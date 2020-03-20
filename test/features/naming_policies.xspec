@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" schematron="file:model2owl/test/features/"> 
+
+    <x:variable name="incorrectClass"></x:variable>
+    
+    <x:scenario label="all names should be Ncname">
+        <x:call template="isNormalizaedString">
+            <x:param name="input">Th!is i-s a clean str!in*g</x:param>
+        </x:call>
+        <x:expect label="clean string">This is a clean string</x:expect>
+    </x:scenario>
+
+
+
+
+
+
+</x:description>
