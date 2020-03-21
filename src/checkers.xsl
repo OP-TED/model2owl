@@ -18,6 +18,8 @@
     <xsl:variable name="allowedStrings" select="'^[\w\d-_:]+$'"/>
     <xsl:variable name="uppercaseLetters" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
     <xsl:variable name="namespacePrefixes" select="fn:doc('../test/testData/namespaces.xml')"/>
+    <xsl:variable name="umlDataTypesMapping" select="fn:doc('../test/testData/umlToXsdDataTypes.xml')"/>
+    <xsl:variable name="xsdAndRdfDataTypes" select="fn:doc('../test/testData/xsdAndRdfDataTypes.xml')"/>
 
     <xd:doc>
         <xd:desc>Checks any string if it is normalized and it contains only allowed characters </xd:desc>
@@ -128,7 +130,7 @@
     
     
     <xd:doc>
-        <xd:desc></xd:desc>
+        <xd:desc>Check if the namespace is valid</xd:desc>
         <xd:param name="input"/>
     </xd:doc>
     
@@ -150,5 +152,76 @@
             </xsl:otherwise>
         </xsl:choose>       
     </xsl:template>
-
+    
+    <xd:doc>
+        <xd:desc>Lookup a data-type in the xsd and rdf accepted data-type document (usually an external file with namespace
+            definitions) and return false or the data-type name if it exists</xd:desc>
+        <xd:param name="qname"/>
+        <xd:param name="dataTypesDefinitions"/>
+    </xd:doc>
+    <xsl:template name="getXsdRdfDataTypeValues">
+        <xsl:param name="qname"/>
+        <xsl:param name="dataTypesDefinitions"/>
+        
+        <xsl:variable name ="dataType" select="$dataTypesDefinitions/*:datatypes/*:datatype/@qname = $qname"/> 
+        <xsl:choose>
+            <xsl:when test="$dataType">
+                <xsl:value-of select="$dataTypesDefinitions/*:datatypes/*:datatype[@qname=$qname]/@qname"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="fn:false()"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>Lookup an uml data-type in the docmuents that presents a mapping with the xsd data-type(usually an external file with namespace
+            definitions) and if found convert data-type from uml to xsd or return false</xd:desc>
+        <xd:param name="qname"/>
+        <xd:param name="umlDataTypeMappings"/>
+    </xd:doc>
+    <xsl:template name="getUmlDataTypeValues">
+        <xsl:param name="qname"/>
+        <xsl:param name="umlDataTypeMappings"/>
+        
+        <xsl:variable name ="dataType" select="$umlDataTypeMappings/*:mappings/*:mapping/from/@qname = $qname"/> 
+        <xsl:choose>
+            <xsl:when test="$dataType">
+                <xsl:value-of select="$umlDataTypeMappings/*:mappings/*:mapping/*:to[../from/@qname = $qname]/@qname"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="fn:false()"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
+    
+    <xd:doc>
+        <xd:desc>Check if the data-type is valid</xd:desc>
+        <xd:param name="input"/>
+    </xd:doc>
+    
+    <xsl:template name="isValidDataType">
+        <xsl:param name="input"/>
+        <xsl:variable name="umlDatatype">
+            <xsl:call-template name="getUmlDataTypeValues">
+                <xsl:with-param name="qname" select="$input"/>
+                <xsl:with-param name="umlDataTypeMappings" select="$umlDataTypesMapping"/>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="xsdRdfDataType">
+            <xsl:call-template name="getXsdRdfDataTypeValues">
+                <xsl:with-param name="qname" select="$input"/>
+                <xsl:with-param name="dataTypesDefinitions" select="$xsdAndRdfDataTypes"/>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:choose>
+            <xsl:when test="($umlDatatype != 'false') or ($xsdRdfDataType != 'false')">
+                <xsl:value-of select="fn:true()"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="fn:false()"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
 </xsl:stylesheet>

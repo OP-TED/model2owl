@@ -90,9 +90,34 @@
         </x:expect>
     </x:scenario>
     
-<!--    <x:scenario label="Check if a data-type is valid ">
+    <x:scenario label="get values from xsd/rdf data-types">
+        <x:call template="getXsdRdfDataTypeValues">
+            <x:param name="qname">xsd:gYearMonth</x:param>
+            <x:param name="dataTypesDefinitions" href="../testData/xsdAndRdfDataTypes.xml" select="/"></x:param>
+        </x:call>
+        <x:expect label="data-type">xsd:gYearMonth</x:expect>
+    </x:scenario>
+    
+    <x:scenario label="get mapping for uml data-types">
+        <x:call template="getUmlDataTypeValues">
+            <x:param name="qname">Date</x:param>
+            <x:param name="umlDataTypeMappings" href="../testData/umlToXsdDataTypes.xml" select="/"></x:param>
+        </x:call>
+        <x:expect label="data-type">xsd:date</x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Check if a data-type is valid ">
         <x:call template="isValidDataType">
-            <x:param name="input">ccev:localName</x:param>
+            <x:param name="input">xsd:string</x:param>
+        </x:call>
+        <x:expect label="boolean-true">
+            <x:text>true</x:text>
+        </x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Check if a data-type is valid when passing a UML data-type ">
+        <x:call template="isValidDataType">
+            <x:param name="input">String</x:param>
         </x:call>
         <x:expect label="boolean-true">
             <x:text>true</x:text>
@@ -106,14 +131,7 @@
         <x:expect label="boolean-false">
             <x:text>false</x:text>
         </x:expect>
-    </x:scenario>-->
-    
-
-    
-    
-    
-    
-    
-    
+    </x:scenario>
+   
 </x:description>
 
