@@ -23,7 +23,7 @@
         <xd:desc/>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
-        <p>This is a class</p>
+        <p>This is a class</p>        
     </xsl:template>
     
     <xd:doc>
@@ -31,6 +31,20 @@
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
         <p>This is a enumeration</p>
+    </xsl:template>
+
+    <xd:doc>
+        <xd:desc/>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:Package']">
+        <p>This is a package</p>
+    </xsl:template>
+
+    <xd:doc>
+        <xd:desc/>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:DataType']">
+        <p>This is a datatype</p>
     </xsl:template>
     
     <xd:doc>
