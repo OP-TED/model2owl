@@ -20,6 +20,8 @@
         </xd:desc>
     </xd:doc>
 
+    <xsl:output method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
+        cdata-section-elements="lines"/>
 
     <xd:doc>
         <xd:desc/>
@@ -38,8 +40,9 @@
         <xsl:apply-templates select="element[@xmi:type = 'uml:Class']"/>
         <xsl:apply-templates select="element[@xmi:type = 'uml:Enumeration']"/>
         <xsl:apply-templates select="element[@xmi:type = 'uml:DataType']"/>
+        <xsl:apply-templates select="element[@xmi:type = 'uml:Package']"/>        
         <xsl:apply-templates select="element[@xmi:type = 'uml:Class']/attributes/attribute"/>
-        <xsl:apply-templates select="element[@xmi:type = 'uml:En-umeration']/attributes/attribute"/>
+        <xsl:apply-templates select="element[@xmi:type = 'uml:Enumeration']/attributes/attribute"/>
     </xsl:template>
 
     <xd:doc>
@@ -53,4 +56,11 @@
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Dependency']"/>
     </xsl:template>
 
+    <xd:doc>
+        <xd:desc>This is the default template for all selected elements and connectors</xd:desc>
+    </xd:doc>
+    <xsl:template match="*">
+        <p>Default for &lt;<xsl:value-of select="./name()"/>&gt; type "<xsl:value-of select="./@xmi:type | ./properties/@ea_type"/>"</p>
+    </xsl:template>
+    
 </xsl:stylesheet>

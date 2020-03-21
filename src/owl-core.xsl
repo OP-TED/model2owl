@@ -42,8 +42,7 @@
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>            
         </rdf:RDF>
-    </xsl:template>
-    
+    </xsl:template>    
     
     <xd:doc>
         <xd:desc> Ontology header </xd:desc>
@@ -64,7 +63,6 @@
                 <xsl:value-of select="$date"/>
             </dct:modified>
         </owl:Ontology>
-    </xsl:template>
-    
+    </xsl:template>    
     
 </xsl:stylesheet>
