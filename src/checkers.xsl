@@ -154,8 +154,8 @@
     </xsl:template>
     
     <xd:doc>
-        <xd:desc>Lookup a data-type in the xsd and rdf accepted data-type document (usually an external file with namespace
-            definitions) and return false or the data-type name if it exists</xd:desc>
+        <xd:desc>Lookup a data-type in the xsd and rdf accepted data-type document (usually an external file with xsd and rdf
+            data-types definitions) and return false or the data-type name if it exists</xd:desc>
         <xd:param name="qname"/>
         <xd:param name="dataTypesDefinitions"/>
     </xd:doc>
@@ -175,8 +175,8 @@
     </xsl:template>
     
     <xd:doc>
-        <xd:desc>Lookup an uml data-type in the docmuents that presents a mapping with the xsd data-type(usually an external file with namespace
-            definitions) and if found convert data-type from uml to xsd or return false</xd:desc>
+        <xd:desc>Lookup an uml data-type in the docmuents that presents a mapping with the xsd data-type(usually an external file with
+            mapping between uml data-type and xsd data-type) and if found convert data-type from uml to xsd or return false</xd:desc>
         <xd:param name="qname"/>
         <xd:param name="umlDataTypeMappings"/>
     </xd:doc>
