@@ -1,3 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
-    stylesheet="file:/home/dragos/src/model2owl/test/unitTests/"> </x:description>
+    stylesheet="file:../../src/checkers.xsl"> 
+
+    <x:scenario label="Check valid normalized string">
+        <x:call template="isValidNormalizedString">
+            <x:param name="input">normalized:String</x:param>
+        </x:call>
+        <x:expect label="is valid">
+            <x:text>true</x:text>
+        </x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Check invalid normalized string">
+        <x:call template="isValidNormalizedString">
+            <x:param name="input">Normalized Str!ng</x:param>
+        </x:call>
+        <x:expect label="is invalid">
+            <x:text>false</x:text>
+        </x:expect>
+    </x:scenario>
+   
+    <x:scenario label="Check if local name from Qname is camelCase with first letter uppercased">
+        <x:call template="isQNameUpperCasedCamelCase">
+            <x:param name="input">prefix:Local</x:param>
+        </x:call>
+        <x:expect label="boolean-true">
+            <x:text>true</x:text>
+        </x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Local name from Qname is not camelCase with first letter uppercased">
+        <x:call template="isQNameUpperCasedCamelCase">
+            <x:param name="input">prefix:local Name</x:param>
+        </x:call>
+        <x:expect label="boolean-false">
+            <x:text>false</x:text>
+        </x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Check if local name from Qname is camelCase with first letter lowercased">
+        <x:call template="isQNameLowerCasedCamelCase">
+            <x:param name="input">prefix:localName</x:param>
+        </x:call>
+        <x:expect label="boolean-true">
+            <x:text>true</x:text>
+        </x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Local name from Qname is not camelCase with first letter uppercased">
+        <x:call template="isQNameLowerCasedCamelCase">
+            <x:param name="input">prefix:local Name</x:param>
+        </x:call>
+        <x:expect label="boolean-false">
+            <x:text>false</x:text>
+        </x:expect>
+    </x:scenario>
+    
+    <x:scenario label="get values from namspace definitions">
+        <x:call template="getNamespaceValues">
+            <x:param name="prefix">ccev</x:param>
+            <x:param name="namespaceDefinitions" href="../testData/namespaces.xml" select="/"></x:param>
+        </x:call>
+        <x:expect label="ccev base name">http://data.europa.eu/m8g/</x:expect>
+    </x:scenario>
+    
+    <x:scenario label="return false when not found namspace definitions">
+        <x:call template="getNamespaceValues">
+            <x:param name="prefix">ccevrts</x:param>
+            <x:param name="namespaceDefinitions" href="../testData/namespaces.xml" select="/"></x:param>
+        </x:call>
+        <x:expect label="to return false">false</x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Check if Qname prefix is a valid namespace">
+        <x:call template="isValidNamespace">
+            <x:param name="input">ccev:localName</x:param>
+        </x:call>
+        <x:expect label="boolean-true">
+            <x:text>true</x:text>
+        </x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Check Qname prefix with a invalid namespace">
+        <x:call template="isValidNamespace">
+            <x:param name="input">prefix:localName</x:param>
+        </x:call>
+        <x:expect label="boolean-false">
+            <x:text>false</x:text>
+        </x:expect>
+    </x:scenario>
+    
+    <x:scenario label="get values from xsd/rdf data-types">
+        <x:call template="getXsdRdfDataTypeValues">
+            <x:param name="qname">xsd:gYearMonth</x:param>
+            <x:param name="dataTypesDefinitions" href="../testData/xsdAndRdfDataTypes.xml" select="/"></x:param>
+        </x:call>
+        <x:expect label="data-type">xsd:gYearMonth</x:expect>
+    </x:scenario>
+    
+    <x:scenario label="get mapping for uml data-types">
+        <x:call template="getUmlDataTypeValues">
+            <x:param name="qname">Date</x:param>
+            <x:param name="umlDataTypeMappings" href="../testData/umlToXsdDataTypes.xml" select="/"></x:param>
+        </x:call>
+        <x:expect label="data-type">xsd:date</x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Check if a data-type is valid ">
+        <x:call template="isValidDataType">
+            <x:param name="input">xsd:string</x:param>
+        </x:call>
+        <x:expect label="boolean-true">
+            <x:text>true</x:text>
+        </x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Check if a data-type is valid when passing a UML data-type ">
+        <x:call template="isValidDataType">
+            <x:param name="input">String</x:param>
+        </x:call>
+        <x:expect label="boolean-true">
+            <x:text>true</x:text>
+        </x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Check a invalid data-type">
+        <x:call template="isValidDataType">
+            <x:param name="input">prefix:localName</x:param>
+        </x:call>
+        <x:expect label="boolean-false">
+            <x:text>false</x:text>
+        </x:expect>
+    </x:scenario>
+   
+</x:description>
+
