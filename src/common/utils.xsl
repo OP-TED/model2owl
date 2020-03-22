@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet 
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" 
@@ -34,20 +35,11 @@
         <xd:param name="qname"/>
         <xd:param name="dataTypesDefinitions"/>
     </xd:doc>
-    <xsl:template name="getXsdRdfDataTypeValues">
+    <xsl:function name="f:getXsdRdfDataTypeValues" as="xs:string">
         <xsl:param name="qname"/>
-        <xsl:param name="dataTypesDefinitions"/>
-        
-        <xsl:variable name ="dataType" select="$dataTypesDefinitions/*:datatypes/*:datatype/@qname = $qname"/> 
-        <xsl:choose>
-            <xsl:when test="$dataType">
-                <xsl:value-of select="$dataTypesDefinitions/*:datatypes/*:datatype[@qname=$qname]/@qname"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:value-of select="fn:false()"/>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
+        <xsl:param name="dataTypesDefinitions"/>        
+        <xsl:sequence select="string($dataTypesDefinitions/*:datatypes/*:datatype[@qname=$qname]/@qname)"/>
+    </xsl:function>
     
     <xd:doc>
         <xd:desc>Lookup a prefix in the namespaceDefinitions (usually an external file with namespace
@@ -55,13 +47,11 @@
         <xd:param name="prefix"/>
         <xd:param name="namespaceDefinitions"/>
     </xd:doc>
-    <xsl:template name="getNamespaceValues">
+    <xsl:function name="f:getNamespaceValues" as="xs:string">
         <xsl:param name="prefix"/>
-        <xsl:param name="namespaceDefinitions" select="$namespacePrefixes"/>
-        
-        <xsl:variable name ="prefixNamespace" select="$namespaceDefinitions/*:prefixes/*:prefix/@value[../@name = $prefix]"/>
-        <xsl:value-of select="$prefixNamespace"/>
-    </xsl:template>
+        <xsl:param name="namespaceDefinitions" />        
+        <xsl:sequence select="string($namespaceDefinitions/*:prefixes/*:prefix/@value[../@name = $prefix])"/>
+    </xsl:function>
     
     <xd:doc>
         <xd:desc>Lookup an uml data-type in the docmuents that presents a mapping with the xsd data-type(usually an external file with
@@ -69,57 +59,48 @@
         <xd:param name="qname"/>
         <xd:param name="umlDataTypeMappings"/>
     </xd:doc>
-    <xsl:template name="getUmlDataTypeValues">
+    <xsl:function name="f:getUmlDataTypeValues" as="xs:string">
         <xsl:param name="qname"/>
         <xsl:param name="umlDataTypeMappings"/>
-        
-        <xsl:variable name ="dataType" select="$umlDataTypeMappings/*:mappings/*:mapping/from/@qname = $qname"/> 
-        <xsl:choose>
-            <xsl:when test="$dataType">
-                <xsl:value-of select="$umlDataTypeMappings/*:mappings/*:mapping/*:to[../from/@qname = $qname]/@qname"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:value-of select="fn:false()"/>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
+        <xsl:variable name ="dataType" select="$umlDataTypeMappings/*:mappings/*:mapping/from/@qname = $qname"/>
+        <xsl:sequence select="string($umlDataTypeMappings/*:mappings/*:mapping/*:to[../from/@qname = $qname]/@qname)"/>
+    </xsl:function>
 
-    <xd:doc>
-        <xd:desc/>
+   <xd:doc>
+        <xd:desc>Build the QName for a lexicalQName (the string equivalent of the QName). The prefix definition 
+            is fetched from the global resource '$namespacePrefixes'.</xd:desc>
         <xd:param name="lexicalQName"/>
     </xd:doc>
     <xsl:function name="f:buildQNameFromLexicalQName" as="xs:QName">
         <xsl:param name="lexicalQName" as="xs:string"/>
         
         <xsl:variable name="prefix" select="fn:substring-before($lexicalQName,':')"/>
-        <xsl:variable name="namespaceURI" as="xs:string">
-            <xsl:call-template name="getNamespaceValues">
-                <xsl:with-param name="prefix" select="$prefix"/>
-            </xsl:call-template>
-        </xsl:variable>
-        <xsl:sequence select="fn:QName($namespaceURI,$lexicalQName)"/>
+        <xsl:variable name="namespaceURI" select="f:getNamespaceValues($prefix,$namespacePrefixes)"/>
+        <xsl:choose>
+            <xsl:when test="$namespaceURI != ''">
+                <xsl:sequence select="fn:QName($namespaceURI,$lexicalQName)"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:message terminate="yes">ERROR: Prefix '<xsl:value-of select="$prefix"/>' has no namespace definition. 
+                    Please check 'config-parameters.xsl' and/or the content of 'namespaces.xml' </xsl:message>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
     
+      
 
     <xd:doc>
-        <xd:desc> generate the element URI pased on the parent package name</xd:desc>
+        <xd:desc> generates URI from the lexicalQName.  The prefix definition 
+            is fetched from the global resource '$namespacePrefixes'.</xd:desc>
         <xd:param name="lexicalQName"/>
     </xd:doc>
-    <xsl:template name="buildURIfromLexicalQName">
+    <xsl:function name="f:buildURIfromLexicalQName">
         <xsl:param name="lexicalQName"/>
         
-        <xsl:variable name="prefix" select="fn:substring-before($lexicalQName,':')"/>
-        <xsl:variable name="local" select="fn:substring-after($lexicalQName,':')"/>
-            
-        <xsl:variable name="namespaceURI">
-            <xsl:call-template name="getNamespaceValues">
-                <xsl:with-param name="prefix" select="$prefix"/>
-            </xsl:call-template>
-        </xsl:variable>
-        
-        
+        <xsl:variable name="qname" select="f:buildQNameFromLexicalQName($lexicalQName)"/>
+        <xsl:sequence select="fn:resolve-uri(fn:local-name-from-QName($qname), fn:namespace-uri-from-QName($qname))"/>
 
-    </xsl:template>
+    </xsl:function>
 
 
 
