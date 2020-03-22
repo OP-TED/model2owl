@@ -15,15 +15,14 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
     xmlns:dct="http://purl.org/dc/terms/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-    xmlns:f="http://https://github.com/costezki/model2owl#"
+    xmlns:f="http://https://github.com/costezki/model2owl#"    
     version="3.0">
 
     <xd:doc scope="stylesheet">
         <xd:desc>A set of useful boolean test functions</xd:desc>
     </xd:doc>
     
-    <xsl:import href="utils.xsl"/>
-    <xsl:import href="../config-parameters.xsl"/>
+    <xsl:import href="utils.xsl"/>    
     
     <xsl:variable name="allowedCharacters" select="'[a-zA-Z0-9-_:]'"/>
     <xsl:variable name="allowedStrings" select="'^[\w\d-_:]+$'"/>
@@ -135,13 +134,7 @@
     <xsl:function name="f:isValidNamespace" as="xs:boolean"> 
         <xsl:param name="input"/>
         <xsl:variable name="prefixToCheck" select="fn:substring-before($input, ':')"/>
-        <xsl:variable name="returnedNamespace">
-            <xsl:call-template name="getNamespaceValues">
-                <xsl:with-param name="namespaceDefinitions" select="$namespacePrefixes"/>
-                <xsl:with-param name="prefix" select="$prefixToCheck"/>
-            </xsl:call-template>
-        </xsl:variable>     
-        <!--<xsl:value-of select="$returnedNamespace"/>-->
+        <xsl:variable name="returnedNamespace" select="f:getNamespaceValues($prefixToCheck,$namespacePrefixes)"/>       
         <xsl:choose>
             <xsl:when test="$returnedNamespace != ''">
                 <xsl:sequence select="fn:true()"/>
@@ -159,20 +152,10 @@
     
     <xsl:function name="f:isValidDataType" as="xs:boolean">
         <xsl:param name="input"/>
-        <xsl:variable name="umlDatatype">
-            <xsl:call-template name="getUmlDataTypeValues">
-                <xsl:with-param name="qname" select="$input"/>
-                <xsl:with-param name="umlDataTypeMappings" select="$umlDataTypesMapping"/>
-            </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="xsdRdfDataType">
-            <xsl:call-template name="getXsdRdfDataTypeValues">
-                <xsl:with-param name="qname" select="$input"/>
-                <xsl:with-param name="dataTypesDefinitions" select="$xsdAndRdfDataTypes"/>
-            </xsl:call-template>
-        </xsl:variable>
+        <xsl:variable name="umlDatatype" select="f:getUmlDataTypeValues($input,$umlDataTypesMapping)"/>
+        <xsl:variable name="xsdRdfDataType" select="f:getXsdRdfDataTypeValues($input,$xsdAndRdfDataTypes)"/>        
         <xsl:choose>
-            <xsl:when test="($umlDatatype != 'false') or ($xsdRdfDataType != 'false')">
+            <xsl:when test="($umlDatatype != '') or ($xsdRdfDataType != '')">
                 <xsl:sequence select="fn:true()"/>
             </xsl:when>
             <xsl:otherwise>
