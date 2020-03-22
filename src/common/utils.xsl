@@ -14,7 +14,9 @@
     xmlns:functx="http://www.functx.com"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
     xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#" version="3.0">
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    version="3.0">
     
     <xd:doc scope="stylesheet">
         <xd:desc>
@@ -24,6 +26,7 @@
         </xd:desc>
     </xd:doc>
     
+    <xsl:import href="../config-parameters.xsl"/>
     
     <xd:doc>
         <xd:desc>Lookup a data-type in the xsd and rdf accepted data-type document (usually an external file with xsd and rdf
@@ -54,18 +57,10 @@
     </xd:doc>
     <xsl:template name="getNamespaceValues">
         <xsl:param name="prefix"/>
-        <xsl:param name="namespaceDefinitions"/>
+        <xsl:param name="namespaceDefinitions" select="$namespacePrefixes"/>
         
         <xsl:variable name ="prefixNamespace" select="$namespaceDefinitions/*:prefixes/*:prefix/@value[../@name = $prefix]"/>
         <xsl:value-of select="$prefixNamespace"/>
-        <!--<xsl:choose>
-            <xsl:when test="$prefixNamespace">
-                
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:value-of select="fn:false()"/>
-            </xsl:otherwise>
-        </xsl:choose>-->
     </xsl:template>
     
     <xd:doc>
@@ -88,5 +83,45 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+
+    <xd:doc>
+        <xd:desc/>
+        <xd:param name="lexicalQName"/>
+    </xd:doc>
+    <xsl:function name="f:buildQNameFromLexicalQName" as="xs:QName">
+        <xsl:param name="lexicalQName" as="xs:string"/>
+        
+        <xsl:variable name="prefix" select="fn:substring-before($lexicalQName,':')"/>
+        
+        <xsl:variable name="namespaceURI" as="xs:string">
+            <xsl:call-template name="getNamespaceValues">
+                <xsl:with-param name="prefix" select="$prefix"/>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:sequence select="fn:QName($namespaceURI,$lexicalQName)"/>
+    </xsl:function>
     
+
+    <xd:doc>
+        <xd:desc> generate the element URI pased on the parent package name</xd:desc>
+        <xd:param name="lexicalQName"/>
+    </xd:doc>
+    <xsl:template name="buildURIfromLexicalQName">
+        <xsl:param name="lexicalQName"/>
+        
+        <xsl:variable name="prefix" select="fn:substring-before($lexicalQName,':')"/>
+        <xsl:variable name="local" select="fn:substring-after($lexicalQName,':')"/>
+            
+        <xsl:variable name="namespaceURI">
+            <xsl:call-template name="getNamespaceValues">
+                <xsl:with-param name="prefix" select="$prefix"/>
+            </xsl:call-template>
+        </xsl:variable>
+        
+        
+
+    </xsl:template>
+
+
+
 </xsl:stylesheet>

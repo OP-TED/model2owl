@@ -14,7 +14,9 @@
     xmlns:functx="http://www.functx.com"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
     xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#" version="3.0">
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    version="3.0">
 
     <xd:doc scope="stylesheet">
         <xd:desc>A set of useful boolean test functions</xd:desc>
@@ -32,10 +34,10 @@
         <xd:param name="input"/>
     </xd:doc>
 
-    <xsl:template name="isValidNormalizedString" as="item()*">
+    <xsl:function name="f:isValidNormalizedString" as="xs:boolean">
         <xsl:param name="input"/>
-        <xsl:value-of select="xs:boolean(fn:matches($input, $allowedStrings))"/>
-    </xsl:template>
+        <xsl:sequence select="xs:boolean(fn:matches($input, $allowedStrings))"/>
+    </xsl:function>
 
     <xd:doc>
         <xd:desc>Checks if the first letter of the local segment is lower-case or upper-case </xd:desc>
@@ -43,7 +45,7 @@
     </xd:doc>
 
 
-    <xsl:template name="firstLetterFromQnameLocalSegment">
+    <xsl:function name="f:firstLetterFromQnameLocalSegment" as="xs:string">
         <xsl:param name="input"/>
         <xsl:variable name="localNameFromQName" select="fn:substring-after($input, ':')"/>
         <xsl:variable name="firstLetter" select="fn:substring($localNameFromQName, 1, 1)"/>
@@ -57,63 +59,46 @@
                 <xsl:value-of select="'lower-case'"/>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
+    </xsl:function>
 
     <xd:doc>
         <xd:desc>Checks if local segment from any Qname is camelCase with first letter upper-cased </xd:desc>
         <xd:param name="input"/>
     </xd:doc>
 
-    <xsl:template name="isQNameUpperCasedCamelCase">
+    <xsl:function name="f:isQNameUpperCasedCamelCase" as="xs:boolean">
         <xsl:param name="input"/>
-        <xsl:variable name="inputIsNormalizedString">
-            <xsl:call-template name="isValidNormalizedString">
-                <xsl:with-param name="input" select="$input"/>
-            </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="letterType">
-            <xsl:call-template name="firstLetterFromQnameLocalSegment">
-                <xsl:with-param name="input" select="$input"/>
-            </xsl:call-template>
-        </xsl:variable>
+        <xsl:variable name="inputIsNormalizedString" select="f:isValidNormalizedString($input)"/>
+        <xsl:variable name="letterType" select="f:firstLetterFromQnameLocalSegment($input)"/>
         <xsl:choose>
             <xsl:when test="($letterType = 'upper-case') and ($inputIsNormalizedString = fn:true())">
-                <xsl:value-of select="fn:true()"/>
+                <xsl:sequence select="fn:true()"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="fn:false()"/>
+                <xsl:sequence select="fn:false()"/>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
+    </xsl:function>
     
     <xd:doc>
         <xd:desc>Checks if local segment from any Qname is camelCase with first letter lower-cased </xd:desc>
         <xd:param name="input"/>
     </xd:doc>
     
-    <xsl:template name="isQNameLowerCasedCamelCase">
+    <xsl:function name="f:isQNameLowerCasedCamelCase" as="xs:boolean">
         <xsl:param name="input"/>
-        <xsl:variable name="inputIsNormalizedString">
-            <xsl:call-template name="isValidNormalizedString">
-                <xsl:with-param name="input" select="$input"/>
-            </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="letterType">
-            <xsl:call-template name="firstLetterFromQnameLocalSegment">
-                <xsl:with-param name="input" select="$input"/>
-            </xsl:call-template>
-        </xsl:variable>
+        <xsl:variable name="inputIsNormalizedString" select="f:isValidNormalizedString($input)"/>
+        <xsl:variable name="letterType" select="f:firstLetterFromQnameLocalSegment($input)"/>
+        
         <xsl:choose>
             <xsl:when test="($letterType = 'lower-case') and ($inputIsNormalizedString = fn:true())">
-                <xsl:value-of select="fn:true()"/>
+                <xsl:sequence select="fn:true()"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="fn:false()"/>
+                <xsl:sequence select="fn:false()"/>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
-    
-
+    </xsl:function>
     
     
     <xd:doc>
@@ -121,7 +106,7 @@
         <xd:param name="input"/>
     </xd:doc>
     
-    <xsl:template name="isValidNamespace">
+    <xsl:function name="f:isValidNamespace" as="xs:boolean"> 
         <xsl:param name="input"/>
         <xsl:variable name="prefixToCheck" select="fn:substring-before($input, ':')"/>
         <xsl:variable name="returnedNamespace">
@@ -133,20 +118,20 @@
         <!--<xsl:value-of select="$returnedNamespace"/>-->
         <xsl:choose>
             <xsl:when test="$returnedNamespace != ''">
-                <xsl:value-of select="fn:true()"/>
+                <xsl:sequence select="fn:true()"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="fn:false()"/>
+                <xsl:sequence select="fn:false()"/>
             </xsl:otherwise>
         </xsl:choose>       
-    </xsl:template>
+    </xsl:function>
     
     <xd:doc>
         <xd:desc>Check if the data-type is valid</xd:desc>
         <xd:param name="input"/>
     </xd:doc>
     
-    <xsl:template name="isValidDataType">
+    <xsl:function name="f:isValidDataType" as="xs:boolean">
         <xsl:param name="input"/>
         <xsl:variable name="umlDatatype">
             <xsl:call-template name="getUmlDataTypeValues">
@@ -162,11 +147,12 @@
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="($umlDatatype != 'false') or ($xsdRdfDataType != 'false')">
-                <xsl:value-of select="fn:true()"/>
+                <xsl:sequence select="fn:true()"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="fn:false()"/>
+                <xsl:sequence select="fn:false()"/>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
+    </xsl:function>
+    
 </xsl:stylesheet>

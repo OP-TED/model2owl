@@ -23,8 +23,7 @@
             <xd:p>This module defines project level variables and parameters</xd:p>
         </xd:desc>
     </xd:doc>
-    
-    
+       
     <xsl:variable name="namespacePrefixes" select="fn:doc('../test/testData/namespaces.xml')"/>
     <xsl:variable name="umlDataTypesMapping" select="fn:doc('../test/testData/umlToXsdDataTypes.xml')"/>
     <xsl:variable name="xsdAndRdfDataTypes" select="fn:doc('../test/testData/xsdAndRdfDataTypes.xml')"/>

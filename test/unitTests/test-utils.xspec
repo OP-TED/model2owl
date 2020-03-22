@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
     stylesheet="../../src/common/utils.xsl">
     
     <x:scenario label="Scenario for testing function getXsdRdfDataTypeValues">
@@ -33,7 +34,12 @@
         </x:call>
         <x:expect label="data-type">xsd:date</x:expect>
     </x:scenario>
-    
+
+
+    <x:scenario label="Scenario for testing function 1">
+        <x:context select="fn:namespace-uri-from-QName(QName('http://data.europa.eu/m8g','prefix:local'))"></x:context>
+        <x:expect label="data-type" test="false()"/>
+    </x:scenario>
     
    
     
