@@ -92,7 +92,6 @@
         <xsl:param name="lexicalQName" as="xs:string"/>
         
         <xsl:variable name="prefix" select="fn:substring-before($lexicalQName,':')"/>
-        
         <xsl:variable name="namespaceURI" as="xs:string">
             <xsl:call-template name="getNamespaceValues">
                 <xsl:with-param name="prefix" select="$prefix"/>
