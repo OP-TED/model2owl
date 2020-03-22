@@ -23,7 +23,7 @@
     <x:scenario label="Scenario 1 for testing function getNamespaceValues ">
         <x:call function="f:getNamespaceValues">
             <x:param name="prefix">ccev</x:param>
-            <x:param name="namespaceDefinitions" href="../testData/namespaces.xml" select="/"></x:param>
+            <x:param name="namespaceDefinitions" href="../testData/namespaces.xml" select="/"/>
         </x:call>
         <x:expect label="ccev base name" select="'http://data.europa.eu/m8g/'"/>
     </x:scenario>
@@ -31,7 +31,7 @@
     <x:scenario label="Scenario 2 for testing function getNamespaceValues ">
         <x:call function="f:getNamespaceValues">
             <x:param name="prefix">ccevrts</x:param>
-            <x:param name="namespaceDefinitions" href="../testData/namespaces.xml" select="/"></x:param>
+            <x:param name="namespaceDefinitions" href="../testData/namespaces.xml" select="/"/>
         </x:call>
         <x:expect label="return nothing" select="''"/>
     </x:scenario>
@@ -39,17 +39,17 @@
     <x:scenario label="Scenario 1 for testing function getUmlDataTypeValues">
         <x:call function="f:getUmlDataTypeValues">
             <x:param name="qname">Date</x:param>
-            <x:param name="umlDataTypeMappings" href="../testData/umlToXsdDataTypes.xml" select="/"></x:param>
+            <x:param name="umlDataTypeMappings" href="../testData/umlToXsdDataTypes.xml" select="/"/>
         </x:call>
-        <x:expect label="data-type" select="'xsd:date'"></x:expect>
+        <x:expect label="data-type" select="'xsd:date'"/>
     </x:scenario>
     
     <x:scenario label="Scenario 2 for testing function getUmlDataTypeValues">
         <x:call function="f:getUmlDataTypeValues">
             <x:param name="qname">DateQ</x:param>
-            <x:param name="umlDataTypeMappings" href="../testData/umlToXsdDataTypes.xml" select="/"></x:param>
+            <x:param name="umlDataTypeMappings" href="../testData/umlToXsdDataTypes.xml" select="/"/>
         </x:call>
-        <x:expect label="nothing" select="''"></x:expect>
+        <x:expect label="nothing" select="''"/>
     </x:scenario>
     
     
@@ -57,14 +57,37 @@
         <x:call function="f:buildQNameFromLexicalQName">
             <x:param name="lexicalQName">xsd:integer</x:param>            
         </x:call>
-        <x:expect label="nothing" select="fn:QName('http://www.w3.org/2001/XMLSchema#','xsd:integer')"></x:expect>
+        <x:expect label="nothing" select="fn:QName('http://www.w3.org/2001/XMLSchema#','xsd:integer')"/>
     </x:scenario>
     
-    <x:scenario label="Scenario 2 for testing function buildQNameFromLexicalQName">
-        <x:call function="f:buildQNameFromLexicalQName">
-            <x:param name="lexicalQName">xsd1:integer</x:param>            
+    
+    
+    <x:scenario label="Scenario 1 for testing function buildURIfromLexicalQName">
+        <x:call function="f:buildURIfromLexicalQName">
+            <x:param name="lexicalQName">xsd:integer</x:param>            
         </x:call>
-        <x:expect label="nothing" select="fn:QName('http://www.w3.org/2001/XMLSchema#','xsd:integer')"></x:expect>
+        <x:expect label="nothing" select="xs:anyURI('http://www.w3.org/2001/XMLSchema#integer')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario 2 for testing function buildURIfromLexicalQName">
+        <x:call function="f:buildURIfromLexicalQName">
+            <x:param name="lexicalQName">rdf:integer</x:param>            
+        </x:call>
+        <x:expect label="nothing" select="xs:anyURI('http://www.w3.org/1999/02/22-rdf-syntax-ns#integer')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario 3 for testing function buildURIfromLexicalQName">
+        <x:call function="f:buildURIfromLexicalQName">
+            <x:param name="lexicalQName">mdr:integer</x:param>            
+        </x:call>
+        <x:expect label="nothing" select="xs:anyURI('http://publications.europa.eu/resource/authority/integer')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario 4 for testing function buildURIfromLexicalQName">
+        <x:call function="f:buildURIfromLexicalQName">
+            <x:param name="lexicalQName">euvoc:integer</x:param>            
+        </x:call>
+        <x:expect label="nothing" select="xs:anyURI('http://publications.europa.eu/ontology/euvoc/integer')"/>
     </x:scenario>
     
 </x:description>

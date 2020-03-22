@@ -14,22 +14,14 @@
 
     
     <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class'] with a comment">
-        <x:context href="../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]"/>
-        <x:expect label="there is an owl:Class" test="count(/owl:Class) > 0"/>
-        <x:expect label="there is a rdfs:label" test="count(/owl:Class/rdfs:label) > 0"/>
-        <x:expect label="there is a rdfs:comment" test="count(/owl:Class/rdfs:comment) > 0"/>
-    </x:scenario>
-
-
-    <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class'] withhout a comment">
-        <x:context href="../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[72]"/>
+        <x:context href="../testData/src-ap-vb3-test.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[3]"/>
         <x:expect label="there is an owl:Class" test="boolean(/owl:Class)"/>
         <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/rdfs:label) "/>
-        <x:expect label="there is a rdfs:comment" test="not(boolean(/owl:Class/rdfs:comment))"/>
+        <x:expect label="there is a rdfs:comment" test="boolean(/owl:Class/rdfs:comment1) "/>
     </x:scenario>
-    
 
-    <x:scenario
+
+<!--    <x:scenario
         label="Scenario for testing template with match 'element[@xmi:type = 'uml:Enumeration']">        
         <x:context href="../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[144]"/>
         <x:expect label="there is a skos:ConceptScheme" test="boolean(/skos:ConceptScheme)"/>
@@ -59,4 +51,5 @@
         <x:context/>
         <x:expect label="Not yet implemented" select="'Not yet implemented'"/>
     </x:scenario>
+-->
 </x:description>

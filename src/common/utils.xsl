@@ -78,8 +78,9 @@
 
         <xsl:variable name="prefix" select="fn:substring-before($lexicalQName, ':')"/>
         <xsl:variable name="namespaceURI" select="f:getNamespaceValues($prefix, $namespacePrefixes)"/>
+        <!--<xsl:sequence select="fn:QName($namespaceURI, $lexicalQName)"/>-->
         <xsl:choose>
-            <xsl:when test="$namespaceURI != ''">
+            <xsl:when test="($namespaceURI != '') and boolean(string(xs:anyURI($namespaceURI)))">
                 <xsl:sequence select="fn:QName($namespaceURI, $lexicalQName)"/>
             </xsl:when>
             <xsl:otherwise>
@@ -94,18 +95,40 @@
 
     <xd:doc>
         <xd:desc> generates URI from the lexicalQName. The prefix definition is fetched from the
-            global resource '$namespacePrefixes'.</xd:desc>
+            global resource '$namespacePrefixes'. The base URI must have a fragment identifier 
+            (hash '#' , or slash '/') by default the slash '/' is assumed. 
+            
+            
+            In order to be compatible 
+            with 'fn:resolve-uri' the ending fragment identifier from the base URI is moved to the 
+            begining of the local segment. THis could probably changed by relying on a simple 
+            concatenation, but at the cost of missing some additional checks that the 'fn:resolve-uri' does.
+            
+            Finally concatenation solution WON! 
+        </xd:desc>
         <xd:param name="lexicalQName"/>
     </xd:doc>
     <xsl:function name="f:buildURIfromLexicalQName">
         <xsl:param name="lexicalQName"/>
-
         <xsl:variable name="qname" select="f:buildQNameFromLexicalQName($lexicalQName)"/>
-        <xsl:sequence
-            select="fn:resolve-uri(fn:local-name-from-QName($qname), fn:namespace-uri-from-QName($qname))"/>
+        <xsl:variable name="namespaceURI" select="fn:namespace-uri-from-QName($qname)"/>
+        <xsl:variable name="fragmentIdentifier"
+            select="substring($namespaceURI, string-length($namespaceURI), 1)"/>
 
+        <xsl:choose>
+            <xsl:when test="substring($namespaceURI, string-length($namespaceURI), 1) = '#'">
+                <xsl:sequence select="xs:anyURI(fn:concat(fn:namespace-uri-from-QName($qname),fn:local-name-from-QName($qname)))"/>
+            </xsl:when>
+            <xsl:when test="substring($namespaceURI, string-length($namespaceURI), 1) = '/'">
+                <xsl:sequence select="xs:anyURI(fn:concat(fn:namespace-uri-from-QName($qname),fn:local-name-from-QName($qname)))"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <!-- warning -->
+                <xsl:message>WARNING: The namespace definition <xsl:value-of select="fn:prefix-from-QName($qname)"/>: '<xsl:value-of select="$namespaceURI"/>' does not end with a fragment
+                    identifier (hash '#' , or slash '/'). Please check namespace.xml and config-parameters.xsl.</xsl:message>
+                <xsl:sequence select="xs:anyURI(fn:concat(fn:namespace-uri-from-QName($qname),'/',fn:local-name-from-QName($qname)))"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
-
-
-
+    
 </xsl:stylesheet>
