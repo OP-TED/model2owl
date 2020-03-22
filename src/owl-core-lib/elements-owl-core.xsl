@@ -19,46 +19,136 @@
         </xd:desc>
     </xd:doc>
 
+    <xsl:output method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
+        cdata-section-elements="lines"/>
+
     <xd:doc>
-        <xd:desc/>
+        <xd:desc>Generate a OWL class definition</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
-        <p>This is a class</p>        
+
+        <!-- TODO: un-CamelCase the name to a normalised string-->
+        <xsl:variable name="className" select="./@name"/>
+        <xsl:variable name="idref" select="./@xmi:idref"/>
+        <!-- TODO: chnge to the propoer URI -->
+        <xsl:variable name="classURI" select="./@name"/>
+        <xsl:variable name="documentation" select="./properties/@documentation"/>
+
+        <owl:Class rdf:about="{$classURI}">
+            <rdfs:label xml:lang="en">
+                <xsl:value-of select="$className"/>
+            </rdfs:label>
+            <skos:prefLabel xml:lang="en">
+                <xsl:value-of select="$className"/>
+            </skos:prefLabel>
+            <xsl:choose>
+                <xsl:when test="$documentation != ''">
+                    <rdfs:comment rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
+                        <!-- TODO: format the documentation -->
+                        <xsl:value-of select="$documentation"/>
+                    </rdfs:comment>
+                </xsl:when>
+            </xsl:choose>
+        </owl:Class>
     </xsl:template>
-    
+
     <xd:doc>
-        <xd:desc/>
+        <xd:desc>Generate the skos:ConceptScheme definition</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
-        <p>This is a enumeration</p>
+        <!-- TODO: un-CamelCase the name to a normalised string-->
+        <xsl:variable name="conceptSchemeName" select="./@name"/>
+        <!-- TODO: chnge to the propoer URI -->
+        <xsl:variable name="conceptSchemeURI" select="./@name"/>
+        <xsl:variable name="documentation" select="./properties/@documentation"/>
+        <!-- generating the actual CS content -->
+        <skos:ConceptScheme rdf:about="{$conceptSchemeURI}">
+            <skos:prefLabel>
+                <xsl:value-of select="$conceptSchemeName"/>
+            </skos:prefLabel>
+            <xsl:choose>
+                <xsl:when test="$documentation">
+                    <skos:definition>
+                        <xsl:value-of select="$documentation"/>
+                    </skos:definition>
+                </xsl:when>
+            </xsl:choose>
+        </skos:ConceptScheme>
     </xsl:template>
 
     <xd:doc>
-        <xd:desc/>
+        <xd:desc>Generate the skos:Concept for each attribute in an enumeration</xd:desc>
     </xd:doc>
-    <xsl:template match="element[@xmi:type = 'uml:Package']">
-        <p>This is a package</p>
+    <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
+        <!-- TODO: un-CamelCase the name to a normalised string-->
+        <xsl:variable name="conceptName" select="./@name"/>
+        <!-- TODO: chnge to the propoer URI -->
+        <xsl:variable name="conceptURI" select="./@name"/>
+
+        <xsl:variable name="conceptSchemeURI" select="../../@name"/>
+
+        <skos:Concept rdf:about="{$conceptURI}">
+            <skos:inScheme rdf:resource="{$conceptSchemeURI}"/>
+            <skos:notation>
+                <xsl:value-of select="$conceptName"/>
+            </skos:notation>
+            <xsl:choose>
+                <xsl:when test="./initial/@body">
+                    <skos:prefLabel xml:lang="en">
+                        <xsl:value-of select="./initial/@body"/>
+                    </skos:prefLabel>
+                </xsl:when>
+                <xsl:otherwise>
+                    <skos:prefLabel xml:lang="en">
+                        <xsl:value-of select="$conceptName"/>
+                    </skos:prefLabel>
+                </xsl:otherwise>
+            </xsl:choose>
+        </skos:Concept>
     </xsl:template>
 
+
     <xd:doc>
-        <xd:desc/>
+        <xd:desc>uml:Package has no equivalent on OWL ontology.</xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:Package']"/>
+
+    <xd:doc>
+        <xd:desc>Generate a rdfs:Datatype definition</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:DataType']">
-        <p>This is a datatype</p>
+        <!-- TODO: un-CamelCase the name to a normalised string-->
+        <xsl:variable name="name" select="./@name"/>
+        <xsl:variable name="idref" select="./@xmi:idref"/>
+        <!-- TODO: chnge to the propoer URI -->
+        <xsl:variable name="URI" select="./@name"/>
+        <xsl:variable name="documentation" select="./properties/@documentation"/>
+
+        <rdfs:Datatype rdf:about="{$URI}">
+            <rdfs:label xml:lang="en">
+                <xsl:value-of select="$name"/>
+            </rdfs:label>
+            <skos:prefLabel xml:lang="en">
+                <xsl:value-of select="$name"/>
+            </skos:prefLabel>
+            <xsl:choose>
+                <xsl:when test="$documentation != ''">
+                    <rdfs:comment rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
+                        <!-- TODO: format the documentation -->
+                        <xsl:value-of select="$documentation"/>
+                    </rdfs:comment>
+                </xsl:when>
+            </xsl:choose>
+        </rdfs:Datatype>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc/>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
         <p>This is a class attribute</p>
     </xsl:template>
-    
-    <xd:doc>
-        <xd:desc/>
-    </xd:doc>
-    <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
-        <p>This is an enumeration attribute</p>
-    </xsl:template>
+
+
 
 </xsl:stylesheet>
