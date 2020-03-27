@@ -16,32 +16,24 @@
     
     <xd:doc>
         <xd:desc>This function will generate a warning message</xd:desc>
-        <xd:param name="input"/>
         <xd:param name="warningMessage"/>
-        <xd:param name="elementType"/>
     </xd:doc>
     <xsl:function name="f:generateHtmlWarning">
-        <xsl:param name="input"/>
-        <xsl:param name="elementType"/>
         <xsl:param name="warningMessage"/>
         <xsl:sequence>
-            <dt>Warning for <xsl:value-of select="$elementType"/>-<xsl:value-of select="$input"/></dt>
             <dd><xsl:value-of select="$warningMessage"/></dd>
         </xsl:sequence>        
     </xsl:function>    
     
     <xd:doc>
         <xd:desc>This function will generate an error message</xd:desc>
-        <xd:param name="input"/>
         <xd:param name="errorMessage"/>
         <xd:param name="elementType"/>
     </xd:doc>
     <xsl:function name="f:generateHtmlError">
-        <xsl:param name="input"/>
         <xsl:param name="elementType"/>
         <xsl:param name="errorMessage"/>
         <xsl:sequence>
-            <dt>Error for <xsl:value-of select="$elementType"/>-<xsl:value-of select="$input"/></dt>
             <dd><xsl:value-of select="$errorMessage"/></dd>
         </xsl:sequence>        
     </xsl:function>    
