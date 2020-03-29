@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    stylesheet="file:../../src/html-conventions-lib/enumeration-html-conventions.xsl">
+    
+    
+    <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Enumeration']-finding enumeration with unmet conventions">
+        <x:context href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[158]"/>
+        <x:expect label="there is an Description List element" test="boolean(/dl)"/>
+        <x:expect label="there is an Description Term element" test="boolean(dl/dt)"/>
+        <x:expect label="there is an Description Details element" test="boolean(dl/dd)"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Enumeration']-finding enumeration with met conventions">
+        <x:context href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[159]"/>
+        <x:expect label="there is an Description List element" test="boolean(/dl)"/>
+        <x:expect label="there is an Description Term element" test="boolean(dl/dt)"/>
+        <x:expect label="there is an Description Details element" test="not(boolean(dl/dd))"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for getting the enumeration name">
+        <x:call template="getEnumerationName">
+            <x:param name="enumeration" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[159]"/>
+        </x:call>   
+        <x:expect label="correct enumeration name">test:AuthorityType</x:expect> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a enumeration name that is valid Qname">
+        <x:call template="enumerationNameChecker">
+            <x:param name="enumeration" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[159]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a enumeration name that is not a valid Qname">
+        <x:call template="enumerationNameChecker">
+            <x:param name="enumeration" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[158]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a enumeration name with the first letter of the local segment is upper-cased">
+        <x:call template="enumerationNameCaseChecker">
+            <x:param name="enumeration" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[159]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a enumeration name with the first letter of the local segment not upper-cased">
+        <x:call template="enumerationNameCaseChecker">
+            <x:param name="enumeration" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[160]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a enumeration with one or more items">
+        <x:call template="enumerationItemsChecker">
+            <x:param name="enumeration" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[159]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a enumeration with no items">
+        <x:call template="enumerationItemsChecker">
+            <x:param name="enumeration" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[160]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    
+    
+</x:description>

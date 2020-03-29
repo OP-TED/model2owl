@@ -75,9 +75,8 @@
     
     <xsl:template name="classDescriptionChecker">
         <xsl:param name="class"/>
-        <xsl:variable name="classDescription" select="$class/properties/@documentation"/>
-        <xsl:variable name="className" select="$class/@name"/>
-        <xsl:if test="$classDescription = ''">
+        <xsl:variable name="noClassDescription" select="$class/properties/not(@documentation)"/>
+        <xsl:if test="$noClassDescription = fn:true()">
             <xsl:sequence select="f:generateHtmlWarning('Description missing. Please add one')"/>
         </xsl:if>
     </xsl:template>

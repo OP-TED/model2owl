@@ -76,9 +76,9 @@
     
     <xsl:template name="classAttributeNameChecker">
         <xsl:param name="classAttribute"/>
-        <xsl:variable name="classAttributeName" select="$classAttribute/@name"/>
+        <xsl:variable name="noClassAttributeName" select="$classAttribute/not(@name)"/>
         <xsl:variable name="attributeId" select="$classAttribute/@xmi:idref"/>
-        <xsl:if test="$classAttributeName = ''">
+        <xsl:if test="$noClassAttributeName = fn:true()">
             <xsl:sequence select="f:generateHtmlWarning(fn:concat('There is an attribute without a name.Here is the attribute id: ', $attributeId))"/>
         </xsl:if>
     </xsl:template>
@@ -133,7 +133,7 @@
         <xsl:variable name="classAttributeType" select="$classAttribute/properties/@type"/>
         <xsl:variable name="umlDatatype" select="f:getUmlDataTypeValues($classAttributeType,$umlDataTypesMapping)"/>
         <xsl:if test="string($umlDatatype) != ''">
-            <xsl:sequence select="f:generateHtmlWarning(fn:concat('This an UML data-type and you should change it into ',$umlDatatype))"/>
+            <xsl:sequence select="f:generateHtmlWarning(fn:concat('This is an UML data-type and you should change it into ',$umlDatatype))"/>
         </xsl:if>
     </xsl:template>
     

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    stylesheet="file:../../src/html-conventions-lib/data-type-html-conventions.xsl">
+    
+    <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:DataType']-finding all data-types with invalid names and return a warning">
+        <x:context href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[260]"/>
+        <x:expect label="there is an Description List element" test="boolean(/dl)"/>
+        <x:expect label="there is an Description Term element" test="boolean(dl/dt)"/>
+        <x:expect label="there is an Description Details element" test="boolean(dl/dd)"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:DataType']-finding all data-types with valid names">
+        <x:context href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[261]"/>
+        <x:expect label="there is an Description List element" test="boolean(/dl)"/>
+        <x:expect label="there is an Description Term element" test="boolean(dl/dt)"/>
+        <x:expect label="there is an Description Details element" test="not(boolean(dl/dd))"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for finding a Data-type element with an invalid name">
+        <x:call template="dataTypeElementNameChecker">
+            <x:param name="dataTypeElement" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[260]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a Data-type element with a valid name">
+        <x:call template="dataTypeElementNameChecker">
+            <x:param name="dataTypeElement" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[261]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+
+</x:description>
