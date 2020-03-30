@@ -17,7 +17,7 @@
         <x:expect label="there is an heading with the enumeration name" test="boolean(/h1)"/>
         <x:expect label="there is an Description List element" test="boolean(/dl)"/>
         <x:expect label="there is an Description Term element" test="boolean(dl/dt)"/>
-        <x:expect label="there is an Description Details element" test="not(boolean(dl/dd))"/>
+        <x:expect label="there is no Description Details element" test="not(boolean(dl/dd))"/>
     </x:scenario>
     
     <x:scenario label="Scenario for getting the enumeration name">
