@@ -6,22 +6,16 @@
 
     <x:scenario label="Generate a warning in html">
         <x:call function="f:generateHtmlWarning">
-            <x:param name="input">Contract</x:param>
-            <x:param name="elementType">Class</x:param>
-            <x:param name="warningMessage">The name is incorrect. Please change</x:param>
+            <x:param name="warningMessage">Warning message</x:param>
         </x:call>
-        <x:expect label="has input name and type" test="//dt//text() = 'Warning for Class-Contract'"/>
-        <x:expect label="has warning message" test="//dd//text() = 'The name is incorrect. Please change'"/>
+        <x:expect label="has warning message" test="//dd//text() = 'Warning message'"/>
     </x:scenario>
     
     
     <x:scenario label="Generate an error in html">
         <x:call function="f:generateHtmlError">
-            <x:param name="input">Contract</x:param>
-            <x:param name="elementType">Class</x:param>
-            <x:param name="warningMessage">This has no description</x:param>
+            <x:param name="errorMessage">This has no description</x:param>
         </x:call>
-        <x:expect label="has input name and type" test="//dt//text() = 'Error for Class-Contract'"/>
         <x:expect label="has error message" test="//dd//text() = 'This has no description'"/>
     </x:scenario>
 

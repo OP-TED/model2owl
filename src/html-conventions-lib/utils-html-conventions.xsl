@@ -28,10 +28,8 @@
     <xd:doc>
         <xd:desc>This function will generate an error message</xd:desc>
         <xd:param name="errorMessage"/>
-        <xd:param name="elementType"/>
     </xd:doc>
     <xsl:function name="f:generateHtmlError">
-        <xsl:param name="elementType"/>
         <xsl:param name="errorMessage"/>
         <xsl:sequence>
             <dd><xsl:value-of select="$errorMessage"/></dd>
