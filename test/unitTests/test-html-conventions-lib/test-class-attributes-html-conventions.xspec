@@ -2,10 +2,10 @@
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:f="http://https://github.com/costezki/model2owl#"
-    stylesheet="file:../../src/html-conventions-lib/class-attributes-html-conventions.xsl">
+    stylesheet="file:../../../src/html-conventions-lib/class-attributes-html-conventions.xsl">
     
     <x:scenario label="Scenario for testing template with match '[uml:Class']/attributes/attribute - finding attributes with unmet conventions">
-        <x:context href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[3]"/>
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[3]"/>
         <x:expect label="there is an heading with the class name" test="boolean(/h1)"/>
         <x:expect label="there is an Description List element" test="boolean(/dl)"/>
         <x:expect label="there is an Description Term element" test="boolean(dl/dt)"/>
@@ -13,7 +13,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for testing template with match '[uml:Class']/attributes/attribute - finding attributes with all conventions met">
-        <x:context href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[37]/attributes/attribute[3]"/>
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[37]/attributes/attribute[3]"/>
         <x:expect label="there is an heading with the class name" test="boolean(/h1)"/>
         <x:expect label="there is an Description List element" test="boolean(/dl)"/>
         <x:expect label="there is an Description Term element" test="boolean(dl/dt)"/>
@@ -22,7 +22,7 @@
     
     <x:scenario label="Scenario for getting the class name">
         <x:call template="getClassName">
-            <x:param name="classAttribute" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[1]"/>
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[1]"/>
         </x:call>   
         <x:expect label="correct class name">epo:AccessTerms</x:expect> 
     </x:scenario>
@@ -30,35 +30,35 @@
     
     <x:scenario label="Scenario for getting the class attribute name">
         <x:call template="getClassAttributeName">
-            <x:param name="classAttribute" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[1]"/>
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[1]"/>
         </x:call>   
         <x:expect label="correct class attribute name">epo:someProcurementDocumentsRestricted</x:expect> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class attribute that has no name">
         <x:call template="classAttributeNameChecker">
-            <x:param name="classAttribute" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[2]"/>
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[2]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class attribute that has a name">
         <x:call template="classAttributeNameChecker">
-            <x:param name="classAttribute" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[1]"/>
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[1]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select = "()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class attribute name that is not a valid Qname">
         <x:call template="classAttributeNameConventionChecker">
-            <x:param name="classAttribute" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[3]"/>
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[3]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class attribute name that is a valid Qname">
         <x:call template="classAttributeNameConventionChecker">
-            <x:param name="classAttribute" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[1]"/>
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[1]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select = "()"/> 
     </x:scenario>
@@ -66,14 +66,14 @@
     
     <x:scenario label="Scenario for finding a class attribute name with the first letter of the local segment not lower-cased">
         <x:call template="classAtrributeNameCaseChecker">
-            <x:param name="classAttribute" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[3]"/>
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[3]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class attribute name with the first letter of the local segment lower-cased">
         <x:call template="classAtrributeNameCaseChecker">
-            <x:param name="classAttribute" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[1]"/>
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[1]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select = "()"/> 
     </x:scenario>
@@ -81,21 +81,21 @@
     
     <x:scenario label="Scenario for finding a class attribute that has an incorrect type">
         <x:call template="classAtrributeTypeChecker">
-            <x:param name="classAttribute" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[1]"/>
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[1]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class attribute that has a correct type">
         <x:call template="classAtrributeTypeChecker">
-            <x:param name="classAttribute" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[3]"/>
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[3]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select = "()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class attribute type that is an UML data-type">
         <x:call template="classAtrributeTypeSuggestion">
-            <x:param name="classAttribute" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[3]"/>
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[3]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
         <x:expect label="expect suggestion with the mapped xsd data-type" test="(dd/text()) = 'This is an UML data-type and you should change it into xsd:date'"></x:expect>
@@ -103,7 +103,7 @@
     
     <x:scenario label="Scenario for finding a class attribute that has a correct type and not an UML data-type">
         <x:call template="classAtrributeTypeSuggestion">
-            <x:param name="classAttribute" href="../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[2]"/>
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[2]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select = "()"/> 
     </x:scenario>

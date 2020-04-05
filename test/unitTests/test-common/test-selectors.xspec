@@ -2,15 +2,15 @@
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
-    stylesheet="../../src/common/selectors.xsl">
+    stylesheet="../../../src/common/selectors.xsl">
     
     <x:scenario label="Scenario for testing template with match 'xmi:XMI">
-        <x:context href="../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/"/>
+        <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/"/>
         <x:expect label="The output is not empty" test="count(/p) > 0"/>
     </x:scenario>
 
     <x:scenario label="Scenario for testing template with match 'elements">
-        <x:context href="../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/xmi:XMI/xmi:Extension/elements"/>
+        <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/xmi:XMI/xmi:Extension/elements"/>
         <x:expect label="uml:Class was selected" test="count(/p[ contains(text(), 'uml:Class')]) > 0"/>
         <x:expect label="uml:Enumeration was selected" test="count(/p[ contains(text(), 'uml:Enumeration')]) > 0"/>        
         <x:expect label="uml:DataType was selected" test="count(/p[ contains(text(), 'uml:DataType')]) > 0"/>        
@@ -18,7 +18,7 @@
     </x:scenario>
 
     <x:scenario label="Scenario for testing template with match 'connectors">
-        <x:context href="../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/xmi:XMI/xmi:Extension/connectors"/>
+        <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/xmi:XMI/xmi:Extension/connectors"/>
         <x:expect label="Generalization was selected" test="count(/p[ contains(text(), 'Generalization')]) > 0"/>
         <x:expect label="Association was selected" test="count(/p[ contains(text(), 'Association')]) > 0"/>
         <x:expect label="Dependency was selected" test="count(/p[ contains(text(), 'Dependency')]) > 0"/>
