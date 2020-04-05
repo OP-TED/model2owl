@@ -37,6 +37,32 @@
         <xsl:param name="input"/>
         <xsl:sequence select="xs:boolean(fn:matches($input, $allowedStrings))"/>
     </xsl:function>
+    
+    <xd:doc>
+        <xd:desc>Checks any string is a valid Qname </xd:desc>
+        <xd:param name="input"/>
+    </xd:doc>
+    
+    <xsl:function name="f:isValidQname" as="xs:boolean">
+        <xsl:param name="input"/>
+        <xsl:choose>
+            <xsl:when test="fn:contains($input,':')">
+            <xsl:choose>
+                <xsl:when test="(f:isValidNormalizedString($input)) and 
+                    (fn:string-length(fn:substring-before($input,':')) > 0) and 
+                    (fn:string-length(fn:substring-after($input,':')) > 0)">
+                    <xsl:sequence select="fn:true()"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:sequence select="fn:false()"/>
+                </xsl:otherwise>
+            </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="fn:false()"/>
+            </xsl:otherwise>
+        </xsl:choose>      
+    </xsl:function>
 
     <xd:doc>
         <xd:desc>Checks if the first letter of the local segment is lower-case or upper-case </xd:desc>
