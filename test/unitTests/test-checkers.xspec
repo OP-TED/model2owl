@@ -17,6 +17,20 @@
         <x:expect label="is invalid" select="false()" />
     </x:scenario>
     
+    <x:scenario label="Check valid Qname string">
+        <x:call function="f:isValidQname">
+            <x:param name="input">normalized:String</x:param>
+        </x:call>
+        <x:expect label="is valid" select="true()" />
+    </x:scenario>
+    
+    <x:scenario label="Check invalid Qname string">
+        <x:call function="f:isValidQname">
+            <x:param name="input">normalizedString</x:param>
+        </x:call>
+        <x:expect label="is valid" select="false()" />
+    </x:scenario>
+    
     <x:scenario label="Check if local name from Qname is camelCase with first letter uppercased">
         <x:call function="f:isQNameUpperCasedCamelCase">
             <x:param name="input">prefix:Local</x:param>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    stylesheet="file:../../src/html-conventions-lib/utils-html-conventions.xsl">
+
+
+    <x:scenario label="Generate a warning in html">
+        <x:call function="f:generateHtmlWarning">
+            <x:param name="warningMessage">Warning message</x:param>
+        </x:call>
+        <x:expect label="has warning message" test="//dd//text() = 'Warning message'"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Generate an error in html">
+        <x:call function="f:generateHtmlError">
+            <x:param name="errorMessage">This has no description</x:param>
+        </x:call>
+        <x:expect label="has error message" test="//dd//text() = 'This has no description'"/>
+    </x:scenario>
+
+</x:description>
