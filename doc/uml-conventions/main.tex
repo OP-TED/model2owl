@@ -2,7 +2,7 @@
 %%% DOCUMENT PREAMBLE %%%
 \documentclass[12pt, a4paper]{report}
 \usepackage[english]{babel}
-%\usepackage{natbib}
+\usepackage[square,numbers]{natbib}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
@@ -26,6 +26,8 @@ type={CC},
 modifier={by},
 version={4.0},
 ]{doclicense}
+
+\bibliographystyle{abbrvnat}
 
 \hypersetup{
 	colorlinks,
@@ -83,6 +85,8 @@ version={4.0},
 
 \input{content/introduction.tex}
 \input{content/final-word.tex}
+
+\bibliography{../references/references}
  
 \end{document}
 
