@@ -1,0 +1,123 @@
+%!TEX root = deliverable49.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% First Page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\DelAcronym}{ePO}
+\newcommand{\DelTitle}{Transformation of UML models to OWL ontologies}
+\newcommand{\DelNumber}{WP 1.3}
+\newcommand{\DelVersion}{1.0}
+\newcommand{\DelAuthor}{Eugeniu Costetchi}
+\newcommand{\DelDate}{17 April 2020}
+\newcommand{\DelFilename}{wp1-3-uml2owl-transformation}
+\newcommand{\DelInitiative}{Initiative for developing eProcurement Ontology}
+
+
+\pagestyle{empty}
+
+
+\begin{titlepage}
+\begin{center}
+
+\begin{center}
+	\begin{center}
+		\setlength{\tabcolsep}{0pt}
+		\begin{tabular}{>{\raggedleft}m{3.5cm}>{\centering}m{\dimexpr\textwidth - 8cm\relax}>{\raggedright}m{3.5cm}}
+			\includegraphics[width=1.15\linewidth]{images/logos/OP-50years-EN}%			
+			&%
+%			\textbf{\large dfs} \\[5pt]%
+%			\textbf{\large sdfs}%
+			&%
+			\includegraphics[width=\linewidth]{images/logos/infeurope-blue-logo} %			
+		\end{tabular}
+	\end{center}
+
+
+%  \includegraphics[scale=.71]{images/logos/OP-50years-EN}
+  \vspace{2mm}
+
+  \end{center}
+  \vspace{4cm}
+  \textbf{{\large \DelInitiative\\}}
+  \vspace{2cm}
+  
+  \begin{spacing}{2.5}
+    \textbf{\Huge \DelTitle}\\ \vspace{2cm}
+    {\large Deliverable \DelNumber} \\ %\vspace{10mm} 
+	{\large \DelAuthor} \\ %\vspace{10mm} 
+	{\large \DelDate} \\ %\vspace{10mm} 
+%    {\large Version \DelVersion}
+  \end{spacing}
+  
+  
+  
+  \vspace*{\fill}  
+   
+  {\footnotesize \doclicenseText\\\doclicenseIcon }
+%  \doclicenseText  
+  
+  \newcolumntype{C}{ >{\arraybackslash} m{3cm} }
+
+\end{center}
+\end{titlepage}
+
+\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Second Page 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\headheight}{1cm}
+\setlength{\footskip}{18mm}
+\addtolength{\textheight}{-\footskip}
+\pagestyle{empty}
+
+\clearpage
+
+\input{disclaimer}
+
+\vspace{6cm}
+
+\begin{flushleft}
+\begin{table*}[!b]
+	  \begin{tabular}{p{4.5cm}p{\textwidth-5cm}}
+		\textbf{Project acronym}       &   \DelAcronym \\
+		\textbf{Project title}    &   \DelInitiative  \\ 
+		\textbf{Document reference} 	&   \DelTitle \\	
+		\textbf{Author(s)}             &   \DelAuthor \\
+		\textbf{Editor(s)}             &   \DelAuthor \\
+		\textbf{Contractor}    &   Infeurope S.A. \\
+		\textbf{Framework contract}    &   10688/35368 \\		
+		\textbf{Actual delivery date}  &   \DelDate \\    
+		\textbf{Delivery nature}     	&   Report (R) \\
+		\textbf{Dissemination licence} 	&   \doclicenseLongNameRef \\
+		\textbf{Filename}           	&   \DelFilename\\
+		\textbf{Suggested readers}    	&   project partners, future users, legal practitioners, software architects\\
+	\end{tabular}
+\end{table*}
+\end{flushleft}
+
+
+
+\clearpage
+\input{abstract}
+\clearpage
+%XXX
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\fancyhf{}
+%\rhead{\slshape\DelAuthor}
+\rhead{\slshape{\DelTitle}}
+\lhead{\slshape\nouppercase{\rightmark}}
+\cfoot{\thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 
