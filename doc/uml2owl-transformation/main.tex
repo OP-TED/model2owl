@@ -7,7 +7,6 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\graphicspath{{images/}}
 \usepackage{parskip}
 \usepackage{fancyhdr}
 \usepackage{vmargin}
@@ -20,6 +19,24 @@
 \usepackage{calc}
 \usepackage{mwe}
 %\usepackage{tabulary}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+%create custom theorem style such as definition and generalisation
+\usepackage{amsmath,amsthm}
+\usepackage{thmtools}
+\usepackage{listings}
+
+\lstset{
+	language=Clean,
+	basicstyle=\ttfamily\footnotesize,
+	linewidth = \linewidth,
+	frame=single, % adds a frame around the code
+	xleftmargin=.2\textwidth,
+	xrightmargin=.2\textwidth,
+}
+
 
 \usepackage[
 type={CC},
@@ -39,26 +56,14 @@ version={4.0},
 }
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
-\graphicspath{{figures/}}
+\graphicspath{{images/}}
 
-%\title{1}								
-%% Title
-%\author{Eugeniu Costetchi}						
-%% Author
-%\date{today's date}
-%% Date
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\makeatletter
-%\let\thetitle\@title
-%\let\theauthor\@author
-%\let\thedate\@date
-%\makeatother
+\declaretheoremstyle[spaceabove=0.75em,spacebelow=0.75em, headindent=0em, postheadspace=1em,qed={}]{thm}
+\theoremstyle{thm}
+\newtheorem{trule}{Rule}
 
-%\pagestyle{fancy}
-%\fancyhf{}
-%\lhead{\DelAuthor}
-%\rhead{\DelTitle}
-%\cfoot{\thepage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}

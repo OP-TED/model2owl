@@ -1,2 +1,51 @@
 \section{Transformation rules}
 \label{sec:tran-rules}
+
+
+\subsection{Classes}
+\label{sec:classes}
+
+UML represents atomic classes as named elements of type \textit{Class} without further features. In OWL, the atomic class, \texttt{owl:Class}, has no intension. It can only be interpreted by its name that has a meaning in the world outside the ontology. The atomic class is a class description that is simultaneously a class axiom. [Kiko2008]
+
+
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.45\linewidth]{logos/EU_Flag_320_213}
+		\caption{UML class}
+		\label{fig:class-uml}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.45\linewidth]{logos/EU_Flag_320_213}
+		\caption{OWL class}
+		\label{fig:class-owl}
+	\end{subfigure}
+	\caption{Visual representation in UML and OWL of a prototypical class }
+	\label{fig:class}
+\end{figure}
+
+\begin{lstlisting}[caption={OWL Class},captionpos=b]
+Class: C
+ skos:prefLabel "label"[en]
+ skos:definition "definition"
+\end{lstlisting}
+
+\begin{trule}[Class]
+	\label{rule:class}
+	Given an UML element $E$ of type $Class$ with a name and optionally with a description  create an OWL class $C$. 
+	\begin{itemize}
+		\item The name is transformed into URI and the label of $C$.
+		\item The description of $E$ is transformed into 
+	\end{itemize}		 	
+\end{trule}
+
+\subsection{Generalisation}
+\label{sec:generalisation}
+...
+
+
+
+
