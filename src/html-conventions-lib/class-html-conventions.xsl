@@ -20,29 +20,45 @@
         <xd:desc>Getting all unmet conventions for Classes  </xd:desc>
     </xd:doc>
     
+    
+    
     <xsl:template match="element[@xmi:type = 'uml:Class']">
-        <dl>
-        <dt>
+        <xsl:variable name = "class">
             <xsl:call-template name="getClassName">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-        </dt>
-            <xsl:call-template name="classNameChecker">
-                <xsl:with-param name="class" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="classDescriptionChecker">
-                <xsl:with-param name="class" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="classNameCaseChecker">
-                <xsl:with-param name="class" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="classNamePrefixChecker">
-                <xsl:with-param name="class" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="classAttributesChecker">
-                <xsl:with-param name="class" select="."/>
-            </xsl:call-template>
-        </dl>
+        </xsl:variable>
+        <h2>              
+            <xsl:value-of select="$class"/>
+        </h2>
+        <section>
+            <h3>Unmet class conventions</h3>
+            <section>
+                <dl>
+                    <dt>
+                    </dt>
+                    <xsl:call-template name="classNameChecker">
+                        <xsl:with-param name="class" select="."/>
+                    </xsl:call-template>
+                    <xsl:call-template name="classDescriptionChecker">
+                        <xsl:with-param name="class" select="."/>
+                    </xsl:call-template>
+                    <xsl:call-template name="classNameCaseChecker">
+                        <xsl:with-param name="class" select="."/>
+                    </xsl:call-template>
+                    <xsl:call-template name="classNamePrefixChecker">
+                        <xsl:with-param name="class" select="."/>
+                    </xsl:call-template>
+                    <xsl:call-template name="classAttributesChecker">
+                        <xsl:with-param name="class" select="."/>
+                    </xsl:call-template>
+                </dl>
+            </section>
+            <h3>Unmet attribute conventions</h3>
+            <section>
+                <xsl:apply-templates select="attributes/attribute"/>
+            </section>
+        </section>
     </xsl:template>
     
     
@@ -121,5 +137,5 @@
     </xsl:template>
     
     
-  
+    
 </xsl:stylesheet>

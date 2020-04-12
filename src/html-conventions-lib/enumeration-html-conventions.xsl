@@ -21,22 +21,36 @@
     </xd:doc>
     
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
-        <dl>
-            <dt>
-                <xsl:call-template name="getEnumerationName">
-                    <xsl:with-param name="enumeration" select="."/>
-                </xsl:call-template>
-            </dt>
-            <xsl:call-template name="enumerationNameChecker">
+        <xsl:variable name="enumeration">
+            <xsl:call-template name="getEnumerationName">
                 <xsl:with-param name="enumeration" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="enumerationNameCaseChecker">
-                <xsl:with-param name="enumeration" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="enumerationItemsChecker">
-                <xsl:with-param name="enumeration" select="."/>
-            </xsl:call-template>
-        </dl>
+        </xsl:variable>
+        <h2>
+            <xsl:value-of select="$enumeration"/>
+        </h2>
+        <section>
+            <h3>Unmet enumeration conventions</h3>
+            <section>
+                <dl>
+                    <dt>
+                    </dt>
+                    <xsl:call-template name="enumerationNameChecker">
+                        <xsl:with-param name="enumeration" select="."/>
+                    </xsl:call-template>
+                    <xsl:call-template name="enumerationNameCaseChecker">
+                        <xsl:with-param name="enumeration" select="."/>
+                    </xsl:call-template>
+                    <xsl:call-template name="enumerationItemsChecker">
+                        <xsl:with-param name="enumeration" select="."/>
+                    </xsl:call-template>
+                </dl>
+            </section>
+            <h3>Unmet item conventions</h3>
+            <section>
+                <xsl:apply-templates select="attributes/attribute"/>
+            </section>
+        </section>
     </xsl:template>
     
     

@@ -20,12 +20,7 @@
         <xd:desc>Getting all unmet conventions for Class attributes  </xd:desc>
     </xd:doc>
     
-    <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
-        <h1>
-            <xsl:call-template name="getClassName">
-                <xsl:with-param name="classAttribute" select="."/>
-            </xsl:call-template>
-        </h1>
+    <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute" name="attributes">
         <dl>
             <dt>
                 <xsl:call-template name="getClassAttributeName">
@@ -51,14 +46,14 @@
     </xsl:template>
     
     
-    <xd:doc>
+<!--    <xd:doc>
         <xd:desc>Getting the class name</xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
     <xsl:template name="getClassName">
         <xsl:param name="classAttribute"/>
         <xsl:value-of select="$classAttribute/parent::attributes/parent::element/@name"/>
-    </xsl:template>
+    </xsl:template>-->
     
     <xd:doc>
         <xd:desc>Getting the class attribute name</xd:desc>
@@ -66,7 +61,15 @@
     </xd:doc>
     <xsl:template name="getClassAttributeName">
         <xsl:param name="classAttribute"/>
-        <xsl:value-of select="$classAttribute/@name"/>
+        <xsl:variable name="attributeName" select="$classAttribute/@name"/>
+        <xsl:choose>
+            <xsl:when test="$classAttribute/not(@name) = fn:true()">
+                <xsl:value-of >No name</xsl:value-of>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$attributeName"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     
     <xd:doc>

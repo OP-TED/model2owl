@@ -21,11 +21,6 @@
     </xd:doc>
     
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
-        <h1>
-            <xsl:call-template name="getEnumerationName">
-                <xsl:with-param name="enumerationItem" select="."/>
-            </xsl:call-template>
-        </h1>
         <dl>
             <dt>
                 <xsl:call-template name="getEnumerationItemName">
@@ -38,15 +33,6 @@
         </dl>
     </xsl:template>
     
-    
-    <xd:doc>
-        <xd:desc>Getting the Enumeration name</xd:desc>
-        <xd:param name="enumerationItem"/>
-    </xd:doc>
-    <xsl:template name="getEnumerationName">
-        <xsl:param name="enumerationItem"/>
-        <xsl:value-of select="$enumerationItem/parent::attributes/parent::element/@name"/>
-    </xsl:template>
     
     <xd:doc>
         <xd:desc>Getting the enumeration item name</xd:desc>
