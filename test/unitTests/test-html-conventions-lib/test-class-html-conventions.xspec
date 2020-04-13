@@ -7,16 +7,23 @@
     
     <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class']-finding class with unmet conventions">
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[34]"/>
-        <x:expect label="there is an Description List element" test="boolean(/dl)"/>
-        <x:expect label="there is an Description Term element" test="boolean(dl/dt)"/>
-        <x:expect label="there is an Description Details element" test="boolean(dl/dd)"/>
+        <x:expect label="there is a h2 with the class name" test="boolean(/h2)"/>
+        <x:expect label="there is a h3 with 'Unmet class conventions' as text " test="section/h3/text() = 'Unmet class conventions'"/>
+        <x:expect label="there is a Description List element" test="boolean(section/section/dl)"/>
+        <x:expect label="there is an Description Term element" test="boolean(section/section/dl/dt)"/>
+        <x:expect label="there is an Description Details element" test="boolean(section/section/dl/dd)"/>
     </x:scenario>
     
     <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class']-finding class with met conventions">
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]"/>
-        <x:expect label="there is an Description List element" test="boolean(/dl)"/>
-        <x:expect label="there is an Description Term element" test="boolean(dl/dt)"/>
-        <x:expect label="there is no Description Details element" test="not(boolean(dl/dd))"/>
+        <x:expect label="there is no h3 with the 'Unmet class conventions' as text" test="not(section/h3/text() = 'Unmet class conventions')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class']-finding class with met conventions but with unmet conventions for attributes">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[37]"/>
+        <x:expect label="there is a h2 with the class name" test="boolean(/h2)"/>
+        <x:expect label="there is no h3 with the 'Unmet class conventions' as text" test="not(section/h3/text() = 'Unmet class conventions')"/>
+        <x:expect label="there is a h3 with the 'Unmet attribute conventions' as text" test="section/h3/text() = 'Unmet attribute conventions'"/>
     </x:scenario>
     
     <x:scenario label="Scenario for getting the class name">
