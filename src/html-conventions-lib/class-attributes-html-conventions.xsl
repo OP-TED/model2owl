@@ -17,16 +17,11 @@
     <xsl:import href="../html-conventions-lib/utils-html-conventions.xsl"/>
     
     <xd:doc>
-        <xd:desc>Getting all unmet conventions for Class attributes  </xd:desc>
+        <xd:desc>Getting all class attributes and show only the ones that have unmet conventions</xd:desc>
     </xd:doc>
     
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute" name="attributes">
-        <dl>
-            <dt>
-                <xsl:call-template name="getClassAttributeName">
-                    <xsl:with-param name="classAttribute" select="."/>
-                </xsl:call-template>
-            </dt>
+        <xsl:variable name="classAttributeChecks" as="item()*">
             <xsl:call-template name="classAttributeNameChecker">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
@@ -42,18 +37,19 @@
             <xsl:call-template name="classAtrributeTypeSuggestion">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-        </dl>
+        </xsl:variable>
+        <xsl:if test="boolean($classAttributeChecks)">
+            <dl>
+                <dt>
+                    <xsl:call-template name="getClassAttributeName">
+                        <xsl:with-param name="classAttribute" select="."/>
+                    </xsl:call-template>
+                </dt>
+                <xsl:copy-of select="$classAttributeChecks"/>
+            </dl>
+        </xsl:if>
     </xsl:template>
     
-    
-<!--    <xd:doc>
-        <xd:desc>Getting the class name</xd:desc>
-        <xd:param name="classAttribute"/>
-    </xd:doc>
-    <xsl:template name="getClassName">
-        <xsl:param name="classAttribute"/>
-        <xsl:value-of select="$classAttribute/parent::attributes/parent::element/@name"/>
-    </xsl:template>-->
     
     <xd:doc>
         <xd:desc>Getting the class attribute name</xd:desc>

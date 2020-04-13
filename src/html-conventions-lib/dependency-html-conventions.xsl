@@ -19,14 +19,11 @@
     
     
     <xd:doc>
-        <xd:desc>Getting all Dependencies and returning a warning for all unmet conventions  </xd:desc>
+        <xd:desc>Getting all dependencies and show only the ones that have unmet conventions</xd:desc>
     </xd:doc>
     
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
-        <dl>
-            <dt>
-                Dependency ID: <xsl:value-of select="@xmi:idref"/>
-            </dt>
+        <xsl:variable name="dependencyChecks" as="item()*">
             <xsl:call-template name="dependencyNameChecker">
                 <xsl:with-param name="dependencyConnector" select="."/>
             </xsl:call-template>
@@ -42,7 +39,15 @@
             <xsl:call-template name="dependencyMultiplicityChecker">
                 <xsl:with-param name="dependencyConnector" select="."/>
             </xsl:call-template>
+        </xsl:variable>
+        <xsl:if test="boolean($dependencyChecks)">
+        <dl>
+            <dt>
+                Dependency ID: <xsl:value-of select="@xmi:idref"/>
+            </dt>
+            <xsl:copy-of select="$dependencyChecks"/>
         </dl>
+        </xsl:if>
     </xsl:template>
     
     

@@ -19,18 +19,23 @@
     
     
     <xd:doc>
-        <xd:desc>Getting all misused data-types and returning a warning  </xd:desc>
+        <xd:desc>Getting all data-types and show only the ones that have unmet conventions </xd:desc>
     </xd:doc>
     
     <xsl:template match="element[@xmi:type = 'uml:DataType']">
+        <xsl:variable name="dataTypeChecks" as="item()*">
+            <xsl:call-template name="dataTypeElementNameChecker">
+                <xsl:with-param name="dataTypeElement" select="."/>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:if test="boolean($dataTypeChecks)">
         <dl>
             <dt>
                 <xsl:value-of select="@name"/>
             </dt>
-            <xsl:call-template name="dataTypeElementNameChecker">
-                <xsl:with-param name="dataTypeElement" select="."/>
-            </xsl:call-template>
+            <xsl:copy-of select="$dataTypeChecks"/>
         </dl>
+        </xsl:if>
     </xsl:template>
     
     

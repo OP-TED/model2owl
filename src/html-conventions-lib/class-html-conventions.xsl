@@ -17,7 +17,7 @@
     <xsl:import href="../html-conventions-lib/utils-html-conventions.xsl"/>
     
     <xd:doc>
-        <xd:desc>Getting all unmet conventions for Classes  </xd:desc>
+        <xd:desc>Getting all classes and attributes and show only the ones with unmet conventions </xd:desc>
     </xd:doc>
     
     
@@ -28,37 +28,49 @@
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
         </xsl:variable>
-        <h2>              
-            <xsl:value-of select="$class"/>
-        </h2>
-        <section>
-            <h3>Unmet class conventions</h3>
+        <xsl:variable name="classConventions" as="item()*">
+            <xsl:call-template name="classNameChecker">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="classDescriptionChecker">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="classNameCaseChecker">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="classNamePrefixChecker">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="classAttributesChecker">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="classAttributeConventions" as="item()*">
+            <xsl:apply-templates select="attributes/attribute"/>
+        </xsl:variable>
+        <xsl:if test="boolean($classConventions) or boolean($classAttributeConventions)">
+            <h2>              
+                <xsl:value-of select="$class"/>
+            </h2>
             <section>
-                <dl>
-                    <dt>
-                    </dt>
-                    <xsl:call-template name="classNameChecker">
-                        <xsl:with-param name="class" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="classDescriptionChecker">
-                        <xsl:with-param name="class" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="classNameCaseChecker">
-                        <xsl:with-param name="class" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="classNamePrefixChecker">
-                        <xsl:with-param name="class" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="classAttributesChecker">
-                        <xsl:with-param name="class" select="."/>
-                    </xsl:call-template>
-                </dl>
+                <xsl:if test="boolean($classConventions)">
+                    <h3>Unmet class conventions</h3>
+                    <section>
+                        <dl>
+                            <dt>
+                            </dt>
+                            <xsl:copy-of select="$classConventions"/>
+                        </dl>
+                    </section>
+                </xsl:if>
+                <xsl:if test="boolean($classAttributeConventions)">
+                    <h3>Unmet attribute conventions</h3>
+                    <section>
+                        <xsl:copy-of select="$classAttributeConventions"/>
+                    </section>
+                </xsl:if>
             </section>
-            <h3>Unmet attribute conventions</h3>
-            <section>
-                <xsl:apply-templates select="attributes/attribute"/>
-            </section>
-        </section>
+        </xsl:if>
     </xsl:template>
     
     

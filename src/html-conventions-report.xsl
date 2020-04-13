@@ -35,6 +35,7 @@
                 
                 <link rel="stylesheet" href="static/css/jquery-ui.min.css"/>  
                 <link rel="stylesheet" href="static/css/bootstrap.min.css"/>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
                 <link rel="stylesheet" href="static/css/pubcss-acm-sig.css"/>
                 <link rel="stylesheet" media="screen" href="static/css/screen.css"/>
                 <link rel="stylesheet" media="print" href="static/css/print.css"/>
