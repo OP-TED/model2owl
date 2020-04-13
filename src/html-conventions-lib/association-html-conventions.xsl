@@ -43,7 +43,8 @@
         <xsl:if test="boolean($associationChecks)">
         <dl>
             <dt>
-                Association ID: <xsl:value-of select="@xmi:idref"/>
+                <xsl:value-of select="f:getConnectorName(.)"/>
+               <!-- Association ID: <xsl:value-of select="@xmi:idref"/>-->
             </dt>
             <xsl:copy-of select="$associationChecks"/>
         </dl>

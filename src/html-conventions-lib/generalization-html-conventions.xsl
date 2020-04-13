@@ -34,7 +34,8 @@
         <xsl:if test="boolean($generalizationChecks)">
         <dl>
             <dt>
-                Generalization ID: <xsl:value-of select="@xmi:idref"/>
+                <xsl:value-of select="f:getConnectorName(.)"/>
+               <!-- Generalization ID: <xsl:value-of select="@xmi:idref"/>-->
             </dt>
             <xsl:copy-of select="$generalizationChecks"/>
         </dl>

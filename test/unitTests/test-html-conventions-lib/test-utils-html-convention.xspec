@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:f="http://https://github.com/costezki/model2owl#"
     stylesheet="file:../../../src/html-conventions-lib/utils-html-conventions.xsl">
 
@@ -18,5 +19,35 @@
         </x:call>
         <x:expect label="has error message" test="//dd//text() = 'This has no description'"/>
     </x:scenario>
+    
+    
+    <x:scenario label="Get connector helper name when direction is Source -> Destination and has no name">
+        <x:call function="f:getConnectorName">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[18]"/>
+        </x:call>
+        <x:expect label="correct helper name for the connector">epo:AccessTerms -&gt; epo:Channel(+epo:hasRestrictedAccessAddress)</x:expect>
+    </x:scenario>
 
+
+    <x:scenario label="Get connector helper name when direction is Bi-Directional and has no name">
+        <x:call function="f:getConnectorName">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[134]"/>
+        </x:call>
+        <x:expect label="correct helper name for the connector">epo:Procedure &lt;-&gt; epo:Contract(+epo:isConcludedBy +epo:concludes)</x:expect>
+    </x:scenario>
+    
+    
+    <x:scenario label="Get connector name when it has a name and it is not required to construct a helper name">
+        <x:call function="f:getConnectorName">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[17]"/>
+        </x:call>
+        <x:expect label="correct helper name for the connector">test association</x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Get connector helper name when direction is unknown and has no name">
+        <x:call function="f:getConnectorName">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[19]"/>
+        </x:call>
+        <x:expect label="correct helper name for the connector">epo:AccessTerms X epo:Organisation(+epo:hasAdditionalInformationProvidedBy +)</x:expect>
+    </x:scenario>
 </x:description>

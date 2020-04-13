@@ -4318,1339 +4318,1092 @@
          </dl>
          <h1>Generalizations</h1>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Generalization ID: EAID_F2CE1D0F_03F6_4212_9039_539A168F5C5E</dt>
+            <dt>generalization with name</dt>
             <dd>A generalization should not have a name. Please remove the name</dd>
             <dd>Destination -&gt; Source is not a valid direction for a generalization. Please rectify
                this</dd>
          </dl>
          <h1>Associations</h1>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_03976A4B_0A83_4fbb_9096_5821A8E81375</dt>
+            <dt>test association</dt>
             <dd>An association should not have a name. Please remove the name</dd>
             <dd>Unspecified is not a valid direction for an association. Please rectify this</dd>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_0B28EDF1_063E_4fc0_BDDE_10F1D8E8DB62</dt>
+            <dt>epo:AccessTerms X epo:Organisation (+epo:hasAdditionalInformationProvidedBy +)</dt>
+            <dd>Source -&gt; Desti is not a valid direction for an association. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:PlannedProcurementPart -&gt; epo:AccessTerms (+)</dt>
             <dd>The target role is missing</dd>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_B5DF6485_5340_4589_8A4B_E803A8847CAB</dt>
+            <dt>epo:Procedure -&gt; epo:AccessTerms (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_63D12BEC_D35F_4ec5_B197_E7E413650BCB</dt>
+            <dt>epo:Address -&gt; epo:LocationCoordinate (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_A983878B_5B5D_42f2_9DE2_168A76779E4D</dt>
+            <dt>epo:Address -&gt; epo:Country (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_40B5EAA0_4EFB_48b8_BF36_4AD58F431BB3</dt>
+            <dt>Site -&gt; epo:Address (+epo:hasPostalAddress)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_749D502A_E72A_439c_A518_B52AC8C519FD</dt>
+            <dt>epo:Location -&gt; epo:Address (+epo:hasPostalAddress)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_A8CBD7C1_E82A_4979_98A5_58BD6A43131C</dt>
+            <dt>epo:OpeningTerms -&gt; epo:Address (+epo:hasOpeningPlace)</dt>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_CC6546F6_5583_40d1_BC88_0710CE957A1F</dt>
+            <dt>epo:ContractTerms -&gt; epo:Address (+epo:hasSpecificPlaceOfPerformance)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_75DF5E6E_51A2_428c_9DF6_F3735F7FF09C</dt>
+            <dt>epo:Agent -&gt; Name (+epo:hasAlias)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_BAFE7A5A_EC42_4d45_B6B3_DD90257AD75F</dt>
+            <dt>epo:Agent &lt;-&gt; epo:Agent (+cccev:delegatesAncillaryActivitiesOn +actsOnBehalfOf)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_CD9AD3F1_EFB1_4465_9ED9_53BC3C2146DA</dt>
+            <dt>epo:Agent -&gt; Identifier (+hasID)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_DB39CC01_06CB_4c7a_9698_25C8B93C8F19</dt>
+            <dt>epo:Agent &lt;-&gt; epo:Role (+epo:playsRole +epo:isRoleOf)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_5E08B8DE_4142_4bf7_B980_A8F85D3FE6DF</dt>
+            <dt>epo:Contract &lt;-&gt; epo:Agent (+epo:isSignatoryPartyOf +epo:isSignedBy)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_EBF47D81_D8E3_4eda_9351_165A2D6D972E</dt>
+            <dt>epo:System &lt;-&gt; epo:Agent (+epo:isOwnBy +epo:owns)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_A163B495_CF0A_46cb_B9FF_7E8F24737233</dt>
+            <dt>epo:AwardCriterion -&gt; epo:Lot (+epo:usedToAward)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_AE06008A_49F4_4fbb_B377_C72AFBAAD71D</dt>
+            <dt>epo:AwardCriterion -&gt; epo:LotGroup (+epo:usedToAward)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_607C3A1A_95D5_446a_8101_3B0D88FC443C</dt>
+            <dt>epo:AwardDecision -&gt; epo:TenderLot (+epo:hasWinning)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_8E2C2A24_9951_4306_A9FB_28757AF26136</dt>
+            <dt>epo:AwardDecision -&gt; epo:Contract (+epo:isReferedByA)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_B42FB17A_FDE3_4b1e_8A4F_4818F4FAC6AA</dt>
+            <dt>epo:AwardDecision -&gt; epo:Winner (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_BFBFA7AD_D33A_4c40_B2A3_2D56592261EA</dt>
+            <dt>epo:AwardDecision -&gt; epo:Lot (+epo:refersTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_E3743890_2A2C_4519_A3D3_B79714622117</dt>
+            <dt>epo:AwardDecision -&gt; epo:LotGroup (+epo:refersTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_1B6633F4_18E7_499c_8833_E5D05896D1EE</dt>
+            <dt>epo:Subcontract &lt;-&gt; epo:AwardDecision (+epo:refersToAwardResult +epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_73550D56_6001_470d_A44B_4E2717D5C180</dt>
+            <dt>epo:Subcontract -&gt; epo:AwardDecision (+epo:referredToIn)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_9BFA9CBA_AA02_4344_997E_2891C61F633A</dt>
+            <dt>epo:Buyer -&gt; epo:AwardDecision (+epo:makesDecsion)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_C1AA8D62_BD7C_4d05_A1C7_7E1E4FA29EC2</dt>
+            <dt>epo:EvaluationResult -&gt; epo:AwardDecision (+epo:providesInformationFor)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_E53E6AAC_5E8D_4d5c_A299_34ACB49884F7</dt>
+            <dt>epo:ContractAwardNotice &lt;-&gt; epo:AwardDecision (+epo:notifiesAwardResult +epo:isNotifiedIn)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_EB2BDB5F_6B2F_4be8_8DF6_CED88B9B0C82</dt>
+            <dt>epo:Subcontract &lt;-&gt; epo:AwardDecision (+epo:acceptsProposalOf +epo:referredToIn)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_610783CB_543D_493b_8D89_2DD66914E4DD</dt>
+            <dt>epo:Business &lt;-&gt; epo:Person (+epo:hasBeneficialOwner +isRoleOf)</dt>
             <dd>The multiplicity value from source is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_36B67DF4_2DCC_4a10_9E5C_9587BC47A059</dt>
+            <dt>epo:Winner -&gt; epo:Business (+epo:isRoleOfBusiness)</dt>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_48A95B97_4F56_4e50_B394_141FBC05B4EC</dt>
+            <dt>epo:Buyer -&gt; epo:BuyerProfile (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_8B8F145A_51EA_4206_A62F_C9887535362E</dt>
+            <dt>epo:Buyer &lt;-&gt; epo:EvaluationBoard (+epo:appoints +epo:appointedBy)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_E18C3E75_9ECC_439f_BCBD_FDC40BE14FB3</dt>
+            <dt>epo:Buyer &lt;-&gt; epo:PlannedProcurementPart (+epo:plans +epo:isPlannedBy)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_95B5EFCC_A591_4284_BDDB_3255C3A534C6</dt>
+            <dt>epo:Procedure &lt;-&gt; epo:Buyer (+epo:isResponsiblityOf +epo:isResponsibleFor)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_AFBFAC8F_6B1F_48b7_A214_E396F63092F4</dt>
+            <dt>epo:CentralPurchasingBody -&gt; epo:Buyer (+epo:actsAs)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_605B0380_1360_42e5_81B8_144F85B0A7EB</dt>
+            <dt>epo:ProcurementServiceProvider -&gt; epo:BuyerProfile (+epo:manages)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_FEA09506_8752_48aa_9C4D_8AD5D8D4F32E</dt>
+            <dt>epo:CentralPurchasingBody -&gt; epo:BuyerProfile (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_CE5406A5_324D_4fb7_A7B2_021B7EBC35BF</dt>
+            <dt>epo:CallForCompetition &lt;-&gt; epo:Notice (+epo:notifiedThrough +)</dt>
             <dd>The target role is missing</dd>
             <dd>The source role is missing</dd>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from source is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_65DBE876_512C_4fda_B304_684469718F09</dt>
+            <dt>epo:InvitationToTender &lt;-&gt; epo:CallForCompetition (+epo:hasPreviousPublication +epo:preceeds)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_E6A5DE6B_050C_4b69_8B11_6FB920CD5795</dt>
+            <dt>epo:Purpose -&gt; epo:CallForExpressionOfInterest (+creation of call for expression of
+               interest)</dt>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_E70C1D11_F321_4ca0_9B38_01E2595921DB</dt>
+            <dt>epo:CandidateShortList -&gt; epo:EconomicOperator (+epo:hasQualified)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_D20201B9_B5F5_40b9_B9A8_44C15B35E272</dt>
+            <dt>epo:Lot -&gt; epo:CandidateShortList (+epo:hasSecondStage)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_3BCAFA7C_DB3B_48a7_85D8_A3062FE96D93</dt>
+            <dt>epo:Change -&gt; epo:Document (+epo:refersToADifferent)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_430ABE66_C2FC_4bbc_AAA8_B9294FEA8556</dt>
+            <dt>epo:Change -&gt; epo:ResourceElement (+epo:hasChangedElement)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_41B4729A_8E78_4764_AE55_D5747192FE24</dt>
+            <dt>epo:Document -&gt; epo:Change (+epo:hasChanged)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_C35CEB23_6CA0_4221_B49B_A3ACD7CD8A3A</dt>
+            <dt>epo:Channel -&gt; epo:OpeningHoursSpecification (+epo:hasAvaliabilityRestriction)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_035351DE_D462_40db_BFFC_E700C43016D5</dt>
+            <dt>epo:SubmissionTerms -&gt; epo:Channel (+epo:hasTenderSubmissionCommunicationMeans)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_0CB3236B_9DFD_49a0_ABC7_03BD87F4A93B</dt>
+            <dt>epo:ContactPoint -&gt; epo:Channel (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_1EDBAA12_E7BA_4061_8A44_1D684CD835F0</dt>
+            <dt>epo:Document -&gt; epo:Channel (+epo:madeAvailableVia)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_48BACF54_925C_45ef_9DB1_8E5AF287CFE0</dt>
+            <dt>epo:ProcedureTerms -&gt; epo:Channel (+epo:hasClarificationsAvailableVia)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_5EFBDE5A_2E73_42ea_A279_94BEC6A07A4C</dt>
+            <dt>epo:ProcedureTerms -&gt; epo:Channel (+epo:hasRestrictedProcurementDocumentsMadeAvailableVia
+               )</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_72E18437_C07D_43b7_AE20_C945D2E67D6F</dt>
+            <dt>epo:Technique -&gt; epo:Channel (+epo:isAvailableVia)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_98ADDFA8_04DD_45fd_BE98_0745FFB651AA</dt>
+            <dt>epo:Lot -&gt; epo:Channel (+epo:usesAdhoc)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_BE9625AE_F9F3_47d9_B4C6_9ACDE8A17ABC</dt>
+            <dt>epo:ProcedureTerms -&gt; epo:Channel (+epo:hasQuestionsMadeAvailableVia )</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_DED69CAE_AC4B_4758_BCBC_1ABBC6BAF818</dt>
+            <dt>epo:PlannedProcurementPart -&gt; epo:Channel (+epo:uses)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_EA72CA40_E3BE_43e5_941B_C494BBFC36EE</dt>
+            <dt>epo:QualificationSystem -&gt; epo:Channel (+epo:hasMeansOfCommunication)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_F453F188_BB6B_49ee_8197_DD9EA7FF4EAF</dt>
+            <dt>epo:OpeningTerms -&gt; epo:Channel (+epo:hasVirtualTenderOpeningAddress)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_FA0A3EF3_3212_4a01_B549_57EC1FDC6790</dt>
+            <dt>epo:ProcedureTerms -&gt; epo:Channel (+epo:hasProcurementDocumentsMadeAvailableVia)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_2D87E9BA_7D03_4ef3_9A15_C249FFD12AE2</dt>
+            <dt>epo:ContactPoint &lt;-&gt; epo:Role (+epo:hasPersonRole +epo:isRoleOfContactPerson)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_F1182C17_11BB_4fea_AC44_3313484AF3BA</dt>
+            <dt>epo:ContactPoint -&gt; epo:OpeningHoursSpecification (+epo:hasAvaliabilityRestriction)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_4B6E629B_BECA_4e04_B7C9_925B517BC914</dt>
+            <dt>epo:Role -&gt; epo:ContactPoint (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_1AB7A18B_C4EC_4b13_AEA8_A2608B4EABBA</dt>
+            <dt>epo:Contract &lt;-&gt; epo:Lot (+epo:refersTo +epo:isReferedByA)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_2C7F6FF4_42D6_4a94_A652_44C3FAB48480</dt>
+            <dt>epo:Contract -&gt; epo:Document (+epo:attaches)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_6CF7585A_9930_48b9_B867_33406CC7CE66</dt>
+            <dt>epo:Contract -&gt; epo:Winner (+epo:refersToSignatory)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_983BCB5B_C545_4e65_99E8_A469BE8784AC</dt>
+            <dt>epo:Contract -&gt; epo:Period (+epo:hasDuration)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_99A957C2_D330_40a5_8027_2AAF46DFC47A</dt>
+            <dt>epo:Contract -&gt; epo:LotGroup (+epo:refersTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_BEEA3B3F_BFE1_478b_9503_B4C8B517646F</dt>
+            <dt>epo:Contract -&gt; epo:Tender (+epo:refersTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_C741BADB_0CAC_40d5_A730_696A39D2224E</dt>
+            <dt>epo:Contract -&gt; epo:Period (+epo:hasEstimatedDuration)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_F5B3A33B_530D_4e44_8717_42DAD5FE9552</dt>
+            <dt>epo:Contract -&gt; epo:Period (+epo:hasDurationEvaluationPeriod)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_FB5AB06F_4F35_46ff_9BE8_C1C17443C148</dt>
+            <dt>epo:Contract -&gt; epo:Purpose (+epo:hasContractPurpose)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_273414F8_B532_4433_B239_DC0DE9C054CA</dt>
+            <dt>epo:eCatalogue -&gt; epo:Contract (+epo:madeAvailableUnder)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_33EB6ABB_DB35_4b96_9E46_695F79EE21E5</dt>
+            <dt>epo:ContractModificationNotice -&gt; epo:Contract (+epo:modifies)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_3B9B861D_DE1C_4ccb_AE3D_CD774F61114F</dt>
+            <dt>epo:Procedure -&gt; epo:Contract (+epo:leadsTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_967E10D6_4B37_4b6f_B740_E7D58A911BD2</dt>
+            <dt>epo:Procedure &lt;-&gt; epo:Contract (+epo:isConcludedBy +epo:concludes)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_29127D27_5BBD_424e_8F1D_F6F18D59FE55</dt>
+            <dt>epo:ContractAwardNotice -&gt; epo:PriorInformationNotice (+epo:refersTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_77FA3DFC_596C_4c80_B4A8_44C3A029D843</dt>
+            <dt>epo:ContractAwardNotice -&gt; epo:ReviewTerms (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_E8C59B36_D89E_43e1_8BB3_B02889255A7A</dt>
+            <dt>epo:ContractAwardNotice -&gt; epo:ContractNotice (+epo:refersTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_43BDBD8C_68F1_4217_A175_3385DFDC8870</dt>
+            <dt>epo:ContractModificationNotice -&gt; epo:ContractAwardNotice (+epo:refersTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_846AA4D4_3A30_49ce_A0E4_44C8BFF2D72F</dt>
+            <dt>epo:ContractModificationNotice X epo:ContractModificationNotice (+ +)</dt>
             <dd>Unspecified is not a valid direction for an association. Please rectify this</dd>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_561A6D16_4396_48db_A2BD_DA98B4FAC3C8</dt>
+            <dt>epo:ContractNotice -&gt; epo:PriorInformationNotice (+epo:refersTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_04A1EEE9_F9C5_48c8_9D5E_0C25C0E90AA2</dt>
+            <dt>epo:ProcurementCriterion -&gt; epo:ContractNotice (+come from)</dt>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_93008191_3613_42a9_8211_547F7F480D08</dt>
+            <dt>epo:ESPDRequest -&gt; epo:ContractNotice (+epo:qualificationCriteria)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_C0E61D02_719E_4b9c_85F2_70DE6AD7609C</dt>
+            <dt>epo:Contractor -&gt; epo:Subcontractor (+hasSubcontracted)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_F593B546_502A_413a_8694_914903478877</dt>
+            <dt>epo:ContractTerms -&gt; epo:SubcontractTerms (+epo:includes)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_31B40B33_2579_49f6_88B7_F0C910C9D205</dt>
+            <dt>epo:PlannedProcurementPart -&gt; epo:ContractTerms (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_98AF53B5_0836_4960_9BAD_828639FB6361</dt>
+            <dt>epo:Lot &lt;-&gt; epo:ContractTerms (+epo:has +epo:appliesTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_1C724561_0899_42a8_840D_DBA85AAA874E</dt>
+            <dt>epo:DesignContestRegimeTerms -&gt; epo:Lot (+epo:appliesTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_C037482B_2397_411f_9ECF_A0ACB8861109</dt>
+            <dt>epo:Procedure -&gt; epo:DirectAwardTerms (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_6B616F1D_F20D_45fe_964B_1FC343081FB8</dt>
+            <dt>epo:Document -&gt; epo:Document (+epo:changeRefersToInstance)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_DFE11A54_45B0_449d_B8FF_34E21440DAD9</dt>
+            <dt>epo:Document -&gt; epo:Document (+epo:refersToPrevious)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_7583AA9C_6F19_40d8_BFBE_CC52D366FBD9</dt>
+            <dt>epo:PlannedProcurementPart -&gt; epo:Document (+epo:refersTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_B9655F67_D2FA_4107_B74F_8555D80281A8</dt>
+            <dt>epo:SecurityClearanceTerms -&gt; epo:Document (+epo:applyTo)</dt>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_DF4E4C99_6F15_45e6_B6BA_6AC99CFCAAD3</dt>
+            <dt>epo:FrameworkAgreementTechnique -&gt; epo:eAuctionTechnique (+epo:uses)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_AB60851D_D7AD_497a_A397_7C4E651F15D4</dt>
+            <dt>epo:EconomicOperator -&gt; epo:FinancialAccount (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_24545C91_D269_4cfe_A646_9A2FDEE01B0F</dt>
+            <dt>epo:Tender -&gt; epo:EconomicOperator (+epo:specifiesSubcontractors)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_D335C013_C1EB_4c83_8740_0950B38D5C10</dt>
+            <dt>epo:EconomicOperatorShortList -&gt; epo:EconomicOperator (+epo:hasShownInterest)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_ED7EB219_9297_4c41_945E_F92DDA5A0197</dt>
+            <dt>epo:Winner -&gt; epo:EconomicOperator (+epo:contractWinnerSubcontractors)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_8152FFD0_6D02_4498_B205_671CDA36B4EF</dt>
+            <dt>epo:EconomicOperatorShortList -&gt; epo:Lot (+epo:hasEOsHavingInterestIn)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_32B26389_CFD3_4093_901B_93863987D636</dt>
+            <dt>epo:ESPDRequest -&gt; epo:SelectionCriterion (+defines)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_38A9CEA0_D542_4a11_AEA0_EC5F24CAF1A1</dt>
+            <dt>epo:EvaluationBoard &lt;-&gt; epo:Lot (+epo:assignedForEvaluationOf +epo:toBeEvaluatedBy)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_63759332_F109_45b4_BA21_62746B24AB58</dt>
+            <dt>epo:EvaluationBoard -&gt; epo:ExclusionGround (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_F9D16671_87A9_411b_B205_013259F2908D</dt>
+            <dt>epo:EvaluationBoard -&gt; epo:Evaluator (+epo:composedOf)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_09A068DE_CB64_4af4_937C_51A9700F9D8C</dt>
+            <dt>epo:EvaluationResult -&gt; epo:TenderLot (+epo:isAbout)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_666E68BB_0120_4649_B444_26BF3AA0938E</dt>
+            <dt>epo:EvaluationSystem -&gt; epo:EvaluationResult (+epo:proposes)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_899425FB_3031_4304_89AC_757DF8A8744A</dt>
+            <dt>epo:TenderLot &lt;-&gt; epo:EvaluationResult (+epo:isAssessedIn +epo:assesses)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_3D3D017B_C5D9_45ea_9AF0_0B339C5A866D</dt>
+            <dt>epo:EvaluationSystem -&gt; epo:Tender (+epo:evaluates)</dt>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_64C95ACA_A14D_424f_B901_A2E7BEFDFFBC</dt>
+            <dt>epo:EvaluationSystem -&gt; epo:Organisation (+epo:belongsTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_CA7194FE_0619_4817_84C9_B5D985BB20A9</dt>
+            <dt>defines (defined as part of)</dt>
             <dd>An association should not have a name. Please remove the name</dd>
             <dd>The target role is missing</dd>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_AD3F6F89_00FE_4ba0_8AE2_50813890D239</dt>
+            <dt>epo:Lot -&gt; epo:EvaluationTerms (+epo:hasTenderEvaluationTerms)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_CC2BD60D_0735_4dac_AFC0_9776A4C43B38</dt>
+            <dt>epo:Evaluator -&gt; epo:SelectionCriterion (+)</dt>
             <dd>The target role is missing</dd>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_D9E52DA0_E98D_40a5_B63C_4C94EA693FD6</dt>
+            <dt>epo:Evaluator -&gt; epo:TenderEvaluation (+epo:performsEvaluation)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_EF18F426_53D5_496d_BB4E_88A8C4B1599C</dt>
+            <dt>epo:ExclusionGround -&gt; epo:QualificationSystem (+epo:qualifiedBy)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_028BA69B_74AF_41a2_AA9B_D3B2D3CB5CE1</dt>
+            <dt>epo:Procedure -&gt; epo:ExclusionGround (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_3EE4B991_B9E8_4e17_87D7_D2C5E8C7FFF8</dt>
+            <dt>epo:Tenderer -&gt; epo:ExclusionGround (+substantiates)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_535BFD26_6AFD_435e_BE09_B2DA134FAD74</dt>
+            <dt>epo:FollowupContractTerms -&gt; epo:Lot (+epo:appliesTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_D4D0B457_E8B9_4092_A9B1_1CE7AE8A0193</dt>
+            <dt>epo:Prize -&gt; epo:FollowupContractTerms (+epo:appliesToFollowupContractTerms)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_12A35122_25D4_4e5f_90C6_12C86D4A633B</dt>
+            <dt>epo:FormalOrganisation -&gt; Name (+epo:hasFormalName)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_6BD6A071_B4A6_4898_84A0_F338B50D4D8C</dt>
+            <dt>epo:FormalOrganisation -&gt; epo:Location (+epo:hasFormalLocation)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_D68065CA_2D18_479d_95EB_23D106ED6921</dt>
+            <dt>epo:PurchaseContract &lt;-&gt; epo:FrameworkAgreement (+epo:hasRulesSetBy +epo:setsRulesOf)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_EBCDA1B6_0962_43d6_94BC_EB843C572615</dt>
+            <dt>epo:FrameworkAgreementTechnique -&gt; epo:FrameworkAgreement (+epo:isConcludedBy)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_3CF24468_A94B_40f5_93D4_E29ABA8A6D0A</dt>
+            <dt>epo:FrameworkAgreementTerms -&gt; epo:Lot (+epo:appliesTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_B767AB42_A635_4ee8_BACF_B1FC6CB7D5B8</dt>
+            <dt>epo:FrameworkAgreementTerms -&gt; epo:LotGroup (+epo:appliesTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_C9AD1DD5_6E62_44b6_BA18_C5B688B7D283</dt>
+            <dt>epo:PlannedProcurementPart -&gt; epo:Fund (+epo:isFundedWith)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_3B6C8E00_AAB3_4f99_8543_F640360DBCF0</dt>
+            <dt>epo:RequestForParticipation -&gt; epo:InvitationToTender (+epo:refersTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_29372338_E89D_4c3d_840F_DBEAF83F36D2</dt>
+            <dt>epo:TenderLot -&gt; epo:Item (+epo:refersTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_F6DC0086_9C6D_4675_AFB8_280817BA2BEC</dt>
+            <dt>epo:Lot -&gt; epo:Item (+epo:refersTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_28236B4B_9308_46ad_9581_3601B37AA6A4</dt>
+            <dt>epo:Person -&gt; epo:Location (+epo:hasLegalLocation)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_9F23612C_1865_4c8b_82ED_0BAA7D433501</dt>
+            <dt>epo:Organisation -&gt; epo:Location (+epo:hasLocation)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_9F31C348_9DF3_4d6b_85AF_2116F80F9858</dt>
+            <dt>epo:RegisteredOrganisation -&gt; epo:Location (+epo:hasRegisteredLocation)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_C6DCC060_7260_4251_A83A_9ABF99675C9C</dt>
+            <dt>epo:Person -&gt; epo:Location (+epo:hasCountryOfBirth)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_0EAFC54B_5909_4b72_B3AB_96EF5B3DAF9E</dt>
+            <dt>epo:Lot &lt;-&gt; epo:LotGroup (+epo:groupedIn +epo:groups)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_217C56AC_5F5D_43c4_9830_8E9FA8969896</dt>
+            <dt>epo:Lot -&gt; epo:StatisticalInformation (+epo:providesAdditionalInformation)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_28D18760_691C_4095_98A0_DB28347CAA0C</dt>
+            <dt>epo:Lot -&gt; epo:SecurityClearanceTerms (+epo:requires)</dt>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_5810F112_B7E6_473d_91EB_9BDB0A0902CB</dt>
+            <dt>epo:Lot -&gt; epo:ProjectProcurement (+epo:contributesToImplement)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_59536AF8_FEB3_470a_8BCF_2A921F9B9314</dt>
+            <dt>epo:Lot -&gt; epo:Purpose (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_6721549B_9289_4508_94D9_C2A6FA85DD81</dt>
+            <dt>epo:Lot -&gt; epo:TenderLot (+epo:awardedTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_7FA4500A_76FE_40ff_BC13_496A39617F1B</dt>
+            <dt>epo:Lot -&gt; epo:OpeningTerms (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_81D470D5_433B_4242_826E_974C4A3AEF87</dt>
+            <dt>epo:Lot -&gt; epo:StrategicProcurement (+epo:involvesOverallStrategicProcurement)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_929BEF51_188A_4b9b_B92F_D604FA3480BA</dt>
+            <dt>epo:Lot -&gt; epo:MultipleStageProcedureTerms (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_B5AB21C5_16E7_4ff6_9CC1_DD2F753E1144</dt>
+            <dt>epo:Lot -&gt; Property (+)</dt>
             <dd>The target role is missing</dd>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_CD58EC60_A1C0_465b_B65C_2F3284BC6B53</dt>
+            <dt>epo:Lot -&gt; epo:PlannedProcurementPart (+epo:refersTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_CEEA3975_9C39_4253_A318_FD386020E817</dt>
+            <dt>epo:Lot -&gt; epo:ProcurementDocument (+epo:referredToIn)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_0F5B582E_5E2B_4aef_BD3F_A8330FD16FC1</dt>
+            <dt>epo:ReviewTerms -&gt; epo:Lot (+epo:appliesTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_275CE09A_F06A_4850_8789_6F64673F7228</dt>
+            <dt>Property -&gt; epo:Lot (+)</dt>
             <dd>The target role is missing</dd>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_28747E27_8C54_4733_9161_9B7702CCFC98</dt>
+            <dt>epo:LotSpecification -&gt; epo:Lot (+epo:appliesTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_5111C221_8C3D_40d6_9788_1B7570757DF1</dt>
+            <dt>epo:Prize X epo:Lot (+ +rewarded With)</dt>
             <dd>Destination -&gt; Source is not a valid direction for an association. Please rectify
                this</dd>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_6B77EF8C_4EC9_4b7d_B5D0_2789FA38FF45</dt>
+            <dt>epo:TenderLot &lt;-&gt; epo:Lot (+epo:relatesTo +epo:relatedTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_774F27FE_F00F_423e_A63A_B10EDB0FAEBB</dt>
+            <dt>epo:SelectionCriterion &lt;-&gt; epo:Lot (+epo:appliesTo +epo:isAppliedTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_C2839B87_E78F_4543_8765_713A00C9FA69</dt>
+            <dt>epo:Technique &lt;-&gt; epo:Lot (+epo:usedIn +epo:uses)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_D6581D61_7FE3_495e_845D_DC15AE7A2051</dt>
+            <dt>epo:SelectionCriterion -&gt; epo:Lot (+epo:usedForReductionOfCandidates)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_D9990D3C_51ED_4626_9195_C96F98BD3349</dt>
+            <dt>epo:Procedure &lt;-&gt; epo:Lot (+epo:specifies +epo:isSpecifiedIn)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_1DC0BC1E_2490_4868_826A_A8A26DE1AC6A</dt>
+            <dt>epo:LotGroup -&gt; epo:Tender (+epo:awardedTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_44CFA3B0_EE66_4ace_9069_38D7A3B7A01C</dt>
+            <dt>epo:ProcedureTerms -&gt; epo:LotGroup (+epo:combineLotsInto)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_4D1B4401_A846_48aa_82C1_10BF2AE15ABE</dt>
+            <dt>epo:SelectionCriterion -&gt; epo:LotGroup (+epo:appliesTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_DBFD4767_09A3_4be6_BE6D_99F09FB1D3D6</dt>
+            <dt>epo:TenderLot -&gt; epo:LotGroup (+epo:appliesTo)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_9AE748AA_F3CE_4573_9033_03B4017015E6</dt>
+            <dt>epo:QualificationSystem -&gt; epo:Notice (+epo:issues)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_F8DE4F3D_DA1A_422d_B1DC_74D4D2FFC9B3</dt>
+            <dt>epo:OpeningHoursSpecification -&gt; epo:Period (+epo:hasInterval)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_BEA5E759_9668_4a44_82D9_C19B3A90B39C</dt>
+            <dt>epo:Organisation -&gt; Name (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_3BD099A9_FE6A_4a6b_9BA4_E97D7CB81EB9</dt>
+            <dt>epo:ReviewTerms -&gt; epo:Organisation (+epo:hasMediationBody)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_6BE409A8_7F79_430b_BABF_C66987BC0298</dt>
+            <dt>epo:ReviewTerms -&gt; epo:Organisation (+epo:hasReviewBody)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_89EFAC45_8221_4aa7_AAA6_8D845D86DA41</dt>
+            <dt>epo:ProcedureTerms -&gt; epo:Organisation (+epo:hasWorkingConditionsInformation)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_A36DB4C1_18F3_43f5_90BF_1FD3EDFC6599</dt>
+            <dt>epo:ProcedureTerms -&gt; epo:Organisation (+epo:hasEmploymentProtectionInformation)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_A869916C_B848_457f_B635_D9F5A4CFF544</dt>
+            <dt>epo:ReviewTerms -&gt; epo:Organisation (+epo:hasReviewService)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_AFC3CEE5_015A_4448_B5DC_57B5626F17CF</dt>
+            <dt>epo:ProcedureTerms -&gt; epo:Organisation (+epo:hasEnvironmentalProtectionInformation
+               )</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_30D51F2C_9147_4c35_AEFA_ED8C40A203A1</dt>
+            <dt>DatumValue -&gt; epo:Period (+cccev:isPeriod)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_D77EAC2F_A434_424a_8ECC_D32EF06886BB</dt>
+            <dt>epo:PlannedProcurementPart -&gt; epo:Period (+epo:hasPlannedPeriod)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_DE5098A6_B134_4261_8994_841365A27FAB</dt>
+            <dt>epo:Technique -&gt; epo:Period (+epo:hasValidityPeriod)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_F388DB32_E220_4579_BDBF_A54695867E0F</dt>
+            <dt>epo:QualificationSystem -&gt; epo:Period (+epo:hasValidityPeriod)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_41D1B102_BBE5_4392_A930_CEA4168677DB</dt>
+            <dt>epo:PlannedProcurementPart -&gt; epo:StrategicProcurement (+epo:involvesOverallStrategicProcurement)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_9B6FD014_0392_417d_97C8_F5063C523203</dt>
+            <dt>epo:PlannedProcurementPart -&gt; epo:Purpose (+epo:hasPurpose)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_5A3E83F2_4A0C_4707_ACA1_C8D3B87F7C00</dt>
+            <dt>(inherits from Document "relates To")</dt>
             <dd>An association should not have a name. Please remove the name</dd>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_604BFD3C_8E6E_45e6_8A7C_A53AF68D6275</dt>
+            <dt>epo:ProjectProcurement &lt;-&gt; epo:PlannedProcurementPart (+epo:foreseesPlannedProcurementPart
+               +epo:isForeseenInProjectProcurement)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_537D539F_60E6_496c_9216_47D07F0D86EB</dt>
+            <dt>(inherits from Document "relates To")</dt>
             <dd>An association should not have a name. Please remove the name</dd>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_07F50200_593C_4246_8735_62ECB1F51D16</dt>
+            <dt>epo:Procedure -&gt; epo:StrategicProcurement (+epo:involvesOverallStrategicProcurement)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_1C8C734E_FD33_4153_9939_FA613CEB5D22</dt>
+            <dt>epo:Procedure -&gt; epo:ProcedureTerms (+epo:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_209C99C3_A03C_42e0_899E_E10B63DFDB91</dt>
+            <dt>epo:Procedure -&gt; epo:Purpose (+epo:hasOverallPurpose)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_0E6691D6_6718_4229_926F_A63EA3022DA6</dt>
+            <dt>epo:ProjectProcurement -&gt; epo:Procedure (+epo:accessMarketThrough)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_5C2DFC54_B720_4f71_B6A5_DA1DE6FC2FEE</dt>
+            <dt>epo:TenderEvaluation -&gt; epo:ProcurementCriterion (+epo:basedOn)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_EF78EF6B_1159_426b_B5F7_3F0C20632CD1</dt>
+            <dt>epo:PublicationProvision -&gt; epo:ResourceElement (+epo:hasNonPublishedElement)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_A5730F0A_995D_4e89_AD6A_FCBAAD43115F</dt>
+            <dt>epo:SelectionCriterion -&gt; epo:QualificationSystem (+epo:qualifiedBy)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_E510B7AB_82BD_4540_A09D_93129799E15D</dt>
+            <dt>Agent -&gt; epo:RegisteredOrganisation (+rov:hasRegisteredOrganization)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_9CE53B2F_6002_4603_B1A0_4AE0E75C1A89</dt>
+            <dt>epo:StrategicProcurement -&gt; epo:ResourceElement (+epo:specifiedIn)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_18E00AB9_554F_4c0c_BE96_4F80B87CC132</dt>
+            <dt>epo:SecurityClearanceTerms -&gt; Site (+epo:applyTo)</dt>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_716352E4_182B_4953_BBB9_64B0AF3C9E59</dt>
+            <dt>epo:SecurityClearanceTerms -&gt; epo:Winner (+apply)</dt>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_7C98771E_06E0_4141_9CF5_2CFE5FEB856B</dt>
+            <dt>epo:TenderLot -&gt; epo:Subcontract (+epo:proposes)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_53BF907A_4380_460c_B057_DF4625ED6C04</dt>
+            <dt>epo:Tenderer -&gt; epo:Subcontractor (+proposesSubcontractor)</dt>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_24FD1FBA_79DB_4e15_A2B5_6FB4940E32EC</dt>
+            <dt>epo:Tender &lt;-&gt; epo:TenderDocument (+epo:attaches +epo:attachedIn)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_3F11811E_757D_41a7_833D_712FEC5F5DB5</dt>
+            <dt>epo:Tender &lt;-&gt; epo:TenderLot (+epo:includes +epo:includedIn)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_FC6BC360_A9B3_4ae2_A439_1CCFCEE2711A</dt>
+            <dt>responds to criterion (applied to)</dt>
             <dd>An association should not have a name. Please remove the name</dd>
             <dd>The target role is missing</dd>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_5EF86696_9598_4f12_9D51_E0965C41E726</dt>
+            <dt>epo:Tenderer -&gt; epo:Tender (+epo:withdraws)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_90F50D97_1C32_4a1e_8991_7D431555FB24</dt>
+            <dt>epo:TenderEvaluation -&gt; epo:Tender (+epo:evaluationOf)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_E026EBD4_4329_4e57_9F78_AF7887C44E46</dt>
+            <dt>epo:Tenderer &lt;-&gt; epo:Tender (+epo:submits +epo:submittedBy)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_41C7DF73_524F_417a_AA4F_919705970C42</dt>
+            <dt>epo:TenderLot -&gt; epo:TenderDocument (+epo:isReferredToBy)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_100EC183_4361_466e_B8C4_7A8240321273</dt>
+            <dt>epo:TenderLotEvaluationRank -&gt; epo:TenderLot (+epo:ranks)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_0DFA3E09_15D9_459a_A73A_1D30DAD23320</dt>
+            <dt>Criterion -&gt; CriterionPropertyGroup (+cccev:has)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_1309CC00_01FB_4268_A5BC_FB23DEB9F94F</dt>
+            <dt>Criterion &lt;-&gt; Evidence (+cccev:basesOnEvidence +cccev:proofs)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_29214D5A_A124_41fb_8C98_DAF4C6573342</dt>
+            <dt>Criterion -&gt; Property (+cccev:hasConstraint)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_751E6276_7229_4a97_806A_CA1B46459A9D</dt>
+            <dt>Criterion -&gt; Criterion (+cccev:hasSub)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_B3D6F855_5BD0_4cb5_B000_396A42EF027F</dt>
+            <dt>Criterion -&gt; Property (+cccev:hasInformationRequirement)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_C21765B5_E36F_4c10_8310_C55A498A1E9C</dt>
+            <dt>Criterion -&gt; Evidence (+cccev:providesEvidence)</dt>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_6F9B5F01_5A12_4aa7_868D_3CD4A6C218E8</dt>
+            <dt>CriterionPropertyGroup -&gt; CriterionPropertyGroup (+cccev:hasPropertySubgroup)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_D1B2251D_E96D_4980_8771_727C56C65693</dt>
+            <dt>CriterionPropertyGroup -&gt; Property (+cccev:hasCriterionProperty)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_3D877C31_33D1_49b2_A3B3_2ED2D7E8177E</dt>
+            <dt>Property &lt;-&gt; DatumValue (+cccev:expressesRequirement +cccev:refinesRequirement)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_CAEEB8A1_58C5_4b58_9ACA_610467D4D59A</dt>
+            <dt>Property &lt;-&gt; DatumValue (+cccev:asksForData +cccev:respondsQuestion)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_86BB0717_BF22_48bd_BEC6_0F6337E2FE76</dt>
+            <dt>OrganizationalUnit -&gt; Name (+org:hasName)</dt>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_143D9C00_F8F0_4d14_BF5C_1E834462D394</dt>
+            <dt>Group -&gt; Agent (+member)</dt>
             <dd>This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Association ID: EAID_242A1F41_CB51_443f_A342_FBB10C4F4EA6</dt>
+            <dt>OrganizationalUnit &lt;-&gt; Organization (+org:unitOf +org:hasUnit)</dt>
             <dd>This association has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
             <dd>The multiplicity value from source is wrong. Please rectify this</dd>
          </dl>
          <h1>Dependencies</h1>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_6D81F842_43D3_4649_A090_5529FD788939</dt>
+            <dt>ProxyConnector &lt;-&gt; ProxyConnector (+ +)</dt>
             <dd>The target role is missing</dd>
             <dd>The source role is missing</dd>
             <dd>The multiplicity value from source is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_EF1BCD69_04E5_450e_ADD8_3F4CB0B6DC62</dt>
+            <dt>test Dependency</dt>
             <dd>An dependency should not have a name. Please remove the name</dd>
             <dd>No direction is not a valid direction for an dependency. Please rectify this</dd>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_A6417A8A_EBC5_410a_BB66_4A8945BCDA0A</dt>
+            <dt>ProxyConnector &lt;-&gt; ProxyConnector (+ +)</dt>
             <dd>The target role is missing</dd>
             <dd>The source role is missing</dd>
             <dd>The multiplicity value from source is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_0782FAFF_D6F8_47bb_9250_939FD144DE12</dt>
+            <dt>ProxyConnector -&gt; ProxyConnector (+)</dt>
             <dd>The target role is missing</dd>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_F264C49C_100F_4c00_914F_A4FAE2916DB0</dt>
+            <dt>ProxyConnector -&gt; ProxyConnector (+)</dt>
             <dd>The target role is missing</dd>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_9219D569_16E7_429b_B506_2B5235ECF9E2</dt>
+            <dt>epo:Address -&gt; euvocabularies:country (+epo:hasCountryCode)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_D0F25E0B_E148_41e7_8C52_BAE14F5149F6</dt>
+            <dt>epo:Address -&gt; nuts (+epo:hasCountrySubentityCode)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_112CA7BC_0E2C_416c_80EC_7F45527A6D06</dt>
+            <dt>has Award Criterion Type</dt>
             <dd>An dependency should not have a name. Please remove the name</dd>
             <dd>The target role is missing</dd>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_277C636A_D943_484f_A80D_69ACBFA6147C</dt>
+            <dt>epo:AwardCriterion -&gt; euvocabularies:number-weight (+epo:hasWeightValueType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_91E24989_0AB1_44de_AF48_1EE54018D9E5</dt>
+            <dt>epo:AwardCriterion -&gt; euvocabularies:number-threshold (+epo:hasThresholdType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_F088C989_3EAB_4eb9_BFCB_B139EAFC4E19</dt>
+            <dt>epo:AwardCriterion -&gt; euvocabularies:award-criterion-type (+epo:hasSubcriterionType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_FBEE0DFA_2173_46d4_8277_F34E55D2B1A0</dt>
+            <dt>epo:AwardCriterion -&gt; euvocabularies:number-fixed (+epo:hasFixedValueType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_7BE80D48_1D4E_42f4_A7B7_1DBCE86B654A</dt>
+            <dt>epo:AwardDecision -&gt; euvocabularies:winner-selection-status (+epo:hasAwardStatus)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_E4B64853_491F_4f31_AF06_9355C81A8C40</dt>
+            <dt>epo:AwardDecision -&gt; euvocabularies:non-award-justification (+epo:hasNonAwardJustification)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_F7F215FB_853C_4b28_9ED8_8F345685ADE2</dt>
+            <dt>epo:AwardDecision -&gt; award-type (+epo:hasAwardStatus)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_15FE118D_5443_4723_8887_BFF48DC77200</dt>
+            <dt>epo:Buyer -&gt; euvocabularies:main-activity (+epo:hasMainActivityType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_20ADBD94_A6CA_425d_9399_93044A7BD76F</dt>
+            <dt>epo:Buyer -&gt; epo:nace (+epo:hasMainActivity)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_D8B16DE0_0613_42f0_811D_F82085D6A825</dt>
+            <dt>epo:Buyer -&gt; euvocabularies:buyer-legal-type (+epo:hasBuyerLegalType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_5C48D3CB_B949_4206_AE79_567BD166592C</dt>
+            <dt>epo:CentralPurchasingBody -&gt; euvocabularies:buyer-legal-type (+epo:hasBuyerLegalType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_B2FED202_9ACA_415c_B2AB_A1E3E26E726C</dt>
+            <dt>epo:Change -&gt; notice-corrigendum-justification (+epo:hasChangeReason)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_69A1B9DC_39FD_4d8c_BB0D_2731C8605DD4</dt>
+            <dt>epo:Channel -&gt; communication-type (+epo:hasCommunicationType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_09C62D40_4527_4d41_AC60_52D80C2CEE5D</dt>
+            <dt>epo:ContractModificationNotice -&gt; euvocabularies:modification-justification (+epo:hasContractModficationJustification)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_04E93E03_E210_4246_AF3B_D517B0B6B857</dt>
+            <dt>epo:ContractTerms -&gt; euvocabularies:usage (+epo:hasShelteredEmploymentUsage)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_12A5A0C6_97F3_4362_97F5_2EACA8AA8D1B</dt>
+            <dt>epo:ContractTerms -&gt; euvocabularies:other-place-service (+epo:hasBroadPlaceOfPerformance)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_C1D7A20C_77E6_40b0_B3BA_61037D4ECF2E</dt>
+            <dt>epo:ContractTerms -&gt; euvocabularies:applicability (+epo:hasReservedExecution)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_A18F7CC6_F588_4724_AC5B_64F20B8D1678</dt>
+            <dt>epo:Country -&gt; euvocabularies:country (+epo:hasCountryCode)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_025513B4_D713_4ff8_9D24_9DCD26B83D4F</dt>
+            <dt>epo:DesignContestRegimeTerms -&gt; design-contest-type (+epo:hasDesignContestType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_279636BF_8F0D_4744_8B59_3277E5CE2E90</dt>
+            <dt>epo:DirectAwardTerms -&gt; euvocabularies:direct-award-justification (+epo:hasJustificationType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_07453542_31E5_4383_8D3E_2757C8D87F2A</dt>
+            <dt>epo:Document -&gt; euvocabularies:communication-justification (+epo:hasRestrictedCommunicationJustification)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_6A9FC4EC_D843_4ffe_84A8_24E86C3ED8AF</dt>
+            <dt>epo:Document -&gt; euvocabularies:language (+epo:hasOfficialLanguage)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_A6B4A699_5405_4173_A54F_700DDD873D13</dt>
+            <dt>epo:DynamicPurchaseSystemTechnique -&gt; euvocabularies:dps-usage (+epo:hasDPSUsage)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_01580F6E_03A8_4b9e_86F9_8CD2AD8C3A60</dt>
+            <dt>epo:EconomicOperator -&gt; legal-form-type (+epo.hasLegalFormType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_1F057680_2DD1_465d_A815_73DADF8FF850</dt>
+            <dt>epo:EconomicOperator -&gt; eo-group-type (+epo:hasEOGroupType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_7E850B76_DD3C_4ffb_A440_FDE6FA3A95F6</dt>
+            <dt>epo:EconomicOperator -&gt; euvocabularies:economic-operator-size (+epo:hasEconomicOperatorSize)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_C289449A_6F8D_459b_994F_6A15181FB29F</dt>
+            <dt>epo:EconomicOperator -&gt; euvocabularies:country (+epo:hasBeneficialOwnerNationality)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_D9C37074_CE3E_4e8b_A9FA_7BB12DFFC051</dt>
+            <dt>epo:EconomicOperator -&gt; eo-role-type (+epo:hasEORoleType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_167AD18E_1BC1_457f_88E5_1B4D9DDE7EEF</dt>
+            <dt>epo:EvaluationBoard -&gt; evaluation-group-type (+epo:hasEvaluationGroupType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_07AC49E7_078D_4fed_A964_B187FFBE7788</dt>
+            <dt>epo:ExclusionGround -&gt; exclusion-criterion (+epo:hasExclusionGroundType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_24F40060_219C_4a4e_A17E_F7A22D301952</dt>
+            <dt>epo:ExclusionGround -&gt; euvocabularies:usage (+epo:hasSelectionCriterionApplicability)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_B19E6FE9_E3B6_4c3c_8AFA_1B39D182A92E</dt>
+            <dt>epo:FrameworkAgreementTechnique -&gt; framework-agreement (+epo:hasFrameworkAgreementType)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_B02CD525_7AD7_45d7_B20C_514E7B961066</dt>
+            <dt>epo:FrameworkAgreementTerms -&gt; framework-agreement (+epo:hasFrameworkAgreementType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_9E45040E_9573_4ec2_971F_0407E27D9413</dt>
+            <dt>epo:GreenProcurement -&gt; euvocabularies:environmental-impact (+epo:fulfillsRequirement)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_F362F8D3_4A45_4dc9_AC9E_9CBFCA6E5549</dt>
+            <dt>epo:InnovativeProcurement -&gt; innovative-acquisition (+epo:fulfillsRequirement)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_73E0123E_9D07_49c6_BAB3_E937B9F25B43</dt>
+            <dt>epo:Item -&gt; euvocabularies:country (+epo:hasCountryOfOrigin)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_76DEFDDE_AF78_4e23_8B84_0C6E8B387AD5</dt>
+            <dt>epo:Lot -&gt; euvocabularies:reserved-procurement (+epo:reservedProcurement)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_8CA66645_D223_487b_B348_21446E4664A6</dt>
+            <dt>epo:Lot -&gt; euvocabularies:permission (+epo:hasVariantPermissions)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_88A802C5_539F_4be0_9527_5047A3CCAABC</dt>
+            <dt>epo:LotSpecification &lt;-&gt; epo:TenderLot (+ +)</dt>
             <dd>The target role is missing</dd>
             <dd>The source role is missing</dd>
             <dd>This dependency has no description. Please add one</dd>
@@ -5658,252 +5411,207 @@
             <dd>The multiplicity value from source is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_B769FDC9_F324_4f02_A715_10A93E0D281C</dt>
+            <dt>epo:Notice -&gt; notification-phases-content-types (+epo:hasNotificationPhasesType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_C9693B48_C34F_4157_8B73_22D6D2BF4561</dt>
+            <dt>epo:Notice -&gt; dps-scope (+epo:hasBuyers)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_F337974A_F4B7_4be6_BD98_F885B35FD24B</dt>
+            <dt>epo:Notice -&gt; form-type (+epo:hasFormType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_007A256B_E0B5_4a62_B8D7_2BC14F331BE5</dt>
+            <dt>epo:Period -&gt; euvocabularies:timeperiods (+epo:hasTimePeriods)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_9D7C9419_E7B7_440c_84EE_43D24190438B</dt>
+            <dt>epo:PlannedProcurementPart -&gt; euvocabularies:legal-basis (+epo:hasLegalBasisID)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_169198B9_544A_4d67_9273_0F076E0C1306</dt>
+            <dt>epo:Procedure -&gt; euvocabularies:procurement-procedure-type (+epo:hasProcedureType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_2FC633C9_64DB_4b46_9190_197D4A4F4C63</dt>
+            <dt>epo:Procedure -&gt; euvocabularies:legal-basis (+epo:hasLegalBasisID)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_4EFC9F57_28AF_4520_9AFA_DD6FC6B796B3</dt>
+            <dt>epo:Procedure -&gt; accelerated-procedure-justification-type (+epo:hasAcceleratedJustification)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_FC60273C_1C4D_482b_8097_28E7629479C3</dt>
+            <dt>epo:Procedure -&gt; legal-regime (+epo:isAbout)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_FDC70F64_55E5_446a_8965_4A26553DF286</dt>
+            <dt>epo:Procedure -&gt; procurement-regime-type (+epo:hasProcurementRegime)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_73C3EE7A_C4C7_4721_94CD_B760E26875AC</dt>
+            <dt>epo:ProcurementCriterion -&gt; e-evaluation-criterion-type (+epo:hasProcurementCriterionApplicability)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_D6EA39C4_A1DD_451d_8107_3B9FC95AECB7</dt>
+            <dt>epo:ProcurementValue -&gt; euvocabularies:currency (+hasCurrencyType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_78588EC6_76D1_4a7a_8685_18B10EAF608B</dt>
+            <dt>epo:PublicationProvision -&gt; euvocabularies:non-publication-justification (+epo:hasNonPublicationJustification)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_26CCA81F_0ECA_4908_97A2_3E908A722883</dt>
+            <dt>epo:Purpose -&gt; unit-code (+epo:hasUnit)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_4C55B571_46BE_40d1_975F_377B6C19180B</dt>
+            <dt>epo:Purpose -&gt; options (+epo:hasOptions)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_74371426_1670_46df_8526_5A4910F24815</dt>
+            <dt>epo:Purpose -&gt; cpv (+epo:hasMainClassification)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_95D11AFD_5F07_4159_ABF2_BA01D9E3FEE4</dt>
+            <dt>epo:Purpose -&gt; cpv (+epo:additionalClassifications)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_DB75B7B6_85A1_4c67_A458_85EFC44E06B4</dt>
+            <dt>epo:Purpose -&gt; euvocabularies:contract-nature (+epo:hasMainNature)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_DD531EFC_2F49_459f_A80D_B0D1817065F3</dt>
+            <dt>epo:Purpose -&gt; euvocabularies:measurement-unit (+epo:hasUnit)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_EA34DF45_5E55_4138_B248_D15B011F82E1</dt>
+            <dt>epo:Purpose -&gt; euvocabularies:contract-nature (+epo:hasAdditionalNature)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_0A05E1A7_A032_44d5_8A47_A62DAC97C6A3</dt>
+            <dt>epo:RegisteredOrganisation -&gt; size (+hasSize)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_C405FCB3_E0FF_459e_9CAB_D599334CA2AD</dt>
+            <dt>epo:RegisteredOrganisation -&gt; legal-form-type (+hasLegalFormType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_385369E8_3B96_472e_BC96_E7759CC1BB3B</dt>
+            <dt>epo:SecurityClearanceTerms -&gt; security-clearance-address (+epo:applicableToSecurityClearanceAddress)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_592353DE_75A3_4c28_90A9_3A43C639C48D</dt>
+            <dt>epo:SelectionCriterion -&gt; euvocabularies:number-weight (+epo:hasWeightValueType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_AF66C86B_C371_4afb_8012_8F091434E4D3</dt>
+            <dt>epo:SelectionCriterion -&gt; euvocabularies:selection-criterion (+epo:hasSelectionCriterionType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_BDF82734_09AB_4b8e_9DAF_A6D519ADDBA5</dt>
+            <dt>epo:SelectionCriterion -&gt; euvocabularies:number-threshold (+epo:hasThresholdType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_D3867609_A463_4b1e_B9D8_CC1CB7E738BC</dt>
+            <dt>epo:SelectionCriterion -&gt; euvocabularies:usage (+epo:hasSelectionCriterionApplicability)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_5C87BC92_AF78_4f16_994C_2F6853BD9DA7</dt>
+            <dt>epo:SocialProcurement -&gt; euvocabularies:social-objective (+epo:fulfillsRequirement)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_B30F4F2C_E1BD_49db_896C_BC1E0F63AB83</dt>
+            <dt>epo:StrategicProcurement -&gt; euvocabularies:strategic-procurement (+has Strategic Procurement
+               Type)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_58DBB593_A4CD_405a_BE55_E9A799F0D654</dt>
+            <dt>epo:Subcontract -&gt; euvocabularies:usage (+epo:hasSubcontractingUsage)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_C8DDF2AD_D50E_4225_A715_E7C9368CEB39</dt>
+            <dt>epo:SubcontractTerms -&gt; euvocabularies:subcontracting-obligation (+epo:hasSubcontractingObligation)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_6D0203DA_A8A3_482a_B747_66A09DEF42FC</dt>
+            <dt>epo:SubmissionTerms -&gt; euvocabularies:missing-info-submission (+epo:hasLateTendererInformation)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_8A3EF8BD_C6F5_4027_9D0A_235327E62C6E</dt>
+            <dt>epo:SubmissionTerms -&gt; euvocabularies:communication-justification (+epo:hasNonElectronicSubmissionJustification)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_917BBA04_49FC_4db8_87F4_9EF1540CD1C9</dt>
+            <dt>epo:SubmissionTerms -&gt; submission-document-type (+epo:hasSubmissionDocumentType)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_9B46D9F5_E71D_40fc_A50D_BE4367D5EE4E</dt>
+            <dt>epo:SubmissionTerms -&gt; euvocabularies:permission (+epo:haseSubmissionPermission)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_C144677A_178B_495d_A1CC_20D0D20B3AD0</dt>
+            <dt>epo:SubmissionTerms -&gt; euvocabularies:subcontracting-indication (+epo:hasTenderSubcontractingInformation)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_C325A5AA_AAE1_4e55_A542_A867A1BED99D</dt>
+            <dt>epo:SubmissionTerms -&gt; euvocabularies:permission (+epo:hasECataloguePermissions)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_E2C29363_440C_4c85_8C4E_38DED0468EB4</dt>
+            <dt>epo:SubmissionTerms -&gt; euvocabularies:language (+epo:hasTenderLanguage)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_1BB31111_F63D_4464_AA32_D22B32C1DF1F</dt>
+            <dt>epo:TechnicalSpecifications -&gt; euvocabularies:accessibility (+epo:includesAccessibilityCriteria)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_9A3BE202_7D15_4c78_9743_070CBEC1296E</dt>
+            <dt>epo:TenderLot -&gt; euvocabularies:applicability (+epo:hasSubcontractingApplicability)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_948B508C_77A8_48b2_8741_BDB2D6276846</dt>
+            <dt>epo:Value -&gt; euvocabularies:currency (+hasCurrencyType)</dt>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_BBD58083_A4A8_4d3f_8BCB_8BE3A80C7B9E</dt>
+            <dt>Criterion -&gt; award-dimension-parent-criterion-relation (+)</dt>
             <dd>The target role is missing</dd>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_6CD32F8F_AAB4_44ac_8857_383B753BE1D2</dt>
+            <dt>Evidence -&gt; confidentiality-level-type (+cccev:hasConfidentialityLevelType)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_2084A1E6_9221_42e3_A711_4EFE41DF6A32</dt>
+            <dt>CriterionPropertyGroup -&gt; criterion-group-property-type (+cccev:hasCriterionGroupPropertyType)</dt>
             <dd>This dependency has no description. Please add one</dd>
             <dd>The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_600D75B9_D4E4_4e60_A4B4_B2C8FAD5BCF2</dt>
+            <dt>disjoint</dt>
             <dd>An dependency should not have a name. Please remove the name</dd>
             <dd>This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>
-               Dependency ID: EAID_5716AA06_014C_4ca1_BA47_0D23F3DDB633</dt>
+            <dt>Person X Organization (+ +)</dt>
             <dd>Unspecified is not a valid direction for an dependency. Please rectify this</dd>
             <dd>This dependency has no description. Please add one</dd>
          </dl>

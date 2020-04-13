@@ -43,7 +43,8 @@
         <xsl:if test="boolean($dependencyChecks)">
         <dl>
             <dt>
-                Dependency ID: <xsl:value-of select="@xmi:idref"/>
+                <xsl:value-of select="f:getConnectorName(.)"/>
+                <!--Dependency ID: <xsl:value-of select="@xmi:idref"/>-->
             </dt>
             <xsl:copy-of select="$dependencyChecks"/>
         </dl>
