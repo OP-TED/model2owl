@@ -1,0 +1,32 @@
+\section{Architectural considerations}
+\label{sec:architecture}
+
+	\subsection{Separation of concerns}
+	\label{sec:separation-conceprns}
+	
+	The successful application of an ontology or the development of an ontology-based system depends not just on building a good ontology but also on fitting this into an appropriate development  process.  All computing information models suffer from a semantic schizophrenia. On the one hand, the model represents the domain; on the other hand, it represents the implemented system, which then represents the domain. These different representation requirements place different demands upon its structure \cite{partridge2013}.
+	
+	One of the common ways to manage this problem is a separation of concerns. OMG's Model Driven Architecture (MDA) \cite{mda-paper} is a well documented structure where a model is built for each concern and this is transformed into a different model for a different concern. 
+	
+	\textit{Transformation} deals with producing different models, viewpoints, or artefacts from a model based on a transformation pattern. In general, transformation can be used to produce one representation from another, or to cross levels of abstraction or architectural layers \cite{mda-guide2}. 
+	
+	The process described in Section \ref{sec:process-approach} adopted some of these principle and employs model transformation to achieve the project objectives.
+
+	\subsection{Semantics}
+	\label{sec:semantics}
+	
+	Users of OWL \citep{owl2} can actually select between two slightly different semantics: \textit{direct semantics} that corresponds to the Description Logics (DL) \cite{dl-baader2004description}, and \textit{RDF-based semantics} that is based on translation of the OWL axioms into directed graphs. In this document we assume by default the direct semantics. In particular cases (i.e. SPARQL entailments and SHACL data shapes) RDF-based semantics is adopted and is explicitly mentioned in the document. 
+	
+	Description logics provide a concise language for OWL axioms and expressions. DLs are characterised by their expressive features. The description logic that supports all class expressions with $>, \bot, \sqcap, \sqcup, \neg, \exists$ and $\forall$ is known as $\mathcal{ALC}$ (which originally used to be an abbreviation for Attribute Language with Complement). For a formal introduction into DL please consult \citet{dl-baader2004description}.
+	
+	Inverse properties are not supported by $\mathcal{ALC}$, and the DL we have introduced above is actually called $\mathcal{ALCI}$ (for $\mathcal{ALC}$ with inverses) \cite{krotzsch2012owl}. Many description logics can be defined by simply listing their supported features. We will use this notation when discussing degrees of expressivity for the ontology layers in Section \ref{sec:expressivity}.
+	
+	Computing all interesting logical conclusions of an OWL ontology can be a challenging problem, and reasoning is typically multi-exponential or even undecidable. To address this problem, the recent update OWL 2 of the W3C standard \citep{owl2.0,owl2} introduced three profiles: \textit{OWL EL}, \textit{OWL RL}, and \textit{OWL QL}. These lightweight sublanguages of OWL restrict the available modelling features in order to simplify reasoning. This has led to large improvements in performance and scalability, which has made the OWL 2 profiles very attractive for practitioners \citep{krotzsch2012owl}.
+	
+	On the other hand, the validation data shapes are expressed using Shapes Constraint Language (SHACL) \cite{shacl-spec}. Its semantics is based on RDF graphs but full RDFS inferencing is not required. SHACL processors may operate on RDF graphs that include RDF entailments \citep{rdf11-semantics} and SPARQL specific entailments \citep{sparql11-entailment}. The entailment regime specifies conditions that address the fourth condition on extensions of basic graph pattern matching \citep{rdf-semantics,rdf11-semantics}. 
+	
+	This architecture delimits different concerns in Section \ref{sec:layers} in a stack of layers and assigns levels of expressivity to each of the layers in Section \ref{sec:expressivity}.
+	
+	
+	\subsection{Layering}
+	\label{sec:layering}
