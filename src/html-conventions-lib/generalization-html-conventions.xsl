@@ -19,21 +19,27 @@
     
     
     <xd:doc>
-        <xd:desc>Getting all generalizations and returning a warning for all unmet conventions  </xd:desc>
+        <xd:desc>Getting all generalizations and show only the ones that have unmet conventions </xd:desc>
     </xd:doc>
     
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
-        <dl>
-            <dt>
-                Generalization ID: <xsl:value-of select="@xmi:idref"/>
-            </dt>
+        <xsl:variable name="generalizationChecks" as="item()*">
             <xsl:call-template name="generalizationNameChecker">
                 <xsl:with-param name="generalizationConnector" select="."/>
             </xsl:call-template>
             <xsl:call-template name="generalizationDirectionChecker">
                 <xsl:with-param name="generalizationConnector" select="."/>
             </xsl:call-template>
+        </xsl:variable>
+        <xsl:if test="boolean($generalizationChecks)">
+        <dl>
+            <dt>
+                <xsl:value-of select="f:getConnectorName(.)"/>
+               <!-- Generalization ID: <xsl:value-of select="@xmi:idref"/>-->
+            </dt>
+            <xsl:copy-of select="$generalizationChecks"/>
         </dl>
+        </xsl:if>
     </xsl:template>
     
     

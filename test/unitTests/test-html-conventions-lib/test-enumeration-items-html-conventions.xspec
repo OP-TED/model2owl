@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    stylesheet="file:../../../src/html-conventions-lib/enumeration-items-html-conventions.xsl">
+    
+    <x:scenario label="Scenario for testing template with match '[uml:Enumeration']/attributes/attribute - finding attributes with unmet conventions">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[158]/attributes/attribute[2]"/>
+        <x:expect label="there is an Description List element" test="boolean(/dl)"/>
+        <x:expect label="there is an Description Term element" test="boolean(dl/dt)"/>
+        <x:expect label="there is an Description Details element" test="boolean(dl/dd)"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing template with match '[uml:Enumeration']/attributes/attribute - finding attributes with all conventions met">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[158]/attributes/attribute[1]"/>
+        <x:expect label="expect to do nothing" select = "()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for getting the enumeration item name">
+        <x:call template="getEnumerationItemName">
+            <x:param name="enumerationItem" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[158]/attributes/attribute[1]"/>
+        </x:call>   
+        <x:expect label="correct enumeration item name">PIN_REDUCE_TIME_LIMIT</x:expect> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a enumeration item name that is not a valid normalized string">
+        <x:call template="enumerationNameConventionChecker">
+            <x:param name="enumerationItem" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[158]/attributes/attribute[2]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a enumeration item name that is a valid normalized string">
+        <x:call template="enumerationNameConventionChecker">
+            <x:param name="enumerationItem" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[158]/attributes/attribute[1]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select = "()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding an enumeration item without an initial value">
+        <x:call template="enumerationItemInitialValueChecker">
+            <x:param name="enumerationItem" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[158]/attributes/attribute[2]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding an enumeration item with initial value">
+        <x:call template="enumerationItemInitialValueChecker">
+            <x:param name="enumerationItem" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[158]/attributes/attribute[1]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select = "()"/> 
+    </x:scenario>
+    
+
+   
+</x:description>

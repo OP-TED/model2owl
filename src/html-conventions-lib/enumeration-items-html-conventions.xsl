@@ -17,36 +17,27 @@
     <xsl:import href="../html-conventions-lib/utils-html-conventions.xsl"/>
     
     <xd:doc>
-        <xd:desc>Getting all unmet conventions for Enumerations items  </xd:desc>
+        <xd:desc>Getting all enumeration items and show only the ones that have unmet conventions</xd:desc>
     </xd:doc>
     
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
-        <h1>
-            <xsl:call-template name="getEnumerationName">
-                <xsl:with-param name="enumerationItem" select="."/>
-            </xsl:call-template>
-        </h1>
-        <dl>
-            <dt>
-                <xsl:call-template name="getEnumerationItemName">
-                    <xsl:with-param name="enumerationItem" select="."/>
-                </xsl:call-template>
-            </dt>
+        <xsl:variable name="enumerationItemChecks" as="item()*">
             <xsl:call-template name="enumerationNameConventionChecker">
                 <xsl:with-param name="enumerationItem" select="."/>
             </xsl:call-template>
-        </dl>
+        </xsl:variable>
+        <xsl:if test="boolean($enumerationItemChecks)">
+            <dl>
+                <dt>
+                    <xsl:call-template name="getEnumerationItemName">
+                        <xsl:with-param name="enumerationItem" select="."/>
+                    </xsl:call-template>
+                </dt>
+                <xsl:copy-of select="$enumerationItemChecks"/>
+            </dl>
+        </xsl:if>
     </xsl:template>
     
-    
-    <xd:doc>
-        <xd:desc>Getting the Enumeration name</xd:desc>
-        <xd:param name="enumerationItem"/>
-    </xd:doc>
-    <xsl:template name="getEnumerationName">
-        <xsl:param name="enumerationItem"/>
-        <xsl:value-of select="$enumerationItem/parent::attributes/parent::element/@name"/>
-    </xsl:template>
     
     <xd:doc>
         <xd:desc>Getting the enumeration item name</xd:desc>

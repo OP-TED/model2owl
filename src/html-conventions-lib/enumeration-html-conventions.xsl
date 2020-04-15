@@ -17,16 +17,16 @@
     <xsl:import href="../html-conventions-lib/utils-html-conventions.xsl"/>
     
     <xd:doc>
-        <xd:desc>Getting all unmet conventions for Enumerations  </xd:desc>
+        <xd:desc>Getting all enumerations and items and show only the ones with unmet conventions</xd:desc>
     </xd:doc>
     
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
-        <dl>
-            <dt>
-                <xsl:call-template name="getEnumerationName">
-                    <xsl:with-param name="enumeration" select="."/>
-                </xsl:call-template>
-            </dt>
+        <xsl:variable name="enumeration">
+            <xsl:call-template name="getEnumerationName">
+                <xsl:with-param name="enumeration" select="."/>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="enumerationConventions" as="item()*">
             <xsl:call-template name="enumerationNameChecker">
                 <xsl:with-param name="enumeration" select="."/>
             </xsl:call-template>
@@ -36,7 +36,33 @@
             <xsl:call-template name="enumerationItemsChecker">
                 <xsl:with-param name="enumeration" select="."/>
             </xsl:call-template>
-        </dl>
+        </xsl:variable>
+        <xsl:variable name="enumerationItemConventions" as="item()*">
+            <xsl:apply-templates select="attributes/attribute"/>
+        </xsl:variable>
+        <xsl:if test="boolean($enumerationConventions) or boolean($enumerationItemConventions)">
+        <h2>
+            <xsl:value-of select="$enumeration"/>
+        </h2>
+        <section>
+            <xsl:if test="boolean($enumerationConventions)">
+            <h3>Unmet enumeration conventions</h3>
+            <section>
+                <dl>
+                    <dt>
+                    </dt>
+                    <xsl:copy-of select="$enumerationConventions"/>
+                </dl>
+            </section>
+            </xsl:if>
+            <xsl:if test="boolean($enumerationItemConventions)">
+            <h3>Unmet item conventions</h3>
+            <section>
+                <xsl:copy-of select="$enumerationItemConventions"/>
+            </section>
+            </xsl:if>
+        </section>
+        </xsl:if>
     </xsl:template>
     
     

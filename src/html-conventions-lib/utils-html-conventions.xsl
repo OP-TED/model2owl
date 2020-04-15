@@ -36,5 +36,49 @@
         </xsl:sequence>        
     </xsl:function>    
     
+    <xd:doc>
+        <xd:desc>Get association direction</xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    <xsl:function name="f:getConnectorDirection">
+        <xsl:param name="connector"/>
+        <xsl:value-of select="$connector/properties/@direction"/>
+    </xsl:function>
+    
+    
+    <xd:doc>
+        <xd:desc></xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    <xsl:function name="f:getConnectorName">
+        <xsl:param name="connector"/>
+        <xsl:variable name="hasNoName" select="$connector/not(@name)"/>
+        <xsl:choose>
+            <xsl:when test="$hasNoName = fn:true()">
+               <xsl:variable name="source" select="$connector/source/model/@name"/>
+               <xsl:variable name="target" select="$connector/target/model/@name"/>
+                <xsl:if test="f:getConnectorDirection($connector) = 'Source -&gt; Destination'">
+                    <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
+                    <xsl:value-of select="fn:concat($source, ' -&gt; ', $target, ' ', '(+',$targetRole,')' )"/>
+                </xsl:if>
+                <xsl:if test="f:getConnectorDirection($connector) = 'Bi-Directional'">
+                    <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
+                    <xsl:variable name="sourceRole" select="$connector/source/role/@name"/>
+                    <xsl:value-of select="fn:concat($source, ' &lt;-&gt; ', $target,' ', '(+',$targetRole,' ','+',$sourceRole,')' )"/>
+                </xsl:if>
+                <xsl:if test="f:getConnectorDirection($connector) != 'Source -&gt; Destination' and 
+                    f:getConnectorDirection($connector) != 'Bi-Directional'">
+                    <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
+                    <xsl:variable name="sourceRole" select="$connector/source/role/@name"/>
+                    <xsl:value-of select="fn:concat($source, ' X ', $target, ' ', '(+',$targetRole,' ','+',$sourceRole,')' )"/>
+                </xsl:if>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$connector/@name"/>
+            </xsl:otherwise>
+        </xsl:choose>
+        
+    </xsl:function>
+    
     
 </xsl:stylesheet>

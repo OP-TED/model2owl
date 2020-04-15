@@ -18,21 +18,25 @@
     
     
     <xd:doc>
-        <xd:desc>Getting all unmet conventions for Packages  </xd:desc>
+        <xd:desc>Getting all packages and show only the ones that have unmet conventions</xd:desc>
     </xd:doc>
     
     <xsl:template match="element[@xmi:type = 'uml:Package']">
-        
+        <xsl:variable name="packageChecks" as="item()*">
+            <xsl:call-template name="packageNameChecker">
+                <xsl:with-param name="package" select="."/>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:if test="boolean($packageChecks)">
         <dl>
             <dt>
                 <xsl:call-template name="getPackageName">
                     <xsl:with-param name="package" select="."/>
                 </xsl:call-template>
             </dt>
-            <xsl:call-template name="packageNameChecker">
-                <xsl:with-param name="package" select="."/>
-            </xsl:call-template>
+            <xsl:copy-of select="$packageChecks"/>
         </dl>
+        </xsl:if>
     </xsl:template>
     
     

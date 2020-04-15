@@ -19,14 +19,11 @@
     
     
     <xd:doc>
-        <xd:desc>Getting all Associations and returning a warning for all unmet conventions  </xd:desc>
+        <xd:desc>Getting all associations and show only the ones that have unmet conventions</xd:desc>
     </xd:doc>
     
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
-        <dl>
-            <dt>
-                Association ID: <xsl:value-of select="@xmi:idref"/>
-            </dt>
+        <xsl:variable name="associationChecks" as="item()*">
             <xsl:call-template name="associationNameChecker">
                 <xsl:with-param name="associationConnector" select="."/>
             </xsl:call-template>
@@ -42,7 +39,16 @@
             <xsl:call-template name="associationMultiplicityChecker">
                 <xsl:with-param name="associationConnector" select="."/>
             </xsl:call-template>
+        </xsl:variable>
+        <xsl:if test="boolean($associationChecks)">
+        <dl>
+            <dt>
+                <xsl:value-of select="f:getConnectorName(.)"/>
+               <!-- Association ID: <xsl:value-of select="@xmi:idref"/>-->
+            </dt>
+            <xsl:copy-of select="$associationChecks"/>
         </dl>
+        </xsl:if>
     </xsl:template>
     
     

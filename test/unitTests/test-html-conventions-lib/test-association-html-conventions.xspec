@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    stylesheet="file:../../../src/html-conventions-lib/association-html-conventions.xsl">
+    
+    <x:scenario label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Association']-finding all associations with unmet conventions">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[17]"/>
+        <x:expect label="there is an Description List element" test="boolean(/dl)"/>
+        <x:expect label="there is an Description Term element" test="boolean(dl/dt)"/>
+        <x:expect label="there is an Description Details element" test="boolean(dl/dd)"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Association']-finding all associations with no unmet conventions">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[18]"/>
+        <x:expect label="expect to do nothing" select="()"/> 
+ 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding an Association that has a name">
+        <x:call template="associationNameChecker">
+            <x:param name="associationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[17]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding an Association that has no name">
+        <x:call template="associationNameChecker">
+            <x:param name="associationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[18]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding an Association that has a wrong direction">
+        <x:call template="associationDirectionChecker">
+            <x:param name="associationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[17]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding an Association that has the right direction">
+        <x:call template="associationDirectionChecker">
+            <x:param name="associationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[18]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding an Association that has no description">
+        <x:call template="associationDescriptionChecker">
+            <x:param name="associationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[17]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding an Association that has a description">
+        <x:call template="associationDescriptionChecker">
+            <x:param name="associationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[18]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding an Association that has no role and the direction is source -> destination">
+        <x:call template="associationRoleChecker">
+            <x:param name="associationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[20]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding an Association that has role and the direction is source -> destination">
+        <x:call template="associationRoleChecker">
+            <x:param name="associationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[18]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding an Association that has no source role and the direction is bi-directional">
+        <x:call template="associationRoleChecker">
+            <x:param name="associationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[83]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding an Association that has source and target role and the direction is bi-directional">
+        <x:call template="associationRoleChecker">
+            <x:param name="associationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[134]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding an Association that has incorrect multiplicity value and the direction is source -> destination">
+        <x:call template="associationMultiplicityChecker">
+            <x:param name="associationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[20]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding an Association that has a correct multiplicity value and the direction is source -> destination">
+        <x:call template="associationMultiplicityChecker">
+            <x:param name="associationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[18]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding an Association that has incorrect multiplicity value in source and the direction is bi-directional">
+        <x:call template="associationMultiplicityChecker">
+            <x:param name="associationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[83]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding an Association that has correct multiplicity value in source and target and the direction is bi-directional">
+        <x:call template="associationMultiplicityChecker">
+            <x:param name="associationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[134]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+</x:description>
