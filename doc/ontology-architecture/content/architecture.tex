@@ -12,27 +12,6 @@
 	
 	The process described in Section \ref{sec:process-approach} adopted some of these principle and employs model transformation to achieve the project objectives.
 
-	\subsection{Semantics}
-	\label{sec:semantics}
-	
-	Users of OWL \citep{owl2} can actually select between two slightly different semantics: \textit{direct semantics} that corresponds to the Description Logics (DL) \cite{dl-baader2004description}, and \textit{RDF-based semantics} that is based on translation of the OWL axioms into directed graphs. In this document we assume by default the direct semantics. In particular cases (i.e. SPARQL entailments and SHACL data shapes) RDF-based semantics is adopted and is explicitly mentioned in the document. 
-	
-	Description logics provide a concise language for OWL axioms and expressions. DLs are characterised by their expressive features. The description logic that supports all class expressions with $>, \bot, \sqcap, \sqcup, \neg, \exists$ and $\forall$ is known as $\mathcal{ALC}$ (which originally used to be an abbreviation for Attribute Language with Complement). For a formal introduction into DL please consult \citet{dl-baader2004description}.
-	
-	Inverse properties are not supported by $\mathcal{ALC}$, and the DL we have introduced above is actually called $\mathcal{ALCI}$ (for $\mathcal{ALC}$ with inverses) \cite{krotzsch2012owl}. Many description logics can be defined by simply listing their supported features. We will use this notation when discussing degrees of expressivity for the ontology layers in Section \ref{sec:expressivity}.
-	
-	Computing all interesting logical conclusions of an OWL ontology can be a challenging problem, and reasoning is typically multi-exponential or even undecidable. To address this problem, the recent update OWL 2 of the W3C standard \citep{owl2.0,owl2} introduced three profiles: \textit{OWL EL}, \textit{OWL RL}, and \textit{OWL QL}. These lightweight sublanguages of OWL restrict the available modelling features in order to simplify reasoning. This has led to large improvements in performance and scalability, which has made the OWL 2 profiles very attractive for practitioners \citep{krotzsch2012owl}.
-	
-	On the other hand, the validation data shapes are expressed using Shapes Constraint Language (SHACL) \cite{shacl-spec}. Its semantics is based on RDF graphs but full RDFS inferencing is not required. SHACL processors may operate on RDF graphs that include RDF entailments \citep{rdf11-semantics} and SPARQL specific entailments \citep{sparql11-entailment}. The entailment regime specifies conditions that address the fourth condition on extensions of basic graph pattern matching \citep{rdf-semantics,rdf11-semantics}. 
-	
-	This architecture delimits different concerns in Section \ref{sec:layers} in a stack of layers and assigns levels of expressivity to each of the layers in Section \ref{sec:expressivity}.
-	
-	\subsection{Open/Closed world assumptions}
-	\label{sec:world-assumption}
-	
-
-	
-
 	
 	\subsection{Layers and components}
 	\label{sec:layers-components}
@@ -85,8 +64,32 @@
 	
 	Just like in the case of restrictions layer, the reasoning layer extends the core layer with higher level of detail and comprising assertions with higher expressive power. Therefore the simple details rest in the core layer permitting this one to focus on other ones. For this reason it is depicted as shifted to the towards the right side of detail axis.
 	
+	
+	\subsection{UML conceptual model}
+	\label{sec:uml-model}	
+	
+	The conceptual model is represented in UML \citep{uml-userguide} serves as the single source of truth. Thus the scope of this architecture is limited by what can be expressed in UML and how that information is utilised to generate formal statements. Each of the above functions will lead to different interpretations of the same UML model.
+	
+	The primary application of UML \citep{fowler2004} for ontology design is in the specification of class diagrams for object-oriented software. However, UML does not have a clearly specified declarative semantics, so that it is not possible to determine whether an ontology is consistent, or to determine the correctness of an implementation of the ontology. Semantic integration in such cases becomes a subjective exercise, validated only by the opinions of the human designers involved in the integration effort \cite{grunninger2003}. 
+	
+	On the other hand, UML is closer than more logic-oriented approaches to the programming languages in which enterprise applications are implemented. For this reason in the current project we have decided to develop agreements on the informal semantics of the UML-based conceptual model. It consists of a set of explicit conventions for naming UML elements \cite{costetchi2020b} and for transforming UML to OWL \cite{costetchi2020c}.
+	
+	\subsection{SHACL shapes}
+	\label{sec:shapes}
+	
+	Application profiles represent a set of constraints on the logical model tying it to a particular system implementation. The application profiles, in this project, must be expressed using SHACL language [ref shacl spec]. The application profiles are extending the (core) formal model and can be derived from the conceptual model through transformation, or can be designed directly in the formal representation. 
+	
+	\subsection{Formal ontology restrictions}
+	\label{sec:restrictions}
+	
+	%	In a formal system of logic used for knowledge representation, the open-world assumption is the assumption that the truth value of a statement may be true irrespective of whether or not it is known to be true. It is the opposite of the closed-world assumption, which holds that any statement that is true is also known to be true [Wikipedia].
+	
+	
+\section{Formal considerations}	
+\label{sec:formal-considerations}
 
-	\subsection{Relationship between the model and data}
+
+	\subsection{Model and data relationship}
 	\label{sec:model-data}
 	
 	DL ontologies are structured into two sets: \textit{ABox} and \textit{TBox}. The \textit{ABox} consists of all (class or property) instance assertions. The \textit{TBox }consists of all terminological axioms, i.e., of all subclass inclusion axioms. The ABox provides information about concrete individuals while the TBox describes general rules that hold for all individuals. In consequence, ABoxes tend to be much larger than TBoxes \citep{krotzsch2012owl}. In Figure \ref{fig:abox-tbox} is depicted the delimitation and relations between the TBox and box ABox components of the eProcurement ontology.
@@ -101,19 +104,58 @@
 	To explain the relevance of each component, in Figure \ref{fig:abox-tbox}, two arbitrary datasets are brought as examples. They instantiate the core ontology, which means that they comprise of factual statements of concrete entities of eProcurement classes. In order to ensure that the instance data follow minimally the intended ontology design they need to comply with a set of data shapes. Once this condition is satisfied, then, new knowledge can be inferred from the provided facts, given the domain inference rules. The new knowledge is mainly oriented to solve the classification task and does not cover other types of inference. 	
 	
 	It is important to note that the data shapes fall out of the TBox as they serve the validation function and are based on a different set of assumptions. First they are interpreted under the closed world assumption, like in XML  or RDBM contexts (see Section \ref{sec:world-assumption}). Second they follow a RDF graph based semantics \ref{sec:semantics}.
-	Next, each of these components is detailed in the sections below.
+	%In the subsequent sections the Next, each of these components is detailed in the sections below.
+
+	\subsection{Semantics}
+	\label{sec:semantics}
 	
-	\subsection{UML conceptual model}
-	\label{sec:uml-model}
+	Users of OWL \citep{owl2} can actually select between two slightly different semantics: \textit{direct semantics} that corresponds to the Description Logics (DL) \cite{dl-baader2004description}, and \textit{RDF-based semantics} that is based on translation of the OWL axioms into directed graphs. In this document we assume by default the direct semantics. In particular cases (i.e. SPARQL entailments and SHACL data shapes) RDF-based semantics is adopted and is explicitly mentioned in the document. 
 	
+	Description logics provide a concise language for OWL axioms and expressions. DLs are characterised by their expressive features. The description logic that supports all class expressions with $>, \bot, \sqcap, \sqcup, \neg, \exists$ and $\forall$ is known as $\mathcal{ALC}$ (which originally used to be an abbreviation for Attribute Language with Complement). For a formal introduction into DL please consult \citet{dl-baader2004description}.
 	
+	Inverse properties are not supported by $\mathcal{ALC}$, and the DL we have introduced above is actually called $\mathcal{ALCI}$ (for $\mathcal{ALC}$ with inverses) \cite{krotzsch2012owl}. Many description logics can be defined by simply listing their supported features. We will use this notation when discussing degrees of expressivity for the ontology layers in Section \ref{sec:expressivity}.
 	
-	\subsection{SHACL shapes}
-	\label{sec:shapes}
+	Computing all interesting logical conclusions of an OWL ontology can be a challenging problem, and reasoning is typically multi-exponential or even undecidable. To address this problem, the recent update OWL 2 of the W3C standard \citep{owl2.0,owl2} introduced three profiles: \textit{OWL EL}, \textit{OWL RL}, and \textit{OWL QL}. These lightweight sublanguages of OWL restrict the available modelling features in order to simplify reasoning. This has led to large improvements in performance and scalability, which has made the OWL 2 profiles very attractive for practitioners \citep{krotzsch2012owl}.
 	
-	Application profiles represent a set of constraints on the logical model tying it to a particular system implementation. The application profiles, in this project, must be expressed using SHACL language [ref shacl spec]. The application profiles are extending the (core) formal model and can be derived from the conceptual model through transformation, or can be designed directly in the formal representation. 
+	On the other hand, the validation data shapes are expressed using Shapes Constraint Language (SHACL) \cite{shacl-spec}. Its semantics is based on RDF graphs but full RDFS inferencing is not required. SHACL processors may operate on RDF graphs that include RDF entailments \citep{rdf11-semantics} and SPARQL specific entailments \citep{sparql11-entailment}. The entailment regime specifies conditions that address the fourth condition on extensions of basic graph pattern matching \citep{rdf-semantics,rdf11-semantics}. 
 	
-	\subsection{Formal ontology restrictions}
-	\label{sec:restrictions}
+	This architecture delimits different concerns in Section \ref{sec:layers-components} in a stack of layers and assigns levels of expressivity to each of the layers in Section \ref{sec:expressivity}.
 	
-	%	In a formal system of logic used for knowledge representation, the open-world assumption is the assumption that the truth value of a statement may be true irrespective of whether or not it is known to be true. It is the opposite of the closed-world assumption, which holds that any statement that is true is also known to be true [Wikipedia].
+	\subsection{Open/Closed world assumptions}
+	\label{sec:world-assumption}
+
+
+	\subsection{Conformance}
+	
+	The eProcurement ontology should be expressed in OWL 2 language and in conformance with the conditions listed in \citet{owl2-comformance}.
+	
+	SHACL conformance
+	
+	RDF conformance for the data
+	
+	UML conformance for CM
+	
+	\subsection{Expressivity levels}
+	\label{sec:expressivity}
+
+	In the layered approach described in [ref architecture section], different expressivity levels are necessary for each layer. In this section we briefly describe these levels of expressivity and relate them to OWL sublanguages \citep{owl1} and profiles \citep{owl2-profiles}.
+	
+	\begin{table}[!ht]
+		\begin{tabular}{@{}ll@{}}
+			\toprule
+			Model/Component                        & Language                      \\ \midrule
+			Conceptual model                       & UML (informal)                \\
+			Core ontology                          & OWL Lite                      \\
+			Data shapes                            & SHACL (SPARQL 1.1 entailment) \\
+			Ontology restrictions - simplified     & OWL QL, OWL EL, OWL RL        \\
+			Ontology restrictions - complete       & OWL 2                         \\
+			Special inference rules (out of scope) & SWRL                          \\ \bottomrule
+		\end{tabular}
+		\caption{The components and the corresponding language dialect}
+		\label{tab:expressivity}
+	\end{table}
+	
+
+\section{URI policy}	
+\label{sec:uri-policy}
+

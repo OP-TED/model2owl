@@ -25,7 +25,7 @@
 	
 	We can greatly improve the readability of an ontology if we use consistent capitalization for concept names. For example, it is common to capitalize class names and use lower case for property names. And so, the names of classes, data-types and enumerations must begin with a capital letter while the names of class attributes, enumeration items, association and dependency relations, including their source and target roles, must begin with a lower case character.
 	
-	All the names are case sensitive. This means that the class ``Winery'' and the attribute ``winery'' are two different names. Nonetheless such similarities are strongly discouraged and more elaborated names are highly encouraged. For example, a simple elaboration is to use suffixes or prefixes. 
+	All the names are case sensitive. This means that the class ``Buyer'' and the attribute ``buyer'' are two different names. Nonetheless such similarities are strongly discouraged and more elaborated names are highly encouraged. For example, a simple elaboration is to use suffixes or prefixes. 
 
 	\subsection{Delimitation}
 	\label{sec:delimitation}
@@ -34,14 +34,14 @@
 	
 	It is recommended that the element names should avoid using spaces and instead follow a camel-case convention. \textit{CamelCasing} is the practice of writing phrases such that the word or abbreviation in the middle of the phrase begins with a capital case. 
 	
-	Exceptionally, if the conceptual model authors must maintain high readability of the UML diagrams, spaces may be tolerated and handled by the conversion script. In the conversion process, spaces are trimmed and phrases turned into camel-case form. For example `` Pre-award catalogue request '' is transformed into ``Pre-AwardCatalogueRequest''. 
+	Exceptionally, if the conceptual model authors must maintain high readability of the UML diagrams, spaces may be tolerated and handled by the conversion script. In the conversion process, spaces are trimmed and phrases turned into camel-case form. For example `` Pre-award   catalogue request  '' is transformed into ``Pre-AwardCatalogueRequest''. 
 	
 	\subsection{Name uniqueness}
 	\label{sec:uniqueness}
 	
 	In the formal ontology, each class, property or individual in the formal ontology must be uniquely identifiable in the formal ontology. Therefore the elements of the conceptual model, classes, attributes, connectors, instance, should have unique names. 
 	
-	This means that there cannot exist a class and an attribute with the same name (such as a class ``winery'' and a property ``winery''). Neither there can exist a class and an instance or an instance and a relation with the same name. 
+	This means that there cannot exist a class and an attribute with the same name (such as a class ``Buyer'' and a property ``buyer''). Neither there can exist a class and an instance or an instance and a relation with the same name. 
 
 	Names that reduce to the same identifier are considered unique. For example ``Legal Entity'' and ``LegalEntity'' are different labels but they reduce to the same identifier ``LegalEntity''. In such cases the names are considered equal and the UML elements replicated.
 	
@@ -50,7 +50,7 @@
 	\subsection{Suffix and prefix}
 	\label{sec:suffix-prefix}
 	
-	Some ontology engineering methodologies suggest using prefix and suffix conventions in the names to distinguish between classes and attributes. Two common practices are to add a ``has-'' or a suffix ``-of'' to attribute names. Thus, our attributes become ``hasMaker'' and ''hasWinery'' if we chose the ``has-'' convention. The attributes become ``makerOf'' and ``wineryOf'' if we chose the ``of-'' convention. This approach allows anyone looking at a term to determine immediately if the term is a class or an attribute. However, the term names become slightly longer \cite{noy2001}.
+	Some ontology engineering methodologies suggest using prefix and suffix conventions in the names to distinguish between classes and attributes. Two common practices are to add a ``has-'' or a suffix ``-of'' to attribute names. Thus, our attributes become ``hasAwardStatus'' and ''hasBuyer'' if we chose the ``has-'' convention. The attributes become ``awardStatusOf'' and ``buyerOf'' if we chose the ``of-'' convention. This approach allows anyone looking at a term to determine immediately if the term is a class or an attribute. However, the term names become slightly longer \cite{noy2001}.
 	
 	Here it is recommended that the names of class attributes employ the ``has-'' suffix.
 	
@@ -120,7 +120,7 @@
 	
 	As a rule of thumb, but not always, the relationship between the controlled list as a whole and its comprising elements can be informally conceptualised as a class-instance, class-subclass, set-item, or part-whole.
 	
-	\subsection{Descriptions}
+	\subsection{Notes, descriptions and comments}
 	\label{sec:descriptions}
 	
 	Large emphasis is set on the naming conventions. Nonetheless, most often, a good name is insufficient for an accurate or easy comprehension by human-readers. To mitigate this and increase the conceptual richness, practitioners may wish to provide human readable definitions, notes, examples and comments grasping the underlying assumptions, usage examples, additional explanations and other types of information. 

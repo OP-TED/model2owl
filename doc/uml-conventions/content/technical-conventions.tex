@@ -1,40 +1,56 @@
 \section{Technical constraints}
 \label{sec:technical}
-	
-	
-	\subsection{Charset}
-	\label{sec:charset}
-	
-	% TODO: talk properly about what charasters are allowed and not allowed. Normalised XML strings and otehr things. 
-	
-	The ontology shall be encoded in at least RDF \cite{rdf11} and XML\cite{xml1-spec} and shall conform to both format specifications. Both languages effectively require that terms begin with an upper or lower case letter from the ASCII character set, or an underscore (\_). This tight restriction means that, for example, terms may not begin with a number, hyphen or accented character \cite{d3.1-2015}. A formal definition of these restrictions is given in the XML specification document \cite{xml1-spec}.
-	
-	It is required that the names use words beginning with an upper or lower case letter (A--Z, a--z) or an underscore (\_) for all terms in the model. Digits (0--9) are allowed in the subsequent character positions.
-	
+		
 	\subsection{Namespaces}
 	\label{sec:namespaces}
 	
 	In order to enable reuse of names defined in other models and a unique reference to a name so that it can be easily identified, namespace management must be considered. We adopt XML approach to defining and managing namespaces as it is inherent in both XMI and OWL2 standards. Hence, a \textit{namespace} is a set of symbols that are used to organize objects of various kinds, so that these objects may be referred to by name and uniquely identifiable. 
 	
-	Namespaces are commonly structured as hierarchies to allow reuse of names in different contexts \cite{xml-namespaces}. This mechanism can be implemented in UML through partitioning the model using packages, which are described in \ref{sec:packages}.
+	Namespaces are commonly structured as hierarchies to allow reuse of names in different contexts \cite{xml-namespaces}. This mechanism can be implemented in UML through partitioning the model using packages, which are described in \ref{sec:uml-package}.
 	
 	A namespace organises a collection of names obeying three constraints:
 	each name is (1) unique, (2) assigned in a consistent way, and (3)
-	assigned according to a common definition \cite{urn-rfc8141}. A \textit{name} in a namespace consists of a \textit{namespace name}, also called \textit{base URI} or just \textit{base}, and a \textit{local name}, also called \textit{local segment} \cite{xml1-spec,urn-rfc2141}. For example, in the name ``http://www.w3.org/ns/org\#Organization'', ``http://www.w3.org/ns/org\#'' is the namespace name and ``Organization'' is the local name. 
-	
-	\texttt{name = [<namespace prefix>:]<local name>}
-	
-	As it is usually verbose, the namespace name is mostly applied as a \textit{prefix} to the local name. \cite{xml-namespaces} specifies a declaration syntax which permits to bind prefixes to namespace names and also to bind a default namespace that applies to unprefixed element names. 
-	For example we can bind the namespace name ``http://www.w3.org/ns/org\#'' to the prefix ``org'', then we can use it to create the same name as such ``org:Organization''. The prefix is subject to namespace interpretation and resolved to an URI \cite{xml-namespaces}.
+	assigned according to a common definition \cite{urn-rfc8141}. An (expanded) \textit{name} in a namespace is a pair consisting of a \textit{namespace name}, also called \textit{base URI} or just \textit{base}, and a \textit{local name}, also called \textit{local segment} \cite{xml1-spec,urn-rfc2141}. The combination of universally managed URI with the vocabulary local name is effective in avoiding name clashes. 	
+	For example, in the expanded name ``http://www.w3.org/ns/org\#Organization'', ``http://www.w3.org/ns/org\#'' is the namespace name and ``Organization'' is the local name. 
+
+	Unlike in the XML specifications, the constraints on the local name are slightly relaxed, allowing token delimitation by space character (see Section \ref{sec:delimitation}). This provides an additional level of readability to the conceptual model users. Nevertheless, the local names must be \textit{normalised strings}, which mean that only single occurrences of space character are permitted. Other delimiting characters, such as tab, line feed, carriage return must be replaced by an occurrence of space and trimmed. 
+	In the transformation process, when URIs are generated, the spaces are removed anyway and conform with the XML conventions (see Section \ref{sec:name}).
+
+\begin{lstlisting}[language=XML,frame=none, basicstyle=\footnotesize\ttfamily,breaklines=true]
+name = <namespace name>/<local name> 
+       <namespace name>#<local name>
+\end{lstlisting}
 		
+	
+	URI references are often inconveniently long, so expanded names should not be used directly. Instead \textit{qualified names} should be used while expanded names are strongly discouraged. A \textit{qualified name} is a name subject to namespace interpretation. Syntactically, they are either \textit{prefixed names} or \textit{unprefixed names}.
+
+\begin{lstlisting}[language=XML,frame=none, basicstyle=\footnotesize\ttfamily,breaklines=true]
+qualified name = [<namespace prefix>:]<local name>
+\end{lstlisting}	
+	
+	The namespace name is usually applied as a \textit{prefix} to the local name but it may be missing as well. \cite{xml-namespaces} specifies a declaration syntax which permits to bind prefixes to namespace names and also to bind a default namespace that applies to unprefixed element names. For example we can bind the namespace name ``http://www.w3.org/ns/org\#'' to the prefix ``org'', then we can use it to create the same name as such ``org:Organization''. The prefix is subject to namespace interpretation and resolved to an URI \cite{xml-namespaces}.
+
 	It is recommended that the UML element names indicate the namespace prefix by prepending it to the name delimited by colon character (:). In case the namespace is not specified (no delimiter) then the name of the package containing the current element is used as namespace prefix. For example if a class ``Contract'' is placed in a package ``epo'' then the name of the containing package is used as the namespace prefix and resolved to ``epo:Contract''. If the delimiter (:) is used without any prefix, then the empty string prefix is resolved to the default namespace as defined in \citep{xml-namespaces}.
+
+	\subsection{Character encoding}
+	\label{sec:charset}
+	
+	In the formal ontology, the names must conform to RDF \cite{rdf11} and XML\cite{xml1-spec} format specifications. Both languages effectively require that terms begin with an upper or lower case letter from the ASCII character set, or an underscore (\_). This tight restriction means that, for example, terms may not begin with a number, hyphen or accented character \cite{d3.1-2015}. Although underscores are permitted, they are discouraged as they may be, in some cases, misread as spaces. A formal definition of these restrictions is given in the XML specification document \cite{xml1-spec}.
+	
+	It is required that the names use words beginning with an upper or lower case letter (A--Z, a--z) or an underscore (\_) for all terms in the model. Digits (0--9) are allowed in the subsequent character positions. Also, as mentioned above, spaces are permitted in the local segment of the name. 
+	
+	Encoded UTF-8 and UTF-16 names are supported \cite{xml1-spec,xml11-spec} but we recommend avoiding any character encodings in the element names. Encoded characters are mostly not readable and require a decoding to become human friendly. Also unexpected results may occur in the transformation script. This recommendation does not apply to the content strings such as descriptions, notes and comments, which may use any character encoding. 
 	
 	\subsection{uml:Package}
 	\label{sec:uml-package}
 	
-	Packages should be used to define a logical partition of the model. Package names shall be short lowercase normalised strings representing an acronym or a short name. They may serve as proxies for the namespace prefixes and used to resolve the name of any comprised elements when the prefix is not provided. This however should not be used as a primary naming method, but rather for suggesting corrections in the element name. 
+	Packages should be used to define a logical partition of the model. They serve as the primary method for the vertical slicing of the conceptual model as described in the layering and slicing section of \citet{costetchi2020a}. 
+	
+	Packages may form hierarchies. In this case the hierarchical relation is interpreted as \textit{meronymy}, denoting a constituent parts of the package. Formally they are translated into owl:import statements.The module corresponding to the parent package imports modules corresponding to the child packages.
 	
 	No empty packages shall be present in the model. A package is empty if it contains no child elements. 
+	
+	Package names shall be short lowercase normalised strings representing an acronym or a short name. They may serve as proxies for the namespace prefixes and used to resolve the name of any comprised elements when the prefix is not provided. This however should not be used as a primary naming method, but rather for suggesting corrections in the element name. 
 	
 	\subsection{uml:Class}
 	\label{sec:uml-class}
