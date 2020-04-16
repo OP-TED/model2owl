@@ -121,9 +121,25 @@
 	
 	This architecture delimits different concerns in Section \ref{sec:layers-components} in a stack of layers and assigns levels of expressivity to each of the layers in Section \ref{sec:expressivity}.
 	
-	\subsection{Open/Closed world assumptions}
+	\subsection{Open and closed world assumptions}
 	\label{sec:world-assumption}
-
+	
+	In the formal systems of logic used for knowledge representation, reasoning is the process through which logical conclusions are derived from a set of premise known to be true or assumed to be true by the laws of valid inference (inference rules). 
+	
+	In the eProcurement ontology checking consistency and deriving new knowledge is foreseen as a valuable functionality beyond the knowledge representation and interoperability establishment.
+	
+	Inferencing is impacted by what is assumed about the knowledge base. The important assumptions to consider are: (a) whether the knowledge base is considered complete -- the closed-world assumption (CWA); or (b) whether the knowledge base (proper knowledge base) is in a state of continuous progression -- the open-world assumption (OWA) \cite{damasio2006supporting}.
+	
+	Under the \textit{closed-world assumption} it is the presumed that a statement that is true is also known to be true. Therefore, conversely, what is not currently known to be true, is false \citep{reiter1981closed}.
+	The opposite of the closed-world assumption is the \textit{open-world assumption} stating that lack of knowledge does not imply falsity. The truth value of a statement may be true irrespective of whether or not it is known to be true. 
+		
+	The eProcurment data is fragmented across information systems. It represents concerns specific to different steps in the procurement process. Performing local reasoning with such incomplete knowledge is therefore necessary functionality for the eProcurement project. 
+		
+	Semantic Web languages, including OWL, make the open-world assumption. The absence of a particular statement within the web means, in principle, that the statement has not been made explicitly yet, irrespective of whether it would be true or not, and irrespective of whether we believe that it would be true or not. This stance is also very convenient for decentralised knowledge bases over the internet, where information may be accessible, outdated, contradictory, inaccessible or missing\cite{damasio2006supporting}. 
+	
+	For validation purpose, in particular, a closed world assumption needs to be made. This concerns the data shapes expressed in SHACL language. In these case, the knowledge base must be considered complete in order to asses whether it fulfils the imposed constraints or recommended shapes. So everything that is not know to be true must be considered as false. 
+	
+	The eProcuremement data must be validated within its local context. The data must be conformant to the information needs and aspects specific to the procurement phase and, possibly, to the information system that handles it. It is, therefore, foreseeable that multiple validation schemes and application profiles have to be developed specific to different phases and aspects of the procurement process. These schemes must extend and flesh out the core ontology, which is the ontology backbone, with levels of specificity and detail as necessary. 
 
 	\subsection{Conformance}
 	
@@ -156,6 +172,93 @@
 	\end{table}
 	
 
-\section{URI policy}	
+\section{URI policy}
 \label{sec:uri-policy}
 
+	The report on high value datasets from EU institutions \citep{d-high-value-assets} mentions eProcurement data as being of special importance and high value. It also provides guidelines and recommendations for  publishing government data approached both from the publisher's point of view, and the reuser's point of view. 
+	
+	eProcurement ontology must be published in multiple formats, including RDF. This entails the assignment of identifiers to each term and, to be useful in the kind of linked data applications envisaged, those identifiers should be HTTP URIs and commit long term URI persistence.
+	
+	\subsection{General considerations and recommendations}
+	\label{sec:considerations}
+	There is a five start rating \cite{berners5star} to measure published data reusability using a five start rating. This rating system is based on four design principles proposed in \citet{berners2006linked}, to which eProcurement ontology subscribes.
+	
+	\begin{itemize}
+		\item Use Uniform Resource Identifiers (URIs) to uniquely identify
+		things (data entities);
+		\item Use HTTP URLs, corresponding to these URIs, so that
+		information can be retrieved;
+		\item Provide metadata using open standards such as RDF;
+		\item Include links to related URIs, so that people can discover more
+		things.		
+	\end{itemize} 
+	
+	Moreover the eProcurement URI scheme must subscribe to the ``Cool URIs'' recommendations \cite{cool-uri-cyganiak} and ensure that they don't change \cite{burners1998cool}. 
+	
+	\begin{itemize}
+		\item \textit{Simplicity}. Short, mnemonic URIs will not break as easily when sent in emails and are in general easier to remember.
+		\item \textit{Stability}. Once you set up a URI to identify a certain resource, it should remain this way as long as possible.
+		\item  \textit{Manageability}. Issue your URIs in a way that you can manage. \cite{cool-uri-cyganiak}
+	\end{itemize}
+
+	The ISA$^2$ study on persistent URIs \cite{d7.1.3-2012} provides a set of design and management principles. They are completed by a more recent study on URI design patterns \citep{d4.02.02-2018}, in the context of promoting semantic interoperability, identified good design practices for the local part of URIs under the \url{http://data.europa.eu} domain (see Section \ref{sec:persistence}).
+	
+	\begin{itemize}
+		\item \textit{Use a template}. Pre-defined approach to URI design, using for example URI templates, can help organisations follow a logical structure \cite{d7.1.3-2012,d4.02.02-2018}.
+		\item \textit{Avoid stating ownership}. The URI template above does not include the name of the organisation or project that minted the URI \cite{d7.1.3-2012,d4.02.02-2018}.
+		\item \textit{Avoid version numbers}. URIs should remain stable between versions and new ones minted for new terms \cite{d7.1.3-2012,d4.02.02-2018}.
+		\item \textit{Re-use existing identifiers}. Where resources are already uniquely identified, those identifiers should be incorporated into the URI \cite{d7.1.3-2012}.
+		\item \textit{Avoid using auto-increment}. Minting new URIs for large datasets will need to be automated and the process must be guaranteed to produce unique identifiers, but not sequentially allocated \cite{d7.1.3-2012}. 
+		\item \textit{Avoid query strings}. Query strings (e.g. \texttt{?param=value}) are usually used in URLs as keys to look up terms in a database. But these constructs should not be used in the URIs but left for particular implement \cite{d7.1.3-2012}. 
+		\item \textit{Avoid using file extensions}. For similar reasons as above \cite{d7.1.3-2012}. 
+		\item \textit{Mix meaningful and opaque strings}. Meaningful URIs should be avoided in the URI segments which carry a risk of renaming (see Section \ref{sec:persistence}) for any foreseeable reason \cite{d4.02.02-2018}.  
+		\item \textit{Employ URI sub-divisions}. When necessary, create subdivisions in the URI pattern following a logical patterns and keeping the namespace maintainable. However this practice must be kept to minimum if at all employed \cite{d4.02.02-2018}. 		
+	\end{itemize}
+	
+	\subsection{Persistence}
+	\label{sec:persistence}
+	
+	In 2014, the ISA Programme supported an informal Task Force working on a common policy for the management of persistent, HTTP-based URIs of EU institutions comparable to the virtues of DOI identification scheme  \citep{d4.02.3-2018}. A Persistent URI Service on the \url{http://data.europa.eu} sub-domain was established that is responsible for the registration and management of persistent URI namespaces and the forwarding of HTTP requests (URI redirection) towards the Publications Office local register for the eProcurement ontology (see Section \ref{sec:uri-scheme}). 
+
+\begin{lstlisting}[language=XML,frame=none, basicstyle=\footnotesize\ttfamily,breaklines=true]
+http://data.europa.eu/{collection-id}/{local-register-space}
+\end{lstlisting}
+	
+	Publications Office was allocated the following persistent URI namespaces for usage in the context of eProcurement ontology. Section \ref{sec:uri-scheme} provides the specifications on the URI structure and the local part organisation. 
+
+%	TODO: inser the URIs
+	\begin{itemize}
+		\item \url{http://data.europa.eu/abc}
+		\item \url{http://data.europa.eu/def}
+	\end{itemize}
+	
+	Regarding URI design, the main consideration of creators should be that when a URI is created, all its parts should be resistant to change. For instance, locations and organisation names can change, and therefore should not be used in URIs. First and foremost, when introducing semantics in URIs, the strings used need to reflect what	the resources are (i.e. intrinsic characteristics such as the type or nature), not who owns them or where they are \cite{d4.02.02-2018}. 
+
+	When creating a URI, its owner can never be certain of who will be using it and can	therefore not notify every concerned individual of future changes. It is therefore	paramount that URIs are designed carefully with the specific goal of making them persistent, in theory forever \cite{burners1998cool}. Persistence is a vital component of URI design.	Since the local part of a URI is under the control of the institution that owns it (in this case Publications Office), it is up to the owners to ensure that the way they design local IDs enables the persistence of the URI as a whole.
+	
+	It is recommended to identify all eProcurement resources with URIs which have opaque local identifiers. However, in the case of TBox resources, such as the ontology and the data shapes, mnemonic local segments may be used.
+		
+	\subsection{URI scheme}
+	\label{sec:uri-scheme}
+	
+	The URIs are best maintained using a pre-defined set of patterns and templates. 
+
+	\paragraph{Ontology reference}: to be used in the ontology header as reference to the ontology.
+\begin{lstlisting}[language=XML,frame=none, basicstyle=\footnotesize\ttfamily,breaklines=true,]
+{baseVoc}/ontology/{ontologyName}
+\end{lstlisting}
+		
+	\paragraph{Ontology reference}: to be used in the ontology header to refer to the current RDF document.
+\begin{lstlisting}[language=XML,frame=none, basicstyle=\footnotesize\ttfamily,breaklines=true,]
+{baseVoc}/ontology/{ontologyName}#{documentRef}
+\end{lstlisting}
+
+	\paragraph{Ontology resources}: to be used to refer to resources defined within the ontology, such as classes, properties and special individuals.	
+\begin{lstlisting}[language=XML,frame=none, basicstyle=\footnotesize\ttfamily,breaklines=true,]
+{baseVoc}/ontology/{ontologyName}#{resourceName}
+\end{lstlisting}
+
+
+	
+	
+	
