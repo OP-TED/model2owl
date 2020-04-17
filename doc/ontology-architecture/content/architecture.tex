@@ -228,8 +228,8 @@ http://data.europa.eu/{collection-id}/{local-register-space}
 
 %	TODO: inser the URIs
 	\begin{itemize}
-		\item \url{http://data.europa.eu/abc}
-		\item \url{http://data.europa.eu/def}
+		\item \ptr{http://data.europa.eu/abc}
+		\item \ptr{http://data.europa.eu/def}
 	\end{itemize}
 	
 	Regarding URI design, the main consideration of creators should be that when a URI is created, all its parts should be resistant to change. For instance, locations and organisation names can change, and therefore should not be used in URIs. First and foremost, when introducing semantics in URIs, the strings used need to reflect what	the resources are (i.e. intrinsic characteristics such as the type or nature), not who owns them or where they are \cite{d4.02.02-2018}. 
@@ -240,25 +240,143 @@ http://data.europa.eu/{collection-id}/{local-register-space}
 		
 	\subsection{URI scheme}
 	\label{sec:uri-scheme}
-	
-	The URIs are best maintained using a pre-defined set of patterns and templates. 
+	 
 
-	\paragraph{Ontology reference}: to be used in the ontology header as reference to the ontology.
-\begin{lstlisting}[language=XML,frame=none, basicstyle=\footnotesize\ttfamily,breaklines=true,]
-{baseVoc}/ontology/{ontologyName}
-\end{lstlisting}
+	The URIs are best maintained using a pre-defined set of patterns and templates. This section defines the URI templates all together forming a URI scheme. 
+	
+	A simple syntax syntax is adopted to express the scheme templates in terms of URI path patterns. A path pattern comprises a sequences of delimited segments, such as \texttt{segment1/segment2/segment3}. Each advancement by a segment leads to creation of a new hierarchically positioned namespace.
+	
+	The segment denomination can be literal or variable. The literal segment means that the value provided is constant and must appear as such in the indicated position. The variable segments are marked by curly brackets ( \{ \} ) and represent the name of the slot which must be filled with a concrete value when a new URI is minted in the implementation process. For example the pattern \texttt{segment/\{varSegment\}} can be instantiated as \texttt{segment/123}.
+	
+	It is possible to indicate that a path sub-sequence is optional by wrapping it in square brackets ( [ ] ). For example \texttt{segment/[\{varSubSegment\}/]{varSubSubSegment}} pattern can be instantiated either as \texttt{segment/abc/123} or \texttt{segment/123}.
+	
+	This section defines templates for two dedicated PURI namespaces corresponding roughly to TBox--ABox distinction in the ontology structure or the model--data delimitation, which is explained in Section \ref{sec:model-data}. The first namespace, \textit{baseVoc},  is dedicated to the ontology, vocabulary and modelling artefacts; while the second, \textit{baseData} is foreseen to accommodate the large volume of instance data.
+	
+	\begin{table}[!ht]
+		\centering
+		\begin{tabular}{@{}lll@{}}
+			\toprule
+			Scope                     & Reference & URI pattern                   \\ \midrule
+			Base URI for vocabularies & baseVoc           & \ptr{http://data.europa.eu/abc} \\
+			Base URI for data         & baseData          & \ptr{http://data.europa.eu/def} \\ \bottomrule
+		\end{tabular}
+		\caption{Base PURIs employed by the eProcurement ontology}
+		\label{tab:baseUris}
+	\end{table}
+
+	For the purpose of eProcurement ontology eight scopes have been identified and each is ascribed a path segment in order to form a separate namespace. They are as follows: ontology (\ptr{/ontology}), controlled list (\ptr{/reference}), data shapes (\ptr{/shape}), reasoning restrictions (\ptr{/rule}) and XML schemas (\ptr{/schema}), instance data (\ptr{/resource}), metadata descriptions (\ptr{/metadata}), and data services (\ptr{/service}). 
+	
+	\paragraph{Ontology core} The ontology documents and content should be situated under  \ptr{/ontology} path segment. Three patterns are of relevance here: to refer to the root of the ontology content space, provided as \texttt{xml:base} / \texttt{xmlns}; (b) to refer to the document of the ontology or fragment/module, the subject of the ontology header; and (c) one to refer to the each resource defined within the ontology, such as classes, properties and special individuals. Table \ref{tab:ontology-patterns} defines the patterns.
 		
-	\paragraph{Ontology reference}: to be used in the ontology header to refer to the current RDF document.
-\begin{lstlisting}[language=XML,frame=none, basicstyle=\footnotesize\ttfamily,breaklines=true,]
-{baseVoc}/ontology/{ontologyName}#{documentRef}
-\end{lstlisting}
-
-	\paragraph{Ontology resources}: to be used to refer to resources defined within the ontology, such as classes, properties and special individuals.	
-\begin{lstlisting}[language=XML,frame=none, basicstyle=\footnotesize\ttfamily,breaklines=true,]
-{baseVoc}/ontology/{ontologyName}#{resourceName}
-\end{lstlisting}
-
-
+	\begin{table}[htb]
+		\centering
+		\begin{tabular}{@{}ll@{}}
+			\toprule
+			Purpose        & Pattern                                                 \\ \midrule
+			Root reference  & \ptr{\{baseVoc\}/ontology/\{ontologyName\}}                   \\
+			Document reference  & \ptr{\{baseVoc\}/ontology/\{ontologyName\}[\#\{documentRef\}]}  \\
+			Resources ref. & \ptr{\{baseVoc\}/ontology/\{ontologyName\}\#\{resourceName\}} \\ \bottomrule
+		\end{tabular}
+		\caption{URI patterns for the ontology namespace}
+		\label{tab:ontology-patterns}
+	\end{table}
 	
+	\paragraph{Controlled list} The controlled list should replicate the current approach taken by Publications Office for reference data as described in Table \ref{tab:reference-patterns}. Optionally the controlled lists may be managed entirely by the Standardisation and Metadata Unit, including publishing them in the established namespace for reference data \texttt{http://publications.europa.eu/resource/authority}.
+	
+	\begin{table}[htb]
+		\centering
+		\begin{tabular}{@{}ll@{}}
+			\toprule
+			Purpose        & Pattern                                             \\ \midrule
+			Root reference & \ptr{\{baseVoc\}/reference/\{listName\}}                  \\
+			Document reference  & \ptr{\{baseVoc\}/reference/\{listName\}[\#\{documentRef\}]} \\
+			Concept scheme & \ptr{\{baseVoc\}/reference/\{listName\}}                  \\
+			Concepts       & \ptr{\{baseVoc\}/reference/\{listName\}\#\{concept\}}     \\ \bottomrule
+		\end{tabular}
+		\caption{URI patterns for the reference data namespace}
+		\label{tab:reference-patterns}
+	\end{table}
+	
+	\paragraph{Data shapes} The data shape files should be situated in the \ptr{/shape} space. The data shapes are extending the core ontology and are intrinsically bound to it. Therefore the ontology name must be used in the content root. Table \ref{tab:shape-patterns} defines the patterns.
+	
+	\begin{table}[htb]
+		\centering
+		\begin{tabular}{@{}ll@{}}
+			\toprule
+			Purpose              & Pattern                                              \\ \midrule
+			Root reference & \ptr{\{baseVoc\}/shape/\{ontologyName\}}                   \\
+			Document reference   & \ptr{\{baseVoc\}/shape/\{ontologyName\}\#\{documentRef\}}  \\
+			Shape resources      & \ptr{\{baseVoc\}/shape/\{ontologyName\}\#\{resourceName\}}
+		\end{tabular}
+		\caption{URI patterns for the data shape namespace}
+		\label{tab:shape-patterns}
+	\end{table}
+	 
+	\paragraph{Ontology restrictions} The restrictions are in fact part of the ontology definition, simply corresponding to the more complex part of it. Therefore the restrictions belong in the same namespace as the ontology. The document reference, however, can be distinguished and placed in the \ptr{/rule} namespace, where, eventually SWRL and other types of reasoning related artefacts may be placed. Table \ref{tab:restriction-patterns} reflects these patterns. 
+	
+	\begin{table}[tb]
+		\centering
+		\begin{tabular}{@{}ll@{}}
+			\toprule
+			Purpose            & Pattern                                                 \\ \midrule
+			Root reference     & \ptr{\{baseVoc\}/ontology/\{ontologyName\}}                   \\
+			Docuemnt reference & \ptr{\{baseVoc\}/rule/\{ontologyName\}\#\{documentRef\}}      \\
+			Resources          & \ptr{\{baseVoc\}/ontology/\{ontologyName\}\#\{resourceName\}}
+		\end{tabular}
+		\caption{URI patterns for the restrictions namespace}
+		\label{tab:restriction-patterns}
+	\end{table}
+	
+	\paragraph{XML schema} In eProcurement domain, usage of XML data is a de facto approach at the moment. In order to support current practices and help establishing a technological change, a space for managing XML schemas id designed within the same PURI space. Schemas namespaces can be minted using \ptr{{baseVoc}/schema/{schemaName}} pattern. 
+	
+	\begin{table}[!htb]
+		\centering
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{@{}ll@{}}
+				\toprule
+				Purpose            & Pattern                                              \\ \midrule
+				Root reference     & \ptr{\{baseRes\}/resource\{documentRef\}}                 \\
+				Document reference & \ptr{\{baseRes\}/resource/\{documentRef\}/\{documentRef\}} \\
+				Fragment reference & \ptr{\{baseRes\}/resource/\{documentRef\}/\{fragmentRef\}{[}/\{subFragmentRef\}{]}} \\
+				Resources          & \ptr{\{baseRes\}/resource/\{documentRef\}\#\{resourceId\}} \\ \bottomrule
+			\end{tabular}
+		}
+		\caption{URI patterns for the instance data namespace}
+		\label{tab:data-patterns}
+	\end{table}
+	
+	\paragraph{Instance data} The concrete eProcurement data instantiating the ePRocurement and related ontologies must be minted in the \ptr{/resource} namespace. The data files are best conceptualised as datasets, bulks or fragments. Therefore it is foreseen the possibility to organised a datasets as a set of fragments as described in the VOID specification \cite{void-spec}. Table \ref{tab:data-patterns} reflects these patterns. 
+	
+	
+	
+	\paragraph{Metadata} Data catalogues and work descriptions should be organised and well described using the established standards such as DCAT \citep{dcat2}, VOID \cite{void-spec}, Dublin Core \cite{dublin-core-metadata} or other representations such as FRBR \cite{frbr-ifla1998} and the CDM \cite{cdm-francesconi2015semantic,cdm-francesconi2015ontology}. The metadata resources must be minted in the must be minted in the \ptr{/metadata} namespace following the patterns provided in Table \ref{tab:metadata-patterns}.
+	
+	\begin{table}[!ht]
+		\centering
+		\begin{tabular}{@{}ll@{}}
+			\toprule
+			Purpose   & Pattern                                            \\ \midrule
+			Dataset   & \ptr{\{baseRes\}/metadata/\{datasetId\}}                 \\
+			Resources & \ptr{\{baseRes\}/metadata/\{datasetId\}\#\{resourceId\}} \\ \bottomrule
+		\end{tabular}
+		\caption{URI patterns for the metadata resources namespace}
+		\label{tab:metadata-patterns}
+	\end{table}
+	
+	\paragraph{Services} It is very important to provide endpoints where the data are accessible. These endpoints can be identified through URIs as well combined with a 303 HTTP redirection \cite{http11-fielding1999hypertext} to resolve the URI to the current URL where the service is accessible. Service URIs should be minted in the \ptr{/service} namespace as described in Table \ref{tab:service-patterns}.
+	
+	% Please add the following required packages to your document preamble:
+	% \usepackage{booktabs}
+	\begin{table}[!ht]
+		\centering
+		\begin{tabular}{@{}ll@{}}
+			\toprule
+			Purpose   & Pattern                                       \\ \midrule
+			Sparql    & \ptr{\{baseRes\}/service/sparql/\{dataLakeId\}}     \\
+			Catalogue & \ptr{\{baseRes\}/service/catalogue/\{catalogueId\}} \\ \bottomrule
+		\end{tabular}
+		\caption{URI patterns for the namespace of the services}
+		\label{tab:service-patterns}
+	\end{table}
 	
 	
