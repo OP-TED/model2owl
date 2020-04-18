@@ -38,13 +38,13 @@
     </xd:doc>
     <xsl:template match="elements">
         
-        <h1>Classes</h1>
+        <h1 class="selector-heading">Classes</h1>
         <xsl:apply-templates select="element[@xmi:type = 'uml:Class']"/>
-        <h1>Enumerations</h1>
+        <h1 class="selector-heading">Enumerations</h1>
         <xsl:apply-templates select="element[@xmi:type = 'uml:Enumeration']"/>
-        <h1>Data-types</h1>
+        <h1 class="selector-heading">Data-types</h1>
         <xsl:apply-templates select="element[@xmi:type = 'uml:DataType']"/>
-        <h1>Packages</h1>
+        <h1 class="selector-heading">Packages</h1>
         <xsl:apply-templates select="element[@xmi:type = 'uml:Package']"/>        
     </xsl:template>
     
@@ -54,11 +54,11 @@
         </xd:desc>
     </xd:doc>
     <xsl:template match="connectors">
-        <h1>Generalizations</h1>
+        <h1 class="selector-heading">Generalizations</h1>
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Generalization']"/>
-        <h1>Associations</h1>
+        <h1 class="selector-heading">Associations</h1>
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Association']"/>
-        <h1>Dependencies</h1>
+        <h1 class="selector-heading">Dependencies</h1>
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Dependency']"/>
     </xsl:template>
     

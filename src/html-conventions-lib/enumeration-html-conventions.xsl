@@ -46,20 +46,13 @@
         </h2>
         <section>
             <xsl:if test="boolean($enumerationConventions)">
-            <h3>Unmet enumeration conventions</h3>
-            <section>
                 <dl>
-                    <dt>
-                    </dt>
+                    <dt>Unmet enumeration conventions</dt>
                     <xsl:copy-of select="$enumerationConventions"/>
                 </dl>
-            </section>
             </xsl:if>
             <xsl:if test="boolean($enumerationItemConventions)">
-            <h3>Unmet item conventions</h3>
-            <section>
-                <xsl:copy-of select="$enumerationItemConventions"/>
-            </section>
+                <xsl:copy-of select="$enumerationItemConventions"/> 
             </xsl:if>
         </section>
         </xsl:if>

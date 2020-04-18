@@ -21,7 +21,7 @@
     <xsl:function name="f:generateHtmlWarning">
         <xsl:param name="warningMessage"/>
         <xsl:sequence>
-            <dd><xsl:value-of select="$warningMessage"/></dd>
+            <dd class="warning"><xsl:value-of select="$warningMessage"/></dd>
         </xsl:sequence>        
     </xsl:function>    
     
@@ -32,7 +32,7 @@
     <xsl:function name="f:generateHtmlError">
         <xsl:param name="errorMessage"/>
         <xsl:sequence>
-            <dd><xsl:value-of select="$errorMessage"/></dd>
+            <dd class="error"><xsl:value-of select="$errorMessage"/></dd>
         </xsl:sequence>        
     </xsl:function>    
     
