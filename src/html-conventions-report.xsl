@@ -61,7 +61,7 @@
                     <xsl:apply-templates/>               
                 </main>
                 <footer>
-                    <p> something maybe here </p>
+                    <p> footer here </p>
                 </footer>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
                 
@@ -79,6 +79,15 @@
                     hashGenerator: "pretty",
                     ignoreSelector: ".skip-toc"
                     });
+                    });
+            
+                     $('.selector-heading').each(function(){
+                     let nextSiblingElementType = jQuery(this).next().prop('nodeName');
+                     if(nextSiblingElementType == "H2" || nextSiblingElementType == "DL" ){
+                        $(this).append(' <i class="fa fa-times-circle invalid"></i>');
+                    }else{
+                        $(this).append(' <i class="fa fa-check-circle valid"></i>');                        
+                    }
                     });
                 </script>
             </body>
