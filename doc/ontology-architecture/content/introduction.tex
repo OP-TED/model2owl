@@ -1,7 +1,7 @@
 \section{Introduction}
 \label{sec:introduction}
 
- 	This document provides a working definition of what is the architectural stance and the design decisions that shall be adopted for the eProcurement ontology along with the description of how to generate it. 
+ 	This document provides a working definition of what is the architectural stance and the design decisions that shall be adopted for the eProcurement ontology along with the specifications how to generate it. 
 	
 	\subsection{Background considerations}
 	
@@ -16,12 +16,10 @@
 	PSI directive \cite{directive-2013/37/EU} across the EU is calling for open, unobstructed access to public data in order to improve transparency and to boost innovation via the reuse of public data. Procurement data has been identified as data with a high-reuse potential \cite{d-high-value-assets}. Therefore, making this data available in machine-readable formats, following the data as a service paradigm, is required in order to maximise its reuse.
 	
 	Given the increasing importance of data standards for eProcurement, a number of initiatives driven by the public sector, the industry and academia have been kick started	in the recent years. Some have grown organically, while others are the result of	standardisation work. The vocabularies and the semantics that they are introducing, the 
-	phases of public procurement that they are covering, and the technologies that they are using all differ. These differences hamper data interoperability and thus its reuse by them or by the wider public. This creates the need for a common data standard for
-publishing public procurement data, hence allowing data from different sources to be 
+	phases of public procurement that they are covering, and the technologies that they are using all differ. These differences hamper data interoperability and thus its reuse by them or by the wider public. This creates the need for a common data standard for publishing public procurement data, hence allowing data from different sources to be 
 	easily accessed and linked, and consequently reused. 
 	
-	In this context, the Publications Office of the European Union aims to develop an eProcurement
-ontology.
+	In this context, the Publications Office of the European Union aims to develop an eProcurement ontology.
 	
 	The objective of the eProcurement ontology is to act as this common standard on the	conceptual level, based on consensus of the main stakeholders and designed to encompass the major requirements of the eProcurement process in conformance with the Directives and Regulations \citep{directive-2014/23/EU,directive-2014/24/EU,directive-2014/25/EU,directive-2014/55/EU}.
 	
@@ -85,8 +83,28 @@ ontology.
 		\item put forward a method to validate the generated formal ontology using the current eProcurement data.
 	\end{itemize}
 
-	\subsection{Key words for Requirement Statements}
+	\subsection{Key words for requirement statements}
 	\label{sec:keywords}
 	The key words ``MUST'', ``MUST NOT'', ``REQUIRED'', ``SHALL'', ``SHALL  NOT'', ``SHOULD'', ``SHOULD NOT'', ``RECOMMENDED'',  ``MAY'', and ``OPTIONAL'' in this document are to be interpreted as described in RFC 2119 \cite{rfc2119}.
 
 	The key words ``MUST (BUT WE KNOW YOU WON'T)'', ``SHOULD CONSIDER'', ``REALLY SHOULD NOT'', ``OUGHT TO'', ``WOULD PROBABLY'', ``MAY WISH TO'', ``COULD'', ``POSSIBLE'', and ``MIGHT'' in this document are to be interpreted as described in RFC 6919 \cite{rfc6919}.
+	
+	The above listed terms are used in lower case form for stylistic and readability reasons. 
+	
+	\subsection{Conformance}
+	
+	This document describes normative and non-normative criteria for eProcurement ontology components and artefacts. The scripts, datasets, and the derived formal ontology and data shapes, must align to the normative criteria and may follow the non-normative descriptions. 
+	
+	The XSLT stylesheets \citep{xslt3-Kay} must be syntactically valid documents and executable with an XSLT engine with predictable output. They may be associated with XSPEC unit tests \cite{xspec-cirulli2017xspec} to ensure correctness.
+	
+	The UML conceptual model must comply with UML standard version 2.5 \citep{uml2.5} and be serialised as XMI document version 2.5.1 \cite{xmi2.5.1}. It also must comply with the conventions agreed with the Publications Office and other stakeholders described in \citet{costetchi2020b}.
+	
+	The core ontology and the formal restrictions components developed under these specifications must be valid OWL 2 documents in conformance with the conditions listed in \citet{owl2-comformance}. They should be available in at least Turtle and \mbox{RDF/XML} serialisation formats.
+	
+	The data shapes component must be valid SHACL documents respecting the normative parts of the specification provided in \cite{shacl-spec}.
+	
+	The instance datasets must be valid RDF1.1 documents comform to the specifications \cite{rdfs11-spec}.
+	
+	The URIs adopted under this specification must respect the policy provided in Section \ref{sec:uri-policy}.
+	
+	

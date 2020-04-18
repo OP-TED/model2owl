@@ -22,8 +22,15 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{booktabs}
+\usepackage{listings}
 
 \bibliographystyle{abbrvnat}
+
+% use it to wrap URI templates 
+%\newcommand*{\ptr}[1]{\footnotesize\ttfamily #1}
+
+\DeclareTextFontCommand{\ptr}{\footnotesize\ttfamily}
+\DeclareTextFontCommand{\texttt}{\footnotesize\ttfamily}
 
 \usepackage[
 type={CC},
@@ -89,8 +96,7 @@ version={4.0},
 \input{content/requirements.tex}
 \input{content/approach-process.tex}
 \input{content/architecture.tex}
-
-\input{content/final-word.tex}
+%\input{content/final-word.tex}
  
 \bibliography{../references/references}
  
