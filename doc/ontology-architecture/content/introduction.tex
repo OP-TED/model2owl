@@ -83,8 +83,28 @@
 		\item put forward a method to validate the generated formal ontology using the current eProcurement data.
 	\end{itemize}
 
-	\subsection{Key words for Requirement Statements}
+	\subsection{Key words for requirement statements}
 	\label{sec:keywords}
 	The key words ``MUST'', ``MUST NOT'', ``REQUIRED'', ``SHALL'', ``SHALL  NOT'', ``SHOULD'', ``SHOULD NOT'', ``RECOMMENDED'',  ``MAY'', and ``OPTIONAL'' in this document are to be interpreted as described in RFC 2119 \cite{rfc2119}.
 
 	The key words ``MUST (BUT WE KNOW YOU WON'T)'', ``SHOULD CONSIDER'', ``REALLY SHOULD NOT'', ``OUGHT TO'', ``WOULD PROBABLY'', ``MAY WISH TO'', ``COULD'', ``POSSIBLE'', and ``MIGHT'' in this document are to be interpreted as described in RFC 6919 \cite{rfc6919}.
+	
+	The above listed terms are used in lower case form for stylistic and readability reasons. 
+	
+	\subsection{Conformance}
+	
+	This document describes normative and non-normative criteria for eProcurement ontology components and artefacts. The scripts, datasets, and the derived formal ontology and data shapes, must align to the normative criteria and may follow the non-normative descriptions. 
+	
+	The XSLT stylesheets \citep{xslt3-Kay} must be syntactically valid documents and executable with an XSLT engine with predictable output. They may be associated with XSPEC unit tests \cite{xspec-cirulli2017xspec} to ensure correctness.
+	
+	The UML conceptual model must comply with UML standard version 2.5 \citep{uml2.5} and be serialised as XMI document version 2.5.1 \cite{xmi2.5.1}. It also must comply with the conventions agreed with the Publications Office and other stakeholders described in \citet{costetchi2020b}.
+	
+	The core ontology and the formal restrictions components developed under these specifications must be valid OWL 2 documents in conformance with the conditions listed in \citet{owl2-comformance}. They should be available in at least Turtle and \mbox{RDF/XML} serialisation formats.
+	
+	The data shapes component must be valid SHACL documents respecting the normative parts of the specification provided in \cite{shacl-spec}.
+	
+	The instance datasets must be valid RDF1.1 documents comform to the specifications \cite{rdfs11-spec}.
+	
+	The URIs adopted under this specification must respect the policy provided in Section \ref{sec:uri-policy}.
+	
+	
