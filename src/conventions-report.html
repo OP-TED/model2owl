@@ -3770,9 +3770,44 @@
          </dl>
          <h1 class="selector-heading">Associations</h1>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>test association</dt>
-            <dd class="warning">An association should not have a name. Please remove the name</dd>
-            <dd class="warning">Unspecified is not a valid direction for an association. Please rectify this</dd>
+            <dt>Agent -&gt; epo:RegisteredOrganisation (+rov:hasRegisteredOrganization)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>Criterion -&gt; CriterionPropertyGroup (+cccev:has)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>Criterion &lt;-&gt; Evidence (+cccev:basesOnEvidence +cccev:proofs)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>Criterion -&gt; Property (+cccev:hasConstraint)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>Criterion -&gt; Criterion (+cccev:hasSub)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>Criterion -&gt; Property (+cccev:hasInformationRequirement)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>Criterion -&gt; Evidence (+cccev:providesEvidence)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>CriterionPropertyGroup -&gt; CriterionPropertyGroup (+cccev:hasPropertySubgroup)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>CriterionPropertyGroup -&gt; Property (+cccev:hasCriterionProperty)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>DatumValue -&gt; epo:Period (+cccev:isPeriod)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -3780,37 +3815,11 @@
             <dd class="warning">Source -&gt; Desti is not a valid direction for an association. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:PlannedProcurementPart -&gt; epo:AccessTerms (+)</dt>
-            <dd class="warning">The target role is missing</dd>
-            <dd class="warning">This association has no description. Please add one</dd>
-            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Procedure -&gt; epo:AccessTerms (+epo:has)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:Address -&gt; epo:LocationCoordinate (+epo:has)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:Address -&gt; epo:Country (+epo:has)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>Site -&gt; epo:Address (+epo:hasPostalAddress)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Location -&gt; epo:Address (+epo:hasPostalAddress)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:OpeningTerms -&gt; epo:Address (+epo:hasOpeningPlace)</dt>
-            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ContractTerms -&gt; epo:Address (+epo:hasSpecificPlaceOfPerformance)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -3827,14 +3836,6 @@
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:Agent &lt;-&gt; epo:Role (+epo:playsRole +epo:isRoleOf)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Contract &lt;-&gt; epo:Agent (+epo:isSignatoryPartyOf +epo:isSignedBy)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:System &lt;-&gt; epo:Agent (+epo:isOwnBy +epo:owns)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -3866,37 +3867,12 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Subcontract &lt;-&gt; epo:AwardDecision (+epo:refersToAwardResult +epo:has)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Subcontract -&gt; epo:AwardDecision (+epo:referredToIn)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Buyer -&gt; epo:AwardDecision (+epo:makesDecsion)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:EvaluationResult -&gt; epo:AwardDecision (+epo:providesInformationFor)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ContractAwardNotice &lt;-&gt; epo:AwardDecision (+epo:notifiesAwardResult +epo:isNotifiedIn)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Subcontract &lt;-&gt; epo:AwardDecision (+epo:acceptsProposalOf +epo:referredToIn)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:Business &lt;-&gt; epo:Person (+epo:hasBeneficialOwner +isRoleOf)</dt>
             <dd class="warning">The multiplicity value from source is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Winner -&gt; epo:Business (+epo:isRoleOfBusiness)</dt>
+            <dt>epo:Buyer -&gt; epo:AwardDecision (+epo:makesDecsion)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
-            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:Buyer -&gt; epo:BuyerProfile (+epo:has)</dt>
@@ -3911,22 +3887,6 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Procedure &lt;-&gt; epo:Buyer (+epo:isResponsiblityOf +epo:isResponsibleFor)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:CentralPurchasingBody -&gt; epo:Buyer (+epo:actsAs)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ProcurementServiceProvider -&gt; epo:BuyerProfile (+epo:manages)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:CentralPurchasingBody -&gt; epo:BuyerProfile (+epo:has)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:CallForCompetition &lt;-&gt; epo:Notice (+epo:notifiedThrough +)</dt>
             <dd class="warning">The target role is missing</dd>
             <dd class="warning">The source role is missing</dd>
@@ -3934,21 +3894,15 @@
             <dd class="warning">The multiplicity value from source is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:InvitationToTender &lt;-&gt; epo:CallForCompetition (+epo:hasPreviousPublication +epo:preceeds)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Purpose -&gt; epo:CallForExpressionOfInterest (+creation of call for expression of
-               interest)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:CandidateShortList -&gt; epo:EconomicOperator (+epo:hasQualified)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Lot -&gt; epo:CandidateShortList (+epo:hasSecondStage)</dt>
+            <dt>epo:CentralPurchasingBody -&gt; epo:Buyer (+epo:actsAs)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:CentralPurchasingBody -&gt; epo:BuyerProfile (+epo:has)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -3960,60 +3914,11 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Document -&gt; epo:Change (+epo:hasChanged)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:Channel -&gt; epo:OpeningHoursSpecification (+epo:hasAvaliabilityRestriction)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:SubmissionTerms -&gt; epo:Channel (+epo:hasTenderSubmissionCommunicationMeans)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:ContactPoint -&gt; epo:Channel (+epo:has)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Document -&gt; epo:Channel (+epo:madeAvailableVia)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ProcedureTerms -&gt; epo:Channel (+epo:hasClarificationsAvailableVia)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ProcedureTerms -&gt; epo:Channel (+epo:hasRestrictedProcurementDocumentsMadeAvailableVia
-               )</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Technique -&gt; epo:Channel (+epo:isAvailableVia)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Lot -&gt; epo:Channel (+epo:usesAdhoc)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ProcedureTerms -&gt; epo:Channel (+epo:hasQuestionsMadeAvailableVia )</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:PlannedProcurementPart -&gt; epo:Channel (+epo:uses)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:QualificationSystem -&gt; epo:Channel (+epo:hasMeansOfCommunication)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:OpeningTerms -&gt; epo:Channel (+epo:hasVirtualTenderOpeningAddress)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ProcedureTerms -&gt; epo:Channel (+epo:hasProcurementDocumentsMadeAvailableVia)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4025,7 +3930,7 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Role -&gt; epo:ContactPoint (+epo:has)</dt>
+            <dt>epo:Contract &lt;-&gt; epo:Agent (+epo:isSignatoryPartyOf +epo:isSignedBy)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4065,19 +3970,7 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:eCatalogue -&gt; epo:Contract (+epo:madeAvailableUnder)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ContractModificationNotice -&gt; epo:Contract (+epo:modifies)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Procedure -&gt; epo:Contract (+epo:leadsTo)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Procedure &lt;-&gt; epo:Contract (+epo:isConcludedBy +epo:concludes)</dt>
+            <dt>epo:ContractAwardNotice &lt;-&gt; epo:AwardDecision (+epo:notifiesAwardResult +epo:isNotifiedIn)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4090,6 +3983,10 @@
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:ContractAwardNotice -&gt; epo:ContractNotice (+epo:refersTo)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ContractModificationNotice -&gt; epo:Contract (+epo:modifies)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4106,16 +4003,11 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ProcurementCriterion -&gt; epo:ContractNotice (+come from)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ESPDRequest -&gt; epo:ContractNotice (+epo:qualificationCriteria)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:Contractor -&gt; epo:Subcontractor (+hasSubcontracted)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ContractTerms -&gt; epo:Address (+epo:hasSpecificPlaceOfPerformance)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4123,19 +4015,15 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:PlannedProcurementPart -&gt; epo:ContractTerms (+epo:has)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Lot &lt;-&gt; epo:ContractTerms (+epo:has +epo:appliesTo)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:DesignContestRegimeTerms -&gt; epo:Lot (+epo:appliesTo)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Procedure -&gt; epo:DirectAwardTerms (+epo:has)</dt>
+            <dt>epo:Document -&gt; epo:Change (+epo:hasChanged)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Document -&gt; epo:Channel (+epo:madeAvailableVia)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4147,16 +4035,7 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:PlannedProcurementPart -&gt; epo:Document (+epo:refersTo)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:SecurityClearanceTerms -&gt; epo:Document (+epo:applyTo)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:FrameworkAgreementTechnique -&gt; epo:eAuctionTechnique (+epo:uses)</dt>
+            <dt>epo:eCatalogue -&gt; epo:Contract (+epo:madeAvailableUnder)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4164,19 +4043,15 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Tender -&gt; epo:EconomicOperator (+epo:specifiesSubcontractors)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:EconomicOperatorShortList -&gt; epo:EconomicOperator (+epo:hasShownInterest)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Winner -&gt; epo:EconomicOperator (+epo:contractWinnerSubcontractors)</dt>
+            <dt>epo:EconomicOperatorShortList -&gt; epo:Lot (+epo:hasEOsHavingInterestIn)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:EconomicOperatorShortList -&gt; epo:Lot (+epo:hasEOsHavingInterestIn)</dt>
+            <dt>epo:ESPDRequest -&gt; epo:ContractNotice (+epo:qualificationCriteria)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4196,15 +4071,15 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:EvaluationResult -&gt; epo:AwardDecision (+epo:providesInformationFor)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:EvaluationResult -&gt; epo:TenderLot (+epo:isAbout)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:EvaluationSystem -&gt; epo:EvaluationResult (+epo:proposes)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:TenderLot &lt;-&gt; epo:EvaluationResult (+epo:isAssessedIn +epo:assesses)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4214,16 +4089,6 @@
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:EvaluationSystem -&gt; epo:Organisation (+epo:belongsTo)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>defines (defined as part of)</dt>
-            <dd class="warning">An association should not have a name. Please remove the name</dd>
-            <dd class="warning">The target role is missing</dd>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Lot -&gt; epo:EvaluationTerms (+epo:hasTenderEvaluationTerms)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4241,19 +4106,7 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Procedure -&gt; epo:ExclusionGround (+epo:has)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Tenderer -&gt; epo:ExclusionGround (+substantiates)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:FollowupContractTerms -&gt; epo:Lot (+epo:appliesTo)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Prize -&gt; epo:FollowupContractTerms (+epo:appliesToFollowupContractTerms)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4265,7 +4118,7 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:PurchaseContract &lt;-&gt; epo:FrameworkAgreement (+epo:hasRulesSetBy +epo:setsRulesOf)</dt>
+            <dt>epo:FrameworkAgreementTechnique -&gt; epo:eAuctionTechnique (+epo:uses)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4281,35 +4134,31 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:PlannedProcurementPart -&gt; epo:Fund (+epo:isFundedWith)</dt>
+            <dt>epo:InvitationToTender &lt;-&gt; epo:CallForCompetition (+epo:hasPreviousPublication +epo:preceeds)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:RequestForParticipation -&gt; epo:InvitationToTender (+epo:refersTo)</dt>
+            <dt>epo:Location -&gt; epo:Address (+epo:hasPostalAddress)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:TenderLot -&gt; epo:Item (+epo:refersTo)</dt>
+            <dt>epo:Lot -&gt; epo:CandidateShortList (+epo:hasSecondStage)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Lot -&gt; epo:Channel (+epo:usesAdhoc)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Lot &lt;-&gt; epo:ContractTerms (+epo:has +epo:appliesTo)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Lot -&gt; epo:EvaluationTerms (+epo:hasTenderEvaluationTerms)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:Lot -&gt; epo:Item (+epo:refersTo)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Person -&gt; epo:Location (+epo:hasLegalLocation)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Organisation -&gt; epo:Location (+epo:hasLocation)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:RegisteredOrganisation -&gt; epo:Location (+epo:hasRegisteredLocation)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Person -&gt; epo:Location (+epo:hasCountryOfBirth)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4364,63 +4213,11 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ReviewTerms -&gt; epo:Lot (+epo:appliesTo)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>Property -&gt; epo:Lot (+)</dt>
-            <dd class="warning">The target role is missing</dd>
-            <dd class="warning">This association has no description. Please add one</dd>
-            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:LotSpecification -&gt; epo:Lot (+epo:appliesTo)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Prize X epo:Lot (+ +rewarded With)</dt>
-            <dd class="warning">Destination -&gt; Source is not a valid direction for an association. Please rectify
-               this</dd>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:TenderLot &lt;-&gt; epo:Lot (+epo:relatesTo +epo:relatedTo)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:SelectionCriterion &lt;-&gt; epo:Lot (+epo:appliesTo +epo:isAppliedTo)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Technique &lt;-&gt; epo:Lot (+epo:usedIn +epo:uses)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:SelectionCriterion -&gt; epo:Lot (+epo:usedForReductionOfCandidates)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Procedure &lt;-&gt; epo:Lot (+epo:specifies +epo:isSpecifiedIn)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:LotGroup -&gt; epo:Tender (+epo:awardedTo)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ProcedureTerms -&gt; epo:LotGroup (+epo:combineLotsInto)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:SelectionCriterion -&gt; epo:LotGroup (+epo:appliesTo)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:TenderLot -&gt; epo:LotGroup (+epo:appliesTo)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:QualificationSystem -&gt; epo:Notice (+epo:issues)</dt>
+            <dt>epo:LotSpecification -&gt; epo:Lot (+epo:appliesTo)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4428,48 +4225,53 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:OpeningTerms -&gt; epo:Address (+epo:hasOpeningPlace)</dt>
+            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:OpeningTerms -&gt; epo:Channel (+epo:hasVirtualTenderOpeningAddress)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Organisation -&gt; epo:Location (+epo:hasLocation)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:Organisation -&gt; Name (+epo:has)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ReviewTerms -&gt; epo:Organisation (+epo:hasMediationBody)</dt>
+            <dt>epo:Person -&gt; epo:Location (+epo:hasLegalLocation)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ReviewTerms -&gt; epo:Organisation (+epo:hasReviewBody)</dt>
+            <dt>epo:Person -&gt; epo:Location (+epo:hasCountryOfBirth)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ProcedureTerms -&gt; epo:Organisation (+epo:hasWorkingConditionsInformation)</dt>
+            <dt>epo:PlannedProcurementPart -&gt; epo:AccessTerms (+)</dt>
+            <dd class="warning">The target role is missing</dd>
+            <dd class="warning">This association has no description. Please add one</dd>
+            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:PlannedProcurementPart -&gt; epo:Channel (+epo:uses)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ProcedureTerms -&gt; epo:Organisation (+epo:hasEmploymentProtectionInformation)</dt>
+            <dt>epo:PlannedProcurementPart -&gt; epo:ContractTerms (+epo:has)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ReviewTerms -&gt; epo:Organisation (+epo:hasReviewService)</dt>
+            <dt>epo:PlannedProcurementPart -&gt; epo:Document (+epo:refersTo)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ProcedureTerms -&gt; epo:Organisation (+epo:hasEnvironmentalProtectionInformation
-               )</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>DatumValue -&gt; epo:Period (+cccev:isPeriod)</dt>
+            <dt>epo:PlannedProcurementPart -&gt; epo:Fund (+epo:isFundedWith)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:PlannedProcurementPart -&gt; epo:Period (+epo:hasPlannedPeriod)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Technique -&gt; epo:Period (+epo:hasValidityPeriod)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:QualificationSystem -&gt; epo:Period (+epo:hasValidityPeriod)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4481,18 +4283,41 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>(inherits from Document "relates To")</dt>
-            <dd class="warning">An association should not have a name. Please remove the name</dd>
+            <dt>epo:Prize -&gt; epo:FollowupContractTerms (+epo:appliesToFollowupContractTerms)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ProjectProcurement &lt;-&gt; epo:PlannedProcurementPart (+epo:foreseesPlannedProcurementPart
-               +epo:isForeseenInProjectProcurement)</dt>
+            <dt>epo:Prize X epo:Lot (+ +rewarded With)</dt>
+            <dd class="warning">Destination -&gt; Source is not a valid direction for an association. Please rectify
+               this</dd>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>(inherits from Document "relates To")</dt>
-            <dd class="warning">An association should not have a name. Please remove the name</dd>
+            <dt>epo:Procedure -&gt; epo:AccessTerms (+epo:has)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Procedure &lt;-&gt; epo:Buyer (+epo:isResponsiblityOf +epo:isResponsibleFor)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Procedure -&gt; epo:Contract (+epo:leadsTo)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Procedure &lt;-&gt; epo:Contract (+epo:isConcludedBy +epo:concludes)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Procedure -&gt; epo:DirectAwardTerms (+epo:has)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Procedure -&gt; epo:ExclusionGround (+epo:has)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Procedure &lt;-&gt; epo:Lot (+epo:specifies +epo:isSpecifiedIn)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4508,11 +4333,55 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:ProjectProcurement -&gt; epo:Procedure (+epo:accessMarketThrough)</dt>
+            <dt>epo:ProcedureTerms -&gt; epo:Channel (+epo:hasClarificationsAvailableVia)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:TenderEvaluation -&gt; epo:ProcurementCriterion (+epo:basedOn)</dt>
+            <dt>epo:ProcedureTerms -&gt; epo:Channel (+epo:hasRestrictedProcurementDocumentsMadeAvailableVia
+               )</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ProcedureTerms -&gt; epo:Channel (+epo:hasQuestionsMadeAvailableVia )</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ProcedureTerms -&gt; epo:Channel (+epo:hasProcurementDocumentsMadeAvailableVia)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ProcedureTerms -&gt; epo:LotGroup (+epo:combineLotsInto)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ProcedureTerms -&gt; epo:Organisation (+epo:hasWorkingConditionsInformation)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ProcedureTerms -&gt; epo:Organisation (+epo:hasEmploymentProtectionInformation)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ProcedureTerms -&gt; epo:Organisation (+epo:hasEnvironmentalProtectionInformation
+               )</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ProcurementCriterion -&gt; epo:ContractNotice (+come from)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ProcurementServiceProvider -&gt; epo:BuyerProfile (+epo:manages)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ProjectProcurement &lt;-&gt; epo:PlannedProcurementPart (+epo:foreseesPlannedProcurementPart
+               +epo:isForeseenInProjectProcurement)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ProjectProcurement -&gt; epo:Procedure (+epo:accessMarketThrough)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4520,16 +4389,59 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:SelectionCriterion -&gt; epo:QualificationSystem (+epo:qualifiedBy)</dt>
+            <dt>epo:PurchaseContract &lt;-&gt; epo:FrameworkAgreement (+epo:hasRulesSetBy +epo:setsRulesOf)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>Agent -&gt; epo:RegisteredOrganisation (+rov:hasRegisteredOrganization)</dt>
+            <dt>epo:Purpose -&gt; epo:CallForExpressionOfInterest (+creation of call for expression of
+               interest)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:QualificationSystem -&gt; epo:Channel (+epo:hasMeansOfCommunication)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:StrategicProcurement -&gt; epo:ResourceElement (+epo:specifiedIn)</dt>
+            <dt>epo:QualificationSystem -&gt; epo:Notice (+epo:issues)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:QualificationSystem -&gt; epo:Period (+epo:hasValidityPeriod)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:RegisteredOrganisation -&gt; epo:Location (+epo:hasRegisteredLocation)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:RequestForParticipation -&gt; epo:InvitationToTender (+epo:refersTo)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ReviewTerms -&gt; epo:Lot (+epo:appliesTo)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ReviewTerms -&gt; epo:Organisation (+epo:hasMediationBody)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ReviewTerms -&gt; epo:Organisation (+epo:hasReviewBody)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:ReviewTerms -&gt; epo:Organisation (+epo:hasReviewService)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Role -&gt; epo:ContactPoint (+epo:has)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:SecurityClearanceTerms -&gt; epo:Document (+epo:applyTo)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:SecurityClearanceTerms -&gt; Site (+epo:applyTo)</dt>
@@ -4542,13 +4454,60 @@
             <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:TenderLot -&gt; epo:Subcontract (+epo:proposes)</dt>
+            <dt>epo:SelectionCriterion &lt;-&gt; epo:Lot (+epo:appliesTo +epo:isAppliedTo)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Tenderer -&gt; epo:Subcontractor (+proposesSubcontractor)</dt>
+            <dt>epo:SelectionCriterion -&gt; epo:Lot (+epo:usedForReductionOfCandidates)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
-            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:SelectionCriterion -&gt; epo:LotGroup (+epo:appliesTo)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:SelectionCriterion -&gt; epo:QualificationSystem (+epo:qualifiedBy)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:StrategicProcurement -&gt; epo:ResourceElement (+epo:specifiedIn)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Subcontract &lt;-&gt; epo:AwardDecision (+epo:refersToAwardResult +epo:has)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Subcontract -&gt; epo:AwardDecision (+epo:referredToIn)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Subcontract &lt;-&gt; epo:AwardDecision (+epo:acceptsProposalOf +epo:referredToIn)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:SubmissionTerms -&gt; epo:Channel (+epo:hasTenderSubmissionCommunicationMeans)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:System &lt;-&gt; epo:Agent (+epo:isOwnBy +epo:owns)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Technique -&gt; epo:Channel (+epo:isAvailableVia)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Technique &lt;-&gt; epo:Lot (+epo:usedIn +epo:uses)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Technique -&gt; epo:Period (+epo:hasValidityPeriod)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Tender -&gt; epo:EconomicOperator (+epo:specifiesSubcontractors)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:Tender &lt;-&gt; epo:TenderDocument (+epo:attaches +epo:attachedIn)</dt>
@@ -4559,13 +4518,24 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>responds to criterion (applied to)</dt>
-            <dd class="warning">An association should not have a name. Please remove the name</dd>
-            <dd class="warning">The target role is missing</dd>
+            <dt>epo:Tenderer -&gt; epo:ExclusionGround (+substantiates)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Tenderer -&gt; epo:Subcontractor (+proposesSubcontractor)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:Tenderer -&gt; epo:Tender (+epo:withdraws)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:Tenderer &lt;-&gt; epo:Tender (+epo:submits +epo:submittedBy)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:TenderEvaluation -&gt; epo:ProcurementCriterion (+epo:basedOn)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4573,7 +4543,23 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>epo:Tenderer &lt;-&gt; epo:Tender (+epo:submits +epo:submittedBy)</dt>
+            <dt>epo:TenderLot &lt;-&gt; epo:EvaluationResult (+epo:isAssessedIn +epo:assesses)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:TenderLot -&gt; epo:Item (+epo:refersTo)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:TenderLot &lt;-&gt; epo:Lot (+epo:relatesTo +epo:relatedTo)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:TenderLot -&gt; epo:LotGroup (+epo:appliesTo)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>epo:TenderLot -&gt; epo:Subcontract (+epo:proposes)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -4585,37 +4571,34 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>Criterion -&gt; CriterionPropertyGroup (+cccev:has)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>Criterion &lt;-&gt; Evidence (+cccev:basesOnEvidence +cccev:proofs)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>Criterion -&gt; Property (+cccev:hasConstraint)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>Criterion -&gt; Criterion (+cccev:hasSub)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>Criterion -&gt; Property (+cccev:hasInformationRequirement)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>Criterion -&gt; Evidence (+cccev:providesEvidence)</dt>
+            <dt>epo:Winner -&gt; epo:Business (+epo:isRoleOfBusiness)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
             <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>CriterionPropertyGroup -&gt; CriterionPropertyGroup (+cccev:hasPropertySubgroup)</dt>
+            <dt>epo:Winner -&gt; epo:EconomicOperator (+epo:contractWinnerSubcontractors)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>CriterionPropertyGroup -&gt; Property (+cccev:hasCriterionProperty)</dt>
+            <dt>Group -&gt; Agent (+member)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>OrganizationalUnit -&gt; Name (+org:hasName)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>OrganizationalUnit &lt;-&gt; Organization (+org:unitOf +org:hasUnit)</dt>
+            <dd class="warning">This association has no description. Please add one</dd>
+            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
+            <dd class="warning">The multiplicity value from source is wrong. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>Property -&gt; epo:Lot (+)</dt>
+            <dd class="warning">The target role is missing</dd>
+            <dd class="warning">This association has no description. Please add one</dd>
+            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>Property &lt;-&gt; DatumValue (+cccev:expressesRequirement +cccev:refinesRequirement)</dt>
@@ -4626,48 +4609,46 @@
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>OrganizationalUnit -&gt; Name (+org:hasName)</dt>
-            <dd class="warning">This association has no description. Please add one</dd>
-            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>Group -&gt; Agent (+member)</dt>
+            <dt>Site -&gt; epo:Address (+epo:hasPostalAddress)</dt>
             <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>OrganizationalUnit &lt;-&gt; Organization (+org:unitOf +org:hasUnit)</dt>
+            <dt>(inherits from Document "relates To")</dt>
+            <dd class="warning">An association should not have a name. Please remove the name</dd>
             <dd class="warning">This association has no description. Please add one</dd>
-            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
-            <dd class="warning">The multiplicity value from source is wrong. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>(inherits from Document "relates To")</dt>
+            <dd class="warning">An association should not have a name. Please remove the name</dd>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>defines (defined as part of)</dt>
+            <dd class="warning">An association should not have a name. Please remove the name</dd>
+            <dd class="warning">The target role is missing</dd>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>responds to criterion (applied to)</dt>
+            <dd class="warning">An association should not have a name. Please remove the name</dd>
+            <dd class="warning">The target role is missing</dd>
+            <dd class="warning">This association has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>test association</dt>
+            <dd class="warning">An association should not have a name. Please remove the name</dd>
+            <dd class="warning">Unspecified is not a valid direction for an association. Please rectify this</dd>
+            <dd class="warning">This association has no description. Please add one</dd>
          </dl>
          <h1 class="selector-heading">Dependencies</h1>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>ProxyConnector &lt;-&gt; ProxyConnector (+ +)</dt>
-            <dd class="warning">The target role is missing</dd>
-            <dd class="warning">The source role is missing</dd>
-            <dd class="warning">The multiplicity value from source is wrong. Please rectify this</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>test Dependency</dt>
-            <dd class="warning">An dependency should not have a name. Please remove the name</dd>
-            <dd class="warning">No direction is not a valid direction for an dependency. Please rectify this</dd>
-            <dd class="warning">This dependency has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>ProxyConnector &lt;-&gt; ProxyConnector (+ +)</dt>
-            <dd class="warning">The target role is missing</dd>
-            <dd class="warning">The source role is missing</dd>
-            <dd class="warning">The multiplicity value from source is wrong. Please rectify this</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>ProxyConnector -&gt; ProxyConnector (+)</dt>
+            <dt>Criterion -&gt; award-dimension-parent-criterion-relation (+)</dt>
             <dd class="warning">The target role is missing</dd>
             <dd class="warning">This dependency has no description. Please add one</dd>
             <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>ProxyConnector -&gt; ProxyConnector (+)</dt>
-            <dd class="warning">The target role is missing</dd>
+            <dt>CriterionPropertyGroup -&gt; criterion-group-property-type (+cccev:hasCriterionGroupPropertyType)</dt>
             <dd class="warning">This dependency has no description. Please add one</dd>
             <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
@@ -4678,13 +4659,6 @@
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:Address -&gt; nuts (+epo:hasCountrySubentityCode)</dt>
             <dd class="warning">This dependency has no description. Please add one</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>has Award Criterion Type</dt>
-            <dd class="warning">An dependency should not have a name. Please remove the name</dd>
-            <dd class="warning">The target role is missing</dd>
-            <dd class="warning">This dependency has no description. Please add one</dd>
-            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>epo:AwardCriterion -&gt; euvocabularies:number-weight (+epo:hasWeightValueType)</dt>
@@ -5035,18 +5009,36 @@
             <dd class="warning">This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>Criterion -&gt; award-dimension-parent-criterion-relation (+)</dt>
-            <dd class="warning">The target role is missing</dd>
-            <dd class="warning">This dependency has no description. Please add one</dd>
-            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
-         </dl>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt>Evidence -&gt; confidentiality-level-type (+cccev:hasConfidentialityLevelType)</dt>
             <dd class="warning">This dependency has no description. Please add one</dd>
             <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>CriterionPropertyGroup -&gt; criterion-group-property-type (+cccev:hasCriterionGroupPropertyType)</dt>
+            <dt>Person X Organization (+ +)</dt>
+            <dd class="warning">Unspecified is not a valid direction for an dependency. Please rectify this</dd>
+            <dd class="warning">This dependency has no description. Please add one</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>ProxyConnector &lt;-&gt; ProxyConnector (+ +)</dt>
+            <dd class="warning">The target role is missing</dd>
+            <dd class="warning">The source role is missing</dd>
+            <dd class="warning">The multiplicity value from source is wrong. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>ProxyConnector &lt;-&gt; ProxyConnector (+ +)</dt>
+            <dd class="warning">The target role is missing</dd>
+            <dd class="warning">The source role is missing</dd>
+            <dd class="warning">The multiplicity value from source is wrong. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>ProxyConnector -&gt; ProxyConnector (+)</dt>
+            <dd class="warning">The target role is missing</dd>
+            <dd class="warning">This dependency has no description. Please add one</dd>
+            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>ProxyConnector -&gt; ProxyConnector (+)</dt>
+            <dd class="warning">The target role is missing</dd>
             <dd class="warning">This dependency has no description. Please add one</dd>
             <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
          </dl>
@@ -5056,8 +5048,16 @@
             <dd class="warning">This dependency has no description. Please add one</dd>
          </dl>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt>Person X Organization (+ +)</dt>
-            <dd class="warning">Unspecified is not a valid direction for an dependency. Please rectify this</dd>
+            <dt>has Award Criterion Type</dt>
+            <dd class="warning">An dependency should not have a name. Please remove the name</dd>
+            <dd class="warning">The target role is missing</dd>
+            <dd class="warning">This dependency has no description. Please add one</dd>
+            <dd class="warning">The multiplicity value from target is wrong. Please rectify this</dd>
+         </dl>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dt>test Dependency</dt>
+            <dd class="warning">An dependency should not have a name. Please remove the name</dd>
+            <dd class="warning">No direction is not a valid direction for an dependency. Please rectify this</dd>
             <dd class="warning">This dependency has no description. Please add one</dd>
          </dl>
       </main>

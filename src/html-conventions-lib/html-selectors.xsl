@@ -55,11 +55,20 @@
     </xd:doc>
     <xsl:template match="connectors">
         <h1 class="selector-heading">Generalizations</h1>
-        <xsl:apply-templates select="connector[./properties/@ea_type = 'Generalization']"/>
+        <xsl:apply-templates select="connector[./properties/@ea_type = 'Generalization']">
+            <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
+            <xsl:sort select="fn:lower-case(source/model/@name)" data-type="text" lang="en"/>
+        </xsl:apply-templates>
         <h1 class="selector-heading">Associations</h1>
-        <xsl:apply-templates select="connector[./properties/@ea_type = 'Association']"/>
+        <xsl:apply-templates select="connector[./properties/@ea_type = 'Association']">
+            <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
+            <xsl:sort select="fn:lower-case(source/model/@name)" data-type="text" lang="en"/>
+        </xsl:apply-templates>
         <h1 class="selector-heading">Dependencies</h1>
-        <xsl:apply-templates select="connector[./properties/@ea_type = 'Dependency']"/>
+        <xsl:apply-templates select="connector[./properties/@ea_type = 'Dependency']">
+            <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
+            <xsl:sort select="fn:lower-case(source/model/@name)" data-type="text" lang="en"/>
+        </xsl:apply-templates>
     </xsl:template>
     
     <xd:doc>
