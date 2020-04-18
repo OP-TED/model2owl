@@ -61,7 +61,8 @@
                     <xsl:apply-templates/>               
                 </main>
                 <footer>
-                    <p> footer here </p>
+                    This document is generated automatically by the <a href="https://github.com/costezki/model2owl" target="_blank">model2owl tool</a>
+                    and is licenced under a <a href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank">CC BY 4.0 licence</a>
                 </footer>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
                 
@@ -84,9 +85,9 @@
                      $('.selector-heading').each(function(){
                      let nextSiblingElementType = jQuery(this).next().prop('nodeName');
                      if(nextSiblingElementType == "H2" || nextSiblingElementType == "DL" ){
-                        $(this).append(' <i class="fa fa-times-circle invalid"></i>');
+                     $(this).append(' <i class="fa fa-times-circle error"></i>');
                     }else{
-                        $(this).append(' <i class="fa fa-check-circle valid"></i>');                        
+                    $(this).append(' <i class="fa fa-check-circle correct"></i>');                        
                     }
                     });
                 </script>

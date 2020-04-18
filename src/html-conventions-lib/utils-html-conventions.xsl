@@ -32,7 +32,7 @@
     <xsl:function name="f:generateHtmlError">
         <xsl:param name="errorMessage"/>
         <xsl:sequence>
-            <dd class="invalid"><xsl:value-of select="$errorMessage"/></dd>
+            <dd class="error"><xsl:value-of select="$errorMessage"/></dd>
         </xsl:sequence>        
     </xsl:function>    
     

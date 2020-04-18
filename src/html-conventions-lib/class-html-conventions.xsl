@@ -54,19 +54,15 @@
             </h2>
             <section>
                 <xsl:if test="boolean($classConventions)">
-                    <section>
                         <dl>
                             <dt>
                                 Unmet class conventions
                             </dt>
                             <xsl:copy-of select="$classConventions"/>
                         </dl>
-                    </section>
                 </xsl:if>
                 <xsl:if test="boolean($classAttributeConventions)">
-                    <section>
                         <xsl:copy-of select="$classAttributeConventions"/>
-                    </section>
                 </xsl:if>
             </section>
         </xsl:if>
