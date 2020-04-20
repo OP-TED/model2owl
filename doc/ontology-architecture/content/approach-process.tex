@@ -5,7 +5,7 @@
 	
 	This section expands and addresses in detail the process of defining and implementing an OWL eProcurement ontology. The underlying assumption is that the conceptual data model developed at Step \ref{step:3} serves as an input for the creation of the ontology, and that this process shall be automatic. 
 	
-	In addition to producing the ontology as an artefact, we also needs to validates its fitness to represent existing data and test whether the functional and non-functional requirements are respected. Figure \ref{fig:process-overview} depicts the sequence of steps as a BPMN process diagram \cite{bpmn-introduction}. 
+	In addition to producing the ontology as an artefact, we also need to validates its fitness to represent existing data and test whether the functional and non-functional requirements are respected. Figure \ref{fig:process-overview} depicts the sequence of steps as a BPMN process diagram \cite{bpmn-introduction}. 
 	
 	\begin{figure}[!ht]		
 		\centering
@@ -14,7 +14,7 @@
 		\label{fig:process-overview}
 	\end{figure}
 
-	The conceptual model serves as the single source of truth, the process starts with development of a series of transformations scripts. The conceptual model needs to be adjusted in order to fit a set of UML modelling conventions \citep{costetchi2020b} making it suitable input for the transformation scripts. Provided that the conceptual model is conform, the transformation can be executed. Finally the validation of the formal ontology can be performed using the existing eProcurement data.
+	The conceptual model serves as the single source of truth, the process starts with development of a series of transformations scripts. The conceptual model needs to be adjusted in order to fit a set of UML modelling conventions \citep{costetchi2020b} making it suitable input for the transformation scripts. Provided that the conceptual model  conforms, the transformation can be executed. Finally, the validation of the formal ontology can be performed using the existing eProcurement data.
 	
 	
 	%	after the creation of the UML transformation scripts, which also sets in place the ontology architecture, this document, and the UML conventions \citep{costetchi2020b}
@@ -25,7 +25,7 @@
 	\subsection{UML transformation scripts generation}
 	\label{sec:uml-transformation}
 	
-	The process start with authoring two documents laying the foundations of the entire process: the ontology architecture and the UML modelling conventions \citep{costetchi2020b}. The main purpose of the ontology architecture (this document) specifications is to describe why the ontology is being built, what its intended uses are, who the end-users are, and which requirements the ontology should fulfil. Moreover, it states how the ontology should be structured in order to facilitate maintenance and usage patterns.
+	The process starts with authoring two documents laying the foundations of the entire process: the ontology architecture and the UML modelling conventions \citep{costetchi2020b}. The main purpose of the ontology architecture (this document) specifications is to describe why the ontology is being built, what its intended uses are, who the end-users are, and which requirements the ontology should fulfil. Moreover, it states how the ontology should be structured in order to facilitate maintenance and usage patterns.
 	
 	
 	\begin{figure}[!ht]		
@@ -37,7 +37,7 @@
 	
 	The conceptual model must comply with a set of UML modelling conventions making it suitable input for the transformation scripts, which implement the same conventions. The two parallel actions staring the process are depicted in Figure \ref{fig:uml-transformation}.
 		
-	The UML conventions document serves, at large, as requirements specification for the XSLT script that checks the UML conceptual model  whether it conforms to the conventions.
+	The UML conventions document serves, at large, as the requirements specification for the XSLT script that checks whether the UML conceptual model conforms to the conventions.
 	
 	The ontology architecture specification (this document) serves, at large, as requirement specifications for the development of three XSLT scripts to generate the formal ontology. These scripts can be developed independent of each other as they refer to different aspects of the formal ontology as described in Section \ref{sec:separation-conceprns}.
 	
@@ -46,7 +46,7 @@
 	\subsection{Conceptual model revision}
 	\label{sec:revision-cm}
 	
-	The current project runs under the assumption that the conceptual model is organised and expressed in accordance to the UML conventions developed in \citet{costetchi2020b}. Having this assumption violated is a risk with critical impact. Therefore an auxiliary process was developed (see Figure \ref{fig:revision-cm}) to continuously improve and correct the model in case it is non-conformant. 
+	The current project runs under the assumption that the conceptual model is organised and expressed in accordance to the UML conventions developed in \citet{costetchi2020b}. Having this assumption violated is a risk with critical impact. Therefore, an auxiliary process was developed (see Figure \ref{fig:revision-cm}) to continuously improve and correct the model in case it is non-conformant. 
 	
 	\begin{figure}[!ht]	
 		\centering
@@ -60,7 +60,7 @@
 	\subsection{Formal ontology generation}
 	\label{sec:ontology-generation}
 	
-	The UML conceptual model constitutes the sole main input for three transformations scripts. Therefore it is very important to ensure that the conceptual model is conform to the set of UML conventions \cite{costetchi2020b}. This they ensure that the conceptual model represents an adequate input for the transformations script as they are developed based on the same set of conventions and assumptions.
+	The UML conceptual model constitutes the sole main input for three transformations scripts. Therefore, it is very important to ensure that the conceptual model is conform to the set of UML conventions \cite{costetchi2020b}. They ensure that the conceptual model represents an adequate input for the transformations script as they are developed based on the same set of conventions and assumptions.
 		
 	\begin{figure}[!ht]		
 		\centering
@@ -76,7 +76,7 @@
 
 	In the introduction of this document, Section \ref{sec:context} explains that it is necessary to transform the current eProcurement data from XML formal (structured according to the standard forms) into RDF format. This process is depicted in Figure \ref{fig:transformation-proc}.
 	
-	The data must representing instances of the ontology generated in previous step explained in Section \ref{sec:ontology-generation}, which is structured according to the forthcoming eForms. This means that the transformations script must consider a carefully established conceptual mapping between the two standards in addition to implementing the format transformation itself. Figure \ref{fig:sub1} reflects that, and in addition, the XSD schemas, to which existent XML data conform, must be consulted and considered in the design and implementation process.
+	The data must represent instances of the ontology generated in previous step explained in Section \ref{sec:ontology-generation}, which is structured according to the forthcoming eForms. This means that the transformations script must consider a carefully established conceptual mapping between the two standards in addition to implementing the format transformation itself. Figure \ref{fig:sub1} reflects that, and in addition, the XSD schemas, to which existent XML data conform, must be consulted and considered in the design and implementation process.
 
 	\begin{figure}[!ht]
 		\centering
@@ -101,7 +101,7 @@
 
 	The execution of data transformation process (see Figure \ref{fig:sub2}) unfolds in three steps as follows. First, the selected data is fed as input to the XSLT transformation script. The output RDF data are then validated for conformance to the formal ontology using the SHACL data shapes. The validation output is a report in RDF format listing possible violations of the data. This report is transformed into a human readable form using a SPARQL query and used to interpret the conformance of the data, and eventually spot mistakes in the transformation script of in the data shapes.   
 	
-	These reports must be used during the transformation script development, as additional stress tests for whether the script performs correctly or it needs further adjustments. Of course these reports may indicate problems steaming from either the transformation script, the input data or the SHACL shapes. Therefore a developer's assessment is necessary to decide on the source of the issue and provide the necessary feedback. The script development process may be considered complete when for a random set of input data the analysts and developers may assert that only the input data cause the exceptions. The data driven conformance exceptions constitute an important input in the ontology validation step of the process presented in Section \ref{sec:ontology-validation}.
+	These reports must be used during the transformation script development, as additional stress tests for whether the script performs correctly or it needs further adjustments. Of course, these reports may indicate problems stemming from either the transformation script, the input data or the SHACL shapes. Therefore, a developer's assessment is necessary to decide on the source of the issue and provide the necessary feedback. The script development process may be considered complete, when for a random set of input data, the analysts and developers can assert that only the input data caused the exceptions. The data driven conformance exceptions constitute an important input in the ontology validation step of the process presented in Section \ref{sec:ontology-validation}.
 	
 	\subsection{Ontology evaluation}
 	\label{sec:ontology-validation}
@@ -117,7 +117,7 @@
 
 	Figure \ref{fig:loading-date} depicts the process of loading data into a triple store. Three components must be ingested before it is ready for query: (a) the RDF datasets generated from the existent XML datasets, (b) the core ontology and (c) the formal ontology restrictions. These three components correspond to a complete ontology where the model and the data, i.e. ABox and TBox (see Section \ref{sec:model-data}), are brought together into a whole.
 	
-	The triple-store organisation, whether it may act as eProcurement data dissemination service, URI dereferencing and other publications related issues are not in scope of the current architecture specification. Nevertheless the data organisation and dissemination should be treated elsewhere in detail considering the best practices for publishing linked data \cite{bizer2009emerging}.
+	The triple-store organisation, whether it acts as an eProcurement data dissemination service, URI dereferencing or other publications related issues is not in scope of the current architecture specification. Nevertheless, the data organisation and dissemination should be treated elsewhere in detail considering the best practices for publishing linked data \cite{bizer2009emerging}.
 	
 	For the purposes of the evaluation efforts, the TBox axioms, i.e. the core ontology and the formal restrictions, must be saved in a dedicated graph.  It is recommended that the instance data is also partitioned into a set of logical and manageable graphs.  
 
