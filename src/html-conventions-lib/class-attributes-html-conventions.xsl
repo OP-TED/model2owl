@@ -28,13 +28,16 @@
             <xsl:call-template name="classAttributeNameConventionChecker">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="classAtrributeNameCaseChecker">
+            <xsl:call-template name="classAttributeNameCaseChecker">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="classAtrributeTypeChecker">
+            <xsl:call-template name="classAttributeTypeChecker">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="classAtrributeTypeSuggestion">
+            <xsl:call-template name="classAttributeTypeSuggestion">
+                <xsl:with-param name="classAttribute" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="classAttributeStereotypeChecker">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
         </xsl:variable>
@@ -100,7 +103,7 @@
         <xd:param name="classAttribute"/>
     </xd:doc>
     
-    <xsl:template name="classAtrributeNameCaseChecker">
+    <xsl:template name="classAttributeNameCaseChecker">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeName" select="$classAttribute/@name"/>
         <xsl:if test="not(f:isQNameLowerCasedCamelCase($classAttributeName))">
@@ -114,7 +117,7 @@
         <xd:param name="classAttribute"/>
     </xd:doc>
     
-    <xsl:template name="classAtrributeTypeChecker">
+    <xsl:template name="classAttributeTypeChecker">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeType" select="$classAttribute/properties/@type"/>
         <xsl:if test="f:isValidDataType($classAttributeType) = fn:false()">
@@ -127,12 +130,25 @@
         <xd:param name="classAttribute"/>
     </xd:doc>
     
-    <xsl:template name="classAtrributeTypeSuggestion">
+    <xsl:template name="classAttributeTypeSuggestion">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeType" select="$classAttribute/properties/@type"/>
         <xsl:variable name="umlDatatype" select="f:getUmlDataTypeValues($classAttributeType,$umlDataTypesMapping)"/>
         <xsl:if test="string($umlDatatype) != ''">
             <xsl:sequence select="f:generateHtmlWarning(fn:concat('This is an UML data-type and you should change it into ',$umlDatatype))"/>
+        </xsl:if>
+    </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>Return warning when attributes have stereotypes</xd:desc>
+        <xd:param name="classAttribute"/>
+    </xd:doc>
+    
+    <xsl:template name="classAttributeStereotypeChecker">
+        <xsl:param name="classAttribute"/>
+        <xsl:variable name="hasStereotype" select="$classAttribute/stereotype/not(@stereotype)"/>
+        <xsl:if test="$hasStereotype = fn:false()">
+            <xsl:sequence select="f:generateHtmlWarning('Attribute must have no stereotype')"/>
         </xsl:if>
     </xsl:template>
     
