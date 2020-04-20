@@ -4,7 +4,7 @@
 	\subsection{Namespaces}
 	\label{sec:namespaces}
 	
-	In order to enable reuse of names defined in other models and a unique reference to a name so that it can be easily identified, namespace management must be considered. We adopt XML approach to defining and managing namespaces as it is inherent in both XMI and OWL2 standards. Hence, a \textit{namespace} is a set of symbols that are used to organize objects of various kinds, so that these objects may be referred to by name and uniquely identifiable. 
+	In order to enable the reuse of names defined in other models and reuse of unique references for names that support easy identification, namespace management must be considered. We adopt XML approach to defining and managing namespaces as it is inherent in both XMI and OWL2 standards. Hence, a \textit{namespace} is a set of symbols that are used to organise objects of various kinds, so that these objects may be referred to by name and uniquely identifiable. 
 	
 	Namespaces are commonly structured as hierarchies to allow reuse of names in different contexts \cite{xml-namespaces}. This mechanism can be implemented in UML through partitioning the model using packages, which are described in \ref{sec:uml-package}.
 	
@@ -16,19 +16,14 @@
 	Unlike in the XML specifications, the constraints on the local name are slightly relaxed, allowing token delimitation by space character (see Section \ref{sec:delimitation}). This provides an additional level of readability to the conceptual model users. Nevertheless, the local names must be \textit{normalised strings}, which mean that only single occurrences of space character are permitted. Other delimiting characters, such as tab, line feed, carriage return must be replaced by an occurrence of space and trimmed. 
 	In the transformation process, when URIs are generated, the spaces are removed anyway and conform with the XML conventions (see Section \ref{sec:name}).
 
-\begin{lstlisting}[language=XML,frame=none, basicstyle=\footnotesize\ttfamily,breaklines=true]
-name = <namespace name>/<local name> 
-       <namespace name>#<local name>
-\end{lstlisting}
-		
+	\ptr{name = <namespace name>/<local name>}\\
+	\ptr{name = <namespace name>\#<local name>}
 	
 	URI references are often inconveniently long, so expanded names should not be used directly. Instead \textit{qualified names} should be used while expanded names are strongly discouraged. A \textit{qualified name} is a name subject to namespace interpretation. Syntactically, they are either \textit{prefixed names} or \textit{unprefixed names}.
 
-\begin{lstlisting}[language=XML,frame=none, basicstyle=\footnotesize\ttfamily,breaklines=true]
-qualified name = [<namespace prefix>:]<local name>
-\end{lstlisting}	
+	\ptr{qualified name = [<namespace prefix>:]<local name>}
 	
-	The namespace name is usually applied as a \textit{prefix} to the local name but it may be missing as well. \cite{xml-namespaces} specifies a declaration syntax which permits to bind prefixes to namespace names and also to bind a default namespace that applies to unprefixed element names. For example we can bind the namespace name ``http://www.w3.org/ns/org\#'' to the prefix ``org'', then we can use it to create the same name as such ``org:Organization''. The prefix is subject to namespace interpretation and resolved to an URI \cite{xml-namespaces}.
+	The namespace name is usually applied as a \textit{prefix} to the local name but it may be missing as well. \cite{xml-namespaces} specifies a declaration syntax which permits to bind prefixes to namespace names and also to bind a default namespace that applies to unprefixed element names. For example we can bind the namespace name ``http://www.w3.org/ns/org\#'' to the prefix ``org'', which we can then use to create the same name as such ``org:Organization''. The prefix is subject to namespace interpretation and resolved to an URI \cite{xml-namespaces}.
 
 	It is recommended that the UML element names indicate the namespace prefix by prepending it to the name delimited by colon character (:). In case the namespace is not specified (no delimiter) then the name of the package containing the current element is used as namespace prefix. For example if a class ``Contract'' is placed in a package ``epo'' then the name of the containing package is used as the namespace prefix and resolved to ``epo:Contract''. If the delimiter (:) is used without any prefix, then the empty string prefix is resolved to the default namespace as defined in \citep{xml-namespaces}.
 
@@ -59,7 +54,7 @@ qualified name = [<namespace prefix>:]<local name>
 	
 	Optionally, in case there is a technical possibility to distinguish between UML notes, then additionally editorial, history notes or simply comments should be provided as class descriptors.
 	
-	It is recommended that a uml:Class has relations, attributes or both. A class must not miss both, attributes and relations associated with it. 
+	It is recommended that a uml:Class has relations, attributes, or both. A class must not miss both, attributes and relations associated with it. 
 	It is mandatory to avoid using the same name in a class, attribute or a relation. 
 	
 	Classes may use\textit{ $<<abstract>>$ stereotype}. It means that no instances are allowed of this class in the datasets. This is not covered by the OWL 2 \cite{owl2} but can be expressed in SHACL data shapes \cite{shacl-spec}. 
@@ -81,12 +76,12 @@ qualified name = [<namespace prefix>:]<local name>
 	
 	It is mandatory to avoid using the same name in an attribute and in a relation, unless there is an additional rule that handles intentional exceptions.  
 	
-	All attribute data types must be defined in the model for reference, regardless if they are reused from other models or specific to the local model. In the case of reused external models the local (re-)definitions serve merely as proxies ax explained in Section \ref{sec:datatype}.
+	All attribute data types must be defined in the model for reference, regardless if they are reused from other models or specific to the local model. In the case of reused external models, the local (re-)definitions serve merely as proxies as explained in Section \ref{sec:datatype}.
 	
 	It is recommended that the attribute type is an atomic data type. 
 	It is possible to use a uml:Enumeration as an attribute type. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Dependency described in Section \ref{sec:dependency}. 
 	
-	It is recommended to avoid using another class as attribute type. This is acceptable exceptionally for a controlled set of classes. The list of allowed classes must be explicitly indicated in the transformations script. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Association described in Section \ref{sec:association}. For the eProcurement project the set of exceptions is: Identifier, Amount, Quantity, Measure, Code. These were initially defined as composite datatypes and then transformed into classes. 
+	It is recommended to avoid using another class as the attribute type. An acceptable exception for this is with a controlled set of classes. The list of allowed classes must be explicitly indicated in the transformations script. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Association described in Section \ref{sec:association}. For the eProcurement project the set of exceptions is: Identifier, Amount, Quantity, Measure, Code. These were initially defined as composite datatypes and then transformed into classes. 
 	
 	\subsection{uml:Enumeration}
 	\label{sec:enumeration}
@@ -97,7 +92,7 @@ qualified name = [<namespace prefix>:]<local name>
 	
 	In an enumeration element, the name shall be interpreted as the controlled list name; it must be a normalised string. Each attribute name is used as a local segment in the generation of the concept URI. The attribute type is ignored and by default is considered to be skos:Concept. The attribute alias is transformed into skos:Concept preferred label. The attribute initial value is transformed into the alternative label of the concept. If the attribute alias is longer than the attribute initial value, then it is considered that the two fields have been swapped by mistake. 
 	
-	In case no attribute alias is specified then the attribute name is used as preferred label of the skos:Concept as skos:prefLabel is a mandatory property in the SKOS model.
+	In case no attribute alias is specified then the attribute name is used as preferred label of the skos:Concept. This happens as skos:prefLabel is a mandatory property in the SKOS model.
 	
 	It is possible to employ the enumerations for class properties in two manners: (a) either define an attribute (uml:Attribute) that indicates as type the enumeration name (b) or draw a dependency (uml:Dependency) relation from the class to the enumeration and provide a relation role. An intermediary, and discouraged solution, is to define attributes with the generic type ``Code'' and, in addition, draw a dependency relation with the same role name to the specific enumeration. In these cases an additional verification should be performed for matching the role on the dependency relation to the attribute name.
 	
@@ -138,11 +133,11 @@ qualified name = [<namespace prefix>:]<local name>
 	
 	The uml:Association connectors represent relations between source and target classes. The association connector cannot be used between other kinds of UML elements.  
 	
-	A generic UML connector may have a name applied to it, and it may have source/target roles specified in addition.  This provides flexibility to how the domain knowledge may be expressed in UML, however this freedom increases the level of ambiguity as well. Therefore we foresee two distinct ways to express properties: using the connector generic name, or using the connector source/target ends. 
+	A generic UML connector may have a name applied to it, and it may have source/target roles specified in addition.  This provides flexibility to how the domain knowledge may be expressed in UML, however this freedom increases the level of ambiguity as well. Therefore, we foresee two distinct ways to express properties: using the connector generic name, or using the connector source/target ends. 
 	
 	First, if a connector name is specified then no source or target roles can be provided. The name must be valid as it is used to generate the OWL property URI. The minimum and maximum cardinality of the relation must be specified as target multiplicity. 
 	
-	Second, and the recommended approach, if the connector has no name then the target role must be specified. Or the converse, if a target role is specified then no connector name can be specified. Optionally a source role may be provided. In this case the relation direction must be changed from ``Source->Target'' to ``Bidirectional''. Or conversely, if the connector direction is ``Bidirectional'' then source and target roles must be provided. No other directions are permitted.
+	The second, and recommended approach is if the connector has no name then the target role must be specified. Or the converse, if a target role is specified then no connector name can be specified. Optionally a source role may be provided. In this case the relation direction must be changed from ``Source->Target'' to ``Bidirectional''. Or conversely, if the connector direction is ``Bidirectional'' then source and target roles must be provided. No other directions are permitted.
 	
 	The target and source multiplicity must be specified accordingly indicating the minimum and maximum cardinality. 
 	
@@ -166,7 +161,7 @@ qualified name = [<namespace prefix>:]<local name>
 	
 	In case a model class should inherit a class from an external model then proxies must be created for those classes. For example if ``Buyer'' specialises an ``org:Organization'' then a proxy for ``org:Organization'' must be created in the ``org'' package. 
 	
-	In this specification, the subclass disjointness is assumed by default, unless otherwise specified in the transformations script, or explicitly marked on the generalisation relation with <<non-disjoint>> stereotype. For the converse case the <<disjoint>> stereotype shall be used.
+	In this specification, the subclasses are assumed disjoint by default, unless otherwise specified in the transformations script, or explicitly marked on the generalisation relation with <<non-disjoint>> stereotype. For the converse case the <<disjoint>> stereotype shall be used.
 	 
 	In case two classes are equivalent, then the $<<equivalent>>$ or $<<complete>>$ stereotype should be used as a marker. 
 	
