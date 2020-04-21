@@ -1,7 +1,11 @@
 # model2owl
+
 This project comprises a set of tools for transforming an UML (v2.5) model from its XMI (v2.5.1) serialisation into a formal ontology. This transformation is performed using XSLT stylesheets under the assumption that the UML model conforms to the set of conventions outlined in the documentation.    
 
-This work is developed in the context of eProcurement project financed by ISA2 and led by the Publications Office of the European Union.
+* UML -> OWL 2 (light / complete)
+* UML -> SHACL
+
+This work is developed in the context of [eProcurement ontology project](https://github.com/eprocurementontology/eprocurementontology) financed by ISA2 and led by the [Publications Office of the European Union](https://op.europa.eu/en/).
 
 The architectural design and the formal specifications are provided in the [Ontology architecture document](doc/ontology-architecture/main.pdf).  
 
@@ -39,7 +43,16 @@ The project development is split into three phases aiming at providing three kin
 
 The scripts developed in this project conform to XSLT 3.0 and can be executed with a corresponding XSLT engine of choice. A recommendation is to use [Saxon-HE](http://saxon.sourceforge.net/), but it is not the only one.
 
-The input eProcurement conceptual model is available in the [eProcurement Ontology project on GitHub](https://github.com/eprocurementontology/eprocurementontology). Note that the XMI (v.2.5.1) output is generated with [Enterprise Architect](https://sparxsystems.com/products/ea/index.html) and was not tested with outputs from other software (although, XMI is an OMG standard).
+The input eProcurement conceptual model is available in the [eProcurement Ontology project on GitHub](https://github.com/eprocurementontology/eprocurementontology). Note that the XMI (v.2.5.1) output is generated with [Enterprise Architect](https://sparxsystems.com/products/ea/index.html) and was not tested with outputs from other software (although, XMI is an OMG standard). But, this does not restrict the current scripts to this project alone and any UML model that conforms to the specified UML conventions can be transformed into a formal ontology.    
+
+We assume that the users of this project are familiar with XML, UML and XSLT technologies and know how to perform an XSLT transformation. 
+
+# Contributing
+You are more than welcome to help expand and mature this project. 
+
+When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
+
+Please note we adhere to [Apache code of conduct](https://www.apache.org/foundation/policies/conduct), please follow it in all your interactions with the project.  
 
 ## Lincence 
 
