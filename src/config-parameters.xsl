@@ -28,4 +28,11 @@
     <xsl:variable name="umlDataTypesMapping" select="fn:doc('../test/testData/umlToXsdDataTypes.xml')"/>
     <xsl:variable name="xsdAndRdfDataTypes" select="fn:doc('../test/testData/xsdAndRdfDataTypes.xml')"/>
     
+    <xsl:variable name="base-uri" select="'http://publications.europa.eu/ontology/ePO'"/>
+    <xsl:variable name="date" select="replace(string(current-time()), '([\D])', 'x')"/>
+    <xsl:variable name="defaultDelimiter" select="'#'"/>
+    
+    <xsl:variable name="mockUnknownDomain">http://unknown.domain/for/prefix#</xsl:variable>
+    <xsl:variable name="mockUnknownPrefix">unknown</xsl:variable>
+    
 </xsl:stylesheet>

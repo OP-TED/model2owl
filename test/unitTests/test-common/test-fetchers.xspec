@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    stylesheet="../../../src/common/fetchers.xsl">
+    
+    
+    <x:scenario label="Scenario for testing function getContainingPackageName for a class">
+        <x:call function="f:getContainingPackageName">
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]"/>            
+        </x:call>
+        <x:expect label="result" select="'epo'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function getContainingPackageName for an attribute">
+        <x:call function="f:getContainingPackageName">
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[1]"/>            
+        </x:call>
+        <x:expect label="result" select="'epo'"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for testing function getContainingPackageName for an attribute">
+        <x:call function="f:getContainingPackageName">
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[39]"/>            
+        </x:call>
+        <x:expect label="result" select="'ccts'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function getElementByName">
+        <x:call function="f:getElementByName">
+            <x:param name="name" >Award Criterion Evaluation Dimension</x:param>
+            <x:param name="root" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/"/>            
+        </x:call>
+        <x:expect label="result" test="boolean(/element/@xmi:idref='EAID_93EF08B0_0DC8_45ad_9174_FBF4E4435B6E')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function getElementByName">
+        <x:call function="f:getElementByName">
+            <x:param name="name" >Award Criterion Evaluation Dimendsion</x:param>
+            <x:param name="root" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/"/>            
+        </x:call>
+        <x:expect label="result" test="()"/>
+    </x:scenario>
+</x:description>

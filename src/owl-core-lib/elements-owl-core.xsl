@@ -4,7 +4,7 @@
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" 
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
-    exclude-result-prefixes="xs math xd xsl uml xmi umldi dc fn"
+    exclude-result-prefixes="xs math xd xsl uml xmi umldi dc fn f"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
@@ -14,7 +14,8 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
     xmlns:dct="http://purl.org/dc/terms/"
     xmlns:f="http://https://github.com/costezki/model2owl#" 
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#" version="3.0">
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"     
+    version="3.0">
     
     <xd:doc scope="stylesheet">
         <xd:desc>
@@ -25,6 +26,7 @@
     </xd:doc>
     
     <xsl:import href="../common/utils.xsl"/>
+    <xsl:import href="../common/formatters.xsl"/>
 
     <xsl:output method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
@@ -38,7 +40,7 @@
         <xsl:variable name="className" select="./@name"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
         <!-- TODO: chnge to the propoer URI -->
-        <xsl:variable name="classURI" select="f:buildURIfromLexicalQName(./@name)"/>
+        <xsl:variable name="classURI" select="f:buildURIfromLexicalQName(./@name, fn:true())"/>
         <xsl:variable name="documentation" select="./properties/@documentation"/>
 
         <owl:Class rdf:about="{$classURI}">
@@ -138,14 +140,13 @@
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$name"/>
             </skos:prefLabel>
-            <xsl:choose>
-                <xsl:when test="$documentation != ''">
-                    <rdfs:comment rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
-                        <!-- TODO: format the documentation -->
-                        <xsl:value-of select="$documentation"/>
-                    </rdfs:comment>
-                </xsl:when>
-            </xsl:choose>
+            
+            <xsl:if test="$documentation != ''">
+                <rdfs:comment rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
+                    <!-- TODO: format the documentation -->
+                    <xsl:value-of select="f:formatDocString($documentation)"/>
+                </rdfs:comment>
+            </xsl:if>
         </rdfs:Datatype>
     </xsl:template>
 
@@ -153,6 +154,9 @@
         <xd:desc/>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
+        
+        <xsl:variable name="typeElement" select="f:getElementByName(./properties/@type,root(.))"/>
+        
         <p>This is a class attribute</p>
     </xsl:template>
 
