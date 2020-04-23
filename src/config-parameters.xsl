@@ -2,20 +2,16 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" 
-    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:fn="http://www.w3.org/2005/xpath-functions"
     exclude-result-prefixes="xs math xd xsl uml xmi umldi dc fn"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
-    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" 
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
-    xmlns:functx="http://www.functx.com"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
-    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:functx="http://www.functx.com"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#" version="3.0">
-    
+
     <xd:doc scope="stylesheet">
         <xd:desc>
             <xd:p><xd:b>Created on:</xd:b> Mar 22, 2020</xd:p>
@@ -23,16 +19,31 @@
             <xd:p>This module defines project level variables and parameters</xd:p>
         </xd:desc>
     </xd:doc>
-       
+
+    <!-- a set of prefix-baseURI definitions -->
     <xsl:variable name="namespacePrefixes" select="fn:doc('../test/testData/namespaces.xml')"/>
-    <xsl:variable name="umlDataTypesMapping" select="fn:doc('../test/testData/umlToXsdDataTypes.xml')"/>
-    <xsl:variable name="xsdAndRdfDataTypes" select="fn:doc('../test/testData/xsdAndRdfDataTypes.xml')"/>
-    
+
+    <!-- a mapping between UML atomic types to XSD datatypes  -->
+    <xsl:variable name="umlDataTypesMapping"
+        select="fn:doc('../test/testData/umlToXsdDataTypes.xml')"/>
+
+    <!-- XSD datatypes that conform to OWL2 requirements   -->
+    <xsl:variable name="xsdAndRdfDataTypes"
+        select="fn:doc('../test/testData/xsdAndRdfDataTypes.xml')"/>
+
+    <!-- Ontology base URI, configure as necessary   -->
     <xsl:variable name="base-uri" select="'http://publications.europa.eu/ontology/ePO'"/>
     <xsl:variable name="date" select="replace(string(current-time()), '([\D])', 'x')"/>
+
+    <!-- when a delimiter is missing in the base URI of a namespace, use this default value-->
     <xsl:variable name="defaultDelimiter" select="'#'"/>
-    
+
+    <!-- Sometimes when it is not possible to resolve teh repfix or the base URI of a namespace, these mock values are used-->
     <xsl:variable name="mockUnknownDomain">http://unknown.domain/for/prefix#</xsl:variable>
     <xsl:variable name="mockUnknownPrefix">unknown</xsl:variable>
-    
+
+    <!-- types of elements and names fo attribute types that are acceptable to produce object properties -->
+    <xsl:variable name="acceptableTypesForObjectProperties"
+        select="('uml:Class', 'uml:Enumeration', 'Code')"/>
+
 </xsl:stylesheet>

@@ -20,6 +20,8 @@
         </xd:desc>
     </xd:doc>
     
+    <xsl:import href="../config-parameters.xsl"/>
+    
     <xd:doc>
         <xd:desc>Finds the first ancestor packagedElement of type='uml:Package' corresponding to a
             given input element</xd:desc>
@@ -28,12 +30,12 @@
     <xsl:function name="f:getContainingPackageName" as="xs:string">                
         <xsl:param name="element" as="node()"/>        
         <xsl:variable name="root" select="root($element)"/>
-        <xsl:sequence
-            select="$root//(ownedAttribute | packagedElement)[@xmi:id = $element/@xmi:idref]/ancestor::packagedElement[@xmi:type = 'uml:Package'][position() = 1]/@name"
-        />        
+        <xsl:variable name="packageName"
+            select="$root//(ownedAttribute | packagedElement | ownedLiteral)[@xmi:id = $element/@xmi:idref]/ancestor::packagedElement[@xmi:type = 'uml:Package'][position() = 1]/@name"
+        />
+        
+        <xsl:sequence select="if (boolean($packageName)) then $packageName else $mockUnknownPrefix" />        
     </xsl:function>
-    
-    
     
     <xd:doc>
         <xd:desc>fetch the xmi:element with a given name</xd:desc>

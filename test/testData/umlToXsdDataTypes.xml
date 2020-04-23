@@ -40,4 +40,12 @@
         <from namespace="uml" qname="Date"/>
         <to namespace="xsd" qname="xsd:date"/>
     </mapping>
+    <mapping>
+        <from namespace="uml" qname="Numeric"/>
+        <to namespace="xsd" qname="xsd:integer"/>
+    </mapping>
+    <mapping>
+        <from namespace="uml" qname="Text"/>
+        <to namespace="xsd" qname="xsd:string"/>
+    </mapping>
 </mappings>

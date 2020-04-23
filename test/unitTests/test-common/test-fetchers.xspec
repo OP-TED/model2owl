@@ -45,4 +45,16 @@
         </x:call>
         <x:expect label="result" test="()"/>
     </x:scenario>
+    
+    <x:scenario label="Scenario for testing function getContainingPackageName for an attribute">
+        <x:call function="f:getContainingPackageName">
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[132]/attributes[1]/attribute[2]"/>            
+        </x:call>
+        <x:expect label="result" select="'epo'"/>
+    </x:scenario>
+    
+    
+    
+    
 </x:description>

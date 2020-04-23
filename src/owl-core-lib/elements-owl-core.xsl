@@ -2,31 +2,30 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" 
-    xmlns:fn="http://www.w3.org/2005/xpath-functions"
-    exclude-result-prefixes="xs math xd xsl uml xmi umldi dc fn f"
+    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    exclude-result-prefixes="xs math xd xsl uml xmi umldi dc fn f functx"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
-    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" 
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
-    xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:f="http://https://github.com/costezki/model2owl#" 
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#"     
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:functx="http://www.functx.com"
     version="3.0">
-    
+
     <xd:doc scope="stylesheet">
         <xd:desc>
             <xd:p><xd:b>Created on:</xd:b> Mar 21, 2020</xd:p>
             <xd:p><xd:b>Author:</xd:b> lps</xd:p>
-            <xd:p>This module defines how selected XMI elements are transformed into OWL2 statements</xd:p>
+            <xd:p>This module defines how selected XMI elements are transformed into OWL2
+                statements</xd:p>
         </xd:desc>
     </xd:doc>
-    
+
     <xsl:import href="../common/utils.xsl"/>
     <xsl:import href="../common/formatters.xsl"/>
+    <xsl:import href="../common/checkers.xsl"/>
 
     <xsl:output method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
@@ -35,13 +34,10 @@
         <xd:desc>Generate a OWL class definition</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
-
-        <!-- TODO: un-CamelCase the name to a normalised string-->
-        <xsl:variable name="className" select="./@name"/>
+        <xsl:variable name="className" select="f:lexicalQNameToWords(./@name)"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
-        <!-- TODO: chnge to the propoer URI -->
-        <xsl:variable name="classURI" select="f:buildURIfromLexicalQName(./@name, fn:true())"/>
-        <xsl:variable name="documentation" select="./properties/@documentation"/>
+        <xsl:variable name="classURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
 
         <owl:Class rdf:about="{$classURI}">
             <rdfs:label xml:lang="en">
@@ -50,14 +46,12 @@
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$className"/>
             </skos:prefLabel>
-            <xsl:choose>
-                <xsl:when test="$documentation != ''">
-                    <rdfs:comment rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
-                        <!-- TODO: format the documentation -->
-                        <xsl:value-of select="$documentation"/>
-                    </rdfs:comment>
-                </xsl:when>
-            </xsl:choose>
+
+            <xsl:if test="$documentation != ''">
+                <rdfs:comment rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
+                    <xsl:value-of select="$documentation"/>
+                </rdfs:comment>
+            </xsl:if>
         </owl:Class>
     </xsl:template>
 
@@ -65,23 +59,23 @@
         <xd:desc>Generate the skos:ConceptScheme definition</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
-        <!-- TODO: un-CamelCase the name to a normalised string-->
-        <xsl:variable name="conceptSchemeName" select="./@name"/>
-        <!-- TODO: chnge to the propoer URI -->
-        <xsl:variable name="conceptSchemeURI" select="./@name"/>
-        <xsl:variable name="documentation" select="./properties/@documentation"/>
+
+        <xsl:variable name="conceptSchemeName" select="f:lexicalQNameToWords(./@name)"/>
+
+        <xsl:variable name="conceptSchemeURI"
+            select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
         <!-- generating the actual CS content -->
         <skos:ConceptScheme rdf:about="{$conceptSchemeURI}">
             <skos:prefLabel>
                 <xsl:value-of select="$conceptSchemeName"/>
             </skos:prefLabel>
-            <xsl:choose>
-                <xsl:when test="$documentation">
-                    <skos:definition>
-                        <xsl:value-of select="$documentation"/>
-                    </skos:definition>
-                </xsl:when>
-            </xsl:choose>
+
+            <xsl:if test="$documentation != ''">
+                <skos:definition rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
+                    <xsl:value-of select="$documentation"/>
+                </skos:definition>
+            </xsl:if>
         </skos:ConceptScheme>
     </xsl:template>
 
@@ -89,30 +83,31 @@
         <xd:desc>Generate the skos:Concept for each attribute in an enumeration</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
-        <!-- TODO: un-CamelCase the name to a normalised string-->
-        <xsl:variable name="conceptName" select="./@name"/>
-        <!-- TODO: chnge to the propoer URI -->
-        <xsl:variable name="conceptURI" select="./@name"/>
+        <xsl:variable name="conceptName"
+            select="
+                if (boolean(./initial/@body)) then
+                    ./initial/@body
+                else
+                    f:lexicalQNameToWords(./@name)"/>
+        <xsl:variable name="conceptURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="notation" select="f:camelCaseString($conceptName)"/>
+        <xsl:variable name="conceptSchemeURI"
+            select="f:buildURIFromElement(../.., fn:true(), fn:true())"/>
+        <xsl:variable name="documentation" select="f:formatDocString(./documentation/@value)"/>
 
-        <xsl:variable name="conceptSchemeURI" select="../../@name"/>
+        <xsl:variable name="initialValue" select="./initial/@body"/>
 
         <skos:Concept rdf:about="{$conceptURI}">
             <skos:inScheme rdf:resource="{$conceptSchemeURI}"/>
             <skos:notation>
-                <xsl:value-of select="$conceptName"/>
+                <xsl:value-of select="$notation"/>
             </skos:notation>
-            <xsl:choose>
-                <xsl:when test="./initial/@body">
-                    <skos:prefLabel xml:lang="en">
-                        <xsl:value-of select="./initial/@body"/>
-                    </skos:prefLabel>
-                </xsl:when>
-                <xsl:otherwise>
-                    <skos:prefLabel xml:lang="en">
-                        <xsl:value-of select="$conceptName"/>
-                    </skos:prefLabel>
-                </xsl:otherwise>
-            </xsl:choose>
+
+            <skos:prefLabel xml:lang="en">
+                <xsl:value-of select="$conceptName"/>
+            </skos:prefLabel>
+
+
         </skos:Concept>
     </xsl:template>
 
@@ -126,12 +121,10 @@
         <xd:desc>Generate a rdfs:Datatype definition</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:DataType']">
-        <!-- TODO: un-CamelCase the name to a normalised string-->
-        <xsl:variable name="name" select="./@name"/>
+        <xsl:variable name="name" select="f:lexicalQNameToWords(./@name)"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
-        <!-- TODO: chnge to the propoer URI -->
-        <xsl:variable name="URI" select="./@name"/>
-        <xsl:variable name="documentation" select="./properties/@documentation"/>
+        <xsl:variable name="URI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
 
         <rdfs:Datatype rdf:about="{$URI}">
             <rdfs:label xml:lang="en">
@@ -140,11 +133,10 @@
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$name"/>
             </skos:prefLabel>
-            
+
             <xsl:if test="$documentation != ''">
                 <rdfs:comment rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
-                    <!-- TODO: format the documentation -->
-                    <xsl:value-of select="f:formatDocString($documentation)"/>
+                    <xsl:value-of select="$documentation"/>
                 </rdfs:comment>
             </xsl:if>
         </rdfs:Datatype>
@@ -154,12 +146,52 @@
         <xd:desc/>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
-        
-        <xsl:variable name="typeElement" select="f:getElementByName(./properties/@type,root(.))"/>
-        
-        <p>This is a class attribute</p>
+
+        <xsl:variable name="typeElement"
+            select="f:getElementByName(./properties/@type, root(.))/@type"/>
+        <xsl:variable name="umlDatatype"
+            select="f:getUmlDataTypeValues(./properties/@type, $umlDataTypesMapping)"/>
+        <xsl:variable name="xsdRdfDataType"
+            select="f:getXsdRdfDataTypeValues(./properties/@type, $xsdAndRdfDataTypes)"/>
+
+        <xsl:variable name="name" select="f:lexicalQNameToWords(./@name)"/>
+        <xsl:variable name="documentation" select="f:formatDocString(./documentation/@value)"/>
+        <!-- TODO: inject the 'has' prefix here if needed -->
+        <xsl:variable name="URI"
+            select="
+                if (fn:starts-with(./@name, 'has') or fn:starts-with(./@name, 'is')) then
+                    f:buildURIFromElement(., fn:false(), fn:true())
+                else
+                    f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="propertyType"
+            select="
+                if (f:isValidDataType(./properties/@type)) then
+                    'owl:DatatypeProperty'
+                else
+                    if (./properties/@type = $acceptableTypesForObjectProperties or f:getElementByName(./properties/@type, root(.))/@type = $acceptableTypesForObjectProperties) then
+                        'owl:ObjectProperty'
+                    else
+                        'rdf:Property'"/>
+        <xsl:element name="{$propertyType}">
+            <xsl:attribute name="rdf:about" select="$URI"/>
+            <rdfs:label xml:lang="en">
+                <xsl:value-of select="$name"/>
+            </rdfs:label>
+            <skos:prefLabel xml:lang="en">
+                <xsl:value-of select="$name"/>
+            </skos:prefLabel>
+            <rdfs:comment >
+                <xsl:value-of select="./@xmi:idref"/>
+            </rdfs:comment>
+            <xsl:if test="boolean($documentation)">
+                <rdfs:comment rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
+                    <xsl:value-of select="$documentation"/>
+                </rdfs:comment>
+                <skos:definition rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
+                    <xsl:value-of select="$documentation"/>
+                </skos:definition>
+            </xsl:if>
+        </xsl:element>
     </xsl:template>
-
-
 
 </xsl:stylesheet>
