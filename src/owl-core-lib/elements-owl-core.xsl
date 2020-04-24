@@ -112,10 +112,10 @@
     </xsl:template>
 
 
-    <xd:doc>
+<!--    <xd:doc>
         <xd:desc>uml:Package has no equivalent on OWL ontology.</xd:desc>
     </xd:doc>
-    <xsl:template match="element[@xmi:type = 'uml:Package']"/>
+    <xsl:template match="element[@xmi:type = 'uml:Package']"/>-->
 
     <xd:doc>
         <xd:desc>Generate a rdfs:Datatype definition</xd:desc>
@@ -154,7 +154,14 @@
         <xsl:variable name="xsdRdfDataType"
             select="f:getXsdRdfDataTypeValues(./properties/@type, $xsdAndRdfDataTypes)"/>
 
-        <xsl:variable name="name" select="f:lexicalQNameToWords(./@name)"/>
+        <xsl:variable name="name"
+            select="
+                if (boolean(./@name)) then
+                    f:lexicalQNameToWords(./@name)
+                else
+                    $mockUnnamedElement"
+        />
+        
         <xsl:variable name="documentation" select="f:formatDocString(./documentation/@value)"/>
         <!-- TODO: inject the 'has' prefix here if needed -->
         <xsl:variable name="URI"
@@ -165,13 +172,14 @@
                     f:buildURIFromElement(., fn:true(), fn:true())"/>
         <xsl:variable name="propertyType"
             select="
-                if (f:isValidDataType(./properties/@type)) then
+                if (f:isAttributeTypeValidForDatatypeProperty(.)) then
                     'owl:DatatypeProperty'
                 else
-                    if (./properties/@type = $acceptableTypesForObjectProperties or f:getElementByName(./properties/@type, root(.))/@type = $acceptableTypesForObjectProperties) then
+                    if (f:isAttributeTypeValidForObjectProperty(.)) then
                         'owl:ObjectProperty'
                     else
-                        'rdf:Property'"/>
+                        'rdf:Property'"
+        />
         <xsl:element name="{$propertyType}">
             <xsl:attribute name="rdf:about" select="$URI"/>
             <rdfs:label xml:lang="en">

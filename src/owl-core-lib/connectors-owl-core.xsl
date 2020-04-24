@@ -24,19 +24,41 @@
         </xd:desc>
     </xd:doc>
 
+    <xsl:import href="../common/fetchers.xsl"/>
+    <xsl:import href="../common/utils.xsl"/>
 
     <xd:doc>
         <xd:desc/>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
-        <p>This is a generalization</p>
+        
+        <xsl:variable name="sourceElementURI"
+            select="f:buildURIFromElement(f:getElementByName(./source/model/@name, root(.)), fn:true(), fn:true())"
+        />
+        <xsl:variable name="targetElementURI"
+            select="f:buildURIFromElement(f:getElementByName(./target/model/@name, root(.)), fn:true(), fn:true())"
+        />
+                
+        <owl:Class rdf:about="{$sourceElementURI}">
+            <rdfs:subClassOf rdf:resource="{$targetElementURI}"/>
+        </owl:Class>
+        
     </xsl:template>
 
     <xd:doc>
         <xd:desc/>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
-        <p>This is a generalization</p>
+        
+        <xsl:variable name="targetRole" select="./target/role/@name"/>
+        <xsl:variable name="sourceRole" select="./source/role/@name"/>
+        
+        <owl:ObjectProperty rdf:sbout="">
+            <rdfs:label xml:lang="en"></rdfs:label>
+            <skos:prefLabel xml:lang="en"></skos:prefLabel>
+            <skos:definition rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"></skos:definition>
+            <rdfs:comment rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"></rdfs:comment>
+        </owl:ObjectProperty>
     </xsl:template>
     
     <xd:doc>

@@ -129,16 +129,32 @@
                     else
                         $lexicalQName"
             />
+            <!--  a qname cannot start with a digit, therefore fence it frith aprefix -->
+            <xsl:variable name="safeDigitLocalSegment"
+                select="
+                    if (not(contains('0123456789', substring($localSegment, 1, 1)))) then
+                        $localSegment
+                    else
+                        fn:concat($mockPrefixforLocalSegment, $localSegment)"
+            />
+            
+            <!-- leave only acceptable characters in the local segment  -->
+            <xsl:variable name="safeCharLocalSegment"
+                select="replace($safeDigitLocalSegment,'[^\w\d\s-_]','')"
+            />            
             <xsl:value-of
                 select="
-                    if (boolean($localSegment)) then
+                if (boolean($safeCharLocalSegment)) then
                     if ($isPascalCase  = fn:true()) then
-                            f:pascalCaseString($localSegment)
+                    f:pascalCaseString($safeCharLocalSegment)
                         else
-                            f:camelCaseString($localSegment)
+                        f:camelCaseString($safeCharLocalSegment)
                     else $mockUnknownPrefix"
             />
         </xsl:variable>
+        
+        
+        
         
         <xsl:sequence select="fn:concat($newPrefix, $newLocalSegment)"/>
     </xsl:function>

@@ -42,8 +42,24 @@
     <xsl:variable name="mockUnknownDomain">http://unknown.domain/for/prefix#</xsl:variable>
     <xsl:variable name="mockUnknownPrefix">unknown</xsl:variable>
 
-    <!-- types of elements and names fo attribute types that are acceptable to produce object properties -->
+    <!-- Sometimes names are missing, then use this default value  -->
+    <xsl:variable name="mockUnnamedElement">unnamed</xsl:variable>
+    
+    <!-- the local segment of an URI cannot start with digits, like "prefix:03000000-1" therefore a prefix must beused -->
+    <xsl:variable name="mockPrefixforLocalSegment">i</xsl:variable>
+
+    <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
     <xsl:variable name="acceptableTypesForObjectProperties"
-        select="('uml:Class', 'uml:Enumeration', 'Code')"/>
+        select="('Code', 'rdfs:Resource', 'Quantity', 'Identier', 'Measure', 'Identifier')"/>
+    
+    
+    <!-- Acceptable stereotypes -->
+    <xsl:variable name="stereotypeValidOnAttributes" select="()"/>
+    <xsl:variable name="stereotypeValidOnGeneralisations" select="('Disjoint','Equivalent','Complete')"/>
+    <xsl:variable name="stereotypeValidOnAssociations" select="()"/>
+    <xsl:variable name="stereotypeValidOnDependencies" select="()"/>
+    <xsl:variable name="stereotypeValidOnClasses" select="('Abstract')"/>
+    <xsl:variable name="stereotypeValidOnDatatypes" select="()"/>
+    
 
 </xsl:stylesheet>
