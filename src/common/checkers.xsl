@@ -200,18 +200,55 @@
     </xsl:function>
 
 
+    <xd:doc>
+        <xd:desc>Check if the connector stereotype is acceptable</xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
     <xsl:function name="f:isConnectorStereotypeValid">
         <xsl:param name="connector" as="node()"/>
-
-    </xsl:function>
-
-    <xsl:function name="f:isElementStereotypeValid">
-        <xsl:param name="element" as="node()"/>
-        
+        <xsl:sequence select=" if (($connector/properties/@ea_type='Generalization' and
+            not(boolean($connector/properties/@stereotype)) or
+            $connector/properties/@stereotype = $stereotypeValidOnGeneralisations) or
+            ($connector/properties/@ea_type='Association' and
+            not(boolean($connector/properties/@stereotype)) or
+            $connector/properties/@stereotype = $stereotypeValidOnAssociations) or
+            ($connector/properties/@ea_type='Dependency' and
+            not(boolean($connector/properties/@stereotype)) or
+            $connector/properties/@stereotype = $stereotypeValidOnDependencies)
+            )
+            then
+            true()
+            else
+            false()"></xsl:sequence>
     </xsl:function>
 
     <xd:doc>
-        <xd:desc>check attribute stereotype whether it is acceptable or not</xd:desc>
+        <xd:desc>Check if the element stereotype is acceptable</xd:desc>
+        <xd:param name="element"/>
+    </xd:doc>
+    <xsl:function name="f:isElementStereotypeValid">
+        <xsl:param name="element" as="node()"/>
+        <xsl:sequence
+            select="
+                if (($element/@xmi:type = 'uml:Class' and
+                        not(boolean($element/properties/@stereotype)) or
+                        $element/properties/@stereotype = $stereotypeValidOnClasses) or
+                ($element/@xmi:type = 'uml:Enumeration' and
+                        not(boolean($element/properties/@stereotype)) or
+                        $element/properties/@stereotype = $stereotypeValidOnEnumerations) or
+                ($element/@xmi:type = 'uml:DataType' and
+                        not(boolean($element/properties/@stereotype)) or
+                        $element/properties/@stereotype = $stereotypeValidOnDatatypes)
+                ) then
+                    fn:true()
+                else
+                    fn:false()
+                "
+        />
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>Check if the attribute stereotype is acceptable</xd:desc>
         <xd:param name="attribute"/>
     </xd:doc>
     <xsl:function name="f:isAttributeStereotypeValid">

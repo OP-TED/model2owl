@@ -187,27 +187,89 @@
         <x:expect label="result" select="true()"/>
     </x:scenario>
     
-    <!--    -->
-<!--    
-    <x:scenario label="Check isAttributeStereotypeValid - invalid stereotype">
-        <x:call function="f:isAttributeStereotypeValid">
+    <x:scenario label="Check isElementStereotypeValid - valid stereotype 1">
+        <x:call function="f:isElementStereotypeValid">
             <x:param name="element"
                 href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
-                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[37]/attributes[1]/attribute[9]"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[155]"                
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check isElementStereotypeValid - valid stereotype 2">
+        <x:call function="f:isElementStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[163]"                
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check isElementStereotypeValid - valid stereotype 2">
+        <x:call function="f:isElementStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]"                
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check isElementStereotypeValid - invalid stereotype 1">
+        <x:call function="f:isElementStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[103]"                
             />
         </x:call>
         <x:expect label="result" select="false()"/>
     </x:scenario>
     
-    <x:scenario label="Check isAttributeStereotypeValid - not stereotype">
-        <x:call function="f:isAttributeStereotypeValid">
+    <!--    -->
+    
+    <x:scenario label="Check isConnectorStereotypeValid - invalid stereotype">
+        <x:call function="f:isConnectorStereotypeValid">
             <x:param name="element"
                 href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
-                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[35]/attributes[1]/attribute[3]"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[5]"
+            />
+        </x:call>
+        <x:expect label="result" select="false()"/>
+    </x:scenario>
+    
+    
+    
+    <x:scenario label="Check isConnectorStereotypeValid - valid stereotype">
+        <x:call function="f:isConnectorStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[27]"
             />
         </x:call>
         <x:expect label="result" select="true()"/>
-    </x:scenario>-->
+    </x:scenario>
+    
+    <x:scenario label="Check isConnectorStereotypeValid - valid stereotype">
+        <x:call function="f:isConnectorStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[453]"
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check isConnectorStereotypeValid - invalid stereotype">
+        <x:call function="f:isConnectorStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[41]"
+            />
+        </x:call>
+        <x:expect label="result" select="false()"/>
+    </x:scenario>
     
     
     
