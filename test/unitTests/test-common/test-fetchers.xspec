@@ -35,15 +35,23 @@
             <x:param name="name" >Award Criterion Evaluation Dimension</x:param>
             <x:param name="root" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/"/>            
         </x:call>
-        <x:expect label="result" test="boolean(/element/@xmi:idref='EAID_93EF08B0_0DC8_45ad_9174_FBF4E4435B6E')"/>
+        <x:expect label="result" test="boolean(/element[@xmi:idref='EAID_93EF08B0_0DC8_45ad_9174_FBF4E4435B6E'])"/>
     </x:scenario>
     
     <x:scenario label="Scenario for testing function getElementByName">
         <x:call function="f:getElementByName">
-            <x:param name="name" >Award Criterion Evaluation Dimendsion</x:param>
+            <x:param name="name" >Award Criterion Evaluation Dimendsion1</x:param>
             <x:param name="root" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/"/>            
         </x:call>
         <x:expect label="result" test="()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function getElementByName">
+        <x:call function="f:getElementByName">
+            <x:param name="name" >epo:AwardDimension</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/"/>            
+        </x:call>
+        <x:expect label="result" test="boolean(/element[@xmi:idref='EAID_93EF08B0_0DC8_45ad_9174_FBF4E4435B6E'])"/>
     </x:scenario>
     
     <x:scenario label="Scenario for testing function getContainingPackageName for an attribute">
@@ -53,8 +61,56 @@
         </x:call>
         <x:expect label="result" select="'epo'"/>
     </x:scenario>
+
+    <x:scenario label="Scenario for testing function getElementByIdRef - valid">
+        <x:call function="f:getElementByIdRef">
+            <x:param name="idRef" >EAID_48133D6A_BE44_43c9_A647_04650698EC95</x:param>   
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/"/> 
+        </x:call>
+        <x:expect label="result" test="boolean(/element[@xmi:idref='EAID_48133D6A_BE44_43c9_A647_04650698EC95'])"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function getElementByIdRef - invalid">
+        <x:call function="f:getElementByIdRef">
+            <x:param name="idRef" >EAID_48133D6A_BE44_43c9_</x:param>   
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/"/> 
+        </x:call>
+        <x:expect label="result" test="()"/>
+    </x:scenario>
+    
+    <!--    -->
+    <x:scenario label="getOutgoingConnectors - valid">
+        <x:call function="f:getOutgoingConnectors">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[124]"/> 
+        </x:call>
+        <x:expect label="result" test="count(/connector)=2"/>
+    </x:scenario>
+    
+    <x:scenario label="getOutgoingConnectors - invalid">
+        <x:call function="f:getOutgoingConnectors">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[1]"/> 
+        </x:call>
+        <x:expect label="result" test="()"/>
+    </x:scenario>
     
     
-    
-    
+    <x:scenario label="getOutgoingConnectors - valid">
+        <x:call function="f:getIncommingConnectors">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]"/> 
+        </x:call>
+        <x:expect label="result" test="count(/connector)=3"/>
+    </x:scenario>
+
+    <x:scenario label="getOutgoingConnectors - invalid">
+        <x:call function="f:getIncommingConnectors">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[3]"/> 
+        </x:call>
+        <x:expect label="result" test="()"/>
+    </x:scenario>
+
+
 </x:description>

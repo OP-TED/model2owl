@@ -48,5 +48,38 @@
         <xsl:sequence select="$root//elements/element[@name=$name]"/>
     </xsl:function>
     
+    <xd:doc>
+        <xd:desc>fetch the xmi:element with a given idRef</xd:desc>
+        <xd:param name="idRef"/>
+        <xd:param name="root"/>
+    </xd:doc>
+    <xsl:function name="f:getElementByIdRef" as="node()*">
+        <xsl:param name="idRef" as="xs:string"/>
+        <xsl:param name="root" as="node()"/>
+        <xsl:sequence select="$root//elements/element[@xmi:idref=$idRef]"/>
+    </xsl:function>
+    
+    
+    
+    <xd:doc>
+        <xd:desc>Get the conenctors outgoing from the element</xd:desc>
+        <xd:param name="element"/>
+    </xd:doc>
+    <xsl:function name="f:getOutgoingConnectors" as="node()*">
+        <xsl:param name="element" as="node()"/>
+        <xsl:sequence select="root($element)//connector[source/@xmi:idref = $element/@xmi:idref]"/>
+    </xsl:function>
+    
+
+    <xd:doc>
+        <xd:desc>Get the connectors incomming to the element</xd:desc>
+        <xd:param name="element"/>
+    </xd:doc>
+    <xsl:function name="f:getIncommingConnectors" as="node()*">
+        <xsl:param name="element" as="node()"/>
+        <xsl:sequence select="root($element)//connector[target/@xmi:idref = $element/@xmi:idref]"/>        
+    </xsl:function>
+    
+    
     
 </xsl:stylesheet>

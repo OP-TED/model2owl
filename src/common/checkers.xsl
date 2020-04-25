@@ -264,4 +264,46 @@
         />
     </xsl:function>
 
+
+    <xsl:function name="f:hasAttributeCorrespondingDependecy">
+        <xsl:param name="attribute"/>
+        <xsl:variable name="classIdRef" select="$attribute/../../@xmi:idref"/>
+        <xsl:variable name="targetRoleNamesOfDependencyConnectors"
+            select="root($attribute)//connector[source/@xmi:idref = $classIdRef and 
+                                properties/@ea_type = 'Dependency' and 
+                                target/model/@type = 'Enumeration']/target/role/string(@name)"
+        />
+        
+        <xsl:variable name="normalisedPossibleCases"
+            select="
+                for $name in $targetRoleNamesOfDependencyConnectors
+                return
+                    if (boolean(substring-after($name, ':')))
+                    then
+                        lower-case(substring-after($name, ':'))
+                    else
+                        lower-case($name)"
+        />
+        <xsl:variable name="normalisedAttributeName"
+            select="
+                if (boolean(substring-after($attribute/@name, ':')))
+                then
+                    lower-case(substring-after($attribute/@name, ':'))
+                else
+                    lower-case($attribute/@name)"
+        />
+        
+        <xsl:sequence
+            select="
+                if ($normalisedAttributeName = $normalisedPossibleCases or
+                concat('has', $normalisedAttributeName) = $normalisedPossibleCases)
+                then
+                    true()
+                else
+                    false()
+                "
+        />
+    </xsl:function>
+
+
 </xsl:stylesheet>

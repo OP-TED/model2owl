@@ -227,8 +227,6 @@
         <x:expect label="result" select="false()"/>
     </x:scenario>
     
-    <!--    -->
-    
     <x:scenario label="Check isConnectorStereotypeValid - invalid stereotype">
         <x:call function="f:isConnectorStereotypeValid">
             <x:param name="element"
@@ -270,8 +268,47 @@
         </x:call>
         <x:expect label="result" select="false()"/>
     </x:scenario>
+<!--    -->
     
-    
+    <x:scenario label="Check  hasAttributeCorrespondingDependecy- valid stereotype">
+        <x:call function="f:hasAttributeCorrespondingDependecy">
+            <x:param name="attribute"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[38]/attributes[1]/attribute[3]"
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>
+
+    <x:scenario label="Check  hasAttributeCorrespondingDependecy- valid stereotype">
+        <x:call function="f:hasAttributeCorrespondingDependecy">
+            <x:param name="attribute"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[38]/attributes[1]/attribute[4]"
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>
+
+    <x:scenario label="Check  hasAttributeCorrespondingDependecy- invalid stereotype">
+        <x:call function="f:hasAttributeCorrespondingDependecy">
+            <x:param name="attribute"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[38]/attributes[1]/attribute[2]"
+            />
+        </x:call>
+        <x:expect label="result" select="false()"/>
+    </x:scenario>
+
+    <x:scenario label="Check  hasAttributeCorrespondingDependecy- invalid stereotype">
+        <x:call function="f:hasAttributeCorrespondingDependecy">
+            <x:param name="attribute"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[39]/attributes[1]/attribute[1]"
+            />
+        </x:call>
+        <x:expect label="result" select="false()"/>
+    </x:scenario>
     
 </x:description>
 
