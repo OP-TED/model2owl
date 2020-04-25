@@ -50,7 +50,7 @@
 
     <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
     <xsl:variable name="acceptableTypesForObjectProperties"
-        select="('Code', 'rdfs:Resource', 'Quantity', 'Identier', 'Measure', 'Identifier')"/>
+        select="('Code', 'rdfs:Resource', 'Quantity', 'Measure', 'Identifier')"/>
     
     
     <!-- Acceptable stereotypes -->

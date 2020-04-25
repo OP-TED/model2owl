@@ -166,7 +166,7 @@
         <x:expect label="boolean-false" select="false()"/>
     </x:scenario>
     
-    <!--    -->
+
     <x:scenario label="Check isAttributeStereotypeValid - invalid stereotype">
         <x:call function="f:isAttributeStereotypeValid">
             <x:param name="element"
@@ -177,7 +177,7 @@
         <x:expect label="result" select="false()"/>
     </x:scenario>
     
-    <x:scenario label="Check isAttributeStereotypeValid - valid stereotype">
+    <x:scenario label="Check isAttributeStereotypeValid - not stereotype">
         <x:call function="f:isAttributeStereotypeValid">
             <x:param name="element"
                 href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
@@ -186,6 +186,29 @@
         </x:call>
         <x:expect label="result" select="true()"/>
     </x:scenario>
+    
+    <!--    -->
+<!--    
+    <x:scenario label="Check isAttributeStereotypeValid - invalid stereotype">
+        <x:call function="f:isAttributeStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[37]/attributes[1]/attribute[9]"
+            />
+        </x:call>
+        <x:expect label="result" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check isAttributeStereotypeValid - not stereotype">
+        <x:call function="f:isAttributeStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[35]/attributes[1]/attribute[3]"
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>-->
+    
     
     
 </x:description>

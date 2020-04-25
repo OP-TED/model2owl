@@ -158,11 +158,9 @@
                 else
                     fn:false()
                 "/>
-
-
     </xsl:function>
 
-
+    
 
 
     <xd:doc>
@@ -173,16 +171,16 @@
     </xd:doc>
     <xsl:function name="f:isAttributeTypeValidForObjectProperty">
         <xsl:param name="attributeElement" as="node()"/>
-        <xsl:variable name="acceptableElementTypes" select="('uml:Class', 'uml:Enumeration')"/>
+        <!--<xsl:variable name="acceptableElementTypes" select="('uml:Class', 'uml:Enumeration')"/>-->
+        <!--f:getElementByName($attributeElement/properties/@type, root($attributeElement))/@xmi:type = $acceptableElementTypes)-->
         <xsl:sequence
             select="
-                if ($attributeElement/properties/@type = $acceptableTypesForObjectProperties or
-                f:getElementByName($attributeElement/properties/@type, root($attributeElement))/@xmi:type = $acceptableElementTypes)
+                if ($attributeElement/properties/@type = $acceptableTypesForObjectProperties)
                 then
                     fn:true()
                 else
-                    fn:false()"/>
-
+                    fn:false()"
+        />
     </xsl:function>
 
     <xd:doc>
@@ -209,7 +207,7 @@
 
     <xsl:function name="f:isElementStereotypeValid">
         <xsl:param name="element" as="node()"/>
-
+        
     </xsl:function>
 
     <xd:doc>
