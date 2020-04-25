@@ -119,10 +119,19 @@
     
     <xsl:template name="classAttributeTypeChecker">
         <xsl:param name="classAttribute"/>
-        <xsl:variable name="classAttributeType" select="$classAttribute/properties/@type"/>
-        <xsl:if test="f:isValidDataType($classAttributeType) = fn:false()">
-            <xsl:sequence select="f:generateHtmlWarning(fn:concat('The attribute type ', $classAttributeType, ' is incorrect'))"/>
-        </xsl:if>
+        <xsl:variable name="classAttributeName" select="$classAttribute/@name"/>
+        <xsl:sequence
+            select="
+                if (f:isAttributeTypeValidForDatatypeProperty($classAttribute))
+                then
+                    ()
+                else if (f:isAttributeTypeValidForObjectProperty($classAttribute))
+                    then
+                        f:generateHtmlWarning(fn:concat('The attribute ', $classAttributeName, ' type is deprecated. Attributes should use XSD or RDF datatypes.'))
+                    else
+                        f:generateHtmlError(fn:concat('The attribute ', $classAttributeName, ' type is incorrect. Attributes must use datatypes that are either: (a) UML common types, (b) XSD or RDF datatypes or (c) custom datatype or enumeration.'))
+              "
+        />
     </xsl:template>
     
     <xd:doc>
