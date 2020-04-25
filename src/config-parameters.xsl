@@ -50,8 +50,7 @@
 
     <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
     <xsl:variable name="acceptableTypesForObjectProperties"
-        select="('Code', 'rdfs:Resource', 'Quantity', 'Measure', 'Identifier')"/>
-    
+        select="('Code', 'Quantity', 'Measure', 'Identifier', 'Amount')"/>
     
     <!-- Acceptable stereotypes -->
     <xsl:variable name="stereotypeValidOnAttributes" select="()"/>
@@ -60,6 +59,6 @@
     <xsl:variable name="stereotypeValidOnDependencies" select="()"/>
     <xsl:variable name="stereotypeValidOnClasses" select="('Abstract')"/>
     <xsl:variable name="stereotypeValidOnDatatypes" select="()"/>
+    <xsl:variable name="stereotypeValidOnEnumerations" select="()"/>
     
-
 </xsl:stylesheet>
