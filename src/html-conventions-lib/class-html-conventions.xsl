@@ -17,7 +17,11 @@
     <xsl:import href="../html-conventions-lib/utils-html-conventions.xsl"/>
     
     <xd:doc>
-        <xd:desc>Getting all classes and attributes and show only the ones with unmet conventions </xd:desc>
+        <xd:desc>Getting all classes and attributes and show only the ones with unmet conventions 
+            [class->common-name-11]
+            [class->common-description-12]
+            [class->common-stereotype-13]
+        </xd:desc>
     </xd:doc>
     
     
@@ -29,10 +33,53 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="classConventions" as="item()*">
-            <xsl:call-template name="classNameChecker">
+            <xsl:call-template name="missingName">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="classDescriptionChecker">
+            <xsl:call-template name="missingNamePrefix">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missing name local name">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="invalid first character n the local segment">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="invalid name prefix">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="invalid name local segment">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="delimiters in the name local segment">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="names must be unique">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            
+            <xsl:call-template name="stereotype provided">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="classIsNotPascalNamed">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="underspecifiedClass">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            
+            <xsl:call-template name="disconnectedClass">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+
+            
+
+            
+            
+<!--            <xsl:call-template name="classNameChecker">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingDescription">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
             <xsl:call-template name="classNameCaseChecker">
@@ -43,7 +90,7 @@
             </xsl:call-template>
             <xsl:call-template name="classAttributesChecker">
                 <xsl:with-param name="class" select="."/>
-            </xsl:call-template>
+            </xsl:call-template>-->
         </xsl:variable>
         <xsl:variable name="classAttributeConventions" as="item()*">
             <xsl:apply-templates select="attributes/attribute"/>
@@ -55,9 +102,7 @@
             <section>
                 <xsl:if test="boolean($classConventions)">
                         <dl>
-                            <dt>
-                                Unmet class conventions
-                            </dt>
+                            <dt>Unmet class conventions</dt>
                             <xsl:copy-of select="$classConventions"/>
                         </dl>
                 </xsl:if>
@@ -79,6 +124,26 @@
     </xsl:template>
     
     <xd:doc>
+        <xd:desc>[class-connectors-16] - The class $className$ is not connected to anything. A class
+            should be connected to otehr elements.</xd:desc>
+        <xd:param name="class"/>
+    </xd:doc>
+    
+    <xsl:template name="disconnectedClass">
+        <xsl:param name="class"/>
+        <xsl:sequence
+            select="
+                if (boolean(f:getOutgoingConnectors($class)) or boolean(f:getIncommingConnectors($class)))
+                then
+                    ()
+                else
+                    f:generateHtmlWarning(fn:concat('The class ', $class/@name, 
+                                                  ' is not connected to anything. A class should be connected to other elements.'))"
+        />
+    </xsl:template>
+    
+    
+    <xd:doc>
         <xd:desc>Return warning when class name is not a valid Qname</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
@@ -92,15 +157,18 @@
     </xsl:template>
     
     <xd:doc>
-        <xd:desc>Return warning when class has no description</xd:desc>
+        <xd:desc>[common-description-9] - $elementName$ is missing a description. All concepts should be defined or described.</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
     
-    <xsl:template name="classDescriptionChecker">
+    <xsl:template name="missingDescription">
         <xsl:param name="class"/>
+        <xsl:variable name="className" select="$class/@name"/>
         <xsl:variable name="noClassDescription" select="$class/properties/not(@documentation)"/>
         <xsl:if test="$noClassDescription = fn:true()">
-            <xsl:sequence select="f:generateHtmlWarning('Description missing. Please add one')"/>
+            <xsl:sequence
+                select="f:generateHtmlWarning(fn:concat($className, ' is missing a description. All concepts should be defined or described.'))"
+            />
         </xsl:if>
     </xsl:template>
     

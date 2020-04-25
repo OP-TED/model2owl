@@ -80,6 +80,19 @@
         <x:expect label="boolean-false" select="false()"/>
     </x:scenario>
     
+    <x:scenario label="Check Qname prefix with a invalid namespace">
+        <x:call function="f:isValidNamespace">
+            <x:param name="input">localName</x:param>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check Qname prefix with a invalid namespace">
+        <x:call function="f:isValidNamespace">
+            <x:param name="input">:localName</x:param>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
     
     <x:scenario label="Check if a data-type is valid ">
         <x:call function="f:isValidDataType">

@@ -131,16 +131,14 @@
     <xsl:function name="f:isValidNamespace" as="xs:boolean">
         <xsl:param name="input"/>
         <xsl:variable name="prefixToCheck" select="fn:substring-before($input, ':')"/>
-        <xsl:variable name="returnedNamespace"
-            select="f:getNamespaceValues($prefixToCheck, $namespacePrefixes)"/>
-        <xsl:choose>
-            <xsl:when test="$returnedNamespace != ''">
-                <xsl:sequence select="fn:true()"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:sequence select="fn:false()"/>
-            </xsl:otherwise>
-        </xsl:choose>
+        <xsl:sequence
+            select="
+            if (boolean(fn:substring-before($input, ':'))) then
+            boolean(f:getNamespaceValues($prefixToCheck, $namespacePrefixes))
+            else
+            fn:false()
+            "
+        />
     </xsl:function>
 
     <xd:doc>
@@ -265,6 +263,11 @@
     </xsl:function>
 
 
+    <xd:doc>
+        <xd:desc>For a given class attribute checks whether is an ongoing connector which has target
+            role name similiar to the attribute name</xd:desc>
+        <xd:param name="attribute"/>
+    </xd:doc>
     <xsl:function name="f:hasAttributeCorrespondingDependecy">
         <xsl:param name="attribute"/>
         <xsl:variable name="classIdRef" select="$attribute/../../@xmi:idref"/>
