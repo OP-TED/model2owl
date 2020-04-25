@@ -67,11 +67,20 @@
     </x:scenario>
     
     
-    <x:scenario label="Scenario for finding a class attribute that has an incorrect type">
+    <x:scenario label="Scenario for finding a class attribute that has an incorrect type and also is not a valid for object property">
         <x:call template="classAttributeTypeChecker">
             <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[1]"/>
         </x:call>   
-        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+        <x:expect label="expect to be an error" test="(dd/@class) = 'error'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a class attribute that has an incorrect type but it is a valid for object property">
+        <x:call template="classAttributeTypeChecker">
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[95]/attributes[1]/attribute[5]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+        <x:expect label="expect to be an error" test="(dd/@class) = 'warning'"/>
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class attribute that has a correct type">
