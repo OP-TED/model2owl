@@ -31,9 +31,10 @@
     <xsl:variable name="xsdAndRdfDataTypes"
         select="fn:doc('../test/testData/xsdAndRdfDataTypes.xml')"/>
 
-    <!-- Ontology base URI, configure as necessary   -->
-    <xsl:variable name="base-uri" select="'http://publications.europa.eu/ontology/ePO'"/>
-    <xsl:variable name="date" select="replace(string(current-time()), '([\D])', 'x')"/>
+    <!-- Ontology base URI, configure as necessary. Do not use a trailing local delimiter 
+        like in the namespace definition-->
+    <!--<xsl:variable name="base-uri" select="'http://publications.europa.eu/ontology/ePO'"/>-->
+    <xsl:variable name="base-uri" select="'http://data.europa.eu/a4g/ontology/epo'"/>
 
     <!-- when a delimiter is missing in the base URI of a namespace, use this default value-->
     <xsl:variable name="defaultDelimiter" select="'#'"/>
@@ -44,21 +45,22 @@
 
     <!-- Sometimes names are missing, then use this default value  -->
     <xsl:variable name="mockUnnamedElement">unnamed</xsl:variable>
-    
+
     <!-- the local segment of an URI cannot start with digits, like "prefix:03000000-1" therefore a prefix must beused -->
     <xsl:variable name="mockPrefixforLocalSegment">i</xsl:variable>
 
     <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
     <xsl:variable name="acceptableTypesForObjectProperties"
         select="('Code', 'Quantity', 'Measure', 'Identifier', 'Amount')"/>
-    
+
     <!-- Acceptable stereotypes -->
     <xsl:variable name="stereotypeValidOnAttributes" select="()"/>
-    <xsl:variable name="stereotypeValidOnGeneralisations" select="('Disjoint','Equivalent','Complete')"/>
+    <xsl:variable name="stereotypeValidOnGeneralisations"
+        select="('Disjoint', 'Equivalent', 'Complete')"/>
     <xsl:variable name="stereotypeValidOnAssociations" select="()"/>
     <xsl:variable name="stereotypeValidOnDependencies" select="()"/>
     <xsl:variable name="stereotypeValidOnClasses" select="('Abstract')"/>
     <xsl:variable name="stereotypeValidOnDatatypes" select="()"/>
     <xsl:variable name="stereotypeValidOnEnumerations" select="()"/>
-    
+
 </xsl:stylesheet>

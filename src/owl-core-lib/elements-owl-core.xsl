@@ -38,6 +38,7 @@
         <xsl:variable name="idref" select="./@xmi:idref"/>
         <xsl:variable name="classURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
+        
 
         <owl:Class rdf:about="{$classURI}">
             <rdfs:label xml:lang="en">
@@ -46,12 +47,13 @@
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$className"/>
             </skos:prefLabel>
-
+            
             <xsl:if test="$documentation != ''">
                 <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </rdfs:comment>
             </xsl:if>
+            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
         </owl:Class>
     </xsl:template>
 
@@ -76,6 +78,7 @@
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
             </xsl:if>
+            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
         </skos:ConceptScheme>
     </xsl:template>
 
@@ -106,8 +109,7 @@
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$conceptName"/>
             </skos:prefLabel>
-
-
+            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
         </skos:Concept>
     </xsl:template>
 
@@ -139,6 +141,7 @@
                     <xsl:value-of select="$documentation"/>
                 </rdfs:comment>
             </xsl:if>
+            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
         </rdfs:Datatype>
     </xsl:template>
 
@@ -199,6 +202,7 @@
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
             </xsl:if>
+            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
         </xsl:element>
     </xsl:template>
 
