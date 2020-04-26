@@ -105,10 +105,10 @@
     
     <x:scenario label="Scenario 1 for testing function getXsdRdfDataTypeValues">
         <x:call function="f:getXsdRdfDataTypeValues">
-            <x:param name="qname">xsd:gYearMonth</x:param>
+            <x:param name="qname">xsd:negativeInteger</x:param>
             <x:param name="dataTypesDefinitions" href="../../testData/xsdAndRdfDataTypes.xml" select="/"/>
         </x:call>
-        <x:expect label="data-type" select="'xsd:gYearMonth'"/>
+        <x:expect label="data-type" select="'xsd:negativeInteger'"/>
     </x:scenario>
 
     <x:scenario label="Scenario 2 for testing function getXsdRdfDataTypeValues">
@@ -151,7 +151,14 @@
         <x:expect label="result" select="''"/>
     </x:scenario>
     
-
+    <x:scenario label="Scenario getting the local segment from element">
+        <x:call function="f:getLocalSegmentForElements">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>
+        <x:expect label="correct local segment" select="'Site'"/>
+    </x:scenario>
+    
     <x:scenario label="Scenario xsd:integer for testing function buildQNameFromLexicalQName">
         <x:call function="f:buildQNameFromLexicalQName">
             <x:param name="lexicalQName">xsd:integer</x:param>   
