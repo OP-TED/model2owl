@@ -347,7 +347,7 @@
         <x:expect label="boolean-false" select="false()"/>
     </x:scenario>
     
-    <x:scenario label="Check an element that is has the name prefix missing">
+    <x:scenario label="Check an element that has the name prefix missing">
         <x:call function="f:isElementNamePrefixMissing">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[316]"/>
@@ -360,7 +360,7 @@
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[99]"/>
         </x:call>
-        <x:expect label="boolean-true" select="true()"/>
+        <x:expect label="boolean-true" select="false()"/>
     </x:scenario>
     
     <x:scenario label="Check an element that has the name prefix">
@@ -379,6 +379,14 @@
         <x:expect label="boolean-false" select="false()"/>
     </x:scenario>
     
+    <x:scenario label="Check an element that has local segment - it is not a Qname">
+        <x:call function="f:isElementNameLocalSegmentMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
     
     <x:scenario label="Check an element that has no local segment">
         <x:call function="f:isElementNameLocalSegmentMissing">
@@ -386,6 +394,78 @@
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[73]"/>
         </x:call>
         <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element with valid prefix">
+        <x:call function="f:isInvalidNamePrefix">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element with invalid prefix">
+        <x:call function="f:isInvalidNamePrefix">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[73]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element with valid local segment - not Qname">
+        <x:call function="f:isInvalidLocalSegmentName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element with valid local segment">
+        <x:call function="f:isInvalidLocalSegmentName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element with invalid local segment">
+        <x:call function="f:isInvalidLocalSegmentName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[95]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check the local segment first character for an element which is valid">
+        <x:call function="f:isValidFirstCharacterInLocalSegment">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check the local segment first character for an element which is invalid">
+        <x:call function="f:isValidFirstCharacterInLocalSegment">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that has the local segment with delimiters">
+        <x:call function="f:isDelimitersInLocalSegment">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[101]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that has the local segment with no delimiters">
+        <x:call function="f:isDelimitersInLocalSegment">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
     </x:scenario>
     
 </x:description>
