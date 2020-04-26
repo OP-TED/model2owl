@@ -323,5 +323,70 @@
         <x:expect label="result" select="false()"/>
     </x:scenario>
     
+    <x:scenario label="Check an element that is missing the name - no name value">
+        <x:call function="f:isElementNameMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[317]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that is missing the name - no name attribute">
+        <x:call function="f:isElementNameMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[318]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that is not missing the name">
+        <x:call function="f:isElementNameMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[316]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that is has the name prefix missing">
+        <x:call function="f:isElementNamePrefixMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[316]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that is has the name prefix missing - has delimiter but it is empty">
+        <x:call function="f:isElementNamePrefixMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[99]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that has the name prefix">
+        <x:call function="f:isElementNamePrefixMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that has local segment">
+        <x:call function="f:isElementNameLocalSegmentMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Check an element that has no local segment">
+        <x:call function="f:isElementNameLocalSegmentMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[73]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
 </x:description>
 

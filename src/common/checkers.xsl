@@ -90,10 +90,10 @@
 
     <xsl:function name="f:isQNameUpperCasedCamelCase" as="xs:boolean">
         <xsl:param name="input"/>
-        <xsl:variable name="inputIsNormalizedString" select="f:isValidNormalizedString($input)"/>
+        <!--        <xsl:variable name="inputIsNormalizedString" select="f:isValidNormalizedString($input)"/>-->
         <xsl:variable name="letterType" select="f:firstLetterFromQnameLocalSegment($input)"/>
         <xsl:choose>
-            <xsl:when test="($letterType = 'upper-case') and ($inputIsNormalizedString = fn:true())">
+            <xsl:when test="($letterType = 'upper-case') and (f:isValidQname($input))">
                 <xsl:sequence select="fn:true()"/>
             </xsl:when>
             <xsl:otherwise>
@@ -109,11 +109,11 @@
 
     <xsl:function name="f:isQNameLowerCasedCamelCase" as="xs:boolean">
         <xsl:param name="input"/>
-        <xsl:variable name="inputIsNormalizedString" select="f:isValidNormalizedString($input)"/>
+        <!--        <xsl:variable name="inputIsNormalizedString" select="f:isValidNormalizedString($input)"/>-->
         <xsl:variable name="letterType" select="f:firstLetterFromQnameLocalSegment($input)"/>
 
         <xsl:choose>
-            <xsl:when test="($letterType = 'lower-case') and ($inputIsNormalizedString = fn:true())">
+            <xsl:when test="($letterType = 'lower-case') and (f:isValidQname($input))">
                 <xsl:sequence select="fn:true()"/>
             </xsl:when>
             <xsl:otherwise>
@@ -133,11 +133,11 @@
         <xsl:variable name="prefixToCheck" select="fn:substring-before($input, ':')"/>
         <xsl:sequence
             select="
-            if (boolean(fn:substring-before($input, ':'))) then
-            boolean(f:getNamespaceValues($prefixToCheck, $namespacePrefixes))
-            else
-            fn:false()
-            "
+                if (boolean(fn:substring-before($input, ':'))) then
+                    boolean(f:getNamespaceValues($prefixToCheck, $namespacePrefixes))
+                else
+                    fn:false()
+                "
         />
     </xsl:function>
 
@@ -155,10 +155,11 @@
                     fn:true()
                 else
                     fn:false()
-                "/>
+                "
+        />
     </xsl:function>
 
-    
+
 
 
     <xd:doc>
@@ -204,20 +205,23 @@
     </xd:doc>
     <xsl:function name="f:isConnectorStereotypeValid">
         <xsl:param name="connector" as="node()"/>
-        <xsl:sequence select=" if (($connector/properties/@ea_type='Generalization' and
-            not(boolean($connector/properties/@stereotype)) or
-            $connector/properties/@stereotype = $stereotypeValidOnGeneralisations) or
-            ($connector/properties/@ea_type='Association' and
-            not(boolean($connector/properties/@stereotype)) or
-            $connector/properties/@stereotype = $stereotypeValidOnAssociations) or
-            ($connector/properties/@ea_type='Dependency' and
-            not(boolean($connector/properties/@stereotype)) or
-            $connector/properties/@stereotype = $stereotypeValidOnDependencies)
-            )
-            then
-            true()
-            else
-            false()"></xsl:sequence>
+        <xsl:sequence
+            select="
+                if (($connector/properties/@ea_type = 'Generalization' and
+                not(boolean($connector/properties/@stereotype)) or
+                $connector/properties/@stereotype = $stereotypeValidOnGeneralisations) or
+                ($connector/properties/@ea_type = 'Association' and
+                not(boolean($connector/properties/@stereotype)) or
+                $connector/properties/@stereotype = $stereotypeValidOnAssociations) or
+                ($connector/properties/@ea_type = 'Dependency' and
+                not(boolean($connector/properties/@stereotype)) or
+                $connector/properties/@stereotype = $stereotypeValidOnDependencies)
+                )
+                then
+                    true()
+                else
+                    false()"
+        />
     </xsl:function>
 
     <xd:doc>
@@ -229,14 +233,14 @@
         <xsl:sequence
             select="
                 if (($element/@xmi:type = 'uml:Class' and
-                        not(boolean($element/properties/@stereotype)) or
-                        $element/properties/@stereotype = $stereotypeValidOnClasses) or
+                not(boolean($element/properties/@stereotype)) or
+                $element/properties/@stereotype = $stereotypeValidOnClasses) or
                 ($element/@xmi:type = 'uml:Enumeration' and
-                        not(boolean($element/properties/@stereotype)) or
-                        $element/properties/@stereotype = $stereotypeValidOnEnumerations) or
+                not(boolean($element/properties/@stereotype)) or
+                $element/properties/@stereotype = $stereotypeValidOnEnumerations) or
                 ($element/@xmi:type = 'uml:DataType' and
-                        not(boolean($element/properties/@stereotype)) or
-                        $element/properties/@stereotype = $stereotypeValidOnDatatypes)
+                not(boolean($element/properties/@stereotype)) or
+                $element/properties/@stereotype = $stereotypeValidOnDatatypes)
                 ) then
                     fn:true()
                 else
@@ -272,11 +276,11 @@
         <xsl:param name="attribute"/>
         <xsl:variable name="classIdRef" select="$attribute/../../@xmi:idref"/>
         <xsl:variable name="targetRoleNamesOfDependencyConnectors"
-            select="root($attribute)//connector[source/@xmi:idref = $classIdRef and 
-                                properties/@ea_type = 'Dependency' and 
-                                target/model/@type = 'Enumeration']/target/role/string(@name)"
-        />
-        
+            select="
+                root($attribute)//connector[source/@xmi:idref = $classIdRef and
+                properties/@ea_type = 'Dependency' and
+                target/model/@type = 'Enumeration']/target/role/string(@name)"/>
+
         <xsl:variable name="normalisedPossibleCases"
             select="
                 for $name in $targetRoleNamesOfDependencyConnectors
@@ -285,17 +289,15 @@
                     then
                         lower-case(substring-after($name, ':'))
                     else
-                        lower-case($name)"
-        />
+                        lower-case($name)"/>
         <xsl:variable name="normalisedAttributeName"
             select="
                 if (boolean(substring-after($attribute/@name, ':')))
                 then
                     lower-case(substring-after($attribute/@name, ':'))
                 else
-                    lower-case($attribute/@name)"
-        />
-        
+                    lower-case($attribute/@name)"/>
+
         <xsl:sequence
             select="
                 if ($normalisedAttributeName = $normalisedPossibleCases or
@@ -308,5 +310,55 @@
         />
     </xsl:function>
 
+    <xd:doc>
+        <xd:desc>Check if the element or attribute is missing the name</xd:desc>
+        <xd:param name="element"/>
+    </xd:doc>
+    <xsl:function name="f:isElementNameMissing">
+        <xsl:param name="element" as="node()"/>
+        <xsl:sequence
+            select="
+                if ($element/@name = '' or not($element/@name))
+                then
+                    fn:true()
+                else
+                    fn:false()
+                "
+        />
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>Check is an element name prefix is missing</xd:desc>
+        <xd:param name="element"/>
+    </xd:doc>
+    <xsl:function name="f:isElementNamePrefixMissing">
+        <xsl:param name="element" as="node()"/>
+        <xsl:sequence
+            select="
+                if (fn:contains($element/@name, ':'))
+                then
+                    fn:false()
+                else
+                    fn:true()"
+        />
+    </xsl:function>
+
+
+    <xd:doc>
+        <xd:desc>Check is an element name local segment is missing</xd:desc>
+        <xd:param name="element"/>
+    </xd:doc>
+    <xsl:function name="f:isElementNameLocalSegmentMissing">
+        <xsl:param name="element" as="node()"/>
+        <xsl:variable name="localSegment"
+            select="
+                if (fn:contains($element/@name, ':')) then
+                    fn:substring-after($element/@name, ':')
+                else
+                    $element/@name"
+        />
+        <xsl:sequence
+            select="not(boolean($localSegment))"/>
+    </xsl:function>
 
 </xsl:stylesheet>

@@ -12,22 +12,25 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:f="http://https://github.com/costezki/model2owl#" version="3.0">
-    
+
     <xsl:import href="../common/checkers.xsl"/>
     <xsl:import href="../html-conventions-lib/utils-html-conventions.xsl"/>
-    
+
     <xd:doc>
-        <xd:desc>Getting all classes and attributes and show only the ones with unmet conventions 
+        <xd:desc>Getting all classes and attributes and show only the ones with unmet conventions
             [class->common-name-11]
             [class->common-description-12]
             [class->common-stereotype-13]
+            [class-connectors-16]
+            [class-attributes-15]
+            [class-name-14]
         </xd:desc>
     </xd:doc>
-    
-    
-    
+
+
+
     <xsl:template match="element[@xmi:type = 'uml:Class']">
-        <xsl:variable name = "class">
+        <xsl:variable name="class">
             <xsl:call-template name="getClassName">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
@@ -57,8 +60,8 @@
             <xsl:call-template name="names must be unique">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            
-            <xsl:call-template name="stereotype provided">
+
+            <xsl:call-template name="stereotypeProvided">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
             <xsl:call-template name="classIsNotPascalNamed">
@@ -67,16 +70,18 @@
             <xsl:call-template name="underspecifiedClass">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            
+
             <xsl:call-template name="disconnectedClass">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
+            <xsl:call-template name="missingDescription">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
 
-            
 
-            
-            
-<!--            <xsl:call-template name="classNameChecker">
+
+
+            <!--            <xsl:call-template name="classNameChecker">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
             <xsl:call-template name="missingDescription">
@@ -96,24 +101,24 @@
             <xsl:apply-templates select="attributes/attribute"/>
         </xsl:variable>
         <xsl:if test="boolean($classConventions) or boolean($classAttributeConventions)">
-            <h2>              
+            <h2>
                 <xsl:value-of select="$class"/>
             </h2>
             <section>
                 <xsl:if test="boolean($classConventions)">
-                        <dl>
-                            <dt>Unmet class conventions</dt>
-                            <xsl:copy-of select="$classConventions"/>
-                        </dl>
+                    <dl>
+                        <dt>Unmet class conventions</dt>
+                        <xsl:copy-of select="$classConventions"/>
+                    </dl>
                 </xsl:if>
                 <xsl:if test="boolean($classAttributeConventions)">
-                        <xsl:copy-of select="$classAttributeConventions"/>
+                    <xsl:copy-of select="$classAttributeConventions"/>
                 </xsl:if>
             </section>
         </xsl:if>
     </xsl:template>
-    
-    
+
+
     <xd:doc>
         <xd:desc>Getting the class name</xd:desc>
         <xd:param name="class"/>
@@ -122,13 +127,13 @@
         <xsl:param name="class"/>
         <xsl:value-of select="$class/@name"/>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>[class-connectors-16] - The class $className$ is not connected to anything. A class
             should be connected to otehr elements.</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
-    
+
     <xsl:template name="disconnectedClass">
         <xsl:param name="class"/>
         <xsl:sequence
@@ -137,80 +142,126 @@
                 then
                     ()
                 else
-                    f:generateHtmlWarning(fn:concat('The class ', $class/@name, 
-                                                  ' is not connected to anything. A class should be connected to other elements.'))"
+                    f:generateHtmlWarning(fn:concat('The class ', $class/@name,
+                    ' is not connected to anything. A class should be connected to other elements.'))"
         />
     </xsl:template>
-    
-    
+
     <xd:doc>
-        <xd:desc>Return warning when class name is not a valid Qname</xd:desc>
+        <xd:desc>[common-description-9] - $elementName$ is missing a description. All concepts
+            should be defined or described.</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
-    
-    <xsl:template name="classNameChecker">
-        <xsl:param name="class"/>
-        <xsl:variable name="className" select="$class/@name"/>
-        <xsl:if test="f:isValidQname($className) = fn:false()">
-            <xsl:sequence select="f:generateHtmlWarning('The name of this class is not a valid Qname. Please change')"/>
-        </xsl:if>
-    </xsl:template>
-    
-    <xd:doc>
-        <xd:desc>[common-description-9] - $elementName$ is missing a description. All concepts should be defined or described.</xd:desc>
-        <xd:param name="class"/>
-    </xd:doc>
-    
+
     <xsl:template name="missingDescription">
         <xsl:param name="class"/>
         <xsl:variable name="className" select="$class/@name"/>
         <xsl:variable name="noClassDescription" select="$class/properties/not(@documentation)"/>
-        <xsl:if test="$noClassDescription = fn:true()">
-            <xsl:sequence
-                select="f:generateHtmlWarning(fn:concat($className, ' is missing a description. All concepts should be defined or described.'))"
-            />
-        </xsl:if>
+        <xsl:sequence
+            select="
+                if ($noClassDescription = fn:true()) then
+                    f:generateHtmlWarning(fn:concat($className, ' is missing a description. All concepts should be defined or described.'))
+                else
+                    ()"
+        />
     </xsl:template>
-    
+
     <xd:doc>
-        <xd:desc>Return warning when class Qname is not with capitalized letter </xd:desc>
+        <xd:desc>[class-attributes-15] - The class $className$ nas no attributes provided. A class
+            should define some attributes.</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
-    
-    <xsl:template name="classNameCaseChecker">
-        <xsl:param name="class"/>
-        <xsl:variable name="className" select="$class/@name"/>
-        <xsl:if test="not(f:isQNameUpperCasedCamelCase($className))">
-            <xsl:sequence select="f:generateHtmlWarning('The first letter of the local segment from the Qname of the class is lower-cased.')"/>
-        </xsl:if>
-    </xsl:template>
-    
-    <xd:doc>
-        <xd:desc>Return warning when Qname prefix is not in the namespaces </xd:desc>
-        <xd:param name="class"/>
-    </xd:doc>
-    
-    <xsl:template name="classNamePrefixChecker">
-        <xsl:param name="class"/>
-        <xsl:variable name="className" select="$class/@name"/>
-        <xsl:if test="not(f:isValidNamespace($className))">
-            <xsl:sequence select="f:generateHtmlWarning('The prefix of this class name is not in the agreed namespaces')"/>
-        </xsl:if>
-    </xsl:template>
-    
-    <xd:doc>
-        <xd:desc>Return warning when a Class doesn't have attributes </xd:desc>
-        <xd:param name="class"/>
-    </xd:doc>
-    
-    <xsl:template name="classAttributesChecker">
+
+    <xsl:template name="underspecifiedClass">
         <xsl:param name="class"/>
         <xsl:variable name="classNumberOfAttributes" select="count($class/attributes/attribute)"/>
+        <xsl:sequence
+            select="
+                if ($classNumberOfAttributes = 0) then
+                    f:generateHtmlWarning(fn:concat('The class ', $class/@name, ' has no attributes provided. A class should define some attributes.'))
+                else
+                    ()"/>
         <xsl:if test="$classNumberOfAttributes = 0">
             <xsl:sequence select="f:generateHtmlWarning('This class has no attributes')"/>
         </xsl:if>
     </xsl:template>
-    
-    
-    
+
+
+    <xd:doc>
+        <xd:desc>[class-name-14] - The class name $value$ is invalid. The class name must start with
+            a capital case. </xd:desc>
+        <xd:param name="class"/>
+    </xd:doc>
+
+    <xsl:template name="classIsNotPascalNamed">
+        <xsl:param name="class"/>
+        <xsl:variable name="className" select="$class/@name"/>
+        <xsl:sequence
+            select="
+                if (f:isValidQname($className))
+                then
+                    if (f:isQNameUpperCasedCamelCase($className) = fn:false())
+                    then
+                        f:generateHtmlWarning(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'))
+                    else
+                        ()
+                else
+                    if (fn:contains($uppercaseLetters, fn:substring($className, 1, 1)))
+                    then
+                        ()
+                    else
+                        f:generateHtmlWarning(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'))"
+        />
+    </xsl:template>
+
+
+    <xd:doc>
+        <xd:desc></xd:desc>
+        <xd:param name="class"/>
+    </xd:doc>
+    <xsl:template name="stereotypeProvided">
+        <xsl:param name="class"/>
+        <xsl:sequence
+            select="
+                if (f:isElementStereotypeValid($class))
+                then
+                    ()
+                else
+                    f:generateHtmlWarning(fn:concat('The ', $class/properties/@stereotype, 
+                                                    ' stareotype is applied to ', $class/@name, 
+                                                    '. Stereotypes are discouraged in the current practice with some exceptions. '))"
+        />
+    </xsl:template>
+
+    <xd:doc>
+        <xd:desc>Return warning when Qname prefix is not in the namespaces </xd:desc>
+        <xd:param name="class"/>
+    </xd:doc>
+
+    <xsl:template name="classNamePrefixChecker">
+        <xsl:param name="class"/>
+        <xsl:variable name="className" select="$class/@name"/>
+        <xsl:if test="not(f:isValidNamespace($className))">
+            <xsl:sequence
+                select="f:generateHtmlWarning('The prefix of this class name is not in the agreed namespaces')"
+            />
+        </xsl:if>
+    </xsl:template>
+
+
+    <xd:doc>
+        <xd:desc>Return warning when class name is not a valid Qname</xd:desc>
+        <xd:param name="class"/>
+    </xd:doc>
+
+    <xsl:template name="classNameChecker">
+        <xsl:param name="class"/>
+        <xsl:variable name="className" select="$class/@name"/>
+        <xsl:if test="f:isValidQname($className) = fn:false()">
+            <xsl:sequence
+                select="f:generateHtmlWarning('The name of this class is not a valid Qname. Please change')"
+            />
+        </xsl:if>
+    </xsl:template>
+
 </xsl:stylesheet>
