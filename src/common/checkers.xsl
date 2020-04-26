@@ -350,15 +350,81 @@
     </xd:doc>
     <xsl:function name="f:isElementNameLocalSegmentMissing">
         <xsl:param name="element" as="node()"/>
-        <xsl:variable name="localSegment"
-            select="
-                if (fn:contains($element/@name, ':')) then
-                    fn:substring-after($element/@name, ':')
-                else
-                    $element/@name"
-        />
-        <xsl:sequence
-            select="not(boolean($localSegment))"/>
+        <xsl:variable name="localSegment" select="f:getLocalSegmentForElements($element)"/>
+        <xsl:sequence select="not(boolean($localSegment))"/>
     </xsl:function>
 
+
+    <xd:doc>
+        <xd:desc>Checks regex for prefix</xd:desc>
+        <xd:param name="element"/>
+    </xd:doc>
+    <xsl:function name="f:isInvalidNamePrefix">
+        <xsl:param name="element"/>
+        <xsl:variable name="prefix" select="fn:substring-before($element/@name, ':')"/>
+        <xsl:sequence
+            select="
+                if (fn:matches($prefix, '^[a-zA-Z0-9]+$'))
+                then
+                    fn:false()
+                else
+                    fn:true()
+                "
+        />
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>Checks regex for local segment</xd:desc>
+        <xd:param name="element"/>
+    </xd:doc>
+    <xsl:function name="f:isInvalidLocalSegmentName">
+        <xsl:param name="element"/>
+        <xsl:variable name="localSegment" select="f:getLocalSegmentForElements($element)"/>
+        <xsl:sequence
+            select="
+                if (fn:matches($localSegment, '^[a-zA-Z0-9_\-\s]+$'))
+                then
+                    fn:false()
+                else
+                    fn:true()
+                "
+        />
+    </xsl:function>
+    
+    <xd:doc>
+        <xd:desc>Checks if first character is invalid in the local segment</xd:desc>
+        <xd:param name="element"/>
+    </xd:doc>
+    
+    <xsl:function name="f:isValidFirstCharacterInLocalSegment">
+        <xsl:param name="element"/>
+        <xsl:variable name="localSegment" select="f:getLocalSegmentForElements($element)"/>
+        <xsl:sequence
+            select="
+            if (fn:matches(fn:substring($localSegment, 1, 1),'^[a-zA-Z_]+$')) then
+                    fn:true()
+                else
+                    fn:false()"
+        />
+    </xsl:function>
+    
+    
+    <xd:doc>
+        <xd:desc>Checks if the local segment contains delimiters (spaces)</xd:desc>
+        <xd:param name="element"/>
+    </xd:doc>
+   
+    <xsl:function name="f:isDelimitersInLocalSegment">
+        <xsl:param name="element"/>
+        <xsl:variable name="localSegment" select="f:getLocalSegmentForElements($element)"/>
+        <xsl:variable name="delimiters" select="'[\s]'"/>
+        <xsl:sequence
+            select="
+                if (fn:matches($localSegment, $delimiters)) then
+                    fn:true()
+                else
+                    fn:false()"
+        />
+    </xsl:function>
+    
 </xsl:stylesheet>
