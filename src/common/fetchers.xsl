@@ -80,6 +80,18 @@
         <xsl:sequence select="root($element)//connector[target/@xmi:idref = $element/@xmi:idref]"/>        
     </xsl:function>
     
+    <xd:doc>
+        <xd:desc>fetch the xmi:conenctor with a given name</xd:desc>
+        <xd:param name="name"/>
+        <xd:param name="root"/>
+    </xd:doc>
+    <xsl:function name="f:getConnectorByName" as="node()*">
+        <xsl:param name="name" as="xs:string"/>
+        <xsl:param name="root" as="node()"/>
+        <xsl:sequence
+            select="$root//connectors/connector[@name | target/role/@name | source/role/@name = $name]"
+        />
+    </xsl:function>
     
     
 </xsl:stylesheet>

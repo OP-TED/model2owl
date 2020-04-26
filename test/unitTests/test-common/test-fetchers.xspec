@@ -112,5 +112,22 @@
         <x:expect label="result" test="()"/>
     </x:scenario>
 
+    <x:scenario label="getConnectorByName - valid">
+        <x:call function="f:getConnectorByName">
+            <x:param name="name">epo:hasCountryCode</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/"/>             
+        </x:call>
+        <x:expect label="result" test="count(/connector)=2"/>
+    </x:scenario>
+    
+    <x:scenario label="getConnectorByName - invalid">
+        <x:call function="f:getConnectorByName">
+            <x:param name="name">epo:hasCountryCode123</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/"/>             
+        </x:call>
+        <x:expect label="result" test="()"/>
+    </x:scenario>
 
 </x:description>
