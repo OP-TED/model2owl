@@ -18,9 +18,8 @@
 
     <xd:doc>
         <xd:desc>Getting all classes and attributes and show only the ones with unmet conventions
-            [class->common-name-58] [class->common-name-57] [class->common-name-11]
-            [class->common-description-12] [class->common-stereotype-13] [class-connectors-16]
-            [class-attributes-15] [class-name-14] </xd:desc>
+            [class->common-name-11] [class->common-description-12] [class->common-stereotype-13]
+        </xd:desc>
     </xd:doc>
 
 
@@ -198,7 +197,8 @@
 
 
     <xd:doc>
-        <xd:desc/>
+        <xd:desc>[common-stereotype-10] - The $stereotypeName$ stareotype is applied to
+            $elementName$. Stereotypes are discouraged in the current practice with some exceptions. </xd:desc>
         <xd:param name="class"/>
     </xd:doc>
     <xsl:template name="stereotypeProvided">
@@ -255,8 +255,8 @@
 
 
     <xd:doc>
-        <xd:desc>The name of the element $IdRef$ is missing. Please provide one respecing the syntax
-            "prefix:localSegment".</xd:desc>
+        <xd:desc>[common-name-1] - The name of the element $IdRef$ is missing. Please provide one
+            respecing the syntax "prefix:localSegment".</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
     <xsl:template name="missingName">
@@ -272,8 +272,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>The name of element $elementName$ is missing a prefix. The name should comprise a
-            prefix respecing the syntax "prefix:localSegment".</xd:desc>
+        <xd:desc>[common-name-2] - The name of element $elementName$ is missing a prefix. The name
+            should comprise a prefix respecing the syntax "prefix:localSegment".</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
     <xsl:template name="missingNamePrefix">
@@ -289,8 +289,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>The name of $elementName$ is missing a local segment. Please provide one respecing
-            the syntax "prefix:localSegment".".</xd:desc>
+        <xd:desc>[common-name-3] - The name of $elementName$ is missing a local segment. Please
+            provide one respecing the syntax "prefix:localSegment".".</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
     <xsl:template name="missingLocalSegmentName">
@@ -306,8 +306,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>The name prefix is invalid in $value$. Please provide a short prefix name
-            containing only alphanumeric characters [a-zA-Z0-9]+.</xd:desc>
+        <xd:desc>[common-name-4] - The name prefix is invalid in $value$. Please provide a short
+            prefix name containing only alphanumeric characters [a-zA-Z0-9]+.</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
     <xsl:template name="invalidNamePrefix">
@@ -324,9 +324,9 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>The local name segment is invalid in $value$. Please provide a concise label using
-            alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with
-            tokens delimited by single spaces.</xd:desc>
+        <xd:desc>[common-name-5] - The local name segment is invalid in $value$. Please provide a
+            concise label using alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase,
+            or possibly with tokens delimited by single spaces.</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
     <xsl:template name="invalidNameLocalSegment">
@@ -344,8 +344,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>The local name segment $value$ starts with an invalid character. The local segment
-            must start with a letter or underscore. </xd:desc>
+        <xd:desc>[common-name-6] - The local name segment $value$ starts with an invalid character.
+            The local segment must start with a letter or underscore. </xd:desc>
         <xd:param name="class"/>
     </xd:doc>
     <xsl:template name="invalidFirstCharacterInLocalSegment">
@@ -362,8 +362,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>The local name segment $value$ contains token delimiters. It is best if the names
-            are camel cased and delimiters removed. </xd:desc>
+        <xd:desc>[common-name-7] - The local name segment $value$ contains token delimiters. It is
+            best if the names are camel cased and delimiters removed. </xd:desc>
         <xd:param name="class"/>
     </xd:doc>
     <xsl:template name="delimitersInTheLocalSegment">
@@ -381,8 +381,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>The name $value$ should be unique. The $elementType1/[parent1/]value$ has the same
-            name as $elementType2/[parent2/]value$. </xd:desc>
+        <xd:desc>[common-name-8] - The name $value$ should be unique. The
+            $elementType1/[parent1/]value$ has the same name as $elementType2/[parent2/]value$. </xd:desc>
         <xd:param name="class"/>
     </xd:doc>
     <xsl:template name="uniqueName">
