@@ -48,7 +48,7 @@
             </skos:prefLabel>
 
             <xsl:if test="$documentation != ''">
-                <rdfs:comment rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
+                <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </rdfs:comment>
             </xsl:if>
@@ -72,7 +72,7 @@
             </skos:prefLabel>
 
             <xsl:if test="$documentation != ''">
-                <skos:definition rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
+                <skos:definition xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
             </xsl:if>
@@ -135,7 +135,7 @@
             </skos:prefLabel>
 
             <xsl:if test="$documentation != ''">
-                <rdfs:comment rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
+                <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </rdfs:comment>
             </xsl:if>
@@ -192,10 +192,10 @@
                 <xsl:value-of select="./@xmi:idref"/>
             </rdfs:comment>
             <xsl:if test="boolean($documentation)">
-                <rdfs:comment rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
+                <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </rdfs:comment>
-                <skos:definition rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML">
+                <skos:definition xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
             </xsl:if>

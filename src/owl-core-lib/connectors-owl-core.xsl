@@ -26,6 +26,7 @@
 
     <xsl:import href="../common/fetchers.xsl"/>
     <xsl:import href="../common/utils.xsl"/>
+    <xsl:import href="../common/formatters.xsl"/>
 
     <xd:doc>
         <xd:desc/>
@@ -56,26 +57,89 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc/>
+        <xd:desc>apply the generic connector generator to Associations</xd:desc>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
-        
-        <xsl:variable name="targetRole" select="./target/role/@name"/>
-        <xsl:variable name="sourceRole" select="./source/role/@name"/>
-        
-        <owl:ObjectProperty rdf:about="">
-            <rdfs:label xml:lang="en"></rdfs:label>
-            <skos:prefLabel xml:lang="en"></skos:prefLabel>
-            <skos:definition rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"></skos:definition>
-            <rdfs:comment rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"></rdfs:comment>
-        </owl:ObjectProperty>
+        <xsl:call-template name="genericConnector"/>       
     </xsl:template>
     
     <xd:doc>
-        <xd:desc/>
+        <xd:desc>apply the generic connector generator to Dependencies</xd:desc>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
-        <p>This is a generalization</p>
+        <xsl:call-template name="genericConnector"/>     
+    </xsl:template>
+
+    <xd:doc>
+        <xd:desc>build an owl:ObjectProperty from every end of a connector that has a name. This
+            template is not concerned with validity or correctness of the connector itself, that is
+            handled somewhere else</xd:desc>
+    </xd:doc>
+    <xsl:template name="genericConnector">
+        <xsl:variable name="targetRoleURI" select="if (./target/role/@name) then f:buildURIFromElement(./target/role, false(), fn:true()) else ()"/>
+        <xsl:variable name="sourceRole" select="if (./source/role/@name) then  f:buildURIFromElement(./source/role, false(), fn:true()) else ()"/>
+        
+        <xsl:variable name="connectorDocumentation" select="f:formatDocString(./documentation/@value)"/>
+        
+        <xsl:if test="$targetRoleURI">
+            <xsl:variable name="name" select="f:lexicalQNameToWords(./target/role/@name)"/>
+            <xsl:variable name="note" select="f:formatDocString(./target/documentation/@value)"/>
+            
+            <owl:ObjectProperty rdf:about="{$targetRoleURI}">
+                <rdfs:label xml:lang="en">
+                    <xsl:value-of select="$name"/>
+                </rdfs:label>
+                <skos:prefLabel xml:lang="en">
+                    <xsl:value-of select="$name"/>
+                </skos:prefLabel>
+                <xsl:if test="$connectorDocumentation">
+                    <skos:definition xml:lang="en">
+                        <xsl:value-of select="$connectorDocumentation"/>
+                    </skos:definition>
+                    <rdfs:comment xml:lang="en">
+                        <xsl:value-of select="$connectorDocumentation"/>
+                    </rdfs:comment>
+                </xsl:if>
+                <xsl:if test="$note">
+                    <skos:scopeNote xml:lang="en">
+                        <xsl:value-of select="$note"/>
+                    </skos:scopeNote>
+                    <rdfs:comment xml:lang="en">
+                        <xsl:value-of select="$note"/>
+                    </rdfs:comment>
+                </xsl:if>
+            </owl:ObjectProperty>
+        </xsl:if>
+        
+        <xsl:if test="$sourceRole">
+            <xsl:variable name="name" select="f:lexicalQNameToWords(./source/role/@name)"/>
+            <xsl:variable name="note" select="f:formatDocString(./source/documentation/@value)"/>
+            
+            <owl:ObjectProperty rdf:about="{$sourceRole}">
+                <rdfs:label xml:lang="en">
+                    <xsl:value-of select="$name"/>
+                </rdfs:label>
+                <skos:prefLabel xml:lang="en">
+                    <xsl:value-of select="$name"/>
+                </skos:prefLabel>
+                <xsl:if test="$connectorDocumentation">
+                    <skos:definition xml:lang="en">
+                        <xsl:value-of select="$connectorDocumentation"/>
+                    </skos:definition>
+                    <rdfs:comment xml:lang="en">
+                        <xsl:value-of select="$connectorDocumentation"/>
+                    </rdfs:comment>
+                </xsl:if>
+                <xsl:if test="$note">
+                    <skos:scopeNote xml:lang="en">
+                        <xsl:value-of select="$note"/>
+                    </skos:scopeNote>
+                    <rdfs:comment xml:lang="en">
+                        <xsl:value-of select="$note"/>
+                    </rdfs:comment>
+                </xsl:if>
+            </owl:ObjectProperty>
+        </xsl:if>
     </xsl:template>
 
 </xsl:stylesheet>

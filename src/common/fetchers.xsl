@@ -30,8 +30,10 @@
     <xsl:function name="f:getContainingPackageName" as="xs:string">                
         <xsl:param name="element" as="node()"/>        
         <xsl:variable name="root" select="root($element)"/>
+        <xsl:variable name="idRef" select="if ( boolean($element/@xmi:idref) ) then $element/@xmi:idref else $element/../../@xmi:idref"/>
+        
         <xsl:variable name="packageName"
-            select="$root//(ownedAttribute | packagedElement | ownedLiteral)[@xmi:id = $element/@xmi:idref]/ancestor::packagedElement[@xmi:type = 'uml:Package'][position() = 1]/@name"
+            select="$root//(ownedAttribute | packagedElement | ownedLiteral)[@xmi:id = $idRef]/ancestor::packagedElement[@xmi:type = 'uml:Package'][position() = 1]/@name"
         />
         
         <xsl:sequence select="if (boolean($packageName)) then $packageName else $mockUnknownPrefix" />        
