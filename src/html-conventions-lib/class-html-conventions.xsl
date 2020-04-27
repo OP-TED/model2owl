@@ -162,9 +162,6 @@
                     f:generateHtmlWarning(fn:concat('The class ', $class/@name, ' has no attributes provided. A class should define some attributes.'))
                 else
                     ()"/>
-        <xsl:if test="$classNumberOfAttributes = 0">
-            <xsl:sequence select="f:generateHtmlWarning('This class has no attributes')"/>
-        </xsl:if>
     </xsl:template>
 
 
