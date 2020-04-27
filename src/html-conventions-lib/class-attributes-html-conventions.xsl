@@ -72,14 +72,6 @@
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
 
-
-
-            <!--           <xsl:call-template name="classAttributeNameChecker">
-                <xsl:with-param name="classAttribute" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="classAttributeNameConventionChecker">
-                <xsl:with-param name="classAttribute" select="."/>
-            </xsl:call-template>-->
         </xsl:variable>
         <xsl:if test="boolean($classAttributeChecks)">
             <dl>

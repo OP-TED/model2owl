@@ -31,9 +31,9 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="classConventions" as="item()*">
-<!--            <xsl:call-template name="missingName">
+            <xsl:call-template name="missingName">
                 <xsl:with-param name="class" select="."/>
-            </xsl:call-template>-->
+            </xsl:call-template>
             <xsl:call-template name="missingNamePrefix">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
