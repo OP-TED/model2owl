@@ -17,8 +17,9 @@
     <xsl:import href="../html-conventions-lib/utils-html-conventions.xsl"/>
 
     <xd:doc>
-        <xd:desc>Getting all class attributes and show only the ones that have unmet
-            conventions</xd:desc>
+        <xd:desc>Getting all class attributes and show only the ones that have unmet conventions
+            [class-attribute-name-21] [class-attribute-multiplicity-22] [class-attribute-type-23]
+            [class-attribute-type-24] [class-attribute-type-25] </xd:desc>
     </xd:doc>
 
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute" name="attributes">
