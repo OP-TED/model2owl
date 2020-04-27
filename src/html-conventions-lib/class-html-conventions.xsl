@@ -31,9 +31,9 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="classConventions" as="item()*">
-            <xsl:call-template name="missingName">
+<!--            <xsl:call-template name="missingName">
                 <xsl:with-param name="class" select="."/>
-            </xsl:call-template>
+            </xsl:call-template>-->
             <xsl:call-template name="missingNamePrefix">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
@@ -246,8 +246,8 @@
         <xsl:if test="f:isValidQname($className) = fn:false()">
             <xsl:sequence
                 select="
-                    f:generateHtmlWarning(fn:concat('The name ', $className, ' does not match the pattern. 
-                                              The name should respect the syntax prefix:localSegment (similar to the XML QName).'))"
+                    f:generateHtmlWarning(fn:concat('The name ', $className, ' does not match the pattern. ',
+                                              'The name should respect the syntax prefix:localSegment (similar to the XML QName).'))"
             />
         </xsl:if>
     </xsl:template>
@@ -316,8 +316,8 @@
             select="
                 if (f:isInvalidNamePrefix($class)) then
                     f:generateHtmlError(fn:concat('The name prefix ', fn:substring-before($class/@name, ':'),
-                    ' , is invalid. Please provide a short prefix name
-                                          containing only alphanumeric characters [a-zA-Z0-9]+.'))
+                                                  ' , is invalid. Please provide a short prefix name ',
+                                                  'containing only alphanumeric characters [a-zA-Z0-9]+.'))
                 else
                     ()"
         />
@@ -335,9 +335,9 @@
             select="
                 if (f:isInvalidLocalSegmentName($class)) then
                     f:generateHtmlError(fn:concat('The local name segment ', fn:substring-after($class/@name, ':'),
-                    ' , is invalid. Please provide a concise label using
-                                           alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with
-                                           tokens delimited by single spaces.'))
+                                                  ' , is invalid. Please provide a concise label using ',
+                                                  'alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with ',
+                                                  'tokens delimited by single spaces.'))
                 else
                     ()"
         />
@@ -356,8 +356,8 @@
                     ()
                 else
                     f:generateHtmlError(fn:concat('The local name segment ', f:getLocalSegmentForElements($class),
-                    ' starts with an invalid character. The local segment
-                                                   must start with a letter or underscore.'))"
+                                                  ' starts with an invalid character. The local segment ',
+                                                  'must start with a letter or underscore.'))"
         />
     </xsl:template>
 
@@ -372,8 +372,8 @@
             select="
                 if (f:isDelimitersInLocalSegment($class)) then
                     f:generateHtmlWarning(fn:concat('The local name segment ', f:getLocalSegmentForElements($class),
-                    ' contains token delimiters. It is best if the names
-                                            are camel cased and delimiters removed.'))
+                                                    ' contains token delimiters. It is best if the names ',
+                                                    'are camel cased and delimiters removed.'))
                 else
                     ()
                 "
@@ -381,17 +381,21 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[common-name-8] - The name $value$ should be unique. The
-            $elementType1/[parent1/]value$ has the same name as $elementType2/[parent2/]value$. </xd:desc>
+        <xd:desc>[common-name-8] - The name $value$ is not unique. The Concept names
+            should be unique within the model; while the relations may repeat
+            but should not overlap with concept names. </xd:desc>
         <xd:param name="class"/>
     </xd:doc>
     <xsl:template name="uniqueName">
         <xsl:param name="class"/>
         <xsl:variable name="elementsFound" select="f:getElementByName($class/@name, root($class))"/>
+        <xsl:variable name="connectorsFound" select="f:getConnectorByName($class/@name, root($class))"/>
         <xsl:sequence
             select="
-                if (count($elementsFound) > 1) then
-                    f:generateHtmlError(fn:concat('The name ', $class/@name, ' is not unique. The Concept names should be unique within the model; while the relations may repeat but should not overlap with concept names. '))
+            if (count($elementsFound) > 1 or count($connectorsFound) > 0) then
+                    f:generateHtmlError(fn:concat('The name ', $class/@name, ' is not unique. The Concept names ',
+                                                  'should be unique within the model; while the relations may repeat ',
+                                                  'but should not overlap with concept names. '))
                 else
                     ()
                 
