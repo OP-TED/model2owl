@@ -24,52 +24,52 @@
 
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute" name="attributes">
         <xsl:variable name="classAttributeChecks" as="item()*">
-            <xsl:call-template name="attributeNameStartsWithLowerCase">
+            <xsl:call-template name="ca-attributeNameStartsWithLowerCase">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="incorrectDatatype">
+            <xsl:call-template name="ca-incorrectDatatype">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="discouragedDatatype">
+            <xsl:call-template name="ca-discouragedDatatype">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="multiplicityIncorrectFormat">
+            <xsl:call-template name="ca-multiplicityIncorrectFormat">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="undefinedType">
+            <xsl:call-template name="ca-undefinedType">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="stereotypeProvided">
+            <xsl:call-template name="ca-stereotypeProvided">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="missingName">
+            <xsl:call-template name="ca-missingName">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="missingNamePrefix">
+            <xsl:call-template name="ca-missingNamePrefix">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="missingLocalSegmentName">
+            <xsl:call-template name="ca-missingLocalSegmentName">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="invalidNamePrefix">
+            <xsl:call-template name="ca-invalidNamePrefix">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="invalidNameLocalSegment">
+            <xsl:call-template name="ca-invalidNameLocalSegment">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="invalidFirstCharacterInLocalSegment">
+            <xsl:call-template name="ca-invalidFirstCharacterInLocalSegment">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="delimitersInTheLocalSegment">
+            <xsl:call-template name="ca-delimitersInTheLocalSegment">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="uniqueName">
+            <xsl:call-template name="ca-uniqueName">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="undefinedPrefix">
+            <xsl:call-template name="ca-undefinedPrefix">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="namingFormat">
+            <xsl:call-template name="ca-namingFormat">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
 
@@ -111,7 +111,7 @@
         <xd:param name="classAttribute"/>
     </xd:doc>
 
-    <xsl:template name="attributeNameStartsWithLowerCase">
+    <xsl:template name="ca-attributeNameStartsWithLowerCase">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeName" select="$classAttribute/@name"/>
         <xsl:sequence
@@ -140,7 +140,7 @@
         <xd:param name="classAttribute"/>
     </xd:doc>
 
-    <xsl:template name="incorrectDatatype">
+    <xsl:template name="ca-incorrectDatatype">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeName" select="$classAttribute/@name"/>
         <xsl:sequence
@@ -165,7 +165,7 @@
             Attributes should use XSD or RDF datatypes.</xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="discouragedDatatype">
+    <xsl:template name="ca-discouragedDatatype">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeName" select="$classAttribute/@name"/>
         <xsl:sequence
@@ -186,7 +186,7 @@
             proxies. </xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="undefinedType">
+    <xsl:template name="ca-undefinedType">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeName" select="$classAttribute/@name"/>
         <xsl:variable name="classAttributeType" select="$classAttribute/properties/@type"/>
@@ -211,7 +211,7 @@
             should be defined with a digit or *</xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="multiplicityIncorrectFormat ">
+    <xsl:template name="ca-multiplicityIncorrectFormat">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeMultiplicityMin" select="$classAttribute/bounds/@lower"/>
         <xsl:variable name="classAttributeMultiplicityMax" select="$classAttribute/bounds/@upper"/>
@@ -233,7 +233,7 @@
             $elementName$. Stereotypes are discouraged in the current practice with some exceptions. </xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="stereotypeProvided">
+    <xsl:template name="ca-stereotypeProvided">
         <xsl:param name="classAttribute"/>
         <xsl:sequence
             select="
@@ -271,7 +271,7 @@
             respecing the syntax "prefix:localSegment".</xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="missingName">
+    <xsl:template name="ca-missingName">
         <xsl:param name="classAttribute"/>
         <xsl:sequence
             select="
@@ -288,7 +288,7 @@
             should comprise a prefix respecing the syntax "prefix:localSegment".</xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="missingNamePrefix">
+    <xsl:template name="ca-missingNamePrefix">
         <xsl:param name="classAttribute"/>
         <xsl:sequence
             select="
@@ -305,7 +305,7 @@
             provide one respecing the syntax "prefix:localSegment".".</xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="missingLocalSegmentName">
+    <xsl:template name="ca-missingLocalSegmentName">
         <xsl:param name="classAttribute"/>
         <xsl:sequence
             select="
@@ -322,7 +322,7 @@
             prefix name containing only alphanumeric characters [a-zA-Z0-9]+.</xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="invalidNamePrefix">
+    <xsl:template name="ca-invalidNamePrefix">
         <xsl:param name="classAttribute"/>
         <xsl:sequence
             select="
@@ -342,7 +342,7 @@
             or possibly with tokens delimited by single spaces.</xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="invalidNameLocalSegment">
+    <xsl:template name="ca-invalidNameLocalSegment">
         <xsl:param name="classAttribute"/>
         <xsl:sequence
             select="
@@ -361,7 +361,7 @@
             The local segment must start with a letter or underscore. </xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="invalidFirstCharacterInLocalSegment">
+    <xsl:template name="ca-invalidFirstCharacterInLocalSegment">
         <xsl:param name="classAttribute"/>
         <xsl:sequence
             select="
@@ -380,7 +380,7 @@
             best if the names are camel cased and delimiters removed. </xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="delimitersInTheLocalSegment">
+    <xsl:template name="ca-delimitersInTheLocalSegment">
         <xsl:param name="classAttribute"/>
         <xsl:sequence
             select="
@@ -400,8 +400,9 @@
             concept names. </xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="uniqueName">
+    <xsl:template name="ca-uniqueName">
         <xsl:param name="classAttribute"/>
+        <xsl:if test="boolean($classAttribute/@name)">
         <xsl:variable name="elementsFound"
             select="f:getElementByName($classAttribute/@name, root($classAttribute))"/>
         <xsl:sequence
@@ -415,7 +416,9 @@
                 
                 "
         />
+        </xsl:if>
     </xsl:template>
+    
     
     <xd:doc>
         <xd:desc>[common-name-57]-The prefix $value$ is not defined. A prefix must be associated to
@@ -423,7 +426,7 @@
         <xd:param name="classAttribute"/>
     </xd:doc>
     
-    <xsl:template name="undefinedPrefix">
+    <xsl:template name="ca-undefinedPrefix">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeName" select="$classAttribute/@name"/>
         <xsl:if test="not(f:isValidNamespace($classAttributeName))">
@@ -442,7 +445,7 @@
         <xd:param name="classAttribute"/>
     </xd:doc>
     
-    <xsl:template name="namingFormat">
+    <xsl:template name="ca-namingFormat">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeName" select="$classAttribute/@name"/>
         <xsl:if test="f:isValidQname($classAttributeName) = fn:false()">
