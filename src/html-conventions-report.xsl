@@ -15,16 +15,17 @@
     
     
     
+    <xsl:import href="common/checkers.xsl"/>
     <xsl:import href="html-conventions-lib/html-selectors.xsl"/>
     <xsl:import href="html-conventions-lib/class-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/class-attributes-html-conventions.xsl"/>
-    <xsl:import href="html-conventions-lib/enumeration-html-conventions.xsl"/>
+    <!--<xsl:import href="html-conventions-lib/enumeration-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/enumeration-items-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/data-type-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/packages-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/association-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/generalization-html-conventions.xsl"/>
-    <xsl:import href="html-conventions-lib/dependency-html-conventions.xsl"/>
+    <xsl:import href="html-conventions-lib/dependency-html-conventions.xsl"/>-->
     
     
     

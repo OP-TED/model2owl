@@ -20,7 +20,7 @@
 	
 	This architecture is organised in \textit{horizontal layers} and vertically slicing \textit{components}. The \textit{components} reflect the organisation of the formal ontology based on a logical content division of the UML conceptual model into packages and modules. This division increases the maintainability of entire content. The models and their components are not disconnected from one another. The relations between them are represented in Figure \ref{fig:components} where each component is represented as an UML package. The conceptual model serves as the single source of truth, from which the three components of the formal model are derived. Each of these components can be further divided into modules. 
 	
-	The main ontology packages are: the \textit{core ontology}, \textit{data shapes}, and \textit{formal ontology restrictions}. These formal modules are derived from the conceptual model through model transformations as described in Section \ref{sec:process-approach} following the rules laid out in \citet{costetchi2020c}.
+	The main ontology packages are: the \textit{core ontology}, \textit{data shapes}, and \textit{formal ontology restrictions}. These formal modules are derived from the conceptual model through model transformations as described in Section \ref{sec:process-approach} following the rules laid out in \citep{costetchi2020c}.
 	
 	The \textit{core ontology} is the foundational, and serves as a backbone for the other components. It establishes the identifiers and the basic definitions of classes and properties.
 	 	
@@ -94,7 +94,7 @@
 	
 	\textit{Shapes Constraint Language (SHACL)} \cite{shacl-spec} is a specification for validating graph-based data against a set of conditions. It provides a concise, uniform syntax for both describing and constraining the contents of an RDF graph. Among others, SHACL includes features to express conditions that constrain the number of values that a property may have, the type of such values, numeric ranges, string matching patterns, and logical combinations of such constraints.
 
-	\textit{Application profiles (AP)} represent a set of constraints on the logical model tying it to a particular system implementation. The application profiles, in this project, must be expressed using SHACL language. \citet{costetchi2016} describes the approach taken by the Publications Office to develop APs and the same style should be maintained for the eProcurement APs. 
+	\textit{Application profiles (AP)} represent a set of constraints on the logical model tying it to a particular system implementation. The application profiles, in this project, must be expressed using SHACL language. The approach taken by the Publications Office to develop APs is described in \citep{costetchi2016}. The same style should be maintained for the eProcurement APs. 
 	
 	The AP must be conceived as extending the core ontology and fleshing the classes and properties with node and property shapes (see \cite[Sec 2.2--2.3]{shacl-spec}). The constraints available in the conceptual model are generic and should be automatically generated. However, when it comes to integration with specific systems, these constraints may not be sufficient, possibly even too rigid at times. Therefore, it is recommended to conceptualise the data shapes not a single fit it all AP but rather to create specific APs as the needs arise. 
 	
@@ -135,9 +135,14 @@
 	
 	Users of OWL \citep{owl2} can actually select between two slightly different semantics: \textit{direct semantics} that corresponds to the Description Logics (DL) \cite{dl-baader2004description}, and \textit{RDF-based semantics} that is based on translation of the OWL axioms into directed graphs. In this document we assume by default the direct semantics. In particular cases (i.e. SPARQL entailments and SHACL data shapes) RDF-based semantics is adopted and is explicitly mentioned in the document. 
 	
-	Description logics provide a concise language for OWL axioms and expressions. DLs are characterised by their expressive features. The description logic that supports all class expressions with $>, \bot, \sqcap, \sqcup, \neg, \exists$ and $\forall$ is known as $\mathcal{ALC}$ (which originally used to be an abbreviation for Attribute Language with Complement). For a formal introduction into DL please consult \citet{dl-baader2004description}.
+	Description logics provide a concise language for OWL axioms and expressions. DLs are characterised by their expressive features. The description logic that supports all class expressions with $>, \bot, \sqcap, \sqcup, \neg, \exists$ and $\forall$ is known as $\mathcal{ALC}$ (which originally used to be an abbreviation for Attribute Language with Complement). For a formal introduction into DL please consult \citep{dl-baader2004description}.
 	
-	Inverse properties are not supported by $\mathcal{ALC}$, and the DL we have introduced above is actually called $\mathcal{ALCI}$ (for $\mathcal{ALC}$ with inverses) \cite{krotzsch2012owl}. Many description logics can be defined by simply listing their supported features. We will use this notation when discussing degrees of expressivity for the ontology layers in Section \ref{sec:expressivity}.
+	Inverse properties are not supported by $\mathcal{ALC}$, and the DL we have introduced above is actually called $\mathcal{ALCI}$ (for $\mathcal{ALC}$ with inverses) \cite{krotzsch2012owl}. Many description logics can be defined by simply listing their supported features. The letter $\mathcal{S}$ is often used as an abbreviation for the ``basic'' DL consisting of $\mathcal{ALC}$ extended with transitive roles (which in the $\mathcal{AL}$ naming scheme would be called $\mathcal{ALCR+}$  ). 
+	
+	The letter $\mathcal{H}$ represents sub-roles (role Hierarchies), $\mathcal{O}$ represents nominals (nOminals), $\mathcal{I}$ represents inverse roles (Inverse), $\mathcal{N}$ represent number restrictions (Number), and $\mathcal{Q}$ represent qualified number restrictions (Qualified). 
+	
+	The integration of a concrete domain/datatype is indicated by appending its name in parenthesis, but sometimes a ``generic'' $\mathcal{D}$ is used to express that some concrete domain/datatype has been integrated. The DL corresponding to the OWL DL ontology language includes all of these constructors and is therefore called
+	$\mathcal{SHOIN(D)}$. We will use this notation when discussing degrees of expressivity for the ontology layers in Section \ref{sec:expressivity}.
 	
 	Computing all interesting logical conclusions of an OWL ontology can be a challenging problem, and reasoning is typically multi-exponential or even undecidable. To address this problem, the recent update OWL 2 of the W3C standard \citep{owl2.0,owl2} introduced three profiles: \textit{OWL EL}, \textit{OWL RL}, and \textit{OWL QL}. These lightweight sublanguages of OWL restrict the available modelling features in order to simplify reasoning. This has led to large improvements in performance and scalability, which has made the OWL 2 profiles very attractive for practitioners \citep{krotzsch2012owl}.
 	
@@ -175,7 +180,7 @@
 	
 	The conceptual model must be expressed UML. It is mostly scoped to class diagrams and the corresponding elements, but additional ones may be employed, provided that there is a clear convention on their interpretation. 
 	
-	The core ontology must be expressed in the simplest OWL language - OWL Lite \cite{owl1}. \citet[Sec.8.3]{owl1} describes the extent of the language in detail specifying what type of axioms are permitted and which are not. Anyway, this language is beyond the expressivity needs of this component, which are enumerated in Section \ref{sec:core-ontology}.
+	The core ontology must be expressed in the simplest OWL language - OWL Lite \cite{owl1}. \citep[Sec.8.3]{owl1} describes the extent of the language in detail specifying what type of axioms are permitted and which are not. Anyway, this language is beyond the expressivity needs of this component, which are enumerated in Section \ref{sec:core-ontology}.
 	
 	\begin{table}[!ht]
 		\centering
@@ -210,7 +215,7 @@
 	
 	\subsection{General considerations and recommendations}
 	\label{sec:considerations}
-	There is a five star rating \cite{berners5star} to measure published data reusability. This rating system is based on four design principles proposed in \citet{berners2006linked}, to which eProcurement ontology subscribes.
+	There is a five star rating \cite{berners5star} to measure published data reusability. This rating system is based on four design principles proposed in \citep{berners2006linked}, to which eProcurement ontology subscribes.
 	
 	\begin{itemize}
 		\item Use Uniform Resource Identifiers (URIs) to uniquely identify
@@ -359,10 +364,10 @@
 			\begin{tabular}{@{}ll@{}}
 				\toprule
 				Purpose            & Pattern                                              \\ \midrule
-				Root reference     & \ptr{\{baseRes\}/resource\{documentRef\}}                 \\
-				Document reference & \ptr{\{baseRes\}/resource/\{documentRef\}/\{documentRef\}} \\
-				Fragment reference & \ptr{\{baseRes\}/resource/\{documentRef\}/\{fragmentRef\}{[}/\{subFragmentRef\}{]}} \\
-				Resources          & \ptr{\{baseRes\}/resource/\{documentRef\}\#\{resourceId\}} \\ \bottomrule
+				Root reference     & \ptr{\{baseData\}/resource\{documentRef\}}                 \\
+				Document reference & \ptr{\{baseData\}/resource/\{documentRef\}/\{documentRef\}} \\
+				Fragment reference & \ptr{\{baseData\}/resource/\{documentRef\}/\{fragmentRef\}{[}/\{subFragmentRef\}{]}} \\
+				Resources          & \ptr{\{baseData\}/resource/\{documentRef\}\#\{resourceId\}} \\ \bottomrule
 			\end{tabular}
 		}
 		\caption{URI patterns for the instance data namespace}
@@ -378,8 +383,8 @@
 		\begin{tabular}{@{}ll@{}}
 			\toprule
 			Purpose   & Pattern                                            \\ \midrule
-			Dataset   & \ptr{\{baseRes\}/metadata/\{datasetId\}}                 \\
-			Resources & \ptr{\{baseRes\}/metadata/\{datasetId\}\#\{resourceId\}} \\ \bottomrule
+			Dataset   & \ptr{\{baseData\}/metadata/\{datasetId\}}                 \\
+			Resources & \ptr{\{baseData\}/metadata/\{datasetId\}\#\{resourceId\}} \\ \bottomrule
 		\end{tabular}
 		\caption{URI patterns for the metadata resources namespace}
 		\label{tab:metadata-patterns}
@@ -394,8 +399,8 @@
 		\begin{tabular}{@{}ll@{}}
 			\toprule
 			Purpose   & Pattern                                       \\ \midrule
-			Sparql    & \ptr{\{baseRes\}/service/sparql/\{dataLakeId\}}     \\
-			Catalogue & \ptr{\{baseRes\}/service/catalogue/\{catalogueId\}} \\ \bottomrule
+			Sparql    & \ptr{\{baseData\}/service/sparql/\{dataLakeId\}}     \\
+			Catalogue & \ptr{\{baseData\}/service/catalogue/\{catalogueId\}} \\ \bottomrule
 		\end{tabular}
 		\caption{URI patterns for the namespace of the services}
 		\label{tab:service-patterns}

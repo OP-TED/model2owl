@@ -1,7 +1,7 @@
 \section{Introduction}
 \label{sec:introduction}
-
- 	This document provides a working definition of what is the architectural stance and the design decisions that shall be adopted for the eProcurement ontology along with the specifications on how to generate it. 
+	
+	This document provides a working definition of what is the architectural stance and the design decisions that shall be adopted for the eProcurement formal ontology along with the specifications how to generate comprising components.
 	
 	\subsection{Background considerations}
 	
@@ -59,7 +59,7 @@
 	
 	Work so far has concentrated on the conceptual modelling of the eNotification phase, taking into consideration the needs of other phases. The UML conceptual model has been created with the forthcoming procurement standard forms (eForms) in mind; the model has not been mapped to the current standard forms.
 	
-	In the 2020 ISA$^2$ work programme a new project has been set up to analyse existing procurement data through the lens of the newly developed conceptual model. This means that the conceptual model needs to be transposed into a formal ontology and a subset of the existing eProcurement data (initially only the notification phase is considered) must be transformed into RDF format such that they instantiate the eProcurement ontology and are conform to a set of predefined data shapes.
+	In the 2020 ISA$^2$ work programme a new project has been set up to analyse existing procurement data through the lens of the newly developed conceptual model. This means that the conceptual model needs to be transposed into a formal ontology and a subset of the existing eProcurement data must be transformed into RDF format such that they instantiate the eProcurement ontology and are conform to a set of predefined data shapes. Initially the notification phase is considered, while the subsequent datasets will be decided at a later stage.
 	
 	Working under the assumption that Steps \ref{step:1}--\ref{step:4} have been completed, the current efforts channel on designing, implementing and executing the necessary tasks in order to accomplish Step \ref{step:5} from the above process. 
 	
@@ -97,9 +97,11 @@
 	
 	The XSLT stylesheets \citep{xslt3-Kay} must be syntactically valid documents and executable with an XSLT engine with predictable output. They may be associated with XSPEC unit tests \cite{xspec-cirulli2017xspec} to ensure correctness.
 	
-	The UML conceptual model must comply with UML standard version 2.5 \citep{uml2.5} and be serialised as XMI document version 2.5.1 \cite{xmi2.5.1}. It also must comply with the conventions agreed with the Publications Office and other stakeholders described in \citet{costetchi2020b}.
+	The source code must be syntactically valid and compilable/interpretable by the corresponding state of the art compiler/interpreter. The source code may be accompanied by the unit tests to ensure the implementation correctness. 
 	
-	The core ontology and the formal restrictions components developed under these specifications must be valid OWL 2 documents in conformance with the conditions listed in \citet{owl2-comformance}. They should be available in at least Turtle and \mbox{RDF/XML} serialisation formats.
+	The UML conceptual model must comply with UML standard version 2.5 \citep{uml2.5} and be serialised as XMI document version 2.5.1 \cite{xmi2.5.1}. It also must comply with the conventions agreed with the Publications Office and other stakeholders described in \citep{costetchi2020b}.
+	
+	The core ontology and the formal restrictions components developed under these specifications must be valid OWL 2 documents in conformance with the conditions listed in \citep{owl2-comformance}. They should be available in at least Turtle and \mbox{RDF/XML} serialisation formats.
 	
 	The data shapes component must be valid SHACL documents respecting the normative parts of the specification provided in \cite{shacl-spec}.
 	
