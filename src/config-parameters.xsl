@@ -62,5 +62,6 @@
     <xsl:variable name="stereotypeValidOnClasses" select="('Abstract')"/>
     <xsl:variable name="stereotypeValidOnDatatypes" select="()"/>
     <xsl:variable name="stereotypeValidOnEnumerations" select="()"/>
+    <xsl:variable name="stereotypeValidOnPackages" select="()"/>
 
 </xsl:stylesheet>

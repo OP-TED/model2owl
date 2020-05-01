@@ -240,7 +240,10 @@
                 $element/properties/@stereotype = $stereotypeValidOnEnumerations) or
                 ($element/@xmi:type = 'uml:DataType' and
                 not(boolean($element/properties/@stereotype)) or
-                $element/properties/@stereotype = $stereotypeValidOnDatatypes)
+                $element/properties/@stereotype = $stereotypeValidOnDatatypes) or
+                ($element/@xmi:type = 'uml:Package' and
+                not(boolean($element/properties/@stereotype)) or
+                $element/properties/@stereotype = $stereotypeValidOnPackages)
                 ) then
                     fn:true()
                 else
