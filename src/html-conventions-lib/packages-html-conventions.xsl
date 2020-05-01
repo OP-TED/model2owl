@@ -18,7 +18,8 @@
 
 
     <xd:doc>
-        <xd:desc>Getting all packages and show only the ones that have unmet conventions</xd:desc>
+        <xd:desc>Getting all packages and show only the ones that have unmet conventions
+            [package-name-43] [package-name-46]</xd:desc>
     </xd:doc>
 
     <xsl:template match="element[@xmi:type = 'uml:Package']">
@@ -130,8 +131,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[common-name-1] - The name of the element $IdRef$ is missing. Please provide one
-            respecing the syntax "prefix:localSegment".</xd:desc>
+        <xd:desc>[package-name-46] - The name of the package $IdRef$ is missing.  Packages must be named".</xd:desc>
         <xd:param name="package"/>
     </xd:doc>
     <xsl:template name="p-missingName">
@@ -139,8 +139,8 @@
         <xsl:sequence
             select="
             if (f:isElementNameMissing($package)) then
-            f:generateHtmlError(fn:concat('The name of the element ', $package/@xmi:idref,
-                    ' is missing. Please provide one respecing the syntax prefix:localSegment.'))
+            f:generateHtmlError(fn:concat('The name of the package ', $package/@xmi:idref,
+            ' is missing.  Packages must be named.'))
                 else
                     ()"
         />
