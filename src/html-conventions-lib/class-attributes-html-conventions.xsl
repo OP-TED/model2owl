@@ -72,6 +72,12 @@
             <xsl:call-template name="ca-namingFormat">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
+            <xsl:call-template name="ca-missingDescription">
+                <xsl:with-param name="classAttribute" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="ca-attributeCorrespondingDependecy">
+                <xsl:with-param name="classAttribute" select="."/>
+            </xsl:call-template>
 
         </xsl:variable>
         <xsl:if test="boolean($classAttributeChecks)">
@@ -253,7 +259,7 @@
         <xd:param name="classAttribute"/>
     </xd:doc>
 
-    <xsl:template name="missingDescription">
+    <xsl:template name="ca-missingDescription">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeName" select="$classAttribute/@name"/>
         <xsl:variable name="noClassDescription" select="$classAttribute/documentation/not(@value)"/>
@@ -461,7 +467,7 @@
         <xd:desc>Attributes with type Code must have a dependency counter-part with the same name</xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="attributeCorrespondingDependecy">
+    <xsl:template name="ca-attributeCorrespondingDependecy">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeType" select="$classAttribute/properties/@type"/>
         <xsl:sequence
