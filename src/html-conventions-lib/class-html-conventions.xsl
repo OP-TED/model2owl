@@ -106,7 +106,15 @@
     </xd:doc>
     <xsl:template name="getClassName">
         <xsl:param name="class"/>
-        <xsl:value-of select="$class/@name"/>
+        <xsl:variable name="className" select="$class/@name"/>
+        <xsl:choose>
+            <xsl:when test="$class/not(@name) = fn:true()">
+                <xsl:value-of>No name</xsl:value-of>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$className"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <xd:doc>
