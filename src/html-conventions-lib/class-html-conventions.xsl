@@ -31,49 +31,49 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="classConventions" as="item()*">
-            <xsl:call-template name="missingName">
+            <xsl:call-template name="c-missingName">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="missingNamePrefix">
+            <xsl:call-template name="c-missingNamePrefix">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="missingLocalSegmentName">
+            <xsl:call-template name="c-missingLocalSegmentName">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="invalidFirstCharacterInLocalSegment">
+            <xsl:call-template name="c-invalidFirstCharacterInLocalSegment">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="invalidNamePrefix">
+            <xsl:call-template name="c-invalidNamePrefix">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="invalidNameLocalSegment">
+            <xsl:call-template name="c-invalidNameLocalSegment">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="delimitersInTheLocalSegment">
+            <xsl:call-template name="c-delimitersInTheLocalSegment">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="uniqueName">
+            <xsl:call-template name="c-uniqueName">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="stereotypeProvided">
+            <xsl:call-template name="c-stereotypeProvided">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="classIsNotPascalNamed">
+            <xsl:call-template name="c-classIsNotPascalNamed">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="underspecifiedClass">
+            <xsl:call-template name="c-underspecifiedClass">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="disconnectedClass">
+            <xsl:call-template name="c-disconnectedClass">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="missingDescription">
+            <xsl:call-template name="c-missingDescription">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="namingFormat">
+            <xsl:call-template name="c-namingFormat">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="undefinedPrefix">
+            <xsl:call-template name="c-undefinedPrefix">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
 
@@ -115,7 +115,7 @@
         <xd:param name="class"/>
     </xd:doc>
 
-    <xsl:template name="disconnectedClass">
+    <xsl:template name="c-disconnectedClass">
         <xsl:param name="class"/>
         <xsl:sequence
             select="
@@ -134,7 +134,7 @@
         <xd:param name="class"/>
     </xd:doc>
 
-    <xsl:template name="missingDescription">
+    <xsl:template name="c-missingDescription">
         <xsl:param name="class"/>
         <xsl:variable name="className" select="$class/@name"/>
         <xsl:variable name="noClassDescription" select="$class/properties/not(@documentation)"/>
@@ -153,7 +153,7 @@
         <xd:param name="class"/>
     </xd:doc>
 
-    <xsl:template name="underspecifiedClass">
+    <xsl:template name="c-underspecifiedClass">
         <xsl:param name="class"/>
         <xsl:variable name="classNumberOfAttributes" select="count($class/attributes/attribute)"/>
         <xsl:sequence
@@ -161,10 +161,8 @@
                 if ($classNumberOfAttributes = 0) then
                     f:generateHtmlWarning(fn:concat('The class ', $class/@name, ' has no attributes provided. A class should define some attributes.'))
                 else
-                    ()"/>
-        <xsl:if test="$classNumberOfAttributes = 0">
-            <xsl:sequence select="f:generateHtmlWarning('This class has no attributes')"/>
-        </xsl:if>
+                    ()"
+        />
     </xsl:template>
 
 
@@ -174,7 +172,7 @@
         <xd:param name="class"/>
     </xd:doc>
 
-    <xsl:template name="classIsNotPascalNamed">
+    <xsl:template name="c-classIsNotPascalNamed">
         <xsl:param name="class"/>
         <xsl:variable name="className" select="$class/@name"/>
         <xsl:sequence
@@ -201,7 +199,7 @@
             $elementName$. Stereotypes are discouraged in the current practice with some exceptions. </xd:desc>
         <xd:param name="class"/>
     </xd:doc>
-    <xsl:template name="stereotypeProvided">
+    <xsl:template name="c-stereotypeProvided">
         <xsl:param name="class"/>
         <xsl:sequence
             select="
@@ -221,7 +219,7 @@
         <xd:param name="class"/>
     </xd:doc>
 
-    <xsl:template name="undefinedPrefix">
+    <xsl:template name="c-undefinedPrefix">
         <xsl:param name="class"/>
         <xsl:variable name="className" select="$class/@name"/>
         <xsl:if test="not(f:isValidNamespace($className))">
@@ -240,14 +238,14 @@
         <xd:param name="class"/>
     </xd:doc>
 
-    <xsl:template name="namingFormat">
+    <xsl:template name="c-namingFormat">
         <xsl:param name="class"/>
         <xsl:variable name="className" select="$class/@name"/>
         <xsl:if test="f:isValidQname($className) = fn:false()">
             <xsl:sequence
                 select="
-                    f:generateHtmlWarning(fn:concat('The name ', $className, ' does not match the pattern. 
-                                              The name should respect the syntax prefix:localSegment (similar to the XML QName).'))"
+                    f:generateHtmlWarning(fn:concat('The name ', $className, ' does not match the pattern. ',
+                    'The name should respect the syntax prefix:localSegment (similar to the XML QName).'))"
             />
         </xsl:if>
     </xsl:template>
@@ -259,7 +257,7 @@
             respecing the syntax "prefix:localSegment".</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
-    <xsl:template name="missingName">
+    <xsl:template name="c-missingName">
         <xsl:param name="class"/>
         <xsl:sequence
             select="
@@ -276,7 +274,7 @@
             should comprise a prefix respecing the syntax "prefix:localSegment".</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
-    <xsl:template name="missingNamePrefix">
+    <xsl:template name="c-missingNamePrefix">
         <xsl:param name="class"/>
         <xsl:sequence
             select="
@@ -293,7 +291,7 @@
             provide one respecing the syntax "prefix:localSegment".".</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
-    <xsl:template name="missingLocalSegmentName">
+    <xsl:template name="c-missingLocalSegmentName">
         <xsl:param name="class"/>
         <xsl:sequence
             select="
@@ -310,14 +308,14 @@
             prefix name containing only alphanumeric characters [a-zA-Z0-9]+.</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
-    <xsl:template name="invalidNamePrefix">
+    <xsl:template name="c-invalidNamePrefix">
         <xsl:param name="class"/>
         <xsl:sequence
             select="
                 if (f:isInvalidNamePrefix($class)) then
                     f:generateHtmlError(fn:concat('The name prefix ', fn:substring-before($class/@name, ':'),
-                    ' , is invalid. Please provide a short prefix name
-                                          containing only alphanumeric characters [a-zA-Z0-9]+.'))
+                    ' , is invalid. Please provide a short prefix name ',
+                    'containing only alphanumeric characters [a-zA-Z0-9]+.'))
                 else
                     ()"
         />
@@ -329,15 +327,15 @@
             or possibly with tokens delimited by single spaces.</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
-    <xsl:template name="invalidNameLocalSegment">
+    <xsl:template name="c-invalidNameLocalSegment">
         <xsl:param name="class"/>
         <xsl:sequence
             select="
                 if (f:isInvalidLocalSegmentName($class)) then
                     f:generateHtmlError(fn:concat('The local name segment ', fn:substring-after($class/@name, ':'),
-                    ' , is invalid. Please provide a concise label using
-                                           alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with
-                                           tokens delimited by single spaces.'))
+                    ' , is invalid. Please provide a concise label using ',
+                    'alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with ',
+                    'tokens delimited by single spaces.'))
                 else
                     ()"
         />
@@ -348,7 +346,7 @@
             The local segment must start with a letter or underscore. </xd:desc>
         <xd:param name="class"/>
     </xd:doc>
-    <xsl:template name="invalidFirstCharacterInLocalSegment">
+    <xsl:template name="c-invalidFirstCharacterInLocalSegment">
         <xsl:param name="class"/>
         <xsl:sequence
             select="
@@ -356,8 +354,8 @@
                     ()
                 else
                     f:generateHtmlError(fn:concat('The local name segment ', f:getLocalSegmentForElements($class),
-                    ' starts with an invalid character. The local segment
-                                                   must start with a letter or underscore.'))"
+                    ' starts with an invalid character. The local segment ',
+                    'must start with a letter or underscore.'))"
         />
     </xsl:template>
 
@@ -366,14 +364,14 @@
             best if the names are camel cased and delimiters removed. </xd:desc>
         <xd:param name="class"/>
     </xd:doc>
-    <xsl:template name="delimitersInTheLocalSegment">
+    <xsl:template name="c-delimitersInTheLocalSegment">
         <xsl:param name="class"/>
         <xsl:sequence
             select="
                 if (f:isDelimitersInLocalSegment($class)) then
                     f:generateHtmlWarning(fn:concat('The local name segment ', f:getLocalSegmentForElements($class),
-                    ' contains token delimiters. It is best if the names
-                                            are camel cased and delimiters removed.'))
+                    ' contains token delimiters. It is best if the names ',
+                    'are camel cased and delimiters removed.'))
                 else
                     ()
                 "
@@ -381,22 +379,30 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[common-name-8] - The name $value$ should be unique. The
-            $elementType1/[parent1/]value$ has the same name as $elementType2/[parent2/]value$. </xd:desc>
+        <xd:desc>[common-name-8] - The name $value$ is not unique. The Concept names should be
+            unique within the model; while the relations may repeat but should not overlap with
+            concept names. </xd:desc>
         <xd:param name="class"/>
     </xd:doc>
-    <xsl:template name="uniqueName">
+    <xsl:template name="c-uniqueName">
         <xsl:param name="class"/>
-        <xsl:variable name="elementsFound" select="f:getElementByName($class/@name, root($class))"/>
-        <xsl:sequence
-            select="
-                if (count($elementsFound) > 1) then
-                    f:generateHtmlError(fn:concat('The name ', $class/@name, ' is not unique. The Concept names should be unique within the model; while the relations may repeat but should not overlap with concept names. '))
-                else
-                    ()
-                
-                "
-        />
+        <xsl:if test="boolean($class/@name)">
+            <xsl:variable name="elementsFound"
+                select="f:getElementByName($class/@name, root($class))"/>
+            <xsl:variable name="connectorsFound"
+                select="f:getConnectorByName($class/@name, root($class))"/>
+            <xsl:sequence
+                select="
+                    if (count($elementsFound) > 1 or count($connectorsFound) > 0) then
+                        f:generateHtmlError(fn:concat('The name ', $class/@name, ' is not unique. The Concept names ',
+                        'should be unique within the model; while the relations may repeat ',
+                        'but should not overlap with concept names. '))
+                    else
+                        ()
+                    
+                    "
+            />
+        </xsl:if>
     </xsl:template>
 
 </xsl:stylesheet>
