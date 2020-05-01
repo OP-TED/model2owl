@@ -12,17 +12,24 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:f="http://https://github.com/costezki/model2owl#" version="3.0">
-    
+
     <xsl:import href="../common/checkers.xsl"/>
     <xsl:import href="../html-conventions-lib/utils-html-conventions.xsl"/>
-    
+
     <xd:doc>
-        <xd:desc>Getting all enumeration items and show only the ones that have unmet conventions</xd:desc>
+        <xd:desc>Getting all enumeration items and show only the ones that have unmet conventions 
+            [enum-attribute-name-51] [enum-attribute-name-60]</xd:desc>
     </xd:doc>
-    
+
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
         <xsl:variable name="enumerationItemChecks" as="item()*">
-            <xsl:call-template name="enumerationNameConventionChecker">
+            <xsl:call-template name="ea-invalidCharacter">
+                <xsl:with-param name="enumerationItem" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="ea-initialValue">
+                <xsl:with-param name="enumerationItem" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="ea-missingDescription">
                 <xsl:with-param name="enumerationItem" select="."/>
             </xsl:call-template>
         </xsl:variable>
@@ -37,45 +44,85 @@
             </dl>
         </xsl:if>
     </xsl:template>
-    
-    
+
+
     <xd:doc>
         <xd:desc>Getting the enumeration item name</xd:desc>
         <xd:param name="enumerationItem"/>
     </xd:doc>
     <xsl:template name="getEnumerationItemName">
         <xsl:param name="enumerationItem"/>
-        <xsl:value-of select="$enumerationItem/@name"/>
+        <xsl:variable name="enumerationItemName" select="$enumerationItem/@name"/>
+        <xsl:choose>
+            <xsl:when test="$enumerationItem/not(@name) = fn:true()">
+                <xsl:value-of>No name</xsl:value-of>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$enumerationItemName"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
-    
 
-    
+
+
     <xd:doc>
-        <xd:desc>Return warning when the enumeration item name is not a normalized string</xd:desc>
+        <xd:desc>[enum-attribute-name-51] - The enumeration code $value$ contains invalid
+            characters. Enumeration codes (in UML attribute name) should contain only aphanumeric
+            charasters and no spaces.</xd:desc>
         <xd:param name="enumerationItem"/>
     </xd:doc>
-    
-    <xsl:template name="enumerationNameConventionChecker">
+
+    <xsl:template name="ea-invalidCharacter">
         <xsl:param name="enumerationItem"/>
         <xsl:variable name="enumerationItemName" select="$enumerationItem/@name"/>
-        <xsl:if test="not(f:isValidNormalizedString($enumerationItemName))">
-            <xsl:sequence select="f:generateHtmlWarning('The name of this item is not a normalized string. Please change the item name')"/>
-        </xsl:if>
+        <xsl:sequence
+            select="
+                if (f:isValidNormalizedString($enumerationItemName)) then
+                    ()
+                else
+                    f:generateHtmlWarning(fn:concat('The enumeration code ', $enumerationItemName, ' contains invalid characters. Enumeration codes ',
+                    '(in UML attribute name) should contain only aphanumeric charasters and no spaces.'))"
+        />
     </xsl:template>
-    
+
     <xd:doc>
-        <xd:desc>Return warning when the enumeration item doesn't have an initial value</xd:desc>
+        <xd:desc>[enum-attribute-name-60] - The enumeration code $attributeName$ has no initial
+            value. The enumeration code should have an initial value.</xd:desc>
         <xd:param name="enumerationItem"/>
     </xd:doc>
-    
-    <xsl:template name="enumerationItemInitialValueChecker">
+
+    <xsl:template name="ea-initialValue">
         <xsl:param name="enumerationItem"/>
         <xsl:variable name="noInitialValue" select="$enumerationItem/initial/not(@body)"/>
-        <xsl:if test="$noInitialValue = fn:true()">
-            <xsl:sequence select="f:generateHtmlWarning('No initial value found. Please add one')"/>
-        </xsl:if>
+        <xsl:sequence
+            select="
+                if ($noInitialValue = fn:true()) then
+                    f:generateHtmlWarning(fn:concat('The enumeration code ', $enumerationItem/@name, ' has no initial value. The enumeration code ',
+                    'should have an initial value.'))
+                else
+                    ()"
+        />
     </xsl:template>
-    
 
-    
+    <xd:doc>
+        <xd:desc>[common-description-9] - $elementName$ is missing a description. All concepts
+            should be defined or described.</xd:desc>
+        <xd:param name="enumerationItem"/>
+    </xd:doc>
+
+    <xsl:template name="ea-missingDescription">
+        <xsl:param name="enumerationItem"/>
+        <xsl:variable name="enumerationItemName" select="$enumerationItem/@name"/>
+        <xsl:variable name="noEnumerationDescription"
+            select="$enumerationItem/documentation/not(@value)"/>
+        <xsl:sequence
+            select="
+                if ($noEnumerationDescription = fn:true()) then
+                    f:generateHtmlWarning(fn:concat($enumerationItemName, ' is missing a description. All concepts should be defined or described.'))
+                else
+                    ()"
+        />
+    </xsl:template>
+
+
 </xsl:stylesheet>
