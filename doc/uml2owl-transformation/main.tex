@@ -7,6 +7,7 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
 \usepackage{graphicx}
+%\graphicspath{{images/}}
 \usepackage{parskip}
 \usepackage{fancyhdr}
 \usepackage{vmargin}
@@ -18,10 +19,12 @@
 \usepackage{hyperref}
 \usepackage{calc}
 \usepackage{mwe}
-%\usepackage{tabulary}
-
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{wallpaper}
+\usepackage{tikz-uml}
 
 %create custom theorem style such as definition and generalisation
 \usepackage{amsmath,amsthm}
@@ -30,15 +33,11 @@
 
 \bibliographystyle{abbrvnat}
 
-\lstset{
-	language=Clean,
-	basicstyle=\ttfamily\footnotesize,
-	linewidth = \linewidth,
-	frame=single, % adds a frame around the code
-	xleftmargin=.2\textwidth,
-	xrightmargin=.2\textwidth,
-}
+% use it to wrap URI templates 
+%\newcommand*{\ptr}[1]{\footnotesize\ttfamily #1}
 
+\DeclareTextFontCommand{\ptr}{\footnotesize\ttfamily}
+\DeclareTextFontCommand{\texttt}{\footnotesize\ttfamily}
 
 \usepackage[
 type={CC},
@@ -54,46 +53,62 @@ version={4.0},
 	urlcolor=black,
 	colorlinks=true, %set true if you want colored links
 	linktoc=all,     %set to all if you want both sections and subsections linked
-%	linkcolor=blue,  %choose some color if you want links to stand out
+	%	linkcolor=blue,  %choose some color if you want links to stand out
 }
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
-
-\graphicspath{{images/}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \declaretheoremstyle[spaceabove=0.75em,spacebelow=0.75em, headindent=0em, postheadspace=1em,qed={}]{thm}
 \theoremstyle{thm}
 \newtheorem{trule}{Rule}
 
+%\graphicspath{{figures/}}
+
+%\title{1}								
+%% Title
+%\author{Eugeniu Costetchi}						
+%% Author
+%\date{today's date}
+%% Date
+
+%\makeatletter
+%\let\thetitle\@title
+%\let\theauthor\@author
+%\let\thedate\@date
+%\makeatother
+
+%\pagestyle{fancy}
+%\fancyhf{}
+%\lhead{\DelAuthor}
+%\rhead{\DelTitle}
+%\cfoot{\thepage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Title Page
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{title}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\tableofcontents
-\pagebreak
-
-
-\renewcommand{\thesection}{\arabic{section}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Content sections follow
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
- 
-
-\input{content/introduction.tex}
-\input{content/transformation-rules.tex}
-\input{content/final-word.tex}
- 
-\bibliography{../references/references}
- 
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%Title Page
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\input{title}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\tableofcontents
+	\pagebreak
+	
+	
+	\renewcommand{\thesection}{\arabic{section}}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Content sections follow
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
+	
+	\input{content/introduction.tex}
+	\input{content/transformation-rules.tex}
+	\input{content/final-word.tex}
+	
+	\bibliography{../references/references}
+	
 \end{document}
 
 %This template was created by Roza Aceska.

@@ -13,13 +13,13 @@ UML represents atomic classes as named elements of type \textit{Class} without f
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[width=.45\linewidth]{logos/EU_Flag_320_213}
+		\includegraphics[width=.45\linewidth]{images/background.png}
 		\caption{UML class}
 		\label{fig:class-uml}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[width=.45\linewidth]{logos/EU_Flag_320_213}
+		\includegraphics[width=.45\linewidth]{images/background.png}
 		\caption{OWL class}
 		\label{fig:class-owl}
 	\end{subfigure}
@@ -41,6 +41,76 @@ Class: C
 		\item The description of $E$ is transformed into 
 	\end{itemize}		 	
 \end{trule}
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+	\begin{umlpackage}{p}
+	\begin{umlpackage}{sp1}
+	\umlclass[template=T]{A}{
+		n : uint \\ t : float
+	}{}
+	\umlclass[y=-3]{B}{
+		d : double
+	}{
+		\umlvirt{setB(b : B) : void} \\ getB() : B}
+	\end{umlpackage}
+	\begin{umlpackage}[x=10,y=-6]{sp2}
+	\umlinterface{C}{
+		n : uint \\ s : string
+	}{}
+	\end{umlpackage}
+	\umlclass[x=2,y=-10]{D}{
+		n : uint
+	}{}
+	\end{umlpackage}
+	
+	\umlassoc[geometry=-|-, arg1=tata, mult1=*, pos1=0.3, arg2=toto, mult2=1, pos2=2.9, align2=left]{C}{B}
+	\umlunicompo[geometry=-|, arg=titi, mult=*, pos=1.7, stereo=vector]{D}{C}
+	\umlimport[geometry=|-, anchors=90 and 50, name=import]{sp2}{sp1}
+	\umlaggreg[arg=tutu, mult=1, pos=0.8, angle1=30, angle2=60, loopsize=2cm]{D}{D}
+	\umlinherit[geometry=-|]{D}{B}
+	\umlnote[x=2.5,y=-6, width=3cm]{B}{Je suis une note qui concerne la classe B}
+	\umlnote[x=7.5,y=-2]{import-2}{Je suis une note qui concerne la relation d'import}
+	\end{tikzpicture}
+	\caption{This is a UML diagram}
+	\label{fig:diagram1}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+	\begin{umlpackage}{p}
+	\begin{umlpackage}{sp1}
+	\umlclass[template=T]{A}{
+		n : uint \\ t : float
+	}{}
+	\umlclass[y=-3]{B}{
+		d : double
+	}{
+		\umlvirt{setB(b : B) : void} \\ getB() : B}
+	\end{umlpackage}
+	\begin{umlpackage}[x=10,y=-6]{sp2}
+	\umlinterface{C}{
+		n : uint \\ s : string
+	}{}
+	\end{umlpackage}
+	\umlclass[x=2,y=-10]{D}{
+		n : uint
+	}{}
+	\end{umlpackage}
+	
+	\umlassoc[geometry=-|-, arg1=tata, mult1=*, pos1=0.3, arg2=toto, mult2=1, pos2=2.9, align2=left]{C}{B}
+	\umlunicompo[geometry=-|, arg=titi, mult=*, pos=1.7, stereo=vector]{D}{C}
+	\umlimport[geometry=|-, anchors=90 and 50, name=import]{sp2}{sp1}
+	\umlaggreg[arg=tutu, mult=1, pos=0.8, angle1=30, angle2=60, loopsize=2cm]{D}{D}
+	\umlinherit[geometry=-|]{D}{B}
+	\umlnote[x=2.5,y=-6, width=3cm]{B}{Je suis une note qui concerne la classe B}
+	\umlnote[x=7.5,y=-2]{import-2}{Je suis une note qui concerne la relation d'import}
+	\end{tikzpicture}
+	\caption{This is a UML diagram}
+	\label{fig:diagram2}
+\end{figure}
 
 \subsection{Generalisation}
 \label{sec:generalisation}

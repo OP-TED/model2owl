@@ -21,9 +21,13 @@
 \newcommand{\DelVersion}{1.0}
 \newcommand{\DelCorporateAuthor}{Publications Office of the European Union}
 \newcommand{\DelAuthor}{Eugeniu Costetchi}
+\newcommand{\DelReviewer}{Natalie Muric, Ioannis Rousochatzakis, George Vernardos}
 \newcommand{\DelDate}{17 April 2020}
 \newcommand{\DelFilename}{wp1-1-ontology-architecture}
 \newcommand{\DelInitiative}{Initiative for developing eProcurement Ontology}
+\newcommand{\DelPreparation}{This report was prepared for the Publications Office of the European Union by \mbox{Infeurope}.}
+\newcommand{\DelReaders}{project partners, future users, legal practitioners, software developers and architects}
+\newcommand{\DelCopyright}{\textsuperscript{\textcopyright} European Union, 2020 }
 
 
 \pagestyle{empty}
@@ -52,7 +56,7 @@
   \vspace{2mm}
 
   \end{center}
-  \vspace{2cm}
+  \vspace{5cm}
   \textbf{{\large \DelInitiative\\}}
   \vspace{2cm}
   
@@ -91,30 +95,37 @@
 
 \input{disclaimer}
 
-\vspace{4cm}
+\vspace*{\fill}  
+%\vspace{4cm}
+
+\textbf{\footnotesize \DelPreparation}
 
 \begin{flushleft}
 \begin{table*}[!b]
-	  \begin{tabular}{p{4.5cm}p{\textwidth-5cm}}
+	 \caption*{\large\textbf{Document metadata}}
+	 \footnotesize
+	  \begin{tabular}{p{3.6cm}p{\textwidth-5cm}}
 %		\textbf{Project acronym}       &   \DelAcronym \\
 %		\textbf{Project title}    &   \DelInitiative  \\ 
-		\textbf{Document reference} 	&   \DelTitle \\	
+		\textbf{Reference} 	&   \DelNumber: \DelTitle \\	
 		\textbf{Corporate Author}      &   \DelCorporateAuthor \\
 		\textbf{Author}             &   \DelAuthor \\
+		\textbf{Reviewers}          &   \DelReviewer \\
 		\textbf{Contractor}    &   Infeurope S.A. \\
-		\textbf{Framework contract}    &   10688/35368 \\		
+		\textbf{Framework contract}    &   10688/35368 \\	
+		\textbf{Work package}  &   \DelNumber\\    				
 		\textbf{Delivery date}  &   \DelDate \\    
 %		\textbf{Delivery nature}     	&   Report (R) \\
 %		\textbf{Dissemination licence} 	&   \doclicenseLongNameRef \\
 %		\textbf{Filename}           	&   \DelFilename\\
-		\textbf{Suggested readers}    	&   project partners, future users, legal practitioners, software architects\\
+		\textbf{Suggested readers}    	&   \DelReaders \\
 	\end{tabular}
 \end{table*}
 \end{flushleft}
 
 %\vspace*{\fill}  
 
-\placetextbox{0.38}{0.027}{\textsuperscript{\textcopyright} European Union, 2020 }
+\placetextbox{0.37}{0.027}{\footnotesize \DelCopyright}
 
 \clearpage
 \input{abstract}
