@@ -159,9 +159,9 @@
                     then
                         ()
                     else
-                        f:generateHtmlError(fn:concat('The attribute ', $classAttributeName,
-                        ' type is incorrect. Attributes must use datatypes that are either: ',
-                        '(a) UML common types, (b) XSD or RDF datatypes or (c) custom datatype or enumeration.'))
+                    f:generateHtmlError(fn:concat('The attribute type ', $classAttribute/properties/@type,
+                    ' type is invalid. Attributes must use types that are either: (a) UML common types,',
+                    ' (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.'))
                 "
         />
     </xsl:template>
@@ -177,11 +177,13 @@
         <xsl:sequence
             select="
                 if (boolean(f:getUmlDataTypeValues($classAttribute/properties/@type, $umlDataTypesMapping))) then
-                    f:generateHtmlWarning(fn:concat('The attribute ', $classAttributeName,
-                    ' type is deprecated. Attributes should use XSD or RDF datatypes. The suggested alternative is',
+                    f:generateHtmlWarning(fn:concat('The attribute type ', $classAttribute/properties/@type,
+                    ' is deprecated. Attributes should use XSD or RDF datatypes. The suggested alternative for ', 
+                    $classAttribute/properties/@type, ' is ', 
                     f:getUmlDataTypeValues($classAttribute/properties/@type, $umlDataTypesMapping)))
                 else
-                    ()"/>
+                    ()"
+        />
 
     </xsl:template>
 
@@ -478,9 +480,11 @@
                     if (f:hasAttributeCorrespondingDependecy($classAttribute)) then
                         ()
                     else
-                    f:generateHtmlError(fn:concat('The attribute ', $classAttribute/@name, ' is type ', $classAttributeType,
+                    f:generateHtmlError(fn:concat('The attribute ', $classAttribute/@name,
                                                   '  is missing its counterpart as dependency relation.',
-                                                  ' Attributes of type Code should have a counter-part dependency relation with the same name and pointing towards an Enumeration.'))
+                                                  ' Attributes of type Code should have a counter-part ',
+                                                  'dependency relation with the same name and pointing ',
+                                                  'towards an Enumeration.'))
                 else
                     ()"
         />

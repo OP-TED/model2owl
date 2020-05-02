@@ -39,13 +39,21 @@
     <xsl:template match="elements">
         
         <h1 class="selector-heading">Classes</h1>
-        <xsl:apply-templates select="element[@xmi:type = 'uml:Class']"/>
+        <xsl:apply-templates select="element[@xmi:type = 'uml:Class']">
+            <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
+        </xsl:apply-templates>
         <h1 class="selector-heading">Enumerations</h1>
-        <xsl:apply-templates select="element[@xmi:type = 'uml:Enumeration']"/>
+        <xsl:apply-templates select="element[@xmi:type = 'uml:Enumeration']">
+            <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
+        </xsl:apply-templates>
         <h1 class="selector-heading">Data-types</h1>
-        <xsl:apply-templates select="element[@xmi:type = 'uml:DataType']"/>
+        <xsl:apply-templates select="element[@xmi:type = 'uml:DataType']">
+            <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
+        </xsl:apply-templates>
         <h1 class="selector-heading">Packages</h1>
-        <xsl:apply-templates select="element[@xmi:type = 'uml:Package']"/>        
+        <xsl:apply-templates select="element[@xmi:type = 'uml:Package']">
+            <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
+        </xsl:apply-templates>        
     </xsl:template>
     
     <xd:doc>
