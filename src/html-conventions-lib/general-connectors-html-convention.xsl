@@ -82,9 +82,9 @@
         <xsl:param name="connector"/>
         <xsl:sequence
             select="
-                if ($connector/source/role/not(@name)) then
+                if (not(boolean($connector/source/role/@name) and boolean($connector/target/role/@name))) then
                     f:generateHtmlWarning(fn:concat('The connector ', f:getConnectorName($connector),
-                    ' has no inverse. It is recommended that each relation (here UML connector) includes a definition of its inverse.'))
+                    ' has no inverse relation. It is recommended that each relation (here UML connector) includes a definition of its inverse.'))
                 else
                     ()"
         />
@@ -105,7 +105,8 @@
                 if ($connectorDirection = ('Source -&gt; Destination', 'Bi-Directional')) then
                     ()
                 else
-                    f:generateHtmlError(fn:concat('The connector ', f:getConnectorName($connector), ' employ invalid direction ', $connectorDirection,
+                    f:generateHtmlError(fn:concat('The connector ', f:getConnectorName($connector), 
+                    ' employ invalid direction ', $connectorDirection,
                     '. Connectors must employ Source->Destination or Bi-directional directions only.'))"
         />
     </xsl:template>
@@ -137,15 +138,17 @@
     <xsl:template name="co-invalidTargetMultiplicityFormat ">
         <xsl:param name="connector"/>
         <xsl:variable name="multiplicityValue" select="$connector/target/type/@multiplicity"/>
-        <xsl:sequence
-            select="
-                if (fn:matches($multiplicityValue, '^[0-9]..[0-9]$') or fn:matches($multiplicityValue, '^[0-9]..\*$')) then
-                    ()
-                else
-                    f:generateHtmlWarning(fn:concat('The connector ', f:getConnectorName($connector),
-                    ' has target multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'))
-                "
-        />
+        <xsl:if test="boolean($multiplicityValue)">
+            <xsl:sequence
+                select="
+                    if (fn:matches($multiplicityValue, '^[0-9]..[0-9]$') or fn:matches($multiplicityValue, '^[0-9]..\*$')) then
+                        ()
+                    else
+                        f:generateHtmlWarning(fn:concat('The connector ', f:getConnectorName($connector),
+                        ' has target multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'))
+                    "
+            />
+        </xsl:if>
     </xsl:template>
  
     <xd:doc>
@@ -174,16 +177,18 @@
     
     <xsl:template name="co-invalidSourceMultiplicityFormat">
         <xsl:param name="connector"/>
-        <xsl:variable name="multiplicityValue" select="$connector/target/type/@multiplicity"/>
-        <xsl:sequence
-            select="
-            if (fn:matches($multiplicityValue, '^[0-9]..[0-9]$') or fn:matches($multiplicityValue, '^[0-9]..\*$')) then
-            ()
-            else
-            f:generateHtmlWarning(fn:concat('The connector ', f:getConnectorName($connector),
-            ' has source multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'))
-            "
-        />
+        <xsl:variable name="multiplicityValue" select="$connector/source/type/@multiplicity"/>
+        <xsl:if test="boolean($multiplicityValue)">
+            <xsl:sequence
+                select="
+                    if (fn:matches($multiplicityValue, '^[0-9]..[0-9]$') or fn:matches($multiplicityValue, '^[0-9]..\*$')) then
+                        ()
+                    else
+                        f:generateHtmlWarning(fn:concat('The connector ', f:getConnectorName($connector),
+                        ' has source multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'))
+                    "
+            />
+        </xsl:if>
     </xsl:template>
 
     <xd:doc>

@@ -83,7 +83,7 @@
         <xsl:sequence
             select="
                 if ($dependencyDirection != 'Source -&gt; Destination') then
-                    f:generateHtmlWarning('The direction is not Source -&gt; Destination. Dependecy direction can be only Source -&gt; Destination. ')
+                    f:generateHtmlError('The direction is not Source -&gt; Destination. Dependecy direction can be only Source -&gt; Destination. ')
                 else
                     ()"
         />

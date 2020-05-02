@@ -21,6 +21,7 @@
             <h1 class="title">UML Comformance Report</h1>
             <h2>[ <xsl:value-of select="format-date(current-date(), 
                 '[D01]/[M01]/[Y0001]')"/> ]</h2>
+            <!--<h2>[ <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> ]</h2>-->
             
             <!-- begin hardcoded author -->
             <div class="authors col-span">
@@ -49,7 +50,12 @@
                 connectors employed in the procurement model. They are as follows: Classes,
                 Enumerations, Datatypes, Packages, Associations, Dependencies and Generalisations.
                 Each major section lists specific model items that needs correction of errors and at
-                least consideration of warnings. </p>  
+                least consideration of warnings. </p>
+            
+            <!--<h4>Tested:</h4>-->
+            <p>The UML model in file <strong><xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/></strong> 
+                was tested <xsl:value-of select="format-dateTime(current-dateTime(), 
+                    'at [H01]:[m01] on [MNn] [D], [Y0001]')"/>.</p>
         </div>
     </xsl:template>
     
