@@ -35,24 +35,24 @@
             <xsl:call-template name="co-missingTargetRole">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="co-missingInverseRelation">
+            <!--<xsl:call-template name="co-missingInverseRelation">
                 <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
+            </xsl:call-template>-->
             <xsl:call-template name="co-invalidRelationshipDirection">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
             <xsl:call-template name="co-missingTargetMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="co-missingSourceMultiplicity">
+           <!-- <xsl:call-template name="co-missingSourceMultiplicity">
                 <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
+            </xsl:call-template>-->
             <xsl:call-template name="co-invalidTargetMultiplicityFormat">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="co-invalidSourceMultiplicityFormat">
+            <!--<xsl:call-template name="co-invalidSourceMultiplicityFormat">
                 <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
+            </xsl:call-template>-->
             <xsl:call-template name="co-directionAndRolesOutOfSync">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>

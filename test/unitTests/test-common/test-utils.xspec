@@ -326,13 +326,13 @@
     
     <x:scenario label="Scenario for testing function buildURIFromElement for a class with prefix">
         <x:call function="f:buildURIFromElement">
-            <x:param name="element" href="../../testData/src-ap-vb3-test.xmi"
-                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[4]"/>
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[40]"/>
             <x:param name="isPascalCase" select="fn:true()"/>
             <x:param name="isDefaultNamespaceContextualised" select="fn:true()"/>
         </x:call>
         <x:expect label="result"
-            select="xs:anyURI('http://publications.europa.eu/ontology/euvoc#XlNote')"/>
+            select="xs:anyURI('http://data.europa.eu/ePO/ontology#Business')"/>
     </x:scenario>
     
     <x:scenario label="Scenario xsd:integer for testing function buildQNameFromLexicalQName">

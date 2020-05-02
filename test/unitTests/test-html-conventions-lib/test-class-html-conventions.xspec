@@ -22,7 +22,8 @@
     <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class']-finding class with met conventions but with unmet conventions for attributes">
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[37]"/>
         <x:expect label="there is a h2 with the class name" test="boolean(/h2)"/>
-        <x:expect label="there is no h3 with the 'Unmet class conventions' as text" test="not(contains(section/dl/dt/text(), 'Unmet class conventions'))"/>
+        <x:expect label="there is no h3 with the 'Unmet class conventions' as text" test="not(boolean(//h3))"/>
+        <x:expect label="there is the text 'Unmet class conventions' " test="contains(section/dl/dt/text(), 'Unmet class conventions')"/>
     </x:scenario>
     
     <x:scenario label="Scenario for getting the class name">
@@ -38,7 +39,7 @@
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[262]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
-        <x:expect label="expect to be a warning" test="/dd/@class = 'warning'"/> 
+        <x:expect label="expect to be a warning" test="contains(/dd/i/@class,'warning')"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class that is not disconnected">

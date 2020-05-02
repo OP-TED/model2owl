@@ -129,25 +129,6 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[connector-multiplicity-33] - The target role of $connectorName$ has no
-            multiplicity. Cardinality must be provided for each role.</xd:desc>
-        <xd:param name="connector"/>
-    </xd:doc>
-
-    <xsl:template name="co-missingSourceMultiplicity">
-        <xsl:param name="connector"/>
-        <xsl:sequence
-            select="
-                if ($connector/source/type/not(@multiplicity)) then
-                    f:generateHtmlError(fn:concat('The source role of ', f:getConnectorName($connector),
-                    ' has no multiplicity. Cardinality must be provided for each role.'))
-                else
-                    ()"
-        />
-    </xsl:template>
-
-
-    <xd:doc>
         <xd:desc>[connector-multiplicity-34] - The connector $connectorName$ has target multiplicity
             invalidly stated. Multiplicity must be specified in the form ['min'..'max'].</xd:desc>
         <xd:param name="connector"/>
@@ -166,24 +147,42 @@
                 "
         />
     </xsl:template>
-
+ 
+    <xd:doc>
+        <xd:desc>[connector-multiplicity-33] - The target role of $connectorName$ has no
+            multiplicity. Cardinality must be provided for each role.</xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    
+    <xsl:template name="co-missingSourceMultiplicity">
+        <xsl:param name="connector"/>
+        <xsl:sequence
+            select="
+            if ($connector/source/type/not(@multiplicity)) then
+            f:generateHtmlError(fn:concat('The source role of ', f:getConnectorName($connector),
+            ' has no multiplicity. Cardinality must be provided for each role.'))
+            else
+            ()"
+        />
+    </xsl:template>
+    
     <xd:doc>
         <xd:desc>[connector-multiplicity-35] - The connector $connectorName$ has source multiplicity
             invalidly stated. Multiplicity must be specified in the form ['min'..'max'].</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-
+    
     <xsl:template name="co-invalidSourceMultiplicityFormat">
         <xsl:param name="connector"/>
         <xsl:variable name="multiplicityValue" select="$connector/target/type/@multiplicity"/>
         <xsl:sequence
             select="
-                if (fn:matches($multiplicityValue, '^[0-9]..[0-9]$') or fn:matches($multiplicityValue, '^[0-9]..\*$')) then
-                    ()
-                else
-                    f:generateHtmlWarning(fn:concat('The connector ', f:getConnectorName($connector),
-                    ' has source multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'))
-                "
+            if (fn:matches($multiplicityValue, '^[0-9]..[0-9]$') or fn:matches($multiplicityValue, '^[0-9]..\*$')) then
+            ()
+            else
+            f:generateHtmlWarning(fn:concat('The connector ', f:getConnectorName($connector),
+            ' has source multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'))
+            "
         />
     </xsl:template>
 

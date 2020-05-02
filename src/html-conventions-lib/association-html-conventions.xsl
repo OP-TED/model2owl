@@ -42,7 +42,7 @@
             </xsl:call-template>
             <xsl:call-template name="co-missingTargetMultiplicity">
                 <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
+            </xsl:call-template> 
             <xsl:call-template name="co-missingSourceMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -65,5 +65,6 @@
         </dl>
         </xsl:if>
     </xsl:template>
+    
     
 </xsl:stylesheet>
