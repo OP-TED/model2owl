@@ -19,7 +19,7 @@
     <xd:doc>
         <xd:desc>Getting all class attributes and show only the ones that have unmet conventions
             [class-attribute-name-21] [class-attribute-multiplicity-22] [class-attribute-type-23]
-            [class-attribute-type-24] [class-attribute-type-25] </xd:desc>
+            [class-attribute-type-24] [class-attribute-type-25] [class-attribute-counter-part-65] </xd:desc>
     </xd:doc>
 
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute" name="attributes">
@@ -464,7 +464,9 @@
     </xsl:template>
     
     <xd:doc>
-        <xd:desc>Attributes with type Code must have a dependency counter-part with the same name</xd:desc>
+        <xd:desc>[class-attribute-counter-part-65] - The attribute $attrName$ is missing its
+            counterpart as dependency relation. Attributes of type Code should have a counter-part
+            dependency relation with the same name and pointing towards an Enumeration.</xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
     <xsl:template name="ca-attributeCorrespondingDependecy">
@@ -477,8 +479,8 @@
                         ()
                     else
                     f:generateHtmlError(fn:concat('The attribute ', $classAttribute/@name, ' is type ', $classAttributeType,
-                                                  ' and it must have a dependency counter-part with the same name.',
-                                                  ' Create a corresponding dependency for this type of attribute with the same name.'))
+                                                  '  is missing its counterpart as dependency relation.',
+                                                  ' Attributes of type Code should have a counter-part dependency relation with the same name and pointing towards an Enumeration.'))
                 else
                     ()"
         />
