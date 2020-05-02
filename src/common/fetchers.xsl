@@ -95,5 +95,19 @@
         />
     </xsl:function>
     
+    <xd:doc>
+        <xd:desc>fetch all the elements contained in the $element</xd:desc>
+        <xd:param name="element"/>
+
+    </xd:doc>
+    <xsl:function name="f:getPackageElements" as="node()*">
+        <xsl:param name="element" as="node()"/>
+        <xsl:variable name="root" select="root($element)"/>
+        <xsl:variable name="childElementsIds"
+            select="$root//packagedElement[@xmi:type = 'uml:Package' and @xmi:id = $element/@xmi:idref]/*/@xmi:id"/>
+        <xsl:variable name="childElements"
+            select="$root//elements/element[@xmi:idref = $childElementsIds]"/>
+        <xsl:sequence select="$childElements"/>
+    </xsl:function>
     
 </xsl:stylesheet>

@@ -130,4 +130,30 @@
         <x:expect label="result" test="()"/>
     </x:scenario>
 
+    <x:scenario label="getPackageElements - invalid">
+        <x:call function="f:getPackageElements">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[274]"/>
+        </x:call>
+        <x:expect label="result" select="()"/>
+    </x:scenario>
+
+    <x:scenario label="getPackageElements - valid">
+        <x:call function="f:getPackageElements">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[253]"/>
+        </x:call>
+        <x:expect label="result" test="boolean(element)"/>
+        <x:expect label="result" test="count(element)=20"/>
+    </x:scenario>
+
+
+    <x:scenario label="getPackageElements - invalid">
+        <x:call function="f:getPackageElements">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[254]"/>
+        </x:call>
+        <x:expect label="result" select="()"/>
+    </x:scenario>
+
 </x:description>
