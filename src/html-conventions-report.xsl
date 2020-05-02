@@ -28,76 +28,25 @@
     <xsl:import href="html-conventions-lib/dependency-html-conventions.xsl"/>-->
     
     
+    <xsl:import href="html-conventions-lib/fragments/header.xsl"/>
+    <xsl:import href="html-conventions-lib/fragments/introduction.xsl"/>
+    <xsl:import href="html-conventions-lib/fragments/footer.xsl"/>
     
     
     <xsl:template match="/">
         <html lang="en">
-            <head>
-                
-                <link rel="stylesheet" href="static/css/jquery-ui.min.css"/>  
-                <link rel="stylesheet" href="static/css/bootstrap.min.css"/>
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
-                <link rel="stylesheet" href="static/css/pubcss-acm-sig.css"/>
-                <link rel="stylesheet" media="screen" href="static/css/screen.css"/>
-                <link rel="stylesheet" media="print" href="static/css/print.css"/>
-                <link rel="stylesheet" href="static/css/toc_adjustments.css"/>
-            </head>
-            
+            <xsl:call-template name="head"/>
             <body>
-                <header class="counter-skip">
-                    <h1 class="skip-toc">Unmet conventions for eProcurement conceptual model </h1>
-                </header>
+                <xsl:call-template name="title-header"/>
                 <main>
                     <div id="toc" class="tocify"></div>
-                    <h1>Introduction</h1>
-                    <p>Tristique magna sit amet purus gravida quis blandit turpis cursus. Ullamcorper velit sed ullamcorper 
-                        morbi tincidunt ornare massa. Sit amet cursus sit amet dictum sit amet. Condimentum lacinia quis vel 
-                        eros donec ac odio tempor. Eget felis eget nunc lobortis mattis aliquam faucibus purus in. 
-                        Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Viverra aliquet eget sit amet tellus
-                        cras adipiscing. Nulla facilisi morbi tempus iaculis urna id volutpat lacus. Faucibus scelerisque eleifend
-                        donec pretium vulputate sapien nec sagittis. Libero volutpat sed cras ornare arcu dui vivamus arcu. 
-                        Ut consequat semper viverra nam libero justo laoreet sit amet. Consequat mauris nunc congue nisi vitae suscipit. 
-                        Posuere urna nec tincidunt praesent semper feugiat nibh sed. Maecenas pharetra convallis posuere morbi leo urna 
-                        molestie at elementum. Morbi quis commodo odio aenean sed.</p>
-                    <xsl:apply-templates/>               
+                    <xsl:call-template name="abstract"/>
+                    <xsl:apply-templates/>
                 </main>
-                <footer>
-                    This document is generated automatically by the <a href="https://github.com/costezki/model2owl" target="_blank">model2owl tool</a>
-                    and is licenced under a <a href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank">CC BY 4.0 licence</a>
-                </footer>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-                
-                <script src="static/js/jquery-3.4.1.min.js"></script>
-                <script src="static/js/jquery-ui.min.js"></script>
-                <script src="static/js/bootstrap.min.js"></script>
-                <script src="static/js/jquery.tocify.min.js"></script>
-                
-                <script>
-                    $(function () {
-                    //Calls the tocify method on your HTML div.
-                    $("#toc").tocify({
-                    selectors: "h1",
-                    theme: "bootstrap",
-                    hashGenerator: "pretty",
-                    ignoreSelector: ".skip-toc"
-                    });
-                    });
-            
-                     $('.selector-heading').each(function(){
-                     let nextSiblingElementType = jQuery(this).next().prop('nodeName');
-                     if(nextSiblingElementType == "H2" || nextSiblingElementType == "DL" ){
-                     $(this).append(' <i class="fa fa-times-circle error"></i>');
-                    }else{
-                    $(this).append(' <i class="fa fa-check-circle correct"></i>');                        
-                    }
-                    });
-                </script>
+                <xsl:call-template name="footer"/>
             </body>
         </html>
-        
     </xsl:template>
-    
-    
 </xsl:stylesheet>
 
 
