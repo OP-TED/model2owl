@@ -17,8 +17,8 @@
     <xsl:import href="../html-conventions-lib/utils-html-conventions.xsl"/>
 
     <xd:doc>
-        <xd:desc>Getting all enumeration items and show only the ones that have unmet conventions 
-            [enum-attribute-name-51] [enum-attribute-name-60]</xd:desc>
+        <xd:desc>Getting all enumeration items and show only the ones that have unmet conventions
+            [enum-attribute-name-51] [enum-attribute-name-52] [enum-attribute-name-60]</xd:desc>
     </xd:doc>
 
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
@@ -30,6 +30,9 @@
                 <xsl:with-param name="enumerationItem" select="."/>
             </xsl:call-template>
             <xsl:call-template name="ea-missingDescription">
+                <xsl:with-param name="enumerationItem" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="ea-missingAlias">
                 <xsl:with-param name="enumerationItem" select="."/>
             </xsl:call-template>
         </xsl:variable>
@@ -87,7 +90,8 @@
 
     <xd:doc>
         <xd:desc>[enum-attribute-name-60] - The enumeration code $attributeName$ has no initial
-            value. The enumeration code should have an initial value.</xd:desc>
+            value. The enumeration code should have an initial value, which is interpreted as
+            preferred label.</xd:desc>
         <xd:param name="enumerationItem"/>
     </xd:doc>
 
@@ -97,8 +101,8 @@
         <xsl:sequence
             select="
                 if ($noInitialValue = fn:true()) then
-                    f:generateHtmlWarning(fn:concat('The enumeration code ', $enumerationItem/@name, ' has no initial value. The enumeration code ',
-                    'should have an initial value.'))
+                    f:generateHtmlWarning(fn:concat('The enumeration code ', $enumerationItem/@name, ' has no initial ',
+                    'value. The enumeration code should have an initial value, which is interpreted as preferred label.'))
                 else
                     ()"
         />
@@ -124,5 +128,24 @@
         />
     </xsl:template>
 
+    <xd:doc>
+        <xd:desc>[enum-attribute-name-52] - The enumeration item $attributeName$ has no alias. The
+            enumeration item should have an alias, which is interpreted as alternative
+            label.</xd:desc>
+        <xd:param name="enumerationItem"/>
+    </xd:doc>
+
+    <xsl:template name="ea-missingAlias">
+        <xsl:param name="enumerationItem"/>
+        <xsl:variable name="noAliasValue" select="$enumerationItem/style/not(@value)"/>
+        <xsl:sequence
+            select="
+                if ($noAliasValue = fn:true()) then
+                    f:generateHtmlWarning(fn:concat('The enumeration code ', $enumerationItem/@name, ' has no alias. ',
+                    'The enumeration code should have an alias, which is interpreted as preferred label.'))
+                else
+                    ()"
+        />
+    </xsl:template>
 
 </xsl:stylesheet>
