@@ -16,6 +16,7 @@
     
     <xsl:template name="footer">
         <footer class="text-center">
+            <br/><br/>
             <p> This document is generated automatically by the <a
                     href="https://github.com/costezki/model2owl" target="_blank">model2owl tool</a>
                 developed in the context of <a
