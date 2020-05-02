@@ -147,8 +147,18 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Return warning when a package is empty - NOT YET IMPLEMENTED</xd:desc>
+        <xd:desc>[package-owned elements-47 ] - The package $packageName$ is empty. Packages must contain child classes and conenctors (i.e. owned elements). </xd:desc>
         <xd:param name="package"/>
     </xd:doc>
+    <xsl:template name="p-emptyPackage">
+        <xsl:param name="package"/>
+        <xsl:sequence
+            select="
+                if (count(f:getPackageElements($package)) > 0) then
+                    ()
+                else
+                f:generateHtmlError(fn:concat('The package ',$package/@name ,' is empty. Packages must contain child classes and conenctors (i.e. owned elements).'))"
+        />
+    </xsl:template>
 
 </xsl:stylesheet>
