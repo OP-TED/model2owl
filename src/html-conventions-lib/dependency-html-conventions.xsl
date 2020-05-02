@@ -14,7 +14,7 @@
     xmlns:f="http://https://github.com/costezki/model2owl#" version="3.0">
 
     <xsl:import href="../common/checkers.xsl"/>
-    <xsl:import href="../html-conventions-lib/utils-html-conventions.xsl"/>
+    <xsl:import href="utils-html-conventions.xsl"/>
     <xsl:import href="general-connectors-html-convention.xsl"/>
 
 
