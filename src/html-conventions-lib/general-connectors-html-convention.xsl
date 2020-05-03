@@ -192,9 +192,9 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[connector-direction-63] - The connector $connectorName$ has no inverse. It is
-            recommended that each relation (here UML connector) includes a definition of its
-            inverse.</xd:desc>
+        <xd:desc>[connector-direction-63] - The connector direction and roles are out of sync. When
+            the connector direction is "Source->Destination" then only a target role is expected,
+            while for "Bi-Directional" direction source and a target roles are expected.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
 
@@ -204,22 +204,28 @@
         <xsl:variable name="missingSourceRole" select="$connector/source/role/not(@name)"/>
         <xsl:variable name="missingTargetRole" select="$connector/target/role/not(@name)"/>
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
-        <xsl:sequence
-            select="
-                if (not($missingTargetRole) and $missingSourceRole) then
-                    ()
-                else
-                    f:generateHtmlError(fn:concat('The connector ', f:getConnectorName($connector), ' has no inverse. It is recommended that each relation ',
-                    '(here UML connector) includes a definition of its inverse.'))"/>
+            <xsl:sequence
+                select="
+                    if (not($missingTargetRole) and $missingSourceRole) then
+                        ()
+                    else
+                        f:generateHtmlError(fn:concat('The connector direction and roles are out of sync.',
+                        ' The connector direction and roles are out of sync. When the connector direction is',
+                        ' Source->Destination then only a target role is expected, while for Bi-Directional',
+                        ' direction source and a target roles are expected.'))"
+            />
         </xsl:if>
         <xsl:if test="$connectorDirection = 'Bi-Directional'">
-        <xsl:sequence
-            select="
-                if (not($missingTargetRole) and not($missingSourceRole)) then
-                    ()
-                else
-                    f:generateHtmlError(fn:concat('The connector ', f:getConnectorName($connector), ' has no inverse. It is recommended that each relation ',
-                    '(here UML connector) includes a definition of its inverse.'))"/>
+            <xsl:sequence
+                select="
+                    if (not($missingTargetRole) and not($missingSourceRole)) then
+                        ()
+                    else
+                        f:generateHtmlError(fn:concat('The connector direction and roles are out of sync.',
+                        ' The connector direction and roles are out of sync. When the connector direction is',
+                        ' Source->Destination then only a target role is expected, while for Bi-Directional',
+                        ' direction source and a target roles are expected.'))"
+            />
         </xsl:if>
     </xsl:template>
 

@@ -102,43 +102,49 @@
     
     <x:scenario label="Scenario for finding a Connector that has source multiplicity">
         <x:call template="co-missingTargetMultiplicity">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[106]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[106]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has invalid format for target multiplicity">
         <x:call template="co-invalidTargetMultiplicityFormat">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[111]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[111]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has valid format for target multiplicity">
         <x:call template="co-invalidTargetMultiplicityFormat">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[106]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[106]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has invalid format for source multiplicity">
         <x:call template="co-invalidSourceMultiplicityFormat">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[111]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[111]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has valid format for source multiplicity">
         <x:call template="co-invalidSourceMultiplicityFormat">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[106]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[106]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
-
+    
     <x:scenario label="Scenario for finding a Connector that has no role and the direction is source -> destination">
         <x:call template="co-directionAndRolesOutOfSync">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[43]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[43]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
@@ -146,7 +152,8 @@
     
     <x:scenario label="Scenario for finding a Connector that has role and the direction is source -> destination">
         <x:call template="co-directionAndRolesOutOfSync">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[173]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[173]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
@@ -154,14 +161,16 @@
     
     <x:scenario label="Scenario for finding a Connector that has no source or target role and the direction is bi-directional">
         <x:call template="co-directionAndRolesOutOfSync">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has source and target role and the direction is bi-directional">
         <x:call template="co-directionAndRolesOutOfSync">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[430]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[430]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
