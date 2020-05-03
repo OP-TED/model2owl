@@ -32,7 +32,7 @@
     <xsl:function name="f:generateHtmlError">
         <xsl:param name="errorMessage"/>
         <xsl:sequence>
-            <dd><i class="fa fa-exclamation-triangle error"></i> <xsl:value-of select="$errorMessage"/></dd>
+            <dd><i class="fa fa-times-circle error"></i> <xsl:value-of select="$errorMessage"/></dd>
         </xsl:sequence>        
     </xsl:function>    
     

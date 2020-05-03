@@ -1,0 +1,51 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tikz-graffoo}[2020/05/16 Graffoo ontology diagrams using the
+Tikz library]
+
+\RequirePackage{tikz}
+
+\usetikzlibrary{shapes}
+\usetikzlibrary{arrows}
+
+
+% boxes
+
+\tikzstyle{every entity} = []
+\tikzstyle{every class} = []
+\tikzstyle{every class-restriction} = []
+\tikzstyle{every datatype} = []
+\tikzstyle{every datatype-restriction} = []
+\tikzstyle{every instance} = []
+\tikzstyle{every literal} = []
+\tikzstyle{every ontology} = []
+\tikzstyle{every prefixes} = []
+\tikzstyle{every axioms} = []
+
+% connectors
+\tikzstyle{every predicate} = []
+\tikzstyle{every object-property} = []
+\tikzstyle{every data-property} = []
+\tikzstyle{every annotation-property} = []
+
+
+
+%
+%\tikzstyle{task} = [rectangle, draw, black,
+%                      minimum width=4em, minimum height=2em,rounded corners,align=center,every task]
+%
+%\tikzstyle{gateway} = [diamond, draw, black,inner sep=0pt,minimum width=1em, minimum height=1em,every gateway]
+%\tikzstyle{sequence} = [->,>=triangle 45,every sequence]
+%\tikzstyle{message} = [o->,dashed,>=open triangle 45,every sequence]
+%\tikzstyle{association} = [->,densely dotted,>=angle 45,every association]
+%\tikzstyle{event} = [circle,minimum width=1.5em, minimum height=1.5em,draw,every event]
+%\tikzstyle{end event} = [event,ultra thick,every event]
+%\tikzstyle{intermediate event} = [event,double,every event]
+%
+%% addition of data shapes from flowchart
+%\tikzstyle{datatype} = [trapezium, trapezium left angle=110, trapezium right angle=70, draw, black,
+%minimum width=4em, minimum height=2em,align=center, every data]
+%
+%\tikzstyle{data-base} = [cylinder, draw, black,shape border rotate=90,aspect=0.10,minimum width=4em, minimum height=2em,align=center,every persistent-data]
+%
+%\tikzstyle{persistent-data} = [trapezium, trapezium left angle=110, trapezium right angle=70, draw, black, double,
+%minimum width=4em, minimum height=2em,align=center,every persistent-data]

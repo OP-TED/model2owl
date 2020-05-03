@@ -30,7 +30,7 @@
             <link rel="stylesheet" href="static/css/toc_adjustments.css"/>
             
             <link rel="shortcut icon" href=""/>
-            <title>UML Comformance Report</title>
+            <title>UML Conventions Comformance Report</title>
         </head>
     </xsl:template>
     

@@ -7,7 +7,7 @@ This project comprises a set of tools for transforming an UML (v2.5) model from 
 
 This work is developed in the context of [eProcurement ontology project](https://github.com/eprocurementontology/eprocurementontology) financed by ISA2 and led by the [Publications Office of the European Union](https://op.europa.eu/en/).
 
-The architectural design and the formal specifications are provided in the [Ontology architecture document](doc/ontology-architecture/main.pdf).  
+The architectural design and the formal specifications are provided in the [Ontology architecture document](doc/ontology-architecture/wp1-1-ontology-architecture-2020-05-03.pdf).  
 
 ##  Work packages
 
@@ -15,8 +15,8 @@ The project development is split into three phases aiming at providing three kin
 
 | Phase 1 	| Ontology architecture and specifications 	|
 |--------	|-----------------------------------------------------------------------------------------------------------------------------	|
-| WP1.1 	| [Ontology architecture document](doc/ontology-architecture/main.pdf) 	|
-| WP1.2 	| [Technical convention document for the UML representation of the conceptual model](doc/uml-conventions/main.pdf)	|
+| WP1.1 	| [Ontology architecture document](doc/ontology-architecture/wp1-1-ontology-architecture-2020-05-03.pdf) 	|
+| WP1.2 	| [Technical convention document for the UML representation of the conceptual model](doc/uml-conventions/wp1-2-uml-conventions-2020-05-03.pdf)	|
 | WP1.3 	| [Script checking the conformance to the technical conventions of the conceptual model](src/html-conventions-report.xsl) 	|
 | WP1.4 	| [Conformance checking script unit tests](test/unitTests/test-html-conventions-lib) 	|
 
