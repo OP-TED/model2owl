@@ -1,0 +1,788 @@
+%% Copyright 2020 Eugeniu Costetchi
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Eugeniu Costetchi.
+%
+% This work consists of the files tikz-graffoo.sty
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{listings-owl}[05/05/2020 Listings-OWL is a listings extension to provide syntax highlighting for main OWL syntaxes. This library implements Turtle, Manchester, Functional and RDF/XML and syntaxes.]
+\RequirePackage{listings}
+\RequirePackage{xcolor}
+
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[scaled=0.8]{DejaVuSansMono}
+%\RequirePackage[scaled=0.9]{dejavu}
+%\RequirePackage{courier}
+
+%\renewcommand\rmdefault{lmr}
+%\renewcommand\sfdefault{lmss}
+
+
+%\renewcommand*\familydefault{\ttdefault}
+%\renewcommand\ttdefault{DejaVuSans-TLF}
+%\renewcommand{\familydefault}{\sfdefault}
+%\renewcommand{\ttdefault}{dejavu} %phv
+
+% colors
+\definecolor{l-green}{HTML}{008017}
+\definecolor{l-teal}{HTML}{3b8080}
+\definecolor{l-blue-bright}{HTML}{0017fa}
+\definecolor{l-blue-calm}{HTML}{181a7a}
+\definecolor{l-yellow-dirty}{HTML}{b19f21}
+\definecolor{l-red-calm}{HTML}{bd1d23}
+\definecolor{l-gray}{HTML}{9a689a}
+\definecolor{l-gray-pale}{HTML}{f8f8f8}
+
+
+%\definecolor{numb}{HTML}{9a585a}
+%\definecolor{punct}{HTML}{000000}
+%\definecolor{delim}{HTML}{000000}
+%
+
+
+\lstdefinelanguage{SPARQL1.1}%
+{
+	% general style
+	basicstyle = \ttfamily\footnotesize\color{l-blue-calm},		
+	backgroundcolor=\color{l-gray-pale},
+	sensitive=false,%
+	upquote=true,
+	breaklines=true,
+	breakatwhitespace=true,
+	showstringspaces=false,%		
+	% treatment of variables
+	keywords={},%
+	keywordsprefix={\?},%
+	keywordstyle=\itshape\color{l-gray},%
+	% treatment of keywords
+	keywords=[2]{
+				values,
+				a,
+				true,
+				false,		
+				select,
+				construct,
+				describe,
+				ask,
+				where,
+				filter,
+				group\ by,
+				minus,
+				distinct,
+				reduced,
+				from\ named,
+				from,
+				order\ by,
+				desc,
+				asc,
+				limit,
+				offset,
+				bindings,
+				load,
+				clear,
+				drop,
+				create,
+				add,
+				move,
+				copy,
+				insert\ data,
+				delete\ data,
+				delete\ where,
+				delete,
+				insert,
+				using\ named,
+				using,
+				graph,
+				default,
+				named,
+				all,
+				optional,
+				service,
+				silent,
+				bind,
+				union,
+				not\ in,
+				in,
+				as,
+				having,
+				to,
+				prefix,
+				base,		
+	},
+	% treatment of functions
+	keywordstyle=[2]\bfseries\color{l-green},%
+	keywords=[3]{
+				str,
+				lang,
+				langmatches,
+				datatype,
+				bound,
+				iri,
+				uri,
+				bnode,
+				rand,
+				abs,
+				ceil,
+				floor,
+				round,
+				concat,
+				strlen,
+				ucase,
+				lcase,
+				encode\_for\_uri,
+				contains,
+				strstarts,
+				strends,
+				strbefore,
+				strafter,
+				year,
+				month,
+				day,
+				hours,
+				minutes,
+				seconds,
+				timezone,
+				tz,
+				now,
+				md5,
+				sha1,
+				sha256,
+				sha384,
+				sha512,
+				coalesce,
+				if,
+				strlang,
+				strdt,
+				sameterm,
+				isiri,
+				isuri,
+				isblank,
+				isliteral,
+				isnumeric,
+				regex,
+				substr,
+				replace,
+				exists,
+				not\ exists,
+				count,
+				sum,
+				min,
+				max,
+				avg,
+				sample,
+				group\_concat,
+				separator	
+	},
+	keywordstyle=[3]\bfseries\color{l-blue-bright},%	
+	% treatment of comments
+	comment=[l]\#,%line comments	
+	commentstyle=\itshape\color{l-teal},%
+	% treatment of strings
+	stringstyle=\color{l-red-calm},%
+	morestring=[d]',%literals
+	morestring=[d]",%literals
+	% treatment of IRIs
+	moredelim=[s][\color{l-yellow-dirty}]{<}{>},% IRIs
+%	moredelim=*[s][\bfseries\color{l-blue-calm}]{\ }{:},
+%	moredelim=*[s][\bfseries\color{l-green}]{:}{\ },
+	alsoletter={\?},%
+	tabsize=3,
+%	literate=	
+%	{(}{{{\color{delim}{(}}}}{1}	
+%	{)}{{{\color{delim}{)}}}}{1}
+%	{\{}{{{\color{delim}{\{}}}}{1}
+%	{\}}{{{\color{delim}{\}}}}}{1}
+%	{[}{{{\color{delim}{[}}}}{1}
+%	{]}{{{\color{delim}{]}}}}{1},
+}[keywords,comments,strings]
+
+
+\lstdefinelanguage{Functional-style}%
+{
+	% general style
+	basicstyle = \ttfamily\footnotesize\color{l-blue-calm},		
+	backgroundcolor=\color{l-gray-pale},
+	sensitive=True,%
+	upquote=true,
+	breaklines=true,
+	breakatwhitespace=true,
+	showstringspaces=false,%
+	tabsize=3,%		
+	% treatment of datatypes
+	keywords=[2]{
+rdf:langRange,
+rdf:PlainLiteral,
+rdf:XMLLiteral,
+rdfs:Literal,
+xsd:anyURI,
+xsd:base64Binary,
+xsd:boolean,
+xsd:byte,
+xsd:dateTime,
+xsd:dateTimeStamp,
+xsd:decimal,
+xsd:double,
+xsd:float,
+xsd:hexBinary,
+xsd:int,
+xsd:integer,
+xsd:long,
+xsd:Name,
+xsd:NCName,
+xsd:negativeInteger,
+xsd:NMTOKEN,
+xsd:nonNegativeInteger,
+xsd:nonPositiveInteger,
+xsd:normalizedString,
+xsd:pattern,
+xsd:positiveInteger,
+xsd:short,
+xsd:string,
+xsd:token,
+xsd:unsignedByte,
+xsd:unsignedInt,
+xsd:unsignedLong,
+xsd:unsignedShort,
+	},
+	keywordstyle=[2]\color{l-green},%
+	% treatment of reserved predicates
+	keywords=[3]{
+		%rdfs
+		rdfs:comment,
+		rdfs:isDefinedBy,
+		rdfs:label,
+		rdfs:seeAlso,
+		% owl
+		owl:backwardCompatibleWith,
+		owl:bottomDataProperty,
+		owl:bottomObjectProperty,
+		owl:deprecated,
+		owl:incompatibleWith,
+		owl:Nothing,
+		owl:priorVersion,
+		owl:rational,
+		owl:real,
+		owl:versionInfo,
+		owl:Thing,
+		owl:topDataProperty,
+		owl:topObjectProperty,
+		% xsd
+		xsd:maxExclusive,
+		xsd:maxInclusive,
+		xsd:maxLength,
+		xsd:minExclusive,
+		xsd:minInclusive,
+		xsd:minLength,
+		xsd:language,
+		xsd:length,
+	},%
+	keywordstyle=[3]\color{l-blue-bright},%	
+	% treatment of primary keywords
+	keywords=[4]{
+		%misc 1
+		Import,
+		Ontology,
+		Prefix,
+		Annotations,
+		%entities
+		Declaration,
+		Datatype,
+		Class,
+		ObjectProperty,
+		DataProperty,
+		AnnotationProperty,
+		NamedIndividual,
+		Annotation,
+	},%
+	keywordstyle=[4]\bfseries\color{l-blue-calm},%
+	% treatment of secondary keywords
+	keywords=[5]{
+		% constructs
+		ObjectInverseOf,
+		DataIntersectionOf,
+		DataUnionOf,
+		DataComplementOf,
+		DataOneOf,
+		DatatypeRestriction,
+		% class axioms
+		SubClassOf,
+		EquivalentClasses,
+		DisjointClasses,
+		DisjointUnion,
+		% assertions
+		SameIndividual,
+		DifferentIndividuals,
+		ObjectPropertyAssertion,
+		ClassAssertion,
+		NegativeObjectPropertyAssertion,
+		DataPropertyAssertion,
+		NegativeDataPropertyAssertion,
+		AnnotationAssertion,
+	},%
+	keywordstyle=[5]\itshape\bfseries\color{l-blue-calm},%
+	% treatment of tertiary keywords
+	keywords=[6]{
+		% object/data property restrictions
+		ObjectIntersectionOf,
+		ObjectUnionOf,
+		ObjectComplementOf,
+		ObjectOneOf,
+		ObjectSomeValuesFrom,
+		ObjectAllValuesFrom,
+		ObjectHasValue,
+		ObjectHasSelf,
+		ObjectMinCardinality,
+		ObjectMaxCardinality,
+		ObjectExactCardinality,
+		DataSomeValuesFrom,
+		DataAllValuesFrom,
+		DataHasValue,
+		DataMinCardinality,
+		DataMaxCardinality,
+		DataExactCardinality,
+		% object/data property axioms
+		SubObjectPropertyOf,
+		ObjectPropertyChain,
+		ObjectPropertyChain,
+		EquivalentObjectProperties,
+		DisjointObjectProperties,
+		ObjectPropertyDomain,
+		ObjectPropertyRange,
+		InverseObjectProperties,
+		FunctionalObjectProperty,
+		InverseFunctionalObjectProperty,
+		ReflexiveObjectProperty,
+		IrreflexiveObjectProperty,
+		SymmetricObjectProperty,
+		AsymmetricObjectProperty,
+		TransitiveObjectProperty,
+		SubDataPropertyOf,
+		EquivalentDataProperties,
+		DisjointDataProperties,
+		DataPropertyDomain,
+		DataPropertyRange,
+		FunctionalDataProperty,
+		DatatypeDefinition,
+		HasKey,
+		SubAnnotationPropertyOf,
+		SubAnnotationPropertyOf,
+		AnnotationPropertyRange,
+	},%
+	keywordstyle=[6]\itshape\bfseries\color{l-red-calm},%		
+	% treatment of strings
+	stringstyle=\color{l-red-calm},%
+	morestring=[d]',%literals
+	morestring=[d]",%literals
+	% treatment of IRIs
+	moredelim=[s][\color{l-yellow-dirty}]{<}{>},% IRIs
+	alsoletter={:},%
+	%	literate=	
+	%	{(}{{{\color{delim}{(}}}}{1}	
+	%	{)}{{{\color{delim}{)}}}}{1}
+	%	{\{}{{{\color{delim}{\{}}}}{1}
+	%	{\}}{{{\color{delim}{\}}}}}{1}
+	%	{[}{{{\color{delim}{[}}}}{1}
+	%	{]}{{{\color{delim}{]}}}}{1},
+}[keywords,comments,strings]
+
+
+\lstdefinelanguage{Manchester-syntax}%
+{
+	% general style
+	basicstyle = \ttfamily\footnotesize\color{l-blue-calm},		
+	backgroundcolor=\color{l-gray-pale},
+	sensitive=false,%
+	upquote=true,
+	breaklines=true,
+	breakatwhitespace=true,
+	showstringspaces=false,%
+	tabsize=3,%		
+	% treatment of datatypes 
+	keywords=[2]{
+		%Manchester datattypes
+		integer,
+		decimal,
+		float,
+		string,
+		% standard datatypes
+		rdf:langRange,
+		rdf:PlainLiteral,
+		rdf:XMLLiteral,
+		rdfs:Literal,
+		xsd:anyURI,
+		xsd:base64Binary,
+		xsd:boolean,
+		xsd:byte,
+		xsd:dateTime,
+		xsd:dateTimeStamp,
+		xsd:decimal,
+		xsd:double,
+		xsd:float,
+		xsd:hexBinary,
+		xsd:int,
+		xsd:integer,
+		xsd:long,
+		xsd:Name,
+		xsd:NCName,
+		xsd:negativeInteger,
+		xsd:NMTOKEN,
+		xsd:nonNegativeInteger,
+		xsd:nonPositiveInteger,
+		xsd:normalizedString,
+		xsd:pattern,
+		xsd:positiveInteger,
+		xsd:short,
+		xsd:string,
+		xsd:token,
+		xsd:unsignedByte,
+		xsd:unsignedInt,
+		xsd:unsignedLong,
+		xsd:unsignedShort,
+	},
+	keywordstyle=[2]\color{l-yellow-dirty},%
+	% treatment of reserved predicates
+	keywords=[3]{
+		%rdfs
+		rdfs:comment,
+		rdfs:isDefinedBy,
+		rdfs:label,
+		rdfs:seeAlso,
+		% owl
+		owl:backwardCompatibleWith,
+%		owl:bottomDataProperty,
+%		owl:bottomObjectProperty,
+		owl:deprecated,
+		owl:incompatibleWith,
+%		owl:Nothing,
+%		owl:priorVersion,
+%		owl:rational,
+%		owl:real,
+		owl:versionInfo,
+%		owl:Thing,
+%		owl:topDataProperty,
+%		owl:topObjectProperty,
+%		% xsd
+%		xsd:maxExclusive,
+%		xsd:maxInclusive,
+%		xsd:maxLength,
+%		xsd:minExclusive,
+%		xsd:minInclusive,
+%		xsd:minLength,
+%		xsd:language,
+%		xsd:length,
+	},%
+	keywordstyle=[3]\itshape\color{l-yellow-dirty},%	
+	% treatment of primary keywords
+	keywords=[4]{
+		%misc 1
+		Import:,
+		Ontology:,
+		Prefix:,		
+	},%
+	keywordstyle=[4]\bfseries\color{l-blue-bright},%
+	% treatment of secondary keywords
+	keywords=[5]{
+		%entities (blue-strong)
+		Datatype,
+		Class,
+		ObjectProperty,
+		DataProperty,
+		AnnotationProperty,
+		NamedIndividual,
+		Annotation,
+		% object property characteristics (blue-strong)
+		Functional, 
+		InverseFunctional,
+		Reflexive, 
+		Irreflexive, 
+		Symmetric, 
+		Asymmetric, 
+		Transitive,
+	},%
+	keywordstyle=[5]\itshape\bfseries\color{l-blue-calm},%\itshape\bfseries
+	% treatment of tertiary keywords
+	keywords=[6]{
+		% primary frames
+		Datatype:,
+		Class:,
+		DataProperty:,
+		AnnotationProperty:,
+		Individual:,
+		ObjectProperty:,		
+	},%
+	keywordstyle=[6]\bfseries\color{l-green},%\itshape\bfseries\color{l-red-calm}
+	% treatment of quaternary keywords
+	keywords=[7]{
+		% restriction (red)
+		some,
+		only,
+		value,
+		Self,
+		min,
+		max,
+		exactly,
+		some,
+		only,
+		value,
+		min,
+		max,
+		exactly,		
+		% propoerty and datatype expressions
+		inverse,
+		length,
+		minLength,
+		maxLength,
+		minLength,
+		langRange,
+		<=,
+		<,
+		>=,
+		>,
+	},%
+	keywordstyle=[7]\bfseries\color{l-red-calm},%\itshape\bfseries\color{l-red-calm}	
+	% treatment of quaternary keywords
+	keywords=[8]{
+		% logical (blue bold)
+		that,
+		or,
+		and,
+		not,
+	},%
+	keywordstyle=[8]\bfseries\color{l-red-calm},%\itshape\bfseries\color{l-red-calm}
+	% treatment of quaternary keywords
+	keywords=[9]{
+		% misc 1
+		Annotations:,
+		% secondary frames (blue-calm)		
+		EquivalentTo:,		
+		SubClassOf:,
+		DisjointWith:,
+		DisjointUnionOf:,
+		HasKey:,
+		Domain:,
+		Range:,
+		Characteristics:,
+		SubPropertyOf:,
+		InverseOf:,
+		SubPropertyChain:,		
+		Types:,
+		Facts:,
+		SameAs:,
+		DifferentFrom:,		
+		% misc 2 (blue-strong)
+		EquivalentClasses:,
+		DisjointClasses:,
+		EquivalentProperties:,
+		DisjointProperties:,
+		EquivalentProperties:,
+		DisjointProperties:,
+		SameIndividual:,
+		DifferentIndividuals:,	
+	},%
+	keywordstyle=[9]\color{l-green},%\itshape\bfseries\color{l-red-calm}		
+	% treatment of strings
+	stringstyle=\itshape\color{l-teal},%
+	morestring=[d]',%literals
+	morestring=[d]",%literals
+	% treatment of IRIs
+%	moredelim=[s][\color{l-yellow-dirty}]{<}{>},% IRIs
+	alsoletter={:<=>},%
+}[keywords,comments,strings]
+
+
+\lstdefinelanguage{Turtle}%
+{
+	% general style
+	basicstyle = \ttfamily\footnotesize\color{l-blue-calm},		
+	backgroundcolor=\color{l-gray-pale},
+	sensitive=false,%
+	upquote=true,
+	breaklines=true,
+	breakatwhitespace=true,
+	showstringspaces=false,%		
+	% treatment of types
+	keywords={},%
+	keywordsprefix={\?},%
+	keywordstyle=\itshape\color{l-gray},%
+	% treatment of keywords
+	keywords=[2]{
+		rdf:Property,
+		rdfs:Datatype,
+		rdfs:Class,
+		rdf:Statement,
+		rdf:List,
+		rdf:Bag,
+		rdf:Alt,
+		rdf:Seq,
+		rdf:CompoundLiteral,
+		rdfs:Resource,
+		rdfs:Container,
+		owl:Class,
+		owl:DataRange,
+		owl:Annotation,
+		owl:Axiom,
+		owl:NamedIndividual,
+		owl:ObjectProperty,
+		owl:Ontology,
+		owl:OntologyProperty,
+		owl:AnnotationProperty,
+		owl:DatatypeProperty,
+		owl:FunctionalProperty,
+	},
+	% treatment of predicates
+	keywordstyle=[2]\bfseries\color{l-green},% \bfseries
+	keywords=[3]{
+		a,
+		rdf:type,
+		rdfs:subClassOf,
+		rdfs:subPropertyOf,
+		rdfs:isDefinedBy,
+		rdfs:seeAlso,
+		rdfs:range,
+		rdfs:domain,
+		rdfs:comment,
+		rdfs:label,
+		rdfs:member,
+		rdf:subject,
+		rdf:predicate,
+		rdf:object,
+		rdf:value,
+		rdf:first,
+		rdf:rest,
+		rdf:language,
+		rdf:direction,
+		owl:sameAs,
+	},
+	keywordstyle=[3]\color{l-blue-bright},%	
+	% treatment of datatypes
+	keywords=[4]{		
+		rdf:langRange,
+		rdf:JSON,
+		rdf:HTML,
+		rdf:PlainLiteral,
+		rdf:XMLLiteral,
+		rdfs:Literal,		
+		% as xsd prefix
+		xsd:anyURI,
+		xsd:base64Binary,
+		xsd:boolean,
+		xsd:byte,
+		xsd:dateTime,
+		xsd:dateTimeStamp,
+		xsd:decimal,
+		xsd:double,
+		xsd:float,
+		xsd:hexBinary,
+		xsd:int,
+		xsd:integer,
+		xsd:long,
+		xsd:Name,
+		xsd:NCName,
+		xsd:negativeInteger,
+		xsd:NMTOKEN,
+		xsd:nonNegativeInteger,
+		xsd:nonPositiveInteger,
+		xsd:normalizedString,
+		xsd:pattern,
+		xsd:positiveInteger,
+		xsd:short,
+		xsd:string,
+		xsd:token,
+		xsd:unsignedByte,
+		xsd:unsignedInt,
+		xsd:unsignedLong,
+		xsd:unsignedShort,
+		% as xs prefix
+		xs:anyURI,
+		xs:base64Binary,
+		xs:boolean,
+		xs:byte,
+		xs:dateTime,
+		xs:dateTimeStamp,
+		xs:decimal,
+		xs:double,
+		xs:float,
+		xs:hexBinary,
+		xs:int,
+		xs:integer,
+		xs:long,
+		xs:Name,
+		xs:NCName,
+		xs:negativeInteger,
+		xs:NMTOKEN,
+		xs:nonNegativeInteger,
+		xs:nonPositiveInteger,
+		xs:normalizedString,
+		xs:pattern,
+		xs:positiveInteger,
+		xs:short,
+		xs:string,
+		xs:token,
+		xs:unsignedByte,
+		xs:unsignedInt,
+		xs:unsignedLong,
+		xs:unsignedShort,					
+	},
+	keywordstyle=[4]\color{l-green},%	
+	% treatment of comments
+	comment=[l]\#,%line comments	
+	commentstyle=\itshape\color{l-teal},%
+	% treatment of strings
+	stringstyle=\color{l-red-calm},%
+	morestring=[d]',%literals
+	morestring=[d]",%literals
+	% treatment of IRIs
+	moredelim=[s][\color{l-yellow-dirty}]{<}{>},% IRIs
+	%moredelim=[s][\color{l-yellow-dirty}]{[}{]},% IRIs
+	alsoletter={:},%
+	tabsize=3,
+	literate=
+	{,}{{{\color{black}{,}}}}{1}
+	{;}{{{\color{black}{;}}}}{1}
+%	{.}{{{\color{black}{.}}}}{1}
+	{(}{{{\color{black}{(}}}}{1}	
+	{)}{{{\color{black}{)}}}}{1}
+	{[}{{{\color{black}{[}}}}{1}
+	{]}{{{\color{black}{]}}}}{1},
+}[keywords,comments,strings]
+
+
+\lstdefinelanguage{RDF/XML}
+{
+	basicstyle = \ttfamily\footnotesize\color{l-blue-calm},		
+	backgroundcolor=\color{l-gray-pale},
+	sensitive=false,%
+	upquote=true,
+	breaklines=true,
+	breakatwhitespace=true,
+	showstringspaces=false,%	
+    basicstyle=\ttfamily\footnotesize,
+    morestring=[b]",
+    moredelim=[s][\bfseries\color{l-blue-calm}]{<}{\ },
+    moredelim=[s][\bfseries\color{l-blue-calm}]{</}{>},
+    moredelim=[l][\bfseries\color{l-blue-calm}]{/>},
+    moredelim=[l][\bfseries\color{l-blue-calm}]{>},
+    morecomment=[s]{<?}{?>},
+    morecomment=[s]{<!--}{-->},
+    commentstyle=\color{l-teal},
+    stringstyle=\color{l-red-calm},
+    identifierstyle=\color{l-green},
+    %    copied from the JSON definition
+%    numbers=left,
+%    numberstyle=\scriptsize,
+%    stepnumber=1,
+%    numbersep=8pt,
+%    frame=lines,
+%    backgroundcolor=\color{background},    
+}

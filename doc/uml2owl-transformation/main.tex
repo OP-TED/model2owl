@@ -23,19 +23,24 @@
 \usepackage{subcaption}
 \usepackage{booktabs}
 \usepackage{listings}
+\usepackage{footnote}
 \usepackage{wallpaper}
 \usepackage{tikz-uml}
 \usepackage{tikz-graffoo}
+\usepackage{listings-owl}
 
 %create custom theorem style such as definition and generalisation
 \usepackage{amsmath,amsthm}
 \usepackage{thmtools}
 \usepackage{listings}
+\usepackage{enumitem}
 
 \bibliographystyle{abbrvnat}
-
 % use it to wrap URI templates 
 %\newcommand*{\ptr}[1]{\footnotesize\ttfamily #1}
+\newcommand*{\coreComponent}{in core ontology layer}
+\newcommand*{\shaclComponent}{in data shape layer}
+\newcommand*{\reasoningComponent}{in reasnoning layer}
 
 \DeclareTextFontCommand{\ptr}{\footnotesize\ttfamily}
 \DeclareTextFontCommand{\texttt}{\footnotesize\ttfamily}
@@ -58,9 +63,10 @@ version={4.0},
 }
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
-\declaretheoremstyle[spaceabove=0.75em,spacebelow=0.75em, headindent=0em, postheadspace=1em,qed={}]{thm}
+\declaretheoremstyle[spaceabove=0.35em,spacebelow=0.35em, headindent=0em, postheadspace=1em,qed={}]{thm}
 \theoremstyle{thm}
 \newtheorem{trule}{Rule}
+%\numberwithin{trule}{subsection}
 
 %\graphicspath{{figures/}}
 
@@ -103,10 +109,12 @@ version={4.0},
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
 	
-	
+
 	\input{content/introduction.tex}
 	\input{content/transformation-rules.tex}
-	\input{content/final-word.tex}
+	\input{content/transformation-rules2.tex}
+	\input{content/transformation-rules3.tex}	
+	\input{content/transformation-rules4.tex}	
 	
 	\bibliography{../references/references}
 	
