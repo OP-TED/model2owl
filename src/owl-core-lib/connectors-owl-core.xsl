@@ -29,6 +29,7 @@
         <xd:desc/>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
+        <!--<xsl:call-template name="classGeneralization"/>-->
 
         <xsl:variable name="sourceElementURI"
             select="f:buildURIFromElement(f:getElementByIdRef(./source/@xmi:idref, root(.)), fn:true(), fn:true())"/>
@@ -153,5 +154,36 @@
             </owl:ObjectProperty>
         </xsl:if>
     </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>NOT YET FINISHED !!!!!!!!!!!!!!!!!!!
+            [Rule 21]-(Class generalisation in core ontology layer) . Specify subclass axiom
+            for the generalisation between UML classes. Sibling classes must be disjoint with one
+            another</xd:desc>
+    </xd:doc>
+    
+    <xsl:template name="classGeneralization">
+        <xsl:variable name="superClass" select="f:getSuperClassFromGeneralization(.)"/>
+        <xsl:variable name="superClassURI" select="f:buildURIFromElement($superClass, fn:true(), fn:true())"/>
+        <xsl:variable name="subClasses" select="f:getSubClassesFromGeneralization(.)"/>
 
+        <xsl:choose>
+            <xsl:when test="count($subClasses) = 1">
+                <xsl:variable name="subClassURI" select="f:buildURIFromElement($subClasses, fn:true(), fn:true())"/>
+                <owl:Class rdf:about="{$subClassURI}">
+                    <rdfs:subClassOf
+                        rdf:resource="{$superClassURI}"/>
+                </owl:Class>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:for-each select="$subClasses">
+                    <owl:Class rdf:about="http://base.uri/OtherClass">
+                        <rdfs:subClassOf rdf:resource="http://base.uri/SuperClass"/>
+                        <owl:disjointWith rdf:resource="http://base.uri/ClassName"/>
+                    </owl:Class>
+                </xsl:for-each>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
 </xsl:stylesheet>
