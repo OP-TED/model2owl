@@ -96,6 +96,17 @@
     </xsl:function>
     
     <xd:doc>
+        <xd:desc>fetch the xmi:connector with a given idRef</xd:desc>
+        <xd:param name="idRef"/>
+        <xd:param name="root"/>
+    </xd:doc>
+    <xsl:function name="f:getConnectorByIdRef" as="node()*">
+        <xsl:param name="idRef" as="xs:string"/>
+        <xsl:param name="root" as="node()"/>
+        <xsl:sequence select="$root//connectors/connector[@xmi:idref=$idRef]"/>
+    </xsl:function>
+    
+    <xd:doc>
         <xd:desc>fetch all the elements contained in the $element</xd:desc>
         <xd:param name="element"/>
 
@@ -140,5 +151,14 @@
         />
     </xsl:function>
     
+<!--    <xd:doc>
+        <xd:desc/>
+        <xd:param name="generalization"/>
+    </xd:doc>
+    <xsl:function name="f:getConnectorsLinkedByGeneralization">
+        <xsl:param name="generalization"/>
+        <xsl:variable name="sourceIdref" select="$generalization/source/@xmi:idref" as="xs:string"/>
+        <xsl:sequence select="f:getConnectorByIdRef($sourceIdref,root($generalization))"/>
+    </xsl:function>-->
     
 </xsl:stylesheet>

@@ -121,6 +121,15 @@
         <x:expect label="result" test="count(/connector)=2"/>
     </x:scenario>
     
+    <x:scenario label="getConnectorByIdref - valid">
+        <x:call function="f:getConnectorByIdRef">
+            <x:param name="name">EAID_028B9360_46F3_4817_834E_F8B261DFBE96</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
+                select="/"/>             
+        </x:call>
+        <x:expect label="result" test="count(/connector)=1"/>
+    </x:scenario>
+    
     <x:scenario label="getConnectorByName - invalid">
         <x:call function="f:getConnectorByName">
             <x:param name="name">epo:hasCountryCode123</x:param>
@@ -171,6 +180,14 @@
         </x:call>
         <x:expect label="result" test="boolean(element)"/>
         <x:expect label="result" test="count(element)=3"/>
+    </x:scenario>
+    
+    <x:scenario label="get sub Classes using a generalization and super Class">
+        <x:call function="f:getConnectorsLinkedByGeneralization">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[11]"/>
+        </x:call>
+        <x:expect label="result">egege</x:expect>
     </x:scenario>
 
 </x:description>
