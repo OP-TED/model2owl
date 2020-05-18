@@ -142,14 +142,28 @@
     <xsl:template match="element[@xmi:type = 'uml:Package']"/>-->
 
     <xd:doc>
-        <xd:desc>[Rule 25]-(Datatype in core ontology layer) .Specify datatype declaration axiom</xd:desc>
+        <xd:desc>Apply rules to data-types</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:DataType']">
+        <xsl:choose>
+            <xsl:when test="./not(attributes) = fn:true()">
+                <xsl:call-template name="datatypeDeclaration"/>
+            </xsl:when>
+            <xsl:otherwise>
+                 <xsl:call-template name="structuredDatatypes"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>[Rule 25]-(Datatype in core ontology layer) .Specify datatype declaration axiom</xd:desc>
+    </xd:doc>
+    <xsl:template name="datatypeDeclaration">
         <xsl:variable name="name" select="f:lexicalQNameToWords(./@name)"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
         <xsl:variable name="URI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
-
+        
         <rdfs:Datatype rdf:about="{$URI}">
             <rdfs:label xml:lang="en">
                 <xsl:value-of select="$name"/>
@@ -157,7 +171,7 @@
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$name"/>
             </skos:prefLabel>
-
+            
             <xsl:if test="$documentation != ''">
                 <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>
@@ -169,7 +183,38 @@
             <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
         </rdfs:Datatype>
     </xsl:template>
-
+    
+    <xd:doc>
+        <xd:desc>[Rule 26]-(Structured Datatype in core ontology layer) .
+            Specify OWL class declaration axiom for UML structured datatype.</xd:desc>
+    </xd:doc>
+    <xsl:template name="structuredDatatypes">
+        <xsl:variable name="datatypeName" select="f:lexicalQNameToWords(./@name)"/>
+        <xsl:variable name="idref" select="./@xmi:idref"/>
+        <xsl:variable name="datatypeURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
+        
+        
+        <owl:Class rdf:about="{$datatypeURI}">
+            <rdfs:label xml:lang="en">
+                <xsl:value-of select="$datatypeName"/>
+            </rdfs:label>
+            <skos:prefLabel xml:lang="en">
+                <xsl:value-of select="$datatypeName"/>
+            </skos:prefLabel>
+            
+            <xsl:if test="$documentation != ''">
+                <rdfs:comment xml:lang="en">
+                    <xsl:value-of select="$documentation"/>
+                </rdfs:comment>
+                <skos:definition xml:lang="en">
+                    <xsl:value-of select="$documentation"/>
+                </skos:definition>
+            </xsl:if>
+            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
+        </owl:Class>
+    </xsl:template>
+    
     <xd:doc>
         <xd:desc> [Rule 4] -(Attribute in core ontology layer). Specify declaration axiom(s) for
             attribute(s) as OWL data or object properties deciding based on their types. The
