@@ -39,9 +39,12 @@
         <xsl:variable name="targetElementURI"
             select="f:buildURIFromElement(f:getElementByIdRef(./target/@xmi:idref, root(.)), fn:true(), fn:true())"
         />
-                
-                
         <owl:Class rdf:about="{$sourceElementURI}">
+            <rdfs:subClassOf rdf:resource="{$targetElementURI}"/> 
+        </owl:Class>
+                
+                
+<!--        <owl:Class rdf:about="{$sourceElementURI}">
             <xsl:choose>
                 <xsl:when test=" fn:lower-case(./properties/@stereotype)= ('equivalent','complete')">
                     <owl:equivalentClass rdf:resource="{$targetElementURI}"/>
@@ -49,10 +52,10 @@
                 <xsl:otherwise>
                     <rdfs:subClassOf rdf:resource="{$targetElementURI}"/>        
                 </xsl:otherwise>
-            </xsl:choose>
+            </xsl:choose>-->
             
             
-        </owl:Class>
+        <!--</owl:Class>-->
         
     </xsl:template>
 
@@ -67,13 +70,17 @@
         <xd:desc>apply the generic connector generator to Dependencies</xd:desc>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
+        <xsl:variable name="targetType" select="./target/model/@type"/>
+        <xsl:variable name="sourceType" select="./source/model/@type"/>
+        <xsl:if test="$targetType != 'ProxyConnector' and $sourceType != 'ProxyConnector'">
+            <xsl:value-of select="'dddddddd'"/>
+        </xsl:if>
         <xsl:call-template name="genericConnector"/>     
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>build an owl:ObjectProperty from every end of a connector that has a name. This
-            template is not concerned with validity or correctness of the connector itself, that is
-            handled somewhere else</xd:desc>
+        <xd:desc>Rule 11 (Unidirectional association in core ontology layer) .
+            Specify object property declaration axiom for the target end of the association.</xd:desc>
     </xd:doc>
     <xsl:template name="genericConnector">
         <xsl:variable name="targetRoleURI" select="if (./target/role/@name) then f:buildURIFromElement(./target/role, false(), fn:true()) else ()"/>

@@ -31,7 +31,8 @@
         cdata-section-elements="lines"/>
 
     <xd:doc>
-        <xd:desc>Generate a OWL class definition</xd:desc>
+        <xd:desc>[Rule 3] - (Class in data shape layer). Specify declaration axiom for UML Class
+            as SHACL Node Shape with a SPARQL constraint that selects all instances of this class</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
         <xsl:variable name="className" select="f:lexicalQNameToWords(./@name)"/>
@@ -52,13 +53,17 @@
                 <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </rdfs:comment>
+                <skos:definition xml:lang="en">
+                    <xsl:value-of select="$documentation"/>
+                </skos:definition>
             </xsl:if>
             <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
         </owl:Class>
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Generate the skos:ConceptScheme definition</xd:desc>
+        <xd:desc>[Rule 27]-(Enumeration in core ontology layer) .
+            instantiation axiom for an UML enumeration.Specify SKOS concept scheme</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
 
@@ -69,11 +74,17 @@
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
         <!-- generating the actual CS content -->
         <skos:ConceptScheme rdf:about="{$conceptSchemeURI}">
+            <rdfs:label xml:lang="en">
+                <xsl:value-of select="$conceptSchemeName"/>
+            </rdfs:label>
             <skos:prefLabel>
                 <xsl:value-of select="$conceptSchemeName"/>
             </skos:prefLabel>
 
             <xsl:if test="$documentation != ''">
+                <rdfs:comment xml:lang="en">
+                    <xsl:value-of select="$documentation"/>
+                </rdfs:comment>
                 <skos:definition xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
@@ -83,7 +94,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Generate the skos:Concept for each attribute in an enumeration</xd:desc>
+        <xd:desc>[Rule 28]-(Enumeration items in core ontology layer) .
+            instantiation axiom for an UML enumeration item. Specify SKOS concept</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
         <xsl:variable name="conceptName"
@@ -102,13 +114,23 @@
 
         <skos:Concept rdf:about="{$conceptURI}">
             <skos:inScheme rdf:resource="{$conceptSchemeURI}"/>
-            <skos:notation>
+<!--            <skos:notation>
                 <xsl:value-of select="$notation"/>
-            </skos:notation>
-
+            </skos:notation>-->
+            <rdfs:label xml:lang="en">
+                <xsl:value-of select="$conceptName"/>
+            </rdfs:label>
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$conceptName"/>
             </skos:prefLabel>
+            <xsl:if test="$documentation != ''">
+                <rdfs:comment xml:lang="en">
+                    <xsl:value-of select="$documentation"/>
+                </rdfs:comment>
+                <skos:definition xml:lang="en">
+                    <xsl:value-of select="$documentation"/>
+                </skos:definition>
+            </xsl:if>
             <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
         </skos:Concept>
     </xsl:template>
@@ -120,7 +142,7 @@
     <xsl:template match="element[@xmi:type = 'uml:Package']"/>-->
 
     <xd:doc>
-        <xd:desc>Generate a rdfs:Datatype definition</xd:desc>
+        <xd:desc>[Rule 25]-(Datatype in core ontology layer) .Specify datatype declaration axiom</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:DataType']">
         <xsl:variable name="name" select="f:lexicalQNameToWords(./@name)"/>
@@ -140,13 +162,19 @@
                 <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </rdfs:comment>
+                <skos:definition xml:lang="en">
+                    <xsl:value-of select="$documentation"/>
+                </skos:definition>
             </xsl:if>
             <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
         </rdfs:Datatype>
     </xsl:template>
 
     <xd:doc>
-        <xd:desc/>
+        <xd:desc> [Rule 4] -(Attribute in core ontology layer). Specify declaration axiom(s) for
+            attribute(s) as OWL data or object properties deciding based on their types. The
+            attributes with primary types should be treated as data properties, whereas those typed
+            with classes or enumerations should be treated as object properties.></xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
 
@@ -191,9 +219,6 @@
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$name"/>
             </skos:prefLabel>
-            <rdfs:comment >
-                <xsl:value-of select="./@xmi:idref"/>
-            </rdfs:comment>
             <xsl:if test="boolean($documentation)">
                 <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>

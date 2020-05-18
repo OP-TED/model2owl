@@ -110,4 +110,14 @@
         <xsl:sequence select="$childElements"/>
     </xsl:function>
     
+    <xd:doc>
+        <xd:desc>Get the subclases for a class using generalization</xd:desc>
+        <xd:param name="element"/>
+    </xd:doc>
+    <xsl:function name="f:getSubClasses">
+        <xsl:param name="generalization" as="node()"/>
+        /xmi:XMI/xmi:Extension/connectors/connector[./properties/@ea_type = 'Generalization'][target/@xmi:idref='EAID_E84B97D8_2656_498d_B584_D95C2DBBD7A1']/source/model/@name
+        
+    </xsl:function>
+    
 </xsl:stylesheet>
