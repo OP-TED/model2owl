@@ -29,8 +29,18 @@
         <xd:desc/>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
+        <xsl:if
+            test="./source/model/@type = 'ProxyConnector' and 
+            ./target/model/@type = 'ProxyConnector'"
+        >
         <xsl:call-template name="propertyGeneralization"/>
-
+        </xsl:if>
+        <xsl:if
+            test="./source/model/@type = 'Class' and 
+            ./target/model/@type = 'Class'"
+            >
+        <xsl:call-template name="classGeneralization"/>
+        </xsl:if>
         <!--        <xsl:variable name="sourceElementURI"
             select="f:buildURIFromElement(f:getElementByIdRef(./source/@xmi:idref, root(.)), fn:true(), fn:true())"/>
         <xsl:variable name="targetElementURI"
@@ -207,9 +217,9 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>NOT YET FINISHED !!!!!!!!!!!!!!!!!!! [Rule 21]-(Class generalisation in core
-            ontology layer) . Specify subclass axiom for the generalisation between UML classes.
-            Sibling classes must be disjoint with one another</xd:desc>
+        <xd:desc>[Rule 21]-(Class generalisation in core ontology layer) . Specify subclass axiom
+            for the generalisation between UML classes. Sibling classes must be disjoint with one
+            another</xd:desc>
     </xd:doc>
 
     <xsl:template name="classGeneralization">
@@ -217,7 +227,8 @@
         <xsl:variable name="superClassURI"
             select="f:buildURIFromElement($superClass, fn:true(), fn:true())"/>
         <xsl:variable name="subClasses" select="f:getSubClassesFromGeneralization(.)"/>
-
+        <xsl:variable name="subclass" select="f:getElementByIdRef(./source/@xmi:idref, root(.))"/>
+        <xsl:variable name="subclassURI" select="f:buildURIFromElement($subclass, fn:true(), fn:true())"/>
         <xsl:choose>
             <xsl:when test="count($subClasses) = 1">
                 <xsl:variable name="subClassURI"
@@ -227,12 +238,17 @@
                 </owl:Class>
             </xsl:when>
             <xsl:otherwise>
+                <owl:Class rdf:about="{$subclassURI}">
+                    <rdfs:subClassOf rdf:resource="{$superClassURI}"/>
+                </owl:Class>
                 <xsl:for-each select="$subClasses">
-                    <owl:Class rdf:about="http://base.uri/OtherClass">
-                        <rdfs:subClassOf rdf:resource="http://base.uri/SuperClass"/>
-                        <owl:disjointWith rdf:resource="http://base.uri/ClassName"/>
-                    </owl:Class>
-                </xsl:for-each>
+                    <xsl:variable name="siblingURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+                    <xsl:if test="$siblingURI != $subclassURI">
+                        <rdf:Description rdf:about="{$subclassURI}">
+                        <owl:disjointWith rdf:resource="{$siblingURI}"/>
+                        </rdf:Description>
+                    </xsl:if>
+                </xsl:for-each> 
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
