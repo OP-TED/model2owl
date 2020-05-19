@@ -3,46 +3,61 @@
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
-    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" 
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
-    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     stylesheet="../../../src/owl-core-lib/connectors-owl-core.xsl">
-    
-    
-    <x:scenario
-        label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']">
-        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[48]"/>
-        <x:expect label="result" test="boolean(/owl:Class)"/>
-        <x:expect label="result" test="boolean(/owl:Class/rdfs:subClassOf)"/>
-        <x:expect label="result" test="/owl:Class/@rdf:about='http://data.europa.eu/ePO/ontology#AwardCriterion'"/>
-        <x:expect label="result" test="/owl:Class/rdfs:subClassOf/@rdf:resource='http://data.europa.eu/ePO/ontology#ProcurementCriterion'"/>
-    </x:scenario>
+
 
     <x:scenario
+        label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization'] - Proxy connectors">
+        <x:context href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[11]"/>
+        <x:expect label="result" test="boolean(/owl:ObjectProperty)"/>
+        <x:expect label="result" test="boolean(/owl:ObjectProperty/rdfs:subPropertyOf)"/>
+        <x:expect label="result"
+            test="/owl:ObjectProperty/@rdf:about='http://data.europa.eu/ePO/ontology#has'"/>
+        <x:expect label="result"
+            test="/owl:ObjectProperty/rdfs:subPropertyOf/@rdf:resource='http://data.europa.eu/ePO/ontology#hasPersonRole'"
+        />
+    </x:scenario>
+    
+    <x:scenario
+        label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization'] - Classes">
+        <x:context href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[23]"/>
+        <x:expect label="result" test="boolean(/owl:Class)"/>
+        <x:expect label="result" test="boolean(/owl:Class/rdfs:subClassOf)"/>
+        <x:expect label="result" test="boolean(/rdf:Description)"/>
+        <x:expect label="result" test="boolean(/rdf:Description/owl:disjointWith)"/>
+    </x:scenario>
+
+    <!--    <x:scenario
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']">
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[454]"/>
         <x:expect label="result" test="boolean(/owl:Class)"/>
         <x:expect label="result" test="boolean(/owl:Class/owl:equivalentClass)"/>
         <x:expect label="result" test="/owl:Class/@rdf:about='http://xmlns.com/foaf/0.1/Person'"/>
         <x:expect label="result" test="/owl:Class/owl:equivalentClass/@rdf:resource='http://www.w3.org/ns/org#Organization'"/>
-    </x:scenario>
+    </x:scenario>-->
 
     <x:scenario
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Association']">
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[68]"/>
-        
+
         <x:expect label="there is a rdfs:label" test="count(/owl:ObjectProperty/rdfs:label)=2"/>
-        <x:expect label="there is a skos:prefLabel" test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
+        <x:expect label="there is a skos:prefLabel"
+            test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
         <x:expect label="there is a rdfs:comment" test="(boolean(/owl:ObjectProperty/rdfs:comment))"/>
-        <x:expect label="there is a skos:definition" test="(boolean(/owl:ObjectProperty/skos:definition))"/>
-        <x:expect label="there is a correct URI" 
+        <x:expect label="there is a skos:definition"
+            test="(boolean(/owl:ObjectProperty/skos:definition))"/>
+        <x:expect label="there is a correct URI"
             test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/ePO/ontology#hasBeneficialOwner'])"/>
-        <x:expect label="there is a correct URI" 
-            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/ePO/ontology#isRoleOf'])"/>
+        <x:expect label="there is a correct URI"
+            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/ePO/ontology#isRoleOf'])"
+        />
     </x:scenario>
 
     <x:scenario
@@ -50,38 +65,62 @@
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[83]"/>
         <x:expect label="there is a rdfs:label" test="count(/owl:ObjectProperty/rdfs:label)=1"/>
-        <x:expect label="there is a skos:prefLabel" test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
+        <x:expect label="there is a skos:prefLabel"
+            test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
         <x:expect label="there is a rdfs:comment" test="boolean(/owl:ObjectProperty/rdfs:comment)"/>
-        <x:expect label="there is a skos:definition" test="not(boolean(/owl:ObjectProperty/skos:definition))"/>
-        <x:expect label="there is a skos:scopeNote" test="count(/owl:ObjectProperty/skos:scopeNote)=1"/>
-        <x:expect label="there is a correct URI" 
-            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/ePO/ontology#notifiedThrough'])"/>
+        <x:expect label="there is a skos:definition"
+            test="not(boolean(/owl:ObjectProperty/skos:definition))"/>
+        <x:expect label="there is a skos:scopeNote"
+            test="count(/owl:ObjectProperty/skos:scopeNote)=1"/>
+        <x:expect label="there is a correct URI"
+            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/ePO/ontology#notifiedThrough'])"
+        />
     </x:scenario>
-    
+
     <x:scenario
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Dependency']">
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[173]"/>
         <x:expect label="there is a rdfs:label" test="count(/owl:ObjectProperty/rdfs:label)=1"/>
-        <x:expect label="there is a skos:prefLabel" test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
+        <x:expect label="there is a skos:prefLabel"
+            test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
         <x:expect label="there is a rdfs:comment" test="boolean(/owl:ObjectProperty/rdfs:comment)"/>
-        <x:expect label="there is a skos:definition" test="boolean(/owl:ObjectProperty/skos:definition)"/>
-        <x:expect label="there is a skos:scopeNote" test="count(/owl:ObjectProperty/skos:scopeNote)=0"/>
-        <x:expect label="there is a correct URI" 
-            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/ePO/ontology#hasUnofficialLanguage'])"/>
+        <x:expect label="there is a skos:definition"
+            test="boolean(/owl:ObjectProperty/skos:definition)"/>
+        <x:expect label="there is a skos:scopeNote"
+            test="count(/owl:ObjectProperty/skos:scopeNote)=0"/>
+        <x:expect label="there is a correct URI"
+            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/ePO/ontology#hasUnofficialLanguage'])"
+        />
     </x:scenario>
-    
+
     <x:scenario
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Dependency']">
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[162]"/>
         <x:expect label="there is a rdfs:label" test="count(/owl:ObjectProperty/rdfs:label)=1"/>
-        <x:expect label="there is a skos:prefLabel" test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
-        <x:expect label="there is a rdfs:comment" test="not(boolean(/owl:ObjectProperty/rdfs:comment))"/>
-        <x:expect label="there is a skos:definition" test="not(boolean(/owl:ObjectProperty/skos:definition))"/>
-        <x:expect label="there is a skos:scopeNote" test="count(/owl:ObjectProperty/skos:scopeNote)=0"/>
-        <x:expect label="there is a correct URI" 
-            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/ePO/ontology#hasDesignContestType'])"/>
+        <x:expect label="there is a skos:prefLabel"
+            test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
+        <x:expect label="there is a rdfs:comment"
+            test="not(boolean(/owl:ObjectProperty/rdfs:comment))"/>
+        <x:expect label="there is a skos:definition"
+            test="not(boolean(/owl:ObjectProperty/skos:definition))"/>
+        <x:expect label="there is a skos:scopeNote"
+            test="count(/owl:ObjectProperty/skos:scopeNote)=0"/>
+        <x:expect label="there is a correct URI"
+            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/ePO/ontology#hasDesignContestType'])"
+        />
     </x:scenario>
-    
+
+    <x:scenario label="Class with subclasses">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[36]"/>
+        <x:call template="classGeneralization"/>
+        <x:expect label="result" test="boolean(/owl:Class)"/>
+        <x:expect label="result" test="boolean(/owl:Class/rdfs:subClassOf)"/>
+        <x:expect label="result" test="boolean(/rdf:Description)"/>
+        <x:expect label="result" test="boolean(/rdf:Description/owl:disjointWith)"/>
+    </x:scenario>
+
+
 </x:description>

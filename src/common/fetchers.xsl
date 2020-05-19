@@ -96,6 +96,17 @@
     </xsl:function>
     
     <xd:doc>
+        <xd:desc>fetch the xmi:connector with a given idRef</xd:desc>
+        <xd:param name="idRef"/>
+        <xd:param name="root"/>
+    </xd:doc>
+    <xsl:function name="f:getConnectorByIdRef" as="node()*">
+        <xsl:param name="idRef" as="xs:string"/>
+        <xsl:param name="root" as="node()"/>
+        <xsl:sequence select="$root//connectors/connector[@xmi:idref=$idRef]"/>
+    </xsl:function>
+    
+    <xd:doc>
         <xd:desc>fetch all the elements contained in the $element</xd:desc>
         <xd:param name="element"/>
 
@@ -109,5 +120,37 @@
             select="$root//elements/element[@xmi:idref = $childElementsIds]"/>
         <xsl:sequence select="$childElements"/>
     </xsl:function>
+    
+    <xd:doc>
+        <xd:desc>Get the superClass from using a generalization</xd:desc>
+        <xd:param name="generalization"/>
+    </xd:doc>
+    <xsl:function name="f:getSuperClassFromGeneralization">
+        <xsl:param name="generalization" as="node()"/>
+        <!--<xsl:variable name="root" select="root($element)"/>-->
+        <xsl:variable name="superClassId" select="$generalization/target/@xmi:idref" as="xs:string"/>
+        <xsl:sequence select="f:getElementByIdRef($superClassId,root($generalization))"/>
+<!--        /xmi:XMI/xmi:Extension/connectors/connector[./properties/@ea_type = 'Generalization'][target/@xmi:idref='EAID_E84B97D8_2656_498d_B584_D95C2DBBD7A1']/source/model/@name-->
+        
+    </xsl:function>
+    <xd:doc>
+        <xd:desc>Get the subClasses from superClass and a generalization</xd:desc>
+        <xd:param name="generalization"/>
+    </xd:doc>
+    <xsl:function name="f:getSubClassesFromGeneralization">
+        <xsl:param name="generalization" as="node()"/>
+        <xsl:variable name="root" select="root($generalization)"/>
+        <xsl:variable name="superClassId" select="f:getSuperClassFromGeneralization($generalization)/@xmi:idref" as="xs:string"/>
+        <xsl:variable name="subClassesId" select="$root//connectors/connector[./properties/@ea_type = 'Generalization' and target/@xmi:idref=$superClassId]/source/@xmi:idref
+            "/>
+        <xsl:sequence
+            select="
+                for $id in $subClassesId
+                return
+                  f:getElementByIdRef($id, $root)"
+        />
+    </xsl:function>
+    
+    
     
 </xsl:stylesheet>
