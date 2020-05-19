@@ -14,21 +14,21 @@
     
     <x:scenario
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']">
-        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[48]"/>
-        <x:expect label="result" test="boolean(/owl:Class)"/>
-        <x:expect label="result" test="boolean(/owl:Class/rdfs:subClassOf)"/>
-        <x:expect label="result" test="/owl:Class/@rdf:about='http://data.europa.eu/ePO/ontology#AwardCriterion'"/>
-        <x:expect label="result" test="/owl:Class/rdfs:subClassOf/@rdf:resource='http://data.europa.eu/ePO/ontology#ProcurementCriterion'"/>
+        <x:context href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[11]"/>
+        <x:expect label="result" test="boolean(/owl:ObjectProperty)"/>
+        <x:expect label="result" test="boolean(/owl:ObjectProperty/rdfs:subPropertyOf)"/>
+        <x:expect label="result" test="/owl:ObjectProperty/@rdf:about='http://data.europa.eu/ePO/ontology#has'"/>
+        <x:expect label="result" test="/owl:ObjectProperty/rdfs:subPropertyOf/@rdf:resource='http://data.europa.eu/ePO/ontology#hasPersonRole'"/>
     </x:scenario>
 
-    <x:scenario
+<!--    <x:scenario
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']">
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[454]"/>
         <x:expect label="result" test="boolean(/owl:Class)"/>
         <x:expect label="result" test="boolean(/owl:Class/owl:equivalentClass)"/>
         <x:expect label="result" test="/owl:Class/@rdf:about='http://xmlns.com/foaf/0.1/Person'"/>
         <x:expect label="result" test="/owl:Class/owl:equivalentClass/@rdf:resource='http://www.w3.org/ns/org#Organization'"/>
-    </x:scenario>
+    </x:scenario>-->
 
     <x:scenario
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Association']">

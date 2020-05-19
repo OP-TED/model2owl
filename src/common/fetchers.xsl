@@ -151,14 +151,6 @@
         />
     </xsl:function>
     
-<!--    <xd:doc>
-        <xd:desc/>
-        <xd:param name="generalization"/>
-    </xd:doc>
-    <xsl:function name="f:getConnectorsLinkedByGeneralization">
-        <xsl:param name="generalization"/>
-        <xsl:variable name="sourceIdref" select="$generalization/source/@xmi:idref" as="xs:string"/>
-        <xsl:sequence select="f:getConnectorByIdRef($sourceIdref,root($generalization))"/>
-    </xsl:function>-->
+    
     
 </xsl:stylesheet>

@@ -29,16 +29,16 @@
         <xd:desc/>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
-        <!--<xsl:call-template name="classGeneralization"/>-->
+        <xsl:call-template name="propertyGeneralization"/>
 
-        <xsl:variable name="sourceElementURI"
+        <!--        <xsl:variable name="sourceElementURI"
             select="f:buildURIFromElement(f:getElementByIdRef(./source/@xmi:idref, root(.)), fn:true(), fn:true())"/>
         <xsl:variable name="targetElementURI"
             select="f:buildURIFromElement(f:getElementByIdRef(./target/@xmi:idref, root(.)), fn:true(), fn:true())"/>
         <owl:Class rdf:about="{$sourceElementURI}">
             <rdfs:subClassOf rdf:resource="{$targetElementURI}"/>
         </owl:Class>
-
+-->
 
         <!--        <owl:Class rdf:about="{$sourceElementURI}">
             <xsl:choose>
@@ -53,6 +53,57 @@
 
         <!--</owl:Class>-->
 
+    </xsl:template>
+
+    <xd:doc>
+        <xd:desc>Rule 22 (Property generalisation in core ontology layer) . Specify sub-property
+            axiom for the generalisation between UML associations and dependencies.</xd:desc>
+    </xd:doc>
+    <xsl:template name="propertyGeneralization">
+        <xsl:variable name="targetIdref" select="./target/@xmi:idref" as="xs:string"/>
+        <xsl:variable name="sourceIdref" select="./source/@xmi:idref" as="xs:string"/>
+        <xsl:variable name="targetElement" select="f:getElementByIdRef($targetIdref, root(.))"/>
+        <xsl:variable name="sourceElement" select="f:getElementByIdRef($sourceIdref, root(.))"/>
+        <xsl:variable name="targetConnectorIdref" select="$targetElement/@classifier" as="xs:string"/>
+        <xsl:variable name="sourceConnectorIdref" select="$sourceElement/@classifier" as="xs:string"/>
+        <xsl:variable name="targetConnector"
+            select="f:getConnectorByIdRef($targetConnectorIdref, root(.))"/>
+        <xsl:variable name="sourceConnector"
+            select="f:getConnectorByIdRef($sourceConnectorIdref, root(.))"/>
+        <xsl:variable name="targetConnectorTargetUri"
+            select="
+                if ($targetConnector/target/role/not(@name) = fn:true()) then
+                    ()
+                else
+                    f:buildURIfromLexicalQName($targetConnector/target/role/@name, fn:false())"/>
+        <xsl:variable name="sourceConnectorTargetUri"
+            select="
+                if ($sourceConnector/target/role/not(@name) = fn:true()) then
+                    ()
+                else
+                    f:buildURIfromLexicalQName($sourceConnector/target/role/@name, fn:false())"/>
+        <xsl:if test="$targetConnectorTargetUri and $sourceConnectorTargetUri">
+            <owl:ObjectProperty rdf:about="{$sourceConnectorTargetUri}">
+                <rdfs:subPropertyOf rdf:resource="{$targetConnectorTargetUri}"/>
+            </owl:ObjectProperty>
+        </xsl:if>
+        <xsl:variable name="targetConnectorSourceUri"
+            select="
+                if ($targetConnector/source/role/not(@name) = fn:true()) then
+                    ()
+                else
+                    f:buildURIfromLexicalQName($targetConnector/source/role/@name, fn:false())"/>
+        <xsl:variable name="sourceConnectorSourceUri"
+            select="
+                if ($sourceConnector/source/role/not(@name) = fn:true()) then
+                    ()
+                else
+                    f:buildURIfromLexicalQName($sourceConnector/source/role/@name, fn:false())"/>
+        <xsl:if test="$targetConnectorSourceUri and $sourceConnectorSourceUri">
+            <owl:ObjectProperty rdf:about="{$sourceConnectorSourceUri}">
+                <rdfs:subPropertyOf rdf:resource="{$targetConnectorSourceUri}"/>
+            </owl:ObjectProperty>
+        </xsl:if>
     </xsl:template>
 
     <xd:doc>
@@ -154,25 +205,25 @@
             </owl:ObjectProperty>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
-        <xd:desc>NOT YET FINISHED !!!!!!!!!!!!!!!!!!!
-            [Rule 21]-(Class generalisation in core ontology layer) . Specify subclass axiom
-            for the generalisation between UML classes. Sibling classes must be disjoint with one
-            another</xd:desc>
+        <xd:desc>NOT YET FINISHED !!!!!!!!!!!!!!!!!!! [Rule 21]-(Class generalisation in core
+            ontology layer) . Specify subclass axiom for the generalisation between UML classes.
+            Sibling classes must be disjoint with one another</xd:desc>
     </xd:doc>
-    
+
     <xsl:template name="classGeneralization">
         <xsl:variable name="superClass" select="f:getSuperClassFromGeneralization(.)"/>
-        <xsl:variable name="superClassURI" select="f:buildURIFromElement($superClass, fn:true(), fn:true())"/>
+        <xsl:variable name="superClassURI"
+            select="f:buildURIFromElement($superClass, fn:true(), fn:true())"/>
         <xsl:variable name="subClasses" select="f:getSubClassesFromGeneralization(.)"/>
 
         <xsl:choose>
             <xsl:when test="count($subClasses) = 1">
-                <xsl:variable name="subClassURI" select="f:buildURIFromElement($subClasses, fn:true(), fn:true())"/>
+                <xsl:variable name="subClassURI"
+                    select="f:buildURIFromElement($subClasses, fn:true(), fn:true())"/>
                 <owl:Class rdf:about="{$subClassURI}">
-                    <rdfs:subClassOf
-                        rdf:resource="{$superClassURI}"/>
+                    <rdfs:subClassOf rdf:resource="{$superClassURI}"/>
                 </owl:Class>
             </xsl:when>
             <xsl:otherwise>
@@ -185,5 +236,5 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
 </xsl:stylesheet>
