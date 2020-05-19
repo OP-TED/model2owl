@@ -44,24 +44,22 @@ In UML, a Class \citep{uml2.5} is purposed to specify a classification of object
 
 \begin{trule}[Class -- \coreComponent]
 	\label{rule:class-core}
-	Specify declaration axiom for UML Class as OWL Class where the URI and a label are deterministically generated from the class name. The label and, if available, the description are ascribed to the class. 
+	Specify declaration axiom for UML Class as OWL Class where the URI and a label are deterministically generated from the class name. The label and, if available, the description are ascribed to the class.
 \end{trule}
 
 \vspace{-\parskip}
 \begin{minipage}[b]{.45\textwidth}
 \begin{lstlisting}[language=Turtle, caption={Class declaration in Turtle syntax}, captionpos=b]
 :ClassName a owl:Class ;
-  rdfs:label "Class name"@en;
-  skos:definition "Description of the class meaning"@en;
+  rdfs:label "Class name"@en ;
 .
 \end{lstlisting}
 \end{minipage}% <---------------- Note the use of "%"
 \quad
 \begin{minipage}[b]{.5\textwidth}
 \begin{lstlisting}[language=RDF/XML, caption={Class declaration in RDF/XML syntax}, captionpos=b]
-<owl:Class rdf:about="http://base.uri/ClassName">
+<owl:Class rdf:about="http://base.uri/ClassName">  
   <rdfs:label xml:lang="en">Class name</rdfs:label>
-  <skos:definition xml:lang="en">Description of the class meaning</skos:definition>  
 </owl:Class>
 \end{lstlisting}
 \end{minipage}
@@ -72,16 +70,18 @@ In UML, a Class \citep{uml2.5} is purposed to specify a classification of object
 \end{trule}
 
 \vspace{-\parskip}
-\begin{minipage}[b]{.45\textwidth}
+\begin{minipage}[b]{.335\textwidth}
 \begin{lstlisting}[language=Turtle, caption={Node shape declaration in Turtle syntax}, captionpos=b]
 :ClassName a sh:NodeShape .
 \end{lstlisting}
 \end{minipage}% <---------------- Note the use of "%"
 \quad
-\begin{minipage}[b]{.5\textwidth}
+\begin{minipage}[b]{.6\textwidth}
 %\raggedleft
 \begin{lstlisting}[language=RDF/XML, caption={Node shape declaration in RDF/XML syntax}, captionpos=b]
-<sh:NodeShape rdf:about="http://base.uri/ClassName"/>
+<rdf:Description rdf:about="http://base.uri/ClassName">
+<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape">
+<rdf:Description>
 \end{lstlisting}
 \end{minipage}
 

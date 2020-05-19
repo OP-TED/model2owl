@@ -29,41 +29,18 @@
         <xd:desc/>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
-        <xsl:if
-            test="./source/model/@type = 'ProxyConnector' and 
-            ./target/model/@type = 'ProxyConnector'"
-        >
-        <xsl:call-template name="propertyGeneralization"/>
-        </xsl:if>
-        <xsl:if
-            test="./source/model/@type = 'Class' and 
-            ./target/model/@type = 'Class'"
-            >
-        <xsl:call-template name="classGeneralization"/>
-        </xsl:if>
-        <!--        <xsl:variable name="sourceElementURI"
-            select="f:buildURIFromElement(f:getElementByIdRef(./source/@xmi:idref, root(.)), fn:true(), fn:true())"/>
-        <xsl:variable name="targetElementURI"
-            select="f:buildURIFromElement(f:getElementByIdRef(./target/@xmi:idref, root(.)), fn:true(), fn:true())"/>
-        <owl:Class rdf:about="{$sourceElementURI}">
-            <rdfs:subClassOf rdf:resource="{$targetElementURI}"/>
-        </owl:Class>
--->
-
-        <!--        <owl:Class rdf:about="{$sourceElementURI}">
-            <xsl:choose>
-                <xsl:when test=" fn:lower-case(./properties/@stereotype)= ('equivalent','complete')">
-                    <owl:equivalentClass rdf:resource="{$targetElementURI}"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <rdfs:subClassOf rdf:resource="{$targetElementURI}"/>        
-                </xsl:otherwise>
-            </xsl:choose>-->
-
-
-        <!--</owl:Class>-->
-
-    </xsl:template>
+        <xsl:choose>
+            <xsl:when
+                test="
+                    ./source/model/@type = 'ProxyConnector' and
+                    ./target/model/@type = 'ProxyConnector'">
+                <xsl:call-template name="propertyGeneralization"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:call-template name="classGeneralization"/>
+            </xsl:otherwise>
+        </xsl:choose>
+            </xsl:template>
 
     <xd:doc>
         <xd:desc>Rule 22 (Property generalisation in core ontology layer) . Specify sub-property
@@ -124,7 +101,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>apply rules to Dependencies</xd:desc>
+        <xd:desc>apply generic connector rules to Dependencies. TODO: otherwise come disjoint
+            property cases needs to be accounted for in te future. </xd:desc>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
         <xsl:variable name="targetType" select="./target/model/@type"/>
@@ -182,6 +160,7 @@
                         <xsl:value-of select="$note"/>
                     </rdfs:comment>
                 </xsl:if>
+                <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
             </owl:ObjectProperty>
         </xsl:if>
 
@@ -212,6 +191,7 @@
                         <xsl:value-of select="$note"/>
                     </rdfs:comment>
                 </xsl:if>
+                <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
             </owl:ObjectProperty>
         </xsl:if>
     </xsl:template>

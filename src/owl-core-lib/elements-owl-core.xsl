@@ -31,34 +31,12 @@
         cdata-section-elements="lines"/>
 
     <xd:doc>
-        <xd:desc>[Rule 3] - (Class in data shape layer). Specify declaration axiom for UML Class
-            as SHACL Node Shape with a SPARQL constraint that selects all instances of this class</xd:desc>
+        <xd:desc> [Rule 2]- (Class in data shape layer). Specify declaration axiom for UML Class as
+            SHACL Node Shape where the URI and a label are deterministically generated from the
+            class name.</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
-        <xsl:variable name="className" select="f:lexicalQNameToWords(./@name)"/>
-        <xsl:variable name="idref" select="./@xmi:idref"/>
-        <xsl:variable name="classURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
-        <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
-        
-
-        <owl:Class rdf:about="{$classURI}">
-            <rdfs:label xml:lang="en">
-                <xsl:value-of select="$className"/>
-            </rdfs:label>
-            <skos:prefLabel xml:lang="en">
-                <xsl:value-of select="$className"/>
-            </skos:prefLabel>
-            
-            <xsl:if test="$documentation != ''">
-                <rdfs:comment xml:lang="en">
-                    <xsl:value-of select="$documentation"/>
-                </rdfs:comment>
-                <skos:definition xml:lang="en">
-                    <xsl:value-of select="$documentation"/>
-                </skos:definition>
-            </xsl:if>
-            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
-        </owl:Class>
+        <xsl:call-template name="classDeclaration"/>
     </xsl:template>
 
     <xd:doc>
@@ -89,7 +67,7 @@
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
             </xsl:if>
-            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
+            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>        
         </skos:ConceptScheme>
     </xsl:template>
 
@@ -142,7 +120,12 @@
     <xsl:template match="element[@xmi:type = 'uml:Package']"/>-->
 
     <xd:doc>
-        <xd:desc>Apply rules to data-types</xd:desc>
+        <xd:desc>
+            <xd:p>[Rule 25]-(Datatype in core ontology layer) .Specify datatype declaration
+                axiom.</xd:p>
+            <xd:p>p [Rule 26]-(Structured Datatype in core ontology layer) . Specify OWL class
+                declaration axiom for UML structured datatype.</xd:p>
+        </xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:DataType']">
         <xsl:choose>
@@ -150,13 +133,16 @@
                 <xsl:call-template name="datatypeDeclaration"/>
             </xsl:when>
             <xsl:otherwise>
-                 <xsl:call-template name="structuredDatatypes"/>
+                 <xsl:call-template name="classDeclaration"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
     
     <xd:doc>
-        <xd:desc>[Rule 25]-(Datatype in core ontology layer) .Specify datatype declaration axiom</xd:desc>
+        <xd:desc>
+            <xd:p>[Rule 25]-(Datatype in core ontology layer) .Specify datatype declaration
+                axiom.</xd:p>           
+        </xd:desc>
     </xd:doc>
     <xsl:template name="datatypeDeclaration">
         <xsl:variable name="name" select="f:lexicalQNameToWords(./@name)"/>
@@ -185,10 +171,9 @@
     </xsl:template>
     
     <xd:doc>
-        <xd:desc>[Rule 26]-(Structured Datatype in core ontology layer) .
-            Specify OWL class declaration axiom for UML structured datatype.</xd:desc>
+        <xd:desc></xd:desc>
     </xd:doc>
-    <xsl:template name="structuredDatatypes">
+    <xsl:template name="classDeclaration">
         <xsl:variable name="datatypeName" select="f:lexicalQNameToWords(./@name)"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
         <xsl:variable name="datatypeURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
