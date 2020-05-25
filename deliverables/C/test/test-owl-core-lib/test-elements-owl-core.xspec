@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" 
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    stylesheet="../../../src/owl-core-lib/elements-owl-core.xsl">
+
+    
+    <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class'] with a comment">
+        <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]"/>
+        <x:expect label="there is an owl:Class" test="boolean(/owl:Class) "/>
+        <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/rdfs:label) "/>
+        <x:expect label="there is a rdfs:comment" test="boolean(/owl:Class/rdfs:comment) "/>
+        <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://data.europa.eu/a4g/ontology#AwardCriterionEvaluationDimension' "/>
+    </x:scenario>
+
+
+    <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class'] withhout a comment">
+        <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[72]"/>
+        <x:expect label="there is an owl:Class" test="boolean(/owl:Class)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/rdfs:label) "/>
+        <x:expect label="there is a rdfs:comment" test="not(boolean(/owl:Class/rdfs:comment))"/>
+        <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://data.europa.eu/a4g/ontology#DesignContest' "/>
+    </x:scenario>
+    
+
+    <x:scenario
+        label="Scenario for testing template with match 'element[@xmi:type = 'uml:Enumeration']">        
+        <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[144]"/>
+        <x:expect label="there is a skos:ConceptScheme" test="boolean(/skos:ConceptScheme)"/>
+        <x:expect label="there is a skos:prefLabel" test="boolean(/skos:ConceptScheme/skos:prefLabel)"/>
+        <x:expect label="there is a correct URI"
+            test="/skos:ConceptScheme/@rdf:about = 'http://data.europa.eu/a4g/ontology#CriterionGroupPropertyType' "
+        />
+    </x:scenario>
+
+<!--    <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Package']">
+        <x:context/>
+        <x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+    </x:scenario>-->
+
+    <x:scenario
+        label="Scenario for testing template with match 'element[@xmi:type = 'uml:DataType']">
+        <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[43]"/>
+        <x:expect label="there is an rdfs:Datatype" test="boolean(/rdfs:Datatype)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(/rdfs:Datatype/rdfs:label)"/>
+        <x:expect label="there is a correct URI" test="/rdfs:Datatype/@rdf:about = 'http://www.unece.org/cefact#Indicator' "/>        
+    </x:scenario>
+    
+    <x:scenario
+        label="Scenario for testing template with match 'element[@xmi:type = 'uml:DataType'] - structured DataType">
+        <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[44]"/>
+        <x:expect label="there is an owl:Class" test="boolean(/owl:Class)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/rdfs:label) "/>
+        <x:expect label="there is a rdfs:comment" test="not(boolean(/owl:Class/rdfs:comment))"/>
+        <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://www.unece.org/cefact#Measure' "/>     
+    </x:scenario>
+
+    <x:scenario
+        label="Scenario for testing template with match 'element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
+        <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[132]/attributes[1]/attribute[2]"/>
+        <x:expect label="there is a skos:Concept" test="boolean(/skos:Concept)"/>
+        <x:expect label="there is a preflabel" test="boolean(/skos:Concept/skos:prefLabel)"/>
+        <x:expect label="there is a correct URI"
+            test="/skos:Concept/@rdf:about='http://data.europa.eu/a4g/ontology#STATE_OF_URGENCY'"/>
+    </x:scenario>
+    
+    <x:scenario
+        label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class']/attributes/attribute">
+        <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+            select="
+            /xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[4]"
+        />
+        <x:expect label="there is an owl:" test="boolean(/owl:DatatypeProperty)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(/owl:DatatypeProperty/rdfs:label)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(/owl:DatatypeProperty/skos:prefLabel)"/>
+        
+        <x:expect label="there is a correct URI"
+            test="/owl:DatatypeProperty/@rdf:about='http://data.europa.eu/a4g/ontology#hasFixedValue'"/>
+    </x:scenario>
+    
+    <x:scenario
+        label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class']/attributes/attribute">
+        <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+            select="
+            /xmi:XMI/xmi:Extension[1]/elements[1]/element[35]/attributes[1]/attribute[4]"
+        />
+        <x:expect label="there is an owl:" test="boolean(/owl:ObjectProperty)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(/owl:ObjectProperty/rdfs:label)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
+        
+        <x:expect label="there is a correct URI"
+            test="/owl:ObjectProperty/@rdf:about='http://data.europa.eu/m8g/hasCriterionGroupPropertyType'"/>
+    </x:scenario>
+    
+   
+    
+    <x:scenario
+        label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class']/attributes/attribute">
+        <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+            select="
+            /xmi:XMI/xmi:Extension[1]/elements[1]/element[32]/attributes[1]/attribute[4]"
+        />
+        <x:expect label="there is an owl:" test="boolean(/owl:DatatypeProperty)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(/owl:DatatypeProperty/rdfs:label)"/>
+        <x:expect label="there is a skos:prefLabel" test="boolean(/owl:DatatypeProperty/skos:prefLabel)"/>
+        <x:expect label="there is a rdfs:comment" test="(boolean(/owl:DatatypeProperty/rdfs:comment))"/>
+        <x:expect label="there is a skos:definition" test="(boolean(/owl:DatatypeProperty/skos:definition))"/>
+        <x:expect label="there is a correct URI" 
+            test="/owl:DatatypeProperty/@rdf:about='http://data.europa.eu/m8g/hasWeightingConsiderationDescription'"/>
+    </x:scenario>
+       
+</x:description>

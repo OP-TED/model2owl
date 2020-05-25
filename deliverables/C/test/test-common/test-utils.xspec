@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"    
+    stylesheet="../../../src/common/utils.xsl">
+
+    <x:scenario label="Scenario 1 for testing function camelCaseString">
+        <x:call function="f:camelCaseString">
+            <x:param name="input">this    is    a    name</x:param>
+        </x:call>
+        <x:expect label="result" select="fn:string('thisIsAName')"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario 3 for testing function camelCaseString">
+        <x:call function="f:camelCaseString">
+            <x:param name="input">This    iS    a    naMe</x:param>
+        </x:call>
+        <x:expect label="result" select="fn:string('thisISANaMe')"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario 2 for testing function camelCaseString">
+        <x:call function="f:camelCaseString">
+            <x:param name="input">this</x:param>
+        </x:call>
+        <x:expect label="result" select="fn:string('this')"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario 1 for testing function pascalCaseString">
+        <x:call function="f:pascalCaseString">
+            <x:param name="input">this    is    a    name</x:param>
+        </x:call>
+        <x:expect label="result" select="fn:string('ThisIsAName')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario 1 for testing function pascalCaseString">
+        <x:call function="f:pascalCaseString">
+            <x:param name="input">this</x:param>
+        </x:call>
+        <x:expect label="result" select="fn:string('This')"/>
+    </x:scenario>
+
+
+    <x:scenario label="Scenario for testing function normaliseLexicalQName as camelCase">
+        <x:call function="f:normaliseLexicalQName">
+            <x:param name="lexicalQName">this</x:param>
+            <x:param name="isPascalCase" select="fn:false()"/>
+        </x:call>
+        <!--<x:expect label="result" select="fn:string('unknown:this')"/>-->
+        <x:expect label="result" select="fn:string('this')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function normaliseLexicalQName as camelCase as sparse prefix">
+        <x:call function="f:normaliseLexicalQName">
+            <x:param name="lexicalQName">q w e:this is a name</x:param>
+            <x:param name="isPascalCase" select="fn:false()"/>
+        </x:call>
+        <x:expect label="result" select="fn:string('qwe:thisIsAName')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function normaliseLexicalQName as PascalCase and no prefix">
+        <x:call function="f:normaliseLexicalQName">
+            <x:param name="lexicalQName">this</x:param>
+            <x:param name="isPascalCase" select="fn:true()"/>
+        </x:call>
+        <x:expect label="result" select="fn:string('This')"/>
+        <!--<x:expect label="result" select="fn:string('unknown:This')"/>-->
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function normaliseLexicalQName as PascalCase and no prefix">
+        <x:call function="f:normaliseLexicalQName">
+            <x:param name="lexicalQName">:this</x:param>
+            <x:param name="isPascalCase" select="fn:true()"/>
+        </x:call>
+        <x:expect label="result" select="fn:string('This')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function normaliseLexicalQName as PascalCase and sparse prefix">
+        <x:call function="f:normaliseLexicalQName">
+            <x:param name="lexicalQName">q w e:this is a name</x:param>
+            <x:param name="isPascalCase" select="fn:true()"/>
+        </x:call>
+        <x:expect label="result" select="fn:string('qwe:ThisIsAName')"/>
+    </x:scenario>
+    
+   
+    <x:scenario label="Scenario 1 for testing function getNamespaceURI ">
+        <x:call function="f:getNamespaceURI">
+            <x:param name="prefix">ccev</x:param>
+            <!--<x:param name="namespaceDefinitions" href="../../testData/namespaces.xml" select="/"/>-->
+        </x:call>
+        <x:expect label="ccev base name" select="'http://data.europa.eu/m8g/'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario 2 for testing function getNamespaceURI ">
+        <x:call function="f:getNamespaceURI">
+            <x:param name="prefix">ccevrts</x:param>
+            <!--<x:param name="namespaceDefinitions" href="../../testData/namespaces.xml" select="/"/>-->
+        </x:call>
+        <x:expect label="return nothing" select="string('http://unknown.domain/for/prefix#')"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario 1 for testing function getXsdRdfDataTypeValues">
+        <x:call function="f:getXsdRdfDataTypeValues">
+            <x:param name="qname">xsd:negativeInteger</x:param>
+            <x:param name="dataTypesDefinitions" href="../../testData/xsdAndRdfDataTypes.xml" select="/"/>
+        </x:call>
+        <x:expect label="data-type" select="'xsd:negativeInteger'"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario 2 for testing function getXsdRdfDataTypeValues">
+        <x:call function="f:getXsdRdfDataTypeValues">
+            <x:param name="qname">xsd:!#4354gYearMonth</x:param>
+            <x:param name="dataTypesDefinitions" href="../../testData/xsdAndRdfDataTypes.xml" select="/"/>
+        </x:call>
+        <x:expect label="result" select="''"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario 1 for testing function getNamespaceValues ">
+        <x:call function="f:getNamespaceValues">
+            <x:param name="prefix">ccev</x:param>
+            <x:param name="namespaceDefinitions" href="../../testData/namespaces.xml" select="/"/>
+        </x:call>
+        <x:expect label="ccev base name" select="'http://data.europa.eu/m8g/'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario 2 for testing function getNamespaceValues ">
+        <x:call function="f:getNamespaceValues">
+            <x:param name="prefix">ccevrts</x:param>
+            <x:param name="namespaceDefinitions" href="../../testData/namespaces.xml" select="/"/>
+        </x:call>
+        <x:expect label="return nothing" select="''"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario 1 for testing function getUmlDataTypeValues">
+        <x:call function="f:getUmlDataTypeValues">
+            <x:param name="qname">Date</x:param>
+            <x:param name="umlDataTypeMappings" href="../../testData/umlToXsdDataTypes.xml" select="/"/>
+        </x:call>
+        <x:expect label="data-type" select="'xsd:date'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario 2 for testing function getUmlDataTypeValues">
+        <x:call function="f:getUmlDataTypeValues">
+            <x:param name="qname">DateQ</x:param>
+            <x:param name="umlDataTypeMappings" href="../../testData/umlToXsdDataTypes.xml" select="/"/>
+        </x:call>
+        <x:expect label="result" select="''"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario getting the local segment from element">
+        <x:call function="f:getLocalSegmentForElements">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>
+        <x:expect label="correct local segment" select="'Site'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario xsd:integer for testing function buildQNameFromLexicalQName">
+        <x:call function="f:buildQNameFromLexicalQName">
+            <x:param name="lexicalQName">xsd:integer</x:param>   
+            <x:param name="isPascalCase" select="fn:false()"/>
+        </x:call>
+        <x:expect label="result" select="fn:QName('http://www.w3.org/2001/XMLSchema#','xsd:integer')"/>
+    </x:scenario>
+    
+         
+    <x:scenario label="Scenario xsd1:integer for testing function buildQNameFromLexicalQName">
+        <x:call function="f:buildQNameFromLexicalQName">
+            <x:param name="lexicalQName">xsd1:integer</x:param>
+            <x:param name="isPascalCase" select="fn:false()"/>            
+        </x:call>
+        <x:expect label="result" select="fn:QName('http://unknown.domain/for/prefix#','xsd1:integer')"/>
+    </x:scenario>
+    
+   
+    <x:scenario label="Scenario :integer for testing function buildQNameFromLexicalQName">
+        <x:call function="f:buildQNameFromLexicalQName">
+            <x:param name="lexicalQName">:integer</x:param>
+            <x:param name="isPascalCase" select="fn:false()"/>            
+        </x:call>
+        <!--<x:expect label="result" select="fn:QName('http://unknown.domain/for/prefix#','integer')"/>-->
+        <x:expect label="result" select="fn:QName('http://data.europa.eu/a4g/ontology#','integer')"/>
+    </x:scenario>
+    
+       
+    <x:scenario label="Scenario integer for testing function buildQNameFromLexicalQName">
+        <x:call function="f:buildQNameFromLexicalQName">
+            <x:param name="lexicalQName">integer</x:param>      
+            <x:param name="isPascalCase" select="fn:false()"/>
+        </x:call>
+        <x:expect label="result" select="fn:QName('http://data.europa.eu/a4g/ontology#','integer')"/>
+    </x:scenario> 
+     
+    <x:scenario label="Scenario xsd:long integer for testing function buildQNameFromLexicalQName">
+        <x:call function="f:buildQNameFromLexicalQName">
+            <x:param name="lexicalQName">xsd:long integer</x:param>
+            <x:param name="isPascalCase" select="fn:false()"/>            
+        </x:call>
+        <x:expect label="result" select="fn:QName('http://www.w3.org/2001/XMLSchema#','xsd:longInteger')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario x s d:long integer for testing function buildQNameFromLexicalQName">
+        <x:call function="f:buildQNameFromLexicalQName">
+            <x:param name="lexicalQName">x s d:long integer</x:param> 
+            <x:param name="isPascalCase" select="fn:false()"/>
+        </x:call>
+        <x:expect label="result" select="fn:QName('http://www.w3.org/2001/XMLSchema#','xsd:longInteger')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario :long integer for testing function buildQNameFromLexicalQName">
+        <x:call function="f:buildQNameFromLexicalQName">
+            <x:param name="lexicalQName">:long integer</x:param>   
+            <x:param name="isPascalCase" select="fn:false()"/>
+        </x:call>
+        <x:expect label="result" select="fn:QName('http://data.europa.eu/a4g/ontology#','longInteger')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario long integer for testing function buildQNameFromLexicalQName">
+        <x:call function="f:buildQNameFromLexicalQName">
+            <x:param name="lexicalQName">long integer</x:param> 
+            <x:param name="isPascalCase" select="fn:false()"/>
+        </x:call>
+        <x:expect label="result" select="fn:QName('http://data.europa.eu/a4g/ontology#','longInteger')"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario long integer for testing function buildQNameFromLexicalQName">
+        <x:call function="f:buildURIfromLexicalQName">
+            <x:param name="lexicalQName">long integer</x:param> 
+            <x:param name="isPascalCase" select="fn:false()"/>
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#longInteger')"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario long integer for testing function buildQNameFromLexicalQName with first capital">
+        <x:call function="f:buildURIfromLexicalQName">
+            <x:param name="lexicalQName">:long integer</x:param> 
+            <x:param name="isPascalCase" select="fn:true()"/>
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#LongInteger')"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario long integer for testing function buildQNameFromLexicalQName in xsd namespace">
+        <x:call function="f:buildURIfromLexicalQName">
+            <x:param name="lexicalQName">xsd:long integer</x:param> 
+            <x:param name="isPascalCase" select="fn:true()"/>
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://www.w3.org/2001/XMLSchema#LongInteger')"/>
+    </x:scenario>
+    
+
+    <x:scenario label="Scenario for testing function buildURIFromElement for a class">
+        <x:call function="f:buildURIFromElement">            
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]"/>
+            <x:param name="isPascalCase" select="fn:true()"/>
+            <x:param name="isDefaultNamespaceContextualised" select="fn:false()"/>            
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#AwardCriterionEvaluationDimension')"/>
+    </x:scenario>
+ 
+ 
+    <x:scenario label="Scenario for testing function buildURIFromElement for an attribute">
+        <x:call function="f:buildURIFromElement">            
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[1]"/>
+            <x:param name="isPascalCase" select="fn:false()"/>
+            <x:param name="isDefaultNamespaceContextualised" select="fn:true()"/>            
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#weight')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function buildURIFromElement for an attribute">
+        <x:call function="f:buildURIFromElement">
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[132]/attributes[1]/attribute[2]"/>
+            <x:param name="isPascalCase" select="fn:true()"/>
+            <x:param name="isDefaultNamespaceContextualised" select="fn:true()"/>            
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#STATE_OF_URGENCY')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function buildURIFromElement for an attribute uncontextualised">
+        <x:call function="f:buildURIFromElement">            
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[1]"/>
+            <x:param name="isPascalCase" select="fn:false()"/>
+            <x:param name="isDefaultNamespaceContextualised" select="fn:false()"/>            
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#weight')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function buildURIFromElement for an attribute in upper case">
+        <x:call function="f:buildURIFromElement">            
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[1]"/>
+            <x:param name="isPascalCase" select="fn:true()"/>
+            <x:param name="isDefaultNamespaceContextualised" select="fn:false()"/>            
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#Weight')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function buildURIFromElement for a datatype">
+        <x:call function="f:buildURIFromElement">            
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[39]"/>
+            <x:param name="isPascalCase" select="fn:true()"/>
+            <x:param name="isDefaultNamespaceContextualised" select="fn:false()"/>            
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#Amount')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function buildURIFromElement for a class with prefix">
+        <x:call function="f:buildURIFromElement">            
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[39]"/>
+            <x:param name="isPascalCase" select="fn:true()"/>
+            <x:param name="isDefaultNamespaceContextualised" select="fn:true()"/>            
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#AwardDimension')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function buildURIFromElement for a class with prefix">
+        <x:call function="f:buildURIFromElement">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[40]"/>
+            <x:param name="isPascalCase" select="fn:true()"/>
+            <x:param name="isDefaultNamespaceContextualised" select="fn:true()"/>
+        </x:call>
+        <x:expect label="result"
+            select="xs:anyURI('http://data.europa.eu/a4g/ontology#Business')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario xsd:integer for testing function buildQNameFromLexicalQName">
+        <x:call function="f:buildQNameFromLexicalQName">
+            <x:param name="lexicalQName">xsd:integer</x:param> 
+            <x:param name="isPascalCase" select="fn:false()"/>
+        </x:call>
+        <x:expect label="result" select="fn:QName('http://www.w3.org/2001/XMLSchema#','xsd:integer')"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario xsd:integer for testing function lexicalQNameToWords">
+        <x:call function="f:lexicalQNameToWords">
+            <x:param name="lexicalqName">xsd:long integer</x:param> 
+        </x:call>
+        <x:expect label="result" select="string('Long integer')"/>
+    </x:scenario>
+    
+</x:description>
