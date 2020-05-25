@@ -14,7 +14,8 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:vann="http://purl.org/vocab/vann/"
-    xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" version="3.0">
+    xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:org="http://www.w3.org/ns/org#" version="3.0">
 
     <xd:doc scope="stylesheet">
         <xd:desc>
@@ -63,7 +64,7 @@
             from different sources to be easily accessed and linked, and consequently
             reused.</xsl:variable>
 
-        <owl:Ontology rdf:about="">
+        <owl:Ontology rdf:about="{$base-uri}">
             <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
             <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
             <dct:description xml:lang="en">
@@ -87,14 +88,14 @@
                         format-date(current-date(),
                         '[D01]/[M01]/[Y0001]')"
                 /></owl:versionInfo>
-            <dct:contributor>
+            <!--            <dct:contributor>
                 <foaf:Person rdf:about="http://costezki.ro/eugeniu#">
                     <foaf:name>Eugeniu Costetchi</foaf:name>
                     <foaf:homepage rdf:resource="http://costezki.ro"/>
                     <foaf:firstName>Eugeniu</foaf:firstName>
                     <foaf:lastName>Costetchi</foaf:lastName>
                 </foaf:Person>
-            </dct:contributor>
+            </dct:contributor>-->
             <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
             <rdfs:seeAlso
                 rdf:resource="https://joinup.ec.europa.eu/solution/eprocurement-ontology/about"/>
@@ -103,7 +104,6 @@
             <cc:attributionName>PublicationsOffice of the European Union</cc:attributionName>
             <cc:attributionURL
                 rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/PUBL"/>
-
             <dct:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
                 <xsl:value-of select="fn:current-date()"/>
             </dct:date>

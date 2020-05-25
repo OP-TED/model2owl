@@ -85,9 +85,9 @@
         <xsl:param name="qname"/>
         <xsl:param name="umlDataTypeMappings"/>
         <xsl:variable name="dataType"
-            select="$umlDataTypeMappings/*:mappings/*:mapping/from/@qname = $qname"/>
+            select="$umlDataTypeMappings/*:mappings/*:mapping/*:from/@qname = $qname"/>
         <xsl:sequence
-            select="string($umlDataTypeMappings/*:mappings/*:mapping/*:to[../from/@qname = $qname]/@qname)"
+            select="string($umlDataTypeMappings/*:mappings/*:mapping/*:to[../*:from/@qname = $qname]/@qname)"
         />
     </xsl:function>
 
@@ -242,22 +242,69 @@
         <xsl:param name="element" as="node()"/>
         <xsl:param name="isPascalCase" as="xs:boolean"/>
         <xsl:param name="isDefaultNamespaceContextualised" as="xs:boolean"/>
-
+        
+        <xsl:sequence select="f:buildURIFromNode($element,$element/@name,$isPascalCase,$isDefaultNamespaceContextualised)"/>
+    </xsl:function>
+    
+    
+    <xd:doc>
+        <xd:desc> Create the attribute URI. If the attribute name starts with an upper case then
+            prepent 'has' prefix to it.</xd:desc>
+        <xd:param name="attribute"/>
+        <xd:param name="isPascalCase"/>
+        <xd:param name="isDefaultNamespaceContextualised"/>
+    </xd:doc>
+    <xsl:function name="f:buildURIFromAttribute">
+        <xsl:param name="attribute" as="node()"/>
+        <xsl:param name="isPascalCase" as="xs:boolean"/>
+        <xsl:param name="isDefaultNamespaceContextualised" as="xs:boolean"/>
+                
+        <xsl:variable name="localName" select="f:getLocalSegmentForElements($attribute)"/>
+        <xsl:variable name="expandedLocalName"
+            select="
+                if (substring($localName, 1, 1) = fn:upper-case(substring($localName, 1, 1))) then
+                    fn:concat('has', $localName)
+                else
+                    $localName
+                "
+        />
+        <xsl:sequence
+            select="f:buildURIFromNode($attribute, $expandedLocalName, $isPascalCase, $isDefaultNamespaceContextualised)"
+        />
+    </xsl:function>
+    
+    
+    <xd:doc>
+        <xd:desc>Create an URI from an XMI node that has name attribute</xd:desc>
+        <xd:param name="element"/>
+        <xd:param name="elementName"/>
+        <xd:param name="isPascalCase"/>
+        <xd:param name="isDefaultNamespaceContextualised"/>
+    </xd:doc>
+    <xsl:function name="f:buildURIFromNode">
+        <xsl:param name="element" as="node()"/>
+        <xsl:param name="elementName" as="xs:string"/>
+        <xsl:param name="isPascalCase" as="xs:boolean"/>
+        <xsl:param name="isDefaultNamespaceContextualised" as="xs:boolean"/>
+        
         <xsl:variable name="defaultNamespacePrefix"
             select="
-                if ($isDefaultNamespaceContextualised) then
-                    f:getContainingPackageName($element)
-                else
-                    fn:string('')"/>
-        <xsl:variable name="elementName"
+            if ($isDefaultNamespaceContextualised) then
+            f:getContainingPackageName($element)
+            else
+            fn:string('')"/>
+        
+        <xsl:variable name="normalisedElementName"
             select="
-                if (contains($element/@name, ':')) then
-                    $element/@name
+                if (contains($elementName, ':')) then
+                    $elementName
                 else
-                    concat($defaultNamespacePrefix, ':', $element/@name)"/>
-        <xsl:sequence select="f:buildURIfromLexicalQName($elementName, $isPascalCase)"/>
+                    concat($defaultNamespacePrefix, ':', $elementName)"
+        />
+        
+        <xsl:sequence select="f:buildURIfromLexicalQName($normalisedElementName, $isPascalCase)"/>
+    </xsl:function>    
 
-    </xsl:function>
 
     <xd:doc>
         <xd:desc>Removes spaces and camelCases the string</xd:desc>
@@ -309,5 +356,5 @@
                 ))"
         />
     </xsl:function>
-
+    
 </xsl:stylesheet>

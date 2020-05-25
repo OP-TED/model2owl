@@ -18,7 +18,7 @@
         <x:expect label="there is an owl:Class" test="boolean(/owl:Class) "/>
         <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/rdfs:label) "/>
         <x:expect label="there is a rdfs:comment" test="boolean(/owl:Class/rdfs:comment) "/>
-        <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://data.europa.eu/ePO/ontology#AwardCriterionEvaluationDimension' "/>
+        <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://data.europa.eu/a4g/ontology#AwardCriterionEvaluationDimension' "/>
     </x:scenario>
 
 
@@ -27,7 +27,7 @@
         <x:expect label="there is an owl:Class" test="boolean(/owl:Class)"/>
         <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/rdfs:label) "/>
         <x:expect label="there is a rdfs:comment" test="not(boolean(/owl:Class/rdfs:comment))"/>
-        <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://data.europa.eu/ePO/ontology#DesignContest' "/>
+        <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://data.europa.eu/a4g/ontology#DesignContest' "/>
     </x:scenario>
     
 
@@ -38,7 +38,7 @@
         <x:expect label="there is a skos:ConceptScheme" test="boolean(/skos:ConceptScheme)"/>
         <x:expect label="there is a skos:prefLabel" test="boolean(/skos:ConceptScheme/skos:prefLabel)"/>
         <x:expect label="there is a correct URI"
-            test="/skos:ConceptScheme/@rdf:about = 'http://data.europa.eu/ePO/ontology#CriterionGroupPropertyType' "
+            test="/skos:ConceptScheme/@rdf:about = 'http://data.europa.eu/a4g/ontology#CriterionGroupPropertyType' "
         />
     </x:scenario>
 
@@ -73,7 +73,7 @@
         <x:expect label="there is a skos:Concept" test="boolean(/skos:Concept)"/>
         <x:expect label="there is a preflabel" test="boolean(/skos:Concept/skos:prefLabel)"/>
         <x:expect label="there is a correct URI"
-            test="/skos:Concept/@rdf:about='http://data.europa.eu/ePO/ontology#STATE_OF_URGENCY'"/>
+            test="/skos:Concept/@rdf:about='http://data.europa.eu/a4g/ontology#STATE_OF_URGENCY'"/>
     </x:scenario>
     
     <x:scenario
@@ -87,7 +87,7 @@
         <x:expect label="there is a rdfs:label" test="boolean(/owl:DatatypeProperty/skos:prefLabel)"/>
         
         <x:expect label="there is a correct URI"
-            test="/owl:DatatypeProperty/@rdf:about='http://data.europa.eu/ePO/ontology#FixedValue'"/>
+            test="/owl:DatatypeProperty/@rdf:about='http://data.europa.eu/a4g/ontology#hasFixedValue'"/>
     </x:scenario>
     
     <x:scenario
@@ -101,7 +101,7 @@
         <x:expect label="there is a rdfs:label" test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
         
         <x:expect label="there is a correct URI"
-            test="/owl:ObjectProperty/@rdf:about='http://data.europa.eu/m8g/CriterionGroupPropertyType'"/>
+            test="/owl:ObjectProperty/@rdf:about='http://data.europa.eu/m8g/hasCriterionGroupPropertyType'"/>
     </x:scenario>
     
    
@@ -118,7 +118,7 @@
         <x:expect label="there is a rdfs:comment" test="(boolean(/owl:DatatypeProperty/rdfs:comment))"/>
         <x:expect label="there is a skos:definition" test="(boolean(/owl:DatatypeProperty/skos:definition))"/>
         <x:expect label="there is a correct URI" 
-            test="/owl:DatatypeProperty/@rdf:about='http://data.europa.eu/m8g/WeightingConsiderationDescription'"/>
+            test="/owl:DatatypeProperty/@rdf:about='http://data.europa.eu/m8g/hasWeightingConsiderationDescription'"/>
     </x:scenario>
        
 </x:description>

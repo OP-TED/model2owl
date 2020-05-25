@@ -1,0 +1,48 @@
+
+#toc {
+    left: 0%;
+    top: 2%;
+    max-height: 100%;
+    width: 20%;
+    background-color:#f5f5f5;
+}
+
+body {
+    text-align:left !important;
+}
+
+.error {
+    color: red;
+    margin-right: 5px;
+}
+
+.correct {
+    color:green;
+}
+.warning {
+    color: #d0d01b;
+    margin-right: 5px;
+}
+
+.tocify {
+    padding: 10px;
+    overflow: auto;
+    margin-left: 2%;
+    position: fixed;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.tocify-extend-page {
+  height: 0 !important;
+}
+
+.active {
+    background-color: rgba(155, 168, 255, 0.3);
+}
+
+@media print {
+    #toc {
+        display: none;
+    }
+}

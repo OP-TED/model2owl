@@ -140,7 +140,7 @@ OWL follows the Open World Assumption \citep{owl2}, therefore, even if the ontol
   <sh:sparql rdf:parseType="Resource">  
     <sh:select>SELECT $this
       WHERE {
-      $this a skos:Concept .
+      $this a :ClassName .
       }
     </sh:select>
   </sh:sparql>
@@ -391,7 +391,7 @@ therein also comprised.
 		\item exact cardinality, e.g. [2..2]
 		\item minimum cardinality only, e.g. [1..*]
 		\item maximum cardinality only, e.g. [*..2]
-		\item maximum and maximum cardinality , e.g. [1..2]
+		\item minimum and maximum cardinality , e.g. [1..2]
 	\end{enumerate}
 \end{trule}
 

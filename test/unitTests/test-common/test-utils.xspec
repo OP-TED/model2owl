@@ -140,7 +140,7 @@
             <x:param name="qname">Date</x:param>
             <x:param name="umlDataTypeMappings" href="../../testData/umlToXsdDataTypes.xml" select="/"/>
         </x:call>
-        <x:expect label="data-type" select="'xsd:date'"></x:expect>
+        <x:expect label="data-type" select="'xsd:date'"/>
     </x:scenario>
     
     <x:scenario label="Scenario 2 for testing function getUmlDataTypeValues">
@@ -183,7 +183,7 @@
             <x:param name="isPascalCase" select="fn:false()"/>            
         </x:call>
         <!--<x:expect label="result" select="fn:QName('http://unknown.domain/for/prefix#','integer')"/>-->
-        <x:expect label="result" select="fn:QName('http://publications.europa.eu/ns/','integer')"/>
+        <x:expect label="result" select="fn:QName('http://data.europa.eu/a4g/ontology#','integer')"/>
     </x:scenario>
     
        
@@ -192,7 +192,7 @@
             <x:param name="lexicalQName">integer</x:param>      
             <x:param name="isPascalCase" select="fn:false()"/>
         </x:call>
-        <x:expect label="result" select="fn:QName('http://publications.europa.eu/ns/','integer')"/>
+        <x:expect label="result" select="fn:QName('http://data.europa.eu/a4g/ontology#','integer')"/>
     </x:scenario> 
      
     <x:scenario label="Scenario xsd:long integer for testing function buildQNameFromLexicalQName">
@@ -216,7 +216,7 @@
             <x:param name="lexicalQName">:long integer</x:param>   
             <x:param name="isPascalCase" select="fn:false()"/>
         </x:call>
-        <x:expect label="result" select="fn:QName('http://publications.europa.eu/ns/','longInteger')"/>
+        <x:expect label="result" select="fn:QName('http://data.europa.eu/a4g/ontology#','longInteger')"/>
     </x:scenario>
     
     <x:scenario label="Scenario long integer for testing function buildQNameFromLexicalQName">
@@ -224,7 +224,7 @@
             <x:param name="lexicalQName">long integer</x:param> 
             <x:param name="isPascalCase" select="fn:false()"/>
         </x:call>
-        <x:expect label="result" select="fn:QName('http://publications.europa.eu/ns/','longInteger')"/>
+        <x:expect label="result" select="fn:QName('http://data.europa.eu/a4g/ontology#','longInteger')"/>
     </x:scenario>
 
     <x:scenario label="Scenario long integer for testing function buildQNameFromLexicalQName">
@@ -232,7 +232,7 @@
             <x:param name="lexicalQName">long integer</x:param> 
             <x:param name="isPascalCase" select="fn:false()"/>
         </x:call>
-        <x:expect label="result" select="xs:anyURI('http://publications.europa.eu/ns/longInteger')"/>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#longInteger')"/>
     </x:scenario>
     
     
@@ -241,7 +241,7 @@
             <x:param name="lexicalQName">:long integer</x:param> 
             <x:param name="isPascalCase" select="fn:true()"/>
         </x:call>
-        <x:expect label="result" select="xs:anyURI('http://publications.europa.eu/ns/LongInteger')"/>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#LongInteger')"/>
     </x:scenario>
 
     <x:scenario label="Scenario long integer for testing function buildQNameFromLexicalQName in xsd namespace">
@@ -260,7 +260,7 @@
             <x:param name="isPascalCase" select="fn:true()"/>
             <x:param name="isDefaultNamespaceContextualised" select="fn:false()"/>            
         </x:call>
-        <x:expect label="result" select="xs:anyURI('http://publications.europa.eu/ns/AwardCriterionEvaluationDimension')"/>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#AwardCriterionEvaluationDimension')"/>
     </x:scenario>
  
  
@@ -271,7 +271,7 @@
             <x:param name="isPascalCase" select="fn:false()"/>
             <x:param name="isDefaultNamespaceContextualised" select="fn:true()"/>            
         </x:call>
-        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/ePO/ontology#weight')"/>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#weight')"/>
     </x:scenario>
     
     <x:scenario label="Scenario for testing function buildURIFromElement for an attribute">
@@ -281,7 +281,7 @@
             <x:param name="isPascalCase" select="fn:true()"/>
             <x:param name="isDefaultNamespaceContextualised" select="fn:true()"/>            
         </x:call>
-        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/ePO/ontology#STATE_OF_URGENCY')"/>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#STATE_OF_URGENCY')"/>
     </x:scenario>
     
     <x:scenario label="Scenario for testing function buildURIFromElement for an attribute uncontextualised">
@@ -291,7 +291,7 @@
             <x:param name="isPascalCase" select="fn:false()"/>
             <x:param name="isDefaultNamespaceContextualised" select="fn:false()"/>            
         </x:call>
-        <x:expect label="result" select="xs:anyURI('http://publications.europa.eu/ns/weight')"/>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#weight')"/>
     </x:scenario>
     
     <x:scenario label="Scenario for testing function buildURIFromElement for an attribute in upper case">
@@ -301,7 +301,7 @@
             <x:param name="isPascalCase" select="fn:true()"/>
             <x:param name="isDefaultNamespaceContextualised" select="fn:false()"/>            
         </x:call>
-        <x:expect label="result" select="xs:anyURI('http://publications.europa.eu/ns/Weight')"/>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#Weight')"/>
     </x:scenario>
     
     <x:scenario label="Scenario for testing function buildURIFromElement for a datatype">
@@ -311,7 +311,7 @@
             <x:param name="isPascalCase" select="fn:true()"/>
             <x:param name="isDefaultNamespaceContextualised" select="fn:false()"/>            
         </x:call>
-        <x:expect label="result" select="xs:anyURI('http://publications.europa.eu/ns/Amount')"/>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#Amount')"/>
     </x:scenario>
     
     <x:scenario label="Scenario for testing function buildURIFromElement for a class with prefix">
@@ -321,7 +321,7 @@
             <x:param name="isPascalCase" select="fn:true()"/>
             <x:param name="isDefaultNamespaceContextualised" select="fn:true()"/>            
         </x:call>
-        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/ePO/ontology#AwardDimension')"/>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#AwardDimension')"/>
     </x:scenario>
     
     <x:scenario label="Scenario for testing function buildURIFromElement for a class with prefix">
@@ -332,7 +332,7 @@
             <x:param name="isDefaultNamespaceContextualised" select="fn:true()"/>
         </x:call>
         <x:expect label="result"
-            select="xs:anyURI('http://data.europa.eu/ePO/ontology#Business')"/>
+            select="xs:anyURI('http://data.europa.eu/a4g/ontology#Business')"/>
     </x:scenario>
     
     <x:scenario label="Scenario xsd:integer for testing function buildQNameFromLexicalQName">

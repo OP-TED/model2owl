@@ -225,12 +225,7 @@
         
         <xsl:variable name="documentation" select="f:formatDocString(./documentation/@value)"/>
         <!-- TODO: inject the 'has' prefix here if needed -->
-        <xsl:variable name="URI"
-            select="
-                if (fn:starts-with(./@name, 'has') or fn:starts-with(./@name, 'is')) then
-                    f:buildURIFromElement(., fn:false(), fn:true())
-                else
-                    f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="URI" select="f:buildURIFromAttribute(., fn:false(), fn:true())"/>
         <xsl:variable name="propertyType"
             select="
                 if (f:isAttributeTypeValidForDatatypeProperty(.)) then

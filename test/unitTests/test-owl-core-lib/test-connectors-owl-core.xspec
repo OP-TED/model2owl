@@ -17,9 +17,9 @@
         <x:expect label="result" test="boolean(/owl:ObjectProperty)"/>
         <x:expect label="result" test="boolean(/owl:ObjectProperty/rdfs:subPropertyOf)"/>
         <x:expect label="result"
-            test="/owl:ObjectProperty/@rdf:about='http://data.europa.eu/ePO/ontology#has'"/>
+            test="/owl:ObjectProperty/@rdf:about='http://data.europa.eu/a4g/ontology#has'"/>
         <x:expect label="result"
-            test="/owl:ObjectProperty/rdfs:subPropertyOf/@rdf:resource='http://data.europa.eu/ePO/ontology#hasPersonRole'"
+            test="/owl:ObjectProperty/rdfs:subPropertyOf/@rdf:resource='http://data.europa.eu/a4g/ontology#hasPersonRole'"
         />
     </x:scenario>
     
@@ -54,9 +54,9 @@
         <x:expect label="there is a skos:definition"
             test="(boolean(/owl:ObjectProperty/skos:definition))"/>
         <x:expect label="there is a correct URI"
-            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/ePO/ontology#hasBeneficialOwner'])"/>
+            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/a4g/ontology#hasBeneficialOwner'])"/>
         <x:expect label="there is a correct URI"
-            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/ePO/ontology#isRoleOf'])"
+            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/a4g/ontology#isRoleOf'])"
         />
     </x:scenario>
 
@@ -73,7 +73,7 @@
         <x:expect label="there is a skos:scopeNote"
             test="count(/owl:ObjectProperty/skos:scopeNote)=1"/>
         <x:expect label="there is a correct URI"
-            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/ePO/ontology#notifiedThrough'])"
+            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/a4g/ontology#notifiedThrough'])"
         />
     </x:scenario>
 
@@ -90,7 +90,7 @@
         <x:expect label="there is a skos:scopeNote"
             test="count(/owl:ObjectProperty/skos:scopeNote)=0"/>
         <x:expect label="there is a correct URI"
-            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/ePO/ontology#hasUnofficialLanguage'])"
+            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/a4g/ontology#hasUnofficialLanguage'])"
         />
     </x:scenario>
 
@@ -108,7 +108,7 @@
         <x:expect label="there is a skos:scopeNote"
             test="count(/owl:ObjectProperty/skos:scopeNote)=0"/>
         <x:expect label="there is a correct URI"
-            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/ePO/ontology#hasDesignContestType'])"
+            test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/a4g/ontology#hasDesignContestType'])"
         />
     </x:scenario>
 
