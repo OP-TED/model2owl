@@ -367,7 +367,7 @@
         <xsl:variable name="prefix" select="fn:substring-before($element/@name, ':')"/>
         <xsl:sequence
             select="
-                if (fn:matches($prefix, '^[a-zA-Z0-9]+$'))
+                if (fn:matches($prefix, '^[a-zA-Z0-9-_]+$'))
                 then
                     fn:false()
                 else
