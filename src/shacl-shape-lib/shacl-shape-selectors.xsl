@@ -42,7 +42,7 @@
         </xd:desc>
     </xd:doc>
     <xsl:template match="connectors">
-        <xsl:apply-templates select="connector[./properties/@ea_type = 'Generalization']"/>
+        <!--<xsl:apply-templates select="connector[./properties/@ea_type = 'Generalization']"/>-->
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Association']"/>
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Dependency']"/>
     </xsl:template>

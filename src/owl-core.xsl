@@ -31,17 +31,18 @@
     <xsl:import href="owl-core-lib/elements-owl-core.xsl"/>
     <xsl:import href="config-parameters.xsl"/>
 
-    <xsl:output name="owl-core.rdf" method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
+    <xsl:output name="core-ePO.rdf" method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
 
+    <xsl:variable name="moduleURI" select=" fn:concat($base-uri,'/','core')"/>
+    
     <xd:doc>
         <xd:desc>The main template for OWL core file</xd:desc>
     </xd:doc>
     <xsl:template match="/">
-
         <rdf:RDF>
             <xsl:namespace name="epo" select="concat($base-uri, '#')"/>
-            <xsl:attribute name="xml:base" expand-text="true">{$base-uri}</xsl:attribute>
+            <xsl:attribute name="xml:base" expand-text="true">{$moduleURI}</xsl:attribute>
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
         </rdf:RDF>
@@ -51,8 +52,11 @@
         <xd:desc> Ontology header </xd:desc>
     </xd:doc>
     <xsl:template name="ontology-header">
-        <xsl:variable name="title">eProcurement ontology</xsl:variable>
-        <xsl:variable name="description">Procurement data has been identified as data with a
+        <xsl:variable name="title">eProcurement core ontology</xsl:variable>
+        <xsl:variable name="description">
+            This module provides the definitions for the core eProcurement ontology.
+            
+            Procurement data has been identified as data with a
             high-reuse potential. Given the increasing importance of data standards for
             eProcurement, a number of initiatives driven by the public sector, the industry and
             academia have been kick-started in recent years. Some have grown organically, while
@@ -64,9 +68,11 @@
             from different sources to be easily accessed and linked, and consequently
             reused.</xsl:variable>
 
-        <owl:Ontology rdf:about="{$base-uri}">
+        <owl:Ontology rdf:about="">
+            
             <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
             <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
+            
             <dct:description xml:lang="en">
                 <xsl:value-of select="$description"/>
             </dct:description>
@@ -81,9 +87,8 @@
             <dct:title xml:lang="en">
                 <xsl:value-of select="$title"/>
             </dct:title>
-            <!--<skos:prefLabel xml:lang="en"><xsl:value-of select="$title"/></skos:prefLabel>-->
-            <!--<owl:versionIRI><xsl:value-of select="$base-uri"/></owl:versionIRI>-->
-            <owl:versionInfo>eProcurement Ontology version auto generated on <xsl:value-of
+            
+            <owl:versionInfo><xsl:value-of select="$title"/> version generated automatically on <xsl:value-of
                     select="
                         format-date(current-date(),
                         '[D01]/[M01]/[Y0001]')"

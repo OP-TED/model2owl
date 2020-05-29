@@ -34,7 +34,7 @@
     <!-- Ontology base URI, configure as necessary. Do not use a trailing local delimiter 
         like in the namespace definition-->
     <!--<xsl:variable name="base-uri" select="'http://publications.europa.eu/ontology/ePO'"/>-->
-    <xsl:variable name="base-uri" select="'http://data.europa.eu/a4g/ontology'"/>
+    <xsl:variable name="base-uri" select="'http://data.europa.eu/a4g/ontology'"/>    
 
     <!-- when a delimiter is missing in the base URI of a namespace, use this default value-->
     <xsl:variable name="defaultDelimiter" select="'#'"/>

@@ -57,7 +57,7 @@
         <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:name)"/>
         <x:expect label="there is a sh:name = Has" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:name/text() = 'Has'"/>
         <x:expect label="there is a sh:class" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:class)"/>
-        <x:expect label="correct target class URI" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:class/@rdf:resource = 'http://data.europa.eu/ePO/ontology#Channel'"/>
+        <x:expect label="correct target class URI" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:class/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Channel'"/>
     </x:scenario>
     
     <x:scenario label="Scenario for association with Bi-Directional direction">
@@ -73,8 +73,8 @@
         <x:expect label="there is a sh:name = Is role of contact person" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:name/text() = 'Is role of contact person'"/>
         <x:expect label="there is a sh:name = Has person role" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:name/text() = 'Has person role'"/>
         <x:expect label="there is a sh:class" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:class)"/>
-        <x:expect label="correct target class URI" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:class/@rdf:resource = 'http://data.europa.eu/ePO/ontology#Role'"/>
-        <x:expect label="correct target class URI" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:class/@rdf:resource = 'http://data.europa.eu/ePO/ontology#ContactPoint'"/>
+        <x:expect label="correct target class URI" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:class/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Role'"/>
+        <x:expect label="correct target class URI" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:class/@rdf:resource = 'http://data.europa.eu/a4g/ontology#ContactPoint'"/>
     </x:scenario>
 
 
