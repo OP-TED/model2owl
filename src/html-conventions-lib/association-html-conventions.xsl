@@ -57,9 +57,10 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:if test="boolean($associationChecks)">
+            <h2><xsl:value-of select="f:getConnectorName(.)"/></h2>
         <dl>
             <dt>
-                <xsl:value-of select="f:getConnectorName(.)"/>
+                Unmet association conventions
             </dt>
             <xsl:copy-of select="$associationChecks"/>
         </dl>
