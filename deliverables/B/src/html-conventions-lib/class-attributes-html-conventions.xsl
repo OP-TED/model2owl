@@ -126,13 +126,13 @@
                 then
                     if (f:isQNameLowerCasedCamelCase($classAttributeName) = fn:false())
                     then
-                        f:generateHtmlWarning(fn:concat('The attribute name ', $classAttributeName, ' is invalid. The attribute name must start with a lower case.'))
+                        f:generateHtmlInfo(fn:concat('The attribute name ', $classAttributeName, ' is invalid. The attribute name must start with a lower case.'))
                     else
                         ()
                 else
                     if (fn:contains($uppercaseLetters, fn:substring($classAttributeName, 1, 1)))
                     then
-                        f:generateHtmlWarning(fn:concat('The attribute name ', $classAttributeName, ' is invalid. The attribute name must start with a lower case.'))
+                        f:generateHtmlInfo(fn:concat('The attribute name ', $classAttributeName, ' is invalid. The attribute name must start with a lower case.'))
                     else
                         ()"/>
 
@@ -177,7 +177,7 @@
         <xsl:sequence
             select="
                 if (boolean(f:getUmlDataTypeValues($classAttribute/properties/@type, $umlDataTypesMapping))) then
-                    f:generateHtmlWarning(fn:concat('The attribute type ', $classAttribute/properties/@type,
+                    f:generateHtmlInfo(fn:concat('The attribute type ', $classAttribute/properties/@type,
                     ' is deprecated. Attributes should use XSD or RDF datatypes. The suggested alternative for ', 
                     $classAttribute/properties/@type, ' is ', 
                     f:getUmlDataTypeValues($classAttribute/properties/@type, $umlDataTypesMapping)))

@@ -15,6 +15,17 @@
     
     
     <xd:doc>
+        <xd:desc>This function will generate a info message</xd:desc>
+        <xd:param name="infoMessage"/>
+    </xd:doc>
+    <xsl:function name="f:generateHtmlInfo">
+        <xsl:param name="infoMessage"/>
+        <xsl:sequence>
+            <dd class="filter infos"><i class="fa fa-info-circle info"></i> <xsl:value-of select="$infoMessage"/></dd>
+        </xsl:sequence>        
+    </xsl:function>    
+    
+    <xd:doc>
         <xd:desc>This function will generate a warning message</xd:desc>
         <xd:param name="warningMessage"/>
     </xd:doc>

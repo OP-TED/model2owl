@@ -4,6 +4,12 @@
     xmlns:f="http://https://github.com/costezki/model2owl#"
     stylesheet="file:../../../src/html-conventions-lib/utils-html-conventions.xsl">
 
+    <x:scenario label="Generate a info in html">
+        <x:call function="f:generateHtmlInfo">
+            <x:param name="infoMessage">Info message</x:param>
+        </x:call>
+        <x:expect label="has info message" test="//dd//text() = 'Info message'"/>
+    </x:scenario>
 
     <x:scenario label="Generate a warning in html">
         <x:call function="f:generateHtmlWarning">
