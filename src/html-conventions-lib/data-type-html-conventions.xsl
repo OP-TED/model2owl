@@ -72,9 +72,10 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:if test="boolean($dataTypeChecks)">
+            <h2><xsl:value-of select="$dataTypeName"/></h2>
             <dl>
                 <dt>
-                    <xsl:value-of select="$dataTypeName"/>
+                    Unmet data-type conventions
                 </dt>
                 <xsl:copy-of select="$dataTypeChecks"/>
             </dl>
@@ -89,7 +90,7 @@
         <xsl:param name="dataTypeElement"/>
         <xsl:variable name="dataTypeName" select="$dataTypeElement/@name"/>
         <xsl:choose>
-            <xsl:when test="$dataTypeElement/not(@name) = fn:true()">
+            <xsl:when test="$dataTypeElement/not(@name) = fn:true() or $dataTypeElement/@name = ''">
                 <xsl:value-of>No name</xsl:value-of>
             </xsl:when>
             <xsl:otherwise>

@@ -38,11 +38,14 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:if test="boolean($packageChecks)">
+            <h2>
+                <xsl:call-template name="getPackageName">
+                    <xsl:with-param name="package" select="."/>
+                </xsl:call-template>
+            </h2>
             <dl>
                 <dt>
-                    <xsl:call-template name="getPackageName">
-                        <xsl:with-param name="package" select="."/>
-                    </xsl:call-template>
+                    Unmet package conventions 
                 </dt>
                 <xsl:copy-of select="$packageChecks"/>
             </dl>
@@ -58,7 +61,7 @@
         <xsl:param name="package"/>
         <xsl:variable name="packageName" select="$package/@name"/>
         <xsl:choose>
-            <xsl:when test="$package/not(@name) = fn:true()">
+            <xsl:when test="$package/not(@name) = fn:true() or $package/@name = ''">
                 <xsl:value-of>No name</xsl:value-of>
             </xsl:when>
             <xsl:otherwise>

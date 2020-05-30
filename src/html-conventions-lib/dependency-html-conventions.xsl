@@ -61,9 +61,10 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:if test="boolean($dependencyChecks)">
+            <h2><xsl:value-of select="f:getConnectorName(.)"/></h2>
             <dl>
                 <dt>
-                    <xsl:value-of select="f:getConnectorName(.)"/>
+                    Unmet dependency conventions
                 </dt>
                 <xsl:copy-of select="$dependencyChecks"/>
             </dl>

@@ -108,7 +108,7 @@
         <xsl:param name="class"/>
         <xsl:variable name="className" select="$class/@name"/>
         <xsl:choose>
-            <xsl:when test="$class/not(@name) = fn:true()">
+            <xsl:when test="$class/not(@name) = fn:true() or $class/@name = ''">
                 <xsl:value-of>No name</xsl:value-of>
             </xsl:when>
             <xsl:otherwise>

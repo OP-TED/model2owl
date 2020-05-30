@@ -52,10 +52,10 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:if test="boolean($generalizationChecks)">
+            <h2><xsl:value-of select="f:getConnectorName(.)"/></h2>
             <dl>
                 <dt>
-                    <xsl:value-of select="f:getConnectorName(.)"/>
-                    <!-- Generalization ID: <xsl:value-of select="@xmi:idref"/>-->
+                    Unmet generalization conventions
                 </dt>
                 <xsl:copy-of select="$generalizationChecks"/>
             </dl>
