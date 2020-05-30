@@ -139,7 +139,7 @@
         <xsl:sequence
             select="
                 if ($noEnumerationDescription = fn:true()) then
-                    f:generateHtmlWarning(fn:concat($enumerationName, ' is missing a description. All concepts should be defined or described.'))
+                    f:generateHtmlInfo(fn:concat($enumerationName, ' is missing a description. All concepts should be defined or described.'))
                 else
                     ()"
         />
