@@ -53,6 +53,26 @@
             }
             });
         </script>
+        <script>
+            $(".filter-button").click(function() {
+            let numberOfCheckboxesChecked = $("#filters :checkbox:checked").length
+            if (numberOfCheckboxesChecked == 0){
+            $(".filter").show();
+            }else {
+            $(".filter").hide();
+            
+
+            $("#filters :checkbox:checked").each(function() {
+            let violationClassSelector = '.'.concat($(this).val());
+            console.log(violationClassSelector);
+            $(violationClassSelector).addClass("showThisType");
+	   
+            });
+            $('.showThisType').show();
+            $('.filter').removeClass('showThisType')
+            }
+            });
+        </script>
     </xsl:template>
     
 </xsl:stylesheet>

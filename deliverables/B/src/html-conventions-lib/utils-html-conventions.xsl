@@ -21,7 +21,7 @@
     <xsl:function name="f:generateHtmlWarning">
         <xsl:param name="warningMessage"/>
         <xsl:sequence>
-            <dd><i class="fa fa-exclamation-triangle warning"></i> <xsl:value-of select="$warningMessage"/></dd>
+            <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i> <xsl:value-of select="$warningMessage"/></dd>
         </xsl:sequence>        
     </xsl:function>    
     
@@ -32,7 +32,7 @@
     <xsl:function name="f:generateHtmlError">
         <xsl:param name="errorMessage"/>
         <xsl:sequence>
-            <dd><i class="fa fa-times-circle error"></i> <xsl:value-of select="$errorMessage"/></dd>
+            <dd class="filter errors"><i class="fa fa-times-circle error"></i> <xsl:value-of select="$errorMessage"/></dd>
         </xsl:sequence>        
     </xsl:function>    
     
@@ -55,8 +55,8 @@
         <xsl:variable name="hasNoName" select="$connector/not(@name)"/>
         <xsl:choose>
             <xsl:when test="$hasNoName = fn:true()">
-               <xsl:variable name="source" select="$connector/source/model/@name"/>
-               <xsl:variable name="target" select="$connector/target/model/@name"/>
+                <xsl:variable name="source" select="$connector/source/model/@name"/>
+                <xsl:variable name="target" select="$connector/target/model/@name"/>
                 <xsl:if test="f:getConnectorDirection($connector) = 'Source -&gt; Destination'">
                     <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
                     <xsl:value-of select="fn:concat($source, ' -&gt; ', $target, ' ', '(+',$targetRole,')' )"/>
