@@ -39,7 +39,35 @@
             <body>
                 <xsl:call-template name="title-header"/>
                 <main>
-                    <div id="toc" class="tocify"></div>
+                    <div id="toc" class="tocify">
+                        <div id="filters">
+                            <p>Type of violation</p>
+                            <div class="checkbox">
+                                <label for="filter-info">
+                                    <input type="checkbox" value="infos" id="filter-info"/>
+                                    Info</label>
+                            </div>
+                            <div class="checkbox">
+                                
+                                <label for="filter-warning">
+                                    <input type="checkbox" value="warnings" id="filter-warning"/>
+                                    Warning</label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="filter-error">
+                                    <input type="checkbox" value="errors" id="filter-error"/>
+                                    Error</label>
+                            </div>
+                            <input type="button" class="filter-button btn btn-primary" style=" width: 100%;"
+                                value="Apply filter"/>
+                        </div>
+                        <hr/>
+                        <div class="text-center">
+                            <p>
+                                <strong>Index</strong>
+                            </p>
+                        </div>
+                    </div>
                     <xsl:call-template name="abstract"/>
                     <xsl:apply-templates/>
                 </main>

@@ -18,12 +18,12 @@
         <footer class="text-center">
             <br/><br/>
             <p> This document is generated automatically by the <a
-                    href="https://github.com/costezki/model2owl" target="_blank">model2owl tool</a>
+                href="https://github.com/costezki/model2owl" target="_blank">model2owl tool</a>
                 developed in the context of <a
                     href="https://joinup.ec.europa.eu/solution/eprocurement-ontology">the
                     eProcurement Ontology initiative</a>.</p>
             <p>The template of this report is based on the <a
-                    href="https://github.com/thomaspark/pubcss">PubCSS library</a>.</p>
+                href="https://github.com/thomaspark/pubcss">PubCSS library</a>.</p>
             <p>&#169; Publications Office of the European Union, 2020</p>
         </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -50,6 +50,26 @@
             $(this).append(' <i class="fa fa-times-circle error"/>');
             }else{
             $(this).append(' <i class="fa fa-check-circle correct"/>');                        
+            }
+            });
+        </script>
+        <script>
+            $(".filter-button").click(function() {
+            let numberOfCheckboxesChecked = $("#filters :checkbox:checked").length
+            if (numberOfCheckboxesChecked == 0){
+            $(".filter").show();
+            }else {
+            $(".filter").hide();
+            
+            
+            $("#filters :checkbox:checked").each(function() {
+            let violationClassSelector = '.'.concat($(this).val());
+            console.log(violationClassSelector);
+            $(violationClassSelector).addClass("showThisType");
+            
+            });
+            $('.showThisType').show();
+            $('.filter').removeClass('showThisType')
             }
             });
         </script>
