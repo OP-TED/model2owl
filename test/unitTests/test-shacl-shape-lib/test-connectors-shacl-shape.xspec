@@ -114,6 +114,13 @@
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
+    <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction and the target multiplicity is *">
+        <x:call template="connectorMultiplicity">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[216]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and only the target has multiplicity ">
         <x:call template="connectorMultiplicity">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[56]"/>
