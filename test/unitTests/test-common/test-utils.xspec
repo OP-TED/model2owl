@@ -351,4 +351,26 @@
         <x:expect label="result" select="string('Long integer')"/>
     </x:scenario>
     
+    
+    <x:scenario label="Scenario for getting the min value for multiplicity">
+        <x:call function="f:getMultiplicityMinFromString">
+            <x:param name="multiplicityString" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[41]/target/type/@multiplicity"/>
+        </x:call>
+        <x:expect label="result" select="string('0')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for getting the max value for multiplicity">
+        <x:call function="f:getMultiplicityMaxFromString">
+            <x:param name="multiplicityString" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[41]/target/type/@multiplicity"/>
+        </x:call>
+        <x:expect label="result" select="string('1')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for formatting the value of multiplicity to have a min and max">
+        <x:call function="f:normalizeMultiplicity">
+            <x:param name="multiplicityString" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[42]/target/type/@multiplicity"/>
+        </x:call>
+        <x:expect label="result" select="string('1..1')"/>
+    </x:scenario>
+    
 </x:description>

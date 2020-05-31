@@ -184,6 +184,7 @@
                 else
                     f:buildURIFromElement($attribute, fn:true(), fn:true())"/>
         <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
+        <xsl:if test="fn:matches($attributeMultiplicityMin,'\d{1,2}|\*') and fn:matches($attributeMultiplicityMax,'\d{1,2}|\*')">
         <sh:property>
             <sh:PropertyShape>
                 <sh:path rdf:resource="{$attributeURI}"/>
@@ -210,5 +211,6 @@
                 </xsl:if>
             </sh:PropertyShape>
         </sh:property>
+        </xsl:if>
     </xsl:template>
 </xsl:stylesheet>

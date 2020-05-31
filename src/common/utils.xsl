@@ -357,4 +357,31 @@
         />
     </xsl:function>
     
+    <xd:doc>
+        <xd:desc/>
+        <xd:param name="multiplicityString"/>
+    </xd:doc>
+    <xsl:function name="f:getMultiplicityMinFromString">
+        <xsl:param name="multiplicityString"/>
+        <xsl:sequence select="fn:substring-before($multiplicityString, '..')"/>
+    </xsl:function>
+    
+    <xd:doc>
+        <xd:desc/>
+        <xd:param name="multiplicityString"/>
+    </xd:doc>
+    <xsl:function name="f:getMultiplicityMaxFromString">
+        <xsl:param name="multiplicityString"/>
+        <xsl:sequence select="fn:substring-after($multiplicityString, '..')"/>
+    </xsl:function>
+    
+    <xd:doc>
+        <xd:desc/>
+        <xd:param name="multiplicityString"/>
+    </xd:doc>
+    <xsl:function name="f:normalizeMultiplicity">
+        <xsl:param name="multiplicityString"/>
+        <xsl:sequence select="fn:concat($multiplicityString,'..',$multiplicityString)"/>
+    </xsl:function>
+    
 </xsl:stylesheet>

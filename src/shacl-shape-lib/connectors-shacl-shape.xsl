@@ -143,29 +143,42 @@
 
     <xsl:template name="connectorMultiplicity">
         <xsl:param name="connector"/>
+        <xsl:variable name="targetMultiplicity"
+            select="
+                    if (not(fn:contains($connector/target/type/@multiplicity, '..'))) then
+                        f:normalizeMultiplicity($connector/target/type/@multiplicity)
+                    else
+                        $connector/target/type/@multiplicity"/>
         <xsl:variable name="targetMultiplicityMin"
-            select="fn:substring($connector/target/type/@multiplicity, 1, 1)"/>
+            select="f:getMultiplicityMinFromString($targetMultiplicity)"/>
         <xsl:variable name="targetMultiplicityMax"
-            select="fn:substring($connector/target/type/@multiplicity, 4, 1)"/>
+            select="f:getMultiplicityMaxFromString($targetMultiplicity)"/>
+        <xsl:variable name="sourceMultiplicity"
+            select="
+                    if (not(fn:contains($connector/source/type/@multiplicity, '..'))) then
+                        f:normalizeMultiplicity($connector/source/type/@multiplicity)
+                    else
+                        $connector/source/type/@multiplicity
+             "/>
         <xsl:variable name="sourceMultiplicityMin"
-            select="fn:substring($connector/source/type/@multiplicity, 1, 1)"/>
+            select="f:getMultiplicityMinFromString($sourceMultiplicity)"/>
         <xsl:variable name="sourceMultiplicityMax"
-            select="fn:substring($connector/source/type/@multiplicity, 4, 1)"/>
+            select="f:getMultiplicityMaxFromString($sourceMultiplicity)"/>
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($connector/source/model/@name, fn:true())"/>
         <xsl:variable name="sourceRole"
             select="
-            if (boolean($connector/source/role/@name)) then
-            f:lexicalQNameToWords($connector/source/role/@name)
-            else ()
-            "/>
+                if (boolean($connector/source/role/@name)) then
+                    f:lexicalQNameToWords($connector/source/role/@name)
+                else
+                    ()
+                "/>
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
                     f:buildURIfromLexicalQName($sourceRole, fn:false())
                 else
-                    ()"
-        />
+                    ()"/>
         <xsl:variable name="targetClassURI"
             select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true())"/>
         <xsl:variable name="targetRole"
@@ -173,8 +186,7 @@
                 if (boolean($connector/target/role/@name)) then
                     f:lexicalQNameToWords($connector/target/role/@name)
                 else
-                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"
-        />
+                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
@@ -183,7 +195,9 @@
         <xsl:if
             test="
                 $connectorDirection = 'Source -&gt; Destination' and
-                $connector/target/type/not(@multiplicity) = fn:false()">
+                $connector/target/type/not(@multiplicity) = fn:false() and 
+                $connector/target/type/@multiplicity != '' and 
+                $connector/target/type/@multiplicity != '*'">
             <sh:NodeShape rdf:about="{$sourceClassURI}">
                 <sh:property>
                     <sh:PropertyShape>
@@ -217,7 +231,9 @@
         <xsl:if
             test="
                 $connectorDirection = 'Bi-Directional' and
-                $connector/target/type/not(@multiplicity) = fn:false()">
+                $connector/target/type/not(@multiplicity) = fn:false() and 
+                $connector/target/type/@multiplicity != '' and
+                $connector/target/type/@multiplicity != '*'">
             <sh:NodeShape rdf:about="{$sourceClassURI}">
                 <sh:property>
                     <sh:PropertyShape>
@@ -251,7 +267,9 @@
         <xsl:if
             test="
                 $connectorDirection = 'Bi-Directional' and
-                $connector/source/type/not(@multiplicity) = fn:false()">
+                $connector/source/type/not(@multiplicity) = fn:false() and
+                $connector/source/type/@multiplicity != '' and
+                $connector/source/type/@multiplicity != '*'">
             <sh:NodeShape rdf:about="{$targetClassURI}">
                 <sh:property>
                     <sh:PropertyShape>
@@ -282,6 +300,7 @@
                 </sh:property>
             </sh:NodeShape>
         </xsl:if>
+
     </xsl:template>
 
     <xd:doc>
