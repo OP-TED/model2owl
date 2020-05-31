@@ -363,7 +363,14 @@
     </xd:doc>
     <xsl:function name="f:getMultiplicityMinFromString">
         <xsl:param name="multiplicityString"/>
-        <xsl:sequence select="fn:substring-before($multiplicityString, '..')"/>
+        <xsl:variable name="min" select="fn:substring-before($multiplicityString, '..')"/>
+        <xsl:sequence
+            select="
+                if ($min = '' or $min = '*') then
+                    ()
+                else
+                    $min"
+        />
     </xsl:function>
     
     <xd:doc>
@@ -372,7 +379,14 @@
     </xd:doc>
     <xsl:function name="f:getMultiplicityMaxFromString">
         <xsl:param name="multiplicityString"/>
-        <xsl:sequence select="fn:substring-after($multiplicityString, '..')"/>
+        <xsl:variable name="max" select="fn:substring-after($multiplicityString, '..')"/>
+        <xsl:sequence
+            select="
+                if ($max = '' or $max = '*') then
+                    ()
+                else
+                    $max"
+        />
     </xsl:function>
     
     <xd:doc>
@@ -381,7 +395,16 @@
     </xd:doc>
     <xsl:function name="f:normalizeMultiplicity">
         <xsl:param name="multiplicityString"/>
-        <xsl:sequence select="fn:concat($multiplicityString,'..',$multiplicityString)"/>
+        <xsl:sequence
+            select="
+                if (fn:contains($multiplicityString, '..')) then
+                    $multiplicityString
+                else
+                    if (not(boolean($multiplicityString)) or $multiplicityString = '' or $multiplicityString = '*') then
+                        ()
+                    else
+                    fn:concat($multiplicityString, '..', $multiplicityString)"
+        />
     </xsl:function>
     
 </xsl:stylesheet>

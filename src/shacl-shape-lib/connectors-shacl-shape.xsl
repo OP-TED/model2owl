@@ -144,28 +144,21 @@
     <xsl:template name="connectorMultiplicity">
         <xsl:param name="connector"/>
         <xsl:variable name="targetMultiplicity"
-            select="
-                    if (not(fn:contains($connector/target/type/@multiplicity, '..'))) then
-                        f:normalizeMultiplicity($connector/target/type/@multiplicity)
-                    else
-                        $connector/target/type/@multiplicity"/>
+            select="f:normalizeMultiplicity($connector/target/type/@multiplicity)"/>
         <xsl:variable name="targetMultiplicityMin"
             select="f:getMultiplicityMinFromString($targetMultiplicity)"/>
         <xsl:variable name="targetMultiplicityMax"
             select="f:getMultiplicityMaxFromString($targetMultiplicity)"/>
         <xsl:variable name="sourceMultiplicity"
-            select="
-                    if (not(fn:contains($connector/source/type/@multiplicity, '..'))) then
-                        f:normalizeMultiplicity($connector/source/type/@multiplicity)
-                    else
-                        $connector/source/type/@multiplicity
-             "/>
+            select="f:normalizeMultiplicity($connector/source/type/@multiplicity)"/>
         <xsl:variable name="sourceMultiplicityMin"
             select="f:getMultiplicityMinFromString($sourceMultiplicity)"/>
         <xsl:variable name="sourceMultiplicityMax"
             select="f:getMultiplicityMaxFromString($sourceMultiplicity)"/>
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($connector/source/model/@name, fn:true())"/>
+      <!--  <xsl:value-of select="$connector/target/type/@multiplicity"/>-->
+        <!--<xsl:value-of select="$targetMultiplicity"/>-->
         <xsl:variable name="sourceRole"
             select="
                 if (boolean($connector/source/role/@name)) then
@@ -195,9 +188,7 @@
         <xsl:if
             test="
                 $connectorDirection = 'Source -&gt; Destination' and
-                $connector/target/type/not(@multiplicity) = fn:false() and 
-                $connector/target/type/@multiplicity != '' and 
-                $connector/target/type/@multiplicity != '*'">
+                boolean($targetMultiplicity)">
             <sh:NodeShape rdf:about="{$sourceClassURI}">
                 <sh:property>
                     <sh:PropertyShape>
@@ -205,21 +196,12 @@
                         <sh:name>
                             <xsl:value-of select="$targetRole"/>
                         </sh:name>
-                        <xsl:if
-                            test="$targetMultiplicityMin != '*' and $targetMultiplicityMax != '*'">
-                            <sh:minCount rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$targetMultiplicityMin"/>
-                            </sh:minCount>
+                        <xsl:if test="boolean($targetMultiplicityMax)">
                             <sh:maxCount rdf:datatype="{$datatypeURI}">
                                 <xsl:value-of select="$targetMultiplicityMax"/>
                             </sh:maxCount>
                         </xsl:if>
-                        <xsl:if test="$targetMultiplicityMin = '*'">
-                            <sh:maxCount rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$targetMultiplicityMax"/>
-                            </sh:maxCount>
-                        </xsl:if>
-                        <xsl:if test="$targetMultiplicityMax = '*'">
+                        <xsl:if test="boolean($targetMultiplicityMin)">
                             <sh:minCount rdf:datatype="{$datatypeURI}">
                                 <xsl:value-of select="$targetMultiplicityMin"/>
                             </sh:minCount>
@@ -231,9 +213,7 @@
         <xsl:if
             test="
                 $connectorDirection = 'Bi-Directional' and
-                $connector/target/type/not(@multiplicity) = fn:false() and 
-                $connector/target/type/@multiplicity != '' and
-                $connector/target/type/@multiplicity != '*'">
+                boolean($targetMultiplicity)">
             <sh:NodeShape rdf:about="{$sourceClassURI}">
                 <sh:property>
                     <sh:PropertyShape>
@@ -241,21 +221,12 @@
                         <sh:name>
                             <xsl:value-of select="$targetRole"/>
                         </sh:name>
-                        <xsl:if
-                            test="$targetMultiplicityMin != '*' and $targetMultiplicityMax != '*'">
-                            <sh:minCount rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$targetMultiplicityMin"/>
-                            </sh:minCount>
+                        <xsl:if test="boolean($targetMultiplicityMax)">
                             <sh:maxCount rdf:datatype="{$datatypeURI}">
                                 <xsl:value-of select="$targetMultiplicityMax"/>
                             </sh:maxCount>
                         </xsl:if>
-                        <xsl:if test="$targetMultiplicityMin = '*'">
-                            <sh:maxCount rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$targetMultiplicityMax"/>
-                            </sh:maxCount>
-                        </xsl:if>
-                        <xsl:if test="$targetMultiplicityMax = '*'">
+                        <xsl:if test="boolean($targetMultiplicityMin)">
                             <sh:minCount rdf:datatype="{$datatypeURI}">
                                 <xsl:value-of select="$targetMultiplicityMin"/>
                             </sh:minCount>
@@ -267,9 +238,7 @@
         <xsl:if
             test="
                 $connectorDirection = 'Bi-Directional' and
-                $connector/source/type/not(@multiplicity) = fn:false() and
-                $connector/source/type/@multiplicity != '' and
-                $connector/source/type/@multiplicity != '*'">
+                boolean($sourceMultiplicity)">
             <sh:NodeShape rdf:about="{$targetClassURI}">
                 <sh:property>
                     <sh:PropertyShape>
@@ -277,21 +246,12 @@
                         <sh:name>
                             <xsl:value-of select="$sourceRole"/>
                         </sh:name>
-                        <xsl:if
-                            test="$sourceMultiplicityMin != '*' and $sourceMultiplicityMax != '*'">
-                            <sh:minCount rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$sourceMultiplicityMin"/>
-                            </sh:minCount>
+                        <xsl:if test="boolean($sourceMultiplicityMax)">
                             <sh:maxCount rdf:datatype="{$datatypeURI}">
                                 <xsl:value-of select="$sourceMultiplicityMax"/>
                             </sh:maxCount>
                         </xsl:if>
-                        <xsl:if test="$sourceMultiplicityMin = '*'">
-                            <sh:maxCount rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$sourceMultiplicityMax"/>
-                            </sh:maxCount>
-                        </xsl:if>
-                        <xsl:if test="$sourceMultiplicityMax = '*'">
+                        <xsl:if test="boolean($sourceMultiplicityMin)">
                             <sh:minCount rdf:datatype="{$datatypeURI}">
                                 <xsl:value-of select="$sourceMultiplicityMin"/>
                             </sh:minCount>
