@@ -78,7 +78,7 @@
             </dct:description>
             <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
             <vann:preferredNamespaceUri>
-                <xsl:value-of select="fn:concat($base-uri, $defaultDelimiter)"/>
+                <xsl:value-of select="fn:concat($base-uri, $defaultDelimiter)"/>                
             </vann:preferredNamespaceUri>
             <dct:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
             <rdfs:label xml:lang="en">

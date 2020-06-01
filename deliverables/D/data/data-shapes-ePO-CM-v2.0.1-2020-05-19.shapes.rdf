@@ -22,21 +22,13 @@
       <dct:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
       <rdfs:label xml:lang="en">eProcurement datashapes</rdfs:label>
       <dct:title xml:lang="en">eProcurement datashapes</dct:title>
-      <owl:versionInfo>eProcurement datashapes version generated automatically on 29/05/2020</owl:versionInfo>
-      <dct:contributor>
-         <foaf:Person rdf:about="http://costezki.ro/eugeniu#">
-            <foaf:name>Eugeniu Costetchi</foaf:name>
-            <foaf:homepage rdf:resource="http://costezki.ro"/>
-            <foaf:firstName>Eugeniu</foaf:firstName>
-            <foaf:lastName>Costetchi</foaf:lastName>
-         </foaf:Person>
-      </dct:contributor>
+      <owl:versionInfo>eProcurement datashapes version generated automatically on 01/06/2020</owl:versionInfo>
       <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
       <rdfs:seeAlso rdf:resource="https://joinup.ec.europa.eu/solution/eprocurement-ontology/about"/>
       <rdfs:seeAlso rdf:resource="https://github.com/eprocurementontology/eprocurementontology"/>
       <cc:attributionName>PublicationsOffice of the European Union</cc:attributionName>
       <cc:attributionURL rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/PUBL"/>
-      <dct:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-05-29+02:00</dct:date>
+      <dct:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-06-01+02:00</dct:date>
    </owl:Ontology>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#AccessTerms">
       <sh:name>Access terms</sh:name>
@@ -6168,8 +6160,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#has"/>
             <sh:name>Has</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -6215,8 +6207,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#has"/>
             <sh:name>Has</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -6239,8 +6231,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#has"/>
             <sh:name>Has</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -6263,8 +6255,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPostalAddress"/>
             <sh:name>Has postal address</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -6287,8 +6279,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPostalAddress"/>
             <sh:name>Has postal address</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -6541,8 +6533,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isOwnBy"/>
             <sh:name>Is own by</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -6648,8 +6640,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isReferedByA"/>
             <sh:name>Is refered by a</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -6865,8 +6857,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#notifiesAwardResult"/>
             <sh:name>Notifies award result</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -6875,8 +6867,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isNotifiedIn"/>
             <sh:name>Is notified in</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -6913,8 +6905,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#acceptsProposalOf"/>
             <sh:name>Accepts proposal of</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -7002,8 +6994,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#has"/>
             <sh:name>Has</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -7035,8 +7027,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#appoints"/>
             <sh:name>Appoints</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -7045,8 +7037,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#appointedBy"/>
             <sh:name>Appointed by</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -7189,8 +7181,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#manages"/>
             <sh:name>Manages</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -7213,8 +7205,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#has"/>
             <sh:name>Has</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -7389,8 +7381,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#proposes"/>
             <sh:name>Proposes</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -7689,8 +7681,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasGeneralEnvironmentCommunicationMeans"/>
             <sh:name>Has general environment communication means</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -7782,8 +7774,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasVirtualTenderOpeningAddress"/>
             <sh:name>Has virtual tender opening address</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -7829,8 +7821,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasGeneralTaxCommunicationMeans"/>
             <sh:name>Has general tax communication means</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -7871,8 +7863,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isRoleOfContactPerson"/>
             <sh:name>Is role of contact person</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8084,8 +8076,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDuration"/>
             <sh:name>Has duration</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8154,8 +8146,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasEstimatedDuration"/>
             <sh:name>Has estimated duration</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8178,8 +8170,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasProcurementValue"/>
             <sh:name>Has procurement value</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8202,8 +8194,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDurationEvaluationPeriod"/>
             <sh:name>Has duration evaluation period</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8226,8 +8218,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasContractPurpose"/>
             <sh:name>Has contract purpose</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8273,8 +8265,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#modifies"/>
             <sh:name>Modifies</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8338,8 +8330,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concludes"/>
             <sh:name>Concludes</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8413,8 +8405,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTotalFrameworkValue"/>
             <sh:name>Has total framework value</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8437,8 +8429,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTotalValue"/>
             <sh:name>Has total value</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8484,8 +8476,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersTo"/>
             <sh:name>Refers to</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8545,8 +8537,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#qualificationCriteria"/>
             <sh:name>Qualification criteria</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8592,8 +8584,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#includes"/>
             <sh:name>Includes</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8616,8 +8608,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#has"/>
             <sh:name>Has</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8649,8 +8641,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#has"/>
             <sh:name>Has</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8885,8 +8877,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasParticipationEvaluationPeriod"/>
             <sh:name>Has participation evaluation period</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -8932,8 +8924,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#has"/>
             <sh:name>Has</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -9089,8 +9081,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#toBeEvaluatedBy"/>
             <sh:name>To be evaluated by</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -9251,8 +9243,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#assesses"/>
             <sh:name>Assesses</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -9280,8 +9272,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#evaluates"/>
             <sh:name>Evaluates</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">n</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -9350,8 +9342,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTenderEvaluationTerms"/>
             <sh:name>Has tender evaluation terms</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -9549,8 +9541,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasFormalName"/>
             <sh:name>Has formal name</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -9573,8 +9565,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasFormalLocation"/>
             <sh:name>Has formal location</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -9606,8 +9598,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasRulesSetBy"/>
             <sh:name>Has rules set by</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -9759,8 +9751,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasOverallMaximumValue"/>
             <sh:name>Has overall maximum value</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -9898,8 +9890,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasLegalLocation"/>
             <sh:name>Has legal location</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -9945,8 +9937,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasRegisteredLocation"/>
             <sh:name>Has registered location</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -9969,8 +9961,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCountryOfBirth"/>
             <sh:name>Has country of birth</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10039,8 +10031,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAwardedEstimatedValue"/>
             <sh:name>Has awarded estimated value</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10063,8 +10055,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#providesAdditionalInformation"/>
             <sh:name>Provides additional information</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10101,8 +10093,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasEstimatedValue"/>
             <sh:name>Has estimated value</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10125,8 +10117,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasValidityPeriod"/>
             <sh:name>Has validity period</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10149,8 +10141,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#contributesToImplement"/>
             <sh:name>Contributes to implement</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10173,8 +10165,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#has"/>
             <sh:name>Has</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10220,8 +10212,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#has"/>
             <sh:name>Has</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10267,8 +10259,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasEstimatedUserConcessionRevenue"/>
             <sh:name>Has estimated user concession revenue</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10291,8 +10283,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#has"/>
             <sh:name>Has</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10315,8 +10307,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasContractEstimatedDuration"/>
             <sh:name>Has contract estimated duration</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10353,8 +10345,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasEstimatedBuyerConcessionRevenue"/>
             <sh:name>Has estimated buyer concession revenue</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10423,8 +10415,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAwardedMaximumValue"/>
             <sh:name>Has awarded maximum value</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10447,8 +10439,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#appliesTo"/>
             <sh:name>Applies to</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10485,8 +10477,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#appliesTo"/>
             <sh:name>Applies to</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10757,8 +10749,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSpecifiedIn"/>
             <sh:name>Is specified in</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10809,8 +10801,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAwardedValue"/>
             <sh:name>Has awarded value</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10833,8 +10825,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasEstimatedValue"/>
             <sh:name>Has estimated value</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -10903,8 +10895,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#appliesTo"/>
             <sh:name>Applies to</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -11157,8 +11149,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isPeriod"/>
             <sh:name>Is period</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -11181,8 +11173,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPlannedPeriod"/>
             <sh:name>Has planned period</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -11205,8 +11197,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasValidityPeriod"/>
             <sh:name>Has validity period</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -11229,8 +11221,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasValidityPeriod"/>
             <sh:name>Has validity period</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -11276,8 +11268,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPurpose"/>
             <sh:name>Has purpose</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -11415,8 +11407,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#has"/>
             <sh:name>Has</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -11439,8 +11431,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasOverallPurpose"/>
             <sh:name>Has overall purpose</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -11463,8 +11455,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasEstimatedValue"/>
             <sh:name>Has estimated value</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -11533,8 +11525,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasEstimatedValue"/>
             <sh:name>Has estimated value</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -11732,8 +11724,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#attachedIn"/>
             <sh:name>Attached in</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -11779,8 +11771,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#includedIn"/>
             <sh:name>Included in</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -11854,8 +11846,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#evaluationOf"/>
             <sh:name>Evaluation of</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -12186,8 +12178,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refinesRequirement"/>
             <sh:name>Refines requirement</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>
@@ -12233,8 +12225,8 @@ Additional Information: this can be used for transparency and evaluation of  PRI
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#respondsQuestion"/>
             <sh:name>Responds question</sh:name>
+            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-            <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"/>
          </sh:PropertyShape>
       </sh:property>
    </sh:NodeShape>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" 
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:sh="http://www.w3.org/ns/shacl#"
+    stylesheet="../../../src/shacl-shape-lib/elements-shacl-shape.xsl">
+    
+    <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class']">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]"/>
+        <x:expect label="there is a sh:NodeShape" test="boolean(sh:NodeShape) "/>
+        <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:name)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(sh:NodeShape/rdfs:label)"/>
+        <x:expect label="there is no sh:description" test="boolean(sh:NodeShape/sh:description)"/>
+        <x:expect label="there is no rdfs:comment" test="boolean(sh:NodeShape/rdfs:comment)"/>
+        <x:expect label="there is a sh:property" test="boolean(sh:NodeShape/sh:property) "/>
+        <x:expect label="there is a sh:PropertyShape" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape)"/>
+        <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:name)"/>
+        <x:expect label="there is a sh:path" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:path)"/>
+        <x:expect label="there is a sh:datatype" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:datatype)"/>
+        <x:expect label="there is a sh:minCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount)"/>
+        <x:expect label="there is a sh:maxCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount)"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="label for UML element">
+        <x:call template="elementName">
+            <x:param name="name">Class name</x:param>
+        </x:call>   
+        <x:expect label="there is a sh:name" test="boolean(sh:name) "/>
+        <x:expect label="there is a rdfs:label" test="boolean(rdfs:label) "/>
+    </x:scenario>
+
+    <x:scenario label="description for UML element">
+        <x:call template="elementDescription">
+            <x:param name="description">This is a description for UML element</x:param>
+        </x:call>   
+        <x:expect label="there is a sh:description" test="boolean(sh:description) "/>
+        <x:expect label="there is a rdfs:comment" test="boolean(rdfs:comment) "/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for class declaration for class that has no description">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[34]"/>
+        <x:expect label="there is a sh:NodeShape" test="boolean(sh:NodeShape) "/>
+        <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:name)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(sh:NodeShape/rdfs:label)"/>
+        <x:expect label="there is no sh:description" test="not(boolean(sh:NodeShape/sh:description))"/>
+        <x:expect label="there is no rdfs:comment" test="not(boolean(sh:NodeShape/rdfs:comment))"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for class declaration for a class that is not abstract">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[52]"/>
+        <x:expect label="there is a sh:NodeShape" test="boolean(sh:NodeShape) "/>
+        <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:name)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(sh:NodeShape/rdfs:label) "/>
+        <x:expect label="there is no sh:description" test="boolean(sh:NodeShape/sh:description)"/>
+        <x:expect label="there is no rdfs:comment" test="boolean(sh:NodeShape/rdfs:comment)"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for class declaration for an abstract class">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[35]"/>
+        <x:expect label="there is a sh:NodeShape" test="boolean(sh:NodeShape) "/>
+        <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:name)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(sh:NodeShape/rdfs:label) "/>
+        <x:expect label="there is sh:description" test="boolean(sh:NodeShape/sh:description)"/>
+        <x:expect label="there is rdfs:comment" test="boolean(sh:NodeShape/rdfs:comment)"/>
+        <x:expect label="there is sh:sparql" test="boolean(sh:NodeShape/sh:sparql)"/>
+        <x:expect label="there is sh:select" test="boolean(sh:NodeShape/sh:sparql/sh:select)"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for attribute range shape for valid datatype">
+        <x:call template="attributeRangeShape">
+            <x:param name="attribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[290]/attributes[1]/attribute[6]"/>
+        </x:call>   
+        <x:expect label="there is a sh:property" test="boolean(sh:property) "/>
+        <x:expect label="there is a sh:PropertyShape" test="boolean(sh:property/sh:PropertyShape)"/>
+        <x:expect label="there is a sh:name" test="boolean(sh:property/sh:PropertyShape/sh:name)"/>
+        <x:expect label="there is a sh:path" test="boolean(sh:property/sh:PropertyShape/sh:path)"/>
+        <x:expect label="there is a sh:datatype" test="boolean(sh:property/sh:PropertyShape/sh:datatype)"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for attribute range shape for invalid datatype">
+        <x:call template="attributeRangeShape">
+            <x:param name="attribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[139]/attributes[1]/attribute[1]"/>
+        </x:call>   
+        <x:expect label="there is a sh:property" test="boolean(sh:property) "/>
+        <x:expect label="there is a sh:PropertyShape" test="boolean(sh:property/sh:PropertyShape)"/>
+        <x:expect label="there is a sh:name" test="boolean(sh:property/sh:PropertyShape/sh:name)"/>
+        <x:expect label="there is a sh:path" test="boolean(sh:property/sh:PropertyShape/sh:path)"/>
+        <x:expect label="there is a sh:class" test="boolean(sh:property/sh:PropertyShape/sh:class)"/>
+        <x:expect label="there is no sh:datatype" test="not(boolean(sh:property/sh:PropertyShape/sh:datatype))"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for attribute multiplicity values are not any (*)">
+        <x:call template="attributeMultiplicity">
+            <x:param name="attribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[139]/attributes[1]/attribute[1]"/>
+        </x:call>   
+        <x:expect label="there is a sh:property" test="boolean(sh:property) "/>
+        <x:expect label="there is a sh:PropertyShape" test="boolean(sh:property/sh:PropertyShape)"/>
+        <x:expect label="there is a sh:name" test="boolean(sh:property/sh:PropertyShape/sh:name)"/>
+        <x:expect label="there is a sh:path" test="boolean(sh:property/sh:PropertyShape/sh:path)"/>
+        <x:expect label="there is a sh:maxCount" test="boolean(sh:property/sh:PropertyShape/sh:maxCount)"/>
+        <x:expect label="there is a correct value for sh:maxCount" test="sh:property/sh:PropertyShape/sh:maxCount/text() = '3'"/>
+        <x:expect label="there is a sh:minCount" test="boolean(sh:property/sh:PropertyShape/sh:minCount)"/>
+        <x:expect label="there is a correct value for sh:minCount" test="sh:property/sh:PropertyShape/sh:minCount/text() = '1'"/>
+    </x:scenario>
+
+
+    <x:scenario label="Scenario for attribute multiplicity max value equals any (*)">
+        <x:call template="attributeMultiplicity">
+            <x:param name="attribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[139]/attributes[1]/attribute[2]"/>
+        </x:call>   
+        <x:expect label="there is a sh:property" test="boolean(sh:property) "/>
+        <x:expect label="there is a sh:PropertyShape" test="boolean(sh:property/sh:PropertyShape)"/>
+        <x:expect label="there is a sh:name" test="boolean(sh:property/sh:PropertyShape/sh:name)"/>
+        <x:expect label="there is a sh:path" test="boolean(sh:property/sh:PropertyShape/sh:path)"/>
+        <x:expect label="there is a sh:minCount" test="boolean(sh:property/sh:PropertyShape/sh:minCount)"/>
+        <x:expect label="there is a correct value for sh:minCount" test="sh:property/sh:PropertyShape/sh:minCount/text() = '1'"/>
+        <x:expect label="there is no sh:maxCount" test="not(boolean(sh:property/sh:PropertyShape/sh:maxCount))"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for attribute multiplicity min value equals any (*)">
+        <x:call template="attributeMultiplicity">
+            <x:param name="attribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[140]/attributes[1]/attribute[1]"/>
+        </x:call>   
+        <x:expect label="there is a sh:property" test="boolean(sh:property) "/>
+        <x:expect label="there is a sh:PropertyShape" test="boolean(sh:property/sh:PropertyShape)"/>
+        <x:expect label="there is a sh:name" test="boolean(sh:property/sh:PropertyShape/sh:name)"/>
+        <x:expect label="there is a sh:path" test="boolean(sh:property/sh:PropertyShape/sh:path)"/>
+        <x:expect label="there is a sh:maxCount" test="boolean(sh:property/sh:PropertyShape/sh:maxCount)"/>
+        <x:expect label="there is a correct value for sh:maxCount" test="sh:property/sh:PropertyShape/sh:maxCount/text() = '7'"/>
+        <x:expect label="there is a no sh:minCount" test="not(boolean(sh:property/sh:PropertyShape/sh:minCount))"/>
+    </x:scenario>
+</x:description>

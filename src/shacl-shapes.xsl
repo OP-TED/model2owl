@@ -70,7 +70,7 @@
             </dct:description>
             <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
             <vann:preferredNamespaceUri>
-                <xsl:value-of select="fn:concat($base-uri, $defaultDelimiter)"/>
+                <xsl:value-of select="fn:concat($base-uri, $defaultDelimiter)"/>                    
             </vann:preferredNamespaceUri>
             <dct:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
             <rdfs:label xml:lang="en">
@@ -87,14 +87,14 @@
                         '[D01]/[M01]/[Y0001]')"
                 /></owl:versionInfo>
 
-            <dct:contributor>
+<!--            <dct:contributor>
                 <foaf:Person rdf:about="http://costezki.ro/eugeniu#">
                     <foaf:name>Eugeniu Costetchi</foaf:name>
                     <foaf:homepage rdf:resource="http://costezki.ro"/>
                     <foaf:firstName>Eugeniu</foaf:firstName>
                     <foaf:lastName>Costetchi</foaf:lastName>
-                </foaf:Person>
-            </dct:contributor>
+                </foaf:Person>-->
+            <!--</dct:contributor>-->
             <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
             <rdfs:seeAlso
                 rdf:resource="https://joinup.ec.europa.eu/solution/eprocurement-ontology/about"/>
