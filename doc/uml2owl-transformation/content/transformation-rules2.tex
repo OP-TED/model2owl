@@ -253,15 +253,17 @@ specification \citep{uml2.5}, the association end names are not obligatory. Howe
 \end{trule}
 
 \vspace{-\parskip}
-\begin{minipage}[b]{.45\textwidth}
+\begin{minipage}[b]{.385\textwidth}
 \begin{lstlisting}[language=Turtle, caption={Declaring a functional property in Turtle syntax}, captionpos=b]
 :relatesTo a owl:FunctionalProperty .
 \end{lstlisting}
 \end{minipage}% <---------------- Note the use of "%"
 \quad\vspace{-\parskip}
-\begin{minipage}[b]{.55\textwidth}
+\begin{minipage}[b]{.57\textwidth}
 \begin{lstlisting}[language=RDF/XML, caption={Declaring a functional property in RDF/XML syntax}, captionpos=b]
-<owl:FunctionalProperty rdf:about="http://base.uri/relatesTo"/>
+<rdf:Description rdf:about="http://base.uri/relatesTo">
+  <rdf:type rdf:resource="http://...owl#FunctionalProperty"/>
+</rdf:Description>
 \end{lstlisting}
 \end{minipage}
 \vspace{-\parskip}
@@ -337,15 +339,17 @@ In case of recursive associations, that are from one class to itself, the transf
 \end{trule}
 
 \vspace{-\parskip}
-\begin{minipage}[b]{.45\textwidth}
+\begin{minipage}[b]{.35\textwidth}
 \begin{lstlisting}[language=Turtle, caption={Declaring an asymmetric property in Turtle syntax}, captionpos=b]
 :relatesTo a owl:AsymmetricProperty .
 \end{lstlisting}
 \end{minipage}% <---------------- Note the use of "%"
 \quad\vspace{-\parskip}
-\begin{minipage}[b]{.55\textwidth}
+\begin{minipage}[b]{.58\textwidth}
 \begin{lstlisting}[language=RDF/XML, caption={Declaring an asymmetric property in RDF/XML syntax}, captionpos=b]
-<owl:AsymmetricProperty rdf:about="http://base.uri/relatesTo"/>
+<rdf:Description rdf:about="http://base.uri/relatesTo">
+  <rdf:type rdf:resource="http://...owl#AsymmetricProperty"/>
+</rdf:Description>
 \end{lstlisting}
 \end{minipage}
 \vspace{-\parskip}

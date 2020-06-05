@@ -252,10 +252,9 @@ of user-defined literals. They should be transformed into SKOS \citep{skos-spec}
 \begin{minipage}[b]{.394\textwidth}
 \begin{lstlisting}[language=Turtle, caption={In-scheme equivalent class in Turtle syntax}, captionpos=b]
 :ControlledList a owl:Class ;  
-  rdfs:subClassOf skos:Concept ;
   owl:equivalentClass [
     rdf:type owl:Restriction ;
-    owl:hasValue :ControlledList ;
+    owl:allValuesFrom :ControlledList ;
     owl:onProperty skos:inScheme ;
   ] ;  
 .
@@ -265,8 +264,7 @@ of user-defined literals. They should be transformed into SKOS \citep{skos-spec}
 \begin{minipage}[b]{.62\textwidth}
 %\raggedleft
 \begin{lstlisting}[language=RDF/XML, caption={In-scheme equivalent class in RDF/XML syntax}, captionpos=b]
-<owl:Class rdf:about="http://base.uri/ControlledList">
-  <rdfs:subClassOf rdf:resource=".../02/skos/core#Concept"/>
+<owl:Class rdf:about="http://base.uri/ControlledList">  
   <owl:equivalentClass>
     <owl:Restriction>
       <owl:onProperty rdf:resource=".../02/skos/core#inScheme"/>

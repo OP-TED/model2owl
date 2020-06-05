@@ -673,8 +673,8 @@ Attributes with multiplicity exactly one correspond to functional object or data
 \end{trule}
 
 %attribute 1
-\vspace{-\parskip}
-\begin{minipage}[b]{.4\textwidth}
+\vspace{\parskip}
+\begin{minipage}[b]{.384\textwidth}
 \begin{lstlisting}[language=Turtle, caption={Declaring a functional property in Turtle syntax}, captionpos=b]
 :attribute5 a owl:FunctionalProperty .
 \end{lstlisting}
@@ -682,7 +682,9 @@ Attributes with multiplicity exactly one correspond to functional object or data
 \quad\vspace{-\parskip}
 \begin{minipage}[b]{.6\textwidth}
 \begin{lstlisting}[language=RDF/XML, caption={Declaring a functional property in RDF/XML syntax}, captionpos=b]
-<owl:FunctionalProperty rdf:about="http://base.uri/attribute5"/>
+<rdf:Description rdf:about="http://base.uri/attribute5">
+  <rdf:type rdf:resource="http://...owl#FunctionalProperty"/>
+</rdf:Description>
 \end{lstlisting}
 \end{minipage}
 \vspace{-\parskip}
