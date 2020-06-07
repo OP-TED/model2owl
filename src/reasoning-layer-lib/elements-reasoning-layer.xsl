@@ -24,7 +24,7 @@
 
 
     <xd:doc>
-        <xd:desc>..................</xd:desc>
+        <xd:desc>Applying rules to the attributes</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
         <xsl:call-template name="attributeDomain">
