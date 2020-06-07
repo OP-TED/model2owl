@@ -18,5 +18,21 @@
             <xd:p></xd:p>
         </xd:desc>
     </xd:doc>
+    <xsl:import href="config-parameters.xsl"/>
+    <xsl:import href="reasoning-layer-lib/reasoning-layer-selectors.xsl"/>
+    <xsl:import href="reasoning-layer-lib/elements-reasoning-layer.xsl"/>
+    <xsl:import href="reasoning-layer-lib/connectors-reasoning-layer.xsl"/>
+    
+    
+    <xd:doc>
+        <xd:desc/>
+    </xd:doc>
+    <xsl:template match="/">
+     
+
+            <xsl:apply-templates/>
+
+    </xsl:template>
+    
     
 </xsl:stylesheet>

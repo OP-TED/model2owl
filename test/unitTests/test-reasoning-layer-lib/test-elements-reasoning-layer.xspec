@@ -52,6 +52,15 @@
         <x:expect label="there is a correct datatype URI " test="owl:DatatypeProperty/rdfs:range/@rdf:resource = 'http://www.w3.org/2001/XMLSchema#string'"/>
     </x:scenario>
     
+    <x:scenario label="Scenario for attribute range - Datatype property (UML data-type)">
+        <x:call template="attributeRange">
+            <x:param name="attribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[290]/attributes[1]/attribute[7]"/>
+        </x:call>   
+        <x:expect label="there is a owl:DatatypeProperty" test="boolean(owl:DatatypeProperty) "/>
+        <x:expect label="there is a rdfs:range" test="boolean(owl:DatatypeProperty/rdfs:range)"/>
+        <x:expect label="there is a correct datatype URI " test="owl:DatatypeProperty/rdfs:range/@rdf:resource = 'http://www.w3.org/2001/XMLSchema#string'"/>
+    </x:scenario>
+    
 
     
     <x:scenario label="Scenario for attribute multiplicity values are not any (*)">
@@ -106,7 +115,6 @@
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[161]"/>
         <x:expect label="there is a owl:Class" test="boolean(owl:Class) "/>
-        <x:expect label="there is a rdfs:subClassOf" test="boolean(owl:Class/rdfs:subClassOf)"/>
         <x:expect label="there is owl:equivalentClass" test="boolean(owl:Class/owl:equivalentClass)"/>
         <x:expect label="there is a owl:Restriction" test="boolean(owl:Class/owl:equivalentClass/owl:Restriction)"/>
         <x:expect label="there is a owl:onProperty" test="boolean(owl:Class/owl:equivalentClass/owl:Restriction/owl:onProperty)"/>

@@ -73,8 +73,14 @@
         <xsl:variable name="attributeURI"
             select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
         <xsl:if test="f:isAttributeTypeValidForDatatypeProperty($attribute)">
+            <xsl:variable name="attributeTypeChecked"
+                select="
+                    if (boolean(f:getUmlDataTypeValues($attribute/properties/@type, $umlDataTypesMapping))) then
+                        f:getUmlDataTypeValues($attribute/properties/@type, $umlDataTypesMapping)
+                    else
+                        $attributeType"/>
             <xsl:variable name="attributeTypeURI"
-                select="f:buildURIfromLexicalQName($attributeType, fn:false())"/>
+                select="f:buildURIfromLexicalQName($attributeTypeChecked, fn:false())"/>
             <owl:DatatypeProperty rdf:about="{$attributeURI}">
                 <rdfs:range rdf:resource="{$attributeTypeURI}"/>
             </owl:DatatypeProperty>
@@ -84,7 +90,7 @@
                 f:isAttributeTypeValidForObjectProperty($attribute) or
                 boolean(f:getElementByName($attributeType, root($attribute)))">
             <xsl:variable name="classURI"
-                select="f:buildURIFromElement(f:getElementByName($attributeType, root($attribute)), fn:true(), fn:true())"/>
+                select="f:buildURIFromElement(f:getElementByName($attributeType, root($attribute))[1], fn:true(), fn:true())"/>
             <owl:ObjectProperty rdf:about="{$attributeURI}">
                 <rdfs:range rdf:resource="{$classURI}"/>
             </owl:ObjectProperty>
@@ -170,10 +176,8 @@
         <xsl:variable name="attributeURI"
             select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
         <xsl:if test="$attributeMultiplicityMin = 1 and $attributeMultiplicityMax = 1">
-            <rdf:Description
-                rdf:about="{$attributeURI}">
-                <rdf:type
-                    rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+            <rdf:Description rdf:about="{$attributeURI}">
+                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
             </rdf:Description>
         </xsl:if>
     </xsl:template>
@@ -186,7 +190,7 @@
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
         <xsl:variable name="enumerationURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
         <owl:Class rdf:about="{$enumerationURI}">
-            <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+            <!-- <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>-->
             <owl:equivalentClass>
                 <owl:Restriction>
                     <owl:onProperty rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>

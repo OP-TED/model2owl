@@ -94,12 +94,24 @@
         <xsl:param name="connector"/>
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($connector/source/model/@name, fn:true())"/>
+        <xsl:variable name="sourceRole"
+            select="
+                if (boolean($connector/source/role/@name)) then
+                    f:lexicalQNameToWords($connector/source/role/@name)
+                else
+                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
         <xsl:variable name="sourceRoleURI"
-            select="f:buildURIfromLexicalQName($connector/source/role/@name, fn:false())"/>
+            select="f:buildURIfromLexicalQName($sourceRole, fn:false())"/>
         <xsl:variable name="targetClassURI"
             select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true())"/>
+        <xsl:variable name="targetRole"
+            select="
+                if (boolean($connector/target/role/@name)) then
+                    f:lexicalQNameToWords($connector/target/role/@name)
+                else
+                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
         <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($connector/target/role/@name, fn:false())"/>
+            select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
             <owl:ObjectProperty rdf:about="{$targetRoleURI}">
@@ -127,12 +139,24 @@
         <xsl:param name="connector"/>
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($connector/source/model/@name, fn:true())"/>
+        <xsl:variable name="sourceRole"
+            select="
+                if (boolean($connector/source/role/@name)) then
+                    f:lexicalQNameToWords($connector/source/role/@name)
+                else
+                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
         <xsl:variable name="sourceRoleURI"
-            select="f:buildURIfromLexicalQName($connector/source/role/@name, fn:false())"/>
+            select="f:buildURIfromLexicalQName($sourceRole, fn:false())"/>
         <xsl:variable name="targetClassURI"
             select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true())"/>
+        <xsl:variable name="targetRole"
+            select="
+                if (boolean($connector/target/role/@name)) then
+                    f:lexicalQNameToWords($connector/target/role/@name)
+                else
+                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
         <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($connector/target/role/@name, fn:false())"/>
+            select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
             <owl:ObjectProperty rdf:about="{$targetRoleURI}">
@@ -159,8 +183,14 @@
     <xsl:template name="connectorAsymetry">
         <xsl:param name="connector"/>
         <xsl:if test="$connector/source/model/@name = $connector/target/model/@name">
+            <xsl:variable name="targetRole"
+                select="
+                    if (boolean($connector/target/role/@name)) then
+                        f:lexicalQNameToWords($connector/target/role/@name)
+                    else
+                        concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
             <xsl:variable name="targetRoleURI"
-                select="f:buildURIfromLexicalQName($connector/target/role/@name, fn:false())"/>
+                select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
             <owl:AsymmetricProperty rdf:about="{$targetRoleURI}"/>
         </xsl:if>
     </xsl:template>
@@ -174,10 +204,22 @@
     <xsl:template name="connectorInverse">
         <xsl:param name="connector"/>
         <xsl:if test="$connector/properties/@direction = 'Bi-Directional'">
+            <xsl:variable name="targetRole"
+                select="
+                    if (boolean($connector/target/role/@name)) then
+                        f:lexicalQNameToWords($connector/target/role/@name)
+                    else
+                        concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
             <xsl:variable name="targetRoleURI"
-                select="f:buildURIfromLexicalQName($connector/target/role/@name, fn:false())"/>
+                select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
+            <xsl:variable name="sourceRole"
+                select="
+                    if (boolean($connector/source/role/@name)) then
+                        f:lexicalQNameToWords($connector/source/role/@name)
+                    else
+                        concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
             <xsl:variable name="sourceRoleURI"
-                select="f:buildURIfromLexicalQName($connector/source/role/@name, fn:false())"/>
+                select="f:buildURIfromLexicalQName($sourceRole, fn:false())"/>
             <owl:ObjectProperty rdf:about="{$targetRoleURI}">
                 <owl:inverseOf rdf:resource="{$sourceRoleURI}"/>
             </owl:ObjectProperty>
