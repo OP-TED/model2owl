@@ -75,7 +75,7 @@
         <x:expect label="there is sh:select" test="boolean(sh:NodeShape/sh:sparql/sh:select)"/>
     </x:scenario>
     
-    <x:scenario label="Scenario for attribute range shape for valid datatype">
+    <x:scenario label="Scenario for attribute range shape for a class type">
         <x:call template="attributeRangeShape">
             <x:param name="attribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[290]/attributes[1]/attribute[6]"/>
         </x:call>   
@@ -83,7 +83,7 @@
         <x:expect label="there is a sh:PropertyShape" test="boolean(sh:property/sh:PropertyShape)"/>
         <x:expect label="there is a sh:name" test="boolean(sh:property/sh:PropertyShape/sh:name)"/>
         <x:expect label="there is a sh:path" test="boolean(sh:property/sh:PropertyShape/sh:path)"/>
-        <x:expect label="there is a sh:datatype" test="boolean(sh:property/sh:PropertyShape/sh:datatype)"/>
+        <x:expect label="there is a sh:class" test="boolean(sh:property/sh:PropertyShape/sh:class)"/>
     </x:scenario>
     
     <x:scenario label="Scenario for attribute range shape for invalid datatype">
