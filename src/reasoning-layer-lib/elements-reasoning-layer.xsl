@@ -129,18 +129,22 @@
                             </owl:Restriction>
                         </xsl:when>
                         <xsl:otherwise>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="{$attributeURI}"/>
-                                <owl:minCardinality rdf:datatype="{$datatypeURI}">
-                                    <xsl:value-of select="$attributeMultiplicityMin"/>
-                                </owl:minCardinality>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="{$attributeURI}"/>
-                                <owl:maxCardinality rdf:datatype="{$datatypeURI}">
-                                    <xsl:value-of select="$attributeMultiplicityMax"/>
-                                </owl:maxCardinality>
-                            </owl:Restriction>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="{$attributeURI}"/>
+                                        <owl:minCardinality rdf:datatype="{$datatypeURI}">
+                                            <xsl:value-of select="$attributeMultiplicityMin"/>
+                                        </owl:minCardinality>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="{$attributeURI}"/>
+                                        <owl:maxCardinality rdf:datatype="{$datatypeURI}">
+                                            <xsl:value-of select="$attributeMultiplicityMax"/>
+                                        </owl:maxCardinality>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:if>

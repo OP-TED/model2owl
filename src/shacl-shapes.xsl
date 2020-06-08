@@ -86,15 +86,6 @@
                         format-date(current-date(),
                         '[D01]/[M01]/[Y0001]')"
                 /></owl:versionInfo>
-
-<!--            <dct:contributor>
-                <foaf:Person rdf:about="http://costezki.ro/eugeniu#">
-                    <foaf:name>Eugeniu Costetchi</foaf:name>
-                    <foaf:homepage rdf:resource="http://costezki.ro"/>
-                    <foaf:firstName>Eugeniu</foaf:firstName>
-                    <foaf:lastName>Costetchi</foaf:lastName>
-                </foaf:Person>-->
-            <!--</dct:contributor>-->
             <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
             <rdfs:seeAlso
                 rdf:resource="https://joinup.ec.europa.eu/solution/eprocurement-ontology/about"/>
@@ -110,11 +101,4 @@
         </owl:Ontology>
     </xsl:template>
 
-    <!--    <xd:doc>
-        <xd:desc/>
-    </xd:doc>
-    <xsl:template match="node()" priority="-1">
-        <xsl:apply-templates/>
-    </xsl:template>
-    -->
 </xsl:stylesheet>
