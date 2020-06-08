@@ -1735,14 +1735,18 @@
    <owl:Class xmlns:sh="http://www.w3.org/ns/shacl#"
               rdf:about="http://data.europa.eu/a4g/ontology#Business">
       <rdfs:subClassOf>
-         <owl:Restriction>
-            <owl:onProperty rdf:resource="http://data.europa.eu/a4g/ontology#hasSize"/>
-            <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</owl:minCardinality>
-         </owl:Restriction>
-         <owl:Restriction>
-            <owl:onProperty rdf:resource="http://data.europa.eu/a4g/ontology#hasSize"/>
-            <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
-         </owl:Restriction>
+         <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="http://data.europa.eu/a4g/ontology#hasSize"/>
+                  <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</owl:minCardinality>
+               </owl:Restriction>
+               <owl:Restriction>
+                  <owl:onProperty rdf:resource="http://data.europa.eu/a4g/ontology#hasSize"/>
+                  <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+               </owl:Restriction>
+            </owl:intersectionOf>
+         </owl:Class>
       </rdfs:subClassOf>
    </owl:Class>
    <rdf:Description xmlns:sh="http://www.w3.org/ns/shacl#"
