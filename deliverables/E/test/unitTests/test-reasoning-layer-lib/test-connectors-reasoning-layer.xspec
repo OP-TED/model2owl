@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" 
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:sh="http://www.w3.org/ns/shacl#"
+    stylesheet="../../../src/reasoning-layer-lib/connectors-reasoning-layer.xsl">
+    
+    <x:scenario
+        label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Dependency'] that is between connectors not classes">
+        <x:context href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario
+        label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Dependency']">
+        <x:context href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[347]"/>
+        <x:expect label="there is 2 owl:ObjectProperty" test="count(owl:ObjectProperty) = 2"/>
+        <x:expect label="there is a rdfs:domain" test="boolean(owl:ObjectProperty/rdfs:domain)"/>
+        <x:expect label="there is a rdfs:range" test="boolean(owl:ObjectProperty/rdfs:range)"/>
+        <x:expect label="there is a owl:Class" test="boolean(owl:Class)"/>
+        <x:expect label="there is a rdfs:subClassOf" test="boolean(owl:Class/rdfs:subClassOf)"/>
+        <x:expect label="there is a owl:Restriction" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction)"/>
+        <x:expect label="there is a owl:onProperty" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
+        <x:expect label="there is a owl:minCardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality)"/>
+        <x:expect label="there is a owl:minCardinality with correct value" test="owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality/text() = '2'"/>
+        <x:expect label="there is a owl:maxCardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:maxCardinality)"/>
+    </x:scenario>
+    
+    <x:scenario
+        label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Association']">
+        <x:context href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[100]"/>
+        <x:expect label="there is 2 owl:ObjectProperty" test="count(owl:ObjectProperty) = 2"/>
+        <x:expect label="there is a rdfs:domain" test="boolean(owl:ObjectProperty/rdfs:domain)"/>
+        <x:expect label="there is a rdfs:range" test="boolean(owl:ObjectProperty/rdfs:range)"/>
+        <x:expect label="there is a owl:Class" test="boolean(owl:Class)"/>
+        <x:expect label="there is a rdfs:subClassOf" test="boolean(owl:Class/rdfs:subClassOf)"/>
+        <x:expect label="there is a owl:Restriction" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction)"/>
+        <x:expect label="there is a owl:onProperty" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
+        <x:expect label="there is a owl:minCardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality)"/>
+        <x:expect label="there is a owl:minCardinality with correct value" test="owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality/text() = '0'"/>
+        <x:expect label="there is no owl:maxCardinality" test="not(boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:maxCardinality))"/>
+        
+    </x:scenario>
+    
+    <x:scenario
+        label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']">
+        <x:context href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[11]"/>
+        <x:expect label="there is 2 owl:ObjectProperty" test="boolean(owl:ObjectProperty)"/>
+        <x:expect label="there is 2 owl:equivalentProperty" test="boolean(owl:ObjectProperty/owl:equivalentProperty)"/>
+        <x:expect label="there is a equivalentProperty" test="owl:ObjectProperty/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isRoleOfContactPerson'"/>
+        <x:expect label="there is a equivalentProperty" test="owl:ObjectProperty/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#hasPersonRole'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for association with Source -&gt; Destination direction - domain">
+        <x:call template="connectorSource">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[100]"/>
+        </x:call>   
+        <x:expect label="there is a owl:ObjectProperty" test="boolean(owl:ObjectProperty)"/>
+        <x:expect label="correct target URI" test="owl:ObjectProperty/@rdf:about = 'http://data.europa.eu/a4g/ontology#has'"/>
+        <x:expect label="there is a rdfs:domain" test="boolean(owl:ObjectProperty/rdfs:domain)"/>
+        <x:expect label="correct class URI" test="owl:ObjectProperty/rdfs:domain/@rdf:resource = 'http://data.europa.eu/a4g/ontology#ContactPoint'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for association with Bi-Directional direction - domain">
+        <x:call template="connectorSource">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[115]"/>
+        </x:call>   
+        <x:expect label="there is 2 owl:ObjectProperty" test="boolean(owl:ObjectProperty)"/>
+        <x:expect label="there is 2 rdfs:domain" test="boolean(owl:ObjectProperty/rdfs:domain)"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for association with Source -&gt; Destination direction - range">
+        <x:call template="connectorTarget">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[100]"/>
+        </x:call>   
+        <x:expect label="there is a owl:ObjectProperty" test="boolean(owl:ObjectProperty)"/>
+        <x:expect label="correct target URI" test="owl:ObjectProperty/@rdf:about = 'http://data.europa.eu/a4g/ontology#has'"/>
+        <x:expect label="there is a rdfs:range" test="boolean(owl:ObjectProperty/rdfs:range)"/>
+        <x:expect label="correct class URI" test="owl:ObjectProperty/rdfs:range/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Channel'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for association with Bi-Directional direction - range">
+        <x:call template="connectorTarget">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[115]"/>
+        </x:call>   
+        <x:expect label="there is 2 owl:ObjectProperty" test="boolean(owl:ObjectProperty)"/>
+        <x:expect label="there is 2 rdfs:range" test="boolean(owl:ObjectProperty/rdfs:range)"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for association asymetry">
+        <x:call template="connectorAsymetry">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[33]"/>
+        </x:call>   
+        <x:expect label="there is a owl:AsymmetricProperty" test="boolean(owl:AsymmetricProperty)"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for association inverse">
+        <x:call template="connectorInverse">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[33]"/>
+        </x:call>   
+        <x:expect label="there is a owl:ObjectProperty" test="boolean(owl:ObjectProperty)"/>
+        <x:expect label="there is a owl:inverseOf" test="boolean(owl:ObjectProperty/owl:inverseOf)"/>
+        <x:expect label=" correct rdf:resource" test="owl:ObjectProperty/owl:inverseOf/@rdf:resource = 'http://data.europa.eu/a4g/ontology#actsOnBehalfOf'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for class equivalence ">
+        <x:call template="classEquivalence">
+            <x:param name="generalisation" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[454]"/>
+        </x:call>   
+        <x:expect label="there is a owl:Class" test="boolean(owl:Class)"/>
+        <x:expect label="there is a owl:equivalentClass" test="boolean(owl:Class/owl:equivalentClass)"/>
+        <x:expect label="there is a equivalent Class" test="owl:Class/owl:equivalentClass/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Organization'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for properties equivalence ">
+        <x:call template="propertiesEquivalence">
+            <x:param name="generalisation" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[11]"/>
+        </x:call>   
+        <x:expect label="there is 2 owl:ObjectProperty" test="boolean(owl:ObjectProperty)"/>
+        <x:expect label="there is 2 owl:equivalentProperty" test="boolean(owl:ObjectProperty/owl:equivalentProperty)"/>
+        <x:expect label="there is a equivalentProperty" test="owl:ObjectProperty/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isRoleOfContactPerson'"/>
+        <x:expect label="there is a equivalentProperty" test="owl:ObjectProperty/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#hasPersonRole'"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction ">
+        <x:call template="connectorMultiplicity">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[100]"/>
+        </x:call>   
+        <x:expect label="there is a owl:Class" test="boolean(owl:Class)"/>
+        <x:expect label="there is a rdfs:subClassOf" test="boolean(owl:Class/rdfs:subClassOf)"/>
+        <x:expect label="there is a owl:Restriction" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction)"/>
+        <x:expect label="there is a owl:onProperty" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
+        <x:expect label="there is a owl:minCardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality)"/>
+        <x:expect label="there is a owl:minCardinality with correct value" test="owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality/text() = '0'"/>
+        <x:expect label="there is no owl:maxCardinality" test="not(boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:maxCardinality))"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and both target and source have multiplicity ">
+        <x:call template="connectorMultiplicity">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[115]"/>
+        </x:call>   
+        <x:expect label="there is a 2 owl:Class" test="count(owl:Class) = 2"/>
+        <x:expect label="there is a 2 rdfs:subClassOf" test="count(owl:Class/rdfs:subClassOf) = 2"/>
+        <x:expect label="there is a 2 owl:Restriction" test="count(owl:Class/rdfs:subClassOf/owl:Restriction) = 2"/>
+        <x:expect label="there is a 2 owl:onProperty" test="count(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty) = 2"/>
+        <x:expect label="there is only one owl:minCardinality" test="count(owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality) = 1"/>
+        <x:expect label="there is a owl:minCardinality with correct value" test="owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality/text() = '0'"/>
+        <x:expect label="there is 2 owl:maxCardinality" test="count(owl:Class/rdfs:subClassOf/owl:Restriction/owl:maxCardinality) = 2"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction and the target has no multiplicity">
+        <x:call template="connectorMultiplicity">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[276]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction and the target multiplicity is *">
+        <x:call template="connectorMultiplicity">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[216]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and only the target has multiplicity ">
+        <x:call template="connectorMultiplicity">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[56]"/>
+        </x:call>   
+        
+        <x:expect label="there is a 1 owl:Class" test="count(owl:Class) = 1"/>
+        <x:expect label="there is a 1 rdfs:subClassOf" test="count(owl:Class/rdfs:subClassOf) = 1"/>
+        <x:expect label="there is a 1 owl:Restriction" test="count(owl:Class/rdfs:subClassOf/owl:Restriction) = 1"/>
+        <x:expect label="there is a 1 owl:onProperty" test="count(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty) = 1"/>
+        <x:expect label="there is only one owl:minCardinality" test="count(owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality) = 1"/>
+        <x:expect label="there is a owl:minCardinality with correct value" test="owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality/text() = '1'"/>
+        <x:expect label="there is 1 owl:maxCardinality" test="count(owl:Class/rdfs:subClassOf/owl:Restriction/owl:maxCardinality) = 1"/>
+    </x:scenario>
+    
+</x:description>

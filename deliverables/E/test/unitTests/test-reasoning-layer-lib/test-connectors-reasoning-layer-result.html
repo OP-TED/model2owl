@@ -1,0 +1,1193 @@
+<?xml version="1.0" encoding="UTF-8"?><html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Test Report for /home/lps/work/workspace-charm/model2owl/src/reasoning-layer-lib/connectors-reasoning-layer.xsl (passed: 71 / pending: 0 / failed: 0 / total: 71)</title>
+      <style type="text/css">/****************************************************************************/
+/*  File:       test-report.css                                             */
+/*  Author:     Jeni Tennison                                               */
+/*  Tags:                                                                   */
+/*    Copyright (c) 2008, 2010 Jeni Tennison (see end of file.)             */
+/* ------------------------------------------------------------------------ */
+
+
+/* test */
+
+/* box model */
+
+body {
+	margin-right: 5%;
+	margin-left: 5%;
+	}
+
+h1 {
+	padding: 0.3em 0.5em 0.3em 0.5em;
+	position: relative;
+	}
+
+h2 {
+	padding: 0.1em 0.5em 0.2em 0.5em;
+	}
+
+h3 {
+	padding-left: 0.6em;
+	}
+
+h4 {
+	padding-left: 0.8em;
+	}
+
+p, table {
+	margin-left: 5%;
+	}
+
+dd ul, dd ol {
+	margin-left: 0%;
+	}
+
+li ul, li ol {
+	margin-left: 5%;
+	}
+
+dl, ul, ol, blockquote {
+	margin-left: 10%;
+	}
+
+dt {
+  padding-top: 3px;
+  padding-bottom: 3px;
+	clear: both;
+	}
+
+dd p {
+	margin-left: -5px;
+	margin-top: 5px;
+	clear: both;
+	}
+
+p.link {
+	margin-top: 4px;
+	margin-bottom: 0px;
+	clear: both;
+	}
+
+tr td, td p, li, li p {
+	margin-left: 0%;
+	}
+
+td {
+	padding-right: 5%;
+	}
+
+.link img, dt img {
+	vertical-align: middle;
+	position: relative;
+	top: -5px;
+	}
+
+img {
+	position: relative;
+	}
+
+#xml-link {
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	width: 10%;
+	margin-left: 0%;
+	}
+
+#link-up {
+	position: absolute;
+	left: 93%;
+	right: 2em;
+	top: 0.3em;
+	}
+
+#link-top {
+	position: absolute;
+	left: 89%;
+	right: 4em;
+	top: 0.3em;
+	}
+	
+.popup {
+	display: block;
+	visibility: hidden;
+	float: right;
+	position: absolute;
+	top: 5px;
+	left: -200px;
+	z-index: 1;
+	padding: 0.3em;
+	width: 220px;
+	}
+
+.note {
+	position: relative;
+	}
+
+.post {
+	margin-left: 5%;
+	padding-top: 1em;
+	}
+	
+.example, .sidebar {
+  margin-left: 5%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  }
+
+pre {
+	padding-left: 5%;
+	margin-left: 5%;
+	}
+
+dd pre, li pre {
+	padding-left: 5%;
+	}
+
+/* fonts */
+body {
+	font-family: sans-serif;
+	font-size: small;
+	}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: sans-serif;
+	}
+
+h1 {
+	font-size: 173%;
+	font-weight: bold;
+	}
+
+h2 {
+	font-size: 144%;
+	font-weight: bold;
+	}
+
+h3 {
+	font-size: 120%;
+	font-weight: normal;
+	}
+
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+}
+
+dt {
+	font-weight: bold;
+	}
+
+a:link, a:visited, a:active, a:hover {
+	font-weight: bold;
+	}
+
+a.offsite:link, a.offsite:visited, a.offsite:active, a.offsite:hover {
+	font-weight: normal;
+	}
+
+/* suppress the normal italics */
+address {
+	font-style: normal;
+	}
+
+div.example, .sidebar {
+  font-family: sans-serif;
+  font-size: 100%;
+  }
+
+
+.note, .link {
+	font-family: sans-serif;
+	font-size: 83%;
+	}
+
+.example, .string, .rtf, .code, pre, code {
+	font-family: monospace;
+  font-size: 83%;
+	}
+
+.boolean {
+	font-style: italic;
+	}
+
+#colophon, #xml-link {
+	font-size: 69%;
+	}
+
+.question, .title {
+	font-weight: bold;
+	}
+
+/* colours */
+body {
+	background-color: white;
+	color: black;
+	border: 0px none black;
+	}
+
+/* this is to make Navigator fill the entire line */
+h1, h2 {
+	border: 1px solid white;
+	width: auto;
+	}
+
+h1 {
+	background: #606;
+	color: #6F6;
+	}
+
+h2 {
+	color: #606;
+	background: #CFC;
+	}
+
+hr {
+	color: #606;
+	background: white;
+	}
+
+img, a:link img, a:visited img, a:hover img, a:active img, #link-up img, #link-top img {
+	border: 0px none white;
+	background: transparent;
+	}
+
+a:link {
+	color: #636;
+	background: transparent;
+	border: 0px none white;
+	}
+
+a:visited {
+	color: #606;
+	background: transparent;
+	border: 0px none white;
+	}
+
+a:active {
+	color: #6F6;
+	background: #606;
+	border: 0px none white;
+	}
+
+a:hover {
+	color: #636;
+	background: #9F9;
+	border: 0px none white;
+	}
+
+a.img:hover, a.img:active {
+	background: transparent;
+	}
+
+#colophon, #xml-link, .note {
+	color: #666;
+	}
+
+#colophon a:link, #colophon a:visited, #colophon a:hover,
+#xml-link a:link, #xml-link a:visited, #xml-link a:hover,
+.note a:link, .note a:visited, .note a:hover {
+	color: #969;
+	background: transparent;
+	}
+
+#colophon a:hover, #xml-link a:hover, .note a:hover {
+	background: #CFC;
+	color: #969;
+	}
+
+.popup {
+	background: white;
+	border: 1px solid #606;
+	}
+
+.post {
+	border-top: 2px solid #606;
+	}
+	
+.example {
+  border-top: 2px solid #606;
+  border-bottom: 2px solid #606;
+  }
+  
+.sidebar {
+  border-top: 2px solid #090;
+  border-bottom: 2px solid #090;
+  }
+  
+.rng {
+  border-left: 2px solid #666;
+  }
+
+.same {
+  background-color: rgb(206, 239, 174);
+}
+
+.inner-diff {
+  background-color: rgba(255, 204, 204, .4);
+}
+
+.diff {
+  background-color: #FCC;
+}
+
+.whitespace {
+	/*font-style: italic;*/
+	color: #999;
+	/*background: white;*/
+}
+
+.ellipsis {
+	color: #999;
+}
+
+.ignored {
+  font-style: italic;
+  color: #999;
+  background: white;
+}
+
+.hit {
+}
+
+.missed {
+  background-color: #A33;
+  color: white;
+}
+
+/* text */
+ol ol li {
+	list-style: lower-alpha;
+	}
+
+td {
+	vertical-align: top;
+	}
+
+h1 {
+	text-transform: uppercase;
+	}
+
+.question {
+	text-indent: -33px;
+	}
+
+.byline {
+	text-align: right;
+	}
+
+#link-top, #link-up {
+	text-align: right;
+	}
+
+a {
+	text-decoration: none;
+	}
+
+body > h2:first-of-type {
+    background: inherit;
+    margin-bottom: 0;
+}
+
+table { width: 95%;
+        /* border: collapse; */ }
+
+th { text-align: left; }
+
+th.totals { text-align: center; font-weight: normal; }
+
+div > table > tbody > tr > th:first-child {
+    font-weight:bold;
+    color: #474747;
+}
+
+.xspec tbody th { font-weight: normal; font-size: 0.8em; border-top: 1px #666 solid; }
+.xspec tbody td { font-size: 0.8em; color: #262626; }
+
+.successful { background-color: #CFC; }
+.pending { background-color: #EEE; color: #666; }
+.failed { background-color: #FCC; }
+
+.successful td:first-child:before, 
+body > table:first-of-type tr.successful th:first-child:before
+{ 
+margin-right: 5px; 
+
+/* optimized version of ../../graphics/success12.png */
+content:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAABcUlEQVR42m1SPUsDQRB9661BIoEQDBqJnRhE1BD8CP4AgwhWEbQIKIhi6Q/QwspCtBBs/CBG1Fb9AWK0iBosLCQgYmGQEFARRUguezfuLeZygsWbmZ037zEMyxZ2W0IgHBIoIjPoF6q2QQYIWVlPcxmS3mYt4vFpjmEpd4pNaJ9vRvS9ILa57Aw2ejUYBtVcTdsZPnc7Qk0juNQ3QC/o55JkhnAO19wDnjAmIkkcZBMwBVmci1uEoR5Od4K73o94eAuZpx3kX+9U35TgVjAqVWdmZUWOhldQrnwhnduEELD7dVYhdMJY9zom+/ZAgqOnNY7OQAynt0sol3TFSyiRWklUCKXyN8Jt40gM7SPo68VDIY1c/ly5KlBtJaU+vlmEpyGArmBMkiZOrpdV3yFQ4PJBkmBkCqTO5jE3fITixyOei/dy0L5aVSjY7Jo/w10sqnFmn9VU+e+ZhW7BvGAzq/4O2UiBMCBJRv9/DyHDFQFTPwI/IlPYPLYnAAAAAElFTkSuQmCC')
+}
+
+.failed td:first-child:before,
+body > table:first-of-type tr.failed th:first-child:before
+{ 
+margin-right: 5px; 
+
+/* optimized version of ../../graphics/fail12.png */
+content:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAjVBMVEWDKBSQLBadMBidMBiSLBWSLRaLKhWCKBOZLheHKRT//////v3ivLPgt67dsafhraLfqJvcopXQl4vNkoTKjH3RbljKaVO8aVaxYlCsUDylUDusOh+wNxu0OBu4ORy7OhzAOx3EPB2rNRqnNBqjMhifMRidMBeaLxeXLhaULRaRLBaOKxWLKhWIKRSFKBRkN75PAAAACnRSTlP7+c3Hx8TIwicknixbQAAAAIZJREFUeNoNwsEKgkAUBdD77jzSXKhDuEpyURBE//8h0SratQuKRK3QsdccjqTjDgLEV9VpPSEyYHPjVtFb9LYQKNYPrVk7fOyAfdMUWRnX9VHFLO9GJB4ClR8wxyIQYmGveZmGu1BUJFjm5fHtShDM8xVZFZ4nXtQVjDxd4hbPytGRPLf8A/K/MGOep8atAAAAAElFTkSuQmCC')
+}
+
+.pending td:first-child:before,
+body > table:first-of-type tr.pending th:first-child:before
+{
+margin-right: 5px; 
+
+/* optimized version of ../../graphics/pending12.png */
+content:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAt1BMVEVgYGBZWVldXV1gYGBjY2NmZmZnZ2dnZ2diYmJfX19dXV1hYWFZWVlYWFhiYmJeXl5YWFhoaGj6+vr39/fz8/Py8vLv7+/p6enk5OR9fX18fHx7e3t6enp5eXl4eHh3d3d2dnZ1dXV0dHRzc3NycnJxcXFwcHBvb29ubm5tbW1sbGxra2tqamppaWloaGhnZ2dmZmZlZWVkZGRjY2NiYmJhYWFfX19eXl5dXV1cXFxbW1taWlpZWVl0CTiLAAAAEnRSTlP++/75/P7Nx8fHyMTBwygmIycZZx20AAAAdElEQVR42jWKvQ4BURSEzzdzED+NQiFRaCWi4f1rhcor2EZl2RDdcq+YyUzyZYb5c0MUn3PIaPUKKk4aBgsqfHPRVpLl0nuFbbkKoe7te5ftw0jue4OJFIeOn4KZsNN26SB28Z9OHi+RJUTePL0263LMY5sfIzMU3HCY7dEAAAAASUVORK5CYII=')
+}
+
+
+
+.xspecResult { width: 95%; table-layout: fixed; }
+
+.xspecResult td,
+.xspecResult th { width: 50%; }
+
+.xspecResult pre { 
+  margin-left: 0; 
+  padding: 0.5em; 
+  overflow: auto; 
+  border: 1px #999 dotted;
+}
+
+span.scenario-totals {float: right; text-align: right}
+
+/* highlight the link target */
+*:target {
+	box-shadow: -0.5rem 0 0 0 #FC511D;
+}
+
+/* ------------------------------------------------------------------------ */
+/*  DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS COMMENT.               */
+/*                                                                          */
+/*  Copyright (c) 2008, 2010 Jeni Tennison                                  */
+/*                                                                          */
+/*  The contents of this file are subject to the MIT License (see the URI   */
+/*  http://www.opensource.org/licenses/mit-license.php for details).        */
+/*                                                                          */
+/*  Permission is hereby granted, free of charge, to any person obtaining   */
+/*  a copy of this software and associated documentation files (the         */
+/*  "Software"), to deal in the Software without restriction, including     */
+/*  without limitation the rights to use, copy, modify, merge, publish,     */
+/*  distribute, sublicense, and/or sell copies of the Software, and to      */
+/*  permit persons to whom the Software is furnished to do so, subject to   */
+/*  the following conditions:                                               */
+/*                                                                          */
+/*  The above copyright notice and this permission notice shall be          */
+/*  included in all copies or substantial portions of the Software.         */
+/*                                                                          */
+/*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,         */
+/*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF      */
+/*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  */
+/*  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY    */
+/*  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,    */
+/*  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE       */
+/*  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                  */
+/* ------------------------------------------------------------------------ */
+</style>
+   </head>
+   <body>
+      <h1>Test Report</h1>
+      <p>Stylesheet: <a href="file:/home/lps/work/workspace-charm/model2owl/src/reasoning-layer-lib/connectors-reasoning-layer.xsl">/home/lps/work/workspace-charm/model2owl/src/reasoning-layer-lib/connectors-reasoning-layer.xsl</a></p>
+      <p>XSpec: <a href="file:/home/lps/work/workspace-charm/model2owl/test/unitTests/test-reasoning-layer-lib/test-connectors-reasoning-layer.xspec">/home/lps/work/workspace-charm/model2owl/test/unitTests/test-reasoning-layer-lib/test-connectors-reasoning-layer.xspec</a></p>
+      <p>Tested: 8 June 2020 at 16:14</p>
+      <h2>Contents</h2>
+      <table class="xspec">
+         <colgroup>
+            <col style="width:75%" />
+            <col style="width:6.25%" />
+            <col style="width:6.25%" />
+            <col style="width:6.25%" />
+            <col style="width:6.25%" />
+         </colgroup>
+         <thead>
+            <tr>
+               <th></th>
+               <th class="totals">passed: 71</th>
+               <th class="totals">pending: 0</th>
+               <th class="totals">failed: 0</th>
+               <th class="totals">total: 71</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e4">Scenario for testing template with match 'connector[./properties/@ea_type = 'Dependency']
+                     that is between connectors not classes</a></th>
+               <th class="totals">1</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">1</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e20">Scenario for testing template with match 'connector[./properties/@ea_type = 'Dependency']</a></th>
+               <th class="totals">10</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">10</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e132">Scenario for testing template with match 'connector[./properties/@ea_type = 'Association']</a></th>
+               <th class="totals">10</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">10</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e238">Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']</a></th>
+               <th class="totals">4</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">4</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e287">Scenario for association with Source -&gt; Destination direction - domain</a></th>
+               <th class="totals">4</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">4</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e335">Scenario for association with Bi-Directional direction - domain</a></th>
+               <th class="totals">2</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">2</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e372">Scenario for association with Source -&gt; Destination direction - range</a></th>
+               <th class="totals">4</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">4</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e419">Scenario for association with Bi-Directional direction - range</a></th>
+               <th class="totals">2</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">2</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e456">Scenario for association asymetry</a></th>
+               <th class="totals">1</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">1</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e478">Scenario for association inverse</a></th>
+               <th class="totals">3</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">3</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e518">Scenario for class equivalence </a></th>
+               <th class="totals">3</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">3</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e559">Scenario for properties equivalence </a></th>
+               <th class="totals">4</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">4</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e611">Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination
+                     direction </a></th>
+               <th class="totals">7</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">7</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e688">Scenario for multiplicity in data shape layer when the connector has Bi-Directional
+                     direction and both target and source have multiplicity </a></th>
+               <th class="totals">7</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">7</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e782">Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination
+                     direction and the target has no multiplicity</a></th>
+               <th class="totals">1</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">1</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e801">Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination
+                     direction and the target multiplicity is *</a></th>
+               <th class="totals">1</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">1</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e820">Scenario for multiplicity in data shape layer when the connector has Bi-Directional
+                     direction and only the target has multiplicity </a></th>
+               <th class="totals">7</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">7</th>
+            </tr>
+         </tbody>
+      </table>
+      <div id="top-level-scenario-d5e4">
+         <h2 class="successful">Scenario for testing template with match 'connector[./properties/@ea_type = 'Dependency']
+            that is between connectors not classes<span class="scenario-totals">passed: 1 / pending: 0 / failed: 0 / total: 1</span></h2>
+         <table class="xspec" id="t-d5e4">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for testing template with match 'connector[./properties/@ea_type = 'Dependency']
+                     that is between connectors not classes</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>expect to do nothing</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e20">
+         <h2 class="successful">Scenario for testing template with match 'connector[./properties/@ea_type = 'Dependency']<span class="scenario-totals">passed: 10 / pending: 0 / failed: 0 / total: 10</span></h2>
+         <table class="xspec" id="t-d5e20">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for testing template with match 'connector[./properties/@ea_type = 'Dependency']</th>
+                  <th>passed: 10 / pending: 0 / failed: 0 / total: 10</th>
+               </tr>
+               <tr class="successful">
+                  <td>there is 2 owl:ObjectProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a rdfs:domain</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a rdfs:range</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:Class</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a rdfs:subClassOf</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:Restriction</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:onProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:minCardinality</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:minCardinality with correct value</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:maxCardinality</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e132">
+         <h2 class="successful">Scenario for testing template with match 'connector[./properties/@ea_type = 'Association']<span class="scenario-totals">passed: 10 / pending: 0 / failed: 0 / total: 10</span></h2>
+         <table class="xspec" id="t-d5e132">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for testing template with match 'connector[./properties/@ea_type = 'Association']</th>
+                  <th>passed: 10 / pending: 0 / failed: 0 / total: 10</th>
+               </tr>
+               <tr class="successful">
+                  <td>there is 2 owl:ObjectProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a rdfs:domain</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a rdfs:range</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:Class</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a rdfs:subClassOf</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:Restriction</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:onProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:minCardinality</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:minCardinality with correct value</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is no owl:maxCardinality</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e238">
+         <h2 class="successful">Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']<span class="scenario-totals">passed: 4 / pending: 0 / failed: 0 / total: 4</span></h2>
+         <table class="xspec" id="t-d5e238">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']</th>
+                  <th>passed: 4 / pending: 0 / failed: 0 / total: 4</th>
+               </tr>
+               <tr class="successful">
+                  <td>there is 2 owl:ObjectProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is 2 owl:equivalentProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a equivalentProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a equivalentProperty</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e287">
+         <h2 class="successful">Scenario for association with Source -&gt; Destination direction - domain<span class="scenario-totals">passed: 4 / pending: 0 / failed: 0 / total: 4</span></h2>
+         <table class="xspec" id="t-d5e287">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for association with Source -&gt; Destination direction - domain</th>
+                  <th>passed: 4 / pending: 0 / failed: 0 / total: 4</th>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:ObjectProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>correct target URI</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a rdfs:domain</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>correct class URI</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e335">
+         <h2 class="successful">Scenario for association with Bi-Directional direction - domain<span class="scenario-totals">passed: 2 / pending: 0 / failed: 0 / total: 2</span></h2>
+         <table class="xspec" id="t-d5e335">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for association with Bi-Directional direction - domain</th>
+                  <th>passed: 2 / pending: 0 / failed: 0 / total: 2</th>
+               </tr>
+               <tr class="successful">
+                  <td>there is 2 owl:ObjectProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is 2 rdfs:domain</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e372">
+         <h2 class="successful">Scenario for association with Source -&gt; Destination direction - range<span class="scenario-totals">passed: 4 / pending: 0 / failed: 0 / total: 4</span></h2>
+         <table class="xspec" id="t-d5e372">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for association with Source -&gt; Destination direction - range</th>
+                  <th>passed: 4 / pending: 0 / failed: 0 / total: 4</th>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:ObjectProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>correct target URI</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a rdfs:range</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>correct class URI</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e419">
+         <h2 class="successful">Scenario for association with Bi-Directional direction - range<span class="scenario-totals">passed: 2 / pending: 0 / failed: 0 / total: 2</span></h2>
+         <table class="xspec" id="t-d5e419">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for association with Bi-Directional direction - range</th>
+                  <th>passed: 2 / pending: 0 / failed: 0 / total: 2</th>
+               </tr>
+               <tr class="successful">
+                  <td>there is 2 owl:ObjectProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is 2 rdfs:range</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e456">
+         <h2 class="successful">Scenario for association asymetry<span class="scenario-totals">passed: 1 / pending: 0 / failed: 0 / total: 1</span></h2>
+         <table class="xspec" id="t-d5e456">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for association asymetry</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:AsymmetricProperty</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e478">
+         <h2 class="successful">Scenario for association inverse<span class="scenario-totals">passed: 3 / pending: 0 / failed: 0 / total: 3</span></h2>
+         <table class="xspec" id="t-d5e478">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for association inverse</th>
+                  <th>passed: 3 / pending: 0 / failed: 0 / total: 3</th>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:ObjectProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:inverseOf</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td> correct rdf:resource</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e518">
+         <h2 class="successful">Scenario for class equivalence <span class="scenario-totals">passed: 3 / pending: 0 / failed: 0 / total: 3</span></h2>
+         <table class="xspec" id="t-d5e518">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for class equivalence </th>
+                  <th>passed: 3 / pending: 0 / failed: 0 / total: 3</th>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:Class</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:equivalentClass</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a equivalent Class</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e559">
+         <h2 class="successful">Scenario for properties equivalence <span class="scenario-totals">passed: 4 / pending: 0 / failed: 0 / total: 4</span></h2>
+         <table class="xspec" id="t-d5e559">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for properties equivalence </th>
+                  <th>passed: 4 / pending: 0 / failed: 0 / total: 4</th>
+               </tr>
+               <tr class="successful">
+                  <td>there is 2 owl:ObjectProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is 2 owl:equivalentProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a equivalentProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a equivalentProperty</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e611">
+         <h2 class="successful">Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination
+            direction <span class="scenario-totals">passed: 7 / pending: 0 / failed: 0 / total: 7</span></h2>
+         <table class="xspec" id="t-d5e611">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination
+                     direction </th>
+                  <th>passed: 7 / pending: 0 / failed: 0 / total: 7</th>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:Class</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a rdfs:subClassOf</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:Restriction</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:onProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:minCardinality</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:minCardinality with correct value</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is no owl:maxCardinality</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e688">
+         <h2 class="successful">Scenario for multiplicity in data shape layer when the connector has Bi-Directional
+            direction and both target and source have multiplicity <span class="scenario-totals">passed: 7 / pending: 0 / failed: 0 / total: 7</span></h2>
+         <table class="xspec" id="t-d5e688">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for multiplicity in data shape layer when the connector has Bi-Directional
+                     direction and both target and source have multiplicity </th>
+                  <th>passed: 7 / pending: 0 / failed: 0 / total: 7</th>
+               </tr>
+               <tr class="successful">
+                  <td>there is a 2 owl:Class</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a 2 rdfs:subClassOf</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a 2 owl:Restriction</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a 2 owl:onProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is only one owl:minCardinality</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:minCardinality with correct value</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is 2 owl:maxCardinality</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e782">
+         <h2 class="successful">Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination
+            direction and the target has no multiplicity<span class="scenario-totals">passed: 1 / pending: 0 / failed: 0 / total: 1</span></h2>
+         <table class="xspec" id="t-d5e782">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination
+                     direction and the target has no multiplicity</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>expect to do nothing</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e801">
+         <h2 class="successful">Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination
+            direction and the target multiplicity is *<span class="scenario-totals">passed: 1 / pending: 0 / failed: 0 / total: 1</span></h2>
+         <table class="xspec" id="t-d5e801">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination
+                     direction and the target multiplicity is *</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>expect to do nothing</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e820">
+         <h2 class="successful">Scenario for multiplicity in data shape layer when the connector has Bi-Directional
+            direction and only the target has multiplicity <span class="scenario-totals">passed: 7 / pending: 0 / failed: 0 / total: 7</span></h2>
+         <table class="xspec" id="t-d5e820">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>Scenario for multiplicity in data shape layer when the connector has Bi-Directional
+                     direction and only the target has multiplicity </th>
+                  <th>passed: 7 / pending: 0 / failed: 0 / total: 7</th>
+               </tr>
+               <tr class="successful">
+                  <td>there is a 1 owl:Class</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a 1 rdfs:subClassOf</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a 1 owl:Restriction</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a 1 owl:onProperty</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is only one owl:minCardinality</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is a owl:minCardinality with correct value</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>there is 1 owl:maxCardinality</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </body>
+</html>
