@@ -104,7 +104,7 @@
 	
 	It is recommended to employ the primitive datatypes that are already defined in XSD \cite{xsd1.1-spec} and RDF \cite{rdf11}, which cover the standard and most common types. Thus definitions of custom data types shall be avoided unless the model really needs them. Such cases are, however, rare.
 	
-	The data types defined in the UML model are resolved into their XSD equivalent using the correspondences from Table \ref{tab:uml2xsd}.
+	The data types defined in the UML model (and custom ones) are resolved into their XSD equivalent using the correspondences from Table \ref{tab:uml2xsd}. Note that the family of string datatypes is mapped to \textit{rdf:langString}. This means that the instance data should provide a language tag for the textual data indicating how it should be read. This enables multilingual data specification. Also, note that Date is mapped to xsd:date and DateTime is mapped to xsd:dateTime. However the xsd:date is not included in the OWL2 interpretation and instead a strong preference is expressed fro xsd:dateTime. Therefore it is recommended to follow the OWL2 specification, although the xsd:date is a valid datatype in the RDF data and in SPARQL queries. 
 	
 	\begin{table}[!ht]
 		\caption{UML to XSD datatype correspondences}
@@ -116,11 +116,12 @@
 			Boolean                 & xsd:boolean \\
 			Float                   & xsd:float   \\
 			Integer                 & xsd:integer \\
-			Char, Character, String & xsd:string  \\
+			Char, Character, String & rdf:langString  \\
 			Short                   & xsd:short   \\
 			Long                    & xsd:long    \\
 			Decimal                 & xsd:decimal \\
-			Date                    & xsd:date    \\ \bottomrule
+			Date                    & xsd:date    \\ 
+			DateTime                & xsd:dateTime \\ \bottomrule
 		\end{tabular}
 	\end{table}
 
