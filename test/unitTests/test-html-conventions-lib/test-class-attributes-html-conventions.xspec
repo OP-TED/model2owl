@@ -307,4 +307,34 @@
         <x:expect label="expect to do nothing" select = "()"/>
     </x:scenario>
     
+    <x:scenario label="Scenario for finding a class attribute with type 'Date'">
+        <x:call template="ca-attributeTypeDateTime">
+            <x:param name="classAttribute"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[47]/attributes[1]/attribute[5]"
+            />
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a class attribute with type 'xsd:dateTime'">
+        <x:call template="ca-attributeTypeDateTime">
+            <x:param name="classAttribute"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[107]/attributes[1]/attribute[4]"
+            />
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a class attribute with type different then Date, DateTime, xsd:date or xsd:dateTime">
+        <x:call template="ca-attributeTypeDateTime">
+            <x:param name="classAttribute"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[107]/attributes[1]/attribute[3]"
+            />
+        </x:call>
+        <x:expect label="expect to do nothing" select = "()"/>
+    </x:scenario>
+    
 </x:description>
