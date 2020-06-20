@@ -78,6 +78,9 @@
             <xsl:call-template name="ca-attributeCorrespondingDependecy">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
+            <xsl:call-template name="ca-attributeTypeDateTime">
+                <xsl:with-param name="classAttribute" select="."/>
+            </xsl:call-template>
 
         </xsl:variable>
         <xsl:if test="boolean($classAttributeChecks)">
@@ -489,5 +492,26 @@
                     ()"
         />
     </xsl:template>
-
+    
+    <xd:doc>
+        <xd:desc>[class-attribute-type-66] - The attribute uses date or date time reference. Ensure
+            that the deadline attributes are typed with xsd:dateTime datatype wherease the date
+            references may use simple xsd:date datatype. </xd:desc>
+        <xd:param name="classAttribute"/>
+    </xd:doc>
+    <xsl:template name="ca-attributeTypeDateTime">
+        <xsl:param name="classAttribute"/>
+        <xsl:variable name="classAttributeType" select="$classAttribute/properties/@type"/>
+        <xsl:sequence
+            select="
+                if ($classAttributeType = ('Date', 'DateTime', 'xsd:date', 'xsd:dateTime')) then
+                    f:generateHtmlInfo(fn:concat('The attribute uses date or date time reference. Ensure that the ',
+                    'deadline attributes are typed with xsd:dateTime datatype wherease the date references may use ',
+                    'simple xsd:date datatype.'))
+                else
+                    ()"
+        />
+        
+    </xsl:template>
+    
 </xsl:stylesheet>
