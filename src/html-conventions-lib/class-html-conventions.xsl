@@ -76,6 +76,9 @@
             <xsl:call-template name="c-undefinedPrefix">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
+            <xsl:call-template name="c-classNamePlural">
+                <xsl:with-param name="class" select="."/>
+            </xsl:call-template>
 
         </xsl:variable>
         <xsl:variable name="classAttributeConventions" as="item()*">
@@ -412,5 +415,22 @@
             />
         </xsl:if>
     </xsl:template>
-
+    
+    <xd:doc>
+        <xd:desc>[class-name-67] - The class name is possibly in plural grammatical number. The
+            class names must always be in singular number. </xd:desc>
+        <xd:param name="class"/>
+    </xd:doc>
+    <xsl:template name="c-classNamePlural">
+        <xsl:param name="class"/>
+        <xsl:variable name="className" select="$class/@name"/>
+        <xsl:sequence
+            select="
+            if (fn:ends-with($className, 'es') or fn:ends-with($className, 's')) then
+                f:generateHtmlWarning('The class name is possibly in plural grammatical number. The class names must always be in singular number. ')
+                else
+                    ()"
+        />
+    </xsl:template>
+    
 </xsl:stylesheet>
