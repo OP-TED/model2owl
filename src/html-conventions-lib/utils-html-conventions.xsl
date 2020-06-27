@@ -12,7 +12,7 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#" 
     xmlns:f="http://https://github.com/costezki/model2owl#" version="3.0">
-    
+    <xsl:import href="../common/fetchers.xsl"/>
     
     <xd:doc>
         <xd:desc>This function will generate a info message</xd:desc>
@@ -58,7 +58,48 @@
     
     
     <xd:doc>
-        <xd:desc></xd:desc>
+        <xd:desc>Get the source name of a connector</xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    
+    <xsl:function name="f:getConnectorSourceName" as="xs:string">
+        <xsl:param name="connector"/>
+        <xsl:sequence
+            select="
+                if ($connector/source/model/@name = 'ProxyConnector') then
+                    fn:concat('(', 
+                    f:getConnectorByIdRef(fn:string(f:getElementByIdRef(fn:string($connector/source/@xmi:idref), root($connector))/@classifier), root($connector))/source/model/@name,
+                    ' - ',
+                    f:getConnectorByIdRef(fn:string(f:getElementByIdRef(fn:string($connector/source/@xmi:idref), root($connector))/@classifier), root($connector))/target/model/@name,
+                    ')')
+                else
+                $connector/source/model/@name "
+        />
+    </xsl:function>
+    
+    <xd:doc>
+        <xd:desc>Get the target name of a connector</xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    
+    <xsl:function name="f:getConnectorTargetName" as="xs:string">
+        <xsl:param name="connector"/>
+        <xsl:sequence
+            select="
+                if ($connector/target/model/@name = 'ProxyConnector') then
+                    fn:concat('(', 
+                    f:getConnectorByIdRef(fn:string(f:getElementByIdRef(fn:string($connector/target/@xmi:idref), root($connector))/@classifier), root($connector))/source/model/@name,
+                    ' - ',
+                    f:getConnectorByIdRef(fn:string(f:getElementByIdRef(fn:string($connector/target/@xmi:idref), root($connector))/@classifier), root($connector))/target/model/@name,
+                    ')')
+                else
+                     $connector/target/model/@name "
+        />
+    </xsl:function>
+    
+    
+    <xd:doc>
+        <xd:desc>Build connector name</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
     <xsl:function name="f:getConnectorName">
@@ -66,8 +107,8 @@
         <xsl:variable name="hasNoName" select="$connector/not(@name)"/>
         <xsl:choose>
             <xsl:when test="$hasNoName = fn:true()">
-               <xsl:variable name="source" select="$connector/source/model/@name"/>
-               <xsl:variable name="target" select="$connector/target/model/@name"/>
+               <xsl:variable name="source" select="f:getConnectorSourceName($connector)"/>
+               <xsl:variable name="target" select="f:getConnectorTargetName($connector)"/>
                 <xsl:if test="f:getConnectorDirection($connector) = 'Source -&gt; Destination'">
                     <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
                     <xsl:value-of select="fn:concat($source, ' -&gt; ', $target, ' ', '(+',$targetRole,')' )"/>

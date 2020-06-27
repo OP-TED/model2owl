@@ -56,4 +56,25 @@
         </x:call>
         <x:expect label="correct helper name for the connector">epo:AccessTerms X epo:Organisation (+epo:hasAdditionalInformationProvidedBy +)</x:expect>
     </x:scenario>
+    
+    <x:scenario label="Get connector source name - Proxy connector">
+        <x:call function="f:getConnectorSourceName">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-06-08-mappings.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
+        </x:call>
+        <x:expect label="correct target name" select="string('(epo:Document - epo:Procedure)')"></x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Get connector target name - Proxy connector">
+        <x:call function="f:getConnectorTargetName">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-06-08-mappings.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
+        </x:call>
+        <x:expect label="correct target name" select="string('(epo:Document - epo:Procedure)')"></x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Get connector helper name when direction is Source -> Destination and has no name">
+        <x:call function="f:getConnectorName">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-06-08-mappings.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
+        </x:call>
+        <x:expect label="correct name for the connector">(epo:Document - epo:Procedure) -> (epo:Document - epo:Procedure) (+)</x:expect>
+    </x:scenario>
 </x:description>
