@@ -89,7 +89,7 @@ When contributing to this repository, please first discuss the change you wish t
 
 Please note we adhere to [Apache code of conduct](https://www.apache.org/foundation/policies/conduct), please follow it in all your interactions with the project.  
 
-## Lincence 
+## Licence 
 
 The document deliverables, such as reports and specifications, available in the /doc folder, are licenced under a [CC BY 4.0 licence](https://creativecommons.org/licenses/by/4.0/deed.en).
 
