@@ -16,6 +16,7 @@
     <xsl:import href="../common/checkers.xsl"/>
     <xsl:import href="../common/fetchers.xsl"/>
     <xsl:import href="utils-html-conventions.xsl"/>
+    <xsl:import href="../config-parameters.xsl"/>
 
 
 
@@ -31,35 +32,35 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
-        <xsl:variable name="generalizationChecks" as="item()*">
-            <xsl:call-template name="g-classWithSingleChild">
-                <xsl:with-param name="generalizationConnector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="g-inverseInheritance">
-                <xsl:with-param name="generalizationConnector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="g-hasName">
-                <xsl:with-param name="generalizationConnector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="g-hasRoleName">
-                <xsl:with-param name="generalizationConnector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="g-hasMultiplicity">
-                <xsl:with-param name="generalizationConnector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="g-directionChecker">
-                <xsl:with-param name="generalizationConnector" select="."/>
-            </xsl:call-template>
-        </xsl:variable>
-        <xsl:if test="boolean($generalizationChecks)">
-            <h2><xsl:value-of select="f:getConnectorName(.)"/></h2>
-            <dl>
-                <dt>
-                    Unmet generalization conventions
-                </dt>
-                <xsl:copy-of select="$generalizationChecks"/>
-            </dl>
-        </xsl:if>
+            <xsl:variable name="generalizationChecks" as="item()*">
+                <xsl:call-template name="g-classWithSingleChild">
+                    <xsl:with-param name="generalizationConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="g-inverseInheritance">
+                    <xsl:with-param name="generalizationConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="g-hasName">
+                    <xsl:with-param name="generalizationConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="g-hasRoleName">
+                    <xsl:with-param name="generalizationConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="g-hasMultiplicity">
+                    <xsl:with-param name="generalizationConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="g-directionChecker">
+                    <xsl:with-param name="generalizationConnector" select="."/>
+                </xsl:call-template>
+            </xsl:variable>
+            <xsl:if test="boolean($generalizationChecks)">
+                <h2>
+                    <xsl:value-of select="f:getConnectorName(.)"/>
+                </h2>
+                <dl>
+                    <dt> Unmet generalization conventions </dt>
+                    <xsl:copy-of select="$generalizationChecks"/>
+                </dl>
+            </xsl:if>
     </xsl:template>
 
 
