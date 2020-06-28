@@ -58,7 +58,7 @@
     <xsl:variable name="stereotypeValidOnGeneralisations"
         select="('Disjoint', 'Equivalent', 'Complete')"/>
     <xsl:variable name="stereotypeValidOnAssociations" select="()"/>
-    <xsl:variable name="stereotypeValidOnDependencies" select="()"/>
+    <xsl:variable name="stereotypeValidOnDependencies" select="('Disjoint', 'disjoint', 'join')"/>
     <xsl:variable name="stereotypeValidOnClasses" select="('Abstract')"/>
     <xsl:variable name="stereotypeValidOnDatatypes" select="()"/>
     <xsl:variable name="stereotypeValidOnEnumerations" select="()"/>
