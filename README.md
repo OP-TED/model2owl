@@ -21,11 +21,12 @@ This work is developed in the context of [eProcurement ontology project](https:/
 
 ### Script unit tests
 
-* [test/unitTest/test-html-conventions-lib](test/unitTest/test-html-conventions-lib) is the location of the unit tests for the script checking the conformance to the technical conventions of the conceptual model are
-* [test/unitTest/test-owl-core-lib](test/unitTest/test-owl-core-lib) is the location of the unit tests for the transformation script for the core OWL ontology.
+* [test/unitTest/test-html-conventions-lib](
+https://github.com/meaningfy-ws/model2owl/tree/master/test/unitTests/test-html-conventions-lib) is the location of the unit tests for the script checking the conformance to the technical conventions of the conceptual model are
+* [test/unitTest/test-owl-core-lib](https://github.com/meaningfy-ws/model2owl/tree/master/test/unitTests/test-owl-core-lib) is the location of the unit tests for the transformation script for the core OWL ontology.
 
-* [test/unitTest/test-shacl-shape-lib](test/unitTest/test-shacl-shape-lib) is the location of the unit tests for the transformation script for the SHACL data shape constraints.
-* [test/unitTest/reasoning-layer-lib](test/unitTest/reasoning-layer-lib) is the location of the unit tests for the transformation script for the restrictions of OWL ontology (on classes and properties).
+* [test/unitTest/test-shacl-shape-lib](https://github.com/meaningfy-ws/model2owl/tree/master/test/unitTests/test-shacl-shape-lib) is the location of the unit tests for the transformation script for the SHACL data shape constraints.
+* [test/unitTest/reasoning-layer-lib](https://github.com/meaningfy-ws/model2owl/tree/master/test/unitTests/reasoning-layer-lib) is the location of the unit tests for the transformation script for the restrictions of OWL ontology (on classes and properties).
 
 ## Running the transformation
 
