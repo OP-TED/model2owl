@@ -34,7 +34,7 @@
     <!-- Ontology base URI, configure as necessary. Do not use a trailing local delimiter 
         like in the namespace definition-->
     <!--<xsl:variable name="base-uri" select="'http://publications.europa.eu/ontology/ePO'"/>-->
-    <xsl:variable name="base-uri" select="'http://data.europa.eu/a4g/ontology'"/>    
+    <xsl:variable name="base-uri" select="'http://data.europa.eu/a4g/ontology'"/>
 
     <!-- when a delimiter is missing in the base URI of a namespace, use this default value-->
     <xsl:variable name="defaultDelimiter" select="'#'"/>
@@ -63,5 +63,17 @@
     <xsl:variable name="stereotypeValidOnDatatypes" select="()"/>
     <xsl:variable name="stereotypeValidOnEnumerations" select="()"/>
     <xsl:variable name="stereotypeValidOnPackages" select="()"/>
+
+    <!--Allowed characters for a normalized string-->
+    <xsl:variable name="allowedStrings" select="'^[\w\d-_:]+$'"/>
+
+    <!-- Uppercased letters -->
+    <xsl:variable name="uppercaseLetters" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
+    <!--    Module URI for datashape definitions for the eProcurement ontology-->
+    <xsl:variable name="moduleUriShapes" select="fn:concat($base-uri, '/', 'ds')"/>
+    <!--    Module URI for inference-related definitions for the eProcurement ontology-->
+    <xsl:variable name="moduleUriRestrictions" select="fn:concat($base-uri, '/', 'ext')"/>
+    <!--    Module URI for the core eProcurement ontology-->
+    <xsl:variable name="moduleUriCore" select="fn:concat($base-uri, '/', 'core')"/>
 
 </xsl:stylesheet>

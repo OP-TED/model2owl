@@ -19,17 +19,17 @@
             <xd:p/>
         </xd:desc>
     </xd:doc>
+    
     <xsl:import href="config-parameters.xsl"/>
     <xsl:import href="reasoning-layer-lib/reasoning-layer-selectors.xsl"/>
     <xsl:import href="reasoning-layer-lib/elements-reasoning-layer.xsl"/>
     <xsl:import href="reasoning-layer-lib/connectors-reasoning-layer.xsl"/>
-
+    
 
 
     <xsl:output name="ext-ePO.rdf" method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
 
-    <xsl:variable name="moduleURI" select="fn:concat($base-uri, '/', 'ext')"/>
 
     <xd:doc>
         <xd:desc/>
@@ -37,7 +37,7 @@
     <xsl:template match="/">
         <rdf:RDF>
             <xsl:namespace name="epo" select="concat($base-uri, '#')"/>
-            <xsl:attribute name="xml:base" expand-text="true">{$moduleURI}</xsl:attribute>
+            <xsl:attribute name="xml:base" expand-text="true">{$moduleUriRestrictions}</xsl:attribute>
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
         </rdf:RDF>

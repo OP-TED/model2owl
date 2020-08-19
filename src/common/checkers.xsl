@@ -18,10 +18,7 @@
     </xd:doc>
 
     <xsl:import href="utils.xsl"/>
-
-    <xsl:variable name="allowedCharacters" select="'[a-zA-Z0-9-_:]'"/>
-    <xsl:variable name="allowedStrings" select="'^[\w\d-_:]+$'"/>
-    <xsl:variable name="uppercaseLetters" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
+    <xsl:import href="../config-parameters.xsl"/>
 
     <xd:doc>
         <xd:desc>Checks any string if it is normalized and it contains only allowed characters </xd:desc>
