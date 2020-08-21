@@ -39,7 +39,7 @@
     <xsl:template match="/">
         <rdf:RDF>
             <xsl:namespace name="epo" select="concat($base-uri, '#')"/>
-            <xsl:attribute name="xml:base" expand-text="true">{$moduleUriShapes}</xsl:attribute>
+            <xsl:attribute name="xml:base" expand-text="true">{$shapeModuleURI}</xsl:attribute>
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
         </rdf:RDF>

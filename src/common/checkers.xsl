@@ -19,6 +19,8 @@
 
     <xsl:import href="utils.xsl"/>
     <xsl:import href="../../config/config-parameters.xsl"/>
+    
+    <xsl:variable name="uppercaseLetters" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
 
     <xd:doc>
         <xd:desc>Checks any string if it is normalized and it contains only allowed characters </xd:desc>

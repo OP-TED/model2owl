@@ -67,13 +67,11 @@
     <!--Allowed characters for a normalized string-->
     <xsl:variable name="allowedStrings" select="'^[\w\d-_:]+$'"/>
 
-    <!-- Uppercased letters -->
-    <xsl:variable name="uppercaseLetters" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
-    <!--    Module URI for datashape definitions for the eProcurement ontology-->
-    <xsl:variable name="moduleUriShapes" select="fn:concat($base-uri, '/', 'ds')"/>
-    <!--    Module URI for inference-related definitions for the eProcurement ontology-->
-    <xsl:variable name="moduleUriRestrictions" select="fn:concat($base-uri, '/', 'ext')"/>
-    <!--    Module URI for the core eProcurement ontology-->
-    <xsl:variable name="moduleUriCore" select="fn:concat($base-uri, '/', 'core')"/>
+    <!--    Shapes Module URI-->
+    <xsl:variable name="shapeModuleURI" select="fn:concat($base-uri, '/', 'ds')"/>
+    <!--    Restrictions Module URI-->
+    <xsl:variable name="restrictionsModuleURI" select="fn:concat($base-uri, '/', 'ext')"/>
+    <!--    Core Module URI-->
+    <xsl:variable name="coreModuleURI" select="fn:concat($base-uri, '/', 'core')"/>
 
 </xsl:stylesheet>
