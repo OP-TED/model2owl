@@ -89,7 +89,6 @@
     <x:scenario label="Scenario 1 for testing function getNamespaceURI ">
         <x:call function="f:getNamespaceURI">
             <x:param name="prefix">ccev</x:param>
-            <!--<x:param name="namespaceDefinitions" href="../../testData/namespaces.xml" select="/"/>-->
         </x:call>
         <x:expect label="ccev base name" select="'http://data.europa.eu/m8g/'"/>
     </x:scenario>
@@ -97,7 +96,6 @@
     <x:scenario label="Scenario 2 for testing function getNamespaceURI ">
         <x:call function="f:getNamespaceURI">
             <x:param name="prefix">ccevrts</x:param>
-            <!--<x:param name="namespaceDefinitions" href="../../testData/namespaces.xml" select="/"/>-->
         </x:call>
         <x:expect label="return nothing" select="string('http://unknown.domain/for/prefix#')"/>
     </x:scenario>
@@ -106,7 +104,7 @@
     <x:scenario label="Scenario 1 for testing function getXsdRdfDataTypeValues">
         <x:call function="f:getXsdRdfDataTypeValues">
             <x:param name="qname">xsd:negativeInteger</x:param>
-            <x:param name="dataTypesDefinitions" href="../../testData/xsdAndRdfDataTypes.xml" select="/"/>
+            <x:param name="dataTypesDefinitions" href="../../../config/test-config/xsdAndRdfDataTypes.xml" select="/"/>
         </x:call>
         <x:expect label="data-type" select="'xsd:negativeInteger'"/>
     </x:scenario>
@@ -114,7 +112,7 @@
     <x:scenario label="Scenario 2 for testing function getXsdRdfDataTypeValues">
         <x:call function="f:getXsdRdfDataTypeValues">
             <x:param name="qname">xsd:!#4354gYearMonth</x:param>
-            <x:param name="dataTypesDefinitions" href="../../testData/xsdAndRdfDataTypes.xml" select="/"/>
+            <x:param name="dataTypesDefinitions" href="../../../config/test-config/xsdAndRdfDataTypes.xml" select="/"/>
         </x:call>
         <x:expect label="result" select="''"/>
     </x:scenario>
@@ -122,7 +120,7 @@
     <x:scenario label="Scenario 1 for testing function getNamespaceValues ">
         <x:call function="f:getNamespaceValues">
             <x:param name="prefix">ccev</x:param>
-            <x:param name="namespaceDefinitions" href="../../testData/namespaces.xml" select="/"/>
+            <x:param name="namespaceDefinitions" href="../../../config/test-config/namespaces.xml" select="/"/>
         </x:call>
         <x:expect label="ccev base name" select="'http://data.europa.eu/m8g/'"/>
     </x:scenario>
@@ -130,7 +128,7 @@
     <x:scenario label="Scenario 2 for testing function getNamespaceValues ">
         <x:call function="f:getNamespaceValues">
             <x:param name="prefix">ccevrts</x:param>
-            <x:param name="namespaceDefinitions" href="../../testData/namespaces.xml" select="/"/>
+            <x:param name="namespaceDefinitions" href="../../../config/test-config/namespaces.xml" select="/"/>
         </x:call>
         <x:expect label="return nothing" select="''"/>
     </x:scenario>
@@ -138,7 +136,7 @@
     <x:scenario label="Scenario 1 for testing function getUmlDataTypeValues">
         <x:call function="f:getUmlDataTypeValues">
             <x:param name="qname">Date</x:param>
-            <x:param name="umlDataTypeMappings" href="../../testData/umlToXsdDataTypes.xml" select="/"/>
+            <x:param name="umlDataTypeMappings" href="../../../config/test-config/umlToXsdDataTypes.xml" select="/"/>
         </x:call>
         <x:expect label="data-type" select="'xsd:date'"/>
     </x:scenario>
@@ -146,7 +144,7 @@
     <x:scenario label="Scenario 2 for testing function getUmlDataTypeValues">
         <x:call function="f:getUmlDataTypeValues">
             <x:param name="qname">DateQ</x:param>
-            <x:param name="umlDataTypeMappings" href="../../testData/umlToXsdDataTypes.xml" select="/"/>
+            <x:param name="umlDataTypeMappings" href="../../../config/test-config/umlToXsdDataTypes.xml" select="/"/>
         </x:call>
         <x:expect label="result" select="''"/>
     </x:scenario>

@@ -28,12 +28,10 @@
     <xsl:import href="shacl-shape-lib/shacl-shape-selectors.xsl"/>
     <xsl:import href="shacl-shape-lib/elements-shacl-shape.xsl"/>
     <xsl:import href="shacl-shape-lib/connectors-shacl-shape.xsl"/>
-    <xsl:import href="config-parameters.xsl"/>
+    <xsl:import href="../config/config-proxy.xsl"/>
 
         <xsl:output name="data-shapes-ePO.shapes.rdf" method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
-
-    <xsl:variable name="moduleURI" select=" fn:concat($base-uri,'/','ds')"/>
     
     <xd:doc>
         <xd:desc>The main template for OWL core file</xd:desc>
@@ -41,7 +39,7 @@
     <xsl:template match="/">
         <rdf:RDF>
             <xsl:namespace name="epo" select="concat($base-uri, '#')"/>
-            <xsl:attribute name="xml:base" expand-text="true">{$moduleURI}</xsl:attribute>
+            <xsl:attribute name="xml:base" expand-text="true">{$shapeModuleURI}</xsl:attribute>
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
         </rdf:RDF>

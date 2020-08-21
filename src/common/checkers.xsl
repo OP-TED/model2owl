@@ -18,9 +18,8 @@
     </xd:doc>
 
     <xsl:import href="utils.xsl"/>
-
-    <xsl:variable name="allowedCharacters" select="'[a-zA-Z0-9-_:]'"/>
-    <xsl:variable name="allowedStrings" select="'^[\w\d-_:]+$'"/>
+    <xsl:import href="../../config/config-proxy.xsl"/>
+    
     <xsl:variable name="uppercaseLetters" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
 
     <xd:doc>
