@@ -18,7 +18,7 @@
     </xd:doc>
 
     <xsl:import href="utils.xsl"/>
-    <xsl:import href="../config-parameters.xsl"/>
+    <xsl:import href="../../config/config-parameters.xsl"/>
 
     <xd:doc>
         <xd:desc>Checks any string if it is normalized and it contains only allowed characters </xd:desc>

@@ -29,7 +29,7 @@
     <xsl:import href="common/selectors.xsl"/>
     <xsl:import href="owl-core-lib/connectors-owl-core.xsl"/>
     <xsl:import href="owl-core-lib/elements-owl-core.xsl"/>
-    <xsl:import href="config-parameters.xsl"/>
+    <xsl:import href="../config/config-parameters.xsl"/>
 
     <xsl:output name="core-ePO.rdf" method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>

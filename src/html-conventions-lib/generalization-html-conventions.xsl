@@ -16,7 +16,7 @@
     <xsl:import href="../common/checkers.xsl"/>
     <xsl:import href="../common/fetchers.xsl"/>
     <xsl:import href="utils-html-conventions.xsl"/>
-    <xsl:import href="../config-parameters.xsl"/>
+    <xsl:import href="../../config/config-parameters.xsl"/>
 
 
 

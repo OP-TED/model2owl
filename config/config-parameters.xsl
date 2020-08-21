@@ -21,15 +21,15 @@
     </xd:doc>
 
     <!-- a set of prefix-baseURI definitions -->
-    <xsl:variable name="namespacePrefixes" select="fn:doc('../test/testData/namespaces.xml')"/>
+    <xsl:variable name="namespacePrefixes" select="fn:doc('namespaces.xml')"/>
 
     <!-- a mapping between UML atomic types to XSD datatypes  -->
     <xsl:variable name="umlDataTypesMapping"
-        select="fn:doc('../test/testData/umlToXsdDataTypes.xml')"/>
+        select="fn:doc('umlToXsdDataTypes.xml')"/>
 
     <!-- XSD datatypes that conform to OWL2 requirements   -->
     <xsl:variable name="xsdAndRdfDataTypes"
-        select="fn:doc('../test/testData/xsdAndRdfDataTypes.xml')"/>
+        select="fn:doc('xsdAndRdfDataTypes.xml')"/>
 
     <!-- Ontology base URI, configure as necessary. Do not use a trailing local delimiter 
         like in the namespace definition-->

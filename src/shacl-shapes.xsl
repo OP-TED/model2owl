@@ -28,7 +28,7 @@
     <xsl:import href="shacl-shape-lib/shacl-shape-selectors.xsl"/>
     <xsl:import href="shacl-shape-lib/elements-shacl-shape.xsl"/>
     <xsl:import href="shacl-shape-lib/connectors-shacl-shape.xsl"/>
-    <xsl:import href="config-parameters.xsl"/>
+    <xsl:import href="../config/config-parameters.xsl"/>
 
         <xsl:output name="data-shapes-ePO.shapes.rdf" method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
