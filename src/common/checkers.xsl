@@ -18,7 +18,7 @@
     </xd:doc>
 
     <xsl:import href="utils.xsl"/>
-    <xsl:import href="../../config/config-parameters.xsl"/>
+    <xsl:import href="../../config/config-proxy.xsl"/>
     
     <xsl:variable name="uppercaseLetters" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
 

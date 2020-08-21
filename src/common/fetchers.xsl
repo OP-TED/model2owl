@@ -20,7 +20,7 @@
         </xd:desc>
     </xd:doc>
     
-    <xsl:import href="../../config/config-parameters.xsl"/>
+    <xsl:import href="../../config/config-proxy.xsl"/>
     
     <xd:doc>
         <xd:desc>Finds the first ancestor packagedElement of type='uml:Package' corresponding to a

@@ -20,7 +20,7 @@
         </xd:desc>
     </xd:doc>
     
-    <xsl:import href="../config/config-parameters.xsl"/>
+    <xsl:import href="../config/config-proxy.xsl"/>
     <xsl:import href="reasoning-layer-lib/reasoning-layer-selectors.xsl"/>
     <xsl:import href="reasoning-layer-lib/elements-reasoning-layer.xsl"/>
     <xsl:import href="reasoning-layer-lib/connectors-reasoning-layer.xsl"/>
