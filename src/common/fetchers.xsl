@@ -167,9 +167,9 @@
         <xd:desc>fetch all distinct class attribute names</xd:desc>
         <xd:param name="root"/>
     </xd:doc>
-    <xsl:function name="f:getDistinctClassAttributeNames" as="item()*">
+    <xsl:function name="f:getDistinctClassAttributeNames" as="xs:string*">
         <xsl:param name="root" as="node()"/>
-        <xsl:sequence select="fn:distinct-values(fn:string($root//element[@xmi:type = 'uml:Class']/attributes/attribute/@name/text()))"/>
+        <xsl:sequence select="fn:distinct-values($root//element[@xmi:type = 'uml:Class']/attributes/attribute/@name)"/>
     </xsl:function>
     
     
@@ -177,7 +177,7 @@
         <xd:desc>fetch all connector distinct names</xd:desc>
         <xd:param name="root"/>
     </xd:doc>
-    <xsl:function name="f:getDistinctConnectorsNames" as="item()*">
+    <xsl:function name="f:getDistinctConnectorsNames" as="xs:string*">
         <xsl:param name="root" as="node()"/>
         <xsl:sequence select="fn:distinct-values($root//connectors/connector/(@name | target/role/@name | source/role/@name))"/>
     </xsl:function>
