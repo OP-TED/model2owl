@@ -181,5 +181,60 @@
         <x:expect label="result" test="boolean(element)"/>
         <x:expect label="result" test="count(element)=3"/>
     </x:scenario>
+    
+    <x:scenario label="Scenario for testing function getClassAttributeByName">
+        <x:call function="f:getClassAttributeByName">
+            <x:param name="name" >epo:Score</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>            
+        </x:call>
+        <x:expect label="result" test="boolean(/attribute[@name='epo:Score'])"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function getClassAttributeByName">
+        <x:call function="f:getClassAttributeByName">
+            <x:param name="name" >epo:invalid</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>            
+        </x:call>
+        <x:expect label="result" test="()"/>
+    </x:scenario>
+    
+<!--   TO DO - Make the tests below work-->
 
+<!--
+    <x:scenario label="Scenario for testing function getDistinctClassAttributeNames">
+        <x:call function="f:getDistinctClassAttributeNames">
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>            
+        </x:call>
+        <x:expect label="result" select=""/>
+    </x:scenario>-->
+    
+    
+ <!--   <x:scenario label="Scenario for testing function getDistinctConnectorsNames">
+        <x:call function="f:getDistinctConnectorsNames">
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>            
+        </x:call>
+        <x:expect label="result" select="'fffffff'"/>
+        
+    </x:scenario>-->
+    
+    <x:scenario label="getConnectorByName - target role">
+        <x:call function="f:getConnectorByName">
+            <x:param name="name">epo:refersTo</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi"
+                select="/"/>             
+        </x:call>
+        
+        <x:expect label="result" test="count(/connector)=14"/>
+    </x:scenario>
+    
+    <x:scenario label="getConnectorByName - source role">
+        <x:call function="f:getConnectorByName">
+            <x:param name="name">epo:concludes</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi"
+                select="/"/>             
+        </x:call>
+        
+        <x:expect label="result" test="count(/connector)=1"/>
+    </x:scenario>
+    
 </x:description>
