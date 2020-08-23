@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    stylesheet="file:../../../src/html-conventions-lib/connectors-with-same-name.xsl">
+    
+    <x:scenario label="Scenario for testing template with match 'connector">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="//connectors"/>
+        <x:expect label="there" select="'dd'"/>
+
+  
+    </x:scenario>
+    
+
+    
+</x:description>
