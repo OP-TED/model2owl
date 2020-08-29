@@ -407,4 +407,15 @@
         />
     </xsl:function>
     
+    
+    <xd:doc>
+        <xd:desc>Compare strings from a sequence to see if they are equal </xd:desc>
+        <xd:param name="stringToCompare"/>
+    </xd:doc>
+    <xsl:function name="f:areStringsEqual" as="xs:boolean">
+        <xsl:param name="stringToCompare" as="xs:string*" />
+        <xsl:variable name="firstString" select="$stringToCompare[1]"/>
+        <xsl:sequence select="every $i in $stringToCompare satisfies $i=$firstString"/>
+    </xsl:function>
+    
 </xsl:stylesheet>

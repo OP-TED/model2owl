@@ -31,30 +31,26 @@
     </xsl:template>
     
     
+
     
     
+    <xd:doc>
+        <xd:desc/>
+        <xd:param name="connectorName"/>
+        <xd:param name="root"/>
+    </xd:doc>
     <xsl:template name="multiplicityForConnectorsWithSameName">
         <xsl:param name="connectorName"/>
         <xsl:param name="root"/>
         <xsl:variable name="connectorsWithSameName" select="f:getConnectorByName($connectorName,$root)"/>
-        <xsl:variable name="compareMultiplicityValues"
+        <xsl:variable name="multiplicityValues" select="$connectorsWithSameName/*[role/@name=$connectorName]/type/@multiplicity"/>
+        <xsl:sequence
             select="
-            for $element in $connectorsWithSameName
-            return
-            fn:compare($connectorName, $element/source/type/@multiplicity)"
+                if (f:areStringsEqual($multiplicityValues)) then
+                    ()
+                else
+                    f:generateHtmlWarning('The multiplicity value used is not equal for all the connectors with this name')"
         />
-            
-<!--            <xsl:variable name="compareMultiplicityValues"
-                select="
-                for $element in $connectorsWithSameName
-                return
-                fn:compare($connector/source/type/@multiplicity, $element/source/type/@multiplicity)"
-            />
-            <!-\-    <xsl:if test="fn:contains(fn:string($compareMultiplicityValues), '1')">-\->
-            <xsl:value-of select="$compareMultiplicityValues[]"/>
-            <!-\-        </xsl:if>-\->-->
-        
-        
     </xsl:template>
     
 </xsl:stylesheet>

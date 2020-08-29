@@ -3,14 +3,33 @@
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:f="http://https://github.com/costezki/model2owl#"
     stylesheet="file:../../../src/html-conventions-lib/connectors-with-same-name.xsl">
-    
+
     <x:scenario label="Scenario for testing template with match 'connector">
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="//connectors"/>
         <x:expect label="there" select="'dd'"/>
 
-  
-    </x:scenario>
-    
 
-    
+    </x:scenario>
+
+
+    <x:scenario label="multiplicity for connectors with the same name - same multiplicty value">
+        <x:call template="multiplicityForConnectorsWithSameName">
+            <x:param name="connectorName">epo:hasCountryCode</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="there is no warning" select="()"/>
+    </x:scenario>
+
+    <x:scenario
+        label="multiplicity for connectors with the same name - different multiplicty values">
+        <x:call template="multiplicityForConnectorsWithSameName">
+            <x:param name="connectorName">epo:has</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+
+    </x:scenario>
+
+
+
 </x:description>
