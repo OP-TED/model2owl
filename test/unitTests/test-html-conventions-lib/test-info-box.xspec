@@ -31,8 +31,8 @@
     
     
     
-    <x:scenario label="more details for class attributes">
-        <x:call template="moreDetailsForAttributes">
+    <x:scenario label="class attribute usage in the model">
+        <x:call template="classAttributeUsage">
             <x:param name="attributeName">epo:AdditionalInformationDeadline</x:param>
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"></x:param>
         </x:call>
@@ -50,8 +50,8 @@
     </x:scenario>
     
     
-    <x:scenario label="more details for connectors">
-        <x:call template="moreDetailsForConnectors">
+    <x:scenario label="connector usage in the model">
+        <x:call template="connectorUsage">
             <x:param name="connectorName">epo:hasPostalAddress</x:param>
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"></x:param>
         </x:call>

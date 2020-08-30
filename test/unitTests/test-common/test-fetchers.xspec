@@ -237,12 +237,5 @@
         <x:expect label="result" test="count(/connector)=1"/>
     </x:scenario>
     
-    
-    <x:scenario label="Scenario for testing function getClassNameWithAttributeName">
-        <x:call function="f:getClassNameWithAttributeName">
-            <x:param name="attributeName" >epo:Address Type</x:param>
-            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>            
-        </x:call>
-        <x:expect label="result" select="'epo:Agent'"/>
-    </x:scenario>
+   
 </x:description>

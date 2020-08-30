@@ -7,6 +7,21 @@
     background-color:#f5f5f5;
 }
 
+.display-in-two-columns {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+a[href^="#"]::before {
+    content: "";
+}
+
+a[href^="#"]::after {
+    content: "";
+}
+
+
 #filters {
     left: 0%;
     top: 45%;

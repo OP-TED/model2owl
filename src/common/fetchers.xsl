@@ -190,18 +190,5 @@
         <xsl:param name="root" as="node()"/>
         <xsl:sequence select="fn:distinct-values($root//element[@xmi:type = 'uml:Class']/@name)"/>
     </xsl:function>
-    
-    <xd:doc>
-        <xd:desc>fetch class name with a given attribute name</xd:desc>
-        <xd:param name="attributeName"/>
-        <xd:param name="root"/>
-    </xd:doc>
-    
-    <xsl:function name="f:getClassNameWithAttributeName" as="xs:string*">
-        <xsl:param name="attributeName"/>
-        <xsl:param name="root" as="node()"/>
-        <xsl:sequence select="$root//elements/element[@xmi:type = 'uml:Class']/attributes/attribute[@name = $attributeName]/parent::attributes/parent::element/@name"/>
-    </xsl:function>
-<!--    /xmi:XMI/xmi:Extension[1]/elements/element[@xmi:type = 'uml:Class']/attributes/attribute[@name = 'epo:Address Type']/parent::attributes/parent::element/@name-->
-    
+
 </xsl:stylesheet>

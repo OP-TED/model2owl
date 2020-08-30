@@ -13,22 +13,24 @@
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:f="http://https://github.com/costezki/model2owl#" version="3.0">
 
-    <xsl:import href="../common/checkers.xsl"/>
+
     <xsl:import href="utils-html-conventions.xsl"/>
+    <xsl:import href="../common/utils.xsl"/>
     <xsl:import href="../common/fetchers.xsl"/>
 
 
     <xsl:template name="infoBox">
-        <h1>Class names used in the model</h1>
-        <ul class="list-group">
+        <h1>Nomenclature</h1>
+        <h2>Class names</h2>
+        <ul class="display-in-two-columns">
             <xsl:call-template name="listOfClassNamesAndOccurrences"/>
         </ul>
-        <h1>Class attributes names used in the model</h1>
-        <ul class="list-group">
+        <h2>Class attribute names</h2>
+        <ul>
             <xsl:call-template name="listOfClassAttributeNamesAndOccurences"/>
         </ul>
-        <h1>Connectors names used in the model</h1>
-        <ul class="list-group">
+        <h2>Connector names</h2>
+        <ul>
             <xsl:call-template name="listOfConnectorsAndOccurrences"/>
         </ul>
     </xsl:template>
@@ -44,7 +46,7 @@
                         fn:concat(' (', fn:string(fn:count((f:getElementByName(., $root)))), ')')
                     else
                         ()"/>
-            <li class="list-group-item">
+            <li>
                 <xsl:value-of select="."/>
                 <xsl:value-of select="$occurences"/>
             </li>
@@ -69,8 +71,8 @@
                         f:camelCaseString(fn:substring-after($attributeName, ':'))
                     else
                         f:camelCaseString($attributeName)"/>
-            <li class="list-group-item">
-                <a class="btn btn-link" data-toggle="collapse" href="#collapse{$hrefAttributeName}"
+            <li>
+                <a data-toggle="collapse" href="#collapse{$hrefAttributeName}"
                     role="button" aria-expanded="false" aria-controls="collapse{$hrefAttributeName}">
                     <xsl:value-of select="$attributeName"/>
                     <xsl:value-of select="$occurences"/>
@@ -78,7 +80,7 @@
                 <div class="collapse" id="collapse{$hrefAttributeName}">
                     <div class="card card-body">
                         <ul>
-                            <xsl:call-template name="moreDetailsForAttributes">
+                            <xsl:call-template name="classAttributeUsage">
                                 <xsl:with-param name="attributeName" select="$attributeName"/>
                                 <xsl:with-param name="root" select="$root"/>
                             </xsl:call-template>
@@ -90,7 +92,7 @@
     </xsl:template>
 
 
-    <xsl:template name="moreDetailsForAttributes">
+    <xsl:template name="classAttributeUsage">
         <xsl:param name="attributeName"/>
         <xsl:param name="root"/>
         <xsl:variable name="attributesWithSameName"
@@ -99,8 +101,10 @@
             <xsl:for-each select="$attributesWithSameName">
                 <xsl:variable name="className" select="./parent::attributes/parent::element/@name"/>
                 <xsl:variable name="attributeType" select="./properties/@type"/>
+                <xsl:variable name="attributeMultiplicityMin" select="./bounds/@lower"/>
+                <xsl:variable name="attributeMultiplicityMax" select="./bounds/@upper"/>
                 <li>
-                    <xsl:value-of select="fn:concat($className, ' (', $attributeType, ')')"/>
+                    <xsl:value-of select="fn:concat($className, ' (', $attributeType, ')', ' [', $attributeMultiplicityMin , '..', $attributeMultiplicityMax, ']')"/>
                 </li>
             </xsl:for-each>
         </xsl:if>
@@ -124,8 +128,8 @@
                         f:camelCaseString(fn:substring-after($connectorName, ':'))
                     else
                         f:camelCaseString($connectorName)"/>
-            <li class="list-group-item">
-                <a class="btn btn-link" data-toggle="collapse" href="#collapse{$hrefConnectorName}"
+            <li>
+                <a data-toggle="collapse" href="#collapse{$hrefConnectorName}"
                     role="button" aria-expanded="false" aria-controls="collapse{$hrefConnectorName}">
                     <xsl:value-of select="$connectorName"/>
                     <xsl:value-of select="$occurences"/>
@@ -133,7 +137,7 @@
                 <div class="collapse" id="collapse{$hrefConnectorName}">
                     <div class="card card-body">
                         <ul>
-                            <xsl:call-template name="moreDetailsForConnectors">
+                            <xsl:call-template name="connectorUsage">
                                 <xsl:with-param name="connectorName" select="$connectorName"/>
                                 <xsl:with-param name="root" select="$root"/>
                             </xsl:call-template>
@@ -144,7 +148,7 @@
         </xsl:for-each>
     </xsl:template>
 
-    <xsl:template name="moreDetailsForConnectors">
+    <xsl:template name="connectorUsage">
         <xsl:param name="connectorName"/>
         <xsl:param name="root"/>
         <xsl:variable name="connectorsWithSameName"
@@ -160,14 +164,16 @@
                 <xsl:if test="./target/role/@name = $connectorName">
                     <li>
                         <xsl:value-of
-                            select="fn:concat($sourceClass, ' -&gt; ', $targetClass, ' (', $targetMultiplicity, ')')"
+                            select="fn:concat($sourceClass, ' -&gt; ', $targetClass, ' [', $targetMultiplicity, ']')"
                         />
                     </li>
                 </xsl:if>
                 <xsl:if test="./source/role/@name = $connectorName">
+                    <li>
                     <xsl:value-of
-                        select="fn:concat($sourceClass, ' (,', $sourceMultiplicity, ')', ' -&lt; ', $targetClass)"
+                        select="fn:concat($sourceClass, ' [,', $sourceMultiplicity, ']', ' &lt;- ', $targetClass)"
                     />
+                    </li>
                 </xsl:if>
             </xsl:for-each>
         </xsl:if>
