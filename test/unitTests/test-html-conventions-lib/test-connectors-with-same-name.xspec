@@ -4,13 +4,13 @@
     xmlns:f="http://https://github.com/costezki/model2owl#"
     stylesheet="file:../../../src/html-conventions-lib/connectors-with-same-name.xsl">
 
-    <x:scenario label="Scenario for testing template with match 'connectors">
-        <x:context href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="//connectors"/>
-        <x:expect label="there are Description Details element" test="boolean(/dd)"/>
-        <x:expect label="there is a heading element" test="boolean(/h1)"/>
+<!--    <x:scenario label="Scenario for testing template with match 'connectors">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        <x:expect label="there are Description Details element" test="boolean(dd)"/>
+        <x:expect label="there is a heading element" test="boolean(h1)"/>
 
 
-    </x:scenario>
+    </x:scenario>-->
 
 
     <x:scenario label="multiplicity for connectors with the same name - same multiplicty value">
@@ -51,6 +51,17 @@
         </x:call>
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
         <x:expect label="expect to find a info" test="/dd/@class = 'filter infos'"/>
+        
+    </x:scenario>
+    
+    <x:scenario
+        label="definition for connectors with the same name - not all the connectors compared have a definition">
+        <x:call template="definitionForConnectorsWithSameName">
+            <x:param name="connectorName">epo:isSubmittedBy</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+        <x:expect label="expect to find a warning" test="/dd/@class = 'filter warnings'"/>
         
     </x:scenario>
 
