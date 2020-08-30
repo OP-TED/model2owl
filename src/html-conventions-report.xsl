@@ -26,7 +26,7 @@
     <xsl:import href="html-conventions-lib/association-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/generalization-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/dependency-html-conventions.xsl"/>
-    
+    <xsl:import href="html-conventions-lib/info-box.xsl"/>
     
     <xsl:import href="html-conventions-lib/fragments/header.xsl"/>
     <xsl:import href="html-conventions-lib/fragments/introduction.xsl"/>
@@ -68,6 +68,7 @@
                             value="Apply filter"/>
                     </div>
                     <xsl:call-template name="abstract"/>
+                    <xsl:call-template name="infoBox"/>
                     <xsl:apply-templates/>
                 </main>
                 <xsl:call-template name="footer"/>
