@@ -17,15 +17,24 @@
     <xsl:import href="utils-html-conventions.xsl"/>
     
     <xd:doc>
-        <xd:desc></xd:desc>
+        <xd:desc>Applying the checkers to a group of connectors with same name</xd:desc>
     </xd:doc>
     
-    <xsl:template match="connectors">
+    <xsl:template name="connectorsWithSameName">
         <xsl:variable name="root" select="/"/>
         <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
+        <h1>Connectors with the same name</h1>
         <xsl:for-each select="$distinctNames">
             <xsl:if test="fn:count(f:getConnectorByName(.,$root)) > 1">
-                <xsl:value-of select="."/>
+                <dt><xsl:value-of select="."/></dt>
+                <xsl:call-template name="multiplicityForConnectorsWithSameName">
+                    <xsl:with-param name="connectorName" select="."/>
+                    <xsl:with-param name="root" select="$root"/>
+                </xsl:call-template>
+                <xsl:call-template name="definitionForConnectorsWithSameName">
+                    <xsl:with-param name="connectorName" select="."/>
+                    <xsl:with-param name="root" select="$root"/>
+                </xsl:call-template>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
@@ -35,7 +44,7 @@
     
     
     <xd:doc>
-        <xd:desc/>
+        <xd:desc>Check the multiplicity values from a group of connectors with same name</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
     </xd:doc>
@@ -50,6 +59,43 @@
                     ()
                 else
                     f:generateHtmlWarning('The multiplicity value used is not equal for all the connectors with this name')"
+        />
+    </xsl:template>
+    
+    
+    <xd:doc>
+        <xd:desc>Check the definition values from a group of connectors with same name</xd:desc>
+        <xd:param name="connectorName"/>
+        <xd:param name="root"/>
+    </xd:doc>
+    <xsl:template name="definitionForConnectorsWithSameName">
+        <xsl:param name="connectorName"/>
+        <xsl:param name="root"/>
+        <xsl:variable name="connectorsWithSameName"
+            select="f:getConnectorByName($connectorName, $root)"/>
+        <xsl:variable name="definitionValues"
+            select="$connectorsWithSameName/*[role/@name = $connectorName]/../documentation/@value"/>
+  
+        <xsl:variable name="descriptionsWithAnnotations" as="xs:string*"
+            select="
+                for $i in $connectorsWithSameName
+                return
+                    if ($i/documentation/@value) then
+                    fn:concat($i/documentation/@value,' (',f:getConnectorName($i), ') ')
+                    else
+                        ()"
+        />
+
+        <xsl:sequence
+            select="
+                if (f:areStringsEqual($definitionValues) and fn:boolean($definitionValues)) then
+                    f:generateHtmlInfo(fn:concat('All the connectors with this name have the same definition. ',
+                                                'Here is the usage: ',
+                                                fn:string-join($descriptionsWithAnnotations, ',')))
+                else
+                f:generateHtmlWarning(fn:concat('The definition for the connectors with this name is different. ',
+                                                 'Here is the usage: ',
+                                                  fn:string-join($descriptionsWithAnnotations, ',')))"
         />
     </xsl:template>
     
