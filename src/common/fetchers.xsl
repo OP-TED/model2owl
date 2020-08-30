@@ -182,5 +182,13 @@
         <xsl:sequence select="fn:distinct-values($root//connectors/connector/(@name | target/role/@name | source/role/@name))"/>
     </xsl:function>
     
-    
+    <xd:doc>
+        <xd:desc>fetch all class distinct names</xd:desc>
+        <xd:param name="root"/>
+    </xd:doc>
+    <xsl:function name="f:getDistinctClassNames" as="xs:string*">
+        <xsl:param name="root" as="node()"/>
+        <xsl:sequence select="fn:distinct-values($root//element[@xmi:type = 'uml:Class']/@name)"/>
+    </xsl:function>
+
 </xsl:stylesheet>
