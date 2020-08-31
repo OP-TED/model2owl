@@ -371,4 +371,25 @@
         <x:expect label="result" select="string('1..1')"/>
     </x:scenario>
     
+    <x:scenario label="Scenario for sequence of strings that are not equal">
+        <x:call function="f:areStringsEqual">
+            <x:param name="stringToCompare" select="('one','two')"/> 
+        </x:call>
+        <x:expect label="result" select="fn:false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for sequence of strings that are equal">
+        <x:call function="f:areStringsEqual">
+            <x:param name="stringToCompare" select="('one','one')"/> 
+        </x:call>
+        <x:expect label="result" select="fn:true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for sequence of strings with only one string">
+        <x:call function="f:areStringsEqual">
+            <x:param name="stringToCompare" select="('one')"/> 
+        </x:call>
+        <x:expect label="result" select="fn:true()"/>
+    </x:scenario>
+    
 </x:description>

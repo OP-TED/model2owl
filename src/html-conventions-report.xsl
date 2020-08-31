@@ -27,7 +27,7 @@
     <xsl:import href="html-conventions-lib/generalization-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/dependency-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/info-box.xsl"/>
-    
+    <xsl:import href="html-conventions-lib/connectors-with-same-name.xsl"/>
     <xsl:import href="html-conventions-lib/fragments/header.xsl"/>
     <xsl:import href="html-conventions-lib/fragments/introduction.xsl"/>
     <xsl:import href="html-conventions-lib/fragments/footer.xsl"/>
@@ -70,6 +70,7 @@
                     <xsl:call-template name="abstract"/>
                     <xsl:call-template name="infoBox"/>
                     <xsl:apply-templates/>
+                    <xsl:call-template name="connectorsWithSameName"/>
                 </main>
                 <xsl:call-template name="footer"/>
             </body>
