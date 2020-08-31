@@ -23,16 +23,16 @@
     <xsl:template name="connectorsWithSameName">
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
-        <h1>Connectors with the same name</h1>
-        <xsl:for-each select="$distinctNames">
+        <h1>Properties with multiple usages</h1>
+        <xsl:for-each select="$distinctNames">  
+            <xsl:sort select="." lang="en"/>
             <xsl:if test="fn:count(f:getConnectorByName(., $root)) > 1">
-
                 <xsl:variable name="connectorsChecks" as="item()*">
-                    <xsl:call-template name="multiplicityForConnectorsWithSameName">
+                    <xsl:call-template name="checkMultiplicityOfConnectorsWithSameName">
                         <xsl:with-param name="connectorName" select="."/>
                         <xsl:with-param name="root" select="$root"/>
                     </xsl:call-template>
-                    <xsl:call-template name="definitionForConnectorsWithSameName">
+                    <xsl:call-template name="checkDefinitionOfConnectorsWithSameName">
                         <xsl:with-param name="connectorName" select="."/>
                         <xsl:with-param name="root" select="$root"/>
                     </xsl:call-template>
@@ -49,14 +49,12 @@
 
 
 
-
-
     <xd:doc>
         <xd:desc>Check the multiplicity values from a group of connectors with same name</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
     </xd:doc>
-    <xsl:template name="multiplicityForConnectorsWithSameName">
+    <xsl:template name="checkMultiplicityOfConnectorsWithSameName">
         <xsl:param name="connectorName"/>
         <xsl:param name="root"/>
         <xsl:variable name="connectorsWithSameName"
@@ -70,7 +68,7 @@
                 if (f:areStringsEqual($multiplicityValues) and $allConnectorsHaveMultiplicityValue) then
                     ()
                 else
-                    f:generateHtmlWarning('The multiplicity value used is not equal for all the connectors with this name')"
+                f:generateHtmlWarning('When a property is reused in multiple contexts, the multiplicity is expected to be the same. Please check the nomenclature above for a summary.')"
         />
     </xsl:template>
 
@@ -80,7 +78,7 @@
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
     </xd:doc>
-    <xsl:template name="definitionForConnectorsWithSameName">
+    <xsl:template name="checkDefinitionOfConnectorsWithSameName">
         <xsl:param name="connectorName"/>
         <xsl:param name="root"/>
         <xsl:variable name="connectorsWithSameName"
@@ -102,14 +100,14 @@
         <xsl:sequence
             select="
                 if (f:areStringsEqual($definitionValues) and fn:boolean($definitionValues and $allConnectorsHaveDefinition)) then
-                    f:generateHtmlInfo(fn:concat('All the connectors with this name have the same definition. ',
-                    'Here is the usage: ',
+                f:generateHtmlInfo(fn:concat('The property is reused in multiple contexts, the meaning given by the definition is the same.  ',
+                    'Here is the property usage: ',
                     fn:string-join($descriptionsWithAnnotations, ',')))
                 else
                     if (fn:boolean($definitionValues)) then
-                        f:generateHtmlWarning(fn:concat('The definition for the connectors with this name is different. ',
-                        'Here is the usage: ',
-                        fn:string-join($descriptionsWithAnnotations, ',')))
+                    f:generateHtmlWarning(fn:concat('When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. ',
+                                                    'In this case, multiple definitions are found: ',
+                                                    fn:string-join($descriptionsWithAnnotations, ',')))
                     else
                         ()"
         />

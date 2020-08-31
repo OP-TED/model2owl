@@ -40,6 +40,7 @@
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="classNames" select="f:getDistinctClassNames($root)"/>
         <xsl:for-each select="$classNames">
+            <xsl:sort select="." lang="en"/>
             <xsl:variable name="occurences"
                 select="
                     if (fn:count((f:getElementByName(., $root))) > 1) then
@@ -58,6 +59,7 @@
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="attributeNames" select="f:getDistinctClassAttributeNames($root)"/>
         <xsl:for-each select="$attributeNames">
+            <xsl:sort select="." lang="en"/>
             <xsl:variable name="occurences"
                 select="
                     if (fn:count((f:getClassAttributeByName(., $root))) > 1) then
@@ -115,6 +117,7 @@
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="connectorNames" select="f:getDistinctConnectorsNames($root)"/>
         <xsl:for-each select="$connectorNames">
+            <xsl:sort select="." lang="en"/>
             <xsl:variable name="occurences"
                 select="
                     if (fn:count((f:getConnectorByName(., $root))) > 1) then

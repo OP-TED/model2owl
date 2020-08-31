@@ -69,8 +69,8 @@
                     </div>
                     <xsl:call-template name="abstract"/>
                     <xsl:call-template name="infoBox"/>
-                    <xsl:call-template name="connectorsWithSameName"/>
                     <xsl:apply-templates/>
+                    <xsl:call-template name="connectorsWithSameName"/>
                 </main>
                 <xsl:call-template name="footer"/>
             </body>
