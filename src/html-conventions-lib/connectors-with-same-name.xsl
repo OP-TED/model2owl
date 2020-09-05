@@ -23,7 +23,7 @@
     <xsl:template name="connectorsWithSameName">
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
-        <h1>Properties with multiple usages</h1>
+        <h1>Connectors with multiple usages</h1>
         <xsl:for-each select="$distinctNames">  
             <xsl:sort select="." lang="en"/>
             <xsl:if test="fn:count(f:getConnectorByName(., $root)) > 1">

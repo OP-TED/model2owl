@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    stylesheet="file:../../../src/html-conventions-lib/class-attributes-with-same-name.xsl">
+    
+<!--    <x:scenario label="multiplicity for connectors with the same name - same multiplicty value">
+        <x:call template="checkMultiplicityOfConnectorsWithSameName">
+            <x:param name="connectorName">epo:hasCountryCode</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="there is no warning" select="()"/>
+    </x:scenario>
+    
+    <x:scenario
+        label="multiplicity for connectors with the same name - different multiplicty values">
+        <x:call template="checkMultiplicityOfConnectorsWithSameName">
+            <x:param name="connectorName">epo:has</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+        
+    </x:scenario>-->
+    
+    
+    <x:scenario
+        label="definition for class attributes with the same name - different definition values">
+        <x:call template="checkDefinitionOfAttributesWithSameName">
+            <x:param name="attributeName">epo:AdditionalInformation</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+        <x:expect label="expect to find a warning" test="/dd/@class = 'filter warnings'"/>
+        
+    </x:scenario>
+    
+    <x:scenario
+        label="definition for class attributes with the same name - same definition values">
+        <x:call template="checkDefinitionOfAttributesWithSameName">
+            <x:param name="attributeName">epo:CurrencyType</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+        <x:expect label="expect to find a info" test="/dd/@class = 'filter infos'"/>
+        
+    </x:scenario>
+    
+    <x:scenario
+        label="definition for class attributes with the same name - not all the attributes compared have a definition">
+        <x:call template="checkDefinitionOfAttributesWithSameName">
+            <x:param name="attributeName">epo:AdditionalInformationDeadline</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+        <x:expect label="expect to find a warning" test="/dd/@class = 'filter warnings'"/>
+        
+    </x:scenario>
+    
+    
+    <x:scenario
+        label="data-type for class attributes with the same name - same data-type values">
+        <x:call template="checkDatatypeOfAttributesWithSameName">
+            <x:param name="attributeName">epo:AdditionalInformation</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="expect no warning" select="()"/>
+        
+    </x:scenario>
+    
+    <x:scenario
+        label="data-type for class attributes with the same name - different data-type values">
+        <x:call template="checkDatatypeOfAttributesWithSameName">
+            <x:param name="attributeName">epo:AdditionalInformationDeadline</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+        <x:expect label="expect to find a warning" test="/dd/@class = 'filter warnings'"/>
+        
+    </x:scenario>
+    
+    <x:scenario
+        label="data-type for class attributes with the same name - not all the attributes compared have a data-type">
+        <x:call template="checkDatatypeOfAttributesWithSameName">
+            <x:param name="attributeName">epo:CurrencyType</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+  
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+        <x:expect label="expect to find a warning" test="/dd/@class = 'filter warnings'"/>
+        
+    </x:scenario>
+    
+    
+    <x:scenario
+        label="multiplicity for class attributes with the same name - different values">
+        <x:call template="checkMultiplicityOfAttributesWithSameName">
+            <x:param name="attributeName">epo:CurrencyType</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+        <x:expect label="expect to find a warning" test="/dd/@class = 'filter warnings'"/>
+        
+    </x:scenario>
+    
+    <x:scenario
+        label="multiplicity for class attributes with the same name - same values">
+        <x:call template="checkMultiplicityOfAttributesWithSameName">
+            <x:param name="attributeName">epo:AdditionalInformationDeadline</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="expect no warning" select="()"/>
+        
+    </x:scenario>
+    
+    <x:scenario
+        label="multiplicity for class attributes with the same name - incomplete values">
+        <x:call template="checkMultiplicityOfAttributesWithSameName">
+            <x:param name="attributeName">epo:AdditionalInformation</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+        <x:expect label="expect to find a warning" test="/dd/@class = 'filter warnings'"/>
+        
+    </x:scenario>
+</x:description>
