@@ -191,4 +191,88 @@
         <xsl:sequence select="fn:distinct-values($root//element[@xmi:type = 'uml:Class']/@name)"/>
     </xsl:function>
 
+    <xd:doc>
+        <xd:desc>Build connector name</xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    <xsl:function name="f:getConnectorName">
+        <xsl:param name="connector"/>
+        <xsl:variable name="hasNoName" select="$connector/not(@name)"/>
+        <xsl:choose>
+            <xsl:when test="$hasNoName = fn:true()">
+                <xsl:variable name="source" select="f:getConnectorSourceName($connector)"/>
+                <xsl:variable name="target" select="f:getConnectorTargetName($connector)"/>
+                <xsl:if test="f:getConnectorDirection($connector) = 'Source -&gt; Destination'">
+                    <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
+                    <xsl:value-of select="fn:concat($source, ' -&gt; ', $target, ' ', '(+',$targetRole,')' )"/>
+                </xsl:if>
+                <xsl:if test="f:getConnectorDirection($connector) = 'Bi-Directional'">
+                    <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
+                    <xsl:variable name="sourceRole" select="$connector/source/role/@name"/>
+                    <xsl:value-of select="fn:concat($source, ' &lt;-&gt; ', $target,' ', '(+',$targetRole,' ','+',$sourceRole,')' )"/>
+                </xsl:if>
+                <xsl:if test="f:getConnectorDirection($connector) != 'Source -&gt; Destination' and 
+                    f:getConnectorDirection($connector) != 'Bi-Directional'">
+                    <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
+                    <xsl:variable name="sourceRole" select="$connector/source/role/@name"/>
+                    <xsl:value-of select="fn:concat($source, ' X ', $target, ' ', '(+',$targetRole,' ','+',$sourceRole,')' )"/>
+                </xsl:if>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$connector/@name"/>
+            </xsl:otherwise>
+        </xsl:choose>
+        
+    </xsl:function>
+    
+    
+    <xd:doc>
+        <xd:desc>Get association direction</xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    <xsl:function name="f:getConnectorDirection">
+        <xsl:param name="connector"/>
+        <xsl:value-of select="$connector/properties/@direction"/>
+    </xsl:function>
+    
+    
+    <xd:doc>
+        <xd:desc>Get the source name of a connector</xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    
+    <xsl:function name="f:getConnectorSourceName" as="xs:string">
+        <xsl:param name="connector"/>
+        <xsl:sequence
+            select="
+            if ($connector/source/model/@name = 'ProxyConnector') then
+            fn:concat('(', 
+            f:getConnectorByIdRef(fn:string(f:getElementByIdRef(fn:string($connector/source/@xmi:idref), root($connector))/@classifier), root($connector))/source/model/@name,
+            ' - ',
+            f:getConnectorByIdRef(fn:string(f:getElementByIdRef(fn:string($connector/source/@xmi:idref), root($connector))/@classifier), root($connector))/target/model/@name,
+            ')')
+            else
+            $connector/source/model/@name "
+        />
+    </xsl:function>
+    
+    <xd:doc>
+        <xd:desc>Get the target name of a connector</xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    
+    <xsl:function name="f:getConnectorTargetName" as="xs:string">
+        <xsl:param name="connector"/>
+        <xsl:sequence
+            select="
+            if ($connector/target/model/@name = 'ProxyConnector') then
+            fn:concat('(', 
+            f:getConnectorByIdRef(fn:string(f:getElementByIdRef(fn:string($connector/target/@xmi:idref), root($connector))/@classifier), root($connector))/source/model/@name,
+            ' - ',
+            f:getConnectorByIdRef(fn:string(f:getElementByIdRef(fn:string($connector/target/@xmi:idref), root($connector))/@classifier), root($connector))/target/model/@name,
+            ')')
+            else
+            $connector/target/model/@name "
+        />
+    </xsl:function>
 </xsl:stylesheet>

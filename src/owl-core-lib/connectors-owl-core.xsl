@@ -24,7 +24,22 @@
     <xsl:import href="../common/fetchers.xsl"/>
     <xsl:import href="../common/utils.xsl"/>
     <xsl:import href="../common/formatters.xsl"/>
-    <xsl:import href="../html-conventions-lib/utils-html-conventions.xsl"/>
+
+
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="connector[./properties/@ea_type = 'Association']"/>
+
+    
+    
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="connector[./properties/@ea_type = 'Dependency']"/>
+        
+    
+    
 
     <xd:doc>
         <xd:desc/>
