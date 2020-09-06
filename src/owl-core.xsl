@@ -43,6 +43,7 @@
             <xsl:attribute name="xml:base" expand-text="true">{$coreModuleURI}</xsl:attribute>
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
+            <xsl:call-template name="connectorsOwlCore"/>
         </rdf:RDF>
     </xsl:template>
 

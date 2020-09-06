@@ -25,6 +25,22 @@
     <xsl:import href="../common/utils.xsl"/>
     <xsl:import href="../common/formatters.xsl"/>
 
+
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="connector[./properties/@ea_type = 'Association']"/>
+
+    
+    
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="connector[./properties/@ea_type = 'Dependency']"/>
+        
+    
+    
+
     <xd:doc>
         <xd:desc/>
     </xd:doc>
@@ -40,7 +56,7 @@
                 <xsl:call-template name="classGeneralization"/>
             </xsl:otherwise>
         </xsl:choose>
-            </xsl:template>
+    </xsl:template>
 
     <xd:doc>
         <xd:desc>Rule 22 (Property generalisation in core ontology layer) . Specify sub-property
@@ -93,107 +109,90 @@
         </xsl:if>
     </xsl:template>
 
-    <xd:doc>
-        <xd:desc>apply rules to Associations</xd:desc>
-    </xd:doc>
-    <xsl:template match="connector[./properties/@ea_type = 'Association']">
-        <xsl:call-template name="genericConnector"/>
-    </xsl:template>
 
     <xd:doc>
-        <xd:desc>apply generic connector rules to Dependencies. TODO: otherwise come disjoint
-            property cases needs to be accounted for in te future. </xd:desc>
+        <xd:desc>apply rules to Associations and Dependencies</xd:desc>
     </xd:doc>
-    <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
-        <xsl:variable name="targetType" select="./target/model/@type"/>
-        <xsl:variable name="sourceType" select="./source/model/@type"/>
-        <xsl:if test="$targetType != 'ProxyConnector' and $sourceType != 'ProxyConnector'">
-            <xsl:call-template name="genericConnector"/>
-        </xsl:if>
+    <xsl:template name="connectorsOwlCore">
+        <xsl:variable name="root" select="root()"/>
+        <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
+        <xsl:for-each select="$distinctNames">
+            <xsl:if test="f:getConnectorByName(.,$root)/source/model/@type != 'ProxyConnector' and f:getConnectorByName(.,$root)/target/model/@type != 'ProxyConnector'">
+            <xsl:call-template name="genericConnector">
+                <xsl:with-param name="connectorName" select="."/>
+                <xsl:with-param name="root" select="$root"/>
+            </xsl:call-template>
+            </xsl:if>
+        </xsl:for-each>
     </xsl:template>
 
     <xd:doc>
         <xd:desc>Rule 11 (Unidirectional association in core ontology layer) . Specify object
             property declaration axiom for the target end of the association.</xd:desc>
+        <xd:param name="root"/>
+        <xd:param name="connectorName"/>
     </xd:doc>
     <xsl:template name="genericConnector">
-        <xsl:variable name="targetRoleURI"
+        <xsl:param name="root"/>
+        <xsl:param name="connectorName"/>
+        <xsl:variable name="connectorsWithSameName"
+            select="f:getConnectorByName($connectorName, $root)"/>
+        <xsl:variable name="roleURI"
+            select="f:buildURIfromLexicalQName(f:lexicalQNameToWords($connectorName), fn:false())"/>
+
+        <xsl:variable name="connectorDocumentations" as="xs:string*"
             select="
-                if (./target/role/@name) then
-                    f:buildURIFromElement(./target/role, false(), fn:true())
-                else
-                    ()"/>
-        <xsl:variable name="sourceRole"
+                for $connector in $connectorsWithSameName
+                return
+                    if ($connector/documentation/@value) then
+                        fn:concat($connector/documentation/@value, ' (', f:getConnectorName($connector), ') ')
+                    else
+                        ()"/>
+
+        <xsl:variable name="documentation"
+            select="f:formatDocString(fn:string-join($connectorDocumentations))"/>
+
+        <xsl:variable name="connectorNotes" as="xs:string*"
             select="
-                if (./source/role/@name) then
-                    f:buildURIFromElement(./source/role, false(), fn:true())
-                else
-                    ()"/>
+                for $connector in $connectorsWithSameName
+                return
+                    if ($connector/target/role/@name = $connectorName and $connector/target/documentation/@value) then
+                        fn:concat($connector/target/documentation/@value, ' (', f:getConnectorName($connector), ') ')
+                    else
+                        if ($connector/source/role/@name = $connectorName and $connector/source/documentation/@value) then
+                            fn:concat($connector/source/documentation/@value, ' (', f:getConnectorName($connector), ') ')
+                        else
+                            ()"/>
 
-        <xsl:variable name="connectorDocumentation"
-            select="f:formatDocString(./documentation/@value)"/>
+        <xsl:variable name="note" select="f:formatDocString(fn:string-join($connectorNotes))"/>
+        <xsl:variable name="name" select="f:lexicalQNameToWords($connectorName)"/>
 
-        <xsl:if test="$targetRoleURI">
-            <xsl:variable name="name" select="f:lexicalQNameToWords(./target/role/@name)"/>
-            <xsl:variable name="note" select="f:formatDocString(./target/documentation/@value)"/>
 
-            <owl:ObjectProperty rdf:about="{$targetRoleURI}">
-                <rdfs:label xml:lang="en">
-                    <xsl:value-of select="$name"/>
-                </rdfs:label>
-                <skos:prefLabel xml:lang="en">
-                    <xsl:value-of select="$name"/>
-                </skos:prefLabel>
-                <xsl:if test="$connectorDocumentation">
-                    <skos:definition xml:lang="en">
-                        <xsl:value-of select="$connectorDocumentation"/>
-                    </skos:definition>
-                    <rdfs:comment xml:lang="en">
-                        <xsl:value-of select="$connectorDocumentation"/>
-                    </rdfs:comment>
-                </xsl:if>
-                <xsl:if test="$note">
-                    <skos:scopeNote xml:lang="en">
-                        <xsl:value-of select="$note"/>
-                    </skos:scopeNote>
-                    <rdfs:comment xml:lang="en">
-                        <xsl:value-of select="$note"/>
-                    </rdfs:comment>
-                </xsl:if>
-                <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
-            </owl:ObjectProperty>
-        </xsl:if>
-
-        <xsl:if test="$sourceRole">
-            <xsl:variable name="name" select="f:lexicalQNameToWords(./source/role/@name)"/>
-            <xsl:variable name="note" select="f:formatDocString(./source/documentation/@value)"/>
-
-            <owl:ObjectProperty rdf:about="{$sourceRole}">
-                <rdfs:label xml:lang="en">
-                    <xsl:value-of select="$name"/>
-                </rdfs:label>
-                <skos:prefLabel xml:lang="en">
-                    <xsl:value-of select="$name"/>
-                </skos:prefLabel>
-                <xsl:if test="$connectorDocumentation">
-                    <skos:definition xml:lang="en">
-                        <xsl:value-of select="$connectorDocumentation"/>
-                    </skos:definition>
-                    <rdfs:comment xml:lang="en">
-                        <xsl:value-of select="$connectorDocumentation"/>
-                    </rdfs:comment>
-                </xsl:if>
-                <xsl:if test="$note">
-                    <skos:scopeNote xml:lang="en">
-                        <xsl:value-of select="$note"/>
-                    </skos:scopeNote>
-                    <rdfs:comment xml:lang="en">
-                        <xsl:value-of select="$note"/>
-                    </rdfs:comment>
-                </xsl:if>
-                <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
-            </owl:ObjectProperty>
-        </xsl:if>
+        <owl:ObjectProperty rdf:about="{$roleURI}">
+            <rdfs:label xml:lang="en">
+                <xsl:value-of select="$name"/>
+            </rdfs:label>
+            <skos:prefLabel xml:lang="en">
+                <xsl:value-of select="$name"/>
+            </skos:prefLabel>
+            <xsl:if test="$documentation">
+                <skos:definition xml:lang="en">
+                    <xsl:value-of select="$documentation"/>
+                </skos:definition>
+                <rdfs:comment xml:lang="en">
+                    <xsl:value-of select="$documentation"/>
+                </rdfs:comment>
+            </xsl:if>
+            <xsl:if test="$note">
+                <skos:scopeNote xml:lang="en">
+                    <xsl:value-of select="$note"/>
+                </skos:scopeNote>
+                <rdfs:comment xml:lang="en">
+                    <xsl:value-of select="$note"/>
+                </rdfs:comment>
+            </xsl:if>
+            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
+        </owl:ObjectProperty>
     </xsl:template>
 
     <xd:doc>
@@ -208,7 +207,8 @@
             select="f:buildURIFromElement($superClass, fn:true(), fn:true())"/>
         <xsl:variable name="subClasses" select="f:getSubClassesFromGeneralization(.)"/>
         <xsl:variable name="subclass" select="f:getElementByIdRef(./source/@xmi:idref, root(.))"/>
-        <xsl:variable name="subclassURI" select="f:buildURIFromElement($subclass, fn:true(), fn:true())"/>
+        <xsl:variable name="subclassURI"
+            select="f:buildURIFromElement($subclass, fn:true(), fn:true())"/>
         <xsl:choose>
             <xsl:when test="count($subClasses) = 1">
                 <xsl:variable name="subClassURI"
@@ -222,13 +222,14 @@
                     <rdfs:subClassOf rdf:resource="{$superClassURI}"/>
                 </owl:Class>
                 <xsl:for-each select="$subClasses">
-                    <xsl:variable name="siblingURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+                    <xsl:variable name="siblingURI"
+                        select="f:buildURIFromElement(., fn:true(), fn:true())"/>
                     <xsl:if test="$siblingURI != $subclassURI">
                         <rdf:Description rdf:about="{$subclassURI}">
-                        <owl:disjointWith rdf:resource="{$siblingURI}"/>
+                            <owl:disjointWith rdf:resource="{$siblingURI}"/>
                         </rdf:Description>
                     </xsl:if>
-                </xsl:for-each> 
+                </xsl:for-each>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
