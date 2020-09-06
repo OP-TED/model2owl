@@ -57,6 +57,7 @@
                or consideration of warnings.</p>
             <p>The UML model in file <em>ePO-CM-v2.0.1-2020-06-08.eap.xmi</em> 
                was tested at 20:06 on September 6, 2020.</p>
+
          </div>
          <h1 xmlns:f="http://https://github.com/costezki/model2owl#">Nomenclature</h1>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">Class names</h2>
@@ -287,7 +288,7 @@
                   <div class="card card-body">
                      <ul>
                         <li>epo:Channel (Text) [1..1]</li>
-                        <li>epo:Lot (Text) [1..1]</li>
+                        <li>epo:Lot (Text) [1..]</li>
                         <li>epo:PlannedProcurementPart (Text) [1..1]</li>
                      </ul>
                   </div>
@@ -557,8 +558,8 @@
             <li><a data-toggle="collapse" href="#collapsecurrencyType" role="button" aria-expanded="false" aria-controls="collapsecurrencyType">epo:CurrencyType (2)</a><div class="collapse" id="collapsecurrencyType">
                   <div class="card card-body">
                      <ul>
-                        <li>epo:ProcurementValue (Code) [1..1]</li>
-                        <li>epo:Value (Code) [1..1]</li>
+                        <li>epo:ProcurementValue () [1..1]</li>
+                        <li>epo:Value (Code) [1..2]</li>
                      </ul>
                   </div>
                </div>
@@ -5476,6 +5477,9 @@
                   with a lower case.</dd>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute type Text is deprecated. Attributes should use XSD or RDF datatypes.
                   The suggested alternative for Text is rdf:langString</dd>
+               <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The attribute epo:AdditionalInformation multiplicity is incorrect. Multiplicity must
+                  be specified in the form [min..max] and the values should be defined with a digit
+                  or *</dd>
             </dl>
             <dl>
                <dt>epo:PerformingStafQualificationInformation</dt>
@@ -6151,7 +6155,11 @@
                <dt>epo:CurrencyType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:CurrencyType is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:CurrencyType is missing a description. All concepts should be defined or described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type  type is invalid. Attributes must use types that are either: (a)
+                  UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:CurrencyType type  is not defined in the model. Every used type
+                  should be defined. This applies to The standard datatypes (e.g XSD or RDF), which
+                  should be re-declared in the model and serving as proxies.</dd>
             </dl>
          </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo:ProjectProcurement</h2>
@@ -7058,7 +7066,6 @@
                <dt>epo:CurrencyType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:CurrencyType is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:CurrencyType is missing a description. All concepts should be defined or described.</dd>
             </dl>
             <dl>
                <dt>epo:OtherCharges</dt>
@@ -13876,7 +13883,7 @@
                role is expected, while for Bi-Directional direction source and a target roles are
                expected.</dd>
          </dl>
-         <h1 xmlns:f="http://https://github.com/costezki/model2owl#">Properties with multiple usages</h1>
+         <h1 xmlns:f="http://https://github.com/costezki/model2owl#">Connectors with multiple usages</h1>
          <dt xmlns:f="http://https://github.com/costezki/model2owl#">(inherits from Document "relates To")</dt>
          <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the multiplicity is expected to be
             the same. Please check the nomenclature above for a summary.</dd>
@@ -14081,6 +14088,379 @@
             
             (epo:FrameworkAgreementTechnique &lt;-&gt; epo:LotGroup (+epo:isOrganisedIn +epo:uses))
             </dd>
+         <h1 xmlns:f="http://https://github.com/costezki/model2owl#">Class attributes with multiple usages</h1>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:AdditionalInformation</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the multiplicity is expected to be
+            the same. Please check the nomenclature above for a summary.</dd>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: Supplementary
+            data about the instance of the concept.
+            
+            WG Approval 30/09/2019
+            (epo:Channel) ,Supplementary data about the instance of the concept.
+            
+            Additional Information
+            
+            For example, information about the Lot not specified elsewhere in the Notice.
+            
+            WG Approval 15/10/2019 (epo:Lot) ,Supplementary data about the instance of the concept.
+            (epo:PlannedProcurementPart) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:AdditionalInformationDeadline</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: The time
+            limit for requesting further information.
+            
+            WG Approval 03/10/2019 (epo:AccessTerm) </dd>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the data-type is expected to be the
+            same. In this case, multiple data-types are found: dateTime (epo:AccessTerm) ,Date
+            (epo:ProcedureTerm) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:CurrencyType</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the multiplicity is expected to be
+            the same. Please check the nomenclature above for a summary.</dd>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the data-type is expected to be the
+            same. In this case, multiple data-types are found: Code (epo:Value) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:Description</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: A narrative
+            text explaining the content of an instance of the class / Self-explanatory text about
+            a concept.
+            (epo:AwardCriterion) ,A narrative text explaining the content of an instance of the
+            class / Self-explanatory text about a concept.
+            
+            Additional Information
+            
+            Used, for example, to explain the main reason for the change in a document compared
+            to the original document.
+            
+            WG Approval 17/10/2019 (epo:Change) ,A narrative text explaining the content of an
+            instance of the class / Self-explanatory text about a concept. (epo:Channel) ,A narrative
+            text explaining the content of an instance of the class / Self-explanatory text about
+            a concept. (epo:ContactPoint) ,A narrative text explaining the content of an instance
+            of the class / Self-explanatory text about a concept.  (epo:ContractModificationNotice)
+            ,A narrative text explaining the content of an instance of the class / Self-explanatory
+            text about a concept. (epo:CriterionPropertyGroup) ,A narrative text explaining the
+            content of an instance of the class / Self-explanatory text about a concept (epo:Item)
+            ,A narrative text explaining the content of an instance of the class / Self-explanatory
+            text about a concept (epo:Lot) ,A narrative text explaining the content of an instance
+            of the class / Self-explanatory text about a concept (epo:LotGroup) ,A narrative text
+            explaining the content of an instance of the class / Self-explanatory text about a
+            concept (epo:OpeningHoursSpecification) ,A narrative text explaining the content of
+            an instance of the class / Self-explanatory text about a concept (epo:Period) ,A narrative
+            text explaining the content of an instance of the class / Self-explanatory text about
+            a concept (epo:PlannedProcurementPart) ,A narrative text explaining the content of
+            an instance of the class / Self-explanatory text about a concept (epo:Procedure) ,Self-explanatory
+            text about a concept.
+            
+            WG Approval 23/04/2020 (epo:ProcurementCriterion) ,A narrative text explaining the
+            content of an instance of the class / Self-explanatory text about a concept (epo:ProjectProcurement)
+            ,A narrative text explaining the content of an instance of the class / Self-explanatory
+            text about a concept.  (epo:ResourceElement) ,A narrative text explaining the content
+            of an instance of the class / Self-explanatory text about a concept. (epo:Role) ,A
+            narrative text explaining the content of an instance of the class / Self-explanatory
+            text about a concept
+            
+            Additional Information
+            
+            Additional information about the security clearance (e.g. which level of security
+            clearance is required, which team members must have it, whether it is necessary already
+            for accessing the procurement documents or only for contract execution).
+            
+            WG Approval 12/09/2019
+            (epo:SecurityClearanceTerm) ,A narrative text explaining the content of an instance
+            of the class / Self-explanatory text about a concept
+            (epo:Subcontract) ,A narrative text explaining the content of an instance of the class
+            / Self-explanatory text about a concept
+            
+            WG Approval 08/05/2019 (epo:SubcontractTerm) ,A narrative text explaining the content
+            of an instance of the class / Self-explanatory text about a concept (epo:System) ,A
+            narrative text explaining the content of an instance of the class / Self-explanatory
+            text about a concept
+            
+            WG Approval 30/09/2019 (epo:Technique) ,A narrative text explaining the content of
+            an instance of the class / Self-explanatory text about a concept
+            (epo:TenderEvaluation) </dd>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the data-type is expected to be the
+            same. In this case, multiple data-types are found: Text (epo:AwardCriterion) ,Text
+            (epo:Change) ,Description (epo:Channel) ,Text (epo:ContactPoint) ,Text (epo:ContractModificationNotice)
+            ,Text (epo:CriterionPropertyGroup) ,Text (epo:Item) ,Text (epo:Lot) ,Text (epo:LotGroup)
+            ,Text (epo:OpeningHoursSpecification) ,Text (epo:Period) ,Text (epo:PlannedProcurementPart)
+            ,Text (epo:Procedure) ,Text (epo:ProcurementCriterion) ,Text (epo:ProjectProcurement)
+            ,Text (epo:ResourceElement) ,Text (epo:Role) ,Text (epo:SecurityClearanceTerm) ,Text
+            (epo:Subcontract) ,Text (epo:SubcontractTerm) ,Text (epo:System) ,Text (epo:Technique)
+            ,Text (epo:TenderEvaluation) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:FixedValue</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: The overall
+            criteria of one single type that will be evaluated. 
+            
+            Additional information:  
+            
+            For instance quality, cost and price  are award criteria. One dimension would be quality
+            with its own weight and threshold that maybe calculated on the basis of the individual
+            criteria.
+            
+            WG decision 05/11/2019   (epo:AwardDimension) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:ID</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: A unique
+            identifier of the instance of the concept. (epo:Agent) ,A unique identifier of the
+            instance of the concept. (epo:Agent) ,A unique identifier of the instance of the concept.
+            (epo:AwardCriterion) ,A unique identifier of the instance of the concept. (epo:Channel)
+            ,A unique identifier of the instance of the concept. (epo:Contract) ,A unique identifier
+            of the instance of the concept. (epo:DatumValue) ,A unique identifier of the instance
+            of the concept. (epo:Document) ,A unique identifier of the instance of the concept.
+            (epo:FinancialAccount) ,A unique identifier of the instance of the concept. (epo:Fund)
+            ,A unique identifier of the instance of the concept. (epo:Lot) ,A unique identifier
+            of the instance of the concept. (epo:LotGroup) ,A unique identifier of the instance
+            of the concept. (epo:PlannedProcurementPart) ,A unique identifier of the instance
+            of the concept.
+            
+            Additional Information
+            
+            For example, in the case of the Procurement Identifier, this could be the European
+            Public Procurement Identifier, and/or any other identifier provided by the buyer,
+            the service provider or any other stakeholder.
+            
+            WG Approval 12/11/2019
+            &lt;foreign otherprops="#ff0000"&gt;
+            &lt;/foreign&gt;&lt;foreign otherprops="#ff0000"&gt;
+            &lt;/foreign&gt; (epo:Procedure) ,
+            A unique identifier of the instance of the concept. (epo:ProjectProcurement) ,A unique
+            identifier of the instance of the concept. (epo:Technique) ,A unique identifier of
+            the instance of the concept. (epo:Tender) ,A unique identifier of the instance of
+            the concept. (epo:TenderLot) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:Justification</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: An explanation
+            about the reasons for using the concept.  (epo:AwardDecision) ,An explanation about
+            the reasons for using the concept. 
+            
+            WG Approval 5/11/2019 (epo:ContractModificationNotice) ,An explanation about the reasons
+            for using the concept. 
+            
+            
+            
+            
+            WG Approval 5/11/2019
+            (epo:DirectAwardTerm) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:LegalFormType</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: Identity
+            that a organisation legally assumes taking into account its ownership and the responsibility
+            that its owners have in legal terms.
+            
+            Examples: Limited Liability Company; GBHM;  SLU; Cooperativa; Société Anonime; etc.
+            (epo:EconomicOperator) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:Name</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: A short
+            text representing an instance of the class. (epo:Channel) ,A short text representing
+            an instance of the class. (epo:CriterionPropertyGroup) ,A short text representing
+            an instance of the class. (epo:FinancialAccount) ,A short text representing an instance
+            of the class. (epo:Fund) ,A short text representing an instance of the class. (epo:Item)
+            ,A short text representing an instance of the class.
+            
+            WG Approval 17/09/2019
+            
+            (epo:ProcurementCriterion) ,A short text representing an instance of the class. (epo:System)
+            </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:NonElectronicSubmissionJustification</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: Reason for
+            not accepting electronic tenders.
+            
+            WG Approval 03/10/2019 
+            (epo:SubmissionTerm) ,Basis for physical submission of tenders. (epo:Tender) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:OfficialLanguage</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: The language(s)
+            in which the instances of the given concepts are officially available. These linguistic
+            versions are equally legally valid.
+            
+            WG Approval 03/10/2019 (epo:Document) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:SMESuitable</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: The Lot
+            is suitable for small and medium enterprises (SMEs).
+            
+            
+            Additional Information
+            
+            This allows the buyer to make emphasis on the fact that the procedure has been designed
+            having SMEs in mind. This indicator is also to be reflected in the selection criteria.
+            
+            For example, number of employees and turnover are applicable to the definition of
+            an SME.
+            
+            WG Approval 15/10/2019 (epo:Lot) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:ThresholdType</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: The method
+            to interpret the threshold value as minimum or a maximum.
+            
+            WG Approval 17/09/2019  (epo:AwardCriterion) ,The type of threshold for a Selection
+            Criterion.
+            
+            Additional Information
+            
+            For example, a minimum score or a maximum number of tenders with the highest score
+            passing.
+            (epo:SelectionCriterion) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:Title</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: A short
+            self-descriptive name of the instance of the concept.
+            
+            Additional Information:
+            
+            For example, the title of a planned part that may become a procedure or a lot in the
+            future; the title of a contract, etc.
+            
+            (WG Approval 11-11-2019)
+            (epo:Contract) ,A short self-descriptive name of the instance of the concept.
+            
+            Additional Information:
+            
+            For example, the title of a planned part that may become a procedure or a lot in the
+            future; the title of a contract, etc.
+            
+            (WG Approval 11-11-2019)
+            (epo:Lot) ,A short self-descriptive name of the instance of the concept.
+            
+            Additional Information:
+            
+            For example, the title of a planned part that may become a procedure or a lot in the
+            future; the title of a contract, etc.
+            
+            (WG Approval 11-11-2019)
+            (epo:LotGroup) ,A short self-descriptive name of the instance of the concept.
+            
+            Additional Information:
+            
+            For example, the title of a planned part that may become a procedure or a lot in the
+            future; the title of a contract, etc.
+            
+            (WG Approval 11-11-2019)
+            (epo:PlannedProcurementPart) ,A short self-descriptive name of the instance of the
+            concept.
+            
+            Additional Information:
+            
+            For example, the title of a planned part that may become a procedure or a lot in the
+            future; the title of a contract, etc.
+            
+            (WG Approval 11-11-2019) (epo:Procedure) ,A short self-descriptive name of the instance
+            of the concept.
+            
+            Additional Information:
+            
+            For example, the title of a planned part that may become a procedure or a lot in the
+            future; the title of a contract, etc.
+            
+            (WG Approval 11-11-2019)
+            (epo:ProjectProcurement) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:Type</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: The property
+            Type can be used to identify the namespace and class of the Agent.
+            
+            This may be useful for XML implementations of the Model, where software applications
+            need to know the type of the Agent in order to identify the particular Agent sub-class
+            properties. But could also create a consistency problem consisting in specifying an
+            IRI for one type of Agent whilst the actual individual of Agent is a different one.
+            
+            One way of resolving this inconsistency would be cross-checking by externalised means
+            the requested IRI ID against the actual type of class (via shapes, Schematron, etc.).
+            
+            For more details on IRIs, check the Request For Comments website: https://tools.ietf.org/html/rfc3987
+            
+            Examples of IRIs:
+            
+            &lt;foreign otherprops="#993300"&gt;https://github.com/semiceu/cagv/2.0.0/xml/CV-Agent#Organisation&lt;/foreign&gt;
+            &lt;foreign otherprops="#993300"&gt;
+            &lt;/foreign&gt;&lt;foreign otherprops="#993300"&gt;https://github.com/semiceu/cagv/2.0.0/xml/CV-Agent#NaturalPerson&lt;/foreign&gt;
+            &lt;foreign otherprops="#993300"&gt;
+            &lt;/foreign&gt;&lt;foreign otherprops="#993300"&gt;https://github.com/semiceu/cagv/2.0.0/xml/CV-Agent#System&lt;/foreign&gt;
+            
+            An example of inconsistency:
+            
+            cagv:Agent.ID = 986454b6-22af-4894-9a3d-f201d236b88c
+            cagv:Agent.Type = &lt;foreign otherprops="#993300"&gt;https://github.com/semiceu/cagv/2.0.0/xml/CV-Agent#ORganisation&lt;/foreign&gt;
+            cagv:NaturalPerson.ID = 986454b6-22af-4894-9a3d-f201d236b88c
+            
+            
+            (epo:Agent) ,The categorisation of the set of activities of the procedure according
+            to the Law. 
+            
+            Additional Information
+            For example "Open Procedure", "Restricted", "Negotiated without Publicity", etc. (see
+            code list "procurement-procedure-type"
+            
+            WG Approval 20/08/2019
+            (epo:Procedure) </dd>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the data-type is expected to be the
+            same. In this case, multiple data-types are found: IRI (epo:Agent) ,Concept (epo:Procedure)
+            </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:UnofficialLanguage</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: The language(s)
+            in which the instances of the given concepts are also available in the following languages.
+            These versions are not an official translation, they are provided only for information.
+            
+            WG Approval 03/10/2019 (epo:Document) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:URL</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: The identifier
+            of a resource.
+            
+            Additional Information
+            
+            For example:
+            
+            1. The URL of the system from where to access the procurement documents;
+            2. The URL of the system for the submission of tender documents;
+            3. The URL of the system from where to download a tool to communicate with the Buyer;
+            4. The URL of the system used by a Technique to allow Economic Operators to exchange
+            information with the Buyer (e.g. eAuction and DPS Systems)
+            5. The URL of the system used to exchange information between Buyer and EO for questions
+            and clarifications;
+            
+            WG Approval 30/09/2019
+            
+            (epo:Channel) ,The identifier of a resource.
+            
+            Additional Information
+            
+            For example:
+            
+            1. The URL of the system from where to access the procurement documents;
+            2. The URL of the system for the submission of tender documents;
+            3. The URL of the system from where to download a tool to communicate with the Buyer;
+            4. The URL of the system used by a Technique to allow Economic Operators to exchange
+            information with the Buyer (e.g. eAuction and DPS Systems)
+            5. The URL of the system used to exchange information between Buyer and EO for questions
+            and clarifications; (epo:Fund) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:WeightValue</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: Relative
+            importance assigned to a given criterion.
+            
+            Additional Information: This is modeled as a Quantity because quantities have an attribute
+            named unitCode, which allows to explain what the numeric value is about. In the case
+            of Award Criteria this unitCode could use the Code List defined by eForms defining
+            different types of evaluation award criteria, e.g. 
+            A rule should nevertheless be imposed: these Quantities should be of the form x.y,
+            where x &amp;lt; 0  so they can be used to represent percentages).
+            
+            (WG approval 15/06/2018
+            reviewed on 23-01-2019) (epo:SelectionCriterion) </dd>
+         <dt xmlns:f="http://https://github.com/costezki/model2owl#">epo:WeightValueType</dt>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: The method
+            to interpret the value as a numerical coefficient expressing the relative importance
+            of the item. 
+            
+            WG Approval 17/09/2019  (epo:SelectionCriterion) </dd>
       </main>
       <footer class="text-center"><br><br><p> This document is generated automatically by the <a href="https://github.com/costezki/model2owl" target="_blank">model2owl tool</a>
             developed in the context of <a href="https://joinup.ec.europa.eu/solution/eprocurement-ontology">the

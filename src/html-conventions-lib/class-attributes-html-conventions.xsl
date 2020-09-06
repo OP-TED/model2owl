@@ -202,7 +202,12 @@
         <xsl:variable name="classAttributeName" select="$classAttribute/@name"/>
         <xsl:variable name="classAttributeType" select="$classAttribute/properties/@type"/>
         <xsl:variable name="elementsFoundWithAttributeTypeName"
-            select="f:getElementByName($classAttributeType, root($classAttribute))"/>
+            select="
+                if (boolean($classAttributeType)) then
+                    f:getElementByName($classAttributeType, root($classAttribute))
+                else
+                    ()"
+        />
         <xsl:sequence
             select="
                 if (count($elementsFoundWithAttributeTypeName) >= 1) then
