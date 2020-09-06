@@ -40,8 +40,18 @@
             <x:param name="attributeName">epo:CurrencyType</x:param>
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
         </x:call>
-        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
-        <x:expect label="expect to find a info" test="/dd/@class = 'filter infos'"/>
+        <x:expect label="expect to find a info" select="()"/>
+        
+    </x:scenario>
+    
+    
+    <x:scenario
+        label="definition for class attributes with the same name - no definition values">
+        <x:call template="checkDefinitionOfAttributesWithSameName">
+            <x:param name="attributeName">epo:Formula</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="expect to find a info" select="()"/>
         
     </x:scenario>
     

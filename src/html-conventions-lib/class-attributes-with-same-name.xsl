@@ -15,6 +15,7 @@
 
     <xsl:import href="../common/checkers.xsl"/>
     <xsl:import href="utils-html-conventions.xsl"/>
+    <xsl:import href="../common/formatters.xsl"/>
 
     <xd:doc>
         <xd:desc>Applying the checkers to a group of class attributes with same name</xd:desc>
@@ -95,7 +96,7 @@
                 for $attribute in $attributesWithSameName
                 return
                     if ($attribute/documentation/@value) then
-                        fn:concat($attribute/documentation/@value, ' (', $attribute/../../@name, ') ')
+                        fn:concat(f:formatDocString($attribute/documentation/@value), ' (', $attribute/../../@name, ') ')
                     else
                         ()"/>
 
@@ -103,10 +104,8 @@
             select="fn:count($attributesWithSameName) = fn:count($definitionValues)"/>
         <xsl:sequence
             select="
-                if (f:areStringsEqual($definitionValues) and fn:boolean($definitionValues) and $allAttributesHaveDefinition) then
-                    f:generateHtmlInfo(fn:concat('The property is reused in multiple contexts, the meaning given by the definition is the same.  ',
-                    'Here is the property usage: ',
-                    fn:string-join($descriptionsWithAnnotations, ',')))
+                if (f:areStringsEqual($definitionValues) and $allAttributesHaveDefinition) then
+                    ()
                 else
                     if (fn:boolean($definitionValues)) then
                         f:generateHtmlWarning(fn:concat('When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. ',
