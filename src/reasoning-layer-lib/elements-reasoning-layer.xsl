@@ -27,12 +27,6 @@
         <xd:desc>Applying rules to the attributes</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
-        <xsl:call-template name="attributeDomain">
-            <xsl:with-param name="attribute" select="."/>
-        </xsl:call-template>
-        <xsl:call-template name="attributeRange">
-            <xsl:with-param name="attribute" select="."/>
-        </xsl:call-template>
         <xsl:call-template name="attributeMultiplicity">
             <xsl:with-param name="attribute" select="."/>
         </xsl:call-template>
@@ -40,61 +34,119 @@
             <xsl:with-param name="attribute" select="."/>
         </xsl:call-template>
     </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>Applying rule 5 and 6 to attributes with distinct names</xd:desc>
+    </xd:doc>
+    <xsl:template name="distinctAttributeNamesInReasoningLayer">
+        <xsl:variable name="root" select="root()"/>
+        <xsl:variable name="distinctNames" select="f:getDistinctClassAttributeNames($root)"/>
+        <xsl:for-each select="$distinctNames">
+            <xsl:call-template name="attributeDomain">
+                <xsl:with-param name="attributeName" select="."/>
+                <xsl:with-param name="root" select="$root"/>
+            </xsl:call-template>
+            <xsl:call-template name="attributeRange">
+                <xsl:with-param name="attributeName" select="."/>
+                <xsl:with-param name="root" select="$root"/>
+            </xsl:call-template>
+        </xsl:for-each>
+    </xsl:template>
 
 
     <xd:doc>
         <xd:desc>Rule 5 (Attribute domain in reasnoning layer) Specify data (or object) property
             domains for attribute(s).</xd:desc>
-        <xd:param name="attribute"/>
+        <xd:param name="root"/>
+        <xd:param name="attributeName"/>
     </xd:doc>
 
     <xsl:template name="attributeDomain">
-        <xsl:param name="attribute"/>
-        <xsl:variable name="className" select="$attribute/../../@name"/>
-        <xsl:variable name="classURI" select="f:buildURIfromLexicalQName($className, fn:true())"/>
+        <xsl:param name="root"/>
+        <xsl:param name="attributeName"/>
+        <xsl:variable name="attributesWithSameName" select="f:getClassAttributeByName($attributeName, $root)"/>
         <xsl:variable name="attributeURI"
-            select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
-        <rdf:Description rdf:about="{$attributeURI}">
-            <rdfs:domain rdf:resource="{$classURI}"/>
-        </rdf:Description>
+            select="f:buildURIFromAttribute($attributesWithSameName[1], fn:false(), fn:true())"/>
+        <xsl:choose>
+            <xsl:when test="fn:count($attributesWithSameName) = 1">
+                <rdf:Description rdf:about="{$attributeURI}">
+                    <rdfs:domain rdf:resource="{f:buildURIfromLexicalQName($attributesWithSameName/../../@name, fn:true())}"/>
+                </rdf:Description>
+            </xsl:when>
+            <xsl:otherwise>
+                <rdf:Description rdf:about="{$attributeURI}">
+                    <rdfs:domain>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <xsl:for-each select="$attributesWithSameName">
+                                <rdf:Description rdf:about="{f:buildURIfromLexicalQName(./../../@name, fn:true())}"/> 
+                            </xsl:for-each>
+                        </owl:unionOf>
+                    </owl:Class>
+                    </rdfs:domain>
+                </rdf:Description>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <xd:doc>
         <xd:desc>Rule 6 (Attribute type in reasnoning layer) . Specify data (or object) property
             range for attribute(s).</xd:desc>
-        <xd:param name="attribute"/>
+        <xd:param name="root"/>
+        <xd:param name="attributeName"/>
     </xd:doc>
 
     <xsl:template name="attributeRange">
-        <xsl:param name="attribute"/>
-        <xsl:variable name="className" select="$attribute/../../@name"/>
-        <xsl:variable name="classURI" select="f:buildURIfromLexicalQName($className, fn:true())"/>
-        <xsl:variable name="attributeType" select="$attribute/properties/@type"/>
+        <xsl:param name="root"/>
+        <xsl:param name="attributeName"/>
+        <xsl:variable name="attributesWithSameName" select="f:getClassAttributeByName($attributeName, $root)"/>
+        <xsl:variable name="distinctAttributeTypesFound" select="fn:distinct-values($attributesWithSameName/properties/@type)"/>
         <xsl:variable name="attributeURI"
-            select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
-        <xsl:if test="f:isAttributeTypeValidForDatatypeProperty($attribute)">
-            <xsl:variable name="attributeTypeChecked"
-                select="
-                    if (boolean(f:getUmlDataTypeValues($attribute/properties/@type, $umlDataTypesMapping))) then
-                        f:getUmlDataTypeValues($attribute/properties/@type, $umlDataTypesMapping)
-                    else
+            select="f:buildURIFromAttribute($attributesWithSameName[1], fn:false(), fn:true())"/>
+        <xsl:choose>
+            <xsl:when test="fn:count($attributesWithSameName) = 1 or fn:count($distinctAttributeTypesFound) = 1">
+                <xsl:variable name="className" select="$attributesWithSameName/../../@name"/>
+                <xsl:variable name="classURI" select="f:buildURIfromLexicalQName($className, fn:true())"/>
+                <xsl:variable name="attributeType" select="$attributesWithSameName[1]/properties/@type"/>
+                <xsl:if test="f:isValidDataType($attributeType)">
+                    <xsl:variable name="attributeTypeChecked"
+                        select="
+                        if (boolean(f:getUmlDataTypeValues($attributeType, $umlDataTypesMapping))) then
+                        f:getUmlDataTypeValues($attributeType, $umlDataTypesMapping)
+                        else
                         $attributeType"/>
-            <xsl:variable name="attributeTypeURI"
-                select="f:buildURIfromLexicalQName($attributeTypeChecked, fn:false())"/>
-            <owl:DatatypeProperty rdf:about="{$attributeURI}">
-                <rdfs:range rdf:resource="{$attributeTypeURI}"/>
-            </owl:DatatypeProperty>
-        </xsl:if>
-        <xsl:if
-            test="
-                f:isAttributeTypeValidForObjectProperty($attribute) or
-                boolean(f:getElementByName($attributeType, root($attribute)))">
-            <xsl:variable name="classURI"
-                select="f:buildURIFromElement(f:getElementByName($attributeType, root($attribute))[1], fn:true(), fn:true())"/>
-            <owl:ObjectProperty rdf:about="{$attributeURI}">
-                <rdfs:range rdf:resource="{$classURI}"/>
-            </owl:ObjectProperty>
-        </xsl:if>
+                    <xsl:variable name="attributeTypeURI"
+                        select="f:buildURIfromLexicalQName($attributeTypeChecked, fn:false())"/>
+                    <owl:DatatypeProperty rdf:about="{$attributeURI}">
+                        <rdfs:range rdf:resource="{$attributeTypeURI}"/>
+                    </owl:DatatypeProperty>
+                </xsl:if>
+                <xsl:if
+                    test="
+                    f:isAttributeTypeValidForObjectProperty($attributesWithSameName[1]) or
+                    boolean(f:getElementByName($attributeType, $root))">
+                    <xsl:variable name="classURI"
+                        select="f:buildURIFromElement(f:getElementByName($attributeType, $root)[1], fn:true(), fn:true())"/>
+                    <owl:ObjectProperty rdf:about="{$attributeURI}">
+                        <rdfs:range rdf:resource="{$classURI}"/>
+                    </owl:ObjectProperty>
+                </xsl:if>
+            </xsl:when>
+            <xsl:otherwise>
+                <rdf:Description rdf:about="{$attributeURI}">
+                    <rdfs:range>
+                        <owl:Class>
+                            <owl:unionOf rdf:parseType="Collection">
+                                <xsl:for-each select="$distinctAttributeTypesFound">
+                                    <rdf:Description rdf:about="{f:buildURIfromLexicalQName(., fn:false())}"/> 
+                                </xsl:for-each>
+                            </owl:unionOf>
+                        </owl:Class>
+                    </rdfs:range>
+                </rdf:Description>
+            </xsl:otherwise>
+        </xsl:choose>
+
 
     </xsl:template>
 
