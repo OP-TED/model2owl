@@ -18,7 +18,11 @@
     <xsl:import href="../common/formatters.xsl"/>
 
     <xd:doc>
-        <xd:desc>Applying the checkers to a group of class attributes with same name</xd:desc>
+        <xd:desc>Applying the checkers to a group of class attributes with same name
+            [class-attributes-with-same-name-definition-71]
+            [class-attributes-with-same-name-multiplicity-72]
+            [class-attributes-with-same-name-data-types-73]
+        </xd:desc>
     </xd:doc>
 
     <xsl:template name="classAttributesWithSameName">
@@ -55,7 +59,7 @@
 
 
     <xd:doc>
-        <xd:desc>Check the multiplicity values from a group of class attributes with same
+        <xd:desc>[class-attributes-with-same-name-multiplicity-72]Check the multiplicity values from a group of class attributes with same
             name</xd:desc>
         <xd:param name="attributeName"/>
         <xd:param name="root"/>
@@ -80,7 +84,7 @@
 
 
     <xd:doc>
-        <xd:desc>Check the definition values from a group of class attributes with same
+        <xd:desc>[class-attributes-with-same-name-definition-71]Check the definition values from a group of class attributes with same
             name</xd:desc>
         <xd:param name="attributeName"/>
         <xd:param name="root"/>
@@ -117,7 +121,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Check the data-type from a group of class attributes with same name</xd:desc>
+        <xd:desc>[class-attributes-with-same-name-data-types-73]Check the data-type from a group of class attributes with same name</xd:desc>
         <xd:param name="attributeName"/>
         <xd:param name="root"/>
     </xd:doc>

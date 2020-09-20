@@ -17,7 +17,10 @@
     <xsl:import href="utils-html-conventions.xsl"/>
 
     <xd:doc>
-        <xd:desc>Applying the checkers to a group of connectors with same name</xd:desc>
+        <xd:desc>Applying the checkers to a group of connectors with same name
+            [connectors-with-same-name-multiplicity-68]
+            [connectors-with-same-name-definition-69]
+            [connectors-with-same-name-definition-70]</xd:desc>
     </xd:doc>
 
     <xsl:template name="connectorsWithSameName">
@@ -50,7 +53,7 @@
 
 
     <xd:doc>
-        <xd:desc>Check the multiplicity values from a group of connectors with same name</xd:desc>
+        <xd:desc>[connectors-with-same-name-multiplicity-68]Check the multiplicity values from a group of connectors with same name</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
     </xd:doc>
@@ -74,7 +77,7 @@
 
 
     <xd:doc>
-        <xd:desc>Check the definition values from a group of connectors with same name</xd:desc>
+        <xd:desc>[connectors-with-same-name-definition-69] [connectors-with-same-name-definition-70] Check the definition values from a group of connectors with same name</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
     </xd:doc>
