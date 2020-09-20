@@ -27,19 +27,10 @@
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
         <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">
-            <xsl:call-template name="connectorSource">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="connectorTarget">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
             <xsl:call-template name="connectorAsymetry">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="connectorInverse">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
         </xsl:if>
@@ -51,19 +42,10 @@
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
         <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">
-            <xsl:call-template name="connectorSource">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="connectorTarget">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
             <xsl:call-template name="connectorAsymetry">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="connectorInverse">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
         </xsl:if>
@@ -81,96 +63,132 @@
             <xsl:with-param name="generalisation" select="."/>
         </xsl:call-template>
     </xsl:template>
-
+    
+    
+    <xd:doc>
+        <xd:desc>Applying rule 12,13 and 20 to connectors with distinct names</xd:desc>
+    </xd:doc>
+    <xsl:template name="distinctConnectorsNamesInReasoningLayer">
+        <xsl:variable name="root" select="root()"/>
+        <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
+        <xsl:for-each select="$distinctNames">
+            <xsl:call-template name="connectorDomain">
+                <xsl:with-param name="connectorName" select="."/>
+                <xsl:with-param name="root" select="$root"/>
+            </xsl:call-template>
+            <xsl:call-template name="connectorRange">
+                <xsl:with-param name="connectorName" select="."/>
+                <xsl:with-param name="root" select="$root"/>
+            </xsl:call-template>
+            <xsl:call-template name="connectorInverse">
+                <xsl:with-param name="connectorName" select="."/>
+                <xsl:with-param name="root" select="$root"/>
+            </xsl:call-template>
+        </xsl:for-each>
+    </xsl:template>
 
 
     <xd:doc>
         <xd:desc>Rule 12 (Association source in reasnoning layer) .Specify object property domain
             for the target end of the association.</xd:desc>
-        <xd:param name="connector"/>
+        <xd:param name="connectorName"/>
+        <xd:param name="root"/>
     </xd:doc>
 
-    <xsl:template name="connectorSource">
-        <xsl:param name="connector"/>
-        <xsl:variable name="sourceClassURI"
-            select="f:buildURIfromLexicalQName($connector/source/model/@name, fn:true())"/>
-        <xsl:variable name="sourceRole"
-            select="
-                if (boolean($connector/source/role/@name)) then
-                    f:lexicalQNameToWords($connector/source/role/@name)
-                else
-                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
-        <xsl:variable name="sourceRoleURI"
-            select="f:buildURIfromLexicalQName($sourceRole, fn:false())"/>
-        <xsl:variable name="targetClassURI"
-            select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true())"/>
-        <xsl:variable name="targetRole"
-            select="
-                if (boolean($connector/target/role/@name)) then
-                    f:lexicalQNameToWords($connector/target/role/@name)
-                else
-                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+    <xsl:template name="connectorDomain">
+        <xsl:param name="connectorName"/>
+        <xsl:param name="root"/>
+        <xsl:variable name="connectorsWithSameName"
+            select="f:getConnectorByName($connectorName, $root)"/>
+        <xsl:variable name="targetRole" select="f:lexicalQNameToWords($connectorName)"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
-        <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
-        <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
-            <owl:ObjectProperty rdf:about="{$targetRoleURI}">
-                <rdfs:domain rdf:resource="{$sourceClassURI}"/>
-            </owl:ObjectProperty>
-        </xsl:if>
-        <xsl:if test="$connectorDirection = 'Bi-Directional'">
-            <owl:ObjectProperty rdf:about="{$targetRoleURI}">
-                <rdfs:domain rdf:resource="{$sourceClassURI}"/>
-            </owl:ObjectProperty>
-            <owl:ObjectProperty rdf:about="{$sourceRoleURI}">
-                <rdfs:domain rdf:resource="{$targetClassURI}"/>
-            </owl:ObjectProperty>
-        </xsl:if>
+        <xsl:choose>
+            <xsl:when test="fn:count($connectorsWithSameName) = 1">
+                <xsl:variable name="classURI"
+                    select="
+                        if ($connectorsWithSameName/target/role/@name = $connectorName) then
+                            f:buildURIfromLexicalQName($connectorsWithSameName/source/model/@name, fn:true())
+                        else
+                            f:buildURIfromLexicalQName($connectorsWithSameName/target/model/@name, fn:true())"/>
+                <rdf:Description rdf:about="{$targetRoleURI}">
+                    <rdfs:domain rdf:resource="{$classURI}"/>
+                </rdf:Description>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="targetDomains"
+                    select="$connectorsWithSameName/target[role/@name = $connectorName]/../source/model/@name"
+                    as="xs:string*"/>
+                <xsl:variable name="sourceDomains"
+                    select="$connectorsWithSameName/source[role/@name = $connectorName]/../target/model/@name"
+                    as="xs:string*"/>
+                <xsl:variable name="domains"
+                    select="functx:value-union($targetDomains, $sourceDomains)"/>
+                <rdf:Description rdf:about="{$targetRoleURI}">
+                    <rdfs:domain>
+                        <owl:Class>
+                            <owl:unionOf rdf:parseType="Collection">
+                                <xsl:for-each select="$domains">
+                                    <rdf:Description
+                                        rdf:about="{f:buildURIfromLexicalQName(., fn:true())}"/>
+                                </xsl:for-each>
+                            </owl:unionOf>
+                        </owl:Class>
+                    </rdfs:domain>
+                </rdf:Description>
+            </xsl:otherwise>
+        </xsl:choose>
+
     </xsl:template>
 
 
     <xd:doc>
         <xd:desc>Rule 13 (Association target in reasnoning layer) . Specify object property range
             for the target end of the association.</xd:desc>
-        <xd:param name="connector"/>
+        <xd:param name="connectorName"/>
+        <xd:param name="root"/>
     </xd:doc>
 
-    <xsl:template name="connectorTarget">
-        <xsl:param name="connector"/>
-        <xsl:variable name="sourceClassURI"
-            select="f:buildURIfromLexicalQName($connector/source/model/@name, fn:true())"/>
-        <xsl:variable name="sourceRole"
-            select="
-                if (boolean($connector/source/role/@name)) then
-                    f:lexicalQNameToWords($connector/source/role/@name)
-                else
-                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
-        <xsl:variable name="sourceRoleURI"
-            select="f:buildURIfromLexicalQName($sourceRole, fn:false())"/>
-        <xsl:variable name="targetClassURI"
-            select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true())"/>
-        <xsl:variable name="targetRole"
-            select="
-                if (boolean($connector/target/role/@name)) then
-                    f:lexicalQNameToWords($connector/target/role/@name)
-                else
-                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+    <xsl:template name="connectorRange">
+        <xsl:param name="connectorName"/>
+        <xsl:param name="root"/>
+        <xsl:variable name="connectorsWithSameName"
+            select="f:getConnectorByName($connectorName, $root)"/>
+        <xsl:variable name="targetRole" select="f:lexicalQNameToWords($connectorName)"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
-        <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
-        <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
-            <owl:ObjectProperty rdf:about="{$targetRoleURI}">
-                <rdfs:range rdf:resource="{$targetClassURI}"/>
-            </owl:ObjectProperty>
-        </xsl:if>
-        <xsl:if test="$connectorDirection = 'Bi-Directional'">
-            <owl:ObjectProperty rdf:about="{$targetRoleURI}">
-                <rdfs:range rdf:resource="{$targetClassURI}"/>
-            </owl:ObjectProperty>
-            <owl:ObjectProperty rdf:about="{$sourceRoleURI}">
-                <rdfs:range rdf:resource="{$sourceClassURI}"/>
-            </owl:ObjectProperty>
-        </xsl:if>
+        <xsl:choose>
+            <xsl:when test="fn:count($connectorsWithSameName) = 1 and fn:boolean($connectorsWithSameName/*[role/@name =$connectorName]/model/@name)">
+                <rdf:Description rdf:about="{$targetRoleURI}">
+                    <rdfs:range
+                        rdf:resource="{f:buildURIfromLexicalQName($connectorsWithSameName/*[role/@name =$connectorName]/model/@name, fn:true())}"
+                    />
+                </rdf:Description>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="targetRanges"
+                    select="$connectorsWithSameName/target[role/@name = $connectorName]/model/@name"
+                    as="xs:string*"/>
+                <xsl:variable name="sourceRanges"
+                    select="$connectorsWithSameName/source[role/@name = $connectorName]/model/@name"
+                    as="xs:string*"/>
+                <xsl:variable name="ranges"
+                    select="functx:value-union($targetRanges, $sourceRanges)"/>
+                <rdf:Description rdf:about="{$targetRoleURI}">
+                    <rdfs:range>
+                        <owl:Class>
+                            <owl:unionOf rdf:parseType="Collection">
+                                <xsl:for-each select="$ranges">
+                                    <rdf:Description
+                                        rdf:about="{f:buildURIfromLexicalQName(., fn:true())}"/>
+                                </xsl:for-each>
+                            </owl:unionOf>
+                        </owl:Class>
+                    </rdfs:range>
+                </rdf:Description>
+            </xsl:otherwise>
+        </xsl:choose>
+
     </xsl:template>
 
 
@@ -198,32 +216,56 @@
     <xd:doc>
         <xd:desc>Rule 20 (Association inverse in reasnoning layer) . Specify inverse object property
             between the source and target ends of the association.</xd:desc>
-        <xd:param name="connector"/>
+        <xd:param name="connectorName"/>
+        <xd:param name="root"/>
     </xd:doc>
 
     <xsl:template name="connectorInverse">
-        <xsl:param name="connector"/>
-        <xsl:if test="$connector/properties/@direction = 'Bi-Directional'">
-            <xsl:variable name="targetRole"
-                select="
-                    if (boolean($connector/target/role/@name)) then
-                        f:lexicalQNameToWords($connector/target/role/@name)
-                    else
-                        concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
-            <xsl:variable name="targetRoleURI"
-                select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
-            <xsl:variable name="sourceRole"
-                select="
-                    if (boolean($connector/source/role/@name)) then
-                        f:lexicalQNameToWords($connector/source/role/@name)
-                    else
-                        concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
-            <xsl:variable name="sourceRoleURI"
-                select="f:buildURIfromLexicalQName($sourceRole, fn:false())"/>
-            <owl:ObjectProperty rdf:about="{$targetRoleURI}">
-                <owl:inverseOf rdf:resource="{$sourceRoleURI}"/>
-            </owl:ObjectProperty>
-        </xsl:if>
+        <xsl:param name="connectorName"/>
+        <xsl:param name="root"/>
+        <xsl:variable name="connectorsWithSameName"
+            select="f:getConnectorByName($connectorName, $root)"/>
+        <xsl:variable name="bidirectionalConnectors"
+            select="$connectorsWithSameName[properties/@direction = 'Bi-Directional' and target/role/@name = $connectorName]"/>
+        <xsl:variable name="distinctTargets"
+            select="fn:distinct-values($bidirectionalConnectors/target/role/@name)"/>
+        
+            <xsl:if test="fn:count($bidirectionalConnectors) = 1">
+                <xsl:variable name="targetRole"
+                    select="f:lexicalQNameToWords($bidirectionalConnectors/target/role/@name)"/>
+                <xsl:variable name="targetRoleURI"
+                    select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
+                <xsl:variable name="sourceRole"
+                    select="
+                        if (boolean($bidirectionalConnectors/source/role/@name)) then
+                            f:lexicalQNameToWords($bidirectionalConnectors/source/role/@name)
+                        else
+                            concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+                <xsl:variable name="sourceRoleURI"
+                    select="f:buildURIfromLexicalQName($sourceRole, fn:false())"/>
+                <rdf:Description rdf:about="{$targetRoleURI}">
+                    <owl:inverseOf rdf:resource="{$sourceRoleURI}"/>
+                </rdf:Description>
+            </xsl:if>
+        <xsl:if test="fn:count($bidirectionalConnectors) > 1" >
+                <xsl:for-each select="$distinctTargets">
+                    <xsl:variable name="targetName" select="."/>
+                    <xsl:variable name="targetRole" select="f:lexicalQNameToWords($targetName)"/>
+                    <xsl:variable name="targetRoleURI"
+                        select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
+                    <xsl:variable name="sourcesFound"
+                        select="$bidirectionalConnectors/source/role/@name"/>
+                    <xsl:for-each select="$sourcesFound">
+                        <xsl:variable name="sourceRole" select="f:lexicalQNameToWords(.)"/>
+                        <xsl:variable name="sourceRoleURI"
+                            select="f:buildURIfromLexicalQName($sourceRole, fn:false())"/>
+                        <rdf:Description rdf:about="{$targetRoleURI}">
+                            <owl:inverseOf rdf:resource="{$sourceRoleURI}"/>
+                        </rdf:Description>
+                    </xsl:for-each>
+                </xsl:for-each>
+            </xsl:if>
+        
     </xsl:template>
 
 
@@ -441,8 +483,4 @@
             </xsl:if>
         </xsl:if>
     </xsl:template>
-
-
-
-
 </xsl:stylesheet>

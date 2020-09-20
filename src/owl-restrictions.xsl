@@ -40,6 +40,8 @@
             <xsl:attribute name="xml:base" expand-text="true">{$restrictionsModuleURI}</xsl:attribute>
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
+            <xsl:call-template name="distinctAttributeNamesInReasoningLayer"/>
+            <xsl:call-template name="distinctConnectorsNamesInReasoningLayer"/>
         </rdf:RDF>
     </xsl:template>
 
