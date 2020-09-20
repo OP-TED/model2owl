@@ -51,7 +51,7 @@
 
     <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
     <xsl:variable name="acceptableTypesForObjectProperties"
-        select="('Code', 'Quantity', 'Measure', 'Identifier', 'Amount')"/>
+        select="('ccts:Code', 'ccts:Quantity', 'ccts:Measure', 'ccts:Identifier', 'ccts:Amount')"/>
 
     <!-- Acceptable stereotypes -->
     <xsl:variable name="stereotypeValidOnAttributes" select="()"/>
