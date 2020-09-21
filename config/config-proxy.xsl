@@ -14,6 +14,6 @@
     
 <!--    Change below the location of your config parameters file-->
     
-    <xsl:import href="test-config/config-parameters.xsl"/>
+    <xsl:import href="ePO-default/config-parameters.xsl"/>
     
 </xsl:stylesheet>

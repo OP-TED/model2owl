@@ -51,7 +51,9 @@
 
     <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
     <xsl:variable name="acceptableTypesForObjectProperties"
-        select="('ccts:Code', 'ccts:Quantity', 'ccts:Measure', 'ccts:Identifier', 'ccts:Amount')"/>
+        select="('skos:Concept', 'ccts:Quantity', 
+                 'ccts:Measure', 'ccts:Identifier', 'ccts:Amount', 
+                 'ccts:Indicator', 'ccts:Text', 'ccts:Numeric')"/>
 
     <!-- Acceptable stereotypes -->
     <xsl:variable name="stereotypeValidOnAttributes" select="()"/>
