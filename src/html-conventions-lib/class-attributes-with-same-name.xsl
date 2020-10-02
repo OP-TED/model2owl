@@ -112,13 +112,13 @@
                     ()
                 else
                     if (fn:boolean($definitionValues)) then
-                        f:generateHtmlWarning(fn:concat('When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. ',
-                        'In this case, multiple definitions are found: ',
-                        fn:string-join($descriptionsWithAnnotations, ',')))
+                    f:generateFormattedHtmlWarning(fn:concat('When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. ',
+                    'In this case, multiple definitions are found: '), $descriptionsWithAnnotations)
                     else
                         ()"
         />
     </xsl:template>
+    
 
     <xd:doc>
         <xd:desc>[class-attributes-with-same-name-data-types-73]Check the data-type from a group of class attributes with same name</xd:desc>
@@ -150,9 +150,8 @@
                     ()
                 else
                     if (fn:boolean($datatypeValues)) then
-                        f:generateHtmlWarning(fn:concat('When a property is reused in multiple contexts, the data-type is expected to be the same. ',
-                        'In this case, multiple data-types are found: ',
-                        fn:string-join($datatypeWithAnnotations, ',')))
+                        f:generateFormattedHtmlWarning(fn:concat('When a property is reused in multiple contexts, the data-type is expected to be the same. ',
+                        'In this case, multiple data-types are found: '), $datatypeWithAnnotations)
                     else
                         ()"
         />

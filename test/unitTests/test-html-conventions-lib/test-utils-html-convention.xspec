@@ -26,4 +26,33 @@
         <x:expect label="has error message" test="//dd//text() = 'This has no description'"/>
     </x:scenario>
     
+    
+    
+    
+    <x:scenario label="Generate a info with a list in html">
+        <x:call function="f:generateFormattedHtmlInfo">
+            <x:param name="infoMessage">Info message</x:param>
+            <x:param name="elementsList" select="(1,2,3,4)"/>
+        </x:call>
+        <x:expect label="has info message" test="//dd//text() = 'Info message'"/>
+        <x:expect label="has 4 list elements" test="count(dd/ul/li) = 4"/>
+    </x:scenario>
+    
+    <x:scenario label="Generate a warning with a list in html">
+        <x:call function="f:generateFormattedHtmlInfo">
+            <x:param name="warningMessage">Warning message</x:param>
+            <x:param name="elementsList" select="(1,2,3,4)"/>
+        </x:call>
+        <x:expect label="has info message" test="//dd//text() = 'Warning message'"/>
+        <x:expect label="has 4 list elements" test="count(dd/ul/li) = 4"/>
+    </x:scenario>
+    
+    <x:scenario label="Generate a error with a list in html">
+        <x:call function="f:generateFormattedHtmlInfo">
+            <x:param name="errorMessage">Error message</x:param>
+            <x:param name="elementsList" select="(1,2,3,4)"/>
+        </x:call>
+        <x:expect label="has info message" test="//dd//text() = 'Error message'"/>
+        <x:expect label="has 4 list elements" test="count(dd/ul/li) = 4"/>
+    </x:scenario>
 </x:description>
