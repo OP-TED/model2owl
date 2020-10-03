@@ -101,7 +101,7 @@
         <xsl:variable name="idRefSource" select="$generalizationConnector/source/@xmi:idref"/>
         <xsl:sequence
             select="
-                if (boolean(f:getOutgoingConnectors($targetElement)[target/@xmi:idref = $idRefSource])) then
+                if (boolean(f:getOutgoingConnectors($targetElement)[target/@xmi:idref = $idRefSource and properties/@ea_type = 'Generalization'])) then
                     f:generateHtmlError(fn:concat('The classes ', $generalizationConnector/target/model/@name, ' and ', $generalizationConnector/source/model/@name, ' inherit one ',
                     'another. Sub-class relation must be established in one direction only, forming a hierarchy.'))
                 else
