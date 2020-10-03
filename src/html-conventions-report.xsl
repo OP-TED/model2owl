@@ -35,47 +35,69 @@
     
     
     <xsl:template match="/">
+        
         <html lang="en">
             <xsl:call-template name="head"/>
-            <body>
-                <xsl:call-template name="title-header"/>
-                <main>
-                    <div id="toc" class="tocify">
-                        <div class="text-center">
-                            <p>
-                                <strong>Table of contents</strong>
-                            </p>
-                        </div>
+            <xsl:choose>
+                <xsl:when
+                    test="fn:namespace-uri(//*:Model) = 'http://www.omg.org/spec/UML/20131001' and
+                    fn:namespace-uri(//*:XMI) = 'http://www.omg.org/spec/XMI/20131001'">
+                    <body>
+                        <xsl:call-template name="title-header"/>
+                        <main>
+                            <div id="toc" class="tocify">
+                                <div class="text-center">
+                                    <p>
+                                        <strong>Table of contents</strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div id="filters" class="tocify">
+                                <p class="text-center">
+                                    <strong>Constrain type</strong>
+                                </p>
+                                <div class="checkbox">
+                                    <label for="filter-info">
+                                        <input type="checkbox" value="infos" id="filter-info"/>
+                                        Info</label>
+                                </div>
+                                <div class="checkbox">
+
+                                    <label for="filter-warning">
+                                        <input type="checkbox" value="warnings" id="filter-warning"
+                                        /> Warning</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label for="filter-error">
+                                        <input type="checkbox" value="errors" id="filter-error"/>
+                                        Error</label>
+                                </div>
+                                <input type="button" class="filter-button btn btn-primary"
+                                    value="Apply filter"/>
+                            </div>
+                            <xsl:call-template name="abstract"/>
+                            <xsl:call-template name="infoBox"/>
+                            <xsl:apply-templates/>
+                            <xsl:call-template name="connectorsWithSameName"/>
+                            <xsl:call-template name="classAttributesWithSameName"/>
+                        </main>
+                        <xsl:call-template name="footer"/>
+                    </body>
+                </xsl:when>
+                <xsl:otherwise>
+                    <div class="alert alert-danger text-center">
+                        <i class="fa fa-times-circle error" style="font-size: 60px;"/>
+                        <h1 class="counter-skip">Wrong model version detected. </h1>
+                        <br/>
+                            <p>Please make sure that the XMI file uses XMI version 2.5.1 and UML version 2.5.1.</p> 
+                        <p>The namespaces to check:</p>
+                        <ul>
+                            <li>xmi="http://www.omg.org/spec/XMI/20131001"</li>
+                            <li>uml="http://www.omg.org/spec/UML/20131001"</li>
+                        </ul>
                     </div>
-                    <div id="filters" class="tocify">
-                        <p class="text-center"><strong>Constrain type</strong></p>
-                        <div class="checkbox">
-                            <label for="filter-info">
-                                <input type="checkbox" value="infos" id="filter-info"/>
-                                Info</label>
-                        </div>
-                        <div class="checkbox">
-                            
-                            <label for="filter-warning">
-                                <input type="checkbox" value="warnings" id="filter-warning"/>
-                                Warning</label>
-                        </div>
-                        <div class="checkbox">
-                            <label for="filter-error">
-                                <input type="checkbox" value="errors" id="filter-error"/>
-                                Error</label>
-                        </div>
-                        <input type="button" class="filter-button btn btn-primary"
-                            value="Apply filter"/>
-                    </div>
-                    <xsl:call-template name="abstract"/>
-                    <xsl:call-template name="infoBox"/>
-                    <xsl:apply-templates/>
-                    <xsl:call-template name="connectorsWithSameName"/>
-                    <xsl:call-template name="classAttributesWithSameName"/>
-                </main>
-                <xsl:call-template name="footer"/>
-            </body>
+                </xsl:otherwise>
+            </xsl:choose>
         </html>
     </xsl:template>
 </xsl:stylesheet>
