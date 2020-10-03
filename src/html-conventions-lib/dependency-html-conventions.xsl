@@ -26,7 +26,7 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
-        <xsl:if test="not(boolean(./properties/@stereotype )) or (./properties/@stereotype != $stereotypeValidOnDependencies)">
+        <xsl:if test="not(boolean(./properties/@stereotype ) and (./properties/@stereotype = $stereotypeValidOnDependencies))">
             <xsl:variable name="dependencyChecks" as="item()*">
                 <xsl:call-template name="co-generalNameProvided">
                     <xsl:with-param name="connector" select="."/>
