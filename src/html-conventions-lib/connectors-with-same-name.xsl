@@ -103,14 +103,12 @@
         <xsl:sequence
             select="
                 if (f:areStringsEqual($definitionValues) and fn:boolean($definitionValues and $allConnectorsHaveDefinition)) then
-                f:generateHtmlInfo(fn:concat('The property is reused in multiple contexts, the meaning given by the definition is the same.  ',
-                    'Here is the property usage: ',
-                    fn:string-join($descriptionsWithAnnotations, ',')))
+                f:generateFormattedHtmlInfo(fn:concat('The property is reused in multiple contexts, the meaning given by the definition is the same.  ',
+                    'Here is the property usage: '), $descriptionsWithAnnotations)
                 else
                     if (fn:boolean($definitionValues)) then
-                    f:generateHtmlWarning(fn:concat('When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. ',
-                                                    'In this case, multiple definitions are found: ',
-                                                    fn:string-join($descriptionsWithAnnotations, ',')))
+                    f:generateFormattedHtmlWarning(fn:concat('When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. ',
+                                                    'In this case, multiple definitions are found: '), $descriptionsWithAnnotations)
                     else
                         ()"
         />
