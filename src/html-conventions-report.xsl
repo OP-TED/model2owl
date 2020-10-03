@@ -87,8 +87,14 @@
                 <xsl:otherwise>
                     <div class="alert alert-danger text-center">
                         <i class="fa fa-times-circle error" style="font-size: 60px;"/>
-                        <h1 class="counter-skip">Wrong XMI and UML version is used. Please rectify this in the XMI/XML input file
-                            and try again.</h1>
+                        <h1 class="counter-skip">Wrong model version detected. </h1>
+                        <br/>
+                            <p>Please make sure that the XMI file uses XMI version 2.5.1 and UML version 2.5.1.</p> 
+                        <p>The namespaces to check:</p>
+                        <ul>
+                            <li>xmi="http://www.omg.org/spec/XMI/20131001"</li>
+                            <li>uml="http://www.omg.org/spec/UML/20131001"</li>
+                        </ul>
                     </div>
                 </xsl:otherwise>
             </xsl:choose>
