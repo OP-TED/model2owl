@@ -51,7 +51,7 @@
 
     <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
     <xsl:variable name="acceptableTypesForObjectProperties"
-        select="('skos:Concept', 'ccts:Quantity', 
+        select="('ccts:Code', 'ccts:Quantity', 
                  'ccts:Measure', 'ccts:Identifier', 'ccts:Amount', 
                  'ccts:Indicator', 'ccts:Text', 'ccts:Numeric')"/>
 
