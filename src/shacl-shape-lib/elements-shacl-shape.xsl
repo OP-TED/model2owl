@@ -20,8 +20,8 @@
 
     <xsl:output method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
-    
-    
+
+
     <xd:doc>
         <xd:desc>[Rule 2] - (Class in data shape layer) .Specify declaration axiom for UML Class as
             SHACL Node Shape where the URI and a label are deterministically generated from the
@@ -33,7 +33,7 @@
         <xsl:variable name="classURI" select="f:buildURIFromElement($class, fn:true(), fn:true())"/>
         <xsl:variable name="documentation"
             select="f:formatDocString($class/properties/@documentation)"/>
-        
+
         <sh:NodeShape rdf:about="{$classURI}">
             <xsl:call-template name="elementName">
                 <xsl:with-param name="name" select="$className"/>
@@ -53,17 +53,25 @@
             <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
         </sh:NodeShape>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>Applying rules 7 and 8 to attributes</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
-        <xsl:call-template name="attributeRangeShape">
-            <xsl:with-param name="attribute" select="."/>
-        </xsl:call-template>
-        <xsl:call-template name="attributeMultiplicity">
-            <xsl:with-param name="attribute" select="."/>
-        </xsl:call-template>
+        <xsl:variable name="className" select="./../../@name" as="xs:string"/>
+        <xsl:variable name="attributeNormalizedLocalName"
+            select="fn:concat(fn:substring-before(./@name, ':'), ':has', f:getLocalSegmentForElements(.))"/>
+        <xsl:variable name="isAttributeWithDependencyName"
+            select="f:getConnectorByName($attributeNormalizedLocalName, root(.))[source/model/@name = $className]"/>
+<!--        generating only for attributes that don't have a coresponding relation (dependency)-->
+        <xsl:if test="not($isAttributeWithDependencyName)">
+            <xsl:call-template name="attributeRangeShape">
+                <xsl:with-param name="attribute" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="attributeMultiplicity">
+                <xsl:with-param name="attribute" select="."/>
+            </xsl:call-template>
+        </xsl:if>
     </xsl:template>
 
 
@@ -119,11 +127,7 @@
     <xsl:template name="attributeRangeShape">
         <xsl:param name="attribute"/>
         <xsl:variable name="attributeURI"
-            select="
-                if (fn:starts-with($attribute/@name, 'has') or fn:starts-with($attribute/@name, 'is')) then
-                    f:buildURIFromElement($attribute, fn:false(), fn:true())
-                else
-                    f:buildURIFromElement($attribute, fn:true(), fn:true())"/>
+            select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
         <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
         <xsl:variable name="attributeType" select="$attribute/properties/@type"/>
         <xsl:if test="f:isAttributeTypeValidForDatatypeProperty($attribute)">
@@ -178,11 +182,7 @@
         <xsl:variable name="datatypeURI"
             select="f:buildURIfromLexicalQName('xsd:integer', fn:false())"/>
         <xsl:variable name="attributeURI"
-            select="
-                if (fn:starts-with($attribute/@name, 'has') or fn:starts-with($attribute/@name, 'is')) then
-                    f:buildURIFromElement($attribute, fn:false(), fn:true())
-                else
-                    f:buildURIFromElement($attribute, fn:true(), fn:true())"/>
+            select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
         <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
         <sh:property>
             <sh:PropertyShape>

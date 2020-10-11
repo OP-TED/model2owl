@@ -19,7 +19,7 @@
    <body>
       <header class="counter-skip">
          <h1 class="title">UML Conventions Comformance Report</h1>
-         <h2>[ 03/10/2020 ]</h2>
+         <h2>[ 11/10/2020 ]</h2>
          <div class="authors col-span">
             <div class="author">
                <div>Publications Office of the European Union</div>
@@ -55,7 +55,7 @@
                   Generalisations</em>. Each major section lists model items that need correction of errors
                or consideration of warnings.</p>
             <p>The UML model in file <em>ePO_CM_CCTS-v2.0.2-2020-07-23.eap.xmi</em> 
-               was tested at 18:22 on October 3, 2020.</p>
+               was tested at 16:12 on October 11, 2020.</p>
          </div>
          <h1 xmlns:f="http://https://github.com/costezki/model2owl#">Nomenclature</h1>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">Class names</h2>
@@ -4305,6 +4305,9 @@
                <dt>ccts:AssuranceLevel</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name ccts:AssuranceLevel is invalid. The attribute name must start with
                   a lower case.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type skos:Concept type is invalid. Attributes must use types that are
+                  either: (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d)
+                  an Enumeration.</dd>
                <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute ccts:AssuranceLevel type skos:Concept is not defined in the model. Every
                   used type should be defined. This applies to The standard datatypes (e.g XSD or RDF),
                   which should be re-declared in the model and serving as proxies.</dd>
@@ -4578,8 +4581,6 @@
                <dt>epo:CountryCode</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:CountryCode is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:CountryCode is missing a description. All concepts should be defined or described.</dd>
             </dl>
             <dl>
@@ -4594,8 +4595,6 @@
                <dt>epo:CountrySubentityCode</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:CountrySubentityCode is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:CountrySubentityCode is missing a description. All concepts should be defined
                   or described.</dd>
             </dl>
@@ -4742,8 +4741,6 @@
                <dt>epo:AwardCriterionType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:AwardCriterionType is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:Description</dt>
@@ -4764,8 +4761,6 @@
                <dt>epo:FixedValueType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:FixedValueType is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:Formula</dt>
@@ -4783,8 +4778,6 @@
                <dt>epo:ThresholdType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:ThresholdType is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:ThresholdValue</dt>
@@ -4806,8 +4799,6 @@
                <dt>epo:WeightValueType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:WeightValueType is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:WeightValueType is missing a description. All concepts should be defined or described.</dd>
             </dl>
             <dl>
@@ -4836,8 +4827,6 @@
                <dt>epo:AwardStatus</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:AwardStatus is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:Justification</dt>
@@ -4851,8 +4840,6 @@
                <dt>epo:NonAwardJustification</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:NonAwardJustification is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:NonAwardJustification is missing a description. All concepts should be defined
                   or described.</dd>
             </dl>
@@ -4885,8 +4872,6 @@
                <dt>epo:Size</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:Size is invalid. The attribute name must start with a lower
                   case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
          </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo:Buyer</h2>
@@ -4902,8 +4887,6 @@
                <dt>epo:BuyerLegalType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:BuyerLegalType is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:BuyerLegalType is missing a description. All concepts should be defined or described.</dd>
             </dl>
             <dl>
@@ -4926,8 +4909,6 @@
                <dt>epo:MainActivityType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:MainActivityType is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
          </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo:BuyerProfile</h2>
@@ -4973,18 +4954,17 @@
                <dt>epo:BuyerLegalType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:BuyerLegalType is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:BuyerLegalType is missing a description. All concepts should be defined or described.</dd>
             </dl>
             <dl>
                <dt>epo:CentralPurchasingBodyType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:CentralPurchasingBodyType is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:CentralPurchasingBodyType is missing a description. All concepts should be defined
                   or described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:CentralPurchasingBodyType  is missing its counterpart as dependency
+                  relation. Attributes of type Code should have a counter-part dependency relation with
+                  the same name and pointing towards an Enumeration.</dd>
             </dl>
          </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo:Change</h2>
@@ -4993,8 +4973,6 @@
                <dt>epo:ChangeReason</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:ChangeReason is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:DateTime</dt>
@@ -5041,8 +5019,6 @@
                <dt>epo:CommunicationType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:CommunicationType is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:CommunicationType is missing a description. All concepts should be defined or
                   described.</dd>
             </dl>
@@ -5195,10 +5171,11 @@
                <dt>epo:ModificationReason</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:ModificationReason is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:ModificationReason is missing a description. All concepts should be defined or
                   described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:ModificationReason  is missing its counterpart as dependency relation.
+                  Attributes of type Code should have a counter-part dependency relation with the same
+                  name and pointing towards an Enumeration.</dd>
             </dl>
          </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo:ContractNotice</h2>
@@ -5241,8 +5218,6 @@
                <dt>epo:BroadPlaceOfPerformance</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:BroadPlaceOfPerformance is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:ContractorLegalFormRequirement</dt>
@@ -5326,8 +5301,6 @@
                <dt>epo:ReservedExecution</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:ReservedExecution is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
          </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo:CountryIdentification</h2>
@@ -5336,9 +5309,10 @@
                <dt>epo:Country</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:Country is invalid. The attribute name must start with a lower
                   case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:Country is missing a description. All concepts should be defined or described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:Country  is missing its counterpart as dependency relation. Attributes
+                  of type Code should have a counter-part dependency relation with the same name and
+                  pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:Name</dt>
@@ -5361,8 +5335,6 @@
                <dt>epo:CriterionGroupPropertyType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:CriterionGroupPropertyType is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:CriterionGroupPropertyType is missing a description. All concepts should be defined
                   or described.</dd>
             </dl>
@@ -5398,9 +5370,10 @@
                <dt>epo:Code</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:Code is invalid. The attribute name must start with a lower
                   case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:Code is missing a description. All concepts should be defined or described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:Code  is missing its counterpart as dependency relation. Attributes
+                  of type Code should have a counter-part dependency relation with the same name and
+                  pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:Date</dt>
@@ -5477,8 +5450,6 @@
                <dt>epo:DesignContestType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:DesignContestType is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:DesignContestType is missing a description. All concepts should be defined or
                   described.</dd>
             </dl>
@@ -5512,8 +5483,6 @@
                <dt>epo:JustificationType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:JustificationType is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
          </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo:Document</h2>
@@ -5536,8 +5505,6 @@
                <dt>epo:OfficialLanguage</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:OfficialLanguage is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:ReceptionDate</dt>
@@ -5553,17 +5520,16 @@
                <dt>epo:RestrictedCommunicationsJustification</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:RestrictedCommunicationsJustification is invalid. The attribute
                   name must start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:RestrictedCommunicationsJustification is missing a description. All concepts should
                   be defined or described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:RestrictedCommunicationsJustification  is missing its counterpart
+                  as dependency relation. Attributes of type Code should have a counter-part dependency
+                  relation with the same name and pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:UnofficialLanguage</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:UnofficialLanguage is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:UUID</dt>
@@ -5610,23 +5576,17 @@
                <dt>epo:BeneficialOwnerNationality</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:BeneficialOwnerNationality is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:EOGroupType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:EOGroupType is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:EOGroupType is missing a description. All concepts should be defined or described.</dd>
             </dl>
             <dl>
                <dt>epo:EORoleType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:EORoleType is invalid. The attribute name must start with a
                   lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:EORoleType is missing a description. All concepts should be defined or described.</dd>
             </dl>
          </section>
@@ -5665,8 +5625,6 @@
                <dt>epo:EvaluationGroupType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:EvaluationGroupType is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:EvaluationGroupType is missing a description. All concepts should be defined or
                   described.</dd>
             </dl>
@@ -5772,8 +5730,6 @@
                <dt>epo:ConfidentialityLevelType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:ConfidentialityLevelType is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:ConfidentialityLevelType is missing a description. All concepts should be defined
                   or described.</dd>
             </dl>
@@ -5803,17 +5759,16 @@
                <dt>epo:ExclusionGroundApplicability</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:ExclusionGroundApplicability is invalid. The attribute name
                   must start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:ExclusionGroundApplicability is missing a description. All concepts should be
                   defined or described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:ExclusionGroundApplicability  is missing its counterpart as dependency
+                  relation. Attributes of type Code should have a counter-part dependency relation with
+                  the same name and pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:ExclusionGroundType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:ExclusionGroundType is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:ExclusionGroundType is missing a description. All concepts should be defined or
                   described.</dd>
             </dl>
@@ -5832,15 +5787,11 @@
                <dt>epo:Country</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:Country is invalid. The attribute name must start with a lower
                   case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:Currency</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:Currency is invalid. The attribute name must start with a lower
                   case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:Currency is missing a description. All concepts should be defined or described.</dd>
             </dl>
             <dl>
@@ -5925,8 +5876,6 @@
                <dt>epo:FrameworkAgreementType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:FrameworkAgreementType is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:FrameworkAgreementType is missing a description. All concepts should be defined
                   or described.</dd>
             </dl>
@@ -5951,8 +5900,6 @@
                <dt>epo:FrameworkAgreementType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:FrameworkAgreementType is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:MaximumNumberOfAwardedTenderers</dt>
@@ -6020,8 +5967,6 @@
                <dt>epo:CountryOfOrigin</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:CountryOfOrigin is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The Optional stareotype is applied to epo:CountryOfOrigin. Stereotypes are discouraged
                   in the current practice with some exceptions. </dd>
             </dl>
@@ -6146,17 +6091,16 @@
                <dt>epo:PerformingStafQualificationInformation</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:PerformingStafQualificationInformation is invalid. The attribute
                   name must start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:PerformingStafQualificationInformation is missing a description. All concepts
                   should be defined or described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:PerformingStafQualificationInformation  is missing its counterpart
+                  as dependency relation. Attributes of type Code should have a counter-part dependency
+                  relation with the same name and pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:ReservedProcurement</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:ReservedProcurement is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:ReservedProcurement is missing a description. All concepts should be defined or
                   described.</dd>
             </dl>
@@ -6178,8 +6122,9 @@
                <dt>epo:VariantsPermission</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:VariantsPermission is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:VariantsPermission  is missing its counterpart as dependency relation.
+                  Attributes of type Code should have a counter-part dependency relation with the same
+                  name and pointing towards an Enumeration.</dd>
             </dl>
          </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo:LotGroup</h2>
@@ -6288,23 +6233,23 @@
                <dt>epo:DPSScopeType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:DPSScopeType is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:DPSScopeType is missing a description. All concepts should be defined or described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:DPSScopeType  is missing its counterpart as dependency relation.
+                  Attributes of type Code should have a counter-part dependency relation with the same
+                  name and pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:FormType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:FormType is invalid. The attribute name must start with a lower
                   case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:NotificationContentType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:NotificationContentType is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:NotificationContentType  is missing its counterpart as dependency
+                  relation. Attributes of type Code should have a counter-part dependency relation with
+                  the same name and pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:PreferredPublicationDate</dt>
@@ -6506,8 +6451,6 @@
                <dt>epo:Nationality</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:Nationality is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:Nationality is missing a description. All concepts should be defined or described.</dd>
             </dl>
             <dl>
@@ -6668,9 +6611,10 @@
                <dt>epo:LegalBasis</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:LegalBasis is invalid. The attribute name must start with a
                   lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:LegalBasis is missing a description. All concepts should be defined or described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:LegalBasis  is missing its counterpart as dependency relation. Attributes
+                  of type Code should have a counter-part dependency relation with the same name and
+                  pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:LegalBasisID</dt>
@@ -6687,9 +6631,10 @@
                <dt>epo:LegalRegime</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:LegalRegime is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:LegalRegime is missing a description. All concepts should be defined or described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:LegalRegime  is missing its counterpart as dependency relation.
+                  Attributes of type Code should have a counter-part dependency relation with the same
+                  name and pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:LotMinimumSubmission</dt>
@@ -6723,8 +6668,6 @@
                <dt>epo:ProcedureType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:ProcedureType is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:Title</dt>
@@ -6909,8 +6852,6 @@
                <dt>epo:NonPublicationJustification</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:NonPublicationJustification is invalid. The attribute name
                   must start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:NonPublicationJustificationDescription</dt>
@@ -6944,31 +6885,26 @@
                <dt>epo:AdditionalClassification</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:AdditionalClassification is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:AdditionalClassification is missing a description. All concepts should be defined
                   or described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:AdditionalClassification  is missing its counterpart as dependency
+                  relation. Attributes of type Code should have a counter-part dependency relation with
+                  the same name and pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:AdditionalContractNature</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:AdditionalContractNature is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:ContractNatureType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:ContractNatureType is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:MainClassification</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:MainClassification is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:MainClassification is missing a description. All concepts should be defined or
                   described.</dd>
             </dl>
@@ -6983,10 +6919,11 @@
                <dt>epo:OptionsPermisision</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:OptionsPermisision is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:OptionsPermisision is missing a description. All concepts should be defined or
                   described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:OptionsPermisision  is missing its counterpart as dependency relation.
+                  Attributes of type Code should have a counter-part dependency relation with the same
+                  name and pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:TotalMagnitudeQuantity</dt>
@@ -6997,8 +6934,6 @@
                <dt>epo:Unit</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:Unit is invalid. The attribute name must start with a lower
                   case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:Unit is missing a description. All concepts should be defined or described.</dd>
             </dl>
          </section>
@@ -7021,8 +6956,6 @@
                <dt>epo:LegalFormType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:LegalFormType is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:LegalFormType is missing a description. All concepts should be defined or described.</dd>
             </dl>
             <dl>
@@ -7045,8 +6978,6 @@
                <dt>epo:RegulatoryFrameworkProvider</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:RegulatoryFrameworkProvider is invalid. The attribute name
                   must start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:RegulatoryFrameworkProvider is missing a description. All concepts should be defined
                   or described.</dd>
             </dl>
@@ -7172,8 +7103,6 @@
                <dt>epo:SelectionCriterionType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:SelectionCriterionType is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:SelectionCriterionType is missing a description. All concepts should be defined
                   or described.</dd>
             </dl>
@@ -7181,8 +7110,6 @@
                <dt>epo:ThresholdType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:ThresholdType is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:ThresholdValue</dt>
@@ -7219,8 +7146,6 @@
                <dt>epo:WeightValueType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:WeightValueType is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
          </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo:SocialProcurement</h2>
@@ -7373,10 +7298,11 @@
                <dt>epo:StrategicProcurementType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:StrategicProcurementType is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:StrategicProcurementType is missing a description. All concepts should be defined
                   or described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:StrategicProcurementType  is missing its counterpart as dependency
+                  relation. Attributes of type Code should have a counter-part dependency relation with
+                  the same name and pointing towards an Enumeration.</dd>
             </dl>
          </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo:Subcontract</h2>
@@ -7456,8 +7382,6 @@
                <dt>epo:SubcontractingObligation</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:SubcontractingObligation is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:SubcontractingObligation is missing a description. All concepts should be defined
                   or described.</dd>
             </dl>
@@ -7477,29 +7401,27 @@
                <dt>epo:ECataloguePermission</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:ECataloguePermission is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:ECataloguePermission  is missing its counterpart as dependency relation.
+                  Attributes of type Code should have a counter-part dependency relation with the same
+                  name and pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:ESubmissioneSignature</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:ESubmissioneSignature is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:ESubmissioneSignature  is missing its counterpart as dependency
+                  relation. Attributes of type Code should have a counter-part dependency relation with
+                  the same name and pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:ESubmissionPermission</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:ESubmissionPermission is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:LateTendererInformation</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:LateTendererInformation is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:LateTendererInformationDescription</dt>
@@ -7528,15 +7450,11 @@
                <dt>epo:NonElectronicSubmissionJustification</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:NonElectronicSubmissionJustification is invalid. The attribute
                   name must start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:SubmissionDocumentType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:SubmissionDocumentType is invalid. The attribute name must
                   start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:SubmissionDocumentType is missing a description. All concepts should be defined
                   or described.</dd>
             </dl>
@@ -7558,8 +7476,6 @@
                <dt>epo:TenderLanguage</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:TenderLanguage is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:TenderReceiptDeadline</dt>
@@ -7575,8 +7491,6 @@
                <dt>epo:TenderSubcontractingInformation</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:TenderSubcontractingInformation is invalid. The attribute name
                   must start with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:TenderValidityDuration</dt>
@@ -7625,10 +7539,11 @@
                <dt>epo:AccessibilityCriteria</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:AccessibilityCriteria is invalid. The attribute name must start
                   with a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:AccessibilityCriteria is missing a description. All concepts should be defined
                   or described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:AccessibilityCriteria  is missing its counterpart as dependency
+                  relation. Attributes of type Code should have a counter-part dependency relation with
+                  the same name and pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:NonAccessibilityCriteriaJustification</dt>
@@ -7745,9 +7660,10 @@
                <dt>epo:Subcontracting</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:Subcontracting is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:Subcontracting is missing a description. All concepts should be defined or described.</dd>
+               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute epo:Subcontracting  is missing its counterpart as dependency relation.
+                  Attributes of type Code should have a counter-part dependency relation with the same
+                  name and pointing towards an Enumeration.</dd>
             </dl>
             <dl>
                <dt>epo:Variant</dt>
@@ -7797,8 +7713,6 @@
                <dt>epo:CurrencyType</dt>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute name epo:CurrencyType is invalid. The attribute name must start with
                   a lower case.</dd>
-               <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute type ccts:Code type is invalid. Attributes must use types that are either:
-                  (a) UML common types, (b) XSD or RDF datatypes (c) a custom Datatype or (d) an Enumeration.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>epo:CurrencyType is missing a description. All concepts should be defined or described.</dd>
             </dl>
             <dl>
@@ -7958,7 +7872,6 @@
             <dl>
                <dt>Unmet class conventions</dt>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>reg2015:Procedure is missing a description. All concepts should be defined or described.</dd>
-               <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The prefix reg2015 is not defined. A prefix must be associated to a namespace URI.</dd>
             </dl>
             <dl>
                <dt>reg2015:AdditionalInformation</dt>
@@ -7966,7 +7879,6 @@
                   start with a lower case.</dd>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute type ccts:Text is deprecated. Attributes should use XSD or RDF datatypes.
                   The suggested alternative for ccts:Text is rdf:langString</dd>
-               <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The prefix reg2015 is not defined. A prefix must be associated to a namespace URI.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>reg2015:AdditionalInformation is missing a description. All concepts should be defined
                   or described.</dd>
             </dl>
@@ -7979,7 +7891,6 @@
                <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute reg2015:DeadlineTendersAndRequest type ccts:DateTime is not defined
                   in the model. Every used type should be defined. This applies to The standard datatypes
                   (e.g XSD or RDF), which should be re-declared in the model and serving as proxies.</dd>
-               <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The prefix reg2015 is not defined. A prefix must be associated to a namespace URI.</dd>
             </dl>
             <dl>
                <dt>reg2015:EstimatedTenderInvitationDate</dt>
@@ -7990,7 +7901,6 @@
                <dd class="filter errors"><i class="fa fa-times-circle error"></i>The attribute reg2015:EstimatedTenderInvitationDate type ccts:Date is not defined
                   in the model. Every used type should be defined. This applies to The standard datatypes
                   (e.g XSD or RDF), which should be re-declared in the model and serving as proxies.</dd>
-               <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The prefix reg2015 is not defined. A prefix must be associated to a namespace URI.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>reg2015:EstimatedTenderInvitationDate is missing a description. All concepts should
                   be defined or described.</dd>
             </dl>
@@ -8000,7 +7910,6 @@
                   a lower case.</dd>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute type ccts:Indicator is deprecated. Attributes should use XSD or RDF
                   datatypes. The suggested alternative for ccts:Indicator is xsd:boolean</dd>
-               <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The prefix reg2015 is not defined. A prefix must be associated to a namespace URI.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>reg2015:GPAUsage is missing a description. All concepts should be defined or described.</dd>
             </dl>
             <dl>
@@ -8009,7 +7918,6 @@
                   with a lower case.</dd>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute type ccts:Indicator is deprecated. Attributes should use XSD or RDF
                   datatypes. The suggested alternative for ccts:Indicator is xsd:boolean</dd>
-               <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The prefix reg2015 is not defined. A prefix must be associated to a namespace URI.</dd>
             </dl>
             <dl>
                <dt>reg2015:LegalBasisDescription</dt>
@@ -8017,7 +7925,6 @@
                   start with a lower case.</dd>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute type ccts:Text is deprecated. Attributes should use XSD or RDF datatypes.
                   The suggested alternative for ccts:Text is rdf:langString</dd>
-               <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The prefix reg2015 is not defined. A prefix must be associated to a namespace URI.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>reg2015:LegalBasisDescription is missing a description. All concepts should be defined
                   or described.</dd>
             </dl>
@@ -8027,7 +7934,6 @@
                   attribute name must start with a lower case.</dd>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute type ccts:Indicator is deprecated. Attributes should use XSD or RDF
                   datatypes. The suggested alternative for ccts:Indicator is xsd:boolean</dd>
-               <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The prefix reg2015 is not defined. A prefix must be associated to a namespace URI.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>reg2015:PerformingStaffQualificationInformation is missing a description. All concepts
                   should be defined or described.</dd>
             </dl>
@@ -8037,7 +7943,6 @@
                   name must start with a lower case.</dd>
                <dd class="filter infos"><i class="fa fa-info-circle info"></i>The attribute type ccts:Indicator is deprecated. Attributes should use XSD or RDF
                   datatypes. The suggested alternative for ccts:Indicator is xsd:boolean</dd>
-               <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The prefix reg2015 is not defined. A prefix must be associated to a namespace URI.</dd>
                <dd class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>reg2015:PublicationOfCallForCompetition is missing a description. All concepts should
                   be defined or described.</dd>
             </dl>

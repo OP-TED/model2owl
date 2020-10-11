@@ -26,7 +26,7 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
-        <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">
+        <xsl:if test="not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector')">
             <xsl:call-template name="connectorRange">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -44,7 +44,8 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
-        <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">
+<!--        <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">-->
+        <xsl:if test="not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector')">
             <xsl:call-template name="connectorRange">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>

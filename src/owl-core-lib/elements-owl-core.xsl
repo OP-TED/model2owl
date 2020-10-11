@@ -220,9 +220,8 @@
                 if (boolean(./@name)) then
                     f:lexicalQNameToWords(./@name)
                 else
-                    $mockUnnamedElement"
-        />
-        
+                    $mockUnnamedElement"/>
+
         <xsl:variable name="documentation" select="f:formatDocString(./documentation/@value)"/>
         <!-- TODO: inject the 'has' prefix here if needed -->
         <xsl:variable name="URI" select="f:buildURIFromAttribute(., fn:false(), fn:true())"/>
@@ -234,26 +233,32 @@
                     if (f:isAttributeTypeValidForObjectProperty(.)) then
                         'owl:ObjectProperty'
                     else
-                        'rdf:Property'"
-        />
-        <xsl:element name="{$propertyType}">
-            <xsl:attribute name="rdf:about" select="$URI"/>
-            <rdfs:label xml:lang="en">
-                <xsl:value-of select="$name"/>
-            </rdfs:label>
-            <skos:prefLabel xml:lang="en">
-                <xsl:value-of select="$name"/>
-            </skos:prefLabel>
-            <xsl:if test="boolean($documentation)">
-                <rdfs:comment xml:lang="en">
-                    <xsl:value-of select="$documentation"/>
-                </rdfs:comment>
-                <skos:definition xml:lang="en">
-                    <xsl:value-of select="$documentation"/>
-                </skos:definition>
-            </xsl:if>
-            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
-        </xsl:element>
+                        'rdf:Property'"/>
+        <xsl:variable name="className" select="./../../@name" as="xs:string"/>
+        <xsl:variable name="attributeNormalizedLocalName"
+            select="fn:concat(fn:substring-before(./@name, ':'), ':has', f:getLocalSegmentForElements(.))"/>
+        <xsl:variable name="isAttributeWithDependencyName"
+            select="f:getConnectorByName($attributeNormalizedLocalName, root(.))[source/model/@name = $className]"/>
+        <xsl:if test="not($isAttributeWithDependencyName)">
+            <xsl:element name="{$propertyType}">
+                <xsl:attribute name="rdf:about" select="$URI"/>
+                <rdfs:label xml:lang="en">
+                    <xsl:value-of select="$name"/>
+                </rdfs:label>
+                <skos:prefLabel xml:lang="en">
+                    <xsl:value-of select="$name"/>
+                </skos:prefLabel>
+                <xsl:if test="boolean($documentation)">
+                    <rdfs:comment xml:lang="en">
+                        <xsl:value-of select="$documentation"/>
+                    </rdfs:comment>
+                    <skos:definition xml:lang="en">
+                        <xsl:value-of select="$documentation"/>
+                    </skos:definition>
+                </xsl:if>
+                <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
+            </xsl:element>
+        </xsl:if>
     </xsl:template>
 
 </xsl:stylesheet>

@@ -42,10 +42,18 @@
         <xsl:apply-templates select="element[@xmi:type = 'uml:Class']">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
         </xsl:apply-templates>
+<!--        <h1 class="selector-heading">Classes attributes</h1>
+        <xsl:apply-templates select="element[@xmi:type = 'uml:Class']/attributes/attribute">
+            <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
+        </xsl:apply-templates>-->
         <h1 class="selector-heading">Enumerations</h1>
         <xsl:apply-templates select="element[@xmi:type = 'uml:Enumeration']">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
         </xsl:apply-templates>
+<!--        <h1 class="selector-heading">Enumerations items</h1>
+        <xsl:apply-templates select="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
+            <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
+        </xsl:apply-templates>-->
         <h1 class="selector-heading">Data-types</h1>
         <xsl:apply-templates select="element[@xmi:type = 'uml:DataType']">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
