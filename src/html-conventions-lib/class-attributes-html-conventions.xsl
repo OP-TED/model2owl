@@ -22,7 +22,7 @@
             [class-attribute-type-24] [class-attribute-type-25] [class-attribute-counter-part-65] </xd:desc>
     </xd:doc>
 
-    <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute" name="attributes">
+    <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
         <xsl:variable name="classAttributeChecks" as="item()*">
             <xsl:call-template name="ca-attributeNameStartsWithLowerCase">
                 <xsl:with-param name="classAttribute" select="."/>
@@ -484,7 +484,7 @@
         <xsl:variable name="classAttributeType" select="$classAttribute/properties/@type"/>
         <xsl:sequence
             select="
-                if ($classAttributeType = 'Code') then
+            if ($classAttributeType = $controlledListType) then
                     if (f:hasAttributeCorrespondingDependecy($classAttribute)) then
                         ()
                     else

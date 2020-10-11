@@ -52,7 +52,8 @@
     <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
     <xsl:variable name="acceptableTypesForObjectProperties"
         select="('Code', 'Quantity', 'Measure', 'Identifier', 'Amount')"/>
-
+    <!--    the type of attributes which takes values from a controlled list-->
+    <xsl:variable name="controlledListType" select="'Code'"/>
     <!-- Acceptable stereotypes -->
     <xsl:variable name="stereotypeValidOnAttributes" select="()"/>
     <xsl:variable name="stereotypeValidOnGeneralisations"

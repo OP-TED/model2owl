@@ -120,5 +120,15 @@
         <x:expect label="there is a correct URI" 
             test="/owl:DatatypeProperty/@rdf:about='http://data.europa.eu/m8g/hasWeightingConsiderationDescription'"/>
     </x:scenario>
+    
+    <x:scenario label="Scenario for testing attribute which has values from controlled list">
+        <x:context href="../../testData/ePO_CM_CCTS-v2.0.2-2020-07-23.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[65]/attributes[1]/attribute[1]"/>
+        <x:expect label="correct result" select="()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing attribute which hasn't values from controlled list">
+        <x:context href="../../testData/ePO_CM_CCTS-v2.0.2-2020-07-23.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[76]/attributes[1]/attribute[2]"/>
+        <x:expect label="there is an owl:" test="boolean(/owl:ObjectProperty)"/>
+    </x:scenario>
        
 </x:description>

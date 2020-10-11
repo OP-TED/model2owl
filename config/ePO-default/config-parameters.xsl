@@ -54,7 +54,8 @@
         select="('ccts:Code', 'ccts:Quantity', 
                  'ccts:Measure', 'ccts:Identifier', 'ccts:Amount', 
                  'ccts:Indicator', 'ccts:Text', 'ccts:Numeric')"/>
-
+<!--    the type of attributes which takes values from a controlled list-->
+    <xsl:variable name="controlledListType" select="'ccts:Code'"/>
     <!-- Acceptable stereotypes -->
     <xsl:variable name="stereotypeValidOnAttributes" select="()"/>
     <xsl:variable name="stereotypeValidOnGeneralisations"
