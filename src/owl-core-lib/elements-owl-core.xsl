@@ -66,8 +66,7 @@
                 <skos:definition xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
-            </xsl:if>
-            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>        
+            </xsl:if>     
         </skos:ConceptScheme>
     </xsl:template>
 
@@ -76,6 +75,8 @@
             instantiation axiom for an UML enumeration item. Specify SKOS concept</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
+        
+        <xsl:if test="$enableGenerationOfSkosConcept">
         <xsl:variable name="conceptName"
             select="
                 if (boolean(./initial/@body)) then
@@ -109,8 +110,8 @@
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
             </xsl:if>
-            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
         </skos:Concept>
+            </xsl:if>
     </xsl:template>
 
 
@@ -147,10 +148,10 @@
     <xsl:template name="datatypeDeclaration">
         <xsl:variable name="name" select="f:lexicalQNameToWords(./@name)"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
-        <xsl:variable name="URI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="data-type-URI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
         
-        <rdfs:Datatype rdf:about="{$URI}">
+        <rdfs:Datatype rdf:about="{$data-type-URI}">
             <rdfs:label xml:lang="en">
                 <xsl:value-of select="$name"/>
             </rdfs:label>
@@ -166,7 +167,9 @@
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
             </xsl:if>
-            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
+            <xsl:if test="fn:contains($data-type-URI, $base-ontology-uri)">
+                <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+            </xsl:if>
         </rdfs:Datatype>
     </xsl:template>
     
@@ -196,7 +199,9 @@
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
             </xsl:if>
-            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
+            <xsl:if test="fn:contains($datatypeURI, $base-ontology-uri)">
+                <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+            </xsl:if>
         </owl:Class>
     </xsl:template>
     
@@ -224,7 +229,7 @@
 
         <xsl:variable name="documentation" select="f:formatDocString(./documentation/@value)"/>
         <!-- TODO: inject the 'has' prefix here if needed -->
-        <xsl:variable name="URI" select="f:buildURIFromAttribute(., fn:false(), fn:true())"/>
+        <xsl:variable name="attributeURI" select="f:buildURIFromAttribute(., fn:false(), fn:true())"/>
         <xsl:variable name="propertyType"
             select="
                 if (f:isAttributeTypeValidForDatatypeProperty(.)) then
@@ -241,7 +246,7 @@
             select="f:getConnectorByName($attributeNormalizedLocalName, root(.))[source/model/@name = $className]"/>
         <xsl:if test="not($isAttributeWithDependencyName)">
             <xsl:element name="{$propertyType}">
-                <xsl:attribute name="rdf:about" select="$URI"/>
+                <xsl:attribute name="rdf:about" select="$attributeURI"/>
                 <rdfs:label xml:lang="en">
                     <xsl:value-of select="$name"/>
                 </rdfs:label>
@@ -256,7 +261,9 @@
                         <xsl:value-of select="$documentation"/>
                     </skos:definition>
                 </xsl:if>
-                <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
+                <xsl:if test="fn:contains($attributeURI, $base-ontology-uri)">
+                    <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+                </xsl:if>
             </xsl:element>
         </xsl:if>
     </xsl:template>

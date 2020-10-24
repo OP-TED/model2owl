@@ -6,15 +6,13 @@
          xmlns:dct="http://purl.org/dc/terms/"
          xmlns:cc="http://creativecommons.org/ns#"
          xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-         xmlns:epo="http://data.europa.eu/a4g/ontology#"
-         xml:base="http://data.europa.eu/a4g/ontology/ext">
-   <owl:Ontology rdf:about="">
+         xmlns:epo="http://data.europa.eu/a4g/ontology#">
+   <owl:Ontology rdf:about="http://data.europa.eu/a4g/rule">
       <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
       <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
-      <owl:imports rdf:resource="http://datashapes.org/dash"/>
-      <owl:imports rdf:resource="http://www.w3.org/ns/shacl#"/>
+      <owl:imports rdf:resource="http://data.europa.eu/a4g/ontology"/>
       <dct:description xml:lang="en">This module provides the inference-related definitions for
-            the eProcurement ontology.</dct:description>
+        the eProcurement ontology.</dct:description>
       <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
       <vann:preferredNamespaceUri>http://data.europa.eu/a4g/ontology#</vann:preferredNamespaceUri>
       <dct:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
@@ -5755,14 +5753,10 @@
       <rdfs:subClassOf>
          <owl:Restriction>
             <owl:onProperty rdf:resource="http://data.europa.eu/a4g/ontology#applies"/>
-            <owl:Cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:Cardinality>
+            <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
          </owl:Restriction>
       </rdfs:subClassOf>
    </owl:Class>
-   <rdf:Description xmlns:sh="http://www.w3.org/ns/shacl#"
-                    rdf:about="http://data.europa.eu/a4g/ontology#applies">
-      <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-   </rdf:Description>
    <owl:Class xmlns:sh="http://www.w3.org/ns/shacl#"
               rdf:about="http://data.europa.eu/a4g/ontology#Procedure">
       <rdfs:subClassOf>

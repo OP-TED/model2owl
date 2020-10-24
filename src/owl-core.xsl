@@ -3,8 +3,9 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+    xmlns:sh="http://www.w3.org/ns/shacl#"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:fn="http://www.w3.org/2005/xpath-functions"
-    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn f"
+    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn f sh"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
@@ -39,8 +40,8 @@
     </xd:doc>
     <xsl:template match="/">
         <rdf:RDF>
-            <xsl:namespace name="epo" select="concat($base-uri, '#')"/>
-            <xsl:attribute name="xml:base" expand-text="true">{$coreModuleURI}</xsl:attribute>
+            <xsl:namespace name="epo" select="concat($base-ontology-uri, '#')"/>
+
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
             <xsl:call-template name="connectorsOwlCore"/>
@@ -51,43 +52,29 @@
         <xd:desc> Ontology header </xd:desc>
     </xd:doc>
     <xsl:template name="ontology-header">
-        <xsl:variable name="title">eProcurement core ontology</xsl:variable>
-        <xsl:variable name="description">
-            This module provides the definitions for the core eProcurement ontology.
-            
-            Procurement data has been identified as data with a
-            high-reuse potential. Given the increasing importance of data standards for
-            eProcurement, a number of initiatives driven by the public sector, the industry and
-            academia have been kick-started in recent years. Some have grown organically, while
-            others are the result of standardisation work. The vocabularies and the semantics that
-            they are introducing, the phases of public procurement that they are covering, and the
-            technologies that they are using all differ. These differences hamper data
-            interoperability and thus its reuse by them or by the wider public. This creates the
-            need for a common data standard for publishing procurement data, hence allowing data
-            from different sources to be easily accessed and linked, and consequently
-            reused.</xsl:variable>
 
-        <owl:Ontology rdf:about="">
+
+        <owl:Ontology rdf:about="{$coreModuleURI}">
             
             <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
             <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
             
             <dct:description xml:lang="en">
-                <xsl:value-of select="$description"/>
+                <xsl:value-of select="$description-core-module"/>
             </dct:description>
             <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
             <vann:preferredNamespaceUri>
-                <xsl:value-of select="fn:concat($base-uri, $defaultDelimiter)"/>                
+                <xsl:value-of select="fn:concat($base-ontology-uri, $defaultDelimiter)"/>                
             </vann:preferredNamespaceUri>
             <dct:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
             <rdfs:label xml:lang="en">
-                <xsl:value-of select="$title"/>
+                <xsl:value-of select="$title-core-module"/>
             </rdfs:label>
             <dct:title xml:lang="en">
-                <xsl:value-of select="$title"/>
+                <xsl:value-of select="$title-core-module"/>
             </dct:title>
             
-            <owl:versionInfo><xsl:value-of select="$title"/> version generated automatically on <xsl:value-of
+            <owl:versionInfo><xsl:value-of select="$title-core-module"/> version generated automatically on <xsl:value-of
                     select="
                         format-date(current-date(),
                         '[D01]/[M01]/[Y0001]')"

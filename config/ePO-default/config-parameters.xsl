@@ -34,7 +34,10 @@
     <!-- Ontology base URI, configure as necessary. Do not use a trailing local delimiter 
         like in the namespace definition-->
     <!--<xsl:variable name="base-uri" select="'http://publications.europa.eu/ontology/ePO'"/>-->
-    <xsl:variable name="base-uri" select="'http://data.europa.eu/a4g/ontology'"/>
+    <xsl:variable name="base-ontology-uri" select="'http://data.europa.eu/a4g/ontology'"/>
+    <xsl:variable name="base-shape-uri" select="'http://data.europa.eu/a4g/shape'"/>
+    <xsl:variable name="base-rule-uri" select="'http://data.europa.eu/a4g/rule'"/>
+
 
     <!-- when a delimiter is missing in the base URI of a namespace, use this default value-->
     <xsl:variable name="defaultDelimiter" select="'#'"/>
@@ -66,15 +69,41 @@
     <xsl:variable name="stereotypeValidOnDatatypes" select="()"/>
     <xsl:variable name="stereotypeValidOnEnumerations" select="()"/>
     <xsl:variable name="stereotypeValidOnPackages" select="()"/>
+    
+<!--    This variable controlls whether the enumeration items are transformed into skos concepts or ignored-->
+    <xsl:variable name="enableGenerationOfSkosConcept" select="fn:false()"/>
 
     <!--Allowed characters for a normalized string-->
     <xsl:variable name="allowedStrings" select="'^[\w\d-_:]+$'"/>
 
     <!--    Shapes Module URI-->
-    <xsl:variable name="shapeModuleURI" select="fn:concat($base-uri, '/', 'ds')"/>
+    <xsl:variable name="shapeModuleURI" select="$base-shape-uri"/>
     <!--    Restrictions Module URI-->
-    <xsl:variable name="restrictionsModuleURI" select="fn:concat($base-uri, '/', 'ext')"/>
+    <xsl:variable name="restrictionsModuleURI" select="$base-rule-uri"/>
     <!--    Core Module URI-->
-    <xsl:variable name="coreModuleURI" select="fn:concat($base-uri, '/', 'core')"/>
+    <xsl:variable name="coreModuleURI" select="$base-ontology-uri"/>
+<!--    title and description for each ontology module-->
+    <xsl:variable name="title-shape-module">eProcurement datashapes</xsl:variable>
+    <xsl:variable name="description-shape-module">This module provides the datashape definitions for the eProcurement ontology.</xsl:variable>
+    
+    <xsl:variable name="title-core-module">eProcurement core ontology</xsl:variable>
+    <xsl:variable name="description-core-module">
+        This module provides the definitions for the core eProcurement ontology.
+        
+        Procurement data has been identified as data with a
+        high-reuse potential. Given the increasing importance of data standards for
+        eProcurement, a number of initiatives driven by the public sector, the industry and
+        academia have been kick-started in recent years. Some have grown organically, while
+        others are the result of standardisation work. The vocabularies and the semantics that
+        they are introducing, the phases of public procurement that they are covering, and the
+        technologies that they are using all differ. These differences hamper data
+        interoperability and thus its reuse by them or by the wider public. This creates the
+        need for a common data standard for publishing procurement data, hence allowing data
+        from different sources to be easily accessed and linked, and consequently
+        reused.</xsl:variable>
+    
+    <xsl:variable name="title-restriction-module">eProcurement extended ontology</xsl:variable>
+    <xsl:variable name="description-restriction-module">This module provides the inference-related definitions for
+        the eProcurement ontology.</xsl:variable>
 
 </xsl:stylesheet>
