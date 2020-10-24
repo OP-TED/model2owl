@@ -366,7 +366,7 @@
         <xsl:variable name="min" select="fn:substring-before($multiplicityString, '..')"/>
         <xsl:sequence
             select="
-                if ($min = '' or $min = '*') then
+                if ($min = '' or $min = '*' or $min = '0') then
                     ()
                 else
                     $min"

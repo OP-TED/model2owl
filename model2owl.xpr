@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="22.1">
+<project version="22.0">
     <meta>
         <filters directoryPatterns="" filePatterns="\Qmodel2owl.xpr\E" positiveFilePatterns="" showHiddenFiles="false"/>
         <options>
-            <serialized version="22.1" xml:space="preserve">
+            <serialized version="22.0" xml:space="preserve">
                 <serializableOrderedMap>
                     <entry>
                         <String>scenario.associations</String>
                         <scenarioAssociation-array>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>src/owl-restrictions.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>owl-restrictions-transform</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XML</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioStorageLocations">
+                                    <list>
+                                        <Byte>2</Byte>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>src/html-conventions-report.xsl</String>
@@ -15,46 +35,6 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>html-conventions-report-2020-07-23-CCTS+XSD</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XML</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioStorageLocations">
-                                    <list>
-                                        <Byte>2</Byte>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>src/owl-restrictions.xsl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>owl-restrictions-2020-06-08-mappings - Copy</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XML</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioStorageLocations">
-                                    <list>
-                                        <Byte>2</Byte>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>src/reasoning-layer-lib/elements-reasoning-layer.xsl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>owl-restrictions-2020-06-08-mappings - Copy</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -1037,7 +1017,7 @@
                                     <null/>
                                 </field>
                                 <field name="name">
-                                    <String>owl-restrictions-2020-06-08-mappings - Copy</String>
+                                    <String>owl-restrictions-transform</String>
                                 </field>
                                 <field name="baseURL">
                                     <String></String>
@@ -1055,10 +1035,10 @@
                                     <String></String>
                                 </field>
                                 <field name="inputXSLURL">
-                                    <String>file:/home/lps/work/workspace-charm/model2owl/src/owl-restrictions.xsl</String>
+                                    <String>${pdu}/src/owl-restrictions.xsl</String>
                                 </field>
                                 <field name="inputXMLURL">
-                                    <String>file:/home/lps/work/workspace-charm/model2owl/test/testData/ePO_CM_CCTS-v2.0.2-2020-07-23.eap.xmi</String>
+                                    <String>${pdu}/test/testData/ePO_CM_CCTS-v2.0.2-2020-07-23.eap.xmi</String>
                                 </field>
                                 <field name="defaultScenario">
                                     <Boolean>false</Boolean>
@@ -1070,7 +1050,7 @@
                                     <String>XML</String>
                                 </field>
                                 <field name="saveAs">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                                 <field name="openInBrowser">
                                     <Boolean>false</Boolean>

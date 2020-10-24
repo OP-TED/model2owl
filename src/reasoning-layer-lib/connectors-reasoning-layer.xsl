@@ -394,21 +394,29 @@
                 <rdfs:subClassOf>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="{$targetRoleURI}"/>
-                        <xsl:if test="boolean($targetMultiplicityMax)">
-                            <owl:maxCardinality rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$targetMultiplicityMax"/>
-                            </owl:maxCardinality>
-                        </xsl:if>
-                        <xsl:if test="boolean($targetMultiplicityMin)">
-                            <owl:minCardinality rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$targetMultiplicityMin"/>
-                            </owl:minCardinality>
-                        </xsl:if>
-                        <xsl:if test="$targetMultiplicityMin = $targetMultiplicityMax">
-                            <owl:Cardinality rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$targetMultiplicityMin"/>
-                            </owl:Cardinality>
-                        </xsl:if>
+                        <xsl:choose>
+                            <xsl:when
+                                test="
+                                    boolean($targetMultiplicityMax) and
+                                    boolean($targetMultiplicityMin) and
+                                    $targetMultiplicityMin = $targetMultiplicityMax">
+                                <owl:Cardinality rdf:datatype="{$datatypeURI}">
+                                    <xsl:value-of select="$targetMultiplicityMin"/>
+                                </owl:Cardinality>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:if test="boolean($targetMultiplicityMax)">
+                                    <owl:maxCardinality rdf:datatype="{$datatypeURI}">
+                                        <xsl:value-of select="$targetMultiplicityMax"/>
+                                    </owl:maxCardinality>
+                                </xsl:if>
+                                <xsl:if test="boolean($targetMultiplicityMin)">
+                                    <owl:minCardinality rdf:datatype="{$datatypeURI}">
+                                        <xsl:value-of select="$targetMultiplicityMin"/>
+                                    </owl:minCardinality>
+                                </xsl:if>
+                            </xsl:otherwise>
+                        </xsl:choose>
                     </owl:Restriction>
                 </rdfs:subClassOf>
             </owl:Class>
@@ -426,21 +434,30 @@
                 <rdfs:subClassOf>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="{$targetRoleURI}"/>
-                        <xsl:if test="boolean($targetMultiplicityMax)">
-                            <owl:maxCardinality rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$targetMultiplicityMax"/>
-                            </owl:maxCardinality>
-                        </xsl:if>
-                        <xsl:if test="boolean($targetMultiplicityMin)">
-                            <owl:minCardinality rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$targetMultiplicityMin"/>
-                            </owl:minCardinality>
-                        </xsl:if>
-                        <xsl:if test="$targetMultiplicityMin = $targetMultiplicityMax">
-                            <owl:Cardinality rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$targetMultiplicityMin"/>
-                            </owl:Cardinality>
-                        </xsl:if>
+                        <xsl:choose>
+                            <xsl:when
+                                test="
+                                    boolean($targetMultiplicityMax) and
+                                    boolean($targetMultiplicityMin) and
+                                    $targetMultiplicityMin = $targetMultiplicityMax">
+                                <owl:Cardinality rdf:datatype="{$datatypeURI}">
+                                    <xsl:value-of select="$targetMultiplicityMin"/>
+                                </owl:Cardinality>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:if test="boolean($targetMultiplicityMax)">
+                                    <owl:maxCardinality rdf:datatype="{$datatypeURI}">
+                                        <xsl:value-of select="$targetMultiplicityMax"/>
+                                    </owl:maxCardinality>
+                                </xsl:if>
+                                <xsl:if test="boolean($targetMultiplicityMin)">
+                                    <owl:minCardinality rdf:datatype="{$datatypeURI}">
+                                        <xsl:value-of select="$targetMultiplicityMin"/>
+                                    </owl:minCardinality>
+                                </xsl:if>
+
+                            </xsl:otherwise>
+                        </xsl:choose>
                     </owl:Restriction>
                 </rdfs:subClassOf>
             </owl:Class>
@@ -458,7 +475,16 @@
                 <rdfs:subClassOf>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="{$sourceRoleURI}"/>
-                        <xsl:if test="boolean($sourceMultiplicityMax)">
+                        <xsl:choose>
+                            <xsl:when test="boolean($sourceMultiplicityMax) and
+                                boolean($sourceMultiplicityMin) and
+                                $sourceMultiplicityMin = $sourceMultiplicityMax">
+                                                            <owl:Cardinality rdf:datatype="{$datatypeURI}">
+                                <xsl:value-of select="$sourceMultiplicityMin"/>
+                            </owl:Cardinality>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                                        <xsl:if test="boolean($sourceMultiplicityMax)">
                             <owl:maxCardinality rdf:datatype="{$datatypeURI}">
                                 <xsl:value-of select="$sourceMultiplicityMax"/>
                             </owl:maxCardinality>
@@ -468,11 +494,8 @@
                                 <xsl:value-of select="$sourceMultiplicityMin"/>
                             </owl:minCardinality>
                         </xsl:if>
-                        <xsl:if test="$sourceMultiplicityMin = $sourceMultiplicityMax">
-                            <owl:Cardinality rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$sourceMultiplicityMin"/>
-                            </owl:Cardinality>
-                        </xsl:if>
+                            </xsl:otherwise>
+                        </xsl:choose>
                     </owl:Restriction>
                 </rdfs:subClassOf>
             </owl:Class>
