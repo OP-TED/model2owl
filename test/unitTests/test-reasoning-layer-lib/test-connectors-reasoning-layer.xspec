@@ -28,9 +28,8 @@
         <x:expect label="there is a rdfs:subClassOf" test="boolean(owl:Class/rdfs:subClassOf)"/>
         <x:expect label="there is a owl:Restriction" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction)"/>
         <x:expect label="there is a owl:onProperty" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:minCardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality)"/>
-        <x:expect label="there is a owl:minCardinality with correct value" test="owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality/text() = '2'"/>
-        <x:expect label="there is a owl:maxCardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:maxCardinality)"/>
+        <x:expect label="there is a owl:Cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:Cardinality)"/>
+
     </x:scenario>
     
     <x:scenario
@@ -41,9 +40,7 @@
         <x:expect label="there is a rdfs:subClassOf" test="boolean(owl:Class/rdfs:subClassOf)"/>
         <x:expect label="there is a owl:Restriction" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction)"/>
         <x:expect label="there is a owl:onProperty" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:minCardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality)"/>
-        <x:expect label="there is a owl:minCardinality with correct value" test="owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality/text() = '0'"/>
-        <x:expect label="there is no owl:maxCardinality" test="not(boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:maxCardinality))"/>
+        <x:expect label="there is a owl:Cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:Cardinality)"/>
         
     </x:scenario>
     
@@ -104,15 +101,13 @@
 
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction ">
         <x:call template="connectorMultiplicity">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[100]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[100]"/>
         </x:call>   
         <x:expect label="there is a owl:Class" test="boolean(owl:Class)"/>
         <x:expect label="there is a rdfs:subClassOf" test="boolean(owl:Class/rdfs:subClassOf)"/>
         <x:expect label="there is a owl:Restriction" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction)"/>
         <x:expect label="there is a owl:onProperty" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:minCardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality)"/>
-        <x:expect label="there is a owl:minCardinality with correct value" test="owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality/text() = '0'"/>
-        <x:expect label="there is no owl:maxCardinality" test="not(boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:maxCardinality))"/>
+        <x:expect label="there is a owl:Cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:Cardinality)"/>
     </x:scenario>
     
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and both target and source have multiplicity ">
@@ -123,8 +118,7 @@
         <x:expect label="there is a 2 rdfs:subClassOf" test="count(owl:Class/rdfs:subClassOf) = 2"/>
         <x:expect label="there is a 2 owl:Restriction" test="count(owl:Class/rdfs:subClassOf/owl:Restriction) = 2"/>
         <x:expect label="there is a 2 owl:onProperty" test="count(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty) = 2"/>
-        <x:expect label="there is only one owl:minCardinality" test="count(owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality) = 1"/>
-        <x:expect label="there is a owl:minCardinality with correct value" test="owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality/text() = '0'"/>
+        <x:expect label="there is only one owl:minCardinality" test="count(owl:Class/rdfs:subClassOf/owl:Restriction/owl:minCardinality) = 0"/>
         <x:expect label="there is 2 owl:maxCardinality" test="count(owl:Class/rdfs:subClassOf/owl:Restriction/owl:maxCardinality) = 2"/>
     </x:scenario>
     
