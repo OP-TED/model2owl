@@ -191,7 +191,9 @@
                     <xsl:value-of select="$note"/>
                 </rdfs:comment>
             </xsl:if>
-            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
+            <xsl:if test="fn:contains($roleURI, $base-ontology-uri)">
+                <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+            </xsl:if>
         </owl:ObjectProperty>
     </xsl:template>
 

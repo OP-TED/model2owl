@@ -66,8 +66,7 @@
                 <skos:definition xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
-            </xsl:if>
-            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>        
+            </xsl:if>     
         </skos:ConceptScheme>
     </xsl:template>
 
@@ -76,6 +75,8 @@
             instantiation axiom for an UML enumeration item. Specify SKOS concept</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
+        
+        <xsl:if test="$enableGenerationOfSkosConcept">
         <xsl:variable name="conceptName"
             select="
                 if (boolean(./initial/@body)) then
@@ -109,8 +110,8 @@
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
             </xsl:if>
-            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
         </skos:Concept>
+            </xsl:if>
     </xsl:template>
 
 
@@ -147,10 +148,10 @@
     <xsl:template name="datatypeDeclaration">
         <xsl:variable name="name" select="f:lexicalQNameToWords(./@name)"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
-        <xsl:variable name="URI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="data-type-URI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
         
-        <rdfs:Datatype rdf:about="{$URI}">
+        <rdfs:Datatype rdf:about="{$data-type-URI}">
             <rdfs:label xml:lang="en">
                 <xsl:value-of select="$name"/>
             </rdfs:label>
@@ -166,7 +167,9 @@
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
             </xsl:if>
-            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
+            <xsl:if test="fn:contains($data-type-URI, $base-ontology-uri)">
+                <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+            </xsl:if>
         </rdfs:Datatype>
     </xsl:template>
     
@@ -196,8 +199,33 @@
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
             </xsl:if>
-            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
+            <xsl:if test="fn:contains($datatypeURI, $base-ontology-uri)">
+                <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+            </xsl:if>
         </owl:Class>
+    </xsl:template>
+    
+    
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute"/>
+
+
+
+
+    <xd:doc>
+        <xd:desc/>
+    </xd:doc>
+    <xsl:template name="generatePropertiesFromDistinctAttributeNamesInCore">
+        <xsl:variable name="root" select="root()"/>
+        <xsl:variable name="distinctNames" select="f:getDistinctClassAttributeNames($root)"/>
+        <xsl:for-each select="$distinctNames">
+            <xsl:call-template name="generatePropertyFromAttribute">
+                <xsl:with-param name="attributeName" select="."/>
+                <xsl:with-param name="root" select="$root"/>
+            </xsl:call-template>
+        </xsl:for-each>
     </xsl:template>
     
     <xd:doc>
@@ -205,60 +233,85 @@
             attribute(s) as OWL data or object properties deciding based on their types. The
             attributes with primary types should be treated as data properties, whereas those typed
             with classes or enumerations should be treated as object properties.></xd:desc>
+        <xd:param name="attributeName"/>
+        <xd:param name="root"/>
     </xd:doc>
-    <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
+    
 
-        <xsl:variable name="typeElement"
-            select="f:getElementByName(./properties/@type, root(.))/@type"/>
-        <xsl:variable name="umlDatatype"
-            select="f:getUmlDataTypeValues(./properties/@type, $umlDataTypesMapping)"/>
-        <xsl:variable name="xsdRdfDataType"
-            select="f:getXsdRdfDataTypeValues(./properties/@type, $xsdAndRdfDataTypes)"/>
 
-        <xsl:variable name="name"
+        
+    <xsl:template name="generatePropertyFromAttribute">
+        <xsl:param name="attributeName"/>
+        <xsl:param name="root"/>
+        <xsl:variable name="attributesWithSameName"
+            select="f:getClassAttributeByName($attributeName, $root)"/>
+        <xsl:variable name="distinctAttributeTypesFound"
+            select="fn:distinct-values($attributesWithSameName/properties/@type)"/>
+        <xsl:variable name="attributeURI"
+            select="f:buildURIFromAttribute($attributesWithSameName[1], fn:false(), fn:true())"/>
+
+        <!--    begin aggregate definitions-->
+        <xsl:variable name="definitionValues" select="$attributesWithSameName/documentation/@value"/>
+        <xsl:variable name="descriptionsWithAnnotationsSequnce" as="xs:string*"
             select="
-                if (boolean(./@name)) then
-                    f:lexicalQNameToWords(./@name)
-                else
-                    $mockUnnamedElement"/>
+                for $attribute in $attributesWithSameName
+                return
+                    if ($attribute/documentation/@value) then
+                        fn:concat(f:formatDocString($attribute/documentation/@value), ' (', $attribute/../../@name, ') ')
+                    else
+                        ()"/>
+        <xsl:variable name="descriptionsWithAnnotations" as="xs:string" select="fn:string-join($descriptionsWithAnnotationsSequnce)"/>
 
-        <xsl:variable name="documentation" select="f:formatDocString(./documentation/@value)"/>
-        <!-- TODO: inject the 'has' prefix here if needed -->
-        <xsl:variable name="URI" select="f:buildURIFromAttribute(., fn:false(), fn:true())"/>
+        <!--    end agrregate definitions-->
+        <xsl:variable name="firstAttribute" select="$attributesWithSameName[1]"/>
+        <!--   decide what type of property is defined -->
         <xsl:variable name="propertyType"
             select="
-                if (f:isAttributeTypeValidForDatatypeProperty(.)) then
+            if (f:isAttributeTypeValidForDatatypeProperty($firstAttribute)) then
                     'owl:DatatypeProperty'
                 else
-                    if (f:isAttributeTypeValidForObjectProperty(.)) then
+                if (f:isAttributeTypeValidForObjectProperty($firstAttribute)) then
                         'owl:ObjectProperty'
                     else
                         'rdf:Property'"/>
-        <xsl:variable name="className" select="./../../@name" as="xs:string"/>
+
+        <xsl:variable name="name"
+            select="
+            if (boolean($firstAttribute/@name)) then
+                    f:lexicalQNameToWords($firstAttribute/@name)
+                else
+                    $mockUnnamedElement"/>
+        <xsl:variable name="className" select="$firstAttribute/../../@name" as="xs:string"/>
         <xsl:variable name="attributeNormalizedLocalName"
-            select="fn:concat(fn:substring-before(./@name, ':'), ':has', f:getLocalSegmentForElements(.))"/>
+            select="fn:concat(fn:substring-before($firstAttribute/@name, ':'), ':has', f:getLocalSegmentForElements($firstAttribute))"/>
         <xsl:variable name="isAttributeWithDependencyName"
-            select="f:getConnectorByName($attributeNormalizedLocalName, root(.))[source/model/@name = $className]"/>
+            select="f:getConnectorByName($attributeNormalizedLocalName, $root)[source/model/@name = $className]"/>
+        
+        
         <xsl:if test="not($isAttributeWithDependencyName)">
             <xsl:element name="{$propertyType}">
-                <xsl:attribute name="rdf:about" select="$URI"/>
+                <xsl:attribute name="rdf:about" select="$attributeURI"/>
                 <rdfs:label xml:lang="en">
                     <xsl:value-of select="$name"/>
                 </rdfs:label>
                 <skos:prefLabel xml:lang="en">
                     <xsl:value-of select="$name"/>
                 </skos:prefLabel>
-                <xsl:if test="boolean($documentation)">
+                <xsl:if test="boolean($descriptionsWithAnnotations)">
                     <rdfs:comment xml:lang="en">
-                        <xsl:value-of select="$documentation"/>
+                        <xsl:value-of select="$descriptionsWithAnnotations"/>
                     </rdfs:comment>
                     <skos:definition xml:lang="en">
-                        <xsl:value-of select="$documentation"/>
+                        <xsl:value-of select="$descriptionsWithAnnotations"/>
                     </skos:definition>
                 </xsl:if>
-                <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
+                <xsl:if test="fn:contains($attributeURI, $base-ontology-uri)">
+                    <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+                </xsl:if>
             </xsl:element>
         </xsl:if>
+        
+      
     </xsl:template>
 
 </xsl:stylesheet>

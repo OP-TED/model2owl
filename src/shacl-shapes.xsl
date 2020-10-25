@@ -38,8 +38,7 @@
     </xd:doc>
     <xsl:template match="/">
         <rdf:RDF>
-            <xsl:namespace name="epo" select="concat($base-uri, '#')"/>
-            <xsl:attribute name="xml:base" expand-text="true">{$shapeModuleURI}</xsl:attribute>
+            <xsl:namespace name="epo" select="concat($base-ontology-uri, '#')"/>
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
         </rdf:RDF>
@@ -50,36 +49,33 @@
     </xd:doc>
     <xsl:template name="ontology-header">
         
-        <xsl:variable name="title">eProcurement datashapes</xsl:variable>
-        <xsl:variable name="description">This module provides the datashape definitions for the eProcurement ontology.</xsl:variable>
-        
 
-        <owl:Ontology rdf:about="">
+        <owl:Ontology rdf:about="{$shapeModuleURI}">
 
-            <!--<owl:imports rdf:resource="{$base-uri}/core"/>-->
-
+    
             <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
             <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
             <owl:imports rdf:resource="http://datashapes.org/dash"/>
             <owl:imports rdf:resource="http://www.w3.org/ns/shacl#"/>
+            <owl:imports rdf:resource="{$coreModuleURI}"/>
 
             <dct:description xml:lang="en">
-                <xsl:value-of select="$description"/>
+                <xsl:value-of select="$description-shape-module"/>
             </dct:description>
             <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
             <vann:preferredNamespaceUri>
-                <xsl:value-of select="fn:concat($base-uri, $defaultDelimiter)"/>                    
+                <xsl:value-of select="fn:concat($base-ontology-uri, $defaultDelimiter)"/>                    
             </vann:preferredNamespaceUri>
             <dct:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
             <rdfs:label xml:lang="en">
-                <xsl:value-of select="$title"/>
+                <xsl:value-of select="$title-shape-module"/>
             </rdfs:label>
             <dct:title xml:lang="en">
-                <xsl:value-of select="$title"/>
+                <xsl:value-of select="$title-shape-module"/>
             </dct:title>
             <!--<skos:prefLabel xml:lang="en"><xsl:value-of select="$title"/></skos:prefLabel>-->
             <!--<owl:versionIRI><xsl:value-of select="$base-uri"/></owl:versionIRI>-->
-            <owl:versionInfo><xsl:value-of select="$title"/> version generated automatically on <xsl:value-of
+            <owl:versionInfo><xsl:value-of select="$title-shape-module"/> version generated automatically on <xsl:value-of
                     select="
                         format-date(current-date(),
                         '[D01]/[M01]/[Y0001]')"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:sh="http://www.w3.org/ns/shacl#"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:fn="http://www.w3.org/2005/xpath-functions"
     exclude-result-prefixes="xs math xd xsl uml xmi umldi dc fn"
@@ -36,8 +37,7 @@
     </xd:doc>
     <xsl:template match="/">
         <rdf:RDF>
-            <xsl:namespace name="epo" select="concat($base-uri, '#')"/>
-            <xsl:attribute name="xml:base" expand-text="true">{$restrictionsModuleURI}</xsl:attribute>
+            <xsl:namespace name="epo" select="concat($base-ontology-uri, '#')"/>
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
             <xsl:call-template name="distinctAttributeNamesInReasoningLayer"/>
@@ -50,37 +50,32 @@
     </xd:doc>
     <xsl:template name="ontology-header">
 
-        <xsl:variable name="title">eProcurement extended ontology</xsl:variable>
-        <xsl:variable name="description">This module provides the inference-related definitions for
-            the eProcurement ontology.</xsl:variable>
 
+        <owl:Ontology rdf:about="{$restrictionsModuleURI}">
 
-        <owl:Ontology rdf:about="">
-
-            <!--<owl:imports rdf:resource="{$base-uri}/core"/>-->
 
             <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
             <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
-            <owl:imports rdf:resource="http://datashapes.org/dash"/>
-            <owl:imports rdf:resource="http://www.w3.org/ns/shacl#"/>
+            <owl:imports rdf:resource="{$coreModuleURI}"/>
+
 
             <dct:description xml:lang="en">
-                <xsl:value-of select="$description"/>
+                <xsl:value-of select="$description-restriction-module"/>
             </dct:description>
             <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
             <vann:preferredNamespaceUri>
-                <xsl:value-of select="fn:concat($base-uri, $defaultDelimiter)"/>
+                <xsl:value-of select="fn:concat($base-ontology-uri, $defaultDelimiter)"/>
             </vann:preferredNamespaceUri>
             <dct:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
             <rdfs:label xml:lang="en">
-                <xsl:value-of select="$title"/>
+                <xsl:value-of select="$title-restriction-module"/>
             </rdfs:label>
             <dct:title xml:lang="en">
-                <xsl:value-of select="$title"/>
+                <xsl:value-of select="$title-restriction-module"/>
             </dct:title>
             <!--<skos:prefLabel xml:lang="en"><xsl:value-of select="$title"/></skos:prefLabel>-->
             <!--<owl:versionIRI><xsl:value-of select="$base-uri"/></owl:versionIRI>-->
-            <owl:versionInfo><xsl:value-of select="$title"/> version generated automatically on
+            <owl:versionInfo><xsl:value-of select="$title-restriction-module"/> version generated automatically on
                     <xsl:value-of
                     select="
                         format-date(current-date(),

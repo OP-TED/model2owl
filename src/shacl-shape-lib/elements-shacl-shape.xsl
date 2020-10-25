@@ -35,6 +35,7 @@
             select="f:formatDocString($class/properties/@documentation)"/>
 
         <sh:NodeShape rdf:about="{$classURI}">
+            <sh:targetClass rdf:resource="{$classURI}"/>
             <xsl:call-template name="elementName">
                 <xsl:with-param name="name" select="$className"/>
             </xsl:call-template>
@@ -50,7 +51,10 @@
                 </xsl:call-template>
             </xsl:if>
             <xsl:apply-templates select="attributes/attribute"/>
-            <rdfs:isDefinedBy rdf:resource="{$base-uri}"/>
+            <xsl:if test="fn:contains($classURI, $base-ontology-uri)">
+                <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+            </xsl:if>
+
         </sh:NodeShape>
     </xsl:template>
 
