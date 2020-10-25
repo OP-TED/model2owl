@@ -13,28 +13,7 @@
     xmlns:sh="http://www.w3.org/ns/shacl#"
     stylesheet="../../../src/reasoning-layer-lib/elements-reasoning-layer.xsl">
     
-<!--    <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class']/attributes/attribute">
-        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[2]"/>
-        <x:expect label="there is 2 rdf:Description" test="boolean(rdf:Description) "/>
-        <x:expect label="there is a rdfs:domain" test="boolean(rdf:Description/rdfs:domain)"/>
-        <x:expect label="there is a owl:DatatypeProperty" test="boolean(owl:DatatypeProperty)"/>
-        <x:expect label="there is no owl:ObjectProperty" test="not(boolean(owl:ObjectProperty))"/>
-        <x:expect label="there is owl:Class" test="boolean(owl:Class)"/>
-        <x:expect label="there is a owl:Restriction" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction) "/>
-        <x:expect label="there is a owl:onProperty" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a rdf:type" test="boolean(rdf:Description/rdf:type)"/>
-    </x:scenario>-->
-    
-<!--    <x:scenario label="Scenario for attribute domain">
-        <x:call template="attributeDomain">
-            <x:param name="attribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[290]/attributes[1]/attribute[6]"/>
-        </x:call>   
-        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
-        <x:expect label="there is a rdfs:domain" test="boolean(rdf:Description/rdfs:domain)"/>
-        <x:expect label="there is a correct parent class URI" test="rdf:Description/rdfs:domain/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Identifier'"/>
-    </x:scenario>
-    -->
-    
+
     <x:scenario
         label="Scenario for attribute domain - attribute with distinct name">
         <x:call template="attributeDomain">
@@ -62,9 +41,9 @@
             <x:param name="attributeName">epo:Address Type</x:param>
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
         </x:call>   
-        <x:expect label="there is a owl:ObjectProperty" test="boolean(owl:ObjectProperty) "/>
-        <x:expect label="there is a rdfs:range" test="boolean(owl:ObjectProperty/rdfs:range)"/>
-        <x:expect label="there is a correct class URI " test="owl:ObjectProperty/rdfs:range/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Code'"/>
+        <x:expect label="there is a owl:ObjectProperty" test="boolean(rdf:Description) "/>
+        <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
+        <x:expect label="there is a correct class URI " test="rdf:Description/rdfs:range/@rdf:resource = 'http://data.europa.eu/a4g/ontology#code'"/>
     </x:scenario>
     
     <x:scenario label="Scenario for attribute range - Datatype property">
@@ -72,9 +51,9 @@
             <x:param name="attributeName">epo:StartTime</x:param>
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
         </x:call>   
-        <x:expect label="there is a owl:DatatypeProperty" test="boolean(owl:DatatypeProperty) "/>
-        <x:expect label="there is a rdfs:range" test="boolean(owl:DatatypeProperty/rdfs:range)"/>
-        <x:expect label="there is a correct datatype URI " test="owl:DatatypeProperty/rdfs:range/@rdf:resource = 'http://www.w3.org/2001/XMLSchema#time'"/>
+        <x:expect label="there is a owl:DatatypeProperty" test="boolean(rdf:Description) "/>
+        <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
+        <x:expect label="there is a correct datatype URI " test="rdf:Description/rdfs:range/@rdf:resource = 'http://www.w3.org/2001/XMLSchema#time'"/>
     </x:scenario>
     
     <x:scenario label="Scenario for attribute range - Datatype property (UML data-type)">
@@ -82,9 +61,9 @@
             <x:param name="attributeName">schemeURI</x:param>
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/"/>
         </x:call>   
-        <x:expect label="there is a owl:DatatypeProperty" test="boolean(owl:DatatypeProperty) "/>
-        <x:expect label="there is a rdfs:range" test="boolean(owl:DatatypeProperty/rdfs:range)"/>
-        <x:expect label="there is a correct datatype URI " test="owl:DatatypeProperty/rdfs:range/@rdf:resource = 'http://www.w3.org/2001/XMLSchema#anyURI'"/>
+        <x:expect label="there is a owl:DatatypeProperty" test="boolean(rdf:Description) "/>
+        <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
+        <x:expect label="there is a correct datatype URI " test="rdf:Description/rdfs:range/@rdf:resource = 'http://www.w3.org/2001/XMLSchema#anyURI'"/>
     </x:scenario>
     
     <x:scenario label="Scenario for attribute range - group of attributes with same name and same data-type">
@@ -92,9 +71,9 @@
             <x:param name="attributeName">epo:AdditionalInformation</x:param>
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
         </x:call>   
-        <x:expect label="there is a owl:DatatypeProperty" test="boolean(owl:DatatypeProperty) "/>
-        <x:expect label="there is a rdfs:range" test="boolean(owl:DatatypeProperty/rdfs:range)"/>
-        <x:expect label="there is a correct datatype URI " test="owl:DatatypeProperty/rdfs:range/@rdf:resource = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#langString'"/>
+        <x:expect label="there is a owl:DatatypeProperty" test="boolean(rdf:Description) "/>
+        <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
+        <x:expect label="there is a correct datatype URI " test="rdf:Description/rdfs:range/@rdf:resource = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#langString'"/>
     </x:scenario>
     
     <x:scenario label="Scenario for attribute range - group of attributes with same name and different data-type">

@@ -30,9 +30,6 @@
         <xsl:call-template name="attributeMultiplicity">
             <xsl:with-param name="attribute" select="."/>
         </xsl:call-template>
-        <xsl:call-template name="attributeMultiplicityOne">
-            <xsl:with-param name="attribute" select="."/>
-        </xsl:call-template>
     </xsl:template>
     
     <xd:doc>
@@ -50,9 +47,39 @@
                 <xsl:with-param name="attributeName" select="."/>
                 <xsl:with-param name="root" select="$root"/>
             </xsl:call-template>
+            <xsl:call-template name="attributeMultiplicityOne">
+                <xsl:with-param name="attributeName" select="."/>
+                <xsl:with-param name="root" select="$root"/>
+            </xsl:call-template>
+            
         </xsl:for-each>
     </xsl:template>
 
+
+    <xd:doc>
+        <xd:desc>Rule 10 (Attribute multiplicity one in reasnoning layer) . For each attribute that
+            has multiplicity exactly one, i.e. [1..1], specify functional property axiom.</xd:desc>
+        <xd:param name="root"/>
+        <xd:param name="attributeName"/>
+    </xd:doc>
+    <xsl:template name="attributeMultiplicityOne">
+        <xsl:param name="attributeName"/>
+        <xsl:param name="root"/>
+        <xsl:variable name="attributesWithSameName" select="f:getClassAttributeByName($attributeName, $root)"/>
+        <xsl:variable name="attributeURI"
+            select="f:buildURIFromAttribute($attributesWithSameName[1], fn:false(), fn:true())"/>
+        <xsl:variable name="attributeMultiplicityMinValues" select="$attributesWithSameName/bounds/@lower"/>
+        <xsl:variable name="attributeMultiplicityMaxValues" select="$attributesWithSameName/bounds/@upper"/>
+        <xsl:variable name="areAllMinValuesOne" select="f:areStringsEqual($attributeMultiplicityMinValues) and $attributeMultiplicityMinValues[1] = '1'" as='xs:boolean'/>
+        <xsl:variable name="areAllMaxValuesOne" select="f:areStringsEqual($attributeMultiplicityMaxValues) and $attributeMultiplicityMaxValues[1] = '1'" as='xs:boolean'/>
+               
+            <xsl:if test="$areAllMinValuesOne and $areAllMaxValuesOne">
+                <rdf:Description rdf:about="{$attributeURI}">
+                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+                </rdf:Description>
+            </xsl:if>
+
+    </xsl:template>
 
     <xd:doc>
         <xd:desc>Rule 5 (Attribute domain in reasnoning layer) Specify data (or object) property
@@ -104,33 +131,26 @@
         <xsl:variable name="attributeURI"
             select="f:buildURIFromAttribute($attributesWithSameName[1], fn:false(), fn:true())"/>
         <xsl:choose>
-            <xsl:when test="fn:count($attributesWithSameName) = 1 or fn:count($distinctAttributeTypesFound) = 1">
+            <xsl:when
+                test="fn:count($attributesWithSameName) = 1 or fn:count($distinctAttributeTypesFound) = 1">
                 <xsl:variable name="className" select="$attributesWithSameName/../../@name"/>
-                <xsl:variable name="classURI" select="f:buildURIfromLexicalQName($className, fn:true())"/>
-                <xsl:variable name="attributeType" select="$attributesWithSameName[1]/properties/@type"/>
-                <xsl:if test="f:isValidDataType($attributeType)">
-                    <xsl:variable name="attributeTypeChecked"
-                        select="
+                <xsl:variable name="classURI"
+                    select="f:buildURIfromLexicalQName($className, fn:true())"/>
+                <xsl:variable name="attributeType"
+                    select="$attributesWithSameName[1]/properties/@type"/>
+
+                <xsl:variable name="attributeTypeChecked"
+                    select="
                         if (boolean(f:getUmlDataTypeValues($attributeType, $umlDataTypesMapping))) then
-                        f:getUmlDataTypeValues($attributeType, $umlDataTypesMapping)
+                            f:getUmlDataTypeValues($attributeType, $umlDataTypesMapping)
                         else
-                        $attributeType"/>
-                    <xsl:variable name="attributeTypeURI"
-                        select="f:buildURIfromLexicalQName($attributeTypeChecked, fn:false())"/>
-                    <owl:DatatypeProperty rdf:about="{$attributeURI}">
-                        <rdfs:range rdf:resource="{$attributeTypeURI}"/>
-                    </owl:DatatypeProperty>
-                </xsl:if>
-                <xsl:if
-                    test="
-                    f:isAttributeTypeValidForObjectProperty($attributesWithSameName[1]) or
-                    boolean(f:getElementByName($attributeType, $root))">
-                    <xsl:variable name="classURI"
-                        select="f:buildURIFromElement(f:getElementByName($attributeType, $root)[1], fn:true(), fn:true())"/>
-                    <owl:ObjectProperty rdf:about="{$attributeURI}">
-                        <rdfs:range rdf:resource="{$classURI}"/>
-                    </owl:ObjectProperty>
-                </xsl:if>
+                            $attributeType"/>
+                <xsl:variable name="attributeTypeURI"
+                    select="f:buildURIfromLexicalQName($attributeTypeChecked, fn:false())"/>
+
+                <rdf:Description rdf:about="{$attributeURI}">
+                    <rdfs:range rdf:resource="{$attributeTypeURI}"/>
+                </rdf:Description>
             </xsl:when>
             <xsl:otherwise>
                 <rdf:Description rdf:about="{$attributeURI}">
@@ -220,23 +240,7 @@
         </owl:Class>
     </xsl:template>
 
-    <xd:doc>
-        <xd:desc>Rule 10 (Attribute multiplicity one in reasnoning layer) . For each attribute that
-            has multiplicity exactly one, i.e. [1..1], specify functional property axiom.</xd:desc>
-        <xd:param name="attribute"/>
-    </xd:doc>
-    <xsl:template name="attributeMultiplicityOne">
-        <xsl:param name="attribute"/>
-        <xsl:variable name="attributeMultiplicityMin" select="$attribute/bounds/@lower"/>
-        <xsl:variable name="attributeMultiplicityMax" select="$attribute/bounds/@upper"/>
-        <xsl:variable name="attributeURI"
-            select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
-        <xsl:if test="$attributeMultiplicityMin = 1 and $attributeMultiplicityMax = 1">
-            <rdf:Description rdf:about="{$attributeURI}">
-                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-            </rdf:Description>
-        </xsl:if>
-    </xsl:template>
+
 
     <xd:doc>
         <xd:desc>(Enumeration in reasnoning layer) . Concept instantiation in RDF/XML For an UML

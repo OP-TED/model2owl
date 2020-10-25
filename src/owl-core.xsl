@@ -45,6 +45,7 @@
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
             <xsl:call-template name="connectorsOwlCore"/>
+            <xsl:call-template name="generatePropertiesFromDistinctAttributeNamesInCore"/>
         </rdf:RDF>
     </xsl:template>
 
