@@ -143,6 +143,7 @@
                         $attributeType"/>
             <xsl:variable name="datatypeURI"
                 select="f:buildURIfromLexicalQName($datatype, fn:false())"/>
+           
             <sh:property>
                 <sh:PropertyShape>
                     <sh:path rdf:resource="{$attributeURI}"/>
@@ -152,6 +153,7 @@
                     <sh:datatype rdf:resource="{$datatypeURI}"/>
                 </sh:PropertyShape>
             </sh:property>
+            
         </xsl:if>
         <xsl:if
             test="

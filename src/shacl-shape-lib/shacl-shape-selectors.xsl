@@ -34,7 +34,7 @@
     </xd:doc>
     <xsl:template match="elements">
         <xsl:apply-templates select="element[@xmi:type = 'uml:Class']"/>
-        <xsl:apply-templates select="element[@xmi:type = 'uml:Class']/attributes/attribute"/>
+        <!--  <xsl:apply-templates select="element[@xmi:type = 'uml:Class']/attributes/attribute"/> -->
     </xsl:template>
     
     <xd:doc>
