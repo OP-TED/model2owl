@@ -38,7 +38,12 @@
     </xd:doc>
     <xsl:template match="/">
         <rdf:RDF>
-            <xsl:namespace name="epo" select="concat($base-ontology-uri, '#')"/>
+            <xsl:namespace name="epo" select="concat($base-ontology-uri, '#')"/> 
+            <xsl:namespace name="epor" select="concat($base-rule-uri, '#')"/>
+            <xsl:namespace name="epos" select="concat($base-shape-uri, '#')"/>                        
+            <xsl:namespace name="" select="concat($base-shape-uri, '#')"/>
+            <xsl:attribute name="xml:base" expand-text="true">{$shapeModuleURI}</xsl:attribute>
+            
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
         </rdf:RDF>
@@ -48,14 +53,10 @@
         <xd:desc> Ontology header </xd:desc>
     </xd:doc>
     <xsl:template name="ontology-header">
-        
-
         <owl:Ontology rdf:about="{$shapeModuleURI}">
-
-    
             <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
             <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
-            <owl:imports rdf:resource="http://datashapes.org/dash"/>
+            <owl:imports rdf:resource="http://datashapes.org/dash"/>            
             <owl:imports rdf:resource="http://www.w3.org/ns/shacl#"/>
             <owl:imports rdf:resource="{$coreModuleURI}"/>
 

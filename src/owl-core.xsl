@@ -40,8 +40,13 @@
     </xd:doc>
     <xsl:template match="/">
         <rdf:RDF>
-            <xsl:namespace name="epo" select="concat($base-ontology-uri, '#')"/>
-
+            <xsl:namespace name="epo" select="concat($base-ontology-uri, '#')"/> 
+            <xsl:namespace name="epor" select="concat($base-rule-uri, '#')"/>
+            <xsl:namespace name="epos" select="concat($base-shape-uri, '#')"/>
+            
+            <xsl:namespace name="" select="concat($base-ontology-uri, '#')"/>
+            <xsl:attribute name="xml:base" expand-text="true">{$coreModuleURI}</xsl:attribute>
+            
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
             <xsl:call-template name="connectorsOwlCore"/>
