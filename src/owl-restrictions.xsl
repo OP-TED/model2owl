@@ -77,13 +77,13 @@
             <dct:title xml:lang="en">
                 <xsl:value-of select="$title-restriction-module"/>
             </dct:title>
-            <!--<skos:prefLabel xml:lang="en"><xsl:value-of select="$title"/></skos:prefLabel>-->
-            <!--<owl:versionIRI><xsl:value-of select="$base-uri"/></owl:versionIRI>-->
-            <owl:versionInfo><xsl:value-of select="$title-restriction-module"/> version generated automatically on
-                    <xsl:value-of
+            <owl:versionIRI rdf:resource="{fn:concat($restrictionsModuleURI,'#',tokenize(base-uri(.), '/')[last()],'-',format-date(current-date(),
+                '[Y0001]-[M01]-[D01]'))}"/>
+            <owl:versionInfo><xsl:value-of select="$title-restriction-module"/> version generated automatically from 
+                <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on <xsl:value-of
                     select="
-                        format-date(current-date(),
-                        '[D01]/[M01]/[Y0001]')"
+                    format-date(current-date(),
+                    '[D01]/[M01]/[Y0001]')"
                 /></owl:versionInfo>
             <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
             <rdfs:seeAlso
