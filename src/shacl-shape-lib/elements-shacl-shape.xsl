@@ -158,7 +158,7 @@
         <xsl:if
             test="
                 count(f:getElementByName($attributeType, root($attribute))) > 0 and
-                f:getElementByName($attributeType, root($attribute))/@xmi:type = 'uml:Class'">
+                f:getElementByName($attributeType, root($attribute))/@xmi:type = 'uml:Class' and not(f:isAttributeTypeValidForDatatypeProperty($attribute))">
             <xsl:variable name="classURI"
                 select="f:buildURIfromLexicalQName($attributeType, fn:true())"/>
             <sh:property>
