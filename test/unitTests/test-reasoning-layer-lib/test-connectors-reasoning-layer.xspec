@@ -28,7 +28,7 @@
         <x:expect label="there is a rdfs:subClassOf" test="boolean(owl:Class/rdfs:subClassOf)"/>
         <x:expect label="there is a owl:Restriction" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction)"/>
         <x:expect label="there is a owl:onProperty" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:Cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:Cardinality)"/>
+        <x:expect label="there is a owl:cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:cardinality)"/>
 
     </x:scenario>
     
@@ -40,7 +40,7 @@
         <x:expect label="there is a rdfs:subClassOf" test="boolean(owl:Class/rdfs:subClassOf)"/>
         <x:expect label="there is a owl:Restriction" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction)"/>
         <x:expect label="there is a owl:onProperty" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:Cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:Cardinality)"/>
+        <x:expect label="there is a owl:cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:cardinality)"/>
         
     </x:scenario>
     
@@ -107,7 +107,7 @@
         <x:expect label="there is a rdfs:subClassOf" test="boolean(owl:Class/rdfs:subClassOf)"/>
         <x:expect label="there is a owl:Restriction" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction)"/>
         <x:expect label="there is a owl:onProperty" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:Cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:Cardinality)"/>
+        <x:expect label="there is a owl:cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:cardinality)"/>
     </x:scenario>
     
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and both target and source have multiplicity ">
