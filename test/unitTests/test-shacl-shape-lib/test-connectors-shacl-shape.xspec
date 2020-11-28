@@ -43,7 +43,7 @@
         <x:expect label="there is a sh:path" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:path)"/>
         <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:name)"/>
         <x:expect label="there is a sh:minCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount)"/>
-        <x:expect label="there is no sh:maxCount" test="not(boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount))"/>
+        <x:expect label="there is no sh:maxCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount)"/>
     </x:scenario>
     
     <x:scenario label="Scenario for association with Source -&gt; Destination direction">
@@ -89,7 +89,7 @@
         <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:name)"/>
         <x:expect label="there is a sh:name = Has" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:name/text() = 'Has'"/>
         <x:expect label="there is a sh:minCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount)"/>
-        <x:expect label="there is a sh:minCount with correct value" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount/text() = '0'"/>
+        <x:expect label="there is a sh:minCount with correct value" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount/text() = '2'"/>
         <x:expect label="there is no sh:maxCount" test="not(boolean(sh:property/sh:PropertyShape/sh:maxCount))"/>
     </x:scenario>
     
@@ -102,8 +102,7 @@
         <x:expect label="there is 2 sh:PropertyShape" test="count(sh:NodeShape/sh:property/sh:PropertyShape) = 2"/>
         <x:expect label="there is 2 sh:path" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:path) = 2"/>
         <x:expect label="there is 2 sh:name" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:name) = 2"/>
-        <x:expect label="there is only one sh:minCount" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount) = 1"/>
-        <x:expect label="there is a sh:minCount with correct value" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount/text() = '0'"/>
+        <x:expect label="there is only one sh:minCount" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount) = 0"/>
         <x:expect label="there is 2 sh:maxCount" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount)=2"/>
     </x:scenario>
     

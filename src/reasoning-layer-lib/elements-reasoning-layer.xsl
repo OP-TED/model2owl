@@ -133,9 +133,9 @@
         <xsl:choose>
             <xsl:when
                 test="fn:count($attributesWithSameName) = 1 or fn:count($distinctAttributeTypesFound) = 1">
-                <xsl:variable name="className" select="$attributesWithSameName/../../@name"/>
+<!--                <xsl:variable name="className" select="$attributesWithSameName/../../@name"/>
                 <xsl:variable name="classURI"
-                    select="f:buildURIfromLexicalQName($className, fn:true())"/>
+                    select="f:buildURIfromLexicalQName($className, fn:true())"/>-->
                 <xsl:variable name="attributeType"
                     select="$attributesWithSameName[1]/properties/@type"/>
 
@@ -146,7 +146,12 @@
                         else
                             $attributeType"/>
                 <xsl:variable name="attributeTypeURI"
-                    select="f:buildURIfromLexicalQName($attributeTypeChecked, fn:false())"/>
+                    select="
+                        if ($attributeType = $controlledListType) then
+                            f:buildURIfromLexicalQName('skos:Concept', fn:true())
+                        else
+                            f:buildURIfromLexicalQName($attributeTypeChecked, fn:false())"
+                />
 
                 <rdf:Description rdf:about="{$attributeURI}">
                     <rdfs:range rdf:resource="{$attributeTypeURI}"/>
@@ -158,7 +163,14 @@
                         <owl:Class>
                             <owl:unionOf rdf:parseType="Collection">
                                 <xsl:for-each select="$distinctAttributeTypesFound">
-                                    <rdf:Description rdf:about="{f:buildURIfromLexicalQName(., fn:false())}"/> 
+                                    <xsl:variable name="attributeTypeURI"
+                                        select="
+                                        if (. = $controlledListType) then
+                                        f:buildURIfromLexicalQName('skos:Concept', fn:true())
+                                        else
+                                        f:buildURIfromLexicalQName(., fn:false())"
+                                    />
+                                    <rdf:Description rdf:about="{$attributeTypeURI}"/> 
                                 </xsl:for-each>
                             </owl:unionOf>
                         </owl:Class>

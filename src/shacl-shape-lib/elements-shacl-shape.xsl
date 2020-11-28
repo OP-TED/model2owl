@@ -190,31 +190,37 @@
         <xsl:variable name="attributeURI"
             select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
         <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
-        <sh:property>
-            <sh:PropertyShape>
-                <sh:path rdf:resource="{$attributeURI}"/>
-                <sh:name>
-                    <xsl:value-of select="$attributeName"/>
-                </sh:name>
-                <xsl:if test="$attributeMultiplicityMin != '*' and $attributeMultiplicityMax != '*'">
-                    <sh:minCount rdf:datatype="{$datatypeURI}">
-                        <xsl:value-of select="$attributeMultiplicityMin"/>
-                    </sh:minCount>
-                    <sh:maxCount rdf:datatype="{$datatypeURI}">
-                        <xsl:value-of select="$attributeMultiplicityMax"/>
-                    </sh:maxCount>
-                </xsl:if>
-                <xsl:if test="$attributeMultiplicityMin = '*'">
-                    <sh:maxCount rdf:datatype="{$datatypeURI}">
-                        <xsl:value-of select="$attributeMultiplicityMax"/>
-                    </sh:maxCount>
-                </xsl:if>
-                <xsl:if test="$attributeMultiplicityMax = '*'">
-                    <sh:minCount rdf:datatype="{$datatypeURI}">
-                        <xsl:value-of select="$attributeMultiplicityMin"/>
-                    </sh:minCount>
-                </xsl:if>
-            </sh:PropertyShape>
-        </sh:property>
+        
+        <xsl:variable name="propertyRestriction" as="item()*">
+            <xsl:if test="$attributeMultiplicityMin != '*' and $attributeMultiplicityMax != '*'">
+                <sh:minCount rdf:datatype="{$datatypeURI}">
+                    <xsl:value-of select="$attributeMultiplicityMin"/>
+                </sh:minCount>
+                <sh:maxCount rdf:datatype="{$datatypeURI}">
+                    <xsl:value-of select="$attributeMultiplicityMax"/>
+                </sh:maxCount>
+            </xsl:if>
+            <xsl:if test="$attributeMultiplicityMin = '*'">
+                <sh:maxCount rdf:datatype="{$datatypeURI}">
+                    <xsl:value-of select="$attributeMultiplicityMax"/>
+                </sh:maxCount>
+            </xsl:if>
+            <xsl:if test="$attributeMultiplicityMax = '*'">
+                <sh:minCount rdf:datatype="{$datatypeURI}">
+                    <xsl:value-of select="$attributeMultiplicityMin"/>
+                </sh:minCount>
+            </xsl:if>
+        </xsl:variable>
+        <xsl:if test="boolean($propertyRestriction)">
+            <sh:property>
+                <sh:PropertyShape>
+                    <sh:path rdf:resource="{$attributeURI}"/>
+                    <sh:name>
+                        <xsl:value-of select="$attributeName"/>
+                    </sh:name>
+                    <xsl:copy-of select="$propertyRestriction"/>
+                </sh:PropertyShape>
+            </sh:property>
+        </xsl:if>
     </xsl:template>
 </xsl:stylesheet>

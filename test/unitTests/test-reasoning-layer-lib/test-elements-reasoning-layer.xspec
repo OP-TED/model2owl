@@ -126,12 +126,12 @@
         <x:expect label="there is a correct value for owl:maxCardinality" test="owl:Class/rdfs:subClassOf/owl:Restriction/owl:maxCardinality/text() = '7'"/>
     </x:scenario>
     
-    <x:scenario label="Scenario for attribute multiplicity min value equals to 1 and multiplicity max value equals to 1 ">
+<!--    <x:scenario label="Scenario for attribute multiplicity min value equals to 1 and multiplicity max value equals to 1 ">
         <x:call template="attributeMultiplicityOne">
-            <x:param name="attribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[140]/attributes[1]/attribute[3]"/>
+            <x:param name="attributeName" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[140]/attributes[1]/attribute[3]"/>
         </x:call>   
         <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
-    </x:scenario>
+    </x:scenario>-->
     
     
     <x:scenario
