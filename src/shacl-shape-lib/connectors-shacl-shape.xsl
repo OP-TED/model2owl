@@ -46,9 +46,11 @@
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
 <!--        <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">-->
         <xsl:if test="not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector')">
-            <xsl:call-template name="connectorRange">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
+            <xsl:if test="not(./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')">
+                <xsl:call-template name="connectorRange">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+            </xsl:if>
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>

@@ -199,5 +199,41 @@
         
     </x:scenario>
     
+    <x:scenario label="Scenario for connector range -> epo:hasAwardStatus">
+        <x:call template="connectorRange">
+            <x:param name="connectorName">epo:hasAwardStatus</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-11-28.eap.xmi" select="/"/>
+        </x:call>   
+        <x:expect label="nothing as the range is done on attribute level" select="()"/>
+        
+    </x:scenario>
+    
+    <x:scenario label="Scenario for connector range -> epo:hasBuyerLegalType">
+        <x:call template="connectorRange">
+            <x:param name="connectorName">epo:hasBuyerLegalType</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-11-28.eap.xmi" select="/"/>
+        </x:call>   
+        <x:expect label="nothing as the range is done on attribute level" select="()"/>
+        
+    </x:scenario>
+    
+    <x:scenario label="Scenario for connector domain -> epo:hasAwardStatus">
+        <x:call template="connectorDomain">
+            <x:param name="connectorName">epo:hasAwardStatus</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-11-28.eap.xmi" select="/"/>
+        </x:call>   
+        <x:expect label="nothing as the range is done on attribute level" select="()"/>
+        
+    </x:scenario>
+    
+    <x:scenario label="Scenario for connector domain -> epo:hasBuyerLegalType">
+        <x:call template="connectorDomain">
+            <x:param name="connectorName">epo:hasBuyerLegalType</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-11-28.eap.xmi" select="/"/>
+        </x:call>   
+        <x:expect label="nothing as the range is done on attribute level" select="()"/>
+        
+    </x:scenario>
+    
     
 </x:description>

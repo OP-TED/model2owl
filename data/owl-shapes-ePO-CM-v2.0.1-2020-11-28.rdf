@@ -877,7 +877,7 @@ Contracting authority procuring activities conducted on a permanent basis, in on
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCPBType"/>
             <sh:name>C p b type</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -1313,7 +1313,7 @@ This includes concession contracts.
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasModificationReason"/>
             <sh:name>Modification reason</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -1588,7 +1588,7 @@ WG approval  08/06/2018</rdfs:comment>
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCountry"/>
             <sh:name>Country</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -1802,7 +1802,7 @@ WG Approval 23/05/2019
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasRestrictedCommunicationsJustification"/>
             <sh:name>Restricted communications justification</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -2143,7 +2143,7 @@ WG approval 31/10/2018</rdfs:comment>
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasExclusionGroundApplicability"/>
             <sh:name>Exclusion ground applicability</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -2766,7 +2766,7 @@ WG approval 12/09/2018</rdfs:comment>
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasVariantsPermission"/>
             <sh:name>Variants permission</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -2811,7 +2811,7 @@ WG approval 12/09/2018</rdfs:comment>
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPerformingStafQualificationInformation"/>
             <sh:name>Performing staf qualification information</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -3042,7 +3042,7 @@ WG Approval 23/05/2019
 WG Approval 23/05/2019
 </rdfs:comment>
       <sh:sparql rdf:parseType="Resource">
-         <sh:select>SELECT $this WHERE { $this a Notice . }
+         <sh:select>SELECT ?this WHERE { ?this a Notice . }
             </sh:select>
       </sh:sparql>
       <sh:property>
@@ -3079,7 +3079,7 @@ WG Approval 23/05/2019
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasNotificationContentType"/>
             <sh:name>Notification content type</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -3186,7 +3186,7 @@ WG Approval 28/04/2020</rdfs:comment>
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasLegalFormType"/>
             <sh:name>Legal form type</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -3788,7 +3788,7 @@ WG Approval 20/08/2019
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasLegalBasis"/>
             <sh:name>Legal basis</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -3803,7 +3803,7 @@ WG Approval 20/08/2019
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasLegalRegime"/>
             <sh:name>Legal regime</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -4587,7 +4587,7 @@ WG Approval 2015-02-26
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSecurityClearanceAddress"/>
             <sh:name>Security clearance address</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -5324,7 +5324,7 @@ WG Approval 14/07/2020</rdfs:comment>
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasESubmissioneSignature"/>
             <sh:name>E submissione signature</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -5421,7 +5421,7 @@ WG Approval 28/04/2020
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAccessibilityCriteria"/>
             <sh:name>Accessibility criteria</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -5476,7 +5476,7 @@ Several techniques can be combined in one single procurement procedure (e.g. eAu
 WG Approval 19/09/2019 
 </rdfs:comment>
       <sh:sparql rdf:parseType="Resource">
-         <sh:select>SELECT $this WHERE { $this a Technique . }
+         <sh:select>SELECT ?this WHERE { ?this a Technique . }
             </sh:select>
       </sh:sparql>
       <sh:property>
@@ -5694,7 +5694,7 @@ See also the definitions of Tender and Lot for a complete understanding.
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSubcontracting"/>
             <sh:name>Subcontracting</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -5918,7 +5918,7 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCurrencyID"/>
             <sh:name>Currency i d</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -6103,7 +6103,7 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasUnitCode"/>
             <sh:name>Unit code</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -6143,7 +6143,7 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasUnitCode"/>
             <sh:name>Unit code</sh:name>
-            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#concept"/>
+            <sh:datatype rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
          </sh:PropertyShape>
       </sh:property>
       <sh:property>
@@ -11041,15 +11041,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCountryCode"/>
             <sh:name>Has country code</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Country"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Address">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCountryCode"/>
-            <sh:name>Has country code</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11058,15 +11049,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasCountryCode&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasCountryCode&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Address">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCountrySubentityCode"/>
-            <sh:name>Has country subentity code</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Nuts"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Address">
       <sh:property>
@@ -11087,15 +11069,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasWeightValueType"/>
             <sh:name>Has weight value type</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Number-weight"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#AwardCriterion">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasWeightValueType"/>
-            <sh:name>Has weight value type</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11106,27 +11079,9 @@ For European notices above the threshold
       </sh:sparql>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#AwardCriterion">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasThresholdType"/>
-            <sh:name>Has threshold type</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Number-threshold"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#AwardCriterion">
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasThresholdType&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasThresholdType&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#AwardCriterion">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAwardCriterionType"/>
-            <sh:name>Has award criterion type</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Award-criterion-type"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#AwardCriterion">
       <sh:property>
@@ -11147,15 +11102,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasFixedValueType"/>
             <sh:name>Has fixed value type</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Number-fixed"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#AwardCriterion">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasFixedValueType"/>
-            <sh:name>Has fixed value type</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11164,15 +11110,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasFixedValueType&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasFixedValueType&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#AwardDecision">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAwardStatus"/>
-            <sh:name>Has award status</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Winner-selection-status"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#AwardDecision">
       <sh:property>
@@ -11194,15 +11131,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasNonAwardJustification"/>
             <sh:name>Has non award justification</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Non-award-justification"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#AwardDecision">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasNonAwardJustification"/>
-            <sh:name>Has non award justification</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
@@ -11212,15 +11140,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasNonAwardJustification&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasNonAwardJustification&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Business">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSize"/>
-            <sh:name>Has size</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Economic-operator-size"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Business">
       <sh:property>
@@ -11242,15 +11161,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasMainActivityType"/>
             <sh:name>Has main activity type</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Main-activity"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Buyer">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasMainActivityType"/>
-            <sh:name>Has main activity type</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11259,15 +11169,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasMainActivityType&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasMainActivityType&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Buyer">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasBuyerLegalType"/>
-            <sh:name>Has buyer legal type</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Buyer-legal-type"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Buyer">
       <sh:property>
@@ -11289,15 +11190,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCentralPurchasingBodyType"/>
             <sh:name>Has central purchasing body type</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Cpb-type"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#CentralPurchasingBody">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCentralPurchasingBodyType"/>
-            <sh:name>Has central purchasing body type</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11306,15 +11198,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasCentralPurchasingBodyType&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasCentralPurchasingBodyType&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Change">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasChangeReason"/>
-            <sh:name>Has change reason</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Notice-corrigendum-justification"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Change">
       <sh:property>
@@ -11336,15 +11219,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCommunicationType"/>
             <sh:name>Has communication type</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Communication-type"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Channel">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCommunicationType"/>
-            <sh:name>Has communication type</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11353,15 +11227,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasCommunicationType&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasCommunicationType&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#ContractModificationNotice">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasContractModficationJustification"/>
-            <sh:name>Has contract modfication justification</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Modification-justification"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#ContractModificationNotice">
       <sh:property>
@@ -11383,15 +11248,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasBroadPlaceOfPerformance"/>
             <sh:name>Has broad place of performance</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Other-place-service"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#ContractTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasBroadPlaceOfPerformance"/>
-            <sh:name>Has broad place of performance</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11400,15 +11256,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasBroadPlaceOfPerformance&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasBroadPlaceOfPerformance&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#ContractTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasReservedExecution"/>
-            <sh:name>Has reserved execution</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Applicability"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#ContractTerm">
       <sh:property>
@@ -11430,15 +11277,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCountryCode"/>
             <sh:name>Has country code</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Country"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#CountryIdentification">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCountryCode"/>
-            <sh:name>Has country code</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11447,15 +11285,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasCountryCode&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasCountryCode&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#DesignContestRegimeTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDesignContestType"/>
-            <sh:name>Has design contest type</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Design-contest-type"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#DesignContestRegimeTerm">
       <sh:property>
@@ -11477,15 +11306,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasJustificationType"/>
             <sh:name>Has justification type</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Direct-award-justification"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#DirectAwardTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasJustificationType"/>
-            <sh:name>Has justification type</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
@@ -11495,15 +11315,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasJustificationType&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasJustificationType&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Document">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasRestrictedCommunicationJustification"/>
-            <sh:name>Has restricted communication justification</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Communication-justification"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Document">
       <sh:property>
@@ -11525,15 +11336,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasOfficialLanguage"/>
             <sh:name>Has official language</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Language"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Document">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasOfficialLanguage"/>
-            <sh:name>Has official language</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11544,27 +11346,9 @@ For European notices above the threshold
       </sh:sparql>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Document">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasUnofficialLanguage"/>
-            <sh:name>Has unofficial language</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Language"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Document">
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasUnofficialLanguage&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasUnofficialLanguage&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#EAuctionTechnique">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasEAuctionUsage"/>
-            <sh:name>Has e auction usage</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Usage"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#EAuctionTechnique">
       <sh:property>
@@ -11585,15 +11369,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasEORoleType"/>
             <sh:name>Has e o role type</sh:name>
-            <sh:class rdf:resource="https://github.com/ESPD/ESPD-EDM/Eo-role-type"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#EconomicOperator">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasEORoleType"/>
-            <sh:name>Has e o role type</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11602,15 +11377,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasEORoleType&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasEORoleType&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#EvaluationBoard">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasEvaluationGroupType"/>
-            <sh:name>Has evaluation group type</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Evaluation-group-type"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#EvaluationBoard">
       <sh:property>
@@ -11631,15 +11397,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasExclusionGroundType"/>
             <sh:name>Has exclusion ground type</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Exclusion-criterion"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#ExclusionGround">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasExclusionGroundType"/>
-            <sh:name>Has exclusion ground type</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11648,15 +11405,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasExclusionGroundType&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasExclusionGroundType&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#FinancialAccount">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCountry"/>
-            <sh:name>Has country</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Country"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#FinancialAccount">
       <sh:property>
@@ -11677,15 +11425,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasFrameworkAgreementType"/>
             <sh:name>Has framework agreement type</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Framework-agreement"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#FrameworkAgreementTechnique">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasFrameworkAgreementType"/>
-            <sh:name>Has framework agreement type</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
@@ -11695,15 +11434,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasFrameworkAgreementType&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasFrameworkAgreementType&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#FrameworkAgreementTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasFrameworkAgreementType"/>
-            <sh:name>Has framework agreement type</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Framework-agreement"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#FrameworkAgreementTerm">
       <sh:property>
@@ -11725,15 +11455,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#fulfillsRequirement"/>
             <sh:name>Fulfills requirement</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Environmental-impact"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#GreenProcurement">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#fulfillsRequirement"/>
-            <sh:name>Fulfills requirement</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11748,15 +11469,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#fulfillsRequirement"/>
             <sh:name>Fulfills requirement</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Innovative-acquisition"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#InnovativeProcurement">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#fulfillsRequirement"/>
-            <sh:name>Fulfills requirement</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11765,15 +11477,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#fulfillsRequirement&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#fulfillsRequirement&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Item">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCountryOfOrigin"/>
-            <sh:name>Has country of origin</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Country"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Item">
       <sh:property>
@@ -11794,15 +11497,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasReservedProcurement"/>
             <sh:name>Has reserved procurement</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Reserved-procurement"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Lot">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasReservedProcurement"/>
-            <sh:name>Has reserved procurement</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11813,27 +11507,9 @@ For European notices above the threshold
       </sh:sparql>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Lot">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isProvidedWithin"/>
-            <sh:name>Is provided within</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Requirement-stage"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Lot">
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isProvidedWithin&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isProvidedWithin&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Lot">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasVariantPermission"/>
-            <sh:name>Has variant permission</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Permission"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Lot">
       <sh:property>
@@ -11855,15 +11531,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasNotificationPhasesType"/>
             <sh:name>Has notification phases type</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Notification-phases-content-types"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Notice">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasNotificationPhasesType"/>
-            <sh:name>Has notification phases type</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
@@ -11873,15 +11540,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasNotificationPhasesType&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasNotificationPhasesType&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Notice">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDPSScope"/>
-            <sh:name>Has d p s scope</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Dps-usage"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Notice">
       <sh:property>
@@ -11903,15 +11561,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasFormType"/>
             <sh:name>Has form type</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Form-type"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Notice">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasFormType"/>
-            <sh:name>Has form type</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
@@ -11921,15 +11570,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasFormType&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasFormType&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#OrganisationGroup">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasEOGroupType"/>
-            <sh:name>Has e o group type</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Eo-group-type"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#OrganisationGroup">
       <sh:property>
@@ -11950,15 +11590,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTimePeriods"/>
             <sh:name>Has time periods</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Timeperiod"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Period">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTimePeriods"/>
-            <sh:name>Has time periods</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -11967,15 +11598,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTimePeriods&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTimePeriods&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Person">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasNationality"/>
-            <sh:name>Has nationality</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Country"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Person">
       <sh:property>
@@ -11996,15 +11618,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasLegalBasisID"/>
             <sh:name>Has legal basis i d</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Legal-basis"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#PlannedProcurementPart">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasLegalBasisID"/>
-            <sh:name>Has legal basis i d</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
          </sh:PropertyShape>
       </sh:property>
@@ -12013,15 +11626,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasLegalBasisID&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasLegalBasisID&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Procedure">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasProcedureType"/>
-            <sh:name>Has procedure type</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Procurement-procedure-type"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Procedure">
       <sh:property>
@@ -12043,15 +11647,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasLegalBasisID"/>
             <sh:name>Has legal basis i d</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Legal-basis"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Procedure">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasLegalBasisID"/>
-            <sh:name>Has legal basis i d</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
          </sh:PropertyShape>
       </sh:property>
@@ -12062,27 +11657,9 @@ For European notices above the threshold
       </sh:sparql>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Procedure">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isAbout"/>
-            <sh:name>Is about</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Legal-regime"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Procedure">
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isAbout&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isAbout&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Procedure">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasProcurementRegime"/>
-            <sh:name>Has procurement regime</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Procurement-regime-type"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Procedure">
       <sh:property>
@@ -12104,15 +11681,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasNonPublicationJustification"/>
             <sh:name>Has non publication justification</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Non-publication-justification"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#PublicationProvision">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasNonPublicationJustification"/>
-            <sh:name>Has non publication justification</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
          </sh:PropertyShape>
       </sh:property>
@@ -12121,15 +11689,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasNonPublicationJustification&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasNonPublicationJustification&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Purpose">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasUnit"/>
-            <sh:name>Has unit</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Unit-code"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Purpose">
       <sh:property>
@@ -12150,15 +11709,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasMainClassification"/>
             <sh:name>Has main classification</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Cpv"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Purpose">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasMainClassification"/>
-            <sh:name>Has main classification</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -12169,27 +11719,9 @@ For European notices above the threshold
       </sh:sparql>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Purpose">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAdditionalClassification"/>
-            <sh:name>Has additional classification</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Cpv"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Purpose">
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasAdditionalClassification&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasAdditionalClassification&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Purpose">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasOptionsPermission"/>
-            <sh:name>Has options permission</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Permission"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Purpose">
       <sh:property>
@@ -12211,15 +11743,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasContractNatureType"/>
             <sh:name>Has contract nature type</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Contract-nature"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Purpose">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasContractNatureType"/>
-            <sh:name>Has contract nature type</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
@@ -12231,27 +11754,9 @@ For European notices above the threshold
       </sh:sparql>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Purpose">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAdditionalContractNature"/>
-            <sh:name>Has additional contract nature</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Contract-nature"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#Purpose">
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasAdditionalContractNature&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasAdditionalContractNature&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#RegulatoryFrameworkInformation">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasRegulatoryFrameworkProvider"/>
-            <sh:name>Has regulatory framework provider</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Regulatory-framework-provider"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#RegulatoryFrameworkInformation">
       <sh:property>
@@ -12272,15 +11777,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isApplicableToSecurityClearanceAddress"/>
             <sh:name>Is applicable to security clearance address</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Security-clearance-address"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SecurityClearanceTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isApplicableToSecurityClearanceAddress"/>
-            <sh:name>Is applicable to security clearance address</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -12291,27 +11787,9 @@ For European notices above the threshold
       </sh:sparql>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SelectionCriterion">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasWeightValueType"/>
-            <sh:name>Has weight value type</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Number-weight"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SelectionCriterion">
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasWeightValueType&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasWeightValueType&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SelectionCriterion">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSelectionCriterionType"/>
-            <sh:name>Has selection criterion type</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Selection-criterion"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SelectionCriterion">
       <sh:property>
@@ -12328,27 +11806,9 @@ For European notices above the threshold
       </sh:sparql>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SelectionCriterion">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasThresholdType"/>
-            <sh:name>Has threshold type</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Number-threshold"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SelectionCriterion">
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasThresholdType&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasThresholdType&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SocialProcurement">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#fulfillsRequirement"/>
-            <sh:name>Fulfills requirement</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Social-objective"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SocialProcurement">
       <sh:property>
@@ -12363,15 +11823,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#fulfillsRequirement&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#fulfillsRequirement&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#StrategicProcurement">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasStrategicProcurementType"/>
-            <sh:name>Has strategic procurement type</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Strategic-procurement"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#StrategicProcurement">
       <sh:property>
@@ -12393,15 +11844,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSubcontractingObligation"/>
             <sh:name>Has subcontracting obligation</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Subcontracting-obligation"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SubcontractTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSubcontractingObligation"/>
-            <sh:name>Has subcontracting obligation</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
@@ -12411,15 +11853,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasSubcontractingObligation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasSubcontractingObligation&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SubmissionTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasLateSubmissionPermission"/>
-            <sh:name>Has late submission permission</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Missing-info-submission"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SubmissionTerm">
       <sh:property>
@@ -12441,15 +11874,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasNonElectronicSubmissionJustification"/>
             <sh:name>Has non electronic submission justification</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Communication-justification"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SubmissionTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasNonElectronicSubmissionJustification"/>
-            <sh:name>Has non electronic submission justification</sh:name>
             <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
@@ -12465,15 +11889,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSubmissionDocumentType"/>
             <sh:name>Has submission document type</sh:name>
-            <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Submission-document-type"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SubmissionTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSubmissionDocumentType"/>
-            <sh:name>Has submission document type</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -12482,15 +11897,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasSubmissionDocumentType&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasSubmissionDocumentType&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SubmissionTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasESubmissionPermission"/>
-            <sh:name>Has e submission permission</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Permission"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SubmissionTerm">
       <sh:property>
@@ -12512,15 +11918,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasOfficialLanguage"/>
             <sh:name>Has official language</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Language"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SubmissionTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasOfficialLanguage"/>
-            <sh:name>Has official language</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -12531,27 +11928,9 @@ For European notices above the threshold
       </sh:sparql>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SubmissionTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTenderSubcontractingInformation"/>
-            <sh:name>Has tender subcontracting information</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Subcontracting-indication"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SubmissionTerm">
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTenderSubcontractingInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTenderSubcontractingInformation&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SubmissionTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasECataloguePermission"/>
-            <sh:name>Has e catalogue permission</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Permission"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SubmissionTerm">
       <sh:property>
@@ -12573,15 +11952,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasLanguage"/>
             <sh:name>Has language</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Language"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#SubmissionTerm">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasLanguage"/>
-            <sh:name>Has language</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -12596,15 +11966,6 @@ For European notices above the threshold
          <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#includesAccessibilityCriteria"/>
             <sh:name>Includes accessibility criteria</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Accessibility"/>
-         </sh:PropertyShape>
-      </sh:property>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#TechnicalSpecification">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#includesAccessibilityCriteria"/>
-            <sh:name>Includes accessibility criteria</sh:name>
             <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
          </sh:PropertyShape>
       </sh:property>
@@ -12613,15 +11974,6 @@ For European notices above the threshold
       <sh:sparql rdf:parseType="Resource">
          <sh:select> SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#includesAccessibilityCriteria&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#includesAccessibilityCriteria&gt; ?this .} </sh:select>
       </sh:sparql>
-   </sh:NodeShape>
-   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#TenderLot">
-      <sh:property>
-         <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSubcontractingApplicability"/>
-            <sh:name>Has subcontracting applicability</sh:name>
-            <sh:class rdf:resource="http://publications.europa.eu/resource/authority/Applicability"/>
-         </sh:PropertyShape>
-      </sh:property>
    </sh:NodeShape>
    <sh:NodeShape rdf:about="http://data.europa.eu/a4g/ontology#TenderLot">
       <sh:property>

@@ -103,24 +103,28 @@
         <xsl:variable name="targetRole" select="f:lexicalQNameToWords($connectorName)"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
-        <xsl:choose>
-            <xsl:when test="fn:count($connectorsWithSameName) = 1">
+<!--        This will filter out all Dependencies that are from a Class to an Enumeration-->
+        <xsl:variable name="filteredConnectorsWithSameName"
+            select="$connectorsWithSameName[not(./properties/@ea_type = 'Dependency' and ./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')]"
+        />
+        
+            <xsl:if test="fn:count($filteredConnectorsWithSameName) = 1">
                 <xsl:variable name="classURI"
                     select="
-                        if ($connectorsWithSameName/target/role/@name = $connectorName) then
-                            f:buildURIfromLexicalQName($connectorsWithSameName/source/model/@name, fn:true())
+                    if ($filteredConnectorsWithSameName/target/role/@name = $connectorName) then
+                    f:buildURIfromLexicalQName($filteredConnectorsWithSameName/source/model/@name, fn:true())
                         else
-                            f:buildURIfromLexicalQName($connectorsWithSameName/target/model/@name, fn:true())"/>
+                        f:buildURIfromLexicalQName($filteredConnectorsWithSameName/target/model/@name, fn:true())"/>
                 <rdf:Description rdf:about="{$targetRoleURI}">
                     <rdfs:domain rdf:resource="{$classURI}"/>
                 </rdf:Description>
-            </xsl:when>
-            <xsl:otherwise>
+            </xsl:if>
+            <xsl:if test="fn:count($filteredConnectorsWithSameName) > 1">
                 <xsl:variable name="targetDomains"
-                    select="$connectorsWithSameName/target[role/@name = $connectorName]/../source/model/@name"
+                    select="$filteredConnectorsWithSameName/target[role/@name = $connectorName]/../source/model/@name"
                     as="xs:string*"/>
                 <xsl:variable name="sourceDomains"
-                    select="$connectorsWithSameName/source[role/@name = $connectorName]/../target/model/@name"
+                    select="$filteredConnectorsWithSameName/source[role/@name = $connectorName]/../target/model/@name"
                     as="xs:string*"/>
                 <xsl:variable name="domains"
                     select="functx:value-union($targetDomains, $sourceDomains)"/>
@@ -136,9 +140,7 @@
                         </owl:Class>
                     </rdfs:domain>
                 </rdf:Description>
-            </xsl:otherwise>
-        </xsl:choose>
-
+            </xsl:if>
     </xsl:template>
 
 
@@ -157,20 +159,24 @@
         <xsl:variable name="targetRole" select="f:lexicalQNameToWords($connectorName)"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
-        <xsl:choose>
-            <xsl:when test="fn:count($connectorsWithSameName) = 1 and fn:boolean($connectorsWithSameName/*[role/@name =$connectorName]/model/@name)">
+        <!-- This will filter out all Dependencies that are from a Class to an Enumeration-->
+        <xsl:variable name="filteredConnectorsWithSameName"
+            select="$connectorsWithSameName[not(./properties/@ea_type = 'Dependency' and ./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')]"
+        />
+        
+            <xsl:if test="fn:count($filteredConnectorsWithSameName) = 1 and fn:boolean($filteredConnectorsWithSameName/*[role/@name =$connectorName]/model/@name)">
                 <rdf:Description rdf:about="{$targetRoleURI}">
                     <rdfs:range
-                        rdf:resource="{f:buildURIfromLexicalQName($connectorsWithSameName/*[role/@name =$connectorName]/model/@name, fn:true())}"
+                        rdf:resource="{f:buildURIfromLexicalQName($filteredConnectorsWithSameName/*[role/@name =$connectorName]/model/@name, fn:true())}"
                     />
                 </rdf:Description>
-            </xsl:when>
-            <xsl:otherwise>
+            </xsl:if>
+            <xsl:if test="fn:count($filteredConnectorsWithSameName) > 1">
                 <xsl:variable name="targetRanges"
-                    select="$connectorsWithSameName/target[role/@name = $connectorName]/model/@name"
+                    select="$filteredConnectorsWithSameName/target[role/@name = $connectorName]/model/@name"
                     as="xs:string*"/>
                 <xsl:variable name="sourceRanges"
-                    select="$connectorsWithSameName/source[role/@name = $connectorName]/model/@name"
+                    select="$filteredConnectorsWithSameName/source[role/@name = $connectorName]/model/@name"
                     as="xs:string*"/>
                 <xsl:variable name="ranges"
                     select="functx:value-union($targetRanges, $sourceRanges)"/>
@@ -186,8 +192,8 @@
                         </owl:Class>
                     </rdfs:range>
                 </rdf:Description>
-            </xsl:otherwise>
-        </xsl:choose>
+            </xsl:if>
+       
 
     </xsl:template>
 

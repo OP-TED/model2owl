@@ -142,8 +142,13 @@
                     else
                         $attributeType"/>
             <xsl:variable name="datatypeURI"
-                select="f:buildURIfromLexicalQName($datatype, fn:false())"/>
-           
+                select="
+                    if ($attributeType = $controlledListType) then
+                        f:buildURIfromLexicalQName('skos:Concept', fn:true())
+                    else
+                        f:buildURIfromLexicalQName($datatype, fn:false())"
+            />
+
             <sh:property>
                 <sh:PropertyShape>
                     <sh:path rdf:resource="{$attributeURI}"/>
@@ -153,14 +158,18 @@
                     <sh:datatype rdf:resource="{$datatypeURI}"/>
                 </sh:PropertyShape>
             </sh:property>
-            
+
         </xsl:if>
         <xsl:if
             test="
                 count(f:getElementByName($attributeType, root($attribute))) > 0 and
                 f:getElementByName($attributeType, root($attribute))/@xmi:type = 'uml:Class' and not(f:isAttributeTypeValidForDatatypeProperty($attribute))">
             <xsl:variable name="classURI"
-                select="f:buildURIfromLexicalQName($attributeType, fn:true())"/>
+                select="
+                    if ($attributeType = $controlledListType) then
+                        f:buildURIfromLexicalQName('skos:Concept', fn:true())
+                    else
+                        f:buildURIfromLexicalQName($attributeType, fn:true())"/>
             <sh:property>
                 <sh:PropertyShape>
                     <sh:path rdf:resource="{$attributeURI}"/>
