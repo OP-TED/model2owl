@@ -46,9 +46,11 @@
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
 <!--        <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">-->
         <xsl:if test="not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector')">
-            <xsl:call-template name="connectorRange">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
+            <xsl:if test="not(./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')">
+                <xsl:call-template name="connectorRange">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+            </xsl:if>
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -186,10 +188,23 @@
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:variable name="datatypeURI"
             select="f:buildURIfromLexicalQName('xsd:integer', fn:false())"/>
+        <!--        this is first property shape content-->
+        <xsl:variable name="sourceDestinationRestrictionContent" as="item()*">
+            <xsl:if test="boolean($targetMultiplicityMax)">
+                <sh:maxCount rdf:datatype="{$datatypeURI}">
+                    <xsl:value-of select="$targetMultiplicityMax"/>
+                </sh:maxCount>
+            </xsl:if>
+            <xsl:if test="boolean($targetMultiplicityMin)">
+                <sh:minCount rdf:datatype="{$datatypeURI}">
+                    <xsl:value-of select="$targetMultiplicityMin"/>
+                </sh:minCount>
+            </xsl:if>
+        </xsl:variable>
         <xsl:if
             test="
                 $connectorDirection = 'Source -&gt; Destination' and
-                boolean($targetMultiplicity)">
+                boolean($targetMultiplicity) and boolean($sourceDestinationRestrictionContent)">
             <sh:NodeShape rdf:about="{$sourceClassURI}">
                 <sh:property>
                     <sh:PropertyShape>
@@ -197,24 +212,30 @@
                         <sh:name>
                             <xsl:value-of select="$targetRole"/>
                         </sh:name>
-                        <xsl:if test="boolean($targetMultiplicityMax)">
-                            <sh:maxCount rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$targetMultiplicityMax"/>
-                            </sh:maxCount>
-                        </xsl:if>
-                        <xsl:if test="boolean($targetMultiplicityMin)">
-                            <sh:minCount rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$targetMultiplicityMin"/>
-                            </sh:minCount>
-                        </xsl:if>
+                        <xsl:copy-of select="$sourceDestinationRestrictionContent"/>
                     </sh:PropertyShape>
                 </sh:property>
             </sh:NodeShape>
         </xsl:if>
+        <!--        end of first property shape content-->
+        
+        <!--        this is second property shape content-->
+        <xsl:variable name="sourceInBidirectionalRestrictionContent" as="item()*">
+            <xsl:if test="boolean($targetMultiplicityMax)">
+                <sh:maxCount rdf:datatype="{$datatypeURI}">
+                    <xsl:value-of select="$targetMultiplicityMax"/>
+                </sh:maxCount>
+            </xsl:if>
+            <xsl:if test="boolean($targetMultiplicityMin)">
+                <sh:minCount rdf:datatype="{$datatypeURI}">
+                    <xsl:value-of select="$targetMultiplicityMin"/>
+                </sh:minCount>
+            </xsl:if>
+        </xsl:variable>
         <xsl:if
             test="
                 $connectorDirection = 'Bi-Directional' and
-                boolean($targetMultiplicity)">
+                boolean($targetMultiplicity) and boolean($sourceInBidirectionalRestrictionContent)">
             <sh:NodeShape rdf:about="{$sourceClassURI}">
                 <sh:property>
                     <sh:PropertyShape>
@@ -222,24 +243,30 @@
                         <sh:name>
                             <xsl:value-of select="$targetRole"/>
                         </sh:name>
-                        <xsl:if test="boolean($targetMultiplicityMax)">
-                            <sh:maxCount rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$targetMultiplicityMax"/>
-                            </sh:maxCount>
-                        </xsl:if>
-                        <xsl:if test="boolean($targetMultiplicityMin)">
-                            <sh:minCount rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$targetMultiplicityMin"/>
-                            </sh:minCount>
-                        </xsl:if>
+                        <xsl:copy-of select="$sourceInBidirectionalRestrictionContent"/>
                     </sh:PropertyShape>
                 </sh:property>
             </sh:NodeShape>
         </xsl:if>
+        <!--        end of second property shape content-->
+        
+        <!--        this is third property shape content-->
+        <xsl:variable name="targetInBidirectionalRestrictionContent" as="item()*">
+            <xsl:if test="boolean($sourceMultiplicityMax)">
+                <sh:maxCount rdf:datatype="{$datatypeURI}">
+                    <xsl:value-of select="$sourceMultiplicityMax"/>
+                </sh:maxCount>
+            </xsl:if>
+            <xsl:if test="boolean($sourceMultiplicityMin)">
+                <sh:minCount rdf:datatype="{$datatypeURI}">
+                    <xsl:value-of select="$sourceMultiplicityMin"/>
+                </sh:minCount>
+            </xsl:if>
+        </xsl:variable>
         <xsl:if
             test="
                 $connectorDirection = 'Bi-Directional' and
-                boolean($sourceMultiplicity)">
+                boolean($sourceMultiplicity) and boolean($targetInBidirectionalRestrictionContent)">
             <sh:NodeShape rdf:about="{$targetClassURI}">
                 <sh:property>
                     <sh:PropertyShape>
@@ -247,21 +274,12 @@
                         <sh:name>
                             <xsl:value-of select="$sourceRole"/>
                         </sh:name>
-                        <xsl:if test="boolean($sourceMultiplicityMax)">
-                            <sh:maxCount rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$sourceMultiplicityMax"/>
-                            </sh:maxCount>
-                        </xsl:if>
-                        <xsl:if test="boolean($sourceMultiplicityMin)">
-                            <sh:minCount rdf:datatype="{$datatypeURI}">
-                                <xsl:value-of select="$sourceMultiplicityMin"/>
-                            </sh:minCount>
-                        </xsl:if>
+                        <xsl:copy-of select="$targetInBidirectionalRestrictionContent"/>
                     </sh:PropertyShape>
                 </sh:property>
             </sh:NodeShape>
         </xsl:if>
-
+        <!--        end of third property shape content-->
     </xsl:template>
 
     <xd:doc>

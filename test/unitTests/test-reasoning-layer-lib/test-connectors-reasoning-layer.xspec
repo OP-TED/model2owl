@@ -28,7 +28,7 @@
         <x:expect label="there is a rdfs:subClassOf" test="boolean(owl:Class/rdfs:subClassOf)"/>
         <x:expect label="there is a owl:Restriction" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction)"/>
         <x:expect label="there is a owl:onProperty" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:Cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:Cardinality)"/>
+        <x:expect label="there is a owl:cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:cardinality)"/>
 
     </x:scenario>
     
@@ -40,7 +40,7 @@
         <x:expect label="there is a rdfs:subClassOf" test="boolean(owl:Class/rdfs:subClassOf)"/>
         <x:expect label="there is a owl:Restriction" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction)"/>
         <x:expect label="there is a owl:onProperty" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:Cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:Cardinality)"/>
+        <x:expect label="there is a owl:cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:cardinality)"/>
         
     </x:scenario>
     
@@ -107,7 +107,7 @@
         <x:expect label="there is a rdfs:subClassOf" test="boolean(owl:Class/rdfs:subClassOf)"/>
         <x:expect label="there is a owl:Restriction" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction)"/>
         <x:expect label="there is a owl:onProperty" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:Cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:Cardinality)"/>
+        <x:expect label="there is a owl:cardinality" test="boolean(owl:Class/rdfs:subClassOf/owl:Restriction/owl:cardinality)"/>
     </x:scenario>
     
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and both target and source have multiplicity ">
@@ -196,6 +196,42 @@
         <x:expect label="correct target URI" test="rdf:Description/@rdf:about = 'http://data.europa.eu/a4g/ontology#actsAs'"/>
         <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
         <x:expect label="correct class URI" test="rdf:Description/rdfs:range/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Buyer'"/>
+        
+    </x:scenario>
+    
+    <x:scenario label="Scenario for connector range -> epo:hasAwardStatus">
+        <x:call template="connectorRange">
+            <x:param name="connectorName">epo:hasAwardStatus</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-11-28.eap.xmi" select="/"/>
+        </x:call>   
+        <x:expect label="nothing as the range is done on attribute level" select="()"/>
+        
+    </x:scenario>
+    
+    <x:scenario label="Scenario for connector range -> epo:hasBuyerLegalType">
+        <x:call template="connectorRange">
+            <x:param name="connectorName">epo:hasBuyerLegalType</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-11-28.eap.xmi" select="/"/>
+        </x:call>   
+        <x:expect label="nothing as the range is done on attribute level" select="()"/>
+        
+    </x:scenario>
+    
+    <x:scenario label="Scenario for connector domain -> epo:hasAwardStatus">
+        <x:call template="connectorDomain">
+            <x:param name="connectorName">epo:hasAwardStatus</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-11-28.eap.xmi" select="/"/>
+        </x:call>   
+        <x:expect label="nothing as the range is done on attribute level" select="()"/>
+        
+    </x:scenario>
+    
+    <x:scenario label="Scenario for connector domain -> epo:hasBuyerLegalType">
+        <x:call template="connectorDomain">
+            <x:param name="connectorName">epo:hasBuyerLegalType</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-11-28.eap.xmi" select="/"/>
+        </x:call>   
+        <x:expect label="nothing as the range is done on attribute level" select="()"/>
         
     </x:scenario>
     
