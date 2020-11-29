@@ -133,9 +133,6 @@
         <xsl:choose>
             <xsl:when
                 test="fn:count($attributesWithSameName) = 1 or fn:count($distinctAttributeTypesFound) = 1">
-<!--                <xsl:variable name="className" select="$attributesWithSameName/../../@name"/>
-                <xsl:variable name="classURI"
-                    select="f:buildURIfromLexicalQName($className, fn:true())"/>-->
                 <xsl:variable name="attributeType"
                     select="$attributesWithSameName[1]/properties/@type"/>
 
