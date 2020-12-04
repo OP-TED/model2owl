@@ -477,13 +477,6 @@ WG Approval 28/04/2020</rdfs:comment>
       </sh:property>
       <sh:property>
          <sh:PropertyShape>
-            <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasID"/>
-            <sh:name>I d</sh:name>
-            <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:minCount>
-         </sh:PropertyShape>
-      </sh:property>
-      <sh:property>
-         <sh:PropertyShape>
             <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasType"/>
             <sh:name>Type</sh:name>
             <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#AnyURI"/>
@@ -2999,7 +2992,7 @@ WG Approval 23/05/2019
 WG Approval 23/05/2019
 </rdfs:comment>
       <sh:sparql rdf:parseType="Resource">
-         <sh:select>SELECT ?this WHERE { ?this a http://data.europa.eu/a4g/ontology#Notice . }
+         <sh:select>SELECT ?this WHERE { ?this a &lt;http://data.europa.eu/a4g/ontology#Notice&gt; . }
             </sh:select>
       </sh:sparql>
       <sh:property>
@@ -5448,7 +5441,7 @@ Several techniques can be combined in one single procurement procedure (e.g. eAu
 WG Approval 19/09/2019 
 </rdfs:comment>
       <sh:sparql rdf:parseType="Resource">
-         <sh:select>SELECT ?this WHERE { ?this a http://data.europa.eu/a4g/ontology#Technique . }
+         <sh:select>SELECT ?this WHERE { ?this a &lt;http://data.europa.eu/a4g/ontology#Technique&gt; . }
             </sh:select>
       </sh:sparql>
       <sh:property>
