@@ -29,7 +29,6 @@
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
         <xsl:variable name="class" select="."/>
-        <xsl:variable name="className" select="f:lexicalQNameToWords($class/@name)"/>
         <xsl:variable name="classURI" select="f:buildURIFromElement($class, fn:true(), fn:true())"/>
         <xsl:variable name="documentation"
             select="f:formatDocString($class/properties/@documentation)"/>
@@ -37,7 +36,7 @@
         <sh:NodeShape rdf:about="{$classURI}">
             <sh:targetClass rdf:resource="{$classURI}"/>
             <xsl:call-template name="elementName">
-                <xsl:with-param name="name" select="$className"/>
+                <xsl:with-param name="name" select="f:lexicalQNameToWords($class/@name)"/>
             </xsl:call-template>
             <xsl:if test="$documentation != ''">
                 <xsl:call-template name="elementDescription">
@@ -47,7 +46,7 @@
             <xsl:if
                 test="$class/properties/@stereotype = ('Abstract', 'abstract class', 'abstract')">
                 <xsl:call-template name="abstractClassDeclaration">
-                    <xsl:with-param name="className" select="$className"/>
+                    <xsl:with-param name="classURI" select="$classURI"/>
                 </xsl:call-template>
             </xsl:if>
             <xsl:apply-templates select="attributes/attribute"/>
@@ -111,13 +110,13 @@
         <xd:desc>[Rule 3]-(Class in data shape layer) . Specify declaration axiom for UML Class as
             SHACL Node Shape with a SPARQL constraint that selects all instances of this
             class</xd:desc>
-        <xd:param name="className"/>
+        <xd:param name="classURI"/>
     </xd:doc>
 
     <xsl:template name="abstractClassDeclaration">
-        <xsl:param name="className"/>
+        <xsl:param name="classURI"/>
         <sh:sparql rdf:parseType="Resource">
-            <sh:select>SELECT ?this WHERE { ?this a <xsl:value-of select="$className"/> . }
+            <sh:select>SELECT ?this WHERE { ?this a <xsl:value-of select="$classURI"/> . }
             </sh:select>
         </sh:sparql>
     </xsl:template>
@@ -146,7 +145,7 @@
                     if ($attributeType = $controlledListType) then
                         f:buildURIfromLexicalQName('skos:Concept', fn:true())
                     else
-                        f:buildURIfromLexicalQName($datatype, fn:false())"
+                        f:buildURIfromLexicalQName($datatype, fn:true())"
             />
 
             <sh:property>

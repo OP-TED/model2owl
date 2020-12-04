@@ -54,8 +54,7 @@
 
     <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
     <xsl:variable name="acceptableTypesForObjectProperties"
-        select="('epo:Quantity', 
-                 'epo:Measure', 'epo:Identifier', 'epo:Amount')"/>
+        select="('epo:Quantity', 'epo:Measure', 'epo:Identifier', 'epo:Amount')"/>
 <!--    the type of attributes which takes values from a controlled list-->
     <xsl:variable name="controlledListType" select="'epo:Code'"/>
     <!-- Acceptable stereotypes -->

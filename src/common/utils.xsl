@@ -242,11 +242,13 @@
         <xsl:param name="element" as="node()"/>
         <xsl:param name="isPascalCase" as="xs:boolean"/>
         <xsl:param name="isDefaultNamespaceContextualised" as="xs:boolean"/>
-        
-        <xsl:sequence select="f:buildURIFromNode($element,$element/@name,$isPascalCase,$isDefaultNamespaceContextualised)"/>
+
+        <xsl:sequence
+            select="f:buildURIFromNode($element, $element/@name, $isPascalCase, $isDefaultNamespaceContextualised)"
+        />
     </xsl:function>
-    
-    
+
+
     <xd:doc>
         <xd:desc> Create the attribute URI. If the attribute name starts with an upper case then
             prepent 'has' prefix to it.</xd:desc>
@@ -258,7 +260,7 @@
         <xsl:param name="attribute" as="node()"/>
         <xsl:param name="isPascalCase" as="xs:boolean"/>
         <xsl:param name="isDefaultNamespaceContextualised" as="xs:boolean"/>
-                
+
         <xsl:variable name="localName" select="f:getLocalSegmentForElements($attribute)"/>
         <xsl:variable name="expandedLocalName"
             select="
@@ -266,14 +268,13 @@
                     fn:concat('has', $localName)
                 else
                     $localName
-                "
-        />
+                "/>
         <xsl:sequence
             select="f:buildURIFromNode($attribute, $expandedLocalName, $isPascalCase, $isDefaultNamespaceContextualised)"
         />
     </xsl:function>
-    
-    
+
+
     <xd:doc>
         <xd:desc>Create an URI from an XMI node that has name attribute</xd:desc>
         <xd:param name="element"/>
@@ -286,24 +287,23 @@
         <xsl:param name="elementName" as="xs:string"/>
         <xsl:param name="isPascalCase" as="xs:boolean"/>
         <xsl:param name="isDefaultNamespaceContextualised" as="xs:boolean"/>
-        
+
         <xsl:variable name="defaultNamespacePrefix"
             select="
-            if ($isDefaultNamespaceContextualised) then
-            f:getContainingPackageName($element)
-            else
-            fn:string('')"/>
-        
+                if ($isDefaultNamespaceContextualised) then
+                    f:getContainingPackageName($element)
+                else
+                    fn:string('')"/>
+
         <xsl:variable name="normalisedElementName"
             select="
                 if (contains($elementName, ':')) then
                     $elementName
                 else
-                    concat($defaultNamespacePrefix, ':', $elementName)"
-        />
-        
+                    concat($defaultNamespacePrefix, ':', $elementName)"/>
+
         <xsl:sequence select="f:buildURIfromLexicalQName($normalisedElementName, $isPascalCase)"/>
-    </xsl:function>    
+    </xsl:function>
 
 
     <xd:doc>
@@ -356,7 +356,7 @@
                 ))"
         />
     </xsl:function>
-    
+
     <xd:doc>
         <xd:desc/>
         <xd:param name="multiplicityString"/>
@@ -372,7 +372,7 @@
                     $min"
         />
     </xsl:function>
-    
+
     <xd:doc>
         <xd:desc/>
         <xd:param name="multiplicityString"/>
@@ -388,7 +388,7 @@
                     $max"
         />
     </xsl:function>
-    
+
     <xd:doc>
         <xd:desc/>
         <xd:param name="multiplicityString"/>
@@ -403,19 +403,38 @@
                     if (not(boolean($multiplicityString)) or $multiplicityString = '' or $multiplicityString = '*') then
                         ()
                     else
-                    fn:concat($multiplicityString, '..', $multiplicityString)"
+                        fn:concat($multiplicityString, '..', $multiplicityString)"
         />
     </xsl:function>
-    
-    
+
+
     <xd:doc>
         <xd:desc>Compare strings from a sequence to see if they are equal </xd:desc>
         <xd:param name="stringToCompare"/>
     </xd:doc>
     <xsl:function name="f:areStringsEqual" as="xs:boolean">
-        <xsl:param name="stringToCompare" as="xs:string*" />
+        <xsl:param name="stringToCompare" as="xs:string*"/>
         <xsl:variable name="firstString" select="$stringToCompare[1]"/>
-        <xsl:sequence select="every $i in $stringToCompare satisfies $i=$firstString"/>
+        <xsl:sequence
+            select="
+                every $i in $stringToCompare
+                    satisfies $i = $firstString"
+        />
     </xsl:function>
-    
+
+    <xd:doc>
+        <xd:desc/>
+        <xd:param name="attributeMultiplicityValue"/>
+    </xd:doc>
+    <xsl:function name="f:getAttributeValueToDisplay">
+        <xsl:param name="attributeMultiplicityValue"/>
+        <xsl:sequence
+            select="
+                if ($attributeMultiplicityValue = ('', '*', '0')) then
+                    ()
+                else
+                    $attributeMultiplicityValue"
+        />
+    </xsl:function>
+
 </xsl:stylesheet>

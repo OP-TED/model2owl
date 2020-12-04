@@ -88,9 +88,9 @@
    
     <x:scenario label="Scenario 1 for testing function getNamespaceURI ">
         <x:call function="f:getNamespaceURI">
-            <x:param name="prefix">ccev</x:param>
+            <x:param name="prefix">nuts</x:param>
         </x:call>
-        <x:expect label="ccev base name" select="'http://data.europa.eu/m8g/'"/>
+        <x:expect label="ccev base name" select="'http://data.europa.eu/nuts/'"/>
     </x:scenario>
     
     <x:scenario label="Scenario 2 for testing function getNamespaceURI ">
@@ -119,7 +119,7 @@
 
     <x:scenario label="Scenario 1 for testing function getNamespaceValues ">
         <x:call function="f:getNamespaceValues">
-            <x:param name="prefix">ccev</x:param>
+            <x:param name="prefix">cccev</x:param>
             <x:param name="namespaceDefinitions" href="../../../config/test-config/namespaces.xml" select="/"/>
         </x:call>
         <x:expect label="ccev base name" select="'http://data.europa.eu/m8g/'"/>
@@ -354,7 +354,7 @@
         <x:call function="f:getMultiplicityMinFromString">
             <x:param name="multiplicityString" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[41]/target/type/@multiplicity"/>
         </x:call>
-        <x:expect label="result" select="string('0')"/>
+        <x:expect label="result" select="()"/>
     </x:scenario>
     
     <x:scenario label="Scenario for getting the max value for multiplicity">
@@ -399,6 +399,20 @@
             <x:param name="isDefaultNamespaceContextualised" select="fn:true()"/>
         </x:call>
         <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#hasTimezoneOffset')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for getting the correct value to display for attribute multiplicity (min = 0)">
+        <x:call function="f:getAttributeValueToDisplay">
+            <x:param name="attributeMultiplicityValue" href="../../testData/ePO-CM-v2.0.1-2020-12-03.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]/attributes[1]/attribute[2]/bounds[1]/@lower"/>
+        </x:call>
+        <x:expect label="result" select="()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for getting the correct value to display for attribute multiplicity (max = *)">
+        <x:call function="f:getAttributeValueToDisplay">
+            <x:param name="attributeMultiplicityValue" href="../../testData/ePO-CM-v2.0.1-2020-12-03.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]/attributes[1]/attribute[2]/bounds[1]/@upper"/>
+        </x:call>
+        <x:expect label="result" select="()"/>
     </x:scenario>
     
 </x:description>
