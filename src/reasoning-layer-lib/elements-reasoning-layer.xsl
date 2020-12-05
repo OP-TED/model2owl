@@ -97,7 +97,7 @@
         <xsl:choose>
             <xsl:when test="fn:count($attributesWithSameName) = 1">
                 <rdf:Description rdf:about="{$attributeURI}">
-                    <rdfs:domain rdf:resource="{f:buildURIfromLexicalQName($attributesWithSameName/../../@name, fn:true())}"/>
+                    <rdfs:domain rdf:resource="{f:buildURIfromLexicalQName($attributesWithSameName/../../@name, fn:true(), fn:true())}"/>
                 </rdf:Description>
             </xsl:when>
             <xsl:otherwise>
@@ -106,7 +106,7 @@
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
                             <xsl:for-each select="$attributesWithSameName">
-                                <rdf:Description rdf:about="{f:buildURIfromLexicalQName(./../../@name, fn:true())}"/> 
+                                <rdf:Description rdf:about="{f:buildURIfromLexicalQName(./../../@name, fn:true(), fn:true())}"/> 
                             </xsl:for-each>
                         </owl:unionOf>
                     </owl:Class>
@@ -145,9 +145,9 @@
                 <xsl:variable name="attributeTypeURI"
                     select="
                         if ($attributeType = $controlledListType) then
-                            f:buildURIfromLexicalQName('skos:Concept', fn:true())
+                        f:buildURIfromLexicalQName('skos:Concept', fn:true(), fn:true())
                         else
-                            f:buildURIfromLexicalQName($attributeTypeChecked, fn:true())"
+                        f:buildURIfromLexicalQName($attributeTypeChecked, fn:true(), fn:false())"
                 />
 
                 <rdf:Description rdf:about="{$attributeURI}">
@@ -163,9 +163,9 @@
                                     <xsl:variable name="attributeTypeURI"
                                         select="
                                         if (. = $controlledListType) then
-                                        f:buildURIfromLexicalQName('skos:Concept', fn:true())
+                                        f:buildURIfromLexicalQName('skos:Concept', fn:true(), fn:true())
                                         else
-                                        f:buildURIfromLexicalQName(., fn:true())"
+                                        f:buildURIfromLexicalQName(., fn:true(), fn:false())"
                                     />
                                     <rdf:Description rdf:about="{$attributeTypeURI}"/> 
                                 </xsl:for-each>
@@ -194,9 +194,9 @@
         <xsl:variable name="attributeMultiplicityMax"
             select="f:getAttributeValueToDisplay($attribute/bounds/@upper)"/>
         <xsl:variable name="className" select="$attribute/../../@name"/>
-        <xsl:variable name="classURI" select="f:buildURIfromLexicalQName($className, fn:true())"/>
+        <xsl:variable name="classURI" select="f:buildURIfromLexicalQName($className, fn:true(), fn:true())"/>
         <xsl:variable name="datatypeURI"
-            select="f:buildURIfromLexicalQName('xsd:integer', fn:false())"/>
+            select="f:buildURIfromLexicalQName('xsd:integer', fn:false(), fn:true())"/>
         <xsl:variable name="attributeURI"
             select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
         <!--if both min and max vaules are present choose whether they are equal or not-->

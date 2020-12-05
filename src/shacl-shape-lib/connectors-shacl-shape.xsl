@@ -71,7 +71,7 @@
     <xsl:template name="connectorRange">
         <xsl:param name="connector"/>
         <xsl:variable name="sourceClassURI"
-            select="f:buildURIfromLexicalQName($connector/source/model/@name, fn:true())"/>
+            select="f:buildURIfromLexicalQName($connector/source/model/@name, fn:true(), fn:true())"/>
         <xsl:variable name="sourceRole"
             select="
                 if (boolean($connector/source/role/@name)) then
@@ -81,12 +81,12 @@
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
-                    f:buildURIfromLexicalQName($sourceRole, fn:false())
+                f:buildURIfromLexicalQName($sourceRole, fn:false(), fn:true())
                 else
                     ()"
         />
         <xsl:variable name="targetClassURI"
-            select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true())"/>
+            select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true(), fn:true())"/>
         <xsl:variable name="targetRole"
             select="
                 if (boolean($connector/target/role/@name)) then
@@ -94,7 +94,7 @@
                 else
                     concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
         <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
+            select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
 
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
@@ -159,7 +159,7 @@
         <xsl:variable name="sourceMultiplicityMax"
             select="f:getMultiplicityMaxFromString($sourceMultiplicity)"/>
         <xsl:variable name="sourceClassURI"
-            select="f:buildURIfromLexicalQName($connector/source/model/@name, fn:true())"/>
+            select="f:buildURIfromLexicalQName($connector/source/model/@name, fn:true(), fn:true())"/>
       <!--  <xsl:value-of select="$connector/target/type/@multiplicity"/>-->
         <!--<xsl:value-of select="$targetMultiplicity"/>-->
         <xsl:variable name="sourceRole"
@@ -172,11 +172,11 @@
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
-                    f:buildURIfromLexicalQName($sourceRole, fn:false())
+                f:buildURIfromLexicalQName($sourceRole, fn:false(), fn:true())
                 else
                     ()"/>
         <xsl:variable name="targetClassURI"
-            select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true())"/>
+            select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true(), fn:true())"/>
         <xsl:variable name="targetRole"
             select="
                 if (boolean($connector/target/role/@name)) then
@@ -184,10 +184,10 @@
                 else
                     concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
         <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
+            select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:variable name="datatypeURI"
-            select="f:buildURIfromLexicalQName('xsd:integer', fn:false())"/>
+            select="f:buildURIfromLexicalQName('xsd:integer', fn:false(), fn:true())"/>
         <!--        this is first property shape content-->
         <xsl:variable name="sourceDestinationRestrictionContent" as="item()*">
             <xsl:if test="boolean($targetMultiplicityMax)">
@@ -293,7 +293,7 @@
     <xsl:template name="connectorAsymmetry">
         <xsl:param name="connector"/>
         <xsl:variable name="sourceClassURI"
-            select="f:buildURIfromLexicalQName($connector/source/model/@name, fn:true())"/>
+            select="f:buildURIfromLexicalQName($connector/source/model/@name, fn:true(), fn:true())"/>
         <xsl:variable name="sourceRole"
             select="
                 if (boolean($connector/source/role/@name)) then
@@ -305,12 +305,12 @@
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
-                    f:buildURIfromLexicalQName($sourceRole, fn:false())
+                f:buildURIfromLexicalQName($sourceRole, fn:false(), fn:true())
                 else
                     ()"
         />
         <xsl:variable name="targetClassURI"
-            select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true())"/>
+            select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true(), fn:true())"/>
         <xsl:variable name="targetRole"
             select="
             if (boolean($connector/target/role/@name)) then
@@ -318,7 +318,7 @@
             else
             concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
         <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($targetRole, fn:false())"/>
+            select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
         
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
