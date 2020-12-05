@@ -78,13 +78,13 @@
                 if ($targetConnector/target/role/not(@name) = fn:true()) then
                     ()
                 else
-                    f:buildURIfromLexicalQName($targetConnector/target/role/@name, fn:false())"/>
+                f:buildURIfromLexicalQName($targetConnector/target/role/@name, fn:false(), fn:true())"/>
         <xsl:variable name="sourceConnectorTargetUri"
             select="
                 if ($sourceConnector/target/role/not(@name) = fn:true()) then
                     ()
                 else
-                    f:buildURIfromLexicalQName($sourceConnector/target/role/@name, fn:false())"/>
+                f:buildURIfromLexicalQName($sourceConnector/target/role/@name, fn:false(), fn:true())"/>
         <xsl:if test="$targetConnectorTargetUri and $sourceConnectorTargetUri">
             <owl:ObjectProperty rdf:about="{$sourceConnectorTargetUri}">
                 <rdfs:subPropertyOf rdf:resource="{$targetConnectorTargetUri}"/>
@@ -95,13 +95,13 @@
                 if ($targetConnector/source/role/not(@name) = fn:true()) then
                     ()
                 else
-                    f:buildURIfromLexicalQName($targetConnector/source/role/@name, fn:false())"/>
+                f:buildURIfromLexicalQName($targetConnector/source/role/@name, fn:false(), fn:true())"/>
         <xsl:variable name="sourceConnectorSourceUri"
             select="
                 if ($sourceConnector/source/role/not(@name) = fn:true()) then
                     ()
                 else
-                    f:buildURIfromLexicalQName($sourceConnector/source/role/@name, fn:false())"/>
+                f:buildURIfromLexicalQName($sourceConnector/source/role/@name, fn:false(), fn:true())"/>
         <xsl:if test="$targetConnectorSourceUri and $sourceConnectorSourceUri">
             <owl:ObjectProperty rdf:about="{$sourceConnectorSourceUri}">
                 <rdfs:subPropertyOf rdf:resource="{$targetConnectorSourceUri}"/>
@@ -138,7 +138,7 @@
         <xsl:variable name="connectorsWithSameName"
             select="f:getConnectorByName($connectorName, $root)"/>
         <xsl:variable name="roleURI"
-            select="f:buildURIfromLexicalQName(f:lexicalQNameToWords($connectorName), fn:false())"/>
+            select="f:buildURIfromLexicalQName(f:lexicalQNameToWords($connectorName), fn:false(), fn:true())"/>
 
         <xsl:variable name="connectorDocumentations" as="xs:string*"
             select="

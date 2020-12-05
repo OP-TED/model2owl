@@ -29,7 +29,6 @@
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
         <xsl:variable name="class" select="."/>
-        <xsl:variable name="className" select="f:lexicalQNameToWords($class/@name)"/>
         <xsl:variable name="classURI" select="f:buildURIFromElement($class, fn:true(), fn:true())"/>
         <xsl:variable name="documentation"
             select="f:formatDocString($class/properties/@documentation)"/>
@@ -37,7 +36,7 @@
         <sh:NodeShape rdf:about="{$classURI}">
             <sh:targetClass rdf:resource="{$classURI}"/>
             <xsl:call-template name="elementName">
-                <xsl:with-param name="name" select="$className"/>
+                <xsl:with-param name="name" select="f:lexicalQNameToWords($class/@name)"/>
             </xsl:call-template>
             <xsl:if test="$documentation != ''">
                 <xsl:call-template name="elementDescription">
@@ -47,7 +46,7 @@
             <xsl:if
                 test="$class/properties/@stereotype = ('Abstract', 'abstract class', 'abstract')">
                 <xsl:call-template name="abstractClassDeclaration">
-                    <xsl:with-param name="className" select="$className"/>
+                    <xsl:with-param name="classURI" select="$classURI"/>
                 </xsl:call-template>
             </xsl:if>
             <xsl:apply-templates select="attributes/attribute"/>
@@ -111,13 +110,13 @@
         <xd:desc>[Rule 3]-(Class in data shape layer) . Specify declaration axiom for UML Class as
             SHACL Node Shape with a SPARQL constraint that selects all instances of this
             class</xd:desc>
-        <xd:param name="className"/>
+        <xd:param name="classURI"/>
     </xd:doc>
 
     <xsl:template name="abstractClassDeclaration">
-        <xsl:param name="className"/>
+        <xsl:param name="classURI"/>
         <sh:sparql rdf:parseType="Resource">
-            <sh:select>SELECT ?this WHERE { ?this a <xsl:value-of select="$className"/> . }
+            <sh:select>SELECT ?this WHERE { ?this a &lt;<xsl:value-of select="$classURI"/>&gt; . }
             </sh:select>
         </sh:sparql>
     </xsl:template>
@@ -144,9 +143,9 @@
             <xsl:variable name="datatypeURI"
                 select="
                     if ($attributeType = $controlledListType) then
-                        f:buildURIfromLexicalQName('skos:Concept', fn:true())
+                    f:buildURIfromLexicalQName('skos:Concept', fn:true(), fn:true())
                     else
-                        f:buildURIfromLexicalQName($datatype, fn:false())"
+                    f:buildURIfromLexicalQName($datatype, fn:true(), fn:false())"
             />
 
             <sh:property>
@@ -167,9 +166,9 @@
             <xsl:variable name="classURI"
                 select="
                     if ($attributeType = $controlledListType) then
-                        f:buildURIfromLexicalQName('skos:Concept', fn:true())
+                    f:buildURIfromLexicalQName('skos:Concept', fn:true(), fn:true())
                     else
-                        f:buildURIfromLexicalQName($attributeType, fn:true())"/>
+                    f:buildURIfromLexicalQName($attributeType, fn:true(), fn:false())"/>
             <sh:property>
                 <sh:PropertyShape>
                     <sh:path rdf:resource="{$attributeURI}"/>
@@ -192,16 +191,16 @@
 
     <xsl:template name="attributeMultiplicity">
         <xsl:param name="attribute"/>
-        <xsl:variable name="attributeMultiplicityMin" select="$attribute/bounds/@lower"/>
-        <xsl:variable name="attributeMultiplicityMax" select="$attribute/bounds/@upper"/>
+        <xsl:variable name="attributeMultiplicityMin" select="f:getAttributeValueToDisplay($attribute/bounds/@lower)"/>
+        <xsl:variable name="attributeMultiplicityMax" select="f:getAttributeValueToDisplay($attribute/bounds/@upper)"/>
         <xsl:variable name="datatypeURI"
-            select="f:buildURIfromLexicalQName('xsd:integer', fn:false())"/>
+            select="f:buildURIfromLexicalQName('xsd:integer', fn:false(), fn:true())"/>
         <xsl:variable name="attributeURI"
             select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
         <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
         
         <xsl:variable name="propertyRestriction" as="item()*">
-            <xsl:if test="$attributeMultiplicityMin != '*' and $attributeMultiplicityMax != '*'">
+            <xsl:if test="boolean($attributeMultiplicityMin) and boolean($attributeMultiplicityMax)">
                 <sh:minCount rdf:datatype="{$datatypeURI}">
                     <xsl:value-of select="$attributeMultiplicityMin"/>
                 </sh:minCount>
@@ -209,12 +208,13 @@
                     <xsl:value-of select="$attributeMultiplicityMax"/>
                 </sh:maxCount>
             </xsl:if>
-            <xsl:if test="$attributeMultiplicityMin = '*'">
+            
+            <xsl:if test="not(boolean($attributeMultiplicityMin)) and boolean($attributeMultiplicityMax)">
                 <sh:maxCount rdf:datatype="{$datatypeURI}">
                     <xsl:value-of select="$attributeMultiplicityMax"/>
                 </sh:maxCount>
             </xsl:if>
-            <xsl:if test="$attributeMultiplicityMax = '*'">
+            <xsl:if test="not(boolean($attributeMultiplicityMax)) and boolean($attributeMultiplicityMin)">
                 <sh:minCount rdf:datatype="{$datatypeURI}">
                     <xsl:value-of select="$attributeMultiplicityMin"/>
                 </sh:minCount>

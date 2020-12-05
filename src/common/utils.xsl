@@ -110,10 +110,12 @@
         <xd:desc>Normalises the lexicalised QName string.</xd:desc>
         <xd:param name="lexicalQName"/>
         <xd:param name="isPascalCase"/>
+        <xd:param name="changeCase"/>
     </xd:doc>
     <xsl:function name="f:normaliseLexicalQName" as="xs:string">
         <xsl:param name="lexicalQName" as="xs:string"/>
         <xsl:param name="isPascalCase" as="xs:boolean"/>
+        <xsl:param name="changeCase" as="xs:boolean"/>
 
         <xsl:variable name="newPrefix">
             <xsl:variable name="prefix" select="fn:substring-before($lexicalQName, ':')"/>
@@ -152,10 +154,13 @@
             <xsl:value-of
                 select="
                     if (boolean($safeCharLocalSegment)) then
-                        if ($isPascalCase = fn:true()) then
+                        if ($isPascalCase and $changeCase) then
                             f:pascalCaseString($safeCharLocalSegment)
                         else
-                            f:camelCaseString($safeCharLocalSegment)
+                            if (not($isPascalCase) and $changeCase) then
+                                f:camelCaseString($safeCharLocalSegment)
+                            else
+                                $safeCharLocalSegment
                     else
                         $mockUnknownPrefix"
             />
@@ -172,13 +177,15 @@
             global resource '$namespacePrefixes' or the default namespace is used.</xd:desc>
         <xd:param name="lexicalQName"/>
         <xd:param name="isPascalCase"/>
+        <xd:param name="changeCase"/>
     </xd:doc>
     <xsl:function name="f:buildQNameFromLexicalQName" as="xs:QName">
         <xsl:param name="lexicalQName" as="xs:string"/>
         <xsl:param name="isPascalCase" as="xs:boolean"/>
+        <xsl:param name="changeCase" as="xs:boolean"/>
 
         <xsl:variable name="normalisedLexicalQName"
-            select="f:normaliseLexicalQName($lexicalQName, $isPascalCase)"/>
+            select="f:normaliseLexicalQName($lexicalQName, $isPascalCase, $changeCase)"/>
 
         <xsl:variable name="namespaceURI"
             select="f:getNamespaceURI(fn:substring-before($normalisedLexicalQName, ':'))"/>
@@ -195,13 +202,15 @@
             'fn:resolve-uri' does. Finally concatenation solution WON! </xd:desc>
         <xd:param name="lexicalQName"/>
         <xd:param name="isPascalCase"/>
+        <xd:param name="changeCase"/>
     </xd:doc>
     <xsl:function name="f:buildURIfromLexicalQName" as="xs:anyURI">
         <xsl:param name="lexicalQName" as="xs:string"/>
         <xsl:param name="isPascalCase" as="xs:boolean"/>
+        <xsl:param name="changeCase" as="xs:boolean"/>
 
         <xsl:variable name="qname"
-            select="f:buildQNameFromLexicalQName($lexicalQName, $isPascalCase)"/>
+            select="f:buildQNameFromLexicalQName($lexicalQName, $isPascalCase, $changeCase)"/>
         <xsl:variable name="namespaceURI" select="fn:namespace-uri-from-QName($qname)"/>
         <xsl:variable name="fragmentIdentifier"
             select="substring($namespaceURI, string-length($namespaceURI), 1)"/>
@@ -212,17 +221,6 @@
                 else
                     xs:anyURI(fn:concat(fn:namespace-uri-from-QName($qname), $defaultDelimiter, fn:local-name-from-QName($qname)))
                 "/>
-        <!--        <xsl:sequence
-            select="
-            if (substring($namespaceURI, string-length($namespaceURI), 1) = '#') then
-            xs:anyURI(fn:concat(fn:namespace-uri-from-QName($qname), fn:local-name-from-QName($qname)))
-            else
-            if (substring($namespaceURI, string-length($namespaceURI), 1) = '/') then
-            xs:anyURI(fn:concat(fn:namespace-uri-from-QName($qname), fn:local-name-from-QName($qname)))
-            else
-            xs:anyURI(fn:concat($mockUnknownDomain, fn:local-name-from-QName($qname)))
-            "
-        />-->
     </xsl:function>
 
     <xd:doc>
@@ -242,11 +240,13 @@
         <xsl:param name="element" as="node()"/>
         <xsl:param name="isPascalCase" as="xs:boolean"/>
         <xsl:param name="isDefaultNamespaceContextualised" as="xs:boolean"/>
-        
-        <xsl:sequence select="f:buildURIFromNode($element,$element/@name,$isPascalCase,$isDefaultNamespaceContextualised)"/>
+
+        <xsl:sequence
+            select="f:buildURIFromNode($element, $element/@name, $isPascalCase, $isDefaultNamespaceContextualised)"
+        />
     </xsl:function>
-    
-    
+
+
     <xd:doc>
         <xd:desc> Create the attribute URI. If the attribute name starts with an upper case then
             prepent 'has' prefix to it.</xd:desc>
@@ -258,7 +258,7 @@
         <xsl:param name="attribute" as="node()"/>
         <xsl:param name="isPascalCase" as="xs:boolean"/>
         <xsl:param name="isDefaultNamespaceContextualised" as="xs:boolean"/>
-                
+
         <xsl:variable name="localName" select="f:getLocalSegmentForElements($attribute)"/>
         <xsl:variable name="expandedLocalName"
             select="
@@ -266,14 +266,13 @@
                     fn:concat('has', $localName)
                 else
                     $localName
-                "
-        />
+                "/>
         <xsl:sequence
             select="f:buildURIFromNode($attribute, $expandedLocalName, $isPascalCase, $isDefaultNamespaceContextualised)"
         />
     </xsl:function>
-    
-    
+
+
     <xd:doc>
         <xd:desc>Create an URI from an XMI node that has name attribute</xd:desc>
         <xd:param name="element"/>
@@ -286,24 +285,23 @@
         <xsl:param name="elementName" as="xs:string"/>
         <xsl:param name="isPascalCase" as="xs:boolean"/>
         <xsl:param name="isDefaultNamespaceContextualised" as="xs:boolean"/>
-        
+
         <xsl:variable name="defaultNamespacePrefix"
             select="
-            if ($isDefaultNamespaceContextualised) then
-            f:getContainingPackageName($element)
-            else
-            fn:string('')"/>
-        
+                if ($isDefaultNamespaceContextualised) then
+                    f:getContainingPackageName($element)
+                else
+                    fn:string('')"/>
+
         <xsl:variable name="normalisedElementName"
             select="
                 if (contains($elementName, ':')) then
                     $elementName
                 else
-                    concat($defaultNamespacePrefix, ':', $elementName)"
-        />
-        
-        <xsl:sequence select="f:buildURIfromLexicalQName($normalisedElementName, $isPascalCase)"/>
-    </xsl:function>    
+                    concat($defaultNamespacePrefix, ':', $elementName)"/>
+
+        <xsl:sequence select="f:buildURIfromLexicalQName($normalisedElementName, $isPascalCase, fn:true())"/>
+    </xsl:function>
 
 
     <xd:doc>
@@ -351,12 +349,12 @@
                 fn:lower-case(
                 functx:camel-case-to-words(
                 fn:local-name-from-QName(
-                f:buildQNameFromLexicalQName($lexicalqName, fn:true())
+                f:buildQNameFromLexicalQName($lexicalqName, fn:true(), fn:true())
                 ), ' ')
                 ))"
         />
     </xsl:function>
-    
+
     <xd:doc>
         <xd:desc/>
         <xd:param name="multiplicityString"/>
@@ -372,7 +370,7 @@
                     $min"
         />
     </xsl:function>
-    
+
     <xd:doc>
         <xd:desc/>
         <xd:param name="multiplicityString"/>
@@ -388,7 +386,7 @@
                     $max"
         />
     </xsl:function>
-    
+
     <xd:doc>
         <xd:desc/>
         <xd:param name="multiplicityString"/>
@@ -403,19 +401,39 @@
                     if (not(boolean($multiplicityString)) or $multiplicityString = '' or $multiplicityString = '*') then
                         ()
                     else
-                    fn:concat($multiplicityString, '..', $multiplicityString)"
+                        fn:concat($multiplicityString, '..', $multiplicityString)"
         />
     </xsl:function>
-    
-    
+
+
     <xd:doc>
         <xd:desc>Compare strings from a sequence to see if they are equal </xd:desc>
         <xd:param name="stringToCompare"/>
     </xd:doc>
     <xsl:function name="f:areStringsEqual" as="xs:boolean">
-        <xsl:param name="stringToCompare" as="xs:string*" />
+        <xsl:param name="stringToCompare" as="xs:string*"/>
         <xsl:variable name="firstString" select="$stringToCompare[1]"/>
-        <xsl:sequence select="every $i in $stringToCompare satisfies $i=$firstString"/>
+        <xsl:sequence
+            select="
+                every $i in $stringToCompare
+                    satisfies $i = $firstString"
+        />
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc/>
+        <xd:param name="attributeMultiplicityValue"/>
+    </xd:doc>
+    <xsl:function name="f:getAttributeValueToDisplay">
+        <xsl:param name="attributeMultiplicityValue"/>
+        <xsl:sequence
+            select="
+                if ($attributeMultiplicityValue = ('', '*', '0')) then
+                    ()
+                else
+                    $attributeMultiplicityValue"
+        />
     </xsl:function>
     
+
 </xsl:stylesheet>

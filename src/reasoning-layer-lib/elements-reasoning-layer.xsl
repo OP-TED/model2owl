@@ -97,7 +97,7 @@
         <xsl:choose>
             <xsl:when test="fn:count($attributesWithSameName) = 1">
                 <rdf:Description rdf:about="{$attributeURI}">
-                    <rdfs:domain rdf:resource="{f:buildURIfromLexicalQName($attributesWithSameName/../../@name, fn:true())}"/>
+                    <rdfs:domain rdf:resource="{f:buildURIfromLexicalQName($attributesWithSameName/../../@name, fn:true(), fn:true())}"/>
                 </rdf:Description>
             </xsl:when>
             <xsl:otherwise>
@@ -106,7 +106,7 @@
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
                             <xsl:for-each select="$attributesWithSameName">
-                                <rdf:Description rdf:about="{f:buildURIfromLexicalQName(./../../@name, fn:true())}"/> 
+                                <rdf:Description rdf:about="{f:buildURIfromLexicalQName(./../../@name, fn:true(), fn:true())}"/> 
                             </xsl:for-each>
                         </owl:unionOf>
                     </owl:Class>
@@ -145,9 +145,9 @@
                 <xsl:variable name="attributeTypeURI"
                     select="
                         if ($attributeType = $controlledListType) then
-                            f:buildURIfromLexicalQName('skos:Concept', fn:true())
+                        f:buildURIfromLexicalQName('skos:Concept', fn:true(), fn:true())
                         else
-                            f:buildURIfromLexicalQName($attributeTypeChecked, fn:false())"
+                        f:buildURIfromLexicalQName($attributeTypeChecked, fn:true(), fn:false())"
                 />
 
                 <rdf:Description rdf:about="{$attributeURI}">
@@ -163,9 +163,9 @@
                                     <xsl:variable name="attributeTypeURI"
                                         select="
                                         if (. = $controlledListType) then
-                                        f:buildURIfromLexicalQName('skos:Concept', fn:true())
+                                        f:buildURIfromLexicalQName('skos:Concept', fn:true(), fn:true())
                                         else
-                                        f:buildURIfromLexicalQName(., fn:false())"
+                                        f:buildURIfromLexicalQName(., fn:true(), fn:false())"
                                     />
                                     <rdf:Description rdf:about="{$attributeTypeURI}"/> 
                                 </xsl:for-each>
@@ -189,17 +189,20 @@
 
     <xsl:template name="attributeMultiplicity">
         <xsl:param name="attribute"/>
-        <xsl:variable name="attributeMultiplicityMin" select="$attribute/bounds/@lower"/>
-        <xsl:variable name="attributeMultiplicityMax" select="$attribute/bounds/@upper"/>
+        <xsl:variable name="attributeMultiplicityMin"
+            select="f:getAttributeValueToDisplay($attribute/bounds/@lower)"/>
+        <xsl:variable name="attributeMultiplicityMax"
+            select="f:getAttributeValueToDisplay($attribute/bounds/@upper)"/>
         <xsl:variable name="className" select="$attribute/../../@name"/>
-        <xsl:variable name="classURI" select="f:buildURIfromLexicalQName($className, fn:true())"/>
+        <xsl:variable name="classURI" select="f:buildURIfromLexicalQName($className, fn:true(), fn:true())"/>
         <xsl:variable name="datatypeURI"
-            select="f:buildURIfromLexicalQName('xsd:integer', fn:false())"/>
+            select="f:buildURIfromLexicalQName('xsd:integer', fn:false(), fn:true())"/>
         <xsl:variable name="attributeURI"
             select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
-        <owl:Class rdf:about="{$classURI}">
-            <rdfs:subClassOf>
-                <xsl:if test="$attributeMultiplicityMin != '*' and $attributeMultiplicityMax != '*'">
+        <!--if both min and max vaules are present choose whether they are equal or not-->
+        <xsl:if test="boolean($attributeMultiplicityMin) and boolean($attributeMultiplicityMax)">
+            <owl:Class rdf:about="{$classURI}">
+                <rdfs:subClassOf>
                     <xsl:choose>
                         <xsl:when test="$attributeMultiplicityMin = $attributeMultiplicityMax">
                             <owl:Restriction>
@@ -228,25 +231,37 @@
                             </owl:Class>
                         </xsl:otherwise>
                     </xsl:choose>
-                </xsl:if>
-                <xsl:if test="$attributeMultiplicityMin = '*'">
+                </rdfs:subClassOf>
+            </owl:Class>
+        </xsl:if>
+<!--        if only min or max is present choose the value that exist-->
+        <xsl:if
+            test="not(boolean($attributeMultiplicityMin)) and boolean($attributeMultiplicityMax)">
+            <owl:Class rdf:about="{$classURI}">
+                <rdfs:subClassOf>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="{$attributeURI}"/>
                         <owl:maxCardinality rdf:datatype="{$datatypeURI}">
                             <xsl:value-of select="$attributeMultiplicityMax"/>
                         </owl:maxCardinality>
                     </owl:Restriction>
-                </xsl:if>
-                <xsl:if test="$attributeMultiplicityMax = '*'">
+                </rdfs:subClassOf>
+            </owl:Class>
+        </xsl:if>
+        <xsl:if
+            test="not(boolean($attributeMultiplicityMax)) and boolean($attributeMultiplicityMin)">
+            <owl:Class rdf:about="{$classURI}">
+                <rdfs:subClassOf>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="{$attributeURI}"/>
                         <owl:minCardinality rdf:datatype="{$datatypeURI}">
                             <xsl:value-of select="$attributeMultiplicityMin"/>
                         </owl:minCardinality>
                     </owl:Restriction>
-                </xsl:if>
-            </rdfs:subClassOf>
-        </owl:Class>
+                </rdfs:subClassOf>
+            </owl:Class>
+        </xsl:if>
+
     </xsl:template>
 
 
