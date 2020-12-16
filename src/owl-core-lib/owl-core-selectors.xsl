@@ -15,10 +15,10 @@
                 constructed output</xd:p>
         </xd:desc>
     </xd:doc>
-    
+
     <xsl:output method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
-    
+
     <xd:doc>
         <xd:desc/>
     </xd:doc>
@@ -26,17 +26,21 @@
         <xsl:apply-templates select="/xmi:XMI/xmi:Extension/elements"/>
         <xsl:apply-templates select="/xmi:XMI/xmi:Extension/connectors"/>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p> This template selects target element definitions</xd:p>
         </xd:desc>
     </xd:doc>
     <xsl:template match="elements">
-<!--        <xsl:apply-templates select="element[@xmi:type = 'uml:Enumeration']"/>    -->
+        <xsl:apply-templates select="element[@xmi:type = 'uml:Class']"/>
+<!--        <xsl:apply-templates select="element[@xmi:type = 'uml:Enumeration']"/>-->
+        <xsl:apply-templates select="element[@xmi:type = 'uml:DataType']"/>
+        <!--<xsl:apply-templates select="element[@xmi:type = 'uml:Package']"/>-->        
         <xsl:apply-templates select="element[@xmi:type = 'uml:Class']/attributes/attribute"/>
+        <xsl:apply-templates select="element[@xmi:type = 'uml:Enumeration']/attributes/attribute"/>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p> This template selects target connector definitions</xd:p>
@@ -47,7 +51,7 @@
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Association']"/>
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Dependency']"/>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>This is the default template for all selected elements and connectors</xd:desc>
     </xd:doc>
