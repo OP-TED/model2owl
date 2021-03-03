@@ -1,0 +1,51 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514548#Buyer0d21c22e-8fd5-4a0d-b950-2b670b5474e2">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514548#Organisationcbe3643a-61e5-47a9-837e-552abd264ade">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514548#Locationd37d84ae-6933-4bcb-bbec-eb01b2749ac0">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514548#Address8b6463d0-cefc-4ba8-8fa6-8f901a1ea1d7">
+                <epo:hasPostalZone>35207</epo:hasPostalZone>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRH03"/>
+                <epo:hasCityName xml:lang="fr">Rennes Cedex 2</epo:hasCityName>
+                <epo:hasStreetName xml:lang="fr">28 rue de la Pilate — CS 40725</epo:hasStreetName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Secrétariat général pour l'administration du ministère de l'Intérieur Ouest</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514548#ContactPointc47fa0b3-4333-4ca5-ae73-05489941a011">
+        <epo:hasDescription xml:lang="fr">Marchespublics-approvisionneur@interieur.gouv.fr</epo:hasDescription>
+        <epo:hasTelephone>+33 299878963</epo:hasTelephone>
+        <epo:hasInternetAddress>https://www.marches-publics.gouv.fr</epo:hasInternetAddress>
+        <epo:hasEmail>Marchespublics-approvisionneur@interieur.gouv.fr</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514548#ProcedureExta7bd00a3-563a-46bb-9be5-e7b48deedef3">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-210-514548#Buyer0d21c22e-8fd5-4a0d-b950-2b670b5474e2"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/pub-os"/>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/cga"/>
+  </epo:Buyer>
+</rdf:RDF>

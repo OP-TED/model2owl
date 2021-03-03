@@ -1,0 +1,56 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000286#Buyerc6b33ac6-63ce-411e-8f4e-33de08b48e0b">
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000286#ProcedureExt0c97058d-e0d4-4e25-9b4b-eead9fdd213d">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000286#Buyerc6b33ac6-63ce-411e-8f4e-33de08b48e0b"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000286#BuyerProfile1b65741f-9ecc-48bb-a1b5-0246a8268968">
+        <epo:hasURL>http://bip.umwd.dolnyslask.pl/</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000286#ContactPoint3b691ba0-9cbc-433a-b90f-4ba9e4132ec2">
+        <epo:hasInternetAddress>http://www.umwd.dolnyslask.pl</epo:hasInternetAddress>
+        <epo:hasEmail>zamowienia.publiczne@dolnyslask.pl</epo:hasEmail>
+        <epo:hasDescription xml:lang="pl">Anna Holeniewska</epo:hasDescription>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000286#Organisation73dc1be7-74e5-460a-8e43-c10f301c7658">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000286#Locationa57bc987-58aa-462f-a324-3c417f7107f5">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000286#Addressf258ef8c-8a70-470d-a375-cb771f8f3a85">
+                <epo:hasCityName xml:lang="pl">Wrocław</epo:hasCityName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                <epo:hasStreetName xml:lang="pl">Wybrzeże J. Słowackiego 12–14</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL514"/>
+                <epo:hasPostalZone>50-411</epo:hasPostalZone>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="pl">Województwo Dolnośląskie – Urząd Marszałkowski Województwa
+                        Dolnośląskiego</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+  </epo:Buyer>
+</rdf:RDF>

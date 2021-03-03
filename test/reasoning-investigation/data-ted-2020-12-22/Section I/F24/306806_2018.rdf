@@ -1,0 +1,68 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306806#ProcedureExt48fda167-87ac-4736-9b43-c9a9557bae31">
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306806#AccessTermsRestr3468107d-d308-49bf-ad5a-1e7e21b9456c">
+        <epo:hasRestrictedAccessAddress>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306806#Channel1059e65c-25df-4647-9dc6-7e10ee74529f">
+            <epo:hasURL>https://www.parisaeroport.fr/</epo:hasURL>
+          </epo:Channel>
+        </epo:hasRestrictedAccessAddress>
+      </epo:AccessTerm>
+    </epo:uses>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306806#Buyer4c6eb731-c0d6-48c8-ac57-53af4324b758">
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306806#ContactPoint4a6d8947-1c73-4e99-9175-96d00017441d">
+            <epo:hasInternetAddress>https://www.parisaeroport.fr/</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="fr">Direction des commerces</epo:hasDescription>
+            <epo:hasEmail>olivier.beau@adp.fr</epo:hasEmail>
+            <epo:hasTelephone>+33 174256577</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306806#ProcedureExt48fda167-87ac-4736-9b43-c9a9557bae31"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306806#ProcedureExt48fda167-87ac-4736-9b43-c9a9557bae31"/>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306806#ProcedureExt48fda167-87ac-4736-9b43-c9a9557bae31"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306806#Organisationea19930e-a0cf-4945-9857-8b3d73d2123e">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306806#OrganisationId8cddde01-8c66-4b52-aac8-396ee5c33192">
+                <epo:identifierValue>FR10</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306806#Location88a3858d-c440-4fc0-9262-5b6272e4a262">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306806#Address988a1d6c-6429-4fea-8992-feae10550a75">
+                    <epo:hasPostalZone>93290</epo:hasPostalZone>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCityName xml:lang="fr">Tremblay-en-France</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+                    <epo:hasStreetName xml:lang="fr">1 rue de France</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Aéroports de Paris</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306806#ProcedureExt48fda167-87ac-4736-9b43-c9a9557bae31"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/airport"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

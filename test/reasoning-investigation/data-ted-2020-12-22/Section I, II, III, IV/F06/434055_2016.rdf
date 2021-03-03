@@ -1,0 +1,151 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#AwardCriterionPriced684fd0f-2597-46f6-abbd-283091ecad13">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#Lotbd56793e-74da-4ed4-99f3-f93dc6d7369d">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#ContractTermLot9182dcca-ba10-4bb7-a158-7b9ed5ebac02">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#ObjectContractAddressb510847e-618f-41b9-b1e6-50c5ae20cb15">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ010"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#PurposeAdditional381bf0eb-5445-45e1-91e4-3e1e3861bd8e">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-238-434055#Procedure9c3acb4b-fd25-4993-be67-f3f0e0253c8a">
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <reg2015:uses>
+              <epo:EAuctionTechnique rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#eAuctionTechnique3fddca01-88b2-48f1-959a-45440e90f36e"/>
+            </reg2015:uses>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#SubmissionTerm370192bc-01e9-410b-acba-1df84e5e18f9"/>
+            </reg2015:applies>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#Buyer5ebbde3a-6bc9-4213-9802-9351b2eea8c9">
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#Organisationbe79c704-219d-43c6-a6ec-2fa76169ddbe">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#Location3ff2b390-0674-47ee-bb06-e8d532be6909">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#Address04224f6e-32c3-40ed-8b8e-b3eae79cc9ab">
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CZE"/>
+                            <epo:hasPostalZone>160 08</epo:hasPostalZone>
+                            <epo:hasCityName xml:lang="cs">Praha 6</epo:hasCityName>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ010"/>
+                            <epo:hasStreetName xml:lang="cs">K Letišti 6/1019</epo:hasStreetName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#OrganisationIda69db92d-42f0-48b1-8208-685efdb34f5b">
+                        <epo:identifierValue>28244532</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                    <epo:hasName xml:lang="cs">Letiště Praha, a.s.</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434055#Procedure9c3acb4b-fd25-4993-be67-f3f0e0253c8a"/>
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#BuyerProfileb33461b1-d98e-4ea7-afe7-dc12e1ab4661">
+                    <epo:hasURL>https://zakazky.cah.cz</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#ContactPointe3a9ed6c-58e9-429d-b8d3-420a28a004a7">
+                    <epo:hasEmail>zdenek.hanus@cah.cz</epo:hasEmail>
+                    <epo:hasInternetAddress>www.prg.aero</epo:hasInternetAddress>
+                    <epo:hasTelephone>+420 220115634</epo:hasTelephone>
+                    <epo:hasDescription xml:lang="cs">Ing. Zdeněk Hanuš</epo:hasDescription>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:hasContractingEntity>true</epo:hasContractingEntity>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/airport"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasTitle xml:lang="cs">
+                    &lt;P&gt;Dodávka letištních hasičských zásahových automobilů.&lt;/P&gt;
+                </epo:hasTitle>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434055#Lotbd56793e-74da-4ed4-99f3-f93dc6d7369d"/>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#Purpose220cd1f3-10a4-42a9-b96b-4d09f62cc657">
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/supplies"/>
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/34144210"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#ContractNotice5335d5f2-fbf4-46db-97b2-03eadacf1fc7">
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434055#Procedure9c3acb4b-fd25-4993-be67-f3f0e0253c8a"/>
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#PreviousNotice736a34ac-d78a-4694-8c18-8f7a58844aab">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#NoticeIdc9c2fc42-966e-4ad4-a6ae-af6920597efd">
+                        <epo:identifierValue>2016/S 033-054047</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <epo:hasDescription xml:lang="cs">
+                    &lt;P&gt;Předmětem Veřejné zakázky je dodávka dvou letištních hasičských automobilů
+                        (dále jen „Automobily“), rok výroby 2016 či 2017, včetně poskytování revizí
+                        v záruční době a pozáručních revizí po dobu 6 let od skončení příslušné
+                        záruční doby a pozáručního servisu po dobu 13 let ode dne uzavření smlouvy o
+                        poskytování servisních služeb a zajištění dodávek náhradních dílů. Na
+                        Automobily se v souladu s ustanovením § 1 odst. 2 vyhlášky č. 35/2007 Sb.,
+                        ve znění pozdějších předpisů, nevztahují podmínky této vyhlášky, technické
+                        požadavky jsou stanoveny dle ICAO Doc 9137-AN/898 Airport Services Manual,
+                        Part 1 Rescue and Firefighting, NFPA 414 a ICAO ANNEX 14.&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#ValueTotal8b849687-4867-4a83-a4d0-327f8173ea9f">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#AmountTotal30eda163-3128-41ce-bb4d-926d9ba53a5d">
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/CZK"/>
+                    <ccts:hasAmountValue>47371420.00</ccts:hasAmountValue>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasDescription xml:lang="cs">
+                        &lt;P&gt;Předmětem Veřejné zakázky je dodávka dvou letištních hasičských
+                            automobilů (dále jen „Automobily“), rok výroby 2016 či 2017, včetně
+                            poskytování revizí v záruční době a pozáručních revizí po dobu 6 let od
+                            skončení příslušné záruční doby a pozáručního servisu po dobu 13 let ode
+                            dne uzavření smlouvy o poskytování servisních služeb a zajištění dodávek
+                            náhradních dílů. Na Automobily se v souladu s ustanovením § 1 odst. 2
+                            vyhlášky č. 35/2007 Sb., ve znění pozdějších předpisů, nevztahují
+                            podmínky této vyhlášky, technické požadavky jsou stanoveny dle ICAO Doc
+                            9137-AN/898 Airport Services Manual, Part 1 Rescue and Firefighting,
+                            NFPA 414 a ICAO ANNEX 14.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

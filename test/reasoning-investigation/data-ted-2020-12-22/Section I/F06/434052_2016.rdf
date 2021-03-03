@@ -1,0 +1,49 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#Buyer4774820b-1e13-410e-ab53-19f35dfb4b8f">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#Organisatione051bbd1-7f38-4312-9d13-d9d5c16f4cac">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#Location7e526936-4712-4995-928d-6c1fe033f371">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#Addressda89458d-6e50-4490-ba9c-fd979ab6833c">
+                <epo:hasPostalZone>20097</epo:hasPostalZone>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                <epo:hasCityName xml:lang="it">San Donato Milanese</epo:hasCityName>
+                <epo:hasStreetName xml:lang="it">Piazzale Supercortemaggiore 2/4 presso sala posta SNAM SpA</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="it">SNAM Rete Gas SpA</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#ProcedureExt24860e8e-993b-4e6d-b225-0227cd50ea55">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434052#Buyer4774820b-1e13-410e-ab53-19f35dfb4b8f"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#ContactPoint9feb5688-dcd4-4382-a7e4-78ac7ba5131e">
+        <epo:hasInternetAddress>www.snamretegas.it</epo:hasInternetAddress>
+        <epo:hasEmail>luca.montaruli@snamretegas.it</epo:hasEmail>
+        <epo:hasTelephone>+39 0237037564</epo:hasTelephone>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gas-heat"/>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+  </epo:Buyer>
+</rdf:RDF>

@@ -1,0 +1,52 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#Buyerd051f999-0940-48a1-b90b-92969b5f0ec3">
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#ProcedureExtb9163f00-27e2-4933-97d9-f659a046a728">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2016/s-205-371441#Buyerd051f999-0940-48a1-b90b-92969b5f0ec3"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#ContactPoint731c147b-d650-4a0b-9dd4-274d034b4432">
+        <epo:hasTelephone>+33 299973526</epo:hasTelephone>
+        <epo:hasDescription xml:lang="fr">M. le maire</epo:hasDescription>
+        <epo:hasEmail>mairie.landean@wanadoo.fr</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.centraledesmarches.com</epo:hasInternetAddress>
+        <epo:hasFax>+33 299972476</epo:hasFax>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#Organisationdc947c57-62f3-464c-8a99-561bf4f0d7d9">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#Locationc171b97b-51d1-44f3-a3bb-d9e78bb6bb1f">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#Addressf388edf9-817f-4e4e-b4df-a65691ed8cab">
+                <epo:hasPostalZone>72110</epo:hasPostalZone>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRH03"/>
+                <epo:hasCityName xml:lang="fr">Landéan</epo:hasCityName>
+                <epo:hasStreetName xml:lang="fr">Mairie — 6 rue Victor Hugo</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Commune de Landéan</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/env-pro"/>
+  </epo:Buyer>
+</rdf:RDF>

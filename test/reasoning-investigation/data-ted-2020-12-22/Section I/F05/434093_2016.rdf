@@ -1,0 +1,121 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:CentralPurchasingBody rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#CPB4973ec82-172d-4ce7-b98b-158b9afff880">
+    <reg2015:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#ProcedureExt790abe8f-7c05-45f4-a4fa-7560e5b2ae7a">
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#AccessTermsFullb19bf12d-f104-485d-8c6c-3b37429e119f">
+            <epo:hasProcurementDocumentLandingPage>http://ausschreibung.tennet.eu/</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#BuyerAdd4e78ac9b-0abe-40c2-acb1-f7197ae5bd83">
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#OrganisationAddbade6572-57ca-40a2-83ea-0f45a3d5234d">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#LocationAdd01e2e677-12fd-42e3-bb99-1ba9e1ad3233">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#AddressAdd682162d2-2acb-4fb3-9b9f-5a6af6df21b6">
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE"/>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                        <epo:hasPostalZone>10557</epo:hasPostalZone>
+                        <epo:hasCityName xml:lang="de">Berlin</epo:hasCityName>
+                        <epo:hasStreetName xml:lang="de">Heidestraße 2</epo:hasStreetName>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="de">50Hertz Transmission GmbH</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#ContactPointAdd7aa0885b-32fd-4177-a79d-266739f3952c">
+                <epo:hasEmail>christian.wild@50hertz.com</epo:hasEmail>
+                <epo:hasDescription xml:lang="de">50Hertz Transmission GmbH</epo:hasDescription>
+                <epo:hasFax>+49 3051502616</epo:hasFax>
+                <epo:hasInternetAddress>www.50hertz.com</epo:hasInternetAddress>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434093#ProcedureExt790abe8f-7c05-45f4-a4fa-7560e5b2ae7a"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#Buyer163a522c-e7bd-439e-b5ae-044720ea6c3b">
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/electricity"/>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#Organisation520c0d63-9bf2-4ff7-a361-fd5f9d1ddb4c">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#Location31504dc2-e15a-4e09-bd4f-bc7f46fe7cd9">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#Address5c466bde-fd54-490f-b037-5e391435cd33">
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE"/>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                        <epo:hasPostalZone>95448</epo:hasPostalZone>
+                        <epo:hasCityName xml:lang="de">Bayreuth</epo:hasCityName>
+                        <epo:hasStreetName xml:lang="de">Bernecker Straße 70</epo:hasStreetName>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="de">TenneT TSO GmbH</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434093#ProcedureExt790abe8f-7c05-45f4-a4fa-7560e5b2ae7a"/>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434093#ProcedureExt790abe8f-7c05-45f4-a4fa-7560e5b2ae7a"/>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#OrganisationParticipationda3cac6b-c22f-4563-a41a-505b0dd47038">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#LocationParticipationae7d9b8d-32b2-4e63-afc5-8435d4698060">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#AddressParticipation0e10059d-e230-4907-ad98-36e805a8849a">
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE"/>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                        <epo:hasPostalZone>95448</epo:hasPostalZone>
+                        <epo:hasCityName xml:lang="de">Bayreuth</epo:hasCityName>
+                        <epo:hasStreetName xml:lang="de">Bernecker Straße 70</epo:hasStreetName>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="de">TenneT TSO GmbH</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:hasContractingEntity>true</epo:hasContractingEntity>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#ContactPointParticipatione537ea5a-c3ed-4814-b739-a2501b7cf327">
+                <epo:hasEmail>elisabeth.roth@tennet.eu</epo:hasEmail>
+                <epo:hasDescription xml:lang="de">Elisabeth Roth</epo:hasDescription>
+                <epo:hasFax>+49 921507404452</epo:hasFax>
+                <epo:hasInternetAddress>http://www.tennet.eu/de/</epo:hasInternetAddress>
+              </epo:ContactPoint>
+            </epo:has>
+            <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434093#ProcedureExt790abe8f-7c05-45f4-a4fa-7560e5b2ae7a"/>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#ContactPoint19052f85-7b39-4c4f-a54e-85ecf4637e9b">
+                <epo:hasEmail>elisabeth.roth@tennet.eu</epo:hasEmail>
+                <epo:hasDescription xml:lang="de">TenneT TSO GmbH</epo:hasDescription>
+                <epo:hasFax>+49 921507404452</epo:hasFax>
+                <epo:hasInternetAddress>http://www.tennet.eu/de/home.html</epo:hasInternetAddress>
+              </epo:ContactPoint>
+            </epo:has>
+            <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434093#ProcedureExt790abe8f-7c05-45f4-a4fa-7560e5b2ae7a"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:hasJointProcurement>true</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:isResponsibleFor>
+    <epo:hasCentralPurchasingBodyType rdf:resource="http://data.europa.eu/a4g/ontology#Cpb-awa"/>
+  </epo:CentralPurchasingBody>
+</rdf:RDF>

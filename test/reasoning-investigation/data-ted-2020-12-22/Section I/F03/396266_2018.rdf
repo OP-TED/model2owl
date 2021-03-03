@@ -1,0 +1,53 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396266#ProcedureExtcd63efc3-2860-42ac-8053-e50a9e63adf4">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396266#Buyer4ca744c0-7e4a-4979-bed8-4e1b0f6cb3aa">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396266#Organisationa66f7e11-eed3-43b3-b35e-fecdb30dd760">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396266#Location5604443d-29d3-4111-aea6-fe14713d8fe4">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396266#Addressc2c834cd-ecd1-4117-a24b-d875a715077e">
+                    <epo:hasPostalZone>01001</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="de">Dresden</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="de">Postfach 120020</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DED21"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Landeshauptstadt Dresden, GB Stadtentwicklung, Bau, Verkehr und
+                        Liegenschaften, Amt f. Hochbau u. Immobilienverwaltung</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396266#ContactPoint12ecec97-dbfa-4558-80fa-e92365cb60b4">
+            <epo:hasInternetAddress>www.dresden.de</epo:hasInternetAddress>
+            <epo:hasEmail>MPomiluck@dresden.de</epo:hasEmail>
+            <epo:hasFax>+49 3514883883</epo:hasFax>
+            <epo:hasTelephone>+49 3514883889</epo:hasTelephone>
+            <epo:hasDescription xml:lang="de">Frau Pomiluck</epo:hasDescription>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396266#ProcedureExtcd63efc3-2860-42ac-8053-e50a9e63adf4"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

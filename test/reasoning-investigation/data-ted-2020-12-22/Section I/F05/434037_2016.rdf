@@ -1,0 +1,62 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434037#ProcedureExt0e27c9d2-0477-4707-8cf8-3147679a33e2">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434037#Buyerc70f9eb7-00fc-4079-affe-599bda07a0c4">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434037#ProcedureExt0e27c9d2-0477-4707-8cf8-3147679a33e2"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/urttb"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434037#ProcedureExt0e27c9d2-0477-4707-8cf8-3147679a33e2"/>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434037#ProcedureExt0e27c9d2-0477-4707-8cf8-3147679a33e2"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434037#Organisation5ad27cd2-0bc5-440c-9ea1-38fd04ad4f91">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434037#Locationdfa4e8e7-6d83-4434-ba21-094777fef607">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434037#Addressb8af4992-c8df-42c7-8e76-e2e4eea42fbe">
+                    <epo:hasPostalZone>BT3 9BG</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="en">Belfast</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="en">Milewater Road</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UK"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="en">Translink</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434037#BuyerProfile7b5a5895-62ef-4f50-b2ef-ac9c2b29e2bc">
+            <epo:hasURL>https://etendersni.gov.uk/epps</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434037#ProcedureExt0e27c9d2-0477-4707-8cf8-3147679a33e2"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434037#ContactPoint9e1b2421-15cb-4f32-be89-f549d57114fa">
+            <epo:hasInternetAddress>https://etendersni.gov.uk/epps</epo:hasInternetAddress>
+            <epo:hasEmail>neil.bowers@translink.co.uk</epo:hasEmail>
+            <epo:hasDescription xml:lang="en">neil.bowerstranslink.co.uk</epo:hasDescription>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434037#AccessTermsFull4c97cf61-126b-421d-a8f1-d8f0ff9a853b">
+        <epo:hasProcurementDocumentLandingPage>https://etendersni.gov.uk/epps</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

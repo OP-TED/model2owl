@@ -1,0 +1,60 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000269#ProcedureExt9e94108f-acf4-495f-87e3-c982bc3a772a">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000269#Buyer3a46dc9c-1a61-4b79-8e15-bc709686038d">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000269#Organisationa0c3ae87-9d81-4d35-a588-aba491c32701">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000269#Location604ab80e-9f00-43c1-9019-2fbf3d6551c8">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000269#Addressfef5b5f3-344e-4332-b3b3-1f0719cb0706">
+                    <epo:hasStreetName xml:lang="es">C/ Alcalá, 48</epo:hasStreetName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ESP"/>
+                    <epo:hasCityName xml:lang="es">Madrid</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ES300"/>
+                    <epo:hasPostalZone>28014</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000269#OrganisationId6058d75b-76a6-4fb6-9703-797fa1d20695">
+                <epo:identifierValue>Q2802472G</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="es">Banco de España</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000269#ProcedureExt9e94108f-acf4-495f-87e3-c982bc3a772a"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000269#BuyerProfilefd022c8a-4553-45a5-b72a-d3b41e2f8a2f">
+            <epo:hasURL>https://contrataciondelestado.es/wps/poc?uri=deeplink:perfilContratante&amp;idBp=AAOeCRmvUWmXQV0WE7lYPw%3D%3D</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000269#ContactPoint738c4dfd-19f2-4556-b61a-0f0c6a28ba7a">
+            <epo:hasDescription xml:lang="es">Banco de España</epo:hasDescription>
+            <epo:hasInternetAddress>http://www.bde.es</epo:hasInternetAddress>
+            <epo:hasEmail>contratacion@bde.es</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/econ-aff"/>
+        <epo:hasBuyerLegalTypeDescription xml:lang="es">Otras entidades del sector público</epo:hasBuyerLegalTypeDescription>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

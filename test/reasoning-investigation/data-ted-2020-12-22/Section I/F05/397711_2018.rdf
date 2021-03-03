@@ -1,0 +1,97 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397711#ProcurementServiceProviderParticipation86dd0ea4-48ab-47ae-a7c8-1c58223d9692">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397711#ContactPointParticipationdfb16db0-5c20-4289-bb0f-8f58c114e95b">
+        <epo:hasInternetAddress>http://www.mpwik.com.pl</epo:hasInternetAddress>
+        <epo:hasDescription xml:lang="pl">Pion Zamówień Publicznych, Dział Postępowań Miejskiego
+                        Przedsiębiorstwa Wodociągów i Kanalizacji w m.st. Warszawie S.A., pok.
+                        309</epo:hasDescription>
+        <epo:hasEmail>d-zamowien@mpwik.com.pl</epo:hasEmail>
+        <epo:hasFax>+48 224455315</epo:hasFax>
+        <epo:hasTelephone>+48 224455300</epo:hasTelephone>
+      </epo:ContactPoint>
+    </epo:has>
+    <reg2015:receivesRequestsToParticipate>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397711#ProcedureExt633843e1-4367-4665-819e-a33dd02c014f">
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397711#AccessTermsFull455cee89-c6c8-48d5-a96b-1b542b7176f3">
+            <epo:hasProcurementDocumentLandingPage>www.mpwik.com.pl</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397711#Buyer7bc70917-bdaa-407b-9088-8a92a3b4791e">
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397711#ContactPoint97dac74f-fb62-4130-887d-8b4c71472266">
+                <epo:hasInternetAddress>www.mpwik.com.pl</epo:hasInternetAddress>
+                <epo:hasDescription xml:lang="pl">Karolina Długołęcka, Pion Zamówień Publicznych – Dział
+                        Postępowań</epo:hasDescription>
+                <epo:hasEmail>d-zamowien@mpwik.com.pl</epo:hasEmail>
+                <epo:hasFax>+48 224455315</epo:hasFax>
+                <epo:hasTelephone>+48 224455316</epo:hasTelephone>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397711#Organisation9d7a25dd-c251-4454-a1eb-9f88232e66a6">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397711#Location8b1d05ff-5a53-4595-bfbb-7e346254a009">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397711#Address8aba1faa-b868-4b00-a3c4-9f44be0cb98b">
+                        <epo:hasStreetName xml:lang="pl">pl. Starynkiewicza 5</epo:hasStreetName>
+                        <epo:hasCityName xml:lang="pl">Warszawa</epo:hasCityName>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                        <epo:hasPostalZone>02-015</epo:hasPostalZone>
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL911"/>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="pl">Miejskie Przedsiębiorstwo Wodociągów i Kanalizacji w m.st.
+                        Warszawie S.A. zarejestrowane w Krajowym Rejestrze Sądowym w Sądzie
+                        Rejonowym dla m.st. Warszawy w Warszawie, XII Wydział Gospodarczy Krajowego
+                        Rejestru Sądowego pod numerem KRS 0000146138</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397711#ProcedureExt633843e1-4367-4665-819e-a33dd02c014f"/>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397711#ProcedureExt633843e1-4367-4665-819e-a33dd02c014f"/>
+            <epo:hasContractingEntity>true</epo:hasContractingEntity>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/water"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:receivesRequestsToParticipate>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397711#OrganisationParticipation60c84e39-38a4-45cc-9936-50d62f1a43fb">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397711#LocationParticipation4f6143c3-c358-4749-87c3-970d33c33a3f">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397711#AddressParticipationa188c1d6-73d0-4005-9fea-e4d6cfef99d4">
+                <epo:hasStreetName xml:lang="pl">pl. Starynkiewicza 5, Dział Postępowań (pok. 309)</epo:hasStreetName>
+                <epo:hasCityName xml:lang="pl">Warszawa</epo:hasCityName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                <epo:hasPostalZone>02-015</epo:hasPostalZone>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL911"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="pl">Miejskie Przedsiębiorstwo Wodociągów i Kanalizacji w m.st.
+                        Warszawie S.A.</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397711#ProcedureExt633843e1-4367-4665-819e-a33dd02c014f"/>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

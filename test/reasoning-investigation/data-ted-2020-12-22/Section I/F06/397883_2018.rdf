@@ -1,0 +1,59 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397883#Buyerc84b31a5-e1d3-44b9-b966-4e72968be416">
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397883#ProcedureExta42f0391-3fa4-4025-a3f4-cae9330cf3dd">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397883#Buyerc84b31a5-e1d3-44b9-b966-4e72968be416"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397883#BuyerProfilec9c6ae6e-ec0a-4d74-9bb4-46d3d42afab9">
+        <epo:hasURL>https://pha.edf.com</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397883#ContactPointbd8db7a7-dde5-408f-8354-767340d12dc3">
+        <epo:hasEmail>david.apuzzo@edf.fr</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.edf.com</epo:hasInternetAddress>
+        <epo:hasTelephone>+33 524991767</epo:hasTelephone>
+        <epo:hasDescription xml:lang="fr">EDF SA – Direction des achats Groupe – ARAP Grand
+                        Ouest</epo:hasDescription>
+        <epo:hasFax>+33 524991790</epo:hasFax>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397883#Organisationc89e0383-c8fb-4d07-9a7f-d025eeb2a03e">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397883#Locationdb399d54-8853-4bcd-9010-e233df23669a">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397883#Address9988f4cd-778f-4e26-9864-03d74e5be720">
+                <epo:hasPostalZone>33692</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="fr">Merignac</epo:hasCityName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRI12"/>
+                <epo:hasStreetName xml:lang="fr">CS 30025</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">EDF SA – Direction des achats Groupe – ARAP Grand
+                        Ouest</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/electricity"/>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+  </epo:Buyer>
+</rdf:RDF>

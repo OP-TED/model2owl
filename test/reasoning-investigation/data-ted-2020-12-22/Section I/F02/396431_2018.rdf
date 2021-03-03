@@ -1,0 +1,61 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396431#ProcedureExtc549740e-e651-46d0-b09a-9f3e354d823d">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396431#Buyer8ae98152-8e6c-4290-b80e-888ade9f13fa">
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396431#ProcedureExtc549740e-e651-46d0-b09a-9f3e354d823d"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396431#ProcedureExtc549740e-e651-46d0-b09a-9f3e354d823d"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396431#Organisation340f9dae-912e-42a8-86fa-70e909378c15">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396431#Location584c41b6-8055-40e2-ab66-4ba511840dc9">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396431#Address6eb0c139-6482-4029-80c1-60e43416b22d">
+                    <epo:hasPostalZone>74613</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="de">Öhringen</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE119"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                    <epo:hasStreetName xml:lang="de">Marktplatz 15</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Große Kreisstadt Öhringen</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396431#ProcedureExtc549740e-e651-46d0-b09a-9f3e354d823d"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396431#ProcedureExtc549740e-e651-46d0-b09a-9f3e354d823d"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396431#ContactPoint4ef9ec72-6bba-42a1-baa2-c3aa214b1c3e">
+            <epo:hasInternetAddress>www.oehringen.de</epo:hasInternetAddress>
+            <epo:hasEmail>frank.stransky@oehringen.de</epo:hasEmail>
+            <epo:hasFax>+49 794168130</epo:hasFax>
+            <epo:hasTelephone>+49 794168220</epo:hasTelephone>
+            <epo:hasDescription xml:lang="de">Stadtverwaltung Öhringen, Ordnungsamt -30.2-, z.Hd. Herrn
+                        Stransky</epo:hasDescription>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/pub-os"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396431#AccessTermsFullbe5d6180-27e1-4075-ba19-fad8674d582c">
+        <epo:hasProcurementDocumentLandingPage>https://www.oehringen.de/stadt/ausschreibungen-auftragsvergaben.html</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

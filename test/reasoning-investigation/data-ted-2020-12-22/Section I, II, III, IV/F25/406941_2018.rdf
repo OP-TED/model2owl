@@ -1,0 +1,162 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-179-406941#Procedure0bf3c7a4-ecad-4520-9da3-fffdcc54f1a7">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#Buyer933bc1f9-8d7c-49d4-8fa4-fd8e5d7f0471">
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#BuyerProfile6be55cca-92f6-4349-b84a-1706598baf1d">
+            <epo:hasURL>https://www.subreport.de/</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#ContactPoint9bc5f010-d89f-4b90-a0d9-26a84538f066">
+            <epo:hasFax>+49 3841304086502</epo:hasFax>
+            <epo:hasEmail>m.boelter@nordwestmecklenburg.de</epo:hasEmail>
+            <epo:hasTelephone>+49 384130406502</epo:hasTelephone>
+            <epo:hasDescription xml:lang="de">Vergabestelle, Herr Boelter</epo:hasDescription>
+            <epo:hasInternetAddress>http://www.nordwestmecklenburg.de</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#Organisationb2ee1dbd-f6f3-4c19-be64-d63601c4e772">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#Locationeb091698-7524-449f-8f50-867877460377">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#Address2f8fdeea-f1cd-453c-abe7-7740b09d48ec">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                    <epo:hasPostalZone>23970</epo:hasPostalZone>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE80M"/>
+                    <epo:hasCityName xml:lang="de">Wismar</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="de">Rostocker Str. 76</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Landkreis Nordwestmecklenburg, Die Landrätin</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-179-406941#Procedure0bf3c7a4-ecad-4520-9da3-fffdcc54f1a7"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:hasEstimatedValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#Value528c498e-9224-4a7b-9d03-e12646aa5806">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#Amount0420a716-f14e-42f5-9789-0b900b855d0d">
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+            <ccts:hasAmountValue>3223516.54</ccts:hasAmountValue>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasEstimatedValue>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#Purposeae0bba64-1729-44f0-bf78-496e156f3614">
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/32412000"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#SubmissionTerm6504fdb1-7956-458a-8d66-6dc143aaa003"/>
+    </reg2015:applies>
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#ValueTotale91adc40-08f8-4a34-ba7b-c967d59e28de">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#AmountTotal02739d1a-b5a8-4086-a3f6-fbefff4a78fa">
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+            <ccts:hasAmountValue>3198807.00</ccts:hasAmountValue>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+    <epo:hasTitle xml:lang="de">
+                    &lt;P&gt;Bereitstellung eines flächendeckenden Breitbandnetzes im Projektgebiet NWM
+                        24_34&lt;/P&gt;
+                </epo:hasTitle>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#Lot713a248a-da23-4daf-a1da-5d8aec86d098">
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-179-406941#Procedure0bf3c7a4-ecad-4520-9da3-fffdcc54f1a7"/>
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#PeriodDurationccaa9d67-76b4-48da-8900-4cce177c4163"/>
+        </epo:hasContractDuration>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#ContractTermLot3e748990-5f4d-4a22-9e56-ac20908c53b9">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#ObjectContractAddressc1480c2a-10ab-4f8c-b3a4-77cd370a0af5">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE80M"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="de"
+            >
+                        &lt;P&gt;Stadt Gadebusch&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#PurposeAdditionalafc06939-35f6-43fa-bf4e-66f14d8b497e">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/32571000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasDescription xml:lang="de">
+                        &lt;P&gt;Der Auftraggeber beabsichtigt, zur Versorgung aller Bürger und
+                            Gewerbetreibenden in näher bezeichneten Teilgebieten im Projektgebiet
+                            NWM 24_34 mit breitbandigen Telekommunikationsdiensten den Bau und
+                            Betrieb eines flächendeckenden Hochgeschwindigkeitsnetzes sowie die
+                            Erbringung von Endkundendienstleistungen im Projektgebiet in Auftrag zu
+                            geben. Der Landkreis Nordwestmecklenburg hat im Rahmen des
+                            Förderprogramms des Bundes „Projektförderung durch Gebietskörperschaften
+                            und Zusammenschlüsse von Gebietskörperschaften im Rahmen der
+                            Bundesförderung zum Breitbandausbau“ am 28.4.2016 eine vorläufige
+                            Förderzusage erhalten. Einzelheiten entnehmen Sie bitte dem
+                            „Begleitdokument zur Bekanntmachung des Landkreises Nordwestmecklenburg
+                            - Projektgebiet NWM 24_34“ (herunterzuladen unter
+                            https://www.subreport.de/E51813238).&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Der Auftraggeber beabsichtigt, zur Versorgung aller Bürger und
+                        Gewerbetreibenden in näher bezeichneten Teilgebieten im Projektgebiet NWM
+                        24_34 mit breitbandigen Telekommunikationsdiensten den Bau und Betrieb eines
+                        flächendeckenden Hochgeschwindigkeitsnetzes sowie die Erbringung von
+                        Endkundendienstleistungen im Projektgebiet in Auftrag zu geben. Der
+                        Landkreis Nordwestmecklenburg hat im Rahmen des Förderprogramms des Bundes
+                        „Projektförderung durch Gebietskörperschaften und Zusammenschlüsse von
+                        Gebietskörperschaften im Rahmen der Bundesförderung zum Breitbandausbau“ am
+                        28.4.2016 eine vorläufige Förderzusage erhalten. Einzelheiten entnehmen Sie
+                        bitte dem „Begleitdokument zur Bekanntmachung des Landkreises
+                        Nordwestmecklenburg - Projektgebiet NWM 24_34“ (herunterzuladen unter
+                        https://www.subreport.de/E51813238).&lt;/P&gt;
+                </epo:hasDescription>
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#ContractNoticec734be37-8c03-4481-9d65-b852d8566754">
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#PreviousNoticee2c7a695-053f-4728-bd2c-37ae5aff73c6">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406941#NoticeId43a069ec-0ccd-45bc-89b7-522d268afecd">
+                <epo:identifierValue>2017/S 173-355207</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-179-406941#Procedure0bf3c7a4-ecad-4520-9da3-fffdcc54f1a7"/>
+      </epo:ContractNotice>
+    </epo:notifies>
+  </reg2015:Procedure>
+</rdf:RDF>

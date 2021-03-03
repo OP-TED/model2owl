@@ -1,0 +1,111 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-207-506541#Proceduree42e8906-f342-4172-8c23-1c01445697ae">
+    <reg2015:hasGPAUsage>false</reg2015:hasGPAUsage>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#Purposea8a42858-1a20-4565-a7e5-0c02c85a2dac">
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/42414110"/>
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/supplies"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call"/>
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#ContractNotice4628ae43-76d3-4335-b6e6-26abc23557d8">
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#PreviousNoticee5b6d3ed-57dc-4c0d-90e2-409fe7013b70">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#NoticeId9d13b8b3-b438-4913-82b5-133ed8419e60">
+                <epo:identifierValue>2019/S 109-266797</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-207-506541#Proceduree42e8906-f342-4172-8c23-1c01445697ae"/>
+      </epo:ContractNotice>
+    </epo:notifies>
+    <reg2015:uses>
+      <epo:FrameworkAgreementTechnique rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#Frameworke8fabb4e-85ac-4295-917b-39f12135efc2"/>
+    </reg2015:uses>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#Buyer029c8fed-4b62-4544-865a-9812df65d83f">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#Organisation643f8141-0dca-425b-9d86-449b916d2fc8">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#Location9f7e3775-53cb-4d4f-8c6b-4e8966de7785">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#Address5587d2a8-a87b-4b75-924d-67bfb0f27a7b">
+                    <epo:hasPostalZone>HU9 5PQ</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="en">Hull</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="en">Port House, Northern Gateway</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKE11"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="en">Associated British Ports</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#ContactPoint4951fea6-d92c-4539-9e49-fd0e66a3fb6b">
+            <epo:hasInternetAddress>http://www.abports.co.uk</epo:hasInternetAddress>
+            <epo:hasTelephone>+44 1482608506</epo:hasTelephone>
+            <epo:hasEmail>MatsHandFW19to23@abports.co.uk</epo:hasEmail>
+            <epo:hasDescription xml:lang="en">Group Procurement Specialist</epo:hasDescription>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-207-506541#Proceduree42e8906-f342-4172-8c23-1c01445697ae"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/port"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:hasDescription xml:lang="en">&lt;P&gt;Design, manufacture, supply, delivery and commissioning of material handlers of varying capacity.&lt;/P&gt;</epo:hasDescription>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#Lot9dea4ebe-5971-4d07-8ce1-a3c94dd32551">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#ContractTermLot8e71d282-981e-4815-9715-523365810a06">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#ObjectContractAddress9f90f573-42ca-4420-84aa-4451e26de348">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKL21"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKE13"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKM94"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKD72"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKK42"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKH14"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#PurposeAdditional82fa6360-fdfc-4f63-b148-63945ee18164">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/42420000"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/42418910"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/42418920"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/42418000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-207-506541#Proceduree42e8906-f342-4172-8c23-1c01445697ae"/>
+        <epo:hasDescription xml:lang="en">&lt;P&gt;Design, manufacture, supply, delivery and commissioning of material handlers of varying capacity across the ABP Ports portfolio. Applications are sought from Original equipment manufacturers (OEMs) or their authorised UK Distributor.&lt;/P&gt;</epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasTitle xml:lang="en">&lt;P&gt;Design, Manufacture, Supply, Delivery and Commissioning of Material Handlers&lt;/P&gt;</epo:hasTitle>
+    <epo:hasCompetitionTermination>true</epo:hasCompetitionTermination>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506541#SubmissionTerm4909f956-d02d-42ae-b1fc-f9ec015029d0"/>
+    </reg2015:applies>
+  </reg2015:Procedure>
+</rdf:RDF>

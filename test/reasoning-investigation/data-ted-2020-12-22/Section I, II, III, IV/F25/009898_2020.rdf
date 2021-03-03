@@ -1,0 +1,113 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-006-009898#Procedure2392c5bd-4a31-4eca-9ac3-13cce9cbff8c">
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#Lotb9cdc267-fe16-4838-83e8-86003af5f426">
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-006-009898#Procedure2392c5bd-4a31-4eca-9ac3-13cce9cbff8c"/>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#ContractTermLot75a755c7-a88a-4088-a599-7362bb20c155">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#ObjectContractAddresse3fea885-3c35-4905-9c35-04eb31d7cafc">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRF12"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#PurposeAdditional4cef4e72-9805-4d0b-9773-4949dbfec8bc">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/60130000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#Periodfb3c5825-17b8-4748-b3bb-710c3e136a7b">
+            <epo:hasEndDate>2025-12-31</epo:hasEndDate>
+            <epo:hasStartDate>2020-01-07</epo:hasStartDate>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;Exploitation du réseau de bus urbain trace au sein du PTU de Colmar
+                            Agglomération.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#ValueTotalb9641a46-3e62-4419-b185-0431d516ec53">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#AmountTotal3cb4aa93-b99f-4b27-9d73-5ab2cb6ab928">
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+            <ccts:hasAmountValue>50000000</ccts:hasAmountValue>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#SubmissionTerm0addaebd-1e12-4218-a44b-7d05216a52f8"/>
+    </reg2015:applies>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#Purposee4ff102f-b81e-4b7d-9cf5-e7fc41b2a79c">
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/60112000"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#Buyer8be068f2-e9c5-4e9b-8657-75cd716e6b02">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#Organisationd430bf13-0255-45da-b23e-390ed3d6daef">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#Location34c945d4-b009-4e73-a4cd-1f91049c21f0">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#Address8e07faa4-1be3-4497-9e86-8045ad97b62b">
+                    <epo:hasPostalZone>68000</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="fr">Colmar</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasStreetName xml:lang="fr">32 cours Sainte-Anne, BP 80197</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRF12"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Colmar Agglomération</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#BuyerProfilee6a18d6f-1fb5-4eb1-b5b1-a577526fd9a5">
+            <epo:hasURL>http://colmar-agglo.e-marchespublics.com</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#ContactPoint94992c5a-7908-4428-9da4-f27d43ab9992">
+            <epo:hasEmail>gregory.delattre@agglo-colmar.fr</epo:hasEmail>
+            <epo:hasInternetAddress>http://www.colmar-agglomeration.fr</epo:hasInternetAddress>
+            <epo:hasFax>+33 369995559</epo:hasFax>
+            <epo:hasTelephone>+33 369995555</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-006-009898#Procedure2392c5bd-4a31-4eca-9ac3-13cce9cbff8c"/>
+        <epo:hasActivityDescription xml:lang="fr">Transports urbains</epo:hasActivityDescription>
+        <epo:hasBuyerLegalTypeDescription xml:lang="fr">Communauté d'agglomération</epo:hasBuyerLegalTypeDescription>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Concession pour l'exploitation du service public du transport urbain par bus
+                        sur le territoire de Colmar Agglomération.&lt;/P&gt;
+                </epo:hasDescription>
+    <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;Concession pour l'exploitation du service public du transport urbain&lt;/P&gt;
+                </epo:hasTitle>
+  </reg2015:Procedure>
+</rdf:RDF>

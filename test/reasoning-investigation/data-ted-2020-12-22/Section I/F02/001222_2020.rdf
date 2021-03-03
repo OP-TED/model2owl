@@ -1,0 +1,70 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001222#ProcedureExt0220933a-0ac8-483d-ba38-20ee21af133f">
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001222#SubmisisonTermsba66fc04-e8f6-4b3e-862f-a98b54c24e72">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001222#ChannelSubmission5ba40fc0-5ae2-41ce-99d6-04c55d4a45af">
+            <epo:hasURL>https://eojn.nn.hr/Oglasnik</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001222#AccessTermsFullbf9301d5-0b2e-4746-b585-b2888b32db16">
+        <epo:hasProcurementDocumentLandingPage>https://eojn.nn.hr/SPIN/application/ipn/DocumentManagement/DokumentPodaciFrm.aspx?OznakaDokumenta=2019/S+0F2-0050909</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001222#Buyere8b6957a-b920-4c86-bc32-5280be78144c">
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001222#ContactPointed5315c3-e5ba-4eef-a8bf-5b4e7212d80c">
+            <epo:hasInternetAddress>http://www.np-plitvicka-jezera.hr/</epo:hasInternetAddress>
+            <epo:hasEmail>josip.markovic@np-plitvicka-jezera.hr</epo:hasEmail>
+            <epo:hasTelephone>+385 53751034</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001222#Organisation248375cd-0ce8-4bc9-8763-1b91fb1976fa">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001222#OrganisationId1f8222a2-8a6f-4399-ab8c-b8d7be513264">
+                <epo:identifierValue>91109303119</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001222#Locationf3738d1d-fd74-4a3a-867e-0ac42cd9d1e7">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001222#Addressa08ca625-81fe-4fb8-a55b-eed1283a1aa1">
+                    <epo:hasPostalZone>53231</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="hr">Plitvička Jezera</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="hr">Josipa Jovića 19</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/HR032"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/HRV"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="hr">Javna ustanova NP Plitvička jezera</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-002-001222#ProcedureExt0220933a-0ac8-483d-ba38-20ee21af133f"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-002-001222#ProcedureExt0220933a-0ac8-483d-ba38-20ee21af133f"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/env-pro"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

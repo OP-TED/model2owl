@@ -1,0 +1,99 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#ProcurementServiceProvider1148ce44-d338-46b7-ab20-aee046d78666">
+    <reg2015:providesAdditionalInformationAboutProcurementProcedure>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#ProcedureExte628a5d6-8bc8-4031-9354-dc41f354577d">
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#AccessTermsFull90d8e125-1e7d-476d-8f9f-b3761c496cef">
+            <epo:hasProcurementDocumentLandingPage>https://zamowienia.psgaz.pl/</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#Buyer1f5db452-2bb6-44b2-bd9f-a1f60d2938d6">
+            <epo:has>
+              <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#BuyerProfilefd55cb16-1a05-4a5f-ba26-f73fbb02a5da">
+                <epo:hasURL>https://www.psgaz.pl/</epo:hasURL>
+              </epo:BuyerProfile>
+            </epo:has>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#ContactPoint5cd5b2e7-151e-4f18-9c4e-c594046e48ab">
+                <epo:hasInternetAddress>www.psgaz.pl</epo:hasInternetAddress>
+                <epo:hasEmail>przetargi.wroclaw@psgaz.pl</epo:hasEmail>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#Organisation480d997c-f32f-42f2-8bd6-d7eadea9b146">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#Locationce30d212-9d2e-445a-a065-b10978d06571">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#Address43e1a5ce-c9a2-43ed-be23-07bf2fcdd6db">
+                        <epo:hasStreetName xml:lang="pl">ul. Wojciecha Bandrowskiego 16</epo:hasStreetName>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                        <epo:hasPostalZone>33-100</epo:hasPostalZone>
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL"/>
+                        <epo:hasCityName xml:lang="pl">Tarnów</epo:hasCityName>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="pl">Polska Spółka Gazownictwa Sp. z o.o.</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000939#ProcedureExte628a5d6-8bc8-4031-9354-dc41f354577d"/>
+            <epo:hasContractingEntity>true</epo:hasContractingEntity>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gas-heat"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:applies>
+          <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#SubmisisonTerms7e9912aa-ca7e-4783-924e-c7e12fc4b11b">
+            <epo:hasSubmissionCommunicationMeans>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#ChannelSubmission7272fa55-227a-4723-a599-6c9abd23c8c1">
+                <epo:hasURL>https://zamowienia.psgaz.pl</epo:hasURL>
+              </epo:Channel>
+            </epo:hasSubmissionCommunicationMeans>
+          </epo:SubmissionTerm>
+        </reg2015:applies>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:providesAdditionalInformationAboutProcurementProcedure>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#ContactPointPSP68b2c01d-b23e-4925-9327-f968f8b05b66">
+        <epo:hasFax>+48 713367106</epo:hasFax>
+        <epo:hasInternetAddress>https://www.psgaz.pl/</epo:hasInternetAddress>
+        <epo:hasDescription xml:lang="pl">Katarzyna Konicka</epo:hasDescription>
+        <epo:hasEmail>przetargi.wroclaw@psgaz.pl</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#OrganisationPSP7b0906f9-9f7a-41bf-b436-ae15e170b510">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#LocationPSPfc6138d7-9550-4a70-a250-e143d16fdfa8">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000939#AddressPSP1291d19c-2ef1-4fb5-9917-fd91bd4c209a">
+                <epo:hasStreetName xml:lang="pl">ul. Ziębicka 44</epo:hasStreetName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                <epo:hasPostalZone>50-507</epo:hasPostalZone>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL51"/>
+                <epo:hasCityName xml:lang="pl">Wrocław</epo:hasCityName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="pl">Polska Spółka Gazownictwa Sp. z o.o., Oddział Zakład Gazowniczy we
+                        Wrocławiu</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

@@ -1,0 +1,70 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434040#ProcedureExt09f1aba7-dc4d-429e-bab2-915ffb34c993">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434040#Buyer4b368af9-e0c3-458d-95aa-fbeb473d37b5">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434040#Organisation28b9db6c-9f00-44ae-9e80-7f567651fb1a">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434040#Locationc1e87fc5-0860-4289-a6a0-51bdc77119cd">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434040#Address5241c6fe-c5e3-4648-9867-2b650e0c7da3">
+                    <epo:hasPostalZone>3320</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="sl">Velenje</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/SVN"/>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/SI014"/>
+                    <epo:hasStreetName xml:lang="sl">Partizanska cesta 78</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434040#OrganisationId57b1e436-3f38-423f-ae2d-a813f3454dfe">
+                <epo:identifierValue>5040361000</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="sl">Premogovnik Velenje, d.d.</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434040#ProcedureExt09f1aba7-dc4d-429e-bab2-915ffb34c993"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434040#ProcedureExt09f1aba7-dc4d-429e-bab2-915ffb34c993"/>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434040#ProcedureExt09f1aba7-dc4d-429e-bab2-915ffb34c993"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/solid-fuel"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434040#BuyerProfile8293c2b0-7f86-4a09-b463-72125359edba">
+            <epo:hasURL>http://www.rlv.si</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434040#ContactPoint974ff0ac-0246-4275-a1f3-4a2b57ffc8c6">
+            <epo:hasTelephone>+386 38994196</epo:hasTelephone>
+            <epo:hasInternetAddress>http://www.rlv.si</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="sl">Jerneja Kemperle</epo:hasDescription>
+            <epo:hasFax>+386 35862190</epo:hasFax>
+            <epo:hasEmail>javnanarocila@rlv.si</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434040#ProcedureExt09f1aba7-dc4d-429e-bab2-915ffb34c993"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434040#AccessTermsFull71c48c93-2e35-4c01-99f1-531f20285542">
+        <epo:hasProcurementDocumentLandingPage>http://www.enarocanje.si/App/Datoteke/180519/PONUDBENA_DOKUMENTACIJA_MATERIAL_ZA_SIDRANJE.zip</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

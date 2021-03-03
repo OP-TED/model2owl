@@ -1,0 +1,72 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#ProcedureExt192fc9fa-c1a2-484b-86e5-c8998c267bdc">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#Buyer3f4d1639-12f0-4c29-af9b-fb3e5d30955a">
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396085#ProcedureExt192fc9fa-c1a2-484b-86e5-c8998c267bdc"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#ContactPoint2a585d60-bc2a-4cfe-b953-77fbc221b6f0">
+            <epo:hasEmail>vodovod.vir.d.o.o@zd.t-com.hr</epo:hasEmail>
+            <epo:hasTelephone>+385 23362608</epo:hasTelephone>
+            <epo:hasDescription xml:lang="hr">Hrvoje Bašić, Đana Peša</epo:hasDescription>
+            <epo:hasFax>+385 23362608</epo:hasFax>
+            <epo:hasInternetAddress>www.vir.hr</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#Organisation246c9023-d2d9-4fda-a64c-a3bdf7630b95">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#OrganisationId2c781791-de35-4376-89e5-6d21ce7d4084">
+                <epo:identifierValue>77534471964</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#Locationfa660859-789e-4ce3-84a5-7d1d6dbdd65d">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#Address910e9f48-4b94-4ded-b02c-67789356ccf4">
+                    <epo:hasPostalZone>23234</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="hr">Put Mula 16</epo:hasStreetName>
+                    <epo:hasCityName xml:lang="hr">Vir</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/HR033"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/HRV"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="hr">Vodovod-Vir d.o.o.</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396085#ProcedureExt192fc9fa-c1a2-484b-86e5-c8998c267bdc"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/hc-am"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#AccessTermsFull591c9f29-cc24-4937-9684-eedc2f767768">
+        <epo:hasProcurementDocumentLandingPage>https://eojn.nn.hr/SPIN/application/ipn/DocumentManagement/DokumentPodaciFrm.aspx?OznakaDokumenta=2018/S+0F2-0024440</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#SubmisisonTerms1d6f77b7-7c07-42cb-9f5c-92b3cc88bdb3">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#ChannelSubmissiond5c8f46e-1f99-4def-8301-2304576925bd">
+            <epo:hasURL>https://eojn.nn.hr/Oglasnik</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

@@ -1,0 +1,76 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:CentralPurchasingBody rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000519#CPB4437fc53-7635-4e90-8090-f13de9d97b3b">
+    <reg2015:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000519#ProcedureExtd8b6bacd-5fb7-4219-9696-31486c7a68bc">
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000519#Buyer734fd449-f540-4d7c-8ae8-7567c77ded49">
+            <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000519#ProcedureExtd8b6bacd-5fb7-4219-9696-31486c7a68bc"/>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000519#ProcedureExtd8b6bacd-5fb7-4219-9696-31486c7a68bc"/>
+            <epo:has>
+              <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000519#BuyerProfile9debb8fc-82f0-4d46-8ed7-9734e337c264">
+                <epo:hasURL>https://my.vergabe.rib.de</epo:hasURL>
+              </epo:BuyerProfile>
+            </epo:has>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000519#ContactPointe91ab833-7567-44d9-bbc1-81adcb58e7fe">
+                <epo:hasInternetAddress>https://my.vergabe.rib.de</epo:hasInternetAddress>
+                <epo:hasEmail>Team-Produktionseinkauf@zdf.de</epo:hasEmail>
+                <epo:hasFax>+49 61317014914</epo:hasFax>
+                <epo:hasTelephone>+49 61317014613</epo:hasTelephone>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000519#Organisation32246ae4-20af-4aed-b823-68b0812f2e38">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000519#Location9ab61995-b00c-4cf3-ae0d-68ed8ec44d6d">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000519#Addressb14e65db-8245-4fbe-a0b2-da029350b170">
+                        <epo:hasCityName xml:lang="de">Mainz</epo:hasCityName>
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DEB35"/>
+                        <epo:hasStreetName xml:lang="de">ZDF-Straße 1</epo:hasStreetName>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                        <epo:hasPostalZone>55100</epo:hasPostalZone>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="de">Zweites Deutsches Fernsehen</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:hasActivityDescription xml:lang="de">Rundfunkanstalt</epo:hasActivityDescription>
+            <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:applies>
+          <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000519#SubmisisonTerms530c8084-e80f-4615-89fc-3a155a547482">
+            <epo:hasSubmissionCommunicationMeans>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000519#ChannelSubmission70994714-8a72-4269-8e84-038db7e9e380">
+                <epo:hasURL>https://my.vergabe.rib.de</epo:hasURL>
+              </epo:Channel>
+            </epo:hasSubmissionCommunicationMeans>
+          </epo:SubmissionTerm>
+        </reg2015:applies>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000519#AccessTermsFulld85ea2b6-2e47-42b7-8372-368a2cd1ac17">
+            <epo:hasProcurementDocumentLandingPage>https://www.meinauftrag.rib.de/public/DetailsByPlatformIdAndTenderId/platformId/3/tenderId/89766</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:isResponsibleFor>
+    <epo:hasCentralPurchasingBodyType rdf:resource="http://data.europa.eu/a4g/ontology#Cpb-awa"/>
+  </epo:CentralPurchasingBody>
+</rdf:RDF>

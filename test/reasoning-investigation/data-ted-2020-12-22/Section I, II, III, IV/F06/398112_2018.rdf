@@ -1,0 +1,119 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#AwardCriterionCoste522f61d-390c-49a5-a3a6-c803e5d2a907">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#Lot341e41da-3464-4677-bef2-1043be41741f">
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#PurposeAdditionalfa6b6dff-6e0a-442c-9c2b-4efaeb27c99c">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/71313000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-175-398112#Procedure7b023108-4d5f-456c-a413-1e25898d84b2">
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#SubmissionTerm89c2adf5-8d04-4209-b0d0-719ab8e70881"/>
+            </reg2015:applies>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#Buyere5a9b658-9243-4f74-a53b-71013ce343e3">
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-398112#Procedure7b023108-4d5f-456c-a413-1e25898d84b2"/>
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#BuyerProfilecdcddd34-6dcd-4bcc-8bfd-7b779be783cd">
+                    <epo:hasURL>www.vbg.ch</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#ContactPoint38cb81ec-1fb6-45fa-b1f7-c45d6dacc21e">
+                    <epo:hasDescription xml:lang="de">Guido Hirzel</epo:hasDescription>
+                    <epo:hasInternetAddress>https://www.simap.ch</epo:hasInternetAddress>
+                    <epo:hasEmail>guido.hirzel@vbg.ch</epo:hasEmail>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#Organisation54311d31-1813-496c-8353-c0c78c22d127">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#Locationb6c55a0c-edf3-4df2-a1f6-a8f57cf39e1d">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#Address4f8b30a2-6c7c-4e3e-ab5a-f95db03075b2">
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CHE"/>
+                            <epo:hasCityName xml:lang="de">Glattbrugg</epo:hasCityName>
+                            <epo:hasStreetName xml:lang="de">Sägereistraße 24</epo:hasStreetName>
+                            <epo:hasPostalZone>8152</epo:hasPostalZone>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="de">VBG Verkehrsbetriebe Glattal AG</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:hasContractingEntity>true</epo:hasContractingEntity>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/urttb"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#Purposef49569ba-4cbc-41db-9e20-caf2f16d2c2a">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/71313000"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#ContractNoticef44e1db9-c86c-47cc-8230-dac5e15f4be4">
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-398112#Procedure7b023108-4d5f-456c-a413-1e25898d84b2"/>
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#PreviousNotice3c447b59-2e2b-4694-9501-02061a845e7d">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#NoticeIda8b6770e-46bd-4d3b-99c3-1e3acc9e41bc">
+                        <epo:identifierValue>2018/S 090-206066</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Glattalbahn Etappe 2A/Querschnittsmandat Umwelt&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-398112#Lot341e41da-3464-4677-bef2-1043be41741f"/>
+            <epo:hasTitle xml:lang="de">
+                    &lt;P&gt;Glattalbahn Etappe 2A/Querschnittsmandat Umwelt&lt;/P&gt;
+                </epo:hasTitle>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasDescription xml:lang="de">
+                        &lt;P&gt;Glattalbahn Etappe 2A/Querschnittsmandat Umwelt&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/cost"/>
+    <epo:hasName>Angebotspreis</epo:hasName>
+    <epo:hasFormula>30 %</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#AwardCriterionCost938ad085-39ef-45d9-b9d1-ad53e3c18c5c">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-398112#Lot341e41da-3464-4677-bef2-1043be41741f"/>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/cost"/>
+    <epo:hasName>Schlüsselpersonal</epo:hasName>
+    <epo:hasFormula>40 %</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#AwardCriterionCost6b4c69f8-cb9e-4271-b8c3-bac5a23e680c">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-398112#Lot341e41da-3464-4677-bef2-1043be41741f"/>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/cost"/>
+    <epo:hasName>Auftragsverständnis</epo:hasName>
+    <epo:hasFormula>30 %</epo:hasFormula>
+  </epo:AwardCriterion>
+</rdf:RDF>

@@ -1,0 +1,142 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-001-000960#Procedure9570c13e-aaa0-47a1-9dc9-a326c9d27ed1">
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#ValueTotal10b699b4-c203-4bae-8d44-9c2a24a6e0f3">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#AmountTotal16ba1753-da75-42b9-a6dc-32bca7dcac88">
+            <ccts:hasAmountValue>864</ccts:hasAmountValue>
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/BGN"/>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+    <reg2015:hasGPAUsage>false</reg2015:hasGPAUsage>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#SubmissionTermdb3f8091-b81f-4ca4-be2f-32313fc4a99f"/>
+    </reg2015:applies>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#Purpose45fa75d3-1db4-4546-9e2e-5f6965f4e619">
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/50413200"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#Lot3c1f4add-c17b-48b5-9dc5-23c4536881ce">
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000960#Procedure9570c13e-aaa0-47a1-9dc9-a326c9d27ed1"/>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#ContractTermLot0971f80f-cae8-4e58-8aec-818ed8acedd2">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#ObjectContractAddress126ee72f-61d0-4742-ae1c-587ddf456dae">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/BG413"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="bg"
+            >
+                        &lt;P&gt;МЕР Благоевград&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#PurposeAdditional36f7c72a-a617-4283-9f74-3526dcc1060e">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/50413200"/>
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasDescription xml:lang="bg">
+                        &lt;P&gt;Поддържане и обслужване на пожароизвестителни системи, пожарогасителни
+                            системи и пожарни кранове в обектите, експлоатирани от МЕР
+                            Благоевград&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#Buyere3c9a35e-85de-49d0-9bb6-274c1ff54b6c">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000960#Procedure9570c13e-aaa0-47a1-9dc9-a326c9d27ed1"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#BuyerProfilef99996b4-9cf5-46f9-a967-f436fb0ee6bb">
+            <epo:hasURL>https://webapps.eso.bg/zop_profile/page2.php?intNo=S1BTdENRcDZrOWtNZ2tiWUZjaEdNTXFlMDZSNFU1K1ppV2pSTUhPdDh0cz0=</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#ContactPoint7791e350-7dfd-4a07-8084-45c2a1075751">
+            <epo:hasFax>+359 73881035</epo:hasFax>
+            <epo:hasEmail>n.goshev@bl.eso.bg</epo:hasEmail>
+            <epo:hasDescription xml:lang="bg">Николай Гошев</epo:hasDescription>
+            <epo:hasTelephone>+359 73889626</epo:hasTelephone>
+            <epo:hasInternetAddress>http://www.eso.bg</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#Organisationffc3470c-8960-48b7-9127-1c81259c1278">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#OrganisationId1d444416-a508-48de-8d42-83971830c882">
+                <epo:identifierValue>1752013040031</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#Locationa1503dd2-56d4-468b-9aa6-fc1ae4c9efb0">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#Addressf9b63deb-e0a8-4fb2-9850-1789a06320cb">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/BG413"/>
+                    <epo:hasCityName xml:lang="bg">Благоевград</epo:hasCityName>
+                    <epo:hasPostalZone>2700</epo:hasPostalZone>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/BGR"/>
+                    <epo:hasStreetName xml:lang="bg">ул. „Промишлена“ № 1</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="bg">„Електроенергиен системен оператор“ ЕАД, МЕР
+                        Благоевград</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/electricity"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted"/>
+    <epo:hasTitle xml:lang="bg">
+                    &lt;P&gt;Поддържане и обслужване на пожароизвестителни системи, пожарогасителни
+                        системи и пожарни кранове в обектите, експлоатирани от МЕР Благоевград&lt;/P&gt;
+                </epo:hasTitle>
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#ContractNotice19c60e0f-ea26-487e-b1b9-ffe741b79e3a">
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000960#Procedure9570c13e-aaa0-47a1-9dc9-a326c9d27ed1"/>
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#PreviousNotice71fcdef6-8b9d-4847-93cd-b48493fb0d34">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#NoticeId9852619d-b92f-4f23-8841-9a7881a678a7">
+                <epo:identifierValue>2016/S 195-351785</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+      </epo:ContractNotice>
+    </epo:notifies>
+    <epo:hasID>
+      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000960#ProcedureId5afe33a5-506a-419e-94e5-b4174c4591b4">
+        <epo:identifierValue>МЕР-БЛ/2019/018</epo:identifierValue>
+      </epo:Identifier>
+    </epo:hasID>
+    <epo:hasDescription xml:lang="bg">
+                    &lt;P&gt;Поддържане и обслужване на пожароизвестителни системи, пожарогасителни
+                        системи и пожарни кранове в обектите, експлоатирани от МЕР Благоевград&lt;/P&gt;
+                </epo:hasDescription>
+  </reg2015:Procedure>
+</rdf:RDF>

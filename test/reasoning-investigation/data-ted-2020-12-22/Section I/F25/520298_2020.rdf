@@ -1,0 +1,59 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520298#Buyerf7376e89-b36a-4d7a-a0cc-dab12cde9dd4">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520298#Organisationfaa22ea6-4d14-4fb3-8586-5fd7fb3cbf2d">
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520298#OrganisationId16a9f835-db8d-4655-a7c7-4340f792c171">
+            <epo:identifierValue>26130022200013</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520298#Location7a919a03-c787-4b2f-aba1-6b6e666400ae">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520298#Address96e2eaf5-3e7b-4b00-8e1c-c5d71dd2fb13">
+                <epo:hasPostalZone>13637</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="fr">Arles</epo:hasCityName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRL04"/>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasStreetName xml:lang="fr">Direction des achats et des ressources matérielles, quartier Fourchon</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">CH Arles AWS</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520298#ProcedureExtdd07f28b-f5df-4e5d-8412-9bd25a21f08d">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-212-520298#Buyerf7376e89-b36a-4d7a-a0cc-dab12cde9dd4"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520298#BuyerProfile7803835a-a837-432b-8418-45af02c1302d">
+        <epo:hasURL>http://marchespublics.ght13.fr/</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520298#ContactPoint8fad4afa-a60e-4fe7-a1d9-dd67e1dec33b">
+        <epo:hasEmail>correspondre@aws-france.com</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.ch-arles.fr</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:hasBuyerLegalTypeDescription xml:lang="fr">autre</epo:hasBuyerLegalTypeDescription>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/health"/>
+  </epo:Buyer>
+</rdf:RDF>

@@ -1,0 +1,147 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#AwardCriterionPricefab4acd6-31b5-48dd-be3c-9e2578701871">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#Lote31e01c3-9869-49d3-bf55-b0774334c028">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#ContractTermLot23d19226-d32e-4b90-af3e-67b5f79ba801">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#ObjectContractAddress7e2ae790-23af-408a-ab18-f369d549f1ba">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRD22"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#PurposeAdditionala85036d5-8ae5-45e8-8823-0b8c8a64698f">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45244000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-175-397720#Procedureb7fc90cd-8026-4e51-9976-84001adc8216">
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#ContractNoticecb0ab4b8-173b-44b7-847c-72b033111b4c">
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-397720#Procedureb7fc90cd-8026-4e51-9976-84001adc8216"/>
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#PreviousNotice6a6a993b-af89-4fdf-9ba0-81fbcff20476">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#NoticeId618f91b3-ef1b-4b20-9d5c-7e1515929c17">
+                        <epo:identifierValue>2018/S 063-140808</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#SubmissionTerm4dd8caa0-f344-4af4-ae05-508b2f64707e"/>
+            </reg2015:applies>
+            <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;La présente consultation concerne les travaux d'entretien et de remises en
+                        état d'ouvrage maritime&lt;/P&gt;
+                </epo:hasDescription>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#Buyer43bd6fe4-ff0a-4a0e-96a9-99b16d0125a9">
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#BuyerProfileeba3fddb-0801-4f9c-a42e-953d58f024db">
+                    <epo:hasURL>http://www.haropaports.com/fr/marches-publics?marches-filter-p=4</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#ContactPoint65662fb8-666d-4fdf-b49a-a83aa208380b">
+                    <epo:hasEmail>str@rouen.port.fr</epo:hasEmail>
+                    <epo:hasInternetAddress>http://www.haropaports.com</epo:hasInternetAddress>
+                    <epo:hasTelephone>+33 235529611</epo:hasTelephone>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#Organisationf2acde50-9ea7-4867-84ff-35509cb8721e">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#Location141e7c33-991c-450f-8838-fa9c38eece3a">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#Address7a747ef4-90cf-4f96-9a0c-94c6e63ab984">
+                            <epo:hasStreetName xml:lang="fr">34 boulevard de Boisguilbert — BP 4075</epo:hasStreetName>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRD22"/>
+                            <epo:hasCityName xml:lang="fr">Rouen Cedex</epo:hasCityName>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                            <epo:hasPostalZone>76022</epo:hasPostalZone>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="fr">Grand port maritime de Rouen</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-397720#Procedureb7fc90cd-8026-4e51-9976-84001adc8216"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/port"/>
+                <epo:hasContractingEntity>true</epo:hasContractingEntity>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#Purposeeb74a490-35ca-47eb-826a-c6cb6f50f768">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45244000"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#ValueTotalf9eac134-dee9-4f0c-847b-0d28dc57c26a">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#AmountTotal34befdb6-cd63-40dc-b188-494f6710406a">
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                    <ccts:hasAmountValue>500839</ccts:hasAmountValue>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397720#Lote31e01c3-9869-49d3-bf55-b0774334c028"/>
+            <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;Entretien ouvrage maritime 2018&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#ProcedureIdaac1d717-1705-4d39-a25b-b12b3a368bb2">
+                <epo:identifierValue>18.14</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;La présente consultation concerne les travaux d'entretien et de remises
+                            en état d'ouvrage maritime&lt;/P&gt;
+                    </epo:hasDescription>
+        <epo:hasAdditionalInformation xml:lang="fr">
+                        &lt;P&gt;L'accord-cadre mono-attributaire avec minimum et maximum est passé en
+                            application des articles 78 et 80 du décret n&lt;FT TYPE="SUP"&gt;o&lt;/FT&gt;
+                            2016-360 du 25.3.2016. Il donnera lieu à l'émission de bons de commande.
+                            — minimum de commande annuel: 100 000 EUR (HT)&lt;/P&gt;
+                        &lt;P&gt;— maximum de commande annuel: 1 000 000 EUR (HT).&lt;/P&gt;
+                    </epo:hasAdditionalInformation>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+    <epo:hasFormula>80</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397720#AwardCriterionQualityaf8cb69c-7cb9-466d-bfc6-c9f13e703061">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397720#Lote31e01c3-9869-49d3-bf55-b0774334c028"/>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasName>Valeur technique</epo:hasName>
+    <epo:hasFormula>20</epo:hasFormula>
+  </epo:AwardCriterion>
+</rdf:RDF>

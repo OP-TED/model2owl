@@ -1,0 +1,68 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500395#ProcedureExtb09a9463-0042-4c54-a05d-3272e33adbbd">
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500395#AccessTermsFull2841f843-4069-4649-ac8c-e45a862fcc16">
+        <epo:hasProcurementDocumentLandingPage>https://www.lebarcares.fr/la-mairie/marches-publics/</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500395#SubmisisonTerms527e10a0-5a5a-4847-afd3-a37c180c28c4">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500395#ChannelSubmissioncb51f7f9-73ae-4e33-bb59-af202817541e">
+            <epo:hasURL>https://www.lebarcares.fr/la-mairie/marches-publics/</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500395#Buyerf21393dc-1acf-40c0-8a34-f7fd561053d5">
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-205-500395#ProcedureExtb09a9463-0042-4c54-a05d-3272e33adbbd"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500395#BuyerProfile62f74a25-d6df-4bbc-ab6c-a1327d095188">
+            <epo:hasURL>https://www.lebarcares.fr/la-mairie/marches-publics/</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500395#ContactPointf947e223-48dc-4cd0-94c6-608763f04a0c">
+            <epo:hasInternetAddress>https://www.lebarcares.fr/la-mairie/marches-publics/</epo:hasInternetAddress>
+            <epo:hasEmail>marches-publics@lebarcares.fr</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500395#Organisation558141f1-e043-4a77-ae75-678bf4299032">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500395#Location5bff2e8c-b4a2-42ce-8b31-99eeb197e30e">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500395#Addressc1c7cabc-5345-4052-8604-100d8dd2d7f6">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasPostalZone>66420</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="fr">Le Barcarès</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Ville de Barcarès</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-205-500395#ProcedureExtb09a9463-0042-4c54-a05d-3272e33adbbd"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

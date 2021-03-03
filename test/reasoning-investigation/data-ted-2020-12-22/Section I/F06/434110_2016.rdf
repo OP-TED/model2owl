@@ -1,0 +1,63 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434110#Buyer70f208b0-b9b6-4c15-b919-2d99d8e161c7">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434110#Organisationbdc2fc4d-5569-431a-a264-1db2b67c073c">
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434110#OrganisationId2ef830ac-ea4f-479a-b2bd-b83109d64d3d">
+            <epo:identifierValue>AK01331</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434110#Location9b1b27ce-cec2-4294-9928-4100ea49fbe4">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434110#Address10216dbf-0b9c-4d88-9e1a-dcddab1ba9d5">
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/HUN"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/HU110"/>
+                <epo:hasPostalZone>1072</epo:hasPostalZone>
+                <epo:hasStreetName xml:lang="hu">Akácfa utca 15.</epo:hasStreetName>
+                <epo:hasCityName xml:lang="hu">Budapest</epo:hasCityName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="hu">Budapesti Közlekedési Zártkörűen Működő
+                        Részvénytársaság</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434110#ProcedureExt3d230636-e743-4c70-9771-16be6d5983b1">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434110#Buyer70f208b0-b9b6-4c15-b919-2d99d8e161c7"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434110#BuyerProfile3150ea03-5559-400d-9ca2-9cc7998c1239">
+        <epo:hasURL>http://www.bkv.hu</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434110#ContactPointb6bb9d45-81cd-4111-92e6-2308aac4ce60">
+        <epo:hasTelephone>+36 14616578</epo:hasTelephone>
+        <epo:hasDescription xml:lang="hu">Schifner Marianna</epo:hasDescription>
+        <epo:hasFax>+36 13226438</epo:hasFax>
+        <epo:hasInternetAddress>http://www.bkv.hu</epo:hasInternetAddress>
+        <epo:hasEmail>kozbeszerzes@bkv.hu</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/urttb"/>
+  </epo:Buyer>
+</rdf:RDF>

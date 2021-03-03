@@ -1,0 +1,72 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000972#ProcedureExte3c2fa69-a4e4-45ce-85b3-6dbc5c9f0dba">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000972#Buyer3c04a37e-43e7-425e-a1c9-f8143e9d98c9">
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000972#ContactPointd078c4d0-3319-4a35-92fc-21d17f873de4">
+            <epo:hasInternetAddress>www.cittametropolitana.ve.it</epo:hasInternetAddress>
+            <epo:hasFax>+039 0412501043</epo:hasFax>
+            <epo:hasTelephone>+039 0412501027</epo:hasTelephone>
+            <epo:hasEmail>stazioneappaltante@cittametropolitana.ve.it</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000972#Organisation9ccf91ad-08b0-41c3-89dd-084df2eb3b67">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000972#OrganisationIdb448c590-1e43-4f7a-b574-93ce37b254d6">
+                <epo:identifierValue>7172138</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000972#Location24c155d9-2347-4edd-9ea1-d107820d2dde">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000972#Addressd46d476f-3afe-47e8-97a1-29e11d7ca276">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                    <epo:hasStreetName xml:lang="it">Via Forte Marghera 191, Mestre</epo:hasStreetName>
+                    <epo:hasPostalZone>30173</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="it">Venezia</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ITH35"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="it">Stazione unica appaltante della città metropolitana di
+                        Venezia</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000972#ProcedureExte3c2fa69-a4e4-45ce-85b3-6dbc5c9f0dba"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000972#ProcedureExte3c2fa69-a4e4-45ce-85b3-6dbc5c9f0dba"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000972#AccessTermsFullae14073d-1ee7-4de1-b744-abb772c9fdbe">
+        <epo:hasProcurementDocumentLandingPage>https://cmvenezia.pro-q.it/</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000972#SubmisisonTermsee963534-1bd7-433b-b4ba-10b0b7ec5285">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000972#ChannelSubmissioncd087147-7204-41b1-bcd9-654082c9c357">
+            <epo:hasURL>https://cmvenezia.pro-q.it/</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

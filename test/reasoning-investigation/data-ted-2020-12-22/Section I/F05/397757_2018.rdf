@@ -1,0 +1,72 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397757#ProcedureExt7d39f6ba-afb6-4c7b-8f28-ea8e0c826659">
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397757#AccessTermsFull7f31023f-9ebd-48bf-a306-35d9d938d375">
+        <epo:hasProcurementDocumentLandingPage>https://eojn.nn.hr/SPIN/application/ipn/DocumentManagement/DokumentPodaciFrm.aspx?OznakaDokumenta=2018/S+0F5-0024520</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397757#SubmisisonTerms46ebb384-1cc8-4fa6-969d-c130ffa6dbcd">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397757#ChannelSubmission94f00aec-5181-4b6f-97ed-69cbfd76361e">
+            <epo:hasURL>https://eojn.nn.hr/Oglasnik</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397757#Buyerd0fef033-b2e6-425e-8a87-e82ead2664ff">
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397757#ProcedureExt7d39f6ba-afb6-4c7b-8f28-ea8e0c826659"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397757#ContactPoint983cc38e-9521-4dcf-91d8-08580211d9b5">
+            <epo:hasInternetAddress>www.hep.hr</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="hr">Marko Rusan</epo:hasDescription>
+            <epo:hasTelephone>+385 16322657</epo:hasTelephone>
+            <epo:hasEmail>marko.rusan@hep.hr</epo:hasEmail>
+            <epo:hasFax>+385 16170464</epo:hasFax>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397757#Organisation869d34fa-8b6a-498a-9ad7-115113277ae3">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397757#Location83ce6284-247a-4d78-8095-e771e0e9522c">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397757#Address45b47e41-5a27-4fa8-96d3-065bb023f64d">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/HRV"/>
+                    <epo:hasStreetName xml:lang="hr">Ulica grada Vukovara 37</epo:hasStreetName>
+                    <epo:hasPostalZone>10000</epo:hasPostalZone>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/HR"/>
+                    <epo:hasCityName xml:lang="hr">Zagreb</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397757#OrganisationId7bff5dcc-2a49-43ec-9363-0965a32904bc">
+                <epo:identifierValue>46830600751</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="hr">HEP – Operator distribucijskog sustava d.o.o.</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397757#ProcedureExt7d39f6ba-afb6-4c7b-8f28-ea8e0c826659"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/electricity"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

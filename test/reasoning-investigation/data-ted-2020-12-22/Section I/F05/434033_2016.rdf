@@ -1,0 +1,77 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434033#ProcedureExt22662cf4-b676-44eb-8cdf-5e22ae8bc1ca">
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434033#AccessTermsFull3fa1be62-80af-4e42-a2e5-f4f4ecd22542">
+        <epo:hasProcurementDocumentLandingPage>https://networkrail.bravosolution.co.uk/web/login.html</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:usesAd-hoc>
+      <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434033#ChannelProcedure5cee620f-61ed-4b64-b021-a5a3d7b6c014">
+        <epo:hasURL>https://networkrail.bravosolution.co.uk/web/login.html</epo:hasURL>
+      </epo:Channel>
+    </reg2015:usesAd-hoc>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434033#SubmisisonTermsdeb241a5-a120-45b0-8f02-ab2df0809204">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434033#ChannelSubmission3571cc81-b151-4ab6-b2c4-b566af9ea0fa">
+            <epo:hasURL>https://networkrail.bravosolution.co.uk/web/login.html</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434033#Buyer0a4148dd-ff21-4bd1-8177-1a19f12ef641">
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434033#ProcedureExt22662cf4-b676-44eb-8cdf-5e22ae8bc1ca"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434033#BuyerProfile1a50f323-43d6-41d2-bb72-35483549be37">
+            <epo:hasURL>https://networkrail.bravosolution.co.uk/web/login.html</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/rail"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434033#ContactPoint017b8155-6f22-482b-8014-580494827819">
+            <epo:hasDescription xml:lang="en">Garry Pyne</epo:hasDescription>
+            <epo:hasInternetAddress>www.networkrail.co.uk</epo:hasInternetAddress>
+            <epo:hasEmail>garry.pyne@networkrail.co.uk</epo:hasEmail>
+            <epo:hasTelephone>+44 8457114141</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434033#ProcedureExt22662cf4-b676-44eb-8cdf-5e22ae8bc1ca"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434033#ProcedureExt22662cf4-b676-44eb-8cdf-5e22ae8bc1ca"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434033#Organisationf9525270-0784-4b8d-bf8a-6dda70d1690a">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434033#Location10dc26b6-1fca-42bf-8c99-f5db8eb8e7fd">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434033#Address5bb124c7-a7cd-434d-bacb-d979a5f2d7d3">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UK"/>
+                    <epo:hasPostalZone>NW1 2DN</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="en">London</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="en">1 Eversholt Street</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="en">Network Rail Infrastructure Ltd</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434033#ProcedureExt22662cf4-b676-44eb-8cdf-5e22ae8bc1ca"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

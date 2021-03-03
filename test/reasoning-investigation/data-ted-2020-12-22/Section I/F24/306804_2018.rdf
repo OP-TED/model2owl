@@ -1,0 +1,73 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306804#ProcedureExt8e937b19-e09d-4311-a52b-9b5958d2d1c5">
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306804#SubmisisonTerms191ebb5e-5b27-4465-99e6-615832c9aac8">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306804#ChannelSubmission3ce13091-d5bc-45f1-87cd-0da1f588f99b">
+            <epo:hasURL>http://sde22.e-marchespublics.com</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306804#Buyeracc550e9-a577-409d-b131-3b7f3ec56a58">
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306804#BuyerProfilea62ab981-50bd-4208-a4ea-7ed85df60584">
+            <epo:hasURL>http://sde22.e-marchespublics.com</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306804#ProcedureExt8e937b19-e09d-4311-a52b-9b5958d2d1c5"/>
+        <epo:hasBuyerLegalTypeDescription xml:lang="fr">Autorité locale</epo:hasBuyerLegalTypeDescription>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306804#ContactPoint55ef86f0-76de-459c-8b8f-6c4ab80f6526">
+            <epo:hasFax>+33 296781667</epo:hasFax>
+            <epo:hasInternetAddress>http://www.sde22.fr/</epo:hasInternetAddress>
+            <epo:hasEmail>sde22@sde22.fr</epo:hasEmail>
+            <epo:hasTelephone>+33 296012020</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306804#ProcedureExt8e937b19-e09d-4311-a52b-9b5958d2d1c5"/>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306804#ProcedureExt8e937b19-e09d-4311-a52b-9b5958d2d1c5"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306804#ProcedureExt8e937b19-e09d-4311-a52b-9b5958d2d1c5"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306804#Organisation98696dd3-af6a-4cec-98b5-498b827c8348">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306804#Locationdb99c454-1978-4ef1-bbe7-62aa5bd0df64">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306804#Addressa23fa196-6192-42c5-9c79-896df751a322">
+                    <epo:hasCityName xml:lang="fr">Saint-Brieuc Cedex 1</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="fr">Espace Carnot — 53 Bd Carnot — CS 20426</epo:hasStreetName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+                    <epo:hasPostalZone>22004</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">SDE des Côtes d'Armor</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306804#AccessTermsFull049d5fca-3b01-40bd-b8b7-fb1b14a450ee">
+        <epo:hasProcurementDocumentLandingPage>http://sde22.e-marchespublics.com</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

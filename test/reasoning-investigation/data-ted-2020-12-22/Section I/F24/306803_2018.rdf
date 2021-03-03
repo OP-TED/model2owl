@@ -1,0 +1,72 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306803#ProcedureExt748a5cc1-51f8-4d5e-a480-0e95a3fcd7fb">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306803#Buyerfe33d332-24f9-42c5-93ce-9cfc2df5a9be">
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306803#ProcedureExt748a5cc1-51f8-4d5e-a480-0e95a3fcd7fb"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306803#ProcedureExt748a5cc1-51f8-4d5e-a480-0e95a3fcd7fb"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306803#ProcedureExt748a5cc1-51f8-4d5e-a480-0e95a3fcd7fb"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306803#BuyerProfiled691e9d5-f1a8-4e9d-8fec-d63ab9a48202">
+            <epo:hasURL>http://www.cadd-marches.com</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306803#ProcedureExt748a5cc1-51f8-4d5e-a480-0e95a3fcd7fb"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:hasBuyerLegalTypeDescription xml:lang="fr">Établissement de coopération intercommunale</epo:hasBuyerLegalTypeDescription>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306803#ContactPointe227bd9c-3a49-4061-9eae-6162ca0e478e">
+            <epo:hasTelephone>+33 237648497</epo:hasTelephone>
+            <epo:hasEmail>j-m.doliveira@dreux-agglomeration.fr</epo:hasEmail>
+            <epo:hasInternetAddress>http://www.cadd-marches.com</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306803#Organisationa30ab698-633f-4f42-aafb-a20f0d3c26a7">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306803#Location28a23778-5eb3-4b01-bcaf-156df2457302">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306803#Addressc409579e-94c2-4b01-8d05-9d339efd50dc">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRB02"/>
+                    <epo:hasPostalZone>28103</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="fr">4 rue de Châteaudun, BP 20159</epo:hasStreetName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCityName xml:lang="fr">Dreux Cedex</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Agglo-Pays-Dreux</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306803#AccessTermsFull08c53c09-5112-456a-bcd0-19346952b8fe">
+        <epo:hasProcurementDocumentLandingPage>http://www.cadd-marches.com</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306803#SubmisisonTermsb14c7902-7863-4ed9-a285-c3dcc17ab106">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306803#ChannelSubmission0e838824-ff23-4124-b9c0-ad802c6ef880">
+            <epo:hasURL>http://www.cadd-marches.com</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

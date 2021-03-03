@@ -1,0 +1,131 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#AwardCriterionPriceacfd3f42-362f-4b88-bb8b-bfa12522fc4f">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#Lot232e8292-1e9e-45f4-95a2-a93f5ce2764c">
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-001-000072#Procedureaa887145-46db-468c-a6fa-b818cfaa47a2">
+            <epo:hasTitle xml:lang="de">
+                    &lt;P&gt;Neubau Studentenwohnhaus in 07743 Jena – Malerarbeiten&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Malerarbeiten.&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#ContractNotice52ef759a-ceaf-445a-ae80-86c197ef7fbb">
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#PreviousNotice5cb0aedd-da3b-40f4-876f-85d903e15538">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#NoticeId5b90540d-ba82-4c7d-8e4c-5554a873b7e4">
+                        <epo:identifierValue>2018/S 024-050194</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000072#Procedureaa887145-46db-468c-a6fa-b818cfaa47a2"/>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#Buyer14e409ee-b260-4563-9d91-90e05a9ed076">
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000072#Procedureaa887145-46db-468c-a6fa-b818cfaa47a2"/>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#ContactPoint1a18f9ed-adca-4204-ab87-646baad44526">
+                    <epo:hasFax>+49 3641930552</epo:hasFax>
+                    <epo:hasInternetAddress>http://www.stw-thueringen.de</epo:hasInternetAddress>
+                    <epo:hasEmail>poststelle@stw-thueringen.de</epo:hasEmail>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#Organisation5cf0fdb8-56d6-46f4-8caf-b025fc0692d9">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#Locationd5b7619d-ad8f-4dac-859f-b6270c21dfa1">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#Address48a91afb-30b9-4267-bee1-c391ea1a7f9a">
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DEG03"/>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                            <epo:hasStreetName xml:lang="de">Philosophenweg 22</epo:hasStreetName>
+                            <epo:hasPostalZone>07743</epo:hasPostalZone>
+                            <epo:hasCityName xml:lang="de">Jena</epo:hasCityName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="de">Studierendenwerk Thüringen Anstalt des öffentlichen
+                        Rechts</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/soc-pro"/>
+                <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000072#Lot232e8292-1e9e-45f4-95a2-a93f5ce2764c"/>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#ValueTotal1fb07d6d-f527-41a6-8a8f-a4f6e6f19ca8">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#AmountTotal42e41685-43c5-45fe-a83c-54779d3a6ffc">
+                    <ccts:hasAmountValue>87000.00</ccts:hasAmountValue>
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#SubmissionTerm37833c47-c4a4-451d-8a5d-6274ca510d2a"/>
+            </reg2015:applies>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#Purpose4cf1c99d-6a30-4a9d-ad19-69f9fb0f8b00">
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45211341"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#ProcedureIdfdb12e06-3133-4a60-853d-42296f6c7b1d">
+                <epo:identifierValue>17-044-Ö-BL</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#ContractTermLot6d194856-e677-426e-b3d0-ea7cb1486358">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#ObjectContractAddress187efa21-b980-4b54-8eb5-cbe6291f026b">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DEG03"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="de"
+            >
+                        &lt;P&gt;07743 Jena Spitzweidenweg&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000072#PurposeAdditional2533f1e4-5551-494a-92fa-5cd1770e5e13">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasDescription xml:lang="de">
+                        &lt;P&gt;Malerarbeiten ca. 20 000 m&lt;FT TYPE="SUP"&gt;2&lt;/FT&gt; Wand-und Deckenflächen, 1
+                            600 m&lt;FT TYPE="SUP"&gt;2&lt;/FT&gt; GK-Leibungen mit Fertigteilelementen.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

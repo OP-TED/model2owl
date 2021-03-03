@@ -1,0 +1,208 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#AwardCriterionCost908f4596-78ac-4f10-94bf-84b56913a1ca">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#Lotc7fd3f98-6723-4872-8990-e566dfed2832">
+        <epo:hasEstimatedValue>
+          <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#ValueValObject14d36c27-1b6c-4a68-b3de-d1c825ef38ef">
+            <epo:hasOverallAmount>
+              <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#AmountValObject51ef5c43-55da-472b-9a60-6b43b6a0a00b">
+                <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                <ccts:hasAmountValue>404200</ccts:hasAmountValue>
+              </ccts:Amount>
+            </epo:hasOverallAmount>
+            <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+          </epo:Value>
+        </epo:hasEstimatedValue>
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#Period5f57d55c-4359-4228-8f53-f5f4893451e2">
+            <epo:hasStartDate>2019-02-09</epo:hasStartDate>
+            <epo:hasEndDate>2020-03-01</epo:hasEndDate>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-175-396459#Procedured4abef3c-58d5-4647-9ca6-64dff94833dc">
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#Buyer797b2e4f-7a00-447d-9f9c-ca7d01600e07">
+                <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/cga"/>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396459#Procedured4abef3c-58d5-4647-9ca6-64dff94833dc"/>
+                <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396459#Procedured4abef3c-58d5-4647-9ca6-64dff94833dc"/>
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#BuyerProfilee39b7fa5-7780-4d5a-a072-300405f2d2e1">
+                    <epo:hasURL>https://contrataciondelestado.es/wps/poc?uri=deeplink:perfilContratante&amp;idBp=mVgpb%2FW7ApU%3D</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396459#Procedured4abef3c-58d5-4647-9ca6-64dff94833dc"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/pub-os"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#Organisationbede7abe-ff5e-41d0-bbeb-eed8341e1e56">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#Location3de5d229-149f-4f4c-90aa-b3d9e43f4a7e">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#Address0fce8c80-5efe-4633-8039-df50c24186c3">
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ESP"/>
+                            <epo:hasPostalZone>28003</epo:hasPostalZone>
+                            <epo:hasCityName xml:lang="es">Madrid</epo:hasCityName>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ES300"/>
+                            <epo:hasStreetName xml:lang="es">C/ Guzmán el Bueno, 110</epo:hasStreetName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#OrganisationId48760917-da3d-4560-bc06-919ba8e7863a">
+                        <epo:identifierValue>S2816003D</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                    <epo:hasName xml:lang="es">Jefatura de Asuntos Económicos de la Guardia Civil</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#ContactPointd9b7b609-b306-44d7-b378-5cecdea672d8">
+                    <epo:hasInternetAddress>http://www.guardiacivil.es</epo:hasInternetAddress>
+                    <epo:hasDescription xml:lang="es">Jefatura de Asuntos Económicos de la Guardia
+                        Civil</epo:hasDescription>
+                    <epo:hasTelephone>+34 915142866</epo:hasTelephone>
+                    <epo:hasFax>+34 915146153</epo:hasFax>
+                    <epo:hasEmail>dg-contratacion-plm@guardiacivil.org</epo:hasEmail>
+                  </epo:ContactPoint>
+                </epo:has>
+                <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396459#Procedured4abef3c-58d5-4647-9ca6-64dff94833dc"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <reg2015:usesAd-hoc>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#ChannelProcedure535b3389-b6eb-444c-ae60-13f582286823">
+                <epo:hasURL>https://contrataciondelestado.es/wps/poc?uri=deeplink:perfilContratante&amp;idBp=mVgpb%2FW7ApU%3D</epo:hasURL>
+              </epo:Channel>
+            </reg2015:usesAd-hoc>
+            <epo:hasEstimatedValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#Value64ae4b55-3c3d-4bf6-8b42-75ed643d2fa0">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#Amount31a78910-8078-457c-a47f-573517547c88">
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                    <ccts:hasAmountValue>404200</ccts:hasAmountValue>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasEstimatedValue>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#SubmissionTerm79baed7b-17b0-457c-85d2-63c49283b1de">
+                <epo:hasReceiptDeadline>2018-10-08+11:00</epo:hasReceiptDeadline>
+                <epo:hasLanguage rdf:resource="http://publications.europa.eu/resource/authority/language/SPA"/>
+              </epo:SubmissionTerm>
+            </reg2015:applies>
+            <reg2015:applies>
+              <epo:OpeningTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#OpeningTerm047bf636-9974-4b78-b105-4f4d0bba1a6f">
+                <epo:hasOpeningDescription xml:lang="es">
+                        &lt;P&gt;Descripción:&lt;/P&gt;
+                    </epo:hasOpeningDescription>
+                <epo:hasOpeningDescription xml:lang="es">
+                        &lt;P&gt;Sala de juntas del Mando de Apoyo.&lt;/P&gt;
+                        &lt;P&gt;Datos de dirección:&lt;/P&gt;
+                        &lt;P&gt;— Calle: Guzmán el Bueno, 110,&lt;/P&gt;
+                        &lt;P&gt;— Código postal: 28003,&lt;/P&gt;
+                        &lt;P&gt;— Población: Madrid,&lt;/P&gt;
+                        &lt;P&gt;— País: España.&lt;/P&gt;
+                    </epo:hasOpeningDescription>
+                <epo:hasOpeningDateTime>2018-10-16+10:00</epo:hasOpeningDateTime>
+              </epo:OpeningTerm>
+            </reg2015:applies>
+            <epo:hasDescription xml:lang="es">
+                    &lt;P&gt;Adquisición de diversas condecoraciones con destino al personal de la Guardia
+                        Civil.&lt;/P&gt;
+                </epo:hasDescription>
+            <reg2015:hasGPAUsage>false</reg2015:hasGPAUsage>
+            <epo:uses>
+              <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#AccessTermsFulla5193913-ea24-4622-9651-b0278a212012">
+                <epo:hasProcurementDocumentLandingPage>https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&amp;idEvl=usZD%2BxC9GdgQK2TEfXGy%2BA%3D%3D</epo:hasProcurementDocumentLandingPage>
+              </epo:AccessTerm>
+            </epo:uses>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396459#Lotc7fd3f98-6723-4872-8990-e566dfed2832"/>
+            <epo:hasTitle xml:lang="es">
+                    &lt;P&gt;Adquisición de diversas condecoraciones con destino al personal de la Guardia
+                        Civil&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#Purposed4e9018e-94df-4f52-b647-76cd77881f0f">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/18512200"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/supplies"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#SelectionCriterionEconomic5f3e32f6-3d98-4277-ba08-86d664529ada">
+                <epo:hasDescription xml:lang="es">
+                    &lt;P&gt;Cifra anual de negocio. Descripción: ver punto n.º 7 1 del Cuadro de
+                        Características del Pliego de Cláusulas Administrativas Particulares.&lt;/P&gt;
+                </epo:hasDescription>
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/ef-stand"/>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#SelectionCriterionTechnicala77377f6-a897-4233-ac54-91f58b7cdeb0">
+                <epo:hasDescription xml:lang="es">
+                    &lt;P&gt;— Trabajos realizados. Descripción: ver punto n.º 7 2 del Cuadro de
+                        Características del Pliego de Cláusulas Administrativas Particulares,&lt;/P&gt;
+                    &lt;P&gt;— Muestras, descripciones y fotografías de los productos a suministrar.
+                        Descripción: ver punto n.º 7 2 del Cuadro de Características del Pliego de
+                        Cláusulas Administrativas Particulares.&lt;/P&gt;
+                </epo:hasDescription>
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/tp-abil"/>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#ProcedureIdea89d810-4648-4a96-ac4a-54c6689f88c9">
+                <epo:identifierValue>A/0022/A/18/2</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#ContractTermLot1a7778e6-5e17-4caf-a49e-c7b3a646479e">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#ObjectContractAddress0e6f9fd2-163d-4ff4-b4bc-93db8a835838">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ES300"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasRenewalIndicator>false</epo:hasRenewalIndicator>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#PurposeAdditional3ea90fdb-78fc-46ce-8bbc-58c735c4f85c">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasDescription xml:lang="es">
+                        &lt;P&gt;Adquisición de diversas condecoraciones con destino al personal de la
+                            Guardia Civil.&lt;/P&gt;
+                    </epo:hasDescription>
+        <epo:hasVariantPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasName>Aumento de garantía</epo:hasName>
+    <epo:hasFormula>5</epo:hasFormula>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/cost"/>
+  </epo:AwardCriterion>
+  <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#SelectionCriterionSuitability7b5d9bc2-caa8-4108-afd9-d883862f9181"/>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396459#AwardCriterionCost3fe32f9b-659b-4b64-b22b-2c306ba91426">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396459#Lotc7fd3f98-6723-4872-8990-e566dfed2832"/>
+    <epo:hasName>Precio</epo:hasName>
+    <epo:hasFormula>95</epo:hasFormula>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/cost"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

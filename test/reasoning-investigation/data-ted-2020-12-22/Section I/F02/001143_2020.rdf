@@ -1,0 +1,79 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001143#ProcedureExt012bbc26-6f9c-447d-b71b-a307c7848ff9">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001143#Buyera3712d8c-15c1-4e03-8fef-5af3d4b38489">
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-002-001143#ProcedureExt012bbc26-6f9c-447d-b71b-a307c7848ff9"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-002-001143#ProcedureExt012bbc26-6f9c-447d-b71b-a307c7848ff9"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001143#BuyerProfile85060eed-58ff-4671-baca-2f66329f06de">
+            <epo:hasURL>https://nen.nipez.cz/profil/mmr</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001143#ContactPoint0b6cc3ab-5b61-439d-9787-159705446951">
+            <epo:hasEmail>simkova@rowan.legal</epo:hasEmail>
+            <epo:hasDescription xml:lang="cs">Adéla Šimková</epo:hasDescription>
+            <epo:hasInternetAddress>http://www.mmr.cz/</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001143#Organisationf70c7b5f-6ccd-40e0-8e99-ed5e59af52b8">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001143#Location679577a4-02e5-4a30-83ad-29a80d359bc6">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001143#Address71dc09f0-7d54-401f-9d49-ef904887424b">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ0"/>
+                    <epo:hasStreetName xml:lang="cs">Staroměstské náměstí 6</epo:hasStreetName>
+                    <epo:hasCityName xml:lang="cs">Praha 1</epo:hasCityName>
+                    <epo:hasPostalZone>110 05</epo:hasPostalZone>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CZE"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001143#OrganisationId3b3f78c4-309d-42da-89f3-c9b1f6769437">
+                <epo:identifierValue>66002222</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="cs">Česká republika - Ministerstvo pro místní rozvoj</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/cga"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001143#AccessTermsRestrbc8aab09-8eca-4965-9f04-cef1546ecd8a">
+        <epo:hasRestrictedAccessAddress>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001143#Channel64f1881c-95ec-4068-a3a5-3f167e40dd8f">
+            <epo:hasURL>https://nen.nipez.cz/profil/mmr</epo:hasURL>
+          </epo:Channel>
+        </epo:hasRestrictedAccessAddress>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001143#SubmisisonTermsf3afe3d9-b6b1-46a0-80a8-f72ce403d2a2">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001143#ChannelSubmissiondb42fc67-a1e5-421a-86a4-b38fe8867ba4">
+            <epo:hasURL>https://nen.nipez.cz</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

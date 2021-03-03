@@ -1,0 +1,78 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434134#ProcedureExte6aaf036-a8af-4d86-b597-6699bad53426">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434134#Buyer46ccc1e7-ca01-45a3-b619-b7af134248fd">
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434134#ProcedureExte6aaf036-a8af-4d86-b597-6699bad53426"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434134#ProcedureExte6aaf036-a8af-4d86-b597-6699bad53426"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434134#Organisationfe55fe52-d6d2-493b-a79a-12fea9ce820e">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434134#Location326e81ec-23d9-475b-b17f-cae36ffa5279">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434134#Addressaaaed339-3e1e-4c8a-964a-641ac46f343c">
+                    <epo:hasCityName xml:lang="de">Tuttlingen</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE137"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                    <epo:hasStreetName xml:lang="de">Bahnhofstraße 100</epo:hasStreetName>
+                    <epo:hasPostalZone>78532</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Breitbandinitiative Landkreis Tuttlingen (BIT) – gemeinsame
+                        selbstständige KAdöR</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434134#ProcedureExte6aaf036-a8af-4d86-b597-6699bad53426"/>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434134#ProcedureExte6aaf036-a8af-4d86-b597-6699bad53426"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434134#ContactPoint403b1ee4-b437-46d4-acd2-2c04d02c9f4e">
+            <epo:hasEmail>zimmermann@iuscomm.de</epo:hasEmail>
+            <epo:hasInternetAddress>http://www.iuscomm.de</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="de">iuscomm Rechtsanwälte – Schenek und Zimmermann
+                        Partnerschaftsgesellschaft mbB</epo:hasDescription>
+            <epo:hasTelephone>+49 711/2535939-33</epo:hasTelephone>
+            <epo:hasFax>+49 711/2535939-27</epo:hasFax>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasActivityDescription xml:lang="de">Verpachtung passiver Infrastrukturen zur
+                    Breitbandversorgung</epo:hasActivityDescription>
+        <epo:hasBuyerLegalTypeDescription xml:lang="de">Gemeinsame selbstständige Kommunalanstalt des öffentlichen
+                    Rechts</epo:hasBuyerLegalTypeDescription>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434134#AccessTermsFull37668dcd-d6b8-4316-8a80-b491a5755a9e">
+        <epo:hasProcurementDocumentLandingPage>http://www.deutsche-evergabe.de/</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434134#SubmisisonTerms86741ca8-51db-4a89-b539-2d244e2bb482">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434134#ChannelSubmission68713728-b0ff-448f-89bb-ee343b0e0ed6">
+            <epo:hasURL>http://www.deutsche-evergabe.de/</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <reg2015:usesAd-hoc>
+      <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434134#ChannelProcedure5e1b6a7a-f4c0-4f5a-bbe7-2af7a067dbd0">
+        <epo:hasURL>http://www.deutsche-evergabe.de/</epo:hasURL>
+      </epo:Channel>
+    </reg2015:usesAd-hoc>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

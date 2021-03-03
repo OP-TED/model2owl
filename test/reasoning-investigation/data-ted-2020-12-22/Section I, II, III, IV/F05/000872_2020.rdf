@@ -1,0 +1,138 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#SelectionCriterionSuitability30eee37f-711e-44c8-a8e3-b1aa018ef6d0"/>
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-001-000872#Procedureed3b1291-88de-47e7-b453-d8dc53a4157b">
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#SubmissionTermf7d86012-30d9-4870-8d51-729be0a50f0b">
+        <epo:hasValidityPeriod>
+          <ccts:Measure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#Measurec1a9e7dd-c831-4a0c-b4c7-906b9ffc58ba">
+            <ccts:hasUnitCode rdf:resource="http://publications.europa.eu/resource/authority/timeperiod/MONTH"/>
+            <ccts:hasMeasureValue>6</ccts:hasMeasureValue>
+          </ccts:Measure>
+        </epo:hasValidityPeriod>
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#ChannelSubmission667666dd-da4b-4088-b4e5-dfadb38fc416">
+            <epo:hasURL>www.marches-securises.fr</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+        <epo:hasLanguage rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+        <epo:hasReceiptDeadline>2020-01-15+11:00</epo:hasReceiptDeadline>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#Buyerf349dd46-6f0e-44d0-837c-b7a16a651234">
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000872#Procedureed3b1291-88de-47e7-b453-d8dc53a4157b"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000872#Procedureed3b1291-88de-47e7-b453-d8dc53a4157b"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#ContactPoint3876306f-ceda-41bb-a8ac-6e8527b99be0">
+            <epo:hasInternetAddress>www.marches-securises.fr</epo:hasInternetAddress>
+            <epo:hasEmail>anne-sophie.parisseaux@dalkia.fr</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#Organisation289db9ad-2aee-413c-b22a-043ddc1f94ab">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#Locationdfba2402-3914-4aee-9127-d549b9ebe8d7">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#Address1ffff112-e4f2-4107-b866-0df4eaec89fd">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCityName xml:lang="fr">Saint-André-lez-Lille</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="fr">37 avenue du Maréchal de Lattre de Tassigny</epo:hasStreetName>
+                    <epo:hasPostalZone>59350</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Maubeuge énergie renouvelable</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gas-heat"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:applies>
+      <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#SelectionCriterionEconomic4132d027-08b5-4414-8b26-7b9b356d9255">
+        <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/ef-stand"/>
+      </epo:SelectionCriterion>
+    </reg2015:applies>
+    <reg2015:hasCriteriaInProcurementDocument rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000872#SelectionCriterionEconomic4132d027-08b5-4414-8b26-7b9b356d9255"/>
+    <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;2019-059 — réseau de chaleur de Maubeuge — raccordement hydraulique
+                        sous-station CVE&lt;/P&gt;
+                </epo:hasTitle>
+    <reg2015:hasCriteriaInProcurementDocument>
+      <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#SelectionCriterionTechnical270a7dfe-32a3-4b19-822b-3613737df939">
+        <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/tp-abil"/>
+      </epo:SelectionCriterion>
+    </reg2015:hasCriteriaInProcurementDocument>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#Lot9c30a3ec-c144-460f-9fb7-9d6e9614957f">
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#PeriodDuration12a173d1-6890-4c9a-9a30-2bbc2b872d54">
+            <epo:hasDurationMeasure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000872#Measurec1a9e7dd-c831-4a0c-b4c7-906b9ffc58ba"/>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#ContractTermLot3012a8ff-3928-4c4e-9085-abead0910595">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#ObjectContractAddress768bbb71-0e6b-4866-a4bf-8dd1697e7b62">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasRenewalIndicator>false</epo:hasRenewalIndicator>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#PurposeAdditionalbc6f3c3b-3621-46ae-838f-5a50b6110cb4">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000872#Procedureed3b1291-88de-47e7-b453-d8dc53a4157b"/>
+        <epo:hasVariantPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/allowed"/>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;Les stipulations de la présente consultation concernent le raccordement
+                            hydraulique de la sous-station du CVE de Maubeuge au réseau de chaleur
+                            de la ville de Maubeuge.&lt;/P&gt;
+                    </epo:hasDescription>
+        <epo:hasAdditionalInformation xml:lang="fr">
+                        &lt;P&gt;L'entité adjudicatrice se réserve le droit d'attribuer le contrat à une
+                            offre de base sans négociation.&lt;/P&gt;
+                    </epo:hasAdditionalInformation>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#AccessTermsFullc0fd166c-cad1-4a18-80f0-98f530d5178b">
+        <epo:hasProcurementDocumentLandingPage>www.marches-securises.fr</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Les stipulations de la présente consultation concernent le raccordement
+                        hydraulique de la sous-station du CVE de Maubeuge au réseau de chaleur de la
+                        ville de Maubeuge.&lt;/P&gt;
+                </epo:hasDescription>
+    <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call"/>
+    <reg2015:applies rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000872#SelectionCriterionTechnical270a7dfe-32a3-4b19-822b-3613737df939"/>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000872#Purpose88e4643d-8d51-4de0-81b8-492154382b41">
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/09323000"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <reg2015:hasGPAUsage>false</reg2015:hasGPAUsage>
+  </reg2015:Procedure>
+</rdf:RDF>

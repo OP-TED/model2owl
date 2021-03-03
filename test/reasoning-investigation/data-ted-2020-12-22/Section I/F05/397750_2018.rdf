@@ -1,0 +1,60 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397750#ProcedureExt1ea600a5-7026-4415-a6ae-9f9e25e6f276">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397750#Buyer1065486e-5e0e-4567-b239-49e287ffa923">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397750#Organisation0a44b745-0b4b-43aa-8a57-2d2ee517e283">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397750#Locationa7270c17-b10e-4d68-823d-7ecf8532c4ba">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397750#Address7c74f08a-63ae-463b-8ab8-e0797056c122">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                    <epo:hasPostalZone>61-492</epo:hasPostalZone>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL415"/>
+                    <epo:hasStreetName xml:lang="pl">ul. Dolna Wilda 126</epo:hasStreetName>
+                    <epo:hasCityName xml:lang="pl">Poznań</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="pl">Aquanet SA</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397750#ContactPointa72e1b26-933f-4254-93d6-8c6b41bbb0a0">
+            <epo:hasFax>+48 618359321</epo:hasFax>
+            <epo:hasDescription xml:lang="pl">Ewa Turzańska-Oleksyn</epo:hasDescription>
+            <epo:hasInternetAddress>www.aquanet.pl</epo:hasInternetAddress>
+            <epo:hasTelephone>+48 618359233</epo:hasTelephone>
+            <epo:hasEmail>ewa.turzanska-oleksyn@aquanet.pl</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397750#ProcedureExt1ea600a5-7026-4415-a6ae-9f9e25e6f276"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397750#ProcedureExt1ea600a5-7026-4415-a6ae-9f9e25e6f276"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397750#ProcedureExt1ea600a5-7026-4415-a6ae-9f9e25e6f276"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397750#ProcedureExt1ea600a5-7026-4415-a6ae-9f9e25e6f276"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/water"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397750#AccessTermsFulla70c4f52-05b5-4331-a506-e991840d2ff5">
+        <epo:hasProcurementDocumentLandingPage>www.aquanet.pl</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

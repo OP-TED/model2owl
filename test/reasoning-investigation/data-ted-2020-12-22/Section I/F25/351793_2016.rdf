@@ -1,0 +1,52 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351793#ProcedureExt11fdd98b-9eff-41b7-b5c1-95521d33526a">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351793#Buyer04c4ea5e-936d-448b-ba9e-bbaa6f609671">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351793#ProcedureExt11fdd98b-9eff-41b7-b5c1-95521d33526a"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351793#Organisation76378142-1192-4d1f-a35d-7b27506bab5e">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351793#Locationd582ef7a-5109-4b88-a3a8-bc65b1b20846">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351793#Address48b30144-1e78-42ac-b099-ba6ce347be14">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasPostalZone>10012</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="fr">Troyes</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="fr">22 rue Grégoire-Pierre Herluison — CS 93047</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">SDEDA</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351793#ContactPoint97ff56b7-6595-463b-bb11-43ed953dbc7c">
+            <epo:hasEmail>sdeda@wandoo.fr</epo:hasEmail>
+            <epo:hasDescription xml:lang="fr">A l'attention de Mme la présidente</epo:hasDescription>
+            <epo:hasFax>+33 325832394</epo:hasFax>
+            <epo:hasInternetAddress>http://www.sdeda.fr</epo:hasInternetAddress>
+            <epo:hasTelephone>+33 325832628</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/env-pro"/>
+        <epo:hasBuyerLegalTypeDescription xml:lang="fr">Syndicat mixte</epo:hasBuyerLegalTypeDescription>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

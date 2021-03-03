@@ -1,0 +1,63 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397866#ProcedureExtc2f2dd6b-e433-4c1c-aecd-434902e37e36">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397866#Buyere6c92be1-258d-4e23-8155-de7fcc1b1bac">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397866#Organisationea6c5023-0ec1-41b4-a819-42deaa9c42e2">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397866#Locationc705548f-8571-4f9d-8b1c-c177bae858cd">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397866#Address78ed7f89-64c6-43f0-b1c7-36eb79b08def">
+                    <epo:hasCityName xml:lang="es">Madrid</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="es">C/ Sor Ángela de la Cruz, 3</epo:hasStreetName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ESP"/>
+                    <epo:hasPostalZone>28020</epo:hasPostalZone>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ES300"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397866#OrganisationIda538908f-1fff-46bd-9d2b-2fbadcd7b757">
+                <epo:identifierValue>Q2801660H</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="es">Administrador de Infraestructuras Ferroviarias</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397866#ProcedureExtc2f2dd6b-e433-4c1c-aecd-434902e37e36"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397866#BuyerProfile258163c5-8e53-4582-828c-519ea4f243f7">
+            <epo:hasURL>https://contrataciondelestado.es/wps/portal/perfilContratante</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397866#ContactPoint62b13aee-ccb7-49ff-9fd7-6b9de56f1ba5">
+            <epo:hasFax>+34 917488896</epo:hasFax>
+            <epo:hasInternetAddress>www.adif.es</epo:hasInternetAddress>
+            <epo:hasEmail>vgallegomendez@adif.es</epo:hasEmail>
+            <epo:hasDescription xml:lang="es">Subdirección Contratación de Desarrollo de Negocio
+                        corPorativo</epo:hasDescription>
+            <epo:hasTelephone>+34 913006270</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/rail"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

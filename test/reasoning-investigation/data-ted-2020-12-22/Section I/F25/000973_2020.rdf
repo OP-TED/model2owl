@@ -1,0 +1,60 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#ProcedureExt14499b3e-e5e4-4ef3-bdd8-9582df74cc14">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#Buyerf00c9ca7-66ea-4a1b-af25-6b5dae1af989">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000973#ProcedureExt14499b3e-e5e4-4ef3-bdd8-9582df74cc14"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#BuyerProfile433dceb9-8fc2-44e3-bca0-1f2e44af4543">
+            <epo:hasURL>https://www.achatpublic.com</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#ContactPointbb18dc6b-8c64-4242-ad1f-78c01a48fbff">
+            <epo:hasInternetAddress>http://www.sieml.fr</epo:hasInternetAddress>
+            <epo:hasEmail>Sieml@sieml.fr</epo:hasEmail>
+            <epo:hasTelephone>+33 241207520</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#Organisatione31e0728-b542-462b-979b-33230e50db89">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#OrganisationId7b11ba44-f2df-4132-9180-8fcf5dc8d49c">
+                <epo:identifierValue>254 901 309 00032</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#Locationcafc57dd-77be-4f0c-b5ab-5e7aee76e084">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#Address300efdae-30e5-4504-9c8f-3d16857a6874">
+                    <epo:hasCityName xml:lang="fr">Angers Cedex 1</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="fr">9 route de la Confluence — ZAC de Beuzon-Ecouflant — CS 60145</epo:hasStreetName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRG02"/>
+                    <epo:hasPostalZone>49001</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">SI Énergies de Maine-et-Loire</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <epo:hasActivityDescription xml:lang="fr">Électricité</epo:hasActivityDescription>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

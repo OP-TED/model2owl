@@ -1,0 +1,60 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429477#ProcedureExt6d713d51-1b13-4e75-a2c6-f675a614d5e2">
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429477#AccessTermsFull5c5d5137-bb50-47ca-bb04-c855b4695e36">
+        <epo:hasProcurementDocumentLandingPage>https://www.evergabe.nrw.de/VMPCenter/company/announcements/categoryOverview.do?method=search&amp;searchString=%22CXPWYD39D50%22</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429477#Buyerfe63149f-59cf-4dd6-b452-0e6af5e2126f">
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429477#ProcedureExt6d713d51-1b13-4e75-a2c6-f675a614d5e2"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429477#Organisation1ea4c862-ef4b-4f1b-ad09-62286c6a3c02">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429477#Locationf89f5d98-fcb6-4318-8f9a-74577dd3ca05">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429477#Address77641dc1-5c48-4928-9e05-1933376327b1">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                    <epo:hasStreetName xml:lang="de">Steinfurter Straße 60</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DEA33"/>
+                    <epo:hasPostalZone>48149</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="de">Münster</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Wohn+Stadtbau GmbH</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429477#ProcedureExt6d713d51-1b13-4e75-a2c6-f675a614d5e2"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429477#ProcedureExt6d713d51-1b13-4e75-a2c6-f675a614d5e2"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429477#ContactPointde167a96-b14b-4876-b9dc-623846a2b83e">
+            <epo:hasInternetAddress>www.wohnstadtbau.de</epo:hasInternetAddress>
+            <epo:hasTelephone>+49 2517008-331</epo:hasTelephone>
+            <epo:hasEmail>ausschreibungen@wohnstadtbau.de</epo:hasEmail>
+            <epo:hasFax>+49 2517008-400</epo:hasFax>
+            <epo:hasDescription xml:lang="de">Sekretariat, Frau Weber</epo:hasDescription>
+          </epo:ContactPoint>
+        </epo:has>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429477#ProcedureExt6d713d51-1b13-4e75-a2c6-f675a614d5e2"/>
+        <epo:hasBuyerLegalTypeDescription xml:lang="de">Wohnungsunternehmen</epo:hasBuyerLegalTypeDescription>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/hc-am"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

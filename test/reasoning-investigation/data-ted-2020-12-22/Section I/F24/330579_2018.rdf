@@ -1,0 +1,67 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#ProcedureExt7c2a6ebe-d610-475f-9db2-5c294109acec">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Buyer21f5908c-3afd-441d-8f58-c7c66d6aa8f1">
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2018/s-144-330579#ProcedureExt7c2a6ebe-d610-475f-9db2-5c294109acec"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Organisation5a091e7b-b826-4ac8-850b-0f374988ad5d">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Location45d52d59-9777-441f-8fd9-874b2f18c04e">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Addressfc8dca51-7252-4ae6-b115-3086d03cca84">
+                    <epo:hasCityName xml:lang="en">Sunderland</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKC23"/>
+                    <epo:hasPostalZone>SR2 7DN</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="en">Civic Centre Burdon Road</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="en">Sunderland City Council</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-144-330579#ProcedureExt7c2a6ebe-d610-475f-9db2-5c294109acec"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-144-330579#ProcedureExt7c2a6ebe-d610-475f-9db2-5c294109acec"/>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2018/s-144-330579#ProcedureExt7c2a6ebe-d610-475f-9db2-5c294109acec"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#ContactPoint444a1da6-3c89-4978-beaf-d3336db71bdd">
+            <epo:hasTelephone>+44 1915611774</epo:hasTelephone>
+            <epo:hasDescription xml:lang="en">Glenda Malone</epo:hasDescription>
+            <epo:hasEmail>glenda.malone@sunderland.gov.uk</epo:hasEmail>
+            <epo:hasInternetAddress>http://www.sunderland.gov.uk</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#AccessTermsFull60e2f055-2cfb-4c36-807a-d67d4817b77f">
+        <epo:hasProcurementDocumentLandingPage>www.nepoportal.org</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#SubmisisonTerms2f67d33b-250d-406a-b503-868e0fa727ac">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#ChannelSubmission1e3294a9-bc99-4adf-8af9-5092bb623b97">
+            <epo:hasURL>www.nepoportal.org</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

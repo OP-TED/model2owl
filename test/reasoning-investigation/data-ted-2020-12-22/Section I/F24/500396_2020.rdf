@@ -1,0 +1,73 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500396#ProcedureExt89472f26-3557-4343-af85-8b8fb70aa130">
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500396#SubmisisonTerms078ec16e-7b09-490f-949d-f8bd1fd5a8ad">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500396#ChannelSubmission1d39c18f-03cd-491d-97b5-fd9e161a65c8">
+            <epo:hasURL>http://eu.eu-supply.com/app/rfq/rwlentrance_s.asp?PID=279251&amp;B=HEUKING</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500396#Buyer5e49ec7b-c0bc-4aa3-befb-de75e08d5903">
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500396#Organisation557af631-9f7d-44eb-a820-7236a08ff337">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500396#Location924a1891-18f3-4841-ac84-2e8e1b55ce08">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500396#Addressf8ba8276-91a5-4563-a4fd-6e66b50ade89">
+                    <epo:hasStreetName xml:lang="de">Königstraße 36</epo:hasStreetName>
+                    <epo:hasPostalZone>78628</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="de">Rottweil</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE135"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Landratsamt Rottweil – Landwirtschaftsamt</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2020/s-205-500396#ProcedureExt89472f26-3557-4343-af85-8b8fb70aa130"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500396#ContactPointd8746e76-8908-474e-bec1-3ddb6549daf8">
+            <epo:hasDescription xml:lang="de">Christine Grau</epo:hasDescription>
+            <epo:hasTelephone>+49 6997561413</epo:hasTelephone>
+            <epo:hasInternetAddress>www.landkreis-rottweil.de</epo:hasInternetAddress>
+            <epo:hasEmail>c.grau@heuking.de</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500396#BuyerProfile76477d09-1447-440e-9251-5373378dca36">
+            <epo:hasURL>https://eu.eu-supply.com/ctm/Company/CompanyInformation/Index/375238</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-205-500396#ProcedureExt89472f26-3557-4343-af85-8b8fb70aa130"/>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2020/s-205-500396#ProcedureExt89472f26-3557-4343-af85-8b8fb70aa130"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-205-500396#ProcedureExt89472f26-3557-4343-af85-8b8fb70aa130"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-205-500396#AccessTermsFullb05f1b5f-1a5f-486a-9a2d-07545027a70e">
+        <epo:hasProcurementDocumentLandingPage>http://eu.eu-supply.com/app/rfq/rwlentrance_s.asp?PID=279251&amp;B=HEUKING</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

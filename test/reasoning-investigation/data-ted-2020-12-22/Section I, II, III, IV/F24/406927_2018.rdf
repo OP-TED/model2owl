@@ -1,0 +1,170 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#SelectionCriterionSuitability10edc696-065b-4191-b3ab-b4878c97c967"/>
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-179-406927#Procedurebc5196f1-e372-4c39-bebd-4395813a075f">
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#Lot1d12cf1e-3d7a-4417-9420-c0a9a5492f18">
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-179-406927#Procedurebc5196f1-e372-4c39-bebd-4395813a075f"/>
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#PeriodDuration07e4e97b-c6fb-4b7a-bfd2-b3f6e1c1eb86"/>
+        </epo:hasContractDuration>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#ContractTermLot604e7a60-f0f7-4754-bf18-fc489871a4df">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#ObjectContractAddress6f21d2ba-f293-4627-aa44-fb0a0e91fb71">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRL04"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="fr"
+            >
+                        &lt;P&gt;Stand de Tir des Trois Lucs — 39 avenue Alfred Blachère — 13012
+                            Marseille.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#PurposeAdditionale7ce40a2-b657-4f2d-9a8c-0671e76fb731">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/92000000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasEstimatedValue>
+          <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#ValueValObject186404dc-6fea-4bed-b44f-7efa291bae18">
+            <epo:hasOverallAmount>
+              <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#AmountValObject086fb260-6aad-4267-9693-ace7b5d3ad44">
+                <ccts:hasAmountValue>12330000</ccts:hasAmountValue>
+                <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+              </ccts:Amount>
+            </epo:hasOverallAmount>
+            <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+          </epo:Value>
+        </epo:hasEstimatedValue>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;La présente consultation concerne un contrat de concession de services,
+                            soumis aux dispositions de l'ordonnance nº 2016-65 du 29.1.2016 relative
+                            aux contrats de concession et du décret nº 2016-86 du 1.2.2016 relatif
+                            aux contrats de concession ayant pour objet la mise en valeur, la
+                            gestion et l'exploitation du stand de tir des Trois Lucs à
+                            Marseille.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasEstimatedValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#Value6a2bc000-e058-478a-9858-db57781d52b8">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#Amount957560aa-8df9-4eb4-93dd-6831a7d98e0a">
+            <ccts:hasAmountValue>12330000</ccts:hasAmountValue>
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasEstimatedValue>
+    <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;Contrat de concession de services pour la mise en valeur, la gestion et
+                        l'exploitation du stand de Tir des Trois Lucs&lt;/P&gt;
+                </epo:hasTitle>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#AccessTermsFull84af66b5-e526-4b22-86e7-31d68af50686">
+        <epo:hasProcurementDocumentLandingPage>http://marchespublics.maire-marseille.fr</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#ContractTermacae4ed8-e7d6-48a4-91da-5f3cc22c51aa">
+        <epo:hasPerformanceConditions xml:lang="fr">
+                    &lt;P&gt;L'exploitation du stand de tir sera assurée par le concessionnaire à ses
+                        risques et périls. Sa rémunération proviendra des recettes d'exploitation
+                        des activités dont il aura la charge. Le concessionnaire sera redevable
+                        envers la ville de Marseille d'une redevance en contrepartie de la mise à
+                        disposition des ouvrages comprenant le stand de tir dont les modalités
+                        précises de calcul figurent dans le projet de contrat.&lt;/P&gt;
+                </epo:hasPerformanceConditions>
+      </epo:ContractTerm>
+    </reg2015:applies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#Buyera382bec4-2e59-4b59-8e83-e20a64a98085">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#Organisation4bcb86e3-4b46-4a46-ae7f-d39a89e7bca1">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#Locationd6360c51-15d1-497f-91fc-41977949e129">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#Address3b9de232-a6bf-4176-a3fd-d5d0f54b9472">
+                    <epo:hasPostalZone>13233</epo:hasPostalZone>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRL04"/>
+                    <epo:hasCityName xml:lang="fr">Marseille Cedex 20</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasStreetName xml:lang="fr">Hôtel de Ville — quai du Port</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Ville de Marseille</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-179-406927#Procedurebc5196f1-e372-4c39-bebd-4395813a075f"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#BuyerProfiled7c23a01-5e11-4789-b17f-6852890131f8">
+            <epo:hasURL>http://marchespublics.mairie-marseille.fr</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#ContactPointa47a19cb-cf5c-460a-8aa2-3585edd2dfaf">
+            <epo:hasInternetAddress>http://www.marseille.fr</epo:hasInternetAddress>
+            <epo:hasEmail>dgaj-dmp@marseille.fr</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-179-406927#Procedurebc5196f1-e372-4c39-bebd-4395813a075f"/>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-179-406927#Procedurebc5196f1-e372-4c39-bebd-4395813a075f"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-179-406927#Procedurebc5196f1-e372-4c39-bebd-4395813a075f"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Contrat de concession de services pour la mise en valeur, la gestion et
+                        l'exploitation du stand de Tir des Trois Lucs.&lt;/P&gt;
+                </epo:hasDescription>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#Purposef14c3088-0c53-4931-bd7e-9d0da4aaad30">
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/92000000"/>
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:hasID>
+      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#ProcedureId254adf25-5f0c-404a-9730-10897e23567c">
+        <epo:identifierValue>2018_51674_0001</epo:identifierValue>
+      </epo:Identifier>
+    </epo:hasID>
+    <reg2015:hasCriteriaInProcurementDocument>
+      <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#SelectionCriterionTechnical98c15448-53dc-4b39-b148-a5b932f4fff2">
+        <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/tp-abil"/>
+      </epo:SelectionCriterion>
+    </reg2015:hasCriteriaInProcurementDocument>
+    <reg2015:hasCriteriaInProcurementDocument>
+      <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#SelectionCriterionEconomicde856aef-e3ae-47fe-8ba6-61688283637a">
+        <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/ef-stand"/>
+      </epo:SelectionCriterion>
+    </reg2015:hasCriteriaInProcurementDocument>
+    <reg2015:applies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-179-406927#SelectionCriterionTechnical98c15448-53dc-4b39-b148-a5b932f4fff2"/>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406927#SubmissionTerm96624610-6605-4c1a-8261-f1f09c906a60">
+        <epo:hasLanguage rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+        <epo:hasReceiptDeadline>2018-11-21+16:00</epo:hasReceiptDeadline>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <reg2015:applies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-179-406927#SelectionCriterionEconomicde856aef-e3ae-47fe-8ba6-61688283637a"/>
+  </reg2015:Procedure>
+</rdf:RDF>

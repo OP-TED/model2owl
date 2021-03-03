@@ -1,0 +1,61 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002718#ProcedureExt0a36969f-8d6f-45a6-9314-2cf3c647b50d">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002718#Buyer90daa9ba-988c-48df-8d8e-f72629241b1d">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002718#Organisationbdd3a0b1-3f9c-412d-a7b3-7cf724055d1d">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002718#OrganisationIdf283c04f-f7e5-4cdb-9f56-f4d2190abf86">
+                <epo:identifierValue>21660180700011</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002718#Locationac98646a-4503-4d97-aa4d-f0ff5f695c3a">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002718#Addressec844d5c-8893-4aef-ab39-f1d9b374cc0c">
+                    <epo:hasPostalZone>66250</epo:hasPostalZone>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRJ15"/>
+                    <epo:hasCityName xml:lang="fr">Saint-Laurent-de-la-Salanque</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="fr">2 avenue Urbain Paret</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Commune de Saint-Laurent-de-la-Salanque</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-002-002718#ProcedureExt0a36969f-8d6f-45a6-9314-2cf3c647b50d"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002718#BuyerProfilecb4ec992-420e-4b1b-a812-5016c61e6755">
+            <epo:hasURL>http://www.perpignanmediterranee.com/</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002718#ContactPoint129278dc-4316-45ef-92e1-eb1a0518c0bf">
+            <epo:hasEmail>contact@saint-laurent-salanque.com</epo:hasEmail>
+            <epo:hasInternetAddress>http://www.perpignanmediterranee.com/</epo:hasInternetAddress>
+            <epo:hasTelephone>+33 468280030</epo:hasTelephone>
+            <epo:hasFax>+33 468280086</epo:hasFax>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

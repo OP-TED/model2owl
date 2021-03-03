@@ -1,0 +1,57 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429559#Buyerc207ec67-c681-4be6-8dea-a0ba193d04a4">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429559#Organisation37df463b-4f6b-4b0a-9985-d7a98cf29e56">
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429559#OrganisationId6c2caf3e-cf49-48d1-bfca-608fd9351b35">
+            <epo:identifierValue>48716944</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429559#Locationb18387a1-bfdc-42a5-a15f-87205042b1c7">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429559#Address07ee356a-903c-48af-8d55-7c7cc8a63dc6">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/NL"/>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/NLD"/>
+                <epo:hasPostalZone>2224 EW</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="nl">Katwijk</epo:hasCityName>
+                <epo:hasStreetName xml:lang="nl">Koningin Julianalaan 3</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="nl">Gemeente Katwijk</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429559#ContactPoint9a038b05-8fed-43d4-b85d-9818210e5dcb">
+        <epo:hasEmail>nzk@katwijk.nl</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.katwijk.nl</epo:hasInternetAddress>
+        <epo:hasFax>+31 714065000</epo:hasFax>
+        <epo:hasTelephone>+31 714065000</epo:hasTelephone>
+        <epo:hasDescription xml:lang="nl">A. Mastenbroek</epo:hasDescription>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429559#ProcedureExt11c4d860-0511-4354-b553-a03c765f7bbf">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429559#Buyerc207ec67-c681-4be6-8dea-a0ba193d04a4"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+  </epo:Buyer>
+</rdf:RDF>

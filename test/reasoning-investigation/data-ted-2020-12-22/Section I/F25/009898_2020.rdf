@@ -1,0 +1,56 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#Buyer24b9c1f3-3768-42d8-996d-4aa13132bfce">
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#ProcedureExt4cb09b66-ebe3-4e5d-ae4d-3914c86d581f">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-006-009898#Buyer24b9c1f3-3768-42d8-996d-4aa13132bfce"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#Organisation74a10cb5-227e-4479-ab6c-bbbb97056212">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#Location31e316f6-3599-4486-a3a1-7afa48e194b4">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#Addresse2270d69-42e6-47df-aa2f-b85ca15e63da">
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasCityName xml:lang="fr">Colmar</epo:hasCityName>
+                <epo:hasPostalZone>68000</epo:hasPostalZone>
+                <epo:hasStreetName xml:lang="fr">32 cours Sainte-Anne, BP 80197</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRF12"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Colmar Agglomération</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#BuyerProfilee5fce38e-531a-42e8-9c2d-fea4f31d2b5a">
+        <epo:hasURL>http://colmar-agglo.e-marchespublics.com</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-006-009898#ContactPoint01962d5a-e1b2-489e-80b0-b7f9bd81e708">
+        <epo:hasEmail>gregory.delattre@agglo-colmar.fr</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.colmar-agglomeration.fr</epo:hasInternetAddress>
+        <epo:hasFax>+33 369995559</epo:hasFax>
+        <epo:hasTelephone>+33 369995555</epo:hasTelephone>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:hasBuyerLegalTypeDescription xml:lang="fr">Communauté d'agglomération</epo:hasBuyerLegalTypeDescription>
+    <epo:hasActivityDescription xml:lang="fr">Transports urbains</epo:hasActivityDescription>
+  </epo:Buyer>
+</rdf:RDF>

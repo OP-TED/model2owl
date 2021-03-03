@@ -1,0 +1,302 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#AwardCriterionCost12fa97ec-3c40-4549-9ec1-644cd7f66c65">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#Lote04c25b9-c7c9-4724-9e6d-aca6cfe10d2b">
+        <epo:hasEstimatedValue>
+          <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#ValueValObject8049a241-0f4b-4569-a039-036ee821831a">
+            <epo:hasOverallAmount>
+              <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#AmountValObject8ec9eb40-6d90-4f19-979a-29a650071419">
+                <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/HRK"/>
+                <ccts:hasAmountValue>45000000.00</ccts:hasAmountValue>
+              </ccts:Amount>
+            </epo:hasOverallAmount>
+            <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+          </epo:Value>
+        </epo:hasEstimatedValue>
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#PeriodDuration1e3fa957-0202-498f-bf2c-79812e55afe8">
+            <epo:hasDurationMeasure>
+              <ccts:Measure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#Measure4920eb50-cfb9-41e2-923c-236c466447df">
+                <ccts:hasMeasureValue>4</ccts:hasMeasureValue>
+                <ccts:hasUnitCode rdf:resource="http://publications.europa.eu/resource/authority/timeperiod/MONTH"/>
+              </ccts:Measure>
+            </epo:hasDurationMeasure>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#ContractTermLot7767ec86-8989-4670-adbe-2c029514a857">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#ObjectContractAddressf2f2ad93-743e-4e56-aa96-e57d1f2cee23">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/HR033"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="hr"
+            >
+                        &lt;P&gt;Mjesto izvršenja radova je uslužno područje naručitelja Vodovod-Vir
+                            d.o.o.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+            <epo:hasRenewalIndicator>false</epo:hasRenewalIndicator>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#PurposeAdditional408db59a-3297-43a3-a98a-4471ad851419">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45231300"/>
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-175-396085#Procedure67005545-ba36-42c6-a0d3-5598694bbcf6">
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#SubmissionTerm352f4503-767e-462f-a001-27f195ac3be3">
+                <epo:hasSubmissionCommunicationMeans>
+                  <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#ChannelSubmission20c33bb5-8b9f-4969-baf9-c8028d7a8096">
+                    <epo:hasURL>https://eojn.nn.hr/Oglasnik</epo:hasURL>
+                  </epo:Channel>
+                </epo:hasSubmissionCommunicationMeans>
+                <epo:hasValidityPeriod rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396085#Measure4920eb50-cfb9-41e2-923c-236c466447df"/>
+                <epo:hasReceiptDeadline>2018-10-15+09:00</epo:hasReceiptDeadline>
+                <epo:hasLanguage rdf:resource="http://publications.europa.eu/resource/authority/language/HRV"/>
+              </epo:SubmissionTerm>
+            </reg2015:applies>
+            <reg2015:hasCriteriaInProcurementDocument>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#SelectionCriterionEconomic7a93386a-e73a-448d-920e-1c7d97f3f1cb">
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/ef-stand"/>
+              </epo:SelectionCriterion>
+            </reg2015:hasCriteriaInProcurementDocument>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#ProcedureId453155f0-b4c7-4d9f-b997-a3531047e7d5">
+                <epo:identifierValue>02/2018</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasTitle xml:lang="hr">
+                    &lt;P&gt;Vodoopskrba i odovodnja otoka Vira 3. faza gradnje&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:hasEstimatedValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#Value365d899e-faa9-4188-90af-d4792f8833cd">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#Amount68aff083-1445-4682-858c-dce672b9354f">
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/HRK"/>
+                    <ccts:hasAmountValue>45000000.00</ccts:hasAmountValue>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasEstimatedValue>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#SelectionCriterionTechnicala659838a-c612-48ae-b40c-5d7375569eb1">
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/tp-abil"/>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <reg2015:hasPerformingStaffQualificationInformation
+            >true</reg2015:hasPerformingStaffQualificationInformation>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#SelectionCriterionSuitabilityc1e2ef6b-5a6d-433c-be72-dede200352f1">
+                <epo:hasDescription xml:lang="hr">
+                    &lt;P&gt;21.1.1 Dokaz o upisu gospodarskog subjekta u sudski, obrtni, strukovni ili
+                        drugi odgovarajući registar u državi njegova poslovnog nastana.&lt;/P&gt;
+                    &lt;P&gt;Za potrebe utvrđivanja okolnosti iz poglavlja 21.1.1, gospodarski subjekt u
+                        ponudi dostavlja:&lt;/P&gt;
+                    &lt;P&gt;— ispunjeni eESPD obrazac (Dio IV. Kriteriji za odabir gospodarskog subjekta,
+                        Odjeljak A: Sposobnost za obavljanje profesionalne djelatnosti: točka 1)) za
+                        sve gospodarske subjekte u ponudi.&lt;/P&gt;
+                    &lt;P&gt;U ponudi se obvezno dostavlja eESPD obrazac – popratni dokumenti se ne
+                        dostavljaju uz ponudu.&lt;/P&gt;
+                    &lt;P&gt;Naručitelj će prije donošenja odluke u postupku javne nabave od ponuditelja
+                        koji je podnio ekonomski najpovoljniju ponudu zatražiti da u primjerenom
+                        roku, ne kraćem od 5 dana, dostavi ažurirane popratne dokumente, radi
+                        provjere okolnosti navedenih u eESPD-u, osim ako već posjeduje te
+                        dokumente.&lt;/P&gt;
+                    &lt;P&gt;Naručitelj će prihvatiti sljedeće dokumente kao dostatan dokaz sposobnosti za
+                        obavljanje profesionalne djelatnosti gospodarskog subjekta iz poglavlja
+                        21.1.1:&lt;/P&gt;
+                    &lt;P&gt;— izvadak iz sudskog, obrtnog, strukovnog ili drugog odgovarajućeg registra
+                        koji se vodi u državi članici njegova poslovnog nastana&lt;/P&gt;
+                    &lt;P&gt;Sukladno članku 20. stavak 2. Pravilnika o dokumentaciji o nabavi te ponudi u
+                        postupcima javne nabave ažurirani popratni dokument je svaki dokument u
+                        kojem su sadržani podaci važeći, odgovaraju stvarnom činjeničnom stanju u
+                        trenutku dostave naručitelju te dokazuju ono što je gospodarski subjekt
+                        naveo u eESPD-u.&lt;/P&gt;
+                </epo:hasDescription>
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/sui-act"/>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <reg2015:applies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396085#SelectionCriterionEconomic7a93386a-e73a-448d-920e-1c7d97f3f1cb"/>
+            <reg2015:applies>
+              <epo:OpeningTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#OpeningTerm93c17320-7209-4450-b55b-8d74422cfc98">
+                <epo:hasOpeningDateTime>2018-10-15+09:00</epo:hasOpeningDateTime>
+                <epo:hasOpeningDescription xml:lang="hr">
+                        &lt;P&gt;Javno otvaranje ponuda održat će se 15.10.2018. u 09:00 h, u prostorijama
+                            Naručitelja, na adresi iz poglavlja 2. ove Dokumentacije o nabavi.&lt;/P&gt;
+                        &lt;P&gt;Javnom otvaranju ponuda smiju prisustvovati ovlašteni predstavnici
+                            Ponuditelja i druge osobe.&lt;/P&gt;
+                        &lt;P&gt;Sukladno članku 282. stavak 8. Zakona o javnoj nabavi, pravo aktivnog
+                            sudjelovanja na javnom otvaranju ponuda imaju samo članovi stručnog
+                            povjerenstva za javnu nabavu i ovlašteni predstavnici Ponuditelja.&lt;/P&gt;
+                        &lt;P&gt;Ovlašteni predstavnici ponuditelja moraju svoje pisano ovlaštenje predati
+                            članovima stručnog povjerenstva neposredno prije javnog otvaranja
+                            ponuda. Ovlaštenje mora biti potpisano od strane ovlaštene osobe
+                            ponuditelja i ovjereno pečatom, ako je primjenjivo, a ukoliko je
+                            ovlaštena osoba na otvaranju ponuda, dužna je umjesto ovlaštenja
+                            donijeti kopiju rješenja o registraciji / obrtnicu i kopiju
+                            identifikacijskog dokumenta te iste predati prisutnim članovima stručnog
+                            povjerenstva.&lt;/P&gt;
+                        &lt;P&gt;Zapisnik o otvaranju ponuda dostavlja se javnom objavom u EOJN-u RH nakon
+                            završetka postupka javnog otvaranja.&lt;/P&gt;
+                        &lt;P&gt;Naručitelj otklanja svaku odgovornost vezanu uz mogući neispravan rad
+                            EOJN-a RH-a ili zastoj u radu EOJN-a RH-a.&lt;/P&gt;
+                        &lt;P&gt;Nedostupnost EOJN-a RH u trenutku ili tijekom otvaranja ponuda postoji
+                            ako u sustavu u trenutku ili tijekom javnog otvaranja ponuda nije
+                            moguće:&lt;/P&gt;
+                        &lt;P&gt;1. priložiti privatne ključeve,&lt;/P&gt;
+                        &lt;P&gt;2. izvršiti uvid u upisnik elektronički dostavljenih ponuda,&lt;/P&gt;
+                        &lt;P&gt;3. izvršiti uvid u uvez ponude, odnosno ponudbeni list.&lt;/P&gt;
+                        &lt;P&gt;Nedostupnost obvezno se prijavljuje Službi za pomoć EOJN-a RH pri
+                            Narodnim novinama d.d. od ponedjeljka do subote u vremenu od 6:00 do
+                            20:00 sati.&lt;/P&gt;
+                        &lt;P&gt;Po zaprimanju prijave Narodne novine d.d. će istu provjeriti te u slučaju
+                            utvrđene nedostupnosti obvezne su o tome bez odgode:&lt;/P&gt;
+                        &lt;P&gt;1. obavijestiti putem elektroničke pošte ponuditelje i članove stručnog
+                            povjerenstva za javnu nabavu u postupku javne nabave, ako je moguće,&lt;/P&gt;
+                        &lt;P&gt;2. obavijestiti putem elektroničke pošte središnje tijelo državne uprave
+                            nadležno za politiku javne nabave, i&lt;/P&gt;
+                        &lt;P&gt;3. objaviti obavijest o nedostupnosti EOJN-a RH na internetskim
+                            stranicama.&lt;/P&gt;
+                        &lt;P&gt;Iznimno, ako se nedostupnost otkloni u roku kraćem od 30 minuta od
+                            zaprimanja prijave, smatra se da nedostupnost nije nastupila.&lt;/P&gt;
+                        &lt;P&gt;Ako se utvrdi nedostupnost EOJN-a RH u trenutku ili tijekom otvaranja,
+                            postupak otvaranja započinje istekom roka za dostavu ponuda te se
+                            zaustavlja dok se nedostupnost ne otkloni.&lt;/P&gt;
+                        &lt;P&gt;Nakon otklanjanja nedostupnosti EOJN-a RH, Narodne novine d.d. obvezne su
+                            bez odgode postupiti analogno navedenomu u točkama 1. do 3.&lt;/P&gt;
+                        &lt;P&gt;Nakon zaprimanja obavijesti Naručitelj je obvezan nastaviti s otvaranjem
+                            ponuda najkasnije u roku od 48 sati od zaprimanja obavijesti, a ako taj
+                            rok ističe na dan na koji naručitelj ne radi, otvaranje će se nastaviti
+                            prvi sljedeći radni dan.&lt;/P&gt;
+                        &lt;P&gt;Naručitelj je obvezan bez odgode obavijestiti ponuditelje o mjestu i
+                            vremenu nastavka otvaranja ponuda ako je otvaranje ponuda javno.&lt;/P&gt;
+                        &lt;P&gt;Od otklanjanja nedostupnosti do nastavka otvaranja ponuda, ponude se ne
+                            smiju mijenjati.&lt;/P&gt;
+                    </epo:hasOpeningDescription>
+                <epo:hasOpeningDescription xml:lang="hr">
+                        &lt;P&gt;Vodovod-Vir d.o.o., Put Mula 16, HR-23234 Vir, HRVATSKA.&lt;/P&gt;
+                    </epo:hasOpeningDescription>
+              </epo:OpeningTerm>
+            </reg2015:applies>
+            <epo:uses>
+              <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#AccessTermsFull7a736f4c-347a-49a3-90f9-5de33dd58e92">
+                <epo:hasProcurementDocumentLandingPage>https://eojn.nn.hr/SPIN/application/ipn/DocumentManagement/DokumentPodaciFrm.aspx?OznakaDokumenta=2018/S+0F2-0024440</epo:hasProcurementDocumentLandingPage>
+              </epo:AccessTerm>
+            </epo:uses>
+            <reg2015:applies>
+              <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#ContractTerm42b0a3dc-9b2b-4c30-97d6-321a1534b1f2">
+                <epo:hasPerformanceConditions xml:lang="hr">
+                    &lt;P&gt;Na temelju provedenog postupka javne nabave sklopit će se okvirni sporazum s
+                        1 (jednim) gospodarskim subjektom za razdoblje 4 (četiri) godine počevši od
+                        dana zaključivanja okvirnog sporazuma sukladno uvjetima iz ove Dokumentacije
+                        o nabavi.&lt;/P&gt;
+                    &lt;P&gt;Nacrt okvirnog sporazuma nalazi se u Knjizi 2 ove Dokumentacije o nabavi.&lt;/P&gt;
+                    &lt;P&gt;Okvirni sporazum sklapa se u pisanom obliku, u roku od 30 dana od dana
+                        izvršnosti odluke o odabiru, sukladno članku 312. stavku 1. ZJN-a 2016.&lt;/P&gt;
+                    &lt;P&gt;Svi uvjeti za sklapanje ugovora na temelju okvirnog sporazuma određeni su
+                        ovom Dokumentacijom o nabavi. Ugovor o javnoj nabavi mora biti sukladan
+                        uvjetima određenim u Dokumentaciji o nabavi i odabranoj ponudi.&lt;/P&gt;
+                    &lt;P&gt;Tijekom trajanja okvirnog sporazuma predviđa se sklapanje više pojedinačna
+                        ugovora o javnoj nabavi radova.&lt;/P&gt;
+                    &lt;P&gt;Nacrt pojedinačnog ugovora nalazi se u Knjizi 2 ove Dokumentacije o
+                        nabavi.&lt;/P&gt;
+                    &lt;P&gt;Ugovor se smatra sklopljenim kada ga potpišu obje ugovorne strane.&lt;/P&gt;
+                </epo:hasPerformanceConditions>
+              </epo:ContractTerm>
+            </reg2015:applies>
+            <reg2015:uses>
+              <epo:FrameworkAgreementTechnique rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#Framework42cb4f8e-bff3-4f58-8c3f-6922b84e9663"/>
+            </reg2015:uses>
+            <reg2015:hasCriteriaInProcurementDocument rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396085#SelectionCriterionTechnicala659838a-c612-48ae-b40c-5d7375569eb1"/>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#Buyer20d75f0e-d61f-46a3-97fb-798b55dbb180">
+                <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396085#Procedure67005545-ba36-42c6-a0d3-5598694bbcf6"/>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#ContactPoint81ee0e21-b1a5-42fa-a1e4-60c26780038e">
+                    <epo:hasDescription xml:lang="hr">Hrvoje Bašić, Đana Peša</epo:hasDescription>
+                    <epo:hasEmail>vodovod.vir.d.o.o@zd.t-com.hr</epo:hasEmail>
+                    <epo:hasFax>+385 23362608</epo:hasFax>
+                    <epo:hasTelephone>+385 23362608</epo:hasTelephone>
+                    <epo:hasInternetAddress>www.vir.hr</epo:hasInternetAddress>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396085#Procedure67005545-ba36-42c6-a0d3-5598694bbcf6"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#Organisationaf96058d-8876-4da1-9bb6-2524cb5fc733">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#Locationefb5aa3f-e875-475f-b80c-10e9687e04a8">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#Address3e11c57a-e8ea-4430-a6d8-c40ebacb89a1">
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/HRV"/>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/HR033"/>
+                            <epo:hasCityName xml:lang="hr">Vir</epo:hasCityName>
+                            <epo:hasPostalZone>23234</epo:hasPostalZone>
+                            <epo:hasStreetName xml:lang="hr">Put Mula 16</epo:hasStreetName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#OrganisationIdd20f47eb-853b-4eea-b680-81d88b64b3e9">
+                        <epo:identifierValue>77534471964</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                    <epo:hasName xml:lang="hr">Vodovod-Vir d.o.o.</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/hc-am"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasDescription xml:lang="hr">
+                    &lt;P&gt;Vodoopskrba i odvodnja otoka Vira 3. faza gradnje.&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#Purposec5e7c93f-3ac3-458c-b5ce-3647f61b132e">
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45231300"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <reg2015:hasGPAUsage>false</reg2015:hasGPAUsage>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396085#Lote04c25b9-c7c9-4724-9e6d-aca6cfe10d2b"/>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasDescription xml:lang="hr">
+                        &lt;P&gt;Izgradnja 3. faze vodoopskrbe i odvodnje otoka Vira.&lt;/P&gt;
+                    </epo:hasDescription>
+        <epo:hasVariantPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasName>Cijena ponude</epo:hasName>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/cost"/>
+    <epo:hasFormula>85</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396085#AwardCriterionQuality62e831da-0d23-428f-8d1e-71c6a7809534">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396085#Lote04c25b9-c7c9-4724-9e6d-aca6cfe10d2b"/>
+    <epo:hasName>Specifično stručno iskustvo Stručnjak 1: ovlašteni
+                                voditelj građenja, Specifično stručno iskustvo Stručnjaka 2:
+                                ovlašteni voditelj radova</epo:hasName>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>10 5</epo:hasFormula>
+  </epo:AwardCriterion>
+</rdf:RDF>

@@ -1,0 +1,57 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000334#Buyer04c518e7-6362-40af-8aaa-ade92e0cb1bc">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000334#Organisation91143d7c-8976-4d77-8873-67c31301c564">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000334#Locationbaf04bea-ab41-4f3a-be24-61651117894a">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000334#Address13b4dc85-f324-40d8-b353-63e639064c7c">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL"/>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                <epo:hasPostalZone>95-100</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="pl">Zgierz</epo:hasCityName>
+                <epo:hasStreetName xml:lang="pl">ul. Konstantynowska 85</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000334#OrganisationIda7026580-4186-4722-91a4-231849e63468">
+            <epo:identifierValue>PL</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasName xml:lang="pl">31 Wojskowy Oddział Gospodarczy</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000334#ProcedureExtf7b9a3a2-9c6b-40d2-b4ff-64ab688dbb57">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000334#Buyer04c518e7-6362-40af-8aaa-ade92e0cb1bc"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000334#ContactPointed464396-89bd-409e-b507-b3e212519720">
+        <epo:hasDescription xml:lang="pl">Elżbieta Adamkiewicz</epo:hasDescription>
+        <epo:hasInternetAddress>http://www.31wog.wp.mil.pl</epo:hasInternetAddress>
+        <epo:hasTelephone>+48 261442098</epo:hasTelephone>
+        <epo:hasFax>+48 261442101</epo:hasFax>
+        <epo:hasEmail>31wog.zp@ron.mil.pl</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:hasBuyerLegalTypeDescription xml:lang="pl">obrona</epo:hasBuyerLegalTypeDescription>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/defence"/>
+  </epo:Buyer>
+</rdf:RDF>

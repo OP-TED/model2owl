@@ -1,0 +1,56 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396246#Buyer143f193e-6d45-4ce0-a570-6147f2fde136">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396246#Organisation16113e8f-42f6-4a41-8fb3-4b85232eb9b0">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396246#Location5991380f-acb7-4c94-afbc-ad8b2916d6da">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396246#Address842b25b0-96f8-48c4-a135-2ae91c8362ed">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DK012"/>
+                <epo:hasCityName xml:lang="da">Kastrup</epo:hasCityName>
+                <epo:hasPostalZone>2770</epo:hasPostalZone>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DNK"/>
+                <epo:hasStreetName xml:lang="da">Amager Landevej 30, 1.</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396246#OrganisationId639903cf-9b28-4118-9460-5e8fa4c08d2a">
+            <epo:identifierValue>25980727</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasName xml:lang="da">Boligorganisationen Tårnbyhuse</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396246#ContactPointd348daeb-7105-44eb-b1b0-a317ba2482c7">
+        <epo:hasDescription xml:lang="da">Molt Wengel Advokatpartnerselskab, advokatfuldmægtig Frederik
+                        Wibeck Heintz</epo:hasDescription>
+        <epo:hasEmail>udbud@mowe.dk</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.taarnbyhuse.dk/</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396246#ProcedureExt3fd88a35-aa0b-4e78-bc30-756d29639431">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396246#Buyer143f193e-6d45-4ce0-a570-6147f2fde136"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/hc-am"/>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+  </epo:Buyer>
+</rdf:RDF>

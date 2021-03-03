@@ -1,0 +1,60 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005810#ProcedureExt94dbadca-3d78-4133-98d6-4397917495d4">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005810#Buyer93798ef6-3287-46da-9d60-b983c7660311">
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005810#BuyerProfile30922fd6-c20a-49d3-9ba0-4285b846aa90">
+            <epo:hasURL>http://www.marches-publics.info/</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005810#ContactPoint3171cd29-d987-4e16-a12e-5f5cfdd10a6a">
+            <epo:hasEmail>service.marches@saint-lo-agglo.fr</epo:hasEmail>
+            <epo:hasInternetAddress>http://www.saint-lo-agglo.fr</epo:hasInternetAddress>
+            <epo:hasTelephone>+33 214290037</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-004-005810#ProcedureExt94dbadca-3d78-4133-98d6-4397917495d4"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005810#Organisation1ccd21fc-a7b3-41c3-bb5e-5ffcb3d570a0">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005810#Location7523b950-0113-4c11-ad1d-04f5a21d79f5">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005810#Address2fdb4c16-d1ce-415d-af6c-9f1fddfac521">
+                    <epo:hasStreetName xml:lang="fr">101 rue Alexis de Tocqueville</epo:hasStreetName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasPostalZone>50008</epo:hasPostalZone>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRD12"/>
+                    <epo:hasCityName xml:lang="fr">Saint-Lô</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005810#OrganisationId9ebc64c4-875d-49ef-9ce3-cc127bb068cb">
+                <epo:identifierValue>20006638900012</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="fr">CA Saint-Lô Agglo</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasActivityDescription xml:lang="fr">Assainissement</epo:hasActivityDescription>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

@@ -1,0 +1,139 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#AwardCriterionPrice15ccb785-0dae-44c3-a633-718f0e8cc94e">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#Lot044089a6-ca73-444c-b808-28315126a319">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#ContractTermLote5b26a6a-721a-4898-a5bf-0f0290d98bd4">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#ObjectContractAddress8bce27c7-6423-49c1-9015-9f222c35eb9c">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL911"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#PurposeAdditional109dd1c6-1bd2-4b0a-897e-a8856b0189ea">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-001-000909#Proceduref497e206-981a-4eb5-b3c6-c8ea7d99d080">
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#SubmissionTermc1bd2089-97d6-4619-8236-d9ee15207f13"/>
+            </reg2015:applies>
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#ContractNotice83e39882-e5b3-4512-9d9a-c10c60cbf265">
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#PreviousNotice9ef38955-5161-443f-9353-05f0263ce8f7">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#NoticeId8199494a-c7b2-45f3-a950-32d9d56a0f9f">
+                        <epo:identifierValue>2019/S 206-503209</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000909#Proceduref497e206-981a-4eb5-b3c6-c8ea7d99d080"/>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000909#Lot044089a6-ca73-444c-b808-28315126a319"/>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#ProcedureId089f4ed1-d05a-4295-942f-16436be7e2b4">
+                <epo:identifierValue>WP.25.00238.2019.S.W.JAWO</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#Purpose8ca3725f-0dcb-4d19-9fe1-835040d6fe55">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/48700000"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/supplies"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#ValueRangef2a0c9e9-c1d6-45fb-b5b0-67ecd8421465">
+                <epo:hasMinimumAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#MinimumAmountObjectContract51fea2a7-f3b7-4b0f-89ac-b47db0bb8eca">
+                    <ccts:hasAmountValue>470479.76</ccts:hasAmountValue>
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/PLN"/>
+                  </ccts:Amount>
+                </epo:hasMinimumAmount>
+                <epo:hasMaximumAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#MaximumAmountObjectContract11691a7d-c2f0-4a06-9ed9-9d3102118f2f">
+                    <ccts:hasAmountValue>507773.92</ccts:hasAmountValue>
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/PLN"/>
+                  </ccts:Amount>
+                </epo:hasMaximumAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <epo:hasDescription xml:lang="pl">
+                    &lt;P&gt;Przedmiot zamówienia – dostawa pakietów subskrypcji Microsoft na okres 12
+                        miesięcy od daty dostawy. Zamawiający dopuszcza oferowanie produktów
+                        równoważnych. Szczegółowy opis przedmiotu zamówienia znajduje się w
+                        specyfikacji technicznej stanowiącej Załącznik nr 1 do SIWZ.&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#Buyer6651a67a-b132-425f-8b74-f8666702ea89">
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#ContactPoint4977ccc1-311a-4578-9705-01cddffab1b6">
+                    <epo:hasInternetAddress>www.metro.waw.pl</epo:hasInternetAddress>
+                    <epo:hasDescription xml:lang="pl">Jakub Wojtkowski</epo:hasDescription>
+                    <epo:hasEmail>zam-eh@metro.waw.pl</epo:hasEmail>
+                    <epo:hasTelephone>+48 226554699</epo:hasTelephone>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000909#Proceduref497e206-981a-4eb5-b3c6-c8ea7d99d080"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#Organisation4f7800be-0000-442c-8d06-686934e9ee17">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#Location665f72a4-ae44-4102-bc69-84b998610a9e">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#Address13bf0b55-c9d2-40ad-9220-dc0932719835">
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL911"/>
+                            <epo:hasCityName xml:lang="pl">Warszawa</epo:hasCityName>
+                            <epo:hasStreetName xml:lang="pl">ul. Wilczy Dół 5</epo:hasStreetName>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                            <epo:hasPostalZone>02-798</epo:hasPostalZone>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="pl">Metro Warszawskie Sp. z o.o.</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/urttb"/>
+                <epo:hasContractingEntity>true</epo:hasContractingEntity>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <epo:hasTitle xml:lang="pl">
+                    &lt;P&gt;Dostawa pakietów subskrypcji Microsoft Office 365 lub produktu
+                        równoważnego&lt;/P&gt;
+                </epo:hasTitle>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasDescription xml:lang="pl">
+                        &lt;P&gt;Przedmiot zamówienia – dostawa pakietów subskrypcji Microsoft na okres 12
+                            miesięcy od daty dostawy. Zamawiający dopuszcza oferowanie produktów
+                            równoważnych. Szczegółowy opis przedmiotu zamówienia znajduje się w
+                            specyfikacji technicznej stanowiącej Załącznik nr 1 do SIWZ.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

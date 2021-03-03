@@ -1,0 +1,52 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000964#Buyeree8a6e02-2bef-4860-9be0-4023064f094e">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000964#ContactPointd5ddf135-6f25-4610-b3c9-4f5ff73fa2a9">
+        <epo:hasTelephone>+48 523285231</epo:hasTelephone>
+        <epo:hasEmail>monika.zielinska@psgaz.pl</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.psgaz.pl</epo:hasInternetAddress>
+        <epo:hasDescription xml:lang="pl">Monika Zielińska</epo:hasDescription>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000964#Organisationcc37b97f-b841-4c40-b879-4edcd31a68e9">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000964#Location327d36a6-00a5-46d7-afc1-28c87bb90368">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000964#Address6d1eb7b4-88d4-47ff-9893-fbf3c528a07c">
+                <epo:hasStreetName xml:lang="pl">Jagiellońska 42</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL61"/>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                <epo:hasPostalZone>85-097</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="pl">Bydgoszcz</epo:hasCityName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="pl">Polska Spółka Gazownictwa Sp. z o.o. Oddział Zakład Gazowniczy w
+                        Bydgoszczy</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000964#ProcedureExt97822c84-f425-4feb-9e63-72e62ea73506">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000964#Buyeree8a6e02-2bef-4860-9be0-4023064f094e"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gas-heat"/>
+  </epo:Buyer>
+</rdf:RDF>

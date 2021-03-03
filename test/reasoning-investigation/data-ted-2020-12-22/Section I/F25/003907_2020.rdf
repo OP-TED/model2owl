@@ -1,0 +1,62 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003907#Buyerb8806098-dd68-4a93-9f86-686d862a33fe">
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003907#ProcedureExt4acdd93e-aa2c-4ffa-b208-0291932abd81">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-003-003907#Buyerb8806098-dd68-4a93-9f86-686d862a33fe"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003907#BuyerProfile4bb0813d-d446-4601-bb9f-8db18d1d4473">
+        <epo:hasURL>http://www.rhein-sieg-kreis.de/cms100/buergerservice/aktuelles/beschaffungen/</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003907#ContactPoint3c332261-ce93-436b-8797-4c08b62d1689">
+        <epo:hasFax>+49 2241/133165</epo:hasFax>
+        <epo:hasTelephone>+49 2241/133543</epo:hasTelephone>
+        <epo:hasDescription xml:lang="de">Allgemeine Dienste und Zentrale Vergabestelle</epo:hasDescription>
+        <epo:hasEmail>zvs@rhein-sieg-kreis.de</epo:hasEmail>
+        <epo:hasInternetAddress>www.rhein-sieg-kreis.de</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003907#Organisation2f69f508-be70-4f2b-ab05-28ce2d369cf1">
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003907#OrganisationId836622df-6265-499b-95ff-5b265e89f33e">
+            <epo:identifierValue>DEA2C</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003907#Locationb987bf8b-419c-437a-b04c-79d5ce9ae6f1">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003907#Address3775cd59-8649-4ef7-888c-92371851dbfd">
+                <epo:hasStreetName xml:lang="de">Kaiser-Wilhelm-Platz 1</epo:hasStreetName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                <epo:hasCityName xml:lang="de">Siegburg</epo:hasCityName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DEA2C"/>
+                <epo:hasPostalZone>53721</epo:hasPostalZone>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="de">Rhein-Sieg-Kreis, Der Landrat</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+  </epo:Buyer>
+</rdf:RDF>

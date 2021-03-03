@@ -1,0 +1,59 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434090#ProcedureExt2376cfac-048c-42ad-9dd7-0cc2ab75bfdd">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434090#Buyer539dd113-3161-429d-a9bc-4abf988c1030">
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434090#ProcedureExt2376cfac-048c-42ad-9dd7-0cc2ab75bfdd"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434090#ProcedureExt2376cfac-048c-42ad-9dd7-0cc2ab75bfdd"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434090#ContactPoint79e16c74-2c89-48c5-a8a6-c528c0f8bb84">
+            <epo:hasInternetAddress>http://www.intercity.pl</epo:hasInternetAddress>
+            <epo:hasEmail>barbara.krolak@intercity.pl</epo:hasEmail>
+            <epo:hasDescription xml:lang="pl">„PKP Intercity” S.A., Biuro Zakupów, ul. Żelazna 59a, 00-848
+                        Warszawa, pok. 302a</epo:hasDescription>
+          </epo:ContactPoint>
+        </epo:has>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434090#ProcedureExt2376cfac-048c-42ad-9dd7-0cc2ab75bfdd"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434090#Organisationaf29dba7-4ac9-4840-a250-7c39e0276d42">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434090#Location001df643-121c-425a-aa2f-21ae38e538aa">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434090#Addressc17583f4-d90d-4106-97a9-343b7c66bec9">
+                    <epo:hasPostalZone>00-848</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="pl">ul. Żelazna 59A</epo:hasStreetName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                    <epo:hasCityName xml:lang="pl">Warszawa</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="pl">„PKP Intercity” S.A.</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434090#ProcedureExt2376cfac-048c-42ad-9dd7-0cc2ab75bfdd"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/rail"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434090#AccessTermsFull1bef3c9f-02bf-43e0-abe9-ef1d3b380720">
+        <epo:hasProcurementDocumentLandingPage>www.intercity.pl</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

@@ -1,0 +1,90 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007637#ProcurementServiceProviderParticipation28cff726-fe73-49d1-9248-e3814d9bd3d4">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007637#OrganisationParticipatione08dbb40-9be2-450c-a3fc-e562a7831594">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007637#LocationParticipation4b0af9ba-b244-419d-8ad1-916fb8fd6728">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007637#AddressParticipation0dfed7d9-7e36-49a9-9384-29dd0d81b585">
+                <epo:hasStreetName xml:lang="de">Walcheplatz 2</epo:hasStreetName>
+                <epo:hasCityName xml:lang="de">Zürich</epo:hasCityName>
+                <epo:hasPostalZone>8090</epo:hasPostalZone>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CHE"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="de">AWEL Amt für Abfall, Wasser, Energie und Luft, Abt. Wasserbau,
+                        Sekretariat (Büro W123)</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <reg2015:receivesTenders>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007637#ProcedureExtd4fc6021-230e-4ac0-9658-7e1fa5cf2bc5">
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007637#Buyerd69d8228-db09-47b0-ba7b-c8e807dd66bf">
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007637#Organisation634a132c-3811-4e48-b6de-5497c0772a95">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007637#Locationd30bae9a-8879-4061-afcf-271647545ae1">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007637#Address77b6f781-d79f-46ee-94ae-da54d6d71298">
+                        <epo:hasStreetName xml:lang="de">Walcheplatz 2</epo:hasStreetName>
+                        <epo:hasCityName xml:lang="de">Zürich</epo:hasCityName>
+                        <epo:hasPostalZone>8090</epo:hasPostalZone>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CHE"/>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="de">Baudirektion Kanton Zürich, AWEL Amt für Abfall, Wasser, Energie
+                        und Luft, Abt. Wasserbau</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007637#ContactPoint98971d09-0f5c-4099-a1ad-fb14d05685d6">
+                <epo:hasInternetAddress>https://www.simap.ch</epo:hasInternetAddress>
+                <epo:hasEmail>simone.messner@bd.zh.ch</epo:hasEmail>
+                <epo:hasDescription xml:lang="de">Simone Messner</epo:hasDescription>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-005-007637#ProcedureExtd4fc6021-230e-4ac0-9658-7e1fa5cf2bc5"/>
+            <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-005-007637#ProcedureExtd4fc6021-230e-4ac0-9658-7e1fa5cf2bc5"/>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+            <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007637#AccessTermsRestr3168ebc5-d97a-493d-bb28-0f259ae2440b">
+            <epo:hasRestrictedAccessAddress>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007637#Channela31eba4b-ce8e-41d5-bf54-9736f826b683">
+                <epo:hasURL>http://www.simap.ch/shabforms/servlet/Search?NOTICE_NR=1113743</epo:hasURL>
+              </epo:Channel>
+            </epo:hasRestrictedAccessAddress>
+          </epo:AccessTerm>
+        </epo:uses>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:receivesTenders>
+    <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2020/s-005-007637#ProcedureExtd4fc6021-230e-4ac0-9658-7e1fa5cf2bc5"/>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007637#ContactPointParticipation4dfc22cf-8ab1-4137-94c5-a7dbad278b09">
+        <epo:hasInternetAddress>https://www.simap.ch</epo:hasInternetAddress>
+        <epo:hasEmail>simone.messner@bd.zh.ch</epo:hasEmail>
+        <epo:hasDescription xml:lang="de">Simone Messner</epo:hasDescription>
+      </epo:ContactPoint>
+    </epo:has>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

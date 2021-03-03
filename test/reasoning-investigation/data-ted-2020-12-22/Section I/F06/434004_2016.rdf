@@ -1,0 +1,57 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434004#ProcedureExt0668dbf7-4422-48bb-a1f8-e443c4c8037e">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434004#Buyer62a445da-700c-43dd-a3ed-c4e75e9e4b5e">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434004#ProcedureExt0668dbf7-4422-48bb-a1f8-e443c4c8037e"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434004#Organisationf02a51d3-9a57-4685-95d6-31b277eb27e4">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434004#Location36796132-bfcb-4f22-90ca-9b1d8b7170b1">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434004#Address0b939adb-42c3-4b7f-b4f9-ad71f195ce6a">
+                    <epo:hasStreetName xml:lang="de">Parkstraße 16</epo:hasStreetName>
+                    <epo:hasPostalZone>71034</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="de">Böblingen</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE112"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Zweckverband Schönbuchbahn</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434004#BuyerProfile064fc303-bc24-4501-a066-40e338cbb17d">
+            <epo:hasURL>www.vergabe24.de</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434004#ContactPointaf74a474-e56d-4bbd-ac38-4d8ab3d6e662">
+            <epo:hasFax>+49 7031663-1962</epo:hasFax>
+            <epo:hasEmail>schoenbuchbahn@lrabb.de</epo:hasEmail>
+            <epo:hasTelephone>+49 7031663-1887</epo:hasTelephone>
+            <epo:hasDescription xml:lang="de">Geschäftsstelle</epo:hasDescription>
+            <epo:hasInternetAddress>www.schoenbuchbahn.de</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/rail"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

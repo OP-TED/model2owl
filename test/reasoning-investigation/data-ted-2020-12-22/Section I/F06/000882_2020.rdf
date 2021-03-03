@@ -1,0 +1,61 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000882#ProcedureExt23bc16ed-ed18-4c09-945b-697f073ced02">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000882#Buyeraf1a1f4f-8570-429b-b23d-262b8659bc87">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000882#Organisationb4dbc7f7-a2e3-4fd7-a8c7-f3109f29c480">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000882#OrganisationId7d08ce84-0e2e-4205-904f-cbef6c83d576">
+                <epo:identifierValue>KRS: 0000040284</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000882#Locationcc07597c-bc2e-453d-b0b2-856bcc6d2ab7">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000882#Address4e10de8d-cb1b-4a97-9906-58ee5c755ac9">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL432"/>
+                    <epo:hasPostalZone>65-120</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="pl">ul. Zjednoczenia 103</epo:hasStreetName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                    <epo:hasCityName xml:lang="pl">Zielona Góra</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="pl">Elektrociepłownia Zielona Góra</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000882#BuyerProfile595dee07-e85d-4c71-88f0-56f2fc7b4173">
+            <epo:hasURL>https://pgeenergiaciepla.eb2b.com.pl</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000882#ContactPointa775e664-7473-4702-a6d7-217be712e86c">
+            <epo:hasEmail>marta.lesniak@gkpge.pl</epo:hasEmail>
+            <epo:hasTelephone>+48 126209676</epo:hasTelephone>
+            <epo:hasDescription xml:lang="pl">Marta Leśniak</epo:hasDescription>
+            <epo:hasInternetAddress>www.ec.zgora.pl</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000882#ProcedureExt23bc16ed-ed18-4c09-945b-697f073ced02"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/electricity"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

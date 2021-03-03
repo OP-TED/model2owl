@@ -1,0 +1,114 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#ProcurementServiceProvider42cbe65e-9594-40c1-bec9-a416de388ffb">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#OrganisationPSP5e39ac99-eef5-4d0a-809b-edb2b81100ff">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#LocationPSP85ddf22d-bb37-4095-81b6-228ecd1247fd">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#AddressPSP17e8d6df-60bd-4dd1-a997-2cb1ff0fdf1a">
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                <epo:hasCityName xml:lang="de">Hamburg</epo:hasCityName>
+                <epo:hasPostalZone>20457</epo:hasPostalZone>
+                <epo:hasStreetName xml:lang="de">Brooktorkai 1</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE600"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="de">HPA Hamburg Port Authority AöR</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <reg2015:providesAdditionalInformationAboutProcurementProcedure>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#ProcedureExt54d3c15d-93bf-41f0-886d-29ca9cb17131">
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#Buyer99ded9f5-42fc-4601-b519-a426cb31027e">
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#Organisationc4068bff-5ca2-4ed3-9b77-6b12e48bd404">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#Location7bd11cc2-07e3-4f9a-b97a-884316e6f3c2">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#Address7b391a69-29c0-4b94-abee-c3b7d3384ac6">
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                        <epo:hasCityName xml:lang="de">Hamburg</epo:hasCityName>
+                        <epo:hasPostalZone>20457</epo:hasPostalZone>
+                        <epo:hasStreetName xml:lang="de">Neuer Wandrahm 4</epo:hasStreetName>
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE600"/>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="de">HPA Hamburg Port Authority, AöR</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351686#ProcedureExt54d3c15d-93bf-41f0-886d-29ca9cb17131"/>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#ContactPointe0e8e258-264c-4d94-851e-a0d02311685a">
+                <epo:hasEmail>ZentralerEinkauf@hpa.hamburg.de</epo:hasEmail>
+                <epo:hasFax>+49 4042847-2612</epo:hasFax>
+                <epo:hasInternetAddress>http://www.hamburg-port-authority.de</epo:hasInternetAddress>
+                <epo:hasTelephone>+49 4042847-2829</epo:hasTelephone>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:hasContractingEntity>true</epo:hasContractingEntity>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/port"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#AccessTermsFull4277c267-b540-4a28-ac33-85cf5aee0ff2">
+            <epo:hasProcurementDocumentLandingPage>www.vergabe.rib.de</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:providesAdditionalInformationAboutProcurementProcedure>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#ContactPointPSPd3e2f0a8-c6b2-4dac-9be5-9b3c556eaed6">
+        <epo:hasEmail>ZentralerEinkauf@hpa.hamburg.de</epo:hasEmail>
+        <epo:hasFax>+49 4042847-2612</epo:hasFax>
+        <epo:hasInternetAddress>http://www.hamburg-port-authority.de</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+  </epo:ProcurementServiceProvider>
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#ProcurementServiceProviderParticipationdc6504bc-740a-4bbc-a85a-5d9364403d3a">
+    <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351686#ProcedureExt54d3c15d-93bf-41f0-886d-29ca9cb17131"/>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#OrganisationParticipation90f999f3-f6f5-4884-a140-eeac8eae147c">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#LocationParticipation63b07a0e-5fdd-46eb-a687-b5f7152d47d5">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#AddressParticipationdb2cbadc-6752-4e4d-ac46-78d3117c3b9c">
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                <epo:hasCityName xml:lang="de">Hamburg</epo:hasCityName>
+                <epo:hasPostalZone>20457</epo:hasPostalZone>
+                <epo:hasStreetName xml:lang="de">Brooktorkai 1</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE600"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="de">HPA Hamburg Port Authority AöR,
+                        Ausschreibungsstelle</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351686#ContactPointParticipationd90237fa-e874-4f6c-ba70-a58078c7bd23">
+        <epo:hasEmail>ZentralerEinkauf@hpa.hamburg.de</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.hamburg-port-authority.de</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351686#ProcedureExt54d3c15d-93bf-41f0-886d-29ca9cb17131"/>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

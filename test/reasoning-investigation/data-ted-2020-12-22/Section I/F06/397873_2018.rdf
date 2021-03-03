@@ -1,0 +1,56 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397873#Buyer5a941985-8784-4bcf-be3b-c4017712bf46">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397873#Organisationd622b1da-d772-4095-a403-aacc39937812">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397873#Locationc9a32064-ca97-42be-ac24-59615d01cab8">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397873#Addressbc7724b7-1f66-4015-89e1-1f5f5d1e0c27">
+                <epo:hasPostalZone>28036</epo:hasPostalZone>
+                <epo:hasStreetName xml:lang="es">C/ Hiedra, 9, edificio 23</epo:hasStreetName>
+                <epo:hasCityName xml:lang="es">Madrid</epo:hasCityName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ES300"/>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ESP"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397873#OrganisationIddb5cf436-e714-4fd6-9a9b-e2fa81fcdf0d">
+            <epo:identifierValue>Q2802152E</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasName xml:lang="es">Adif — Alta Velocidad</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397873#ContactPoint4b4482f5-d9c0-4b4c-895c-ae1da9c6c114">
+        <epo:hasTelephone>+34 917744804</epo:hasTelephone>
+        <epo:hasInternetAddress>www.adifaltavelocidad.es</epo:hasInternetAddress>
+        <epo:hasEmail>pmardaiz@adif.es</epo:hasEmail>
+        <epo:hasFax>+34 917674490</epo:hasFax>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397873#ProcedureExt8aaffddd-4a3b-47d7-8223-6b677230d674">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397873#Buyer5a941985-8784-4bcf-be3b-c4017712bf46"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/rail"/>
+  </epo:Buyer>
+</rdf:RDF>

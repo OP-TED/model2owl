@@ -1,0 +1,81 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434086#ProcedureExt5506c16e-b7ef-430d-a416-f68708cb205f">
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434086#AccessTermsRestrd6619a6f-fa36-4f88-b7d5-8c13d69fa3ba">
+        <epo:hasRestrictedAccessAddress>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434086#Channel5778acbb-b6d4-4cdf-9f3c-beb16b633f68">
+            <epo:hasURL>http://espacefournisseurs.inter.laposte.fr/fr-FR</epo:hasURL>
+          </epo:Channel>
+        </epo:hasRestrictedAccessAddress>
+      </epo:AccessTerm>
+    </epo:uses>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434086#Buyer1638bc65-f4d3-4b67-9ffd-38f22d04173b">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434086#ProcedureExt5506c16e-b7ef-430d-a416-f68708cb205f"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434086#Organisation8d35f15a-637f-49e0-a88f-b88204cc83ec">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434086#OrganisationId6a26911b-c1ba-4c30-8e19-ca6f0f22cb4e">
+                <epo:identifierValue>356000000</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434086#Location4a3f4354-3d9d-45f7-af6f-b3792b462a1d">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434086#Address17944614-e253-498c-aa21-e0b94ef8d6bc">
+                    <epo:hasCityName xml:lang="fr">Paris</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+                    <epo:hasStreetName xml:lang="fr">9 rue du Colonel Pierre Avia</epo:hasStreetName>
+                    <epo:hasPostalZone>75015</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">[La Poste] Direction des achats du réseau La Poste
+                        (DHA-RLP)</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434086#BuyerProfilec3cacc54-1a64-4413-8d79-a0bd5110a964">
+            <epo:hasURL>http://espacefournisseurs.inter.laposte.fr/fr-FR</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434086#ContactPoint2e93f47d-1b84-4640-aa65-5b915fb41ef9">
+            <epo:hasEmail>eric.malbranque@laposte.fr</epo:hasEmail>
+            <epo:hasTelephone>+33 320217862</epo:hasTelephone>
+            <epo:hasDescription xml:lang="fr">Eric Malbranque</epo:hasDescription>
+            <epo:hasInternetAddress>http://espacefournisseurs.inter.laposte.fr/fr-FR</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434086#ProcedureExt5506c16e-b7ef-430d-a416-f68708cb205f"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/post"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434086#SubmisisonTerms938b1fcf-5375-410b-9355-7533acef895d">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434086#ChannelSubmission0332a50c-9115-483f-b76f-521b9b20f6d4">
+            <epo:hasURL>http://espacefournisseurs.inter.laposte.fr</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

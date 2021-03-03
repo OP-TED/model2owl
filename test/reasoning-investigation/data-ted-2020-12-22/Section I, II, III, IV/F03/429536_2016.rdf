@@ -1,0 +1,134 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#AwardCriterionPrice5005e74c-b617-4d93-8245-c81bf265682e">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#Lotfd280c15-6d77-43aa-996e-883c5d21f89b">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#ContractTermLot275931b5-813d-4dee-af7a-46b961241c25">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#ObjectContractAddressd00ca4c9-ae60-467e-80b6-42032a0bf015">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR102"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="fr"
+            >
+                        &lt;P&gt;Nemours (77140).&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#PurposeAdditionalf156ccb2-67fd-4082-97d6-42418622f671">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45112710"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-236-429536#Procedure29aa11b2-1a6b-4902-95e9-4c0203660788">
+            <reg2015:hasGPAUsage>false</reg2015:hasGPAUsage>
+            <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;Travaux de clôturage et de remise en état des espaces verts résidence «Les
+                        Pyrus».&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#ProcedureId6c386813-86d1-4ec9-8304-6d1f1cbd0263">
+                <epo:identifierValue>2016-056</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429536#Lotfd280c15-6d77-43aa-996e-883c5d21f89b"/>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#ValueTotal7da7cc44-a68c-40c2-89f2-ce3318862b30">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#AmountTotal2faddf2c-3ae6-49cf-8d09-ed40257b027e">
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                    <ccts:hasAmountValue>54983.95</ccts:hasAmountValue>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Travaux de clôturage et de remise en état des espaces verts résidence «Les
+                        Pyrus».&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#Buyerc3b94e72-462f-47c3-bd81-43848ec516ac">
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#BuyerProfile93e56972-6840-449a-aa6e-002dd78e8310">
+                    <epo:hasURL>http://www.maximilien.fr</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#ContactPointec0e0474-d7a4-4de0-a073-29cf24e8230d">
+                    <epo:hasEmail>servicemarches@valduloinghabitat.fr</epo:hasEmail>
+                    <epo:hasFax>+33 164455035</epo:hasFax>
+                    <epo:hasInternetAddress>http://www.hlmnemours.fr</epo:hasInternetAddress>
+                    <epo:hasTelephone>+33 164455036</epo:hasTelephone>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#Organisation918ba17a-5eda-475e-a237-e466c91c9e4b">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#Locationde287050-7efa-45f3-9658-5244be653a44">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#Addressb832d7a1-e932-43e2-9662-6bdcbd60d708">
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR102"/>
+                            <epo:hasStreetName xml:lang="fr">31 avenue du JF Kennedy — BP 82</epo:hasStreetName>
+                            <epo:hasPostalZone>77793</epo:hasPostalZone>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                            <epo:hasCityName xml:lang="fr">Nemours Cedex</epo:hasCityName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="fr">Val du Loing Habitat</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-236-429536#Procedure29aa11b2-1a6b-4902-95e9-4c0203660788"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/hc-am"/>
+                <epo:hasBuyerLegalTypeDescription xml:lang="fr"
+                >Établissement public à caractère industriel et
+                    commercial</epo:hasBuyerLegalTypeDescription>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#Purposec666c4d4-d323-4334-8d38-495776c357ca">
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45112710"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#SubmissionTermf1d789e0-238d-4b58-8341-d0ac1905c63d"/>
+            </reg2015:applies>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;Travaux de clôturage et de remise en état des espaces verts résidence
+                            «Les Pyrus».&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasFormula>40</epo:hasFormula>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429536#AwardCriterionQuality143989e7-8bf2-4b24-8267-35433c124f76">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429536#Lotfd280c15-6d77-43aa-996e-883c5d21f89b"/>
+    <epo:hasName>Valeur technique</epo:hasName>
+    <epo:hasFormula>60</epo:hasFormula>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

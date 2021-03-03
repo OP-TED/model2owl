@@ -1,0 +1,141 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-195-351800#Procedure28002b3f-e287-4808-b8d2-664be8697df6">
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#Lotd7713ea7-b6da-430d-a770-2a62b987f0be">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#ContractTermLote397a1aa-4033-4bf5-bdb0-eed547a22183">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#ObjectContractAddress71ad659c-2783-455d-913d-1239b1e9ede0">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#PurposeAdditional08081c6d-e7c2-4b88-be66-33e6c09af532">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/92610000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#PeriodDuration0ff0c67b-882e-4ea8-afde-ec03e360f520"/>
+        </epo:hasContractDuration>
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-195-351800#Procedure28002b3f-e287-4808-b8d2-664be8697df6"/>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;Concession de services pour le nouveau centre aquatique.&lt;/P&gt;
+                    </epo:hasDescription>
+        <epo:hasAdditionalInformation xml:lang="fr">
+                        &lt;P&gt;Au point II.2.7), il convient de lire exactement 72.5 mois.&lt;/P&gt;
+                    </epo:hasAdditionalInformation>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Concession de services pour la gestion du nouveau centre aquatique.&lt;/P&gt;
+                </epo:hasDescription>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#SubmissionTerm2a0c983b-c218-4aa5-a396-1a76239090f9"/>
+    </reg2015:applies>
+    <epo:hasEstimatedValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#Value7fdedfee-ff0d-4c8d-9ebe-6b0a0221e7a3">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#Amount5d00a721-aa09-484a-bfc5-25d9f7c6a17d">
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+            <ccts:hasAmountValue>6017687</ccts:hasAmountValue>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasEstimatedValue>
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#ValueTotald07fb09b-f8d4-4485-8d8e-1b2cef55c970">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#AmountTotal02a2dad9-0564-4daf-a620-0a52920b2299">
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+            <ccts:hasAmountValue>6017687</ccts:hasAmountValue>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#Purposeac998beb-da37-49d4-b88a-7f4d1aec4e4d">
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/92610000"/>
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#Buyerf145a8d6-4708-4011-b378-543684722549">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#Organisation12c610d6-7768-4de9-b871-0cda4e0910c3">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#Locationdf558a1d-e494-4530-a50f-ee9a30f2a853">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#Address334cfdd9-d505-4e19-bf88-34709f2e492a">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCityName xml:lang="fr">Aire-sur-la-Lys</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR302"/>
+                    <epo:hasPostalZone>62120</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Communauté de communes du pays d'Aire</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#BuyerProfile0f6be3c7-ae65-46d1-b754-c27885df587d">
+            <epo:hasURL>http://marches-publics.cc-pays-aire.fr</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#ContactPointbbe6df00-d9b6-4b1e-ae21-294dada51b6e">
+            <epo:hasDescription xml:lang="fr">Corinne Dufour</epo:hasDescription>
+            <epo:hasTelephone>+33 321954040</epo:hasTelephone>
+            <epo:hasEmail>ccpa@ville-airesurlalys.fr</epo:hasEmail>
+            <epo:hasInternetAddress>http://ccpaire.kappatau.fr</epo:hasInternetAddress>
+            <epo:hasFax>+33 321954041</epo:hasFax>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-195-351800#Procedure28002b3f-e287-4808-b8d2-664be8697df6"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:hasID>
+      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#ProcedureId0bdcd78e-7908-4b0a-9dce-54ced8325afb">
+        <epo:identifierValue>20160517CCPA</epo:identifierValue>
+      </epo:Identifier>
+    </epo:hasID>
+    <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;Concession de services pour la gestion du nouveau centre aquatique.&lt;/P&gt;
+                </epo:hasTitle>
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#ContractNoticeb0fcc317-2929-45db-84a8-b1e3ea9eac05">
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-195-351800#Procedure28002b3f-e287-4808-b8d2-664be8697df6"/>
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#PreviousNotice7b2ec55c-ddf8-4bc7-b92b-6bae99e805bc">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351800#NoticeIdd79910f8-9a75-48a4-85bd-4121c8a626ce">
+                <epo:identifierValue>2016/S 097-173651</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+      </epo:ContractNotice>
+    </epo:notifies>
+  </reg2015:Procedure>
+</rdf:RDF>

@@ -1,0 +1,79 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397764#ProcedureExte47461ea-1976-4abd-9c60-d4d3226c466e">
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397764#AccessTermsFull60164a17-75ec-4c22-84e0-02188c04248d">
+        <epo:hasProcurementDocumentLandingPage>http://irl.eu-supply.com/app/rfq/rwlentrance_s.asp?PID=134962&amp;B=ETENDERS_SIMPLE</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397764#SubmisisonTermsac1fc896-aa4d-473f-bc0a-84b21dafee9a">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397764#ChannelSubmission85b7a508-137d-47b3-a9fb-5e820827d2fa">
+            <epo:hasURL>http://irl.eu-supply.com/app/rfq/rwlentrance_s.asp?PID=134962&amp;B=ETENDERS_SIMPLE</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397764#Buyerdaf10514-eea9-4305-9dd7-a135c7d4574a">
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397764#ContactPoint43480d89-849e-49f2-9776-9a5338198484">
+            <epo:hasEmail>paul.harvey@anpost.ie</epo:hasEmail>
+            <epo:hasTelephone>+353 17058836</epo:hasTelephone>
+            <epo:hasDescription xml:lang="en">Paul Harvey</epo:hasDescription>
+            <epo:hasInternetAddress>http://www.anpost.ie/AnPost/</epo:hasInternetAddress>
+            <epo:hasFax>+353 18090795</epo:hasFax>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397764#ProcedureExte47461ea-1976-4abd-9c60-d4d3226c466e"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/post"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397764#Organisationb9c2dc76-581b-449c-acc5-49727f9c7552">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397764#OrganisationIdfa0e9be8-57ca-4ec6-8527-528be21aa2e1">
+                <epo:identifierValue>N/A</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397764#Locationf1e904fb-9ff0-468f-b561-80b93b8f0039">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397764#Addressb0a501ae-d7d6-4681-8029-833c946de80b">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/IRL"/>
+                    <epo:hasPostalZone>O'Connell Street</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="en">General Post Office</epo:hasStreetName>
+                    <epo:hasCityName xml:lang="en">Dublin</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/IE"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="en">An Post</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397764#ProcedureExte47461ea-1976-4abd-9c60-d4d3226c466e"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397764#ProcedureExte47461ea-1976-4abd-9c60-d4d3226c466e"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397764#ProcedureExte47461ea-1976-4abd-9c60-d4d3226c466e"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397764#BuyerProfile9731915f-c779-4426-960e-714a720fcd3b">
+            <epo:hasURL>https://irl.eu-supply.com/ctm/Company/CompanyInformation/Index/391</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

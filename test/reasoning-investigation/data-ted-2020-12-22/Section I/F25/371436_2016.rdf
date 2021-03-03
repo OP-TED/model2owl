@@ -1,0 +1,56 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371436#Buyere45c2a7e-7ba6-4203-b3b0-8894bfa81f54">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371436#Organisatione1f86ac3-f6b3-4a11-8800-9cad7fe98a23">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371436#Location7838bcb2-e357-40bf-b1a5-e9afd4229a9d">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371436#Address726df9d8-afa3-43a8-aa67-a2287f38cd5a">
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasPostalZone>91054</epo:hasPostalZone>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR104"/>
+                <epo:hasCityName xml:lang="fr">Évry Cedex</epo:hasCityName>
+                <epo:hasStreetName xml:lang="fr">500 place des Champs-Elysées — BP 62 Courcouronnes</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Communauté d'agglomération Évry Centre Essonne</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371436#BuyerProfilecf1503a0-7f68-40af-9877-684eaf178c16">
+        <epo:hasURL>https://www.achatpublic.com/sdm/ent/gen/index.jsp</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371436#ContactPoint3cc35fdf-f20a-4fa5-8b86-2cca292dc7b5">
+        <epo:hasFax>+33 160773368</epo:hasFax>
+        <epo:hasInternetAddress>http://www.grandparissud.fr</epo:hasInternetAddress>
+        <epo:hasTelephone>+33 169915858</epo:hasTelephone>
+        <epo:hasEmail>commande.publique@grandparissud.fr</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371436#ProcedureExta399df35-4b5b-4ca9-9a1f-7e58f45f8b48">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2016/s-205-371436#Buyere45c2a7e-7ba6-4203-b3b0-8894bfa81f54"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+  </epo:Buyer>
+</rdf:RDF>

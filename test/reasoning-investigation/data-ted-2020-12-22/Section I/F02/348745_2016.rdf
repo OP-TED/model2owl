@@ -1,0 +1,88 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348745#ProcurementServiceProvider9a053b2c-7ab0-46b3-b9b4-07a18eb7a705">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348745#ContactPointPSPda64bec2-1e6f-4595-a7e0-bf4245e10e2f">
+        <epo:hasEmail>ozzw.szp@ron.mil.pl</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.ozzw.wp.mil.pl</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348745#OrganisationPSP87f11e84-b501-40fd-8160-13e523b44633">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348745#LocationPSPc7b96dad-1712-4121-8fb3-998565faca16">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348745#AddressPSP7a94c728-5771-42da-912f-a10af7f5a040">
+                <epo:hasCityName xml:lang="pl">Warszawa</epo:hasCityName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL911"/>
+                <epo:hasPostalZone>01-163</epo:hasPostalZone>
+                <epo:hasStreetName xml:lang="pl">ul. Ostroroga 35</epo:hasStreetName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="pl">Oddział Zabezpieczenia Żandarmerii Wojskowej</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <reg2015:providesAdditionalInformationAboutProcurementProcedure>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348745#ProcedureExtb62059fc-e40d-4391-ab97-119f8654473f">
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348745#Buyer773244b8-1661-4734-b646-1bee1e3da81e">
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348745#ContactPointef51f3e5-66ab-4faa-ad91-472770ef6ce2">
+                <epo:hasFax>+48 261853070</epo:hasFax>
+                <epo:hasEmail>ozzw.szp@ron.mil.pl</epo:hasEmail>
+                <epo:hasTelephone>+48 261853247</epo:hasTelephone>
+                <epo:hasDescription xml:lang="pl">p. Mariusz Mocarski</epo:hasDescription>
+                <epo:hasInternetAddress>http://www.ozzw.wp.mil.pl</epo:hasInternetAddress>
+              </epo:ContactPoint>
+            </epo:has>
+            <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2016/s-194-348745#ProcedureExtb62059fc-e40d-4391-ab97-119f8654473f"/>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348745#Organisationb9bd1e5c-fa73-4174-a0b1-6205004f2bc3">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348745#Location571fc561-04fe-4aae-9f48-9815d0c488aa">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348745#Addressc5156dd4-268b-4261-a60c-96b291bd84c6">
+                        <epo:hasCityName xml:lang="pl">Warszawa</epo:hasCityName>
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL911"/>
+                        <epo:hasPostalZone>01-163</epo:hasPostalZone>
+                        <epo:hasStreetName xml:lang="pl">ul. J. Ostroroga 35</epo:hasStreetName>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="pl">Oddział Zabezpieczenia Żandarmerii Wojskowej w
+                        Warszawie</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-194-348745#ProcedureExtb62059fc-e40d-4391-ab97-119f8654473f"/>
+            <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-194-348745#ProcedureExtb62059fc-e40d-4391-ab97-119f8654473f"/>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/defence"/>
+            <epo:hasBuyerLegalTypeDescription xml:lang="pl">jednostka wojskowa</epo:hasBuyerLegalTypeDescription>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348745#AccessTermsFull851f053c-b9fd-4f86-8d89-64403dbecd59">
+            <epo:hasProcurementDocumentLandingPage>http://www.ozzw.wp.mil.pl</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:providesAdditionalInformationAboutProcurementProcedure>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

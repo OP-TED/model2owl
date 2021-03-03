@@ -1,0 +1,137 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#AwardCriterionPricee8b964cf-c695-46f1-8f19-71dc9d18e2b7">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#Lotb3379d75-ad47-4740-9fa5-5f5c4c96a7de">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#ContractTermLot6448763f-a743-4739-89ac-c7380c74f115">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#ObjectContractAddressd4a29209-c11a-44b7-bb6f-e66d04953606">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ072"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="cs"
+            >
+                        &lt;P&gt;Zlín&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#PurposeAdditional7c976241-dab9-47c2-a15b-c174c71e418b">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-001-000275#Procedure87734b02-13bb-4011-b0bb-dd8e6bc2a1e0">
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#SubmissionTermdcb70393-1eb8-4287-ab33-11999065c164"/>
+            </reg2015:applies>
+            <epo:hasTitle xml:lang="cs">
+                    &lt;P&gt;UTB – Charpyho kladivo 25J&lt;/P&gt;
+                </epo:hasTitle>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#ContractNotice6bb7b319-c6e1-4977-b4c5-82c5063c368c">
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000275#Procedure87734b02-13bb-4011-b0bb-dd8e6bc2a1e0"/>
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#PreviousNoticeffa9c579-bbb2-47db-853b-7c25631b031d">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#NoticeId4af40925-1b75-4dd7-9c2a-cd4f0db789ad">
+                        <epo:identifierValue>2019/S 157-387073</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#Buyerb430765f-f7fd-4311-abe4-58b60fe4e31a">
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#BuyerProfile320a49fb-7d2d-43b8-a99c-7af544730e8e">
+                    <epo:hasURL>https://www.egordion.cz/nabidkaGORDION/profilUtb</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#ContactPoint47a40870-1152-4277-9ab2-008e51526097">
+                    <epo:hasInternetAddress>www.utb.cz</epo:hasInternetAddress>
+                    <epo:hasEmail>oo@utb.cz</epo:hasEmail>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#Organisation9ef29df6-9ea8-4e4e-8c41-0e59644e8a01">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#Location4bf01368-b318-4636-bc50-84c8aa2cbaec">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#Addressd4960d09-c521-4f0d-8795-798e81a22fbf">
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ072"/>
+                            <epo:hasCityName xml:lang="cs">Zlín</epo:hasCityName>
+                            <epo:hasStreetName xml:lang="cs">nám. T. G. Masaryka 5555</epo:hasStreetName>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CZE"/>
+                            <epo:hasPostalZone>760 01</epo:hasPostalZone>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#OrganisationIdbfcf8d3f-7c25-48c0-88e4-4cbde042b9c5">
+                        <epo:identifierValue>70883521</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                    <epo:hasName xml:lang="cs">Univerzita Tomáše Bati ve Zlíně</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000275#Procedure87734b02-13bb-4011-b0bb-dd8e6bc2a1e0"/>
+                <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/education"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#ValueTotal6edff9ae-dcb4-41e8-99c0-91c7b70872e1">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#AmountTotalc140d089-7b69-4550-93a9-f481d473a4c1">
+                    <ccts:hasAmountValue>1190000.00</ccts:hasAmountValue>
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/CZK"/>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#Purposecbfed363-d3bb-4ecc-bcaf-93f35e24f126">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/38000000"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/supplies"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <epo:hasDescription xml:lang="cs">
+                    &lt;P&gt;Předmětem plnění veřejné zakázky je dodávka Charpyho kladiva 25J pořizovaného
+                        pro potřeby Fakulty technologické Univerzity Tomáše Bati ve Zlíně v rozsahu
+                        a v souladu se zadávacími podmínkami.&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000275#Lotb3379d75-ad47-4740-9fa5-5f5c4c96a7de"/>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasDescription xml:lang="cs">
+                        &lt;P&gt;Předmětem plnění veřejné zakázky je dodávka Charpyho kladiva 25J
+                            pořizovaného pro potřeby Fakulty technologické Univerzity Tomáše Bati ve
+                            Zlíně v rozsahu a v souladu se zadávacími podmínkami.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

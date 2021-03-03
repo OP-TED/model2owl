@@ -1,0 +1,113 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434104#AwardCriterionPrice090f4b0a-4331-4869-b89d-a07a1742260a">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434104#Lotf37f36e0-bb42-420e-ab74-30cbf45277de">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434104#ContractTermLot2fdfa171-f37b-4dca-800d-1c70204181d3">
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="de"
+            >
+                        &lt;P&gt;Brüssow.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434104#PurposeAdditionalda3ae905-c3cd-4c1e-9792-d2a467c31b1d">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/60112000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-238-434104#Procedure2872bc58-a35e-4069-85f1-09012971509d">
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434104#ContractNotice4985cf2b-baf0-4e3c-94cc-eba528e63032">
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434104#Procedure2872bc58-a35e-4069-85f1-09012971509d"/>
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434104#PreviousNotice61b7ddc2-fcb9-4101-a2ba-2d88f6a18037">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434104#NoticeId34cdd839-dd93-40e0-bd00-a387b4d2ecf3">
+                        <epo:identifierValue>2016/S 190-341490</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434104#Buyer51e6f5fa-d32a-471a-8e5f-1a5d64ffccc4">
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434104#ContactPointfe9c6a08-c108-4607-b9b5-ca7f9eb7d796">
+                    <epo:hasEmail>m.roscher@uvg-online.de</epo:hasEmail>
+                    <epo:hasInternetAddress>www.wirbewegensie.de</epo:hasInternetAddress>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434104#Organisation7d5ffce8-d61a-48fd-9282-5bc1881f3ac5">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434104#Location1637788c-66ec-4220-9cf5-ac354cd6fc92">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434104#Address6481adfd-76a9-4bb8-9b42-399adf925dd4">
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                            <epo:hasStreetName xml:lang="de">Steinstraße 5</epo:hasStreetName>
+                            <epo:hasCityName xml:lang="de">Schwedt/Oder</epo:hasCityName>
+                            <epo:hasPostalZone>16303</epo:hasPostalZone>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="de">Uckermärkische Verkehrsgesellschaft mbH</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434104#Procedure2872bc58-a35e-4069-85f1-09012971509d"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/urttb"/>
+                <epo:hasContractingEntity>true</epo:hasContractingEntity>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Gegenstand des Auftrages sind Personenbeförderungsleistungen in Brüssow
+                        (Landkreis Uckermark). Der ausgewählte Auftragnehmer stellt das Fahrpersonal
+                        sowie die Busse zur Erbringung der Verkehrsleistungen. Die gegenständlichen
+                        Leistungen waren bereits als Teillos in einem anderen EU-weiten
+                        Vergabeverfahren ausgeschrieben worden. Das Los musste aufgehoben werden.
+                        Mit der hiesigen Ausschreibung wurden die Verkehrsleistungen erneut
+                        ausgeschrieben.&lt;/P&gt;
+                </epo:hasDescription>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434104#SubmissionTerm26a4ee22-1ea2-4d12-b753-a758d39226bf"/>
+            </reg2015:applies>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434104#Lotf37f36e0-bb42-420e-ab74-30cbf45277de"/>
+            <epo:hasTitle xml:lang="de">
+                    &lt;P&gt;Busverkehrs- und Rufbusleistungen im ÖPNV.&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434104#Purposed346ac69-4ff4-4f9f-8bb3-1bc08a3a1bf1">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/60112000"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasDescription xml:lang="de">
+                        &lt;P&gt;Vgl. Abschnitt II.1.4) „Kurze Beschreibung“.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

@@ -1,0 +1,52 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#Buyer9b4e6008-dc18-45d1-b4e0-3c7b82cbe8b0">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#Organisation290757fd-3da5-47f3-9327-d0524683d022">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#Location89cf898e-68b9-4085-a9a3-ebeeec6c147f">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#Address09a4bf9f-1279-40fc-aba4-88287a47c732">
+                <epo:hasPostalZone>80287</epo:hasPostalZone>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE212"/>
+                <epo:hasStreetName xml:lang="de">Emmy-Noether-Straße 2</epo:hasStreetName>
+                <epo:hasCityName xml:lang="de">München</epo:hasCityName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="de">Stadtwerke München GmbH</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#ProcedureExta1c9a91f-1c6e-4952-b6e0-cdd89ee5c3a6">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434003#Buyer9b4e6008-dc18-45d1-b4e0-3c7b82cbe8b0"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#ContactPoint84d9846b-f785-4b7a-a8d9-6d5de64b9648">
+        <epo:hasFax>+49 892361-4853</epo:hasFax>
+        <epo:hasEmail>mayr.andreas@swm.de</epo:hasEmail>
+        <epo:hasTelephone>+49 892361-4797</epo:hasTelephone>
+        <epo:hasDescription xml:lang="de">Andreas Mayr</epo:hasDescription>
+        <epo:hasInternetAddress>http://www.swm.de</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/urttb"/>
+  </epo:Buyer>
+</rdf:RDF>

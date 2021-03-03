@@ -1,0 +1,66 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:CentralPurchasingBody rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000342#CPB437f4df0-dba3-43f2-8928-32318267d6d2">
+    <reg2015:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000342#ProcedureExt44070207-a199-437a-96a3-1b53938187f2">
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000342#Buyer53e39150-ef5f-48b3-8927-7133b068103e">
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000342#Organisationbdc18b9e-2457-428a-8ce5-62bde97db832">
+                <epo:hasID>
+                  <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000342#OrganisationId8b8b06d3-9ce0-4751-a0b2-d273de09beef">
+                    <epo:identifierValue>00297577</epo:identifierValue>
+                  </epo:Identifier>
+                </epo:hasID>
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000342#Locationba24dd37-e765-429a-b04a-d4444af93dbc">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000342#Addressdcadd4e8-ceff-443f-ae75-f0ac9780a8ae">
+                        <epo:hasCityName xml:lang="cs">Orlová - Lutyně</epo:hasCityName>
+                        <epo:hasStreetName xml:lang="cs">Osvobození 796</epo:hasStreetName>
+                        <epo:hasPostalZone>735 14</epo:hasPostalZone>
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ080"/>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CZE"/>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="cs">Město Orlová</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:has>
+              <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000342#BuyerProfiled50c72f1-fba1-4d9c-ab45-09cc94adbb89">
+                <epo:hasURL>https://www.vhodne-uverejneni.cz/profil/00297577</epo:hasURL>
+              </epo:BuyerProfile>
+            </epo:has>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000342#ContactPoint1c2bac3e-33eb-4268-9baf-22e2be02f146">
+                <epo:hasInternetAddress>https://www.mesto-orlova.cz/</epo:hasInternetAddress>
+                <epo:hasTelephone>+420 595170938</epo:hasTelephone>
+                <epo:hasEmail>hafernik@ppe.cz</epo:hasEmail>
+                <epo:hasDescription xml:lang="cs">Bc. Filip Haferník</epo:hasDescription>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000342#ProcedureExt44070207-a199-437a-96a3-1b53938187f2"/>
+            <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:isResponsibleFor>
+    <epo:hasCentralPurchasingBodyType rdf:resource="http://data.europa.eu/a4g/ontology#Cpb-awa"/>
+  </epo:CentralPurchasingBody>
+</rdf:RDF>

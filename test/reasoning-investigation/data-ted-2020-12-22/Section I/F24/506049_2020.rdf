@@ -1,0 +1,69 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506049#ProcedureExt6bd00b93-2713-4eb4-b0de-04d50f833efa">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506049#Buyer28e350fc-c3d4-4ead-b721-7098091876b6">
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/cga"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506049#ContactPoint43eef8ba-5eb2-4b64-86b1-d8d98567630c">
+            <epo:hasTelephone>+33 158094088</epo:hasTelephone>
+            <epo:hasDescription xml:lang="fr">Bureau des marchés et de la dépense publique (SG/SDF2)</epo:hasDescription>
+            <epo:hasInternetAddress>https://www.ecologique-solidaire.gouv.fr/direction-generale-laviation-civile-dgac</epo:hasInternetAddress>
+            <epo:hasEmail>Pmi-dgac.sg@aviation-civile.gouv.fr</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506049#Organisationd4e7a45c-4432-4e12-90b3-18bfc685f96f">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506049#Locationccdc954b-dcec-41b1-ab9c-193940db8cf4">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506049#Address6e6586e1-d0ea-4115-a054-d866fde5e302">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCityName xml:lang="fr">Paris Cedex 15</epo:hasCityName>
+                    <epo:hasPostalZone>75720</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="fr">50 rue Henry Farman</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR101"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506049#OrganisationId991a5368-5c71-4d76-8502-5bf849a92be3">
+                <epo:identifierValue>12006401900074</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="fr">Ministère chargé des transports — DGAC</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-207-506049#ProcedureExt6bd00b93-2713-4eb4-b0de-04d50f833efa"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506049#BuyerProfile69e84ee7-b9ae-48d0-a991-ef69be2617dc">
+            <epo:hasURL>https://www.marches-publics.gouv.fr</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2020/s-207-506049#ProcedureExt6bd00b93-2713-4eb4-b0de-04d50f833efa"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-207-506049#ProcedureExt6bd00b93-2713-4eb4-b0de-04d50f833efa"/>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2020/s-207-506049#ProcedureExt6bd00b93-2713-4eb4-b0de-04d50f833efa"/>
+        <epo:hasActivityDescription xml:lang="fr">Activités aéroportuaires</epo:hasActivityDescription>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506049#AccessTermsFull5be44b06-160c-4bba-b5c7-79982176e829">
+        <epo:hasProcurementDocumentLandingPage>https://www.marches-publics.gouv.fr/?page=entreprise.EntrepriseAdvancedSearch&amp;AllCons&amp;refConsultation=608083&amp;orgAcronyme=d4t</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

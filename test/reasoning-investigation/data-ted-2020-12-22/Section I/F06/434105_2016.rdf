@@ -1,0 +1,56 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434105#Buyere4a5adc1-5bed-4391-9baf-cb181a240ca9">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434105#ContactPointbeba4f7f-8027-46ac-98c7-39ee7ff2790e">
+        <epo:hasEmail>saz@fh.dk</epo:hasEmail>
+        <epo:hasTelephone>+45 48405050</epo:hasTelephone>
+        <epo:hasDescription xml:lang="da">Saja Aziz</epo:hasDescription>
+        <epo:hasInternetAddress>www.fh.dk</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434105#Organisation1c2e4d5e-d744-4039-a7af-363be848b8eb">
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434105#OrganisationId392b4841-eeb0-4610-b779-162afe943562">
+            <epo:identifierValue>2516 5160</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434105#Location7b4a61ef-442f-4916-a7de-de9e56aeb4a9">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434105#Addressef34dc62-0756-4ea9-bd69-d11a76c0285e">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DK013"/>
+                <epo:hasPostalZone>3000</epo:hasPostalZone>
+                <epo:hasStreetName xml:lang="da">Haderslevvej 25</epo:hasStreetName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DNK"/>
+                <epo:hasCityName xml:lang="da">Helsingør</epo:hasCityName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="da">Forsyning Helsingør Varme A/S</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434105#ProcedureExt47726e4a-d2c6-415d-9f65-145da44155ff">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434105#Buyere4a5adc1-5bed-4391-9baf-cb181a240ca9"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gas-heat"/>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+  </epo:Buyer>
+</rdf:RDF>

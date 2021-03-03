@@ -1,0 +1,61 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397719#ProcedureExt26a00f03-1d4e-4a77-8af3-d49ad1407fdf">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397719#Buyer89f85d9e-6417-42a8-834a-c0ed6a26cafa">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397719#ProcedureExt26a00f03-1d4e-4a77-8af3-d49ad1407fdf"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397719#BuyerProfile4acbebe4-3343-444a-85c5-9e4c0fad6280">
+            <epo:hasURL>https://pirkimai.eviesiejipirkimai.lt/ctm/Company/CompanyInformation/Index/8327</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397719#ContactPoint7af76812-0ef6-4a49-a545-32083044dba5">
+            <epo:hasEmail>bozena.rokiene@chc.lt</epo:hasEmail>
+            <epo:hasTelephone>+370 52667309</epo:hasTelephone>
+            <epo:hasInternetAddress>http://www.chc.lt</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="lt">Božena Rokienė</epo:hasDescription>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397719#Organisation2b9d3e93-9e3a-461e-a706-763cb1212ffc">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397719#OrganisationIdd8ec1cb8-7290-4850-94d3-58d9e7f92dd7">
+                <epo:identifierValue>124135580</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397719#Location377c7bd2-8f2b-4135-92bb-ed14e7d5c485">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397719#Addressd7bc8a0c-5377-4ff8-b3eb-bcef583d8c9a">
+                    <epo:hasPostalZone>LT-02300</epo:hasPostalZone>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/LTU"/>
+                    <epo:hasStreetName xml:lang="lt">Jočionių g. 13</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/LT"/>
+                    <epo:hasCityName xml:lang="lt">Vilnius</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="lt">AB „Vilniaus šilumos tinklai“</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gas-heat"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

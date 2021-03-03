@@ -1,0 +1,87 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444077#ProcurementServiceProviderParticipation3eb74cd6-7168-48ff-92a5-5c253c2c7196">
+    <reg2015:receivesRequestsToParticipate>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444077#ProcedureExt27665ca3-0b52-4135-83e0-eb9031c993b5">
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444077#Buyerf0de4806-4311-4a96-9d96-34283576b3e3">
+            <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-243-444077#ProcedureExt27665ca3-0b52-4135-83e0-eb9031c993b5"/>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-243-444077#ProcedureExt27665ca3-0b52-4135-83e0-eb9031c993b5"/>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444077#ContactPointb4ff1b06-6a15-4416-9ad2-d7e5ffd503d1">
+                <epo:hasDescription xml:lang="fi">Samuli Kallio</epo:hasDescription>
+                <epo:hasEmail>samuli.kallio@ely-keskus.fi</epo:hasEmail>
+                <epo:hasInternetAddress>http://www.ely-keskus.fi/pohjois-pohjanmaa</epo:hasInternetAddress>
+                <epo:hasTelephone>+358 295038252</epo:hasTelephone>
+                <epo:hasFax>+358 88162869</epo:hasFax>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444077#Organisation47d5ecc4-4d8a-4574-bd3b-d9464c675736">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444077#Location25e1af2f-4710-4ffd-b1d5-c8bf6da28bae">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444077#Addressd752b73b-cff7-477d-99a1-9f2ae5510d32">
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FIN"/>
+                        <epo:hasPostalZone>90101</epo:hasPostalZone>
+                        <epo:hasStreetName xml:lang="fi">PL 86</epo:hasStreetName>
+                        <epo:hasCityName xml:lang="fi">Oulu</epo:hasCityName>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="fi">Pohjois-Pohjanmaan elinkeino-, liikenne- ja
+                        ympäristökeskus</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+            <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444077#AccessTermsFull90751bb6-ef36-440c-bff7-8d9f12c72100">
+            <epo:hasProcurementDocumentLandingPage>http://www.ely-keskus.fi/web/ely/joukkoliikenteen-hankinnat</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:receivesRequestsToParticipate>
+    <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2016/s-243-444077#ProcedureExt27665ca3-0b52-4135-83e0-eb9031c993b5"/>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444077#ContactPointParticipationb8f2b67a-7dfe-48e6-a27a-862fcb102e86">
+        <epo:hasEmail>kirjaamo.pohjois-pohjanmaa@ely-keskus.fi</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.ely-keskus.fi/pohjois-pohjanmaa</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444077#OrganisationParticipation8b878e15-f09b-4a38-890b-ef206932e182">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444077#LocationParticipation985bb4b3-cbed-4053-915f-7ea19cef8dd1">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444077#AddressParticipation82d8bdbd-2d9c-4908-a3e1-f365bbf89b14">
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FIN"/>
+                <epo:hasPostalZone>90130</epo:hasPostalZone>
+                <epo:hasStreetName xml:lang="fi">Veteraanikatu 1</epo:hasStreetName>
+                <epo:hasCityName xml:lang="fi">Oulu</epo:hasCityName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fi">Pohjois-Pohjanmaan elinkeino-, liikenne- ja ympäristökeskus /
+                        Kirjaamo</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

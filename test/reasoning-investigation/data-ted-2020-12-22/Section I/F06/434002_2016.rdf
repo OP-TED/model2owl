@@ -1,0 +1,57 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434002#Buyerf526f698-0b7a-4fd8-bb0b-2bb30e895264">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434002#Organisation419f4f7b-5b8e-43c1-9e29-3335ddd824ed">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434002#Locationf0a7c01b-f156-413e-a92d-465e32293aaf">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434002#Address592e3750-2f60-4b33-986e-a5d0fcee54fa">
+                <epo:hasPostalZone>59443</epo:hasPostalZone>
+                <epo:hasStreetName xml:lang="fr">23 avenue de la Marne, CS 90101</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRE11"/>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasCityName xml:lang="fr">Wasquehal Cedex</epo:hasCityName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Noréade</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434002#BuyerProfile9c91c8da-11e8-414f-b8f1-c7c78eadbca9">
+        <epo:hasURL>https://www.achatpublic.com</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434002#ContactPoint0301b944-38fe-4dc8-894f-8fc9e7167692">
+        <epo:hasInternetAddress>http://www.noreade.fr/</epo:hasInternetAddress>
+        <epo:hasDescription xml:lang="fr">M. le directeur général de Noréade</epo:hasDescription>
+        <epo:hasEmail>marches@noreade.fr</epo:hasEmail>
+        <epo:hasTelephone>+33 320664306</epo:hasTelephone>
+        <epo:hasFax>+33 320664444</epo:hasFax>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434002#ProcedureExtb343f1ca-636b-4ae3-a373-3de6ea20639e">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434002#Buyerf526f698-0b7a-4fd8-bb0b-2bb30e895264"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/water"/>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+  </epo:Buyer>
+</rdf:RDF>

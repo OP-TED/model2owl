@@ -1,0 +1,130 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-001-000973#Proceduree4e74529-7842-4042-ba15-0b32685f6110">
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#SubmissionTerma4a9188e-bff1-47ef-858d-f6900a8234fb"/>
+    </reg2015:applies>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#Lotf4a45f52-f062-4ae6-b0a2-8b38b766cddb">
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#Periodb208779c-7d4a-4450-8962-e297ae68c843">
+            <epo:hasStartDate>2020-01-01</epo:hasStartDate>
+            <epo:hasEndDate>2049-12-31</epo:hasEndDate>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#ContractTermLotc9f0f52c-ac6b-4aae-8f8f-1f1a98080ec4">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#ObjectContractAddressa91d92d2-92bd-42e3-8b03-d459adffd8e3">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRG02"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#PurposeAdditional4d8755c5-e058-484f-b1f1-eea50d9a2e06">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/65310000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000973#Proceduree4e74529-7842-4042-ba15-0b32685f6110"/>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;La mission de développement et d'exploitation du réseau public de
+                            distribution d'énergie électrique consiste à assurer la desserte
+                            rationnelle du territoire national par les réseaux publics de
+                            distribution, dans le respect de l'environnement, et le cas échéant
+                            l'interconnexion avec les pays voisins, pour garantir la continuité du
+                            réseau, le raccordement ainsi que l'accès dans des conditions non
+                            discriminatoires aux réseaux publics de distribution. La mission de
+                            fourniture d'énergie électrique consiste à assurer aux clients raccordés
+                            au réseau de distribution d'énergie électrique qui en font la demande le
+                            bénéfice des tarifs réglementés de vente d'électricité, dans les
+                            conditions prévues par l'article L. 337-7 du code de l'énergie.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#ValueTotalcc555a1d-b9a1-4383-a0a0-a7d5c57ebb02">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#AmountTotal00efa052-f87c-4f1b-b1fe-23eeb8ee0d78">
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+            <ccts:hasAmountValue>1500000000</ccts:hasAmountValue>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#Buyer05263124-dbd2-4f67-a717-ce235efa8d3b">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000973#Proceduree4e74529-7842-4042-ba15-0b32685f6110"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#BuyerProfilee1d5c66b-6555-4ddd-b7e0-4d34b38ff914">
+            <epo:hasURL>https://www.achatpublic.com</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#ContactPoint6812e7b4-bb24-42a4-9882-a851431e28e5">
+            <epo:hasInternetAddress>http://www.sieml.fr</epo:hasInternetAddress>
+            <epo:hasEmail>Sieml@sieml.fr</epo:hasEmail>
+            <epo:hasTelephone>+33 241207520</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#Organisation6a5d795a-5089-4f7d-9360-1d4683198750">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#Locationae74096a-a4a8-44f3-96b4-5e4233043319">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#Addressef1a3504-2694-4430-a89f-a60e7fd2db34">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRG02"/>
+                    <epo:hasCityName xml:lang="fr">Angers Cedex 1</epo:hasCityName>
+                    <epo:hasPostalZone>49001</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="fr">9 route de la Confluence — ZAC de Beuzon-Ecouflant — CS 60145</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#OrganisationIdbf4bcd83-35c8-417b-a654-dea26c804fa1">
+                <epo:identifierValue>254 901 309 00032</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="fr">SI Énergies de Maine-et-Loire</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <epo:hasActivityDescription xml:lang="fr">Électricité</epo:hasActivityDescription>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000973#Purposeab1c6e7d-3766-490b-9fea-3e6a7dd2d787">
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/65310000"/>
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;Contrat de concession pour le service public du développement et de
+                        l'exploitation du réseau de distribution d'électricité et de la fourniture
+                        d'énergie électrique aux tarifs réglementés de vente&lt;/P&gt;
+                </epo:hasTitle>
+    <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Renouvellement du contrat de concession pour le service public du
+                        développement et de l'exploitation du réseau de distribution d'électricité
+                        et de la fourniture d'énergie électrique aux tarifs réglementés de vente sur
+                        le territoire du SIEML (Maine-et-Loire).&lt;/P&gt;
+                </epo:hasDescription>
+  </reg2015:Procedure>
+</rdf:RDF>

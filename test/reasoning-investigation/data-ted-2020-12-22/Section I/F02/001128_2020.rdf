@@ -1,0 +1,70 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001128#ProcedureExtc92d2606-c28d-4d7a-8397-7c35b71af0dc">
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001128#AccessTermsFull588ef60b-bf45-4339-9a46-12c407754f15">
+        <epo:hasProcurementDocumentLandingPage>https://platform.negometrix.com/PublishedTenders.aspx?tenderId=140826&amp;companyId=20779</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001128#Buyerfac50b49-34a9-41cb-b705-6100b0d82366">
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2020/s-002-001128#ProcedureExtc92d2606-c28d-4d7a-8397-7c35b71af0dc"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001128#Organisation9214ab1a-c881-4da1-a38f-4e663e34fb0a">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001128#OrganisationId9227dd3b-2343-47e1-8b60-80452d9d05e6">
+                <epo:identifierValue>000696327</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001128#Locationeacd4872-15f2-43b6-9a63-45dfc0ab64e6">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001128#Addresse5a95515-a5d4-46cf-8ecf-673889bc3554">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/BGR"/>
+                    <epo:hasStreetName xml:lang="bg">ул. „Московска“ № 33</epo:hasStreetName>
+                    <epo:hasCityName xml:lang="bg">София</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/BG411"/>
+                    <epo:hasPostalZone>1000</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="bg">Столична община</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001128#BuyerProfilefff9a60b-5ce0-410e-bb04-80082c57e6dc">
+            <epo:hasURL>https://www.sofia.bg/municipality-sofia-buyer-profile</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-002-001128#ProcedureExtc92d2606-c28d-4d7a-8397-7c35b71af0dc"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2020/s-002-001128#ProcedureExtc92d2606-c28d-4d7a-8397-7c35b71af0dc"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-002-001128#ProcedureExtc92d2606-c28d-4d7a-8397-7c35b71af0dc"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-001128#ContactPointbfeee149-39a0-4882-8c67-eb696ef9e714">
+            <epo:hasEmail>v.mutafchijska@sofia.bg</epo:hasEmail>
+            <epo:hasInternetAddress>www.sofia.bg</epo:hasInternetAddress>
+            <epo:hasFax>+359 29861221</epo:hasFax>
+            <epo:hasTelephone>+359 29377252</epo:hasTelephone>
+            <epo:hasDescription xml:lang="bg">Веселина Мутафчийска</epo:hasDescription>
+          </epo:ContactPoint>
+        </epo:has>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

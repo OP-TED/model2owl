@@ -1,0 +1,139 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:CentralPurchasingBody rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#CPB1910556b-8152-41a9-9a65-91c8d81e1f5c">
+    <reg2015:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-238-434108#Procedure05ab3c41-7b1f-4f33-af6f-596f6fa6ab7c">
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#Buyer410e2483-9e5b-4110-a71e-5e1a3e262940">
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#ContactPoint128449a8-4bcc-4de0-a36c-f7c54e4a1568">
+                <epo:hasTelephone>+39 0237037011</epo:hasTelephone>
+                <epo:hasInternetAddress>www.snamretegas.it</epo:hasInternetAddress>
+                <epo:hasEmail>stefania.francavilla@snamretegas.it</epo:hasEmail>
+                <epo:hasDescription xml:lang="it">Stefania Francavilla</epo:hasDescription>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434108#Procedure05ab3c41-7b1f-4f33-af6f-596f6fa6ab7c"/>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#Organisation3eaa8e7c-3d34-45d2-b109-335a299a6193">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#Location2f359642-b6cc-4ee2-98a5-67e57d3e9c01">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#Address83b1d754-d487-44f8-98b7-55935d7dc220">
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                        <epo:hasStreetName xml:lang="it">Piazzale Supercortemaggiore 2/4 presso sala posta SNAM SpA</epo:hasStreetName>
+                        <epo:hasPostalZone>20097</epo:hasPostalZone>
+                        <epo:hasCityName xml:lang="it">San Donato Milanese</epo:hasCityName>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="it">SNAM SpA qui rappresentata nel processo di approvvigionamento da
+                        SNAM Rete Gas SpA</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:hasContractingEntity>true</epo:hasContractingEntity>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gas-heat"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:applies>
+          <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#SubmissionTermaa0551b0-42b3-4ed3-bcd5-8c3ae803003c"/>
+        </reg2015:applies>
+        <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted"/>
+        <epo:hasTotalValue>
+          <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#ValueTotale736f6bc-3c7c-4efe-9a2c-67b039bb47e0">
+            <epo:hasOverallAmount>
+              <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#AmountTotal6f4d9f8c-6eda-4920-8bd5-4e9d5fa9465e">
+                <ccts:hasAmountValue>5832865.00</ccts:hasAmountValue>
+                <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+              </ccts:Amount>
+            </epo:hasOverallAmount>
+            <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+          </epo:Value>
+        </epo:hasTotalValue>
+        <epo:hasTitle xml:lang="it">
+                    &lt;P&gt;Raccolta, trasporto, recupero e smaltimento dei rifiuti speciali prodotti
+                        dalle società del gruppo SNAM — CIG: 62439996F9.&lt;/P&gt;
+                </epo:hasTitle>
+        <reg2015:hasGPAUsage>false</reg2015:hasGPAUsage>
+        <epo:specifies>
+          <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#Lot9c5f24d1-9c59-4000-b8bd-92c7fcec1607">
+            <epo:has>
+              <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#ContractTermLot2547147d-90f6-4235-b602-978d73352d68">
+                <epo:hasSpecificPlaceOfPerformance>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#ObjectContractAddress11667da5-e6a2-4d87-a8e9-b0104b171374">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/IT"/>
+                  </epo:Address>
+                </epo:hasSpecificPlaceOfPerformance>
+                <epo:hasPlaceOfPerformanceAdditionalInformation
+                 xml:lang="it">
+                        &lt;P&gt;Tutto il territorio nazionale esclusa Sardegna.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+              </epo:ContractTerm>
+            </epo:has>
+            <epo:has>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#PurposeAdditionalef9eab98-8e2b-4c0e-afd6-c6b49a1bd438">
+                <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/allowed"/>
+                <epo:hasOptionsDescription xml:lang="it">
+                        &lt;P&gt;Prolungamento opzionale della validità degli accordi quadro per ulteriori
+                            1 095 gg.&lt;/P&gt;
+                    </epo:hasOptionsDescription>
+              </epo:Purpose>
+            </epo:has>
+            <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434108#Procedure05ab3c41-7b1f-4f33-af6f-596f6fa6ab7c"/>
+            <epo:hasDescription xml:lang="it">
+                        &lt;P&gt;Accordo quadro per la raccolta, trasporto,recupero e smaltimento dei
+                            rifiuti speciali prodotti dalle società del gruppo SNAM.&lt;/P&gt;
+                    </epo:hasDescription>
+          </epo:Lot>
+        </epo:specifies>
+        <epo:hasDescription xml:lang="it">
+                    &lt;P&gt;Raccolta, trasporto, recupero e smaltimento dei rifiuti speciali prodotti
+                        dalle società del gruppo SNAM.&lt;/P&gt;
+                </epo:hasDescription>
+        <reg2015:uses>
+          <epo:FrameworkAgreementTechnique rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#Framework47f9d606-4a44-4b25-9cf4-3e89fac8055a"/>
+        </reg2015:uses>
+        <epo:notifies>
+          <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#ContractNoticeb27baec4-f74c-47aa-bee7-afa3d8dc9c90">
+            <epo:refersToPrevious>
+              <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#PreviousNotice7cee31ba-2030-4042-b76c-b3160bb63eb7">
+                <epo:hasID>
+                  <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#NoticeIde0a452df-e8e9-4d2a-a039-458755c0d73e">
+                    <epo:identifierValue>2015/S 091-164471</epo:identifierValue>
+                  </epo:Identifier>
+                </epo:hasID>
+              </epo:Notice>
+            </epo:refersToPrevious>
+            <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434108#Procedure05ab3c41-7b1f-4f33-af6f-596f6fa6ab7c"/>
+          </epo:ContractNotice>
+        </epo:notifies>
+        <epo:hasOverallPurpose>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#Purpose8810d936-b914-4eee-a190-055837ff5f7e">
+            <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+            <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/90510000"/>
+          </epo:Purpose>
+        </epo:hasOverallPurpose>
+      </reg2015:Procedure>
+    </reg2015:isResponsibleFor>
+    <epo:hasCentralPurchasingBodyType rdf:resource="http://data.europa.eu/a4g/ontology#Cpb-awa"/>
+  </epo:CentralPurchasingBody>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#AwardCriterionPricece1744eb-350e-437e-86c8-b89832f499ec">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434108#Lot9c5f24d1-9c59-4000-b8bd-92c7fcec1607"/>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

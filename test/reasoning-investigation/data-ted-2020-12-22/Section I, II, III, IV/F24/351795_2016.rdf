@@ -1,0 +1,163 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#ProcurementServiceProviderParticipation36274edb-82a2-44c6-acaf-d1e6caabf385">
+    <reg2015:receivesTenders>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-195-351795#Procedureb7cde8ae-c925-468a-956d-81cf44d1ad27">
+        <reg2015:applies>
+          <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#SubmissionTerm507cb08b-42fd-48d5-86ec-96668b7ab712">
+            <epo:hasLanguage rdf:resource="http://publications.europa.eu/resource/authority/language/ITA"/>
+            <epo:hasReceiptDeadline>2016-11-11+12:00</epo:hasReceiptDeadline>
+          </epo:SubmissionTerm>
+        </reg2015:applies>
+        <epo:specifies>
+          <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#Lot8607f06c-04f0-41d5-be8f-fe0121bca6ac">
+            <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-195-351795#Procedureb7cde8ae-c925-468a-956d-81cf44d1ad27"/>
+            <epo:hasContractDuration>
+              <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#PeriodDuration410202fb-a5ca-4eb0-aaa5-dd24ea129cfb"/>
+            </epo:hasContractDuration>
+            <epo:hasEstimatedValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#ValueValObject484d63dd-c336-4dad-aa9b-3b13bc487faa">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#AmountValObject2f2c90c3-82f0-4065-8dbb-a097768bec9f">
+                    <ccts:hasAmountValue>1596000.00</ccts:hasAmountValue>
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasEstimatedValue>
+            <epo:hasDescription xml:lang="it">
+                        &lt;P&gt;Affidamento in concessione del servizio di cassa.&lt;/P&gt;
+                    </epo:hasDescription>
+          </epo:Lot>
+        </epo:specifies>
+        <reg2015:applies>
+          <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#SelectionCriterionEconomic7eeeda4c-cb74-4a40-b9cb-b4cefffbb224">
+            <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/ef-stand"/>
+          </epo:SelectionCriterion>
+        </reg2015:applies>
+        <reg2015:hasCriteriaInProcurementDocument rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351795#SelectionCriterionEconomic7eeeda4c-cb74-4a40-b9cb-b4cefffbb224"/>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#AccessTermsFullac55565b-6d36-42d5-8f4f-bc088e214ccb">
+            <epo:hasProcurementDocumentLandingPage>www.unive.it/appalti</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#Buyerb93ebd83-fab7-4298-ad8f-7fd6e1a93cb5">
+            <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-195-351795#Procedureb7cde8ae-c925-468a-956d-81cf44d1ad27"/>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-195-351795#Procedureb7cde8ae-c925-468a-956d-81cf44d1ad27"/>
+            <epo:has>
+              <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#BuyerProfilec3b3801e-d1aa-4b55-aa9e-ef4674e27a4a">
+                <epo:hasURL>http://www.unive.it/appalti</epo:hasURL>
+              </epo:BuyerProfile>
+            </epo:has>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#ContactPoint88969b54-bcd6-4634-a3d6-6a93afef9acb">
+                <epo:hasFax>+39 0412348079</epo:hasFax>
+                <epo:hasEmail>acquisti.asia@unive.it</epo:hasEmail>
+                <epo:hasInternetAddress>www.unive.it</epo:hasInternetAddress>
+                <epo:hasTelephone>+39 0412348305</epo:hasTelephone>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#Organisation6b31bb9c-e721-4d51-a2f6-5874b94c7dcf">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#Location08be7d6f-7b33-46f7-8879-4cca58947c23">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#Address0b2c2ccf-9bb3-46a9-a63a-cb1daebc9add">
+                        <epo:hasPostalZone>30123</epo:hasPostalZone>
+                        <epo:hasCityName xml:lang="it">Venezia</epo:hasCityName>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                        <epo:hasStreetName xml:lang="it">Dorsoduro 3246</epo:hasStreetName>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="it">Università Ca' Foscari Venezia</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/education"/>
+            <epo:hasBuyerLegalTypeDescription xml:lang="it">università</epo:hasBuyerLegalTypeDescription>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <epo:hasDescription xml:lang="it">
+                    &lt;P&gt;Affidamento in concessione del servizio di cassa.&lt;/P&gt;
+                </epo:hasDescription>
+        <epo:hasTitle xml:lang="it">
+                    &lt;P&gt;Procedura aperta per l'affidamento in concessione del servizio di cassa.&lt;/P&gt;
+                </epo:hasTitle>
+        <epo:hasEstimatedValue>
+          <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#Valued3d8b041-7462-43a8-8242-e4dc9d8b5ebf">
+            <epo:hasOverallAmount>
+              <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#Amounta81993fa-36f0-45bd-80f0-dbeb505fad99">
+                <ccts:hasAmountValue>1596000.00</ccts:hasAmountValue>
+                <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+              </ccts:Amount>
+            </epo:hasOverallAmount>
+            <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+          </epo:Value>
+        </epo:hasEstimatedValue>
+        <reg2015:hasCriteriaInProcurementDocument>
+          <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#SelectionCriterionTechnicale4128d0a-0640-4519-b9c8-f852675441e9">
+            <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/tp-abil"/>
+          </epo:SelectionCriterion>
+        </reg2015:hasCriteriaInProcurementDocument>
+        <epo:hasOverallPurpose>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#Purpose1317f59e-6273-4886-9fed-6cd6c7df4f88">
+            <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/66600000"/>
+            <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+          </epo:Purpose>
+        </epo:hasOverallPurpose>
+        <reg2015:applies rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351795#SelectionCriterionTechnicale4128d0a-0640-4519-b9c8-f852675441e9"/>
+        <reg2015:applies>
+          <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#SelectionCriterionSuitability5f19b53f-fa96-4460-99dd-f49bcaf11e9b">
+            <epo:hasDescription xml:lang="it">
+                    &lt;P&gt;Vedasi art. 6 del disciplinare di gara.&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/sui-act"/>
+          </epo:SelectionCriterion>
+        </reg2015:applies>
+      </reg2015:Procedure>
+    </reg2015:receivesTenders>
+    <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-195-351795#Procedureb7cde8ae-c925-468a-956d-81cf44d1ad27"/>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#ContactPointParticipationd4591807-382c-49bd-ae3d-752518cd21b0">
+        <epo:hasFax>+49 0412348365</epo:hasFax>
+        <epo:hasEmail>protocollo@pec.unive.it</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.unive.it/appalti</epo:hasInternetAddress>
+        <epo:hasTelephone>+49 0412348286</epo:hasTelephone>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#OrganisationParticipation900049a3-0777-46cf-b858-05ba9eb8fdb8">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#LocationParticipationec27b9d2-bc95-4b6a-9c6f-453799ebeb38">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#AddressParticipation9537f71b-d167-44c1-9953-ebe2bda07de7">
+                <epo:hasPostalZone>30123</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="it">Venezia</epo:hasCityName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                <epo:hasStreetName xml:lang="it">Dorsoduro 3246</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="it">Università Ca' Foscari Venezia — Settore Protocollo</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

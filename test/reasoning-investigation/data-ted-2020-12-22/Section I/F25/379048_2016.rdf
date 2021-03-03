@@ -1,0 +1,55 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-209-379048#ProcedureExt88fb78b7-dcff-40f2-95b3-0b22789fa3cf">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-209-379048#Buyerffeda030-097f-4be5-b3a7-bcec6baeff96">
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-209-379048#BuyerProfiledc8e9a62-e335-48b4-a28a-ec1082f9dbd4">
+            <epo:hasURL>http://www.achatpublic.com</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-209-379048#ContactPoint2ed684a8-d1e6-4ce1-8b77-c8c7e98721e5">
+            <epo:hasInternetAddress>http://www.corse.fr</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="fr">Jean-François Santoni</epo:hasDescription>
+            <epo:hasEmail>contact@otc-corse.fr</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-209-379048#ProcedureExt88fb78b7-dcff-40f2-95b3-0b22789fa3cf"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-209-379048#Organisationd8713b7b-e759-4ca0-bb01-e63592b57ed6">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-209-379048#Locationd8f0c008-d0ae-4577-b62b-ddf718dee700">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-209-379048#Addressa51919ba-117f-4402-a8e1-88a5590e78ac">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR8"/>
+                    <epo:hasStreetName xml:lang="fr">22 cours Grandval</epo:hasStreetName>
+                    <epo:hasCityName xml:lang="fr">Ajaccio</epo:hasCityName>
+                    <epo:hasPostalZone>20187</epo:hasPostalZone>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Collectivité territoriale de Corse</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasActivityDescription xml:lang="fr">Transport maritime</epo:hasActivityDescription>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>
