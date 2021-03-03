@@ -72,6 +72,11 @@ Ontologies processed in 177 ms by FaCT++
 
 ![img-EAuctionTechnique-1.png](img-EAuctionTechnique-1.png)
 
+## Adding data
+
+Adding random selections of TED data (F02) (instacnes of the EPO) did not lead to any inferences about those instances. This finding is inconclussive. More attempts shall be done.  
+
+
 # Hermit 1.4.3
 
 - is slow (~1 min classes, ~1 min object properties). Does not finish on data properties.
@@ -161,6 +166,12 @@ Is Equivalent to :
    inverse (hasModificationReason)
    inverse (hasParticipationEvaluationPeriod)
    **inverse (modifies)**
+
+## Adding data
+
+Adding random selections of TED data (F02 - 002775_2020) (instacnes of the EPO) lead to first of all slow performance of Hermit reasoner. 
+Hermit performs teh reasoning very slower. Very very slow. ~1h half way through class hierarchy calculation. Finally, cancelled the process.  
+
 
 # Pellet 
 
