@@ -1,0 +1,121 @@
+@prefix : <http://data.europa.eu/a4g/ontology#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://www.omg.org/spec/UML/20131001/UMLDC> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epor: <http://data.europa.eu/a4g/rule#> .
+@prefix epos: <http://data.europa.eu/a4g/shape#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+
+# -------------------------- core layer
+
+epo:Agent
+  rdf:type owl:Class ;
+  rdfs:comment """A  person, an organization, or a system that act in procurement or have the power to act in procurement.
+
+WG Approval 28/04/2020"""@en ;
+  rdfs:isDefinedBy <http://data.europa.eu/a4g/ontology> ;
+  rdfs:label "Agent"@en ;
+  skos:definition """A  person, an organization, or a system that act in procurement or have the power to act in procurement.
+
+WG Approval 28/04/2020"""@en ;
+  skos:prefLabel "Agent"@en ;
+.
+
+epo:hasAlias
+  rdf:type owl:DatatypeProperty ;
+  rdfs:isDefinedBy <http://data.europa.eu/a4g/ontology> ;
+  rdfs:label "Alias"@en ;
+  skos:prefLabel "Alias"@en ;
+.
+epo:hasType
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment """The property Type can be used to identify the namespace and class of the Agent.
+
+This may be useful for XML implementations of the Model, where software applications need to know the type of the Agent in order to identify the particular Agent sub-class properties. But could also create a consistency problem consisting in specifying an IRI for one type of Agent whilst the actual individual of Agent is a different one.
+
+One way of resolving this inconsistency would be cross-checking by externalised means the requested IRI ID against the actual type of class (via shapes, Schematron, etc.).
+
+For more details on IRIs, check the Request For Comments website: https://tools.ietf.org/html/rfc3987
+
+Examples of IRIs:
+
+<foreign otherprops=\"#993300\">https://github.com/semiceu/cagv/2.0.0/xml/CV-Agent#Organisation</foreign>
+<foreign otherprops=\"#993300\">
+</foreign><foreign otherprops=\"#993300\">https://github.com/semiceu/cagv/2.0.0/xml/CV-Agent#NaturalPerson</foreign>
+<foreign otherprops=\"#993300\">
+</foreign><foreign otherprops=\"#993300\">https://github.com/semiceu/cagv/2.0.0/xml/CV-Agent#System</foreign>
+
+An example of inconsistency:
+
+cagv:Agent.ID = 986454b6-22af-4894-9a3d-f201d236b88c
+cagv:Agent.Type = <foreign otherprops=\"#993300\">https://github.com/semiceu/cagv/2.0.0/xml/CV-Agent#ORganisation</foreign>
+cagv:NaturalPerson.ID = 986454b6-22af-4894-9a3d-f201d236b88c
+
+
+ (epo:Agent) """@en ;
+  rdfs:isDefinedBy <http://data.europa.eu/a4g/ontology> ;
+  rdfs:label "Type"@en ;
+  skos:definition """The property Type can be used to identify the namespace and class of the Agent.
+
+This may be useful for XML implementations of the Model, where software applications need to know the type of the Agent in order to identify the particular Agent sub-class properties. But could also create a consistency problem consisting in specifying an IRI for one type of Agent whilst the actual individual of Agent is a different one.
+
+One way of resolving this inconsistency would be cross-checking by externalised means the requested IRI ID against the actual type of class (via shapes, Schematron, etc.).
+
+For more details on IRIs, check the Request For Comments website: https://tools.ietf.org/html/rfc3987
+
+Examples of IRIs:
+
+<foreign otherprops=\"#993300\">https://github.com/semiceu/cagv/2.0.0/xml/CV-Agent#Organisation</foreign>
+<foreign otherprops=\"#993300\">
+</foreign><foreign otherprops=\"#993300\">https://github.com/semiceu/cagv/2.0.0/xml/CV-Agent#NaturalPerson</foreign>
+<foreign otherprops=\"#993300\">
+</foreign><foreign otherprops=\"#993300\">https://github.com/semiceu/cagv/2.0.0/xml/CV-Agent#System</foreign>
+
+An example of inconsistency:
+
+cagv:Agent.ID = 986454b6-22af-4894-9a3d-f201d236b88c
+cagv:Agent.Type = <foreign otherprops=\"#993300\">https://github.com/semiceu/cagv/2.0.0/xml/CV-Agent#ORganisation</foreign>
+cagv:NaturalPerson.ID = 986454b6-22af-4894-9a3d-f201d236b88c
+
+
+ (epo:Agent) """@en ;
+  skos:prefLabel "Type"@en ;
+.
+
+epo:isCreatorOf
+  rdf:type owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://data.europa.eu/a4g/ontology> ;
+  rdfs:label "Is creator of"@en ;
+  skos:prefLabel "Is creator of"@en ;
+.
+
+# ------------------------ restrictions layer
+
+epo:Agent
+  rdf:type owl:Class ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality 1 ;
+      owl:onProperty epo:hasAlias ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality 1 ;
+      owl:onProperty epo:hasType ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality 1 ;
+      owl:onProperty epo:isCreatorOf ;
+    ] ;
+.

@@ -1,0 +1,55 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434107#ProcedureExt5c9f28cc-8c82-422f-a4e4-92c5fc79cd64">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434107#Buyer6acb4010-936b-4302-97aa-8f01ce21daae">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434107#ProcedureExt5c9f28cc-8c82-422f-a4e4-92c5fc79cd64"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434107#Organisation00a98329-2c8d-40a2-919b-111e856e7aa2">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434107#Location0d257d67-a829-483b-b8b5-67a05564354e">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434107#Address5a4f641f-8a16-4fd1-b53b-ca4cf0d9f72a">
+                    <epo:hasCityName xml:lang="it">Segrate (MI)</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="it">Aeroporto Milano Linate</epo:hasStreetName>
+                    <epo:hasPostalZone>20090</epo:hasPostalZone>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="it">Società per Azioni Esercizi Aeroportuali S.E.A.</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434107#BuyerProfile05b32f8d-cb29-4935-b038-72bac5737aaf">
+            <epo:hasURL>http://www.seamilano.eu</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434107#ContactPoint62f5fbe3-bcc5-4356-8ae4-eeacf38853bd">
+            <epo:hasEmail>portalefornitorisea@seamilano.eu</epo:hasEmail>
+            <epo:hasInternetAddress>http://www.seamilano.eu</epo:hasInternetAddress>
+            <epo:hasTelephone>+39 027485-2650</epo:hasTelephone>
+            <epo:hasFax>+39 027485-2015</epo:hasFax>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/airport"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

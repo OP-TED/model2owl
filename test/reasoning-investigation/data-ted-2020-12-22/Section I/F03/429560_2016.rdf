@@ -1,0 +1,52 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429560#Buyerf75dcabf-cfac-4e91-968d-511d1f98f96b">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429560#ContactPoint172d8a2f-9ee5-49b2-8c84-e0d61a9e8c70">
+        <epo:hasInternetAddress>www.mgh-muc.de</epo:hasInternetAddress>
+        <epo:hasEmail>technik@mgh-muc.de</epo:hasEmail>
+        <epo:hasTelephone>+49 8954092522</epo:hasTelephone>
+        <epo:hasFax>+49 8954092530</epo:hasFax>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429560#Organisationdbebd4ec-8f32-4087-ab98-7228c72eafc7">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429560#Location412593c5-93b0-4b10-85b5-63178509fc39">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429560#Address6c5b4ce6-8d17-42ba-a1d7-6203c14a7671">
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                <epo:hasCityName xml:lang="de">München</epo:hasCityName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE212"/>
+                <epo:hasPostalZone>80339</epo:hasPostalZone>
+                <epo:hasStreetName xml:lang="de">Gollierstr. 70-V</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="de">MGH – Münchner Gewerbehof- und Technologiezentrumsgesellschaft
+                        mbH</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429560#ProcedureExtc5631b0e-6201-4f0f-a888-eb6ff5f5e93f">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429560#Buyerf75dcabf-cfac-4e91-968d-511d1f98f96b"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasBuyerLegalTypeDescription xml:lang="de">Beteiligungsgesellschaft</epo:hasBuyerLegalTypeDescription>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/econ-aff"/>
+  </epo:Buyer>
+</rdf:RDF>

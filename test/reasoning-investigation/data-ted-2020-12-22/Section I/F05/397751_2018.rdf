@@ -1,0 +1,62 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397751#ProcedureExtff14f8d6-a959-4cfb-8317-cfb7462722b1">
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397751#AccessTermsFull66f0fb30-68bb-429b-887b-42e09bdf47a0">
+        <epo:hasProcurementDocumentLandingPage>http://bip.um.szczecin.pl/chapter_11710.asp</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397751#Buyer1251bc1b-b27e-4373-a9ff-75727d969abf">
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397751#ProcedureExtff14f8d6-a959-4cfb-8317-cfb7462722b1"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397751#ProcedureExtff14f8d6-a959-4cfb-8317-cfb7462722b1"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397751#ProcedureExtff14f8d6-a959-4cfb-8317-cfb7462722b1"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397751#Organisationc4139ce3-304b-4468-b589-792cd01585a7">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397751#Locationffbe0c4d-c729-4e1a-b57d-ad257871ba8f">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397751#Address2a221870-ef8a-49ef-bb2a-f8f4d333e509">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL424"/>
+                    <epo:hasPostalZone>70-456</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="pl">Szczecin</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="pl">pl. Armii Krajowej 1</epo:hasStreetName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="pl">Gmina Miasto Szczecin – Biuro ds. Zamówień Publicznych Urzędu
+                        Miasta Szczecin</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397751#ProcedureExtff14f8d6-a959-4cfb-8317-cfb7462722b1"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397751#ContactPointda4637cf-4f40-4f22-bb10-9d5653e90da8">
+            <epo:hasInternetAddress>www.szczecin.pl</epo:hasInternetAddress>
+            <epo:hasTelephone>+48 914245102</epo:hasTelephone>
+            <epo:hasDescription xml:lang="pl">Urząd Miasta Szczecin, Biuro ds. Zamówień
+                        Publicznych</epo:hasDescription>
+            <epo:hasEmail>bzp@um.szczecin.pl</epo:hasEmail>
+            <epo:hasFax>+48 914245104</epo:hasFax>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasActivityDescription xml:lang="pl">ogólne usługi publiczne</epo:hasActivityDescription>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

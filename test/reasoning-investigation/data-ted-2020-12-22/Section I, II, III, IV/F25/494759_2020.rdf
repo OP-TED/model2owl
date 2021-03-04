@@ -1,0 +1,134 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-203-494759#Procedurea2f5544a-4132-46df-b2ae-11a04a23b845">
+    <epo:hasEstimatedValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#Valuefb00ab7a-96de-49b0-b461-1909de9ce8e5">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#Amount4aaa115c-0e16-4677-aa75-9fcd0372cc80">
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+            <ccts:hasAmountValue>24665729.50</ccts:hasAmountValue>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasEstimatedValue>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#Buyerc453342e-be57-4a88-99e0-a2543f45ae6d">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#Organisationdd33fdbe-1e7e-4945-825e-fa75a7b80237">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#Locationc88c8cd0-d14e-43dd-ae93-04f948a7731d">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#Address19f2b41b-adb1-4c9a-b79f-a57b90fc2e1a">
+                    <epo:hasStreetName xml:lang="es">C/ Peonías, 12</epo:hasStreetName>
+                    <epo:hasPostalZone>28042</epo:hasPostalZone>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ES300"/>
+                    <epo:hasCityName xml:lang="es">Madrid</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ESP"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#OrganisationId333dfbd1-44f5-43a8-8bd2-c031ab23f721">
+                <epo:identifierValue>A86212420</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="es">AENA, S. M. E., S. A.</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-203-494759#Procedurea2f5544a-4132-46df-b2ae-11a04a23b845"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#ContactPointd240d24e-ca43-4234-aac9-6ae4acf38acf">
+            <epo:hasInternetAddress>http://www.aena.es</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="es">Ángeles Poyato Medina</epo:hasDescription>
+            <epo:hasFax>+34 913211575</epo:hasFax>
+            <epo:hasEmail>apoyato@aena.es</epo:hasEmail>
+            <epo:hasTelephone>+34 671728325</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/airport"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:hasDescription xml:lang="es">&lt;P&gt;Cesión de tres (3) espacios destinados a la actividad de restauración en el Aeropuerto de Valencia, C/VLC/189/19.&lt;/P&gt;</epo:hasDescription>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#Purposed4ba80f3-d59e-40f5-886a-767b757b3098">
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/55000000"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#ValueTotalf74551cb-9afb-457a-ab98-ebddd4857eba">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#AmountTotalb858f705-4caf-477c-bd81-c27b7a9540ee">
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+            <ccts:hasAmountValue>18891442.00</ccts:hasAmountValue>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#SubmissionTerm7f4d3f2f-dab6-4396-a5f8-1e64d6577b0a"/>
+    </reg2015:applies>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#Lot595ee840-ec9d-48f9-9857-f2d62bd431fc">
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-203-494759#Procedurea2f5544a-4132-46df-b2ae-11a04a23b845"/>
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#PeriodDurationab39eeab-066b-49aa-8f07-9c5cd0bfcd61"/>
+        </epo:hasContractDuration>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#ContractTermLot69f3c3c6-0d32-4f32-b139-68791e623221">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#ObjectContractAddress4bac6a93-e591-4d79-b1e1-9355f570a52b">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ES52"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#PurposeAdditional77f49218-80f5-4974-8fd0-e695e8829ceb">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/55000000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasDescription xml:lang="es">&lt;P&gt;Cesión de tres (3) espacios destinados a la actividad de restauración en el Aeropuerto de Valencia, C/VLC/189/19.&lt;/P&gt;</epo:hasDescription>
+        <epo:hasAdditionalInformation xml:lang="es">&lt;P&gt;Se procede a publicar en la página web de AENA, S. M. E., S. A., la adjudicación del expediente.&lt;/P&gt;</epo:hasAdditionalInformation>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasTitle xml:lang="es">&lt;P&gt;Cesión de tres (3) espacios destinados a la actividad de restauración en el Aeropuerto de Valencia, C/VLC/189/19&lt;/P&gt;</epo:hasTitle>
+    <epo:hasID>
+      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#ProcedureIdfce76fba-dcdd-450e-bfee-15fb7678b97c">
+        <epo:identifierValue>C/VLC/189/19</epo:identifierValue>
+      </epo:Identifier>
+    </epo:hasID>
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#ContractNotice0b687001-f6ce-44fb-8ab3-ee4ee6feb7c6">
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#PreviousNotice500f5a09-980d-4291-8692-b8adb53adac5">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-203-494759#NoticeIdfce50a28-3dde-4982-9e28-f68c7f5ebf0f">
+                <epo:identifierValue>2019/S 249-619825</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-203-494759#Procedurea2f5544a-4132-46df-b2ae-11a04a23b845"/>
+      </epo:ContractNotice>
+    </epo:notifies>
+  </reg2015:Procedure>
+</rdf:RDF>

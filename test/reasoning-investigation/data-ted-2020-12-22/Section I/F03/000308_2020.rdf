@@ -1,0 +1,55 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000308#ProcedureExtedf9ec9d-0d3a-4db3-b891-aa194fb60fa6">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000308#Buyera3a7570d-0d8f-484d-ac13-2d9755b06287">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000308#Organisationa6090052-eab5-4aa2-808c-250d64210ada">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000308#Locationba8bc85f-b379-48bc-86d3-b2ab1807177d">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000308#Address98ec1600-9f02-4d54-8948-489ad5e5f8a8">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasStreetName xml:lang="fr">Pour le compte de la ville de Nice, 5 rue de l'Hôtel de Ville</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRL03"/>
+                    <epo:hasCityName xml:lang="fr">Nice Cedex 4</epo:hasCityName>
+                    <epo:hasPostalZone>06364</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Métropole Nice Côte d'Azur</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000308#BuyerProfile86053a40-bc3f-4a4e-8ee5-1a5e5dd87800">
+            <epo:hasURL>http://www.e-marches06.fr</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000308#ContactPointe8981ab8-c2af-4ef5-a857-4242746ab903">
+            <epo:hasInternetAddress>http://www.e-marches06.fr</epo:hasInternetAddress>
+            <epo:hasEmail>dao@nicecotedazur.org</epo:hasEmail>
+            <epo:hasTelephone>+33 497134470</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000308#ProcedureExtedf9ec9d-0d3a-4db3-b891-aa194fb60fa6"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

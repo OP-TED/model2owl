@@ -1,0 +1,69 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000579#ProcedureExt01de3652-2288-4e5b-aa00-825669778c53">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000579#Buyere7ac23ad-9f77-41f4-ba8a-06eaadd46c98">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000579#ProcedureExt01de3652-2288-4e5b-aa00-825669778c53"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000579#ProcedureExt01de3652-2288-4e5b-aa00-825669778c53"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000579#BuyerProfileee52bc43-abb4-4772-a4aa-d6434cf293d0">
+            <epo:hasURL>https://my.vergabe.bayern.de</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000579#ContactPoint2e06d01b-7991-45c6-9430-65f3dabedda1">
+            <epo:hasInternetAddress>https://my.vergabe.bayern.de</epo:hasInternetAddress>
+            <epo:hasEmail>bekanntmachungen.vz2.bau@muenchen.de</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000579#Organisation8a63621c-6c62-47b2-828a-3905afa64ab9">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000579#Location05f9842a-cf07-4b7a-89f5-978e803bec59">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000579#Addressa4735240-83de-44b8-9bab-1e3a6af455ad">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE212"/>
+                    <epo:hasPostalZone>81671</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="de">Friedenstraße 40</epo:hasStreetName>
+                    <epo:hasCityName xml:lang="de">München</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Landeshauptstadt München, Baureferat</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000579#SubmisisonTerms60542724-fb63-4969-9bad-68f15f6ede49">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000579#ChannelSubmissionbef02d18-f414-44b4-9c48-4478de29cdd0">
+            <epo:hasURL>https://my.vergabe.bayern.de</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000579#AccessTermsFull78e81a54-11c6-4765-8a0d-be7bb1d1a0e1">
+        <epo:hasProcurementDocumentLandingPage>https://www.meinauftrag.rib.de/public/DetailsByPlatformIdAndTenderId/platformId/1/tenderId/186555</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

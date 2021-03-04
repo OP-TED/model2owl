@@ -1,0 +1,49 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396179#Buyere05de9cb-acd3-465c-82a7-f5cbf8fb6003">
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396179#ProcedureExtf67342f3-2a0b-4fbc-ad3a-a95e3e013504">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396179#Buyere05de9cb-acd3-465c-82a7-f5cbf8fb6003"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396179#Organisation0f1d99e9-8856-4ba0-b339-470289bd6204">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396179#Location0f2a2da5-3cac-43b1-9c9d-7debdb438916">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396179#Address95a55085-9550-4ada-a4f2-69518ff44cf6">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasStreetName xml:lang="fr">place Roger Salengro, CS 60067</epo:hasStreetName>
+                <epo:hasCityName xml:lang="fr">Arques Cedex</epo:hasCityName>
+                <epo:hasPostalZone>62507</epo:hasPostalZone>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Ville d'Arques</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396179#ContactPoint2cb6dcba-fe4e-447d-b1be-c66ecd2cf8b4">
+        <epo:hasInternetAddress>http://ville-arques.fr</epo:hasInternetAddress>
+        <epo:hasEmail>a.lagersie@ville-arques.fr</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/cga"/>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+  </epo:Buyer>
+</rdf:RDF>

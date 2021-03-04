@@ -1,0 +1,195 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#AwardCriterionCost64e58bb0-d00b-465a-ae04-e0776d7c8df0">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#Lotd498c233-0a54-4009-9212-3b3f44c73ec8">
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#PeriodDuration3fbb7065-69f7-4dab-a7b0-ad90ec7f09c9">
+            <epo:hasDurationMeasure>
+              <ccts:Measure rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#Measure594089be-8a86-4d87-8484-bba440c3fb52">
+                <ccts:hasMeasureValue>3</ccts:hasMeasureValue>
+                <ccts:hasUnitCode rdf:resource="http://publications.europa.eu/resource/authority/timeperiod/MONTH"/>
+              </ccts:Measure>
+            </epo:hasDurationMeasure>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-207-505891#Procedure0d2920ca-722f-4410-8549-4c3caee0f475">
+            <reg2015:hasCriteriaInProcurementDocument>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#SelectionCriterionTechnical80ac6c93-7900-40da-896d-8e3f7b566d51">
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/tp-abil"/>
+              </epo:SelectionCriterion>
+            </reg2015:hasCriteriaInProcurementDocument>
+            <reg2015:hasCriteriaInProcurementDocument>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#SelectionCriterionEconomic64c9520f-c302-4c83-8c3b-fef37c2966b6">
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/ef-stand"/>
+              </epo:SelectionCriterion>
+            </reg2015:hasCriteriaInProcurementDocument>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#Buyer54da16fe-72b1-4a1c-adb8-07d66048fab8">
+                <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-207-505891#Procedure0d2920ca-722f-4410-8549-4c3caee0f475"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#Organisation598a3b79-af88-4471-9b2d-01cf05d2964d">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#Location5a7ccf17-e9bf-407a-bdf2-5aa17d9630e0">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#Addresse69fe622-681a-448a-8095-fe8f4cd68a4c">
+                            <epo:hasCityName xml:lang="hr">Zagreb</epo:hasCityName>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/HR"/>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/HRV"/>
+                            <epo:hasPostalZone>10000</epo:hasPostalZone>
+                            <epo:hasStreetName xml:lang="hr">Savska cesta 88a</epo:hasStreetName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#OrganisationId72795496-123c-4c33-ba24-b66e4edcfca6">
+                        <epo:identifierValue>69401829750</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                    <epo:hasName xml:lang="hr">Plinacro d.o.o.</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-207-505891#Procedure0d2920ca-722f-4410-8549-4c3caee0f475"/>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#ContactPointc4885553-e739-431f-af9d-aa8321130275">
+                    <epo:hasInternetAddress>www.plinacro.hr</epo:hasInternetAddress>
+                    <epo:hasFax>+385 16301746</epo:hasFax>
+                    <epo:hasDescription xml:lang="hr">Daonella Tannir</epo:hasDescription>
+                    <epo:hasTelephone>+385 16301716</epo:hasTelephone>
+                    <epo:hasEmail>daonella.tannir@plinacro.hr</epo:hasEmail>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:hasContractingEntity>true</epo:hasContractingEntity>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gas-heat"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:uses>
+              <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#AccessTermsFull3e23e57e-58b4-4612-a81e-359c2b90207a">
+                <epo:hasProcurementDocumentLandingPage>https://eojn.nn.hr/SPIN/application/ipn/DocumentManagement/DokumentPodaciFrm.aspx?OznakaDokumenta=2020/S+0F5-0037462</epo:hasProcurementDocumentLandingPage>
+              </epo:AccessTerm>
+            </epo:uses>
+            <reg2015:applies>
+              <epo:OpeningTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#OpeningTerm86008c7a-1b6d-4849-99e0-d1688da9f981">
+                <epo:hasOpeningDateTime>2020-11-24+10:00</epo:hasOpeningDateTime>
+                <epo:hasOpeningDescription xml:lang="hr">&lt;P&gt;U Zagrebu, Savska cesta 88 a, dvorana 1 kat.&lt;/P&gt;</epo:hasOpeningDescription>
+              </epo:OpeningTerm>
+            </reg2015:applies>
+            <reg2015:applies rdf:resource="http://data.europa.eu/a4g/resource/2020/s-207-505891#SelectionCriterionEconomic64c9520f-c302-4c83-8c3b-fef37c2966b6"/>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#ProcedureIddb53457f-7ed8-4e8a-87ee-6e603b8ad83b">
+                <epo:identifierValue>PN-I-559/20-DT</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasDescription xml:lang="hr">&lt;P&gt;Nadogradnja informacijskog sustava za upravljanje kapacitetima - SUKAP sustav, PN-I-559-20-DT.&lt;/P&gt;</epo:hasDescription>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2020/s-207-505891#Lotd498c233-0a54-4009-9212-3b3f44c73ec8"/>
+            <reg2015:hasGPAUsage>false</reg2015:hasGPAUsage>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#Purpose76c47e4f-7a08-42d2-b8bc-e232c7732ae9">
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/72260000"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#SubmissionTermae02da08-8e71-4bbe-b2dc-2ba09ef95ed4">
+                <epo:hasValidityPeriod rdf:resource="http://data.europa.eu/a4g/resource/2020/s-207-505891#Measure594089be-8a86-4d87-8484-bba440c3fb52"/>
+                <epo:hasSubmissionCommunicationMeans>
+                  <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#ChannelSubmission463dea55-ce51-4da0-9e63-0584346bf260">
+                    <epo:hasURL>https://eojn.nn.hr/Oglasnik</epo:hasURL>
+                  </epo:Channel>
+                </epo:hasSubmissionCommunicationMeans>
+                <epo:hasLanguage rdf:resource="http://publications.europa.eu/resource/authority/language/HRV"/>
+                <epo:hasReceiptDeadline>2020-11-24+10:00</epo:hasReceiptDeadline>
+                <epo:hasGuaranteeDescription xml:lang="hr">&lt;P&gt;Jamstvo za ozbiljnost ponude, jamstvo za uredno ispunjenje ugovora.&lt;/P&gt;</epo:hasGuaranteeDescription>
+              </epo:SubmissionTerm>
+            </reg2015:applies>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#SelectionCriterionSuitability94066a5e-46f8-4552-bb9d-c51c34dc0ed1">
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/sui-act"/>
+                <epo:hasDescription xml:lang="hr">&lt;P&gt;15.1. Izvadak iz sudskog, obrtnog, strukovnog ili drugog odgovarajućeg registra koji se vodi u državi poslovnog nastana gospodarskog subjekta.&lt;/P&gt;&lt;P&gt;— U slučaju zajednice gospodarskih subjekata, svi članovi zajednice gospodarskih subjekata obvezni su pojedinačno dokazati postojanje profesionalne sposobnosti.&lt;/P&gt;&lt;P&gt;— Kao preliminarni dokaz za ispunjavanje kriterija za odabir gospodarskog subjekta iz točke 15.1. gospodarski subjekti popunjavaju obrazac ESPD, DIO IV: Kriteriji za odabir gospodarskog subjekta, Odjeljak A: Sposobnost za obavljanje profesionalne djelatnosti, točka 1).&lt;/P&gt;</epo:hasDescription>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <epo:hasTitle xml:lang="hr">&lt;P&gt;Nadogradnja informacijskog sustava za upravljanje kapacitetima - SUKAP sustav, PN-I-559-20-DT&lt;/P&gt;</epo:hasTitle>
+            <reg2015:applies>
+              <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#ContractTerm8be72057-d825-471f-a526-e0cacbedc72d">
+                <epo:hasPaymentArrangement xml:lang="hr">&lt;P&gt;Sukladno točki 30. Dokumentacije o nabavi.&lt;/P&gt;</epo:hasPaymentArrangement>
+                <epo:hasContractorLegalFormRequirementDescription
+                 xml:lang="hr">&lt;P&gt;Sukladno Dokumentaciji o nabavi.&lt;/P&gt;</epo:hasContractorLegalFormRequirementDescription>
+                <epo:hasPerformanceConditions xml:lang="hr">&lt;P&gt;Sukladno Dokumentaciji o nabavi.&lt;/P&gt;</epo:hasPerformanceConditions>
+              </epo:ContractTerm>
+            </reg2015:applies>
+            <reg2015:applies rdf:resource="http://data.europa.eu/a4g/resource/2020/s-207-505891#SelectionCriterionTechnical80ac6c93-7900-40da-896d-8e3f7b566d51"/>
+            <epo:hasEstimatedValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#Value9a99a96f-f37a-44a7-b388-068284da0307">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#Amountf383af86-b86c-4c07-919f-24aca0d98c22">
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/HRK"/>
+                    <ccts:hasAmountValue>3750000.00</ccts:hasAmountValue>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasEstimatedValue>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#ContractTermLotf4dbd301-026b-4174-931f-cc76df7292e9">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#ObjectContractAddresse284ebe8-23f0-4aa6-9972-8265fba3bbc2">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/HR"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="hr"
+            >&lt;P&gt;Sukladno DON-u.&lt;/P&gt;</epo:hasPlaceOfPerformanceAdditionalInformation>
+            <epo:hasRenewalIndicator>false</epo:hasRenewalIndicator>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#PurposeAdditional266e6948-185e-4c47-bc03-9197bdf9bae1">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/72260000"/>
+            <epo:hasOptionsDescription xml:lang="hr">&lt;P&gt;Moguće produženje roka izvršenja i sklapanje dodatka ugovora.&lt;/P&gt;</epo:hasOptionsDescription>
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasEstimatedValue>
+          <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#ValueValObject2c492b53-66f7-4c95-adfc-41696897b0e9">
+            <epo:hasOverallAmount>
+              <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#AmountValObject6ebd51ef-3b84-4c77-a673-c30008cdc189">
+                <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/HRK"/>
+                <ccts:hasAmountValue>3750000.00</ccts:hasAmountValue>
+              </ccts:Amount>
+            </epo:hasOverallAmount>
+            <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+          </epo:Value>
+        </epo:hasEstimatedValue>
+        <epo:hasDescription xml:lang="hr">&lt;P&gt;Nadogradnja informacijskog sustava za upravljanje kapacitetima – SUKAP sustav, PN-I-559-20-DT&lt;/P&gt;</epo:hasDescription>
+        <epo:hasVariantPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/cost"/>
+    <epo:hasName>Cijena</epo:hasName>
+    <epo:hasFormula>85 %</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#AwardCriterionQuality3431c026-cd54-4daf-829d-d32dbc9754ec">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2020/s-207-505891#Lotd498c233-0a54-4009-9212-3b3f44c73ec8"/>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasName>Kvaliteta (iskustvo) angažiranih ključnih tehničkih stručnjaka</epo:hasName>
+    <epo:hasFormula>15 %</epo:hasFormula>
+  </epo:AwardCriterion>
+</rdf:RDF>

@@ -1,0 +1,473 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#AwardCriterionQuality18b250e6-49bb-43c6-a619-3a983a3489de">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#Lotc68c3599-9fe3-429e-83a0-60c4fe17c525">
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#PeriodDuration7e474f9e-6494-4c7d-b855-47f9b0a8e1b7">
+            <epo:hasDurationMeasure>
+              <ccts:Measure rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#Measurea52ab525-9921-46c9-93f3-690a5cec074a">
+                <ccts:hasMeasureValue>6</ccts:hasMeasureValue>
+                <ccts:hasUnitCode rdf:resource="http://publications.europa.eu/resource/authority/timeperiod/MONTH"/>
+              </ccts:Measure>
+            </epo:hasDurationMeasure>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#ContractTermLotbf1acd4d-2947-4eba-aa0d-11b622b0e439">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#ObjectContractAddress6d1bcf8c-0101-420a-9578-5b23a4eb345e">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/BG334"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="bg"
+            >
+                        &lt;P&gt;Поръчката ще се изпълнява в гр. Търговище, ул. „Поп Сава Катрафилов“ от
+                            бул. „Трайко Китанчев“ — кръстовище ул. „В. Петлешков“ до кръстовище ул.
+                            „Любен Каравелов“.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+            <epo:hasRenewalIndicator>false</epo:hasRenewalIndicator>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#PurposeAdditional9c702b5d-2d9a-49fc-9e17-6054012852c1">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45233252"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-236-429512#Procedurea478662c-99f1-447a-ae12-19b102e6f325">
+            <reg2015:hasGPAUsage>false</reg2015:hasGPAUsage>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#Purpose84f6deed-bb53-454c-b4e7-d3df5c6d96ae">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45233252"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:uses>
+              <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#AccessTermsFull584ae143-68c5-4193-82b0-50e5c3850567">
+                <epo:hasProcurementDocumentLandingPage>http://ezop.uslugi.io/public/obshtina_targovishte/#9</epo:hasProcurementDocumentLandingPage>
+              </epo:AccessTerm>
+            </epo:uses>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#SelectionCriterionTechnicalf07bf13a-640b-48f4-8258-4f1cd5d70bd0">
+                <epo:hasDescription xml:lang="bg">
+                    &lt;P&gt;1. Участникът, през последните 5 (пет) години, считано от датата на подаване
+                        на офертата, да е изпълнил дейности с предмет и обем, идентични или сходни с
+                        тези на настоящата обществена поръчка.&lt;/P&gt;
+                    &lt;P&gt;Под „дейност с предмет и обем, сходни с тези на настоящата обществена
+                        поръчка“ следва да се разбира изпълнението на строително-монтажни дейности
+                        по изграждане и/или реконструкция и/или ремонт и/или рехабилитация на пътна
+                        и/или улична мрежа с дължина минимум 500 метра.&lt;/P&gt;
+                    &lt;P&gt;2. Участникът да има въведена сертифицирана система за управление на
+                        качеството съгласно стандарт EN ISO 9001:2008 или еквивалент, с обхват на
+                        сертификата в областта на строителството.&lt;/P&gt;
+                    &lt;P&gt;Възложителят ще приеме еквивалентни сертификати, издадени от органи,
+                        установени в други държави-членки, както и други доказателства за
+                        еквивалентни мерки за осигуряване на качеството.&lt;/P&gt;
+                    &lt;P&gt;3. Участникът да има въведена сертифицирана система за опазване на околната
+                        среда съгласно стандарт ISO 14001:2004 или еквивалент, с обхват на
+                        сертификата в областта на строителството.&lt;/P&gt;
+                    &lt;P&gt;Възложителят ще приеме еквивалентни сертификати, издадени от органи,
+                        установени в други държави-членки, както и други доказателства за
+                        еквивалентни мерки за опазване на околната среда.&lt;/P&gt;
+                    &lt;P&gt;При участие на обединения, които не са юридически лица, съответствието с
+                        минималното изискване по т. 1. се доказва от обединението участник, а не от
+                        всяко от лицата, включени в него. Изискванията по т.2 и т.3 следва да се
+                        докажат от всички участници в обединението, които ще изпълняват
+                        строителство, съобразно разпределението на участието на лицата при
+                        изпълнение на дейностите, предвидено в договора за създаване на
+                        обединението.&lt;/P&gt;
+                    &lt;P&gt;При участие на подизпълнители, същите следва да отговарят на горепосочените
+                        изисквания за технически и професионални способности съобразно вида и дела
+                        от поръчката, който ще изпълняват.&lt;/P&gt;
+                    &lt;P&gt;Съгласно чл. 65 от ЗОП участниците могат да се позоват на капацитета на трети
+                        лица, независимо от правната връзка между тях, по отношение на критериите,
+                        свързани с икономическото и финансовото състояние и техническите
+                        способности.&lt;/P&gt;
+                    &lt;P&gt;Когато участникът се позовава на капацитета на трети лица, той трябва да може
+                        да докаже, че ще разполага с техните ресурси, като, преди сключване на
+                        договора, представи документи за поетите от третите лица задължения.&lt;/P&gt;
+                    &lt;P&gt;Третите лица трябва да отговарят на съответните критерии за подбор, за
+                        доказването на които участникът се позовава на техния капацитет и за тях да
+                        не са налице основанията за отстраняване от процедурата.&lt;/P&gt;
+                </epo:hasDescription>
+                <epo:hasDescription xml:lang="bg">
+                    &lt;P&gt;1. Участникът, през последните 5 (пет) години, считано от датата на подаване
+                        на офертата, да е изпълнил дейности с предмет и обем, идентични или сходни с
+                        тези на настоящата обществена поръчка.&lt;/P&gt;
+                    &lt;P&gt;Участниците декларират съответствието си с критерия за подбор в ЕЕДОП — Обр.
+                        № 1.&lt;/P&gt;
+                    &lt;P&gt;Преди сключването на договора за обществена поръчка (или в случаите на чл.
+                        67, ал. 5 от ЗОП) участниците следва да представят актуални документи,
+                        доказващи изпълнението на горното изискване, съгласно чл. 64, ал. 1, т. 1 от
+                        ЗОП.&lt;/P&gt;
+                    &lt;P&gt;2.Участникът да има въведена сертифицирана система за управление на
+                        качеството съгласно стандарт EN ISO 9001:2008 или еквивалент, с обхват на
+                        сертификата в областта на строителството.&lt;/P&gt;
+                    &lt;P&gt;Участниците декларират съответствието си с критерия за подбор в ЕЕДОП — Обр.
+                        № 1.&lt;/P&gt;
+                    &lt;P&gt;Преди сключването на договора за обществена поръчка (или в случаите на чл.
+                        67, ал. 5 от ЗОП) участниците следва да представят актуални документи,
+                        доказващи изпълнението на горното изискване, съгласно чл. 64, ал. 3, във вр.
+                        с ал. 5, 6 и 7 от ЗОП.&lt;/P&gt;
+                    &lt;P&gt;3. Участникът да има въведена сертифицирана система за опазване на околната
+                        среда съгласно стандарт ISO 14001:2004 или еквивалент, с обхват на
+                        сертификата в областта на строителството.&lt;/P&gt;
+                    &lt;P&gt;Участниците декларират съответствието си с критерия за подбор в ЕЕДОП — Обр.
+                        № 1.&lt;/P&gt;
+                    &lt;P&gt;Преди сключването на договора за обществена поръчка (или в случаите на чл.
+                        67, ал. 5 от ЗОП) участниците следва да представят актуални документи,
+                        доказващи изпълнението на горното изискване, съгласно чл. 64, ал. 4, във вр.
+                        с ал. 5, 6 и 7 от ЗОП.&lt;/P&gt;
+                </epo:hasDescription>
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/tp-abil"/>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429512#Lotc68c3599-9fe3-429e-83a0-60c4fe17c525"/>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#SelectionCriterionEconomica6112943-a56f-4ba9-806c-3ab4bc17894b">
+                <epo:hasDescription xml:lang="bg">
+                    &lt;P&gt;Участникът следва да притежава валидна застраховка „Професионална
+                        отговорност“ на лицето/лицата, което/които ще осъществява строителството за
+                        вреди, причинени на други участници в строителството и/или на трети лица,
+                        вследствие на неправомерни действия или бездействия при или по повод
+                        изпълнение на задълженията им за целия срок на договора.&lt;/P&gt;
+                    &lt;P&gt;Забележка:&lt;/P&gt;
+                    &lt;P&gt;За участник, установен/регистриран в Р България застраховката „Професионална
+                        отговорност“, следва да бъде съгласно чл. чл. 171, ал. 1 от ЗУТ за
+                        строителство, покриваща минималната застрахователна сума за строител за
+                        строежи трета категория съгласно чл. 137, ал. 1, т. 3 ЗУТ в размер на 200
+                        000 BGN, съгласно чл. 5, ал. 2, т. 3 от Наредбата за условията и реда за
+                        задължително застраховане в проектирането и строителството.&lt;/P&gt;
+                    &lt;P&gt;За участник, установен/регистриран извън Р. България, застраховката за
+                        професионална отговорност следва да бъде еквивалент на тази по чл. 171, ал.
+                        1 от ЗУТ, но направена съгласно законодателството на държавата, където е
+                        установен/регистриран участникът.&lt;/P&gt;
+                    &lt;P&gt;При участие на обединение, което не е юридическо лице, изискването за
+                        затраховка „Професионална отговорност“ се доказва от всеки участник в
+                        обединението, който ще извършва строителство, съобразно разпределението на
+                        участието на лицата при изпълнение на дейностите, предвидено в договора за
+                        създаване на обединението.&lt;/P&gt;
+                    &lt;P&gt;При участие на подизпълнители, същите следва да отговарят на горепосоченото
+                        изискване съобразно вида и дела от поръчката, който ще изпълняват.&lt;/P&gt;
+                </epo:hasDescription>
+                <epo:hasDescription xml:lang="bg">
+                    &lt;P&gt;Участникът следва да притежава валидна застраховка „Професионална
+                        отговорност“ на лицето/лицата, което/които ще осъществява строителството за
+                        вреди, причинени на други участници в строителството и/или на трети лица,
+                        вследствие на неправомерни действия или бездействия при или по повод
+                        изпълнение на задълженията им за целия срок на договора.&lt;/P&gt;
+                    &lt;P&gt;Участниците декларират съответствието си с горния критерий за подбор в ЕЕДОП
+                        — Обр. 1, чрез попълване на съответното поле.&lt;/P&gt;
+                    &lt;P&gt;Преди сключване на договора за обществена поръчка (или в случаите на чл. 67,
+                        ал. 5 от ЗОП) участниците следва да представят актуални документи, доказващи
+                        изпълнението на горното изискване, съгласно чл. 62, ал. 1, т. 2 от ЗОП.&lt;/P&gt;
+                </epo:hasDescription>
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/ef-stand"/>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <reg2015:applies>
+              <epo:OpeningTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#OpeningTerme144ddc3-c48c-48ec-b0e4-a11da8ff865a">
+                <epo:hasOpeningDateTime>2017-01-10+10:00</epo:hasOpeningDateTime>
+                <epo:hasOpeningDescription xml:lang="bg">
+                        &lt;P&gt;Получените оферти се отварят на публично заседание, на което могат да
+                            присъстват участниците в процедурата или техни упълномощени
+                            представители, както и представители на средствата за масово
+                            осведомяване.&lt;/P&gt;
+                    </epo:hasOpeningDescription>
+                <epo:hasOpeningDescription xml:lang="bg">
+                        &lt;P&gt;Гр. Търговище 7700, пл. „Свобода“, Община Търговище в зала № 74.&lt;/P&gt;
+                    </epo:hasOpeningDescription>
+              </epo:OpeningTerm>
+            </reg2015:applies>
+            <epo:hasTitle xml:lang="bg">
+                    &lt;P&gt;„Реконструкция на ул. „Поп Сава Катрафилов“ от бул. „Трайко Китанчев“ —
+                        кръстовище ул. „В. Петлешков“ до кръстовище ул. „Любен Каравелов“ гр.
+                        Търговище“.&lt;/P&gt;
+                </epo:hasTitle>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#SelectionCriterionSuitability4064d6b5-ce28-4699-a93b-9fc83c9063ea">
+                <epo:hasDescription xml:lang="bg">
+                    &lt;P&gt;Участникът следва да е вписан в Централния професионален регистър на
+                        строителя, за изпълнение на строежи, с обхват: строителни дейности по обекти
+                        втора група, трета категория, съгласно Наредба №1 от 30.7.2003 г. за
+                        номенклатурата на видовете строежи и чл. 137 от ЗУТ.&lt;/P&gt;
+                    &lt;P&gt;Съгласно чл. 60 от ЗОП, чуждестранните участници могат да докажат
+                        регистрацията си в аналогични регистри съгласно законодателството на
+                        държавата-членка, в която са установени.&lt;/P&gt;
+                    &lt;P&gt;При участие на обединение, което не е юридическо лице, изискването за
+                        регистрация се доказва от всеки участник в обединението, който ще извършва
+                        строителство съобразно разпределението на участието на лицата при изпълнение
+                        на дейностите, предвидено в договора за създаване на обединението.&lt;/P&gt;
+                    &lt;P&gt;При участие на подизпълнители, същите следва да отговарят на горепосоченото
+                        изискване съобразно вида и дела от поръчката, който ще изпълняват.&lt;/P&gt;
+                    &lt;P&gt;Участниците декларират съответствието си с горния критерий за подбор в ЕЕДОП
+                        — Обр. 1, чрез попълване на съответното поле.&lt;/P&gt;
+                    &lt;P&gt;Преди сключване на договора за обществена поръчка (или в случаите на чл. 67,
+                        ал. 5 от ЗОП) участниците следва да представят актуални документи, доказващи
+                        изпълнението на горното изискване, а именно: копие от Удостоверение за
+                        вписване в Централния професионален регистър на строителя, за изпълнение на
+                        строежи, с обхват: строителни дейности по обекти втора група, трета
+                        категория.&lt;/P&gt;
+                </epo:hasDescription>
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/sui-act"/>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <reg2015:applies>
+              <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#ContractTerm92c035a1-69b8-4890-bbeb-672f4e2021d6">
+                <epo:hasPerformanceConditions xml:lang="bg">
+                    &lt;P&gt;Срокът за изпълнение на СМР е по предложение на участника, като същият НЕ
+                        подлежи на оценка, съгласно одобрената от Възложителя методика за оценка на
+                        офертите. Срокът за изпълнение на СМР, предмет на поръчката, не може да бъде
+                        по-кратък от 120 кал. дни и по-дълъг от 180 кал. дни, като същият започва да
+                        тече от датата на подписване на Протокол за откриване на стр. площадка и
+                        определяне на стр. линия и и ниво за строежи на техн. инфрастр. (Прилож. №
+                        2а към чл. 7, ал. 3, т. 2 от Наредба № 3 от 31.7.2003 г. за съставяне на
+                        актове и протоколи по време на строителството) и приключва със съставянето
+                        на Констативен акт за установяване годността за приемане на строежа
+                        (Приложение № 15 към чл. 7, ал. 3, т. 15 от Наредба № 3 от 31.7. 2003 г. за
+                        съставяне на актове и протоколи по време на строителството).Участници, които
+                        предложат срок за изпълнение на СМР по-кратък от поставения мин. срок от 120
+                        кал. дни или по-дълъг от поставения макс. срок от 180 кал. дни, ще бъдат
+                        отстранявани по-нататъшно участие в процедурата.&lt;/P&gt;
+                </epo:hasPerformanceConditions>
+              </epo:ContractTerm>
+            </reg2015:applies>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#SubmissionTermdf820280-26da-41ad-b13c-8198c24a4a4f">
+                <epo:hasValidityPeriod rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429512#Measurea52ab525-9921-46c9-93f3-690a5cec074a"/>
+                <epo:hasLanguage rdf:resource="http://publications.europa.eu/resource/authority/language/BUL"/>
+                <epo:hasReceiptDeadline>2017-01-09+17:00</epo:hasReceiptDeadline>
+              </epo:SubmissionTerm>
+            </reg2015:applies>
+            <epo:hasEstimatedValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#Valueb4e80728-735b-4ddb-bae5-529bce525218">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#Amounte13772de-2205-41e5-b60f-5685794c6b85">
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/BGN"/>
+                    <ccts:hasAmountValue>1208000</ccts:hasAmountValue>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasEstimatedValue>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#Buyerbcbac2af-012e-4382-8653-b7d5c5595bf3">
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#ContactPointParticipation840284e4-dcf5-4237-9b70-9ef60ecaeafc">
+                    <epo:hasFax>+359 60162-212</epo:hasFax>
+                    <epo:hasEmail>zaharieva.p@targovishte.bg</epo:hasEmail>
+                    <epo:hasTelephone>+359 60168-716</epo:hasTelephone>
+                    <epo:hasInternetAddress>http://www.targovishte.bg/</epo:hasInternetAddress>
+                    <epo:hasDescription xml:lang="bg">Павлина Захариева</epo:hasDescription>
+                  </epo:ContactPoint>
+                </epo:has>
+                <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-236-429512#Procedurea478662c-99f1-447a-ae12-19b102e6f325"/>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-236-429512#Procedurea478662c-99f1-447a-ae12-19b102e6f325"/>
+                <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-236-429512#Procedurea478662c-99f1-447a-ae12-19b102e6f325"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#OrganisationParticipationab478883-59ce-468a-9c98-f2edfa74700c">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#OrganisationParticipationId55bddd28-e2ed-4db5-b21e-912ddd7e08ee">
+                        <epo:identifierValue>000875920</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#LocationParticipation53225088-609a-4a31-8251-8440ce28098b">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#AddressParticipation8ca80e8e-4a30-4c56-a2af-bd31904932d3">
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/BG334"/>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/BGR"/>
+                            <epo:hasStreetName xml:lang="bg">пл. „Свобода“, Център за административно обслужване — работно място №
+                        5</epo:hasStreetName>
+                            <epo:hasPostalZone>7700</epo:hasPostalZone>
+                            <epo:hasCityName xml:lang="bg">Търговище</epo:hasCityName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="bg">Община Търговище</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#BuyerProfilea65ff176-8bb4-4f29-892a-ca3e19de3f77">
+                    <epo:hasURL>http://ezop.uslugi.io/public/obshtina_targovishte/#9</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+                <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-236-429512#Procedurea478662c-99f1-447a-ae12-19b102e6f325"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#Organisationa60d8f95-9061-4a7f-871e-3a614383c705">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#OrganisationIdcda3adf7-52a5-483d-9160-da225fefa7bb">
+                        <epo:identifierValue>000875920</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#Location3f595550-cf6f-430e-ab43-8e0e7e3ec1eb">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#Address7365863c-dbf4-4249-b2d1-44a38fb7bf1e">
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/BG334"/>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/BGR"/>
+                            <epo:hasStreetName xml:lang="bg">пл. „Свобода“</epo:hasStreetName>
+                            <epo:hasPostalZone>7700</epo:hasPostalZone>
+                            <epo:hasCityName xml:lang="bg">Търговище</epo:hasCityName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="bg">Община Търговище</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#ContactPointecce4ff8-5242-42b1-968d-cb98a93d0d39">
+                    <epo:hasFax>+359 60162212</epo:hasFax>
+                    <epo:hasEmail>obshtina@targovishte.bg</epo:hasEmail>
+                    <epo:hasTelephone>+359 60168651</epo:hasTelephone>
+                    <epo:hasInternetAddress>http://www.targovishte.bg/</epo:hasInternetAddress>
+                    <epo:hasDescription xml:lang="bg">инж. Димо Димов — директор дирекция УТ, Мариана Тодорова — гл.
+                        експерт отдел НПО</epo:hasDescription>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <epo:hasDescription xml:lang="bg">
+                    &lt;P&gt;В обхвата на поръчката попадат дейности по осъществяване на реконструкция на
+                        ул. „Поп Сава Катрафилов“ в гр. Търговище, същите са предвидени за
+                        изпълнение в 2 участъка, както следва: Участък 1: От бул. „Тр. Китанчев“ до
+                        ул. „В. Петлешков“ км. 0+000 до км. 0+230; Участък 2: От ул. „В. Петлешков“
+                        до ул. „Л. Каравелов“ км. 0+230 до км. 0+500. &lt;/P&gt;
+                    &lt;P&gt;Настоящата поръчка обхваща проектно решение за пътни работи по изграждането
+                        на:&lt;/P&gt;
+                    &lt;P&gt;- Трети участък – пробив по нов терен между ул. „Л. Каравелов“ и ул. „В.
+                        Петлешков“. Проектното решение включва реконструкцията на двете кръстовища,
+                        свързано с новото ул. платно на ул. „Поп Сава Катрафилов“ в пълната и ширина
+                        от 20 м.&lt;/P&gt;
+                    &lt;P&gt;- Четвърти участък – ул. „В. Петлешков“ до бул. „Трайко Китанчев“ и
+                        преустройство на платното на бул. „Тр. Китанчев“ в зоната на кръстовището, с
+                        цел създаване на шлюзови ленти за ляво завиващите автомобилни потоци.
+                        Обхватът, обемът и изискванията към изпълнението на обществената поръчка са
+                        подробно описани и регламентирани в Техническите спецификации.&lt;/P&gt;
+                </epo:hasDescription>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasEstimatedValue>
+          <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#ValueValObjecta32f17c1-01a1-4a60-bbe7-8e6d2b0bc0a6">
+            <epo:hasOverallAmount>
+              <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#AmountValObject8405adc4-6360-4a2b-ad59-60d18fc51a39">
+                <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/BGN"/>
+                <ccts:hasAmountValue>1208000</ccts:hasAmountValue>
+              </ccts:Amount>
+            </epo:hasOverallAmount>
+            <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+          </epo:Value>
+        </epo:hasEstimatedValue>
+        <epo:hasAdditionalInformation xml:lang="bg">
+                        &lt;P&gt;Срокът за изпълнение на СМР е по предложение на участника, като същият Не
+                            подлежи на оценка, съгласно одобрената от Възложителя методика за оценка
+                            на офертите. Срокът за изпълнение на СМР, предмет на настоящата поръчка,
+                            не може да бъде по-кратък от 120 (сто и двадесет) календарни дни и
+                            по-дълъг от 180 (сто и осемдесет) календарни дни.&lt;/P&gt;
+                    </epo:hasAdditionalInformation>
+        <epo:hasVariantPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+        <epo:hasDescription xml:lang="bg">
+                        &lt;P&gt;В обхвата на поръчката попадат дейности по осъществяване на реконструкция
+                            на ул. „Поп Сава Катрафилов“ в гр. Търговище, същите са предвидени за
+                            изпълнение в 2 участъка, както следва:&lt;/P&gt;
+                        &lt;P&gt;Участък 1: От бул. „Тр. Китанчев“ до ул. „В. Петлешков“ км. 0+000 до км.
+                            0+230;&lt;/P&gt;
+                        &lt;P&gt;Участък 2: От ул. „В. Петлешков“ до ул. „Л. Каравелов“ км. 0+230 до км.
+                            0+500.&lt;/P&gt;
+                        &lt;P&gt;С цел подобряване на транспортната връзка на посочените жилищни зони и
+                            общ. сгради с централна градска част, градоустройственият план на гр.
+                            Търговище предвижда изграждането на директно трасе на ново ул. платно,
+                            представляващо продължение на ул. “Поп Сава Катрафилов” до пресичането и
+                            с бул. “Тр. Китанчев”. В краен етап на изграждане новото ул. платно има
+                            габарит от 20 м, включващ:&lt;/P&gt;
+                        &lt;P&gt;— 2 платна по 2 ленти за движение в 1 посока, общо 2 х 7 м;&lt;/P&gt;
+                        &lt;P&gt;— 2 тротоара за пешеходно движение, с ширина 2 х 3 м.&lt;/P&gt;
+                        &lt;P&gt;В зависимост от застрояването на прилеж. терени, в отделни части на
+                            платното, част от тротоарните ленти получават ширина над 3 м.&lt;/P&gt;
+                        &lt;P&gt;Във връзка с възможностите за неговата реализация, общата дължина на
+                            трасето е разделено в следните 4 участъка:&lt;/P&gt;
+                        &lt;P&gt;— Първи участък, обхващащ реконструкция и разширение на съществуващото
+                            улично платно на ул. ”Поп Сава Катрафилов” от бул. ”М. Андрей” до ул.
+                            ”Г. С. Раковски”, с дължина — 137 м;&lt;/P&gt;
+                        &lt;P&gt;— Втори участък, от ул. ”Г. С. Раковски” до пресичането на ул. ”Л.
+                            Каравелов”, с дължина-103 м;&lt;/P&gt;
+                        &lt;P&gt;— Трети участък, представляващ пробив по нов терен, с отчуждаване на
+                            жилищни и обществени имоти, в зоната м/у ул. ”Л. Каравелов” и ул. ”В.
+                            Петлешков”, с дължина — 197 м;&lt;/P&gt;
+                        &lt;P&gt;— Четвърти участък, обхващащ трасето от ул. ”В. Петлешков” до бул. ”Тр.
+                            Китанчев”, вкл. рампиране на кръстовището на бул. „Тр. Китанчев“, с
+                            платното на бул. „Сюрен”, с дължина — 127 м;&lt;/P&gt;
+                        &lt;P&gt;Настоящата обществена поръчка обхваща проектно решение за пътни работи по
+                            изграждането на:&lt;/P&gt;
+                        &lt;P&gt;— Трети участък — пробив по нов терен между ул. ”Л. Каравелов” и ул. ”В.
+                            Петлешков”. Проектното решение включва реконструкцията на двете
+                            кръстовища, свързано с новото улично платно на ул. ”Поп Сава Катрафилов”
+                            в пълната и ширина от 20 м.&lt;/P&gt;
+                        &lt;P&gt;— Четвърти участък — ул. ”В. Петлешков” до бул. ”Трайко Китанчев” и
+                            преустройство на платното на бул. „Тр. Китанчев” в зоната на
+                            кръстовището, с цел създаване на шлюзови ленти за ляво завиващите
+                            автомобилни потоци.&lt;/P&gt;
+                        &lt;P&gt;СМР, обект на настоящата поръчка, са както следва по участъци:&lt;/P&gt;
+                        &lt;P&gt;1. Участък от бул. "Тр. Китанчев" до ул."В. Петлешков" км. 0+000 до км.
+                            0+230 — земни работи, пътни работи, асфалтови работи, отводняване, ОД,
+                            ВОБД, ел. работи, озеленяване;&lt;/P&gt;
+                        &lt;P&gt;2. Участък от ул. "В. Петлешков" до ул. "Л. Каравелов", км. 0+230 до км.
+                            0+500 — земни работи, пътни работи, асфалтови работи, отводняване, ОД,
+                            ВОБД, ел. работи, озеленяване.&lt;/P&gt;
+                        &lt;P&gt;Обхватът, обемът и изискванията към изпълнението на обществената поръчка
+                            са подробно описани и регламентирани в Техническите спецификации,
+                            неразделна част от документацията за общ. поръчка.&lt;/P&gt;
+                        &lt;P&gt;В посочената прогнозна стойност са включени 8 % непредвидени разходи,
+                            равняващи се на 89 481,48 BGN без ДДС, като същите са начислени в общата
+                            стойност от 1 208 000 BGN без ДДС, и следва да бъдат начислени и в
+                            офертата на участника, върху общата стойност за всички строителни
+                            работи.&lt;/P&gt;
+                        &lt;P&gt;За „непредвидени разходи” ще се приемат освен допълнително възникнали
+                            количества по посочените дейности в КСС и такива, които са извън
+                            посочените и представляват пречка за технологичното изпълнение на
+                            дейностите в КСС за изпълнение на обекта.&lt;/P&gt;
+                        &lt;P&gt;Стойността на непредв. разходи следва да е включена в ценовата оферта на
+                            избрания за изпълнител участник и не надвишава 8 % от общата стойност на
+                            извършените СМР. Допълн. видове работи се възлагат само ако са
+                            мотивирани с неразривна свързаност и технолог. необходимост от тяхното
+                            изпълнение, без оглед на които обектът не би могъл да бъде технологично
+                            завършен до степен на годност, съобразно целите на изпълняваните
+                            СМР.&lt;/P&gt;
+                        &lt;P&gt;Всички непредв. разходи следва да се приемат като лимитирани във
+                            финансовия ресурс на възложителя, в размер на оферираните от уч-ка
+                            непредв. разходи.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasName>Начин на изпълнение, като измерител на качеството —
+                            П1</epo:hasName>
+    <epo:hasFormula>50</epo:hasFormula>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429512#AwardCriterionPrice7cc50932-62b0-4c41-8d32-1c630470bba7">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429512#Lotc68c3599-9fe3-429e-83a0-60c4fe17c525"/>
+    <epo:hasFormula>50</epo:hasFormula>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

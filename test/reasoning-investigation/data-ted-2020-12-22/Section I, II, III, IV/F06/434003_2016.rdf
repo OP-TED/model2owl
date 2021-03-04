@@ -1,0 +1,122 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-238-434003#Procedurede11c372-7f7a-4e6d-8956-cad979c8f6a5">
+    <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#ContractNoticed49a46fc-2209-45ee-bc39-0b9bf9ceeecc">
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#PreviousNotice0b3169e6-d938-457b-801b-eeaae0434c9a">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#NoticeIdf52bdd0b-8007-491d-b8f5-3d86837ed5de">
+                <epo:identifierValue>2016/S 090-160421</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434003#Procedurede11c372-7f7a-4e6d-8956-cad979c8f6a5"/>
+      </epo:ContractNotice>
+    </epo:notifies>
+    <epo:hasID>
+      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#ProcedureIdd77b32ba-dbde-4b76-b397-2ddea5a6d3c5">
+        <epo:identifierValue>SV-APE-160506-005</epo:identifierValue>
+      </epo:Identifier>
+    </epo:hasID>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#Buyerafcad638-6bb1-49bf-b784-29fb55155b08">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434003#Procedurede11c372-7f7a-4e6d-8956-cad979c8f6a5"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#Organisation8173e970-b71f-48fe-8952-1f3e94b68a09">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#Locationad25fbe1-268c-4e9a-9ffe-36cfcb8be493">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#Addressb841b39b-01c0-427c-9485-e49dbfff1e85">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE212"/>
+                    <epo:hasCityName xml:lang="de">München</epo:hasCityName>
+                    <epo:hasPostalZone>80287</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="de">Emmy-Noether-Straße 2</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Stadtwerke München GmbH</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#ContactPoint99d9e9e3-69a6-4327-90f7-903d57a2de5c">
+            <epo:hasDescription xml:lang="de">Andreas Mayr</epo:hasDescription>
+            <epo:hasTelephone>+49 892361-4797</epo:hasTelephone>
+            <epo:hasInternetAddress>http://www.swm.de</epo:hasInternetAddress>
+            <epo:hasEmail>mayr.andreas@swm.de</epo:hasEmail>
+            <epo:hasFax>+49 892361-4853</epo:hasFax>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/urttb"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#Purpose407af625-0568-4448-b906-ceeedb277206">
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45234116"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#Lot44c5f9ff-9879-43d3-b4b9-bb3f3e827cbf">
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434003#Procedurede11c372-7f7a-4e6d-8956-cad979c8f6a5"/>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#ContractTermLot157b83f0-6aab-4895-b8ba-d7e6646f59d2">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#ObjectContractAddress7d813683-6228-4f45-a3e4-7f71a64e4520">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE212"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="de"
+            >
+                        &lt;P&gt;Gleiserneuerung in München, Münchner Freiheit bis Scheidplatz.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#PurposeAdditional48f86880-c779-481e-9af3-44c0cb92504a">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasDescription xml:lang="de">
+                        &lt;P&gt;2 100 m vollständige Gleiserneuerung inkl. Erneuerung der Schotters, der
+                            Schwellen und der Schienen,&lt;/P&gt;
+                        &lt;P&gt;3 150 m Stromschienen,&lt;/P&gt;
+                        &lt;P&gt;2 100 m Schienen,&lt;/P&gt;
+                        &lt;P&gt;2 Weichen.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasTitle xml:lang="de">
+                    &lt;P&gt;Gleisbauarbeiten.&lt;/P&gt;
+                </epo:hasTitle>
+    <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Gleisbauarbeiten:&lt;/P&gt;
+                    &lt;P&gt;2 100 m vollständige Gleiserneuerung inklusive Erneuerung des Schotters, der
+                        Schwellen und der Schienen / 3 150 m Stromschienen / 2 100 m Schienen/ 2
+                        Weichen.&lt;/P&gt;
+                </epo:hasDescription>
+    <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call"/>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434003#SubmissionTerm5c9c53a1-8cad-479a-b579-fe54be251b2e"/>
+    </reg2015:applies>
+  </reg2015:Procedure>
+</rdf:RDF>

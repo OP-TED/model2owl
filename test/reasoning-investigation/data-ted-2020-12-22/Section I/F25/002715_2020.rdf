@@ -1,0 +1,61 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002715#Buyerba1dfdb4-978b-4b6e-8ea8-4e967cedd64a">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002715#Organisation8ecf5b25-b753-4af4-a7c8-558ef947716c">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002715#Location60bb30c3-7162-4d11-bd93-6a6c62d4173f">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002715#Address4277b674-84fa-484e-b52a-dc559e572510">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRB06"/>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasCityName xml:lang="fr">Gien</epo:hasCityName>
+                <epo:hasStreetName xml:lang="fr">48 quai de Châtillon</epo:hasStreetName>
+                <epo:hasPostalZone>45501</epo:hasPostalZone>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002715#OrganisationId3e8ff889-23ee-4922-823c-21ea3db0693a">
+            <epo:identifierValue>25450257800019</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasName xml:lang="fr">Syctom de Gien et Châteauneuf s/loire</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002715#ProcedureExtd3eb3fbd-ccc1-4957-9331-91f5c99dffc1">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-002-002715#Buyerba1dfdb4-978b-4b6e-8ea8-4e967cedd64a"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002715#BuyerProfile71a63ded-8585-4412-a71f-f08acae4e582">
+        <epo:hasURL>http://www.marches-publics.info/</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002715#ContactPoint79714e85-9ac7-4cfa-abb4-0a35dc1fd3cf">
+        <epo:hasTelephone>+33 238676009</epo:hasTelephone>
+        <epo:hasFax>+33 238380547</epo:hasFax>
+        <epo:hasInternetAddress>http://www.syctomgienchateauneuf.fr/</epo:hasInternetAddress>
+        <epo:hasEmail>syctom.gienchateauneuf@wanadoo.fr</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+  </epo:Buyer>
+</rdf:RDF>

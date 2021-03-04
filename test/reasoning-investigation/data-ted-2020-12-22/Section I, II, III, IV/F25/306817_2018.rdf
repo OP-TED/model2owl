@@ -1,0 +1,158 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-134-306817#Procedure93297428-0e2a-4776-92b5-6acecc07abb0">
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#ValueTotal48af3410-aa64-4c9c-a945-6c3375776c63">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#AmountTotald33c782f-f21f-4333-b332-1293ae6eef12">
+            <ccts:hasAmountValue>29042868</ccts:hasAmountValue>
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#ContractNotice1a98ab3f-b1de-4c3f-8e26-17f643517934">
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#PreviousNoticef6b402b1-8213-41c5-9f18-663b6c3fb012">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#NoticeId126bbfdd-1981-4eb6-a527-2ac89c6be360">
+                <epo:identifierValue>2016/S 244-446041</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-134-306817#Procedure93297428-0e2a-4776-92b5-6acecc07abb0"/>
+      </epo:ContractNotice>
+    </epo:notifies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#Buyer88fe0142-9297-422a-9cc5-8dabd14af4b9">
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#BuyerProfile5898aba6-6a47-435e-8081-b9037433a628">
+            <epo:hasURL>http://www.marches-securises.fr</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#ContactPointbaa9edd8-64f4-4463-9084-ecedbbd47838">
+            <epo:hasFax>+33 254903558</epo:hasFax>
+            <epo:hasInternetAddress>http://www.blois.fr</epo:hasInternetAddress>
+            <epo:hasEmail>marchespublics@blois.fr</epo:hasEmail>
+            <epo:hasTelephone>+33 254903535</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-134-306817#Procedure93297428-0e2a-4776-92b5-6acecc07abb0"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#Organisation698821ae-8622-4dd9-b202-d8ffa706595f">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#Location74d7cd8d-0ed8-40f4-b0f5-8f824ce7e699">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#Addressb2c4eea2-6110-443f-bfa1-e920f303762b">
+                    <epo:hasCityName xml:lang="fr">Blois</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="fr">9 place Saint Louis</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRB05"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasPostalZone>41000</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Ville de Blois</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/cga"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/env-pro"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#Lotb57055c5-325c-4583-a5f4-fef5a24b667b">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#ContractTermLot1c97fdf7-1843-4bcb-96f8-e6bf4742a57f">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#ObjectContractAddresse6757261-cbdb-4918-8c11-961a48428245">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRB05"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#PurposeAdditionalc371e99b-3773-4ea0-82c0-bbbec2ab6654">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/09323000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-134-306817#Procedure93297428-0e2a-4776-92b5-6acecc07abb0"/>
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#PeriodDuration78a59515-776e-47bc-be87-180aeb92fd47"/>
+        </epo:hasContractDuration>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;La présente procédure a pour objet de déléguer le service public de
+                            production et de distribution de chaleur sur les quartiers Bégon — croix
+                            Chevalier.&lt;/P&gt;
+                        &lt;P&gt;Le délégataire assurera la gestion et l'exploitation du réseau de
+                            chaleur. Le délégataire assurera à ses risques et périls notamment:&lt;/P&gt;
+                        &lt;P&gt;— l'exploitation et la gestion des équipements de production de chaleur,
+                            des réseaux de transport de distribution de chaud et des
+                            sous-stations,&lt;/P&gt;
+                        &lt;P&gt;— la fourniture et la distribution de chaleur,&lt;/P&gt;
+                        &lt;P&gt;— la maintenance et l'entretien courant des installations,&lt;/P&gt;
+                        &lt;P&gt;— les travaux de gros entretiens et de renouvellement hormis le bâti de
+                            la chaufferie et les réseaux de transport et de distribution de
+                            chaleur,&lt;/P&gt;
+                        &lt;P&gt;— la commercialisation de la chaleur,&lt;/P&gt;
+                        &lt;P&gt;— la perception des recettes dues par les abonnés,&lt;/P&gt;
+                        &lt;P&gt;— les relations avec les abonnés et le délégant.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasID>
+      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#ProcedureId5fcf8d80-9f8e-4fbb-8271-5b2bbb70de1e">
+        <epo:identifierValue>DSP_RC_BEGON/CROIX CHEVALIER</epo:identifierValue>
+      </epo:Identifier>
+    </epo:hasID>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#Purpose184979ef-e14f-4fd6-bc75-5ff1fdcdc25a">
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/09323000"/>
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;La présente procédure a pour objet de déléguer le service public de
+                        production et de distribution de chaleur sur les quartiers Bégon — croix
+                        Chevalier. Le délégataire assurera la gestion et l'exploitation du réseau de
+                        chaleur. Le délégataire assurera à ses risques et périls notamment: &lt;/P&gt;
+                    &lt;P&gt;— l'exploitation et la gestion des équipements de production de chaleur, des
+                        réseaux de transport de distribution de chaud et des sous-stations,&lt;/P&gt;
+                    &lt;P&gt;— la fourniture et la distribution de chaleur,&lt;/P&gt;
+                    &lt;P&gt;— la maintenance et l'entretien courant des installations, &lt;/P&gt;
+                    &lt;P&gt;— les travaux de gros entretiens et de renouvellement hormis le bâti de la
+                        chaufferie et les réseaux de transport et de distribution de chaleur,&lt;/P&gt;
+                    &lt;P&gt;— la commercialisation de la chaleur,&lt;/P&gt;
+                    &lt;P&gt;— la perception des recettes dues par les abonnés, &lt;/P&gt;
+                    &lt;P&gt;— les relations avec les abonnés et le délégant. &lt;/P&gt;
+                    &lt;P&gt;La réalisation des travaux de 1&lt;FT TYPE="SUP"&gt;er&lt;/FT&gt; établissement est
+                        réalisée parla Ville sous maîtrise d'ouvrage publique. La durée de la
+                        convention de délégation de service public sera de 9 ans&lt;/P&gt;
+                </epo:hasDescription>
+    <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;Délégation de service public relative au réseau de chaleur des quartiers
+                        Bégon — croix Chevalier&lt;/P&gt;
+                </epo:hasTitle>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#SubmissionTerma52b1565-96f8-45f0-b799-2169ea87174a"/>
+    </reg2015:applies>
+  </reg2015:Procedure>
+</rdf:RDF>

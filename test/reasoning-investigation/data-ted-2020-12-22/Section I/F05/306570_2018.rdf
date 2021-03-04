@@ -1,0 +1,97 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306570#ProcurementServiceProvider8f859c7c-7ed3-472c-b605-0b760aa817f5">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306570#ContactPointPSPa032ff9c-7b0a-45b1-960b-05b2db8b6dcc">
+        <epo:hasFax>+49 6926536784</epo:hasFax>
+        <epo:hasDescription xml:lang="de">Kriedemann, Marko</epo:hasDescription>
+        <epo:hasInternetAddress>http://www.deutschebahn.com/bieterportal</epo:hasInternetAddress>
+        <epo:hasTelephone>+49 4039183073</epo:hasTelephone>
+        <epo:hasEmail>marko.kriedemann@deutschebahn.com</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306570#OrganisationPSP38dc8780-046d-49e8-a515-44700c728dce">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306570#LocationPSPda1a088a-e578-4ec0-b520-e4d3203c866e">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306570#AddressPSP0910e5d7-1944-47b5-9b47-2a70e9875b34">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE600"/>
+                <epo:hasPostalZone>20097</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="de">Hamburg</epo:hasCityName>
+                <epo:hasStreetName xml:lang="de">Hammerbrookstraße 44</epo:hasStreetName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="de">GS.EI-N – Beschaffung Infrastruktur Region Nord</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <reg2015:providesAdditionalInformationAboutProcurementProcedure>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306570#ProcedureExtd0534f92-0690-4d58-86d8-47b34ed9853b">
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306570#AccessTermsFullbd595bcf-ce25-410b-95aa-760bcc33e5fd">
+            <epo:hasProcurementDocumentLandingPage>https://bieterportal.noncd.db.de/evergabe.bieter/DownloadTenderFiles.ashx?subProjectId=Bgov1wM6Geo%3d</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <reg2015:applies>
+          <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306570#SubmisisonTermsaef52069-370c-4383-bd15-b30354cc19d6">
+            <epo:hasSubmissionCommunicationMeans>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306570#ChannelSubmission47190962-5643-4f5a-beca-83bf933e111d">
+                <epo:hasURL>http://www.deutschebahn.com/bieterportal</epo:hasURL>
+              </epo:Channel>
+            </epo:hasSubmissionCommunicationMeans>
+          </epo:SubmissionTerm>
+        </reg2015:applies>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306570#Buyer6cd7dc5c-1232-4526-b3a4-2a35a2293f31">
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306570#ProcedureExtd0534f92-0690-4d58-86d8-47b34ed9853b"/>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306570#ContactPoint835af428-7d1e-4e2a-ba77-14feb712caa7">
+                <epo:hasFax>+49 6926536784</epo:hasFax>
+                <epo:hasDescription xml:lang="de">Kriedemann, Marko</epo:hasDescription>
+                <epo:hasInternetAddress>http://www.deutschebahn.com/bieterportal</epo:hasInternetAddress>
+                <epo:hasTelephone>+49 4039183073</epo:hasTelephone>
+                <epo:hasEmail>marko.kriedemann@deutschebahn.com</epo:hasEmail>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306570#Organisation5c8b2228-b3da-4f75-955e-62b3be0b3e6b">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306570#Location55f62ce4-1a22-4587-a2df-34b48e839cf0">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306570#Addressb1f5f509-92de-40de-928b-5eb1fb6c0d8a">
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE30"/>
+                        <epo:hasPostalZone>10557</epo:hasPostalZone>
+                        <epo:hasCityName xml:lang="de">Berlin</epo:hasCityName>
+                        <epo:hasStreetName xml:lang="de">Europaplatz 1</epo:hasStreetName>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="de">DB Station&amp;Service AG (Bukr 11)</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/rail"/>
+            <epo:hasContractingEntity>true</epo:hasContractingEntity>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:providesAdditionalInformationAboutProcurementProcedure>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

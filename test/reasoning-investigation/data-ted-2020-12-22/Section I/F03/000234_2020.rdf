@@ -1,0 +1,61 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000234#Buyer61c0f13b-3635-4103-a170-4c3fbb8ffe41">
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000234#BuyerProfile81da8bb4-a80b-4b67-b3c6-249d4fd5abdc">
+        <epo:hasURL>http://www.adif.es/es_ES/empresas_servicios/licitaciones.shtml</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000234#ContactPoint671ea1a4-cabb-498e-9cf4-df8ca3885742">
+        <epo:hasDescription xml:lang="es">Subdirección de Contratación III</epo:hasDescription>
+        <epo:hasInternetAddress>www.adif.es</epo:hasInternetAddress>
+        <epo:hasEmail>mdfotero@adif.es</epo:hasEmail>
+        <epo:hasTelephone>+34 913006290</epo:hasTelephone>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000234#ProcedureExtba709932-755c-43f3-839e-afb0146d7a65">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000234#Buyer61c0f13b-3635-4103-a170-4c3fbb8ffe41"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000234#Organisation91985ea8-3b4d-49fe-8d55-0c6588a7d7bc">
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000234#OrganisationId218ee56e-d2a2-4184-af84-c0ad53180e02">
+            <epo:identifierValue>Q2801660H</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000234#Location8544f341-c67b-4177-94ce-89b4eac72d35">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000234#Addressa9b7efb3-3b3e-4a91-8ba7-e60d753eb9ec">
+                <epo:hasCityName xml:lang="es">Madrid</epo:hasCityName>
+                <epo:hasStreetName xml:lang="es">C/ Sor Ángela de la Cruz, 3</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ES300"/>
+                <epo:hasPostalZone>28020</epo:hasPostalZone>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ESP"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="es">Administrador de Infraestructuras Ferroviarias</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:hasBuyerLegalTypeDescription xml:lang="es">Administrador de Infraestructuras Ferroviarias</epo:hasBuyerLegalTypeDescription>
+    <epo:hasActivityDescription xml:lang="es">Servicios de transporte ferroviario</epo:hasActivityDescription>
+  </epo:Buyer>
+</rdf:RDF>

@@ -1,0 +1,55 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#Buyerad4bad23-bdc9-4978-8931-665848e3cc1e">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#Organisationde132d3b-afa4-4af4-9db0-94ea57c2a978">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#Locationf0509fc0-337e-4214-babf-6297c71bc663">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#Addressedf603b9-ec13-4433-a995-bf66be85793b">
+                <epo:hasStreetName xml:lang="it">p.le Aldo Moro 5</epo:hasStreetName>
+                <epo:hasPostalZone>00185</epo:hasPostalZone>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ITI43"/>
+                <epo:hasCityName xml:lang="it">Roma</epo:hasCityName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="it">Università degli studi di Roma «La Sapienza»</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#ProcedureExt09cdca49-3480-4dc6-b00f-a955f7ee3bbf">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-207-506057#Buyerad4bad23-bdc9-4978-8931-665848e3cc1e"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#BuyerProfile6fdf7d87-26a5-47c5-904d-b341247b7688">
+        <epo:hasURL>https://uniroma1.ubuy.cineca.it/PortaleAppalti/it/homepage.wp</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#ContactPoint52abc85c-9aa7-465c-8ff7-26b690c3df3d">
+        <epo:hasTelephone>+39 0649910912</epo:hasTelephone>
+        <epo:hasInternetAddress>www.uniroma1.it</epo:hasInternetAddress>
+        <epo:hasEmail>gare.appalti@uniroma1.it</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/education"/>
+  </epo:Buyer>
+</rdf:RDF>

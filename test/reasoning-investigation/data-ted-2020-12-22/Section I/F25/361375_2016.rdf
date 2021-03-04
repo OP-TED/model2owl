@@ -1,0 +1,50 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-200-361375#ProcedureExtdd2b1ee9-c250-4ffa-a566-e190d4324f61">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-200-361375#Buyer1b6bf3ac-a6c8-40f7-a722-7d4907ec6f41">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-200-361375#ProcedureExtdd2b1ee9-c250-4ffa-a566-e190d4324f61"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-200-361375#Organisationbdff7b13-290c-4528-88a5-0aa265ca628f">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-200-361375#Location15ce29da-97b9-4116-9a54-2bf820f96a66">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-200-361375#Address1cb89337-1abc-4c64-958f-6d8b641579f0">
+                    <epo:hasPostalZone>PO2 8BY</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="en">Portsmouth</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="en">MP1.2, Leach Building, Whale Island</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKK23"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="en">Ministry of Defence, C&amp;C, C&amp;C</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-200-361375#ContactPoint1423f967-4e78-4f30-a843-4e21b0e1d834">
+            <epo:hasTelephone>+44 2392625180</epo:hasTelephone>
+            <epo:hasEmail>DefComrclCC-Navy3@mod.uk</epo:hasEmail>
+            <epo:hasDescription xml:lang="en">Mandy Lazar</epo:hasDescription>
+            <epo:hasInternetAddress>https://www.gov.uk/government/organisations/ministry-of-defence</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/cga"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

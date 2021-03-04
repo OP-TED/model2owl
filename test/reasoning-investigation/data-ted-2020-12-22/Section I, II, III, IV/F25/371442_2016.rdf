@@ -1,0 +1,118 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-205-371442#Procedure65172ee3-8bb1-4adb-8379-a30276593105">
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#ValueTotalb331c0a1-cbfd-4c78-9c82-995149048c37">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#AmountTotald6bf79ea-83c2-4e7d-8d7c-aedf46a47fe7">
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+            <ccts:hasAmountValue>0.01</ccts:hasAmountValue>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#Purpose8b12fd9f-2a49-41dc-a4aa-8a9a0123d469">
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/65300000"/>
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#SubmissionTerm66629d6d-31b9-4ff6-8760-1d1c28e3ee1d"/>
+    </reg2015:applies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#Buyer10235eae-745a-4a79-8c89-dbcbf73691be">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-205-371442#Procedure65172ee3-8bb1-4adb-8379-a30276593105"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#ContactPointffe864fc-cbfc-4dd1-8131-15adc231b92e">
+            <epo:hasInternetAddress>http://www.leipzig.de/stromkonzession</epo:hasInternetAddress>
+            <epo:hasEmail>dirk.mueller2@leipzig.de</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#Organisation30a42e87-7a79-4a85-9c42-c13dfcab0a65">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#Location7cfa72c5-6109-42c3-be6e-ae6dea1481ab">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#Address1c384809-95de-4a71-a227-a81824f79c8b">
+                    <epo:hasPostalZone>04092</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="de">Leipzig</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Stadt Leipzig</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#ContractNoticed8112626-dfd2-4df5-8a9f-120bfd57a765">
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#PreviousNoticeb4c11ab5-4802-4ab0-88af-f8627188fc8b">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#NoticeId3f0960c0-a2dd-44e2-86d6-254f6a6dbb52">
+                <epo:identifierValue>2015/S 129-238517</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-205-371442#Procedure65172ee3-8bb1-4adb-8379-a30276593105"/>
+      </epo:ContractNotice>
+    </epo:notifies>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#Lotc768e57e-7e66-44f6-b232-4084b2540c1d">
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-205-371442#Procedure65172ee3-8bb1-4adb-8379-a30276593105"/>
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#Period18cb01f0-65b2-45de-93bc-26baa08fbd76">
+            <epo:hasEndDate>2036-12-31</epo:hasEndDate>
+            <epo:hasStartDate>2017-01-01</epo:hasStartDate>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:hasAdditionalInformation xml:lang="de">
+                        &lt;P&gt;Das Angebot der Stadtwerke Leipzig GmbH zeichnete sich u. a. durch ein
+                            insgesamt besseres Stützpunktkonzept, ein höheres jährlich zugesichertes
+                            Investitionsbudget sowie eine nachvollziehbarere
+                            Netznutzungsentgeltprognose und einer wettbewerbsfreundlicheren Regelung
+                            zum Umfang des Übereignungsanspruchs nach Ablauf der Vertragslaufzeit im
+                            Vergleich zu den anderen beteiligten Unternehmen aus.&lt;/P&gt;
+                    </epo:hasAdditionalInformation>
+        <epo:hasDescription xml:lang="de">
+                        &lt;P&gt;Siehe unter II.1.4).&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Der Rat der Stadt Leipzig hat in seiner Sitzung am 20.4.2016 beschlossen,
+                        einen Wegenutzungsvertrag über die Versorgung des Stadtgebietes mit Strom
+                        mit der Stadtwerke Leipzig GmbH, Augustusplatz 7, 04109 Leipzig
+                        abzuschließen. Die Laufzeit des Vertrages beginnt für die Ortsteile
+                        Wiederitzsch, Knautnaundorf, Seehausen, Göbschelwitz, Hohenheida, Plaußig,
+                        Lausen, Hartmannsdorf, Miltitz, Radefeld (Gewerbegebiet), Böhlitz-Ehrenberg,
+                        Lindenthal, Lützschena und Stahmeln am 1.1.2017 und für die Ortsteile
+                        Mölkau, Holzhausen, Liebertwolkwitz, Engelsdorf und Burghausen-Rückmarsdorf
+                        am 1.1.2018. Der Konzessionsvertrag endet einheitlich am 31.12.2036.&lt;/P&gt;
+                </epo:hasDescription>
+    <epo:hasTitle xml:lang="de">
+                    &lt;P&gt;Stromkonzession.&lt;/P&gt;
+                </epo:hasTitle>
+  </reg2015:Procedure>
+</rdf:RDF>

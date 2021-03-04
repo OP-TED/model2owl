@@ -1,0 +1,122 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-195-351801#Procedure2160d4c4-b5da-4b6f-ae53-75d71245cb09">
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#SubmissionTermea3899ab-4f05-407f-a80a-fb91d820855c"/>
+    </reg2015:applies>
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#ContractNoticea9c54ce8-a817-4ab4-baab-8562df9df38e">
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-195-351801#Procedure2160d4c4-b5da-4b6f-ae53-75d71245cb09"/>
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#PreviousNoticea2652541-571a-4906-ae9c-c094756a666e">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#NoticeId596065b9-6c50-448a-8bd7-b2a0aad508c1">
+                <epo:identifierValue>2016/S 171-307692</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+      </epo:ContractNotice>
+    </epo:notifies>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#Lot8bb3d9ef-addb-4f0f-b57c-780a0e4b3caf">
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-195-351801#Procedure2160d4c4-b5da-4b6f-ae53-75d71245cb09"/>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#ContractTermLot64af7650-9df9-4072-87e3-1b5b9809abbe">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#ObjectContractAddressc89a4c17-266a-48ce-91bd-b8bb1ec65627">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#PurposeAdditionalb359bb69-b3f1-4aa6-a8db-090cda728db5">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/85312110"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#PeriodDuration7b9ad521-2659-4bfc-a1a2-027793aa5eac"/>
+        </epo:hasContractDuration>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;Renouvellement de contrat portant sur la gestion et l'exploitation d'un
+                            équipement multi-accueil déjà existant et géré en DSP.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#Purpose723bd442-a9b7-498c-a375-9c327583df44">
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/85312110"/>
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#Buyer45b46be1-5076-45ff-a248-9f69b81c80ae">
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#BuyerProfile835ccfe4-7579-4cce-9fa3-9f7ed7d3df7e">
+            <epo:hasURL>http://www.mp74.fr</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#ContactPoint2044b642-4886-4dac-9f33-579c16e77aa7">
+            <epo:hasEmail>a.zanna@mairiedemarnaz.fr</epo:hasEmail>
+            <epo:hasInternetAddress>http://www.mp74.fr</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#Organisationa46af061-aaad-4b95-8157-26a55ece7fef">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#OrganisationId4b746e63-c161-47eb-a648-0f0c90ae552a">
+                <epo:identifierValue>21740169400013</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#Location7facd153-8231-4511-9dae-fb22bd5d17c3">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#Address8d5875d7-2a14-4f75-9e05-2b1cb41ebf35">
+                    <epo:hasStreetName xml:lang="fr">BP 6</epo:hasStreetName>
+                    <epo:hasCityName xml:lang="fr">Marnaz</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR718"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasPostalZone>74460</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Mairie de Marnaz</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-195-351801#Procedure2160d4c4-b5da-4b6f-ae53-75d71245cb09"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/cga"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;DSP pour l'exploitation de l'établissement d'accueil de Jeune Enfant «Le
+                        Petit Prince».&lt;/P&gt;
+                </epo:hasTitle>
+    <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Il s'agit d'un renouvellement de contrat portant sur la gestion et
+                        l'exploitation d'un équipement multi-accueil déjà existant et géré en DSP.
+                        Le contrat est conclu pour une durée de 5 ans à compter du 1.8.2017 ou de la
+                        date de notification du contrat si celle-ci est ultérieure.&lt;/P&gt;
+                    &lt;P&gt;En offre de base, la capacité d'accueil est de 40 places.&lt;/P&gt;
+                    &lt;P&gt;En prestations supplémentaires éventuelles (PSE), la capacité totale de
+                        l'équipement est réduite à 35 places.&lt;/P&gt;
+                </epo:hasDescription>
+  </reg2015:Procedure>
+</rdf:RDF>

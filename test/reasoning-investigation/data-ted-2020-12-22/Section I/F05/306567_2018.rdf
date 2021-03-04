@@ -1,0 +1,71 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306567#ProcedureExtee86a4e9-395c-450b-81ea-6441481e2798">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306567#Buyer5bf2670e-2795-47ee-be34-25cf40279600">
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306567#ContactPoint2c83a702-900b-42dc-8695-a5217d21f6e2">
+            <epo:hasInternetAddress>https://port.brussels</epo:hasInternetAddress>
+            <epo:hasEmail>jopsomer@port.brussels</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306567#ProcedureExtee86a4e9-395c-450b-81ea-6441481e2798"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/port"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306567#ProcedureExtee86a4e9-395c-450b-81ea-6441481e2798"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306567#BuyerProfile20433ffd-cab4-4ecd-a5f2-9a586ebdec45">
+            <epo:hasURL>https://enot.publicprocurement.be/enot-war/preViewNotice.do?noticeId=314805</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306567#ProcedureExtee86a4e9-395c-450b-81ea-6441481e2798"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306567#Organisation10ae3b44-1e17-48bf-9e3f-6fffb269a8cc">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306567#Location7e049965-f70d-4e26-8815-582591d80cfa">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306567#Address5ea0d44b-c864-41c7-bb93-13f5667e6843">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/BE100"/>
+                    <epo:hasStreetName xml:lang="fr">Place des Armateurs 6</epo:hasStreetName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/BEL"/>
+                    <epo:hasCityName xml:lang="fr">Bruxelles</epo:hasCityName>
+                    <epo:hasPostalZone>1000</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306567#OrganisationIdd425cfe6-722c-44a6-b997-e1f366d18309">
+                <epo:identifierValue>0249.268.719_22826</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="fr">Port de Bruxelles</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306567#ProcedureExtee86a4e9-395c-450b-81ea-6441481e2798"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306567#AccessTermsRestrb1101f33-5338-4924-8936-c6e810671c91">
+        <epo:hasRestrictedAccessAddress>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306567#Channel1d3d70d1-4560-4a4d-9cc7-b9ab1bf00eae">
+            <epo:hasURL>https://enot.publicprocurement.be/enot-war/preViewNotice.do?noticeId=314805</epo:hasURL>
+          </epo:Channel>
+        </epo:hasRestrictedAccessAddress>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

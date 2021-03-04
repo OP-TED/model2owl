@@ -1,0 +1,56 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002719#Buyer9ad8e7ee-393d-428b-b117-cbb2a205afa1">
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002719#BuyerProfiled95cb4e6-b4c2-42a5-9cf0-df06831dc0ba">
+        <epo:hasURL>https://marchespublics.aude.fr/</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002719#ContactPointaeaac6e7-a702-4715-87ac-7319ae4aa9ce">
+        <epo:hasEmail>marches@carcassonne-agglo.fr</epo:hasEmail>
+        <epo:hasTelephone>+33 468105658</epo:hasTelephone>
+        <epo:hasInternetAddress>http://www.carcassonne-agglo.fr</epo:hasInternetAddress>
+        <epo:hasDescription xml:lang="fr">Damien Frileux, responsable des marchés publics</epo:hasDescription>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002719#Organisation978ea99a-07ea-4b29-b9f0-b7a5cd39c489">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002719#Location40d03c65-6e64-4d6e-a802-d1a471c78fae">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002719#Address58f272bb-5b85-47ea-93f8-cdd0c7587bb9">
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasStreetName xml:lang="fr">1 rue Pierre Germain</epo:hasStreetName>
+                <epo:hasCityName xml:lang="fr">Carcassonne Cedex 9</epo:hasCityName>
+                <epo:hasPostalZone>11890</epo:hasPostalZone>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRJ11"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Carcassonne Agglo</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-002-002719#ProcedureExtc6f2cc95-a1d0-47fc-a45d-66e6e4e0cd76">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-002-002719#Buyer9ad8e7ee-393d-428b-b117-cbb2a205afa1"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+  </epo:Buyer>
+</rdf:RDF>

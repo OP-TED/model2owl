@@ -1,0 +1,77 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:CentralPurchasingBody rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348731#CPBcef396b2-9712-436a-bf90-e79d98b8da22">
+    <reg2015:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348731#ProcedureExtd314ddfe-a4e6-4fb9-a616-e69dd8b452bf">
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348731#Buyer334ce27a-5c12-4efd-9f13-f30b48f0918f">
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348731#ContactPoint6be48d7c-4da1-4263-a1cb-b43090233287">
+                <epo:hasFax>+45 88713008</epo:hasFax>
+                <epo:hasTelephone>+45 88713000</epo:hasTelephone>
+                <epo:hasEmail>udbud@amgros.dk</epo:hasEmail>
+                <epo:hasInternetAddress>http://www.amgros.dk</epo:hasInternetAddress>
+                <epo:hasDescription xml:lang="da">Flemming Sonne</epo:hasDescription>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348731#Organisationdb14f6b9-0047-4435-8561-0b727f57bd5d">
+                <epo:hasID>
+                  <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348731#OrganisationId983c88bd-2fba-4b29-a3a7-120c383299e9">
+                    <epo:identifierValue>14479880</epo:identifierValue>
+                  </epo:Identifier>
+                </epo:hasID>
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348731#Location1a4512a0-fe8d-4cec-ba73-d69fdcc9fb66">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348731#Addressd2db1ea1-433a-42d4-982a-109e4abc93b3">
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DNK"/>
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DK0"/>
+                        <epo:hasPostalZone>2100</epo:hasPostalZone>
+                        <epo:hasStreetName xml:lang="da">Dampfærgevej 22</epo:hasStreetName>
+                        <epo:hasCityName xml:lang="da">København Ø</epo:hasCityName>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="da">Amgros I/S</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-194-348731#ProcedureExtd314ddfe-a4e6-4fb9-a616-e69dd8b452bf"/>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-194-348731#ProcedureExtd314ddfe-a4e6-4fb9-a616-e69dd8b452bf"/>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/health"/>
+            <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:applies>
+          <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348731#SubmisisonTerms8d79f8f1-104a-4089-b620-148b5c89e15a">
+            <epo:hasSubmissionCommunicationMeans>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348731#ChannelSubmission4266fae7-bb7b-408c-8c09-4e814b5c3374">
+                <epo:hasURL>https://levportal.amgros.dk</epo:hasURL>
+              </epo:Channel>
+            </epo:hasSubmissionCommunicationMeans>
+          </epo:SubmissionTerm>
+        </reg2015:applies>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-194-348731#AccessTermsFullf60d0bd6-522b-495e-b09a-dce8976221d2">
+            <epo:hasProcurementDocumentLandingPage>https://levportal.amgros.dk</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:isResponsibleFor>
+    <epo:hasCentralPurchasingBodyType rdf:resource="http://data.europa.eu/a4g/ontology#Cpb-awa"/>
+  </epo:CentralPurchasingBody>
+</rdf:RDF>

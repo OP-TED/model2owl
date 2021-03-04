@@ -1,0 +1,50 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396216#Buyer92f72f85-ae83-4c83-b480-a613cb3a1c29">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396216#Organisation16a4bef0-78bb-4d43-9a3f-adb23130820d">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396216#Location4b7da7e0-64e3-463a-81e4-666df564cdf1">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396216#Address6fbceff0-bcd8-4042-b362-0649de65e6a6">
+                <epo:hasPostalZone>06364</epo:hasPostalZone>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRL03"/>
+                <epo:hasCityName xml:lang="fr">Nice Cedex 4</epo:hasCityName>
+                <epo:hasStreetName xml:lang="fr">5 rue de l'hôtel de ville</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Métropole Nice Côte d'Azur</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396216#ContactPoint2c9d7627-7606-4b02-a2bd-bdc32d1dac63">
+        <epo:hasInternetAddress>http://www.e-marches06.fr</epo:hasInternetAddress>
+        <epo:hasTelephone>+33 489981000</epo:hasTelephone>
+        <epo:hasEmail>dao@nicecotedazur.org</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396216#ProcedureExt4c4d6048-0bae-4ee7-8982-04f38b7fcc1a">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396216#Buyer92f72f85-ae83-4c83-b480-a613cb3a1c29"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+  </epo:Buyer>
+</rdf:RDF>

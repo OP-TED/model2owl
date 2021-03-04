@@ -1,0 +1,128 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-003-003905#Procedurec99c3c26-2a2f-42f0-8b86-deffc307cb84">
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#Lot5786d043-671c-45da-809c-707f1329a9bf">
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-003-003905#Procedurec99c3c26-2a2f-42f0-8b86-deffc307cb84"/>
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#Period558f91ff-2e6b-41e7-bff9-461235472efe">
+            <epo:hasEndDate>2027-12-31</epo:hasEndDate>
+            <epo:hasStartDate>2020-01-03</epo:hasStartDate>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#ContractTermLotf056fa38-7695-4053-85e1-89962516629f">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#ObjectContractAddressedb92713-7d8f-429d-a520-e1e4172f1ab1">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRC14"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#PurposeAdditional51360904-8879-4caa-bedf-154383dfdbf6">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/79952000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;Exploitation du parc des expositions Auxerrexpo.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasID>
+      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#ProcedureIdec4a3140-312e-498c-a1e3-8b28613b968f">
+        <epo:identifierValue>2019VADSP1</epo:identifierValue>
+      </epo:Identifier>
+    </epo:hasID>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#Purposea7cc2b26-d197-4bf6-a385-0ca1c5a5157a">
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/79950000"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#Buyerbe9deb51-a4a9-4852-bfeb-a8cf2c5aadd9">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-003-003905#Procedurec99c3c26-2a2f-42f0-8b86-deffc307cb84"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#Organisation776bae13-b5c8-4f76-b67f-4ff7903da8d1">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#Location34addc3d-c687-4b94-a45b-142230de08f4">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#Address5e5f12c6-0a7b-4e8e-b4dc-d6490d126fef">
+                    <epo:hasPostalZone>89000</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="fr">14 place de l'Hôtel de Ville</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRC14"/>
+                    <epo:hasCityName xml:lang="fr">Auxerre</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Ville d'Auxerre</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#BuyerProfile7debd19b-3c64-4160-bdb6-2fa1851facd9">
+            <epo:hasURL>https://www.ternum-bfc.fr/</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#ContactPoint56f61858-9a45-4d61-84ec-d0769549891f">
+            <epo:hasInternetAddress>https://www.auxerre.fr/</epo:hasInternetAddress>
+            <epo:hasEmail>commande.publique@auxerre.com</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#SubmissionTerm4ae4b299-f86d-44c9-81e9-9ff8016680f0"/>
+    </reg2015:applies>
+    <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;Exploitation du parc des expositions Auxerrexpo&lt;/P&gt;
+                </epo:hasTitle>
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#ContractNoticec0f51f76-964c-49b8-819a-05d6be0fb4ad">
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#PreviousNoticeb56ecdb9-e00f-411e-a54b-55350c1896a5">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#NoticeId4f5240c6-a60a-43f8-bb02-58c18376c26c">
+                <epo:identifierValue>2019/S 059-137651</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-003-003905#Procedurec99c3c26-2a2f-42f0-8b86-deffc307cb84"/>
+      </epo:ContractNotice>
+    </epo:notifies>
+    <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Exploitation du parc des expositions Auxerrexpo.&lt;/P&gt;
+                </epo:hasDescription>
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#ValueTotaled2a26a0-03a1-4b62-8e50-263b7bb4fdc6">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003905#AmountTotaldeed20f2-d4e4-4115-8dbe-7848ef6cdbbc">
+            <ccts:hasAmountValue>2720000</ccts:hasAmountValue>
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+  </reg2015:Procedure>
+</rdf:RDF>

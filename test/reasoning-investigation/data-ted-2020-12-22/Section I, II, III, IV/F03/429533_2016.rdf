@@ -1,0 +1,136 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#AwardCriterionPrice86701ff2-7bd1-4963-a3f6-71505137d2fd">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#Lot767a2369-79f0-460e-92c9-f9c6ecdc4234">
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-236-429533#Procedure033a0857-e611-4fe1-b4a6-713ea8f9e1cd">
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#Purpose63812e3e-e3cd-46f9-855d-400a54dc9a96">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45262520"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#ProcedureIdcc37eefe-d6e9-43d6-8d47-cc2e1cbf60da">
+                <epo:identifierValue>16O40568</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#ValueTotal7a4f0d3d-3e00-4b80-a4ec-56e2f7dafbb8">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#AmountTotalfa65df6a-e2be-4459-8849-a53c8cb8032a">
+                    <ccts:hasAmountValue>131753.45</ccts:hasAmountValue>
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#SubmissionTerm90be90bd-8339-4555-8a6d-195e5d7741a8"/>
+            </reg2015:applies>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429533#Lot767a2369-79f0-460e-92c9-f9c6ecdc4234"/>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#Buyerb72ab49e-913b-4b0a-af4a-d7d738b9f722">
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#Organisationec0a5e92-cf01-470f-8bc1-c0e1392a629a">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#Locatione3d2e2d0-8e3e-433d-85ab-849009b00638">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#Address23ba33bd-0d88-4f92-84a7-d3767f045d96">
+                            <epo:hasPostalZone>01099</epo:hasPostalZone>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DED"/>
+                            <epo:hasCityName xml:lang="de">Dresden</epo:hasCityName>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                            <epo:hasStreetName xml:lang="de">Königsbrücker Straße 80</epo:hasStreetName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="de">Staatsbetrieb Sächsisches Immobilien- und Baumanagement,
+                        Niederlassung Dresden 1</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-236-429533#Procedure033a0857-e611-4fe1-b4a6-713ea8f9e1cd"/>
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#BuyerProfileed184f8c-c40f-40fb-aa07-af76c77b1121">
+                    <epo:hasURL>www.sachsen-vergabe.de</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#ContactPointae22e3dc-de01-4506-8df1-0943c76e1aab">
+                    <epo:hasInternetAddress>www.sib.sachsen.de</epo:hasInternetAddress>
+                    <epo:hasFax>+49 351-8093-104</epo:hasFax>
+                    <epo:hasTelephone>+49 351-8093-0</epo:hasTelephone>
+                    <epo:hasEmail>bieteranfragen.d1@sib.smf.sachsen.de</epo:hasEmail>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/econ-aff"/>
+                <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Natursteinarbeiten Westflügel Sockel.&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:hasTitle xml:lang="de">
+                    &lt;P&gt;Dresden, Sempergalerie, Sanierung Gemäldegalerie Alte Meister.&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#ContractNoticeba96c510-0bee-4068-bac3-675d565f6ee1">
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-236-429533#Procedure033a0857-e611-4fe1-b4a6-713ea8f9e1cd"/>
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#PreviousNoticedcbf9d7e-7faf-4922-8905-4ea41974297c">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#NoticeId266f32cb-8e5c-4d42-ae40-709e4a87a6ae">
+                        <epo:identifierValue>2016/S 176-315685</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+              </epo:ContractNotice>
+            </epo:notifies>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#ContractTermLot2308856c-bee2-4e0f-8e81-9c5a01a0b7fb">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#ObjectContractAddress56ffddcb-144f-4eab-b614-0cccfba23175">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DED"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="de"
+            >
+                        &lt;P&gt;Theaterplatz 2, 01067 Dresden.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#PurposeAdditional7c21354c-f33a-4e54-a801-82e95cde3b54">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasDescription xml:lang="de">
+                        &lt;P&gt;Siehe Auftragsbekanntmachung.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

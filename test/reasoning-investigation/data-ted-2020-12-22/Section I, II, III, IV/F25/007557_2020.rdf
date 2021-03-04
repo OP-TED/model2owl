@@ -1,0 +1,132 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-005-007557#Procedure51f206a7-9d03-4022-98a4-604f884d5c7d">
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#SubmissionTerm2deba85b-8e63-4a02-ac04-bcc31dfbaa63"/>
+    </reg2015:applies>
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#ValueTotal9946a772-5925-46cc-bc26-d83485055b73">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#AmountTotald8bdd0d0-e9b0-4e89-88e1-33620d1bfedf">
+            <ccts:hasAmountValue>7491666.67</ccts:hasAmountValue>
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#Buyere032eb24-4e35-4f97-a166-774502017c91">
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#BuyerProfile6bb7bd54-1409-44ee-bc59-0ac9a0906f8c">
+            <epo:hasURL>http://marches-publics-manche.fr</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#ContactPoint8148261a-b3aa-4aba-9c4e-2bf6a3e266af">
+            <epo:hasEmail>mortainais.amenagement@manche.fr</epo:hasEmail>
+            <epo:hasInternetAddress>http://marches-publics-manche.fr</epo:hasInternetAddress>
+            <epo:hasTelephone>+33 233059883</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#Organisationf3f27be7-c49e-464c-91c9-82ad47ffe358">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#Location636c3795-c472-497d-822b-df8d73504e76">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#Address4780f947-950e-4f40-b088-71f0ba8ebc2c">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRD12"/>
+                    <epo:hasPostalZone>50050</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="fr">route de Candol</epo:hasStreetName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCityName xml:lang="fr">Saint-Lô Cedex</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Mortainais aménagement</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-005-007557#Procedure51f206a7-9d03-4022-98a4-604f884d5c7d"/>
+        <epo:hasBuyerLegalTypeDescription xml:lang="fr">Syndicat mixte</epo:hasBuyerLegalTypeDescription>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#ContractNotice7a8ed052-b28a-4264-b7f8-956cbb6148e6">
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-005-007557#Procedure51f206a7-9d03-4022-98a4-604f884d5c7d"/>
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#PreviousNoticecc65ec1c-1451-413c-8e30-92c9c21108af">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#NoticeId97235bdd-a24f-4e86-8fc5-26528239e9af">
+                <epo:identifierValue>2019/S 045-104401</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+      </epo:ContractNotice>
+    </epo:notifies>
+    <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;Concession d'aménagement «requalification du pôle industriel de Romagny»&lt;/P&gt;
+                </epo:hasTitle>
+    <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#Purpose084f136e-4057-4d2b-8590-8aafeadb108c">
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45200000"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:hasID>
+      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#ProcedureId15fd72d9-75e7-49a9-891c-e90991603644">
+        <epo:identifierValue>DDAE-434-18</epo:identifierValue>
+      </epo:Identifier>
+    </epo:hasID>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#Lot19602ddf-0441-423c-812d-4eafa1c2939c">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#ContractTermLotc8226337-1c94-4977-a567-8f862b2988e1">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#ObjectContractAddress61544360-86a5-422a-8259-66425a37cf3b">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRD12"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="fr"
+            >
+                        &lt;P&gt;Romagny-Fontenay.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#PurposeAdditional2c391289-9ddc-43ef-9b96-a0eeee66d763">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45200000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#PeriodDurationd15bb53d-7ae4-4b35-bce6-6d4c05155130"/>
+        </epo:hasContractDuration>
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-005-007557#Procedure51f206a7-9d03-4022-98a4-604f884d5c7d"/>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;Concession d'aménagement «requalification du pôle industriel de
+                            Romagny».&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Concession d'aménagement «requalification du pôle industriel de Romagny».&lt;/P&gt;
+                </epo:hasDescription>
+  </reg2015:Procedure>
+</rdf:RDF>

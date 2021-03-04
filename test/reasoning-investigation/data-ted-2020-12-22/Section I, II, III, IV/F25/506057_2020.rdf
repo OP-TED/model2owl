@@ -1,0 +1,110 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-207-506057#Procedure123746a7-46de-4753-97f3-7a2de2265150">
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#Purpose5237546b-a82e-4fbb-a770-fea483e21235">
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/66110000"/>
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#Lotfbd395bf-0119-4eb4-ba95-98b81e82919a">
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-207-506057#Procedure123746a7-46de-4753-97f3-7a2de2265150"/>
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#PeriodDurationf783bea7-6635-489f-9ec2-05f9859cf568"/>
+        </epo:hasContractDuration>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#ContractTermLotb374c50b-8d66-407f-b6c0-68e0ab681025">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#ObjectContractAddress88479191-9669-42ad-b843-7e110c1d945c">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ITI43"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:hasDescription xml:lang="it">&lt;P&gt;Vedi documenti di gara&lt;/P&gt;</epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#SubmissionTerm72a3d529-6cae-4d57-a2df-3d3891fd2ee0"/>
+    </reg2015:applies>
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#ContractNotice4f436ab7-38ea-4cf3-8c2d-ce54e5977c36">
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-207-506057#Procedure123746a7-46de-4753-97f3-7a2de2265150"/>
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#PreviousNoticeccc26c58-79de-4674-a191-83d1c21f3f4e">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#NoticeId1128a360-ab72-453a-885d-971db6062b0e">
+                <epo:identifierValue>2019/S 191-464455</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+      </epo:ContractNotice>
+    </epo:notifies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#Buyerf66a18f0-5e52-4944-8fde-b19a1d81ae0a">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#Organisation3552f400-72d2-488b-8a1e-800386f98ee1">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#Locationafa68a15-a60c-4859-827e-d76f5eedfff7">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#Addressfc6d9d79-f452-41f2-9c38-b351f5c54853">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ITI43"/>
+                    <epo:hasCityName xml:lang="it">Roma</epo:hasCityName>
+                    <epo:hasPostalZone>00185</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="it">p.le Aldo Moro 5</epo:hasStreetName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="it">Università degli studi di Roma «La Sapienza»</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-207-506057#Procedure123746a7-46de-4753-97f3-7a2de2265150"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#BuyerProfile52d88ad3-d83f-487f-8303-874f3b307192">
+            <epo:hasURL>https://uniroma1.ubuy.cineca.it/PortaleAppalti/it/homepage.wp</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#ContactPointf2e43add-688c-4e27-ad6f-92cc4c9f7d5d">
+            <epo:hasInternetAddress>www.uniroma1.it</epo:hasInternetAddress>
+            <epo:hasEmail>gare.appalti@uniroma1.it</epo:hasEmail>
+            <epo:hasTelephone>+39 0649910912</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/education"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#ValueTotala62e55d5-1a84-4f20-a9d4-1c17e0255f32">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-506057#AmountTotal665efa25-1e50-4f7e-82e1-603d93914732">
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+            <ccts:hasAmountValue>9987500.00</ccts:hasAmountValue>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+    <epo:hasDescription xml:lang="it">&lt;P&gt;Vedi documenti di gara.&lt;/P&gt;</epo:hasDescription>
+    <epo:hasTitle xml:lang="it">&lt;P&gt;Concessione del servizio di cassa ed incasso delle tasse e dei contributi universitari e del servizio di intermediazione finanziaria dell’Università degli studi di Roma «La Sapienza»&lt;/P&gt;</epo:hasTitle>
+  </reg2015:Procedure>
+</rdf:RDF>

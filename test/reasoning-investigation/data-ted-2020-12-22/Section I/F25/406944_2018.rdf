@@ -1,0 +1,57 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406944#Buyer5f7c7622-c62b-4270-b4c7-f688144fead2">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406944#Organisation5b058049-977c-4f51-a994-cbea0731987a">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406944#Location67aa3070-5aa4-403a-9d82-1c172a43f259">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406944#Addressbdf7e452-3695-4f5e-8bf5-557f4621e5ea">
+                <epo:hasStreetName xml:lang="de">Rostocker Str. 76</epo:hasStreetName>
+                <epo:hasCityName xml:lang="de">Wismar</epo:hasCityName>
+                <epo:hasPostalZone>23970</epo:hasPostalZone>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE80M"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="de">Landkreis Nordwestmecklenburg, Die Landrätin</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406944#BuyerProfilecd9733c9-c537-4adb-aff9-2c4186fbbece">
+        <epo:hasURL>https://www.subreport.de/</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406944#ContactPoint5c96308e-f285-4091-a49a-a3dcbe2ac85c">
+        <epo:hasTelephone>+49 384130406502</epo:hasTelephone>
+        <epo:hasFax>+49 3841304086502</epo:hasFax>
+        <epo:hasEmail>m.boelter@nordwestmecklenburg.de</epo:hasEmail>
+        <epo:hasDescription xml:lang="de">Vergabestelle, Herr Boelter</epo:hasDescription>
+        <epo:hasInternetAddress>http://www.nordwestmecklenburg.de</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406944#ProcedureExtb96208b1-cdea-47b9-bbe4-8c48e4569a02">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2018/s-179-406944#Buyer5f7c7622-c62b-4270-b4c7-f688144fead2"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+  </epo:Buyer>
+</rdf:RDF>

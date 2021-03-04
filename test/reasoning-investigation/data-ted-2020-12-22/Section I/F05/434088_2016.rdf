@@ -1,0 +1,71 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434088#ProcedureExt761850f1-d3c0-4291-ba85-1ad17b9d73b2">
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434088#AccessTermsFullc1e08906-545f-4297-a9a8-70bdc3878efb">
+        <epo:hasProcurementDocumentLandingPage>http://www.sncf.com/fr/fournisseurs/avis-de-marche</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434088#SubmisisonTerms927c5729-4fdc-4991-8ae2-6b76f9618627">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434088#ChannelSubmission34b2c2f8-569f-4bca-b20a-c18f42199c75">
+            <epo:hasURL>http://www.sncf.com/fr/fournisseurs/avis-de-marche</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434088#Buyer4deae242-d0be-4961-acf6-8cc310880886">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434088#ProcedureExt761850f1-d3c0-4291-ba85-1ad17b9d73b2"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434088#ProcedureExt761850f1-d3c0-4291-ba85-1ad17b9d73b2"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434088#Organisationa49b9b05-6a1d-4f9d-8ec2-aad4bb5df769">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434088#Locatione97e399f-3047-4f98-b9ea-2973ffa3e563">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434088#Address1ed2304e-6090-4af8-9bd2-1b81694abe31">
+                    <epo:hasPostalZone>93418</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="fr">Campus réseau — 15-17 rue Jean-Philippe Rameau — CS 80001</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR5"/>
+                    <epo:hasCityName xml:lang="fr">La Plaine Saint-Denis Cedex</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">SNCF Réseau</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434088#BuyerProfile91f4311d-7438-4307-8ca8-181fca7af536">
+            <epo:hasURL>http://www.sncf.com/fr/fournisseurs/avis-de-marche</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434088#ContactPoint1430ce53-bf06-495f-bd73-84569490f473">
+            <epo:hasEmail>ext.cks.natacha.nahmias@reseau.sncf.fr</epo:hasEmail>
+            <epo:hasTelephone>+33 000000000</epo:hasTelephone>
+            <epo:hasInternetAddress>http://www.sncf.com/fr/fournisseurs/avis-de-marche</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="fr">SNCF réseau — DTA IDF MN — CSP PIPS</epo:hasDescription>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/rail"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

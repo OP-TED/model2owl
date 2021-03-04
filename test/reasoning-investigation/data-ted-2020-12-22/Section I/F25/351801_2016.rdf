@@ -1,0 +1,59 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#ProcedureExt9487f180-4aa2-455e-bc67-dfc7056070f9">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#Buyerfcf0b186-5617-49e4-b1e9-a83ddcfc9c33">
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#BuyerProfilecb35459f-1ea1-4f0b-897e-20f49552afd9">
+            <epo:hasURL>http://www.mp74.fr</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#ContactPoint1756bb60-2c8e-46a6-b8bf-af2560c31765">
+            <epo:hasEmail>a.zanna@mairiedemarnaz.fr</epo:hasEmail>
+            <epo:hasInternetAddress>http://www.mp74.fr</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#Organisation0a2e95a3-6aa4-4b51-aa09-99523e506d54">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#OrganisationIdc65c09e7-a15d-4348-8c5c-ec780ad35084">
+                <epo:identifierValue>21740169400013</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#Location6b7a39d1-b056-4672-b33c-cdfc777bf65f">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351801#Addressba2d5873-5de8-4989-b99b-35b5c0b398da">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRK28"/>
+                    <epo:hasCityName xml:lang="fr">Marnaz</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="fr">BP 6</epo:hasStreetName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasPostalZone>74460</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Mairie de Marnaz</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351801#ProcedureExt9487f180-4aa2-455e-bc67-dfc7056070f9"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/cga"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

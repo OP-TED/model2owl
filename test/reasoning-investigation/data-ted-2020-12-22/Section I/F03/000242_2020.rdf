@@ -1,0 +1,58 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000242#Buyeradaaf94e-5cf9-4e3b-9b4d-5d50bd199b21">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000242#ContactPoint453031bb-af96-43f2-9a09-19c5e7c43e64">
+        <epo:hasDescription xml:lang="pl">mgr Ksenia Sondej</epo:hasDescription>
+        <epo:hasTelephone>+48 523256795</epo:hasTelephone>
+        <epo:hasEmail>zampub@kpcp.pl</epo:hasEmail>
+        <epo:hasInternetAddress>www.kpcp.pl</epo:hasInternetAddress>
+        <epo:hasFax>+48 523256609</epo:hasFax>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000242#ProcedureExte73e3e84-8d5d-43f3-9dc7-e73fe4cc757c">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000242#Buyeradaaf94e-5cf9-4e3b-9b4d-5d50bd199b21"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000242#Organisation848495eb-cb91-477a-ac26-19211d85ec48">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000242#Locationbb670b95-2af8-446f-a646-38b829955790">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000242#Address3aeed9ea-d475-41ef-ab5a-fdaa10141020">
+                <epo:hasStreetName xml:lang="pl">ul. Seminaryjna 1</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL"/>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                <epo:hasCityName xml:lang="pl">Bydgoszcz</epo:hasCityName>
+                <epo:hasPostalZone>85-326</epo:hasPostalZone>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000242#OrganisationIde171015d-16a2-48cc-a8de-409a36df72d3">
+            <epo:identifierValue>pl</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasName xml:lang="pl">Kujawsko-Pomorskie Centrum Pulmonologii w
+                        Bydgoszczy</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/health"/>
+    <epo:hasBuyerLegalTypeDescription xml:lang="pl">samodzielny publiczny zakład opieki zdrowotnej</epo:hasBuyerLegalTypeDescription>
+  </epo:Buyer>
+</rdf:RDF>

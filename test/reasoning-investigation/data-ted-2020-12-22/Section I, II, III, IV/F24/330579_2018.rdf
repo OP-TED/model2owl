@@ -1,0 +1,227 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#SelectionCriterionSuitability5c0796f8-3079-4578-b3e5-8d1e230bacc6"/>
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-144-330579#Procedurec3001c17-2fef-4133-86bb-1d564abe0b68">
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#SubmissionTerma5181bfe-8932-4778-b18d-a9db96d4a617">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#ChannelSubmission6c82ce08-11e8-4f26-8e66-9a498db5d18a">
+            <epo:hasURL>www.nepoportal.org</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+        <epo:hasReceiptDeadline>2018-08-29+12:00</epo:hasReceiptDeadline>
+        <epo:hasLanguage rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <reg2015:applies>
+      <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#ContractTermad5c8d3d-9b0a-428b-9998-21245caf7f91">
+        <epo:hasPerformanceConditions xml:lang="en">&lt;P&gt;As stated in the procurement documents&lt;/P&gt;</epo:hasPerformanceConditions>
+      </epo:ContractTerm>
+    </reg2015:applies>
+    <epo:hasEstimatedValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Value0c4da8b3-90fd-4008-acda-377873421cc6">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Amount8fb01566-0b7c-4f30-9a71-b4134146125e">
+            <ccts:hasAmountValue>17783297.00</ccts:hasAmountValue>
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/GBP"/>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasEstimatedValue>
+    <reg2015:hasCriteriaInProcurementDocument>
+      <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#SelectionCriterionEconomic81ed98c5-3fad-4027-a856-6fbc58a9f814">
+        <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/ef-stand"/>
+      </epo:SelectionCriterion>
+    </reg2015:hasCriteriaInProcurementDocument>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Buyer369c4763-2382-4add-a188-db9260cbabf0">
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-144-330579#Procedurec3001c17-2fef-4133-86bb-1d564abe0b68"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Organisationbbfa8d9b-644a-4e3b-b9ca-931a3b06fe6b">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Locationd0b4f6d0-f175-43a8-922b-6de7db8b4817">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Addressbea469b7-374e-4110-98c1-00a70dac463c">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKC23"/>
+                    <epo:hasPostalZone>SR2 7DN</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="en">Sunderland</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="en">Civic Centre Burdon Road</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="en">Sunderland City Council</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#ContactPoint309dda0f-54ce-42f0-87b1-2bdb75daba5a">
+            <epo:hasInternetAddress>http://www.sunderland.gov.uk</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="en">Glenda Malone</epo:hasDescription>
+            <epo:hasEmail>glenda.malone@sunderland.gov.uk</epo:hasEmail>
+            <epo:hasTelephone>+44 1915611774</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-144-330579#Procedurec3001c17-2fef-4133-86bb-1d564abe0b68"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-144-330579#Procedurec3001c17-2fef-4133-86bb-1d564abe0b68"/>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-144-330579#Procedurec3001c17-2fef-4133-86bb-1d564abe0b68"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:hasTitle xml:lang="en">&lt;P&gt;Operator Concession for Sunderland Parklife Football Hubs&lt;/P&gt;</epo:hasTitle>
+    <reg2015:hasCriteriaInProcurementDocument>
+      <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#SelectionCriterionTechnical32007584-016a-43d0-a283-d96633aa5b9a">
+        <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/tp-abil"/>
+      </epo:SelectionCriterion>
+    </reg2015:hasCriteriaInProcurementDocument>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Lot73cc1ae3-c358-4fd4-a1b2-319460fa037f">
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Period5ef20c08-afa3-4f24-a1b2-ed8d54ad2be5">
+            <epo:hasEndDate>2029-07-31</epo:hasEndDate>
+            <epo:hasStartDate>2019-08-01</epo:hasStartDate>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-144-330579#Procedurec3001c17-2fef-4133-86bb-1d564abe0b68"/>
+        <epo:hasEstimatedValue>
+          <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#ValueValObjectf0fe1d8e-d270-452a-a605-533ca21c12d2">
+            <epo:hasOverallAmount>
+              <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#AmountValObject8b46d2fb-39f5-4774-994e-34bced909d26">
+                <ccts:hasAmountValue>9271021.00</ccts:hasAmountValue>
+                <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+              </ccts:Amount>
+            </epo:hasOverallAmount>
+            <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+          </epo:Value>
+        </epo:hasEstimatedValue>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#ContractTermLote40e6bbc-5e71-48dd-8b0c-08a905333064">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#ObjectContractAddress1d6befc4-6b3d-41ac-a78c-f257ea520c19">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKC23"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="en"
+            >&lt;P&gt;Ford Quarry, Keelman’s Lane, Sunderland, SR4 0JW and Northern Area Playing Fields, Stephenson Road, Washington, NE37 3HR&lt;/P&gt;</epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#PurposeAdditionalb4018394-3c69-43d6-8d71-b6b7d0707b55">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/77314000"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/79993100"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/79993000"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/50700000"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/50000000"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/92620000"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/92000000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#LotIdda076b1a-ee32-4566-b4f4-f64c6f8a9eb6">
+            <epo:identifierValue>1</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasDescription xml:lang="en">&lt;P&gt;Sunderland City Council and its partners have identified 3 initial sites in Sunderland which are to be developed as Football Hubs, as part of the delivery of the Parklife project.&lt;/P&gt;&lt;P&gt;— The Sunderland Parklife scheme focuses on the development of these football hub sites,&lt;/P&gt;&lt;P&gt;— Northern Area in Washington,&lt;/P&gt;&lt;P&gt;— expansion of the Community North site in Downhill and the Ford Quarry site.&lt;/P&gt;&lt;P&gt;The proposed contract is divided into lots.&lt;/P&gt;&lt;P&gt;Lot 1 will include the operation and management of the Northern Area and Ford Quarry Hubs, with the contract for Lot 1 to be entered into between the Contractor and the Sunderland Football Trust.&lt;/P&gt;&lt;P&gt;Contractors should note that both concession lots will be awarded to a single preferred bidder, who will be required to enter into contracts with the Council and Sunderland Football Trust in respect of both of the aforementioned Lots.&lt;/P&gt;&lt;P&gt;More details are contained with the procurement documents.&lt;/P&gt;</epo:hasDescription>
+        <epo:hasTitle xml:lang="en">&lt;P&gt;Operator Concession for Sunderland Parklife Northern Area and Ford Quarry Football Hubs&lt;/P&gt;</epo:hasTitle>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Lot37d85b14-e250-415f-8ae9-8dca9cb6168f">
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Periodf2ce4cad-4e1d-4a3d-abc0-66bb7c7e81cb">
+            <epo:hasEndDate>2029-07-31</epo:hasEndDate>
+            <epo:hasStartDate>2019-08-01</epo:hasStartDate>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-144-330579#Procedurec3001c17-2fef-4133-86bb-1d564abe0b68"/>
+        <epo:hasEstimatedValue>
+          <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#ValueValObject7bf457a1-4c11-463a-9e35-93422a98f559">
+            <epo:hasOverallAmount>
+              <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#AmountValObject78bcff14-1e37-4116-bb5f-bae5aff6757a">
+                <ccts:hasAmountValue>8512276.00</ccts:hasAmountValue>
+                <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/GBP"/>
+              </ccts:Amount>
+            </epo:hasOverallAmount>
+            <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+          </epo:Value>
+        </epo:hasEstimatedValue>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#ContractTermLotfe71e89f-367e-4b35-a3b4-504eb5cdc4c4">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#ObjectContractAddress19e4cdfa-3dbe-4f97-86bb-a2704b258874">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKC23"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="en"
+            >&lt;P&gt;Community North Sports Complex, Kingsway Road, Sunderland, SR5 4BB&lt;/P&gt;</epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#PurposeAdditional80be7925-6caf-4a13-bed5-c66e875deb78">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/77314000"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/79993100"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/79993000"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/50700000"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/50000000"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/92620000"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/92000000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#LotId5ec7e0af-9c3b-4f05-bd7c-616c8474494a">
+            <epo:identifierValue>2</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasDescription xml:lang="en">&lt;P&gt;Sunderland City Council and its partners have identified three initial sites in Sunderland which are to be developed as Football Hubs, as part of the delivery of the Parklife project.&lt;/P&gt;&lt;P&gt;— The Sunderland Parklife scheme focuses on the development of these football hub sites,&lt;/P&gt;&lt;P&gt;— Northern Area in Washington,&lt;/P&gt;&lt;P&gt;— expansion of the Community North site in Downhill and the Ford Quarry site.&lt;/P&gt;&lt;P&gt;The proposed contract is divided into lots.&lt;/P&gt;&lt;P&gt;Lot 2 will comprise the operation and management of the Community North Hub, with a contract for Lot 2 to be entered into between the Contractor and the Council.&lt;/P&gt;&lt;P&gt;Contractors should note that both concession lots will be awarded to a single preferred bidder, who will be required to enter into contracts with the Council and Sunderland Football Trust in respect of both of the aforementioned Lots.&lt;/P&gt;&lt;P&gt;More details are contained with the procurement documents.&lt;/P&gt;</epo:hasDescription>
+        <epo:hasTitle xml:lang="en">&lt;P&gt;Operator Concession for Sunderland Parklife Community North Football Hubs&lt;/P&gt;</epo:hasTitle>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasMaximumNumberOfLotsToBeAwarded>2</epo:hasMaximumNumberOfLotsToBeAwarded>
+    <reg2015:applies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-144-330579#SelectionCriterionTechnical32007584-016a-43d0-a283-d96633aa5b9a"/>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#AccessTermsFulladae89a9-e17c-4391-a98a-714a69775d11">
+        <epo:hasProcurementDocumentLandingPage>www.nepoportal.org</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <epo:has>
+      <epo:ProcedureTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#ProcedureTermdb0bd70f-7bb0-44f3-b2e9-60f647f41e98">
+        <epo:combinesLotsInto>
+          <epo:LotGroup rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#LotGroup27cd5880-fbf7-4478-b6a8-3fa2b0326922">
+            <epo:groups rdf:resource="http://data.europa.eu/a4g/resource/2018/s-144-330579#Lot37d85b14-e250-415f-8ae9-8dca9cb6168f"/>
+            <epo:groups rdf:resource="http://data.europa.eu/a4g/resource/2018/s-144-330579#Lot73cc1ae3-c358-4fd4-a1b2-319460fa037f"/>
+            <epo:hasDescription xml:lang="en">&lt;P&gt;The contracting authority will be awarding the contracts for both lots to one contractor.&lt;/P&gt;&lt;P&gt;Contractors should note that both concession lots will be awarded to a single preferred bidder, who will be required to enter into contracts with the Sunderland Football Trust for Lot 1 and The Council for Lot 2&lt;/P&gt;</epo:hasDescription>
+          </epo:LotGroup>
+        </epo:combinesLotsInto>
+      </epo:ProcedureTerm>
+    </epo:has>
+    <epo:hasLotSubmissionLimit>2</epo:hasLotSubmissionLimit>
+    <epo:hasDescription xml:lang="en">&lt;P&gt;Sunderland City Council and its partners the Football Association, Durham County Football Association Ltd, and The Foundation of Light have identified 3 sites in Sunderland for development into Football Hubs, as part of the Football Association, Sport England and The Premier League’s “Parklife” project.&lt;/P&gt;&lt;P&gt;The Project will support sustainable grassroots provision in the City with investment in strategic sites with Artificial Grass Pitches, grass pitches and ancillary facilities that can support extensive training and match play, as well as coaching, education and Football Development initiatives.&lt;/P&gt;&lt;P&gt;The Council, procuring in partnership with the Sunderland Football Trust, is seeking to procure an operator to manage the Football Hub facilities. Construction of the Hubs is not in scope of this opportunity.&lt;/P&gt;&lt;P&gt;The concession is to be awarded to one operator, who will be required to enter into contracts with the Council and Sunderland Football Trust in respect of both Lots.&lt;/P&gt;</epo:hasDescription>
+    <reg2015:applies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-144-330579#SelectionCriterionEconomic81ed98c5-3fad-4027-a856-6fbc58a9f814"/>
+    <epo:hasID>
+      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#ProcedureId470ab49c-f988-4b7b-890b-df2318516816">
+        <epo:identifierValue>DN337509</epo:identifierValue>
+      </epo:Identifier>
+    </epo:hasID>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-144-330579#Purposef434b5f8-d879-4ea9-ad3e-4b2ec34c3a06">
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/92610000"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+  </reg2015:Procedure>
+</rdf:RDF>

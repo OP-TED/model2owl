@@ -1,0 +1,196 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#AwardCriterionPrice5fb4c3a4-3808-483e-9182-8e46a84f2557">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#Lot0fa7f2e5-7d76-4867-a412-9a18860b9f67">
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#Period49f72964-2d26-43bf-be17-9a7291c7ec5e">
+            <epo:hasEndDate>2020-08-07</epo:hasEndDate>
+            <epo:hasStartDate>2019-08-05</epo:hasStartDate>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-175-396151#Procedurebb8a65d7-d767-4891-a588-735172776e11">
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#Buyer7068470d-e359-4067-a68c-f303d55456b7">
+                <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396151#Procedurebb8a65d7-d767-4891-a588-735172776e11"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#Organisationb352e97c-a1d7-4635-88cd-53b4234a697d">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#Location0cca44b5-33af-415e-b1e2-2f6507fe993b">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#Address7d7ec954-4e36-466f-b2c4-43d679eca534">
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                            <epo:hasPostalZone>94469</epo:hasPostalZone>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE224"/>
+                            <epo:hasCityName xml:lang="de">Deggendorf</epo:hasCityName>
+                            <epo:hasStreetName xml:lang="de">Perlasberger Str. 41</epo:hasStreetName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#OrganisationId26ba437c-b89a-46f2-b1b6-51813d327340">
+                        <epo:identifierValue>DE 285615449</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                    <epo:hasName xml:lang="de">DONAUISAR Klinikum Deggendorf-Dingolfing-Landau gKU, vertreten
+                        durch Frau Dr. Inge Wolff</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#ContactPoint40c5ccd5-c71a-4ea9-aa87-e6fff354f5ae">
+                    <epo:hasTelephone>+49 9913801905</epo:hasTelephone>
+                    <epo:hasInternetAddress>www.donau-isar-klinikum.de</epo:hasInternetAddress>
+                    <epo:hasFax>+49 9913801909</epo:hasFax>
+                    <epo:hasEmail>robert.schreder@donau-isar-klinikum.de</epo:hasEmail>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396151#Procedurebb8a65d7-d767-4891-a588-735172776e11"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/health"/>
+                <epo:hasBuyerLegalTypeDescription xml:lang="de"
+                >gemeinsames Kommunalunternehmen der Landkreise
+                    Deggendorf/Dingolfing-Landau</epo:hasBuyerLegalTypeDescription>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#SelectionCriterionEconomiceda7ce7d-fd57-4575-bbb7-337e62c4efa3">
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/ef-stand"/>
+                <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;https://www.staatsanzeiger-eservices.de/aJs/EuBekVuUrl?z_param=146096&lt;/P&gt;
+                </epo:hasDescription>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#SelectionCriterionTechnical9f1409bc-38b6-4be4-977b-35d5edc706c0">
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/tp-abil"/>
+                <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;https://www.staatsanzeiger-eservices.de/aJs/EuBekVuUrl?z_param=146096&lt;/P&gt;
+                </epo:hasDescription>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;1090 Bodenbelagsarbeiten&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <reg2015:applies>
+              <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#ContractTerma9277dfc-8871-40b7-89bd-e668864b2cd0">
+                <epo:hasPerformanceConditions xml:lang="de">
+                    &lt;P&gt;Siehe Auftragsunterlagen&lt;/P&gt;
+                </epo:hasPerformanceConditions>
+              </epo:ContractTerm>
+            </reg2015:applies>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#SubmissionTerm2e3d6fa5-591e-4a2f-ab20-54d855f11bcf">
+                <epo:hasSubmissionCommunicationMeans>
+                  <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#ChannelSubmissionf26726d3-6897-4ea8-a0ca-559f95ebe252">
+                    <epo:hasURL>www.staatsanzeiger-eservices.de</epo:hasURL>
+                  </epo:Channel>
+                </epo:hasSubmissionCommunicationMeans>
+                <epo:hasReceiptDeadline>2018-10-25+10:00</epo:hasReceiptDeadline>
+                <epo:hasLanguage rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+              </epo:SubmissionTerm>
+            </reg2015:applies>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#SelectionCriterionSuitabilitye514b804-0025-4cd8-90c4-43b14785fda0">
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/sui-act"/>
+                <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;https://www.staatsanzeiger-eservices.de/aJs/EuBekVuUrl?z_param=146096&lt;/P&gt;
+                </epo:hasDescription>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#Purpose6cf8efc2-7cb9-4139-8ec5-0d5212c4322f">
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45432130"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396151#Lot0fa7f2e5-7d76-4867-a412-9a18860b9f67"/>
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#ContractNotice017b0d4a-5e61-4539-a603-18b10f3e19a6">
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#PreviousNotice677d0d7d-56f8-4403-9b6e-0910b94e2872">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#NoticeId28dcc5f0-5fcd-4d82-89ff-e9de1cb65383">
+                        <epo:identifierValue>2018/S 046-100094</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396151#Procedurebb8a65d7-d767-4891-a588-735172776e11"/>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <reg2015:applies>
+              <epo:OpeningTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#OpeningTermeeda61bd-1293-441a-9788-8d5dced0f801">
+                <epo:hasOpeningDateTime>2018-10-25+10:00</epo:hasOpeningDateTime>
+                <epo:hasOpeningDescription xml:lang="de">
+                        &lt;P&gt;Nur Vertreter des Auftraggebers&lt;/P&gt;
+                    </epo:hasOpeningDescription>
+                <epo:hasOpeningDescription xml:lang="de">
+                        &lt;P&gt;Anschrift siehe Nr. I.1)&lt;/P&gt;
+                    </epo:hasOpeningDescription>
+              </epo:OpeningTerm>
+            </reg2015:applies>
+            <epo:hasTitle xml:lang="de">
+                    &lt;P&gt;051 – Klinikum Deggendorf – Neonatologie und Kinderheilkunde Gewerk 1090
+                        Bodenbelagsarbeiten&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:uses>
+              <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#AccessTermsFull1eebebd0-c6a1-45cf-be4f-8ef2cc3a4504">
+                <epo:hasProcurementDocumentLandingPage>https://www.staatsanzeiger-eservices.de/aJs/EuBekVuUrl?z_param=146096</epo:hasProcurementDocumentLandingPage>
+              </epo:AccessTerm>
+            </epo:uses>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#ContractTermLot367873ab-d218-415b-ac87-87a063608cd9">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#ObjectContractAddressc5ee174b-203d-41b0-9dd3-cea28e85973d">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE224"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="de"
+            >
+                        &lt;P&gt;Perlasberger Str. 41&lt;/P&gt;
+                        &lt;P&gt;94469 Deggendorf&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+            <epo:hasRenewalIndicator>false</epo:hasRenewalIndicator>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#PurposeAdditional7966823a-eeb5-42fc-8c1f-97365de5e2f3">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45430000"/>
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasDescription xml:lang="de">
+                        &lt;P&gt;Ca. 900 m&lt;FT TYPE="SUP"&gt;2&lt;/FT&gt; Untergrund vorbereiten&lt;/P&gt;
+                        &lt;P&gt;Ca. 95 lfm. Fugen verharzen&lt;/P&gt;
+                        &lt;P&gt;Ca. 1 200 lfm. Randdämmstreifen schneiden&lt;/P&gt;
+                        &lt;P&gt;Ca. 1 300 m&lt;FT TYPE="SUP"&gt;2&lt;/FT&gt; Estrich schleifen&lt;/P&gt;
+                        &lt;P&gt;Ca. 1 300 m&lt;FT TYPE="SUP"&gt;2&lt;/FT&gt; PVC-Boden verlegen&lt;/P&gt;
+                        &lt;P&gt;Ca. 1 280 lfm. ALU-Profil einbauen&lt;/P&gt;
+                        &lt;P&gt;Ca. 80 lfm. Edelstahl-Schwerlast-Dehnfugenprofil einbauen&lt;/P&gt;
+                        &lt;P&gt;Ca. 1 300 Erstpflege PVC-Boden&lt;/P&gt;
+                    </epo:hasDescription>
+        <epo:hasVariantPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

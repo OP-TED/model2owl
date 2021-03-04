@@ -1,0 +1,125 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-209-511662#Procedure91e72d05-e5ae-45bd-bbd4-ac456ad6a400">
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#Purpose028951c2-17dd-42aa-801d-b6a5482c4e22">
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45454000"/>
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:hasEstimatedValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#Valuec5abfead-58b1-48e6-9161-0a436d8d4841">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#Amountf40dcaac-7cf6-4dee-ae75-56c070d34ff9">
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+            <ccts:hasAmountValue>100086084.00</ccts:hasAmountValue>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasEstimatedValue>
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#ContractNoticefcc704b5-991e-4159-a076-3a7b60dd0a68">
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#PreviousNotice72fd0bfa-b297-4a35-8e51-bdace9a5c241">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#NoticeId470ea1da-5095-48f4-9000-cf7101119c5a">
+                <epo:identifierValue>2019/S 220-540969</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-209-511662#Procedure91e72d05-e5ae-45bd-bbd4-ac456ad6a400"/>
+      </epo:ContractNotice>
+    </epo:notifies>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#SubmissionTerm005fecaf-b569-443c-914b-1e628605e0d5"/>
+    </reg2015:applies>
+    <epo:hasTitle xml:lang="it">&lt;P&gt;Concessione per la riqualificazione e gestione del complesso sportivo palazzo del ghiaccio (via dei Ciclamini 23, Milano) mediante partenariato pubblico privato (art. 183, comma 15 D.Lgs. 50/2016)&lt;/P&gt;</epo:hasTitle>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#Lot49b55d8e-e3f7-4285-a0b3-2eb9dee26a9b">
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#PeriodDurationd97ef994-3f16-4b0f-8596-04aa1b4d8a70"/>
+        </epo:hasContractDuration>
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-209-511662#Procedure91e72d05-e5ae-45bd-bbd4-ac456ad6a400"/>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#ContractTermLot64e488e9-daea-4cca-9d87-e7938457e7b6">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#ObjectContractAddressbc02139d-6009-4994-be9c-4fd10f03807e">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ITC4C"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="it"
+            >&lt;P&gt;Milano.&lt;/P&gt;</epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:hasDescription xml:lang="it">&lt;P&gt;Gara n. 64/2019 — affidamento in concessione della riqualificazione e gestione del complesso sportivo palazzo del ghiaccio (via dei Ciclamini 23, Milano) mediante partenariato pubblico privato, ai sensi dell’art. 183, comma 15 del D.Lgs. 50/2016 e s.m.i. — CUP: B45D18000200007 — CIG: 80933034EA.&lt;/P&gt;</epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasDescription xml:lang="it">&lt;P&gt;La concessione ha per oggetto l'affidamento in concessione della riqualificazione e gestione del complesso sportivo palazzo del ghiaccio (via dei Ciclamini 23, Milano) mediante partenariato pubblico privato, ai sensi dell’art. 183, comma 15 del D.Lgs. 50/2016 e s.m.i. — CUP: B45D18000200007 — CIG: 80933034EA.&lt;/P&gt;</epo:hasDescription>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#Buyer15f0fc3a-8851-4b13-a975-1eb35f157706">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-209-511662#Procedure91e72d05-e5ae-45bd-bbd4-ac456ad6a400"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#ContactPointd969c710-8a97-474f-862a-ec5e69915a23">
+            <epo:hasDescription xml:lang="it">dott.ssa Lara De Filpo</epo:hasDescription>
+            <epo:hasEmail>APP.PubBandi@comune.milano.it</epo:hasEmail>
+            <epo:hasInternetAddress>www.comune.milano.it</epo:hasInternetAddress>
+            <epo:hasTelephone>+39 0288453214</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#Organisationdc13c27f-56a6-4467-a44a-23de7112f544">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#Location769954bf-08f6-4c92-a65e-d734155d60dc">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#Address4ee2a397-2815-4c15-a1f0-d033b6744136">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                    <epo:hasCityName xml:lang="it">Milano</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="it">via Bernina 12</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ITC4C"/>
+                    <epo:hasPostalZone>20158</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="it">Comune di Milano — Area gare opere pubbliche</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#ValueTotal92f42368-f19b-445d-af35-cfa6a879b345">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#AmountTotal55455e33-73a8-4887-8f75-315752ed3cb6">
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+            <ccts:hasAmountValue>100086084.00</ccts:hasAmountValue>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+    <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+    <epo:hasID>
+      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#ProcedureIdc9a80113-4e84-4d4e-ba9d-77cedd7b93ed">
+        <epo:identifierValue>64/2019</epo:identifierValue>
+      </epo:Identifier>
+    </epo:hasID>
+  </reg2015:Procedure>
+</rdf:RDF>

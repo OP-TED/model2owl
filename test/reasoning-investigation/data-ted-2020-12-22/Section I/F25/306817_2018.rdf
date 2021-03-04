@@ -1,0 +1,56 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#ProcedureExt608f192f-6d6c-41b3-a4a1-143a625e2908">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#Buyera27522ea-e04c-4165-b73d-def442b45b63">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#Organisatione9096950-430f-4be3-8c54-90dc58b6d454">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#Location25b5d2be-8e74-4fed-b6cc-e67bff0bbb1b">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#Addresse1751be8-4e45-4b92-a08e-9d6e562aeebe">
+                    <epo:hasStreetName xml:lang="fr">9 place Saint Louis</epo:hasStreetName>
+                    <epo:hasPostalZone>41000</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="fr">Blois</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRB05"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Ville de Blois</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306817#ProcedureExt608f192f-6d6c-41b3-a4a1-143a625e2908"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#BuyerProfile7a7394a1-94d4-42e0-85f8-012e112dd319">
+            <epo:hasURL>http://www.marches-securises.fr</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306817#ContactPoint0b0b0623-c8e1-4a66-b16a-786799d47b96">
+            <epo:hasTelephone>+33 254903535</epo:hasTelephone>
+            <epo:hasFax>+33 254903558</epo:hasFax>
+            <epo:hasInternetAddress>http://www.blois.fr</epo:hasInternetAddress>
+            <epo:hasEmail>marchespublics@blois.fr</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/cga"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/env-pro"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

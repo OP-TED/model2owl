@@ -1,0 +1,140 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#AwardCriterionPricea4026448-8498-495a-ad4d-8b431cd2b4bc">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#Lot357d8d96-98fd-4c14-afe2-61d804a91951">
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-175-396261#Proceduree3a61f85-a893-4fa2-9321-713445776c58">
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#ContractNoticed074a6de-1373-455a-b50c-a6d759293913">
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396261#Proceduree3a61f85-a893-4fa2-9321-713445776c58"/>
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#PreviousNotice223c799e-8f2c-46f6-bdbe-b4d8f8dfc172">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#NoticeId4e7ff17a-da8c-4945-862e-86a60a9524a6">
+                        <epo:identifierValue>2018/S 108-245309</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396261#Lot357d8d96-98fd-4c14-afe2-61d804a91951"/>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#ProcedureIdd6ae25d0-cb5c-4bae-94d2-9e0ed27a6e28">
+                <epo:identifierValue>062/2018</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#ValueTotald5c7bf8e-d402-4f58-8d0b-740b566c18d3">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#AmountTotal240a3415-ed7e-4c28-87ac-30e5966f2860">
+                    <ccts:hasAmountValue>644000.00</ccts:hasAmountValue>
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Im Zuge des Neubaus der Maria-Scholz-Schule sind Fassadenarbeiten
+                        auszuführen.&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#Buyerb7f12cca-1de3-4b7f-9363-6466359ec512">
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#Organisationd942afc9-831b-49db-bc73-0768b56d1103">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#Locationa20c2cf5-aa54-41f8-a928-52ff87543627">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#Addressd755c674-30bd-467c-9772-1d18c18d8067">
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                            <epo:hasCityName xml:lang="de">Bad Homburg vor der Höhe</epo:hasCityName>
+                            <epo:hasStreetName xml:lang="de">Ludwig-Erhard-Anlage 1-5</epo:hasStreetName>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE718"/>
+                            <epo:hasPostalZone>61352</epo:hasPostalZone>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="de">Der Kreisausschuss des Hochtaunuskreises</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#BuyerProfile67c5961b-dd34-426f-b2b6-bcbb44fe26bf">
+                    <epo:hasURL>http://www.subreport-elvis.de</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#ContactPointf908e08c-5f52-4094-8226-ee0b3cd450b9">
+                    <epo:hasTelephone>+049 61729994825</epo:hasTelephone>
+                    <epo:hasInternetAddress>http://www.hochtaunuskreis.de</epo:hasInternetAddress>
+                    <epo:hasDescription xml:lang="de">Auskünfte werden ausschließlich über die Online-Plattform
+                        subreport ELVis abgewickelt</epo:hasDescription>
+                    <epo:hasEmail>ausschreibungen@hochtaunuskreis.de</epo:hasEmail>
+                    <epo:hasFax>+049 61729999824</epo:hasFax>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396261#Proceduree3a61f85-a893-4fa2-9321-713445776c58"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+                <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#SubmissionTermd37b33a7-e531-4370-9f32-bc9014090062"/>
+            </reg2015:applies>
+            <epo:hasTitle xml:lang="de">
+                    &lt;P&gt;Fassadenarbeiten&lt;/P&gt;
+                </epo:hasTitle>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#Purposeb74bd8f5-fb44-46b1-8019-a07ace207a9d">
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45443000"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#ContractTermLot618e8d72-ea12-4507-9d14-0653ca0ab65b">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#ObjectContractAddress8a619322-7798-49ab-aa86-4747f3f9f6f9">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE718"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="de"
+            >
+                        &lt;P&gt;61350 Bad Homburg&lt;/P&gt;
+                        &lt;P&gt;Schwalbacher Straße 7&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396261#PurposeAdditional299a7d1b-4b68-46a1-a339-57b16b7166eb">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasDescription xml:lang="de">
+                        &lt;P&gt;Im Zuge des Neubaus der Maria-Scholz-Schule sind Fassadenarbeiten
+                            auszuführen.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

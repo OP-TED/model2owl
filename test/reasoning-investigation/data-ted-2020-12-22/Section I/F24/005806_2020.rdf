@@ -1,0 +1,93 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#ProcurementServiceProviderParticipationff23a158-2a98-458a-aaae-cf6d315caca7">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#ContactPointParticipation4c1079a5-d885-4418-826d-f5b85d7f1d9a">
+        <epo:hasEmail>dsp.uve@nicecotedazur.org</epo:hasEmail>
+        <epo:hasDescription xml:lang="fr">Patrick Bollie</epo:hasDescription>
+        <epo:hasTelephone>+33 497134780</epo:hasTelephone>
+        <epo:hasInternetAddress>http://www.nicecotedazur.org</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <reg2015:receivesRequestsToParticipate>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#ProcedureExt1ddf7e43-e331-4693-8111-ea73fcdfc566">
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#AccessTermsFull04409020-0242-4da2-b67f-44416899700c">
+            <epo:hasProcurementDocumentLandingPage>http://www.e-marches06.fr</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#Buyerad15161c-9b9f-44ea-add3-e24398584cfb">
+            <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-004-005806#ProcedureExt1ddf7e43-e331-4693-8111-ea73fcdfc566"/>
+            <epo:has>
+              <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#BuyerProfilec576a437-e544-4d75-ba56-6d07a369b042">
+                <epo:hasURL>http://www.e-marches06.fr</epo:hasURL>
+              </epo:BuyerProfile>
+            </epo:has>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#ContactPoint837b0426-b04c-4fd9-81f3-36cdca14baa9">
+                <epo:hasEmail>dsp.uve@nicecotedazur.org</epo:hasEmail>
+                <epo:hasDescription xml:lang="fr">Patrick Bollie</epo:hasDescription>
+                <epo:hasTelephone>+33 497134780</epo:hasTelephone>
+                <epo:hasInternetAddress>http://www.nicecotedazur.org</epo:hasInternetAddress>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#Organisationb3df6511-6a61-4799-8b26-a2b34af0f1fd">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#Location6d226903-90f0-4f2f-90ec-cdcc247fb17d">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#Address8d71958a-635c-416a-be4d-b0fb5ad5229e">
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRL03"/>
+                        <epo:hasCityName xml:lang="fr">Nice</epo:hasCityName>
+                        <epo:hasStreetName xml:lang="fr">5 rue de l'Hôtel de Ville</epo:hasStreetName>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                        <epo:hasPostalZone>06364</epo:hasPostalZone>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="fr">Métropole Nice Côte d'Azur</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-004-005806#ProcedureExt1ddf7e43-e331-4693-8111-ea73fcdfc566"/>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+            <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:receivesRequestsToParticipate>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#OrganisationParticipation21e66f58-9326-4605-8112-7e19ecc9d100">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#LocationParticipationd706a634-9402-4710-9afc-e710a84558cc">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#AddressParticipation8791002c-23da-458a-b278-1db2901b848f">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRL03"/>
+                <epo:hasCityName xml:lang="fr">Nice</epo:hasCityName>
+                <epo:hasStreetName xml:lang="fr">8 avenue Félix Faure (6e étage)</epo:hasStreetName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasPostalZone>06000</epo:hasPostalZone>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Métropole Nice Côte d'Azur — mission DSP UVE/RCU</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2020/s-004-005806#ProcedureExt1ddf7e43-e331-4693-8111-ea73fcdfc566"/>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

@@ -1,0 +1,47 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#ProcedureExtcf8249ed-66d8-49ee-905c-803f910428af">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#Buyerf2e1a4b0-c5f0-4a09-9854-43831b31d1ee">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#Organisation57162f70-2de4-4df5-a549-9d03a3b51363">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#Location6d254003-fb7c-47f0-b210-6639c0e91911">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#Address4e7ed878-8d6a-47fb-8e87-6cb9932171e6">
+                    <epo:hasPostalZone>04092</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="de">Leipzig</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Stadt Leipzig</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371442#ContactPointe3317454-64b2-42c8-946a-c95d89deb8d0">
+            <epo:hasInternetAddress>http://www.leipzig.de/stromkonzession</epo:hasInternetAddress>
+            <epo:hasEmail>dirk.mueller2@leipzig.de</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-205-371442#ProcedureExtcf8249ed-66d8-49ee-905c-803f910428af"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

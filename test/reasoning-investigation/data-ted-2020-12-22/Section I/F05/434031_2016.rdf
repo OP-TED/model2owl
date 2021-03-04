@@ -1,0 +1,73 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434031#ProcedureExt1b75d194-8d6c-4213-9713-06fd3dbf849f">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434031#Buyer778f518f-db71-44a7-b253-39a795385759">
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434031#ProcedureExt1b75d194-8d6c-4213-9713-06fd3dbf849f"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/urttb"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434031#Organisation3545347a-899d-48d8-885a-aa019c1c4716">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434031#Location33a633bf-13d4-490a-b83c-f4ed7ff17e07">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434031#Address5f17fc03-736c-4c53-8b07-ede33c2fcc07">
+                    <epo:hasCityName xml:lang="fr">Toulouse Cedex 1</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="fr">4 impasse Paul Mesplé</epo:hasStreetName>
+                    <epo:hasPostalZone>31081</epo:hasPostalZone>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRJ23"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Tisséo</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434031#ContactPoint6c997d41-8c47-4359-bf70-604ae789062b">
+            <epo:hasInternetAddress>http://www.tisseo.fr</epo:hasInternetAddress>
+            <epo:hasTelephone>+33 562112622</epo:hasTelephone>
+            <epo:hasDescription xml:lang="fr">Clothilde Lefebvre</epo:hasDescription>
+            <epo:hasEmail>clothilde.lefebvre@tisseo.fr</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434031#ProcedureExt1b75d194-8d6c-4213-9713-06fd3dbf849f"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434031#BuyerProfile5de01d53-da0a-423c-9cbc-97d95c74c796">
+            <epo:hasURL>http://marches.local-trust.com/?page=entreprise.EntrepriseHome</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434031#ProcedureExt1b75d194-8d6c-4213-9713-06fd3dbf849f"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434031#ProcedureExt1b75d194-8d6c-4213-9713-06fd3dbf849f"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434031#SubmisisonTerms8cd8a57e-41b5-45e6-800a-076d0d7dafdb">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434031#ChannelSubmission4acf1c67-50c6-4cde-8720-08b29bd6a0b1">
+            <epo:hasURL>http://marches.local-trust.com/?page=entreprise.EntrepriseHome</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434031#AccessTermsFull842e61c5-d5c4-492b-a420-308fda7a9d3a">
+        <epo:hasProcurementDocumentLandingPage>http://marches.local-trust.com/?page=entreprise.EntrepriseHome</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

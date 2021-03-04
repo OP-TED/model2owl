@@ -1,0 +1,61 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000907#Buyer39e843e5-f782-4995-911f-f7987a88c03c">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000907#Organisation9426f396-b729-453d-8564-0fa216a2c2c6">
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000907#OrganisationId72a2085d-b3c0-4fd5-8be7-16da16359751">
+            <epo:identifierValue>KRS: 0000013479</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000907#Locationbea2a8b3-d302-47ba-ae71-de4cbdb16868">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000907#Addressb3d53fae-a647-4962-b022-2d510734e39a">
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                <epo:hasCityName xml:lang="pl">Warszawa</epo:hasCityName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL911"/>
+                <epo:hasPostalZone>00-120</epo:hasPostalZone>
+                <epo:hasStreetName xml:lang="pl">ul. Złota 59</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="pl">PGE Energia Ciepła S.A.</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000907#BuyerProfile3d8cbf2d-c535-49d8-a02e-9b3299a882e4">
+        <epo:hasURL>https://pgeenergiaciepla.eb2b.com.pl</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000907#ContactPoint3d61d9db-335c-4299-b633-bca444e1d1ea">
+        <epo:hasTelephone>+48 327391250</epo:hasTelephone>
+        <epo:hasEmail>wilhelm.weiner@gkpge.pl</epo:hasEmail>
+        <epo:hasInternetAddress>https://www.pgeenergiaciepla.pl/</epo:hasInternetAddress>
+        <epo:hasDescription xml:lang="pl">Wilhelm Weiner</epo:hasDescription>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000907#ProcedureExt47a2d81c-0d3c-49f4-899b-e00edea59470">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000907#Buyer39e843e5-f782-4995-911f-f7987a88c03c"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/electricity"/>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+  </epo:Buyer>
+</rdf:RDF>

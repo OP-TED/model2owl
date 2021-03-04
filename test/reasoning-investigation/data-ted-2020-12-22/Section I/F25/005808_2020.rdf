@@ -1,0 +1,56 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005808#Buyerad83e9f6-3e01-42d3-bc12-e7be54710477">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005808#Organisation13a4fd2b-fc03-4915-9eeb-a584835bc2e9">
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005808#OrganisationId963ef5dd-7cd1-4f6b-85c8-153199e42a84">
+            <epo:identifierValue>25740008500011</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005808#Location509f6150-7475-4073-bf56-ea146d7f718b">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005808#Addressd91e0281-5bac-463e-8ebc-786486faf0a2">
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasPostalZone>74330</epo:hasPostalZone>
+                <epo:hasStreetName xml:lang="fr">2107 route d'Annecy</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRK28"/>
+                <epo:hasCityName xml:lang="fr">Poisy</epo:hasCityName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Syndicat des énergies et de l'aménagement numérique de la
+                        Haute-Savoie (SYANE)</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005808#ContactPointe64349cd-058c-4eba-aa03-049619506c99">
+        <epo:hasTelephone>+33 450335060</epo:hasTelephone>
+        <epo:hasEmail>info@syane.fr</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.syane.fr</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005808#ProcedureExt5d7ea695-9ca6-472e-b939-023121cf3d69">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-004-005808#Buyerad83e9f6-3e01-42d3-bc12-e7be54710477"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasActivityDescription xml:lang="fr">Énergie et communications électroniques</epo:hasActivityDescription>
+    <epo:hasBuyerLegalTypeDescription xml:lang="fr">Autre</epo:hasBuyerLegalTypeDescription>
+  </epo:Buyer>
+</rdf:RDF>

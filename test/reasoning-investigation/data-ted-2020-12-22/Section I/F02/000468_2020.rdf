@@ -1,0 +1,76 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000468#ProcedureExt8dc36bd3-c544-46ec-9f48-5356b3c9c3d6">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000468#Buyer89102eb9-3dd3-4c5d-8bef-8168be3d0cb1">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000468#Organisationa8be1beb-6b51-494b-9d81-aebfefb393ca">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000468#Location22d39d25-974d-4a28-aa10-88aaf7e9c90f">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000468#Addressd39517a1-d483-4e5e-a8cb-0aca59920116">
+                    <epo:hasCityName xml:lang="cs">Lysá nad Labem</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CZE"/>
+                    <epo:hasPostalZone>289 22</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="cs">Husovo náměstí 23/1</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ020"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000468#OrganisationId9146fa95-889b-487a-93b3-6d98cb93b815">
+                <epo:identifierValue>00239402</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="cs">Město Lysá nad Labem</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000468#BuyerProfile9a55db1b-6831-4d2e-b2fd-57d00382c2da">
+            <epo:hasURL>https://www.e-zakazky.cz/Profil-Zadavatele/e398a2a0-bebc-4bab-9230-2db9b53eb91d</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000468#ContactPoint1afb201f-2b10-4305-8af3-793131409525">
+            <epo:hasTelephone>+420 605201156</epo:hasTelephone>
+            <epo:hasDescription xml:lang="cs">Mgr. Bc. Milan Konečný</epo:hasDescription>
+            <epo:hasInternetAddress>https://mestolysa.cz/cz/</epo:hasInternetAddress>
+            <epo:hasEmail>zadavacirizeni@viaconsult.cz</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000468#ProcedureExt8dc36bd3-c544-46ec-9f48-5356b3c9c3d6"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000468#ProcedureExt8dc36bd3-c544-46ec-9f48-5356b3c9c3d6"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000468#SubmisisonTermsc6e0febc-4060-4e21-9264-6edbb83a2fa9">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000468#ChannelSubmission75cf57ed-5c42-434c-b4dd-072ff4c0b366">
+            <epo:hasURL>https://www.e-zakazky.cz/Profil-Zadavatele/e398a2a0-bebc-4bab-9230-2db9b53eb91d</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000468#AccessTermsFull91934741-5a70-4ce8-9db3-7aa8848f3537">
+        <epo:hasProcurementDocumentLandingPage>https://www.e-zakazky.cz/Profil-Zadavatele/e398a2a0-bebc-4bab-9230-2db9b53eb91d</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

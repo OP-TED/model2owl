@@ -1,0 +1,213 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#AwardCriterionQuality002f15c6-c372-4cc9-8f5d-807b2dd3ff10">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#Lot71d0e599-7dd5-48c6-90c0-f9e0e8f2d46d">
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-001-000318#Procedureab400d4a-bf4e-4567-b613-65b2c8d13143">
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000318#Lot71d0e599-7dd5-48c6-90c0-f9e0e8f2d46d"/>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#ProcedureIdd8c573ab-bfb3-4be5-aeae-66c286ea242c">
+                <epo:identifierValue>2019_DPAL_AOO1</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Acquisition, installation et maintenance d'armoires de mobilité associées à
+                        un logiciel de mise à disposition de moyens de déplacement.&lt;/P&gt;
+                </epo:hasDescription>
+            <reg2015:hasJointProcurement>true</reg2015:hasJointProcurement>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#Purposeb29bb1d7-d1a3-4b44-ad38-47c8fb1a46f3">
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/supplies"/>
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/48213000"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#ValueTotalfffc5a51-ae7a-4d2c-977a-38bc4888293c">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#AmountTotal24c7f813-84f8-4554-9c93-9ce90f7dcfe3">
+                    <ccts:hasAmountValue>160000</ccts:hasAmountValue>
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#ContractNoticea81c849d-ce0b-41e4-82a6-791b8e008683">
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000318#Procedureab400d4a-bf4e-4567-b613-65b2c8d13143"/>
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#PreviousNoticebc8105c1-7925-41ab-988d-38078a7516f0">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#NoticeId0c90854c-3742-4ce1-9fbd-506541acde63">
+                        <epo:identifierValue>2019/S 120-293189</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#BuyerAdd4848a2fb-bd77-498f-a67d-e04988561f40">
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000318#Procedureab400d4a-bf4e-4567-b613-65b2c8d13143"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#OrganisationAdd24e38bd5-44f2-470d-800c-3fdf236785c6">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#LocationAddf4369e59-5eed-43db-ad8d-c5e6cd9e5623">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#AddressAdd6a936d7d-16bd-44eb-8271-e49237063041">
+                            <epo:hasPostalZone>25000</epo:hasPostalZone>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                            <epo:hasStreetName xml:lang="fr">2 rue Mégevand</epo:hasStreetName>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRC21"/>
+                            <epo:hasCityName xml:lang="fr">Besançon</epo:hasCityName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="fr">Ville de Besançon</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#ContactPointAdda0520958-fe75-4d8b-bbca-610448bbfbd5">
+                    <epo:hasEmail>pal-marches@grandbesancon.fr</epo:hasEmail>
+                    <epo:hasInternetAddress>http://www.besancon.fr</epo:hasInternetAddress>
+                  </epo:ContactPoint>
+                </epo:has>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#BuyerAddb06803f0-a8b5-428c-8783-c6998c522a4b">
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000318#Procedureab400d4a-bf4e-4567-b613-65b2c8d13143"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#OrganisationAdd3eafb8fa-61e8-4ae3-a84d-1cf6db6bf2b6">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#LocationAdd90737a9b-7f12-4916-8e24-d1703c7c5bd4">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#AddressAdd86deb863-a0d5-4433-a3b3-646f5c31d695">
+                            <epo:hasPostalZone>25000</epo:hasPostalZone>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                            <epo:hasStreetName xml:lang="fr">9 rue Pablo Picasso</epo:hasStreetName>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRC21"/>
+                            <epo:hasCityName xml:lang="fr">Besançon</epo:hasCityName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="fr">Centre communal d'action sociale de Besançon</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#ContactPointAdd4f790482-19b8-4c20-a9d2-133aa227f492">
+                    <epo:hasEmail>pal-marches@grandbesancon.fr</epo:hasEmail>
+                    <epo:hasInternetAddress>http://www.besancon.fr</epo:hasInternetAddress>
+                  </epo:ContactPoint>
+                </epo:has>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;Acquisition, installation et maintenance d'armoires de mobilité associées à
+                        un logiciel de mise à disposition de moyens de déplacement&lt;/P&gt;
+                </epo:hasTitle>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#SubmissionTerme7231678-e23e-4d58-8bd9-b2475fdd9959"/>
+            </reg2015:applies>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#Buyer97e0d6b9-2b1c-4e60-83b5-6b995990857a">
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000318#Procedureab400d4a-bf4e-4567-b613-65b2c8d13143"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#Organisationf25abb99-3bad-4dc4-8268-178ff59d4509">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#Location569e0038-62ac-4917-a978-d60daa5bc93c">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#Address31e785d9-762b-4d5c-a26f-225b306392f9">
+                            <epo:hasPostalZone>25034</epo:hasPostalZone>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                            <epo:hasStreetName xml:lang="fr">4 rue Gabriel Plançon</epo:hasStreetName>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRC21"/>
+                            <epo:hasCityName xml:lang="fr">Besançon</epo:hasCityName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="fr">Grand Besançon</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#BuyerProfile94bf8d72-11ed-4483-a264-bee7f1760b30">
+                    <epo:hasURL>http://www.marches.grandbesancon.fr</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#ContactPointc407d603-2372-4ea2-8cce-66c17d0b7941">
+                    <epo:hasTelephone>+33 381415533</epo:hasTelephone>
+                    <epo:hasFax>+33 381415536</epo:hasFax>
+                    <epo:hasEmail>pal-marches@grandbesancon.fr</epo:hasEmail>
+                    <epo:hasInternetAddress>http://www.grandbesancon.fr</epo:hasInternetAddress>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#ContractTermLotfce8c0a9-9658-4942-805e-d933c3d40042">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#ObjectContractAddressbf782c4d-c1fb-458e-8c0c-ef4f624660f6">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRC21"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#PurposeAdditionalc8960e12-3cc2-44ae-b58d-65e62b1089b4">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/48213000"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;Acquisition, installation et maintenance d'armoires de mobilité associées
+                            à un logiciel de mise à disposition de moyens de déplacement.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>20</epo:hasFormula>
+    <epo:hasName>Résultat des essais</epo:hasName>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#AwardCriterionQualitya4fb6504-2fb9-46b8-933b-588ccb6bf9a3">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000318#Lot71d0e599-7dd5-48c6-90c0-f9e0e8f2d46d"/>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>30</epo:hasFormula>
+    <epo:hasName>Valeur technique</epo:hasName>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#AwardCriterionQualityd1ff7c51-fd89-4d83-99d4-820ce46371ba">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000318#Lot71d0e599-7dd5-48c6-90c0-f9e0e8f2d46d"/>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>10</epo:hasFormula>
+    <epo:hasName>Durée de garantie</epo:hasName>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000318#AwardCriterionPrice1da8235a-9acc-4352-beb8-0324415943b5">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000318#Lot71d0e599-7dd5-48c6-90c0-f9e0e8f2d46d"/>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+    <epo:hasFormula>40</epo:hasFormula>
+  </epo:AwardCriterion>
+</rdf:RDF>

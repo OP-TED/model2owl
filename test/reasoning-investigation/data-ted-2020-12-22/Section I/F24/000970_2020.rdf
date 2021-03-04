@@ -1,0 +1,77 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000970#ProcedureExt707f4a8d-6e79-440e-8fc1-ddad42b63f99">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000970#Buyerb61c97ce-987d-4adf-999b-207f601c2af7">
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000970#ProcedureExt707f4a8d-6e79-440e-8fc1-ddad42b63f99"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000970#ProcedureExt707f4a8d-6e79-440e-8fc1-ddad42b63f99"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000970#BuyerProfile20acf741-eb3c-432b-a911-8b480721b286">
+            <epo:hasURL>https://www.e-zakazky.cz/Profil-Zadavatele/2ac97bd8-0c6f-425a-a683-84631629d3ec</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000970#ContactPointacd31c6c-353e-4163-90e0-ca5dfd86ad2e">
+            <epo:hasInternetAddress>http://www.vhz.cz/</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="cs">Vodohospodářský rozvoj a výstavba a.s. Ing. Jan Plechatý, Ing.
+                        Lukáš Drbola</epo:hasDescription>
+            <epo:hasEmail>plechaty@vrv.cz</epo:hasEmail>
+            <epo:hasTelephone>+420 605262947</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000970#Organisation0b7d12b7-64f8-4da6-af94-2e39b8ab3129">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000970#Locationda01ee6b-8871-4a9c-9e77-06d5b777ab16">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000970#Address607a0dac-8d20-48c3-8a36-b5acbb29bb3a">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ071"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CZE"/>
+                    <epo:hasStreetName xml:lang="cs">Jílová 2769/6</epo:hasStreetName>
+                    <epo:hasPostalZone>787 01</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="cs">Šumperk</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000970#OrganisationIdb44d127d-d936-445f-8c63-1dd971656423">
+                <epo:identifierValue>47674954</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="cs">Vodohospodářská zařízení Šumperk, a.s.</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/water"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000970#SubmisisonTerms42d397ae-503e-4612-9c23-f99a8143d121">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000970#ChannelSubmission9d13eee0-3afa-421b-b4a9-865c052cafe1">
+            <epo:hasURL>https://www.e-zakazky.cz/Profil-Zadavatele/2ac97bd8-0c6f-425a-a683-84631629d3ec</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000970#AccessTermsFull08d3bd73-b568-4181-abc3-b391be243daa">
+        <epo:hasProcurementDocumentLandingPage>https://www.e-zakazky.cz/Profil-Zadavatele/2ac97bd8-0c6f-425a-a683-84631629d3ec</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

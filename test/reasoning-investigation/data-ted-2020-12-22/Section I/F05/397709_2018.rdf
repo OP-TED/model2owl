@@ -1,0 +1,89 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397709#ProcurementServiceProviderParticipation20da6f27-d29d-49dc-81d4-2a8307e2c79e">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397709#OrganisationParticipation10aa28c1-a1d8-44c8-bd09-9cff119f8516">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397709#LocationParticipationdf735f04-67e4-4460-bad0-ac3d9c1e9c04">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397709#AddressParticipationc961cc3f-9703-4c25-b2f6-fd3bf5594b4f">
+                <epo:hasStreetName xml:lang="pl">ul. Gazowa 11/13</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL"/>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                <epo:hasPostalZone>26-600</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="pl">Radom</epo:hasCityName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="pl">Sekcja Przetargów</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <reg2015:receivesTenders>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397709#ProcedureExtc7a003a8-9ec7-484f-a168-bab5849e4f5f">
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397709#AccessTermsFull7c2ff126-3977-49c9-aae4-95ec904803f8">
+            <epo:hasProcurementDocumentLandingPage>https://zamowienia.psgaz.pl</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397709#Buyer8d7c6162-fd24-4285-bfc0-c67c35558d51">
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397709#ProcedureExtc7a003a8-9ec7-484f-a168-bab5849e4f5f"/>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397709#Organisation0285c9de-a2b9-426d-a850-d20c6a135a73">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397709#Location66050c92-a9ca-41e3-b861-02f5c32fb14c">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397709#Address8dba257a-acfc-4c59-acb1-6e6a7e7f2e13">
+                        <epo:hasStreetName xml:lang="pl">ul. Równoległa 4a</epo:hasStreetName>
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL"/>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                        <epo:hasPostalZone>02-235</epo:hasPostalZone>
+                        <epo:hasCityName xml:lang="pl">Warszawa</epo:hasCityName>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="pl">Polska Spółka Gazownictwa Sp. z o.o. Oddział Zakład Gazowniczy w
+                        Warszawie</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397709#ContactPoint92027ab7-52b0-4c08-b9aa-75c36f723b7f">
+                <epo:hasDescription xml:lang="pl">Agnieszka Strzelczyk</epo:hasDescription>
+                <epo:hasInternetAddress>www.psgaz.pl</epo:hasInternetAddress>
+                <epo:hasEmail>Agnieszka.Strzelczyk@psgaz.pl</epo:hasEmail>
+                <epo:hasTelephone>+48 483324151</epo:hasTelephone>
+              </epo:ContactPoint>
+            </epo:has>
+            <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397709#ProcedureExtc7a003a8-9ec7-484f-a168-bab5849e4f5f"/>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gas-heat"/>
+            <epo:hasContractingEntity>true</epo:hasContractingEntity>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:receivesTenders>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397709#ContactPointParticipation9417935f-1347-458a-bde4-53067e87a18f">
+        <epo:hasDescription xml:lang="pl">Agnieszka Strzelczyk</epo:hasDescription>
+        <epo:hasInternetAddress>www.psgaz.pl</epo:hasInternetAddress>
+        <epo:hasEmail>Agnieszka.Strzelczyk@psgaz.pl</epo:hasEmail>
+        <epo:hasTelephone>+48 483324151</epo:hasTelephone>
+      </epo:ContactPoint>
+    </epo:has>
+    <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397709#ProcedureExtc7a003a8-9ec7-484f-a168-bab5849e4f5f"/>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

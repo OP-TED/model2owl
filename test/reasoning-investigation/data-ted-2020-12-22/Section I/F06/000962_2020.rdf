@@ -1,0 +1,63 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000962#Buyerc19b39a5-fc0d-4fbc-a0e1-718902371345">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000962#Organisationabc0ec50-2c36-480f-a7fc-a89700c58cb7">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000962#Locationc118f254-4439-40ef-977a-3c48c05e6ef0">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000962#Addresseed5dd67-1bcf-4429-95df-63569c6171b4">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/BG413"/>
+                <epo:hasPostalZone>2700</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="bg">Благоевград</epo:hasCityName>
+                <epo:hasStreetName xml:lang="bg">ул. „Промишлена“ № 1</epo:hasStreetName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/BGR"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000962#OrganisationId5b4d0ae3-4197-4fa3-8d8c-c9e9b912b5e8">
+            <epo:identifierValue>1752013040031</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasName xml:lang="bg">„Електроенергиен системен оператор“ ЕАД, МЕР
+                        Благоевград</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000962#BuyerProfilef75c7b85-9483-4774-9954-a9c483e27dda">
+        <epo:hasURL>https://webapps.eso.bg/zop_profile/page2.php?intNo=S1BTdENRcDZrOWtNZ2tiWUZjaEdNT2pXUGZuZ2c1SE5pSi9FRHQ5WEVmcz0=</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000962#ContactPointfb3a3ec0-f66a-4e78-a6dc-52d42e9eadbf">
+        <epo:hasInternetAddress>http://www.eso.bg</epo:hasInternetAddress>
+        <epo:hasDescription xml:lang="bg">Николай Гошев</epo:hasDescription>
+        <epo:hasFax>+359 73881035</epo:hasFax>
+        <epo:hasEmail>n.goshev@bl.eso.bg</epo:hasEmail>
+        <epo:hasTelephone>+359 73889626</epo:hasTelephone>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000962#ProcedureExtacf3cda9-3a1c-4e2a-b9b2-79bf4c818c43">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000962#Buyerc19b39a5-fc0d-4fbc-a0e1-718902371345"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/electricity"/>
+  </epo:Buyer>
+</rdf:RDF>

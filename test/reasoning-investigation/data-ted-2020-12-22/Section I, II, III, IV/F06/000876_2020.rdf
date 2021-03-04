@@ -1,0 +1,202 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#AwardCriterionQuality281bea5f-1dd8-46f2-aacf-5ed094b43f26">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#Lot3e2bb18e-e7d7-46cc-bd73-b9f25bedbf29">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#ContractTermLot97047aa5-b912-4c69-a905-533f11d45c4e">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#ObjectContractAddressf8cc7bfe-d4f0-4bee-9d1d-3fdbc2bfd18d">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR10"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#PurposeAdditional019ef5bf-f4b2-419f-8210-c007c247b4bc">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45311000"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45315400"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45315600"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45315300"/>
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-001-000876#Procedure5be3b682-4a2b-48e6-ae88-3eaa9e69f52d">
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000876#Lot3e2bb18e-e7d7-46cc-bd73-b9f25bedbf29"/>
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#ContractNoticedd97d444-4924-4651-826b-66687262eab8">
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000876#Procedure5be3b682-4a2b-48e6-ae88-3eaa9e69f52d"/>
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#PreviousNotice20ea526e-7f20-45e3-8f5f-114a5ab0ea87">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#NoticeIdecbd25c7-fadc-42f7-8400-d3c5ca3cf228">
+                        <epo:identifierValue>2018/S 207-473457</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#ValueTotal619e052c-bb30-4d5b-a91f-2871b7145d4c">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#AmountTotal1a09ac6c-4b54-457b-8092-4118681a793a">
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                    <ccts:hasAmountValue>4099867.22</ccts:hasAmountValue>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call"/>
+            <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Ce marché a pour objet principal les travaux de réalisation de la
+                        distribution énergie haute tension, basse tension et traction dans le cadre
+                        du projet de la ligne du Tram 10 Antony-Clamart.&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;Marché d'énergie dans le cadre du projet de tramway Tram 10
+                        Antony-Clamart&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#Buyer04d2d345-54c7-48e4-98d9-6b2474d1835b">
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#BuyerProfile2d52a876-60f5-4ee4-84fb-56f2211b1007">
+                    <epo:hasURL>https://www.achatpublic.com/sdm/ent/gen/index.jsp</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#ContactPointd40ee588-c903-44dd-867e-26dce34f4f2f">
+                    <epo:hasInternetAddress>http://transamo.fr</epo:hasInternetAddress>
+                    <epo:hasEmail>Arlo.straudo@transamo.com</epo:hasEmail>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#Organisationaacb572c-5fd4-4cb1-bd40-2cacbd6d43a7">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#Location7f111729-3629-4f44-a057-85b77c082783">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#Addressc1053723-ac65-498a-8d0f-b535b1dd6034">
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                            <epo:hasPostalZone>92442</epo:hasPostalZone>
+                            <epo:hasCityName xml:lang="fr">Issy-les-Moulineaux Cedex</epo:hasCityName>
+                            <epo:hasStreetName xml:lang="fr">12 rue Rouget de l'Isle, CS 60174</epo:hasStreetName>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR10"/>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="fr">Transamo</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000876#Procedure5be3b682-4a2b-48e6-ae88-3eaa9e69f52d"/>
+                <epo:hasContractingEntity>true</epo:hasContractingEntity>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/urttb"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#SubmissionTerm1fe3315c-2e5f-41fc-9ef0-a247cc30f694"/>
+            </reg2015:applies>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#Purpose4353ecd3-4aee-4c60-9c7d-eb456b1b3350">
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45310000"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#ProcedureId2194cce1-b67b-4052-9cd2-19af0e90f506">
+                <epo:identifierValue>2018-049_Energie</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;Les prestations à réaliser dans le cadre du marché concernent:&lt;/P&gt;
+                        &lt;P&gt;— la production et la distribution de l'énergie traction jusqu'aux
+                            tableaux de distribution traction pour le +750 VCC et jusqu'au
+                            sectionneur d'isolement automatique pour le retour traction,&lt;/P&gt;
+                        &lt;P&gt;— la production et la distribution basse tension aux sous-stations de
+                            traction au site de maintenance et de remisage et aux locaux
+                            signalisation et exploitation alimentés depuis les sous-stations,&lt;/P&gt;
+                        &lt;P&gt;— la fourniture, l'installation et le raccordement de tous les
+                            équipements des sous-stations de traction,&lt;/P&gt;
+                        &lt;P&gt;— la fourniture et l'installation des équipements traction en ligne et
+                            dans l'enceinte du site de maintenance et de remisage,&lt;/P&gt;
+                        &lt;P&gt;— la fourniture, la pose et le raccordement des câbles traction,&lt;/P&gt;
+                        &lt;P&gt;— la fourniture, la pose et le raccordement des câbles d'alimentation
+                            BT,&lt;/P&gt;
+                        &lt;P&gt;— la fourniture, la pose et le raccordement des câbles contrôle
+                            commande,&lt;/P&gt;
+                        &lt;P&gt;— la fourniture, la pose et le raccordement des câbles d'arrêt d'urgence
+                            et de la ligne pilote dans les SST et entre les SST et les équipements
+                            tractions en ligne et dans le site de maintenance et de remisage,&lt;/P&gt;
+                        &lt;P&gt;— la fourniture et l'installation des câbles traction entre les
+                            sous-stations de traction, jusqu'aux pieds des supports de la LAC,&lt;/P&gt;
+                        &lt;P&gt;— la fourniture, l'installation et le raccordement des câbles de
+                            protection de la Mant.&lt;/P&gt;
+                        &lt;P&gt;La bonne exécution de ce marché devra passer par la mise en œuvre des
+                            prestations décrites ci-dessous:&lt;/P&gt;
+                        &lt;P&gt;— les études d'exécution des matériels — leur fabrication et leur recette
+                            en usine,&lt;/P&gt;
+                        &lt;P&gt;— leur acheminement,&lt;/P&gt;
+                        &lt;P&gt;— leur installation sur site,&lt;/P&gt;
+                        &lt;P&gt;— le tirage des câbles en ligne,&lt;/P&gt;
+                        &lt;P&gt;— les essais constructeurs, essais de mise sous tension et essais
+                            d'interfaces, incluant toute prestation de réglage et de paramétrage de
+                            l'installation électrique,&lt;/P&gt;
+                        &lt;P&gt;— leur mise en service,&lt;/P&gt;
+                        &lt;P&gt;— la fourniture de la documentation,&lt;/P&gt;
+                        &lt;P&gt;— la formation à l'utilisation et à la maintenance des équipements,&lt;/P&gt;
+                        &lt;P&gt;— la fourniture des pièces de rechange,&lt;/P&gt;
+                        &lt;P&gt;— l'assistance permanente pendant la période de garantie.&lt;/P&gt;
+                        &lt;P&gt;Le titulaire du marché aura également en charge d'être l'interlocuteur
+                            exclusif du consuel pour toutes les installations installées en ligne et
+                            toutes les SST comme défini dans la note d'organisation de chantier.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasName>Sous-critère 2.4: qualité et environnement</epo:hasName>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>5</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#AwardCriterionQualityba065d50-bfea-45bd-9c37-028d64ccb319">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000876#Lot3e2bb18e-e7d7-46cc-bd73-b9f25bedbf29"/>
+    <epo:hasName>Sous-critère 2.1: technicité/interfaces</epo:hasName>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>20</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#AwardCriterionQuality7beec54d-0880-48c4-af49-57be2a82bb63">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000876#Lot3e2bb18e-e7d7-46cc-bd73-b9f25bedbf29"/>
+    <epo:hasName>Sous-critère 2.3: planning</epo:hasName>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>5</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#AwardCriterionQuality0c7e0325-9d32-4c1b-bfaf-e3772292b594">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000876#Lot3e2bb18e-e7d7-46cc-bd73-b9f25bedbf29"/>
+    <epo:hasName>Sous-critère 2.2: organisation/moyens humains et matériel
+                                sur le chantier</epo:hasName>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>10</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000876#AwardCriterionPriceac017e17-a337-4436-a9ed-beaa2d28cd3e">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000876#Lot3e2bb18e-e7d7-46cc-bd73-b9f25bedbf29"/>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+    <epo:hasFormula>60</epo:hasFormula>
+  </epo:AwardCriterion>
+</rdf:RDF>

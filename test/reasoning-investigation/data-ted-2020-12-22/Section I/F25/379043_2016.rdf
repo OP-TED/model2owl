@@ -1,0 +1,56 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-209-379043#Buyer8159d53d-a033-40a1-81cb-a3e09898f843">
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-209-379043#ProcedureExtebc1361f-ab89-493f-80c1-6778b6717794">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2016/s-209-379043#Buyer8159d53d-a033-40a1-81cb-a3e09898f843"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-209-379043#Organisationd675392d-be3a-4d8d-9fe6-8807d4b61a3f">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-209-379043#Locationa06e779a-4434-4066-9aab-1dcfbe7bc70f">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-209-379043#Address413e4f63-7d34-42c2-bf78-f7cf22ff2dbf">
+                <epo:hasPostalZone>91220</epo:hasPostalZone>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR104"/>
+                <epo:hasCityName xml:lang="fr">Le Plessis-Pâté</epo:hasCityName>
+                <epo:hasStreetName xml:lang="fr">place du 8 Mai 1945</epo:hasStreetName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-209-379043#OrganisationId84bbd732-a654-48b0-9ac6-1849a617147e">
+            <epo:identifierValue>91494</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasName xml:lang="fr">Mairie de Plessis-Pâté</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-209-379043#ContactPoint2f665163-b4f8-4e13-8676-8d313eafe17a">
+        <epo:hasTelephone>+33 160855900</epo:hasTelephone>
+        <epo:hasFax>+33 160855929</epo:hasFax>
+        <epo:hasEmail>mairie@leplessispate.fr</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.leplessispate.fr</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+  </epo:Buyer>
+</rdf:RDF>

@@ -1,0 +1,76 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429478#ProcedureExtde88b89c-b330-4399-9639-2a04fbd68610">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429478#Buyer9e29c4d2-05f6-431b-bdba-c1cf0082dc1e">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429478#Organisation629a799c-636d-48dc-b70c-dc2593e75384">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429478#Location2272277a-5de2-43bd-9e00-df2acd0aadb9">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429478#Addressc1a5b0b9-d6fb-4341-b83b-1a9225cbb5d2">
+                    <epo:hasCityName xml:lang="de">Kempten (Allgäu)</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE273"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                    <epo:hasPostalZone>87439</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="de">Rottachstraße 13</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Staatliches Bauamt Kempten</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429478#ProcedureExtde88b89c-b330-4399-9639-2a04fbd68610"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429478#BuyerProfile56ab932d-1565-436e-a9bf-19308c0e29fa">
+            <epo:hasURL>https://my.vergabe.bayern.de</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429478#ContactPointd5c5349d-3951-4f1d-8dc6-05a79225cd3e">
+            <epo:hasFax>+49 8315243-3333</epo:hasFax>
+            <epo:hasTelephone>+49 8315243-02</epo:hasTelephone>
+            <epo:hasInternetAddress>https://my.vergabe.bayern.de</epo:hasInternetAddress>
+            <epo:hasEmail>vergabe@stbake.bayern.de</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429478#ProcedureExtde88b89c-b330-4399-9639-2a04fbd68610"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/cga"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:usesAd-hoc>
+      <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429478#ChannelProcedure17d64ae6-4560-4554-9bbe-48add5cadfe1">
+        <epo:hasURL>https://my.vergabe.bayern.de</epo:hasURL>
+      </epo:Channel>
+    </reg2015:usesAd-hoc>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429478#SubmisisonTerms88a65584-aa44-4f99-bf23-54b3f92577aa">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429478#ChannelSubmission0b3d8eba-b691-4451-94c5-6e79f650995e">
+            <epo:hasURL>https://my.vergabe.bayern.de</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429478#AccessTermsFull151a0cb1-e8b2-4d31-8a27-ef5d8cd8decc">
+        <epo:hasProcurementDocumentLandingPage>https://www.meinauftrag.rib.de/public/DetailsByPlatformIdAndTenderId/platformId/1/tenderId/130506</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

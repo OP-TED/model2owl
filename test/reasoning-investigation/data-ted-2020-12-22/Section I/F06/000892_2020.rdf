@@ -1,0 +1,62 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000892#Buyercbd2cde8-3802-4185-8212-947e1d16f601">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000892#Organisation33c38c43-1037-43a2-8cdc-81bfaabafa86">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000892#Location140db2f3-3714-4d4e-8b44-58e3bf6bc939">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000892#Addressc79f13c8-2f06-4af9-8baa-eb095a1423f1">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/LT"/>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/LTU"/>
+                <epo:hasStreetName xml:lang="lt">P. Lukšio g. 5B</epo:hasStreetName>
+                <epo:hasCityName xml:lang="lt">Vilnius</epo:hasCityName>
+                <epo:hasPostalZone>LT-08221</epo:hasPostalZone>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000892#OrganisationId0d3a59c5-57fa-4b47-90f2-d70e83aa6698">
+            <epo:identifierValue>303359627</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasName xml:lang="lt">UAB Verslo aptarnavimo centras</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000892#BuyerProfile996997f0-fbc6-4acc-9361-21c8944f9e00">
+        <epo:hasURL>https://pirkimai.eviesiejipirkimai.lt/ctm/Company/CompanyInformation/Index/47164</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000892#ContactPointe5606f0e-95b3-488d-9d72-35c62143fc7a">
+        <epo:hasDescription xml:lang="lt">Jūratė Kaupinienė</epo:hasDescription>
+        <epo:hasEmail>jurate.kaupiniene@le.lt</epo:hasEmail>
+        <epo:hasTelephone>+370 66513258</epo:hasTelephone>
+        <epo:hasInternetAddress>https://vac.le.lt/</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000892#ProcedureExt06b951a2-5a1a-4ba5-84a9-135635445e46">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000892#Buyercbd2cde8-3802-4185-8212-947e1d16f601"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+    <epo:hasActivityDescription xml:lang="lt">Klasikinio sektoriaus įmonė, teikianti verslo aptarnavimo
+                    paslaugas</epo:hasActivityDescription>
+  </epo:Buyer>
+</rdf:RDF>

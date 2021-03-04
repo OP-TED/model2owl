@@ -1,0 +1,65 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396381#ProcedureExtdb0735bc-52d9-4aaf-b744-c14f10211acb">
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396381#SubmisisonTerms88260871-bedc-4961-a8c5-515ba16b7178">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396381#ChannelSubmission2f96a2e8-1ccc-446f-9094-0a8d00cb2ddf">
+            <epo:hasURL>https://www.dtvp.de/Center/notice/CXTRYYRYYY1</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396381#AccessTermsFull4a0fa3b0-65c3-47b5-8700-ab5063f51325">
+        <epo:hasProcurementDocumentLandingPage>https://www.dtvp.de/Center/notice/CXTRYYRYYY1</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396381#Buyer549741cc-bfe9-47df-8cb3-e851a49489ad">
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396381#ContactPoint9a298361-922d-4389-8e41-ce42b08ad761">
+            <epo:hasEmail>Stephan.Dueckert@giz.de</epo:hasEmail>
+            <epo:hasInternetAddress>www.giz.de</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396381#ProcedureExtdb0735bc-52d9-4aaf-b744-c14f10211acb"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396381#ProcedureExtdb0735bc-52d9-4aaf-b744-c14f10211acb"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396381#Organisationd6cf1f3e-9805-4470-8171-9b989e62be6c">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396381#Location49873a9b-896f-424a-a024-5d5ef4f2206d">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396381#Addressd215920d-1e58-4d9f-80a9-ce315b2f51a2">
+                    <epo:hasPostalZone>65760</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="de">Eschborn</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="de">Dag-Hammarskjöld-Weg 1 – 5</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE71A"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ)
+                        GmbH</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+        <epo:hasActivityDescription xml:lang="de">Internationale Zusammenarbeit</epo:hasActivityDescription>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

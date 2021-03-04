@@ -1,0 +1,59 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#Buyer51a8f9ba-71e3-45e1-9071-47149b5383b9">
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#BuyerProfiled7772e1c-3c6b-4868-ac3e-eafd936a0365">
+        <epo:hasURL>https://www.egordion.cz/nabidkaGORDION/profilUtb</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#ContactPoint4b2bfd7c-a351-4001-b5a1-b6e90d070cc3">
+        <epo:hasInternetAddress>www.utb.cz</epo:hasInternetAddress>
+        <epo:hasEmail>oo@utb.cz</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#ProcedureExt53140650-526a-4db6-b4bb-5cccb312c99c">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000275#Buyer51a8f9ba-71e3-45e1-9071-47149b5383b9"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#Organisation33043090-365f-4a73-8017-26f85bb696cd">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#Location883230ee-37f5-4d79-a169-5c52c11391b2">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#Address3a6841df-cbb6-4aaf-a39a-7b35fcc8535c">
+                <epo:hasPostalZone>760 01</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="cs">Zlín</epo:hasCityName>
+                <epo:hasStreetName xml:lang="cs">nám. T. G. Masaryka 5555</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ072"/>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CZE"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000275#OrganisationIdb3818fc5-d156-4cd9-b328-25f376b47c8a">
+            <epo:identifierValue>70883521</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasName xml:lang="cs">Univerzita Tomáše Bati ve Zlíně</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/education"/>
+  </epo:Buyer>
+</rdf:RDF>

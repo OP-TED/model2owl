@@ -1,0 +1,57 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#Buyerbfe0c170-816e-4d8a-a6fd-53587a83dd66">
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#ProcedureExta70863f6-b742-421c-8c53-aea512e7d090">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396252#Buyerbfe0c170-816e-4d8a-a6fd-53587a83dd66"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#BuyerProfile86e7acc0-1388-4929-9c32-03e18b84b3a6">
+        <epo:hasURL>http://www.vergabe.bayern.de</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#ContactPointd5a3881c-aafc-42c2-9be7-3856959151db">
+        <epo:hasTelephone>+49 94169856-01</epo:hasTelephone>
+        <epo:hasEmail>vergabe@stbar.bayern.de</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.vergabe.bayern.de</epo:hasInternetAddress>
+        <epo:hasFax>+49 94169856-1999</epo:hasFax>
+        <epo:hasDescription xml:lang="de">Staatliches Bauamt Regensburg</epo:hasDescription>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#Organisation3f2dbfa4-1ab9-4fcc-814b-dbdfa2db8422">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#Locationc29d4dee-31d4-4957-b8fc-333b212ff641">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#Addresse9e88878-f82b-4628-a63e-6b08c8f9ac26">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE232"/>
+                <epo:hasPostalZone>93053</epo:hasPostalZone>
+                <epo:hasStreetName xml:lang="de">Bajuwarenstr. 2d</epo:hasStreetName>
+                <epo:hasCityName xml:lang="de">Regensburg</epo:hasCityName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="de">Staatliches Bauamt Regensburg</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/econ-aff"/>
+  </epo:Buyer>
+</rdf:RDF>

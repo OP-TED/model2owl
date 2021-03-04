@@ -1,0 +1,73 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#ProcedureExt7b180ce9-6e03-4abd-a298-1d9c3370e361">
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#SubmisisonTermsf528827e-5cd4-44da-be36-180cad9141b9">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#ChannelSubmissione9273f45-e730-4b84-b686-60fc0d517200">
+            <epo:hasURL>www.staatsanzeiger-eservices.de</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#AccessTermsFullf6e1a99c-480c-43e0-94af-651385c6c61f">
+        <epo:hasProcurementDocumentLandingPage>https://www.staatsanzeiger-eservices.de/aJs/EuBekVuUrl?z_param=146096</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#Buyerad77c4dc-567a-43cb-a162-da5c7baa4ca2">
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#ContactPointc1302ef3-f48e-4ccc-bccc-4f2c0fe51932">
+            <epo:hasInternetAddress>www.donau-isar-klinikum.de</epo:hasInternetAddress>
+            <epo:hasFax>+49 9913801909</epo:hasFax>
+            <epo:hasTelephone>+49 9913801905</epo:hasTelephone>
+            <epo:hasEmail>robert.schreder@donau-isar-klinikum.de</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396151#ProcedureExt7b180ce9-6e03-4abd-a298-1d9c3370e361"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396151#ProcedureExt7b180ce9-6e03-4abd-a298-1d9c3370e361"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#Organisation20f9937a-133d-4882-a82e-4050bf151a4f">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#Location1e9e0e92-5f12-4e4a-9852-4f88357c0d0a">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#Addressa5efc2c0-79aa-449e-8254-702f948b1c8c">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE224"/>
+                    <epo:hasCityName xml:lang="de">Deggendorf</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="de">Perlasberger Str. 41</epo:hasStreetName>
+                    <epo:hasPostalZone>94469</epo:hasPostalZone>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396151#OrganisationIdecd3cc21-7511-4a1b-b466-67a0cb2b9527">
+                <epo:identifierValue>DE 285615449</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="de">DONAUISAR Klinikum Deggendorf-Dingolfing-Landau gKU, vertreten
+                        durch Frau Dr. Inge Wolff</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasBuyerLegalTypeDescription xml:lang="de">gemeinsames Kommunalunternehmen der Landkreise
+                    Deggendorf/Dingolfing-Landau</epo:hasBuyerLegalTypeDescription>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/health"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

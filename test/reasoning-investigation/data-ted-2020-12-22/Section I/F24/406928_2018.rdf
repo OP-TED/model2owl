@@ -1,0 +1,73 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406928#ProcedureExte506ac65-934b-45dd-afd4-a68e6e6a3c6d">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406928#Buyer2fd13b59-2fed-4d0c-86be-c04596fd2d48">
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-179-406928#ProcedureExte506ac65-934b-45dd-afd4-a68e6e6a3c6d"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2018/s-179-406928#ProcedureExte506ac65-934b-45dd-afd4-a68e6e6a3c6d"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/cga"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-179-406928#ProcedureExte506ac65-934b-45dd-afd4-a68e6e6a3c6d"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406928#Organisation6ac9f7e4-3e1b-442c-9787-6fad5abd78a4">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406928#Location8ea9262d-846e-4143-8e3e-30686e2863ac">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406928#Addressac3c70c9-4154-4efc-ba3c-94b134156a78">
+                    <epo:hasStreetName xml:lang="fr">CS 73310</epo:hasStreetName>
+                    <epo:hasPostalZone>21033</epo:hasPostalZone>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRC11"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCityName xml:lang="fr">Dijon Cedex</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Ville de Dijon</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2018/s-179-406928#ProcedureExte506ac65-934b-45dd-afd4-a68e6e6a3c6d"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406928#ContactPointff0a28aa-ab92-4ff2-ba71-4c679d5cf699">
+            <epo:hasTelephone>+33 380745172</epo:hasTelephone>
+            <epo:hasEmail>marches-publics@ville-dijon.fr</epo:hasEmail>
+            <epo:hasFax>+33 380745282</epo:hasFax>
+            <epo:hasInternetAddress>http://www.ville-dijon.fr</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406928#BuyerProfile6535f44d-6de1-4c71-94a3-d9f9008d3940">
+            <epo:hasURL>http://www.achatpublic.com</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406928#AccessTermsFull7fd02ea9-e071-4057-afe3-45dc2a724e16">
+        <epo:hasProcurementDocumentLandingPage>https://www.achatpublic.com</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406928#SubmisisonTerms6436766b-884f-469d-b976-fbae12f91264">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-179-406928#ChannelSubmission806436be-5eba-4ea5-ac9f-66ae980402ca">
+            <epo:hasURL>https://www.achatpublic.com</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

@@ -1,0 +1,354 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#AwardCriterionQualityeb691a20-9e67-4a5e-abae-55af4e909a06">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#Lot1fe68443-0f44-41f9-9acd-880ef1139bc1">
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#PeriodDuration4b57ae86-e11a-4a0e-89d1-dd01ccc53fe7">
+            <epo:hasDurationMeasure>
+              <ccts:Measure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#Measure10949b6f-25ab-442d-8b07-c9bb4c3c6670">
+                <ccts:hasMeasureValue>6</ccts:hasMeasureValue>
+                <ccts:hasUnitCode rdf:resource="http://publications.europa.eu/resource/authority/timeperiod/MONTH"/>
+              </ccts:Measure>
+            </epo:hasDurationMeasure>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#ContractTermLot1e57606b-41e8-4a39-88b5-23b7596644fb">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#ObjectContractAddressd2dfb686-e7b7-49aa-b403-ba1a699e50df">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR716"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="fr"
+            >
+                        &lt;P&gt;Commune de Villeurbanne.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+            <epo:hasRenewalIndicator>false</epo:hasRenewalIndicator>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#PurposeAdditionale24735f4-9cad-4175-a361-71797b8970f6">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45233221"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45233200"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45232130"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45112100"/>
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/allowed"/>
+            <epo:hasOptionsDescription xml:lang="fr">
+                        &lt;P&gt;Aux termes de l'article 30.I.7 du décret 2016-360 du 25.3.2016 relatif
+                            aux marchés publics, l'entité adjudicatrice se réserve le droit de
+                            passer sans publicité ni mise en concurrence préalable un marché pour
+                            des prestations similaires.&lt;/P&gt;
+                    </epo:hasOptionsDescription>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasEstimatedValue>
+          <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#ValueValObject0496ea54-3fb1-46f4-9784-244f4561183a">
+            <epo:hasOverallAmount>
+              <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#AmountValObject657e463a-87b4-4524-afc1-1cb47c18dce8">
+                <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                <ccts:hasAmountValue>7500000</ccts:hasAmountValue>
+              </ccts:Amount>
+            </epo:hasOverallAmount>
+            <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+          </epo:Value>
+        </epo:hasEstimatedValue>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-238-433994#Procedureb0195924-4b32-4cba-a4e3-7cc396422037">
+            <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;La présente consultation concerne les prestations d'études, des fournitures,
+                        de la réalisation des travaux, des contrôles et essais relatifs aux
+                        infrastructures, aux réseaux d'assainissement pluvial de voirie, aux massifs
+                        de poteaux de ligne aérienne de contact, aux massifs d'éclairage, aux
+                        massifs de la signalisation lumineuse tricolore ainsi qu'à la signalisation
+                        horizontale, verticale directionnelle et de police du secteur géographique
+                        n° 3 localisé entre la rue du 1.3.1943 et la rue du Souvenir Français
+                        (commune de Villeurbanne) de la ligne C3.&lt;/P&gt;
+                    &lt;P&gt;Elle est lancée en appel d'offres ouvert en vertu des articles 67 et 68 du
+                        décret n° 2016-360 du 25.3.2016 relatif aux marchés publics.&lt;/P&gt;
+                    &lt;P&gt;Dans le cadre de ce marché, le SYTRAL met en œuvre une condition d'exécution
+                        sociale visant à promouvoir l'emploi en faveur des publics prioritaires.&lt;/P&gt;
+                    &lt;P&gt;Le délai d'exécution du marché est de 29 mois dont 6 semaines de période de
+                        préparation.&lt;/P&gt;
+                </epo:hasDescription>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#SelectionCriterionEconomiceebe85ba-f1fe-4634-8aef-e1397d05c8da">
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/ef-stand"/>
+                <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;9 000 000 EUR HT chiffre d'affaires annuel dans l'activité infrastructures —
+                        VRD (global groupement).&lt;/P&gt;
+                </epo:hasDescription>
+                <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;— déclaration concernant le chiffre d'affaires global et le chiffre
+                        d'affaires concernant les fournitures, services ou travaux objet du marché,
+                        réalisés au cours des 3 derniers exercices disponibles,&lt;/P&gt;
+                    &lt;P&gt;— déclaration concernant le chiffre d'affaires global et le chiffre
+                        d'affaires concernant les prestations de même nature que celles du marché,
+                        réalisées au cours des 3 derniers exercices disponibles.&lt;/P&gt;
+                    &lt;P&gt;Seuil minimal exigé: 9 000 000 EUR HT chiffre d'affaires annuel dans
+                        l'activité infrastructures — VRD (global groupement).&lt;/P&gt;
+                    &lt;P&gt;— déclaration appropriée de banques ou preuve d'une assurance pour les
+                        risques professionnels.&lt;/P&gt;
+                </epo:hasDescription>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#Purpose321866ff-79fb-4de5-a9b2-0820286b5260">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45233120"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <reg2015:applies>
+              <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#ContractTerm5c160fa1-1bf6-4537-a60c-7d7e0cb2d874">
+                <epo:hasPaymentArrangement xml:lang="fr">
+                    &lt;P&gt;Les ressources qui seront mobilisées pour financer l'opération sont
+                        constituées par les fonds propres du SYTRAL. Les paiements seront effectués
+                        par virement administratif dans le délai réglementaire de 30 jours à compter
+                        de la présentation des demandes de paiement, selon l'application des
+                        articles 115 à 121 du décret n° 2016-360 du 25.3.2016 et du décret n°
+                        2013-269 du 29.3.2013 relatif à la lutte contre les retards de paiement dans
+                        les contrats de la commande publique.&lt;/P&gt;
+                </epo:hasPaymentArrangement>
+                <epo:hasContractorLegalFormRequirementDescription
+                 xml:lang="fr">
+                    &lt;P&gt;Pour un même lot, les candidats n'ont pas la possibilité de soumissionner en
+                        agissant à la fois en qualité de candidat individuel et de membre d'un ou
+                        plusieurs groupement(s). La participation à plusieurs groupements, pour un
+                        même lot, est également interdite.&lt;/P&gt;
+                    &lt;P&gt;En cas de groupement, aucune forme juridique n'est exigée.&lt;/P&gt;
+                    &lt;P&gt;En cas de groupement conjoint, le mandataire sera solidaire de chacun des
+                        membres du groupement pour ses obligations contractuelles à l'égard de la
+                        personne publique pour l'exécution.&lt;/P&gt;
+                </epo:hasContractorLegalFormRequirementDescription>
+              </epo:ContractTerm>
+            </reg2015:applies>
+            <reg2015:applies>
+              <epo:OpeningTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#OpeningTermff5c000f-02b0-4c60-b4eb-4811e716bb6f">
+                <epo:hasOpeningDateTime>2017-01-17+00:00</epo:hasOpeningDateTime>
+              </epo:OpeningTerm>
+            </reg2015:applies>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#ProcedureIdbfc3cb92-b38b-4ccc-abe1-974d158d9fbc">
+                <epo:identifierValue>16s0204</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#SubmissionTerm832bdc7c-ca96-4f10-8b71-7c2c90c18f0b">
+                <epo:hasValidityPeriod rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-433994#Measure10949b6f-25ab-442d-8b07-c9bb4c3c6670"/>
+                <epo:hasSubmissionCommunicationMeans>
+                  <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#ChannelSubmissionde9f5801-72cd-455e-970b-f49a92a50149">
+                    <epo:hasURL>https://www.marches-publics.info</epo:hasURL>
+                  </epo:Channel>
+                </epo:hasSubmissionCommunicationMeans>
+                <epo:hasReceiptDeadline>2017-01-16+16:00</epo:hasReceiptDeadline>
+                <epo:hasLanguage rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+                <epo:hasGuaranteeDescription xml:lang="fr">
+                    &lt;P&gt;En cas de versement d'une avance, Le titulaire doit fournir la garantie à
+                        première demande prévue à l'article 110 du décret n° 2016-360 du 25.3.2016.
+                        Cette garantie doit couvrir 100 % du montant de l'avance.&lt;/P&gt;
+                    &lt;P&gt;Conformément aux articles 122 à 126 du décret n° 2016-360 du 25.3.2016, une
+                        retenue de garantie égale à 5 % du montant du marché sera appliquée. La
+                        retenue de garantie peut être remplacée par une garantie à première
+                        demande.&lt;/P&gt;
+                </epo:hasGuaranteeDescription>
+              </epo:SubmissionTerm>
+            </reg2015:applies>
+            <epo:hasEstimatedValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#Value8d0e249e-0c33-420b-a3e5-7e6b2ad65428">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#Amountf2883d1b-e3f3-48e0-a82c-b1f726631526">
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                    <ccts:hasAmountValue>7500000</ccts:hasAmountValue>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasEstimatedValue>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-433994#Lot1fe68443-0f44-41f9-9acd-880ef1139bc1"/>
+            <epo:uses>
+              <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#AccessTermsFull80e7c3cd-66a0-409f-90af-59ca1a16540e">
+                <epo:hasProcurementDocumentLandingPage>https://www.marches-publics.info</epo:hasProcurementDocumentLandingPage>
+              </epo:AccessTerm>
+            </epo:uses>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#SelectionCriterionTechnicalc6b716c7-8251-4c26-a4d1-f881de6489ef">
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/tp-abil"/>
+                <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;— certificats de qualifications professionnelles ou justificatifs
+                        équivalents:&lt;/P&gt;
+                    &lt;P&gt;FNTP Terrassement en milieu urbain: 2321.&lt;/P&gt;
+                    &lt;P&gt;FNTP Enrobés classiques: 3421.&lt;/P&gt;
+                    &lt;P&gt;FNTP Chaussées urbaines béton à performance particulière: 3431.&lt;/P&gt;
+                    &lt;P&gt;FNTP Bordures et caniveaux: 346.&lt;/P&gt;
+                    &lt;P&gt;FNTP Petits ouvrages en maçonnerie: 347.&lt;/P&gt;
+                    &lt;P&gt;FNTP Réseau gravitaire urbain — tranchée &lt; 3,5 m de profondeur: 5144.&lt;/P&gt;
+                </epo:hasDescription>
+                <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;— l'indication des titres d'études et professionnels de l'opérateur
+                        économique et/ou des cadres de l'entreprise, et notamment des responsables
+                        de prestation de services de même nature que celle du marché (documents à
+                        produire en annexe du formulaire DC2),&lt;/P&gt;
+                    &lt;P&gt;— déclaration indiquant les effectifs moyens annuels du candidat et
+                        l'importance du personnel d'encadrement pour chacune des 3 dernières
+                        années,&lt;/P&gt;
+                    &lt;P&gt;— liste des travaux exécutés en lien avec l'objet du marché au cours des 5
+                        dernières années. Pour chaque chantier cité: l'objet, le lieu, la date, la
+                        durée, le montant de la prestation, le maître d'ouvrage. Ils pourront être
+                        appuyés d'attestations de bonne exécution signées du maître d'ouvrage,&lt;/P&gt;
+                    &lt;P&gt;— certificats de qualifications professionnelles ou justificatifs équivalents
+                        notamment par certificats d'identité professionnelle ou référence de travaux
+                        attestant de la compétence de l'entreprise à réaliser la prestation pour
+                        laquelle il se porte candidat.&lt;/P&gt;
+                </epo:hasDescription>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#SelectionCriterionSuitability1a7b8b53-fb6f-47fa-b344-554cf5b16ced">
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/sui-act"/>
+                <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;— le DUME.&lt;/P&gt;
+                    &lt;P&gt;Ou;&lt;/P&gt;
+                    &lt;P&gt;— la lettre de candidature, DC1,&lt;/P&gt;
+                    &lt;P&gt;— la déclaration du candidat, DC2.&lt;/P&gt;
+                    &lt;P&gt;À défaut d'utiliser:&lt;/P&gt;
+                    &lt;P&gt;— lettre de candidature, établie sur papier libre, datée et signée et
+                        précisant:&lt;/P&gt;
+                    &lt;P&gt;— nom et adresse du candidat (établissement et siège social, adresse
+                        électronique, numéros de téléphone et de télécopie, numéro SIRET),&lt;/P&gt;
+                    &lt;P&gt;— si le candidat se présente seul ou en groupement; dans ce dernier cas,
+                        forme du groupement, désignation des membres du groupement et habilitation
+                        donnée au mandataire,&lt;/P&gt;
+                    &lt;P&gt;— document relatif aux pouvoirs de la personne habilitée à engager le
+                        candidat,&lt;/P&gt;
+                    &lt;P&gt;— déclaration sur l'honneur, datée et signée, pour justifier qu'il n'a pas
+                        fait l'objet d'une interdiction de concourir,&lt;/P&gt;
+                    &lt;P&gt;— si le candidat est en redressement judiciaire (ou procédure étrangère
+                        équivalente), copie du ou des jugements prononcés à cet effet (s'il n'est
+                        pas rédigé en langue française, le jugement doit être accompagné d'une
+                        traduction certifiée).&lt;/P&gt;
+                </epo:hasDescription>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;Affaire 16s0204 — C3 Lafayette &gt; Bonnevay — infra 3.&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#Buyer9a6815c5-bf7b-434e-bc0f-e5d6a5701cc4">
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#OrganisationPSP55bd8c80-33bc-4e82-9efb-a55f232a8212">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#LocationPSPaba946b5-be0e-4f38-bbc6-2438d568d5b0">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#AddressPSP90e5e935-a522-49ad-94ee-4aa97d37434c">
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR716"/>
+                            <epo:hasStreetName xml:lang="fr">21 boulevard vivier merle, CS 63815</epo:hasStreetName>
+                            <epo:hasPostalZone>69487</epo:hasPostalZone>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                            <epo:hasCityName xml:lang="fr">Lyon</epo:hasCityName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="fr">SYTRAL</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/urttb"/>
+                <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-433994#Procedureb0195924-4b32-4cba-a4e3-7cc396422037"/>
+                <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-433994#Procedureb0195924-4b32-4cba-a4e3-7cc396422037"/>
+                <epo:hasContractingEntity>true</epo:hasContractingEntity>
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#BuyerProfilebad2406f-386c-4c9f-9c50-0029606b6713">
+                    <epo:hasURL>https://www.marches-publics.info</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-433994#Procedureb0195924-4b32-4cba-a4e3-7cc396422037"/>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#ContactPoint78ca45ad-0b05-4711-9bac-a8745e7f478a">
+                    <epo:hasTelephone>+33 472845800</epo:hasTelephone>
+                    <epo:hasFax>+33 478531284</epo:hasFax>
+                    <epo:hasInternetAddress>https://www.marches-publics.info</epo:hasInternetAddress>
+                    <epo:hasEmail>unitemarches@sytral.fr</epo:hasEmail>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#Organisation410ca48e-9ecd-44e0-a171-9b9607fd94a9">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#OrganisationId14f00acb-b93e-446b-ba3f-66baa6ae7e6d">
+                        <epo:identifierValue>25690099400011</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#Location9544bbc2-2158-4caf-9088-6fd85997aace">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#Address0473343b-198b-4cc7-bb7a-e0918f9f568a">
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR716"/>
+                            <epo:hasStreetName xml:lang="fr">21 boulevard Vivier Merle, CS 63815</epo:hasStreetName>
+                            <epo:hasPostalZone>69487</epo:hasPostalZone>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                            <epo:hasCityName xml:lang="fr">Lyon</epo:hasCityName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="fr">SYTRAL</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#ContactPointPSP97dff7cf-7e3c-4bb7-87c6-d02a241dff7d">
+                    <epo:hasTelephone>+33 472845800</epo:hasTelephone>
+                    <epo:hasFax>+33 478531284</epo:hasFax>
+                    <epo:hasInternetAddress>https://www.marches-publics.info</epo:hasInternetAddress>
+                    <epo:hasEmail>unitemarches@sytral.fr</epo:hasEmail>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-433994#Procedureb0195924-4b32-4cba-a4e3-7cc396422037"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasVariantPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;La présente consultation concerne les prestations d'études, des
+                            fournitures, de la réalisation des travaux, des contrôles et essais
+                            relatifs aux infrastructures, aux réseaux d'assainissement pluvial de
+                            voirie, aux massifs de poteaux de ligne aérienne de contact, aux massifs
+                            d'éclairage, aux massifs de la signalisation lumineuse tricolore ainsi
+                            qu'à la signalisation horizontale, verticale directionnelle et de police
+                            du secteur géographique n° 3 localisé entre la rue du 1.3.1943 et la rue
+                            du Souvenir Français (commune de Villeurbanne) de la ligne C3.&lt;/P&gt;
+                        &lt;P&gt;Elle est lancée en appel d'offres ouvert en vertu des articles 67 et 68
+                            du décret n° 2016-360 du 25.3.2016 relatif aux marchés publics.&lt;/P&gt;
+                        &lt;P&gt;Dans le cadre de ce marché, le SYTRAL met en œuvre une condition
+                            d'exécution sociale visant à promouvoir l'emploi en faveur des publics
+                            prioritaires.&lt;/P&gt;
+                        &lt;P&gt;Le délai d'exécution du marché est de 29 mois dont 6 semaines de période
+                            de préparation.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>30</epo:hasFormula>
+    <epo:hasName>Valeur technique de l'offre</epo:hasName>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-433994#AwardCriterionPricef45c6b22-e00f-4c24-9382-965801bd1259">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-433994#Lot1fe68443-0f44-41f9-9acd-880ef1139bc1"/>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+    <epo:hasFormula>70</epo:hasFormula>
+  </epo:AwardCriterion>
+</rdf:RDF>

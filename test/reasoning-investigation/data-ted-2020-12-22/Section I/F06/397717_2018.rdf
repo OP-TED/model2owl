@@ -1,0 +1,54 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397717#ProcedureExt408b9635-7c1e-42ad-a3b4-2bad82bde962">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397717#Buyer486af51b-76b8-403f-abeb-70f9ec817c49">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397717#Organisation7f89a8f0-cf17-43c6-b466-8f0477093c9c">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397717#OrganisationId761875f3-9ce7-4ca6-bdc4-d05b25a11846">
+                <epo:identifierValue>1010547-1</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397717#Locationae1fda05-7d85-48eb-8211-d27916880e5e">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397717#Addressa565a397-d5e6-407d-a6a9-199ec60c0dd3">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FI1C5"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FIN"/>
+                    <epo:hasCityName xml:lang="fi">Helsinki</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fi">Liikennevirasto</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397717#ContactPoint9f635024-8cc7-4417-a0ab-f12d5599457f">
+            <epo:hasTelephone>+358 295343536</epo:hasTelephone>
+            <epo:hasEmail>joonas.hamalainen@liikennevirasto.fi</epo:hasEmail>
+            <epo:hasInternetAddress>www.liikennevirasto.fi</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="fi">Joonas Hämäläinen</epo:hasDescription>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397717#ProcedureExt408b9635-7c1e-42ad-a3b4-2bad82bde962"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/rail"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

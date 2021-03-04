@@ -1,0 +1,62 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396198#Buyer215f8619-b542-42ad-88bc-495c5856df62">
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396198#BuyerProfileef83504c-7978-461b-a482-e060b8aeab92">
+        <epo:hasURL>http://www.meierijstad.nl</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396198#ContactPoint5918698d-7c64-4c3c-9eb0-cf3052ef229e">
+        <epo:hasFax>+31 413432010</epo:hasFax>
+        <epo:hasDescription xml:lang="nl">J.M.M. (Hans) van den Wijngaard</epo:hasDescription>
+        <epo:hasInternetAddress>http://www.meierijstad.nl</epo:hasInternetAddress>
+        <epo:hasEmail>inkoop@meierijstad.nl</epo:hasEmail>
+        <epo:hasTelephone>+31 413381000</epo:hasTelephone>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396198#ProcedureExt6f8dbc05-7c38-4c82-9d25-e939686ad8ca">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396198#Buyer215f8619-b542-42ad-88bc-495c5856df62"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396198#Organisation8972fb8e-7828-4045-9885-b3a0c2a61cae">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396198#Locationd9c4dad5-d2a1-4337-acae-c75f23b58e16">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396198#Address0da65b9b-32e4-4ed1-84d2-8d6711621515">
+                <epo:hasPostalZone>5461 KN</epo:hasPostalZone>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/NLD"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/NL"/>
+                <epo:hasCityName xml:lang="nl">Veghel</epo:hasCityName>
+                <epo:hasStreetName xml:lang="nl">Stadhuisplein 1</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396198#OrganisationId126001f9-ba3a-4d70-8802-bc52fdbae1e8">
+            <epo:identifierValue>61559918</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasName xml:lang="nl">Gemeente Meierijstad</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+  </epo:Buyer>
+</rdf:RDF>

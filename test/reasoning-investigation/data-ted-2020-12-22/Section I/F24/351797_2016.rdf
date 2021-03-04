@@ -1,0 +1,127 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#ProcurementServiceProviderc3f56524-bfeb-48f0-8a42-7a0f1848acf1">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#OrganisationPSPc35e1ece-fdb0-477f-bd44-e75f81b0b219">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#LocationPSPab5ecdbf-122f-4d4f-9868-afa31943eacc">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#AddressPSP1e1d7765-1a62-429e-a04c-e5b1665e2311">
+                <epo:hasCityName xml:lang="fr">Charbonnières-les-Bains</epo:hasCityName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRK26"/>
+                <epo:hasStreetName xml:lang="fr">2 place de l'Église</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Commune de Charbonnières-les-Bains</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <reg2015:providesAdditionalInformationAboutProcurementProcedure>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#ProcedureExt73639b38-a7a8-4bea-85b5-78638aa3b369">
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#Buyer2637ffe3-ad60-497a-a711-070e4ee0a912">
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#Organisation9c42f366-a7a6-4943-8517-b2ba07b3e72e">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#Locationbc86844e-05e2-43e6-b918-c80f883a3e4c">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#Address136b6931-b4ed-4b42-89a8-7a44ba6f46be">
+                        <epo:hasPostalZone>69260</epo:hasPostalZone>
+                        <epo:hasCityName xml:lang="fr">Charbonnières-les-Bains</epo:hasCityName>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRK26"/>
+                        <epo:hasStreetName xml:lang="fr">2 place de l'Église</epo:hasStreetName>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="fr">Ville de Charbonnières-les-Bains</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:has>
+              <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#BuyerProfile6f3162f9-1fd5-4d3e-b663-9c2afeab41c2">
+                <epo:hasURL>https://www.marches-securises.fr/</epo:hasURL>
+              </epo:BuyerProfile>
+            </epo:has>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#ContactPointfb5b58f7-c9c1-42d0-a45c-18a8d8ad058a">
+                <epo:hasFax>+33 478198296</epo:hasFax>
+                <epo:hasDescription xml:lang="fr">Stéphane Franchequin</epo:hasDescription>
+                <epo:hasTelephone>+33 478198000</epo:hasTelephone>
+                <epo:hasEmail>sfranchequin@charbonniereslesbains.com</epo:hasEmail>
+                <epo:hasInternetAddress>https://www.charbonnieres.com/</epo:hasInternetAddress>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351797#ProcedureExt73639b38-a7a8-4bea-85b5-78638aa3b369"/>
+            <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+            <epo:hasActivityDescription xml:lang="fr">Petite enfance</epo:hasActivityDescription>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:applies>
+          <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#SubmisisonTerms3a0f4c34-648a-4244-a2df-0773f725e346">
+            <epo:hasSubmissionCommunicationMeans>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#ChannelSubmissionc57c19e5-da9d-4d19-92c8-957e6b9ade9c">
+                <epo:hasURL>https://www.marches-securises.fr/</epo:hasURL>
+              </epo:Channel>
+            </epo:hasSubmissionCommunicationMeans>
+          </epo:SubmissionTerm>
+        </reg2015:applies>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#AccessTermsFullc62d046d-732d-4256-86f0-3f5c2c3f8935">
+            <epo:hasProcurementDocumentLandingPage>https://www.marches-securises.fr/</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:providesAdditionalInformationAboutProcurementProcedure>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#ContactPointPSPfcf127b0-e561-49d6-9de9-c1239747152e">
+        <epo:hasDescription xml:lang="fr">Stéphane Franchequin</epo:hasDescription>
+        <epo:hasEmail>sfranchequin@charbonniereslesbains.com</epo:hasEmail>
+        <epo:hasInternetAddress>https://marches-securises.fr/</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+  </epo:ProcurementServiceProvider>
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#ProcurementServiceProviderParticipation459dacbd-5333-4e5a-864a-45c9e8d0f0e0">
+    <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351797#ProcedureExt73639b38-a7a8-4bea-85b5-78638aa3b369"/>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#OrganisationParticipation183b7f18-6cc8-4492-bd3e-a589411c443d">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#LocationParticipation765d3b13-7290-4033-a4c8-e86e2a052a02">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#AddressParticipation11a2107c-75a2-4ce2-8489-568c945fadd3">
+                <epo:hasCityName xml:lang="fr">Charbonnières-les-Bains</epo:hasCityName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRK26"/>
+                <epo:hasStreetName xml:lang="fr">2 place de l'Église</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Commune de Charbonnières-les-Bains</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351797#ContactPointParticipation95bf6fe8-d5af-4556-bfdc-ff1d52610ea7">
+        <epo:hasDescription xml:lang="fr">Stéphane Franchequin</epo:hasDescription>
+        <epo:hasEmail>sfranchequin@charbonniereslesbains.com</epo:hasEmail>
+        <epo:hasInternetAddress>https://marches-securises.fr/</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351797#ProcedureExt73639b38-a7a8-4bea-85b5-78638aa3b369"/>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

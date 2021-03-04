@@ -1,0 +1,51 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#Buyerf3015f81-641b-46ce-a9db-b1863b380c88">
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#ProcedureExt1128e30a-30bd-4776-9b29-5d34cd366e3d">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000909#Buyerf3015f81-641b-46ce-a9db-b1863b380c88"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#ContactPointc7752def-f544-4a39-ad66-b1921d059272">
+        <epo:hasDescription xml:lang="pl">Jakub Wojtkowski</epo:hasDescription>
+        <epo:hasEmail>zam-eh@metro.waw.pl</epo:hasEmail>
+        <epo:hasInternetAddress>www.metro.waw.pl</epo:hasInternetAddress>
+        <epo:hasTelephone>+48 226554699</epo:hasTelephone>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#Organisationc9f1e90b-577d-4337-a68e-03c983fed43b">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#Locationd825f6e0-f372-40de-ae7a-0ecd57b35e1d">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000909#Address8c99379c-844a-4330-9b7d-dd081bdf5b25">
+                <epo:hasPostalZone>02-798</epo:hasPostalZone>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL911"/>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                <epo:hasCityName xml:lang="pl">Warszawa</epo:hasCityName>
+                <epo:hasStreetName xml:lang="pl">ul. Wilczy Dół 5</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="pl">Metro Warszawskie Sp. z o.o.</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/urttb"/>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+  </epo:Buyer>
+</rdf:RDF>

@@ -1,0 +1,55 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#ProcedureExt36b7c4e6-8493-4464-adcc-d353154ea728">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#Buyerad8adfff-7ce6-4900-896c-028848b1918a">
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#BuyerProfile9a7bbf4e-7aac-413d-a359-024c01efc33d">
+            <epo:hasURL>http://marches-publics-manche.fr</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#ContactPoint826502b1-a982-4ded-b9a3-f7c039e4c8c5">
+            <epo:hasEmail>mortainais.amenagement@manche.fr</epo:hasEmail>
+            <epo:hasInternetAddress>http://marches-publics-manche.fr</epo:hasInternetAddress>
+            <epo:hasTelephone>+33 233059883</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-005-007557#ProcedureExt36b7c4e6-8493-4464-adcc-d353154ea728"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#Organisation70ce0d90-aeae-46dd-af78-ec28b3bc87f9">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#Location877313f6-1b92-4f42-9d1c-65fba2416a05">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-005-007557#Addressd28d4940-0ebf-4ec4-a85b-f9f8504bb077">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCityName xml:lang="fr">Saint-Lô Cedex</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRD12"/>
+                    <epo:hasStreetName xml:lang="fr">route de Candol</epo:hasStreetName>
+                    <epo:hasPostalZone>50050</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Mortainais aménagement</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasBuyerLegalTypeDescription xml:lang="fr">Syndicat mixte</epo:hasBuyerLegalTypeDescription>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

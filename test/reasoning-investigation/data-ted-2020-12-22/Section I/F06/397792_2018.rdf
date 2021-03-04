@@ -1,0 +1,49 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397792#Buyer4c81c97a-a316-4d85-97e7-76d1badfb119">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397792#Organisation1f8e178e-4b40-456d-b854-3d1c248538fb">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397792#Locationd1a63c86-9505-4562-a21a-162985152657">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397792#Address74ec545d-f99a-4100-a1ed-69500a7e5334">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UK"/>
+                <epo:hasPostalZone>NW1 2DN</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="en">London</epo:hasCityName>
+                <epo:hasStreetName xml:lang="en">1 Eversholt Street</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="en">Network Rail Infrastructure Ltd</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397792#ProcedureExte62d3d01-6ec8-4074-b1b1-bd077520d98d">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397792#Buyer4c81c97a-a316-4d85-97e7-76d1badfb119"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397792#ContactPoint6b7c164d-7b81-475b-ae6b-b641679845ba">
+        <epo:hasTelephone>+44 7730352992</epo:hasTelephone>
+        <epo:hasInternetAddress>www.networkrail.co.uk</epo:hasInternetAddress>
+        <epo:hasEmail>emmanuel.agyei@networkrail.co.uk</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:hasActivityDescription xml:lang="en">Railway</epo:hasActivityDescription>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+  </epo:Buyer>
+</rdf:RDF>

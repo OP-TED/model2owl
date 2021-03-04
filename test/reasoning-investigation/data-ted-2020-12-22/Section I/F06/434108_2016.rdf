@@ -1,0 +1,56 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:CentralPurchasingBody rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#CPBb2cde2b1-0f7a-4701-a039-4a3479042b63">
+    <reg2015:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#ProcedureExt151cef31-1dc2-42bf-8ef1-299d5b404a48">
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#Buyerd814f51c-b449-4586-a79b-a8c5b8bc7281">
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434108#ProcedureExt151cef31-1dc2-42bf-8ef1-299d5b404a48"/>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#Organisationa430dacd-bf33-4713-ae38-27604421e8af">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#Locationd01ff57a-50ab-4dd1-a2fb-d02182a15353">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#Addresscbb7f259-802e-4ea6-8959-a94dd5ca8965">
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                        <epo:hasStreetName xml:lang="it">Piazzale Supercortemaggiore 2/4 presso sala posta SNAM SpA</epo:hasStreetName>
+                        <epo:hasPostalZone>20097</epo:hasPostalZone>
+                        <epo:hasCityName xml:lang="it">San Donato Milanese</epo:hasCityName>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="it">SNAM SpA qui rappresentata nel processo di approvvigionamento da
+                        SNAM Rete Gas SpA</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434108#ContactPoint3135fed3-3665-455a-a2ce-8a716dc0e322">
+                <epo:hasInternetAddress>www.snamretegas.it</epo:hasInternetAddress>
+                <epo:hasDescription xml:lang="it">Stefania Francavilla</epo:hasDescription>
+                <epo:hasTelephone>+39 0237037011</epo:hasTelephone>
+                <epo:hasEmail>stefania.francavilla@snamretegas.it</epo:hasEmail>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:hasContractingEntity>true</epo:hasContractingEntity>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gas-heat"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:isResponsibleFor>
+    <epo:hasCentralPurchasingBodyType rdf:resource="http://data.europa.eu/a4g/ontology#Cpb-awa"/>
+  </epo:CentralPurchasingBody>
+</rdf:RDF>

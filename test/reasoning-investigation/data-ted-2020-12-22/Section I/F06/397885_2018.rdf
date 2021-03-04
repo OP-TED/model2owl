@@ -1,0 +1,57 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397885#ProcedureExt201a56a3-9bb3-4495-aff1-7f7a928775b8">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397885#Buyer14157e7b-7a00-4aab-b2e1-90edd5e7a2f5">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397885#ProcedureExt201a56a3-9bb3-4495-aff1-7f7a928775b8"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397885#BuyerProfile669af9cf-1779-47ae-b070-1cceff4e4913">
+            <epo:hasURL>https://pha.edf.com</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397885#ContactPointbe18a055-9403-426f-b233-4fb4aa49140e">
+            <epo:hasInternetAddress>www.edf.com</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="fr">Sabine Miguet</epo:hasDescription>
+            <epo:hasTelephone>+33 57800718</epo:hasTelephone>
+            <epo:hasEmail>sabine.miguet@edf.fr</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397885#Organisationda7971d7-7b2b-45fe-9b3f-1f6e08bac3e0">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397885#Location6612ec54-4acc-4b06-a9a5-50f9abc303bc">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397885#Address6ba9b715-8dcd-4383-a7a6-750d5674c3c0">
+                    <epo:hasStreetName xml:lang="fr">Direction des achats groupe — 1 rue Henriette Galle-Grimm, TSA
+                        40007</epo:hasStreetName>
+                    <epo:hasCityName xml:lang="fr">Nancy</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+                    <epo:hasPostalZone>54015</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">EDF SA</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/electricity"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

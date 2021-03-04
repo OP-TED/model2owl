@@ -1,0 +1,80 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000934#ProcedureExt4f3e618b-8fd0-4aac-881e-645dfcfadde3">
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000934#AccessTermsRestr68bf05db-32cb-4dc2-b26f-ee8a4bdc5835">
+        <epo:hasRestrictedAccessAddress>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000934#Channel9a7bd58d-ef5b-43fb-9b28-d887ce6e55d9">
+            <epo:hasURL>https://enot.publicprocurement.be/enot-war/preViewNotice.do?noticeId=361341</epo:hasURL>
+          </epo:Channel>
+        </epo:hasRestrictedAccessAddress>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000934#SubmisisonTerms4136a831-aec8-4383-b3dd-30ffb7574256">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000934#ChannelSubmissioneea66861-8aec-4be0-81cf-feba9eacec7a">
+            <epo:hasURL>https://eten.publicprocurement.be/etendering/viewWorkspacesBasedOnExtUrl.do?wsName=bpost-2019-1-035-F05</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000934#Buyerd9d8c0bc-db35-4e60-986e-57477066e999">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000934#Organisation42085aaf-c667-4f9e-bed1-43e41ccace02">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000934#Location89cf42d6-f750-48e9-be7d-0039d6c2e962">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000934#Address8dca7523-5e3e-4e1a-be22-456316516b4d">
+                    <epo:hasStreetName xml:lang="fr">Centre monnaie</epo:hasStreetName>
+                    <epo:hasPostalZone>1000</epo:hasPostalZone>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/BE100"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/BEL"/>
+                    <epo:hasCityName xml:lang="fr">Bruxelles</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000934#OrganisationIddec95dc2-6b24-4f22-969a-30df18d75b30">
+                <epo:identifierValue>0214.596.464_26604</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="fr">BPOST</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000934#ProcedureExt4f3e618b-8fd0-4aac-881e-645dfcfadde3"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000934#ProcedureExt4f3e618b-8fd0-4aac-881e-645dfcfadde3"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000934#BuyerProfile354cf82f-a7dd-4ebc-a505-cd4a38514568">
+            <epo:hasURL>https://enot.publicprocurement.be/enot-war/preViewNotice.do?noticeId=361341</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000934#ContactPoint35c5074e-2708-496d-b8c1-3447ea5ed745">
+            <epo:hasInternetAddress>http://www.bpost.be</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="fr">Laurent Van den Eynde</epo:hasDescription>
+            <epo:hasTelephone>+32 22762786</epo:hasTelephone>
+            <epo:hasEmail>laurent.vandeneynde@bpost.be</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/post"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

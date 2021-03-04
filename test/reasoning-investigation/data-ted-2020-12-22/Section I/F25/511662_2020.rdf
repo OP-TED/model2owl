@@ -1,0 +1,51 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#Buyer029254bb-a94d-4f33-ad15-bf721f91716e">
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#ProcedureExt9038048f-88cc-4b03-8a6d-0fd3f931baa3">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-209-511662#Buyer029254bb-a94d-4f33-ad15-bf721f91716e"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#ContactPoint7a3cf10f-74c0-4809-821a-45037b878031">
+        <epo:hasInternetAddress>www.comune.milano.it</epo:hasInternetAddress>
+        <epo:hasTelephone>+39 0288453214</epo:hasTelephone>
+        <epo:hasEmail>APP.PubBandi@comune.milano.it</epo:hasEmail>
+        <epo:hasDescription xml:lang="it">dott.ssa Lara De Filpo</epo:hasDescription>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#Organisationd895428d-9c41-4d2a-af94-9b968468b2b2">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#Locationa8f01a97-ff4c-4bd2-be1c-11af0ef8d7d0">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-209-511662#Addressf09fe803-ebe4-4a3e-ae1d-0242bb1aeeaf">
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                <epo:hasStreetName xml:lang="it">via Bernina 12</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ITC4C"/>
+                <epo:hasPostalZone>20158</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="it">Milano</epo:hasCityName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="it">Comune di Milano — Area gare opere pubbliche</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+  </epo:Buyer>
+</rdf:RDF>

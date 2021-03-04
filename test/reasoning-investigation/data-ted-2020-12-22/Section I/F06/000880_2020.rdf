@@ -1,0 +1,62 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000880#ProcedureExt92ebee76-08af-4e0b-aed6-5c3e00045868">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000880#Buyer8b8f4ee7-40ee-49e2-b85e-a51aff352e77">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000880#ProcedureExt92ebee76-08af-4e0b-aed6-5c3e00045868"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000880#BuyerProfile487f6f49-b34c-4112-a0bd-f8ece8a57e28">
+            <epo:hasURL>http://www.lw.com.pl</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000880#ContactPoint794118bc-3074-452a-af49-f16ce03449af">
+            <epo:hasTelephone>+48 814625284</epo:hasTelephone>
+            <epo:hasEmail>pkozyra@lw.com.pl</epo:hasEmail>
+            <epo:hasFax>+48 814625007</epo:hasFax>
+            <epo:hasInternetAddress>www.lw.com.pl</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="pl">Piotr Kozyra</epo:hasDescription>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000880#Organisation8b68a75f-67c8-460d-8613-5cff66e5e403">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000880#Location13bfc279-81fd-46a2-a744-c7ee71ec3af8">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000880#Address5c300d50-8952-423c-8a6c-57540900a0df">
+                    <epo:hasCityName xml:lang="pl">Puchaczów</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL814"/>
+                    <epo:hasPostalZone>21-013</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="pl">Bogdanka</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000880#OrganisationId6498266e-04a7-48e9-b0c8-1728e0667887">
+                <epo:identifierValue>PL 7130005784</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="pl">Lubelski Węgiel Bogdanka S.A. w Bogdance</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/solid-fuel"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

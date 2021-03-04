@@ -1,0 +1,226 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#ProcurementServiceProviderParticipation1c034aa9-a39a-440a-99ef-9c9f0723e203">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#ContactPointParticipationf99e1917-1707-433c-8906-c7c725c9c508">
+        <epo:hasEmail>dsp.uve@nicecotedazur.org</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.nicecotedazur.org</epo:hasInternetAddress>
+        <epo:hasTelephone>+33 497134780</epo:hasTelephone>
+        <epo:hasDescription xml:lang="fr">Patrick Bollie</epo:hasDescription>
+      </epo:ContactPoint>
+    </epo:has>
+    <reg2015:receivesRequestsToParticipate>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-004-005806#Procedure52c60d65-301c-4b52-a6ba-a1b2054b51ef">
+        <epo:hasOverallPurpose>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#Purpose84786e74-c993-4772-a847-c836d062ddab">
+            <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+            <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/09323000"/>
+          </epo:Purpose>
+        </epo:hasOverallPurpose>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#AccessTermsFulla68ad347-eca1-436d-b515-7ed5f2a0b6d5">
+            <epo:hasProcurementDocumentLandingPage>http://www.e-marches06.fr</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <reg2015:applies>
+          <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#SubmissionTerm9c1d4ea5-2265-4979-9830-e8acb92c8e35">
+            <epo:hasLanguage rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+            <epo:hasReceiptDeadline>2020-05-05+12:00</epo:hasReceiptDeadline>
+          </epo:SubmissionTerm>
+        </reg2015:applies>
+        <reg2015:applies>
+          <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#SelectionCriterionEconomic64bc474e-67ab-48da-9a45-2ee20cc0cea2">
+            <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/ef-stand"/>
+            <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Les informations et documents à remettre pour justifier de la capacité
+                        économique et financière sont ceux listés dans le règlement de la
+                        consultation.&lt;/P&gt;
+                </epo:hasDescription>
+          </epo:SelectionCriterion>
+        </reg2015:applies>
+        <epo:specifies>
+          <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#Lot3111d152-5dde-4e16-abca-f4e87d699927">
+            <epo:hasEstimatedValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#ValueValObjectfc458c07-1604-48e0-bf99-c7cfcd748afa">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#AmountValObject75f2757f-b385-4851-88bc-8638eed771d2">
+                    <ccts:hasAmountValue>145000000</ccts:hasAmountValue>
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasEstimatedValue>
+            <epo:has>
+              <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#ContractTermLotc3614796-d2ee-4c45-a963-4aacc2a027f1">
+                <epo:hasSpecificPlaceOfPerformance>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#ObjectContractAddress22b201d8-34c4-4ac8-8fdb-47623617e841">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRL03"/>
+                  </epo:Address>
+                </epo:hasSpecificPlaceOfPerformance>
+                <epo:hasPlaceOfPerformanceAdditionalInformation
+                 xml:lang="fr">
+                        &lt;P&gt;Nice.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+              </epo:ContractTerm>
+            </epo:has>
+            <epo:has>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#PurposeAdditional3631a599-6b8c-4f3a-80b6-8bbe85bbe1b0">
+                <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/71321200"/>
+                <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45232140"/>
+                <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45331230"/>
+                <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/09323000"/>
+              </epo:Purpose>
+            </epo:has>
+            <epo:hasContractDuration>
+              <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#PeriodDuration19ab793e-756c-4a3a-b0b1-164c1594a846"/>
+            </epo:hasContractDuration>
+            <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-004-005806#Procedure52c60d65-301c-4b52-a6ba-a1b2054b51ef"/>
+            <epo:hasAdditionalInformation xml:lang="fr">
+                        &lt;P&gt;La valeur de la concession est estimée entre 132 000 000 EUR constants HT
+                            (161 000 000 EUR courant HT) et 145 000 000 EUR constants HT (175 000
+                            000 EUR courant HT) suivant le scénario de développement du réseau
+                            retenu.&lt;/P&gt;
+                    </epo:hasAdditionalInformation>
+            <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;Le concessionnaire se charge d'exploiter et d'entretenir le réseau public
+                            de chaleur de Nice Est, de recruter et de gérer le personnel. Le
+                            concessionnaire doit également financer l'ensemble des travaux afférents
+                            notamment les travaux de renouvellement et de développement du réseau de
+                            réaliser un projet respectueux de l'environnement. Les prestations
+                            attendues du futur concessionnaire sont précisées dans le dossier de
+                            consultation accessible sur le profil acheteur susmentionné
+                            (http://www.e-marches06.fr).&lt;/P&gt;
+                    </epo:hasDescription>
+          </epo:Lot>
+        </epo:specifies>
+        <reg2015:applies>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#ContractTerma7a05981-9dd3-4224-8a23-40162f2ee222">
+            <epo:hasPerformanceConditions xml:lang="fr">
+                    &lt;P&gt;Articles L. 1411-1 et suivants du CGCT; Titre III du Libre 1&lt;FT TYPE="SUP"&gt;er&lt;/FT&gt; de la 3&lt;FT TYPE="SUP"&gt;e&lt;/FT&gt; partie du code de la commande
+                        publique. Mise en place d'une société dédiée. Aucune subvention
+                        d'investissement ou d'exploitation ne sera versée au concessionnaire par la
+                        Métropole Nice Côte d'Azur.&lt;/P&gt;
+                </epo:hasPerformanceConditions>
+          </epo:ContractTerm>
+        </reg2015:applies>
+        <reg2015:applies>
+          <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#SelectionCriterionSuitabilityce108f9f-0ca4-4f3a-8cc7-fe073174c1a9">
+            <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/sui-act"/>
+            <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;— dans les conditions et selon les modalités précisées,&lt;/P&gt;
+                    &lt;P&gt;— dans le règlement de la consultation.&lt;/P&gt;
+                </epo:hasDescription>
+          </epo:SelectionCriterion>
+        </reg2015:applies>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#Buyer3040539f-3139-4c14-a8f7-e88a6a228dca">
+            <epo:has>
+              <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#BuyerProfile93f3651e-4cb8-4883-890b-5616dabecafe">
+                <epo:hasURL>http://www.e-marches06.fr</epo:hasURL>
+              </epo:BuyerProfile>
+            </epo:has>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#ContactPoint6c91ce28-da1d-413d-b587-e5eb1f7fa91c">
+                <epo:hasEmail>dsp.uve@nicecotedazur.org</epo:hasEmail>
+                <epo:hasInternetAddress>http://www.nicecotedazur.org</epo:hasInternetAddress>
+                <epo:hasTelephone>+33 497134780</epo:hasTelephone>
+                <epo:hasDescription xml:lang="fr">Patrick Bollie</epo:hasDescription>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#Organisationed4979f9-a774-409e-9cee-b7f12c7a42ef">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#Locatione1539d37-eb01-4e02-ba5e-25cb61de92ff">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#Addresse3bd641f-269e-48ca-bd3e-aa2abebc1893">
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRL03"/>
+                        <epo:hasPostalZone>06364</epo:hasPostalZone>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                        <epo:hasStreetName xml:lang="fr">5 rue de l'Hôtel de Ville</epo:hasStreetName>
+                        <epo:hasCityName xml:lang="fr">Nice</epo:hasCityName>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="fr">Métropole Nice Côte d'Azur</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-004-005806#Procedure52c60d65-301c-4b52-a6ba-a1b2054b51ef"/>
+            <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-004-005806#Procedure52c60d65-301c-4b52-a6ba-a1b2054b51ef"/>
+            <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Le contrat est un contrat de concession de service sous forme de délégation
+                        de service public, soumis pour sa passation au code de la commande publique.
+                        La Métropole confie la poursuite de l'exploitation et de la maintenance du
+                        service public de production en secours, de transport et de distribution de
+                        chaleur et de production de froid associé de Nice Est par la prise en charge
+                        du réseau de chaleur alimenté par l'UVE de l'Ariane et la réalisation des
+                        travaux afférents, incluant un renouvellement nécessaire à la continuité de
+                        service et un développement sur un périmètre d'exploitation plus élargi.&lt;/P&gt;
+                </epo:hasDescription>
+        <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;Concession de service public concernant l'exploitation du réseau public de
+                        chaleur de Nice Est&lt;/P&gt;
+                </epo:hasTitle>
+        <reg2015:applies>
+          <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#SelectionCriterionTechnical750ea917-4915-468e-b3b0-dc5ebb2d62fa">
+            <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/tp-abil"/>
+            <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Les informations et documents à remettre pour justifier de la capacité
+                        technique et professionnelle sont ceux listés dans le règlement de la
+                        consultation.&lt;/P&gt;
+                </epo:hasDescription>
+          </epo:SelectionCriterion>
+        </reg2015:applies>
+        <epo:hasEstimatedValue>
+          <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#Valuec8fa3119-568f-40b2-86dc-2f2467b47a27">
+            <epo:hasOverallAmount>
+              <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#Amount29559af1-e053-4f66-bccd-d697a9f38ddb">
+                <ccts:hasAmountValue>145000000</ccts:hasAmountValue>
+                <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+              </ccts:Amount>
+            </epo:hasOverallAmount>
+            <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+          </epo:Value>
+        </epo:hasEstimatedValue>
+      </reg2015:Procedure>
+    </reg2015:receivesRequestsToParticipate>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#OrganisationParticipation198a0fbd-a918-41df-9a3a-5717f585f9a0">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#LocationParticipationbcbbfb31-a073-47f6-9c01-8c4262825a9a">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-004-005806#AddressParticipation00673a1c-a4be-4bee-8dad-3983cd6ba1c1">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRL03"/>
+                <epo:hasPostalZone>06000</epo:hasPostalZone>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasStreetName xml:lang="fr">8 avenue Félix Faure (6e étage)</epo:hasStreetName>
+                <epo:hasCityName xml:lang="fr">Nice</epo:hasCityName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Métropole Nice Côte d'Azur — mission DSP UVE/RCU</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-004-005806#Procedure52c60d65-301c-4b52-a6ba-a1b2054b51ef"/>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

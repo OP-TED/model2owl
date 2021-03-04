@@ -1,0 +1,72 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434136#ProcedureExtd35c850c-532d-4e32-8ebb-ecab4a4eccff">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434136#Buyerd53c3209-785f-4d98-9f1f-29c80f988f00">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434136#Organisationb299d218-d8b4-42e4-914e-fe9c6c1030ac">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434136#Locationa999fe35-1805-42fa-8657-0510f2b04696">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434136#Address4a05736d-232d-4b4e-bc42-fdc6dd603bff">
+                    <epo:hasStreetName xml:lang="it">Via Luigi Sacco 5</epo:hasStreetName>
+                    <epo:hasPostalZone>21100</epo:hasPostalZone>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                    <epo:hasCityName xml:lang="it">Varese</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ITC41"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="it">Comune di Varese</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434136#ProcedureExtd35c850c-532d-4e32-8ebb-ecab4a4eccff"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434136#BuyerProfiled79a49fc-f7fe-4f4c-942c-9741f02e9ae1">
+            <epo:hasURL>http://www.comune.varese.it/bandi-di-gara-ar</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434136#ContactPoint3b7f0688-4d6f-4130-a91b-d61f3bee5a88">
+            <epo:hasTelephone>+39 332255455</epo:hasTelephone>
+            <epo:hasFax>+39 332255310</epo:hasFax>
+            <epo:hasInternetAddress>www.comune.varese.it</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="it">Area III Risorse Finanziarie</epo:hasDescription>
+            <epo:hasEmail>teresa.bonelli@comune.varese.it</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434136#ProcedureExtd35c850c-532d-4e32-8ebb-ecab4a4eccff"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434136#SubmisisonTerms64a014a2-1045-4977-a8a9-aba41b7ac0b9">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434136#ChannelSubmissionaae8514c-81aa-4faf-8d6f-a6d13c7f8441">
+            <epo:hasURL>http://www.arca.regione.lombardia.it</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434136#AccessTermsFulle78c913b-a041-4821-a7df-3e40cd2347a0">
+        <epo:hasProcurementDocumentLandingPage>http://www.comune.varese.it/bandi-di-gara-ar</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

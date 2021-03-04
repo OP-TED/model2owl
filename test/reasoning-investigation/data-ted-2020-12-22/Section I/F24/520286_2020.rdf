@@ -1,0 +1,78 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520286#ProcedureExt488b0d0a-e1b7-4efb-bfd1-12568b7699aa">
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520286#AccessTermsFull0c0626b2-cd8f-464f-9087-489f4e4cb3e9">
+        <epo:hasProcurementDocumentLandingPage>http://www.xmarches.fr</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520286#SubmisisonTerms00736d8c-ee86-4bb6-8d0d-1efa1291aa87">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520286#ChannelSubmission0b2249af-c93d-4673-99ee-8e564d2400bf">
+            <epo:hasURL>http://www.xmarches.fr</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520286#Buyerca2fc293-c9d6-4dbd-9759-befac899a349">
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2020/s-212-520286#ProcedureExt488b0d0a-e1b7-4efb-bfd1-12568b7699aa"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2020/s-212-520286#ProcedureExt488b0d0a-e1b7-4efb-bfd1-12568b7699aa"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520286#BuyerProfile0affc3e6-ba48-4462-b3d0-193b06534087">
+            <epo:hasURL>www.xmarches.fr</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-212-520286#ProcedureExt488b0d0a-e1b7-4efb-bfd1-12568b7699aa"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520286#Organisation5128d52e-ce68-46a8-ad35-f0b473b2f74b">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520286#Location00389962-d0e6-4afa-ab81-4d50af343dbb">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520286#Addresse63ae673-48ff-4ba6-8ddf-cbe724676560">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRF34"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasCityName xml:lang="fr">Épinal</epo:hasCityName>
+                    <epo:hasPostalZone>88000</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="fr">9 rue du Général Leclcerc</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520286#OrganisationId0f1d54a0-da48-4447-9215-a40d578fefba">
+                <epo:identifierValue>21880160300018</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="fr">Commune d'Épinal</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-212-520286#ContactPointb444ea3e-f708-4a85-88ee-b3ab0f5bdfcc">
+            <epo:hasEmail>christophe.varvois@epinal.fr</epo:hasEmail>
+            <epo:hasInternetAddress>www.agglo-epinal.fr</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="fr">Direction urbanisme et patrimoine</epo:hasDescription>
+            <epo:hasTelephone>+33 329685000</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-212-520286#ProcedureExt488b0d0a-e1b7-4efb-bfd1-12568b7699aa"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

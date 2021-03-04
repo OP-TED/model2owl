@@ -1,0 +1,70 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000928#ProcedureExtcfe3a800-da94-4bcb-b234-b8ca8ad5e171">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000928#Buyerc369e652-2001-41b6-b13d-a5480dfec4fe">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000928#ProcedureExtcfe3a800-da94-4bcb-b234-b8ca8ad5e171"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/port"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000928#BuyerProfile220116de-0545-4b98-ae77-5d831f236d86">
+            <epo:hasURL>https://contrataciondelestado.es/wps/poc?uri=deeplink:perfilContratante&amp;idBp=XekKB5Q8becQK2TEfXGy%2BA%3D%3D</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000928#ProcedureExtcfe3a800-da94-4bcb-b234-b8ca8ad5e171"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000928#ProcedureExtcfe3a800-da94-4bcb-b234-b8ca8ad5e171"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000928#Organisation7b266ed1-84dd-490c-80ad-cad4357daee5">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000928#Location8aae2448-0c1a-440c-af00-134f7a8cf2cb">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000928#Addressfc9b0f49-0b94-4aee-af19-552e2329e391">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ES111"/>
+                    <epo:hasPostalZone>15001</epo:hasPostalZone>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ESP"/>
+                    <epo:hasStreetName xml:lang="es">Avenida de la Marina, 3</epo:hasStreetName>
+                    <epo:hasCityName xml:lang="es">A Coruña</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000928#OrganisationId6e272bba-015a-4128-b2a8-47328345e61f">
+                <epo:identifierValue>Q1567003G</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="es">Presidencia de la Autoridad Portuaria de A Coruña</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000928#ProcedureExtcfe3a800-da94-4bcb-b234-b8ca8ad5e171"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000928#ContactPoint82298743-2361-458f-b034-62f4af8bfa15">
+            <epo:hasTelephone>+34 981219621</epo:hasTelephone>
+            <epo:hasInternetAddress>http://www.puertocoruna.com</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="es">Presidencia de la Autoridad Portuaria de A Coruña</epo:hasDescription>
+            <epo:hasEmail>contratacion@puertocoruna.com</epo:hasEmail>
+            <epo:hasFax>+34 981219607</epo:hasFax>
+          </epo:ContactPoint>
+        </epo:has>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000928#AccessTermsFull6c471aae-2555-4be1-9972-2aff56c00f16">
+        <epo:hasProcurementDocumentLandingPage>https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&amp;idEvl=wUCuQ03DvZxvYnTkQN0%2FZA%3D%3D</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

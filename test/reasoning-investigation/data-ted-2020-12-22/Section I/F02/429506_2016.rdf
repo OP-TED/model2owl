@@ -1,0 +1,64 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429506#ProcedureExtd978b747-c8cb-457f-88c2-2d241fd293f3">
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429506#AccessTermsFulle1449db3-5f5d-4a2b-a0f2-4dd3873b07f3">
+        <epo:hasProcurementDocumentLandingPage>https://www.egordion.cz/nabidkaGORDION/profilPisek</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429506#Buyerbf80e5f9-2cd0-4d4c-9a01-1c398619e0be">
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429506#ProcedureExtd978b747-c8cb-457f-88c2-2d241fd293f3"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429506#Organisationa9b3e8d9-4fb1-4815-afcd-fe719bfca3e4">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429506#Location85b37d17-46d2-410d-81f2-a16a0ccc1209">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429506#Addressdc933b71-62c1-4a83-99a5-c6c1748f878c">
+                    <epo:hasStreetName xml:lang="cs">Velké náměstí 114/3</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ031"/>
+                    <epo:hasPostalZone>397 19</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="cs">Písek</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CZE"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429506#OrganisationIdf4cbdd11-c195-439c-b835-ca554e18c1ff">
+                <epo:identifierValue>00249998</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="cs">Město Písek</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429506#ProcedureExtd978b747-c8cb-457f-88c2-2d241fd293f3"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429506#ContactPointe266b737-b1f1-473e-a044-581798064e86">
+            <epo:hasEmail>m.silhanek@pmadvisory.cz</epo:hasEmail>
+            <epo:hasDescription xml:lang="cs">JUDr. Michal Šilhánek</epo:hasDescription>
+            <epo:hasInternetAddress>http://www.mesto-pisek.cz/</epo:hasInternetAddress>
+            <epo:hasTelephone>+420 602162198</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429506#ProcedureExtd978b747-c8cb-457f-88c2-2d241fd293f3"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429506#ProcedureExtd978b747-c8cb-457f-88c2-2d241fd293f3"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

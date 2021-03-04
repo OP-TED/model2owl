@@ -1,0 +1,57 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#ProcedureExt47cde8ad-cdea-410a-b1a7-3746010ae3ce">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#Buyerc2dccda9-5fcd-4a84-9c3d-81a5bf0bdf1e">
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#BuyerProfilea55b3484-d214-4b2b-80d8-4deb2598fcc8">
+            <epo:hasURL>www.sachsen-vergabe.de</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#ContactPoint369dec48-eff6-41b1-81c9-05167d2a9f51">
+            <epo:hasEmail>bieteranfragen.d1@sib.smf.sachsen.de</epo:hasEmail>
+            <epo:hasFax>+49 351-8093-104</epo:hasFax>
+            <epo:hasTelephone>+49 351-8093-0</epo:hasTelephone>
+            <epo:hasInternetAddress>www.sib.sachsen.de</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429533#ProcedureExt47cde8ad-cdea-410a-b1a7-3746010ae3ce"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#Organisation911de889-54e8-4c73-8f53-6658227b6b3e">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#Location870344a5-8241-4b29-ac14-b08d5eacd433">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429533#Addresse9369bff-3d23-4673-ab0a-021ae1592fb2">
+                    <epo:hasStreetName xml:lang="de">Königsbrücker Straße 80</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DED"/>
+                    <epo:hasCityName xml:lang="de">Dresden</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                    <epo:hasPostalZone>01099</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Staatsbetrieb Sächsisches Immobilien- und Baumanagement,
+                        Niederlassung Dresden 1</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/econ-aff"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

@@ -1,0 +1,52 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000295#Buyer450bcaf9-ca5b-4520-9783-996b6ab72728">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000295#ContactPoint54500d15-de29-4357-b9d7-f9100401ce70">
+        <epo:hasInternetAddress>http://umed.pl</epo:hasInternetAddress>
+        <epo:hasDescription xml:lang="pl">Uniwersytet Medyczny w łodzi, Biuro Obsługi i Realizacji Zamówień
+                        Publicznych, III piętro, pok. 22</epo:hasDescription>
+        <epo:hasEmail>edyta.wysokinska@umed.lodz.pl</epo:hasEmail>
+        <epo:hasTelephone>+42 2725934</epo:hasTelephone>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000295#ProcedureExtddeadae7-7a67-4941-80d8-45c2cdb98e7a">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000295#Buyer450bcaf9-ca5b-4520-9783-996b6ab72728"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000295#Organisation4602e3fa-035f-48bc-aabf-0252bfbb393e">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000295#Location991a60ee-1946-4c09-b302-0fb24c2fa169">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000295#Address4762ba74-f3ac-4326-afea-4dc39a6da712">
+                <epo:hasPostalZone>90-419</epo:hasPostalZone>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                <epo:hasCityName xml:lang="pl">Łódź</epo:hasCityName>
+                <epo:hasStreetName xml:lang="pl">al. Kościuszki 4</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL711"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="pl">Uniwersytet Medyczny w Łodzi</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/education"/>
+    <epo:hasBuyerLegalTypeDescription xml:lang="pl">uczelnia państwowa</epo:hasBuyerLegalTypeDescription>
+  </epo:Buyer>
+</rdf:RDF>

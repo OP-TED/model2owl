@@ -1,0 +1,123 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-205-371441#Proceduree7c3ba62-0559-4225-b273-5c1f63af1389">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#Buyerf40a62ce-79f0-462d-aa9f-84493aaf9673">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-205-371441#Proceduree7c3ba62-0559-4225-b273-5c1f63af1389"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#ContactPoint60ac6e2e-30d9-42c0-9bfe-0d3c54a24d67">
+            <epo:hasDescription xml:lang="fr">M. le maire</epo:hasDescription>
+            <epo:hasEmail>mairie.landean@wanadoo.fr</epo:hasEmail>
+            <epo:hasFax>+33 299972476</epo:hasFax>
+            <epo:hasTelephone>+33 299973526</epo:hasTelephone>
+            <epo:hasInternetAddress>http://www.centraledesmarches.com</epo:hasInternetAddress>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#Organisation11fbbd47-718c-4d97-8d10-75c600cdb542">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#Locationdf4a8ae5-2851-4580-8844-ac1132793a04">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#Addressceff7d82-9856-4a1e-b585-7b64f4ec4c04">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR523"/>
+                    <epo:hasPostalZone>72110</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="fr">Mairie — 6 rue Victor Hugo</epo:hasStreetName>
+                    <epo:hasCityName xml:lang="fr">Landéan</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Commune de Landéan</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/env-pro"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#SubmissionTerm18736be7-4416-4656-aa1a-37a04e655123"/>
+    </reg2015:applies>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#Lote98817e8-9ac0-4331-a4d6-9e11b6c6dfba">
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#PeriodDuration68ff0c62-7d66-46c1-9fcc-2d24149ff6b5"/>
+        </epo:hasContractDuration>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#ContractTermLot66b1766c-a3f1-4aac-b411-48122b977e34">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#ObjectContractAddressd0bb1851-59ce-4161-8a80-a8a41c9735ed">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR523"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="fr"
+            >
+                        &lt;P&gt;Commune de Landéan.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-205-371441#Proceduree7c3ba62-0559-4225-b273-5c1f63af1389"/>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;Les caractéristiques principales de la concession sont:&lt;/P&gt;
+                        &lt;P&gt;— 295 abonnés,&lt;/P&gt;
+                        &lt;P&gt;— 18 585 m&lt;FT TYPE="SUP"&gt;3&lt;/FT&gt; de volume pour l'assiette de
+                            redevance,&lt;/P&gt;
+                        &lt;P&gt;— Le réseau d'eaux usées en gravitaire a une longueur de 4 906 ml,&lt;/P&gt;
+                        &lt;P&gt;— Le nombre de poste de relèvement est de 1,&lt;/P&gt;
+                        &lt;P&gt;— La capacité de la station d'épuration de type boues activées est de 1
+                            200 EH.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+    <epo:hasID>
+      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#ProcedureIdf5c04164-2ef3-442f-90c8-c68409739aac">
+        <epo:identifierValue>NTE 2493</epo:identifierValue>
+      </epo:Identifier>
+    </epo:hasID>
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#ValueTotaldfc411ef-b6dc-47ab-9c6a-436b5421d906">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#AmountTotal00983dbd-39a3-4743-8fe0-cf5beda0ea96">
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+            <ccts:hasAmountValue>48937.00</ccts:hasAmountValue>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-205-371441#Purpose9d86d44f-cd02-409f-8dfa-a1162c2e32bc">
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/90420000"/>
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Les caractéristiques principales de la concession sont:&lt;/P&gt;
+                    &lt;P&gt;— 295 abonnés,&lt;/P&gt;
+                    &lt;P&gt;— 18 585 m&lt;FT TYPE="SUP"&gt;3&lt;/FT&gt; de volume pour l'assiette de redevance,&lt;/P&gt;
+                    &lt;P&gt;— le réseau d'eaux usées en gravitaire a une longueur de 4 906 ml,&lt;/P&gt;
+                    &lt;P&gt;— le nombre de poste de relèvement est de 1,&lt;/P&gt;
+                    &lt;P&gt;— la capacité de la station d'épuration de type boues activées est de 1 200
+                        EH.&lt;/P&gt;
+                </epo:hasDescription>
+    <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;La présente consultation concerne la gestion du service public
+                        d'assainissement collectif de la ville de Landéan («l'autorité concédante»).
+                        Cette concession de services concerne l'ensemble du service.&lt;/P&gt;
+                </epo:hasTitle>
+  </reg2015:Procedure>
+</rdf:RDF>

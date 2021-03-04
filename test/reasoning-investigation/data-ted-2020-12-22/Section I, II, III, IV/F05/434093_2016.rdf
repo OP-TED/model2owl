@@ -1,0 +1,376 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#AwardCriterionQualityd92f92b4-cd0d-4b13-8cb0-896e44cbba3f">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#Lotf7ffd744-27fc-48d1-a3c6-196d17222350">
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#PeriodDuration6134453e-5ea6-4629-acc4-35c3a51fbcab">
+            <epo:hasDurationMeasure>
+              <ccts:Measure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#Measure729d8d29-8912-4268-bdbf-63f911e9ec5b">
+                <ccts:hasMeasureValue>6</ccts:hasMeasureValue>
+                <ccts:hasUnitCode rdf:resource="http://publications.europa.eu/resource/authority/timeperiod/MONTH"/>
+              </ccts:Measure>
+            </epo:hasDurationMeasure>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#ContractTermLotbdd4789f-dd78-4f01-bbd8-6feae5723c76">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#ObjectContractAddress4d198d4a-1c84-49a1-bf87-3f73438c2005">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="de"
+            >
+                        &lt;P&gt;Sachsen-Anhalt, Sachsen, Thüringen und Bayern.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+            <epo:hasRenewalIndicator>false</epo:hasRenewalIndicator>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#PurposeAdditional8b6d28f0-7e47-497f-8870-59ce6a280e92">
+            <epo:hasOptionsDescription xml:lang="de">
+                        &lt;P&gt;Unterstützungsleistungen für das in der Bundesfachplanung befindliche
+                            BBP-Vorhaben Nr. 5.&lt;/P&gt;
+                    </epo:hasOptionsDescription>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/71356400"/>
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-238-434093#Procedured1291c81-044b-4b63-9f7a-c440759ce6ac">
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434093#Lotf7ffd744-27fc-48d1-a3c6-196d17222350"/>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#SubmissionTermead3f831-eb38-44b8-ac06-54fc9de7983c">
+                <epo:hasValidityPeriod rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434093#Measure729d8d29-8912-4268-bdbf-63f911e9ec5b"/>
+                <epo:hasReceiptDeadline>2017-01-13</epo:hasReceiptDeadline>
+                <epo:hasLanguage rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+              </epo:SubmissionTerm>
+            </reg2015:applies>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#Buyer5e15c5dc-a060-4c65-918a-c7fafaf25121">
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#ContactPointParticipation6829643d-e2aa-430c-a337-31cab854e97c">
+                    <epo:hasInternetAddress>http://www.tennet.eu/de/</epo:hasInternetAddress>
+                    <epo:hasEmail>elisabeth.roth@tennet.eu</epo:hasEmail>
+                    <epo:hasDescription xml:lang="de">Elisabeth Roth</epo:hasDescription>
+                    <epo:hasFax>+49 921507404452</epo:hasFax>
+                  </epo:ContactPoint>
+                </epo:has>
+                <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434093#Procedured1291c81-044b-4b63-9f7a-c440759ce6ac"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/electricity"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#Organisation9c5f9a4d-ef84-40b8-be5c-07cf88ee8a4c">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#Locationafa25bae-eb59-45b8-a5b7-c1d45bf26dcb">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#Addressa40be877-ac64-4137-aa89-38e9eb4f5911">
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE"/>
+                            <epo:hasCityName xml:lang="de">Bayreuth</epo:hasCityName>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                            <epo:hasPostalZone>95448</epo:hasPostalZone>
+                            <epo:hasStreetName xml:lang="de">Bernecker Straße 70</epo:hasStreetName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="de">TenneT TSO GmbH</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#OrganisationParticipationd84d5549-a95b-4c64-a9c9-f3b59826c69f">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#LocationParticipation6bc72c3e-15b9-4681-89ac-a614c0d03cd4">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#AddressParticipation6c504594-3aee-4215-b865-ce2dc114d441">
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE"/>
+                            <epo:hasCityName xml:lang="de">Bayreuth</epo:hasCityName>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                            <epo:hasPostalZone>95448</epo:hasPostalZone>
+                            <epo:hasStreetName xml:lang="de">Bernecker Straße 70</epo:hasStreetName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="de">TenneT TSO GmbH</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:hasContractingEntity>true</epo:hasContractingEntity>
+                <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434093#Procedured1291c81-044b-4b63-9f7a-c440759ce6ac"/>
+                <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434093#Procedured1291c81-044b-4b63-9f7a-c440759ce6ac"/>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434093#Procedured1291c81-044b-4b63-9f7a-c440759ce6ac"/>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#ContactPointe026da8e-2605-4d51-812f-ace451a8c19f">
+                    <epo:hasInternetAddress>http://www.tennet.eu/de/home.html</epo:hasInternetAddress>
+                    <epo:hasEmail>elisabeth.roth@tennet.eu</epo:hasEmail>
+                    <epo:hasDescription xml:lang="de">TenneT TSO GmbH</epo:hasDescription>
+                    <epo:hasFax>+49 921507404452</epo:hasFax>
+                  </epo:ContactPoint>
+                </epo:has>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Umweltplanungs- sowie technische Planungsleistungen inkl. begleitende
+                        Projektmanagementleistungen und Planungskoordinationsleistungen im Rahmen
+                        des Bundesfachplanungsverfahrens bis zur Vorlage der Entscheidung der BNetzA
+                        nach § 12 NABEG für die HGÜ-Verbindung zwischen Wolmirstedt und Isar
+                        (BBPlG-Vorhaben Nr. 5), Teilabschnitt 1 NVP Wolmirstedt bis zur Landesgrenze
+                        Thüringen/Bayern (Regelzone 50Hertz Transmission GmbH) und Teilabschnitt 2
+                        zwischen der Landesgrenze Thüringen/Bayern bis zum NVP Isar (Regelzone
+                        TenneT TSO GmbH).&lt;/P&gt;
+                    &lt;P&gt;Das BBPlG-Vorhaben wird von der TenneT TSO GmbH zusammen mit der 50Hertz
+                        Transmission GmbH geplant und wird im Projektbezug mit dem Projektnamen „
+                        SuedOstLink“ bezeichnet.&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:hasTitle xml:lang="de">
+                    &lt;P&gt;Umweltplanungs- sowie technische Planungsleistungen inkl.
+                        Planungskoordinationsleistungen (inkl. Projektmanagement) im Rahmen des
+                        Bundesfachplanungsverfahrens für das Projekt SuedOstLink.&lt;/P&gt;
+                </epo:hasTitle>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#SelectionCriterionEconomic899808a9-79b6-4aa1-979b-ce8b4e41d02c">
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/ef-stand"/>
+                <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Angaben und Formalitäten, die erforderlich sind, um die Einhaltung der
+                        Auflagen zu überprüfen: Der Nachweis ist durch die Vorlage folgender
+                        Dokumente zu erbringen:&lt;/P&gt;
+                    &lt;P&gt;— Angabe der Gesamtumsätze sowie der Umsätze mit vergleichbaren Leistungen in
+                        den letzten 3 Jahren abgeschlossenen Geschäftsjahren (im Anschreiben
+                        anzugeben),&lt;/P&gt;
+                    &lt;P&gt;— Aktuelle Hausbankauskunft (nicht älter als 2 Monate).&lt;/P&gt;
+                    &lt;P&gt;Sämtliche Nachweise nach dieser Ziffer III.1.2) sind Mindestbedingungen.&lt;/P&gt;
+                </epo:hasDescription>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <reg2015:hasJointProcurement>true</reg2015:hasJointProcurement>
+            <reg2015:hasGPAUsage>false</reg2015:hasGPAUsage>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#Purposeb63bc208-1998-4f13-9a82-0a4998a7d7bf">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/71000000"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#SelectionCriterionTechnical4233d080-25f5-4d80-9f8f-76465238b137">
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/tp-abil"/>
+                <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Angaben und Formalitäten, die erforderlich sind, um die Einhaltung der
+                        Auflagen zu überprüfen: Umweltfachliche Planungsleistungen:&lt;/P&gt;
+                    &lt;P&gt;— Referenzen zu Umweltplanungsleistungen für die Erstellung von
+                        Antragsunterlagen in Bundesfachplanungs-, Raumordnungs- oder
+                        Planfeststellungsverfahren für mind. 2 lineare Infrastrukturprojekte (aus
+                        dem Bereich erdverlegte Leitungen, Erdkabel, Pipelines oder
+                        Bundesfernstraßen) mit einer Mindestlänge von jeweils 50 km in den letzten 7
+                        Jahren mit Ansprechpartner und Telefonnummer;&lt;/P&gt;
+                    &lt;P&gt;— Nachweis von einschlägigen Erfahrungen in der Anwendung Geographischer
+                        Informationssysteme (GIS) und vom Auftraggeber nutzbaren
+                        GIS-Plattformen;&lt;/P&gt;
+                    &lt;P&gt;— Nachweis von Erfahrungen im Bereich Äußerungs- und Einwendungsmanagement
+                        bei Infrastrukturvorhaben;&lt;/P&gt;
+                    &lt;P&gt;— Nachweis von Erfahrungen im Bereich der Methodenentwicklung für
+                        umweltfachliche Fragestellungen, insbesondere bei Infrastrukturvorhaben;&lt;/P&gt;
+                    &lt;P&gt;— eine Mitarbeiteranzahl von mind. 50 Mitarbeitern (FTE = Full-Time
+                        Equivalents);&lt;/P&gt;
+                    &lt;P&gt;— Leistungen bzgl. Eines GIS-Systems: Nachweis über die
+                        Bereitstellungsmöglichkeit einer GIS-Infrastruktur sowie von GIS-Modulen zum
+                        projektbezogenen Einsatz für mind. 3 Infrastrukturprojekte (insbes. aus dem
+                        Bereich erdverlegte Leitungen, Erdkabel oder Pipelines) in den letzten 7
+                        Jahren.&lt;/P&gt;
+                    &lt;P&gt;Technische Planungsleistungen:&lt;/P&gt;
+                    &lt;P&gt;— Referenzen zu technischen Planungsleistungen für mind. 2 lineare
+                        Infrastrukturprojekte (aus dem Bereich erdverlegte Leitungen, Erdkabel,
+                        Pipelines oder Bundesfernstraßen) mit einer Mindestlänge von jeweils 50 km
+                        in den letzten 7 Jahren mit Ansprechpartner und Telefonnummer;&lt;/P&gt;
+                    &lt;P&gt;— Referenzen zu technischen Planungsleistungen für mind. 1 Projekt aus dem
+                        Bereich Freileitungstrasse mit einer Mindestlänge von 50 km in den letzten 7
+                        Jahren mit Ansprechpartner und Telefonnummer;&lt;/P&gt;
+                    &lt;P&gt;— Erfahrungen in der Anwendung Geographischer Informationssysteme (GIS) und
+                        vom Auftraggeber nutzbaren GIS-Plattformen;&lt;/P&gt;
+                    &lt;P&gt;— eine Mitarbeiteranzahl von mind. 25 Mitarbeitern (FTE = Full-Time
+                        Equivalents).&lt;/P&gt;
+                    &lt;P&gt;Planungskoordinationsleistungen:&lt;/P&gt;
+                    &lt;P&gt;Die folgenden Referenzen sind durch den Bieter bzw. im Falle einer
+                        Bewerbergemeinschaft mind. durch das führende Mitglied der
+                        Bewerbergemeinschaft nachzuweisen:&lt;/P&gt;
+                    &lt;P&gt;— Referenzen zu Planungskoordinationsleistungen (Leistungen wie
+                        (Teil)-Projektleitung, Terminplanung, -steuerung, Kostencontrolling,
+                        Schnittstellenmanagement, Berichts- und Dokumentationswesen,
+                        Risikomanagement etc.) von mind. 5 Infrastrukturprojekten mit einem Volumen
+                        von jeweils mind. 100 000 000 EUR (Klarstellung: hiermit ist das
+                        Gesamtvolumen des betreffenden Projektes gemeint) in den letzten 7 Jahren;
+                        hiervon mind. 1 Projekt aus dem Bereich erdverlegte Leitungen, Erdkabel oder
+                        Pipelines; es muss nachgewiesen werden, dass der Bieter hierbei die
+                        Federführung bei der Erbringung von Projektmanagementleistungen inne
+                        hatte;&lt;/P&gt;
+                    &lt;P&gt;— eine Mitarbeiteranzahl von mind. 100 Mitarbeitern (FTE = Full-Time
+                        Equivalents);&lt;/P&gt;
+                    &lt;P&gt;— ein zertifiziertesQualitätsmanagementsystem EN DIN ISO9001 oder
+                        vergleichbar.&lt;/P&gt;
+                    &lt;P&gt;Sämtliche Nachweise nach dieser Ziffer III.1.3) sind Mindestbedingungen.&lt;/P&gt;
+                </epo:hasDescription>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#SelectionCriterionSuitability555b8f52-03cd-43c6-9820-066dce40d12f">
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/sui-act"/>
+                <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Angaben und Formalitäten, die erforderlich sind, um die Einhaltung der
+                        Auflagen zu überprüfen: Der Nachweis ist durch die Vorlage folgender
+                        Dokumente zu erbringen:&lt;/P&gt;
+                    &lt;P&gt;— aktueller Handelsregisterauszug, zum Zeitpunkt des Ablaufs der
+                        Teilnahmefrist nicht älter als 3 Monate;&lt;/P&gt;
+                    &lt;P&gt;— Auszug aus dem Gewerbezentralregister (zum Zeitpunkt der Einreichung nicht
+                        älter als 12 Monate);&lt;/P&gt;
+                    &lt;P&gt;— Unternehmensorganisation (insbesondere Standorte des Unternehmens,
+                        Eigentümerstruktur);&lt;/P&gt;
+                    &lt;P&gt;— Mitgliedsbescheinigung einer Berufsgenossenschaft oder einer vergleichbaren
+                        Vereinigung (nicht älter als 6 Monate bezogen auf das Datum des
+                        Abgabetermins des Teilnahmeantrages);&lt;/P&gt;
+                    &lt;P&gt;— bestehende Betriebshaftpflichtversicherung mit einer Mindestdeckungssumme
+                        i. H. v. 3 000 000 EUR jeweils für Sach- und Vermögensschäden, 2fach
+                        maximiert (Bestätigung ist vorzulegen) ersatzweise (vom Bewerber zu
+                        begründen) eine Bescheinigung einer Versicherung, dass ein derartiger
+                        Versicherungsschutz im Auftragsfall für den Bewerber bestehen wird;&lt;/P&gt;
+                    &lt;P&gt;— Eigenerklärung, dass Ausschlussgründe gemäß §§ 123, 124 GWB nicht
+                        vorliegen&lt;/P&gt;
+                    &lt;P&gt;Sämtliche Nachweise nach dieser Ziffer III.1.1) sind Mindestbedingungen.&lt;/P&gt;
+                </epo:hasDescription>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <reg2015:hasPerformingStaffQualificationInformation
+            >true</reg2015:hasPerformingStaffQualificationInformation>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#BuyerAdd0e9f4c35-49ee-4d5a-84e5-e302b780d6ae">
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#OrganisationAdde00395a3-3300-4d06-9fe4-e67fc4b8a52e">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#LocationAddc670592c-cf59-4a2a-9963-de931bd497a7">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#AddressAdd42d9503c-fc1f-479f-8e07-b0001c6708b8">
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE"/>
+                            <epo:hasCityName xml:lang="de">Berlin</epo:hasCityName>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                            <epo:hasPostalZone>10557</epo:hasPostalZone>
+                            <epo:hasStreetName xml:lang="de">Heidestraße 2</epo:hasStreetName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="de">50Hertz Transmission GmbH</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434093#Procedured1291c81-044b-4b63-9f7a-c440759ce6ac"/>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#ContactPointAdd443bf422-87da-40a4-974a-b0d2ed1be64b">
+                    <epo:hasInternetAddress>www.50hertz.com</epo:hasInternetAddress>
+                    <epo:hasEmail>christian.wild@50hertz.com</epo:hasEmail>
+                    <epo:hasDescription xml:lang="de">50Hertz Transmission GmbH</epo:hasDescription>
+                    <epo:hasFax>+49 3051502616</epo:hasFax>
+                  </epo:ContactPoint>
+                </epo:has>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call"/>
+            <epo:uses>
+              <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#AccessTermsFull58bb2e55-4a25-4c3e-94b0-78613fb379b4">
+                <epo:hasProcurementDocumentLandingPage>http://ausschreibung.tennet.eu/</epo:hasProcurementDocumentLandingPage>
+              </epo:AccessTerm>
+            </epo:uses>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasDescription xml:lang="de">
+                        &lt;P&gt;Die Leistungen im Rahmen der Leistungserbringung beziehen sich auf die
+                            Bearbeitung des BBPlG-Vorhaben Nr. 5 Teilabschnitt 1 NVP Wolmirstedt bis
+                            zur Landesgrenze Thüringen/Bayern (Regelzone 50Hertz) und Teilabschnitt
+                            2 zwischen der Landesgrenze Thüringen/Bayern und dem NVP Isar (Regelzone
+                            TenneT), insgesamt ca. 415 km Luftlinie. Hinzu kommen zu betrachtende
+                            Alternativen/Varianten, die Bearbeitung der speziellen Fragestellungen
+                            im Bereich der Gewässerquerungen (u.a. Mittellandkanal, Saale, Donau),
+                            mögliche Wechselwirkungen mit dem BBPlG-Vorhaben Nr. 18 Redwitz –
+                            Mechlenreuth – Etzenricht – Schwandorf (Ostbayernring), sowie
+                            Fragestellungen im Bereich der beiden Standorte für die geplanten
+                            Konverteranlagen. Das Gesamtvorhaben kann in Abschnitte mit
+                            eigenständigen Bundesfachplanungsverfahren unterteilt werden. Länge und
+                            Zahl der möglichen Abschnitte sind noch offen.&lt;/P&gt;
+                        &lt;P&gt;Die geforderten Leistungen sind bis zum Abschluss des
+                            Bundesfachplanungsverfahrens mit Vorlage der Entscheidung nach § 12
+                            NABEG zu erbringen und gliedern sich insbesondere in nachfolgende Haupt-
+                            und Nebenleistungen.&lt;/P&gt;
+                        &lt;P&gt;Hauptleistungen:&lt;/P&gt;
+                        &lt;P&gt;— Leistungen im Bereich der Planungskoordination,&lt;/P&gt;
+                        &lt;P&gt;— Teilnahme an den Antragskonferenzen,&lt;/P&gt;
+                        &lt;P&gt;— Erstellung der erforderlichen Unterlagen nach § 8 NABEG
+                            (Umweltplanungsleistungen sowie bautechnische Planungsleistungen inkl.
+                            ggf. Absicherung der Planungsergebnisse durch Überprüfung im
+                            Gelände),&lt;/P&gt;
+                        &lt;P&gt;— Teilnahme und Unterstützung bei den Erörterungsterminen, sofern es
+                            Inhalte betrifft, die im Rahmen der Hauptleistungen erbracht werden,&lt;/P&gt;
+                        &lt;P&gt;— Fachliche Bearbeitung von Äußerungen (im Vorfeld und parallel zu den
+                            Verfahren ) / fachliche Zuarbeit für die Erstellung von Unterlagen für
+                            die Öffentlichkeit sowie Unterstützung bei der Vermittlung von
+                            planerischen Inhalten im Rahmen der Projektkommunikation
+                            (Stakeholderintegration, z. B. im Rahmen von Infomärkten,
+                            Fachdialogen),&lt;/P&gt;
+                        &lt;P&gt;— Unterstützung bei der Einwendungsbearbeitung für das
+                            Bundesfachplanungsvorhaben,&lt;/P&gt;
+                        &lt;P&gt;— Unterstützung bei der Methodenabstimmung für die Bundesfachplanung,&lt;/P&gt;
+                        &lt;P&gt;— Technische Beratung zur Trassierung, Bautechnik, Verlegung von
+                            Erdkabeln, Standortbestimmung für die Konverter, sowie ggf. zu
+                            Freileitungen.&lt;/P&gt;
+                        &lt;P&gt;Nebenleistungen:&lt;/P&gt;
+                        &lt;P&gt;— Optionale Kartierungen zu Nutzungen, Biotoptypen, FFH-Lebensraumtypen
+                            und zur Fauna (Unterlagen nach § 8 NABEG) und vorbereitende Leistungen
+                            (faunistische Planungsraumanalysen),&lt;/P&gt;
+                        &lt;P&gt;— Leistungen der Kartenerstellung im Rahmen der Erstellung der Unterlagen
+                            nach § 8 NABEG,&lt;/P&gt;
+                        &lt;P&gt;— Vervielfältigung und Versand von (Antrags-)Unterlagen,&lt;/P&gt;
+                        &lt;P&gt;— Mitwirkung bei Antragskonferenzen und Erörterungsterminen, sofern es
+                            Inhalte betrifft, die im Rahmen von Nebenleistungen erbracht wurden,&lt;/P&gt;
+                        &lt;P&gt;— ggf. erforderlich werdende – derzeit aber noch nicht im Detail
+                            abschätzbare und über Leistungsverzeichnisse abbildbare –
+                            Sondergutachten zu während des Bundesfachplanungsverfahren aufgeworfenen
+                            Fragestellungen.&lt;/P&gt;
+                    </epo:hasDescription>
+        <epo:hasVariantPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasName>Qualitätsmanagement</epo:hasName>
+    <epo:hasFormula>10 %</epo:hasFormula>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#AwardCriterionQuality8a129e2f-b903-42ba-be32-5223f3b44f75">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434093#Lotf7ffd744-27fc-48d1-a3c6-196d17222350"/>
+    <epo:hasName>Vertrag und kommerzielle Bedingungen</epo:hasName>
+    <epo:hasFormula>15 %</epo:hasFormula>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#AwardCriterionQualityf64f92e2-1ae4-4d5c-b34f-ad8dd0949687">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434093#Lotf7ffd744-27fc-48d1-a3c6-196d17222350"/>
+    <epo:hasName>Technisches Konzept</epo:hasName>
+    <epo:hasFormula>25 %</epo:hasFormula>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#AwardCriterionPrice49e01649-44df-4846-b4b0-8dd1b47a4490">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434093#Lotf7ffd744-27fc-48d1-a3c6-196d17222350"/>
+    <epo:hasFormula>50 %</epo:hasFormula>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+  <epo:CentralPurchasingBody rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434093#CPB89d32aa5-87ae-4e43-8e64-f9aae113e9c8">
+    <reg2015:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434093#Procedured1291c81-044b-4b63-9f7a-c440759ce6ac"/>
+    <epo:hasCentralPurchasingBodyType rdf:resource="http://data.europa.eu/a4g/ontology#Cpb-awa"/>
+  </epo:CentralPurchasingBody>
+</rdf:RDF>

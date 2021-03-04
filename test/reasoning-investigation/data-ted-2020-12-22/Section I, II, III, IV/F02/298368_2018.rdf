@@ -1,0 +1,260 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#SelectionCriterionSuitability7186e992-9908-4ead-b48b-658c0502399b"/>
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#ProcurementServiceProviderf9ac835c-0b1a-4907-b493-9a249d47aa59">
+    <reg2015:providesAdditionalInformationAboutProcurementProcedure>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-131-298368#Procedure53a6e6b7-908e-491a-b9d4-afb3b7535496">
+        <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+        <epo:hasOverallPurpose>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Purpose2e00ee04-a65e-487d-9046-7a69d25f006d">
+            <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/42000000"/>
+            <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/supplies"/>
+          </epo:Purpose>
+        </epo:hasOverallPurpose>
+        <reg2015:hasCriteriaInProcurementDocument>
+          <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#SelectionCriterionEconomic8af4c296-f092-4827-9d9f-4ecb0c71dc8c">
+            <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/ef-stand"/>
+          </epo:SelectionCriterion>
+        </reg2015:hasCriteriaInProcurementDocument>
+        <reg2015:applies>
+          <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#SelectionCriterionTechnical20c0fa73-7c1d-427a-b320-f5856320851f">
+            <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/tp-abil"/>
+          </epo:SelectionCriterion>
+        </reg2015:applies>
+        <epo:hasTitle xml:lang="en">
+                    &lt;P&gt;UK SBS PR18111 — UKRI Air Cooled Water Chillers for STFC&lt;/P&gt;
+                </epo:hasTitle>
+        <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+        <epo:hasDescription xml:lang="en">
+                    &lt;P&gt;The Science and Technology Facilities Council (STFC), a component Research
+                        Council of UK Research and Innovation (UKRI) is carrying out a phased
+                        programme for the replacement of 3 existing Climaveneta TC/SRAT/LN-1202
+                        chillers. The programme will begin in 2018 and expect to be completed by
+                        2020. The anticipated phasing will be to purchase a single 350 kW chiller in
+                        2018 with two further chillers purchased before the end of the agreement
+                        period.&lt;/P&gt;
+                </epo:hasDescription>
+        <reg2015:applies>
+          <epo:OpeningTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#OpeningTermae61d876-42b6-4db2-8d5c-2294c60ad41a">
+            <epo:hasOpeningDateTime>2018-08-21+14:00</epo:hasOpeningDateTime>
+          </epo:OpeningTerm>
+        </reg2015:applies>
+        <epo:specifies>
+          <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Lot5659d543-0a5f-4c28-a401-2ea220e6b774">
+            <epo:hasEstimatedValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#ValueValObjectb4d7fed4-6a2b-4801-9c8f-4259ea6c8d51">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#AmountValObject55d93a83-95f7-4a88-b8c6-d9812fa954a2">
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/GBP"/>
+                    <ccts:hasAmountValue>260000.00</ccts:hasAmountValue>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasEstimatedValue>
+            <epo:hasContractDuration>
+              <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#PeriodDurationf8a539f2-40a5-44f1-826d-8b24e4f0ea5b">
+                <epo:hasDurationMeasure>
+                  <ccts:Measure rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Measure6583591a-c180-47b3-9ed1-7395a50415cd">
+                    <ccts:hasUnitCode rdf:resource="http://publications.europa.eu/resource/authority/timeperiod/MONTH"/>
+                    <ccts:hasMeasureValue>3</ccts:hasMeasureValue>
+                  </ccts:Measure>
+                </epo:hasDurationMeasure>
+              </epo:Period>
+            </epo:hasContractDuration>
+            <epo:has>
+              <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#ContractTermLot47a41249-8b38-4923-97a2-ba5e5029297a">
+                <epo:hasSpecificPlaceOfPerformance>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#ObjectContractAddress02cf6da3-5cca-4dcd-b64d-89c3571f2df8">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKJ14"/>
+                  </epo:Address>
+                </epo:hasSpecificPlaceOfPerformance>
+                <epo:hasRenewalIndicator>false</epo:hasRenewalIndicator>
+                <epo:hasPlaceOfPerformanceAdditionalInformation
+                 xml:lang="en">
+                        &lt;P&gt;Rutherford Appleton Laboratory, Harwell Oxford, OX11 0QX, United
+                            Kingdom.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+              </epo:ContractTerm>
+            </epo:has>
+            <epo:has>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#PurposeAdditionaldca040d5-9df1-499b-876f-977f0c859021">
+                <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+              </epo:Purpose>
+            </epo:has>
+            <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-131-298368#Procedure53a6e6b7-908e-491a-b9d4-afb3b7535496"/>
+            <epo:hasDescription xml:lang="en">
+                        &lt;P&gt;The Science and Technology Facilities Council (STFC), a component
+                            Research Council of UK Research and Innovation (UKRI), is a
+                            world-leading multi-disciplinary science organisation, whose goal is to
+                            deliver economic, societal, scientific and international benefits to the
+                            UK and its people — and more broadly to the world.&lt;/P&gt;
+                        &lt;P&gt;STFC are carrying out a phased programme for the replacement of 3
+                            existing Climaveneta TC/SRAT/LN-1202 chillers. The programme will begin
+                            in 2018 and expect to be completed by 2020. The anticipated phasing will
+                            be to purchase a single 350 kW chiller in 2018 with 2 further chillers
+                            purchased before the end of the agreement period.&lt;/P&gt;
+                        &lt;P&gt;The requirement is for the design, manufacture, testing, delivery and
+                            commissioning of up to 3 Nº air cooled water chillers to replace failing
+                            units located on the existing R5.1 platform. The assembly forms part of
+                            the ISIS Neutron Science Research facility at Rutherford Appleton
+                            Laboratory (RAL), Chilton, Oxfordshire, part of the Science and
+                            Technology Facilities Council (STFC).&lt;/P&gt;
+                        &lt;P&gt;To participate in this procurement, participants shall first be
+                            registered on the e-Sourcing Suite. If Bidders have not yet registered
+                            on the e-Sourcing Suite, this can be done online at:&lt;/P&gt;
+                        &lt;P&gt;https://gpsesourcing.cabinetoffice.gov.uk/emptoris by following the above
+                            link “Supplier e-Sourcing Registration”.&lt;/P&gt;
+                        &lt;P&gt;Please note that, to register, Bidders must have a valid DUNS number (as
+                            provided by Dun and Bradstreet) for the organisation which you are
+                            registering, who will be entering into a contract if&lt;/P&gt;
+                        &lt;P&gt;Invited to do so.&lt;/P&gt;
+                        &lt;P&gt;Note: registration may take some time please ensure that you allow a
+                            sufficient amount of time to register.&lt;/P&gt;
+                        &lt;P&gt;Full instructions for registration and use of the system can be found
+                            at&lt;/P&gt;
+                        &lt;P&gt;https://www.gov.uk/government/publications/esourcing-tool-guidance-for-suppliers&lt;/P&gt;
+                        &lt;P&gt;Once you have registered on the e-Sourcing Suite, a registered user can
+                            express an interest for a specific procurement. This is done by emailing
+                            ExpressionOfInterest@crowncommercial.gov.uk&lt;/P&gt;
+                        &lt;P&gt;— your email must clearly state: the name and reference for the
+                            procurement you wish to register for,&lt;/P&gt;
+                        &lt;P&gt;— your organisations full name as a registered supplier,&lt;/P&gt;
+                        &lt;P&gt;The name and contact details for the registered individual sending the
+                            email.&lt;/P&gt;
+                        &lt;P&gt;Crown Commercial Service (CCS) will process the email and then enable the
+                            Bidder to access the procurement online via the e-Sourcing Suite.&lt;/P&gt;
+                        &lt;P&gt;The registered user will receive a notification email to alert them once
+                            this has been done. As a user of the e-Sourcing Suite you will have
+                            access to Emptoris email messaging service which facilitates.&lt;/P&gt;
+                        &lt;P&gt;All messages sent to you and from you in relation to any specific RFX
+                            event.&lt;/P&gt;
+                        &lt;P&gt;Please note it is your responsibility to access these emails on a regular
+                            basis to ensure you have sight of all relevant information applicable to
+                            this opportunity.&lt;/P&gt;
+                        &lt;P&gt;For technical assistance on use of the e-Sourcing Suite please contact
+                            Crown Commercial Service (CCS) Helpdesk (Not UK SBS Ltd):&lt;/P&gt;
+                        &lt;P&gt;Email: eenablement@crowncommercial.gov.uk&lt;/P&gt;
+                        &lt;P&gt;Training support to respond to a requirement is available to bidders
+                            at:&lt;/P&gt;
+                        &lt;P&gt;http://www.uksbs.co.uk/services/procure/Pages/supplier.aspx&lt;/P&gt;
+                        &lt;P&gt;Responses must be received by the date in IV.2.2. Responses received
+                            outside or concurrently using the e-Sourcing process will not be
+                            accepted or considered further for this opportunity.&lt;/P&gt;
+                    </epo:hasDescription>
+            <epo:hasVariantPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Lot>
+        </epo:specifies>
+        <reg2015:hasCriteriaInProcurementDocument rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298368#SelectionCriterionTechnical20c0fa73-7c1d-427a-b320-f5856320851f"/>
+        <reg2015:applies>
+          <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#SubmissionTerme79b55a3-ccb1-408c-9d78-358956f28aab">
+            <epo:hasValidityPeriod rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298368#Measure6583591a-c180-47b3-9ed1-7395a50415cd"/>
+            <epo:hasSubmissionCommunicationMeans>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#ChannelSubmission8645cbd5-76de-4cad-a2c9-269b61e352b4">
+                <epo:hasURL>https://gpsesourcing.cabinetoffice.gov.uk/emptoris</epo:hasURL>
+              </epo:Channel>
+            </epo:hasSubmissionCommunicationMeans>
+            <epo:hasLanguage rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+            <epo:hasReceiptDeadline>2018-08-21+14:00</epo:hasReceiptDeadline>
+          </epo:SubmissionTerm>
+        </reg2015:applies>
+        <epo:hasEstimatedValue>
+          <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Valuecbd8514f-1975-4db2-af62-1f0dc0b2653f">
+            <epo:hasOverallAmount>
+              <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Amount79c7cea3-6164-4d9f-a276-a3c598b5898c">
+                <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/GBP"/>
+                <ccts:hasAmountValue>260000.00</ccts:hasAmountValue>
+              </ccts:Amount>
+            </epo:hasOverallAmount>
+            <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+          </epo:Value>
+        </epo:hasEstimatedValue>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Buyerab01945c-8ee3-4227-ab14-74ced68a15ab">
+            <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-131-298368#Procedure53a6e6b7-908e-491a-b9d4-afb3b7535496"/>
+            <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-131-298368#Procedure53a6e6b7-908e-491a-b9d4-afb3b7535496"/>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Organisationdcef422f-564f-4d02-b409-83265535db9d">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Location3e6dc9a9-fd74-4fed-84b2-e5d32043edb4">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Addressbed3d282-c01a-40f6-af64-e453dec8ae59">
+                        <epo:hasStreetName xml:lang="en">Polaris House</epo:hasStreetName>
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKK14"/>
+                        <epo:hasPostalZone>SN2 1SZ</epo:hasPostalZone>
+                        <epo:hasCityName xml:lang="en">Swindon</epo:hasCityName>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="en">UK Research And Innovation</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#ContactPoint2313bff7-d6d6-4a35-adb7-00562ddda106">
+                <epo:hasInternetAddress>https://www.stfc.ac.uk/</epo:hasInternetAddress>
+                <epo:hasEmail>majorprojects@uksbs.co.uk</epo:hasEmail>
+                <epo:hasDescription xml:lang="en">Jonathan Smith</epo:hasDescription>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-131-298368#Procedure53a6e6b7-908e-491a-b9d4-afb3b7535496"/>
+            <epo:hasActivityDescription xml:lang="en">Scientific Research and Innovation</epo:hasActivityDescription>
+            <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:applies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298368#SelectionCriterionEconomic8af4c296-f092-4827-9d9f-4ecb0c71dc8c"/>
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#ProcedureId5ea14ca0-b1de-42c2-a05d-1fe0fcc5d874">
+            <epo:identifierValue>UK SBS PR18111</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#AccessTermsRestraf6b51ec-28b5-4c30-b619-98dc8f8eebee">
+            <epo:hasRestrictedAccessAddress>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Channel6da7a9d7-460b-4b61-9bbb-881f2688dd24">
+                <epo:hasURL>https://gpsesourcing.cabinetoffice.gov.uk/emptoris</epo:hasURL>
+              </epo:Channel>
+            </epo:hasRestrictedAccessAddress>
+          </epo:AccessTerm>
+        </epo:uses>
+      </reg2015:Procedure>
+    </reg2015:providesAdditionalInformationAboutProcurementProcedure>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#OrganisationPSPa68f8d2c-f2da-416f-9c30-30928f56a8a2">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#LocationPSP19f5f837-d51d-444a-a940-61b4beffa3a3">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#AddressPSPcac37b47-28a1-4f50-b4c1-b1c7c8cdcfd0">
+                <epo:hasStreetName xml:lang="en">Polaris House, North Star Avenue</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKK14"/>
+                <epo:hasPostalZone>SN2 1FF</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="en">Swindon</epo:hasCityName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="en">UK Shared Business Services</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#ContactPointPSP91a3ff9a-2a4a-4975-ba8d-e5f31fcf148f">
+        <epo:hasInternetAddress>https://gpsesourcing.cabinetoffice.gov.uk/emptoris</epo:hasInternetAddress>
+        <epo:hasEmail>ExpressionOfInterest@crowncommercial.gov.uk</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

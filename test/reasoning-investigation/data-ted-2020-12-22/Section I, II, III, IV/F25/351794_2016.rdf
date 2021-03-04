@@ -1,0 +1,160 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-195-351794#Procedure514e8e4b-16f4-4d1f-9c7c-2e38db4da28c">
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#ContractNotice44e91527-3ce5-46cf-894d-0be7a621a371">
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#PreviousNotice0d4f87e6-4261-48d6-a436-9c466acec810">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#NoticeIdda9feccb-7ef0-4d16-9d76-9d7f1fb8da6c">
+                <epo:identifierValue>2015/S 132-242129</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-195-351794#Procedure514e8e4b-16f4-4d1f-9c7c-2e38db4da28c"/>
+      </epo:ContractNotice>
+    </epo:notifies>
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#ValueTotal9b9003c6-f95f-4e8b-adf3-c16f50cfbaee">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#AmountTotaldf5618f7-5953-42f2-9ad7-29e3d8746832">
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+            <ccts:hasAmountValue>78295010</ccts:hasAmountValue>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#SubmissionTermb1466d89-806b-4124-8258-8ad5d1044aa5"/>
+    </reg2015:applies>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#Lot325317ce-a173-418d-8933-98747e0bd3d5">
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#PeriodDurationdb75e7c2-c08f-4c71-bb63-58a2ed2e9c1d"/>
+        </epo:hasContractDuration>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#ContractTermLot0f7d01af-a99b-4db4-9d00-24b226f71289">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#ObjectContractAddress8af95784-1c11-4956-8348-e89852431be0">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="fr"
+            >
+                        &lt;P&gt;Département de l'Aube&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#PurposeAdditionalf2a86b9b-9bca-455f-be2b-9a0eae1840cf">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/90500000"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/45222100"/>
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/90513300"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-195-351794#Procedure514e8e4b-16f4-4d1f-9c7c-2e38db4da28c"/>
+        <epo:hasDescription xml:lang="fr">
+                        &lt;P&gt;Par la Convention tripartite, le délégataire du contrat souhaite céder
+                            aux établissements de crédit les créances qui seront dues par le SDEDA
+                            au titre du Contrat de DSP à compter de la date réelle de mise en
+                            service industrielle (MSI), et en particulier les redevances RPF (dues
+                            par le SDEDA à compter de la Date Réelle de MSI au titre des coûts
+                            d'investissement, de préfinancement et de financement de l'UVE), la
+                            valeur financière résiduelle (telle que calculée selon les modalités
+                            prévues dans la convention) qui viendrait se substituer aux redevances
+                            RPF, due par le SDEDA au délégataire en cas de fin anticipée du contrat
+                            de DSP par le SDEDA pour quelque raison que ce soit ou en cas de
+                            survenance d'un cas d'indemnisation prévu par la convention ainsi que
+                            toutes autres sommes qui viendraient se substituer aux créances ainsi
+                            définies.&lt;/P&gt;
+                    </epo:hasDescription>
+        <epo:hasAdditionalInformation xml:lang="fr">
+                        &lt;P&gt;Durée prévisionnelle de la convention de DSP: 46 mois de phase d'études,
+                            d'instruction administrative et de construction de l'UVE, puis 25 ans à
+                            compter de la date de mise en service industrielle de l'unité de
+                            valorisation énergétique. Le Contrat de DSP prévoit que la cession des
+                            créances fera l'objet d'une acceptation par le SDEDA au bénéfice des
+                            établissements de crédit.&lt;/P&gt;
+                    </epo:hasAdditionalInformation>
+      </epo:Lot>
+    </epo:specifies>
+    <reg2015:hasGPAUsage>false</reg2015:hasGPAUsage>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#Buyer91f229ff-d4b4-4980-b250-26fee9f28a15">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#Organisation7ad145f6-c0fc-4668-bf63-1845c1df734a">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#Locatione78d00f9-1e01-4b19-b26a-133357c21ad6">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#Address483c029b-a230-4d46-a659-f53ce8825e8e">
+                    <epo:hasStreetName xml:lang="fr">22 rue Grégoire-Pierre Herluison — CS 93047</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+                    <epo:hasPostalZone>10012</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="fr">Troyes</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">SDEDA</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#ContactPoint2ef3503e-8aa1-4431-8cd7-5ab0a573513e">
+            <epo:hasInternetAddress>http://www.sdeda.fr</epo:hasInternetAddress>
+            <epo:hasDescription xml:lang="fr">A l'attention de Mme la présidente</epo:hasDescription>
+            <epo:hasEmail>sdeda@wandoo.fr</epo:hasEmail>
+            <epo:hasTelephone>+33 325832628</epo:hasTelephone>
+            <epo:hasFax>+33 325832394</epo:hasFax>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-195-351794#Procedure514e8e4b-16f4-4d1f-9c7c-2e38db4da28c"/>
+        <epo:hasBuyerLegalTypeDescription xml:lang="fr">Syndicat mixte</epo:hasBuyerLegalTypeDescription>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/env-pro"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:hasDescription xml:lang="fr">
+                    &lt;P&gt;Convention de cession de créances professionnelles à titre d'escompte (ou
+                        convention tripartite) et acte d'acceptation en lien avec la DSP sous forme
+                        de concession portant sur la conception, la réalisation, de financement et
+                        l'exploitation de l'UVE des déchets ménagers et assimilés du SDEDA de
+                        capacité 60 000 t à PCI de 3000 kcal/kg. Le contrat principal est conclu en
+                        application des articles L.1411-1 et suivants et R.1411-1 et suivants du
+                        code général des collectivités territoriales. La convention tripartite est
+                        conclue en application des dispositions des articles L. 313-23 et suivants
+                        du code monétaire et financier. Le SDEDA entend ainsi valider la cession des
+                        créances aux cessionnaires effectuée dans le respect des stipulations du
+                        contrat de DSP et souhaite accepter la cession des créances visées
+                        ci-dessous et décrites plus précisément dans la documentation financière, à
+                        hauteur de 100 % de leur montant, conformément aux termes de l'article
+                        L.313-29 du code monétaire et financier.&lt;/P&gt;
+                </epo:hasDescription>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351794#Purpose6c39f985-1a1f-4152-8e50-1955df398475">
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/90513300"/>
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:hasTitle xml:lang="fr">
+                    &lt;P&gt;Convention de cession de créances professionnelles à titre d'escompte (ou
+                        convention tripartite) et acte d'acceptation en lien avec la DSP sous forme
+                        de concession de l'UVE du SDEDA.&lt;/P&gt;
+                </epo:hasTitle>
+  </reg2015:Procedure>
+</rdf:RDF>

@@ -1,0 +1,51 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000062#Buyer50c45520-1f0e-4b9d-8cdb-e7023a60c29a">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000062#Organisationa08662c2-f029-4b09-be04-14d7687e21cd">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000062#Location26904bc3-3427-4927-a3dc-5d25f0f3d919">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000062#Addressd51eaec8-b3df-4411-aa49-f543638b4e06">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DEG03"/>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                <epo:hasCityName xml:lang="de">Jena</epo:hasCityName>
+                <epo:hasStreetName xml:lang="de">Philosophenweg 22</epo:hasStreetName>
+                <epo:hasPostalZone>07743</epo:hasPostalZone>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="de">Studierendenwerk Thüringen Anstalt des öffentlichen
+                        Rechts</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000062#ProcedureExt6e4a376a-a898-4a65-931f-c90566fac138">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000062#Buyer50c45520-1f0e-4b9d-8cdb-e7023a60c29a"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000062#ContactPointc748dddf-1439-4222-aff9-aad4bccdae02">
+        <epo:hasEmail>poststelle@stw-thueringen.de</epo:hasEmail>
+        <epo:hasFax>+49 3641930552</epo:hasFax>
+        <epo:hasInternetAddress>http://www.stw-thueringen.de</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/soc-pro"/>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+  </epo:Buyer>
+</rdf:RDF>

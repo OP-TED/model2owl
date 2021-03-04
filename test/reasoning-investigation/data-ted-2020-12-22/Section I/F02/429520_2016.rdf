@@ -1,0 +1,101 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#ProcurementServiceProviderba66734e-44ea-4d4b-85b6-405825668027">
+    <reg2015:providesAdditionalInformationAboutProcurementProcedure>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#ProcedureExt54305a32-f97e-40b9-aeba-6e49a2525486">
+        <reg2015:applies>
+          <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#SubmisisonTermsa3722e09-aa81-447b-81eb-b39b9f680044">
+            <epo:hasSubmissionCommunicationMeans>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#ChannelSubmissiond43825d1-7c5f-4379-ad42-e04af6173c70">
+                <epo:hasURL>http://www.rib-software.dk/udbudsportal</epo:hasURL>
+              </epo:Channel>
+            </epo:hasSubmissionCommunicationMeans>
+          </epo:SubmissionTerm>
+        </reg2015:applies>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#AccessTermsFull61d11bfd-65de-4040-b9f2-9503e6a67c00">
+            <epo:hasProcurementDocumentLandingPage>http://www.rib-software.dk/udbudsportal</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#Buyer9d24e2e8-5b26-4b34-9c65-ef171a5567f4">
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-236-429520#ProcedureExt54305a32-f97e-40b9-aeba-6e49a2525486"/>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#Organisationf973dcf2-e7eb-4a64-98ad-e5c8c4bfb216">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#Location5247ee30-7fd8-4bad-82e3-7eb6b4e25b8b">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#Address3c2a3e84-1af0-4e29-87fe-a97bea700f0c">
+                        <epo:hasStreetName xml:lang="da">Hvidovre Hospital, Byggeafdelingen, Kettegård Allé 30</epo:hasStreetName>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DNK"/>
+                        <epo:hasPostalZone>2650</epo:hasPostalZone>
+                        <epo:hasCityName xml:lang="da">Hvidovre</epo:hasCityName>
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DK012"/>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="da">Region Hovedstaden ved Amager og Hvidovre Hospital</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:has>
+              <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#BuyerProfile349cdd42-2286-4fc2-bb94-99a3ef3c8a8b">
+                <epo:hasURL>http://www.nythospitalhvidovre.dk</epo:hasURL>
+              </epo:BuyerProfile>
+            </epo:has>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#ContactPoint70f4f758-f98a-4f0d-ab3c-2a1cd8fc3b7c">
+                <epo:hasEmail>filip.finell@regionh.dk</epo:hasEmail>
+                <epo:hasTelephone>+45 38623375</epo:hasTelephone>
+                <epo:hasInternetAddress>http://www.nythospitalhvidovre.dk</epo:hasInternetAddress>
+                <epo:hasDescription xml:lang="da">Filip Finell</epo:hasDescription>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/health"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:providesAdditionalInformationAboutProcurementProcedure>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#OrganisationPSPf1349ef7-9f05-49e7-bbc6-4cd887c363b8">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#LocationPSP3747cbfb-7262-43c2-a1db-f5a2b3e8d3a9">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#AddressPSP171c378e-a671-427b-8139-2b25335ba3d4">
+                <epo:hasStreetName xml:lang="da">Njalsgade 17, Pakhus 2</epo:hasStreetName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DNK"/>
+                <epo:hasPostalZone>2300</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="da">København S</epo:hasCityName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DK011"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="da">schmidt/hammer/lassen/architects og aarhus arkitekterne a/s</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-236-429520#ContactPointPSPb450a07e-3d99-4346-9737-b707d8ff08eb">
+        <epo:hasEmail>eje@shl.dk</epo:hasEmail>
+        <epo:hasTelephone>+45 31903145</epo:hasTelephone>
+        <epo:hasInternetAddress>www.shl.dk</epo:hasInternetAddress>
+        <epo:hasFax>+45 70201907</epo:hasFax>
+        <epo:hasDescription xml:lang="da">Erik Jensen</epo:hasDescription>
+      </epo:ContactPoint>
+    </epo:has>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

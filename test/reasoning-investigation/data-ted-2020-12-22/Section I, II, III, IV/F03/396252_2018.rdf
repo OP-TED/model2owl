@@ -1,0 +1,137 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#AwardCriterionPricebc8a238e-fc54-431c-973b-0b596a588397">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#Lot9ede05d7-e530-4ccb-a161-13e8aa7d07c0">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#ContractTermLot4183c6b9-724c-48b3-b29e-2d9244c3a839">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#ObjectContractAddress74ee6317-f472-45b8-9b96-289ec15645fe">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE232"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="de"
+            >
+                        &lt;P&gt;Regensburg&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#PurposeAdditionalaac08ff9-a635-443e-84d9-f8995093b0b4">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-175-396252#Procedure6a7efb53-e3c8-43be-bd62-851922a7ff69">
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#SubmissionTermc570ccb2-96c2-4390-bcbb-45a9aca4ee7f"/>
+            </reg2015:applies>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#ValueTotalb24dc6b4-4bd7-4f01-ba3a-87e0a25021f8">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#AmountTotalffe0012e-a54e-41b5-9393-b4a9af21aaae">
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                    <ccts:hasAmountValue>23519610.00</ccts:hasAmountValue>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#Buyerd1589160-8ad9-44c5-94df-2fda268e26da">
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#BuyerProfilef707367e-83cd-4e2e-aef6-86e4f74c7d0b">
+                    <epo:hasURL>http://www.vergabe.bayern.de</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#ContactPointd1ff530c-f49c-4e24-9c94-617d4a49bf88">
+                    <epo:hasInternetAddress>http://www.vergabe.bayern.de</epo:hasInternetAddress>
+                    <epo:hasFax>+49 94169856-1999</epo:hasFax>
+                    <epo:hasEmail>vergabe@stbar.bayern.de</epo:hasEmail>
+                    <epo:hasDescription xml:lang="de">Staatliches Bauamt Regensburg</epo:hasDescription>
+                    <epo:hasTelephone>+49 94169856-01</epo:hasTelephone>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396252#Procedure6a7efb53-e3c8-43be-bd62-851922a7ff69"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#Organisationd389f3ed-5123-4248-9bc2-206cfe8aa141">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#Location9ef6e2cc-1164-49c6-8efe-71ee05a7bcdd">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#Address9f4de91d-0d69-42bb-8444-633e6b2a9a2c">
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE232"/>
+                            <epo:hasPostalZone>93053</epo:hasPostalZone>
+                            <epo:hasCityName xml:lang="de">Regensburg</epo:hasCityName>
+                            <epo:hasStreetName xml:lang="de">Bajuwarenstr. 2d</epo:hasStreetName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="de">Staatliches Bauamt Regensburg</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/econ-aff"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#Purposedfb6f7be-97e9-4e74-98ed-43e578be0f41">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45214410"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396252#Lot9ede05d7-e530-4ccb-a161-13e8aa7d07c0"/>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#ProcedureId4668b165-7fa9-49af-ada3-d9844ae251a8">
+                <epo:identifierValue>18 E 0515</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#ContractNotice7a790ae8-7c8e-48cd-981e-f66077c4fc8c">
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#PreviousNotice798ee59e-f94b-4f0e-b7d3-e4156d5cde7f">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396252#NoticeId3f180565-778c-4f57-9244-67e58f277777">
+                        <epo:identifierValue>2018/S 120-272363</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396252#Procedure6a7efb53-e3c8-43be-bd62-851922a7ff69"/>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <epo:hasTitle xml:lang="de">
+                    &lt;P&gt;Ostbayerische Technische Hochschule Regensburg – Neubau
+                        Verwaltungsgebäude&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Restverlagerung&lt;/P&gt;
+                </epo:hasDescription>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasDescription xml:lang="de">
+                        &lt;P&gt;Restverlagerung&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

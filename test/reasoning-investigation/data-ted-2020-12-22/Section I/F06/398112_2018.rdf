@@ -1,0 +1,54 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#Buyer702dede8-5aca-4c64-b19a-cea65f202959">
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#ProcedureExt6d40d568-7d0d-4d26-9268-6438b7b2d2cd">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-398112#Buyer702dede8-5aca-4c64-b19a-cea65f202959"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#BuyerProfile121b18e1-52bc-4a4b-abf9-e5ade455bd85">
+        <epo:hasURL>www.vbg.ch</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#ContactPoint77b757a9-3f94-4a32-b5e3-b3cdb6126a7e">
+        <epo:hasEmail>guido.hirzel@vbg.ch</epo:hasEmail>
+        <epo:hasDescription xml:lang="de">Guido Hirzel</epo:hasDescription>
+        <epo:hasInternetAddress>https://www.simap.ch</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#Organisationfb487f13-c4ab-495a-8c68-244186ec20cd">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#Locationb043fe0b-bcdd-4787-b3f9-8c3344bc3490">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-398112#Address81ceaa45-6189-4991-b14e-a28f19dcba74">
+                <epo:hasPostalZone>8152</epo:hasPostalZone>
+                <epo:hasStreetName xml:lang="de">Sägereistraße 24</epo:hasStreetName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CHE"/>
+                <epo:hasCityName xml:lang="de">Glattbrugg</epo:hasCityName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="de">VBG Verkehrsbetriebe Glattal AG</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/urttb"/>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+  </epo:Buyer>
+</rdf:RDF>

@@ -1,0 +1,120 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-210-514547#Procedure1b14241a-f386-4647-aa11-2e7164cc34be">
+    <epo:hasTitle xml:lang="fi">&lt;P&gt;Varhaiskasvatuksen valokuvaus käyttöoikeussopimuksella&lt;/P&gt;</epo:hasTitle>
+    <epo:hasOverallPurpose>
+      <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#Purposefdc57291-f561-4c3c-a8e9-e8334f0cb12f">
+        <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+        <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/79960000"/>
+      </epo:Purpose>
+    </epo:hasOverallPurpose>
+    <epo:hasEstimatedValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#Value360d9b84-984d-47f9-b501-34b538be71c7">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#Amount661ec1c4-91ba-4893-9357-16aa6f40d11d">
+            <ccts:hasAmountValue>1660000.0</ccts:hasAmountValue>
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasEstimatedValue>
+    <epo:hasTotalValue>
+      <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#ValueTotal25a39f90-c407-4870-a014-ab3ba5eef34d">
+        <epo:hasOverallAmount>
+          <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#AmountTotal8287ab15-0f7a-43c5-9310-97baeda394bf">
+            <ccts:hasAmountValue>1660000.0</ccts:hasAmountValue>
+            <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+          </ccts:Amount>
+        </epo:hasOverallAmount>
+        <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+      </epo:Value>
+    </epo:hasTotalValue>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#Buyer2f3ec7f4-6602-4381-816d-21a93f32c19e">
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#ContactPoint8904b9a2-7162-4507-9056-19b563ca7047">
+            <epo:hasInternetAddress>http://www.tampere.fi</epo:hasInternetAddress>
+            <epo:hasEmail>hankintapalvelut@tuomilogistiikka.fi</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-210-514547#Procedure1b14241a-f386-4647-aa11-2e7164cc34be"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#Organisatione3d4221b-ca66-4d65-81e8-d88e03943328">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#OrganisationIde4aced20-064b-4d41-b35e-01f14eb7e4b0">
+                <epo:identifierValue>0211675-2</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#Location13616bb5-a220-4d9d-9878-274765d66c36">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#Address06d782ac-5601-45ad-82b8-d4627ab7533a">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FIN"/>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FI197"/>
+                    <epo:hasPostalZone>FI-33101</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="fi">Tampere</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="fi">Aleksis Kiven katu 14–16 C</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fi">Tampereen kaupunki</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+        <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:notifies>
+      <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#ContractNoticec11a3b1a-ed09-42da-9e62-020a88803440">
+        <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-210-514547#Procedure1b14241a-f386-4647-aa11-2e7164cc34be"/>
+        <epo:refersToPrevious>
+          <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#PreviousNotice9c64d76f-82f0-4092-a8a0-dc96008a4d93">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#NoticeIda6ed20a9-6f34-4424-952d-7afd5d87482d">
+                <epo:identifierValue>2019/S 138-341231</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </epo:Notice>
+        </epo:refersToPrevious>
+      </epo:ContractNotice>
+    </epo:notifies>
+    <epo:hasDescription xml:lang="fi">&lt;P&gt;Tampereen kaupungin varhaiskasvatuksen valokuvauspalvelun hankinta.&lt;/P&gt;</epo:hasDescription>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#SubmissionTerm5d1947ff-d019-42a4-9062-287149fbd93f"/>
+    </reg2015:applies>
+    <epo:specifies>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#Lot54fda5a8-1f18-47fb-b5c9-e6cdc7de794b">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#ContractTermLotd5ae8736-f785-4971-9c75-b7247551b57c">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#ObjectContractAddress14f5c4c3-8c1e-462d-9b37-2b89d30c808b">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FI197"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2020/s-210-514547#PeriodDuration563dc40e-2719-4eae-ad57-104522471cf6"/>
+        </epo:hasContractDuration>
+        <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-210-514547#Procedure1b14241a-f386-4647-aa11-2e7164cc34be"/>
+        <epo:hasDescription xml:lang="fi">&lt;P&gt;Tampereen kaupungin varhaiskasvatuksen valokuvauspalvelun hankinta.&lt;/P&gt;&lt;P&gt;Sopimuskausi kestää kaksi (2) vuotta. Sopimusta on mahdollista jatkaa kahdella yhden (1+1) vuoden optiokaudella.&lt;/P&gt;</epo:hasDescription>
+      </epo:Lot>
+    </epo:specifies>
+  </reg2015:Procedure>
+</rdf:RDF>

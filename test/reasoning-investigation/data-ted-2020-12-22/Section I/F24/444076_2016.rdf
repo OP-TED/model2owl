@@ -1,0 +1,121 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#ProcurementServiceProviderParticipationb638b58d-3a7a-4cea-8c38-24307f52658a">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#ContactPointParticipationb5806356-5cb7-421f-963b-fdee0d1ebb2f">
+        <epo:hasInternetAddress>http://www.millau.fr</epo:hasInternetAddress>
+        <epo:hasEmail>magali.cammas@millau.fr</epo:hasEmail>
+        <epo:hasTelephone>+33 565609745</epo:hasTelephone>
+        <epo:hasDescription xml:lang="fr">Magali Cammas</epo:hasDescription>
+      </epo:ContactPoint>
+    </epo:has>
+    <reg2015:receivesTenders>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#ProcedureExt65e605dd-b68a-4b7f-a713-8c06c2aec204">
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#AccessTermsFulld1da4cd6-80c8-4dfd-86f6-cf4d7d337f2b">
+            <epo:hasProcurementDocumentLandingPage>http://www.millau.fr</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#Buyer075556d2-d79f-4421-8975-ad87809a0a30">
+            <epo:has>
+              <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#BuyerProfile72e4f0ef-cde8-4b97-8772-e9ad322e7c7a">
+                <epo:hasURL>http://www.marches-securises.fr</epo:hasURL>
+              </epo:BuyerProfile>
+            </epo:has>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#ContactPointbdaebaef-3376-4310-bb61-2e5eea24fb8c">
+                <epo:hasInternetAddress>http://www.millau.fr</epo:hasInternetAddress>
+                <epo:hasEmail>service-communication@millau.fr</epo:hasEmail>
+                <epo:hasTelephone>+33 565595000</epo:hasTelephone>
+                <epo:hasDescription xml:lang="fr">M. le maire</epo:hasDescription>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#Organisationec54e34c-69bc-4465-9b6a-4fa10a4e829b">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#Location4adfbe3f-da57-4b8f-a1dc-4efe0211f1cc">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#Address0e98f8bf-3434-4ea7-adae-6510cec88386">
+                        <epo:hasCityName xml:lang="fr">Millau</epo:hasCityName>
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRJ22"/>
+                        <epo:hasStreetName xml:lang="fr">17 bd de la République</epo:hasStreetName>
+                        <epo:hasPostalZone>12100</epo:hasPostalZone>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="fr">Ville de Millau</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-243-444076#ProcedureExt65e605dd-b68a-4b7f-a713-8c06c2aec204"/>
+            <epo:hasActivityDescription xml:lang="fr">Assainissement</epo:hasActivityDescription>
+            <epo:hasContractingEntity>true</epo:hasContractingEntity>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:receivesTenders>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#OrganisationParticipationc657e641-c4ee-4f90-89af-ca57da2b8562">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#LocationParticipation5f635699-552d-41d2-b400-e18f6758f75d">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#AddressParticipation2dcc54d0-ab7a-4986-a063-45ad5f69f61d">
+                <epo:hasCityName xml:lang="fr">Millau</epo:hasCityName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRJ22"/>
+                <epo:hasStreetName xml:lang="fr">Centre Technique Municipal — rue Étienne Delmas</epo:hasStreetName>
+                <epo:hasPostalZone>12100</epo:hasPostalZone>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Mairie de Millau — service commande publique</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-243-444076#ProcedureExt65e605dd-b68a-4b7f-a713-8c06c2aec204"/>
+  </epo:ProcurementServiceProvider>
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#ProcurementServiceProvider0abe6445-9f91-47f2-9e56-c9f2d9c3c069">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#ContactPointPSP2c749b38-407b-4fb1-9a20-97ce1848772f">
+        <epo:hasInternetAddress>http://www.millau.fr</epo:hasInternetAddress>
+        <epo:hasEmail>y.dutheil@millau.fr</epo:hasEmail>
+        <epo:hasTelephone>+33 565595066</epo:hasTelephone>
+        <epo:hasDescription xml:lang="fr">Yvan Dutheil</epo:hasDescription>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#OrganisationPSP5cddb6f7-8e67-408e-896e-0b44e1d59255">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#LocationPSP8c6baded-563e-4941-988a-293d3906003b">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-243-444076#AddressPSP34d20180-6ace-4bfb-9c7b-ad03328183eb">
+                <epo:hasCityName xml:lang="fr">Millau</epo:hasCityName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRJ22"/>
+                <epo:hasStreetName xml:lang="fr">17 bd de la République</epo:hasStreetName>
+                <epo:hasPostalZone>12100</epo:hasPostalZone>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Mairie de Millau — service technique</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-243-444076#ProcedureExt65e605dd-b68a-4b7f-a713-8c06c2aec204"/>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

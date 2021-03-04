@@ -1,0 +1,57 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000911#Buyerfbbf320f-1fd2-4b60-8290-97f6cc5b7c5f">
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000911#BuyerProfile45428084-12d1-4e27-888e-aeeae39c5f35">
+        <epo:hasURL>https://www.eprocurement.gov.cy</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000911#ContactPointd913e00b-55fe-4cea-8944-c509ed4cebea">
+        <epo:hasEmail>mail@wbn.org.cy</epo:hasEmail>
+        <epo:hasTelephone>+357 22698143</epo:hasTelephone>
+        <epo:hasDescription xml:lang="el">Τμήμα Προσφορών και Προμηθειών</epo:hasDescription>
+        <epo:hasFax>+357 22698200</epo:hasFax>
+        <epo:hasInternetAddress>https://www.eprocurement.gov.cy</epo:hasInternetAddress>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000911#Organisation60c1a6a1-3e51-4f3a-85ef-17a1cb48061e">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000911#Locatione5e7548b-486b-46ab-b6fb-92042750f52d">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000911#Address656520d1-60d1-48ec-bc95-b746924e5b6f">
+                <epo:hasCityName xml:lang="el">Λευκωσία</epo:hasCityName>
+                <epo:hasPostalZone>2012</epo:hasPostalZone>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CYP"/>
+                <epo:hasStreetName xml:lang="el">Λεωφόρος Αθαλάσσας 84, Στρόβολος</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CY"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="el">Συμβούλιο Υδατοπρομήθειας Λευκωσίας</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000911#ProcedureExt3c3a147d-e174-412a-ad1b-9bb39e02a491">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000911#Buyerfbbf320f-1fd2-4b60-8290-97f6cc5b7c5f"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/water"/>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+  </epo:Buyer>
+</rdf:RDF>

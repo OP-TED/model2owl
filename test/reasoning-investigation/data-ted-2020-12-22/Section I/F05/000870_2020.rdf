@@ -1,0 +1,64 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000870#ProcedureExt4880583c-da48-4252-ade8-b84726970647">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000870#Buyer4bb0c83e-b35f-4fff-895c-b120a573e1c1">
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000870#ContactPointceff4679-ab00-43fa-a4a5-ba3d67ed0b57">
+            <epo:hasInternetAddress>www.marches-securises.fr</epo:hasInternetAddress>
+            <epo:hasEmail>anne-sophie.parisseaux@dalkia.fr</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000870#ProcedureExt4880583c-da48-4252-ade8-b84726970647"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000870#ProcedureExt4880583c-da48-4252-ade8-b84726970647"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000870#Organisation3437f9cc-f04a-4986-9f79-6a4845f07840">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000870#Locationecaeb161-a990-4d94-b68e-71ddfb758276">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000870#Address0120d1a3-e25e-431c-ba79-9dcd158c9180">
+                    <epo:hasCityName xml:lang="fr">Saint-André-lez-Lille</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+                    <epo:hasPostalZone>59350</epo:hasPostalZone>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasStreetName xml:lang="fr">37 avenue du Maréchal de Lattre de Tassigny</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Maubeuge Énergie Renouvelable</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gas-heat"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000870#AccessTermsFull05663bd3-0068-4317-bb7f-44ecbbcb256b">
+        <epo:hasProcurementDocumentLandingPage>www.marches-securises.fr</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000870#SubmisisonTermsc223b239-2f6c-45f1-a422-924191f83673">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000870#ChannelSubmissiona6debfc3-5a32-416e-ade2-ea663ccb1600">
+            <epo:hasURL>www.marches-securises.fr</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

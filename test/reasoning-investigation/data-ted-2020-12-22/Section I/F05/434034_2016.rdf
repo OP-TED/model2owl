@@ -1,0 +1,77 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434034#ProcedureExt4e0d0e43-4b72-4308-a6e2-7c095f2895ca">
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434034#SubmisisonTermsa60da9c3-bd9a-47e2-b1b0-b56de338016c">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434034#ChannelSubmission8daa5449-48d3-4406-b72c-91882bb08fee">
+            <epo:hasURL>http://kelag.vemap.com</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434034#Buyer89110e8f-b422-417c-bc3b-205f000a2ad2">
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434034#ProcedureExt4e0d0e43-4b72-4308-a6e2-7c095f2895ca"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434034#ProcedureExt4e0d0e43-4b72-4308-a6e2-7c095f2895ca"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434034#BuyerProfilee876b8bd-bac1-4271-9e94-e742527fd298">
+            <epo:hasURL>http://kelag.vemap.com</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434034#ContactPointeeed381f-7c41-4b79-978a-ca9d4deb007f">
+            <epo:hasTelephone>+43 4635251410</epo:hasTelephone>
+            <epo:hasDescription xml:lang="de">Markus Grutschnig</epo:hasDescription>
+            <epo:hasInternetAddress>http://www.kelag.at</epo:hasInternetAddress>
+            <epo:hasEmail>markus.grutschnig@kelag.at</epo:hasEmail>
+            <epo:hasFax>+43 463525951410</epo:hasFax>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434034#Organisationc9930efd-ab1c-4c56-937a-615312919142">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434034#Locatione2f655df-84fd-40b0-8890-18a8250efac8">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434034#Address43eaa276-7dc0-4318-9ff3-169d96c895d3">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/AT"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/AUT"/>
+                    <epo:hasPostalZone>9506</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="de">St. Magdalener Straße 81</epo:hasStreetName>
+                    <epo:hasCityName xml:lang="de">Villach</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="de">Kelag Wärme GmbH</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gas-heat"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:usesAd-hoc>
+      <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434034#ChannelProcedure08a62c11-2e9f-49ad-8f0d-8fe13b2fbb0e">
+        <epo:hasURL>http://kelag.vemap.com</epo:hasURL>
+      </epo:Channel>
+    </reg2015:usesAd-hoc>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434034#AccessTermsFull7f203c55-384f-4ea4-9bb1-624d099ef359">
+        <epo:hasProcurementDocumentLandingPage>http://kelag.vemap.com</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

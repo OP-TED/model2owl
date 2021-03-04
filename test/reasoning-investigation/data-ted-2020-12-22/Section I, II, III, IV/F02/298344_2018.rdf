@@ -1,0 +1,486 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AwardCriterionQuality7ed853f9-d81f-4a10-bcc8-6b8a67e7e809">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lota1183f7a-46c1-4d64-9532-01bf92740020">
+        <epo:hasContractDuration>
+          <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#PeriodDuration7a88278b-4c16-4162-9988-008670982ff9">
+            <epo:hasDurationMeasure>
+              <ccts:Measure rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#Measuree20f8ed7-20dc-44f8-87e7-24d80d390cd0">
+                <ccts:hasUnitCode rdf:resource="http://publications.europa.eu/resource/authority/timeperiod/MONTH"/>
+                <ccts:hasMeasureValue>360</ccts:hasMeasureValue>
+              </ccts:Measure>
+            </epo:hasDurationMeasure>
+          </epo:Period>
+        </epo:hasContractDuration>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ContractTermLot56ea18ba-6707-4e35-bffc-e9bd4a04d0a0">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ObjectContractAddress52e758df-57cc-4402-a5a0-5d79c8aa6d83">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ071"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasRenewalIndicator>false</epo:hasRenewalIndicator>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="cs"
+            >
+                        &lt;P&gt;Budova KÚOK (včetně jeho detašovaných pracovišť) a sídla příspěvkových
+                            organizací&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-131-298344#Procedure86ae4552-8cc4-436e-aca7-4b98d70bc328">
+            <reg2015:usesAd-hoc>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ChannelProcedure38403871-580f-4424-ad0f-2e318a2405d1">
+                <epo:hasURL>https://www.tenderarena.cz/registrace/dodavatel.jsf?typ=DODAVATEL</epo:hasURL>
+              </epo:Channel>
+            </reg2015:usesAd-hoc>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ProcedureId29fa31b3-1128-4c14-a5e5-bbd42ff98445">
+                <epo:identifierValue>KÚOK/69761/2018/OKŘ/358</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:specifies>
+              <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lotaeb03eeb-791a-4ae9-9822-a959c32797ea">
+                <epo:has>
+                  <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ContractTermLotc2978c61-a312-4913-b58c-560fee58d131">
+                    <epo:hasSpecificPlaceOfPerformance>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ObjectContractAddressae990b97-1fde-4080-b34c-d8d890dbed08">
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ071"/>
+                      </epo:Address>
+                    </epo:hasSpecificPlaceOfPerformance>
+                    <epo:hasRenewalIndicator>false</epo:hasRenewalIndicator>
+                    <epo:hasPlaceOfPerformanceAdditionalInformation
+                     xml:lang="cs">
+                        &lt;P&gt;Budova KÚOK (včetně jeho detašovaných pracovišť) a sídla příspěvkových
+                            organizací.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+                  </epo:ContractTerm>
+                </epo:has>
+                <epo:hasID>
+                  <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#LotIdee1499ba-a136-49bf-b6ea-4074b7be52be">
+                    <epo:identifierValue>2</epo:identifierValue>
+                  </epo:Identifier>
+                </epo:hasID>
+                <epo:has>
+                  <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#PurposeAdditionalaebd10b1-6b73-4813-88c7-f0a882d85170">
+                    <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/34110000"/>
+                    <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+                  </epo:Purpose>
+                </epo:has>
+                <epo:hasContractDuration>
+                  <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#PeriodDuration5c293a93-e634-4398-9a01-bbefe194e867">
+                    <epo:hasDurationMeasure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Measuree20f8ed7-20dc-44f8-87e7-24d80d390cd0"/>
+                  </epo:Period>
+                </epo:hasContractDuration>
+                <epo:hasTitle xml:lang="cs">
+                        &lt;P&gt;Část 2 - Motorová vozidla - osobní (typ B)&lt;/P&gt;
+                    </epo:hasTitle>
+                <epo:hasEstimatedValue>
+                  <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ValueValObject44c42912-983c-4928-b113-e3ed1e8af4c7">
+                    <epo:hasOverallAmount>
+                      <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AmountValObjectdb69b94b-ed9b-4495-8875-b9b0adf6ba9a">
+                        <ccts:hasAmountValue>2900000.00</ccts:hasAmountValue>
+                        <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/CZK"/>
+                      </ccts:Amount>
+                    </epo:hasOverallAmount>
+                    <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+                  </epo:Value>
+                </epo:hasEstimatedValue>
+                <epo:hasDescription xml:lang="cs">
+                        &lt;P&gt;Předpokládané (požadované) množství: 4 kusy. Jedná se o motorová vozidla
+                            kombi střední třídy a limuzínu. Dodání pro: Olomoucký kraj, Zdravotnická
+                            záchranná služba Olomouckého kraje, Střední odborná škola lesnická a
+                            strojírenská Šternberk, Střední škola, Základní škola a Mateřská škola
+                            prof. V. Vejdovského Olomouc - Hejčín.&lt;/P&gt;
+                    </epo:hasDescription>
+                <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-131-298344#Procedure86ae4552-8cc4-436e-aca7-4b98d70bc328"/>
+                <epo:hasVariantPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+              </epo:Lot>
+            </epo:specifies>
+            <epo:hasLotSubmissionLimit>4</epo:hasLotSubmissionLimit>
+            <epo:specifies>
+              <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lot34951729-5cf1-4f2e-9c91-c67622c423df">
+                <epo:hasEstimatedValue>
+                  <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ValueValObject7fefff1e-0078-42c3-b243-5e6a525cdbb4">
+                    <epo:hasOverallAmount>
+                      <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AmountValObjectac48dbe8-8feb-40d7-9a78-b937c379fabf">
+                        <ccts:hasAmountValue>1571000.00</ccts:hasAmountValue>
+                        <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/CZK"/>
+                      </ccts:Amount>
+                    </epo:hasOverallAmount>
+                    <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+                  </epo:Value>
+                </epo:hasEstimatedValue>
+                <epo:hasVariantPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+                <epo:has>
+                  <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#PurposeAdditionalc9fcf9de-cb5c-44e6-b749-85fb85b4fa4f">
+                    <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/34110000"/>
+                    <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+                  </epo:Purpose>
+                </epo:has>
+                <epo:hasContractDuration>
+                  <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#PeriodDuration25227909-cd43-4ddd-a940-ce0e516fb56b">
+                    <epo:hasDurationMeasure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Measuree20f8ed7-20dc-44f8-87e7-24d80d390cd0"/>
+                  </epo:Period>
+                </epo:hasContractDuration>
+                <epo:hasID>
+                  <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#LotId350cc52d-6ecb-4fe5-8dd3-950f8992cea1">
+                    <epo:identifierValue>3</epo:identifierValue>
+                  </epo:Identifier>
+                </epo:hasID>
+                <epo:hasTitle xml:lang="cs">
+                        &lt;P&gt;Část 3 – Motorová vozidla - osobní (typ C)&lt;/P&gt;
+                    </epo:hasTitle>
+                <epo:has>
+                  <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ContractTermLotf7c01069-5369-4900-ad7f-77a886eb9ace">
+                    <epo:hasSpecificPlaceOfPerformance>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ObjectContractAddress1d2db036-5071-43dc-92f1-9bd753d2f790">
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ071"/>
+                      </epo:Address>
+                    </epo:hasSpecificPlaceOfPerformance>
+                    <epo:hasRenewalIndicator>false</epo:hasRenewalIndicator>
+                    <epo:hasPlaceOfPerformanceAdditionalInformation
+                     xml:lang="cs">
+                        &lt;P&gt;Sídla příspěvkových organizací&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+                  </epo:ContractTerm>
+                </epo:has>
+                <epo:hasDescription xml:lang="cs">
+                        &lt;P&gt;Předpokládané (požadované) množství: 2 kusy. Jedná se o motorová vozidla
+                            typu SUV. Dodání pro: Koordinátor Integrovaného dopravního systému
+                            Olomouckého kraje, příspěvková organizace, Střední lesnická škola,
+                            Hranice, Jurikova 588.&lt;/P&gt;
+                    </epo:hasDescription>
+                <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-131-298344#Procedure86ae4552-8cc4-436e-aca7-4b98d70bc328"/>
+              </epo:Lot>
+            </epo:specifies>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#SelectionCriterionTechnicalda6c1f9d-be09-41da-a243-d48858085c0e">
+                <epo:hasDescription xml:lang="cs">
+                    &lt;P&gt;Ad § 79 odst. 2 písm. b) zákona) - Minimální úroveň pro splnění
+                        kvalifikačního předpokladu je stanovena na min. 2 zakázky na dodávky se
+                        souvisejícím předmětem plnění, kde hodnota každé dodávky činila nejméně 1
+                        000 000 CZK bez DPH.&lt;/P&gt;
+                    &lt;P&gt;Ad § 79 odst. 2 písm. k) zákona) - Nabídka musí obsahovat podrobný popis
+                        dodávaného předmětu plnění tak, aby bylo zřejmé, že jsou splněny požadavky
+                        zadavatele na předmět plnění. Nabídka musí obsahovat popis vozidel, tj.
+                        popis konkrétně nabízených vozidel, vč. uvedení výrobce a obchodních názvů,
+                        případně fotografie a ilustrativní vyobrazení.&lt;/P&gt;
+                </epo:hasDescription>
+                <epo:hasDescription xml:lang="cs">
+                    &lt;P&gt;Dle § 79 odst. 2 písm. b) zákona - seznam významných dodávek poskytnutých
+                        dodavatelem za poslední 3 roky před zahájením zadávacího řízení včetně
+                        uvedení ceny a doby jejich poskytnutí a identifikace objednatele.&lt;/P&gt;
+                    &lt;P&gt;Dle § 79 odst. 2 písm. k) zákona – popisy dodávaného předmětu plnění.&lt;/P&gt;
+                </epo:hasDescription>
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/tp-abil"/>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lota1183f7a-46c1-4d64-9532-01bf92740020"/>
+            <epo:specifies>
+              <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lot9b15c02e-f598-4b9c-b5f3-0eb9c15f8c48">
+                <epo:hasTitle xml:lang="cs">
+                        &lt;P&gt;Část 4 – Motorová vozidla pro přepravu méně než 10 lidí (typ D)&lt;/P&gt;
+                    </epo:hasTitle>
+                <epo:hasContractDuration>
+                  <epo:Period rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#PeriodDuration49f4b4e9-5645-46e6-bee9-20caade467e1">
+                    <epo:hasDurationMeasure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Measuree20f8ed7-20dc-44f8-87e7-24d80d390cd0"/>
+                  </epo:Period>
+                </epo:hasContractDuration>
+                <epo:hasID>
+                  <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#LotIdf0b4a4e5-c9a9-4f35-9b93-8865a349ee20">
+                    <epo:identifierValue>4</epo:identifierValue>
+                  </epo:Identifier>
+                </epo:hasID>
+                <epo:has>
+                  <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ContractTermLotc81b7ffe-e09e-4d22-b495-92d1b7986e59">
+                    <epo:hasSpecificPlaceOfPerformance>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ObjectContractAddresscf958ac4-96ef-4bc8-9101-0b74f3cfa7ac">
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ071"/>
+                      </epo:Address>
+                    </epo:hasSpecificPlaceOfPerformance>
+                    <epo:hasRenewalIndicator>false</epo:hasRenewalIndicator>
+                    <epo:hasPlaceOfPerformanceAdditionalInformation
+                     xml:lang="cs">
+                        &lt;P&gt;Sídla příspěvkových organizací&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+                  </epo:ContractTerm>
+                </epo:has>
+                <epo:isSpecifiedIn rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-131-298344#Procedure86ae4552-8cc4-436e-aca7-4b98d70bc328"/>
+                <epo:hasVariantPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+                <epo:hasEstimatedValue>
+                  <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ValueValObject23083d59-31bb-4524-95db-145a176546cd">
+                    <epo:hasOverallAmount>
+                      <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AmountValObjecta789ccaa-42fe-4abc-9c0e-f4cc9ed84e10">
+                        <ccts:hasAmountValue>1690000.00</ccts:hasAmountValue>
+                        <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/CZK"/>
+                      </ccts:Amount>
+                    </epo:hasOverallAmount>
+                    <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+                  </epo:Value>
+                </epo:hasEstimatedValue>
+                <epo:hasDescription xml:lang="cs">
+                        &lt;P&gt;Předpokládané (požadované) množství: 2 kusy. Jedná se o motorová vozidla
+                            pro přepravu osob a nákladů pro přepravu méně než 10 lidí. Dodání pro:
+                            Centrum sociálních služeb Prostějov, Gymnázium, Jeseník, Komenského
+                            281.&lt;/P&gt;
+                    </epo:hasDescription>
+                <epo:has>
+                  <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#PurposeAdditional9e0ba0a3-ca39-493b-834f-0c936581c279">
+                    <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/34115200"/>
+                    <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+                  </epo:Purpose>
+                </epo:has>
+              </epo:Lot>
+            </epo:specifies>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#Buyer00f56dbf-b354-4887-84e5-b133e41c9abc">
+                <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-131-298344#Procedure86ae4552-8cc4-436e-aca7-4b98d70bc328"/>
+                <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-131-298344#Procedure86ae4552-8cc4-436e-aca7-4b98d70bc328"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#BuyerProfile3402e345-0c64-4b48-bca6-6c39cb7e35ab">
+                    <epo:hasURL>https://www.egordion.cz/nabidkaGORDION/profilOlomouckykraj</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-131-298344#Procedure86ae4552-8cc4-436e-aca7-4b98d70bc328"/>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ContactPointaf3af80a-807e-4d17-9b06-99c101bd6c8d">
+                    <epo:hasEmail>m.jureckova@kr-olomoucky.cz</epo:hasEmail>
+                    <epo:hasInternetAddress>https://www.kr-olomoucky.cz</epo:hasInternetAddress>
+                    <epo:hasTelephone>+420 585508282</epo:hasTelephone>
+                    <epo:hasDescription xml:lang="cs">Ing. Martina Jurečková</epo:hasDescription>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#Organisation7da36b40-7f78-4efb-8b34-99edbf263051">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#OrganisationId68c1fcc4-ccea-4e34-8b37-6ee8c0283dbd">
+                        <epo:identifierValue>60609460</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#Locationa653d35c-f34f-40f2-b3b9-e245f7aa4aaf">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#Addressf210aab2-67c0-438f-abfe-efa7837f9a79">
+                            <epo:hasPostalZone>779 11</epo:hasPostalZone>
+                            <epo:hasStreetName xml:lang="cs">Jeremenkova 1191/40a</epo:hasStreetName>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ071"/>
+                            <epo:hasCityName xml:lang="cs">Olomouc</epo:hasCityName>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CZE"/>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="cs">Olomoucký kraj</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-131-298344#Procedure86ae4552-8cc4-436e-aca7-4b98d70bc328"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#SubmissionTerm80c09868-fdab-47ca-9f9b-6d0aaa918b2e">
+                <epo:hasValidityPeriod rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Measuree20f8ed7-20dc-44f8-87e7-24d80d390cd0"/>
+                <epo:hasSubmissionCommunicationMeans>
+                  <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ChannelSubmissiona0e83934-98b1-4383-8f7e-f09234d21225">
+                    <epo:hasURL>https://www.egordion.cz/nabidkaGORDION/profilOlomouckykraj</epo:hasURL>
+                  </epo:Channel>
+                </epo:hasSubmissionCommunicationMeans>
+                <epo:hasReceiptDeadline>2018-08-09+09:00</epo:hasReceiptDeadline>
+                <epo:hasLanguage rdf:resource="http://publications.europa.eu/resource/authority/language/CES"/>
+              </epo:SubmissionTerm>
+            </reg2015:applies>
+            <reg2015:applies>
+              <epo:OpeningTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#OpeningTerm08886e3e-5054-4542-83eb-a5f51087254e">
+                <epo:hasOpeningDescription xml:lang="cs">
+                        &lt;P&gt;KÚOK, Jeremenkova 40a, Olomouc&lt;/P&gt;
+                    </epo:hasOpeningDescription>
+                <epo:hasOpeningDateTime>2018-08-09+09:01</epo:hasOpeningDateTime>
+              </epo:OpeningTerm>
+            </reg2015:applies>
+            <epo:uses>
+              <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AccessTermsRestrcf0a3b53-1126-49c1-bb8e-d0d9bf8044ad">
+                <epo:hasRestrictedAccessAddress>
+                  <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#Channela6667e85-37d8-4546-954a-b04beb555a7a">
+                    <epo:hasURL>https://www.egordion.cz/nabidkaGORDION/profilOlomouckykraj</epo:hasURL>
+                  </epo:Channel>
+                </epo:hasRestrictedAccessAddress>
+              </epo:AccessTerm>
+            </epo:uses>
+            <epo:hasDescription xml:lang="cs">
+                    &lt;P&gt;Předmětem veřejné zakázky je nákup 17 osobních motorových vozidel pro potřeby
+                        Centrálního zadavatele a jeho příspěvkových organizací. Jedná se o nákup
+                        vozů: Motorová vozidla - osobní (typ A - nižší nebo nižší střední třídy - 9
+                        ks), Motorová vozidla - osobní (typ B - kombi střední třídy a limuzínu - 4
+                        ks), Motorová vozidla - osobní (typ C - typu SUV - 2 ks) a Motorová vozidla
+                        pro přepravu méně než 10 lidí (typ D - pro přepravu osob a nákladů pro
+                        přepravu méně než 10 lidí - 2 ks).&lt;/P&gt;
+                </epo:hasDescription>
+            <reg2015:applies>
+              <epo:SelectionCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#SelectionCriterionSuitabilitye24d4cca-543c-4153-8b93-ceb3d50302d9">
+                <epo:hasDescription xml:lang="cs">
+                    &lt;P&gt;Dle § 77 odst. 1 zákona – výpis z obchodního rejstříku nebo jiné obdobné
+                        evidence, pokud jiný právní předpis zápis do takové evidence vyžaduje
+                        (postačí předložit výpis z obchodního rejstříku nebo jiné obdobné evidence
+                        jedenkrát a bude považován za prokázání základní i profesní
+                        způsobilosti).&lt;/P&gt;
+                    &lt;P&gt;Dle § 77 odst. 2 písm. (a) zákona - doklad o oprávnění podnikat v rozsahu
+                        odpovídajícímu předmětu veřejné zakázky, pokud jiné právní předpisy takové
+                        oprávnění vyžadují - min.: předmět podnikání Výroba, obchod a služby
+                        neuvedené v přílohách 1 až 3 živnostenského zákona.&lt;/P&gt;
+                </epo:hasDescription>
+                <epo:hasSelectionCriterionType rdf:resource="http://publications.europa.eu/resource/authority/selection-criterion/sui-act"/>
+              </epo:SelectionCriterion>
+            </reg2015:applies>
+            <epo:hasTitle xml:lang="cs">
+                    &lt;P&gt;„Centrální nákup automobilů 2018"&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#Purpose93d8f555-47cf-4e19-91a4-470f5cfe2591">
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/supplies"/>
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/34100000"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:hasEstimatedValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#Valuea8b80084-1604-4e08-b7b8-7fe707ea98c8">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#Amount07cc465a-6167-4275-9b60-0251f4b10d95">
+                    <ccts:hasAmountValue>9061000.00</ccts:hasAmountValue>
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/CZK"/>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasEstimatedValue>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#LotIdc31cb4b2-05da-4587-add4-273749feec97">
+            <epo:identifierValue>1</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#PurposeAdditional5d318cf9-343e-41c6-9514-7ccb482ac731">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/34110000"/>
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasDescription xml:lang="cs">
+                        &lt;P&gt;Předpokládané (požadované) množství: 9 kusů. Jedná se o motorová vozidla
+                            nižší nebo nižší střední třídy.&lt;/P&gt;
+                        &lt;P&gt;Dodávka pro: Olomouckého kraje a Centrum sociálních služeb Prostějov,
+                            Sociální služby pro seniory Šumperk, Pedagogicko - psychologická poradna
+                            a Speciálně pedagogické centrum Olomouckého kraje, Olomouc, U Sportovní
+                            haly 1a, Střední škola železniční, technická a služeb, Šumperk, Švehlova
+                            střední škola polytechnická Prostějov.&lt;/P&gt;
+                    </epo:hasDescription>
+        <epo:hasEstimatedValue>
+          <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#ValueValObjectcd6c867c-9aae-4564-9027-47dc8aa8d7ba">
+            <epo:hasOverallAmount>
+              <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AmountValObjectc70ba4db-ab73-4c62-bec7-267738165100">
+                <ccts:hasAmountValue>2900000.00</ccts:hasAmountValue>
+                <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/CZK"/>
+              </ccts:Amount>
+            </epo:hasOverallAmount>
+            <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+          </epo:Value>
+        </epo:hasEstimatedValue>
+        <epo:hasTitle xml:lang="cs">
+                        &lt;P&gt;Část 1 - Motorová vozidla - osobní (typ A)&lt;/P&gt;
+                    </epo:hasTitle>
+        <epo:hasVariantPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasName>Maximální spotřeba pohonných hmot pro kombinovaný
+                                provoz</epo:hasName>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>5</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:CentralPurchasingBody rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#CPBa94c261e-4b6f-448f-80c3-cfa539813613">
+    <reg2015:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-131-298344#Procedure86ae4552-8cc4-436e-aca7-4b98d70bc328"/>
+    <epo:hasCentralPurchasingBodyType rdf:resource="http://data.europa.eu/a4g/ontology#Cpb-awa"/>
+  </epo:CentralPurchasingBody>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AwardCriterionQuality36b88b1c-2505-46c6-890f-d5b50c060e8e">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lotaeb03eeb-791a-4ae9-9822-a959c32797ea"/>
+    <epo:hasName>Technické parametry automobilů</epo:hasName>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>25</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AwardCriterionPrice7545c2a2-7394-409b-8898-d00504f4bef9">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lotaeb03eeb-791a-4ae9-9822-a959c32797ea"/>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+    <epo:hasFormula>70</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AwardCriterionQuality8f1a7617-c11d-49b6-a2f4-9baa51678309">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lotaeb03eeb-791a-4ae9-9822-a959c32797ea"/>
+    <epo:hasName>Maximální spotřeba pohonných hmot pro kombinovaný
+                                provoz</epo:hasName>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>5</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AwardCriterionQuality070d10f7-c069-490b-acbb-535ea55cbfbf">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lota1183f7a-46c1-4d64-9532-01bf92740020"/>
+    <epo:hasName>Technické parametry automobilů</epo:hasName>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>25</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AwardCriterionQuality52625a08-8271-4d69-8fb5-7239eecd6b5c">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lot34951729-5cf1-4f2e-9c91-c67622c423df"/>
+    <epo:hasName>Technické parametry automobilů</epo:hasName>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>25</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AwardCriterionPriceec6e133e-840d-4b9f-9a52-7402e3a63907">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lot9b15c02e-f598-4b9c-b5f3-0eb9c15f8c48"/>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+    <epo:hasFormula>70</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AwardCriterionQuality8bf52062-8ee1-4e53-81aa-169ecfbb052d">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lot34951729-5cf1-4f2e-9c91-c67622c423df"/>
+    <epo:hasName>Maximální spotřeba pohonných hmot pro kombinovaný
+                                provoz</epo:hasName>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>5</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AwardCriterionQuality4928c0a3-837f-46e9-a15b-10422af4525b">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lot9b15c02e-f598-4b9c-b5f3-0eb9c15f8c48"/>
+    <epo:hasName>Maximální spotřeba pohonných hmot pro kombinovaný
+                                provoz</epo:hasName>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>5</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AwardCriterionPrice392627d9-0a58-4d50-9c70-92c00d325617">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lota1183f7a-46c1-4d64-9532-01bf92740020"/>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+    <epo:hasFormula>70</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AwardCriterionPrice419603cf-2ab0-4f86-83e3-0badb2c85bd1">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lot34951729-5cf1-4f2e-9c91-c67622c423df"/>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+    <epo:hasFormula>70</epo:hasFormula>
+  </epo:AwardCriterion>
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298344#AwardCriterionQualityd60cdae3-5693-4a15-97fa-ebc5139c3e6e">
+    <epo:isUsedToAward rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298344#Lot9b15c02e-f598-4b9c-b5f3-0eb9c15f8c48"/>
+    <epo:hasName>Technické parametry automobilů</epo:hasName>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/quality"/>
+    <epo:hasFormula>25</epo:hasFormula>
+  </epo:AwardCriterion>
+</rdf:RDF>

@@ -1,0 +1,57 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397879#ProcedureExt4415be07-7176-4236-a951-1393c8a9ea26">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397879#Buyer38524321-16a5-46aa-83f5-bf98f47ee999">
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397879#BuyerProfilec9c1d749-20e7-4fed-bd3d-f490af84d57c">
+            <epo:hasURL>http://www.trenord.it</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397879#ContactPoint77cdb04e-4406-4983-a9dd-7350cb29fc7d">
+            <epo:hasInternetAddress>http://www.trenord.it</epo:hasInternetAddress>
+            <epo:hasTelephone>+39 0285114250</epo:hasTelephone>
+            <epo:hasDescription xml:lang="it">Dott.ssa Sarah Laquagni</epo:hasDescription>
+            <epo:hasEmail>trenord@legalmail.it</epo:hasEmail>
+            <epo:hasFax>+39 0285114621</epo:hasFax>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397879#ProcedureExt4415be07-7176-4236-a951-1393c8a9ea26"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397879#Organisation2f175632-2089-44d9-9df6-0607d8a259b3">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397879#Location4cc62a8a-7bce-4260-aec4-20d95b4dc7ba">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397879#Address0eb8d09b-9caf-4af8-8b48-60dfe41b6ce2">
+                    <epo:hasStreetName xml:lang="it">Piazzale Cadorna 14</epo:hasStreetName>
+                    <epo:hasCityName xml:lang="it">Milano</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ITC4C"/>
+                    <epo:hasPostalZone>20123</epo:hasPostalZone>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="it">Trenord S.r.l.</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/rail"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

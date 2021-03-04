@@ -1,0 +1,72 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#ProcedureExt82352f7a-6198-4f0f-adb8-8bb5f4d44008">
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#AccessTermsFull54e9ee87-05b9-466b-ac1d-e6f76f827771">
+        <epo:hasProcurementDocumentLandingPage>https://eojn.nn.hr/SPIN/application/ipn/DocumentManagement/DokumentPodaciFrm.aspx?OznakaDokumenta=2020/S+0F5-0037462</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#Buyera805e10f-e750-4c8e-959a-210f29be3af9">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#Organisation23dc6729-7219-48d2-9a48-580a708a7e43">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#OrganisationId65ebea58-ef31-4755-9dd6-62417e1909e5">
+                <epo:identifierValue>69401829750</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#Location171f4fe1-1ca5-4dbb-bd57-f9ef50ee5d46">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#Address590807e7-430d-465a-89b9-7b17eca03482">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/HRV"/>
+                    <epo:hasCityName xml:lang="hr">Zagreb</epo:hasCityName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/HR"/>
+                    <epo:hasPostalZone>10000</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="hr">Savska cesta 88a</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="hr">Plinacro d.o.o.</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-207-505891#ProcedureExt82352f7a-6198-4f0f-adb8-8bb5f4d44008"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-207-505891#ProcedureExt82352f7a-6198-4f0f-adb8-8bb5f4d44008"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#ContactPoint0df468cd-040a-4944-a757-fc0ab9671564">
+            <epo:hasDescription xml:lang="hr">Daonella Tannir</epo:hasDescription>
+            <epo:hasTelephone>+385 16301716</epo:hasTelephone>
+            <epo:hasInternetAddress>www.plinacro.hr</epo:hasInternetAddress>
+            <epo:hasFax>+385 16301746</epo:hasFax>
+            <epo:hasEmail>daonella.tannir@plinacro.hr</epo:hasEmail>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gas-heat"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#SubmisisonTerms0b851f8b-3f96-49ed-b8ab-9c2fc12f6901">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-207-505891#ChannelSubmissionf38e1edb-953c-42e2-aa13-541a2112f3e8">
+            <epo:hasURL>https://eojn.nn.hr/Oglasnik</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

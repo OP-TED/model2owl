@@ -1,0 +1,55 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306779#ProcedureExt3aae14eb-54fa-478b-9bb4-7a7ed9ad46dc">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306779#Buyerbbdf8497-99b8-4fe3-9ccf-248bd276d96b">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306779#ProcedureExt3aae14eb-54fa-478b-9bb4-7a7ed9ad46dc"/>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306779#ContactPoint95cf4818-963e-4ebf-96bf-df11137f29f0">
+            <epo:hasInternetAddress>http://www.kraftringen.se</epo:hasInternetAddress>
+            <epo:hasEmail>emily.metcalf@kraftringen.se</epo:hasEmail>
+            <epo:hasDescription xml:lang="sv">Emily Metcalf</epo:hasDescription>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306779#Organisation0447f1c0-830e-44eb-84b0-31e3cfe089fe">
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306779#OrganisationId53d4bf1b-a466-4cb5-ae74-14962700f3f6">
+                <epo:identifierValue>556100-9852</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306779#Locationef4c729c-cf84-49c2-a8f7-f3c469324402">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306779#Address2d78ae50-78fa-4293-9c4e-4a48c6df2833">
+                    <epo:hasStreetName xml:lang="sv">Box 25</epo:hasStreetName>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/SE224"/>
+                    <epo:hasPostalZone>221 00</epo:hasPostalZone>
+                    <epo:hasCityName xml:lang="sv">LUND</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/SWE"/>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="sv">Kraftringen Energi AB (publ)</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/electricity"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

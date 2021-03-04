@@ -1,0 +1,58 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434046#ProcedureExtc56586b0-6090-43cc-b1aa-4a9970dd377e">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434046#Buyere2aacb80-382c-478c-b92d-a856887217e9">
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434046#ProcedureExtc56586b0-6090-43cc-b1aa-4a9970dd377e"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434046#BuyerProfile4a49e3a7-756a-44fa-8324-60cb42a85c32">
+            <epo:hasURL>http://www.sncf.com/fr/fournisseurs/avis-de-marche</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434046#ContactPoint2482584d-cdfe-4ea2-830f-74543521894c">
+            <epo:hasInternetAddress>http://www.sncf.com/fr/fournisseurs/avis-de-marche</epo:hasInternetAddress>
+            <epo:hasFax>+33 482313625</epo:hasFax>
+            <epo:hasEmail>rozenn.figueroa@sncf.fr</epo:hasEmail>
+            <epo:hasTelephone>+33 482313642</epo:hasTelephone>
+            <epo:hasDescription xml:lang="fr">SNCF réseau — dir achats réseau EFI — entité fournitures
+                        IN</epo:hasDescription>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434046#Organisationc323aaf1-c7ec-4c63-a8a2-7ec8325ce7c6">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434046#Location0be7da75-04d0-47f0-962d-4e641ed3580a">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434046#Address888f7164-b30d-42d2-bf19-d05dbf9a14a7">
+                    <epo:hasPostalZone>69502</epo:hasPostalZone>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+                    <epo:hasCityName xml:lang="fr">Lyon Cedex 03</epo:hasCityName>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasStreetName xml:lang="fr">120 boulevard Vivier-Merle</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">SNCF réseau</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/rail"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

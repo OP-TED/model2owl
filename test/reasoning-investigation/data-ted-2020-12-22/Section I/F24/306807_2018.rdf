@@ -1,0 +1,132 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#ProcurementServiceProviderParticipation44e5de04-cdd3-4569-8960-9cfb956ba4a1">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#ContactPointParticipation18891a06-936e-452c-85d9-59d69c1fe51f">
+        <epo:hasTelephone>+33 134290306</epo:hasTelephone>
+        <epo:hasInternetAddress>https://agysoft.marches-publics.info/</epo:hasInternetAddress>
+        <epo:hasEmail>servicemarches@roissypaysdefrance.fr</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <reg2015:receivesRequestsToParticipate>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#ProcedureExt3e49f289-20db-4a59-ab9e-32ddaedbfa8e">
+        <reg2015:applies>
+          <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#SubmisisonTerms3aad203e-9161-4222-af45-68246308696b">
+            <epo:hasSubmissionCommunicationMeans>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#ChannelSubmission1b7b93d3-8d1a-4078-b9f7-86810f2bc237">
+                <epo:hasURL>https://agysoft.marches-publics.info/</epo:hasURL>
+              </epo:Channel>
+            </epo:hasSubmissionCommunicationMeans>
+          </epo:SubmissionTerm>
+        </reg2015:applies>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#Buyer077cf73e-5eab-4f59-b4c0-1b53180bcfa0">
+            <epo:has>
+              <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#BuyerProfile4448c9e2-f926-4aa2-9708-fc3db83945ef">
+                <epo:hasURL>https://agysoft.marches-publics.info/</epo:hasURL>
+              </epo:BuyerProfile>
+            </epo:has>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#ContactPointbd76285a-f94c-4073-985b-427861d2d88a">
+                <epo:hasTelephone>+33 134290306</epo:hasTelephone>
+                <epo:hasInternetAddress>https://www.roissypaysdefrance.fr</epo:hasInternetAddress>
+                <epo:hasEmail>correspondre@aws-france.com</epo:hasEmail>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306807#ProcedureExt3e49f289-20db-4a59-ab9e-32ddaedbfa8e"/>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#Organisationc45b34a3-8495-4a6a-ac8e-5461460ac2b1">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#Location7ead70b4-cc1a-4817-90e5-1e3fb06e85ee">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#Address811dc9df-4f16-4006-97a2-4d2ccc795c4e">
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR108"/>
+                        <epo:hasCityName xml:lang="fr">Roissy-en-France</epo:hasCityName>
+                        <epo:hasStreetName xml:lang="fr">6 bis avenue Charles de Gaulle</epo:hasStreetName>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                        <epo:hasPostalZone>95700</epo:hasPostalZone>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasID>
+                  <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#OrganisationIdc08eda8f-3425-40d9-a88b-1c5fc31d456a">
+                    <epo:identifierValue>20005565500019</epo:identifierValue>
+                  </epo:Identifier>
+                </epo:hasID>
+                <epo:hasName xml:lang="fr">Communauté d'agglomération Roissy Pays de France</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#AccessTermsFull5a0b4d66-db0d-452c-baba-3741e3ee77e7">
+            <epo:hasProcurementDocumentLandingPage>https://agysoft.marches-publics.info/</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:receivesRequestsToParticipate>
+    <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306807#ProcedureExt3e49f289-20db-4a59-ab9e-32ddaedbfa8e"/>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#OrganisationParticipation346dc9a4-b3a9-40ff-9fe1-8e65c30bb6ac">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#LocationParticipationb26e0fee-33df-495b-91a5-d257b2c7811b">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#AddressParticipation4271d3c6-669d-469b-af7e-9a952bf1756b">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR108"/>
+                <epo:hasCityName xml:lang="fr">Villiers-le-Bel</epo:hasCityName>
+                <epo:hasStreetName xml:lang="fr">1 boulevard Carnot</epo:hasStreetName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasPostalZone>95400</epo:hasPostalZone>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Communauté d'agglomération Roissy Pays de France: service marchés publics</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+  </epo:ProcurementServiceProvider>
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#ProcurementServiceProvider8abaf115-4e09-451b-83ca-d2d691a241d5">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#ContactPointPSP88d1d427-f393-4612-b6fc-9a9a0443d325">
+        <epo:hasTelephone>+33 134290306</epo:hasTelephone>
+        <epo:hasInternetAddress>https://agysoft.marches-publics.info/</epo:hasInternetAddress>
+        <epo:hasEmail>servicemarches@roissypaysdefrance.fr</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-134-306807#ProcedureExt3e49f289-20db-4a59-ab9e-32ddaedbfa8e"/>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#OrganisationPSP428f212d-089b-4d80-a801-46e75b8d86f5">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#LocationPSP600b7747-e85f-453b-918e-30f3bd9e28cb">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-134-306807#AddressPSP100109d2-6594-4843-a6f5-6437f07c8c90">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR108"/>
+                <epo:hasCityName xml:lang="fr">Villiers-le-Bel</epo:hasCityName>
+                <epo:hasStreetName xml:lang="fr">1 boulevard Carnot</epo:hasStreetName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasPostalZone>95400</epo:hasPostalZone>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Communauté d'agglomération Roissy Pays de France: service marchés publics</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

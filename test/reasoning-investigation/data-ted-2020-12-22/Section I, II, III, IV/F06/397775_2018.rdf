@@ -1,0 +1,141 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#AwardCriterionPricee25b53b8-5136-4e93-91f6-d8c55b7bdee7">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#Lotb0ca52d4-9499-41e8-bedd-dfda22a0e8f3">
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-175-397775#Procedureec728d9b-d8c1-47bb-a8c1-9b3c377dfb71">
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#SubmissionTerm7abf69ad-6c64-45ea-b188-5aa9591b81f2"/>
+            </reg2015:applies>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#ValueTotalcf38c1aa-1310-47ac-9ac0-f25e65ba4639">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#AmountTotald449a3d6-42da-40da-99c0-ad5affbdc56f">
+                    <ccts:hasAmountValue>888800.00</ccts:hasAmountValue>
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-397775#Lotb0ca52d4-9499-41e8-bedd-dfda22a0e8f3"/>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#Purpose51727f84-d818-4ce8-acf3-b8c7304b7849">
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/supplies"/>
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/24951311"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#Buyer90f286c6-6b83-4ac2-a946-473cc97b82b2">
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#Organisationdcb3c97e-e147-42b1-8d55-64bf9bc3a562">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#Locationb57c26ea-ebcc-47a3-9887-380f1e480a71">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#Address1eec2b36-c7d9-4adc-8030-6976f4d17f5a">
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ESP"/>
+                            <epo:hasCityName xml:lang="es">Madrid</epo:hasCityName>
+                            <epo:hasPostalZone>28007</epo:hasPostalZone>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ES"/>
+                            <epo:hasStreetName xml:lang="es">C/ Cerro de la Plata, 4</epo:hasStreetName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="es">Empresa Municipal de Transportes de Madrid, S. A.</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#BuyerProfilec348f3a5-4d43-4499-9cb4-0cb34afc82e2">
+                    <epo:hasURL>www.emtmadrid.es</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#ContactPoint2047c875-24f4-45e8-a796-7f894aa7914c">
+                    <epo:hasFax>+34 912093825</epo:hasFax>
+                    <epo:hasInternetAddress>www.emtmadrid.es</epo:hasInternetAddress>
+                    <epo:hasTelephone>+34 912093839</epo:hasTelephone>
+                    <epo:hasEmail>contratacion@emtmadrid.es</epo:hasEmail>
+                    <epo:hasDescription xml:lang="es">Secretaría General, Área de Contratación</epo:hasDescription>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-397775#Procedureec728d9b-d8c1-47bb-a8c1-9b3c377dfb71"/>
+                <epo:hasContractingEntity>true</epo:hasContractingEntity>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/urttb"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <epo:hasTitle xml:lang="es">
+                    &lt;P&gt;Suministro de 800 000 litros de refrigerante diluido al 50 % listo para su
+                        uso (06001303)&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:hasDescription xml:lang="es">
+                    &lt;P&gt;Suministro de 800 000 litros de refrigerante diluido al 50 % listo para su
+                        uso (06001303).&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#ContractNotice7b0643cd-1222-4759-a1c5-5c351c9ad730">
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-397775#Procedureec728d9b-d8c1-47bb-a8c1-9b3c377dfb71"/>
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#PreviousNotice12896f71-0bb2-40b0-9ed1-02cf46e7fb91">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#NoticeIda71d98f6-6926-4218-af2c-ad228e6d3eb9">
+                        <epo:identifierValue>2018/S 060-133394</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#ProcedureIdb321985f-58ae-4e62-936e-2877e56e1d70">
+                <epo:identifierValue>18/024/2</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#ContractTermLotecd09940-448f-4885-bd21-8a0a28796cf5">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#ObjectContractAddress7200eac8-0c79-4b7d-ac99-d092b654551c">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/ES"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="es"
+            >
+                        &lt;P&gt;Los suministros, así como la recogida de contenedores vacíos, serán
+                            efectuados directamente en los distintos Centros de Operaciones, así
+                            como para el almacén general en función de necesidades de EMT.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-397775#PurposeAdditional8c51a25b-bf99-4d65-bb21-8ea538b94a43">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasDescription xml:lang="es">
+                        &lt;P&gt;Suministro de 800 000 litros de refrigerante diluido al 50 % listo para
+                            su uso (06001303).&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

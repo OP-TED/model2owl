@@ -1,0 +1,150 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#AwardCriterionPrice8e87a0ea-5b64-4e32-acb7-ea75dba25e0a">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#Lot186daa5f-c7e8-4145-8cea-3a813a35c6ba">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#ContractTermLotb679f716-9b1d-4aca-bfe8-03f2c5ca0b7e">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#ObjectContractAddress88b0f1fa-ff36-49b4-8a9b-5b9f640cb001">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE923"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="de"
+            >
+                        &lt;P&gt;31787 Hameln&lt;/P&gt;
+                        &lt;P&gt;Basbergstraße 112&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#PurposeAdditional5db3a79c-09b9-463b-a85c-001706109561">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2018/s-175-396231#Procedure27bc6ddb-071d-43b3-af83-f6c313e14592">
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396231#Lot186daa5f-c7e8-4145-8cea-3a813a35c6ba"/>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#SubmissionTermc6a7ef05-d949-44d5-826c-d33a5652342d"/>
+            </reg2015:applies>
+            <epo:hasTitle xml:lang="de">
+                    &lt;P&gt;Neubau Schulzentrum Nord in Hameln – Bodenbelagsarbeiten (2
+                        Bauabschnitte)&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#ValueTotal106596a5-1abe-4b79-b8d8-8875a51d7a66">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#AmountTotal6894787f-30ad-471e-9ded-3c22baad7597">
+                    <ccts:hasAmountValue>306540.20</ccts:hasAmountValue>
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#ContractNotice6c4acd5d-cb0a-49cf-8a73-500e752fdf77">
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396231#Procedure27bc6ddb-071d-43b3-af83-f6c313e14592"/>
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#PreviousNotice52b623bb-e3bf-4ecb-a377-7bdd40e49d2a">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#NoticeIdc532f4a7-9b99-45f0-968b-a0c812710fad">
+                        <epo:identifierValue>2018/S 125-283977</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#Buyer10c6a0ba-7c2e-4e3b-bb3e-c058cae93eb9">
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2018/s-175-396231#Procedure27bc6ddb-071d-43b3-af83-f6c313e14592"/>
+                <epo:has>
+                  <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#BuyerProfile5c35d81c-b92e-416f-b1ac-9941b0c37dd4">
+                    <epo:hasURL>www.hameln.de/stadtportal/rathaus/zentrale_vergabestelle/index.htm</epo:hasURL>
+                  </epo:BuyerProfile>
+                </epo:has>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#ContactPoint77203a17-7cb3-46a3-8ff2-e512795b224a">
+                    <epo:hasInternetAddress>www.hameln.de</epo:hasInternetAddress>
+                    <epo:hasEmail>vergabestelle@hameln.de</epo:hasEmail>
+                    <epo:hasTelephone>+49 5151202-1417</epo:hasTelephone>
+                    <epo:hasFax>+49 5151202-1266</epo:hasFax>
+                    <epo:hasDescription xml:lang="de">Stadt Hameln – Zentrale Vergabestelle, Rathausplatz 1, 31785
+                        Hameln</epo:hasDescription>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#Organisation14cdfc41-4dc5-4334-90c9-0883053fa011">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#OrganisationId1708ffb9-7eaf-4188-afdc-5d972d7c2c66">
+                        <epo:identifierValue>DE923</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#Location565c9dcb-267d-4762-bbcc-83e664c5c7e5">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#Addressf570dd15-af9c-4dcf-bc68-659272f36ae3">
+                            <epo:hasStreetName xml:lang="de">Rathausplatz 1</epo:hasStreetName>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DE923"/>
+                            <epo:hasPostalZone>31785</epo:hasPostalZone>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                            <epo:hasCityName xml:lang="de">Hameln</epo:hasCityName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="de">Stadt Hameln</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Bodenbelag bestehend aus Linoleum, z.T. mit Trittschallverbesserung,
+                        Nadelvlies, Estricharbeiten in Kleinflächen, Abbruch bahnenverlegter
+                        Oberbeläge im 2.BA&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#ProcedureId46bbc81a-ca10-43ad-8a92-3e523d76d4cf">
+                <epo:identifierValue>26/2018</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396231#Purpose565b5568-cc4f-48e6-a002-220793feef8c">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45432130"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasDescription xml:lang="de">
+                        &lt;P&gt;Bodenbelagarbeiten, zwei Bauabschnitte, ca. 3 500 m&lt;FT TYPE="SUP"&gt;2&lt;/FT&gt;
+                            Abbruch bahnenverlegter Oberbeläge, Estrich in Kleinflächen, ca. 4 200
+                                m&lt;FT TYPE="SUP"&gt;2&lt;/FT&gt; Linoleum, ca. 2 400 m&lt;FT TYPE="SUP"&gt;2&lt;/FT&gt;
+                            Linoleum mit Trittschallverbesserung, ca. 550 m Kernsockelleisten ca. 1
+                            500 m&lt;FT TYPE="SUP"&gt;2&lt;/FT&gt; Nadelvlies.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

@@ -1,0 +1,74 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396439#ProcedureExt19407642-f4b3-4ab9-ad77-25bea1a88835">
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396439#SubmisisonTerms89c6b9f6-3aa4-42f8-860c-42abc3f70449">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396439#ChannelSubmission1fef5333-d315-43a5-98af-02f63910efc1">
+            <epo:hasURL>http://www.e-bourgogne.fr</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396439#AccessTermsFulla962221a-9b92-4e31-a9d8-d475fad68004">
+        <epo:hasProcurementDocumentLandingPage>http://www.e-bourgogne.fr</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396439#Buyerfb61ae65-426c-400d-b9d2-5f69a68dae9c">
+        <epo:hasBuyerLegalTypeDescription xml:lang="fr">Établissement de santé</epo:hasBuyerLegalTypeDescription>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396439#ProcedureExt19407642-f4b3-4ab9-ad77-25bea1a88835"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396439#BuyerProfile68774c54-ec8a-4f0f-a779-a4c0eb8b186e">
+            <epo:hasURL>http://www.e-bourgogne.fr</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396439#ContactPoint7b47d265-bfc5-47d3-abb3-006ea24a5fb3">
+            <epo:hasDescription xml:lang="fr">M. le directeur</epo:hasDescription>
+            <epo:hasEmail>direction@ch-sens.fr</epo:hasEmail>
+            <epo:hasTelephone>+33 3886861515</epo:hasTelephone>
+            <epo:hasInternetAddress>http://www.ch-sens.fr</epo:hasInternetAddress>
+            <epo:hasFax>+33 3886861007</epo:hasFax>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/health"/>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396439#ProcedureExt19407642-f4b3-4ab9-ad77-25bea1a88835"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396439#Organisationdf17eaa9-8b4d-408b-b6a0-9628e1032617">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396439#Location27dcddf5-0006-42de-a051-4dd325c2999f">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-175-396439#Addressee0fd8e7-b77b-4d92-bde8-91561d722e19">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRC14"/>
+                    <epo:hasPostalZone>89100</epo:hasPostalZone>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                    <epo:hasStreetName xml:lang="fr">1 avenue Pierre de Coubertin</epo:hasStreetName>
+                    <epo:hasCityName xml:lang="fr">Sens</epo:hasCityName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="fr">Centre hospitalier de Sens</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396439#ProcedureExt19407642-f4b3-4ab9-ad77-25bea1a88835"/>
+        <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2018/s-175-396439#ProcedureExt19407642-f4b3-4ab9-ad77-25bea1a88835"/>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

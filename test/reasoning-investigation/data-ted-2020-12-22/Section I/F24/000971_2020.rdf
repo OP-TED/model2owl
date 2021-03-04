@@ -1,0 +1,76 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000971#ProcedureExt68b7316f-66e8-4d65-a491-fa4104e9d496">
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000971#Buyeradb10886-fb9c-4347-81b1-783e11fb75f4">
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000971#BuyerProfiled0a0037e-7075-4db4-9bf9-ef08b0b3e833">
+            <epo:hasURL>https://nen.nipez.cz/profil/vhsturnovNEN</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000971#ContactPoint275dde34-374c-44ca-9cf7-0b23ab94db9e">
+            <epo:hasInternetAddress>https://www.vhsturnov.cz/</epo:hasInternetAddress>
+            <epo:hasEmail>kokrment@vrv.cz</epo:hasEmail>
+            <epo:hasDescription xml:lang="cs">Ing. Ivo Kokrment</epo:hasDescription>
+            <epo:hasTelephone>+420 605266184</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000971#ProcedureExt68b7316f-66e8-4d65-a491-fa4104e9d496"/>
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000971#Organisationf3f6769d-c051-4262-a55d-a6dc7bc02c47">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000971#Location82a3811e-70f9-4894-833b-f6c3fe78a3b4">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000971#Addressfafb606d-afe3-4cb1-a33a-7c7fc6739bad">
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CZE"/>
+                    <epo:hasPostalZone>511 01</epo:hasPostalZone>
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ051"/>
+                    <epo:hasCityName xml:lang="cs">Turnov</epo:hasCityName>
+                    <epo:hasStreetName xml:lang="cs">Antonína Dvořáka 287</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000971#OrganisationIdc47fb62f-6674-436e-8c51-01ee7b5df7b0">
+                <epo:identifierValue>49295934</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasName xml:lang="cs">Vodohospodářské sdružení Turnov</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000971#ProcedureExt68b7316f-66e8-4d65-a491-fa4104e9d496"/>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/water"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000971#AccessTermsFull7d4f5bde-7b4e-44ed-a524-66dad86b8367">
+        <epo:hasProcurementDocumentLandingPage>https://nen.nipez.cz/profil/vhsturnovNEN</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000971#SubmisisonTerms5f2065d7-38cf-49d2-af81-91577c179214">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000971#ChannelSubmission161e6b80-da58-4276-80ad-ce49954ac2d3">
+            <epo:hasURL>https://nen.nipez.cz/profil/vhsturnovNEN</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

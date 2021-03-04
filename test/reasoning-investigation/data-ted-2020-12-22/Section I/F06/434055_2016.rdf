@@ -1,0 +1,61 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#Buyer5f59d27c-de4a-40e8-b9a7-9a71077fa0f7">
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#BuyerProfile76ea0afd-63d1-483c-97a7-dd2771a57438">
+        <epo:hasURL>https://zakazky.cah.cz</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#ContactPointe4aacd5b-77c1-4feb-9131-86358c045a8d">
+        <epo:hasDescription xml:lang="cs">Ing. Zdeněk Hanuš</epo:hasDescription>
+        <epo:hasInternetAddress>www.prg.aero</epo:hasInternetAddress>
+        <epo:hasEmail>zdenek.hanus@cah.cz</epo:hasEmail>
+        <epo:hasTelephone>+420 220115634</epo:hasTelephone>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#Organisation08ee7290-ce3d-4798-b0f9-0b44fbfd1741">
+        <epo:hasID>
+          <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#OrganisationId7a22c041-b3c9-4a25-99b1-f8b473571534">
+            <epo:identifierValue>28244532</epo:identifierValue>
+          </epo:Identifier>
+        </epo:hasID>
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#Locatione3f7fc21-681b-4853-96e1-392ad45f00cb">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#Address30d17d88-bb02-4507-851a-792e92a69484">
+                <epo:hasCityName xml:lang="cs">Praha 6</epo:hasCityName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/CZE"/>
+                <epo:hasStreetName xml:lang="cs">K Letišti 6/1019</epo:hasStreetName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/CZ010"/>
+                <epo:hasPostalZone>160 08</epo:hasPostalZone>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="cs">Letiště Praha, a.s.</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434055#ProcedureExt57f5ec05-bfb4-4aa5-987d-d98df9345c7b">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434055#Buyer5f59d27c-de4a-40e8-b9a7-9a71077fa0f7"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/airport"/>
+    <epo:hasContractingEntity>true</epo:hasContractingEntity>
+  </epo:Buyer>
+</rdf:RDF>

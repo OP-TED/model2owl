@@ -1,0 +1,55 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003904#Buyerb46b503d-b31b-4394-bacf-a1ae0635d1ce">
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003904#Organisation7c95bbf8-090a-4c4d-9c51-26af938648ce">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003904#Location80e25214-d965-4b8d-a782-ab719325e489">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003904#Addressc175ffd2-bf68-41f2-b914-0f3bb527c0c8">
+                <epo:hasCityName xml:lang="fr">Basse-Terre</epo:hasCityName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FR"/>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Région Guadeloupe</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:isResponsibleFor>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003904#ProcedureExtd38862e6-d1f1-4a7d-be38-015a2b6b1267">
+        <epo:isResponsiblityOf rdf:resource="http://data.europa.eu/a4g/resource/2020/s-003-003904#Buyerb46b503d-b31b-4394-bacf-a1ae0635d1ce"/>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </epo:isResponsibleFor>
+    <epo:has>
+      <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003904#BuyerProfile76d6e628-c6db-441e-a9b6-fc66126b0bf7">
+        <epo:hasURL>http://www.eguadeloupe.com</epo:hasURL>
+      </epo:BuyerProfile>
+    </epo:has>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-003-003904#ContactPoint8c95a026-bfed-4140-90c6-b2543b99d1dc">
+        <epo:hasTelephone>+33 590804040</epo:hasTelephone>
+        <epo:hasDescription xml:lang="fr">Direction de la commande publique</epo:hasDescription>
+        <epo:hasEmail>dcp-region@cr-guadeloupe.fr</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.region-guadeloupe.fr</epo:hasInternetAddress>
+        <epo:hasFax>+33 590804159</epo:hasFax>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+    <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut"/>
+  </epo:Buyer>
+</rdf:RDF>

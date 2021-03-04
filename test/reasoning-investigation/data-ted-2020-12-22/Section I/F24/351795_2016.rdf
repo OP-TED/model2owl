@@ -1,0 +1,91 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#ProcurementServiceProviderParticipationf2d1cb04-c5b6-45c3-a1eb-b795e906ad2c">
+    <reg2015:receivesTenders>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#ProcedureExt398ca70e-a1a4-4ef2-b73f-7ee6b918ced7">
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#Buyer8e61954f-abfc-408e-a082-7294008f3d02">
+            <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351795#ProcedureExt398ca70e-a1a4-4ef2-b73f-7ee6b918ced7"/>
+            <epo:has>
+              <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#BuyerProfilef331e99e-aaca-41b5-98ff-b5484793c1ed">
+                <epo:hasURL>http://www.unive.it/appalti</epo:hasURL>
+              </epo:BuyerProfile>
+            </epo:has>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#ContactPoint6f811f4d-b7c5-4db2-9e0d-81e73ecb9a09">
+                <epo:hasFax>+39 0412348079</epo:hasFax>
+                <epo:hasEmail>acquisti.asia@unive.it</epo:hasEmail>
+                <epo:hasInternetAddress>www.unive.it</epo:hasInternetAddress>
+                <epo:hasTelephone>+39 0412348305</epo:hasTelephone>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#Organisation96f47c71-d5e7-40c5-9994-7641bab14acb">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#Location342fea6a-ef80-442d-aeed-67a32902b9e2">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#Address3fef1c8a-ea5d-4e53-970c-ba392d603b22">
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                        <epo:hasCityName xml:lang="it">Venezia</epo:hasCityName>
+                        <epo:hasStreetName xml:lang="it">Dorsoduro 3246</epo:hasStreetName>
+                        <epo:hasPostalZone>30123</epo:hasPostalZone>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="it">Università Ca' Foscari Venezia</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351795#ProcedureExt398ca70e-a1a4-4ef2-b73f-7ee6b918ced7"/>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/education"/>
+            <epo:hasBuyerLegalTypeDescription xml:lang="it">università</epo:hasBuyerLegalTypeDescription>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#AccessTermsFull29f55b84-3bab-4cbc-a197-b6d186ad716e">
+            <epo:hasProcurementDocumentLandingPage>www.unive.it/appalti</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:receivesTenders>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#ContactPointParticipation9f3afe2a-b75a-4423-9393-6be67cb527b7">
+        <epo:hasFax>+49 0412348365</epo:hasFax>
+        <epo:hasEmail>protocollo@pec.unive.it</epo:hasEmail>
+        <epo:hasInternetAddress>http://www.unive.it/appalti</epo:hasInternetAddress>
+        <epo:hasTelephone>+49 0412348286</epo:hasTelephone>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#OrganisationParticipationb1d6a386-cdde-45ee-9f98-c69d7c878acd">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#LocationParticipation351b9c1d-b735-414a-a92a-0351900105af">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351795#AddressParticipation22e417a1-fef8-4c7b-ac1f-46c8b385dc34">
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                <epo:hasCityName xml:lang="it">Venezia</epo:hasCityName>
+                <epo:hasStreetName xml:lang="it">Dorsoduro 3246</epo:hasStreetName>
+                <epo:hasPostalZone>30123</epo:hasPostalZone>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="it">Università Ca' Foscari Venezia — Settore Protocollo</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351795#ProcedureExt398ca70e-a1a4-4ef2-b73f-7ee6b918ced7"/>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

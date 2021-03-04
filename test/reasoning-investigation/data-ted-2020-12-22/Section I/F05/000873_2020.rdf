@@ -1,0 +1,72 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000873#ProcedureExt8a542f78-b7e1-422d-b15b-dfc31ebfb46f">
+    <reg2015:applies>
+      <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000873#SubmisisonTermsbd9b52f7-7c99-4a70-833d-61f76c7d9213">
+        <epo:hasSubmissionCommunicationMeans>
+          <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000873#ChannelSubmission53bf8aa4-6a85-48be-a3e3-e4e03872ac7a">
+            <epo:hasURL>https://zakupy.jsw.pl</epo:hasURL>
+          </epo:Channel>
+        </epo:hasSubmissionCommunicationMeans>
+      </epo:SubmissionTerm>
+    </reg2015:applies>
+    <epo:isResponsiblityOf>
+      <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000873#Buyer1894b2d5-d958-4e0c-9cd6-f5a1106ae6dc">
+        <epo:isRoleOf>
+          <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000873#Organisation4c4840b7-392a-42c7-90eb-50c9bd2bc9d5">
+            <epo:hasLocation>
+              <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000873#Locatione2e42145-c97d-43b0-82af-6bbb5bf905e9">
+                <epo:hasPostalAddress>
+                  <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000873#Address98d54699-1d99-4a18-bf02-1a1fd62ecdd9">
+                    <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL227"/>
+                    <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                    <epo:hasCityName xml:lang="pl">Jastrzębie-Zdrój</epo:hasCityName>
+                    <epo:hasPostalZone>44-330</epo:hasPostalZone>
+                    <epo:hasStreetName xml:lang="pl">Towarowa 1</epo:hasStreetName>
+                  </epo:Address>
+                </epo:hasPostalAddress>
+              </epo:Location>
+            </epo:hasLocation>
+            <epo:hasName xml:lang="pl">Jastrzębska Spółka Węglowa S.A. z siedzibą w Jastrzębiu Zdroju,
+                        Zakład Wsparcia Produkcji</epo:hasName>
+          </epo:Organisation>
+        </epo:isRoleOf>
+        <reg2015:providesAdditionalInformationAboutProcurementProcedure rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000873#ProcedureExt8a542f78-b7e1-422d-b15b-dfc31ebfb46f"/>
+        <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000873#ProcedureExt8a542f78-b7e1-422d-b15b-dfc31ebfb46f"/>
+        <epo:has>
+          <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000873#BuyerProfile37b364d5-fcab-49bb-b3c5-bcad849d4740">
+            <epo:hasURL>http://www.jsw.pl/dla-kontrahentow/przetargi/</epo:hasURL>
+          </epo:BuyerProfile>
+        </epo:has>
+        <epo:has>
+          <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000873#ContactPoint3835ec55-4996-4e72-bdad-efffd7f48353">
+            <epo:hasEmail>przetargi@zwp.jsw.pl</epo:hasEmail>
+            <epo:hasDescription xml:lang="pl">Łukasz Cieściów</epo:hasDescription>
+            <epo:hasInternetAddress>www.jsw.pl</epo:hasInternetAddress>
+            <epo:hasTelephone>+48 327564957</epo:hasTelephone>
+          </epo:ContactPoint>
+        </epo:has>
+        <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/solid-fuel"/>
+        <epo:hasContractingEntity>true</epo:hasContractingEntity>
+      </epo:Buyer>
+    </epo:isResponsiblityOf>
+    <epo:uses>
+      <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000873#AccessTermsFull6fc6e568-8341-4e26-91ae-ebf180f8c092">
+        <epo:hasProcurementDocumentLandingPage>http://www.jsw.pl/dla-kontrahentow/przetargi/</epo:hasProcurementDocumentLandingPage>
+      </epo:AccessTerm>
+    </epo:uses>
+    <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+  </reg2015:Procedure>
+</rdf:RDF>

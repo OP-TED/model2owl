@@ -1,0 +1,135 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#ProcurementServiceProvider42c59bf0-e262-4899-89fc-2c71aa1ca5d8">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#ContactPointPSPadb31c2c-1a30-4675-a500-ab5339b4d231">
+        <epo:hasInternetAddress>http://www.mp74.fr</epo:hasInternetAddress>
+        <epo:hasFax>+33 450986507</epo:hasFax>
+        <epo:hasTelephone>+33 450983505</epo:hasTelephone>
+        <epo:hasEmail>laurent.dambrosio@mairiedemarnaz.fr</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#OrganisationPSPd82fca9c-575d-4abc-9d7c-c9b7257b57ee">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#LocationPSP08b1c695-4445-43da-92d4-3d273c4aa3ad">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#AddressPSPa4140a4e-f97f-4024-b8f7-bcb81279b844">
+                <epo:hasPostalZone>74460</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="fr">Marnaz</epo:hasCityName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRK28"/>
+                <epo:hasStreetName xml:lang="fr">Mairie</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Commune de Marnaz: Laurent d'Ambrosio — directeur général des
+                        services</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <reg2015:providesAdditionalInformationAboutProcurementProcedure>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#ProcedureExt93512620-e99d-4c3d-9454-ee53e7b0a033">
+        <reg2015:applies>
+          <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#SubmisisonTerms3fe774ec-8137-42f6-8dc2-ff4a792d5c01">
+            <epo:hasSubmissionCommunicationMeans>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#ChannelSubmissione25ab512-a241-46c9-9c71-ed431eccf2a7">
+                <epo:hasURL>http://www.mp74.fr</epo:hasURL>
+              </epo:Channel>
+            </epo:hasSubmissionCommunicationMeans>
+          </epo:SubmissionTerm>
+        </reg2015:applies>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#AccessTermsFulle30bab49-bb5b-4a4b-8aca-fa1e7dec1b23">
+            <epo:hasProcurementDocumentLandingPage>http://www.mp74.fr</epo:hasProcurementDocumentLandingPage>
+          </epo:AccessTerm>
+        </epo:uses>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#Buyer46079fd9-6595-49f6-adcb-9556a8c31f90">
+            <epo:has>
+              <epo:BuyerProfile rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#BuyerProfile7076caf3-3327-4f15-9681-4a66d53c0f8c">
+                <epo:hasURL>http://www.mp74.fr</epo:hasURL>
+              </epo:BuyerProfile>
+            </epo:has>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#ContactPoint5e88e17b-3eab-4cdc-aea6-500da14872a1">
+                <epo:hasInternetAddress>http://www.mp74.fr</epo:hasInternetAddress>
+                <epo:hasEmail>a.zanna@mairiedemarnaz.fr</epo:hasEmail>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351799#ProcedureExt93512620-e99d-4c3d-9454-ee53e7b0a033"/>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#Organisation773c702f-5949-4fdf-8049-43f4fd52766a">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#Locationf4077b1b-60a1-4070-99c6-e371f3306b69">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#Address71b1c5fd-aca8-48d6-8bbd-20a86a463460">
+                        <epo:hasPostalZone>74460</epo:hasPostalZone>
+                        <epo:hasCityName xml:lang="fr">Marnaz</epo:hasCityName>
+                        <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRK28"/>
+                        <epo:hasStreetName xml:lang="fr">BP 6</epo:hasStreetName>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasID>
+                  <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#OrganisationId83b6b1a6-6265-4d56-9cbd-4663cf756211">
+                    <epo:identifierValue>21740169400013</epo:identifierValue>
+                  </epo:Identifier>
+                </epo:hasID>
+                <epo:hasName xml:lang="fr">Mairie de Marnaz</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gen-pub"/>
+            <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:providesAdditionalInformationAboutProcurementProcedure>
+  </epo:ProcurementServiceProvider>
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#ProcurementServiceProviderParticipation260d36cd-6903-481b-b57f-3ba2d4eaca01">
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#ContactPointParticipation786427e0-e1fb-46a3-9dc4-bded0d36bba3">
+        <epo:hasInternetAddress>http://www.mp74.fr</epo:hasInternetAddress>
+        <epo:hasFax>+33 450986507</epo:hasFax>
+        <epo:hasTelephone>+33 450983505</epo:hasTelephone>
+        <epo:hasEmail>laurent.dambrosio@mairiedemarnaz.fr</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+    <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351799#ProcedureExt93512620-e99d-4c3d-9454-ee53e7b0a033"/>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#OrganisationParticipation2d53c15c-548a-4daa-9fc8-81461b9116bd">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#LocationParticipation3e01054e-e384-4129-a5e6-467ff762452a">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-195-351799#AddressParticipation7f1534c0-193d-43fa-92aa-82b677a3be79">
+                <epo:hasPostalZone>74460</epo:hasPostalZone>
+                <epo:hasCityName xml:lang="fr">Marnaz</epo:hasCityName>
+                <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/FRA"/>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/FRK28"/>
+                <epo:hasStreetName xml:lang="fr">Mairie</epo:hasStreetName>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="fr">Commune de Marnaz: Laurent d'Ambrosio — directeur général des
+                        services</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2016/s-195-351799#ProcedureExt93512620-e99d-4c3d-9454-ee53e7b0a033"/>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

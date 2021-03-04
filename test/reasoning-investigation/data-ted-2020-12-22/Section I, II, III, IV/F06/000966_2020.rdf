@@ -1,0 +1,118 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#AwardCriterionPricef2e9b5c1-dcf8-4728-8090-40cf60b56230">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#Lot95f638a0-d7ab-4181-9bed-925b094cc6d8">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#ContractTermLot66544bce-0ad4-44df-9e33-2a51384d1771">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#ObjectContractAddress9bd94be6-1e2f-4416-b0e6-88e47e74e253">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#PurposeAdditional5673c6b3-6b01-4058-b8fb-acaf7f378c2f">
+            <epo:hasAdditionalClassification rdf:resource="http://data.europa.eu/cpv/cpv/60210000"/>
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-001-000966#Procedure479a3020-0804-4637-90a2-7fefee8bd649">
+            <reg2015:hasGPAUsage>false</reg2015:hasGPAUsage>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#ProcedureIdfdccf8c6-3be2-4dd1-bbde-f0400ca547ad">
+                <epo:identifierValue>PZP1-25-111/2019</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/direct-award-justification"/>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#SubmissionTermd31bd8dc-6dfe-4991-aba5-d308e6264e4f"/>
+            </reg2015:applies>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#ValueTotal1c2aa63f-8249-45b7-8e4b-f7b784a47f9d">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#AmountTotalbcbcb18c-5092-425e-a86c-63cd24b0cba5">
+                    <ccts:hasAmountValue>113306.12</ccts:hasAmountValue>
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/PLN"/>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <epo:hasTitle xml:lang="pl">
+                    &lt;P&gt;Ulgowe usługi transportowe w 2020 r. - „Łódzka Kolej Aglomeracyjna" Sp. z
+                        o.o.&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#Purposed7272892-ec0c-4d03-9052-33697bd59cda">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/60210000"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/services"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000966#Lot95f638a0-d7ab-4181-9bed-925b094cc6d8"/>
+            <epo:hasDescription xml:lang="pl">
+                    &lt;P&gt;Przedmiotem zamówienia są ulgowe usługi transportowe na rok 2020 na przejazdy
+                        pociągami dla pracowników, emerytów i rencistów oraz osób pobierających
+                        kolejowe świadczenia przedemerytalne.&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#Buyer4810b191-d337-42c0-bafc-752cb0d863e2">
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#Organisationdb234357-0b2b-4ea1-aa0c-838244a09a65">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#Location75f31450-954c-4ea1-b38b-7d0b8ca94bc1">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#Address295047f6-4c03-4a57-a1b1-2feae112f1d9">
+                            <epo:hasStreetName xml:lang="pl">ul. Kolejowa 1</epo:hasStreetName>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/POL"/>
+                            <epo:hasPostalZone>01-217</epo:hasPostalZone>
+                            <epo:hasCityName xml:lang="pl">Warszawa</epo:hasCityName>
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/PL911"/>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="pl">„Przewozy Regionalne" Sp. z o.o.</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000966#ContactPointe38eb4fc-e065-40a9-a68f-71a9e7ee550a">
+                    <epo:hasInternetAddress>https://www.polregio.pl</epo:hasInternetAddress>
+                    <epo:hasDescription xml:lang="pl">Anna Oliszewska, Agata Szewczyk, Warszawa, ul. Kolejowa 1, pokój
+                        603</epo:hasDescription>
+                    <epo:hasEmail>wzs@p-r.com.pl</epo:hasEmail>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000966#Procedure479a3020-0804-4637-90a2-7fefee8bd649"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/rail"/>
+                <epo:hasContractingEntity>true</epo:hasContractingEntity>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasDescription xml:lang="pl">
+                        &lt;P&gt;Przedmiotem zamówienia są ulgowe usługi transportowe na rok 2020 na
+                            przejazdy pociągami dla pracowników, emerytów i rencistów oraz osób
+                            pobierających kolejowe świadczenia przedemerytalne.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

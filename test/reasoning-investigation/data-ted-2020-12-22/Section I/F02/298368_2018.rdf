@@ -1,0 +1,96 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:ProcurementServiceProvider rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#ProcurementServiceProvider9f5604c3-710e-4e38-9308-fb19cf99c696">
+    <reg2015:providesAdditionalInformationAboutProcurementProcedure>
+      <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#ProcedureExtfdd917cf-7ebd-41a4-b659-3d12abe3bbb7">
+        <reg2015:applies>
+          <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#SubmisisonTerms762d4bb1-f759-4e21-b390-479e00204051">
+            <epo:hasSubmissionCommunicationMeans>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#ChannelSubmissionc365da36-e525-4ea8-88a3-d7c468b5eeef">
+                <epo:hasURL>https://gpsesourcing.cabinetoffice.gov.uk/emptoris</epo:hasURL>
+              </epo:Channel>
+            </epo:hasSubmissionCommunicationMeans>
+          </epo:SubmissionTerm>
+        </reg2015:applies>
+        <epo:isResponsiblityOf>
+          <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Buyer3c1d69f1-e2ee-4ca3-a246-56d36984b7df">
+            <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298368#ProcedureExtfdd917cf-7ebd-41a4-b659-3d12abe3bbb7"/>
+            <epo:isRoleOf>
+              <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Organisation7ca34893-73fa-40bf-a3ad-50c7f25fc667">
+                <epo:hasLocation>
+                  <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Locationd4c9c12c-8dac-489a-8c09-8a0634f69bd2">
+                    <epo:hasPostalAddress>
+                      <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Addressf53f1495-8e73-42c0-a9e2-bc33866e1223">
+                        <epo:hasCityName xml:lang="en">Swindon</epo:hasCityName>
+                        <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKK14"/>
+                        <epo:hasStreetName xml:lang="en">Polaris House</epo:hasStreetName>
+                        <epo:hasPostalZone>SN2 1SZ</epo:hasPostalZone>
+                      </epo:Address>
+                    </epo:hasPostalAddress>
+                  </epo:Location>
+                </epo:hasLocation>
+                <epo:hasName xml:lang="en">UK Research And Innovation</epo:hasName>
+              </epo:Organisation>
+            </epo:isRoleOf>
+            <reg2015:receivesRequestsToParticipate rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298368#ProcedureExtfdd917cf-7ebd-41a4-b659-3d12abe3bbb7"/>
+            <reg2015:receivesTenders rdf:resource="http://data.europa.eu/a4g/resource/2018/s-131-298368#ProcedureExtfdd917cf-7ebd-41a4-b659-3d12abe3bbb7"/>
+            <epo:has>
+              <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#ContactPoint28c197f6-16dc-4e69-8094-51383dcc8bd1">
+                <epo:hasInternetAddress>https://www.stfc.ac.uk/</epo:hasInternetAddress>
+                <epo:hasEmail>majorprojects@uksbs.co.uk</epo:hasEmail>
+                <epo:hasDescription xml:lang="en">Jonathan Smith</epo:hasDescription>
+              </epo:ContactPoint>
+            </epo:has>
+            <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+            <epo:hasActivityDescription xml:lang="en">Scientific Research and Innovation</epo:hasActivityDescription>
+          </epo:Buyer>
+        </epo:isResponsiblityOf>
+        <epo:uses>
+          <epo:AccessTerm rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#AccessTermsRestr668e11e0-580e-4e4b-89ae-d51843078f18">
+            <epo:hasRestrictedAccessAddress>
+              <epo:Channel rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#Channel75d0b1b5-7caa-4839-a3e5-9009fc738e4f">
+                <epo:hasURL>https://gpsesourcing.cabinetoffice.gov.uk/emptoris</epo:hasURL>
+              </epo:Channel>
+            </epo:hasRestrictedAccessAddress>
+          </epo:AccessTerm>
+        </epo:uses>
+        <reg2015:hasJointProcurement>false</reg2015:hasJointProcurement>
+      </reg2015:Procedure>
+    </reg2015:providesAdditionalInformationAboutProcurementProcedure>
+    <epo:isRoleOf>
+      <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#OrganisationPSP96a0ca3a-89b4-49f3-98c5-d34c8e1bf692">
+        <epo:hasLocation>
+          <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#LocationPSP3fe6c89c-a95e-435c-acd0-7c008f860f62">
+            <epo:hasPostalAddress>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#AddressPSPdb82841c-ab08-4f60-9214-b5b0c5c39887">
+                <epo:hasCityName xml:lang="en">Swindon</epo:hasCityName>
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/UKK14"/>
+                <epo:hasStreetName xml:lang="en">Polaris House, North Star Avenue</epo:hasStreetName>
+                <epo:hasPostalZone>SN2 1FF</epo:hasPostalZone>
+              </epo:Address>
+            </epo:hasPostalAddress>
+          </epo:Location>
+        </epo:hasLocation>
+        <epo:hasName xml:lang="en">UK Shared Business Services</epo:hasName>
+      </epo:Organisation>
+    </epo:isRoleOf>
+    <epo:has>
+      <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2018/s-131-298368#ContactPointPSP63e37b7d-7d60-410b-9189-d585c45407d2">
+        <epo:hasInternetAddress>https://gpsesourcing.cabinetoffice.gov.uk/emptoris</epo:hasInternetAddress>
+        <epo:hasEmail>ExpressionOfInterest@crowncommercial.gov.uk</epo:hasEmail>
+      </epo:ContactPoint>
+    </epo:has>
+  </epo:ProcurementServiceProvider>
+</rdf:RDF>

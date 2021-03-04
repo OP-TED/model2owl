@@ -1,0 +1,123 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#AwardCriterionPrice31179a61-cc77-4c11-81ab-6eed2838e5b9">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#Lotb9898204-9163-4a0e-ba7a-2c799c744e0a">
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2016/s-238-434052#Procedure955e849d-1740-430e-8c52-3a26bc194878">
+            <epo:hasDescription xml:lang="it">
+                    &lt;P&gt;Ricambi per valvole.&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#ValueTotal3023ab67-2df3-4f1f-a957-8667fb4f7b91">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#AmountTotal7ccb3938-1092-4592-88e4-6b4212af52c9">
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                    <ccts:hasAmountValue>1200000.00</ccts:hasAmountValue>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <epo:hasTitle xml:lang="it">
+                    &lt;P&gt;Ricambi per valvole.&lt;/P&gt;
+                </epo:hasTitle>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#Purpose1aa35305-8093-4f65-aabb-7107db5ebdeb">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/42131142"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/supplies"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <reg2015:hasGPAUsage>false</reg2015:hasGPAUsage>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2016/s-238-434052#Lotb9898204-9163-4a0e-ba7a-2c799c744e0a"/>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call"/>
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#ContractNotice2ff44023-2116-4a39-a9a2-dc1ad97dbc63">
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#PreviousNotice62868330-8b4b-410e-84e8-00a66edbbfe2">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#NoticeIdb0f23428-ffa8-4d71-8462-09be120503a4">
+                        <epo:identifierValue>2015/S 250-459511</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434052#Procedure955e849d-1740-430e-8c52-3a26bc194878"/>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#SubmissionTerm39bd9009-5a49-4cbd-ace8-cb4280a0cbc6"/>
+            </reg2015:applies>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#Buyer390645a9-98eb-47ba-9fba-a3844e3fd001">
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#ContactPoint40436f1a-19ee-4cc4-acbf-702dbeef2ffd">
+                    <epo:hasEmail>luca.montaruli@snamretegas.it</epo:hasEmail>
+                    <epo:hasTelephone>+39 0237037564</epo:hasTelephone>
+                    <epo:hasInternetAddress>www.snamretegas.it</epo:hasInternetAddress>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2016/s-238-434052#Procedure955e849d-1740-430e-8c52-3a26bc194878"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#Organisationa61a7b05-3418-42e8-82bb-fca3e843f272">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#Location9c932ed5-6f0c-423c-8982-2d618ddcdacb">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#Address372f44a0-023b-454c-bcf0-aecb64c35d3e">
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/ITA"/>
+                            <epo:hasCityName xml:lang="it">San Donato Milanese</epo:hasCityName>
+                            <epo:hasStreetName xml:lang="it">Piazzale Supercortemaggiore 2/4 presso sala posta SNAM SpA</epo:hasStreetName>
+                            <epo:hasPostalZone>20097</epo:hasPostalZone>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="it">SNAM Rete Gas SpA</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:hasContractingEntity>true</epo:hasContractingEntity>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/gas-heat"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#ContractTermLotd5355100-7e1c-4326-a000-1378e6a0bcfd">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#ObjectContractAddressf9947885-cd21-4c65-a1cc-ca117ef8bde3">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/IT"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="it"
+            >
+                        &lt;P&gt;Territorio nazionale.&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2016/s-238-434052#PurposeAdditional036040bd-6b99-4e9a-8d66-19023626c661">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:hasDescription xml:lang="it">
+                        &lt;P&gt;Ricambi per valvole.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>

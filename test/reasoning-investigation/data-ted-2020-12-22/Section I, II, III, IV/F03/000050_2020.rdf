@@ -1,0 +1,133 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:epodata="http://data.europa.eu/a4g/resource#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC"
+    xmlns:epo="http://data.europa.eu/a4g/ontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+    xmlns:ccts="http://www.unece.org/cefact#"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:reg2015data="http://data.europa.eu/a4g/extension/resource#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <epo:AwardCriterion rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#AwardCriterionPrice83962287-c7ef-4074-9262-74e7e7d9aee8">
+    <epo:isUsedToAward>
+      <epo:Lot rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#Lot058a04aa-15af-4e8f-a7ef-a42021d266eb">
+        <epo:has>
+          <epo:ContractTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#ContractTermLotf0dfa32f-59b6-4cd5-ba97-90094cca453b">
+            <epo:hasSpecificPlaceOfPerformance>
+              <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#ObjectContractAddressd72cb7fd-8caf-4c12-94c0-a7516aa48bb2">
+                <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DEG01"/>
+              </epo:Address>
+            </epo:hasSpecificPlaceOfPerformance>
+            <epo:hasPlaceOfPerformanceAdditionalInformation xml:lang="de"
+            >
+                        &lt;P&gt;99089 Erfurt&lt;/P&gt;
+                        &lt;P&gt;Nordhäuser Straße 78&lt;/P&gt;
+                    </epo:hasPlaceOfPerformanceAdditionalInformation>
+          </epo:ContractTerm>
+        </epo:has>
+        <epo:has>
+          <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#PurposeAdditionald79dccd8-eec5-4b2f-be54-262030ebbe0c">
+            <epo:hasOptionsPermission rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+          </epo:Purpose>
+        </epo:has>
+        <epo:isSpecifiedIn>
+          <reg2015:Procedure rdf:about="http://data.europa.eu/a4g/extension/resource/2020/s-001-000050#Procedureafd47b5e-d9ec-4329-9ea3-3a5c187656cd">
+            <reg2015:hasGPAUsage>true</reg2015:hasGPAUsage>
+            <epo:hasDescription xml:lang="de">
+                    &lt;P&gt;Einbau- und Lieferleistung von Metalltüren und Metallglasfassaden für die
+                        Sanierung des Gebäudes der ehemaligen Zahnklinik in 99089 Erfurt, Nordhäuser
+                        Straße 78.&lt;/P&gt;
+                </epo:hasDescription>
+            <epo:hasID>
+              <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#ProcedureIddb85a8fd-2c5f-4cc4-99e7-f4a05a82c5ab">
+                <epo:identifierValue>16-086-Ö-BL</epo:identifierValue>
+              </epo:Identifier>
+            </epo:hasID>
+            <epo:hasProcedureType rdf:resource="http://publications.europa.eu/resource/authority/procurement-procedure-type/open"/>
+            <epo:hasOverallPurpose>
+              <epo:Purpose rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#Purpose44eee0f1-7e25-47e7-9a16-ddb17324639d">
+                <epo:hasMainClassification rdf:resource="http://data.europa.eu/cpv/cpv/45215214"/>
+                <epo:hasContractNatureType rdf:resource="http://publications.europa.eu/resource/authority/contract-nature/works"/>
+              </epo:Purpose>
+            </epo:hasOverallPurpose>
+            <epo:hasTotalValue>
+              <epo:Value rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#ValueTotalb7c46e3b-119e-4e20-aded-cf795df0be16">
+                <epo:hasOverallAmount>
+                  <ccts:Amount rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#AmountTotalcdb8749f-6e95-410e-aa1c-a8401c2d9d3a">
+                    <ccts:hasAmountValue>709130.00</ccts:hasAmountValue>
+                    <epo:hasCurrencyCode rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
+                  </ccts:Amount>
+                </epo:hasOverallAmount>
+                <epo:VATIncludedIndicator>false</epo:VATIncludedIndicator>
+              </epo:Value>
+            </epo:hasTotalValue>
+            <epo:specifies rdf:resource="http://data.europa.eu/a4g/resource/2020/s-001-000050#Lot058a04aa-15af-4e8f-a7ef-a42021d266eb"/>
+            <epo:notifies>
+              <epo:ContractNotice rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#ContractNotice99795e83-7fef-4479-9f97-4b2c6b5995b5">
+                <epo:refersToPrevious>
+                  <epo:Notice rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#PreviousNotice132e7a8e-20d8-4dc3-b0cd-014bb5e23412">
+                    <epo:hasID>
+                      <epo:Identifier rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#NoticeId7d79ef19-8680-44bd-b6c9-d3f630957fba">
+                        <epo:identifierValue>2017/S 075-144335</epo:identifierValue>
+                      </epo:Identifier>
+                    </epo:hasID>
+                  </epo:Notice>
+                </epo:refersToPrevious>
+                <epo:relatesTo rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000050#Procedureafd47b5e-d9ec-4329-9ea3-3a5c187656cd"/>
+              </epo:ContractNotice>
+            </epo:notifies>
+            <epo:isResponsiblityOf>
+              <epo:Buyer rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#Buyere3b8c557-a731-4715-a92f-d83bc28a2aa7">
+                <epo:isResponsibleFor rdf:resource="http://data.europa.eu/a4g/extension/resource/2020/s-001-000050#Procedureafd47b5e-d9ec-4329-9ea3-3a5c187656cd"/>
+                <epo:isRoleOf>
+                  <epo:Organisation rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#Organisation5518c55b-2569-4dc2-a9d1-3755ac4c0204">
+                    <epo:hasLocation>
+                      <epo:Location rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#Location03f0a07b-5810-4214-816a-5e73cdac29dc">
+                        <epo:hasPostalAddress>
+                          <epo:Address rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#Address8c224b82-2ae1-468d-986e-14b18cd485d7">
+                            <epo:hasCountrySubentityCode rdf:resource="http://data.europa.eu/nuts/code/DEG03"/>
+                            <epo:hasCountryCode rdf:resource="http://publications.europa.eu/resource/authority/country/DEU"/>
+                            <epo:hasCityName xml:lang="de">Jena</epo:hasCityName>
+                            <epo:hasPostalZone>07743</epo:hasPostalZone>
+                            <epo:hasStreetName xml:lang="de">Philosophenweg 22</epo:hasStreetName>
+                          </epo:Address>
+                        </epo:hasPostalAddress>
+                      </epo:Location>
+                    </epo:hasLocation>
+                    <epo:hasName xml:lang="de">Studierendenwerk Thüringen Anstalt des öffentlichen
+                        Rechts</epo:hasName>
+                  </epo:Organisation>
+                </epo:isRoleOf>
+                <epo:has>
+                  <epo:ContactPoint rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#ContactPoint38091d8c-726a-45b8-983e-07c6cfac74c5">
+                    <epo:hasInternetAddress>http://www.stw-thueringen.de</epo:hasInternetAddress>
+                    <epo:hasFax>+49 3641930502</epo:hasFax>
+                    <epo:hasEmail>poststelle@stw-thueringen.de</epo:hasEmail>
+                  </epo:ContactPoint>
+                </epo:has>
+                <epo:hasBuyerLegalType rdf:resource="http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl"/>
+                <epo:hasMainActivityType rdf:resource="http://publications.europa.eu/resource/authority/main-activity/soc-pro"/>
+              </epo:Buyer>
+            </epo:isResponsiblityOf>
+            <reg2015:applies>
+              <epo:SubmissionTerm rdf:about="http://data.europa.eu/a4g/resource/2020/s-001-000050#SubmissionTermc20434a9-b766-4339-96f7-6852e5bae1f5"/>
+            </reg2015:applies>
+            <epo:hasTitle xml:lang="de">
+                    &lt;P&gt;2.08 Metallbauarbeiten – Türen, Glasfassade&lt;/P&gt;
+                </epo:hasTitle>
+          </reg2015:Procedure>
+        </epo:isSpecifiedIn>
+        <epo:hasDescription xml:lang="de">
+                        &lt;P&gt;Einbau- und Lieferleistung von Metalltüren und Metallglasfassaden.&lt;/P&gt;
+                    </epo:hasDescription>
+      </epo:Lot>
+    </epo:isUsedToAward>
+    <epo:hasAwardCriterionType rdf:resource="http://publications.europa.eu/resource/authority/award-criterion-type/price"/>
+  </epo:AwardCriterion>
+</rdf:RDF>
