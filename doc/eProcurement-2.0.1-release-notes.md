@@ -67,8 +67,8 @@ This development is publicly available at this URL: [https://github.com/OP-TED/m
 
 Naming and design rules are tightly coupled, since the automation process expects the model to respect these rules in order to produce artefacts of quality and fully functional. These naming and design principles can be found in the documentation about the automated transformation of the UML into OWL, in these two documents:
 
-i) UML conventions: [https://github.com/OP-TED/model2owl/blob/master/doc/uml-conventions/uml-conventions.pdf](https://github.com/OP-TED/model2owl/blob/master/doc/uml-conventions/uml-conventions.pdf), and
-ii) Ontology architecture: [https://github.com/OP-TED/model2owl/blob/master/doc/ontology-architecture/ontology-architecture.pdf](https://github.com/OP-TED/model2owl/blob/master/doc/ontology-architecture/ontology-architecture.pdf)
+* i) UML conventions: [https://github.com/OP-TED/model2owl/blob/master/doc/uml-conventions/uml-conventions.pdf](https://github.com/OP-TED/model2owl/blob/master/doc/uml-conventions/uml-conventions.pdf), and
+* ii) Ontology architecture: [https://github.com/OP-TED/model2owl/blob/master/doc/ontology-architecture/ontology-architecture.pdf](https://github.com/OP-TED/model2owl/blob/master/doc/ontology-architecture/ontology-architecture.pdf)
 
 Note, the automatic generation of the SHACL data shapes from the UML class attributes is currently disabled. This is due to the necessity to perform a strict distinctions between properties that are meant to receive literal values, and those that receive object (URI) values. It is foreseen to carry on in the next version of teh ontology a revision on 
   * usage of standard and custom data-types,
