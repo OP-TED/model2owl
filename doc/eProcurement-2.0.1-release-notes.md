@@ -70,11 +70,11 @@ Naming and design rules are tightly coupled, since the automation process expect
 * i) UML conventions: [https://github.com/OP-TED/model2owl/blob/master/doc/uml-conventions/uml-conventions.pdf](https://github.com/OP-TED/model2owl/blob/master/doc/uml-conventions/uml-conventions.pdf), and
 * ii) Ontology architecture: [https://github.com/OP-TED/model2owl/blob/master/doc/ontology-architecture/ontology-architecture.pdf](https://github.com/OP-TED/model2owl/blob/master/doc/ontology-architecture/ontology-architecture.pdf)
 
-Note, the automatic generation of the SHACL data shapes from the UML class attributes is currently disabled. This is due to the necessity to perform a strict distinctions between properties that are meant to receive literal values, and those that receive object (URI) values. It is foreseen to carry on in the next version of teh ontology a revision on 
+Note, the automatic generation of the SHACL data shapes from the UML class attributes is currently disabled.  Thisis due to the necessity to perform a strict distinctions between properties that are meant to receive literal values, and those that receive object (URI) values. It is foreseen to carry on in the next version of the ontology a revision on 
   * usage of standard and custom data-types,
   * definition of complex data-types, and their declarations as classes, 
   * employment of properties as class attributes when they should be relations between classes.  
-
+The automatic generation of the SHACL data shapes from the UML class relations is enabled as described in [The UML2OWL transformation rules](https://github.com/OP-TED/model2owl/blob/master/doc/uml2owl-transformation/uml2owl-transformation.pdf)
 ## III. Controlled vocabularies
 
 Important decisions were also made regarding code-lists and taxonomies. From version 2.0.1 on, only two types of controlled vocabularies are proposed : those published on EU Vocabularies site and those defined during the development of the ePO. 
