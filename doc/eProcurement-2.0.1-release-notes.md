@@ -8,6 +8,8 @@ The conceptual model, represented as UML diagrams, has evolved largely in respec
 The new conceptual model results mainly from comparing the previous model to the requirements introduced by the _eForms Regulation_ 
 (Commission Implementing Regulation (EU) 2019/1780). Hence, the scope of the work has not varied between versions: eNotification and eAccess. 
 
+As described in the Ontology Architecture documentation the caridinalites have been kept as permissive as possible in order to align with ISA2 practise on Core Vocabularies.
+
 ### Alignment ot eForms
 
 Direct consequences of the Alignment to eForms have been:
