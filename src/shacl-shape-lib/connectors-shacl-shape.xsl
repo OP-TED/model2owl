@@ -26,7 +26,8 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
-        <xsl:if test="not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector')">
+        <xsl:if
+            test="not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector')">
             <xsl:call-template name="connectorRange">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -44,13 +45,22 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
-<!--        <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">-->
-        <xsl:if test="not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector')">
-            <xsl:if test="not(./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')">
-                <xsl:call-template name="connectorRange">
-                    <xsl:with-param name="connector" select="."/>
-                </xsl:call-template>
-            </xsl:if>
+        <!--        <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">-->
+        <xsl:if
+            test="not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector')">
+            <xsl:choose>
+                <xsl:when
+                    test="not(./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')">
+                    <xsl:call-template name="connectorRange">
+                        <xsl:with-param name="connector" select="."/>
+                    </xsl:call-template>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:call-template name="connectorRangeClassToEnumeration">
+                        <xsl:with-param name="connector" select="."/>
+                    </xsl:call-template>
+                </xsl:otherwise>
+            </xsl:choose>
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -76,15 +86,15 @@
             select="
                 if (boolean($connector/source/role/@name)) then
                     f:lexicalQNameToWords($connector/source/role/@name)
-                    else ()
-                    "/>
+                else
+                    ()
+                "/>
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
-                f:buildURIfromLexicalQName($sourceRole, fn:false(), fn:true())
+                    f:buildURIfromLexicalQName($sourceRole, fn:false(), fn:true())
                 else
-                    ()"
-        />
+                    ()"/>
         <xsl:variable name="targetClassURI"
             select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true(), fn:true())"/>
         <xsl:variable name="targetRole"
@@ -138,6 +148,42 @@
     </xsl:template>
 
     <xd:doc>
+        <xd:desc>[Rule 34]-(Dependency range shape in data shape layer) . Within the SHACL Node
+            Shape corresponding to the source UML class, specify property constraints indicating the
+            range class.</xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+
+
+    <xsl:template name="connectorRangeClassToEnumeration">
+        <xsl:param name="connector"/>
+
+        <xsl:variable name="targetClassURI"
+            select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true(), fn:true())"/>
+        <xsl:variable name="targetRole"
+            select="
+                if (boolean($connector/target/role/@name)) then
+                    f:lexicalQNameToWords($connector/target/role/@name)
+                else
+                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+        <xsl:variable name="targetRoleURI"
+            select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
+        <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
+
+        <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
+
+            <sh:NodeShape rdf:about="{$targetRoleURI}">
+                <sh:property>
+                    <sh:PropertyShape>
+                        <sh:path rdf:resource="skos:inScheme"/>
+                        <sh:hasValue rdf:resource="{$targetClassURI}"/>
+                    </sh:PropertyShape>
+                </sh:property>
+            </sh:NodeShape>
+        </xsl:if>
+    </xsl:template>
+
+    <xd:doc>
         <xd:desc> Rule 15 (Association multiplicity in data shape layer) . Within the SHACL Node
             Shape corresponding to the source UML class, specify property constraints indicating
             minimum and maximum cardinality according to cases provided by Rule 8 </xd:desc>
@@ -160,7 +206,7 @@
             select="f:getMultiplicityMaxFromString($sourceMultiplicity)"/>
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($connector/source/model/@name, fn:true(), fn:true())"/>
-      <!--  <xsl:value-of select="$connector/target/type/@multiplicity"/>-->
+        <!--  <xsl:value-of select="$connector/target/type/@multiplicity"/>-->
         <!--<xsl:value-of select="$targetMultiplicity"/>-->
         <xsl:variable name="sourceRole"
             select="
@@ -172,7 +218,7 @@
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
-                f:buildURIfromLexicalQName($sourceRole, fn:false(), fn:true())
+                    f:buildURIfromLexicalQName($sourceRole, fn:false(), fn:true())
                 else
                     ()"/>
         <xsl:variable name="targetClassURI"
@@ -218,7 +264,7 @@
             </sh:NodeShape>
         </xsl:if>
         <!--        end of first property shape content-->
-        
+
         <!--        this is second property shape content-->
         <xsl:variable name="sourceInBidirectionalRestrictionContent" as="item()*">
             <xsl:if test="boolean($targetMultiplicityMax)">
@@ -249,7 +295,7 @@
             </sh:NodeShape>
         </xsl:if>
         <!--        end of second property shape content-->
-        
+
         <!--        this is third property shape content-->
         <xsl:variable name="targetInBidirectionalRestrictionContent" as="item()*">
             <xsl:if test="boolean($sourceMultiplicityMax)">
@@ -300,46 +346,47 @@
                     f:lexicalQNameToWords($connector/source/role/@name)
                 else
                     ()
-                "
-        />
+                "/>
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
-                f:buildURIfromLexicalQName($sourceRole, fn:false(), fn:true())
+                    f:buildURIfromLexicalQName($sourceRole, fn:false(), fn:true())
                 else
-                    ()"
-        />
+                    ()"/>
         <xsl:variable name="targetClassURI"
             select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true(), fn:true())"/>
         <xsl:variable name="targetRole"
             select="
-            if (boolean($connector/target/role/@name)) then
-            f:lexicalQNameToWords($connector/target/role/@name)
-            else
-            concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+                if (boolean($connector/target/role/@name)) then
+                    f:lexicalQNameToWords($connector/target/role/@name)
+                else
+                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
-        
+
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
             <sh:NodeShape rdf:about="{$sourceClassURI}">
                 <sh:sparql rdf:parseType="Resource">
-                    <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of select="$targetRoleURI"
-                    />&gt; ?that . ?that &lt;<xsl:value-of select="$targetRoleURI"/>&gt; ?this .} </sh:select>
+                    <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
+                            select="$targetRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
+                            select="$targetRoleURI"/>&gt; ?this .} </sh:select>
                 </sh:sparql>
             </sh:NodeShape>
         </xsl:if>
         <xsl:if test="$connectorDirection = 'Bi-Directional'">
             <sh:NodeShape rdf:about="{$sourceClassURI}">
                 <sh:sparql rdf:parseType="Resource">
-                    <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of select="$targetRoleURI"
-                    />&gt; ?that . ?that &lt;<xsl:value-of select="$targetRoleURI"/>&gt; ?this .} </sh:select>
+                    <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
+                            select="$targetRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
+                            select="$targetRoleURI"/>&gt; ?this .} </sh:select>
                 </sh:sparql>
             </sh:NodeShape>
             <sh:NodeShape rdf:about="{$targetClassURI}">
                 <sh:sparql rdf:parseType="Resource">
-                    <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of select="$sourceRoleURI"
-                    />&gt; ?that . ?that &lt;<xsl:value-of select="$sourceRoleURI"/>&gt; ?this .} </sh:select>
+                    <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
+                            select="$sourceRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
+                            select="$sourceRoleURI"/>&gt; ?this .} </sh:select>
                 </sh:sparql>
             </sh:NodeShape>
         </xsl:if>

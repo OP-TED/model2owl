@@ -164,4 +164,16 @@
         <x:expect label="there is 2 sh:sparql" test="count(sh:NodeShape/sh:sparql)=2"/>
         <x:expect label="there is 2 sh:select" test="count(sh:NodeShape/sh:sparql/sh:select)=2"/>
     </x:scenario>
+    
+    <x:scenario label="Scenario for dependency range (Class -> Enumeration)">
+        <x:call template="connectorRangeClassToEnumeration">
+            <x:param name="connector" href="../../testData/ePO_CM-2022-01-20.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[247]"/>
+        </x:call>   
+        <x:expect label="there is 1 sh:NodeShape" test="count(sh:NodeShape) = 1"/>
+        <x:expect label="there is 1 sh:property" test="count(sh:NodeShape/sh:property) = 1"/>
+        <x:expect label="there is 1 sh:PropertyShape" test="count(sh:NodeShape/sh:property/sh:PropertyShape) = 1"/>
+        <x:expect label="there is 1 sh:path" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:path) = 1"/>
+        <x:expect label="there is sh:path = skos:inScheme" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:path/@rdf:resource = 'skos:inScheme'"/>
+        <x:expect label="there is 1 sh:hasValue" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:hasValue) = 1"/>
+    </x:scenario>
 </x:description>

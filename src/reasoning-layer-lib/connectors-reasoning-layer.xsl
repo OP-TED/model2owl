@@ -49,6 +49,11 @@
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
         </xsl:if>
+        <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration'">
+            <xsl:call-template name="connectorDependencyRange">
+                <xsl:with-param name="connector" select="."/>
+            </xsl:call-template>
+        </xsl:if>
     </xsl:template>
 
     <xd:doc>
@@ -198,6 +203,30 @@
     </xsl:template>
 
 
+
+    <xd:doc>
+        <xd:desc>Rule 33 (Dependency target in reasnoning layer) . Specify object property range
+            for the target end of the dependency.</xd:desc>
+        <xd:param name="connector"/>
+        <xd:param name="root"/>
+    </xd:doc>
+    
+    <xsl:template name="connectorDependencyRange">
+        <xsl:param name="connector"/>
+        <xsl:param name="root"/>
+
+        <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
+        <xsl:variable name="targetRoleURI"
+            select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
+
+            <rdf:Description rdf:about="{$targetRoleURI}">
+                <rdfs:range
+                    rdf:resource="skos:Concept"
+                />
+            </rdf:Description>
+       
+    </xsl:template>
+
     <xd:doc>
         <xd:desc>Rule 19 (Association asymmetry in reasnoning layer) . Specify the asymmetry object
             property axiom for each end of a recursive association.</xd:desc>
@@ -273,6 +302,8 @@
             </xsl:if>
         
     </xsl:template>
+    
+    
 
 
     <xd:doc>
@@ -343,7 +374,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc> Rule 16 (Association multiplicity in reasnoning layer) . For the association
+        <xd:desc> Rule 16,17 (Association multiplicity in reasnoning layer) . For the association
             target multiplicity, where min and max are different than * (any) and multiplicity is
             not [1..1], specify a subclass axiom where the source class specialises an anonymous
             restriction of properties formulated according to cases provided by Rule 9.</xd:desc>
@@ -531,3 +562,5 @@
         <!--       end of third restriction content-->
     </xsl:template>
 </xsl:stylesheet>
+
+
