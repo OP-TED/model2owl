@@ -235,5 +235,14 @@
         
     </x:scenario>
     
+    <x:scenario label="Scenario for dependency range to enumeration">
+        <x:call template="connectorDependencyRange">
+            <x:param name="connector" href="../../testData/ePO_CM-2022-01-20.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[247]"/>
+        </x:call>   
+        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
+        <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
+        <x:expect label="range is skos:Concept" test="rdf:Description/rdfs:range/@rdf:resource = 'skos:Concept'"/>
+    </x:scenario>
+
     
 </x:description>
