@@ -1,0 +1,60 @@
+%\twocolumn
+\section{Additional rules}
+\label{sec:tran-rules5}
+
+In this section are specified new transformation rules that were implemented after the UML model refactoring.
+
+
+\begin{trule}[Dependency target -- \reasoningComponent]
+	\label{rule:dependency-uni-range-rc}	
+	Specify object property range for the target end of the dependency.
+\end{trule}
+\vspace{-\parskip}
+\begin{minipage}[b]{.385\textwidth}
+	\begin{lstlisting}[language=Turtle, caption={Range specification in Turtle syntax}, captionpos=b]
+	:relatesTo a owl:ObjectProperty ;
+	rdfs:range skos:Concept ;
+	.
+	\end{lstlisting}
+\end{minipage}% <---------------- Note the use of "%"
+\quad\vspace{-\parskip}
+\begin{minipage}[b]{.6\textwidth}
+	\begin{lstlisting}[language=RDF/XML, caption={Range specification in  RDF/XML syntax}, captionpos=b]
+	<owl:ObjectProperty rdf:about="http://base.uri/relatesTo">
+	<rdfs:range rdf:resource="skos:Concept"/>
+	</owl:ObjectProperty>
+	\end{lstlisting}
+\end{minipage}
+\vspace{-\parskip}
+
+\begin{trule}[Dependency range shape -- \shaclComponent]
+	\label{rule:dependency-uni-range-dc}
+	Within the SHACL Node Shape corresponding to the source UML class, specify property constraints indicating the range class.
+\end{trule}
+
+\vspace{-\parskip}
+\begin{minipage}[b]{.385\textwidth}
+	\begin{lstlisting}[language=Turtle, caption={Property class constraint in Turtle syntax}, captionpos=b]
+	:relatesTo a sh:NodeShape ;
+	sh:property [
+	a sh:PropertyShape ;
+	sh:path skos:inScheme ;
+	sh:hasValue :OtherClass ;
+	];
+	.    
+	\end{lstlisting}
+\end{minipage}% <---------------- Note the use of "%"
+\quad\vspace{-\parskip}
+\begin{minipage}[b]{.6\textwidth}
+	\begin{lstlisting}[language=RDF/XML, caption={Property class constraint in RDF/XML syntax}, captionpos=b]
+	<sh:NodeShape rdf:about="http://base.uri/relatesTo">
+	<sh:property>
+	<sh:PropertyShape>
+	<sh:path rdf:resource="skos:inScheme"/>
+	<sh:hasValue rdf:resource="http://base.uri/OtherClass"/>
+	</sh:PropertyShape>
+	</sh:property>
+	</sh:NodeShape>
+	\end{lstlisting}
+\end{minipage}
+\vspace{-\parskip}

@@ -21,7 +21,10 @@ Association range\footnotemark[1] &  & Rule \ref{rule:association-uni-range-dc} 
 Association multiplicity\footnotemark[1] &  & Rule \ref{rule:association-uni-multiplicity-dc} & Rule \ref{rule:association-uni-multiplicity-rc}, \ref{rule:association-uni-multiplicity-one-rc} \\
 Association asymmetry\footnotemark[1]  &  & Rule \ref{rule:association-uni-asymetry-ds} & Rule \ref{rule:association-uni-asymetry-rc} \\
 Association inverse\footnotemark[2] &  &  & Rule \ref{rule:association-bi-inverse-rc} \\
-Dependency\footnotemark[3] & $\dots$ & $\dots$ & $\dots$ \\
+Dependency\footnotemark[3] & Rule \ref{rule:association-uni-core} & &  \\
+Dependency domain\footnotemark[3] &  &  & Rule \ref{rule:association-uni-domain-rc} \\
+Dependency range\footnotemark[3] &  & Rule \ref{rule:dependency-uni-range-dc} & Rule \ref{rule:dependency-uni-range-rc} \\
+Dependency multiplicity\footnotemark[3] &  & Rule \ref{rule:association-uni-multiplicity-dc} & Rule \ref{rule:association-uni-multiplicity-rc} \\
 Class generalisation & Rule \ref{rule:generalisation-class-core} &  &  \\
 Property generalisation & Rule \ref{rule:generalisation-property-core} &  &  \\
 Class equivalence &  &  & Rule \ref{rule:equivalent-classes-rc} \\
@@ -80,7 +83,7 @@ specification \citep{uml2.5}, the association end names are not obligatory. Howe
 \vspace{-\parskip}
 \begin{minipage}[b]{.385\textwidth}
 \begin{lstlisting}[language=Turtle, caption={Property declaration in Turtle syntax}, captionpos=b]
-:relatesTo a owl:DatatypeProperty ;
+:relatesTo a owl:ObjectProperty ;
   rdfs:label "relates oo"@en;
   skos:definition "Description of the relationship meaning"@en;
 .
@@ -89,10 +92,10 @@ specification \citep{uml2.5}, the association end names are not obligatory. Howe
 \quad\vspace{-\parskip}
 \begin{minipage}[b]{.6\textwidth}
 \begin{lstlisting}[language=RDF/XML, caption={Property declaration in  RDF/XML syntax}, captionpos=b]
-<owl:DatatypeProperty rdf:about="http://base.uri/relatesTo">
+<owl:ObjectProperty rdf:about="http://base.uri/relatesTo">
   <rdfs:label xml:lang="en">relates to</rdfs:label>
   <skos:definition xml:lang="en">Description of the relationship meaning</skos:definition> 
-</owl:DatatypeProperty>  
+</owl:ObjectProperty>  
 \end{lstlisting}
 \end{minipage}
 \vspace{-\parskip}

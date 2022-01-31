@@ -81,7 +81,7 @@
 	It is recommended that the attribute type is an atomic data type. 
 	It is possible to use a uml:Enumeration as an attribute type. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Dependency described in Section \ref{sec:dependency}. 
 	
-	It is recommended to avoid using another class as the attribute type. An acceptable exception for this is with a controlled set of classes. The list of allowed classes must be explicitly indicated in the transformations script. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Association described in Section \ref{sec:association}. For the eProcurement project the set of exceptions is: Identifier, Amount, Quantity, Measure, Code. These were initially defined as composite datatypes and then transformed into classes. 
+	It is recommended to avoid using another class as the attribute type. An acceptable exception for this is with a controlled set of classes. The list of allowed classes must be explicitly indicated in the transformations script. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Association described in Section \ref{sec:association}. For the eProcurement project the set of exceptions is: Identifier, Amount, Quantity, Measure. These were initially defined as composite datatypes and then transformed into classes. 
 	
 	\subsection{uml:Enumeration}
 	\label{sec:enumeration}
@@ -94,7 +94,8 @@
 	
 	In case no attribute alias is specified then the attribute name is used as preferred label of the skos:Concept. This happens as skos:prefLabel is a mandatory property in the SKOS model.
 	
-	It is possible to employ the enumerations for class properties in two manners: (a) either define an attribute (uml:Attribute) that indicates as type the enumeration name (b) or draw a dependency (uml:Dependency) relation from the class to the enumeration and provide a relation role. An intermediary, and discouraged solution, is to define attributes with the generic type ``Code'' and, in addition, draw a dependency relation with the same role name to the specific enumeration. In these cases an additional verification should be performed for matching the role on the dependency relation to the attribute name.
+	It is possible to employ the enumerations for class properties by drawing a dependency (uml:Dependency) relation from the class to the
+	enumeration and provide a relation target role.
 	
 
 	\subsection{uml:Datatype}
