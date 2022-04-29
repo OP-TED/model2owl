@@ -75,7 +75,6 @@
             select="f:getConnectorByIdRef($targetConnectorIdref, root(.))"/>
         <xsl:variable name="sourceConnector"
             select="f:getConnectorByIdRef($sourceConnectorIdref, root(.))"/>
-        <xsl:message select="$targetConnector"/>
         <xsl:if test="$targetConnector and $sourceConnector">
            <xsl:variable name="targetConnectorTargetUri"
                select="
