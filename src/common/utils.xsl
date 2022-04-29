@@ -435,5 +435,22 @@
         />
     </xsl:function>
     
+    <xd:doc>
+        <xd:desc>Check if connector target and source are in the model</xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    <xsl:function name="f:checkIfConnectorTargetAndSourceElementsExists">
+        <xsl:param name="connector"/>
+        <xsl:variable name="targetElementId" select="$connector/target/@xmi:idref"/>
+        <xsl:variable name="sourceElementId" select="$connector/source/@xmi:idref"/>
+        <xsl:variable name="root" select="root($connector)"/>
+        <xsl:sequence
+            select="
+                if (f:getElementByIdRef($targetElementId, $root) and f:getElementByIdRef($sourceElementId, $root)) then
+                    fn:true()
+                else
+                    fn:false()"
+        />
+    </xsl:function>
 
 </xsl:stylesheet>

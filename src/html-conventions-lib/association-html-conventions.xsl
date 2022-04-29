@@ -25,43 +25,45 @@
     
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
         <xsl:variable name="associationChecks" as="item()*">
-            <xsl:call-template name="co-generalNameProvided">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="co-missingDescription">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="co-missingTargetRole">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="co-missingInverseRelation">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="co-invalidRelationshipDirection">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-            <xsl:if test="f:getConnectorDirection(.) = 'Bi-Directional'">
-            <xsl:call-template name="co-missingTargetMultiplicity">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template> 
-            <xsl:call-template name="co-missingSourceMultiplicity">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-            </xsl:if>
-            <xsl:if test="f:getConnectorDirection(.) = 'Source -&gt; Destination'">
-                <xsl:call-template name="co-missingTargetMultiplicity">
+            <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">
+                <xsl:call-template name="co-generalNameProvided">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-missingDescription">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-missingTargetRole">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-missingInverseRelation">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-invalidRelationshipDirection">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:if test="f:getConnectorDirection(.) = 'Bi-Directional'">
+                    <xsl:call-template name="co-missingTargetMultiplicity">
+                        <xsl:with-param name="connector" select="."/>
+                    </xsl:call-template>
+                    <xsl:call-template name="co-missingSourceMultiplicity">
+                        <xsl:with-param name="connector" select="."/>
+                    </xsl:call-template>
+                </xsl:if>
+                <xsl:if test="f:getConnectorDirection(.) = 'Source -&gt; Destination'">
+                    <xsl:call-template name="co-missingTargetMultiplicity">
+                        <xsl:with-param name="connector" select="."/>
+                    </xsl:call-template>
+                </xsl:if>
+                <xsl:call-template name="co-invalidTargetMultiplicityFormat">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-invalidSourceMultiplicityFormat">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-directionAndRolesOutOfSync">
                     <xsl:with-param name="connector" select="."/>
                 </xsl:call-template>
             </xsl:if>
-            <xsl:call-template name="co-invalidTargetMultiplicityFormat">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="co-invalidSourceMultiplicityFormat">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="co-directionAndRolesOutOfSync">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
         </xsl:variable>
         <xsl:if test="boolean($associationChecks)">
             <h2><xsl:value-of select="f:getConnectorName(.)"/></h2>

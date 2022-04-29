@@ -31,31 +31,33 @@
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Association']"/>
 
-    
-    
+
+
     <xd:doc>
         <xd:desc>This will override the common selector when applying templates</xd:desc>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']"/>
-        
-    
-    
+
+
+
 
     <xd:doc>
         <xd:desc/>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
-        <xsl:choose>
-            <xsl:when
-                test="
-                    ./source/model/@type = 'ProxyConnector' and
-                    ./target/model/@type = 'ProxyConnector'">
-                <xsl:call-template name="propertyGeneralization"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:call-template name="classGeneralization"/>
-            </xsl:otherwise>
-        </xsl:choose>
+        <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">
+            <xsl:choose>
+                <xsl:when
+                    test="
+                        ./source/model/@type = 'ProxyConnector' and
+                        ./target/model/@type = 'ProxyConnector'">
+                    <xsl:call-template name="propertyGeneralization"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:call-template name="classGeneralization"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
     </xsl:template>
 
     <xd:doc>
@@ -73,39 +75,42 @@
             select="f:getConnectorByIdRef($targetConnectorIdref, root(.))"/>
         <xsl:variable name="sourceConnector"
             select="f:getConnectorByIdRef($sourceConnectorIdref, root(.))"/>
-        <xsl:variable name="targetConnectorTargetUri"
-            select="
-                if ($targetConnector/target/role/not(@name) = fn:true()) then
-                    ()
-                else
-                f:buildURIfromLexicalQName($targetConnector/target/role/@name, fn:false(), fn:true())"/>
-        <xsl:variable name="sourceConnectorTargetUri"
-            select="
-                if ($sourceConnector/target/role/not(@name) = fn:true()) then
-                    ()
-                else
-                f:buildURIfromLexicalQName($sourceConnector/target/role/@name, fn:false(), fn:true())"/>
-        <xsl:if test="$targetConnectorTargetUri and $sourceConnectorTargetUri">
-            <owl:ObjectProperty rdf:about="{$sourceConnectorTargetUri}">
-                <rdfs:subPropertyOf rdf:resource="{$targetConnectorTargetUri}"/>
-            </owl:ObjectProperty>
-        </xsl:if>
-        <xsl:variable name="targetConnectorSourceUri"
-            select="
-                if ($targetConnector/source/role/not(@name) = fn:true()) then
-                    ()
-                else
-                f:buildURIfromLexicalQName($targetConnector/source/role/@name, fn:false(), fn:true())"/>
-        <xsl:variable name="sourceConnectorSourceUri"
-            select="
-                if ($sourceConnector/source/role/not(@name) = fn:true()) then
-                    ()
-                else
-                f:buildURIfromLexicalQName($sourceConnector/source/role/@name, fn:false(), fn:true())"/>
-        <xsl:if test="$targetConnectorSourceUri and $sourceConnectorSourceUri">
-            <owl:ObjectProperty rdf:about="{$sourceConnectorSourceUri}">
-                <rdfs:subPropertyOf rdf:resource="{$targetConnectorSourceUri}"/>
-            </owl:ObjectProperty>
+        <xsl:message select="$targetConnector"/>
+        <xsl:if test="$targetConnector and $sourceConnector">
+           <xsl:variable name="targetConnectorTargetUri"
+               select="
+                   if ($targetConnector/target/role/not(@name) = fn:true()) then
+                       ()
+                   else
+                       f:buildURIfromLexicalQName($targetConnector/target/role/@name, fn:false(), fn:true())"/>
+           <xsl:variable name="sourceConnectorTargetUri"
+               select="
+                   if ($sourceConnector/target/role/not(@name) = fn:true()) then
+                       ()
+                   else
+                       f:buildURIfromLexicalQName($sourceConnector/target/role/@name, fn:false(), fn:true())"/>
+           <xsl:if test="$targetConnectorTargetUri and $sourceConnectorTargetUri">
+               <owl:ObjectProperty rdf:about="{$sourceConnectorTargetUri}">
+                   <rdfs:subPropertyOf rdf:resource="{$targetConnectorTargetUri}"/>
+               </owl:ObjectProperty>
+           </xsl:if>
+           <xsl:variable name="targetConnectorSourceUri"
+               select="
+                   if ($targetConnector/source/role/not(@name) = fn:true()) then
+                       ()
+                   else
+                       f:buildURIfromLexicalQName($targetConnector/source/role/@name, fn:false(), fn:true())"/>
+           <xsl:variable name="sourceConnectorSourceUri"
+               select="
+                   if ($sourceConnector/source/role/not(@name) = fn:true()) then
+                       ()
+                   else
+                       f:buildURIfromLexicalQName($sourceConnector/source/role/@name, fn:false(), fn:true())"/>
+           <xsl:if test="$targetConnectorSourceUri and $sourceConnectorSourceUri">
+               <owl:ObjectProperty rdf:about="{$sourceConnectorSourceUri}">
+                   <rdfs:subPropertyOf rdf:resource="{$targetConnectorSourceUri}"/>
+               </owl:ObjectProperty>
+           </xsl:if>
         </xsl:if>
     </xsl:template>
 
@@ -117,11 +122,12 @@
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
         <xsl:for-each select="$distinctNames">
-            <xsl:if test="f:getConnectorByName(.,$root)/source/model/@type != 'ProxyConnector' and f:getConnectorByName(.,$root)/target/model/@type != 'ProxyConnector'">
-            <xsl:call-template name="genericConnector">
-                <xsl:with-param name="connectorName" select="."/>
-                <xsl:with-param name="root" select="$root"/>
-            </xsl:call-template>
+            <xsl:if
+                test="f:getConnectorByName(., $root)/source/model/@type != 'ProxyConnector' and f:getConnectorByName(., $root)/target/model/@type != 'ProxyConnector'">
+                <xsl:call-template name="genericConnector">
+                    <xsl:with-param name="connectorName" select="."/>
+                    <xsl:with-param name="root" select="$root"/>
+                </xsl:call-template>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
