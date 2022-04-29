@@ -260,6 +260,7 @@
         <xsl:param name="isDefaultNamespaceContextualised" as="xs:boolean"/>
 
         <xsl:variable name="localName" select="f:getLocalSegmentForElements($attribute)"/>
+        <xsl:variable name="prefix" select="fn:substring-before($attribute/@name, ':')"/>
         <xsl:variable name="expandedLocalName"
             select="
                 if (substring($localName, 1, 1) = fn:upper-case(substring($localName, 1, 1))) then
@@ -268,7 +269,7 @@
                     $localName
                 "/>
         <xsl:sequence
-            select="f:buildURIFromNode($attribute, $expandedLocalName, $isPascalCase, $isDefaultNamespaceContextualised)"
+            select="f:buildURIFromNode($attribute, fn:concat($prefix,':',$expandedLocalName), $isPascalCase, $isDefaultNamespaceContextualised)"
         />
     </xsl:function>
 
