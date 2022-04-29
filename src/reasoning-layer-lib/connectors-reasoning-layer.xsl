@@ -26,7 +26,9 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
-        <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">
+        <xsl:if
+            test="./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
+            f:checkIfConnectorTargetAndSourceElementsExists(.)">
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -41,7 +43,8 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
-        <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">
+        <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class' and 
+            f:checkIfConnectorTargetAndSourceElementsExists(.)">
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -61,12 +64,14 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
+        <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">
         <xsl:call-template name="classEquivalence">
             <xsl:with-param name="generalisation" select="."/>
         </xsl:call-template>
         <xsl:call-template name="propertiesEquivalence">
             <xsl:with-param name="generalisation" select="."/>
         </xsl:call-template>
+        </xsl:if>
     </xsl:template>
     
     

@@ -433,4 +433,20 @@
         <x:expect label="result" select="()"/>
     </x:scenario>
     
+    <x:scenario label="Scenario for checking if connector target and source are in the model - True">
+        <x:call function="f:checkIfConnectorTargetAndSourceElementsExists">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2022-04-29_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[12]"/>            
+        </x:call>
+        <x:expect label="result" select="fn:true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for checking if connector target and source are in the model - False">
+        <x:call function="f:checkIfConnectorTargetAndSourceElementsExists">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2022-04-29_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[10]"/>            
+        </x:call>
+        <x:expect label="result" select="fn:false()"/>
+    </x:scenario>
+    
 </x:description>

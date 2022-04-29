@@ -32,7 +32,8 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
-            <xsl:variable name="generalizationChecks" as="item()*">
+        <xsl:variable name="generalizationChecks" as="item()*">
+            <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">
                 <xsl:call-template name="g-classWithSingleChild">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
@@ -51,16 +52,17 @@
                 <xsl:call-template name="g-directionChecker">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
-            </xsl:variable>
-            <xsl:if test="boolean($generalizationChecks)">
-                <h2>
-                    <xsl:value-of select="f:getConnectorName(.)"/>
-                </h2>
-                <dl>
-                    <dt> Unmet generalization conventions </dt>
-                    <xsl:copy-of select="$generalizationChecks"/>
-                </dl>
             </xsl:if>
+        </xsl:variable>
+        <xsl:if test="boolean($generalizationChecks)">
+            <h2>
+                <xsl:value-of select="f:getConnectorName(.)"/>
+            </h2>
+            <dl>
+                <dt> Unmet generalization conventions </dt>
+                <xsl:copy-of select="$generalizationChecks"/>
+            </dl>
+        </xsl:if>
     </xsl:template>
 
 
