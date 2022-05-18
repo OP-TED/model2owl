@@ -53,7 +53,7 @@
             
             $("table.display").DataTable({
             buttons: [],
-            "lengthMenu": [[-1], [30, "All"]],
+            "lengthMenu": [[-1], ["All"]],
             responsive: {
             details: true
             }

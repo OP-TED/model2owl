@@ -220,7 +220,8 @@
                     xs:anyURI(fn:concat(fn:namespace-uri-from-QName($qname), fn:local-name-from-QName($qname)))
                 else
                     xs:anyURI(fn:concat(fn:namespace-uri-from-QName($qname), $defaultDelimiter, fn:local-name-from-QName($qname)))
-                "/>
+                "
+        />
     </xsl:function>
 
     <xd:doc>
@@ -269,7 +270,7 @@
                     $localName
                 "/>
         <xsl:sequence
-            select="f:buildURIFromNode($attribute, fn:concat($prefix,':',$expandedLocalName), $isPascalCase, $isDefaultNamespaceContextualised)"
+            select="f:buildURIFromNode($attribute, fn:concat($prefix, ':', $expandedLocalName), $isPascalCase, $isDefaultNamespaceContextualised)"
         />
     </xsl:function>
 
@@ -301,7 +302,8 @@
                 else
                     concat($defaultNamespacePrefix, ':', $elementName)"/>
 
-        <xsl:sequence select="f:buildURIfromLexicalQName($normalisedElementName, $isPascalCase, fn:true())"/>
+        <xsl:sequence
+            select="f:buildURIfromLexicalQName($normalisedElementName, $isPascalCase, fn:true())"/>
     </xsl:function>
 
 
@@ -435,7 +437,7 @@
                     $attributeMultiplicityValue"
         />
     </xsl:function>
-    
+
     <xd:doc>
         <xd:desc>Check if connector target and source are in the model</xd:desc>
         <xd:param name="connector"/>
@@ -452,6 +454,67 @@
                 else
                     fn:false()"
         />
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>Check if the connector is used to or from external classes</xd:desc>
+        <xd:param name="connectorName"/>
+    </xd:doc>
+
+    <xsl:function name="f:connector-to-or-from-external-class">
+        <xsl:param name="connectorName"/>
+        <xsl:param name="root"/>
+        <xsl:variable name="connectorElements" select="f:getConnectorByName($connectorName, $root)"/>
+        <xsl:choose>
+            <xsl:when test="fn:count($connectorElements) > 1">
+                <xsl:variable name="targetClasses"
+                    select="
+                        for $connector in $connectorElements
+                        return
+                        if (f:getElementByIdRef($connector/target/@xmi:idref, $root)/@name) then
+                                fn:true()
+                            else
+                                fn:false()"/>
+                <xsl:variable name="sourceClasses"
+                    select="
+                        for $connector in $connectorElements
+                        return
+                        if (f:getElementByIdRef($connector/source/@xmi:idref, $root)/@name) then
+                                fn:true()
+                            else
+                                fn:false()"/>
+                <xsl:variable name="externalTargetClasses"
+                    select="
+                        every $i in $targetClasses
+                            satisfies $i = fn:false()"/>
+                <xsl:variable name="externalSourceClasses"
+                    select="
+                        every $i in $sourceClasses
+                            satisfies $i = fn:false()"/>
+                <xsl:sequence
+                    select="
+                    if ($externalSourceClasses or $externalTargetClasses) then
+                            fn:true()
+                        else
+                            fn:false()"/>
+
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="targetClass"
+                    select="f:getElementByIdRef($connectorElements/target/@xmi:idref, $root)/@name"/>
+                <xsl:variable name="sourceClass"
+                    select="f:getElementByIdRef($connectorElements/source/@xmi:idref, $root)/@name"/>
+                <xsl:sequence
+                    select="
+                        if ($targetClass and $sourceClass) then
+                            fn:false()
+                        else
+                            fn:true()"
+                />
+            </xsl:otherwise>
+        </xsl:choose>
+
+
     </xsl:function>
 
 </xsl:stylesheet>
