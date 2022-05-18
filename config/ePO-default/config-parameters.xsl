@@ -103,5 +103,6 @@
     <xsl:variable name="title-restriction-module">eProcurement extended ontology</xsl:variable>
     <xsl:variable name="description-restriction-module">This module provides the inference-related definitions for
         the eProcurement ontology.</xsl:variable>
+    <xsl:variable name="reference-to-external-classes-in-glossary" select="fn:false()"/>
 
 </xsl:stylesheet>
