@@ -26,7 +26,7 @@
             <thead class="center aligned">
                 <tr>
                     <th>Class name</th>
-                    <th>Description</th>
+                    <th>Definition</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,14 +34,15 @@
             </tbody>
         </table>
 
-        <h2>DataType properties and definitions</h2>
+        <h2>Attributes (datatype properties) names and definitions</h2>
         <table class="display">
             <thead class="center aligned">
                 <tr>
+                          <th>Class name</th>
                     <th>Attribute name</th>
-                    <th>Description</th>
-                    <th>Domain class name</th>
-                    <th>Range data type</th>
+                    <th>Definition</th>
+              
+                    <th>Data type / cardinality</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,13 +50,13 @@
             </tbody>
         </table>
 
-        <h2>Object properties and definitions</h2>
+        <h2>Predicates (object properties) and definitions</h2>
         <table class="display">
             <thead class="center aligned">
                 <tr>
-                    <th>Connector name</th>
-                    <th>Description</th>
-                    <th>Domain and Range classes</th>
+                    <th>Predicate name</th>
+                    <th>Definition</th>
+                    <th>Domain, Range and Cardinality</th>
                 </tr>
             </thead>
             <tbody>
@@ -92,11 +93,6 @@
             <xsl:sort select="." lang="en"/>
             <xsl:variable name="attributeName" select="."/>
             <tr>
-                <td>
-
-                    <xsl:value-of select="$attributeName"/>
-                </td>
-
                 <xsl:call-template name="classAttributeUsage">
                     <xsl:with-param name="attributeName" select="$attributeName"/>
                     <xsl:with-param name="root" select="$root"/>
@@ -113,6 +109,18 @@
             select="f:getClassAttributeByName($attributeName, $root)"/>
         <xsl:choose>
             <xsl:when test="fn:count($attributesWithSameName) > 1">
+                
+                <td>
+                    <xsl:for-each select="$attributesWithSameName">
+                        <xsl:value-of select="./parent::attributes/parent::element/@name"/>
+                        <br/>
+                    </xsl:for-each>
+                </td>
+                
+                <td>
+                    <xsl:value-of select="$attributeName"/>
+                </td>
+                
                 <td>
 
                     <xsl:value-of
@@ -122,12 +130,7 @@
                             f:formatDocString($atribute/documentation/@value)"
                     />
                 </td>
-                <td>
-                    <xsl:for-each select="$attributesWithSameName">
-                        <xsl:value-of select="./parent::attributes/parent::element/@name"/>
-                        <br/>
-                    </xsl:for-each>
-                </td>
+
                 <td>
                     <xsl:for-each select="$attributesWithSameName">
                         <xsl:variable name="attributeType" select="./properties/@type"/>
@@ -142,12 +145,17 @@
             <xsl:otherwise>
                 <xsl:variable name="className"
                     select="$attributesWithSameName/parent::attributes/parent::element/@name"/>
+                       <td>
+                    <xsl:value-of select="$className"/>
+                </td>
+                <td>
+                    
+                    <xsl:value-of select="$attributeName"/>
+                </td>
                 <td>
                     <xsl:value-of select="f:formatDocString($attributesWithSameName/documentation/@value)"/>
                 </td>
-                <td>
-                    <xsl:value-of select="$className"/>
-                </td>
+        
                 <xsl:variable name="attributeType" select="$attributesWithSameName/properties/@type"/>
                 <xsl:variable name="attributeMultiplicityMin"
                     select="$attributesWithSameName/bounds/@lower"/>
