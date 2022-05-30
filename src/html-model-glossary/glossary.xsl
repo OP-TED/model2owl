@@ -181,7 +181,6 @@
             <tr>
                 <td>
                     <xsl:value-of select="$connectorName"/>
-                    <xsl:value-of select="f:connector-to-or-from-external-class(.,$root)"/>
                 </td>
 
                 <xsl:call-template name="connectorUsage">
