@@ -30,7 +30,12 @@
 
     <xsl:output name="ext-ePO.rdf" method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
-
+    
+    <!-- The metadata.xml is used to define the metadata for each input xmi file -->    
+    <xsl:variable name="metadata" select="document(concat(base-uri(),'/../','metadata.xml'))" />
+    <!-- ontology version -->    
+    <xsl:variable name="version" select="$metadata//version"/>
+    
 
     <xd:doc>
         <xd:desc/>
@@ -64,7 +69,7 @@
 
 
             <dct:description xml:lang="en">
-                <xsl:value-of select="$description-restriction-module"/>
+                <xsl:value-of select="$metadata//restrictions/desc"/>
             </dct:description>
             <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
             <vann:preferredNamespaceUri>
@@ -72,19 +77,14 @@
             </vann:preferredNamespaceUri>
             <dct:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
             <rdfs:label xml:lang="en">
-                <xsl:value-of select="$title-restriction-module"/>
+                <xsl:value-of select="$metadata//restrictions/title"/>
             </rdfs:label>
             <dct:title xml:lang="en">
-                <xsl:value-of select="$title-restriction-module"/>
+                <xsl:value-of select="$metadata//restrictions/title"/>
             </dct:title>
             <owl:versionIRI rdf:resource="{fn:concat($restrictionsModuleURI,'#',tokenize(base-uri(.), '/')[last()],'-',format-date(current-date(),
                 '[Y0001]-[M01]-[D01]'))}"/>
-            <owl:versionInfo><xsl:value-of select="$title-restriction-module"/> version generated automatically from 
-                <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on <xsl:value-of
-                    select="
-                    format-date(current-date(),
-                    '[D01]/[M01]/[Y0001]')"
-                /></owl:versionInfo>
+            <owl:versionInfo><xsl:value-of select="$version"/></owl:versionInfo>
             <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
             <rdfs:seeAlso
                 rdf:resource="https://joinup.ec.europa.eu/solution/eprocurement-ontology/about"/>
