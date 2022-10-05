@@ -66,7 +66,7 @@
             <owl:imports rdf:resource="{$coreModuleURI}"/>
 
             <dct:description xml:lang="en">
-                <xsl:value-of select="$ontologyDescription"/>
+                <xsl:value-of select="$ontologyDescription"/> (inference-related definitions or restrictions)
             </dct:description>
             <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
             <vann:preferredNamespaceUri>

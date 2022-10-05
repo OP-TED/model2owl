@@ -83,10 +83,10 @@
             </vann:preferredNamespaceUri>
             <dct:license rdf:resource="$license-core-module"/>
             <rdfs:label xml:lang="en">
-                <xsl:value-of select="$title-core-module"/>
+                <xsl:value-of select="$ontologyTitle"/>
             </rdfs:label>
             <dct:title xml:lang="en">
-                <xsl:value-of select="$title-core-module"/>
+                <xsl:value-of select="$ontologyTitle"/>
             </dct:title>
             
             <owl:versionIRI rdf:resource="{fn:concat($coreModuleURI,'#',tokenize(base-uri(.), '/')[last()],'-',format-date(current-date(),

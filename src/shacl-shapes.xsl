@@ -68,7 +68,7 @@
             
 
             <dct:description xml:lang="en">
-                <xsl:value-of select="$description-shape-module"/>
+                <xsl:value-of select="$ontologyDescription"/> (SHACL datashape)
             </dct:description>
             <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
             <vann:preferredNamespaceUri>
