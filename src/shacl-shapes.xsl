@@ -9,7 +9,8 @@
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:sh="http://www.w3.org/ns/shacl#"
@@ -29,8 +30,9 @@
     <xsl:import href="shacl-shape-lib/elements-shacl-shape.xsl"/>
     <xsl:import href="shacl-shape-lib/connectors-shacl-shape.xsl"/>
     <xsl:import href="../config/config-proxy.xsl"/>
-
-        <xsl:output name="data-shapes-ePO.shapes.rdf" method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
+    
+    
+    <xsl:output name="data-shapes-ePO.shapes.rdf" method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
     
     <xd:doc>
@@ -54,11 +56,16 @@
     </xd:doc>
     <xsl:template name="ontology-header">
         <owl:Ontology rdf:about="{$shapeModuleURI}">
-            <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
-            <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
+            
+            <!-- imports some common resources from metadata.xml (next to the xmi input file)-->
+            <xsl:for-each select="$metadata//imports/@resource">
+                <owl:imports rdf:resource="{.}"/>
+            </xsl:for-each>  
+            
+            <owl:imports rdf:resource="{$coreModuleURI}"/>            
             <owl:imports rdf:resource="http://datashapes.org/dash"/>            
             <owl:imports rdf:resource="http://www.w3.org/ns/shacl#"/>
-            <owl:imports rdf:resource="{$coreModuleURI}"/>
+            
 
             <dct:description xml:lang="en">
                 <xsl:value-of select="$description-shape-module"/>
@@ -69,19 +76,19 @@
             </vann:preferredNamespaceUri>
             <dct:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
             <rdfs:label xml:lang="en">
-                <xsl:value-of select="$title-shape-module"/>
+                <xsl:value-of select="$ontologyTitle"/>. This module provides the datashape definitions.
             </rdfs:label>
             <dct:title xml:lang="en">
-                <xsl:value-of select="$title-shape-module"/>
+                <xsl:value-of select="$ontologyTitle"/>. This module provides the datashape definitions.
             </dct:title>
             <owl:versionIRI rdf:resource="{fn:concat($shapeModuleURI,'#',tokenize(base-uri(.), '/')[last()],'-',format-date(current-date(),
                 '[Y0001]-[M01]-[D01]'))}"/>
-            <owl:versionInfo><xsl:value-of select="$title-shape-module"/> version generated automatically from 
-                <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on <xsl:value-of
-                    select="
-                    format-date(current-date(),
-                    '[D01]/[M01]/[Y0001]')"
-                /></owl:versionInfo>
+            <owl:versionInfo><xsl:value-of select="$ontologyVersion"/></owl:versionInfo>
+            <rdfs:comment>This version is automatically generated from <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on <xsl:value-of
+                select="
+                format-date(current-date(),
+                '[Y0001]-[M01]-[D01]')"/>
+            </rdfs:comment>
             <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
             <rdfs:seeAlso
                 rdf:resource="https://joinup.ec.europa.eu/solution/eprocurement-ontology/about"/>
@@ -92,7 +99,8 @@
                 rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/PUBL"/>
 
             <dct:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
-                <xsl:value-of select="fn:current-date()"/>
+                <xsl:value-of select="format-date(current-date(),
+                    '[Y0001]-[M01]-[D01]')"/>
             </dct:date>
         </owl:Ontology>
     </xsl:template>
