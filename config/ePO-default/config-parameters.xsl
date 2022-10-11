@@ -7,7 +7,8 @@
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
-    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:functx="http://www.functx.com"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#" version="3.0">
@@ -104,5 +105,13 @@
     <xsl:variable name="description-restriction-module">This module provides the inference-related definitions for
         the eProcurement ontology.</xsl:variable>
     <xsl:variable name="reference-to-external-classes-in-glossary" select="fn:false()"/>
+    
+    <xsl:variable name="license-core-module" select="'http://creativecommons.org/licenses/by-sa/4.0/'"/>
 
+    <!-- The metadata.xml is used to define the metadata for each input xmi file -->    
+    <xsl:variable name="metadata" select="document(concat(base-uri(),'/../','metadata.xml'))" />
+    <!-- ontology title, version to be inserted in the ontology header below -->    
+    <xsl:variable name="ontologyTitle" select="$metadata//title"/>
+    <xsl:variable name="ontologyVersion" select="$metadata//version"/>
+    <xsl:variable name="ontologyDescription" select="$metadata//description"/>
 </xsl:stylesheet>
