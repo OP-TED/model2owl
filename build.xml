@@ -6,6 +6,18 @@
 	<property name="xspec.project.dir" location="xspec" />
   <include file="${basedir}/xspec/build.xml" />
 
+	<path id="class.path">
+	  <fileset dir="lib">
+		<include name="*.jar" />
+	  </fileset>
+	</path>
+	
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="lib/ant-contrib.jar"/>
+		</classpath>
+	</taskdef>
+
    <target name="dist" depends="compile"
         description="generate the distribution">
     
@@ -20,13 +32,38 @@
 
   <target name="compile" depends="init"
         description="Run unit tests">
-		<antcall target="xspec.xspec" inheritall="false">
+		<!-- antcall target="xspec.xspec" inheritall="false">
 			<param name="xspec.xml" location="${basedir}/test/unitTests/test-owl-core-lib/test-connectors-owl-core.xspec"/>
 		</antcall>  
 		<antcall target="xspec.xspec" inheritall="false">
 			<param name="xspec.xml" location="${basedir}/test/unitTests/test-owl-core-lib/test-elements-owl-core.xspec"/>
-		</antcall>  
+		</antcall -->  
   </target>
+  
+  <target name="unit_tests">
+	  <foreach target="unit_test" param="xspecFile">
+		<fileset dir="${basedir}/test/unitTests" casesensitive="yes">
+		  <include name="**/*.xspec"/>
+		  <exclude name="*test-common/*,*test-html*"/>		  
+		</fileset>
+	  </foreach>
+</target>
+
+
+<target name="unit_test">
+	<echo message="${xspecFile}"/>
+	<trycatch>
+		<try>
+			<antcall target="xspec.xspec" inheritall="false">
+				<param name="xspec.xml" location="${xspecFile}"/>
+			</antcall> 
+		</try>
+		<catch>
+			<echo message="Fail to execute unit test in ${xspecFile}"/>
+		</catch>
+	</trycatch>
+	
+</target>
   
    
 
