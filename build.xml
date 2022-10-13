@@ -19,11 +19,13 @@
   </target>
 
   <target name="compile" depends="init"
-        description="compile the source">
-	 <antcall target="xspec.xspec" inheritall="false">
-      <param name="xspec.xml" location="${basedir}/test/unitTests/test-common/test-checkers.xspec"/>
-   </antcall>
-  
+        description="Run unit tests">
+		<antcall target="xspec.xspec" inheritall="false">
+			<param name="xspec.xml" location="${basedir}/test/unitTests/test-owl-core-lib/test-connectors-owl-core.xspec"/>
+		</antcall>  
+		<antcall target="xspec.xspec" inheritall="false">
+			<param name="xspec.xml" location="${basedir}/test/unitTests/test-owl-core-lib/test-elements-owl-core.xspec"/>
+		</antcall>  
   </target>
   
    
