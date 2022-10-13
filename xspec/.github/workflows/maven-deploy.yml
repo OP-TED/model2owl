@@ -1,0 +1,33 @@
+name: Maven Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  maven-deploy:
+    runs-on: ubuntu-latest
+
+    # Do not disturb forks
+    if: github.repository == 'xspec/xspec'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: gpg --version
+
+      - uses: actions/setup-java@v3
+        with:
+          java-version: 8
+          distribution: zulu
+          server-id: xspec-io.ossrh
+          server-username: NEXUS_USERNAME
+          server-password: NEXUS_PASSWORD
+          gpg-private-key: ${{ secrets.gpg_private_key }}
+
+      - run: mvn clean deploy --batch-mode --activate-profiles release
+        env:
+          NEXUS_USERNAME: ${{ secrets.nexus_username }}
+          NEXUS_PASSWORD: ${{ secrets.nexus_password }}
+          GPG_PASSPHRASE: ${{ secrets.gpg_passphrase }}

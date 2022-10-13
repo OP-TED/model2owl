@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xspec-test additional-classpath=${env.XML_RESOLVER_JAR}?>
+<?xspec-test saxon-custom-options=-catalog:"${xspec.project.dir}/test/catalog/01/catalog-public.xml;${xspec.project.dir}/test/catalog/01/catalog-rewriteURI.xml"?>
+<x:description stylesheet="../src/schematron/schut-to-xslt.xsl"
+	xmlns:local="urn:x-xspec:schematron:schut-to-xslt:local"
+	xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<x:scenario label="Scenario for testing function locate-schematron-uri">
+		<x:call function="local:locate-schematron-uri">
+			<x:param as="element()" href="schematron/locate-schematron-uri.xspec"
+				select="x:description[starts-with(@schematron, 'catalog-01:')]" />
+		</x:call>
+		<x:expect as="xs:anyURI"
+			label="Located and resolved with catalog, working around https://issues.apache.org/jira/browse/XMLCOMMONS-24"
+			select="resolve-uri('catalog/01/example.xml', $x:xspec-uri)[starts-with(., 'file:/')]"
+		 />
+	</x:scenario>
+
+	<x:scenario label="@xml:base">
+		<x:context href="../tutorial/schematron/demo-01.xspec" />
+		<x:expect label="Absolute Schematron file URI set on outermost element"
+			select="$x:context/x:description/resolve-uri(@schematron, base-uri())"
+			test="/element()/@xml:base/data()" />
+		<x:expect label="No other" select="1" test="count(//@xml:base)" />
+	</x:scenario>
+
+</x:description>

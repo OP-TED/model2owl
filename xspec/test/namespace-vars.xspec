@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description stylesheet="do-nothing.xsl" xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!--
+		The test target (../src/common/namespace-vars.xsl) is included implicitly by the XSpec
+		compiler. You don't need to specify it in /x:description/@stylesheet.
+	-->
+
+	<x:scenario label="Scenario for testing variable deq-namespace">
+		<x:context />
+		<x:expect label="xs:anyURI of 'deq' namespace URI" select="
+				namespace-uri-for-prefix(
+					'deq',
+					doc(resolve-uri('../src/common/deep-equal.xsl', $x:xspec-uri))/element()
+				)" test="$x:deq-namespace treat as xs:anyURI" />
+	</x:scenario>
+
+	<x:scenario label="Scenario for testing variable rep-namespace">
+		<x:context />
+		<x:expect label="xs:anyURI of 'rep' namespace URI" select="
+				namespace-uri-for-prefix(
+					'rep',
+					doc(resolve-uri('../src/common/report-sequence.xsl', $x:xspec-uri))/element()
+				)" test="$x:rep-namespace treat as xs:anyURI" />
+	</x:scenario>
+
+	<x:scenario label="Scenario for testing variable saxon-namespace">
+		<x:context />
+		<x:expect label="xs:anyURI of 'saxon' namespace URI" select="
+				namespace-uri-for-prefix(
+					'saxon',
+					doc(resolve-uri('../src/common/report-sequence.xsl', $x:xspec-uri))/element()
+				)" test="$x:saxon-namespace treat as xs:anyURI" />
+	</x:scenario>
+
+	<x:scenario label="Scenario for testing variable xs-namespace">
+		<x:context />
+		<x:expect label="xs:anyURI of 'xs' namespace URI" select="
+				namespace-uri-for-prefix(
+					'xs',
+					doc(resolve-uri('../src/common/namespace-vars.xsl', $x:xspec-uri))/element()
+				)" test="$x:xs-namespace treat as xs:anyURI" />
+	</x:scenario>
+
+	<x:scenario label="Scenario for testing variable xsl-namespace">
+		<x:context />
+		<x:expect label="xs:anyURI of 'xsl' namespace URI"
+			select="doc('')/element() => namespace-uri()" test="$x:xsl-namespace treat as xs:anyURI"
+		 />
+	</x:scenario>
+
+</x:description>

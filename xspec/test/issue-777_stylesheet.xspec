@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description stylesheet="issue-777.xsl" xmlns:my="my-namespace"
+	xmlns:x="http://www.jenitennison.com/xslt/xspec">
+
+	<x:param as="document-node(element(test))" href="issue-777.xml" name="my:test" />
+
+	<x:scenario>
+		<x:label><![CDATA[
+			When
+			- x:param in XSpec defines $my:test
+			- xsl:variable in SUT defines $my:test-doc and $my:test-doc-uri
+		]]></x:label>
+
+		<x:call function="false" />
+
+		<x:expect label="$my:test-doc should be a document defined in SUT" select="/"
+			test="$my:test-doc">
+			<test>document defined in SUT</test>
+		</x:expect>
+
+		<x:expect label="$my:test-doc-uri should be a URI defined in SUT"
+			select="'URI defined in SUT'" test="$my:test-doc-uri" />
+	</x:scenario>
+
+</x:description>

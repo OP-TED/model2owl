@@ -1,0 +1,20 @@
+# Third party
+/lib/*
+
+# Negate /lib/README.md
+# https://github.com/prettier/prettier/issues/3328#issuecomment-350732773
+!/lib/README.md
+
+# End-to-end test Actual and Expected
+/test/end-to-end/cases/actual__/
+/test/end-to-end/cases/expected/
+
+# Default TEST_DIR
+/test/**/xspec/
+/tutorial/**/xspec/
+
+# Negate /test/ant/worker/java/**/xspec/
+!/test/ant/worker/java/**
+
+# XHTML can be formatted by XML editors including Oxygen
+*.xhtml

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Test Report for square.xsl (passed: 1 / pending: 2 / failed: 1 / total: 4)</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../src/reporter/test-report.css" /><script language="javascript" type="text/javascript">
+function toggle(scenarioID) {
+   table = document.getElementById("table_"+scenarioID);
+   icon = document.getElementById("icon_"+scenarioID)
+   // need to:
+   //   switch table.style.display between 'none' and 'block'
+   //   switch between collapse and expand icons
+
+   if (table.style.display == "none") {
+      // This try/catch is to handle IE 7.  It doesn't support table.style.display = "table"
+      try {
+         table.style.display = "table";
+      } catch(err) {
+         table.style.display = "block";
+      }
+      icon.src = "../../../../../graphics/3angle-down.gif" ;
+      icon.alt = "collapse" ;
+      icon.title = "collapse" ;
+   }
+   else {
+      table.style.display = "none";
+      icon.src = "../../../../../graphics/3angle-right.gif" ;
+      icon.alt = "expand" ;
+      icon.title = "expand" ;
+   };
+
+   return;
+}
+</script></head>
+   <body>
+      <h1>Test Report</h1>
+      <p>Stylesheet: <a href="../../../../square.xsl">square.xsl</a></p>
+      <p>XSpec: <a href="../../format-xspec-report-folding.xspec">format-xspec-report-folding.xspec</a></p>
+      <p>Tested: 1 January 2000 at 00:00</p>
+      <h2>Contents</h2>
+      <table class="xspec">
+         <colgroup>
+            <col style="width:75%" />
+            <col style="width:6.25%" />
+            <col style="width:6.25%" />
+            <col style="width:6.25%" />
+            <col style="width:6.25%" />
+         </colgroup>
+         <thead>
+            <tr>
+               <th></th>
+               <th class="totals">passed: 1</th>
+               <th class="totals">pending: 2</th>
+               <th class="totals">failed: 1</th>
+               <th class="totals">total: 4</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr class="pending">
+               <th>(<strong>testing @focus of a Success scenario</strong>) <a href="#top_scenario1">Test @focus</a></th>
+               <th class="totals">1</th>
+               <th class="totals">2</th>
+               <th class="totals">1</th>
+               <th class="totals">4</th>
+            </tr>
+         </tbody>
+      </table>
+      <div id="top_scenario1">
+         <h2 class="pending"><a href="javascript:toggle('scenario1')"><img src="../../../../../graphics/3angle-down.gif" alt="collapse" id="icon_scenario1" /></a>(<strong>testing @focus of a Success scenario</strong>) Test @focus<span class="scenario-totals">1/2/1/4</span></h2>
+         <table class="xspec" id="table_scenario1" style="display: table">
+            <colgroup>
+               <col style="width:85%" />
+               <col style="width:15%" />
+            </colgroup>
+            <tbody>
+               <tr class="pending">
+                  <th>(<strong>testing @focus of a Success scenario</strong>) Test @focus</th>
+                  <th>1/2/1/4</th>
+               </tr>
+               <tr id="scenario1-scenario1" class="pending">
+                  <th>(<strong>testing @focus of a Success scenario</strong>) an unfocused Success scenario must be Pending</th>
+                  <th>0/1/0/1</th>
+               </tr>
+               <tr class="pending">
+                  <td>(<strong>testing @focus of a Success scenario</strong>) it would return Success if it were not Pending</td>
+                  <td>Pending</td>
+               </tr>
+               <tr id="scenario1-scenario2" class="pending">
+                  <th>(<strong>testing @focus of a Success scenario</strong>) an unfocused Failure scenario must be Pending</th>
+                  <th>0/1/0/1</th>
+               </tr>
+               <tr class="pending">
+                  <td>(<strong>testing @focus of a Success scenario</strong>) it would return Failure if it were not Pending</td>
+                  <td>Pending</td>
+               </tr>
+               <tr id="scenario1-scenario3" class="successful">
+                  <th>a focused Success scenario</th>
+                  <th>1/0/0/1</th>
+               </tr>
+               <tr class="successful">
+                  <td>must execute the test and return Success</td>
+                  <td>Success</td>
+               </tr>
+               <tr id="scenario1-scenario4" class="failed">
+                  <th><a href="#scenario1-scenario4">a focused Failure scenario</a></th>
+                  <th>0/0/1/1</th>
+               </tr>
+               <tr class="failed">
+                  <td><a href="#scenario1-scenario4-expect1">must execute the test and return Failure</a></td>
+                  <td>Failure</td>
+               </tr>
+            </tbody>
+         </table>
+         <div id="scenario1-scenario4">
+            <h3>Test @focus a focused Failure scenario</h3>
+            <div id="scenario1-scenario4-expect1" class="xTestReport">
+               <h4 class="xTestReportTitle">must execute the test and return Failure</h4>
+               <div class="xTestReportHint"><a href="https://github.com/xspec/xspec/wiki/Understanding-Test-Results" target="_blank" title="What does this report mean?">[?]</a></div>
+               <table class="xspecResult">
+                  <thead>
+                     <tr>
+                        <th>Result</th>
+                        <th>Expecting</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>
+                           <pre>9</pre>
+                        </td>
+                        <td>
+                           <pre>$t:result instance of xs:string</pre>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

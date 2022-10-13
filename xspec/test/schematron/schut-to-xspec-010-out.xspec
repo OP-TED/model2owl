@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description xmlns="http://www.jenitennison.com/xslt/xspec"
+             schematron="%TEST_BASE%/schematron/schut-to-xspec-test.sch"
+             original-xspec="%TEST_BASE%/schematron/schut-to-xspec-010-in.xspec"
+             stylesheet="schut-to-xspec-test.sch.xsl">
+   <x:scenario xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns=""
+               xslt-version="3"
+               xspec="%TEST_BASE%/schematron/schut-to-xspec-010-in.xspec"
+               label="A"/>
+   <x:scenario xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns=""
+               xslt-version="3"
+               xspec="%TEST_BASE%/schematron/schut-to-xspec-010-import.xspec"
+               label="B"/>
+</description>

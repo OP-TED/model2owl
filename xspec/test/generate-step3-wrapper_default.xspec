@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description stylesheet="../src/schematron/generate-step3-wrapper.xsl"
+	xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<x:scenario label="Without $ACTUAL-PREPROCESSOR-URI">
+		<x:context href="../tutorial/schematron/demo-02-PhaseA.xspec" />
+		<x:expect>
+			<x:label><![CDATA[
+				- The built-in preprocessor, not $ACTUAL-PREPROCESSOR-URI, should be imported.
+				- /x:description/x:param should be transformed into /xsl:stylesheet/xsl:param.
+				- SchXslt metadata generation in SVRL should be disabled.
+			]]></x:label>
+			<xsl:stylesheet exclude-result-prefixes="#all" version="3.0"
+				xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+				<xsl:import href="{$x:schematron-preprocessor?stylesheets?3 treat as xs:anyURI}" />
+				<xsl:variable as="document-node()" name="...">
+					<xsl:document>
+						<xsl:text>PhaseA</xsl:text>
+					</xsl:document>
+				</xsl:variable>
+				<xsl:param name="Q{{}}phase" select="..." />
+				<xsl:param as="Q{{http://www.w3.org/2001/XMLSchema}}boolean"
+					name="Q{{}}schxslt.compile.metadata" select="false()" />
+			</xsl:stylesheet>
+		</x:expect>
+	</x:scenario>
+
+</x:description>

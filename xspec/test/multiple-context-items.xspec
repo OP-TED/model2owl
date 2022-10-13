@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description stylesheet="mirror.xsl" xmlns:items="x-urn:test:xspec-items"
+	xmlns:mirror="x-urn:test:mirror" xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<x:helper stylesheet="items.xsl" />
+
+	<x:scenario label="Test" shared="yes">
+		<x:scenario label="Calling a named template">
+			<x:call template="mirror:context-mirror" />
+			<x:expect label="should call the template once for each item in x:context"
+				select="$x:context" />
+		</x:scenario>
+
+		<x:scenario label="Applying templates">
+			<x:context mode="mirror:context-mirror" />
+			<x:expect label="should apply templates to all the items in x:context"
+				select="$x:context" />
+		</x:scenario>
+	</x:scenario>
+
+	<x:scenario label="When x:context consists of multiple items">
+		<x:scenario label="both node and atomic value">
+			<x:context as="item()+" select="$items:all-nodes, $items:integer" />
+			<x:like label="Test" />
+		</x:scenario>
+
+		<x:scenario label="nodes">
+			<x:context as="node()+" select="$items:all-nodes" />
+			<x:like label="Test" />
+		</x:scenario>
+
+		<x:scenario label="atomic values">
+			<x:context as="xs:anyAtomicType+" select="$items:integer, $items:integer" />
+			<x:like label="Test" />
+		</x:scenario>
+	</x:scenario>
+
+</x:description>

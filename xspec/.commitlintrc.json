@@ -1,0 +1,23 @@
+{
+  "extends": ["@commitlint/config-angular"],
+  "rules": {
+    "scope-enum": [
+      2,
+      "always",
+      [
+        "xslt",
+        "xquery",
+        "schematron",
+        "oxygen",
+        "basex",
+        "deps",
+        "deps-dev",
+        "report",
+        "xproc",
+        "schema",
+        "maven",
+        "cli"
+      ]
+    ]
+  }
+}

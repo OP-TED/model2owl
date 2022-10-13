@@ -1,0 +1,43 @@
+trigger:
+  branches:
+    exclude:
+      - 'dependabot/*'
+  tags:
+    exclude:
+      - '*'
+
+jobs:
+  - template: test/ci/azure-pipelines_windows.yml
+    parameters:
+      jobName: Win_Java8
+      javaVersion: 8
+      testOxygen: false
+
+  - template: test/ci/azure-pipelines_windows.yml
+    parameters:
+      jobName: Win_Java11
+      javaVersion: 11
+
+  - job: macOS
+
+    pool:
+      vmImage: macOS-latest
+
+    variables:
+      # Non-mainstream jobs are not included in favor of GitHub Actions
+      XSPEC_TEST_ENV: saxon-9-9
+
+    steps:
+      - script: test/ci/uninstall-bats-macos.sh
+        displayName: Uninstall stale Bats
+
+      - script: >
+          source test/ci/npm-ci.sh
+          && source test/ci/install-deps.sh
+          && test/ci/print-env.sh
+          && test/ci/run-core-tests.sh
+          && test/ci/maven-package.sh -q
+          && test/ci/compile-java.sh -silent
+          && test/ci/last-git-status.sh
+          && test/ci/test-maven-jar.sh -silent
+        displayName: Test

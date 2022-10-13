@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	compilation-params-scope.xspec is based on this file.
+	When modifying this file, check whether compilation-params-scope.xspec needs any additions or
+	updates.
+-->
+<x:description xmlns:my="http://example.org/ns/my"
+               xmlns:myv="http://example.org/ns/my/variable"
+               xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               stylesheet="../../test/square.xsl"
+               query="http://example.org/ns/my"
+               query-at="../../test/square.xqm">
+
+   <!-- Example (embellished a bit to make it runnable) in Compilation.md, under "Variables scope" -->
+   <!-- To facilitate updating that wiki, compile this test without deleting intermediate results. -->
+
+   <x:variable name="myv:var-1" select="trace('value-1')" />
+
+   <x:scenario label="outer scenario">
+      <x:variable name="myv:var-2" select="trace('value-2')" />
+
+      <x:scenario label="inner scenario">
+         <x:variable name="myv:var-3" select="trace('value-3')" />
+         <x:call function="my:square">
+            <x:param select="0" />
+         </x:call>
+
+         <x:variable name="myv:var-4" select="trace('value-4')" />
+         <x:expect label="1st expect"
+            test="$myv:var-1 and $myv:var-2 and $myv:var-3 and $myv:var-4" />
+
+         <x:variable name="myv:var-5" select="trace('value-5')" />
+         <x:expect label="2nd expect"
+            test="$myv:var-1 and $myv:var-2 and $myv:var-3 and $myv:var-4 and $myv:var-5" />
+      </x:scenario>
+   </x:scenario>
+
+</x:description>

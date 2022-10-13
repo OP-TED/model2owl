@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="e2e-base.run-worker" name="generate-expected">
+	<!-- Import "e2e-base" build file.
+		Use <import> instead of <include>, otherwise "e2e-base" build file cannot override
+		a target in "run-xspec-tests" build file. -->
+	<import file="../base/build.xml" />
+
+	<!-- Ideally, we should wipe out the expected results directory before generating the expected
+		results. But we can't, because some of the expected results are not always be generated
+		depending on the environment (schema-aware, Saxon version, etc.) -->
+</project>

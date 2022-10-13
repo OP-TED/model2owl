@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xt:extensions xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xt="http://www.oxygenxml.com/ns/extension"
+	xsi:schemaLocation="http://www.oxygenxml.com/ns/extension http://www.oxygenxml.com/ns/extension/extensions.xsd">
+
+	<!-- This @id value assumes that https://github.com/xspec/ community owns "xspec.io". -->
+	<xt:extension id="io.xspec.xspec">
+
+		<!--
+			To publish a new version,
+			* Update this @href to a specific commit archive
+			* Increment <xt:version>
+			* Disable the new add-on version in the project options stored in xspec.xpr
+			  (Options - Preferences - Document Type Association)
+			* Update the changelog in xt:description
+		-->
+		<xt:location
+			href="https://github.com/xspec/xspec/archive/6cae146c6e2fcbcba21bc45db822bd2443f207e8.zip" />
+
+		<xt:version>2.3.0</xt:version>
+
+		<!-- Note that supporting multiple oXygen versions may be hard to maintain, because
+			* oXygen add-on and framework require manual testing.
+			* oXygen framework cannot always be backward compatible. See
+			  https://github.com/TEIC/oxygen-tei/issues/30. -->
+		<xt:oxy_version>22.0+</xt:oxy_version>
+
+		<xt:type>framework</xt:type>
+
+		<!-- This could be Jeni, but she's not participated in this add-on release. -->
+		<xt:author>https://github.com/xspec/xspec</xt:author>
+
+		<xt:name>XSpec</xt:name>
+
+		<xt:description>
+			<xi:include href="editors/oxygen/add-on/description/latest.xhtml">
+				<xi:fallback>Visit https://github.com/xspec/xspec and see
+					editors/oxygen/add-on/description/latest.xhtml</xi:fallback>
+			</xi:include>
+		</xt:description>
+
+		<xt:license>
+			<xi:include href="LICENSE" parse="text">
+				<xi:fallback>Visit https://github.com/xspec/xspec and see LICENSE</xi:fallback>
+			</xi:include>
+		</xt:license>
+
+	</xt:extension>
+
+</xt:extensions>

@@ -1,0 +1,60 @@
+name: Lint
+
+on:
+  push:
+    branches-ignore:
+      - 'dependabot/**'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  codespell:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - run: test/ci/run-codespell.sh
+
+  jing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: >
+          source test/ci/npm-ci.sh
+          && source test/ci/install-jing.sh
+          && bats --print-output-on-failure --tap --trace test/rnc.bats
+
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: sudo make --directory=/usr/share/doc/git/contrib/diff-highlight
+      - run: >
+          source test/ci/npm-ci.sh
+          && test/ci/run-prettier.sh
+
+  shellcheck:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: sudo apt-get purge shellcheck
+      - run: sudo snap install shellcheck
+      - run: >
+          source test/ci/npm-ci.sh
+          && test/ci/run-shellcheck.sh
+
+  shfmt:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: sudo snap install shfmt
+      - run: shfmt -d .

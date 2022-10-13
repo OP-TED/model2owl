@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description query="x-urn:test:mirror" query-at="mirror.xqm" stylesheet="mirror.xsl"
+	xml:base="../../" xmlns:mirror="x-urn:test:mirror"
+	xmlns:x="http://www.jenitennison.com/xslt/xspec">
+
+	<x:scenario label="Unreferenced shared scenario" shared="yes">
+		<x:expect label="This unreferenced shared x:expect should not fire at all" test="true()" />
+	</x:scenario>
+
+	<x:scenario label="Referenced shared scenario"
+		pending="This @pending is just to see how the current implementation behaves. At the moment, setting @pending=yes on a scenario appears to have no effect on the scenario where the corresponding x:like occurs."
+		shared="yes">
+		<x:like label="Shared scenario nested in a referenced shared scenario" />
+		<x:expect label="This referenced shared x:expect should fire only at x:like" test="true()"
+		 />
+	</x:scenario>
+
+	<x:scenario label="Referenced and explicitly unshared scenario" shared="no">
+		<x:call function="mirror:false" />
+		<x:expect
+			label="This referenced and explicitly unshared x:expect should fire both at its original x:scenario and x:like"
+			test="true()" />
+	</x:scenario>
+
+	<x:scenario label="Referenced and implicitly unshared scenario">
+		<x:call function="mirror:false" />
+		<x:expect
+			label="This referenced and implicitly unshared x:expect should fire both at its original x:scenario and x:like"
+			test="true()" />
+	</x:scenario>
+
+	<x:scenario label="Shared scenario nested in a referenced shared scenario" shared="yes">
+		<x:expect label="This nested shared x:expect should fire only at nested x:like"
+			test="true()" />
+	</x:scenario>
+
+	<x:scenario label="Scenario for testing x:like which references a shared scenario">
+		<x:call function="mirror:false" />
+		<x:like label="Referenced shared scenario" />
+	</x:scenario>
+
+	<x:scenario label="Scenario for testing x:like which references unshared scenarios">
+		<x:scenario label="explicit one">
+			<x:like label="Referenced and explicitly unshared scenario" />
+		</x:scenario>
+		<x:scenario label="implicit one">
+			<x:like label="Referenced and implicitly unshared scenario" />
+		</x:scenario>
+	</x:scenario>
+
+	<!--
+		@shared[not(. = ('yes', 'no'))]
+	-->
+
+	<x:scenario label="Unreferenced @shared=true" shared="true">
+		<x:expect label="This unreferenced @shared=true x:expect should not fire at all"
+			test="true()" />
+	</x:scenario>
+
+	<x:scenario label="Unreferenced @shared=1" shared="1">
+		<x:expect label="This unreferenced @shared=true x:expect should not fire at all"
+			test="true()" />
+	</x:scenario>
+
+	<x:scenario label="Unreferenced @shared=false" shared="false">
+		<x:call function="mirror:false" />
+		<x:expect
+			label="This unreferenced @shared=false x:expect should fire only at its original x:scenario"
+			test="true()" />
+	</x:scenario>
+
+	<x:scenario label="Unreferenced @shared=0" shared="0">
+		<x:call function="mirror:false" />
+		<x:expect
+			label="This unreferenced @shared=0 x:expect should fire only at its original x:scenario"
+			test="true()" />
+	</x:scenario>
+
+</x:description>

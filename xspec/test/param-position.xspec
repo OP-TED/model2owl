@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description query="x-urn:test:param-position" query-at="param-position.xqm"
+	stylesheet="param-position.xsl" xmlns:param-position="x-urn:test:param-position"
+	xmlns:x="http://www.jenitennison.com/xslt/xspec">
+
+	<x:scenario label="When all instances of function-param have @position in ascending order">
+		<x:call function="param-position:join">
+			<x:param position="1" select="'a'" />
+			<x:param position="2" select="'b'" />
+			<x:param position="3" select="'c'" />
+			<x:param position="4" select="'d'" />
+		</x:call>
+		<x:expect label="The parameters are picked up in @position order" select="'abcd'" />
+	</x:scenario>
+
+	<x:scenario label="When all instances of function-param have @position in descending order">
+		<x:call function="param-position:join">
+			<x:param position="4" select="'d'" />
+			<x:param position="3" select="'c'" />
+			<x:param position="2" select="'b'" />
+			<x:param position="1" select="'a'" />
+		</x:call>
+		<x:expect label="The parameters are picked up in @position order" select="'abcd'" />
+	</x:scenario>
+
+	<x:scenario label="When multiple instances of function-param @position are not consecutive">
+		<x:call function="param-position:join">
+			<x:param position="3" select="'c'" />
+			<x:param position="1" select="'a'" />
+			<x:param position="4" select="'d'" />
+			<x:param position="2" select="'b'" />
+		</x:call>
+		<x:expect label="The parameters are picked up in relative @position order" select="'abcd'"
+		 />
+	</x:scenario>
+
+	<x:scenario label="When parameters are nested">
+		<x:call function="param-position:join">
+			<x:param select="'implicit 1st parameter to be overridden'" />
+		</x:call>
+
+		<x:scenario label="4 (greater than count(ancestor-or-self::x:scenario/x:call/x:param))">
+			<x:call>
+				<x:param position="4" select="'explicit 4th parameter to be overridden'" />
+			</x:call>
+
+			<x:scenario
+				label="implicit 1 (overrides a grandparent parameter) and implicit 2 (inserted in the midst)">
+				<x:call>
+					<x:param select="'a'" />
+					<x:param select="'b'" />
+				</x:call>
+
+				<x:scenario
+					label="3 (inserted in the midst) and 4 (overrides a grandparent parameter)">
+					<x:call>
+						<x:param position="3" select="'c'" />
+						<x:param position="4" select="'d'" />
+					</x:call>
+
+					<x:scenario label="expect">
+						<x:expect label="The parameters are merged" select="'abcd'" />
+					</x:scenario>
+				</x:scenario>
+			</x:scenario>
+		</x:scenario>
+	</x:scenario>
+
+</x:description>

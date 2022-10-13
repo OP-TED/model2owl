@@ -1,0 +1,72 @@
+# Job template for Windows
+
+parameters:
+  - name: jobName
+    type: string
+    default: ''
+  - name: javaVersion
+    type: string
+    default: ''
+  - name: testOxygen
+    type: boolean
+    default: true
+
+jobs:
+  - job: ${{ parameters.jobName }}
+    timeoutInMinutes: 0
+
+    pool:
+      vmImage: windows-latest
+
+    strategy:
+      maxParallel: 0
+
+      matrix:
+        Saxon-10:
+          XSPEC_TEST_ENV: saxon-10
+
+        Saxon-9-9:
+          XSPEC_TEST_ENV: saxon-9-9
+
+        ${{ if eq(parameters.testOxygen, true) }}:
+          Oxygen:
+            XSPEC_TEST_ENV: oxygen
+
+    steps:
+      - task: JavaToolInstaller@0
+        displayName: Install Java ${{ parameters.javaVersion }}
+        inputs:
+          versionSpec: ${{ parameters.javaVersion }}
+          jdkArchitectureOption: x64
+          jdkSourceOption: PreInstalled
+          cleanDestinationDirectory: false
+
+      - task: BatchScript@1
+        displayName: Install test dependencies
+        inputs:
+          filename: test\ci\install-deps.cmd
+          modifyEnvironment: true
+
+      - script: call test\ci\print-env.cmd
+        displayName: Print versions and env vars
+
+      - script: call test\run-bats.cmd
+        displayName: Execute bats-like unit tests
+
+      - script: call test\run-xspec-tests-ant.cmd -silent
+        displayName: Execute XSpec unit tests
+
+      - script: call test\end-to-end\run-e2e-tests.cmd -silent
+        displayName: Execute XSpec end-to-end tests
+
+      - script: call test\ci\maven-package.cmd --no-transfer-progress
+        displayName: Maven package
+
+      - script: call test\ci\compile-java.cmd -verbose
+        displayName: Compile Java
+
+      - script: call test\ci\last-git-status.cmd
+        displayName: Check git status
+
+      - script: call test\ci\test-maven-jar.cmd
+        displayName: Test Maven jar

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Test Report for external_mirror.xsl (passed: 2 / pending: 0 / failed: 2 / total: 4)</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../src/reporter/test-report.css" />
+   </head>
+   <body>
+      <h1>Test Report</h1>
+      <p>Stylesheet: <a href="../../../../external_mirror.xsl">external_mirror.xsl</a></p>
+      <p>XSpec: <a href="../../external_function.xspec">external_function.xspec</a></p>
+      <p>Tested: 1 January 2000 at 00:00</p>
+      <h2>Contents</h2>
+      <table class="xspec">
+         <colgroup>
+            <col style="width:75%" />
+            <col style="width:6.25%" />
+            <col style="width:6.25%" />
+            <col style="width:6.25%" />
+            <col style="width:6.25%" />
+         </colgroup>
+         <thead>
+            <tr>
+               <th></th>
+               <th class="totals">passed: 2</th>
+               <th class="totals">pending: 0</th>
+               <th class="totals">failed: 2</th>
+               <th class="totals">total: 4</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr class="failed">
+               <th><a href="#top_scenario1">when a function returns 0</a></th>
+               <th class="totals">2</th>
+               <th class="totals">0</th>
+               <th class="totals">2</th>
+               <th class="totals">4</th>
+            </tr>
+         </tbody>
+      </table>
+      <div id="top_scenario1">
+         <h2 class="failed">when a function returns 0<span class="scenario-totals">passed: 2 / pending: 0 / failed: 2 / total: 4</span></h2>
+         <table class="xspec" id="table_scenario1">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="failed">
+                  <th>when a function returns 0</th>
+                  <th>passed: 2 / pending: 0 / failed: 2 / total: 4</th>
+               </tr>
+               <tr class="successful">
+                  <td>expecting 0 in @select must be Success</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <td>expecting xs:integer in @test must be Success</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="failed">
+                  <td><a href="#scenario1-expect3">expecting 1 in @select must be Failure</a></td>
+                  <td>Failure</td>
+               </tr>
+               <tr class="failed">
+                  <td><a href="#scenario1-expect4">expecting xs:string in @test must be Failure</a></td>
+                  <td>Failure</td>
+               </tr>
+            </tbody>
+         </table>
+         <div id="scenario1">
+            <h3>when a function returns 0</h3>
+            <div id="scenario1-expect3" class="xTestReport">
+               <h4 class="xTestReportTitle">expecting 1 in @select must be Failure</h4>
+               <div class="xTestReportHint"><a href="https://github.com/xspec/xspec/wiki/Understanding-Test-Results" target="_blank" title="What does this report mean?">[?]</a></div>
+               <table class="xspecResult">
+                  <thead>
+                     <tr>
+                        <th>Result</th>
+                        <th>Expected Result</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>
+                           <pre>0</pre>
+                        </td>
+                        <td>
+                           <pre>1</pre>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div id="scenario1-expect4" class="xTestReport">
+               <h4 class="xTestReportTitle">expecting xs:string in @test must be Failure</h4>
+               <div class="xTestReportHint"><a href="https://github.com/xspec/xspec/wiki/Understanding-Test-Results" target="_blank" title="What does this report mean?">[?]</a></div>
+               <table class="xspecResult">
+                  <thead>
+                     <tr>
+                        <th>Result</th>
+                        <th>Expecting</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>
+                           <pre>0</pre>
+                        </td>
+                        <td>
+                           <pre>$t:result instance of xs:string</pre>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

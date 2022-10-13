@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.jenitennison.com/xslt/xspec"
+        xspec="../../issue-346.xspec"
+        stylesheet="../../../../mirror.xsl"
+        date="2000-01-01T00:00:00Z">
+   <scenario id="scenario1" xspec="../../issue-346.xspec">
+      <label>When a function returns a node containing a space</label>
+      <input-wrap xmlns="">
+         <x:call xmlns:mirror="x-urn:test:mirror"
+                 xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                 function="mirror:param-mirror">
+            <x:param as="element(p)" href="../../issue-346.xml" select="element(p)"/>
+         </x:call>
+      </input-wrap>
+      <result select="/element()">
+         <content-wrap xmlns="">
+            <p>
+               <span>foo</span>
+               <ws xmlns="http://www.jenitennison.com/xslt/xspec"> </ws>
+               <span>bar</span>
+            </p>
+         </content-wrap>
+      </result>
+      <test id="scenario1-expect1" successful="false">
+         <label>Expecting no space should be Failure</label>
+         <expect select="/element()">
+            <content-wrap xmlns="">
+               <p xmlns:mirror="x-urn:test:mirror"
+                  xmlns:x="http://www.jenitennison.com/xslt/xspec">
+                  <span>foo</span>
+                  <span>bar</span>
+               </p>
+            </content-wrap>
+         </expect>
+      </test>
+   </scenario>
+</report>

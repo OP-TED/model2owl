@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xspec-test additional-classpath=${xspec.project.dir}/java?>
+<?xspec-test saxon-custom-options=-config:"${xspec.project.dir}/src/reporter/coverage-report-config.xml"?>
+<x:description query="x-urn:test:do-nothing" query-at="do-nothing.xqm" stylesheet="do-nothing.xsl"
+	xmlns:x="http://www.jenitennison.com/xslt/xspec">
+
+	<x:import href="line-number/common.xspec" />
+
+	<x:scenario label="Scenarios for testing x:column-number() with lineNumbering enabled">
+		<x:call function="x:column-number" />
+
+		<x:scenario label="processing instruction">
+			<x:call>
+				<x:param select="$doc/processing-instruction()" />
+			</x:call>
+			<x:expect label="column number after '?>'" select="7" />
+		</x:scenario>
+
+		<x:scenario label="element">
+			<x:call>
+				<x:param select="$doc/elem" />
+			</x:call>
+			<x:expect label="column number after '>' of open tag" select="15" />
+		</x:scenario>
+
+		<x:scenario label="attribute">
+			<x:call>
+				<x:param select="$doc/elem/@attr" />
+			</x:call>
+			<x:expect label="column number after '>' of element open tag" select="15" />
+		</x:scenario>
+
+		<x:scenario label="child element">
+			<x:call>
+				<x:param select="$doc/elem/child" />
+			</x:call>
+			<x:expect label="column number after '>' of open tag" select="11" />
+		</x:scenario>
+
+		<x:scenario label="comment">
+			<x:call>
+				<x:param select="$doc/comment()" />
+			</x:call>
+			<x:expect label="column number after '-->'" select="15" />
+		</x:scenario>
+
+	</x:scenario>
+
+	<x:scenario label="Scenarios for testing x:line-number() with lineNumbering enabled">
+		<x:call function="x:line-number" />
+
+		<x:scenario label="processing instruction">
+			<x:call>
+				<x:param select="$doc/processing-instruction()" />
+			</x:call>
+			<x:expect label="line number" select="2" />
+		</x:scenario>
+
+		<x:scenario label="element">
+			<x:call>
+				<x:param select="$doc/elem" />
+			</x:call>
+			<x:expect label="line number" select="3" />
+		</x:scenario>
+
+		<x:scenario label="attribute">
+			<x:call>
+				<x:param select="$doc/elem/@attr" />
+			</x:call>
+			<x:expect label="line number" select="3" />
+		</x:scenario>
+
+		<x:scenario label="child element">
+			<x:call>
+				<x:param select="$doc/elem/child" />
+			</x:call>
+			<x:expect label="line number" select="4" />
+		</x:scenario>
+
+		<x:scenario label="comment">
+			<x:call>
+				<x:param select="$doc/comment()" />
+			</x:call>
+			<x:expect label="line number" select="6" />
+		</x:scenario>
+
+	</x:scenario>
+
+</x:description>

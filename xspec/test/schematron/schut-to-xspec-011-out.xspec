@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description xmlns="http://www.jenitennison.com/xslt/xspec"
+             schematron="%TEST_BASE%/schematron/schut-to-xspec-test.sch"
+             original-xspec="%TEST_BASE%/schematron/schut-to-xspec-011-in.xspec"
+             stylesheet="schut-to-xspec-test.sch.xsl">
+   <x:param xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns="" name="phase">
+      <x:text>P1</x:text>
+   </x:param>
+   <x:scenario xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns=""
+               xslt-version="3"
+               xspec="%TEST_BASE%/schematron/schut-to-xspec-011-in.xspec"
+               label="Schematron test scenario"/>
+</description>

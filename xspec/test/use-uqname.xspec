@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description query="x-urn:test:mirror" query-at="mirror.xqm" stylesheet="mirror.xsl"
+	xmlns:mirror="x-urn:test:mirror" xmlns:use-uqname="x-urn:test:use-uqname"
+	xmlns:x="http://www.jenitennison.com/xslt/xspec">
+
+	<!-- Leading and trailing whitespace strings ('&#x09;&#x0A;&#x0D;&#x20;') are inserted to the
+		tested attributes deliberately.
+		'&#x0D;' is removed from @select and @test. It doesn't work on XQuery. TODO: Investigate it. -->
+
+	<x:variable
+		as="
+			&#x09;&#x0A;&#x0D;&#x20;
+			element(Q{x-urn:test:use-uqname}global-variable-child)
+			&#x09;&#x0A;&#x0D;&#x20;"
+		name="
+			&#x09;&#x0A;&#x0D;&#x20;
+			Q{x-urn:test:use-uqname}global-variable
+			&#x09;&#x0A;&#x0D;&#x20;"
+		select="
+			&#x09;&#x0A;&#x20;
+			Q{x-urn:test:use-uqname}global-variable-child
+			&#x09;&#x0A;&#x20;">
+		<use-uqname:global-variable-child />
+	</x:variable>
+
+	<x:scenario label="Using URIQualifiedName in">
+
+		<x:scenario label="global variable (@as | @name | @select)">
+			<x:call function="mirror:param-mirror">
+				<x:param select="$use-uqname:global-variable" />
+			</x:call>
+			<x:expect label="should be possible">
+				<use-uqname:global-variable-child />
+			</x:expect>
+		</x:scenario>
+
+		<x:scenario label="local variable (@as | @name | @select)">
+			<x:variable
+				as="
+					&#x09;&#x0A;&#x0D;&#x20;
+					element(Q{x-urn:test:use-uqname}local-variable-child)
+					&#x09;&#x0A;&#x0D;&#x20;"
+				name="
+					&#x09;&#x0A;&#x0D;&#x20;
+					Q{x-urn:test:use-uqname}local-variable
+					&#x09;&#x0A;&#x0D;&#x20;"
+				select="
+					&#x09;&#x0A;&#x20;
+					Q{x-urn:test:use-uqname}local-variable-child
+					&#x09;&#x0A;&#x20;">
+				<use-uqname:local-variable-child />
+			</x:variable>
+			<x:call function="mirror:param-mirror">
+				<x:param select="$use-uqname:local-variable" />
+			</x:call>
+			<x:expect label="should be possible">
+				<use-uqname:local-variable-child />
+			</x:expect>
+		</x:scenario>
+
+		<x:scenario label="local variable @name, with local part 'result' and non-XSpec namespace,">
+			<x:call function="mirror:param-mirror">
+				<x:param select="'result of function call'" />
+			</x:call>
+			<x:variable
+				name="
+					&#x09;&#x0A;&#x0D;&#x20;
+					Q{x-urn:test:use-uqname}result
+					&#x09;&#x0A;&#x0D;&#x20;"
+				select="'local variable value'" />
+			<x:expect label="has no conflict with $x:result" select="'local variable value'"
+				test="$use-uqname:result" />
+			<x:expect label="while $x:result is preserved" select="'result of function call'"
+				test="$x:result" />
+		</x:scenario>
+
+		<x:scenario label="function-call @function and function-param (@as | @name | @select)">
+			<x:call
+				function="
+					&#x09;&#x0A;&#x0D;&#x20;
+					Q{x-urn:test:mirror}param-mirror
+					&#x09;&#x0A;&#x0D;&#x20;">
+				<x:param
+					as="
+						&#x09;&#x0A;&#x0D;&#x20;
+						element(Q{x-urn:test:use-uqname}function-param-child)
+						&#x09;&#x0A;&#x0D;&#x20;"
+					name="
+						&#x09;&#x0A;&#x0D;&#x20;
+						Q{}param-items
+						&#x09;&#x0A;&#x0D;&#x20;"
+					select="
+						&#x09;&#x0A;&#x20;
+						element(Q{x-urn:test:use-uqname}function-param-child)
+						&#x09;&#x0A;&#x20;">
+					<use-uqname:function-param-child />
+				</x:param>
+			</x:call>
+			<x:expect label="should be possible">
+				<use-uqname:function-param-child />
+			</x:expect>
+		</x:scenario>
+
+		<x:scenario label="assertion">
+			<x:call function="false" />
+			<x:expect
+				as="
+					&#x09;&#x0A;&#x0D;&#x20;
+					Q{http://www.w3.org/2001/XMLSchema}string
+					&#x09;&#x0A;&#x0D;&#x20;"
+				label="(@as | @select) and non-boolean @test should be possible"
+				select="
+					&#x09;&#x0A;&#x20;
+					'xyz' treat as Q{http://www.w3.org/2001/XMLSchema}string
+					&#x09;&#x0A;&#x20;"
+				test="
+					&#x09;&#x0A;&#x20;
+					'xyz' treat as Q{http://www.w3.org/2001/XMLSchema}string
+					&#x09;&#x0A;&#x20;" />
+			<x:expect label="boolean @test should be possible"
+				test="
+					&#x09;&#x0A;&#x20;
+					true() treat as Q{http://www.w3.org/2001/XMLSchema}boolean
+					&#x09;&#x0A;&#x20;"
+			 />
+		</x:scenario>
+
+	</x:scenario>
+
+</x:description>

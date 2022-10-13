@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description stylesheet="mirror.xsl"
+	xmlns:mirror="x-urn:test:mirror"
+	xmlns:myv="http://example.org/ns/my/variable"
+	xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!--
+		To test xspec/xspec#894 properly, 'local-xs' and 'polymorph' namespace prefixes must be
+		declared only in //x:*[@as] where @as is being tested.
+	-->
+
+	<x:scenario label="In context template-param (i.e. //x:context/x:param), when @as uses a prefix defined in x:param,">
+		<x:context mode="mirror:param-mirror">
+			<x:param as="local-xs:double" name="param-items" select="xs:integer(0)" xmlns:local-xs="http://www.w3.org/2001/XMLSchema" />
+			<dummy />
+		</x:context>
+		<x:expect label="@as takes effect" test="$x:result instance of xs:double" />
+	</x:scenario>
+
+	<x:scenario label="In context (i.e. //x:context), when @as uses a prefix defined in x:context,">
+		<x:context as="local-xs:double" select="xs:integer(0)"
+			xmlns:local-xs="http://www.w3.org/2001/XMLSchema" />
+		<x:call template="mirror:context-mirror" />
+		<x:expect label="@as takes effect" test="$x:result instance of xs:double" />
+	</x:scenario>
+
+	<x:scenario label="In function-param (i.e. //x:call[@function]/x:param),">
+		<x:scenario label="when the function has a single param and @as uses a prefix defined in x:param,">
+			<x:call function="mirror:param-mirror">
+				<x:param as="local-xs:double" select="xs:integer(0)" xmlns:local-xs="http://www.w3.org/2001/XMLSchema" />
+			</x:call>
+			<x:expect label="@as takes effect" test="$x:result instance of xs:double" />
+		</x:scenario>
+
+		<x:scenario
+			label="when the function has multiple params and all @as share the same prefix but each prefix has different URI defined in x:param,">
+			<x:call function="mirror:trace">
+				<x:param as="element(polymorph:element)" xmlns:polymorph="param-1-ns">
+					<polymorph:element />
+				</x:param>
+				<x:param as="polymorph:string" select="'label'" xmlns:polymorph="http://www.w3.org/2001/XMLSchema" />
+			</x:call>
+			<x:expect label="@as doesn't break the params"
+				test="$x:result instance of element(Q{param-1-ns}element)" />
+		</x:scenario>
+	</x:scenario>
+
+	<x:scenario label="In template-call template-param (i.e. //x:call[@template]/x:param), when @as uses a prefix defined in x:param,">
+		<x:call template="mirror:param-mirror">
+			<x:param as="local-xs:double" name="param-items" select="xs:integer(0)" xmlns:local-xs="http://www.w3.org/2001/XMLSchema" />
+		</x:call>
+		<x:expect label="@as takes effect" test="$x:result instance of xs:double" />
+	</x:scenario>
+
+	<x:param as="local-xs:double" name="global-param" select="xs:integer(0)" xmlns:local-xs="http://www.w3.org/2001/XMLSchema" />
+	<x:scenario label="In global-param (i.e. /x:description/x:param), when @as uses a prefix defined in x:param,">
+		<x:context />
+		<x:expect label="@as takes effect" test="$global-param instance of xs:double" />
+	</x:scenario>
+
+	<x:variable as="local-xs:double" name="myv:global-var" select="xs:integer(0)" xmlns:local-xs="http://www.w3.org/2001/XMLSchema" />
+	<x:scenario label="In global variable (i.e. /x:description/x:variable), when @as uses a prefix defined in x:variable,">
+		<x:context />
+		<x:expect label="@as takes effect" test="$myv:global-var instance of xs:double" />
+	</x:scenario>
+
+	<x:scenario label="In scenario-level variable (i.e. //x:scenario/x:variable), when @as uses a prefix defined in x:variable,">
+		<x:variable as="local-xs:double" name="myv:local-var" select="xs:integer(0)" xmlns:local-xs="http://www.w3.org/2001/XMLSchema" />
+		<x:context />
+		<x:expect label="@as takes effect" test="$myv:local-var instance of xs:double" />
+	</x:scenario>
+
+	<x:scenario label="In assertion (i.e. //x:expect), when @as uses a prefix defined in x:expect,">
+		<x:call function="mirror:param-mirror">
+			<x:param select="xs:integer(0)" />
+		</x:call>
+		<x:expect as="local-xs:integer" label="@as takes effect"
+			xmlns:local-xs="http://www.w3.org/2001/XMLSchema">0</x:expect>
+	</x:scenario>
+
+</x:description>

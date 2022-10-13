@@ -1,0 +1,37 @@
+<project name="model2owl" default="dist" basedir=".">
+  <description>
+    Run unit tests
+  </description>
+  <property name="xspec.properties" location="system.properties" />
+	<property name="xspec.project.dir" location="xspec" />
+  <include file="${basedir}/xspec/build.xml" />
+
+   <target name="dist" depends="compile"
+        description="generate the distribution">
+    
+  </target>
+
+	<target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+     
+  </target>
+
+  <target name="compile" depends="init"
+        description="compile the source">
+	 <antcall target="xspec.xspec" inheritall="false">
+      <param name="xspec.xml" location="${basedir}/test/unitTests/test-common/test-checkers.xspec"/>
+   </antcall>
+  
+  </target>
+  
+   
+
+  <target name="clean"
+        description="clean up">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>	
+  </target>
+</project>

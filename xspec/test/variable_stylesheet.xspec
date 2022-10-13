@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	external_scenario-param.xspec is based on this file.
+	When modifying this file, check whether external_scenario-param.xspec needs any additions or
+	updates.
+-->
+<x:description
+	xmlns:mirror="x-urn:test:mirror"
+	xmlns:myv="http://example.org/ns/my/variable"
+	xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	stylesheet="mirror.xsl">
+	<!-- Variables used only in this test file are in a dedicated namespace to prevent conflict with
+	 global parameters or global variables in the file to be tested. -->
+
+	<!-- Scenarios specific to XSLT -->
+
+	<x:scenario label="Variables can appear in different parts of scenario.">
+		<!-- For tests using function call scenarios, see variable.xspec. -->
+		<x:scenario label="x:variable interspersed with x:context, x:call[@template], and x:expect">
+			<x:variable name="myv:before_context" select="'before_context'"/>
+			<x:context><mycontext role="{$myv:before_context}"/></x:context>
+			<x:variable name="myv:after_context" select="'after_context'"/>
+			<x:call template="mirror:context-mirror"/>
+			<x:variable name="myv:after_call" select="'after_call'"/>
+			<x:expect label="reflects expected behavior of named template for this context,">
+				<mycontext role="before_context"/>
+			</x:expect>
+			<x:variable name="myv:after_expect" select="'after_expect'"/>
+			<x:expect label="and expected value for each variable."
+				test="($myv:before_context='before_context') and
+				($myv:after_context='after_context') and
+				($myv:after_call='after_call') and
+				($myv:after_expect='after_expect')"
+			/>
+		</x:scenario>
+		<x:scenario label="If variable is defined both before and after x:context[x:param]">
+			<x:variable name="myv:var" select="'before_context'"/>
+			<x:context mode="mirror:param-mirror">
+				<x:param name="param-items" select="$myv:var"/>
+				<mycontext/>
+			</x:context>
+			<x:variable name="myv:var" select="'after_context'"/>
+			<x:expect label="then parameter reflects x:variable preceding x:context,"
+				select="'before_context'"/>
+			<x:expect label="while final variable value reflects final x:variable."
+				test="$myv:var" select="'after_context'"/>
+		</x:scenario>
+		<x:scenario label="If variable is redefined between x:context and x:call">
+			<x:scenario label="then context reflects">
+				<x:variable name="myv:var" select="'before_context'"/>
+				<x:context><mycontext role="{$myv:var}"/></x:context>
+				<x:variable name="myv:var" select="'after_context (value is not used in this scenario)'"/>
+				<x:call template="mirror:context-mirror"/>
+				<x:variable name="myv:var" select="'after_call'"/>
+				<x:expect label="x:variable preceding x:context,">
+					<mycontext role="before_context"/>
+				</x:expect>
+				<x:expect label="while final variable value reflects final x:variable."
+					test="$myv:var" select="'after_call'"/>
+			</x:scenario>
+			<x:scenario label="then template parameter reflects">
+				<x:variable name="myv:var" select="'before_context'"/>
+				<x:context><mycontext role="{$myv:var}"/></x:context>
+				<x:variable name="myv:var" select="'after_context_before_call'"/>
+				<x:call template="mirror:param-mirror">
+					<x:param name="param-items" select="$myv:var"/>
+				</x:call>
+				<x:variable name="myv:var" select="'after_call (value is not used in this scenario)'"/>
+				<x:expect label="x:variable preceding x:call."
+					select="'after_context_before_call'"/>
+			</x:scenario>
+		</x:scenario>
+		<x:scenario label="x:variable interspersed with x:context and x:expect">
+			<x:variable name="myv:before_context" select="'before_context'"/>
+			<x:context mode="mirror:context-mirror"><mycontext role="{$myv:before_context}"/></x:context>
+			<x:variable name="myv:after_context" select="'after_context'"/>
+			<x:expect label="reflects expected behavior of template rule for this context,">
+				<mycontext role="before_context"/>
+			</x:expect>
+			<x:variable name="myv:after_expect" select="'after_expect'"/>
+			<x:expect label="and expected value for each variable."
+				test="($myv:before_context='before_context') and
+				($myv:after_context='after_context') and
+				($myv:after_expect='after_expect')"
+			/>
+		</x:scenario>
+		<x:scenario label="x:variable interspersed with x:context[x:param] and x:expect">
+			<x:variable name="myv:before_context" select="'before_context'"/>
+			<x:context mode="mirror:param-mirror">
+				<x:param name="param-items" select="$myv:before_context"/>
+				<mycontext/>
+			</x:context>
+			<x:variable name="myv:after_context" select="'after_context'"/>
+			<x:expect label="reflects expected behavior of template rule for this parameter,"
+				select="'before_context'"/>
+			<x:variable name="myv:after_expect" select="'after_expect'"/>
+			<x:expect label="and expected value for each variable."
+				test="($myv:before_context='before_context') and
+				($myv:after_context='after_context') and
+				($myv:after_expect='after_expect')"
+			/>
+		</x:scenario>
+		<x:scenario label="x:variable used to store the context">
+			<x:variable name="myv:context"><foo/></x:variable>
+			<x:context select="$myv:context" mode="mirror:context-mirror" />
+			<x:expect label="reflects expected behavior of template rule for this context."><foo/></x:expect>
+		</x:scenario>
+		<x:scenario label="Variable with following-sibling x:expect but no sibling x:context">
+			<x:context mode="mirror:context-mirror"><foo/></x:context>
+			<x:scenario label="can be referenced">
+				<x:variable name="myv:with-expect-but-no-sibling-context"><foo/></x:variable>
+				<x:expect label="in x:expect/@select." select="$myv:with-expect-but-no-sibling-context"/>
+			</x:scenario>
+		</x:scenario>
+	</x:scenario>
+
+</x:description>

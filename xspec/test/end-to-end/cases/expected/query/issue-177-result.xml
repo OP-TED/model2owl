@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.jenitennison.com/xslt/xspec"
+        xspec="../../issue-177.xspec"
+        query="x-urn:test:do-nothing"
+        query-at="../../../../do-nothing.xqm"
+        date="2000-01-01T00:00:00Z">
+   <scenario id="scenario1" xspec="../../issue-177.xspec">
+      <label>Given the function returns &lt;foo /&gt;</label>
+      <input-wrap xmlns="">
+         <x:call xmlns:x="http://www.jenitennison.com/xslt/xspec" function="exactly-one">
+            <x:param as="element(foo)">
+               <foo/>
+            </x:param>
+         </x:call>
+      </input-wrap>
+      <result select="/element()">
+         <content-wrap xmlns="">
+            <foo xmlns:x="http://www.jenitennison.com/xslt/xspec"/>
+         </content-wrap>
+      </result>
+      <test id="scenario1-expect1" successful="false">
+         <label>When @test is "empty($x:result/self::element(foo))" (i.e. boolean),
+				then the HTML report should be
+					"Result"    = "&lt;foo /&gt;"
+				and
+					"Expecting" = "empty($x:result/self::element(foo))"
+				without diff.</label>
+         <expect-test-wrap xmlns="">
+            <x:expect xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                      test="empty($x:result/self::element(foo))"/>
+         </expect-test-wrap>
+         <expect select="()"/>
+      </test>
+      <test id="scenario1-expect2" successful="false">
+         <label>When x:expect expects &lt;bar /&gt; and @test is "$x:result/self::element(foo)" (i.e. non boolean),
+				then the HTML report should be
+					"Result"          = "&lt;foo /&gt;"
+				and
+					"Expected Result" = "&lt;bar /&gt;"
+				with diff.</label>
+         <expect-test-wrap xmlns="">
+            <x:expect xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                      test="$x:result/self::element(foo)"/>
+         </expect-test-wrap>
+         <result select="/element()">
+            <content-wrap xmlns="">
+               <foo xmlns:x="http://www.jenitennison.com/xslt/xspec"/>
+            </content-wrap>
+         </result>
+         <expect select="/element()">
+            <content-wrap xmlns="">
+               <bar xmlns:x="http://www.jenitennison.com/xslt/xspec"/>
+            </content-wrap>
+         </expect>
+      </test>
+   </scenario>
+</report>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<t:description stylesheet="do-nothing.xsl" xmlns:local="urn:x-xspec:common:report-sequence:local"
+   xmlns:rep="urn:x-xspec:common:report-sequence" xmlns:t="http://www.jenitennison.com/xslt/xspec"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+   <!--
+      The test target (../src/common/report-sequence.xsl) is included implicitly by the XSpec
+      compiler. You don't need to specify it in /t:description/@stylesheet.
+   -->
+
+   <t:scenario label="rep:report-atomic-value">
+      <t:call function="rep:report-atomic-value" />
+
+      <t:scenario label="https://www.w3.org/TR/xmlschema11-2/type-hierarchy-201104.longdesc.html">
+
+         <t:scenario label="Other built-in atomic types">
+
+            <t:scenario label="Derived from xs:dateTime">
+
+               <!-- BaseX 9.4.5 does not support xs:dateTimeStamp -->
+               <t:scenario label="xs:dateTimeStamp">
+                  <t:call>
+                     <t:param select="xs:dateTimeStamp('1234-01-02T03:04:05Z')" />
+                  </t:call>
+                  <t:expect label="Constructor" select="string()"
+                     >Q{http://www.w3.org/2001/XMLSchema}dateTimeStamp('1234-01-02T03:04:05Z')</t:expect>
+               </t:scenario>
+
+            </t:scenario>
+
+            <t:scenario label="Derived from xs:decimal">
+
+               <t:scenario label="xs:integer">
+
+                  <!-- FOAR0002 'Value out of range' on BaseX 9.4.5 -->
+                  <t:scenario label="Max of xs:unsignedLong (a subtype of xs:integer)">
+                     <t:call>
+                        <t:param select="xs:integer(18446744073709551615)" />
+                     </t:call>
+                     <t:expect label="Numeric literal" select="'18446744073709551615'" />
+                  </t:scenario>
+
+               </t:scenario>
+
+            </t:scenario>
+
+         </t:scenario>
+
+      </t:scenario>
+
+   </t:scenario>
+
+   <t:scenario label="rep:atom-type-UQName">
+      <t:call function="rep:atom-type-UQName" />
+
+      <!-- BaseX 9.4.5 does not support xs:dateTimeStamp -->
+      <t:scenario label="Derived from xs:dateTime">
+         <t:call>
+            <t:param select="xs:dateTimeStamp('1111-11-11T11:11:11Z')" />
+         </t:call>
+         <t:expect label="xs:dateTimeStamp" select="string()"
+            >Q{http://www.w3.org/2001/XMLSchema}dateTimeStamp</t:expect>
+      </t:scenario>
+
+   </t:scenario>
+
+   <t:scenario label="Scenario for testing template identity">
+      <t:context>
+         <foo bar="baz">
+            <?qux?>
+            <!--quux-->
+            <corge>grault</corge>
+         </foo>
+      </t:context>
+      <t:call template="local:identity" />
+      <t:expect label="Copied and default template rule applied">
+         <foo>bazgrault</foo>
+      </t:expect>
+   </t:scenario>
+
+</t:description>

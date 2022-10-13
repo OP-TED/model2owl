@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="install" name="install-deps">
+
+	<property environment="env" />
+
+	<macrodef name="download">
+		<attribute name="src" />
+		<attribute name="dest" />
+
+		<sequential>
+			<retry retrycount="5" retrydelay="5000">
+				<get dest="@{dest}" src="@{src}" />
+			</retry>
+		</sequential>
+	</macrodef>
+
+	<target name="saxon">
+		<echo message="Install Saxon ${env.SAXON_VERSION}" />
+
+		<dirname file="${env.SAXON_JAR}" property="saxon.jar.dir" />
+		<mkdir dir="${saxon.jar.dir}" />
+
+		<download dest="${env.SAXON_JAR}"
+			src="https://repo1.maven.org/maven2/net/sf/saxon/Saxon-HE/${env.SAXON_VERSION}/Saxon-HE-${env.SAXON_VERSION}.jar"
+		 />
+	</target>
+
+	<target name="xml-resolver">
+		<echo message="Install XML Resolver ${env.XML_RESOLVER_VERSION}" />
+
+		<dirname file="${env.XML_RESOLVER_JAR}" property="xml-resolver.jar.dir" />
+		<mkdir dir="${xml-resolver.jar.dir}" />
+
+		<download dest="${env.XML_RESOLVER_JAR}"
+			src="https://repo1.maven.org/maven2/xml-resolver/xml-resolver/${env.XML_RESOLVER_VERSION}/xml-resolver-${env.XML_RESOLVER_VERSION}.jar"
+		 />
+	</target>
+
+	<target depends="log4j" if="env.XMLCALABASH_VERSION" name="xml-calabash">
+		<echo message="Install XML Calabash ${env.XMLCALABASH_VERSION}" />
+
+		<tempfile deleteonexit="true" destdir="${java.io.tmpdir}" prefix="xmlcalabash_deleteonexit_"
+			property="xmlcalabash.zip" suffix=".zip" />
+		<download dest="${xmlcalabash.zip}"
+			src="https://github.com/ndw/xmlcalabash1/releases/download/${env.XMLCALABASH_VERSION}/xmlcalabash-${env.XMLCALABASH_VERSION}.zip" />
+
+		<dirname file="${env.XMLCALABASH_JAR}" property="xmlcalabash.jar.dir" />
+		<dirname file="${xmlcalabash.jar.dir}" property="xmlcalabash.unzip.dest" />
+		<unzip dest="${xmlcalabash.unzip.dest}" src="${xmlcalabash.zip}" />
+
+		<condition property="xmlcalabash.saxon.jar.count.ok">
+			<resourcecount count="1">
+				<fileset dir="${xmlcalabash.jar.dir}/lib/" id="xmlcalabash.saxon.jar"
+					includes="Saxon-HE-*.jar" />
+			</resourcecount>
+		</condition>
+		<fail message="Failed to identify Saxon jar in XML Calabash lib dir"
+			unless="xmlcalabash.saxon.jar.count.ok" />
+		<delete verbose="true">
+			<fileset refid="xmlcalabash.saxon.jar" />
+		</delete>
+	</target>
+
+	<target if="env.LOG4J_VERSION" name="log4j">
+		<echo message="Install Log4j ${env.LOG4J_VERSION}" />
+
+		<mkdir dir="${env.LOG4J_DIR}" />
+
+		<download dest="${env.LOG4J_DIR}/log4j-api.jar"
+			src="https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/${env.LOG4J_VERSION}/log4j-api-${env.LOG4J_VERSION}.jar" />
+		<download dest="${env.LOG4J_DIR}/log4j-core.jar"
+			src="https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/${env.LOG4J_VERSION}/log4j-core-${env.LOG4J_VERSION}.jar" />
+		<download dest="${env.LOG4J_DIR}/log4j-slf4j-impl.jar"
+			src="https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-slf4j-impl/${env.LOG4J_VERSION}/log4j-slf4j-impl-${env.LOG4J_VERSION}.jar"
+		 />
+	</target>
+
+	<target if="env.BASEX_VERSION" name="basex">
+		<echo message="Install BaseX ${env.BASEX_VERSION}" />
+
+		<tempfile deleteonexit="true" destdir="${java.io.tmpdir}" prefix="basex_deleteonexit_"
+			property="basex.zip" suffix=".zip" />
+		<loadresource property="basex.version.without.dot">
+			<propertyresource name="env.BASEX_VERSION" />
+			<filterchain>
+				<tokenfilter>
+					<replaceregex flags="g" pattern="\." replace="" />
+				</tokenfilter>
+			</filterchain>
+		</loadresource>
+		<download dest="${basex.zip}"
+			src="https://files.basex.org/releases/${env.BASEX_VERSION}/BaseX${basex.version.without.dot}.zip" />
+
+		<dirname file="${env.BASEX_JAR}" property="basex.jar.dir" />
+		<dirname file="${basex.jar.dir}" property="basex.unzip.dest" />
+		<unzip dest="${basex.unzip.dest}" src="${basex.zip}" />
+
+		<chmod dir="${basex.unzip.dest}/basex/bin" excludes="*.bat" includes="*" perm="+x"
+			verbose="true" />
+	</target>
+
+	<target name="install">
+		<parallel failonany="true">
+			<antcall target="saxon" />
+			<antcall target="xml-resolver" />
+			<antcall target="xml-calabash" />
+			<antcall target="basex" />
+		</parallel>
+	</target>
+
+</project>
