@@ -20,7 +20,8 @@
             <xd:p>This module defines project level variables and parameters</xd:p>
         </xd:desc>
     </xd:doc>
-
+    <!-- List of xmi files to be merged into a single xmi file-->
+    <xsl:variable name="xmiFileList" select="collection('../../test/test-multi-xmi?select=*.xmi')"/>
     <!-- a set of prefix-baseURI definitions -->
     <xsl:variable name="namespacePrefixes" select="fn:doc('namespaces.xml')"/>
 
