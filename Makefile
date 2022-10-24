@@ -14,11 +14,11 @@ install:
 	# Unzip
 	unzip /tmp/frameworks.zip -d .
 	unzip /tmp/lib.zip -d .
-	
+
 	# Clean up
 	rm -rf /tmp/frameworks.zip
 	rm -rf /tmp/lib.zip
-	rm -rf frameworks.zip
-	rm -rf lib.zip
+	git rm -rf frameworks.zip
+	git rm -rf lib.zip
 tests:
 	ant -lib lib/saxon*.jar unit_tests
