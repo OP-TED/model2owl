@@ -12,5 +12,7 @@ install:
 	git checkout ${curBranch}
 	unzip /tmp/frameworks.zip -d .
 	unzip /tmp/lib.zip -d .
-unit_tests:
+	rm -rf /tmp/frameworks.zip
+	rm -rf /tmp/lib.zip
+tests:
 	ant -lib lib/saxon*.jar unit_tests
