@@ -16,6 +16,9 @@
     
     <xsl:import href="../../config/config-proxy.xsl"/>
     
+    <!-- List of xmi files to be merged into a single xmi file-->
+    <xsl:variable name="xmiFileList" select="collection('../../test/test-multi-xmi?select=*.xml')"/>
+    
     <xsl:template match="/">
         
         <xmi:XMI xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI" xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:thecustomprofile="http://www.sparxsystems.com/profiles/thecustomprofile/1.0">
