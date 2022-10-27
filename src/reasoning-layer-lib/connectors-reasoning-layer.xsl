@@ -99,7 +99,7 @@
 
 
     <xd:doc>
-        <xd:desc>Rule 12 (Association source in reasnoning layer) .Specify object property domain
+        <xd:desc>Rule 12 (Association source in reasnoning layer). Specify object property domain
             for the target end of the association.</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
@@ -114,8 +114,12 @@
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
 <!--        This will filter out all Dependencies that are from a Class to an Enumeration-->
-        <xsl:variable name="filteredConnectorsWithSameName"
+        <!--<xsl:variable name="filteredConnectorsWithSameName"
             select="$connectorsWithSameName[not(./properties/@ea_type = 'Dependency' and ./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')]"
+        />-->
+        <!-- We need to provide Domain for Dependencies relations also (cf. EPO-620)-->
+        <xsl:variable name="filteredConnectorsWithSameName"
+            select="$connectorsWithSameName"
         />
         
             <xsl:if test="fn:count($filteredConnectorsWithSameName) = 1">
