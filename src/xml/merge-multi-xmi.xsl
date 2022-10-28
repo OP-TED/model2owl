@@ -9,7 +9,9 @@
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
     xmlns:dc="http://purl.org/dc/elements/1.1/" 
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:functx="http://www.functx.com"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#" version="3.0">
    
     <xsl:output version="1.0" encoding="windows-1252" indent="yes" /> 
@@ -17,8 +19,10 @@
     <xsl:import href="../../config/config-proxy.xsl"/>
     
     <!-- List of xmi files to be merged into a single xmi file-->
-    <!--<xsl:variable name="xmiFileList" select="collection('../../test/test-multi-xmi?select=*.xml')"/>-->
-    <xsl:variable name="xmiFileList" select="collection('./xmi-src?select=*.xml')"/>
+    <xsl:import href="../../src/common/functx-1.0.1-doc.xsl"/>
+    <xsl:variable name="inputFolder" select="functx:substring-before-last(base-uri(), '/')"/>    
+    <xsl:variable name="xmiFileList" select="collection(concat($inputFolder, '/', '?select=*.xml'))"/>
+    
     <xsl:template match="/">
         
         <xmi:XMI xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI" xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:thecustomprofile="http://www.sparxsystems.com/profiles/thecustomprofile/1.0">
@@ -27,7 +31,7 @@
             <!-- Merge elements under uml:Model -->
             <uml:Model xmi:type="uml:Model" name="EA_Model">  
             <xsl:for-each select="$xmiFileList" >
-                <xsl:variable name="doc" select="document(document-uri(.))" />                              
+                <xsl:variable name="doc" select="." />                              
                     <xsl:copy-of select="$doc//uml:Model/packagedElement"></xsl:copy-of>
                     <xsl:copy-of select="$doc//uml:Model/umldi:Diagram"></xsl:copy-of>
                     <xsl:copy-of select="$doc//uml:Model/profileApplication"></xsl:copy-of>                  
@@ -36,7 +40,7 @@
             <!-- Merge elements under xmi:Extension -->
             <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
             <xsl:for-each select="$xmiFileList" >
-                <xsl:variable name="doc" select="document(document-uri(.))" />                
+                <xsl:variable name="doc" select="." />                
                 <xsl:copy-of select="$doc//xmi:XMI/xmi:Extension/elements"></xsl:copy-of>
                 <xsl:copy-of select="$doc//xmi:XMI/xmi:Extension/connectors"></xsl:copy-of>
                 <xsl:copy-of select="$doc//xmi:XMI/xmi:Extension/primitivetypes/profiles"></xsl:copy-of>
@@ -46,7 +50,7 @@
             
             <!-- Merge other elements-->  
             <xsl:for-each select="$xmiFileList" >
-                <xsl:variable name="doc" select="document(document-uri(.))" />               
+                <xsl:variable name="doc" select="." />               
                 <xsl:copy-of select="$doc//thecustomprofile:subproperty"></xsl:copy-of>
                 <xsl:copy-of select="$doc//thecustomprofile:disjoint"></xsl:copy-of>
                 <xsl:copy-of select="$doc//thecustomprofile:extends"></xsl:copy-of>

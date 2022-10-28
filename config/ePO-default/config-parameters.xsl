@@ -81,35 +81,14 @@
     <xsl:variable name="restrictionsModuleURI" select="$base-rule-uri"/>
     <!--    Core Module URI-->
     <xsl:variable name="coreModuleURI" select="$base-ontology-uri"/>
-<!--    title and description for each ontology module-->
-    <xsl:variable name="title-shape-module">eProcurement datashapes</xsl:variable>
-    <xsl:variable name="description-shape-module">This module provides the datashape definitions for the eProcurement ontology.</xsl:variable>
-    
-    <xsl:variable name="title-core-module">eProcurement core ontology</xsl:variable>
-    <xsl:variable name="description-core-module">
-        This module provides the definitions for the core eProcurement ontology.
-        
-        Procurement data has been identified as data with a
-        high-reuse potential. Given the increasing importance of data standards for
-        eProcurement, a number of initiatives driven by the public sector, the industry and
-        academia have been kick-started in recent years. Some have grown organically, while
-        others are the result of standardisation work. The vocabularies and the semantics that
-        they are introducing, the phases of public procurement that they are covering, and the
-        technologies that they are using all differ. These differences hamper data
-        interoperability and thus its reuse by them or by the wider public. This creates the
-        need for a common data standard for publishing procurement data, hence allowing data
-        from different sources to be easily accessed and linked, and consequently
-        reused.</xsl:variable>
-    
-    <xsl:variable name="title-restriction-module">eProcurement extended ontology</xsl:variable>
-    <xsl:variable name="description-restriction-module">This module provides the inference-related definitions for
-        the eProcurement ontology.</xsl:variable>
+
+
     <xsl:variable name="reference-to-external-classes-in-glossary" select="fn:false()"/>
     
     <xsl:variable name="license-core-module" select="'http://creativecommons.org/licenses/by-sa/4.0/'"/>
-
+    <xsl:import href="../../src/common/functx-1.0.1-doc.xsl"/>
     <!-- The metadata.xml is used to define the metadata for each input xmi file -->    
-    <xsl:variable name="metadata" select="document(concat(base-uri(),'/../','metadata.xml'))" />
+    <xsl:variable name="metadata" select="document(concat(functx:substring-before-last(base-uri(), '/'), '/', 'metadata.xml'))" />
     <!-- ontology title, version to be inserted in the ontology header below -->    
     <xsl:variable name="ontologyTitle" select="$metadata//title"/>
     <xsl:variable name="ontologyVersion" select="$metadata//version"/>
