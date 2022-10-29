@@ -1,0 +1,106 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% DOCUMENT PREAMBLE %%%
+\documentclass[12pt, a4paper]{report}
+\usepackage[english]{babel}
+\usepackage[square,numbers]{natbib}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+%\graphicspath{{images/}}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\usepackage[table]{xcolor}
+\usepackage{setspace}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage[colorlinks]{hyperref}
+\usepackage{hyperref}
+\usepackage{calc}
+\usepackage{mwe}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{wallpaper}
+
+\bibliographystyle{abbrvnat}
+
+% use it to wrap URI templates 
+%\newcommand*{\ptr}[1]{\footnotesize\ttfamily #1}
+
+\DeclareTextFontCommand{\ptr}{\footnotesize\ttfamily}
+\DeclareTextFontCommand{\texttt}{\footnotesize\ttfamily}
+
+\usepackage[
+type={CC},
+modifier={by},
+version={4.0},
+]{doclicense}
+
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black,
+	colorlinks=true, %set true if you want colored links
+	linktoc=all,     %set to all if you want both sections and subsections linked
+%	linkcolor=blue,  %choose some color if you want links to stand out
+}
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+%\graphicspath{{figures/}}
+
+%\title{1}								
+%% Title
+%\author{Eugeniu Costetchi}						
+%% Author
+%\date{today's date}
+%% Date
+
+%\makeatletter
+%\let\thetitle\@title
+%\let\theauthor\@author
+%\let\thedate\@date
+%\makeatother
+
+%\pagestyle{fancy}
+%\fancyhf{}
+%\lhead{\DelAuthor}
+%\rhead{\DelTitle}
+%\cfoot{\thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Title Page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{title}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+\pagebreak
+
+
+\renewcommand{\thesection}{\arabic{section}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Content sections follow
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ 
+
+\input{content/introduction.tex}
+\input{content/requirements.tex}
+\input{content/approach-process.tex}
+\input{content/architecture.tex}
+%\input{content/final-word.tex}
+ 
+\bibliography{../references/references}
+ 
+\end{document}
+
+%This template was created by Roza Aceska.

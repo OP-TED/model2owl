@@ -1,0 +1,112 @@
+\section{Introduction}
+\label{sec:introduction}
+	
+	This document provides a working definition of what is the architectural stance and the design decisions that shall be adopted for the eProcurement formal ontology along with the specifications how to generate comprising components.
+	
+	\subsection{Background considerations}
+	
+	Public procurement is undergoing a digital transformation. The EU supports the process of rethinking public procurement process with digital technologies in mind. This goes beyond simply moving to electronic tools; it rethinks various pre-award and post-award phases. The aim is to make them simpler for businesses to participate in and for the public sector to manage. It also allows for the integration of data-based approaches at various stages of the procurement process.
+	
+	%this paragraph can be cut	
+	Digital procurement is deeply linked to eGovernment. It is one of the key drivers toward the implementation of the ``once-only principle'' in public administrations -- a cornerstone of the EU's Digital Single Market strategy. In the age of big data, digital procurement is also crucial in enabling governments to make data-driven decisions about public spending.
+	
+	%this paragraph can be cut		
+	With digital tools, public spending should become more transparent, evidence-oriented, optimised, streamlined and integrated with market conditions. This puts eProcurement at the heart of other changes introduced to public procurement in new EU directives.
+	
+	PSI directive \cite{directive-2013/37/EU} across the EU is calling for open, unobstructed access to public data in order to improve transparency and to boost innovation via the reuse of public data. Procurement data has been identified as data with a high-reuse potential \cite{d-high-value-assets}. Therefore, making this data available in machine-readable formats, following the data as a service paradigm, is required in order to maximise its reuse.
+	
+	Given the increasing importance of data standards for eProcurement, a number of initiatives driven by the public sector, the industry and academia have been kick started	in the recent years. Some have grown organically, while others are the result of	standardisation work. The vocabularies and the semantics that they are introducing, the 
+	phases of public procurement that they are covering, and the technologies that they are using all differ. These differences hamper data interoperability and thus its reuse by them or by the wider public. This creates the need for a common data standard for publishing public procurement data, hence allowing data from different sources to be 
+	easily accessed and linked, and consequently reused. 
+	
+	In this context, the Publications Office of the European Union aims to develop an eProcurement ontology.
+	
+	The objective of the eProcurement ontology is to act as this common standard on the	conceptual level, based on consensus of the main stakeholders and designed to encompass the major requirements of the eProcurement process in conformance with the Directives and Regulations \citep{directive-2014/23/EU,directive-2014/24/EU,directive-2014/25/EU,directive-2014/55/EU}.
+	
+	\subsection{Target audience}
+	\label{sec:audience}
+	
+	The target audience of the eProcurement ontology, defined in \citep{d4.07-2016}, comprises the following groups of stakeholders:
+	\begin{itemize}
+		\item Contracting authorities and entities, i.e. buyers, such as public administrations in the EU Member States or EU institutions;
+		\item Economic operators, i.e. suppliers of goods and services such as businesses, entrepreneurs and financial institutions;
+		\item Academia and researchers;
+		\item Media and journalists;
+		\item Auditors and regulators;
+		\item Members of parliaments at regional, national and EU level;
+		\item Standardisation organisations;
+		\item NGOs; and
+		\item Citizens \cite{d4.07-2016}.
+	\end{itemize}	
+	
+	\subsection{Context and scope}
+	\label{sec:context}
+	
+	In the past years much effort was invested into the eProcurement ontology initiative, including definition of requirements, provision of general specifications, identification of the main use cases, and laborious development of a preliminary shared conceptual model expressed using Unified Modelling Language (UML) \cite{uml-userguide,uml2.5}. 
+	
+	%	The next step is to establish a process for generating a formal OWL ontology, the final artefact of the project.  
+	
+	The general methodology for developing the eProcurement ontology is described in \cite[3--15]{d2.01-2017}. It describes a process comprising the following steps:
+	\begin{enumerate}
+		\item\label{step:1} Define use cases
+		\item\label{step:2} Define the requirements for the use cases
+		\item\label{step:3} Develop a conceptual data model
+		\item\label{step:4} Consider reusing existing ontologies
+		\item\label{step:5} Define and implement an OWL ontology		
+	\end{enumerate}
+	
+	The ultimate objective of the eProcurement ontology project is to put forth a commonly agreed OWL ontology that will conceptualise, formally encode and make available in an open, structured and machine-readable format data about public procurement, covering end-to-end procurement, i.e. from notification, through tendering to awarding, ordering, invoicing and payment \citep{d4.07-2016}.
+	
+	Work so far has concentrated on the conceptual modelling of the eNotification phase, taking into consideration the needs of other phases. The UML conceptual model has been created with the forthcoming procurement standard forms (eForms) in mind; the model has not been mapped to the current standard forms.
+	
+	In the 2020 ISA$^2$ work programme a new project has been set up to analyse existing procurement data through the lens of the newly developed conceptual model. This means that the conceptual model needs to be transposed into a formal ontology and a subset of the existing eProcurement data must be transformed into RDF format such that they instantiate the eProcurement ontology and are conform to a set of predefined data shapes. Initially the notification phase is considered, while the subsequent datasets will be decided at a later stage.
+	
+	Working under the assumption that Steps \ref{step:1}--\ref{step:4} have been completed, the current efforts channel on designing, implementing and executing the necessary tasks in order to accomplish Step \ref{step:5} from the above process. 
+	
+	Once the formal ontology is created and the XML data is transformed into RDF representation, the data can be queried in order to validate the suitability to satisfy the business use cases defined in \cite[Sec. 3]{d2.01-2017}.
+	
+	This document comprises of architectural specification and implementation guidelines that shall be taken into consideration when developing the formal ontology. Other related artefacts (i.e. documents, scripts and datasets) are presented in Section \ref{sec:process-approach}, where it is described, in detail, the process for accomplishing the generation the formal eProcurement ontology, transformation of XML data and the ontology validation.
+	
+	There is a number of aspects that are excluded from the scope of this project stage:	
+	\begin{itemize}
+		\item Change management and maintenance of the ontology content.
+		\item Content authoring and conceptual design of the domain model.
+		\item Practical implementation of systems that implement the ontology.
+	\end{itemize}
+	
+	Currently in scope are the following items:
+	\begin{itemize}
+		\item designing an ontology architecture (this document),
+		\item create guidelines and conventions for the UML conceptual model \citep{costetchi2020b}, 
+		\item develop a set of transformation scripts from the UML model into a formal ontology
+		\item implement a set of scripts to transform the existing XML eProcurement data into RDF format,
+		\item put forward a method to validate the generated formal ontology using the current eProcurement data.
+	\end{itemize}
+
+	\subsection{Key words for requirement statements}
+	\label{sec:keywords}
+	The key words ``MUST'', ``MUST NOT'', ``REQUIRED'', ``SHALL'', ``SHALL  NOT'', ``SHOULD'', ``SHOULD NOT'', ``RECOMMENDED'',  ``MAY'', and ``OPTIONAL'' in this document are to be interpreted as described in RFC 2119 \cite{rfc2119}.
+
+	The key words ``MUST (BUT WE KNOW YOU WON'T)'', ``SHOULD CONSIDER'', ``REALLY SHOULD NOT'', ``OUGHT TO'', ``WOULD PROBABLY'', ``MAY WISH TO'', ``COULD'', ``POSSIBLE'', and ``MIGHT'' in this document are to be interpreted as described in RFC 6919 \cite{rfc6919}.
+	
+	The above listed terms are used in lower case form for stylistic and readability reasons. 
+	
+	\subsection{Conformance}
+	
+	This document describes normative and non-normative criteria for eProcurement ontology components and artefacts. The scripts, datasets, and the derived formal ontology and data shapes, must align to the normative criteria and may follow the non-normative descriptions. 
+	
+	The XSLT stylesheets \citep{xslt3-Kay} must be syntactically valid documents and executable with an XSLT engine with predictable output. They may be associated with XSPEC unit tests \cite{xspec-cirulli2017xspec} to ensure correctness.
+	
+	The source code must be syntactically valid and compilable/interpretable by the corresponding state of the art compiler/interpreter. The source code may be accompanied by the unit tests to ensure the implementation correctness. 
+	
+	The UML conceptual model must comply with UML standard version 2.5 \citep{uml2.5} and be serialised as XMI document version 2.5.1 \cite{xmi2.5.1}. It also must comply with the conventions agreed with the Publications Office and other stakeholders described in \citep{costetchi2020b}.
+	
+	The core ontology and the formal restrictions components developed under these specifications must be valid OWL 2 documents in conformance with the conditions listed in \citep{owl2-comformance}. They should be available in at least Turtle and \mbox{RDF/XML} serialisation formats.
+	
+	The data shapes component must be valid SHACL documents respecting the normative parts of the specification provided in \cite{shacl-spec}.
+	
+	The instance datasets must be valid RDF1.1 documents conform to the specifications \cite{rdfs11-spec}.
+	
+	The URIs adopted under this specification must respect the policy provided in Section \ref{sec:uri-policy}.
+	
+	

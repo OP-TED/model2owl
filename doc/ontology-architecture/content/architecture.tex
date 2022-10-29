@@ -1,0 +1,409 @@
+\section{Architectural considerations}
+\label{sec:architecture}
+
+	The previous section presented the processes used to generate eProcurement ontology components, instance data and how to validate them. This section provides in depth specifications of how these artefacts are structured and how they relate to each other. 
+
+	\subsection{Separation of concerns}
+	\label{sec:separation-conceprns}
+	
+	The successful application of an ontology or the development of an ontology-based system depends not just on building a good ontology but also on fitting this into an appropriate development  process.  All computing information models suffer from a semantic schizophrenia. On the one hand, the model represents the domain; on the other hand, it represents the implemented system, which then represents the domain. These different representation requirements place different demands upon its structure \cite{partridge2013}.
+	
+	One of the common ways to manage this problem is a separation of concerns. OMG's Model Driven Architecture (MDA) \cite{mda-paper} is a well-documented structure where a model is built for each concern and this is transformed into a different model for a different concern. 
+	
+	\textit{Transformation} deals with producing different models, viewpoints, or artefacts from a model based on a transformation pattern. In general, transformation can be used to produce one representation from another, or to cross levels of abstraction or architectural layers \cite{mda-guide2}. 
+	
+	The process described in Section \ref{sec:process-approach} incorporates some of these principles and employs model transformation as means to achieve the project objectives.
+
+	
+	\subsection{Layers and components}
+	\label{sec:layers-components}
+	
+	This architecture is organised in \textit{horizontal layers} and vertically slicing \textit{components}. The \textit{components} reflect the organisation of the formal ontology based on a logical content division of the UML conceptual model into packages and modules. This division increases the maintainability of entire content. The models and their components are not disconnected from one another. The relations between them are represented in Figure \ref{fig:components} where each component is represented as an UML package. The conceptual model serves as the single source of truth, from which the three components of the formal model are derived. Each of these components can be further divided into modules. 
+	
+	The main ontology packages are: the \textit{core ontology}, \textit{data shapes}, and \textit{formal ontology restrictions}. These formal modules are derived from the conceptual model through model transformations as described in Section \ref{sec:process-approach} following the rules laid out in \citep{costetchi2020c}.
+	
+	The \textit{core ontology} is the foundational, and serves as a backbone for the other components. It establishes the identifiers and the basic definitions of classes and properties.
+	 	
+	The \textit{data shapes} represent constraints on how the core ontology can be instantiated and the set of controlled value lists associated to it. 	
+	
+	The \textit{formal ontology restrictions} cover intensional class and property definitions used for deriving additional knowledge from factual information. Both, the data shapes and the ontology restrictions are defined as extensions that are flashing out the core ontology which plays, in this case the role of a backbone.
+	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=0.99\textwidth]{../img/uml.png}
+		\caption{The main components of the eProcurement ontology and their relation to each other and the UML conceptual model}
+		\label{fig:components}
+	\end{figure}
+	
+	This architecture distinguishes the following layers: the \textit{conceptual layer}, \textit{core definition layer}, \textit{validation layer} and \textit{reasoning layer}. These \textit{layers} can be thought of as formal languages with well-defined boundaries and extents. The diagram in Figure \ref{fig:layers} presents the organisation the ontology layers along two axes: \textit{expressivity} and \textit{detail}. 
+	
+	The \textit{expressivity} of a language is the breadth of ideas that can be represented and communicated in that language. The more expressive the language is, the greater the variety and quantity of ideas it can be used to represent. The design of a language and its formalism involves an inevitable trade-off between the expressive power and its ``analysability'', which translates directly into computation difficulty. The more a formalism can express, the harder it becomes to understand, i.e. compute, what do instances of it mean.
+	
+	The \textit{detail} refers to how much description and aspects of the domain concepts are considered. This dimension plays a pragmatic rather than formal role. The rationale is that lower level of detail is useful and re-usable to a wider public, but for a set of relatively simple tasks. As the level of detail increases, the difficulty to operate on it also increases thus the user base shrinks and the task complexity rises. 
+	
+	The detail axis starts, on one side, from establishing the concepts identity, labels, natural language  definitions; continues through establishing relations and constraints; and ends, on the other side, with formulating special logical conditions, implications and inference rules.
+	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=0.8\textwidth]{../img/eProcurement-layers}
+		\caption{Expressivity and extent of the eProcurement ontology layers}
+		\label{fig:layers}
+	\end{figure}
+	
+	The \textit{conceptual layer} accommodates informal representation of the business objects, places, things, actors in the ``real world'' not representations of these things in the information system. It is situated at the base of the diagram with lowest expressivity because it has not formal semantics but with a wide coverage of detail. The dotted line delimits the border between formal and informal layers.
+	
+	In the conceptual layer is situated the \textit{UML conceptual model}, which is described in Section \ref{sec:uml-model}. This model is also called \textit{computation independent model} because it is informal and its main purpose is to interface the domain experts with an explicit conceptual representation of the domain.
+		
+	In the formal section of the diagram, the expert knowledge is expressed using descriptive languages with a formal semantics (see Section \ref{sec:semantics}), which in this architecture are primarily OWL 2\cite{owl2} and SHACL\cite{shacl-spec}. 
+		
+	The \textit{core layer}, is situated in the core ontology, which has as a primary goal to define the main concepts and relations of the ontology. It is limited to the declarative axioms of the ontology and therefore serves primarily for vocabulary and identity establishment. For this reason, it is represented as having the lowest formal expressivity and the lightest level of detail in comparison to other layers. It plays the role of a backbone which is flashed out by other layers. 
+
+	The \textit{validation layer} accommodates declarations of data shapes which represent constraints on the instance data, i.e. the ABox (see Section \ref{sec:model-data}). The assertions in this layer are interpreted done under the closed world assumption, making it possible to support validation functionality. The SHACL shapes are situated in this layer and are addressed in detail in Section \ref{sec:shapes}.
+	
+	The validation layer is situated immediately above the core definitions, being more expressive but also extending it with additional detail. Therefore, it is shifted, on the detail axis, to the right towards more detail and leaving out the simple axioms as they are already covered in the core later.
+	
+	The \textit{reasoning layer} accommodates formal intensional definitions of the classes and properties. In Logics, \textit{intensional definition} gives the meaning of a term by specifying necessary and sufficient conditions for when the term should be used. This layer is mostly formed of subclass restrictions and complex class definitions, and as well, domain and range specifications for properties. This layer provides assertions necessary to support consistency checking and classification reasoning functionalities for eProcurement ontology. The formal ontology restrictions component is situated in this layer and is described in Section \ref{sec:restrictions}.
+	
+	Just like in the case of the restrictions layer, the reasoning layer extends the core layer with higher level of detail and comprising assertions with higher expressive power. Therefore, the simple details rest in the core layer permitting this one to focus on other ones. For this reason, it is depicted as shifted to the towards the right side of detail axis.
+	
+	
+	\subsection{UML conceptual model}
+	\label{sec:uml-model}	
+	
+	The conceptual model is represented in UML \citep{uml-userguide} serves as the single source of truth. Thus, the scope of this architecture is limited by what can be expressed in UML and how that information is utilised to generate formal statements. Each of the above functions will lead to different interpretations of the same UML model.
+	
+	The primary application of UML \citep{fowler2004} for ontology design is in the specification of class diagrams for object-oriented software. However, UML does not have a clearly specified declarative semantics, so that it is not possible to determine whether an ontology is consistent, or to determine the correctness of an implementation of the ontology. Semantic integration in such cases becomes a subjective exercise, validated only by the opinions of the human designers involved in the integration effort \cite{grunninger2003}. 
+	
+	On the other hand, UML is closer than more logic-oriented approaches to the programming languages in which enterprise applications are implemented. For this reason, in the current project we have decided to develop agreements on the informal semantics of the UML-based conceptual model. It consists of a set of explicit conventions for naming and structuring UML elements \cite{costetchi2020b} and for transforming UML to OWL \cite{costetchi2020c}.
+
+	\subsection{Core ontology component}
+	\label{sec:core-ontology}
+	
+	This component constitutes the backbone of the eProcurement ontology. It is the simplest from the formal point of view and lightest in terms of detail. 
+	
+	The main purpose of this component is to declare the classes, properties datatypes and controlled lists. It established, in a machine readable format, the concepts by assigning each an URI and decorating it with a human readable labels and descriptions. This represents a mechanism that established a common understanding between humans and machine. 
+	
+	It is void of any constraints or restrictions and may be used as a formal ontology or as a data exchange vocabulary.
+	
+	\subsection{SHACL data shapes component}
+	\label{sec:shapes}
+	
+	In OWL the constraints are formed at the semantic level in the way the logic of the entire knowledge base holds together consistently. It is not always easy or obvious how the constraints should be formed so that they fulfil a business or application requirement. Moreover, in practice often the kind of constraints necessary are those aiming at the surface representation of the data. Take, XSD for example, it provides a description of how an XML document ought to be structured.
+	
+	In the eProcurement domain, before the RDF data is utilised as a semantic resource, it must first respect a more formal conventions on how it is instantiated and organised. There is a need for the XSD counterpart for the RDF graphs. 
+	
+	\textit{Shapes Constraint Language (SHACL)} \cite{shacl-spec} is a specification for validating graph-based data against a set of conditions. It provides a concise, uniform syntax for both describing and constraining the contents of an RDF graph. Among others, SHACL includes features to express conditions that constrain the number of values that a property may have, the type of such values, numeric ranges, string matching patterns, and logical combinations of such constraints.
+
+	\textit{Application profiles (AP)} represent a set of constraints on the logical model tying it to a particular system implementation. The application profiles, in this project, must be expressed using SHACL language. The approach taken by the Publications Office to develop APs is described in \citep{costetchi2016}. The same style should be maintained for the eProcurement APs. 
+	
+	The AP must be conceived as extending the core ontology and fleshing the classes and properties with node and property shapes (see \cite[Sec 2.2--2.3]{shacl-spec}). The constraints available in the conceptual model are generic and should be automatically generated. However, when it comes to integration with specific systems, these constraints may not be sufficient, possibly even too rigid at times. Therefore, it is recommended to conceptualise the data shapes not a single fit it all AP but rather to create specific APs as the needs arise. 
+	
+	\subsection{Formal ontology restrictions component}
+	\label{sec:restrictions}
+	
+	This component accommodates formal intensional definitions of the classes and properties. It is mostly formed of subclass restrictions, complex class definitions, domain and range specifications for properties; which can be derived from the conceptual model. 
+	
+	This component provides the rules and logical conditions for reasoning with eProcurement ontology. And so, the statements from this component play the role of necessary and sufficient conditions to support consistency checking and classification reasoning functionalities for eProcurement ontology. 
+	
+	Mostly expressions in OWL 2 should be acceptable for the reasoning purposes of eProcurement ontology. It is possible, however, that OWL 2 is too expressive, leading to slow reasoning, and thus downgrading to OWL dialect (EL, QL, RL) might be necessary. This implies that multiple variants of this components should be generated, one for each OWL dialect as described in Section \ref{sec:expressivity}. Each of these variants shall be tested and the most appropriate choice selected for reasoning in the validation phase (see Section \ref{sec:ontology-validation}). 
+		
+		
+\section{Formal considerations}	
+\label{sec:formal-considerations}
+
+	This section addresses the aspects of logics in the eProcurement ontology. It specifies the semantics, the relationship between the abstract layer of the ontology and the instance data, under what assumptions is the inference done and what level of logical formalism should the ontology components adapt in order to maintain flexibility and reasoning capacity. 
+	
+	\subsection{Model and data relationship}
+	\label{sec:model-data}
+	
+	DL ontologies are structured into two sets: \textit{ABox} and \textit{TBox}. The \textit{ABox} consists of all (class or property) instance assertions. The \textit{TBox} consists of all terminological axioms, i.e., of all subclass inclusion axioms. The ABox provides information about concrete individuals while the TBox describes general rules that hold for all individuals. In consequence, ABoxes tend to be much larger than TBoxes \citep{krotzsch2012owl}. In Figure \ref{fig:abox-tbox} is depicted the delimitation and relations between the TBox and box ABox components of the eProcurement ontology.
+	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=0.99\textwidth]{../img/ontology.png}
+		\caption{The relationship between the data and each of the ontology components}
+		\label{fig:abox-tbox}
+	\end{figure}
+	
+	To explain the relevance of each component, in Figure \ref{fig:abox-tbox}, two arbitrary datasets are brought as examples. They instantiate the core ontology, which means that they comprise of factual statements of concrete entities of eProcurement classes. In order to ensure that the instance data follow minimally the intended ontology design they need to comply with a set of data shapes. Once this condition is satisfied, then, new knowledge can be inferred from the provided facts, given the domain inference rules. The new knowledge is mainly oriented to solve the classification task and does not cover other types of inference. 	
+	
+	It is important to note that the data shapes fall out of the TBox as they serve the validation function and are based on a different set of assumptions. First, they are interpreted under the closed world assumption, like in XML  or RDBM contexts (see Section \ref{sec:world-assumption}). Secondly, they follow a RDF graph based semantics \ref{sec:semantics}.
+	%In the subsequent sections the Next, each of these components is detailed in the sections below.
+
+	\subsection{Semantics}
+	\label{sec:semantics}
+	
+	Users of OWL \citep{owl2} can actually select between two slightly different semantics: \textit{direct semantics} that corresponds to the Description Logics (DL) \cite{dl-baader2004description}, and \textit{RDF-based semantics} that is based on translation of the OWL axioms into directed graphs. In this document we assume by default the direct semantics. In particular cases (i.e. SPARQL entailments and SHACL data shapes) RDF-based semantics is adopted and is explicitly mentioned in the document. 
+	
+	Description logics provide a concise language for OWL axioms and expressions. DLs are characterised by their expressive features. The description logic that supports all class expressions with $>, \bot, \sqcap, \sqcup, \neg, \exists$ and $\forall$ is known as $\mathcal{ALC}$ (which originally used to be an abbreviation for Attribute Language with Complement). For a formal introduction into DL please consult \citep{dl-baader2004description}.
+	
+	Inverse properties are not supported by $\mathcal{ALC}$, and the DL we have introduced above is actually called $\mathcal{ALCI}$ (for $\mathcal{ALC}$ with inverses) \cite{krotzsch2012owl}. Many description logics can be defined by simply listing their supported features. The letter $\mathcal{S}$ is often used as an abbreviation for the ``basic'' DL consisting of $\mathcal{ALC}$ extended with transitive roles (which in the $\mathcal{AL}$ naming scheme would be called $\mathcal{ALCR+}$  ). 
+	
+	The letter $\mathcal{H}$ represents sub-roles (role Hierarchies), $\mathcal{O}$ represents nominals (nOminals), $\mathcal{I}$ represents inverse roles (Inverse), $\mathcal{N}$ represent number restrictions (Number), and $\mathcal{Q}$ represent qualified number restrictions (Qualified). 
+	
+	The integration of a concrete domain/datatype is indicated by appending its name in parenthesis, but sometimes a ``generic'' $\mathcal{D}$ is used to express that some concrete domain/datatype has been integrated. The DL corresponding to the OWL DL ontology language includes all of these constructors and is therefore called
+	$\mathcal{SHOIN(D)}$. We will use this notation when discussing degrees of expressivity for the ontology layers in Section \ref{sec:expressivity}.
+	
+	Computing all interesting logical conclusions of an OWL ontology can be a challenging problem, and reasoning is typically multi-exponential or even undecidable. To address this problem, the recent update OWL 2 of the W3C standard \citep{owl2.0,owl2} introduced three profiles: \textit{OWL EL}, \textit{OWL RL}, and \textit{OWL QL}. These lightweight sublanguages of OWL restrict the available modelling features in order to simplify reasoning. This has led to large improvements in performance and scalability, which has made the OWL 2 profiles very attractive for practitioners \citep{krotzsch2012owl}.
+	
+	On the other hand, the validation data shapes are expressed using Shapes Constraint Language (SHACL) \cite{shacl-spec}. Its semantics is based on RDF graphs but full RDFS inferencing is not required. SHACL processors may operate on RDF graphs that include RDF entailments \citep{rdf11-semantics} and SPARQL specific entailments \citep{sparql11-entailment}. The entailment regime specifies conditions that address the fourth condition on extensions of basic graph pattern matching \citep{rdf-semantics,rdf11-semantics}. 
+	
+	This architecture delimits different concerns in Section \ref{sec:layers-components} in a stack of layers and assigns levels of expressivity to each of the layers in Section \ref{sec:expressivity}.
+	
+	\subsection{Open and closed world assumptions}
+	\label{sec:world-assumption}
+	
+	In the formal systems of logic used for knowledge representation, reasoning is the process through which logical conclusions are derived from a set of premises known to be true or assumed to be true by the laws of valid inference (inference rules). 
+	
+	In the eProcurement ontology checking consistency and deriving new knowledge is foreseen as a valuable functionality beyond the knowledge representation and interoperability establishment.
+	
+	Inferencing is impacted by what is assumed about the knowledge base. The important assumptions to consider are: (a) whether the knowledge base is considered complete -- the closed-world assumption (CWA); or (b) whether the knowledge base (proper knowledge base) is in a state of continuous progression -- the open-world assumption (OWA) \cite{damasio2006supporting}.
+	
+	Under the \textit{closed-world assumption} it is the presumed that a statement that is true is also known to be true. Therefore, conversely, what is not currently known to be true, is false \citep{reiter1981closed}.
+	The opposite of the closed-world assumption is the \textit{open-world assumption} stating that lack of knowledge does not imply falsity. The truth value of a statement may be true irrespective of whether or not it is known to be true. 
+		
+	The eProcurement data is fragmented across information systems. It represents concerns specific to different steps in the procurement process. Performing local reasoning with such incomplete knowledge is therefore necessary functionality for the eProcurement project. 
+		
+	Semantic Web languages, including OWL, make the open-world assumption. The absence of a particular statement within the web means, in principle, that the statement has not been made explicitly yet, irrespective of whether it would be true or not, and irrespective of whether we believe that it would be true or not. This stance is also very convenient for decentralised knowledge bases over the internet, where information may be accessible, outdated, contradictory, inaccessible or missing \cite{damasio2006supporting}. 
+	
+	For validation purposes, in particular, a closed world assumption needs to be made. This concerns the data shapes expressed in SHACL language. In this case, the knowledge base must be considered complete in order to assess whether it fulfils the imposed constraints or recommended shapes. Therefore, everything that is not known to be true must be considered as false. 
+	
+	The eProcurement data must be validated within its local context. The data must be conformant to the information needs and aspects specific to the procurement phase and, possibly, to the information system that handles it. It is, therefore, foreseeable that multiple validation schemes and application profiles have to be developed specific to different phases and aspects of the procurement process. These schemes must extend and flesh out the core ontology, which is the ontology backbone, with levels of specificity and detail as necessary. 
+	
+	
+	\subsection{Expressivity levels}
+	\label{sec:expressivity}
+
+	In the layered approach described in Section \ref{sec:layers-components}, different expressivity levels are necessary for each layer. This section briefly describe these levels of expressivity and relate them to OWL sublanguages \citep{owl1} and profiles \citep{owl2-profiles}. 
+	
+	Table \ref{tab:expressivity} summarises the recommended sublanguage for each component, gradually advancing from lightest towards the more expressive ones. The last item, special inference rules, is mentioned but fall out of the scope of current specification. It may be considered in the ontology validation process (see Section \ref{sec:ontology-validation}) involving \textit{Semantic Web Rule Language (SWRL)} expressions. SWRL \citep{swrl-horrocks2004} is more expressive than OWL 2. It allows inequality and equality expressions ($IE$). Punning ($PN$) is included, which means that class terms can be used as properties. Language overview and a few flavours of SWRL are discussed in \cite{swrl-expressivness}.
+	
+	The conceptual model must be expressed UML. It is mostly scoped to class diagrams and the corresponding elements, but additional ones may be employed, provided that there is a clear convention on their interpretation. 
+	
+	The core ontology must be expressed in the simplest OWL language - OWL Lite \cite{owl1}. \citep[Sec.8.3]{owl1} describes the extent of the language in detail specifying what type of axioms are permitted and which are not. Anyway, this language is beyond the expressivity needs of this component, which are enumerated in Section \ref{sec:core-ontology}.
+	
+	\begin{table}[!ht]
+		\centering
+		\begin{tabular}{@{}lll@{}}
+			\toprule
+			Model/Component         & OWL profile    & DL language \\ \midrule
+			Conceptual model        & UML (informal) & -           \\
+			Core ontology           & OWL Lite       & $\mathcal{SHIF(D)}$     \\
+			Simplified restrictions & OWL EL         & $\mathcal{EL}tiny$      \\
+			Simplified restrictions & OWL RL         & $\mathcal{RL}tiny$      \\
+			Simplified restrictions & OWL QL         & $\mathcal{QL}tiny$      \\
+			Data shapes             & SHACL          & -           \\
+			Complete restrictions   & OWL 2          & $\mathcal{SROIQ(D)}$    \\
+			\textit{Additional inference rules (out of scope)} & \textit{SWRL} & \textit{$\mathcal{SROIQ(D)} + IE, PN$} \\ \bottomrule
+		\end{tabular}
+		\caption{The components and the corresponding language dialect}
+		\label{tab:expressivity}
+	\end{table}
+	
+	The formal ontology restrictions are divided into four variants. Three variants must be generated for each of the OWL 2 sublanguages. The transformation rules that require more complex statements must be omitted when generating these (simpler) variants. OWL 2 EL is a lightweight language with polynomial time reasoning, which guarantees very fast termination time. OWL 2 QL is specifically designed for efficient database integration where the amount of instance data is very large. OWL 2 RL is designed for compatibility with rule-based inference tools. An in depth analysis of each dialect is available in \citep{krotzsch2012owl}.
+		
+	The complete set of restrictions should be expressed using OWL 2 language, which offers ``maximum'' expressivity while keeping reasoning problems decidable, but still very expensive. The reason these variants are mentioned is because reasoning configuration for eProcurement is still difficult to decide, as was explained in Section \ref{sec:restrictions}. Each variant must be generated from the UML model, of course, limited to the level of detail available in the UML model, and to the expressivity of each sublanguage indicated in Table \ref{tab:expressivity}.
+	
+	Data shapes must be expressed in SHACL language. No particular restrictions apply to this component as the SHACL engines are known to perform in polynomial time. 
+	
+\section{URI policy}
+\label{sec:uri-policy}
+
+	The report on high value datasets from EU institutions \citep{d-high-value-assets} mentions eProcurement data as being of special importance and high value. It also provides guidelines and recommendations for  publishing government data approached both from the publisher's point of view, and the reuser's point of view. 
+	
+	eProcurement ontology must be published in multiple formats, including RDF. This entails the assignment of identifiers to each term and, to be useful in the kind of linked data applications envisaged, those identifiers should be HTTP URIs and commit long term URI persistence.
+	
+	\subsection{General considerations and recommendations}
+	\label{sec:considerations}
+	There is a five star rating \cite{berners5star} to measure published data reusability. This rating system is based on four design principles proposed in \citep{berners2006linked}, to which eProcurement ontology subscribes.
+	
+	\begin{itemize}
+		\item Use Uniform Resource Identifiers (URIs) to uniquely identify
+		things (data entities);
+		\item Use HTTP URLs, corresponding to these URIs, so that
+		information can be retrieved;
+		\item Provide metadata using open standards such as RDF;
+		\item Include links to related URIs, so that people can discover more
+		things.		
+	\end{itemize} 
+	
+	Moreover the eProcurement URI scheme must subscribe to the ``Cool URIs'' recommendations \cite{cool-uri-cyganiak} and ensure that they don't change \cite{burners1998cool}. 
+	
+	\begin{itemize}
+		\item \textit{Simplicity}. Short, mnemonic URIs will not break as easily when sent in emails and are in general easier to remember.
+		\item \textit{Stability}. Once you set up a URI to identify a certain resource, it should remain this way as long as possible.
+		\item  \textit{Manageability}. Issue your URIs in a way that you can manage. \cite{cool-uri-cyganiak}
+	\end{itemize}
+
+	The ISA$^2$ study on persistent URIs \cite{d7.1.3-2012} provides a set of design and management principles. They are completed by a more recent study on URI design patterns \citep{d4.02.02-2018}, in the context of promoting semantic interoperability, identified good design practices for the local part of URIs under the \url{http://data.europa.eu} domain (see Section \ref{sec:persistence}).
+	
+	\begin{itemize}
+		\item \textit{Use a template}. Pre-defined approach to URI design, using for example URI templates, can help organisations follow a logical structure \cite{d7.1.3-2012,d4.02.02-2018}.
+		\item \textit{Avoid stating ownership}. The URI template above does not include the name of the organisation or project that minted the URI \cite{d7.1.3-2012,d4.02.02-2018}.
+		\item \textit{Avoid version numbers}. URIs should remain stable between versions and new ones minted for new terms \cite{d7.1.3-2012,d4.02.02-2018}.
+		\item \textit{Re-use existing identifiers}. Where resources are already uniquely identified, those identifiers should be incorporated into the URI \cite{d7.1.3-2012}.
+		\item \textit{Avoid using auto-increment}. Minting new URIs for large datasets will need to be automated and the process must be guaranteed to produce unique identifiers, but not sequentially allocated \cite{d7.1.3-2012}. 
+		\item \textit{Avoid query strings}. Query strings (e.g. \texttt{?param=value}) are usually used in URLs as keys to look up terms in a database. But these constructs should not be used in the URIs but left for particular implement \cite{d7.1.3-2012}. 
+		\item \textit{Avoid using file extensions}. For similar reasons as above \cite{d7.1.3-2012}. 
+		\item \textit{Mix meaningful and opaque strings}. Meaningful URIs should be avoided in the URI segments which carry a risk of renaming (see Section \ref{sec:persistence}) for any foreseeable reason \cite{d4.02.02-2018}.  
+		\item \textit{Employ URI sub-divisions}. When necessary, create subdivisions in the URI pattern following a logical pattern and keeping the namespace maintainable. However, this practice must be kept to minimum if at all employed \cite{d4.02.02-2018}. 		
+	\end{itemize}
+	
+	\subsection{Persistence}
+	\label{sec:persistence}
+	
+	In 2014, the ISA Programme supported an informal Task Force working on a common policy for the management of persistent, HTTP-based URIs of EU institutions comparable to the virtues of DOI identification scheme  \citep{d4.02.3-2018}. A Persistent URI Service on the \url{http://data.europa.eu} sub-domain was established that is responsible for the registration and management of persistent URI namespaces and the forwarding of HTTP requests (URI redirection) towards the Publications Office local register for the eProcurement ontology (see Section \ref{sec:uri-scheme}). 
+
+	\ptr{http://data.europa.eu/{collection-id}/{local-register-space}}
+	
+	The Publications Office was allocated \ptr{http://data.europa.eu/a4g} URI namespaces for usage in the context of eProcurement ontology. Section \ref{sec:uri-scheme} provides the specifications on the URI structure and the local part organisation. 
+		
+	Regarding URI design, the main consideration of creators should be that when a URI is created, all its parts should be resistant to change. For instance, locations and organisation names can change, and therefore should not be used in URIs. First and foremost, when introducing semantics in URIs, the strings used need to reflect what	the resources are (i.e. intrinsic characteristics such as the type or nature), not who owns them or where they are \cite{d4.02.02-2018}. 
+
+	When creating a URI, its owner can never be certain of who will be using it and can	therefore not notify every concerned individual of future changes. It is therefore	paramount that URIs are designed carefully with the specific goal of making them persistent, in theory forever \cite{burners1998cool}. Persistence is a vital component of URI design.	Since the local part of a URI is under the control of the institution that owns it (in this case Publications Office), it is up to the owners to ensure that the way they design local IDs enables the persistence of the URI as a whole.
+	
+	It is recommended to identify all eProcurement resources with URIs which have opaque local identifiers. However, in the case of TBox resources, such as the ontology and the data shapes, mnemonic local segments may be used.
+		
+	\subsection{URI scheme}
+	\label{sec:uri-scheme}
+	 
+	The URIs are best maintained using a predefined set of patterns and templates. This section defines the URI templates all together forming a URI scheme. 
+	
+	A simple syntax is adopted to express the scheme templates in terms of URI path patterns. A path pattern comprises a sequence of delimited segments, such as \texttt{segment1/segment2/segment3}. Each advancement by a segment leads to creation of a new hierarchically positioned namespace.
+	
+	The segment denomination can be literal or variable. The literal segment means that the value provided is constant and must appear as such in the indicated position. The variable segments are marked by curly brackets ( \{ \} ) and represent the name of the slot which must be filled with a concrete value when a new URI is minted in the implementation process. For example, the pattern \texttt{segment/\{varSegment\}} can be instantiated as \texttt{segment/123}.
+	
+	It is possible to indicate that a path sub-sequence is optional by wrapping it in square brackets ( [ ] ). For example \texttt{segment/[\{varSubSegment\}/]{varSubSubSegment}} pattern can be instantiated either as \texttt{segment/abc/123} or \texttt{segment/123}.
+	
+	This section defines templates for two dedicated PURI namespaces corresponding roughly to TBox--ABox distinction in the ontology structure or the model--data delimitation, which is explained in Section \ref{sec:model-data}. The first namespace, \textit{baseVoc},  is dedicated to the ontology, vocabulary and modelling artefacts; while the second, \textit{baseData} is foreseen to accommodate the large volume of instance data. 
+	
+	The instance datasets are generated by a range of institutions. Therefore, each agent should be delegated minting URIs in a controlled and conflict free manner. One way to do that is allocate dedicated base PURI spaces. 
+	
+	\begin{table}[!ht]
+		\centering
+		\begin{tabular}{@{}lll@{}}
+			\toprule
+			Scope                     & Reference & URI pattern                   \\ \midrule
+			Base URI for vocabularies & baseVoc           & \ptr{http://data.europa.eu/a4g} \\
+			Base URI for data         & baseData          & \ptr{http://data.europa.eu/\{agentSpecificId\}} \\ \bottomrule
+		\end{tabular}
+		\caption{Base PURIs employed by the eProcurement ontology}
+		\label{tab:baseUris}
+	\end{table}
+
+	For the purpose of eProcurement ontology eight scopes have been identified and each is ascribed a path segment in order to form a separate namespace. They are as follows: ontology (\ptr{/ontology}), controlled list (\ptr{/reference}), data shapes (\ptr{/shape}), reasoning restrictions (\ptr{/rule}) and XML schemas (\ptr{/schema}), instance data (\ptr{/resource}), metadata descriptions (\ptr{/metadata}), and data services (\ptr{/service}). 
+	
+	\paragraph{Ontology core} The ontology documents and content should be situated under  \ptr{/ontology} path segment. Three patterns are of relevance here: to refer to the root of the ontology content space, provided as \texttt{xml:base} / \texttt{xmlns}; (b) to refer to the document of the ontology or fragment/module, the subject of the ontology header; and (c) one to refer to the each resource defined within the ontology, such as classes, properties and special individuals. Table \ref{tab:ontology-patterns} defines the patterns.
+		
+	\begin{table}[htb]
+		\centering
+		\begin{tabular}{@{}ll@{}}
+			\toprule
+			Purpose        & Pattern                                                 \\ \midrule
+			Root reference  & \ptr{\{baseVoc\}/ontology/\{ontologyName\}}                   \\
+			Document reference  & \ptr{\{baseVoc\}/ontology/\{ontologyName\}[\#\{documentRef\}]}  \\
+			Resources ref. & \ptr{\{baseVoc\}/ontology/\{ontologyName\}\#\{resourceName\}} \\ \bottomrule
+		\end{tabular}
+		\caption{URI patterns for the ontology namespace}
+		\label{tab:ontology-patterns}
+	\end{table}
+	
+	\paragraph{Controlled list} The controlled list should replicate the current approach taken by Publications Office for reference data as described in Table \ref{tab:reference-patterns}. Optionally the controlled lists may be managed entirely by the Standardisation and Metadata Unit, including publishing them in the established namespace for reference data \texttt{http://publications.europa.eu/resource/authority}.
+	
+	\begin{table}[htb]
+		\centering
+		\begin{tabular}{@{}ll@{}}
+			\toprule
+			Purpose        & Pattern                                             \\ \midrule
+			Root reference & \ptr{\{baseVoc\}/reference/\{listName\}}                  \\
+			Document reference  & \ptr{\{baseVoc\}/reference/\{listName\}[\#\{documentRef\}]} \\
+			Concept scheme & \ptr{\{baseVoc\}/reference/\{listName\}}                  \\
+			Concepts       & \ptr{\{baseVoc\}/reference/\{listName\}\#\{concept\}}     \\ \bottomrule
+		\end{tabular}
+		\caption{URI patterns for the reference data namespace}
+		\label{tab:reference-patterns}
+	\end{table}
+
+	In order to keep maintainability of PURIs high and fence off from the risk of agencies clashing to maintain a common PURI, new base namespaces can be requested from the PURI committee. This risk is particularly high for controlled lists and should carefully considered at the conception. 
+	
+	\paragraph{Data shapes} The data shape files should be situated in the \ptr{/shape} space. The data shapes are extending the core ontology and are intrinsically bound to it. Therefore, the ontology name must be used in the content root. Table \ref{tab:shape-patterns} defines the patterns.
+	
+	\begin{table}[htb]
+		\centering
+		\begin{tabular}{@{}ll@{}}
+			\toprule
+			Purpose              & Pattern                                              \\ \midrule
+			Root reference & \ptr{\{baseVoc\}/shape/\{ontologyName\}}                   \\
+			Document reference   & \ptr{\{baseVoc\}/shape/\{ontologyName\}\#\{documentRef\}}  \\
+			Shape resources      & \ptr{\{baseVoc\}/shape/\{ontologyName\}\#\{resourceName\}}
+		\end{tabular}
+		\caption{URI patterns for the data shape namespace}
+		\label{tab:shape-patterns}
+	\end{table}
+	 
+	\paragraph{Ontology restrictions} The restrictions are in fact part of the ontology definition, simply corresponding to the more complex part of it. Therefore, the restrictions belong in the same namespace as the ontology. The document reference, however, can be distinguished and placed in the \ptr{/rule} namespace, where, eventually SWRL \cite{swrl-horrocks2004} and other types of reasoning related artefacts may be placed. Table \ref{tab:restriction-patterns} reflects these patterns. 
+	
+	\begin{table}[tb]
+		\centering
+		\begin{tabular}{@{}ll@{}}
+			\toprule
+			Purpose            & Pattern                                                 \\ \midrule
+			Root reference     & \ptr{\{baseVoc\}/ontology/\{ontologyName\}}                   \\
+			Document reference & \ptr{\{baseVoc\}/rule/\{ontologyName\}\#\{documentRef\}}      \\
+			Resources          & \ptr{\{baseVoc\}/ontology/\{ontologyName\}\#\{resourceName\}}
+		\end{tabular}
+		\caption{URI patterns for the restrictions namespace}
+		\label{tab:restriction-patterns}
+	\end{table}
+	
+	\paragraph{XML schema} In eProcurement domain, usage of XML data is a de facto approach at the moment. In order to support current practices and help establishing a technological change, a space for managing XML schemas id designed within the same PURI space. Schemas namespaces can be minted using \ptr{{baseVoc}/schema/{schemaName}} pattern. 
+	
+	\begin{table}[!htb]
+		\centering
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{@{}ll@{}}
+				\toprule
+				Purpose            & Pattern                                              \\ \midrule
+				Root reference     & \ptr{\{baseData\}/resource\{documentRef\}}                 \\
+				Document reference & \ptr{\{baseData\}/resource/\{documentRef\}/\{documentRef\}} \\
+				Fragment reference & \ptr{\{baseData\}/resource/\{documentRef\}/\{fragmentRef\}{[}/\{subFragmentRef\}{]}} \\
+				Resources          & \ptr{\{baseData\}/resource/\{documentRef\}\#\{resourceId\}} \\ \bottomrule
+			\end{tabular}
+		}
+		\caption{URI patterns for the instance data namespace}
+		\label{tab:data-patterns}
+	\end{table}
+	
+	\paragraph{Instance data} The concrete eProcurement data instantiating the ePRocurement and related ontologies must be minted in the \ptr{/resource} namespace. The data files are best conceptualised as datasets, bulks or fragments. Therefore, it is foreseen the possibility to organise a dataset as a set of fragments as described in the VOID specification \cite{void-spec}. Table \ref{tab:data-patterns} reflects these patterns. 
+	
+	\paragraph{Metadata} Data catalogues and work descriptions should be organised and well described using the established standards such as DCAT \citep{dcat2}, VOID \cite{void-spec}, Dublin Core \cite{dublin-core-metadata} or other representations such as FRBR \cite{frbr-ifla1998} and the CDM \cite{cdm-francesconi2015semantic,cdm-francesconi2015ontology}. The metadata resources must be minted in the must be minted in the \ptr{/metadata} namespace following the patterns provided in Table \ref{tab:metadata-patterns}.
+	
+	\begin{table}[!ht]
+		\centering
+		\begin{tabular}{@{}ll@{}}
+			\toprule
+			Purpose   & Pattern                                            \\ \midrule
+			Dataset   & \ptr{\{baseData\}/metadata/\{datasetId\}}                 \\
+			Resources & \ptr{\{baseData\}/metadata/\{datasetId\}\#\{resourceId\}} \\ \bottomrule
+		\end{tabular}
+		\caption{URI patterns for the metadata resources namespace}
+		\label{tab:metadata-patterns}
+	\end{table}
+	
+	\paragraph{Services} It is very important to provide endpoints where the data are accessible. These endpoints can be identified through URIs as well combined with a 303 HTTP redirection \cite{http11-fielding1999hypertext} to resolve the URI to the current URL where the service is accessible. Service URIs should be minted in the \ptr{/service} namespace as described in Table \ref{tab:service-patterns}.
+	
+	% Please add the following required packages to your document preamble:
+	% \usepackage{booktabs}
+	\begin{table}[!ht]
+		\centering
+		\begin{tabular}{@{}ll@{}}
+			\toprule
+			Purpose   & Pattern                                       \\ \midrule
+			Sparql    & \ptr{\{baseData\}/service/sparql/\{dataLakeId\}}     \\
+			Catalogue & \ptr{\{baseData\}/service/catalogue/\{catalogueId\}} \\ \bottomrule
+		\end{tabular}
+		\caption{URI patterns for the namespace of the services}
+		\label{tab:service-patterns}
+	\end{table}
+	
+	

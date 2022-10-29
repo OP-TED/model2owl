@@ -1,0 +1,133 @@
+\section{Conventional constraints}
+\label{sec:conventional}
+
+	Defining naming and structural conventions for concepts in an ontology and then strictly adhering to these conventions doesn't only makes the ontology easier to understand, but also helps avoid some common modelling mistakes. 
+	
+	UML is a language without formal semantics. Moreover, it is quite flexible and permissive with ways in which a concept can be expressed. Also, there are many alternatives in naming concepts. Often there is no particular reason to choose one or another alternative. However, we need to define a set of naming conventions for classes, relations, attributes, controlled lists and adhere to it \cite{noy2001}.
+
+	In theory any name can be assigned to a concept, relationship or property. In practice, there are two types of constraints on the kind of names that should be used: \textit{technical} and \textit{conventional}. This section deals with conventional constraint, while the technical constraints are addressed in Section \ref{sec:technical}.
+	
+	\subsection{What is in a name?}
+	\label{sec:name}
+		
+	The naming conventions apply to the \textit{element names} in the conceptual model. These names are intended for further use as human-readable denominations, called \textit{labels}; and machine-readable denominations, called \textit{identifiers}. The identifiers serve as a basis for generating URIs \cite{rfc3986} to ensure unambiguous reference to a formal construct; while the labels are meant to ease the comprehension by human-readers. For this reason we will consider that mostly the conventional recommendations provided here apply to them and none of the technical constraints.
+
+	The names should also belong to and be organised by \textit{namespaces}. They can be provided as a short prefix to the elements name, for example ``org:Organisation'', ``epo:Notice'' or ``skos:Concept''. Namespaces are addressed in detail in Section \ref{sec:namespaces}.
+	
+	In \cite{isaHandbook2015} a simple convention is proposed: that the identifier of a conceptual model element is the name of the element, where spaces have been removed. For example, the identifier of the ``Legal Entity'' class is ``LegalEntity''. Note that the casing is important and is addressed in Section \ref{sec:casing}.
+	
+	It is recommended that the names and descriptions for classes and properties are expressed in British English \cite{d2.01-2017}. In addition, a mechanism for providing a multilingual labelling system should be adopted. 
+	
+	It is recommended to avoid abbreviations in concept names. Also the words employed in the meta-model such as ``class'', ``property'', ``attribute'', ``connector'' etc. should be avoided as well. Names which are nonsensical, unpronounceable, hard to read, or easily confusable with other names should not be employed \cite{xml1-spec}.
+
+	\subsection{Case sensitivity}	
+	\label{sec:casing}
+	
+	We can greatly improve the readability of an ontology if we use consistent capitalisation for concept names. For example, it is common to capitalise class names and use lower case for property names. And so, the names of classes, data-types and enumerations must begin with a capital letter while the names of class attributes, enumeration items, association and dependency relations, including their source and target roles, must begin with a lower case character.
+	
+	All the names are case sensitive. This means that the class ``Buyer'' and the attribute ``buyer'' are two different names. Nonetheless such similarities are strongly discouraged and more elaborated names are highly encouraged. For example, a simple elaboration is to use suffixes or prefixes. 
+
+	\subsection{Delimitation}
+	\label{sec:delimitation}
+	
+	In UML, the spaces in names are allowed and using them may be the most intuitive solution for many ontology developers. It is however, important to consider other systems with which your system may interact. If those systems do not use spaces or if your presentation medium does not handle spaces well, it can be useful to use another method \cite{noy2001}. 
+	
+	It is recommended that the element names should avoid using spaces and instead follow a camel-case convention. \textit{CamelCasing} is the practice of writing phrases such that the word or abbreviation in the middle of the phrase begins with a capital case. 
+	
+	Exceptionally, if the conceptual model authors must maintain high readability of the UML diagrams, spaces may be tolerated and handled by the conversion script. In the conversion process, spaces are trimmed and phrases turned into camel-case form. For example `` Pre-award   catalogue request  '' is transformed into ``Pre-AwardCatalogueRequest''. 
+	
+	\subsection{Name uniqueness}
+	\label{sec:uniqueness}
+	
+	In the formal ontology, each class, property or individual in the formal ontology must be uniquely identifiable in the formal ontology. Therefore the elements of the conceptual model, classes, attributes, connectors, instance, should have unique names. 
+	
+	This means that there cannot exist a class and an attribute with the same name (such as a class ``Buyer'' and a property ``buyer''). Neither there can exist a class and an instance or an instance and a relation with the same name. 
+
+	Names that reduce to the same identifier are considered unique. For example ``Legal Entity'' and ``LegalEntity'' are different labels but they reduce to the same identifier ``LegalEntity''. In such cases the names are considered equal and the UML elements replicated.
+	
+	Nevertheless, name uniqueness is a recommendation but sometimes it is useful to replicate an UML element. In such cases, when the names are reused, the assumption is that the two UML elements represent manifestations of the same meaning. This is especially important for relations and is explained in Section \ref{sec:relation-reusability}.	
+	
+	\subsection{Suffix and prefix}
+	\label{sec:suffix-prefix}
+	
+	Some ontology engineering methodologies suggest using prefix and suffix conventions in the names to distinguish between classes and attributes. Two common practices are to add a ``has-'' or a suffix ``-of'' to attribute names. Thus, our attributes become ``hasAwardStatus'' and ''hasBuyer'' if we chose the ``has-'' convention. The attributes become ``awardStatusOf'' and ``buyerOf'' if we chose the ``of-'' convention. This approach allows anyone looking at a term to determine immediately if the term is a class or an attribute. However, the term names become slightly longer \cite{noy2001}.
+	
+	Here it is recommended that the names of class attributes employ the ``has-'' suffix.
+	
+	Other common suffixes are the prepositions ``-by'' and ``-to''. The organisation ontology \citep{org-ontology} exemplifies their usage in cases such as ``embodiedBy'' and ``conformsTo''. However, if the preposition can be avoided, then do so \cite{d3.1-2015}.
+	
+	It is recommended to use prepositions in the ontology terms only if necessary.
+	
+	Optionally common and descriptive prefixes and suffixes for related properties or classes may be used. While they are just labels and their names have no inherent semantic meaning, it is still a useful way for humans to cluster and understand the vocabulary. For example, properties about languages or tools might contain suffixes such as ``Language'' (e.g. ``displayLanguage'') or ``Tool'' (e.g. ``validationTool'') for all related properties \cite{d2.01-2017}.
+	
+	\subsection{Classes}
+	\label{sec:classes}
+	
+	When choosing class names, it is conventional to use simple nouns or noun phrases. In case the class refers to actions, states, relations or qualities, which are usually expressed in natural language by verbs or adjectives then they must be nominalised. We often form nouns from other parts of speech, most commonly from a verb or an adjective. We can then use the noun phrase instead of the verb or adjective to create a more formal style. This process is called nominalisation. 
+	
+	A class name represents a collection of objects. For example, a class ``Language'' actually represents all languages. Therefore, it could be more natural for some model designers to call the class ``Languages'' rather than ``Language''. In practice, however, the singular is used more often for class names, while the plural for sets and collections \cite{noy2001}. Therefore, it is required that the class names must always use the singular lexical form. 
+	
+	When building the class hierarchy, names of direct subclasses of a class should consistently either all include or not include the name of the superclass. For example, if we are creating two subclasses of the ``Wine'' class to represent red and white wines, the two subclass names should be either ``Red Wine'' and ``White Wine'' or ``Red'' and ``White'', but not ``Red Wine'' and ``White'' \cite{noy2001}.
+	
+	Class specialisations with a single child must be avoided. This means that there should be at least two sibling subclasses specified in the model. By default the classes are not disjunctive, however, if required, the transformation script may generate disjunctive classes by default.
+	
+	Circular inheritance must be avoided. This means that if there is a B that specialises a class A then A may not specialise B or any of the sub-classes of B. 
+	
+	\subsection{Relations}
+	\label{sec:relations}
+	
+	When establishing relations between concepts it is conventional to use verbs of action, state, process or relation such as such as ``includes'', ``replaces'', ``manages''. It is required to use a verb or a verb phrase for relationship terms. It should be in \textit{lowerCamelCase} such that $<subject-predicate-object>$ triples may actually be read as natural language clauses, e.g. ``EconomicOperator offers ProcuredItem'' \cite{d2.01-2017}.
+	
+	The verb phrase must be in present tense, if needed inflected as third person singular. If an additional level of specificity is needed a qualifying nominal phrase may be appended. 
+	
+	Relationships are usually bi-directional and the inverse one should be provided where it makes sense. Adjust the verb phrases in the predicates as appropriate, usually, by employing the \textit{active and passive voice} in the term formulation brings the desired result. For example, ``uses/isUsedBy'' and ``refersTo/isReferredToBy'' or ``offers/isOfferedBy'' \cite{d2.01-2017}.
+	
+	The name of the inverse relation should not be semantically inverted verb, such as in case of ``buys/sells'' , ``open/closes''. The semantically inverted dichotomies must be modelled in separate connectors because they represent different relations. For example the dichotomy ``buys/sells'' should be modelled as two pairs: ``buys/isBoughtBy'' and ``sells/isSoldBy''.
+	
+	When the relation is of different nature, more like an attribute, then prefixing and suffixing techniques can be employed. For example, in the Organisation Ontology \cite{org-ontology}, the concepts of an ``Organisation'' and a ``Site'' are defined along with two relationships that are the inverse of each other: ``Organisation hasSite Site'' and ``Site siteOf Organisation'' \citep{d3.1-2015}.
+	
+	It is recommended that each relationship includes a definition of its inverse. 
+	
+	Models should define such inverse pairs for relationships although this does not extend to attributes. For example, Dublin Core\citep{dublin-core-metadata} includes a property of ``dateAccepted'', there is no inverse property that would link a given date, which is expressed as a simple value, to all the documents accepted for publication on that date.
+	
+	\subsection{Relations reusability}	
+	\label{sec:relation-reusability}
+	
+	The relation names should be chosen so that there is a balance of accuracy and precision on one hand and the relation reusability on the other hand. These two dimensions are inversely correlated: the higher the reuse the lower the accuracy and vice versa. 
+	
+	On one hand, if we choose more generic predicates such as ``isSpecifiedIn'' this tends towards maximising relation reusability across the model. Yet at the same time the risk of overloading the relation meaning also increases. 
+	
+	On the other hand, the above risk could be mitigated by simply appending the range class to the relation name: such ``isSpecifiedInContract'' and such ``isSpecifiedInProcedure'' following the following naming pattern:    \ptr{verbPhrase + [RangeClassName] Qualifier}. This ensures predicate uniqueness and maximum level of specificity at the cost of reusability across and beyond the model. The latter can be achieved through inference, but an additional predicate inheritance structure must be defined.  Another risk is that a change or evolution of the name of the class has a direct impact on all incoming predicates, and thus raising the chances of errors. This in turn may decrease the model agility and elasticity.
+	
+	Optionally, the transformation process from the conceptual model to the formal ontology, may contain a mechanism of appending the name of the range class to the predicate name in order to automatically produce a predicate with higher specificity, shall this be required. 
+	
+	\subsection{Attributes}
+	\label{sec:attributes}
+	When creating attribute names, it is conventional to use simple nouns such as ``name'', ``weight'', ``colour''. Attributes are a special type of relations that describe an entity in terms of its qualities. And so, to be consistent with the above convention and in order to increase the clarity, it is recommended to employ the prefix ``has-'' for each attribute even if it does not add much to the term’s meaning. So, it is preferred to use terms such as ``hasName'', ``hasWeight'' and ``hasColour''.
+	
+	It is recommended to use simple nouns for attribute names prepended with the verb ``has-''.
+	
+	To avoid laborious mechanical work of adding the prefix, it is possible to rely on the convention that the attribute names starting with a capital letter must be read as having the ``has-'' prefix. It means that the transformation script will prepend the ``has-'' prefix to all attributes starting with a capital letter.
+	
+	By default, the attribute multiplicity is ``1''. This should be read as any number which is expressed as ``0..*''. In special cases, a list of custom default multiplicities is defined for the transformation script. That means that some data types or classes that are used as attribute types are paired with a default multiplicity, for example ``1..1'', ``0..1'', ``2..2''. 
+	
+	\subsection{Controlled lists}
+	\label{sec:controlled-list}
+	
+	The controlled list is a carefully selected list of words and phrases and is often employed in the modelling practices. The controlled list has a name and a set of terms. For example the list of grammatical genders can be named ``Gender'' and comprise the terms ``masculine'', ``feminine'', ``neuter'' and ``utrum''. 
+	
+	It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case. 
+	
+	As a rule of thumb, but not always, the relationship between the controlled list as a whole and its comprising elements can be informally conceptualised as a class-instance, class-subclass, set-item, or part-whole.
+	
+	\subsection{Notes, descriptions and comments}
+	\label{sec:descriptions}
+	
+	Large emphasis is set on the naming conventions. Nonetheless, most often, a good name is insufficient for an accurate or easy comprehension by human-readers. To mitigate this and increase the conceptual richness, practitioners may wish to provide human readable definitions, notes, examples and comments grasping the underlying assumptions, usage examples, additional explanations and other types of information. 
+	
+	It is recommended that each element is defined by a crisp, one-line definition. The definition starts with a capital letter and ends with a period.
+	
+	A description may provide complementary information concerning the usage of the element or its relation to relevant standards. For example, a description may contain recommendations about which controlled vocabularies to use, describe the underlying assumptions and additional explanations for reducing ambiguity. Descriptions may contain multiple paragraphs separated by blank lines. The descriptions should not paraphrase the definitions.
+	
+	In case the model editor provides concrete examples of possible element values or instances then they shall be provided as a comma-separated list. Each example value is enclosed in quotes and is optionally followed by a short explanation enclosed in parentheses \cite{isaHandbook2015}. 
+	

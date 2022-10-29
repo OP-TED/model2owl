@@ -1,0 +1,130 @@
+%\twocolumn
+\section{Transformation of UML descriptors}
+\label{sec:tran-rules4}
+
+In this section are specified transformation rules for UML descriptive elements. \mbox{Table \ref{tab:descriptiors-overview}} provides an overview of the section coverage.
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{@{}p{0.3\textwidth}p{0.2\textwidth}p{0.2\textwidth}p{0.2\textwidth}@{}}
+\toprule
+UML element            & Rules \coreComponent & Rules \shaclComponent & Rules \reasoningComponent \\ \midrule
+NAme & Rule \ref{rule:elemen-label} & Rule \ref{rule:elemen-label} & Rule \ref{rule:elemen-label} \\
+Note & Rule \ref{rule:elemen-definition} & Rule \ref{rule:elemen-definition} & Rule \ref{rule:elemen-definition} \\
+Comment & Rule \ref{rule:elemen-external-comment} & Rule \ref{rule:elemen-external-comment} & Rule \ref{rule:elemen-external-comment} \\ \bottomrule
+\end{tabular}
+\caption{Overview of transformation rules for UML datatypes}
+\label{tab:descriptiors-overview}
+\end{table}
+
+\subsection{Name}
+
+Most of the UML elements are named. The UML conventions \cite{costetchi2020b} dedicate an extensive section to the naming conventions and how deterministically to generate an URI and a label from the UML element name. The label should be associated to the resource URI by \texttt{rdfs:label} and, even if redundant, also as \texttt{skos:prefLabel}. 
+
+\begin{trule}[Label]
+	\label{rule:elemen-label}	
+	Specify a label for UML element.
+\end{trule}
+
+\vspace{-\parskip}
+\begin{minipage}[b]{.394\textwidth}
+\begin{lstlisting}[language=Turtle, caption={Labels in Turtle syntax}, captionpos=b]
+:ResourceName 
+  rdfs:label "Resource name" ;
+  skos:prefLabel "Resource name"@en ;
+.
+\end{lstlisting}
+\end{minipage}% <---------------- Note the use of "%"
+\quad\vspace{-\parskip}
+\begin{minipage}[b]{.62\textwidth}
+\begin{lstlisting}[language=RDF/XML, caption={Labels in RDF/XML syntax}, captionpos=b]
+<rdf:Description rdf:about="http://base.uri/ResourceName">
+  <rdfs:label>Resource name</rdfs:label>
+  <skos:prefLabel xml:lang="en">Resource name</skos:prefLabel>
+</rdf:Description>
+\end{lstlisting}
+\end{minipage}
+\vspace{-\parskip}
+
+\subsection{Note}
+
+Most of the UML element foresee provisions of descriptions and notes. They should be transformed into \texttt{rdfs:comment} and \texttt{skos:definition}. 
+
+\begin{trule}[Description]
+	\label{rule:elemen-definition}	
+	Specify a description for UML element.
+\end{trule}
+
+\vspace{-\parskip}
+\begin{minipage}[b]{.45\textwidth}
+\begin{lstlisting}[language=Turtle, caption={Description in Turtle syntax}, captionpos=b]
+:ResourceName 
+  rdfs:comment "Description of teh resource meaning" ;
+  skos:definition "Resource name"@en ;
+.
+\end{lstlisting}
+\end{minipage}% <---------------- Note the use of "%"
+\quad\vspace{-\parskip}
+\begin{minipage}[b]{.5\textwidth}
+\begin{lstlisting}[language=RDF/XML, caption={Description in RDF/XML syntax}, captionpos=b]
+<rdf:Description rdf:about="http://base.uri/ResourceName">
+  <rdfs:comment>Description of teh resource meaning</rdfs:comment>
+  <skos:definition xml:lang="en">Description of teh resource meaning</skos:definition>
+</rdf:Description>
+\end{lstlisting}
+\end{minipage}
+\vspace{-\parskip}
+
+\subsection{Comment}
+
+In accordance with \citep{uml2.5}, every kind of UML Element may own Comments (see Figure \ref{fig:comment-visual}). They add no semantics but may represent information useful to the reader. In OWL it is possible to define the annotation axiom for OWL Class, Datatype, ObjectProperty, DataProperty, AnnotationProperty and NamedIndividual. The textual explanation added to UML Class is identified as useful for conceptual modelling \cite{uml-userguide}, therefore the Comments that are connected to UML Classes are taken into consideration in the transformation.
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\umlemptyclass{ClassName} 
+			\umlnote[x=-5em,y=-5em, width=12em]{ClassName}{This is an additional comment on ClassName} 
+		\end{tikzpicture}		
+	\end{subfigure}%
+	\begin{subfigure}{.6\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\gClass{}{className}{ClassName}
+			\gLiteral{below=4em of className}{list}{\valueLang[en]{This is an additional comment on ClassName}}
+			\gAnnotationProperty{className}{list}{rdfs:comment}
+		\end{tikzpicture}
+	\end{subfigure}
+	\caption{Visual representation of an UML comment (on the left) and an OWL comment (on the right)}
+	\label{fig:comment-visual}
+\end{figure}
+
+As UML Comments add no semantics, they are not used in any method of
+semantic validation. In OWL the AnnotationAssertion \citep{owl2} axiom does
+not add any semantics either, and it only improves readability.
+
+\begin{trule}[Comment]
+	\label{rule:elemen-external-comment}	
+	Specify annotation axiom for UML Comment associated to an UML element. 
+\end{trule}
+
+\vspace{-\parskip}
+\begin{minipage}[b]{.45\textwidth}
+\begin{lstlisting}[language=Turtle, caption={Comment in Turtle syntax}, captionpos=b]
+:ClassName 
+  rdfs:comment "This is an additional comment on ClassName" ;
+  skos:editorialNote "This is an additional comment on ClassName"@en ;
+.
+\end{lstlisting}
+\end{minipage}% <---------------- Note the use of "%"
+\quad\vspace{-\parskip}
+\begin{minipage}[b]{.5\textwidth}
+\begin{lstlisting}[language=RDF/XML, caption={Comment in RDF/XML syntax}, captionpos=b]
+<rdf:Description rdf:about="http://base.uri/ClassName">
+  <rdfs:comment>This is an additional comment on ClassName</rdfs:comment>
+  <skos:editorialNote xml:lang="en">This is an additional comment on ClassName</skos:definition>
+</rdf:Description>
+\end{lstlisting}
+\end{minipage}
+\vspace{-\parskip}

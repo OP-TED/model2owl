@@ -1,0 +1,170 @@
+\section{Technical constraints}
+\label{sec:technical}
+		
+	\subsection{Namespaces}
+	\label{sec:namespaces}
+	
+	In order to enable the reuse of names defined in other models and reuse of unique references for names that support easy identification, namespace management must be considered. We adopt XML approach to defining and managing namespaces as it is inherent in both XMI and OWL2 standards. Hence, a \textit{namespace} is a set of symbols that are used to organise objects of various kinds, so that these objects may be referred to by name and uniquely identifiable. 
+	
+	Namespaces are commonly structured as hierarchies to allow reuse of names in different contexts \cite{xml-namespaces}. This mechanism can be implemented in UML through partitioning the model using packages, which are described in \ref{sec:uml-package}.
+	
+	A namespace organises a collection of names obeying three constraints:
+	each name is (1) unique, (2) assigned in a consistent way, and (3)
+	assigned according to a common definition \cite{urn-rfc8141}. An (expanded) \textit{name} in a namespace is a pair consisting of a \textit{namespace name}, also called \textit{base URI} or just \textit{base}, and a \textit{local name}, also called \textit{local segment} \cite{xml1-spec,urn-rfc2141}. The combination of universally managed URI with the vocabulary local name is effective in avoiding name clashes. 	
+	For example, in the expanded name ``http://www.w3.org/ns/org\#Organization'', ``http://www.w3.org/ns/org\#'' is the namespace name and ``Organization'' is the local name. 
+
+	Unlike in the XML specifications, the constraints on the local name are slightly relaxed, allowing token delimitation by space character (see Section \ref{sec:delimitation}). This provides an additional level of readability to the conceptual model users. Nevertheless, the local names must be \textit{normalised strings}, which mean that only single occurrences of space character are permitted. Other delimiting characters, such as tab, line feed, carriage return must be replaced by an occurrence of space and trimmed. 
+	In the transformation process, when URIs are generated, the spaces are removed anyway and conform with the XML conventions (see Section \ref{sec:name}).
+
+	\ptr{name = <namespace name>/<local name>}\\
+	\ptr{name = <namespace name>\#<local name>}
+	
+	URI references are often inconveniently long, so expanded names should not be used directly. Instead \textit{qualified names} should be used while expanded names are strongly discouraged. A \textit{qualified name} is a name subject to namespace interpretation. Syntactically, they are either \textit{prefixed names} or \textit{unprefixed names}.
+
+	\ptr{qualified name = [<namespace prefix>:]<local name>}
+	
+	The namespace name is usually applied as a \textit{prefix} to the local name but it may be missing as well. \cite{xml-namespaces} specifies a declaration syntax which permits to bind prefixes to namespace names and also to bind a default namespace that applies to unprefixed element names. For example we can bind the namespace name ``http://www.w3.org/ns/org\#'' to the prefix ``org'', which we can then use to create the same name as such ``org:Organization''. The prefix is subject to namespace interpretation and resolved to an URI \cite{xml-namespaces}.
+
+	It is recommended that the UML element names indicate the namespace prefix by prepending it to the name delimited by colon character (:). In case the namespace is not specified (no delimiter) then the name of the package containing the current element is used as namespace prefix. For example if a class ``Contract'' is placed in a package ``epo'' then the name of the containing package is used as the namespace prefix and resolved to ``epo:Contract''. If the delimiter (:) is used without any prefix, then the empty string prefix is resolved to the default namespace as defined in \citep{xml-namespaces}.
+
+	\subsection{Character encoding}
+	\label{sec:charset}
+	
+	In the formal ontology, the names must conform to RDF \cite{rdf11} and XML\cite{xml1-spec} format specifications. Both languages effectively require that terms begin with an upper or lower case letter from the ASCII character set, or an underscore (\_). This tight restriction means that, for example, terms may not begin with a number, hyphen or accented character \cite{d3.1-2015}. Although underscores are permitted, they are discouraged as they may be, in some cases, misread as spaces. A formal definition of these restrictions is given in the XML specification document \cite{xml1-spec}.
+	
+	It is required that the names use words beginning with an upper or lower case letter (A--Z, a--z) or an underscore (\_) for all terms in the model. Digits (0--9) are allowed in the subsequent character positions. Also, as mentioned above, spaces are permitted in the local segment of the name. 
+	
+	Encoded UTF-8 and UTF-16 names are supported \cite{xml1-spec,xml11-spec} but we recommend avoiding any character encodings in the element names. Encoded characters are mostly not readable and require a decoding to become human friendly. Also unexpected results may occur in the transformation script. This recommendation does not apply to the content strings such as descriptions, notes and comments, which may use any character encoding. 
+	
+	\subsection{uml:Package}
+	\label{sec:uml-package}
+	
+	Packages should be used to define a logical partition of the model. They serve as the primary method for the vertical slicing of the conceptual model as described in the layering and slicing section of \citet{costetchi2020a}. 
+	
+	Packages may form hierarchies. In this case the hierarchical relation is interpreted as \textit{meronymy}, denoting a constituent parts of the package. Formally they are translated into owl:import statements.The module corresponding to the parent package imports modules corresponding to the child packages.
+	
+	No empty packages shall be present in the model. A package is empty if it contains no child elements. 
+	
+	Package names shall be short lowercase normalised strings representing an acronym or a short name. They may serve as proxies for the namespace prefixes and used to resolve the name of any comprised elements when the prefix is not provided. This however should not be used as a primary naming method, but rather for suggesting corrections in the element name. 
+	
+	\subsection{uml:Class}
+	\label{sec:uml-class}
+	
+	uml:Class is transformed into an owl:Class. Each uml:Class must have a name and should have a description representing the human readable class definition in the domain context. 
+	
+	Optionally, in case there is a technical possibility to distinguish between UML notes, then additionally editorial, history notes or simply comments should be provided as class descriptors.
+	
+	It is recommended that a uml:Class has relations, attributes, or both. A class must not miss both, attributes and relations associated with it. 
+	It is mandatory to avoid using the same name in a class, attribute or a relation. 
+	
+	Classes may use\textit{ $<<abstract>>$ stereotype}. It means that no instances are allowed of this class in the datasets. This is not covered by the OWL 2 \cite{owl2} but can be expressed in SHACL data shapes \cite{shacl-spec}. 
+	
+	\subsection{uml:Class attributes}
+	\label{sec:attributes-class}
+	
+	uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty.
+	
+	Each uml:Attribute must have a name and attribute type. The name is used to generate URI and label while the type is used to define the range restriction. 
+	
+	An attribute may contain an alias, which is used as an alternative label; and it may have initial value provided which is transferred into a definition.  	
+	
+	It is recommended that the attribute type is one of the XSD and RDF datatypes compatible\footnote{\url{https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes}} with OWL 2. Exceptionally, generic data types such as ``Numeric'', ``String'', ``Date'' can be used. In such cases the transformation script uses a correspondence table defining which XSD data type shall be used for each atomic UML type. If the datatype is not found in the correspondence table then it is considered invalid. 
+	
+	The attribute multiplicity should be specified indicating the minimum and maximum cardinality. The default [1] multiplicity shall be interpreted as unspecified as expressed as [0..*] in the OWL model.
+	
+	It is recommended to avoid duplicate attributes names across multiple classes. Unless, by design, attributes with the same name are shared across multiple classes. 
+	
+	It is mandatory to avoid using the same name in an attribute and in a relation, unless there is an additional rule that handles intentional exceptions.  
+	
+	All attribute data types must be defined in the model for reference, regardless if they are reused from other models or specific to the local model. In the case of reused external models, the local (re-)definitions serve merely as proxies as explained in Section \ref{sec:datatype}.
+	
+	It is recommended that the attribute type is an atomic data type. 
+	It is possible to use a uml:Enumeration as an attribute type. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Dependency described in Section \ref{sec:dependency}. 
+	
+	It is recommended to avoid using another class as the attribute type. An acceptable exception for this is with a controlled set of classes. The list of allowed classes must be explicitly indicated in the transformations script. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Association described in Section \ref{sec:association}. For the eProcurement project the set of exceptions is: Identifier, Amount, Quantity, Measure. These were initially defined as composite datatypes and then transformed into classes. 
+	
+	\subsection{uml:Enumeration}
+	\label{sec:enumeration}
+
+	In UML the controlled lists, discussed in Section \ref{sec:controlled-list} are represented as uml:Enumeration. They are transformed into instances of a SKOS model \cite{skos-spec}. 
+	
+	Each uml:Enumeration element is transformed into skos:ConceptScheme and each enumeration item (represented by an uml:Attribute) is transformed into a skos:Concept. An enumeration must not be empty.
+	
+	In an enumeration element, the name shall be interpreted as the controlled list name; it must be a normalised string. Each attribute name is used as a local segment in the generation of the concept URI. The attribute type is ignored and by default is considered to be skos:Concept. The attribute alias is transformed into skos:Concept preferred label. The attribute initial value is transformed into the alternative label of the concept. If the attribute alias is longer than the attribute initial value, then it is considered that the two fields have been swapped by mistake. 
+	
+	In case no attribute alias is specified then the attribute name is used as preferred label of the skos:Concept. This happens as skos:prefLabel is a mandatory property in the SKOS model.
+	
+	It is possible to employ the enumerations for class properties by drawing a dependency (uml:Dependency) relation from the class to the
+	enumeration and provide a relation target role.
+	
+
+	\subsection{uml:Datatype}
+	\label{sec:datatype}
+	
+	This convention draws the distinction between primitive (or atomic) types (consisting of single literal value) and composite types (consisting of multiple attributes) \citep{isaHandbook2015}. In fact, the composite datatypes must be defined as classes and handled as such. For example: AmountType, Identifier, Quantity and Measure are to be treated as classes even if conceptually they could be seen as composite data types.
+	
+	It is recommended to employ the primitive datatypes that are already defined in XSD \cite{xsd1.1-spec} and RDF \cite{rdf11}, which cover the standard and most common types. Thus definitions of custom data types shall be avoided unless the model really needs them. Such cases are, however, rare.
+	
+	The data types defined in the UML model (and custom ones) are resolved into their XSD equivalent using the correspondences from Table \ref{tab:uml2xsd}. Note that the family of string datatypes is mapped to \textit{rdf:langString}. This means that the instance data should provide a language tag for the textual data indicating how it should be read. This enables multilingual data specification. Also, note that Date is mapped to xsd:date and DateTime is mapped to xsd:dateTime. However the xsd:date is not included in the OWL2 interpretation and instead a strong preference is expressed fro xsd:dateTime. Therefore it is recommended to follow the OWL2 specification, although the xsd:date is a valid datatype in the RDF data and in SPARQL queries. 
+	
+	\begin{table}[!ht]
+		\caption{UML to XSD datatype correspondences}
+		\label{tab:uml2xsd}
+		\centering
+		\begin{tabular}{@{}cc@{}}
+			\toprule
+			UML                     & XSD         \\ \midrule
+			Boolean                 & xsd:boolean \\
+			Float                   & xsd:float   \\
+			Integer                 & xsd:integer \\
+			Char, Character, String & rdf:langString  \\
+			Short                   & xsd:short   \\
+			Long                    & xsd:long    \\
+			Decimal                 & xsd:decimal \\
+			Date                    & xsd:date    \\ 
+			DateTime                & xsd:dateTime \\ \bottomrule
+		\end{tabular}
+	\end{table}
+
+	It is recommended to use OWL 2 compliant XSD and RDF standard data types. They may be useful in indicating a specific data type which is not possible with UML ones. For example making a distinction between a general string (xsd:string) and a literal with a language tag (rdf:langString) or XML encoded ones such as rdf:HTML and rdf:XMLLiteral.
+	
+	For the model consistency, it is recommended that the proxy data types be defined in the model for the XSD\footnote{\url{https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes}} and RDF data types\footnote{\url{https://www.w3.org/TR/rdf11-concepts/\#section-Datatypes}} used in the model. The proxies must follow the standard namespace convention using the ``rdf'' and ``xsd'' prefixes.
+
+	\subsection{uml:Association}
+	\label{sec:association}	
+	
+	The uml:Association connectors represent relations between source and target classes. The association connector cannot be used between other kinds of UML elements.  
+	
+	A generic UML connector may have a name applied to it, and it may have source/target roles specified in addition.  This provides flexibility to how the domain knowledge may be expressed in UML, however this freedom increases the level of ambiguity as well. Therefore, we foresee two distinct ways to express properties: using the connector generic name, or using the connector source/target ends. 
+	
+	First, if a connector name is specified then no source or target roles can be provided. The name must be valid as it is used to generate the OWL property URI. The minimum and maximum cardinality of the relation must be specified as target multiplicity. 
+	
+	The second, and recommended approach is if the connector has no name then the target role must be specified. Or the converse, if a target role is specified then no connector name can be specified. Optionally a source role may be provided. In this case the relation direction must be changed from ``Source->Target'' to ``Bidirectional''. Or conversely, if the connector direction is ``Bidirectional'' then source and target roles must be provided. No other directions are permitted.
+	
+	The target and source multiplicity must be specified accordingly indicating the minimum and maximum cardinality. 
+	
+	It is recommended that each association has a definition. The definition is then used for each role as they stand for the same meaning manifested in the inverse direction. Additional, specific definition, can be specified along the target and source roles. 
+	
+	
+	\subsection{uml:Dependency}
+	\label{sec:dependency}
+	
+	The dependency connector may be used between uml:Class and uml:Enumeration boxes, oriented from the class towards the enumeration. It indicates the class has an owl:ObjectProperty whose range is a controlled vocabulary. 
+	The connector must have direction ``Source->Target''. No other directions are acceptable. 
+	
+	The connector must have a valid name and no source/target roles are acceptable. The multiplicity must be specified at the target of the connector. 
+	
+	In the transformation process, for the reasoning purposes, the range of the property must be expressed as a range restriction using owl:oneOf the values from the enumeration Concept scheme. This is also valuable for generating SHACL shapes.
+		
+	\subsection{uml:Generalization}
+	\label{sec:degenalization}
+	
+	The uml:Generalization connector signifies a class-subClass relation and is transformed into rdfs:subClassOf relation standing between source and target classes. The connector must have no name or source/target roles specified in the UML model.
+	
+	In case a model class should inherit a class from an external model then proxies must be created for those classes. For example if ``Buyer'' specialises an ``org:Organization'' then a proxy for ``org:Organization'' must be created in the ``org'' package. 
+	
+	In this specification, the subclasses are assumed disjoint by default, unless otherwise specified in the transformations script, or explicitly marked on the generalisation relation with <<non-disjoint>> stereotype. For the converse case the <<disjoint>> stereotype shall be used.
+	 
+	In case two classes are equivalent, then the $<<equivalent>>$ or $<<complete>>$ stereotype should be used as a marker. 
+	
+	

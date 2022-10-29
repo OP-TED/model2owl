@@ -1,0 +1,64 @@
+\section{Requirements}
+\label{sec:requirements}
+	
+	In Section \ref{sec:introduction} the context of the eProcurement project was presented along with explanations as to why the ontology is being built, what its intended uses are, who the end	users are. This section elaborates on the general design criteria along with requirements the ontology should fulfil.
+	
+	\subsection{Functional requirements}
+	\label{sec:functional-requirements}	
+	
+	This section provides the main functionalities and use cases that the ontology should support. These requirements are derived from the use cases identified in the report on policy support for eProcurement \cite{d4.07-2016} and outlined in the in the eProcurement project chapter proposal \cite{d2.02-2017}.
+	
+	\begin{enumerate}
+		\item \textit{Transparency and monitoring}: to enable verification that public procurement is conducted according to the rules set by the Directives and Regulation \citep{directive-2014/23/EU,directive-2014/24/EU,directive-2014/25/EU,directive-2014/55/EU}.
+		\begin{enumerate}
+			\item Public understandability
+			\item Data Journalism
+			\item Monitor the money flow
+			\item Detect fraud and compliance with procurement criteria
+			\item Audit procurement process
+			\item Cross-validate data from different parts of the procurement process			
+		\end{enumerate}
+		\item \textit{Innovation \& value added services}: to allow the emergence of new applications and services on the basis of the availability of procurement data.
+		\begin{enumerate}
+			\item Automated matchmaking of procured services and products with businesses
+			\item Automated validation of procurement criteria
+			\item Alerting services
+			\item Data analytics on public procurement data			
+		\end{enumerate}
+		\item \textit{Interconnection of public procurement systems}: to support increased interoperability across procurement systems.
+		\begin{enumerate}
+			\item Increase cross-domain interoperability among Member States 
+			\item Introduce automated classification systems in public procurement systems			
+		\end{enumerate}
+	\end{enumerate}
+	
+	
+	\subsection{Non-functional requirements}
+	\label{sec:non-functional-requirements}
+	
+	This section provides the characteristics, qualities and general aspects that the eProcurement ontology should satisfy.
+	
+	\begin{itemize}
+		\item The practices, technologies and standards must be aligned with the European Directive on open data and the reuse of public sector information \citep{directive-2019/1024}, the single digital gateway regulation \citep{directive-2018/1724},  and European Publications Office standards and practices.
+		\item The terminology used in the ontology should be reused from established core vocabularies \cite{isaHandbook2015} and domain ontologies as long as their meaning fits into the description of the eProcurement domain.
+		\item The concept and relation labels must allow for multilingual content, covering at least the official European Languages \cite{styleguide-eu}.
+		\item The formal ontology, and the related artefacts, must be generated from the eProcurement UML conceptual model, serving as the single source of truth, through a set of predefined transformation rules \citep{costetchi2020c}. 
+		\item The content of the ontology must be consistent with the predefined set of UML conceptual model conventions \cite{costetchi2020b}.
+		\item The ontology identifiers must follow a strict URI policy defined in Section \ref{sec:uri-policy}.
+		\item The ontology design must commit long term URI persistence.
+		\item The ontology, and the related artefacts, must be layered in order to support different degrees of ontological commitment and levels formal specification stacked on each other (see Section \ref{sec:layers-components}).
+		\item The ontology, and the related artefacts,  must be sliced in order to support a modular organisation of the domain in terms of self contained or semi-dependent modules (see Section \ref{sec:layers-components}).
+	\end{itemize}
+	
+	\subsection{General design criteria}
+	\label{sec:design-criteria}
+	
+	For the purpose of knowledge sharing and interoperation between programs based on a shared conceptualisation, \citet{gruber1995} proposes a set of preliminary \textit{design criteria} a formal ontology should follow:
+	
+	\begin{itemize}
+		\item \textit{Clarity}. An ontology should communicate the purpose and meaning of defined terms. Definitions should be objective and independent of social and computational context even if the underlying motivations arise from them. Formalism is the means to this end, and when possible, the logical formulation should be provided.
+		\item \textit{Coherence}. Ontology should permit inferences that are consistent with the definitions. At the least, the defining axioms should be logically consistent. Coherence should also apply to the concepts that are defined informally, such as those described in natural language documentation and examples.
+		\item \textit{Extensibility}. Ontology should be designed to anticipate the uses of the shared vocabulary. It should offer a conceptual foundation for a range of anticipated tasks and the representation should be crafted so that one can extend and specialise the ontology monotonically. This feature supports and encourages reuse and further specialisations of ontologies and creation of the application profiles. 
+		\item \textit{Minimal encoding bias}. The conceptualisation should be specified at the knowledge level without depending on a particular symbol-level encoding. 
+		\item \textit{Minimal ontological commitment}. Ontology should require the minimal ontological commitment sufficient to support the intended knowledge sharing activities. Ontology should make as few claims as possible about the world being modelled, allowing the parties committed to the ontology freedom specialise and instantiate the ontology as needed. An ontological commitment is an agreement to use the shared vocabulary, with which queries and assertions are exchanged between agents, in a coherent and consistent manner. We say that an agent commits to an ontology if its behaviour is consistent with the definitions in the ontology \cite{gruber1995}.		
+	\end{itemize}	
