@@ -4,10 +4,10 @@
     	Run unit tests
 	</description>
 	<property name="xspec.properties" location="system.properties" />
-	<property name="xspec.project.dir" location="frameworks/xspec" />
+	<property name="xspec.project.dir" location="xspec" />
 	<property name="lib.dir" location="${basedir}/lib" />
 
-	<include file="${basedir}/frameworks/xspec/build.xml" />
+	<include file="${basedir}/xspec/build.xml" />
 
 	<!-- include foreach -->
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
