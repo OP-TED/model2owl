@@ -1,151 +1,0 @@
-\section{Introduction}
-\label{sec:introduction}
-
-	Publications Office of the European Union set off to build an eProcurement ontology well motivated in \citep[p.5-9]{costetchi2020a}. The ultimate objective of the project is to put forth a commonly agreed ontology that will conceptualise, formally encode and make available in an open, structured and machine-readable format data about public procurement, covering end-to-end procurement, i.e. from notification, through tendering to awarding, ordering, invoicing and payment \citep{d4.07-2016}.
-	
-	The process and the methodology adopted involve modelling the conceptual model in Unified Modelling Language (UML) \citep{uml2.5} and then, by abiding a set of conventions and recommendations, transform that model into a formal ontology \citep[p.12-21]{costetchi2020a} expressed in Web Ontology Language (OWL) \citep{owl2}. 
-	
-	This document provides a working definition of the transformation rules from the UML conceptual model into the formal ontology and validation data shapes. These rules are organised in accordance with the eProcurement ontology architecture \citep[p.21-27]{costetchi2020a}.
-	
-	 \subsection{State of the art}
-	 Much has been written about correspondences and between and transformation from UML to OWL and vice versa \citep{sadowska2019}. The most significant literature on this topic was published between 2006 and 2019 comprising three book chapters, nine journal papers and multiple conference papers. 
-	 
-	 The work presented in \citep{khan2015consistency} transforms into OWL some selected elements of UML modelscontaining multiple UML class, object and state-chart diagrams in order to analyse consistency of the models. A similar approach is presented in\citep{khan2013consistency}, which is focused on detecting inconsistencyin models containing UML class and state-chartdiagrams.
-	 
-	 The papers \citep{hajjamy2016,zedlitz2012,zedlitz2014conceptual} investigate the differences and similarities between UML and OWLin order to present transformations of selected	(and identified as useful) elements of UML class diagram. In \citep{zedlitz2014conceptual}, the need for UML--OWL transformation is additionally motivated by not repeating the modelling independently in both languages.
-	 
-	 The paper \citep{kiko2008} compares OWL abstract syntax elements to the equivalent UML featuresand appropriate OCL statements. The analysis
-	 is conducted in the direction from OWL to UML.For every OWL construct its UML interpretationis proposed.
-	 
-	 The works presented in \citep{xu2012,xu2009semantics,na2006method} are focusedon extracting ontological knowledge from UMLclass diagrams and describe some UML--OWLmappings with the aim to reuse the existingUML models and stream the building of OWLdomain ontologies.
-	 
-	 In \citep{sadowska2019} is presented a comprehensive review of the related work. We use it as a guideline for ensuring the necessary coverage of the transformation rules specified in this report. It is important to note here that all the UML elements are treated here, but only the ones employed in the eProcurement conceptual model. 
-	
-	\subsection{How to read this document}
-	The reminder of this document comprises four sections covering major UML aspects. Section \ref{sec:tran-rules} treats classes and attributes. Following section deals with the main connector types employed in the eProcurement model, namely: associations, dependencies and generalisations. Section \ref{sec:tran-rules3} explains how the datatypes and enumerations should be transformed and, finally, Section \ref{sec:tran-rules4} provides a few transformation rules that are applicable to all UML elements and are concerned with comments, labels and notes.
-	
-	Each section provides a table with overview of the transformation rule set comprised within. The table provides three columns, one for every layer of the ontology architecture comprising rules: (a) \coreComponent, (b) \shaclComponent, and \mbox{(c) \reasoningComponent}.
-
-	Transformation rules are specified in a normative language and are aided by prototypical UML diagram fragments (usually preceding the rule) along with representation of the corresponding OWL fragment depicted in Graffoo visual notation \citep{graffoo-falco2014modelling}. The diagrams are provided side to side in order to increase comprehension, with UML fragment on the left constituting the source of the transformation and the OWL fragment on the right representing the final result of the transformation. 
-	
-	Each transformation rule is accompanied by the formal OWL representation, in Turtle \citep{turtle-Carothers:14:RT} and RDF/XML \citep{rdf-xml-Schreiber:14:RXS,rdf-xml-Beckett:04:RSS} syntaxes, corresponding to the depicted UML fragment from the preceding figure. RDF/XML is a syntax to express RDF graphs as an XML document. Turtle is a textual syntax for RDF \citep{rdf11} that is compact and resembles a natural text form with abbreviations for common usage patterns and datatypes.
-	
-	\subsection{UML visual notation}
-	
-	This section provides the main UML elements employed in this document. A detailed description can be consulted in the standard specifications \citep{uml2.5} and in the \mbox{user guide \cite{uml-userguide}}. 
-	
-	
-	\begin{figure}[!ht]
-		\centering
-		\begin{tikzpicture}
-			\umlsimpleclass{Simple Class Name}
-			\umlsimpleclass[type=abstract, right=7em of {Simple Class Name}]{Abstract Class Name}
-			\umlclass[below=2em of {Simple Class Name}]{Class With Attributes}{}{
-						attribute1 : xsd:string \\
-						attribute2 : OtherClass \\}
-			\umlclass[below=2em of {Abstract Class Name}]{Class With Attribute Multiplicity}{}{
-						attribute1 : xsd:string [2..2]\\
-						attribute2 : xsd:string [1..*]\\
-						attribute3 : xsd:string [*..2]\\
-						attribute4 : xsd:string [1..2]\\
-						}
-		\end{tikzpicture}
-		\caption{UML visual notation for classes and attributes}
-		\label{fig:uml-sheat-sheet-classes}
-	\end{figure}
-	
-	\begin{figure}[!ht]
-		\centering
-		\begin{tikzpicture}
-			\umlsimpleclass[type=DataType]{Datatype Name}
-			\umlclass[type=Enumeration, right=7em of {Datatype Name}]{Controlled List}{
-					itemA='First item'\\
-					itemB='Second item'}{}
-		\end{tikzpicture}
-		\caption{UML visual notation for datatypes and enumerations}
-		\label{fig:uml-sheat-sheet-datatypes}
-	\end{figure}
-	
-	\begin{figure}[!ht]
-		\centering
-		\begin{tikzpicture}
-			\umlsimpleclass{A}
-			\umlsimpleclass[below=3em of A]{B}
-			\umluniassoc[geometry=--, arg1={Association}, mult1=min..max, pos1=.7,   align2=right]{B}{A}
-			
-			\umlsimpleclass[right=5em of A]{C}
-			\umlsimpleclass[below=3em of C]{D}
-			\umlinherit{D}{C}
-						
-			\umlsimpleclass[right=5em of C]{E}
-			\umlsimpleclass[below=3em of E]{F}
-			\umldep[geometry=--, arg1={Dependecy}, mult1=min..max, pos1=.7,   align2=right]{F}{E}
-		\end{tikzpicture}
-		\caption{UML visual notation for association, generalisation, and dependency}
-		\label{fig:uml-sheat-sheet-associations}
-	\end{figure}
-	
-	Figure \ref{fig:uml-sheat-sheet-classes} depicts simple, abstract and regular classes with and without attribute specifications. Note that no class methods are ever employed as this document as the transformations aim at data structures only. 
-	
-	Figure \ref{fig:uml-sheat-sheet-datatypes} depicts a primitive datatype and an enumeration. No complex datatypes are depicted as they are treated in the same manner as classes are. 
-	
-	Figure \ref{fig:uml-sheat-sheet-associations} depicts association, generalisation and dependency connectors as the only ones necessary to model the eProcurement conceptual model. 
-	
-	\subsection{Graffoo visual notation}
-	
-	This section provides the main Graffoo elements employed in this document. A detailed description can be consulted in the OWL standard specifications \citep{owl2} and in the Graffoo user guide \cite{graffoo-falco2014modelling}.
-	
-	\begin{figure}[!h]
-		\centering
-		\begin{tikzpicture}
-			\gClass{}{class}{a class};
-			
-			\gGlassRestriction{right=3em of class}{class-restriction}{a class restriction};
-			
-			\gDatatype{right=3em of class-restriction}{datatype}{a datatype};
-			
-			\gDatatypeRestriction{below=1em of datatype}{datatype-restriction}{a datatype restriction};
-			
-			\gLiteral{below=1em of class}{literal}{\valueLang[en]{a literal value}};
-			
-			\gInstance{below=1em of class-restriction}{left}{instance1}{an instance\\of a class};				
-		\end{tikzpicture}
-		\caption{Graffoo visual notation for classes, instances and datatypes}
-		\label{fig:graffoo-classes}
-	\end{figure}
-	
-	\begin{figure}[!b]
-		\centering
-			\begin{tikzpicture}			
-			\gEntity{}{s1}{ subject };
-			\gEntity{right=12em of s1}{o1}{ object };
-			\gPredicate{s1}{o1}{predicate};
-			
-			\gClass{below=1em of s1}{s2}{ domain };
-			\gClass{right=12em of s2}{o2}{ range };
-			\gObjectProperty{s2}{o2}{object property};
-							
-			\gClass{below=1em of s2}{s3}{ domain };
-			\gDatatype{right=12em of s3}{o3}{ range };
-			\gDataProperty{s3}{o3}{data property};
-			
-			\gClass{below=1em of s3}{s4}{ domain };
-			\gDatatype{right=12em of s4}{o4}{ range };
-			\gAnnotationProperty{s4}{o4}{annotation property};
-			
-			\gEntity{below=1em of s4}{s5}{ resource };
-			\gAxiom{right=7em of s5}{o5}{additional axioms};
-			\gLink{s5}{o5};	
-			\end{tikzpicture}
-		\caption{Graffoo visual notation for object and data properties and generic links}
-		\label{fig:graffoo-predicates}
-	\end{figure}
-	
-	A yellow rectangle with solid black border is used to declare classes. Solid black and labelled arrows are used to declare class axioms. A green rhomboid with solid black border is used to declare datatypes. Solid black and labelled arrows are used to declare class axioms.
-	
-	A pink circle with solid black border is used to declare individuals. Solid black and labelled arrows are used to declare axioms and assertions among individuals.
-
-	A green solid line is used to declare data properties, where the empty circle at the beginning identifies the property domain while the empty arrow at the end indicates the property range. A blue solid line is used to declare object properties, where the solid circle at the beginning identifies the property domain while the solid arrow at the end indicates the property range.			
-		
-
-	The following sections present the transformation rules necessary for converting the UML eProcurement conceptual model into a formal OWL ontology. 
