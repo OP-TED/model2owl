@@ -10,9 +10,12 @@
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
     xmlns:dc="http://purl.org/dc/elements/1.1/" 
     xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:functx="http://www.functx.com"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#" version="3.0">
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+    xmlns:functx="http://www.functx.com"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#" 
+    version="3.0">
     
 <!--    Change below the location of your config parameters file-->
     

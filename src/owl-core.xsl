@@ -36,7 +36,7 @@
     <xsl:import href="owl-core-lib/owl-core-selectors.xsl"/>
     <xsl:import href="owl-core-lib/connectors-owl-core.xsl"/>
     <xsl:import href="owl-core-lib/elements-owl-core.xsl"/>
-    <xsl:import href="../config/config-proxy.xsl"/>
+    <!-- xsl:import href="../config/config-proxy.xsl"/ -->
 
     <xsl:output name="core-ePO.rdf" method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
