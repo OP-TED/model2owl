@@ -36,6 +36,16 @@ The input eProcurement conceptual model is available in the [eProcurement Ontolo
 
 We assume that the users of this project are familiar with XML, UML and XSLT technologies and know how to perform an XSLT transformation. 
 
+## Combine multiple XMI / XML UML documents
+make merge-xmi
+
+This will merge multiple input XMI / XML UML documents into a single one. The output is located under ./output/combined-xmi/ and will be used to generate a single glossary.
+
+## Generate the glossary from the merged document
+make generate-glossary
+
+The glossary will generated and located in the ./output/glossary/
+
 ## Repository Structure
 
 * /src - source code of the XSLT scripts generating the HTML conventions report. 
