@@ -107,7 +107,7 @@ transform: owl-core owl-restrictions shacl
 convert-to-turtle:
 	@for filename in ${FILELIST}; do \
 		echo Converting $${filename}; \
-		python3 scripts/rdfxml2turtle.py --input  $${filename} --output $${filename%.*}.ttl;  \
+		rdfpipe -i application/rdf+xml -o  turtle $${filename} > $${filename%.*}.ttl; \
 		echo Input in RDF/XML format;  \
 		ls -lh $${filename};  \
 		echo " ==> Output in Turtle format";  \
