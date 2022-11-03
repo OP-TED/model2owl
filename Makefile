@@ -19,31 +19,33 @@ gitRepoFiles :=  $(shell ls -l transform/model2owl/.git >/dev/null 2>&1 | wc -l 
 secrets.GITHUB_TOKEN := *******
 
 # Model2owl directory
-MODEL2OWL_DIR="."
+MODEL2OWL_DIR?="."
+# Project directory, ie. directory where we store the input/output from model2owl
+PROJECT_DIR?=".."
 # One of the xmi input files to be merged into a single UML xmi/xml file
-FIRST_INPUT_XMI_FILE="test/test-multi-xmi/ePO_CM.xml"
+FIRST_INPUT_XMI_FILE?="test/test-multi-xmi/ePO_CM.xml"
 # Input dir containing files to be merged
-INPUT_XMI_DIR=$(shell dirname ${FIRST_INPUT_XMI_FILE})
+INPUT_XMI_DIR?=$(shell dirname ${FIRST_INPUT_XMI_FILE})
 # rdflib version
-RDF_LIB_VERSION=6.2.0
+RDF_LIB_VERSION?=6.2.0
 SAXON="../saxon-he-10.6.jar"
 # Output directory containing combined file from multiple xmi / xml UML models
-OUTPUT_COMBINED_XMI_PATH="../output/combined-xmi"
+OUTPUT_COMBINED_XMI_PATH?="../output/combined-xmi"
 # Glossary output directory
-OUTPUT_GLOSSARY_PATH="../output/glossary"
+OUTPUT_GLOSSARY_PATH?="../output/glossary"
 
 # Input XMI/XML UML models
-ePO_CM_FILE_PATH="test/test-multi-xmi/ePO_CM.xml"
-OUTPUT_CORE_FILE_NAME="ePO_CM-core.rdf"
-OUTPUT_RESTRICTIONS_FILE_NAME="ePO_CM-restrictions.rdf"
-OUTPUT_SHACL_SHAPES_FILE_NAME="ePO_CM-shacl.rdf"
+ePO_CM_FILE_PATH?="test/test-multi-xmi/ePO_CM.xml"
+OUTPUT_CORE_FILE_NAME?="ePO_CM-core.rdf"
+OUTPUT_RESTRICTIONS_FILE_NAME?="ePO_CM-restrictions.rdf"
+OUTPUT_SHACL_SHAPES_FILE_NAME?="ePO_CM-shacl.rdf"
 
 # Output ontologies
-OUTPUT_PATH_OWL="../output/epo-ontologies"
+OUTPUT_PATH_OWL?="../output/epo-ontologies"
 FILELIST=$(shell ls ${OUTPUT_PATH_OWL}/*.rdf)
 # download saxon library 	
 get-saxon:
-	@cd ..	&& curl -L -o saxon.zip "https://kumisystems.dl.sourceforge.net/project/saxon/Saxon-HE/10/Java/SaxonHE10-6J.zip" && unzip saxon.zip && rm -rf saxon.zip
+	@cd ${PROJECT_DIR}  && curl -L -o saxon.zip "https://kumisystems.dl.sourceforge.net/project/saxon/Saxon-HE/10/Java/SaxonHE10-6J.zip" && unzip saxon.zip && rm -rf saxon.zip
 
 # Clone model2owl if the directory model2owl does not exist
 #get-model2owl-repo:	
@@ -51,12 +53,19 @@ get-saxon:
 	
 # download xspec framework to run unit tests
 get-xspec:	
-	@cd .. && rm -rf xspec && curl -L -o xspec.zip https://github.com/xspec/xspec/archive/refs/tags/v2.2.4.zip && unzip xspec.zip -d model2owl && rm -rf xspec.zip && cd model2owl && ln -s xspec-* xspec
+	@cd ${PROJECT_DIR}  && rm -rf xspec && curl -L -o xspec.zip https://github.com/xspec/xspec/archive/refs/tags/v2.2.4.zip && unzip xspec.zip -d model2owl && rm -rf xspec.zip && cd model2owl && ln -s xspec-* xspec
 
-# download and install rdflib
+# install rdflib
 get-rdflib:
-	#@cd .. &&  wget https://github.com/RDFLib/rdflib/releases/download/${RDF_LIB_VERSION}/rdflib-${RDF_LIB_VERSION}.tar.gz && tar xvf  rdflib-${RDF_LIB_VERSION}.tar.gz	 && pip install -e rdflib-${RDF_LIB_VERSION}
-	@sudo apt-get install -y python3-rdflib
+	@echo please activate your virtual env first using the commands below
+	@echo -- Create an virtual environment    
+	@echo pip install virtualenv
+	@echo virtualenv venv
+	@echo -- Activate your venv
+	@echo source venv/bin/activate
+	@echo -- Install rdflib inside your virtual environment
+	@pip install rdflib
+	
 
 ######################################################################################
 # Download, install saxon, xspec, rdflib and other dependencies
@@ -115,12 +124,18 @@ convert-to-turtle:
 	done
 #@for filename in $$(ls $$FILELIST ); do echo Converting ${filename}; python3 scripts/rdfxml2turtle.py --input  ${filename} --output ${filename%.*}.ttl;  echo Input in RDF/XML format;  ls -lh ${filename};  echo Output in Turtle format;  ls -lh ${filename%.*}.ttl;  done;
 help:
-	@echo The automatic tasks available are defined as below 
+	@echo The automatic tasks available are defined as below
 	@echo "\$$ Command line # Description"
-	@echo "\$$ make merge-xmi # to combine multi input files (xmi, xml)" 
-	@echo "\$$ make generate-glossary # to generate the glossary using the output from the merge-xmi task"
+	@echo
+	@echo "\$$ make merge-xmi # to combine multi input files (*.xml)"
+	@echo Variables:
+	@echo FIRST_INPUT_XMI_FILE=[first xmi or xml filename]
+	@echo
+	@echo "\$$ make generate-glossary # to generate the glossary using the output from the merge-xmi task"	
 	@echo "\$$ make transform # transform from XMI/XML UML into RDF/XML (core, restrictions and shacl)"
-	@echo "\$$ # "
+	@echo
+	@echo "\$$ make convert-to-turtle # convert RDF/XML files from an input folder into Turtle format"
+	@echo
 	@echo "\$$ # "
 
 h: help	

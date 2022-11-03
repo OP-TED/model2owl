@@ -23,7 +23,7 @@
 
 
     <xd:doc>
-        <xd:desc>[Rule 2] - (Class in data shape layer) .Specify declaration axiom for UML Class as
+        <xd:desc>[Rule 2] - (Class in data shape layer). Specify declaration axiom for UML Class as
             SHACL Node Shape where the URI and a label are deterministically generated from the
             class name and rules 3,7,8 </xd:desc>
     </xd:doc>
