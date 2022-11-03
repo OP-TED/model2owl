@@ -95,9 +95,7 @@ generate-glossary:
 	@echo
 	@ls -lh ${OUTPUT_GLOSSARY_PATH}/glossary.html
 	@echo
-	#@head ${OUTPUT_GLOSSARY_PATH}/glossary.html	
-	#@echo ...
-	#@tail ${OUTPUT_GLOSSARY_PATH}/glossary.html
+	 
 
 owl-core:
 	@java -jar ${SAXON} -s:${ePO_CM_FILE_PATH} -xsl:${MODEL2OWL_DIR}/src/owl-core.xsl -o:${OUTPUT_PATH_OWL}/${OUTPUT_CORE_FILE_NAME}
@@ -132,6 +130,9 @@ help:
 	@echo FIRST_INPUT_XMI_FILE=[first xmi or xml filename]
 	@echo
 	@echo "\$$ make generate-glossary # to generate the glossary using the output from the merge-xmi task"	
+	@echo Variables:
+	@echo OUTPUT_COMBINED_XMI_PATH=[the input directory containing the output combined or merged XMI file.]
+	@echo OUTPUT_GLOSSARY_PATH=[the output directory containing the glossary]
 	@echo "\$$ make transform # transform from XMI/XML UML into RDF/XML (core, restrictions and shacl)"
 	@echo
 	@echo "\$$ make convert-to-turtle # convert RDF/XML files from an input folder into Turtle format"
