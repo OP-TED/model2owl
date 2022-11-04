@@ -7,12 +7,12 @@
 	<property name="xspec.project.dir" location="xspec" />
 	<property name="lib.dir" location="${basedir}/lib" />
 
-	<include file="${basedir}/xspec/build.xml" />
+	<include file="${basedir}/../xspec/build.xml" />
 
 	<!-- include foreach -->
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
-			<pathelement location="lib/ant-contrib.jar"/>
+			<pathelement location="../lib/ant-contrib.jar"/>
 		</classpath>
 	</taskdef>
 	<!-- include jars files -->
