@@ -17,9 +17,9 @@
 
     <x:scenario label="Testing function generate label from a string - scenario 2">
         <x:call function="f:lexicalQNameToWords">
-            <x:param name="input">epo:hasEPORoleandType</x:param>
+            <x:param name="input">epo:hasEPORoleType</x:param>
         </x:call>
-        <x:expect label="result" select="fn:string('Has EPO role and type')"/>
+        <x:expect label="result" select="fn:string('Has EPO role type')"/>
     </x:scenario>   
     
     

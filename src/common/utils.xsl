@@ -341,8 +341,26 @@
         <xsl:sequence select="fn:concat(upper-case(substring($cc, 1, 1)), substring($cc, 2))"/>
     </xsl:function>
 
-
-
+    <xd:doc>
+        <xd:desc>Smooth a string</xd:desc>
+        <xd:param name="str">input string to be smoothed</xd:param>
+    </xd:doc>
+    <xsl:function name="f:smooth-string" as="xs:string?">
+        <xsl:param name="str" as="xs:string"/>
+        <xsl:sequence select="
+            if ($str = 'Has u r l') then
+                ('Has URL')
+            else
+            if (matches($str,'\[[a-z] [a-z]? ?[a-z]+\]')) then
+                    upper-case($str)
+                else
+                    $str            
+            "
+            >
+            
+        </xsl:sequence>
+    </xsl:function>
+    
 
     <xd:doc>
         <xd:desc>Turns the local segment of a lexicalised qName into words</xd:desc>
@@ -350,16 +368,15 @@
     </xd:doc>
     <xsl:function name="f:lexicalQNameToWords" as="xs:string">
         <xsl:param name="lexicalqName" as="xs:string"/>
-
         <xsl:sequence
             select="
-                functx:capitalize-first(
+                f:smooth-string(functx:capitalize-first(
                 fn:lower-case(
                 functx:camel-case-to-words(
                 fn:local-name-from-QName(
                 f:buildQNameFromLexicalQName($lexicalqName, fn:true(), fn:true())
                 ), ' ')
-                ))"
+                )))"
         />
     </xsl:function>
 

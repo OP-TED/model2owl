@@ -42,7 +42,8 @@ OUTPUT_SHACL_SHAPES_FILE_NAME?="ePO_CM-shacl.rdf"
 
 # Output ontologies
 OUTPUT_PATH_OWL?="../output/epo-ontologies"
-FILELIST=$(shell ls ${OUTPUT_PATH_OWL}/*.rdf)
+RDF_DIR?=${OUTPUT_PATH_OWL}
+FILELIST=$(shell ls ${RDF_DIR}/*.rdf)
 # download saxon library 	
 get-saxon:
 	@cd ${PROJECT_DIR}  && curl -L -o saxon.zip "https://kumisystems.dl.sourceforge.net/project/saxon/Saxon-HE/10/Java/SaxonHE10-6J.zip" && unzip saxon.zip && rm -rf saxon.zip
@@ -136,7 +137,8 @@ help:
 	@echo "\$$ make transform # transform from XMI/XML UML into RDF/XML (core, restrictions and shacl)"
 	@echo
 	@echo "\$$ make convert-to-turtle # convert RDF/XML files from an input folder into Turtle format"
-	@echo
+	@echo Variables:
+	@echo RDF_DIR=[Directory containing RDF/XML files to be converted into Turtle format]
 	@echo "\$$ # "
 
 h: help	
