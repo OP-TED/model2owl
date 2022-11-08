@@ -30,12 +30,18 @@ INPUT_XMI_DIR?=$(shell dirname ${FIRST_INPUT_XMI_FILE})
 RDF_LIB_VERSION?=6.2.0
 SAXON="../saxon-he-10.6.jar"
 # Output directory containing combined file from multiple xmi / xml UML models
-OUTPUT_COMBINED_XMI_PATH?="../output/combined-xmi"
+COMBINED_XMI_DIRECTORY?="../output/combined-xmi"
+COMBINED_FILE_NAME?=ePO-combined.xmi
+XMI_DIRECTORY?="../output/combined-xmi"
 # Glossary output directory
 OUTPUT_GLOSSARY_PATH?="../output/glossary"
 
-# Input XMI/XML UML models
-ePO_CM_FILE_PATH?="test/test-multi-xmi/ePO_CM.xml"
+# Input XMI/XML UML file path
+UML_INPUT_FILENAME?="test/test-multi-xmi/ePO_CM.xml"
+filename=$(shell basename -- "${UML_INPUT_FILENAME}") 
+UML_FILENAME_WITHOUT_EXTENSION=$(shell echo ${filename} | cut -f1 -d '.')
+
+
 OUTPUT_CORE_FILE_NAME?="ePO_CM-core.rdf"
 OUTPUT_RESTRICTIONS_FILE_NAME?="ePO_CM-restrictions.rdf"
 OUTPUT_SHACL_SHAPES_FILE_NAME?="ePO_CM-shacl.rdf"
@@ -80,34 +86,36 @@ unit-tests:
 
 # Combine xmi UML files
 merge-xmi:
-	@mkdir -p ${OUTPUT_COMBINED_XMI_PATH}
-	@java -jar ${SAXON} -s:${FIRST_INPUT_XMI_FILE} -xsl:${MODEL2OWL_DIR}/src/xml/merge-multi-xmi.xsl -o:${OUTPUT_COMBINED_XMI_PATH}/ePO-combined.xml
+	@mkdir -p ${COMBINED_XMI_DIRECTORY}
+	@java -jar ${SAXON} -s:${FIRST_INPUT_XMI_FILE} -xsl:${MODEL2OWL_DIR}/src/xml/merge-multi-xmi.xsl -o:${COMBINED_XMI_DIRECTORY}/${COMBINED_FILE_NAME}
 	@echo Input files to be combined are located at the directory containing this input file: ${FIRST_INPUT_XMI_FILE} under directory ${INPUT_XMI_DIR}
 	@ls -lh ${INPUT_XMI_DIR}
 	@echo 
-	@echo "==> The combined document is located at the following location ${OUTPUT_COMBINED_XMI_PATH}/ePO-combined.xml"
-	@ls -lh ${OUTPUT_COMBINED_XMI_PATH}/ePO-combined.xml
+	@echo "==> The combined document is located at the following location 
+	@ls -lh ${COMBINED_XMI_DIRECTORY}/${COMBINED_FILE_NAME}
 
-# Generate the glossary
+# Generate the glossary from an input file
 generate-glossary:
 	@mkdir -p "${OUTPUT_GLOSSARY_PATH}"
-	@java -jar ${SAXON} -s:${OUTPUT_COMBINED_XMI_PATH}/ePO-combined.xml -xsl:${MODEL2OWL_DIR}/src/html-model-glossary.xsl -o:${OUTPUT_GLOSSARY_PATH}/glossary.html
-	@echo The combined glossary is located at ${OUTPUT_GLOSSARY_PATH}/glossary.html
+	@echo Input: ${UML_INPUT_FILENAME}
+	@echo Input without extension: ${UML_FILENAME_WITHOUT_EXTENSION}
+	@java -jar ${SAXON} -s:${UML_INPUT_FILENAME} -xsl:${MODEL2OWL_DIR}/src/html-model-glossary.xsl -o:${OUTPUT_GLOSSARY_PATH}/${UML_FILENAME_WITHOUT_EXTENSION}-glossary.html
+	@echo The combined glossary is located at the following location:
 	@echo
-	@ls -lh ${OUTPUT_GLOSSARY_PATH}/glossary.html
+	@ls -lh ${OUTPUT_GLOSSARY_PATH}/${UML_FILENAME_WITHOUT_EXTENSION}-glossary.html
 	@echo
 	 
 
 owl-core:
-	@java -jar ${SAXON} -s:${ePO_CM_FILE_PATH} -xsl:${MODEL2OWL_DIR}/src/owl-core.xsl -o:${OUTPUT_PATH_OWL}/${OUTPUT_CORE_FILE_NAME}
+	@java -jar ${SAXON} -s:${UML_INPUT_FILENAME} -xsl:${MODEL2OWL_DIR}/src/owl-core.xsl -o:${OUTPUT_PATH_OWL}/${OUTPUT_CORE_FILE_NAME}
 	@echo Output owl core file:
 	@ls -lh ${OUTPUT_PATH_OWL}/${OUTPUT_CORE_FILE_NAME}
 owl-restrictions:
-	@java -jar ${SAXON} -s:${ePO_CM_FILE_PATH} -xsl:${MODEL2OWL_DIR}/src/owl-restrictions.xsl -o:${OUTPUT_PATH_OWL}/${OUTPUT_RESTRICTIONS_FILE_NAME}
+	@java -jar ${SAXON} -s:${UML_INPUT_FILENAME} -xsl:${MODEL2OWL_DIR}/src/owl-restrictions.xsl -o:${OUTPUT_PATH_OWL}/${OUTPUT_RESTRICTIONS_FILE_NAME}
     @echo Output owl restrictions file:
 	@ls -lh ${OUTPUT_PATH_OWL}/${OUTPUT_RESTRICTIONS_FILE_NAME}
 shacl:
-	@java -jar ${SAXON} -s:${ePO_CM_FILE_PATH} -xsl:${MODEL2OWL_DIR}/src/shacl-shapes.xsl -o:${OUTPUT_PATH_OWL}/${OUTPUT_SHACL_SHAPES_FILE_NAME}
+	@java -jar ${SAXON} -s:${UML_INPUT_FILENAME} -xsl:${MODEL2OWL_DIR}/src/shacl-shapes.xsl -o:${OUTPUT_PATH_OWL}/${OUTPUT_SHACL_SHAPES_FILE_NAME}
 	@echo Output shacl file:
 	@ls -lh ${OUTPUT_PATH_OWL}/${OUTPUT_SHACL_SHAPES_FILE_NAME}
 
@@ -126,13 +134,15 @@ help:
 	@echo The automatic tasks available are defined as below
 	@echo "\$$ Command line # Description"
 	@echo
-	@echo "\$$ make merge-xmi # to combine multi input files (*.xml)"
+	@echo "\$$ make merge-xmi # to combine multiple input files (*.xmi, *.xml)"
 	@echo Variables:
 	@echo FIRST_INPUT_XMI_FILE=[first xmi or xml filename]
+	@echo COMBINED_XMI_DIRECTORY=[the directory containing the output combined or merged XMI file.]
+	@echo COMBINED_FILE_NAME=[the filename of the combined or merged XMI files, e.g. combined.xmi]
 	@echo
-	@echo "\$$ make generate-glossary # to generate the glossary using the output from the merge-xmi task"	
+	@echo "\$$ make generate-glossary # to generate the glossary from an input file"	
 	@echo Variables:
-	@echo OUTPUT_COMBINED_XMI_PATH=[the input directory containing the output combined or merged XMI file.]
+	@echo UML_INPUT_FILENAME=[the path to the xmi or xml UML input file.]	
 	@echo OUTPUT_GLOSSARY_PATH=[the output directory containing the glossary]
 	@echo "\$$ make transform # transform from XMI/XML UML into RDF/XML (core, restrictions and shacl)"
 	@echo

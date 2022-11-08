@@ -9,11 +9,7 @@
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
-    xmlns:dc="http://purl.org/dc/elements/1.1/" 
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
-    xmlns:dct="http://purl.org/dc/terms/"    
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/"    
     version="3.0">
    
     <xsl:output version="1.0" encoding="windows-1252" indent="yes" /> 
@@ -26,7 +22,11 @@
     <xsl:variable name="FileList" select="collection(concat($inputFolder, '/', '?select=*.xmi'))  | collection(concat($inputFolder, '/', '?select=*.xml'))"/>
     <xsl:template match="/">
         
-        <xmi:XMI xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI" xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:thecustomprofile="http://www.sparxsystems.com/profiles/thecustomprofile/1.0">
+        <xmi:XMI xmlns:uml="http://www.omg.org/spec/UML/20131001" 
+                xmlns:xmi="http://www.omg.org/spec/XMI/20131001" 
+                xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI" 
+                xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" 
+                xmlns:thecustomprofile="http://www.sparxsystems.com/profiles/thecustomprofile/1.0">
             <xmi:Documentation exporter="Enterprise Architect" exporterVersion="6.5"/> 
             
             <!-- Merge elements under uml:Model -->
