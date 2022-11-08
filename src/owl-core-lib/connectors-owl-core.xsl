@@ -50,6 +50,8 @@
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
         <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">
+            <xsl:value-of select="./@idref"/>
+            <xsl:value-of select="'check out this generalization'"/>
             <xsl:choose>
                 <xsl:when
                     test="

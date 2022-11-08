@@ -34,14 +34,13 @@
         <x:expect label="result" test="boolean(/rdf:Description/owl:disjointWith)"/>
     </x:scenario>
 
-<!--        <x:scenario
+    <x:scenario
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']">
-        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[454]"/>
+        <x:context href="../../testData/ePO-CM-v2.0.1-2022-04-29_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/*[namespace-uri()='' and local-name()='connectors'][1]/*[namespace-uri()='' and local-name()='connector'][4]"/>
         <x:expect label="result" test="boolean(/owl:Class)"/>
-        <x:expect label="result" test="boolean(/owl:Class/owl:equivalentClass)"/>
-        <x:expect label="result" test="/owl:Class/@rdf:about='http://xmlns.com/foaf/0.1/Person'"/>
-        <x:expect label="result" test="/owl:Class/owl:equivalentClass/@rdf:resource='http://www.w3.org/ns/org#Organization'"/>
-    </x:scenario>-->
+        <x:expect label="result" test="boolean(/rdf:Description)"/>        
+        <x:expect label="result" test="/owl:Class/@rdf:about='http://data.europa.eu/a4g/ontology#ElementChangeSpecification'"/>        
+    </x:scenario>
 
     <x:scenario
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Association']">
