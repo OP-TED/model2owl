@@ -122,39 +122,40 @@
             select="$connectorsWithSameName"
         />
         
-            <xsl:if test="fn:count($filteredConnectorsWithSameName) = 1">
-                <xsl:variable name="classURI"
-                    select="
+        <xsl:if test="fn:count($filteredConnectorsWithSameName) = 1">
+            <xsl:variable name="classURI"
+                select="
                     if ($filteredConnectorsWithSameName/target/role/@name = $connectorName) then
-                    f:buildURIfromLexicalQName($filteredConnectorsWithSameName/source/model/@name, fn:true(), fn:true())
-                        else
-                        f:buildURIfromLexicalQName($filteredConnectorsWithSameName/target/model/@name, fn:true(), fn:true())"/>
-                <rdf:Description rdf:about="{$targetRoleURI}">
-                    <rdfs:domain rdf:resource="{$classURI}"/>
-                </rdf:Description>
-            </xsl:if>
-            <xsl:if test="fn:count($filteredConnectorsWithSameName) > 1">
-                <xsl:variable name="targetDomains"
-                    select="$filteredConnectorsWithSameName/target[role/@name = $connectorName]/../source/model/@name"
-                    as="xs:string*"/>
-                <xsl:variable name="sourceDomains"
-                    select="$filteredConnectorsWithSameName/source[role/@name = $connectorName]/../target/model/@name"
-                    as="xs:string*"/>
-                <xsl:variable name="domains"
-                    select="functx:value-union($targetDomains, $sourceDomains)"/>
-                <rdf:Description rdf:about="{$targetRoleURI}">
-                    <rdfs:domain>
-                        <owl:Class>
-                            <owl:unionOf rdf:parseType="Collection">
-                                <xsl:for-each select="$domains">
-                                    <rdf:Description
-                                        rdf:about="{f:buildURIfromLexicalQName(., fn:true(), fn:true())}"/>
-                                </xsl:for-each>
-                            </owl:unionOf>
-                        </owl:Class>
-                    </rdfs:domain>
-                </rdf:Description>
-            </xsl:if>
+                        f:buildURIfromLexicalQName($filteredConnectorsWithSameName/source/model/@name, fn:true(), fn:true())
+                    else
+                        f:buildURIfromLexicalQName($filteredConnectorsWithSameName/target/model/@name, fn:true(), fn:true())
+            "/>
+            <rdf:Description rdf:about="{$targetRoleURI}">
+                <rdfs:domain rdf:resource="{$classURI}"/>
+            </rdf:Description>
+        </xsl:if>
+        <xsl:if test="fn:count($filteredConnectorsWithSameName) > 1">
+            <xsl:variable name="targetDomains"
+                select="$filteredConnectorsWithSameName/target[role/@name = $connectorName]/../source/model/@name"
+                as="xs:string*"/>
+            <xsl:variable name="sourceDomains"
+                select="$filteredConnectorsWithSameName/source[role/@name = $connectorName]/../target/model/@name"
+                as="xs:string*"/>
+            <xsl:variable name="domains"
+                select="functx:value-union($targetDomains, $sourceDomains)"/>
+            <rdf:Description rdf:about="{$targetRoleURI}">
+                <rdfs:domain>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <xsl:for-each select="$domains">
+                                <rdf:Description
+                                    rdf:about="{f:buildURIfromLexicalQName(., fn:true(), fn:true())}"/>
+                            </xsl:for-each>
+                        </owl:unionOf>
+                    </owl:Class>
+                </rdfs:domain>
+            </rdf:Description>
+        </xsl:if>
     </xsl:template>
 
 

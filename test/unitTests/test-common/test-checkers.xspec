@@ -3,12 +3,8 @@
     xmlns:f="http://https://github.com/costezki/model2owl#"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
-    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
-    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-    stylesheet="file:../../../src/common/checkers.xsl">
+    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"    
+    stylesheet="../../../src/common/checkers.xsl">
     
     <x:scenario label="Check valid normalized string">
         <x:call function="f:isValidNormalizedString">
@@ -68,7 +64,7 @@
     
     <x:scenario label="Check if Qname prefix is a valid namespace">
         <x:call function="f:isValidNamespace">
-            <x:param name="input">ccev:localName</x:param>
+            <x:param name="input">cccev:localName</x:param>
         </x:call>
         <x:expect label="boolean-true" select="true()"/>
     </x:scenario>
@@ -103,12 +99,12 @@
     
     <x:scenario label="Check if a data-type is valid when passing a UML data-type ">
         <x:call function="f:isValidDataType">
-            <x:param name="input">String</x:param>
+            <x:param name="input">string</x:param>
         </x:call>
         <x:expect label="boolean-true" select="true()"/>
     </x:scenario>
     
-    <x:scenario label="Check a invalid data-type">
+    <x:scenario label="Check an invalid data-type">
         <x:call function="f:isValidDataType">
             <x:param name="input">prefix:localName</x:param>
         </x:call>

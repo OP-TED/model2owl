@@ -3,7 +3,9 @@
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:f="http://https://github.com/costezki/model2owl#"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
-    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"    
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"  
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    
     stylesheet="../../../src/common/utils.xsl">
 
     <x:scenario label="Scenario 1 for testing function camelCaseString">
@@ -11,14 +13,7 @@
             <x:param name="input">this    is    a    name</x:param>
         </x:call>
         <x:expect label="result" select="fn:string('thisIsAName')"/>
-    </x:scenario>
-
-    <x:scenario label="Scenario 3 for testing function camelCaseString">
-        <x:call function="f:camelCaseString">
-            <x:param name="input">This    iS    a    naMe</x:param>
-        </x:call>
-        <x:expect label="result" select="fn:string('thisISANaMe')"/>
-    </x:scenario>
+    </x:scenario>   
 
     <x:scenario label="Scenario 2 for testing function camelCaseString">
         <x:call function="f:camelCaseString">
@@ -27,6 +22,12 @@
         <x:expect label="result" select="fn:string('this')"/>
     </x:scenario>
     
+    <x:scenario label="Scenario 3 for testing function camelCaseString">
+        <x:call function="f:camelCaseString">
+            <x:param name="input">This    iS    a    naMe</x:param>
+        </x:call>
+        <x:expect label="result" select="fn:string('thisISANaMe')"/>
+    </x:scenario>
     
     <x:scenario label="Scenario 1 for testing function pascalCaseString">
         <x:call function="f:pascalCaseString">
@@ -35,7 +36,7 @@
         <x:expect label="result" select="fn:string('ThisIsAName')"/>
     </x:scenario>
     
-    <x:scenario label="Scenario 1 for testing function pascalCaseString">
+    <x:scenario label="Scenario 2 for testing function pascalCaseString">
         <x:call function="f:pascalCaseString">
             <x:param name="input">this</x:param>
         </x:call>

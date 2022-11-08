@@ -77,7 +77,7 @@
                 </td>
                 <td>
                     <xsl:variable name="classElement" select="f:getElementByName(., $root)"/>
-                    <xsl:value-of select="f:formatDocString($classElement/properties/@documentation)"/>
+                    <xsl:value-of select="f:formatDocString(fn:string-join($classElement/properties/@documentation))"/>
                 </td>
             </tr>
         </xsl:for-each>
