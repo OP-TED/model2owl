@@ -91,7 +91,7 @@ merge-xmi:
 	@echo Input files to be combined are located at the directory containing this input file: ${FIRST_INPUT_XMI_FILE} under directory ${INPUT_XMI_DIR}
 	@ls -lh ${INPUT_XMI_DIR}
 	@echo 
-	@echo "==> The combined document is located at the following location 
+	@echo "==> The combined document is located at the following location" 
 	@ls -lh ${COMBINED_XMI_DIRECTORY}/${COMBINED_FILE_NAME}
 
 # Generate the glossary from an input file
