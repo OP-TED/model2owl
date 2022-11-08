@@ -2,21 +2,16 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" 
-    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:fn="http://www.w3.org/2005/xpath-functions"
     exclude-result-prefixes="xs math xd xsl uml xmi umldi dc fn"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
-    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:functx="http://www.functx.com"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-    xmlns:f="http://https://github.com/costezki/model2owl#" 
-    xmlns:functx="http://www.functx.com"
-    version="3.0">
+    xmlns:f="http://https://github.com/costezki/model2owl#" version="3.0">
 
     <xd:doc scope="stylesheet">
         <xd:desc>
@@ -341,26 +336,8 @@
         <xsl:sequence select="fn:concat(upper-case(substring($cc, 1, 1)), substring($cc, 2))"/>
     </xsl:function>
 
-    <xd:doc>
-        <xd:desc>Smooth a string</xd:desc>
-        <xd:param name="str">input string to be smoothed</xd:param>
-    </xd:doc>
-    <xsl:function name="f:smooth-string" as="xs:string?">
-        <xsl:param name="str" as="xs:string"/>
-        <xsl:sequence select="
-            if ($str = 'Has u r l') then
-                ('Has URL')
-            else
-            if (matches($str,'\[[a-z] [a-z]? ?[a-z]+\]')) then
-                    upper-case($str)
-                else
-                    $str            
-            "
-            >
-            
-        </xsl:sequence>
-    </xsl:function>
-    
+
+
 
     <xd:doc>
         <xd:desc>Turns the local segment of a lexicalised qName into words</xd:desc>
@@ -368,15 +345,16 @@
     </xd:doc>
     <xsl:function name="f:lexicalQNameToWords" as="xs:string">
         <xsl:param name="lexicalqName" as="xs:string"/>
+
         <xsl:sequence
             select="
-                f:smooth-string(functx:capitalize-first(
+                functx:capitalize-first(
                 fn:lower-case(
                 functx:camel-case-to-words(
                 fn:local-name-from-QName(
                 f:buildQNameFromLexicalQName($lexicalqName, fn:true(), fn:true())
                 ), ' ')
-                )))"
+                ))"
         />
     </xsl:function>
 
