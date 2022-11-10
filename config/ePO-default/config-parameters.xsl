@@ -91,12 +91,15 @@
 
     <xsl:variable name="reference-to-external-classes-in-glossary" select="fn:false()"/>
     
-    <xsl:variable name="license-core-module" select="'http://creativecommons.org/licenses/by-sa/4.0/'"/>
-    
     <!-- The metadata.xml is used to define the metadata for each input xmi file. The metadata.xml is found next to the input file. -->    
     <xsl:variable name="metadata" select="document(concat(functx:substring-before-last(base-uri(), '/'), '/', 'metadata.xml'))" />
     <!-- ontology title, version to be inserted in the ontology header below -->    
     <xsl:variable name="ontologyTitle" select="$metadata//title"/>
     <xsl:variable name="ontologyVersion" select="$metadata//version"/>
     <xsl:variable name="ontologyDescription" select="$metadata//description"/>
+    <xsl:variable name="ontologyContributors" select="$metadata//dc:contributor"/>
+    <xsl:variable name="ontologyCreator" select="$metadata//dct:creator"/>
+    <xsl:variable name="ontologyRights" select="$metadata//dc:rights"/>
+    <xsl:variable name="ontologyIncompatibleWith" select="$metadata//owl:incompatibleWith"/>
+    <xsl:variable name="licenseCoreModule" select="$metadata//dct:license"/>    
 </xsl:stylesheet>

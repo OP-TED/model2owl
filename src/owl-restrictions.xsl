@@ -59,8 +59,6 @@
         <xd:desc> Ontology header </xd:desc>
     </xd:doc>
     <xsl:template name="ontology-header">
-
-
         <owl:Ontology rdf:about="{$restrictionsModuleURI}">            
             <!-- imports some common resources from metadata.xml (next to the xmi input file)-->
             <xsl:for-each select="$metadata//imports/@resource">
@@ -76,7 +74,8 @@
             <vann:preferredNamespaceUri>
                 <xsl:value-of select="fn:concat($base-ontology-uri, $defaultDelimiter)"/>
             </vann:preferredNamespaceUri>
-            <dct:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
+            <xsl:copy-of select="$licenseCoreModule"/>
+            <xsl:copy-of select="$ontologyRights"/>
             <rdfs:label xml:lang="en">
                 <xsl:value-of select="$ontologyTitle"/>. This module provides the inference-related definitions.
             </rdfs:label>
@@ -87,6 +86,7 @@
                 '[Y0001]-[M01]-[D01]'))}"/>
             
             <owl:versionInfo><xsl:value-of select="$ontologyVersion"/></owl:versionInfo>
+            <xsl:copy-of select="$ontologyIncompatibleWith"></xsl:copy-of>
             <rdfs:comment>This version is automatically generated from <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on <xsl:value-of
                 select="
                 format-date(current-date(),

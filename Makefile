@@ -72,7 +72,12 @@ get-rdflib:
 	@echo source venv/bin/activate
 	@echo -- Install rdflib inside your virtual environment
 	@pip install rdflib
-	
+
+# activate a virtual env
+activate-venv:
+	@echo virtualenv venv
+	@echo -- Activate your venv
+	@echo source venv/bin/activate
 
 ######################################################################################
 # Download, install saxon, xspec, rdflib and other dependencies
@@ -83,6 +88,9 @@ init:  get-saxon  get-xspec get-rdflib
 # Run unit_tests
 unit-tests:
 	@ant -lib ${SAXON} unit_tests
+
+update-metadata.xml-to-test-data:
+	@echo "${MODEL2OWL_DIR}/test/testData ${MODEL2OWL_DIR}/test/test-multi-xmi ${MODEL2OWL_DIR}/test/test-merge-xmi" | xargs -n 1 cp -v ${MODEL2OWL_DIR}/config/metadata.xml
 
 # Combine xmi UML files
 merge-xmi:

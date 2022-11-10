@@ -74,7 +74,9 @@
                 <owl:imports rdf:resource="{.}"/>
             </xsl:for-each>            
              
-            
+            <dct:title xml:lang="en">
+                <xsl:value-of select="$ontologyTitle"/>
+            </dct:title>
             <dct:description xml:lang="en">
                 <xsl:value-of select="$ontologyDescription"/>
             </dct:description>
@@ -82,17 +84,16 @@
             <vann:preferredNamespaceUri>
                 <xsl:value-of select="fn:concat($base-ontology-uri, $defaultDelimiter)"/>                
             </vann:preferredNamespaceUri>
-            <dct:license rdf:resource="$license-core-module"/>
+            <xsl:copy-of select="$licenseCoreModule"/>
+            <xsl:copy-of select="$ontologyRights"/>
             <rdfs:label xml:lang="en">
                 <xsl:value-of select="$ontologyTitle"/>
-            </rdfs:label>
-            <dct:title xml:lang="en">
-                <xsl:value-of select="$ontologyTitle"/>
-            </dct:title>
+            </rdfs:label>            
             
             <owl:versionIRI rdf:resource="{fn:concat($coreModuleURI,'#',tokenize(base-uri(.), '/')[last()],'-',format-date(current-date(),
                 '[Y0001]-[M01]-[D01]'))}"/>
             <owl:versionInfo><xsl:value-of select="$ontologyVersion"/></owl:versionInfo>
+            <xsl:copy-of select="$ontologyIncompatibleWith"></xsl:copy-of>
             <rdfs:comment>This version is automatically generated from <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on <xsl:value-of
                 select="
                 format-date(current-date(),
@@ -111,44 +112,8 @@
                     '[Y0001]-[M01]-[D01]')"/>
             </dct:date>
             
-            <dc:contributor>
-                <foaf:Person>
-                    <foaf:name>Eugeniu</foaf:name>
-                    <foaf:surname>Costetchi</foaf:surname>
-                    <foaf:homepage rdf:resource="http://costezki.ro"/>
-                    <schema:affiliation rdf:parseType="Resource">
-                        <foaf:name>Meaningfy</foaf:name>
-                        <foaf:page rdf:resource="http://meaningfy.ws"/>
-                    </schema:affiliation>
-                </foaf:Person>
-            </dc:contributor>
-            
-            <dc:contributor>
-                <foaf:Person>
-                    <foaf:name>Andreea</foaf:name>
-                    <foaf:surname>Pasare</foaf:surname>
-                    <schema:affiliation rdf:parseType="Resource">
-                        <foaf:name>Meaningfy</foaf:name>
-                        <foaf:page rdf:resource="http://meaningfy.ws"/>
-                    </schema:affiliation>
-                </foaf:Person>
-            </dc:contributor>
-            
-            <dc:contributor>
-                <foaf:Person>
-                    <foaf:name>Natalie</foaf:name>
-                    <foaf:surname>Muric</foaf:surname>
-                    <schema:affiliation rdf:parseType="Resource">
-                        <foaf:name>Publications Office of the European Union</foaf:name>
-                    </schema:affiliation>
-                </foaf:Person>
-            </dc:contributor>
-            
-            <dct:creator>
-                <foaf:Person>
-                    <foaf:name>eProcurement Ontology Working Group</foaf:name>
-                </foaf:Person>
-            </dct:creator>
+           <xsl:copy-of select="$ontologyContributors" />
+           <xsl:copy-of select="$ontologyCreator" />
         </owl:Ontology>
         
     </xsl:template>

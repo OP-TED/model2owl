@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="windows-1252"?>
-<metadata>
+<metadata
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dct="http://purl.org/dc/terms/"    
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:schema="https://schema.org/"
+    >
     <title>eProcurement core ontology</title>
     <!-- Ontology version -->
     <version>3.0.1</version>
@@ -18,4 +25,43 @@
     <!-- default imports for each module -->
     <imports resource="http://purl.org/dc/terms/"/>
     <imports resource="http://www.w3.org/2004/02/skos/core"/>
+    
+    <dc:contributor>
+        <foaf:Person>
+            <foaf:name>Eugeniu</foaf:name>
+            <foaf:surname>Costetchi</foaf:surname>
+            <foaf:homepage rdf:resource="http://costezki.ro"/>
+            <schema:affiliation rdf:parseType="Resource">
+                <foaf:name>Meaningfy</foaf:name>
+                <foaf:page rdf:resource="http://meaningfy.ws"/>
+            </schema:affiliation>
+        </foaf:Person>
+    </dc:contributor>
+    <dc:contributor>
+        <foaf:Person>
+            <foaf:name>Andreea</foaf:name>
+            <foaf:surname>Pasare</foaf:surname>
+            <schema:affiliation rdf:parseType="Resource">
+                <foaf:name>Meaningfy</foaf:name>
+                <foaf:page rdf:resource="http://meaningfy.ws"/>
+            </schema:affiliation>
+        </foaf:Person>
+    </dc:contributor>
+    <dc:contributor>
+        <foaf:Person>
+            <foaf:name>Natalie</foaf:name>
+            <foaf:surname>Muric</foaf:surname>
+            <schema:affiliation rdf:parseType="Resource">
+                <foaf:name>Publications Office of the European Union</foaf:name>
+            </schema:affiliation>
+        </foaf:Person>
+    </dc:contributor>
+    <dct:creator>
+        <foaf:Person>
+            <foaf:name>eProcurement Ontology Working Group</foaf:name>
+        </foaf:Person>
+    </dct:creator>
+    <dct:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
+    <dc:rights>This ontology is licenced under CC BY-SA 4.0 - http://creativecommons.org/licenses/by-sa/4.0/</dc:rights>
+    <owl:incompatibleWith>2.x.x</owl:incompatibleWith>
 </metadata>
