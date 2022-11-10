@@ -6,16 +6,22 @@
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:fn="http://www.w3.org/2005/xpath-functions"
     exclude-result-prefixes="xs math xd xsl uml xmi umldi fn f"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
-    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"    
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:dct="http://purl.org/dc/terms/"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:sh="http://www.w3.org/ns/shacl#"
-    xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:vann="http://purl.org/vocab/vann/"
-    xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" version="3.0">
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#" 
+    xmlns:sh="http://www.w3.org/ns/shacl#"
+    xmlns:f="http://https://github.com/costezki/model2owl#" 
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:cc="http://creativecommons.org/ns#" 
+    xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+    xmlns:schema="https://schema.org/"
+    version="3.0">
 
     <xd:doc scope="stylesheet">
         <xd:desc>
