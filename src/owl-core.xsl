@@ -22,6 +22,7 @@
     xmlns:cc="http://creativecommons.org/ns#" 
     xmlns:foaf="http://xmlns.com/foaf/0.1/"
     xmlns:org="http://www.w3.org/ns/org#" 
+    xmlns:schema="https://schema.org/"
     version="3.0">
 
     <xd:doc scope="stylesheet">
@@ -115,10 +116,10 @@
                     <foaf:name>Eugeniu</foaf:name>
                     <foaf:surname>Costetchi</foaf:surname>
                     <foaf:homepage rdf:resource="http://costezki.ro"/>
-                    <foaf:affiliation rdf:parseType="Resource">
+                    <schema:affiliation rdf:parseType="Resource">
                         <foaf:name>Meaningfy</foaf:name>
                         <foaf:page rdf:resource="http://meaningfy.ws"/>
-                    </foaf:affiliation>
+                    </schema:affiliation>
                 </foaf:Person>
             </dc:contributor>
             
@@ -126,10 +127,10 @@
                 <foaf:Person>
                     <foaf:name>Andreea</foaf:name>
                     <foaf:surname>Pasare</foaf:surname>
-                    <foaf:affiliation rdf:parseType="Resource">
+                    <schema:affiliation rdf:parseType="Resource">
                         <foaf:name>Meaningfy</foaf:name>
                         <foaf:page rdf:resource="http://meaningfy.ws"/>
-                    </foaf:affiliation>
+                    </schema:affiliation>
                 </foaf:Person>
             </dc:contributor>
             
@@ -137,9 +138,9 @@
                 <foaf:Person>
                     <foaf:name>Natalie</foaf:name>
                     <foaf:surname>Muric</foaf:surname>
-                    <foaf:affiliation rdf:parseType="Resource">
+                    <schema:affiliation rdf:parseType="Resource">
                         <foaf:name>Publications Office of the European Union</foaf:name>
-                    </foaf:affiliation>
+                    </schema:affiliation>
                 </foaf:Person>
             </dc:contributor>
             
