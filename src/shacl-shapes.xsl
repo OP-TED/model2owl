@@ -65,7 +65,7 @@
         <owl:Ontology rdf:about="{$shapeModuleURI}">
             
             <!-- imports some common resources from metadata.xml (next to the xmi input file)-->
-            <xsl:for-each select="$metadata//imports/@resource">
+            <xsl:for-each select="$m//imports/@resource">
                 <owl:imports rdf:resource="{.}"/>
             </xsl:for-each>  
             
@@ -79,37 +79,29 @@
             <dct:description xml:lang="en">
                 <xsl:value-of select="$ontologyDescription"/> (SHACL datashape)
             </dct:description>
-            <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
+            
+            <xsl:copy-of select="$commonMetadata"></xsl:copy-of>
+            
             <vann:preferredNamespaceUri>
                 <xsl:value-of select="fn:concat($base-ontology-uri, $defaultDelimiter)"/>                    
             </vann:preferredNamespaceUri>
-            <xsl:copy-of select="$licenseCoreModule"/>
-            <xsl:copy-of select="$ontologyRights"/>
+             
             <rdfs:label xml:lang="en">
                 <xsl:value-of select="$ontologyTitle"/>. This module provides the datashape definitions.
             </rdfs:label>           
             <owl:versionIRI rdf:resource="{fn:concat($shapeModuleURI,'#',tokenize(base-uri(.), '/')[last()],'-',format-date(current-date(),
                 '[Y0001]-[M01]-[D01]'))}"/>
-            <owl:versionInfo><xsl:value-of select="$ontologyVersion"/></owl:versionInfo>
-            <xsl:copy-of select="$ontologyIncompatibleWith"></xsl:copy-of>
+             
             <rdfs:comment>This version is automatically generated from <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on <xsl:value-of
                 select="
                 format-date(current-date(),
                 '[Y0001]-[M01]-[D01]')"/>
             </rdfs:comment>
-            <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
-            <rdfs:seeAlso
-                rdf:resource="https://joinup.ec.europa.eu/solution/eprocurement-ontology/about"/>
-            <rdfs:seeAlso
-                rdf:resource="https://github.com/eprocurementontology/eprocurementontology"/>
-            <cc:attributionName>PublicationsOffice of the European Union</cc:attributionName>
-            <cc:attributionURL
-                rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/PUBL"/>
-
             <dct:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
                 <xsl:value-of select="format-date(current-date(),
                     '[Y0001]-[M01]-[D01]')"/>
             </dct:date>
+            
         </owl:Ontology>
     </xsl:template>
 

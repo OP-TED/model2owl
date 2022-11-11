@@ -9,12 +9,14 @@
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
+    xmlns:cc="http://creativecommons.org/ns#"
     xmlns:dc="http://purl.org/dc/elements/1.1/" 
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
     xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#" 
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:vann="http://purl.org/vocab/vann/"
     version="3.0">
 
     <xd:doc scope="stylesheet">
@@ -92,14 +94,23 @@
     <xsl:variable name="reference-to-external-classes-in-glossary" select="fn:false()"/>
     
     <!-- The metadata.xml is used to define the metadata for each input xmi file. The metadata.xml is found next to the input file. -->    
-    <xsl:variable name="metadata" select="document(concat(functx:substring-before-last(base-uri(), '/'), '/', 'metadata.xml'))" />
-    <!-- ontology title, version to be inserted in the ontology header below -->    
-    <xsl:variable name="ontologyTitle" select="$metadata//title"/>
-    <xsl:variable name="ontologyVersion" select="$metadata//version"/>
-    <xsl:variable name="ontologyDescription" select="$metadata//description"/>
-    <xsl:variable name="ontologyContributors" select="$metadata//dc:contributor"/>
-    <xsl:variable name="ontologyCreator" select="$metadata//dct:creator"/>
-    <xsl:variable name="ontologyRights" select="$metadata//dc:rights"/>
-    <xsl:variable name="ontologyIncompatibleWith" select="$metadata//owl:incompatibleWith"/>
-    <xsl:variable name="licenseCoreModule" select="$metadata//dct:license"/>    
+    <xsl:variable name="m" select="document(concat(functx:substring-before-last(base-uri(), '/'), '/', 'metadata.xml'))" />
+    <!-- ontology title, version to be inserted in the ontology header -->
+    <!-- Customized metadata: title and description can be appended or extended -->    
+    <xsl:variable name="ontologyTitle" select="$m//title"/>    
+    <xsl:variable name="ontologyDescription" select="$m//description"/>
+    <!-- Common metadata (core, restrictions and shacle) -->    
+    <xsl:variable name="commonMetadata" 
+        select="
+        $m//owl:versionInfo|
+        $m//dc:contributor|
+        $m//dct:creator|
+        $m//dc:rights|
+        $m//dct:license|
+        $m//owl:incompatibleWith|
+        $m//cc:attributionName|
+        $m//cc:attributionURL|
+        $m//vann:preferredNamespacePrefix|
+        $m//rdfs:seeAlso        
+        "/>    
 </xsl:stylesheet>
