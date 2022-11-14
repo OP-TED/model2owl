@@ -36,7 +36,7 @@
     <xsl:import href="shacl-shape-lib/shacl-shape-selectors.xsl"/>
     <xsl:import href="shacl-shape-lib/elements-shacl-shape.xsl"/>
     <xsl:import href="shacl-shape-lib/connectors-shacl-shape.xsl"/>
-    <xsl:import href="../config/config-proxy.xsl"/>
+    <!--<xsl:import href="../config/config-proxy.xsl"/>-->
     
     
     <xsl:output name="data-shapes-ePO.shapes.rdf" method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
@@ -48,8 +48,8 @@
     <xsl:template match="/">
         <rdf:RDF>
             <xsl:namespace name="epo" select="concat($base-ontology-uri, '#')"/> 
-            <xsl:namespace name="epor" select="concat($base-rule-uri, '#')"/>
-            <xsl:namespace name="epos" select="concat($base-shape-uri, '#')"/>                        
+            <!--<xsl:namespace name="epor" select="concat($base-rule-uri, '#')"/>
+            <xsl:namespace name="epos" select="concat($base-shape-uri, '#')"/>-->                        
             <xsl:namespace name="" select="concat($base-shape-uri, '#')"/>
             <xsl:attribute name="xml:base" expand-text="true">{$shapeModuleURI}</xsl:attribute>
             

@@ -6,7 +6,7 @@
     xmlns:sh="http://www.w3.org/ns/shacl#"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" 
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
-    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn f sh dc foaf"
+    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn f sh"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
@@ -49,8 +49,8 @@
     <xsl:template match="/">
         <rdf:RDF>
             <xsl:namespace name="epo" select="concat($base-ontology-uri, '#')"/> 
-            <xsl:namespace name="epor" select="concat($base-rule-uri, '#')"/>
-            <xsl:namespace name="epos" select="concat($base-shape-uri, '#')"/>
+            <!--<xsl:namespace name="epor" select="concat($base-rule-uri, '#')"/>
+            <xsl:namespace name="epos" select="concat($base-shape-uri, '#')"/>-->
             
             <xsl:namespace name="" select="concat($base-ontology-uri, '#')"/>
             <xsl:attribute name="xml:base" expand-text="true">{$coreModuleURI}</xsl:attribute>
@@ -99,7 +99,7 @@
                     '[Y0001]-[M01]-[D01]')"/>
             </dct:date>
             
-            <xsl:copy-of select="$commonMetadata"></xsl:copy-of>
+            <xsl:copy-of select="$commonMetadata" />
             <vann:preferredNamespaceUri>
                 <xsl:value-of select="fn:concat($base-ontology-uri, $defaultDelimiter)"/>                
             </vann:preferredNamespaceUri>
