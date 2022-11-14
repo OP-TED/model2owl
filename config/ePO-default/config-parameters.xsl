@@ -102,6 +102,7 @@
     <!-- Common metadata (core, restrictions and shacle) -->    
     <xsl:variable name="commonMetadata" 
         select="
+        $m//rdfs:seeAlso| 
         $m//owl:versionInfo|
         $m//dc:contributor|
         $m//dct:creator|
@@ -110,7 +111,6 @@
         $m//owl:incompatibleWith|
         $m//cc:attributionName|
         $m//cc:attributionURL|
-        $m//vann:preferredNamespacePrefix|
-        $m//rdfs:seeAlso        
+        $m//vann:preferredNamespacePrefix               
         "/>    
 </xsl:stylesheet>
