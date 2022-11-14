@@ -36,14 +36,24 @@
         <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:domain/owl:Class/owl:unionOf/rdf:Description) = 3"/>
     </x:scenario>
     
-    <x:scenario label="Scenario for attribute range - Object property">
+    <!--<x:scenario label="Scenario for attribute range - Object property">
         <x:call template="attributeRange">
             <x:param name="attributeName">epo:Address Type</x:param>
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
         </x:call>   
         <x:expect label="there is a owl:ObjectProperty" test="boolean(rdf:Description) "/>
         <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
-        <x:expect label="there is a correct class URI " test="rdf:Description/rdfs:range/@rdf:resource = 'http://www.w3.org/2004/02/skos/core#Concept'"/>
+        <x:expect label="there is a correct class URI " test="rdf:Description/rdfs:range/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Code'"/>
+    </x:scenario>-->
+    
+    <x:scenario label="Scenario for attribute range - Object property">
+        <x:call template="attributeRange">
+            <x:param name="attributeName">epo:hasBuyerTypeDescription</x:param>
+            <x:param name="root" href="../../testData/ePO_CM-2022-04-29.xmi" select="/"/>
+        </x:call>   
+        <x:expect label="there is a owl:ObjectProperty" test="boolean(rdf:Description) "/>
+        <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
+        <x:expect label="there is a correct class URI " test="rdf:Description/rdfs:range/@rdf:resource = 'http://www.w3.org/2000/01/rdf-schema#Literal'"/>
     </x:scenario>
     
     <x:scenario label="Scenario for attribute range - Datatype property">
@@ -63,7 +73,7 @@
         </x:call>   
         <x:expect label="there is a owl:DatatypeProperty" test="boolean(rdf:Description) "/>
         <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
-        <x:expect label="there is a correct datatype URI " test="rdf:Description/rdfs:range/@rdf:resource = 'http://www.w3.org/2001/XMLSchema#anyURI'"/>
+        <x:expect label="there is a correct datatype URI " test="rdf:Description/rdfs:range/@rdf:resource = 'http://data.europa.eu/a4g/ontology#URI'"/>
     </x:scenario>
     
     <x:scenario label="Scenario for attribute range - group of attributes with same name and same data-type">
@@ -73,7 +83,7 @@
         </x:call>   
         <x:expect label="there is a owl:DatatypeProperty" test="boolean(rdf:Description) "/>
         <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
-        <x:expect label="there is a correct datatype URI " test="rdf:Description/rdfs:range/@rdf:resource = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#langString'"/>
+        <x:expect label="there is a correct datatype URI " test="rdf:Description/rdfs:range/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Text'"/>
     </x:scenario>
     
     <x:scenario label="Scenario for attribute range - group of attributes with same name and different data-type">

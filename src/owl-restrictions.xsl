@@ -5,11 +5,11 @@
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" 
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
-    exclude-result-prefixes="xs math xd xsl uml xmi umldi dc fn"
+    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
-    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
-    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"     
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:dct="http://purl.org/dc/terms/"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
@@ -18,6 +18,7 @@
     xmlns:cc="http://creativecommons.org/ns#" 
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:schema="https://schema.org/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/" 
     version="3.0">
     <xd:doc scope="stylesheet">
         <xd:desc>
@@ -27,7 +28,7 @@
         </xd:desc>
     </xd:doc>
     
-    <xsl:import href="../config/config-proxy.xsl"/>
+    <!--<xsl:import href="../config/config-proxy.xsl"/>-->
     <xsl:import href="reasoning-layer-lib/reasoning-layer-selectors.xsl"/>
     <xsl:import href="reasoning-layer-lib/elements-reasoning-layer.xsl"/>
     <xsl:import href="reasoning-layer-lib/connectors-reasoning-layer.xsl"/>
@@ -41,8 +42,8 @@
     <xsl:template match="/">
         <rdf:RDF>
             <xsl:namespace name="epo" select="concat($base-ontology-uri, '#')"/> 
-            <xsl:namespace name="epor" select="concat($base-rule-uri, '#')"/>
-            <xsl:namespace name="epos" select="concat($base-shape-uri, '#')"/>                        
+            <!--<xsl:namespace name="epor" select="concat($base-rule-uri, '#')"/>
+            <xsl:namespace name="epos" select="concat($base-shape-uri, '#')"/>-->                        
             <xsl:namespace name="" select="concat($base-rule-uri, '#')"/>
             <xsl:attribute name="xml:base" expand-text="true">{$restrictionsModuleURI}</xsl:attribute>
             
