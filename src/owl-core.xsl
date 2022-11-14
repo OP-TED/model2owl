@@ -6,7 +6,7 @@
     xmlns:sh="http://www.w3.org/ns/shacl#"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" 
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
-    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn f sh"
+    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn f sh dc foaf"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
