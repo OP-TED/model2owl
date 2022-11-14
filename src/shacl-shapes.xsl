@@ -3,7 +3,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" 
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
     exclude-result-prefixes="xs math xd xsl uml xmi umldi fn f"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"    
@@ -64,7 +65,7 @@
         <owl:Ontology rdf:about="{$shapeModuleURI}">
             
             <!-- imports some common resources from metadata.xml (next to the xmi input file)-->
-            <xsl:for-each select="$metadata//imports/@resource">
+            <xsl:for-each select="$m//imports/@resource">
                 <owl:imports rdf:resource="{.}"/>
             </xsl:for-each>  
             
@@ -72,42 +73,35 @@
             <owl:imports rdf:resource="http://datashapes.org/dash"/>            
             <owl:imports rdf:resource="http://www.w3.org/ns/shacl#"/>
             
-
-            <dct:description xml:lang="en">
-                <xsl:value-of select="$ontologyDescription"/> (SHACL datashape)
-            </dct:description>
-            <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
-            <vann:preferredNamespaceUri>
-                <xsl:value-of select="fn:concat($base-ontology-uri, $defaultDelimiter)"/>                    
-            </vann:preferredNamespaceUri>
-            <dct:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
-            <rdfs:label xml:lang="en">
-                <xsl:value-of select="$ontologyTitle"/>. This module provides the datashape definitions.
-            </rdfs:label>
             <dct:title xml:lang="en">
                 <xsl:value-of select="$ontologyTitle"/>. This module provides the datashape definitions.
             </dct:title>
+            <dct:description xml:lang="en">
+                <xsl:value-of select="$ontologyDescription"/> (SHACL datashape)
+            </dct:description>
+            
+            <xsl:copy-of select="$commonMetadata"></xsl:copy-of>
+            
+            <vann:preferredNamespaceUri>
+                <xsl:value-of select="fn:concat($base-ontology-uri, $defaultDelimiter)"/>                    
+            </vann:preferredNamespaceUri>
+             
+            <rdfs:label xml:lang="en">
+                <xsl:value-of select="$ontologyTitle"/>. This module provides the datashape definitions.
+            </rdfs:label>           
             <owl:versionIRI rdf:resource="{fn:concat($shapeModuleURI,'#',tokenize(base-uri(.), '/')[last()],'-',format-date(current-date(),
                 '[Y0001]-[M01]-[D01]'))}"/>
-            <owl:versionInfo><xsl:value-of select="$ontologyVersion"/></owl:versionInfo>
+             
             <rdfs:comment>This version is automatically generated from <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on <xsl:value-of
                 select="
                 format-date(current-date(),
                 '[Y0001]-[M01]-[D01]')"/>
             </rdfs:comment>
-            <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
-            <rdfs:seeAlso
-                rdf:resource="https://joinup.ec.europa.eu/solution/eprocurement-ontology/about"/>
-            <rdfs:seeAlso
-                rdf:resource="https://github.com/eprocurementontology/eprocurementontology"/>
-            <cc:attributionName>PublicationsOffice of the European Union</cc:attributionName>
-            <cc:attributionURL
-                rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/PUBL"/>
-
             <dct:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
                 <xsl:value-of select="format-date(current-date(),
                     '[Y0001]-[M01]-[D01]')"/>
             </dct:date>
+            
         </owl:Ontology>
     </xsl:template>
 

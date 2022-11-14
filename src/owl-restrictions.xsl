@@ -10,11 +10,11 @@
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
     xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:dct="http://purl.org/dc/terms/"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
     xmlns:vann="http://purl.org/vocab/vann/"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
-    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"    
     xmlns:cc="http://creativecommons.org/ns#" 
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:schema="https://schema.org/"
@@ -32,8 +32,6 @@
     <xsl:import href="reasoning-layer-lib/elements-reasoning-layer.xsl"/>
     <xsl:import href="reasoning-layer-lib/connectors-reasoning-layer.xsl"/>
     
-
-
     <xsl:output name="ext-ePO.rdf" method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>    
     
@@ -59,53 +57,44 @@
         <xd:desc> Ontology header </xd:desc>
     </xd:doc>
     <xsl:template name="ontology-header">
-
-
         <owl:Ontology rdf:about="{$restrictionsModuleURI}">            
             <!-- imports some common resources from metadata.xml (next to the xmi input file)-->
-            <xsl:for-each select="$metadata//imports/@resource">
+            <xsl:for-each select="$m//imports/@resource">
                 <owl:imports rdf:resource="{.}"/>
             </xsl:for-each>  
             
             <owl:imports rdf:resource="{$coreModuleURI}"/>
-
-            <dct:description xml:lang="en">
-                <xsl:value-of select="$ontologyDescription"/> (inference-related definitions or restrictions)
-            </dct:description>
-            <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
-            <vann:preferredNamespaceUri>
-                <xsl:value-of select="fn:concat($base-ontology-uri, $defaultDelimiter)"/>
-            </vann:preferredNamespaceUri>
-            <dct:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
-            <rdfs:label xml:lang="en">
-                <xsl:value-of select="$ontologyTitle"/>. This module provides the inference-related definitions.
-            </rdfs:label>
+           
             <dct:title xml:lang="en">
                 <xsl:value-of select="$ontologyTitle"/>. This module provides the inference-related definitions.
             </dct:title>
+            <dct:description xml:lang="en">
+                <xsl:value-of select="$ontologyDescription"/> (inference-related definitions or restrictions)
+            </dct:description>
+            
+            <xsl:copy-of select="$commonMetadata" />
+            
+            <vann:preferredNamespaceUri>
+                <xsl:value-of select="fn:concat($base-ontology-uri, $defaultDelimiter)"/>
+            </vann:preferredNamespaceUri>
+             
+            <rdfs:label xml:lang="en">
+                <xsl:value-of select="$ontologyTitle"/>. This module provides the inference-related definitions.
+            </rdfs:label>
+           
             <owl:versionIRI rdf:resource="{fn:concat($restrictionsModuleURI,'#',tokenize(base-uri(.), '/')[last()],'-',format-date(current-date(),
                 '[Y0001]-[M01]-[D01]'))}"/>
-            
-            <owl:versionInfo><xsl:value-of select="$ontologyVersion"/></owl:versionInfo>
             <rdfs:comment>This version is automatically generated from <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on <xsl:value-of
                 select="
                 format-date(current-date(),
                 '[Y0001]-[M01]-[D01]')"/>
-            </rdfs:comment>
-            
-            <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
-            <rdfs:seeAlso
-                rdf:resource="https://joinup.ec.europa.eu/solution/eprocurement-ontology/about"/>
-            <rdfs:seeAlso
-                rdf:resource="https://github.com/eprocurementontology/eprocurementontology"/>
-            <cc:attributionName>PublicationsOffice of the European Union</cc:attributionName>
-            <cc:attributionURL
-                rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/PUBL"/>
-
+            </rdfs:comment>            
+           
             <dct:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
                 <xsl:value-of select="format-date(current-date(),
                     '[Y0001]-[M01]-[D01]')"/>
             </dct:date>
+            
         </owl:Ontology>
     </xsl:template>
 

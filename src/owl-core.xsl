@@ -12,10 +12,10 @@
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:dct="http://purl.org/dc/terms/"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
-    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"    
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:f="http://https://github.com/costezki/model2owl#" 
     xmlns:vann="http://purl.org/vocab/vann/"
@@ -40,8 +40,7 @@
     <!-- xsl:import href="../config/config-proxy.xsl"/ -->
 
     <xsl:output name="core-ePO.rdf" method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
-        cdata-section-elements="lines"/>
-    
+        cdata-section-elements="lines"/>    
     
     
     <xd:doc>
@@ -70,85 +69,40 @@
 
         <owl:Ontology rdf:about="{$coreModuleURI}">
             <!-- imports some common resources from metadata.xml (next to the xmi input file)-->
-            <xsl:for-each select="$metadata//imports/@resource">
+            <xsl:for-each select="$m//imports/@resource">
                 <owl:imports rdf:resource="{.}"/>
             </xsl:for-each>            
              
-            
-            <dct:description xml:lang="en">
-                <xsl:value-of select="$ontologyDescription"/>
-            </dct:description>
-            <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
-            <vann:preferredNamespaceUri>
-                <xsl:value-of select="fn:concat($base-ontology-uri, $defaultDelimiter)"/>                
-            </vann:preferredNamespaceUri>
-            <dct:license rdf:resource="$license-core-module"/>
-            <rdfs:label xml:lang="en">
-                <xsl:value-of select="$ontologyTitle"/>
-            </rdfs:label>
             <dct:title xml:lang="en">
                 <xsl:value-of select="$ontologyTitle"/>
             </dct:title>
+            <dct:description xml:lang="en">
+                <xsl:value-of select="$ontologyDescription"/>
+            </dct:description>            
+            
+            
+            <rdfs:label xml:lang="en">
+                <xsl:value-of select="$ontologyTitle"/>
+            </rdfs:label>            
             
             <owl:versionIRI rdf:resource="{fn:concat($coreModuleURI,'#',tokenize(base-uri(.), '/')[last()],'-',format-date(current-date(),
-                '[Y0001]-[M01]-[D01]'))}"/>
-            <owl:versionInfo><xsl:value-of select="$ontologyVersion"/></owl:versionInfo>
+                '[Y0001]-[M01]-[D01]'))}"/>            
+            
             <rdfs:comment>This version is automatically generated from <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on <xsl:value-of
                 select="
                 format-date(current-date(),
                 '[Y0001]-[M01]-[D01]')"/>
             </rdfs:comment>
-            <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
-            <rdfs:seeAlso
-                rdf:resource="https://joinup.ec.europa.eu/solution/eprocurement-ontology/about"/>
-            <rdfs:seeAlso
-                rdf:resource="https://github.com/eprocurementontology/eprocurementontology"/>
-            <cc:attributionName>PublicationsOffice of the European Union</cc:attributionName>
-            <cc:attributionURL
-                rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/PUBL"/>
+            
             <dct:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
                 <xsl:value-of select="format-date(current-date(),
                     '[Y0001]-[M01]-[D01]')"/>
             </dct:date>
             
-            <dc:contributor>
-                <foaf:Person>
-                    <foaf:name>Eugeniu</foaf:name>
-                    <foaf:surname>Costetchi</foaf:surname>
-                    <foaf:homepage rdf:resource="http://costezki.ro"/>
-                    <schema:affiliation rdf:parseType="Resource">
-                        <foaf:name>Meaningfy</foaf:name>
-                        <foaf:page rdf:resource="http://meaningfy.ws"/>
-                    </schema:affiliation>
-                </foaf:Person>
-            </dc:contributor>
-            
-            <dc:contributor>
-                <foaf:Person>
-                    <foaf:name>Andreea</foaf:name>
-                    <foaf:surname>Pasare</foaf:surname>
-                    <schema:affiliation rdf:parseType="Resource">
-                        <foaf:name>Meaningfy</foaf:name>
-                        <foaf:page rdf:resource="http://meaningfy.ws"/>
-                    </schema:affiliation>
-                </foaf:Person>
-            </dc:contributor>
-            
-            <dc:contributor>
-                <foaf:Person>
-                    <foaf:name>Natalie</foaf:name>
-                    <foaf:surname>Muric</foaf:surname>
-                    <schema:affiliation rdf:parseType="Resource">
-                        <foaf:name>Publications Office of the European Union</foaf:name>
-                    </schema:affiliation>
-                </foaf:Person>
-            </dc:contributor>
-            
-            <dct:creator>
-                <foaf:Person>
-                    <foaf:name>eProcurement Ontology Working Group</foaf:name>
-                </foaf:Person>
-            </dct:creator>
+            <xsl:copy-of select="$commonMetadata"></xsl:copy-of>
+            <vann:preferredNamespaceUri>
+                <xsl:value-of select="fn:concat($base-ontology-uri, $defaultDelimiter)"/>                
+            </vann:preferredNamespaceUri>
         </owl:Ontology>
         
     </xsl:template>
