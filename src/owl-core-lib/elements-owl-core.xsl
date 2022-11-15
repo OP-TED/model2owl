@@ -143,7 +143,7 @@
     
     <xd:doc>
         <xd:desc>
-            <xd:p>[Rule 25]-(Datatype in core ontology layer) .Specify datatype declaration
+            <xd:p>[Rule 25]-(Datatype in core ontology layer). Specify datatype declaration
                 axiom.</xd:p>           
         </xd:desc>
     </xd:doc>
@@ -269,17 +269,17 @@
         <!--   decide what type of property is defined -->
         <xsl:variable name="propertyType"
             select="
-            if (f:isAttributeTypeValidForDatatypeProperty($firstAttribute)) then
+                if (f:isAttributeTypeValidForDatatypeProperty($firstAttribute)) then
                     'owl:DatatypeProperty'
                 else
-                if (f:isAttributeTypeValidForObjectProperty($firstAttribute)) then
+                    if (f:isAttributeTypeValidForObjectProperty($firstAttribute)) then
                         'owl:ObjectProperty'
                     else
                         'rdf:Property'"/>
 
         <xsl:variable name="name"
             select="
-            if (boolean($firstAttribute/@name)) then
+                if (boolean($firstAttribute/@name)) then
                     f:lexicalQNameToWords($firstAttribute/@name)
                 else
                     $mockUnnamedElement"/>

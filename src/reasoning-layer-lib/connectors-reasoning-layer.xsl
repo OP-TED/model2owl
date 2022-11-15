@@ -160,7 +160,7 @@
 
 
     <xd:doc>
-        <xd:desc>Rule 13 (Association target in reasnoning layer) . Specify object property range
+        <xd:desc>Rule 13 (Association target in reasnoning layer). Specify object property range
             for the target end of the association.</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
