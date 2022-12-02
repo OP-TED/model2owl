@@ -28,7 +28,7 @@ FIRST_INPUT_XMI_FILE?="test/test-multi-xmi/ePO_CM.xml"
 INPUT_XMI_DIR?=$(shell dirname ${FIRST_INPUT_XMI_FILE})
 # rdflib version
 RDF_LIB_VERSION?=6.2.0
-SAXON="../saxon-he-10.6.jar"
+SAXON?="../saxon-he-10.6.jar"
 # Output directory containing combined file from multiple xmi / xml UML models
 COMBINED_XMI_DIRECTORY?="../output/combined-xmi"
 COMBINED_FILE_NAME?=ePO-combined.xmi
