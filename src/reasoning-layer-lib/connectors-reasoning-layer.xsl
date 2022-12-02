@@ -146,12 +146,21 @@
             <rdf:Description rdf:about="{$targetRoleURI}">
                 <rdfs:domain>
                     <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
+                        <xsl:choose>
+                            <xsl:when test="fn:count($domains) > 1">
+                            <owl:unionOf rdf:parseType="Collection">
+                                <xsl:for-each select="$domains">
+                                    <rdf:Description
+                                        rdf:about="{f:buildURIfromLexicalQName(., fn:true(), fn:true())}"/>
+                                </xsl:for-each>
+                            </owl:unionOf>
+                        </xsl:when>
+                        <xsl:when test="fn:count($domains) = 1">
                             <xsl:for-each select="$domains">
-                                <rdf:Description
-                                    rdf:about="{f:buildURIfromLexicalQName(., fn:true(), fn:true())}"/>
+                                <rdf:domain rdf:resource="{f:buildURIfromLexicalQName(., fn:true(), fn:true())}"/>
                             </xsl:for-each>
-                        </owl:unionOf>
+                        </xsl:when>
+                        </xsl:choose>
                     </owl:Class>
                 </rdfs:domain>
             </rdf:Description>
@@ -160,7 +169,7 @@
 
 
     <xd:doc>
-        <xd:desc>Rule 13 (Association target in reasnoning layer). Specify object property range
+        <xd:desc>Rule 13 (Association target in reasnoning layer) . Specify object property range
             for the target end of the association.</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
@@ -198,12 +207,22 @@
                 <rdf:Description rdf:about="{$targetRoleURI}">
                     <rdfs:range>
                         <owl:Class>
+                            <xsl:choose>
+                            <xsl:when test="fn:count($ranges) > 1">
                             <owl:unionOf rdf:parseType="Collection">
                                 <xsl:for-each select="$ranges">
                                     <rdf:Description
                                         rdf:about="{f:buildURIfromLexicalQName(., fn:true(), fn:true())}"/>
                                 </xsl:for-each>
                             </owl:unionOf>
+                            </xsl:when>
+                            <xsl:when test="fn:count($ranges) = 1">
+                                <xsl:for-each select="$ranges">
+                                    <rdfs:range
+                                        rdf:resource="{f:buildURIfromLexicalQName(., fn:true(), fn:true())}"/>
+                                </xsl:for-each>
+                            </xsl:when>
+                            </xsl:choose>
                         </owl:Class>
                     </rdfs:range>
                 </rdf:Description>
@@ -572,5 +591,3 @@
         <!--       end of third restriction content-->
     </xsl:template>
 </xsl:stylesheet>
-
-
