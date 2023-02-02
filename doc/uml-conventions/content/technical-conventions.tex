@@ -53,25 +53,41 @@
 	uml:Class is transformed into an owl:Class. Each uml:Class must have a name and should have a description representing the human readable class definition in the domain context. 
 	
 	Optionally, in case there is a technical possibility to distinguish between UML notes, then additionally editorial, history notes or simply comments should be provided as class descriptors.
-	
+
 	It is recommended that a uml:Class has relations, attributes, or both. A class must not miss both, attributes and relations associated with it. 
 	It is mandatory to avoid using the same name in a class, attribute or a relation. 
 	
 	Classes may use\textit{ $<<abstract>>$ stereotype}. It means that no instances are allowed of this class in the datasets. This is not covered by the OWL 2 \cite{owl2} but can be expressed in SHACL data shapes \cite{shacl-spec}. 
-	
+
+
+	\subsection{Tagged values}
+	\label{sec:tagged-values}
+
+	A description for a class, attribute or a connector is added in the UML Notes. This way, all the information are readble during the development of the model.
+	We can use Tags to separate the notes into definition, additional information and other comments (eg. WG approval stamp):
+
+		- skos:prefLabel for the label of the class
+		- skos:definition for the definition
+		- skos:scopeNote for additional information
+		- rdfs:comment for WG approval stamp
+
+
 	\subsection{uml:Class attributes}
 	\label{sec:attributes-class}
-	
-	uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty.
+
+%	We do not transform attributes in object properties anymore because we have removed all Code attribute types.
+	uml:Attribute is mostly transformed into owl:DataProperty.
 	
 	Each uml:Attribute must have a name and attribute type. The name is used to generate URI and label while the type is used to define the range restriction. 
-	
-	An attribute may contain an alias, which is used as an alternative label; and it may have initial value provided which is transferred into a definition.  	
-	
+
+%	Do we still use this?
+	An attribute may contain an alias, which is used as an alternative label; and it may have initial value provided which is transferred into a definition.
+
+%	We should not use a correspondace table for data types since we switched to XSD in the model
 	It is recommended that the attribute type is one of the XSD and RDF datatypes compatible\footnote{\url{https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes}} with OWL 2. Exceptionally, generic data types such as ``Numeric'', ``String'', ``Date'' can be used. In such cases the transformation script uses a correspondence table defining which XSD data type shall be used for each atomic UML type. If the datatype is not found in the correspondence table then it is considered invalid. 
-	
+
 	The attribute multiplicity should be specified indicating the minimum and maximum cardinality. The default [1] multiplicity shall be interpreted as unspecified as expressed as [0..*] in the OWL model.
-	
+
 	It is recommended to avoid duplicate attributes names across multiple classes. Unless, by design, attributes with the same name are shared across multiple classes. 
 	
 	It is mandatory to avoid using the same name in an attribute and in a relation, unless there is an additional rule that handles intentional exceptions.  
@@ -79,8 +95,10 @@
 	All attribute data types must be defined in the model for reference, regardless if they are reused from other models or specific to the local model. In the case of reused external models, the local (re-)definitions serve merely as proxies as explained in Section \ref{sec:datatype}.
 	
 	It is recommended that the attribute type is an atomic data type. 
-	It is possible to use a uml:Enumeration as an attribute type. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Dependency described in Section \ref{sec:dependency}. 
-	
+
+%	We do not transform attributes in object properties anymore because we have removed all Code attribute types.
+
+%	Not sure if we still need this paragraph below. We now have relations to all of these classes.
 	It is recommended to avoid using another class as the attribute type. An acceptable exception for this is with a controlled set of classes. The list of allowed classes must be explicitly indicated in the transformations script. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Association described in Section \ref{sec:association}. For the eProcurement project the set of exceptions is: Identifier, Amount, Quantity, Measure. These were initially defined as composite datatypes and then transformed into classes. 
 	
 	\subsection{uml:Enumeration}
@@ -98,6 +116,7 @@
 	enumeration and provide a relation target role.
 	
 
+%	We do not use Composite datatypes anymore.
 	\subsection{uml:Datatype}
 	\label{sec:datatype}
 	
