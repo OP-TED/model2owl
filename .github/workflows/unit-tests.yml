@@ -23,9 +23,11 @@ jobs:
         run: mvn install
       - name: current dir
         run: pwd
+      - name: current dir
+        run: ls -la ./target/surefire-reports
       - name: Publish Test Report
         if: success() || failure()
         uses: scacap/action-surefire-report@v1
         with:
-          report_paths: './target/surefire-reports/'
+          report_paths: './target/surefire-reports/*'
 
