@@ -30,6 +30,6 @@ jobs:
         if: success() || failure() # always run even if the previous step fails
         with:
           report_paths: '**/target/surefire-reports/test-*.xml'
-          summary: true
+          annotate_notice: true
           detailed_summary: true
 
