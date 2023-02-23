@@ -88,7 +88,7 @@ init:  get-saxon  get-xspec get-rdflib
 ############################ Main tasks ##############################################
 # Run unit_tests
 unit-tests:
-	@ant -lib ${SAXON} unit_tests
+	@mvn install
 
 update-metadata.xml-to-test-data:
 	@echo "${MODEL2OWL_DIR}/test/testData ${MODEL2OWL_DIR}/test/test-multi-xmi ${MODEL2OWL_DIR}/test/test-merge-xmi" | xargs -n 1 cp -v ${MODEL2OWL_DIR}/config/metadata.xml
