@@ -26,8 +26,7 @@ jobs:
       - name: current dir
         run: ls -la ./target/surefire-reports
       - name: Publish Test Report
-#        uses: mikepenz/action-junit-report@v3
-        uses: scacap/action-surefire-report@v1.4.0
+        uses: mikepenz/action-junit-report@v3
         if: success() || failure() # always run even if the previous step fails
         with:
           report_paths: '**/target/surefire-reports/test-*.xml'
