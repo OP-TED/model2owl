@@ -28,6 +28,6 @@ jobs:
       - name: Publish Test Report
         if: success() || failure()
         uses: scacap/action-surefire-report@v1
-#        with:
-#          report_paths: './target/surefire-reports/*'
+        with:
+          report_paths: '**/surefire-reports/test-*.xml'
 
