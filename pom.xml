@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ws.meaningfy.model2owl</groupId>
+    <artifactId>model2owl</artifactId>
+    <version>1</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.nkutsche</groupId>
+                <artifactId>xspec-maven-plugin</artifactId>
+                <version>2.0.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>run-xspec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <testDir>${project.basedir}/test/unitTests/test-common</testDir>
+                    <xspecProperties>
+                        <xspec.fail>false</xspec.fail>
+                    </xspecProperties>
+                </configuration>
+                <dependencies>
+<!--                    <dependency>-->
+<!--                        <groupId>io.xspec</groupId>-->
+<!--                        <artifactId>xspec</artifactId>-->
+<!--                        <version>2.2.4</version>-->
+<!--                        <classifier>enduser-files</classifier>-->
+<!--                        <type>zip</type>-->
+<!--                    </dependency>-->
+                    <dependency>
+                        <groupId>name.dmaus.schxslt</groupId>
+                        <artifactId>schxslt</artifactId>
+                        <version>1.8.6</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
