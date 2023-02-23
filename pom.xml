@@ -21,12 +21,13 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <testDir>${project.basedir}/test/unitTests/test-common</testDir>
+                    <testDir>${project.basedir}/test/unitTests</testDir>
+                    <generateSurefireReport>true</generateSurefireReport>
                     <xspecProperties>
                         <xspec.fail>false</xspec.fail>
                     </xspecProperties>
                 </configuration>
-                <dependencies>
+<!--                <dependencies>-->
 <!--                    <dependency>-->
 <!--                        <groupId>io.xspec</groupId>-->
 <!--                        <artifactId>xspec</artifactId>-->
@@ -34,15 +35,13 @@
 <!--                        <classifier>enduser-files</classifier>-->
 <!--                        <type>zip</type>-->
 <!--                    </dependency>-->
-                    <dependency>
-                        <groupId>name.dmaus.schxslt</groupId>
-                        <artifactId>schxslt</artifactId>
-                        <version>1.8.6</version>
-                    </dependency>
-                </dependencies>
+<!--                    <dependency>-->
+<!--                        <groupId>name.dmaus.schxslt</groupId>-->
+<!--                        <artifactId>schxslt</artifactId>-->
+<!--                        <version>1.8.6</version>-->
+<!--                    </dependency>-->
+<!--                </dependencies>-->
             </plugin>
         </plugins>
     </build>
-
-
 </project>
