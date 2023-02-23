@@ -26,8 +26,8 @@ jobs:
       - name: current dir
         run: ls -la ./target/surefire-reports
       - name: Publish Test Report
-        if: success() || failure()
-        uses: scacap/action-surefire-report@v1
+        uses: mikepenz/action-junit-report@v3
+        if: success() || failure() # always run even if the previous step fails
         with:
-          report_paths: '/home/runner/work/model2owl/model2owl/target/surefire-reports/test-checkers.xspec-junit.xml'
+          report_paths: '**/target/surefire-reports/test-*.xml'
 
