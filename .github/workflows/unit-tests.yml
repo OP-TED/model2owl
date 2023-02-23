@@ -27,5 +27,5 @@ jobs:
         if: success() || failure()
         uses: scacap/action-surefire-report@v1
         with:
-          report_paths: './target/surefire-reports/*.xml'
+          report_paths: './target/surefire-reports/'
 
