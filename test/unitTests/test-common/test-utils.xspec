@@ -413,23 +413,23 @@
     
     <x:scenario label="Scenario testing build URI from attribute">
         <x:call function="f:buildURIFromAttribute">
-            <x:param name="attribute" href="../../testData/ePO_CM_CCTS-v2.0.2-2020-07-23.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[38]/attributes[1]/attribute[23]"/>
+            <x:param name="attribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[176]/attributes[1]/attribute[4]"/>
             <x:param name="isPascalCase" select="fn:false()"/>
             <x:param name="isDefaultNamespaceContextualised" select="fn:true()"/>
         </x:call>
-        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#hasTimezoneOffset')"/>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#body-pl')"/>
     </x:scenario>
     
     <x:scenario label="Scenario for getting the correct value to display for attribute multiplicity (min = 0)">
         <x:call function="f:getAttributeValueToDisplay">
-            <x:param name="attributeMultiplicityValue" href="../../testData/ePO-CM-v2.0.1-2020-12-03.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]/attributes[1]/attribute[2]/bounds[1]/@lower"/>
+            <x:param name="attributeMultiplicityValue" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]/attributes[1]/attribute[2]/bounds[1]/@lower"/>
         </x:call>
         <x:expect label="result" select="()"/>
     </x:scenario>
     
     <x:scenario label="Scenario for getting the correct value to display for attribute multiplicity (max = *)">
         <x:call function="f:getAttributeValueToDisplay">
-            <x:param name="attributeMultiplicityValue" href="../../testData/ePO-CM-v2.0.1-2020-12-03.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]/attributes[1]/attribute[2]/bounds[1]/@upper"/>
+            <x:param name="attributeMultiplicityValue" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]/attributes[1]/attribute[2]/bounds[1]/@upper"/>
         </x:call>
         <x:expect label="result" select="()"/>
     </x:scenario>

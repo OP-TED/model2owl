@@ -168,6 +168,8 @@
                 "
         />
     </xsl:template>
+    
+<!--    TODO Do we need the rule below?-->
 
     <xd:doc>
         <xd:desc>[class-attribute-type-24] - The attribute $attributeName$ type is deprecated.
