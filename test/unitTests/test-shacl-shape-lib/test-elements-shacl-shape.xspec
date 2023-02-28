@@ -14,7 +14,7 @@
     stylesheet="../../../src/shacl-shape-lib/elements-shacl-shape.xsl">
     
     <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class']">
-        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]"/>
+        <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[224]"/>
         <x:expect label="there is a sh:NodeShape" test="boolean(sh:NodeShape) "/>
         <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:name)"/>
         <x:expect label="there is a rdfs:label" test="boolean(sh:NodeShape/rdfs:label)"/>
@@ -25,7 +25,7 @@
         <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:name)"/>
         <x:expect label="there is a sh:path" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:path)"/>
         <x:expect label="there is a sh:datatype" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:datatype)"/>
-        <x:expect label="there is a sh:minCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount)"/>
+        <x:expect label="there is a not sh:minCount" test="not(boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount))"/>
         <x:expect label="there is a sh:maxCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount)"/>
     </x:scenario>
     

@@ -8,13 +8,13 @@
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"    
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-    stylesheet="file:../../../src/common/utils.xsl">
+    stylesheet="../../../src/common/utils.xsl">
     
-    <x:scenario label="Check valid camelcase detection">
+    <x:scenario label="QName to words">
         <x:call function="f:lexicalQNameToWords">
             <x:param name="input">hasEPORoleType</x:param>
         </x:call>
-        <x:expect label="is valid" select="has e p o role type"/>
+        <x:expect label="Transformation from Qname to words is valid" select="'Has e p o role type'"/>
     </x:scenario>
     
 </x:description>

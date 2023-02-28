@@ -99,7 +99,7 @@
     
     <x:scenario label="Check if a data-type is valid when passing a UML data-type ">
         <x:call function="f:isValidDataType">
-            <x:param name="input">string</x:param>
+            <x:param name="input">xsd:string</x:param>
         </x:call>
         <x:expect label="boolean-true" select="true()"/>
     </x:scenario>
@@ -159,7 +159,7 @@
         <x:call function="f:isAttributeTypeValidForDatatypeProperty">
             <x:param name="attributeElement"
                 href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
-                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[35]/attributes[1]/attribute[8]"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[37]/attributes[1]/attribute[3]"
             />
         </x:call>
         <x:expect label="boolean-true" select="true()"/>

@@ -14,11 +14,11 @@
 
     
     <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class'] with a comment">
-        <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]"/>
+        <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]"/>
         <x:expect label="there is an owl:Class" test="boolean(/owl:Class) "/>
         <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/rdfs:label) "/>
         <x:expect label="there is a rdfs:comment" test="boolean(/owl:Class/rdfs:comment) "/>
-        <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://data.europa.eu/a4g/ontology#AwardCriterionEvaluationDimension' "/>
+        <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://data.europa.eu/a4g/ontology#Lot' "/>
     </x:scenario>
 
 
@@ -43,55 +43,54 @@
     </x:scenario>
 
 
-   <!-- <x:scenario
+    <x:scenario
         label="Scenario for testing template with match 'element[@xmi:type = 'uml:DataType']">
         <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[43]"/>
         <x:expect label="there is an rdfs:Datatype" test="boolean(/rdfs:Datatype)"/>
         <x:expect label="there is a rdfs:label" test="boolean(/rdfs:Datatype/rdfs:label)"/>
-        <x:expect label="there is a correct URI" test="/rdfs:Datatype/@rdf:about = 'http://www.unece.org/cefact#Indicator' "/>        
-    </x:scenario>-->
+        <x:expect label="there is a correct URI" test="/rdfs:Datatype/@rdf:about = 'http://unknown.domain/for/prefix#Indicator' "/>        
+    </x:scenario>
     
-  <!--  <x:scenario
+    <x:scenario
         label="Scenario for testing template with match 'element[@xmi:type = 'uml:DataType'] - structured DataType">
         <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[44]"/>
         <x:expect label="there is an owl:Class" test="boolean(/owl:Class)"/>
         <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/rdfs:label) "/>
         <x:expect label="there is a rdfs:comment" test="not(boolean(/owl:Class/rdfs:comment))"/>
-        <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://www.unece.org/cefact#Measure' "/>     
-    </x:scenario>-->
+        <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://unknown.domain/for/prefix#Measure' "/>     
+    </x:scenario>
 
     <x:scenario
         label="Scenario for testing template with match 'element[@xmi:type = 'uml:Enumeration']/attributes/attribute - by default nothing shall be generated">
         <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[132]/attributes[1]/attribute[2]"/>
-        <x:expect label="there is a skos:Concept" select="()"/>
+        <x:expect label="there is no skos:Concept" select="()"/>
     </x:scenario>
     
 
     
-    <!--<x:scenario
+    <x:scenario
         label="Scenario for testing attributes - ObjectProperty">
         <x:call template="generatePropertyFromAttribute">
-            <x:param name="attributeName">Criterion Group Property Type</x:param>
-            <x:param name="root" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/"/>
+            <x:param name="attributeName">epo:hasWithdrawalReason</x:param>
+            <x:param name="root" href="../../testData/ePO-CM_v.3.0.1.eap.xmi" select="/"/>
         </x:call>
         <x:expect label="there is an owl:" test="boolean(/owl:ObjectProperty)"/>
         <x:expect label="there is a rdfs:label" test="boolean(/owl:ObjectProperty/rdfs:label)"/>
         <x:expect label="there is a rdfs:label" test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
         
         <x:expect label="there is a correct URI"
-            test="/owl:ObjectProperty/@rdf:about='http://data.europa.eu/m8g/hasCriterionGroupPropertyType'"/>
-    </x:scenario>-->
+            test="/owl:ObjectProperty/@rdf:about='http://data.europa.eu/a4g/ontology#hasWithdrawalReason'"/>
+    </x:scenario>
     
    
-    
-    <!--<x:scenario
+    <x:scenario
         label="Scenario for testing attributes - DatatypeProperty">
         <x:call template="generatePropertyFromAttribute">
-            <x:param name="attributeName">Weighting Consideration Description</x:param>
-            <x:param name="root" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/"/>
+            <x:param name="attributeName">epo:hasEstimatedInvitationToExpressInterestDate</x:param>
+            <x:param name="root" href="../../testData/ePO-CM_v.3.0.1.eap.xmi" select="/"/>
         </x:call>
         <x:expect label="there is an owl:" test="boolean(/owl:DatatypeProperty)"/>
         <x:expect label="there is a rdfs:label" test="boolean(/owl:DatatypeProperty/rdfs:label)"/>
@@ -99,10 +98,9 @@
         <x:expect label="there is a rdfs:comment" test="(boolean(/owl:DatatypeProperty/rdfs:comment))"/>
         <x:expect label="there is a skos:definition" test="(boolean(/owl:DatatypeProperty/skos:definition))"/>
         <x:expect label="there is a correct URI" 
-            test="/owl:DatatypeProperty/@rdf:about='http://data.europa.eu/m8g/hasWeightingConsiderationDescription'"/>
+            test="/owl:DatatypeProperty/@rdf:about='http://data.europa.eu/a4g/ontology#hasEstimatedInvitationToExpressInterestDate'"/>
     </x:scenario>
     
--->
     <x:scenario
             label="Scenario for testing attributes with ccts:Code type">
             <x:call template="generatePropertyFromAttribute">

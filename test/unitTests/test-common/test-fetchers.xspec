@@ -8,7 +8,7 @@
     
     <x:scenario label="Scenario for testing function getContainingPackageName for a class">
         <x:call function="f:getContainingPackageName">
-            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]"/>            
         </x:call>
         <x:expect label="result" select="'epo'"/>
@@ -16,18 +16,10 @@
     
     <x:scenario label="Scenario for testing function getContainingPackageName for an attribute">
         <x:call function="f:getContainingPackageName">
-            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[1]"/>            
         </x:call>
         <x:expect label="result" select="'epo'"/>
-    </x:scenario>
-
-    <x:scenario label="Scenario for testing function getContainingPackageName for an attribute">
-        <x:call function="f:getContainingPackageName">
-            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
-                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[39]"/>            
-        </x:call>
-        <x:expect label="result" select="'ccts'"/>
     </x:scenario>
     
     <x:scenario label="Scenario for testing function getElementByName">
@@ -185,7 +177,7 @@
     <x:scenario label="Scenario for testing function getClassAttributeByName">
         <x:call function="f:getClassAttributeByName">
             <x:param name="name" >epo:Score</x:param>
-            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>            
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/"/>            
         </x:call>
         <x:expect label="result" test="boolean(/attribute[@name='epo:Score'])"/>
     </x:scenario>
@@ -193,34 +185,33 @@
     <x:scenario label="Scenario for testing function getClassAttributeByName">
         <x:call function="f:getClassAttributeByName">
             <x:param name="name" >epo:invalid</x:param>
-            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>            
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/"/>            
         </x:call>
         <x:expect label="result" test="()"/>
     </x:scenario>
     
-<!--   TO DO - Make the tests below work-->
 
-<!--
+
     <x:scenario label="Scenario for testing function getDistinctClassAttributeNames">
         <x:call function="f:getDistinctClassAttributeNames">
-            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>            
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/"/>            
         </x:call>
-        <x:expect label="result" select=""/>
-    </x:scenario>-->
+        <x:expect label="result" select="('epo:AdditionalInformationDeadline', 'epo:SomeProcurementDocumentsRestrctedJustification', 'epo:SomeProcurementDocumentsRestricted', 'epo:AdditionalStreetName', 'epo:Address Type', 'epo:Block Name', 'epo:Building Name', 'epo:Building Number', 'epo:CityName', 'epo:CitySubdivisionName', 'epo:CountryCode', 'epo:CountrySubentity', 'epo:CountrySubentityCode', 'epo:Department', 'epo:District', 'epo:Floor', 'epo:ID', 'epo:InhouseMail', 'epo:MarkAttention', 'epo:MarkCare', 'epo:PlotIdentification', 'epo:PostalZone', 'epo:Postbox', 'epo:Region', 'epo:Room', 'epo:StreetName', 'epo:TimezoneOffset', 'epo:Type', 'epo:AwardCriterionType', 'epo:Description', 'epo:FixedValue', 'epo:FixedValueType', 'epo:Formula', 'epo:ThresholdType', 'epo:ThresholdValue', 'epo:WeightValue', 'epo:WeightValueType', 'epo:WeigthingJustification', 'epo:AwardDecisionDate', 'epo:AwardStatus', 'epo:Justification', 'epo:NonAwardJustification', 'epo:ListedCompany', 'epo:Size', 'epo:ActivityDescription', 'epo:BuyerLegalType', 'epo:ContractingEntity', 'epo:MainActivityType', 'epo:URL', 'epo:ChangeReason', 'epo:DateTime', 'epo:ProcurementDocumentsChanged', 'epo:Reason', 'epo:AdditionalInformation', 'epo:CommunicationType', 'epo:Endpoint', 'epo:Name', 'epo:Email', 'epo:Fax', 'epo:InternetAddress', 'epo:Telephone', 'epo:ContractConclusionDate', 'epo:EntryintoForceDate', 'epo:Title', 'epo:ModificationReason', 'epo:Recurrence', 'epo:RecurrenceDescription', 'epo:BroadPlaceOfPerformance', 'epo:ContractorLegalFormRequirement', 'epo:ContractorLegalFormRequirementDescription', 'epo:eInvoicing', 'epo:eOrdering', 'epo:ePayment', 'epo:MaximumNumberOfRenewals', 'epo:PaymentArrangements', 'epo:PerformanceConditions', 'epo:PlaceOfPerformanceAdditionalInformation', 'epo:RenewalDescription', 'epo:RenewalIndicator', 'epo:ReservedExecution', 'epo:Country', 'epo:Identification', 'epo:DesignContestType', 'epo:JuryDecisionBinding', 'epo:ParticipationPayment', 'epo:JustificationType', 'epo:DispatchDate', 'epo:OfficialLanguage', 'epo:ReceptionDate', 'epo:UnofficialLanguage', 'epo:UUID', 'epo:DPSTermination', 'epo:DPSUsage', 'epo:BeneficialOwnerNationality', 'epo:EconomicOperatorSize', 'epo:EOGroupType', 'epo:EORoleType', 'epo:LegalFormType', 'epo:LimitationDescription', 'epo:EvaluationGroupType', 'epo:PercentageEvaluated', 'epo:IsAbnormallyLow', 'epo:IsAbnormallyLowJustification', 'epo:NoResultReason', 'epo:NumberAwardedContract', 'epo:PercentageOfEvaluation', 'epo:AwardCriteriaEvaluationFormula', 'epo:OverallCostAwardCriteriaPonderation', 'epo:OverallPriceAwardCriteriaPonderation', 'epo:OverallQualityAwardCriteriaPonderation', 'epo:AccountFormat', 'epo:AccountType', 'epo:AliasName', 'epo:Currency', 'epo:PaymentNote', 'epo:Follow-upContract', 'epo:Follow-upContractInformation', 'epo:TaxIdentifier', 'epo:BuyerCoverage', 'epo:DurationExtensionJustification', 'epo:FrameworkAgreementType', 'epo:MaximumNumberOfAwardedTenderers', 'epo:Classification', 'epo:CountryOfOrigin', 'epo:Altitude', 'epo:CoordinateSystem', 'epo:LatitudeDegrees', 'epo:LatitudeDirection', 'epo:LatitudeMinutes', 'epo:LongitudeDegrees', 'epo:LongitudeDirection', 'epo:LongitudeMinutes', 'epo:GPAUsage', 'epo:SMESuitable', 'epo:VariantsPermission', 'epo:AwardDateScheduled', 'epo:ParticipationReserved', 'epo:ReservedProcurement', 'epo:EstimatedInvitationToExpressInterestDate', 'epo:EstimatedInvitationToTenderDate', 'epo:MaximumCandidates', 'epo:MaximumNumberOfCandidates', 'epo:MinimumNumberOfCandidates', 'epo:NoNegotiationNecessary', 'epo:SuccessiveReduction', 'epo:DPSScopeType', 'epo:FormType', 'epo:NotificationPhasesType', 'epo:PreferredPublicationDate', 'epo:PublicationDate', 'epo:OpeningDateTime', 'epo:OpeningDescription', 'epo:DescriptionCode', 'epo:DurationMeasure', 'epo:EndDate', 'epo:EndTime', 'epo:StartDate', 'epo:StartTime', 'epo:AlternativeName', 'epo:BirthFamilyName', 'epo:DateOfBirth', 'epo:DateOfDeath', 'epo:FamilyName', 'epo:FullName', 'epo:Gender', 'epo:GivenName', 'epo:Nationality', 'epo:PatronimicName', 'epo:LegalBasisID', 'epo:EstimatedContractNoticePublicationDate', 'epo:PrizeRank', 'epo:PrizeValue', 'epo:Accelerated', 'epo:AcceleratedProcedureJustification', 'epo:ChoiceJustification', 'epo:CompetitionTermination', 'epo:LegalBasis', 'epo:LegalRegime', 'epo:LotMinimumSubmission', 'epo:LotSubmissionLimit', 'epo:MainFeatures', 'epo:MaximumNumberOfLotsToBeAwarded', 'epo:ProcedureType', 'epo:EstimatedTenderInvitationDate', 'epo:GroupLotEvaluationMethod', 'epo:LotAwardLimit', 'epo:ReceiptExpressionsDeadline', 'epo:RequestForParticipationDeadline', 'epo:TenderReceiptDeadLine', 'epo:ProcurementCriterionApplicability', 'epo:FreeE-Access', 'epo:CalculationMethod', 'epo:CurrencyType', 'epo:MaximumAmount', 'epo:MinimumAmount', 'epo:OverallAmount', 'epo:TaxIncludedIndicator', 'epo:AvailabilityDate', 'epo:AvailabilityTime', 'epo:NonPublicationJustification', 'epo:NonPublicationJustificationDescription', 'epo:AdditionalClassification', 'epo:ContractNatureType', 'epo:MainClassification', 'epo:Options', 'epo:OptionsDescription', 'epo:TotalMagnitudeQuantity', 'epo:Unit', 'epo:LegalName', 'epo:ElementIRI', 'epo:ReviewDeadline', 'epo:ReviewDeadlineInformation', 'epo:ReviewProcedure', 'epo:SubClassType', 'epo:Deadline', 'epo:SelectionCriterionType', 'epo:UsedForCandidateRestriction', 'epo:WeightingJustification', 'epo:AbnormallyLowTendersLot', 'epo:CleanVehicles', 'epo:EEARecievedTenderLots', 'epo:HighestReceivedTenderLotValue', 'epo:InadmissibleTendersLot', 'epo:LowestReceivedTenderLotValue', 'epo:MediumTendersPerLot', 'epo:ReceivedMicroTenderLots', 'epo:ReceivedNON-EEATenderLots', 'epo:ReceivedParticipationRequestsPerLot', 'epo:ReceivedReviewRequestsPerLot', 'epo:ReceivedSmallTenderLots', 'epo:ReceivedSMETenderLots', 'epo:TendersReceivedPerLot', 'epo:TotalVehicles', 'epo:UnverifiedTenderLot', 'epo:ZeroEmissionVehicles', 'epoElectronicTendersLot', 'epo:FulfillsRequirement', 'epo:StrategicProcurementDescription', 'epo:EstimatedShare', 'epo:SubcontractingUsage', 'epo:MaximumShare', 'epo:MinimumShare', 'epo:MinimumShareSubjectMatter', 'epo:MinimumSubcontractorsProposedObligation', 'epo:SubcontractingInvolved', 'epo:SubcontractingObligation', 'epo:SubcontractorsProposedAboveObligation', 'epo:eCataloguePermission', 'epo:eSubmissioneSignature', 'epo:eSubmissionPermission', 'epo:LateTendererInformation', 'epo:LateTendererInformationDescription', 'epo:MultipleTenders', 'epo:NonElectronicSubmissionDescription', 'epo:NonElectronicSubmissionJustification', 'epo:SubmissionDocumentType', 'epo:TenderGuaranteeDescription', 'epo:TenderGuaranteeRequired', 'epo:TenderLanguage', 'epo:TenderReceiptDeadline', 'epo:TenderSubcontractingInformation', 'epo:TenderValidityDeadline', 'epo:AccessibilityCriteria', 'epo:NonAccessibilityCriteriaJustification', 'epo:ElectronicSubmission', 'epo:AdmissibleTender', 'epo:Score', 'epo:Subcontracting', 'epo:Variant', 'epo:FinalRanking', 'epo:RankingInFirstStage', 'epo:OtherCharges', 'epo:TotalAmountWithoutVAT', 'epo:TotalVATAmount', 'epo:WinnerRank', 'Criterion Group Property Type', 'Description', 'Identifier', 'Name', 'Amount', 'Code', 'Date', 'ID', 'Indicator', 'Quantity', 'Text', 'Time', 'URI', 'Confidentiality Level Type')"/>
+    </x:scenario>
     
     
- <!--   <x:scenario label="Scenario for testing function getDistinctConnectorsNames">
+    <x:scenario label="Scenario for testing function getDistinctConnectorsNames">
         <x:call function="f:getDistinctConnectorsNames">
-            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>            
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/"/>            
         </x:call>
-        <x:expect label="result" select="'fffffff'"/>
-        
-    </x:scenario>-->
+        <x:expect label="result" select="('test Dependency', 'test association', 'source', 'epo:hasRestrictedAccessAddress', 'epo:hasAdditionalInformationProvidedBy', 'epo:has', 'generalization with name', 'epo:hasCountryCode', 'epo:hasCountrySubentityCode', 'epo:hasPostalAddress', 'epo:hasOpeningPlace', 'epo:hasSpecificPlaceOfPerformance', 'epo:hasAlias', 'actsOnBehalfOf', 'cccev:delegatesAncillaryActivitiesOn', 'hasID', 'epo:isRoleOf', 'epo:playsRole', 'epo:isSignedBy', 'epo:isSignatoryPartyOf', 'epo:owns', 'epo:isOwnBy', 'has Award Criterion Type', 'epo:hasWeightValueType', 'epo:hasThresholdType', 'epo:usedToAward', 'epo:hasSubcriterionType', 'epo:hasFixedValueType', 'epo:hasWinning', 'epo:Justification', 'epo:isReferedByA', 'epo:refersTo', 'epo:AwardJustification', 'epo:hasAwardStatus', 'epo:refersToAwardResult', 'epo:referredToIn', 'epo:makesDecsion', 'epo:providesInformationFor', 'epo:isNotifiedIn', 'epo:notifiesAwardResult', 'epo:acceptsProposalOf', 'isRoleOf', 'epo:hasBeneficialOwner', 'epo:isRoleOfBusiness', 'epo:hasMainActivityType', 'epo:hasMainActivity', 'epo:appointedBy', 'epo:appoints', 'epo:hasBuyerLegalType', 'epo:isPlannedBy', 'epo:plans', 'epo:isResponsibleFor', 'epo:isResponsiblityOf', 'epo:actsAs', 'epo:manages', 'epo:notifiedThrough', 'epo:preceeds', 'epo:hasPreviousPublication', 'creation of call for expression of interest', 'epo:hasQualified', 'epo:hasSecondStage', 'epo:proposes', 'epo:refersToADifferent', 'epo:hasChangedElement', 'epo:hasChangeReason', 'epo:hasChanged', 'epo:hasCommunicationType', 'epo:hasAvaliabilityRestriction', 'epo:hasTenderSubmissionCommunicationMeans', 'epo:madeAvailableVia', 'epo:hasClarificationsAvailableVia', 'epo:hasRestrictedProcurementDocumentsMadeAvailableVia ', 'epo:isAvailableVia', 'epo:hasGeneralEmploymentCommunicationMeans', 'epo:usesAdhoc', 'epo:hasGeneralEnvironmentCommunicationMeans', 'epo:hasQuestionsMadeAvailableVia ', 'epo:uses', 'epo:hasMeansOfCommunication', 'epo:hasVirtualTenderOpeningAddress', 'epo:hasProcurementDocumentsMadeAvailableVia', 'epo:hasGeneralTaxCommunicationMeans', 'epo:isRoleOfContactPerson', 'epo:hasPersonRole', 'epo:funds', 'epo:isFundedBy', 'epo:attaches', 'epo:refersToSignatory', 'epo:hasDuration', 'epo:hasEstimatedDuration', 'epo:hasProcurementValue', 'epo:hasDurationEvaluationPeriod', 'epo:hasContractPurpose', 'epo:madeAvailableUnder', 'epo:modifies', 'epo:leadsTo', 'epo:concludes', 'epo:isConcludedBy', 'epo:hasTotalFrameworkValue', 'epo:hasTotalValue', 'epo:hasContractModficationJustification', 'come from', 'epo:qualificationCriteria', 'hasSubcontracted', 'epo:hasShelteredEmploymentUsage', 'epo:hasBroadPlaceOfPerformance', 'epo:hasReservedExecution', 'epo:includes', 'epo:appliesTo', 'epo:hasDesignContestType', 'epo:hasJustificationType', 'epo:refersToPreviousProcedureLots', 'epo:hasNonPublishedElement', 'epo:hasRestrictedCommunicationJustification', 'epo:hasOfficialLanguage', 'epo:changeRefersToInstance', 'epo:relatesTo', 'epo:hasUnofficialLanguage', 'epo:refersToPrevious', 'epo:applyTo', 'epo:hasParticipationEvaluationPeriod', 'epo:hasDPSUsage', 'epo.hasLegalFormType', 'epo:hasEOGroupType', 'epo:hasEconomicOperatorSize', 'epo:hasBeneficialOwnerNationality', 'epo:hasEORoleType', 'epo:specifiesSubcontractors', 'epo:hasShownInterest', 'epo:contractWinnerSubcontractors', 'epo:hasEOsHavingInterestIn', 'defines', 'epo:hasEvaluationGroupType', 'epo:toBeEvaluatedBy', 'epo:assignedForEvaluationOf', 'epo:composedOf', 'epo:ranksTenders', 'epo:isAbout', 'epo:assesses', 'epo:isAssessedIn', 'epo:evaluates', 'epo:belongsTo', 'defines (defined as part of)', 'epo:hasTenderEvaluationTerms', 'epo:performsEvaluation', 'epo:hasExclusionGroundType', 'epo:hasSelectionCriterionApplicability', 'epo:qualifiedBy', 'substantiates', 'epo:appliesToFollowupContractTerms', 'epo:hasFormalName', 'epo:hasFormalLocation', 'epo:setsRulesOf', 'epo:hasRulesSetBy', 'epo:organisedIn', 'epo:hasFrameworkAgreementType', 'epo:hasOverallMaximumValue', 'epo:isFundedWith', 'epo:fulfillsRequirement', 'epo:hasCountryOfOrigin', 'epo:hasLegalLocation', 'epo:hasLocation', 'epo:hasRegisteredLocation', 'epo:hasCountryOfBirth', 'epo:groups', 'epo:groupedIn', 'epo:hasAwardedEstimatedValue', 'epo:providesAdditionalInformation', 'epo:requires', 'epo:hasEstimatedValue', 'epo:hasValidityPeriod', 'epo:contributesToImplement', 'epo:awardedTo', 'epo:reservedProcurement', 'epo:involvesOverallStrategicProcurement', 'epo:hasVariantPermissions', 'epo:hasEstimatedUserConcessionRevenue', 'epo:hasContractEstimatedDuration', 'epo:hasEstimatedBuyerConcessionRevenue', 'epo:hasAwardedMaximumValue', 'rewarded With', 'epo:relatedTo', 'epo:isAppliedTo', 'epo:usedIn', 'epo:usedForReductionOfCandidates', 'epo:isSpecifiedIn', 'epo:specifies', 'epo:hasAwardedValue', 'epo:combineLotsInto', 'epo:hasNotificationPhasesType', 'epo:hasBuyers', 'epo:hasFormType', 'epo:issues', 'epo:hasInterval', 'epo:hasMediationBody', 'epo:hasReviewBody', 'epo:providesTaxRegulatoryInformation', 'epo:hasWorkingConditionsInformation', 'epo:hasEmploymentProtectionInformation', 'epo:hasReviewService', 'epo:hasEnvironmentalProtectionInformation ', 'epo:hasTimePeriods', 'cccev:isPeriod', 'epo:hasPlannedPeriod', 'epo:hasPurpose', 'epo:hasLegalBasisID', 'Name', 'epo:notifies', 'epo:isForeseenInProjectProcurement', 'epo:foreseesPlannedProcurementPart', 'Good', 'epo:hasProcedureType', 'epo:hasOverallPurpose', 'epo:hasAcceleratedJustification', 'epo:hasProcurementRegime', 'epo:accessMarketThrough', 'epo:hasProcurementCriterionApplicability', 'epo:basedOn', 'hasCurrencyType', 'epo:hasNonPublicationJustification', 'epo:hasUnit', 'epo:hasOptions', 'epo:hasMainClassification', 'epo:additionalClassifications', 'epo:hasOptionsPermission', 'epo:hasMainNature', 'epo:hasAdditionalNature', 'hasSize', 'hasLegalFormType', 'rov:hasRegisteredOrganization', 'epo:specifiedIn', 'epo:applicableToSecurityClearanceAddress', 'apply', 'epo:hasSelectionCriterionType', 'has Strategic Procurement Type', 'epo:hasSubcontractingUsage', 'proposesSubcontractor', 'epo:hasSubcontractingObligation', 'epo:hasLateTendererInformation', 'epo:hasNonElectronicSubmissionJustification', 'epo:hasSubmissionDocumentType', 'epo:haseSubmissionPermission', 'epo:hasTenderSubcontractingInformation', 'epo:hasECataloguePermissions', 'epo:hasTenderLanguage', 'epo:includesAccessibilityCriteria', 'epo:attachedIn', 'epo:includedIn', 'responds to criterion (applied to)', 'epo:withdraws', 'epo:evaluationOf', 'epo:submittedBy', 'epo:submits', 'epo:isReferredToBy', 'epo:hasSubcontractingApplicability', 'epo:ranks', 'cccev:hasConfidentialityLevelType', 'cccev:hasCriterionGroupPropertyType', 'cccev:has', 'cccev:proofs', 'cccev:basesOnEvidence', 'cccev:hasConstraint', 'cccev:hasSub', 'cccev:hasInformationRequirement', 'cccev:providesEvidence', 'cccev:hasPropertySubgroup', 'cccev:hasCriterionProperty', 'cccev:refinesRequirement', 'cccev:expressesRequirement', 'cccev:respondsQuestion', 'cccev:asksForData', 'disjoint', 'test:source', 'test:target', 'org:hasName', 'member', 'org:hasUnit', 'org:unitOf')"/>
+            
+    </x:scenario>
     
     <x:scenario label="getConnectorByName - target role">
         <x:call function="f:getConnectorByName">
             <x:param name="name">epo:refersTo</x:param>
-            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi"
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/"/>             
         </x:call>
         
@@ -230,7 +221,7 @@
     <x:scenario label="getConnectorByName - source role">
         <x:call function="f:getConnectorByName">
             <x:param name="name">epo:concludes</x:param>
-            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi"
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/"/>             
         </x:call>
         
@@ -269,23 +260,23 @@
     
     <x:scenario label="Get connector source name - Proxy connector">
         <x:call function="f:getConnectorSourceName">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-06-08-mappings.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
         </x:call>
-        <x:expect label="correct target name" select="string('(epo:Document - epo:Procedure)')"></x:expect>
+        <x:expect label="correct target name" select="string('(epo:Lot - epo:ProcurementValue)')"></x:expect>
     </x:scenario>
     
     <x:scenario label="Get connector target name - Proxy connector">
         <x:call function="f:getConnectorTargetName">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-06-08-mappings.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
         </x:call>
-        <x:expect label="correct target name" select="string('(epo:Document - epo:Procedure)')"></x:expect>
+        <x:expect label="correct target name" select="string('(epo:LotGroup - epo:ProcurementValue)')"></x:expect>
     </x:scenario>
     
     <x:scenario label="Get connector helper name when direction is Source -> Destination and has no name">
         <x:call function="f:getConnectorName">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-06-08-mappings.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[338]"/>
         </x:call>
-        <x:expect label="correct name for the connector">(epo:Document - epo:Procedure) -> (epo:Document - epo:Procedure) (+)</x:expect>
+        <x:expect label="correct name for the connector">epo:Procedure -> epo:StrategicProcurement (+epo:involvesOverallStrategicProcurement)</x:expect>
     </x:scenario>
    
 </x:description>

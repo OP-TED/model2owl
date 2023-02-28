@@ -22,41 +22,41 @@
     
     <x:scenario
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Dependency']">
-        <x:context href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
-            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[347]"/>
+        <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[398]"/>
         <x:expect label="there is 3 sh:NodeShape" test="count(sh:NodeShape)=3"/>
         <x:expect label="there is a sh:property" test="boolean(sh:NodeShape/sh:property)"/>
         <x:expect label="there is ash:PropertyShape" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape)"/>
         <x:expect label="there is a sh:path" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:path)"/>
         <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:name)"/>
         <x:expect label="there is a sh:minCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount)"/>
-        <x:expect label="there is a sh:maxCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount)"/>
+        <x:expect label="there is no sh:maxCount" test="not(boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount))"/>
     </x:scenario>
     
     <x:scenario
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Association']">
-        <x:context href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
-            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[100]"/>
+        <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[259]"/>
         <x:expect label="there is 3 sh:NodeShape" test="count(sh:NodeShape)=3"/>
         <x:expect label="there is a sh:property" test="boolean(sh:NodeShape/sh:property)"/>
         <x:expect label="there is ash:PropertyShape" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape)"/>
         <x:expect label="there is a sh:path" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:path)"/>
         <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:name)"/>
-        <x:expect label="there is a sh:minCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount)"/>
-        <x:expect label="there is no sh:maxCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount)"/>
+        <x:expect label="there is no sh:minCount" test="not(boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount))"/>
+        <x:expect label="there is a sh:maxCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount)"/>
     </x:scenario>
     
     <x:scenario
         label="Scenario for no empty property shapes - epo:hasAvailabilityRestriction">
-        <x:context href="../../testData/ePO-CM-v2.0.1-2020-11-28.eap.xmi"
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[115]"/>
-        <x:expect label="there is 3 sh:NodeShape" test="count(sh:NodeShape)=2"/>
+        <x:expect label="there is 6 sh:NodeShape" test="count(sh:NodeShape)=6"/>
         <x:expect label="there is a sh:property" test="boolean(sh:NodeShape/sh:property)"/>
         <x:expect label="there is ash:PropertyShape" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape)"/>
         <x:expect label="there is a sh:path" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:path)"/>
         <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:name)"/>
-        <x:expect label="there is a sh:minCount" test="boolean(not(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount))"/>
-        <x:expect label="there is no sh:maxCount" test="boolean(not(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount))"/>
+        <x:expect label="there is no sh:minCount" test="boolean(not(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount))"/>
+        <x:expect label="there is  sh:maxCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount)"/>
     </x:scenario>
     
     <x:scenario label="Scenario for association with Source -&gt; Destination direction">
@@ -167,7 +167,7 @@
     
     <x:scenario label="Scenario for dependency range (Class -> Enumeration)">
         <x:call template="connectorRangeClassToEnumeration">
-            <x:param name="connector" href="../../testData/ePO_CM-2022-01-20.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[247]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[247]"/>
         </x:call>   
         <x:expect label="there is 1 sh:NodeShape" test="count(sh:NodeShape) = 1"/>
         <x:expect label="there is 1 sh:property" test="count(sh:NodeShape/sh:property) = 1"/>
