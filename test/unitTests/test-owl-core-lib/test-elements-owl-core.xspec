@@ -101,6 +101,14 @@
             test="/owl:DatatypeProperty/@rdf:about='http://data.europa.eu/a4g/ontology#hasEstimatedInvitationToExpressInterestDate'"/>
     </x:scenario>
     
+    <x:scenario
+            label="Scenario for testing attributes with ccts:Code type">
+            <x:call template="generatePropertyFromAttribute">
+                <x:param name="attributeName">epo:DesignContestType</x:param>
+                <x:param name="root" href="../../testData/ePO_CM_CCTS-v2.0.2-2020-07-23.eap.xmi" select="/"/>
+            </x:call>
+        <x:expect label="generating nothing" select="()"/>
+    </x:scenario>
 
        
 </x:description>
