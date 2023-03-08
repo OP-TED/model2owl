@@ -20,6 +20,11 @@
 
     <xsl:output method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
+    
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="connector[./properties/@ea_type = 'Generalization']"/>
 
     <xd:doc>
         <xd:desc>applying the rules to associations</xd:desc>

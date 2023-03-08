@@ -34,7 +34,7 @@
     </xd:doc>
 
 
-    <xsl:import href="owl-core-lib/owl-core-selectors.xsl"/>
+    <xsl:import href="common/selectors.xsl"/>
     <xsl:import href="owl-core-lib/connectors-owl-core.xsl"/>
     <xsl:import href="owl-core-lib/elements-owl-core.xsl"/>
     <!-- xsl:import href="../config/config-proxy.xsl"/ -->

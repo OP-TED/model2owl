@@ -41,7 +41,16 @@
         <xsl:call-template name="classDeclaration"/>
     </xsl:template>
 
+
     <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:Enumeration']"/>
+    
+    
+<!--    TODO RULE 27 should be removed? vvvv -->
+
+    <!--<xd:doc>
         <xd:desc>[Rule 27]-(Enumeration in core ontology layer) .
             instantiation axiom for an UML enumeration.Specify SKOS concept scheme</xd:desc>
     </xd:doc>
@@ -52,7 +61,7 @@
         <xsl:variable name="conceptSchemeURI"
             select="f:buildURIFromElement(., fn:true(), fn:true())"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
-        <!-- generating the actual CS content -->
+        <!-\- generating the actual CS content -\->
         <skos:ConceptScheme rdf:about="{$conceptSchemeURI}">
             <rdfs:label xml:lang="en">
                 <xsl:value-of select="$conceptSchemeName"/>
@@ -70,7 +79,7 @@
                 </skos:definition>
             </xsl:if>     
         </skos:ConceptScheme>
-    </xsl:template>
+    </xsl:template>-->
 
     <xd:doc>
         <xd:desc>[Rule 28]-(Enumeration items in core ontology layer) .

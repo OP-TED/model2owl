@@ -33,7 +33,7 @@
     </xd:doc>
 
 
-    <xsl:import href="shacl-shape-lib/shacl-shape-selectors.xsl"/>
+    <xsl:import href="common/selectors.xsl"/>
     <xsl:import href="shacl-shape-lib/elements-shacl-shape.xsl"/>
     <xsl:import href="shacl-shape-lib/connectors-shacl-shape.xsl"/>
     <!--<xsl:import href="../config/config-proxy.xsl"/>-->

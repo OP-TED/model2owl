@@ -270,6 +270,31 @@
 
 
 
+
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:Class']"/>
+
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:Enumeration']"/>
+    
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:DataType']"/>
+    
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute"/>
+
+    
+    
+<!--    TODO Is this rule still needed? vvv -->
+<!--
     <xd:doc>
         <xd:desc>(Enumeration in reasnoning layer) . Concept instantiation in RDF/XML For an UML
             enumeration, specify an equivalent class restriction covering the set of individuals
@@ -278,7 +303,7 @@
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
         <xsl:variable name="enumerationURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
         <owl:Class rdf:about="{$enumerationURI}">
-            <!-- <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>-->
+            <!-\- <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>-\->
             <owl:equivalentClass>
                 <owl:Restriction>
                     <owl:onProperty rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
@@ -287,7 +312,7 @@
             </owl:equivalentClass>
         </owl:Class>
     </xsl:template>
-
+-->
 
 
 
