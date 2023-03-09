@@ -45,6 +45,7 @@
         <xd:param name="prefix"/>
         <xd:param name="namespaceDefinitions"/>
     </xd:doc>
+    
     <xsl:function name="f:getNamespaceValues" as="xs:string">
         <xsl:param name="prefix"/>
         <xsl:param name="namespaceDefinitions"/>
@@ -68,7 +69,8 @@
                 if (boolean($fetch)) then
                     string($fetch)
                 else
-                    $mockUnknownDomain"
+                    fn:error(xs:QName('prefixes'),concat($prefix, ' is not found. Please check namespaces'))
+                "
         />
     </xsl:function>
 
@@ -160,7 +162,7 @@
                             else
                                 $safeCharLocalSegment
                     else
-                        $mockUnknownPrefix"
+                    fn:error(xs:QName('normalise'),concat($lexicalQName, ' - lexicalised QName string failed the normalise process'))"
             />
         </xsl:variable>
 
@@ -221,56 +223,25 @@
                 "
         />
     </xsl:function>
+    
 
     <xd:doc>
         <xd:desc>Builds a URI for the element using the element @name attribute. The name expests a
-            prefix preceeded by colon (:). In case the prefix is absen then the default namespace is
-            used, or if $isDefaultNamespaceContextualised is set to true then the package name
-            (feteched using f:getContainingPackageName function) is used as default namespace.
+            prefix preceeded by colon (:).
             isPascalCase - indicates whether the first letter of the local segmetn shall be
-            capitalised. isDefaultNamespaceContextualised - indicates whether the default namespace
-            from the prefix definitions shall be used or the default namespace is contextualised to
-            the containg package. </xd:desc>
+            capitalised. </xd:desc>
         <xd:param name="element"/>
-        <xd:param name="isDefaultNamespaceContextualised"/>
         <xd:param name="isPascalCase"/>
     </xd:doc>
     <xsl:function name="f:buildURIFromElement">
         <xsl:param name="element" as="node()"/>
         <xsl:param name="isPascalCase" as="xs:boolean"/>
-        <xsl:param name="isDefaultNamespaceContextualised" as="xs:boolean"/>
 
         <xsl:sequence
-            select="f:buildURIFromNode($element, $element/@name, $isPascalCase, $isDefaultNamespaceContextualised)"
+            select="f:buildURIFromNode($element, $element/@name, $isPascalCase)"
         />
     </xsl:function>
 
-
-    <xd:doc>
-        <xd:desc> Create the attribute URI. If the attribute name starts with an upper case then
-            prepent 'has' prefix to it.</xd:desc>
-        <xd:param name="attribute"/>
-        <xd:param name="isPascalCase"/>
-        <xd:param name="isDefaultNamespaceContextualised"/>
-    </xd:doc>
-    <xsl:function name="f:buildURIFromAttribute">
-        <xsl:param name="attribute" as="node()"/>
-        <xsl:param name="isPascalCase" as="xs:boolean"/>
-        <xsl:param name="isDefaultNamespaceContextualised" as="xs:boolean"/>
-
-        <xsl:variable name="localName" select="f:getLocalSegmentForElements($attribute)"/>
-        <xsl:variable name="prefix" select="fn:substring-before($attribute/@name, ':')"/>
-        <xsl:variable name="expandedLocalName"
-            select="
-                if (substring($localName, 1, 1) = fn:upper-case(substring($localName, 1, 1))) then
-                    fn:concat('has', $localName)
-                else
-                    $localName
-                "/>
-        <xsl:sequence
-            select="f:buildURIFromNode($attribute, fn:concat($prefix, ':', $expandedLocalName), $isPascalCase, $isDefaultNamespaceContextualised)"
-        />
-    </xsl:function>
 
 
     <xd:doc>
@@ -278,20 +249,14 @@
         <xd:param name="element"/>
         <xd:param name="elementName"/>
         <xd:param name="isPascalCase"/>
-        <xd:param name="isDefaultNamespaceContextualised"/>
     </xd:doc>
     <xsl:function name="f:buildURIFromNode">
         <xsl:param name="element" as="node()"/>
         <xsl:param name="elementName" as="xs:string"/>
         <xsl:param name="isPascalCase" as="xs:boolean"/>
-        <xsl:param name="isDefaultNamespaceContextualised" as="xs:boolean"/>
 
         <xsl:variable name="defaultNamespacePrefix"
-            select="
-                if ($isDefaultNamespaceContextualised) then
-                    f:getContainingPackageName($element)
-                else
-                    fn:string('')"/>
+            select="fn:string('')"/>
 
         <xsl:variable name="normalisedElementName"
             select="
@@ -457,6 +422,7 @@
     <xd:doc>
         <xd:desc>Check if the connector is used to or from external classes</xd:desc>
         <xd:param name="connectorName"/>
+        <xd:param name="root"/>
     </xd:doc>
 
     <xsl:function name="f:connector-to-or-from-external-class">

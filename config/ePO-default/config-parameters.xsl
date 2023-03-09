@@ -47,7 +47,6 @@
     <xsl:variable name="defaultDelimiter" select="'#'"/>
 
     <!-- Sometimes when it is not possible to resolve teh repfix or the base URI of a namespace, these mock values are used-->
-    <xsl:variable name="mockUnknownDomain">http://unknown.domain/for/prefix#</xsl:variable>
     <xsl:variable name="mockUnknownPrefix">unknown</xsl:variable>
 
     <!-- Sometimes names are missing, then use this default value  -->

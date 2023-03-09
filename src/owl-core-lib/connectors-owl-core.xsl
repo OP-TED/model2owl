@@ -215,16 +215,16 @@
     <xsl:template name="classGeneralization">
         <xsl:variable name="superClass" select="f:getSuperClassFromGeneralization(.)"/>
         <xsl:variable name="superClassURI"
-            select="f:buildURIFromElement($superClass, fn:true(), fn:true())"/>
+            select="f:buildURIFromElement($superClass, fn:true())"/>
         <xsl:variable name="subClasses" select="f:getSubClassesFromGeneralization(.)"/>
         <xsl:if test="f:getElementByIdRef(./source/@xmi:idref, root(.))">
             <xsl:variable name="subclass" select="f:getElementByIdRef(./source/@xmi:idref, root(.))"/>
             <xsl:variable name="subclassURI"
-                select="f:buildURIFromElement($subclass, fn:true(), fn:true())"/>
+                select="f:buildURIFromElement($subclass, fn:true())"/>
             <xsl:choose>
                 <xsl:when test="count($subClasses) = 1">
                     <xsl:variable name="subClassURI"
-                        select="f:buildURIFromElement($subClasses, fn:true(), fn:true())"/>
+                        select="f:buildURIFromElement($subClasses, fn:true())"/>
                     <owl:Class rdf:about="{$subClassURI}">
                         <rdfs:subClassOf rdf:resource="{$superClassURI}"/>
                     </owl:Class>
@@ -235,7 +235,7 @@
                     </owl:Class>
                     <xsl:for-each select="$subClasses">
                         <xsl:variable name="siblingURI"
-                            select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+                            select="f:buildURIFromElement(., fn:true())"/>
                         <xsl:if test="$siblingURI != $subclassURI">
                             <rdf:Description rdf:about="{$subclassURI}">
                                 <owl:disjointWith rdf:resource="{$siblingURI}"/>

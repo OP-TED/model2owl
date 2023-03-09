@@ -71,7 +71,7 @@
         <xsl:param name="root"/>
         <xsl:variable name="attributesWithSameName" select="f:getClassAttributeByName($attributeName, $root)"/>
         <xsl:variable name="attributeURI"
-            select="f:buildURIFromAttribute($attributesWithSameName[1], fn:false(), fn:true())"/>
+            select="f:buildURIFromElement($attributesWithSameName[1], fn:false())"/>
         <xsl:variable name="attributeMultiplicityMinValues" select="$attributesWithSameName/bounds/@lower"/>
         <xsl:variable name="attributeMultiplicityMaxValues" select="$attributesWithSameName/bounds/@upper"/>
         <xsl:variable name="areAllMinValuesOne" select="f:areStringsEqual($attributeMultiplicityMinValues) and $attributeMultiplicityMinValues[1] = '1'" as='xs:boolean'/>
@@ -97,7 +97,7 @@
         <xsl:param name="attributeName"/>
         <xsl:variable name="attributesWithSameName" select="f:getClassAttributeByName($attributeName, $root)"/>
         <xsl:variable name="attributeURI"
-            select="f:buildURIFromAttribute($attributesWithSameName[1], fn:false(), fn:true())"/>
+            select="f:buildURIFromElement($attributesWithSameName[1], fn:false())"/>
         <xsl:choose>
             <xsl:when test="fn:count($attributesWithSameName) = 1">
                 <rdf:Description rdf:about="{$attributeURI}">
@@ -133,7 +133,7 @@
         <xsl:variable name="attributesWithSameName" select="f:getClassAttributeByName($attributeName, $root)"/>
         <xsl:variable name="distinctAttributeTypesFound" select="fn:distinct-values($attributesWithSameName/properties/@type)"/>
         <xsl:variable name="attributeURI"
-            select="f:buildURIFromAttribute($attributesWithSameName[1], fn:false(), fn:true())"/>
+            select="f:buildURIFromElement($attributesWithSameName[1], fn:false())"/>
         <xsl:choose>
             <xsl:when
                 test="fn:count($attributesWithSameName) = 1 or fn:count($distinctAttributeTypesFound) = 1">
@@ -202,7 +202,7 @@
         <xsl:variable name="datatypeURI"
             select="f:buildURIfromLexicalQName('xsd:integer', fn:false(), fn:true())"/>
         <xsl:variable name="attributeURI"
-            select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
+            select="f:buildURIFromElement($attribute, fn:false())"/>
         <!--if both min and max vaules are present choose whether they are equal or not-->
         <xsl:if test="boolean($attributeMultiplicityMin) and boolean($attributeMultiplicityMax)">
             <owl:Class rdf:about="{$classURI}">
@@ -301,7 +301,7 @@
             that are skos:inScheme of this enumeration.</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
-        <xsl:variable name="enumerationURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="enumerationURI" select="f:buildURIFromElement(., fn:true())"/>
         <owl:Class rdf:about="{$enumerationURI}">
             <!-\- <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>-\->
             <owl:equivalentClass>

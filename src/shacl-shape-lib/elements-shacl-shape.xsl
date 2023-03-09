@@ -29,7 +29,7 @@
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
         <xsl:variable name="class" select="."/>
-        <xsl:variable name="classURI" select="f:buildURIFromElement($class, fn:true(), fn:true())"/>
+        <xsl:variable name="classURI" select="f:buildURIFromElement($class, fn:true())"/>
         <xsl:variable name="documentation"
             select="f:formatDocString($class/properties/@documentation)"/>
 
@@ -133,7 +133,7 @@
     <xsl:template name="attributeRangeShape">
         <xsl:param name="attribute"/>
         <xsl:variable name="attributeURI"
-            select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
+            select="f:buildURIFromElement($attribute, fn:false())"/>
         <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
         <xsl:variable name="attributeType" select="$attribute/properties/@type"/>
         <xsl:if test="f:isAttributeTypeValidForDatatypeProperty($attribute)">
@@ -199,7 +199,7 @@
         <xsl:variable name="datatypeURI"
             select="f:buildURIfromLexicalQName('xsd:integer', fn:false(), fn:true())"/>
         <xsl:variable name="attributeURI"
-            select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
+            select="f:buildURIFromElement($attribute, fn:false())"/>
         <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
         
         <xsl:variable name="propertyRestriction" as="item()*">

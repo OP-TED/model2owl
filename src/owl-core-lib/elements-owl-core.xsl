@@ -59,7 +59,7 @@
         <xsl:variable name="conceptSchemeName" select="f:lexicalQNameToWords(./@name)"/>
 
         <xsl:variable name="conceptSchemeURI"
-            select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+            select="f:buildURIFromElement(., fn:true())"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
         <!-\- generating the actual CS content -\->
         <skos:ConceptScheme rdf:about="{$conceptSchemeURI}">
@@ -94,10 +94,10 @@
                     ./initial/@body
                 else
                     f:lexicalQNameToWords(./@name)"/>
-        <xsl:variable name="conceptURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="conceptURI" select="f:buildURIFromElement(., fn:true())"/>
         <xsl:variable name="notation" select="f:camelCaseString($conceptName)"/>
         <xsl:variable name="conceptSchemeURI"
-            select="f:buildURIFromElement(../.., fn:true(), fn:true())"/>
+            select="f:buildURIFromElement(../.., fn:true())"/>
         <xsl:variable name="documentation" select="f:formatDocString(./documentation/@value)"/>
 
         <xsl:variable name="initialValue" select="./initial/@body"/>
@@ -159,7 +159,7 @@
     <xsl:template name="datatypeDeclaration">
         <xsl:variable name="name" select="f:lexicalQNameToWords(./@name)"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
-        <xsl:variable name="data-type-URI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="data-type-URI" select="f:buildURIFromElement(., fn:true())"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
         
         <rdfs:Datatype rdf:about="{$data-type-URI}">
@@ -190,7 +190,7 @@
     <xsl:template name="classDeclaration">
         <xsl:variable name="datatypeName" select="f:lexicalQNameToWords(./@name)"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
-        <xsl:variable name="datatypeURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="datatypeURI" select="f:buildURIFromElement(., fn:true())"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
         
         
@@ -259,7 +259,7 @@
         <xsl:variable name="distinctAttributeTypesFound"
             select="fn:distinct-values($attributesWithSameName/properties/@type)"/>
         <xsl:variable name="attributeURI"
-            select="f:buildURIFromAttribute($attributesWithSameName[1], fn:false(), fn:true())"/>
+            select="f:buildURIFromElement($attributesWithSameName[1], fn:false())"/>
 
         <!--    begin aggregate definitions-->
         <xsl:variable name="definitionValues" select="$attributesWithSameName/documentation/@value"/>
