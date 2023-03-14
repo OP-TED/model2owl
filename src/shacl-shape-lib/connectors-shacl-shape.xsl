@@ -107,7 +107,7 @@
                 if (boolean($connector/target/role/@name)) then
                     f:lexicalQNameToWords($connector/target/role/@name)
                 else
-                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+                    fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
@@ -170,7 +170,7 @@
                 if (boolean($connector/target/role/@name)) then
                     f:lexicalQNameToWords($connector/target/role/@name)
                 else
-                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+                    fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
@@ -233,7 +233,7 @@
                 if (boolean($connector/target/role/@name)) then
                     f:lexicalQNameToWords($connector/target/role/@name)
                 else
-                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+                    fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
@@ -365,7 +365,7 @@
                 if (boolean($connector/target/role/@name)) then
                     f:lexicalQNameToWords($connector/target/role/@name)
                 else
-                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+                    fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
 

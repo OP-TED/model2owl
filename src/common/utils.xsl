@@ -146,7 +146,7 @@
                     if (not(contains('0123456789', substring($localSegment, 1, 1)))) then
                         $localSegment
                     else
-                        fn:concat($mockPrefixforLocalSegment, $localSegment)"/>
+                    fn:error(xs:QName('localSegment'),concat($localSegment, ' - this local segment starts with a digit. Please change this'))"/>
 
             <!-- leave only acceptable characters in the local segment  -->
             <xsl:variable name="safeCharLocalSegment"

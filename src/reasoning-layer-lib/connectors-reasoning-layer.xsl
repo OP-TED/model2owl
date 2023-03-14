@@ -251,7 +251,7 @@
                     if (boolean($connector/target/role/@name)) then
                         f:lexicalQNameToWords($connector/target/role/@name)
                     else
-                        concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+                    fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
             <xsl:variable name="targetRoleURI"
                 select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
             <owl:AsymmetricProperty rdf:about="{$targetRoleURI}"/>
@@ -285,7 +285,7 @@
                         if (boolean($bidirectionalConnectors/source/role/@name)) then
                             f:lexicalQNameToWords($bidirectionalConnectors/source/role/@name)
                         else
-                            concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+                        fn:error(xs:QName('connectors'),concat($bidirectionalConnectors/@xmi:idref, ' - connector source role name is empty'))"/>
                 <xsl:variable name="sourceRoleURI"
                     select="f:buildURIfromLexicalQName($sourceRole, fn:false(), fn:true())"/>
                 <rdf:Description rdf:about="{$targetRoleURI}">
@@ -427,7 +427,7 @@
                 if (boolean($connector/target/role/@name)) then
                     f:lexicalQNameToWords($connector/target/role/@name)
                 else
-                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+                    fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>

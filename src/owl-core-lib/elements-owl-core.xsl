@@ -291,13 +291,15 @@
             if (boolean($firstAttribute/@name)) then
                     f:lexicalQNameToWords($firstAttribute/@name)
                 else
-                    $mockUnnamedElement"/>
+                fn:error(xs:QName('attribute'),concat($firstAttribute/@xmi:idref, ' - Attribute with no name'))"/>
         <xsl:variable name="className" select="$firstAttribute/../../@name" as="xs:string"/>
-        <xsl:variable name="attributeNormalizedLocalName"
-            select="fn:concat(fn:substring-before($firstAttribute/@name, ':'), ':has', f:getLocalSegmentForElements($firstAttribute))"/>
+     <!--   <xsl:variable name="attributeNormalizedLocalName"
+            select="fn:concat(fn:substring-before($firstAttribute/@name, ':'), ':has', f:getLocalSegmentForElements($firstAttribute))
+            "/>
         <xsl:variable name="isAttributeWithDependencyName"
-            select="f:getConnectorByName($attributeNormalizedLocalName, $root)[source/model/@name = $className]"/>
-        
+            select="f:getConnectorByName($attributeNormalizedLocalName, $root)[source/model/@name = $className]"/>-->
+        <xsl:variable name="isAttributeWithDependencyName"
+            select="f:getConnectorByName($firstAttribute/@name, $root)[source/model/@name = $className]"/>
         
         <xsl:if test="not($isAttributeWithDependencyName)">
             <xsl:element name="{$propertyType}">

@@ -46,15 +46,6 @@
     <!-- when a delimiter is missing in the base URI of a namespace, use this default value-->
     <xsl:variable name="defaultDelimiter" select="'#'"/>
 
-    <!-- Sometimes when it is not possible to resolve teh repfix or the base URI of a namespace, these mock values are used-->
-    <xsl:variable name="mockUnknownPrefix">unknown</xsl:variable>
-
-    <!-- Sometimes names are missing, then use this default value  -->
-    <xsl:variable name="mockUnnamedElement">unnamed</xsl:variable>
-
-    <!-- the local segment of an URI cannot start with digits, like "prefix:03000000-1" therefore a prefix must beused -->
-    <xsl:variable name="mockPrefixforLocalSegment">i</xsl:variable>
-
     <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
     <xsl:variable name="acceptableTypesForObjectProperties"
         select="('epo:Identifier', 'rdfs:Literal')"/>
