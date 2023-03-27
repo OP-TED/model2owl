@@ -29,7 +29,7 @@
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
         <xsl:variable name="class" select="."/>
-        <xsl:variable name="classURI" select="f:buildURIFromElement($class, fn:true())"/>
+        <xsl:variable name="classURI" select="f:buildURIFromElement($class)"/>
         <xsl:variable name="documentation"
             select="f:formatDocString($class/properties/@documentation)"/>
 
@@ -133,7 +133,7 @@
     <xsl:template name="attributeRangeShape">
         <xsl:param name="attribute"/>
         <xsl:variable name="attributeURI"
-            select="f:buildURIFromElement($attribute, fn:false())"/>
+            select="f:buildURIFromElement($attribute)"/>
         <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
         <xsl:variable name="attributeType" select="$attribute/properties/@type"/>
         <xsl:if test="f:isAttributeTypeValidForDatatypeProperty($attribute)">
@@ -148,7 +148,7 @@
                     if ($attributeType = $controlledListType) then
                     f:buildURIfromLexicalQName('skos:Concept', fn:true(), fn:true())
                     else
-                    f:buildURIfromLexicalQName($datatype, fn:true(), fn:false())"
+                    f:buildURIfromLexicalQName($datatype)"
             />
 
             <sh:property>
@@ -169,9 +169,9 @@
             <xsl:variable name="classURI"
                 select="
                     if ($attributeType = $controlledListType) then
-                    f:buildURIfromLexicalQName('skos:Concept', fn:true(), fn:true())
+                    f:buildURIfromLexicalQName('skos:Concept')
                     else
-                    f:buildURIfromLexicalQName($attributeType, fn:true(), fn:false())"/>
+                    f:buildURIfromLexicalQName($attributeType)"/>
             <sh:property>
                 <sh:PropertyShape>
                     <sh:path rdf:resource="{$attributeURI}"/>
@@ -197,9 +197,9 @@
         <xsl:variable name="attributeMultiplicityMin" select="f:getAttributeValueToDisplay($attribute/bounds/@lower)"/>
         <xsl:variable name="attributeMultiplicityMax" select="f:getAttributeValueToDisplay($attribute/bounds/@upper)"/>
         <xsl:variable name="datatypeURI"
-            select="f:buildURIfromLexicalQName('xsd:integer', fn:false(), fn:true())"/>
+            select="f:buildURIfromLexicalQName('xsd:integer')"/>
         <xsl:variable name="attributeURI"
-            select="f:buildURIFromElement($attribute, fn:false())"/>
+            select="f:buildURIFromElement($attribute)"/>
         <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
         
         <xsl:variable name="propertyRestriction" as="item()*">

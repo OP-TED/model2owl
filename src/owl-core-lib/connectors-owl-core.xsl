@@ -85,13 +85,13 @@
                    if ($targetConnector/target/role/not(@name) = fn:true()) then
                        ()
                    else
-                       f:buildURIfromLexicalQName($targetConnector/target/role/@name, fn:false(), fn:true())"/>
+                       f:buildURIfromLexicalQName($targetConnector/target/role/@name)"/>
            <xsl:variable name="sourceConnectorTargetUri"
                select="
                    if ($sourceConnector/target/role/not(@name) = fn:true()) then
                        ()
                    else
-                       f:buildURIfromLexicalQName($sourceConnector/target/role/@name, fn:false(), fn:true())"/>
+                       f:buildURIfromLexicalQName($sourceConnector/target/role/@name)"/>
            <xsl:if test="$targetConnectorTargetUri and $sourceConnectorTargetUri">
                <owl:ObjectProperty rdf:about="{$sourceConnectorTargetUri}">
                    <rdfs:subPropertyOf rdf:resource="{$targetConnectorTargetUri}"/>
@@ -102,13 +102,13 @@
                    if ($targetConnector/source/role/not(@name) = fn:true()) then
                        ()
                    else
-                       f:buildURIfromLexicalQName($targetConnector/source/role/@name, fn:false(), fn:true())"/>
+                       f:buildURIfromLexicalQName($targetConnector/source/role/@name)"/>
            <xsl:variable name="sourceConnectorSourceUri"
                select="
                    if ($sourceConnector/source/role/not(@name) = fn:true()) then
                        ()
                    else
-                       f:buildURIfromLexicalQName($sourceConnector/source/role/@name, fn:false(), fn:true())"/>
+                       f:buildURIfromLexicalQName($sourceConnector/source/role/@name)"/>
            <xsl:if test="$targetConnectorSourceUri and $sourceConnectorSourceUri">
                <owl:ObjectProperty rdf:about="{$sourceConnectorSourceUri}">
                    <rdfs:subPropertyOf rdf:resource="{$targetConnectorSourceUri}"/>
@@ -147,7 +147,7 @@
         <xsl:variable name="connectorsWithSameName"
             select="f:getConnectorByName($connectorName, $root)"/>
         <xsl:variable name="roleURI"
-            select="f:buildURIfromLexicalQName(f:lexicalQNameToWords($connectorName), fn:false(), fn:true())"/>
+            select="f:buildURIfromLexicalQName($connectorName)"/>
 
         <xsl:variable name="connectorDocumentations" as="xs:string*"
             select="
@@ -215,16 +215,16 @@
     <xsl:template name="classGeneralization">
         <xsl:variable name="superClass" select="f:getSuperClassFromGeneralization(.)"/>
         <xsl:variable name="superClassURI"
-            select="f:buildURIFromElement($superClass, fn:true())"/>
+            select="f:buildURIFromElement($superClass)"/>
         <xsl:variable name="subClasses" select="f:getSubClassesFromGeneralization(.)"/>
         <xsl:if test="f:getElementByIdRef(./source/@xmi:idref, root(.))">
             <xsl:variable name="subclass" select="f:getElementByIdRef(./source/@xmi:idref, root(.))"/>
             <xsl:variable name="subclassURI"
-                select="f:buildURIFromElement($subclass, fn:true())"/>
+                select="f:buildURIFromElement($subclass)"/>
             <xsl:choose>
                 <xsl:when test="count($subClasses) = 1">
                     <xsl:variable name="subClassURI"
-                        select="f:buildURIFromElement($subClasses, fn:true())"/>
+                        select="f:buildURIFromElement($subClasses)"/>
                     <owl:Class rdf:about="{$subClassURI}">
                         <rdfs:subClassOf rdf:resource="{$superClassURI}"/>
                     </owl:Class>
@@ -235,7 +235,7 @@
                     </owl:Class>
                     <xsl:for-each select="$subClasses">
                         <xsl:variable name="siblingURI"
-                            select="f:buildURIFromElement(., fn:true())"/>
+                            select="f:buildURIFromElement(.)"/>
                         <xsl:if test="$siblingURI != $subclassURI">
                             <rdf:Description rdf:about="{$subclassURI}">
                                 <owl:disjointWith rdf:resource="{$siblingURI}"/>

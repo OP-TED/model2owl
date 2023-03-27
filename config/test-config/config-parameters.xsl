@@ -38,6 +38,10 @@
 
     <!-- when a delimiter is missing in the base URI of a namespace, use this default value-->
     <xsl:variable name="defaultDelimiter" select="'#'"/>
+    
+    <!--    set default namespace interpretation for lexical Qnames that are not prefix:localSegment or :localSegment. If this 
+    is set to true localSegment will transform to :localSegment-->
+    <xsl:variable name="defaultNamespaceInterpretation" select="fn:false()"/>
 
     <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
     <xsl:variable name="acceptableTypesForObjectProperties"

@@ -106,7 +106,7 @@
         />
     </xsl:function>
 
-    <xd:doc>
+<!--    <xd:doc>
         <xd:desc>Normalises the lexicalised QName string.</xd:desc>
         <xd:param name="lexicalQName"/>
         <xd:param name="isPascalCase"/>
@@ -140,7 +140,7 @@
                         fn:substring-after($lexicalQName, ':')
                     else
                         $lexicalQName"/>
-            <!--  a qname cannot start with a digit, therefore fence it frith aprefix -->
+            <!-\-  a qname cannot start with a digit, therefore fence it frith aprefix -\->
             <xsl:variable name="safeDigitLocalSegment"
                 select="
                     if (not(contains('0123456789', substring($localSegment, 1, 1)))) then
@@ -148,7 +148,7 @@
                     else
                     fn:error(xs:QName('localSegment'),concat($localSegment, ' - this local segment starts with a digit. Please change this'))"/>
 
-            <!-- leave only acceptable characters in the local segment  -->
+            <!-\- leave only acceptable characters in the local segment  -\->
             <xsl:variable name="safeCharLocalSegment"
                 select="replace($safeDigitLocalSegment, '[^\w\d\s-_]', '')"/>
             <xsl:value-of
@@ -170,26 +170,42 @@
 
 
         <xsl:sequence select="fn:concat($newPrefix, $newLocalSegment)"/>
-    </xsl:function>
+    </xsl:function>-->
 
     <xd:doc>
         <xd:desc>Build the QName for a lexicalQName. The prefix definition is fetched from the
             global resource '$namespacePrefixes' or the default namespace is used.</xd:desc>
         <xd:param name="lexicalQName"/>
-        <xd:param name="isPascalCase"/>
-        <xd:param name="changeCase"/>
     </xd:doc>
     <xsl:function name="f:buildQNameFromLexicalQName" as="xs:QName">
         <xsl:param name="lexicalQName" as="xs:string"/>
-        <xsl:param name="isPascalCase" as="xs:boolean"/>
-        <xsl:param name="changeCase" as="xs:boolean"/>
+        
+        <xsl:variable name="prefix"
+            select="
+                if (fn:contains($lexicalQName, ':')) then
+                    if (boolean(fn:substring-before($lexicalQName, ':'))) then
+                        fn:substring-before($lexicalQName, ':')
+                    else
+                        ''
+                else
+                    if ($defaultNamespaceInterpretation) then
+                        ''
+                    else
+                        fn:error(xs:QName('prefix'), concat($lexicalQName, ' - Incorrect lexicalised QName. Should be prefix:localSegment or :localSegment format'))"/>
 
-        <xsl:variable name="normalisedLexicalQName"
-            select="f:normaliseLexicalQName($lexicalQName, $isPascalCase, $changeCase)"/>
-
-        <xsl:variable name="namespaceURI"
-            select="f:getNamespaceURI(fn:substring-before($normalisedLexicalQName, ':'))"/>
-        <xsl:sequence select="fn:QName($namespaceURI, $normalisedLexicalQName)"/>
+        <xsl:variable name="namespaceURI" select="f:getNamespaceURI($prefix)"/>
+        <xsl:variable name="qname"
+            select="
+                if (fn:substring-before($lexicalQName, ':') != '') then
+                    $lexicalQName
+                else
+                    if ($defaultNamespaceInterpretation and not(fn:contains($lexicalQName, ':'))) then
+                        $lexicalQName
+                    else
+                        fn:substring-after($lexicalQName, ':')"
+        />
+                    
+        <xsl:sequence select="fn:QName($namespaceURI, $qname)"/>
     </xsl:function>
 
     <xd:doc>
@@ -201,16 +217,12 @@
             concatenation, but at the cost of missing some additional checks that the
             'fn:resolve-uri' does. Finally concatenation solution WON! </xd:desc>
         <xd:param name="lexicalQName"/>
-        <xd:param name="isPascalCase"/>
-        <xd:param name="changeCase"/>
     </xd:doc>
     <xsl:function name="f:buildURIfromLexicalQName" as="xs:anyURI">
         <xsl:param name="lexicalQName" as="xs:string"/>
-        <xsl:param name="isPascalCase" as="xs:boolean"/>
-        <xsl:param name="changeCase" as="xs:boolean"/>
 
         <xsl:variable name="qname"
-            select="f:buildQNameFromLexicalQName($lexicalQName, $isPascalCase, $changeCase)"/>
+            select="f:buildQNameFromLexicalQName($lexicalQName)"/>
         <xsl:variable name="namespaceURI" select="fn:namespace-uri-from-QName($qname)"/>
         <xsl:variable name="fragmentIdentifier"
             select="substring($namespaceURI, string-length($namespaceURI), 1)"/>
@@ -228,45 +240,16 @@
     <xd:doc>
         <xd:desc>Builds a URI for the element using the element @name attribute. The name expests a
             prefix preceeded by colon (:).
-            isPascalCase - indicates whether the first letter of the local segmetn shall be
-            capitalised. </xd:desc>
+          </xd:desc>
         <xd:param name="element"/>
-        <xd:param name="isPascalCase"/>
     </xd:doc>
     <xsl:function name="f:buildURIFromElement">
         <xsl:param name="element" as="node()"/>
-        <xsl:param name="isPascalCase" as="xs:boolean"/>
+        <xsl:variable name="elementName" select="$element/@name"/>
 
         <xsl:sequence
-            select="f:buildURIFromNode($element, $element/@name, $isPascalCase)"
+            select="f:buildURIfromLexicalQName($elementName)"
         />
-    </xsl:function>
-
-
-
-    <xd:doc>
-        <xd:desc>Create an URI from an XMI node that has name attribute</xd:desc>
-        <xd:param name="element"/>
-        <xd:param name="elementName"/>
-        <xd:param name="isPascalCase"/>
-    </xd:doc>
-    <xsl:function name="f:buildURIFromNode">
-        <xsl:param name="element" as="node()"/>
-        <xsl:param name="elementName" as="xs:string"/>
-        <xsl:param name="isPascalCase" as="xs:boolean"/>
-
-        <xsl:variable name="defaultNamespacePrefix"
-            select="fn:string('')"/>
-
-        <xsl:variable name="normalisedElementName"
-            select="
-                if (contains($elementName, ':')) then
-                    $elementName
-                else
-                    concat($defaultNamespacePrefix, ':', $elementName)"/>
-
-        <xsl:sequence
-            select="f:buildURIfromLexicalQName($normalisedElementName, $isPascalCase, fn:true())"/>
     </xsl:function>
 
 
@@ -315,7 +298,7 @@
                 fn:lower-case(
                 functx:camel-case-to-words(
                 fn:local-name-from-QName(
-                f:buildQNameFromLexicalQName($lexicalqName, fn:true(), fn:true())
+                f:buildQNameFromLexicalQName($lexicalqName)
                 ), ' ')
                 ))"
         />

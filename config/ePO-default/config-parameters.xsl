@@ -34,6 +34,9 @@
     <!-- XSD datatypes that conform to OWL2 requirements   -->
     <xsl:variable name="xsdAndRdfDataTypes"
         select="fn:doc('xsdAndRdfDataTypes.xml')"/>
+    <!--    set default namespace interpretation for lexical Qnames that are not prefix:localSegment or :localSegment. If this 
+    is set to true localSegment will transform to :localSegment-->
+    <xsl:variable name="defaultNamespaceInterpretation" select="fn:true()"/>
 
     <!-- Ontology base URI, configure as necessary. Do not use a trailing local delimiter 
         like in the namespace definition-->
