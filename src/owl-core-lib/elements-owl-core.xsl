@@ -41,7 +41,16 @@
         <xsl:call-template name="classDeclaration"/>
     </xsl:template>
 
+
     <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:Enumeration']"/>
+    
+    
+<!--    TODO RULE 27 should be removed? vvvv -->
+
+    <!--<xd:doc>
         <xd:desc>[Rule 27]-(Enumeration in core ontology layer) .
             instantiation axiom for an UML enumeration.Specify SKOS concept scheme</xd:desc>
     </xd:doc>
@@ -50,9 +59,9 @@
         <xsl:variable name="conceptSchemeName" select="f:lexicalQNameToWords(./@name)"/>
 
         <xsl:variable name="conceptSchemeURI"
-            select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+            select="f:buildURIFromElement(.)"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
-        <!-- generating the actual CS content -->
+        <!-\- generating the actual CS content -\->
         <skos:ConceptScheme rdf:about="{$conceptSchemeURI}">
             <rdfs:label xml:lang="en">
                 <xsl:value-of select="$conceptSchemeName"/>
@@ -70,7 +79,7 @@
                 </skos:definition>
             </xsl:if>     
         </skos:ConceptScheme>
-    </xsl:template>
+    </xsl:template>-->
 
     <xd:doc>
         <xd:desc>[Rule 28]-(Enumeration items in core ontology layer) .
@@ -85,10 +94,10 @@
                     ./initial/@body
                 else
                     f:lexicalQNameToWords(./@name)"/>
-        <xsl:variable name="conceptURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="conceptURI" select="f:buildURIFromElement(.)"/>
         <xsl:variable name="notation" select="f:camelCaseString($conceptName)"/>
         <xsl:variable name="conceptSchemeURI"
-            select="f:buildURIFromElement(../.., fn:true(), fn:true())"/>
+            select="f:buildURIFromElement(../..)"/>
         <xsl:variable name="documentation" select="f:formatDocString(./documentation/@value)"/>
 
         <xsl:variable name="initialValue" select="./initial/@body"/>
@@ -150,7 +159,7 @@
     <xsl:template name="datatypeDeclaration">
         <xsl:variable name="name" select="f:lexicalQNameToWords(./@name)"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
-        <xsl:variable name="data-type-URI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="data-type-URI" select="f:buildURIFromElement(.)"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
         
         <rdfs:Datatype rdf:about="{$data-type-URI}">
@@ -181,7 +190,7 @@
     <xsl:template name="classDeclaration">
         <xsl:variable name="datatypeName" select="f:lexicalQNameToWords(./@name)"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
-        <xsl:variable name="datatypeURI" select="f:buildURIFromElement(., fn:true(), fn:true())"/>
+        <xsl:variable name="datatypeURI" select="f:buildURIFromElement(.)"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
         
         
@@ -250,7 +259,7 @@
         <xsl:variable name="distinctAttributeTypesFound"
             select="fn:distinct-values($attributesWithSameName/properties/@type)"/>
         <xsl:variable name="attributeURI"
-            select="f:buildURIFromAttribute($attributesWithSameName[1], fn:false(), fn:true())"/>
+            select="f:buildURIFromElement($attributesWithSameName[1])"/>
 
         <!--    begin aggregate definitions-->
         <xsl:variable name="definitionValues" select="$attributesWithSameName/documentation/@value"/>
@@ -282,13 +291,15 @@
             if (boolean($firstAttribute/@name)) then
                     f:lexicalQNameToWords($firstAttribute/@name)
                 else
-                    $mockUnnamedElement"/>
+                fn:error(xs:QName('attribute'),concat($firstAttribute/@xmi:idref, ' - Attribute with no name'))"/>
         <xsl:variable name="className" select="$firstAttribute/../../@name" as="xs:string"/>
-        <xsl:variable name="attributeNormalizedLocalName"
-            select="fn:concat(fn:substring-before($firstAttribute/@name, ':'), ':has', f:getLocalSegmentForElements($firstAttribute))"/>
+     <!--   <xsl:variable name="attributeNormalizedLocalName"
+            select="fn:concat(fn:substring-before($firstAttribute/@name, ':'), ':has', f:getLocalSegmentForElements($firstAttribute))
+            "/>
         <xsl:variable name="isAttributeWithDependencyName"
-            select="f:getConnectorByName($attributeNormalizedLocalName, $root)[source/model/@name = $className]"/>
-        
+            select="f:getConnectorByName($attributeNormalizedLocalName, $root)[source/model/@name = $className]"/>-->
+        <xsl:variable name="isAttributeWithDependencyName"
+            select="f:getConnectorByName($firstAttribute/@name, $root)[source/model/@name = $className]"/>
         
         <xsl:if test="not($isAttributeWithDependencyName)">
             <xsl:element name="{$propertyType}">

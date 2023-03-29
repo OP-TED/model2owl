@@ -31,7 +31,7 @@
     </x:scenario>
     
 
-    <x:scenario
+<!--    <x:scenario
         label="Scenario for testing template with match 'element[@xmi:type = 'uml:Enumeration']">        
         <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[144]"/>
@@ -40,7 +40,7 @@
         <x:expect label="there is a correct URI"
             test="/skos:ConceptScheme/@rdf:about = 'http://data.europa.eu/a4g/ontology#CriterionGroupPropertyType' "
         />
-    </x:scenario>
+    </x:scenario>-->
 
 
     <x:scenario
@@ -49,7 +49,7 @@
             select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[43]"/>
         <x:expect label="there is an rdfs:Datatype" test="boolean(/rdfs:Datatype)"/>
         <x:expect label="there is a rdfs:label" test="boolean(/rdfs:Datatype/rdfs:label)"/>
-        <x:expect label="there is a correct URI" test="/rdfs:Datatype/@rdf:about = 'http://unknown.domain/for/prefix#Indicator' "/>        
+        <x:expect label="there is a correct URI" test="/rdfs:Datatype/@rdf:about = 'http://data.europa.eu/a4g/ontology#Indicator' "/>        
     </x:scenario>
     
     <x:scenario
@@ -59,7 +59,7 @@
         <x:expect label="there is an owl:Class" test="boolean(/owl:Class)"/>
         <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/rdfs:label) "/>
         <x:expect label="there is a rdfs:comment" test="not(boolean(/owl:Class/rdfs:comment))"/>
-        <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://unknown.domain/for/prefix#Measure' "/>     
+        <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://data.europa.eu/a4g/ontology#Measure' "/>     
     </x:scenario>
 
     <x:scenario
@@ -107,7 +107,9 @@
                 <x:param name="attributeName">epo:DesignContestType</x:param>
                 <x:param name="root" href="../../testData/ePO_CM_CCTS-v2.0.2-2020-07-23.eap.xmi" select="/"/>
             </x:call>
-        <x:expect label="generating nothing" select="()"/>
+        <x:expect label="there is rdf:Property" test="boolean(/rdf:Property)"/>
+        <x:expect label="there is a correct URI"
+            test="/rdf:Property/@rdf:about='http://data.europa.eu/a4g/ontology#DesignContestType'"/>
     </x:scenario>
 
        

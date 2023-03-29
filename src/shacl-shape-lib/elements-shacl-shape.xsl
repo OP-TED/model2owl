@@ -29,7 +29,7 @@
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
         <xsl:variable name="class" select="."/>
-        <xsl:variable name="classURI" select="f:buildURIFromElement($class, fn:true(), fn:true())"/>
+        <xsl:variable name="classURI" select="f:buildURIFromElement($class)"/>
         <xsl:variable name="documentation"
             select="f:formatDocString($class/properties/@documentation)"/>
 
@@ -57,7 +57,10 @@
         </sh:NodeShape>
     </xsl:template>
 
-    <xd:doc>
+
+<!--TODO What are we doing with the rules below vvv-->
+
+<!--    <xd:doc>
         <xd:desc>Applying rules 7 and 8 to attributes</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
@@ -66,7 +69,7 @@
             select="fn:concat(fn:substring-before(./@name, ':'), ':has', f:getLocalSegmentForElements(.))"/>
         <xsl:variable name="isAttributeWithDependencyName"
             select="f:getConnectorByName($attributeNormalizedLocalName, root(.))[source/model/@name = $className]"/>
-<!--        generating only for attributes that don't have a coresponding relation (dependency)-->
+<!-\-        generating only for attributes that don't have a coresponding relation (dependency)-\->
         <xsl:if test="not($isAttributeWithDependencyName)">
             <xsl:call-template name="attributeRangeShape">
                 <xsl:with-param name="attribute" select="."/>
@@ -75,7 +78,7 @@
                 <xsl:with-param name="attribute" select="."/>
             </xsl:call-template>
         </xsl:if>
-    </xsl:template>
+    </xsl:template>-->
 
 
     <xd:doc>
@@ -121,7 +124,7 @@
         </sh:sparql>
     </xsl:template>
 
-    <xd:doc>
+  <!--  <xd:doc>
         <xd:desc>[Rule 7] (Attribute range shape in data shape layer) . Within the SHACL Node Shape
             corresponding to the UML class, specify property constraints, for each UML attribute,
             indicating the range class or datatype.</xd:desc>
@@ -130,7 +133,7 @@
     <xsl:template name="attributeRangeShape">
         <xsl:param name="attribute"/>
         <xsl:variable name="attributeURI"
-            select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
+            select="f:buildURIFromElement($attribute)"/>
         <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
         <xsl:variable name="attributeType" select="$attribute/properties/@type"/>
         <xsl:if test="f:isAttributeTypeValidForDatatypeProperty($attribute)">
@@ -145,7 +148,7 @@
                     if ($attributeType = $controlledListType) then
                     f:buildURIfromLexicalQName('skos:Concept', fn:true(), fn:true())
                     else
-                    f:buildURIfromLexicalQName($datatype, fn:true(), fn:false())"
+                    f:buildURIfromLexicalQName($datatype)"
             />
 
             <sh:property>
@@ -166,9 +169,9 @@
             <xsl:variable name="classURI"
                 select="
                     if ($attributeType = $controlledListType) then
-                    f:buildURIfromLexicalQName('skos:Concept', fn:true(), fn:true())
+                    f:buildURIfromLexicalQName('skos:Concept')
                     else
-                    f:buildURIfromLexicalQName($attributeType, fn:true(), fn:false())"/>
+                    f:buildURIfromLexicalQName($attributeType)"/>
             <sh:property>
                 <sh:PropertyShape>
                     <sh:path rdf:resource="{$attributeURI}"/>
@@ -194,9 +197,9 @@
         <xsl:variable name="attributeMultiplicityMin" select="f:getAttributeValueToDisplay($attribute/bounds/@lower)"/>
         <xsl:variable name="attributeMultiplicityMax" select="f:getAttributeValueToDisplay($attribute/bounds/@upper)"/>
         <xsl:variable name="datatypeURI"
-            select="f:buildURIfromLexicalQName('xsd:integer', fn:false(), fn:true())"/>
+            select="f:buildURIfromLexicalQName('xsd:integer')"/>
         <xsl:variable name="attributeURI"
-            select="f:buildURIFromAttribute($attribute, fn:false(), fn:true())"/>
+            select="f:buildURIFromElement($attribute)"/>
         <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
         
         <xsl:variable name="propertyRestriction" as="item()*">
@@ -231,5 +234,25 @@
                 </sh:PropertyShape>
             </sh:property>
         </xsl:if>
-    </xsl:template>
+    </xsl:template>-->
+    
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:Enumeration']"/>
+    
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:DataType']"/>
+    
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute"/>
+    
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute"/>
 </xsl:stylesheet>

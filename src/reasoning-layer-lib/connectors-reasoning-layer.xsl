@@ -110,9 +110,9 @@
         <xsl:param name="root"/>
         <xsl:variable name="connectorsWithSameName"
             select="f:getConnectorByName($connectorName, $root)"/>
-        <xsl:variable name="targetRole" select="f:lexicalQNameToWords($connectorName)"/>
+        <xsl:variable name="targetRole" select="$connectorName"/>
         <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
+            select="f:buildURIfromLexicalQName($targetRole)"/>
 <!--        This will filter out all Dependencies that are from a Class to an Enumeration-->
         <!--<xsl:variable name="filteredConnectorsWithSameName"
             select="$connectorsWithSameName[not(./properties/@ea_type = 'Dependency' and ./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')]"
@@ -126,9 +126,9 @@
             <xsl:variable name="classURI"
                 select="
                     if ($filteredConnectorsWithSameName/target/role/@name = $connectorName) then
-                        f:buildURIfromLexicalQName($filteredConnectorsWithSameName/source/model/@name, fn:true(), fn:true())
+                        f:buildURIfromLexicalQName($filteredConnectorsWithSameName/source/model/@name)
                     else
-                        f:buildURIfromLexicalQName($filteredConnectorsWithSameName/target/model/@name, fn:true(), fn:true())
+                        f:buildURIfromLexicalQName($filteredConnectorsWithSameName/target/model/@name)
             "/>
             <rdf:Description rdf:about="{$targetRoleURI}">
                 <rdfs:domain rdf:resource="{$classURI}"/>
@@ -149,7 +149,7 @@
                         <owl:unionOf rdf:parseType="Collection">
                             <xsl:for-each select="$domains">
                                 <rdf:Description
-                                    rdf:about="{f:buildURIfromLexicalQName(., fn:true(), fn:true())}"/>
+                                    rdf:about="{f:buildURIfromLexicalQName(.)}"/>
                             </xsl:for-each>
                         </owl:unionOf>
                     </owl:Class>
@@ -171,9 +171,9 @@
         <xsl:param name="root"/>
         <xsl:variable name="connectorsWithSameName"
             select="f:getConnectorByName($connectorName, $root)"/>
-        <xsl:variable name="targetRole" select="f:lexicalQNameToWords($connectorName)"/>
+        <xsl:variable name="targetRole" select="$connectorName"/>
         <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
+            select="f:buildURIfromLexicalQName($targetRole)"/>
         <!-- This will filter out all Dependencies that are from a Class to an Enumeration-->
         <xsl:variable name="filteredConnectorsWithSameName"
             select="$connectorsWithSameName[not(./properties/@ea_type = 'Dependency' and ./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')]"
@@ -182,7 +182,7 @@
             <xsl:if test="fn:count($filteredConnectorsWithSameName) = 1 and fn:boolean($filteredConnectorsWithSameName/*[role/@name =$connectorName]/model/@name)">
                 <rdf:Description rdf:about="{$targetRoleURI}">
                     <rdfs:range
-                        rdf:resource="{f:buildURIfromLexicalQName($filteredConnectorsWithSameName/*[role/@name =$connectorName]/model/@name, fn:true(), fn:true())}"
+                        rdf:resource="{f:buildURIfromLexicalQName($filteredConnectorsWithSameName/*[role/@name =$connectorName]/model/@name)}"
                     />
                 </rdf:Description>
             </xsl:if>
@@ -201,7 +201,7 @@
                             <owl:unionOf rdf:parseType="Collection">
                                 <xsl:for-each select="$ranges">
                                     <rdf:Description
-                                        rdf:about="{f:buildURIfromLexicalQName(., fn:true(), fn:true())}"/>
+                                        rdf:about="{f:buildURIfromLexicalQName(.)}"/>
                                 </xsl:for-each>
                             </owl:unionOf>
                         </owl:Class>
@@ -227,7 +227,7 @@
 
         <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
         <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
+            select="f:buildURIfromLexicalQName($targetRole)"/>
 
             <rdf:Description rdf:about="{$targetRoleURI}">
                 <rdfs:range
@@ -249,11 +249,11 @@
             <xsl:variable name="targetRole"
                 select="
                     if (boolean($connector/target/role/@name)) then
-                        f:lexicalQNameToWords($connector/target/role/@name)
+                        $connector/target/role/@name
                     else
-                        concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+                    fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
             <xsl:variable name="targetRoleURI"
-                select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
+                select="f:buildURIfromLexicalQName($targetRole)"/>
             <owl:AsymmetricProperty rdf:about="{$targetRoleURI}"/>
         </xsl:if>
     </xsl:template>
@@ -277,17 +277,17 @@
         
             <xsl:if test="fn:count($bidirectionalConnectors) = 1">
                 <xsl:variable name="targetRole"
-                    select="f:lexicalQNameToWords($bidirectionalConnectors/target/role/@name)"/>
+                    select="$bidirectionalConnectors/target/role/@name"/>
                 <xsl:variable name="targetRoleURI"
-                    select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
+                    select="f:buildURIfromLexicalQName($targetRole)"/>
                 <xsl:variable name="sourceRole"
                     select="
                         if (boolean($bidirectionalConnectors/source/role/@name)) then
-                            f:lexicalQNameToWords($bidirectionalConnectors/source/role/@name)
+                            $bidirectionalConnectors/source/role/@name
                         else
-                            concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+                        fn:error(xs:QName('connectors'),concat($bidirectionalConnectors/@xmi:idref, ' - connector source role name is empty'))"/>
                 <xsl:variable name="sourceRoleURI"
-                    select="f:buildURIfromLexicalQName($sourceRole, fn:false(), fn:true())"/>
+                    select="f:buildURIfromLexicalQName($sourceRole)"/>
                 <rdf:Description rdf:about="{$targetRoleURI}">
                     <owl:inverseOf rdf:resource="{$sourceRoleURI}"/>
                 </rdf:Description>
@@ -295,15 +295,15 @@
         <xsl:if test="fn:count($bidirectionalConnectors) > 1" >
                 <xsl:for-each select="$distinctTargets">
                     <xsl:variable name="targetName" select="."/>
-                    <xsl:variable name="targetRole" select="f:lexicalQNameToWords($targetName)"/>
+                    <xsl:variable name="targetRole" select="$targetName"/>
                     <xsl:variable name="targetRoleURI"
-                        select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
+                        select="f:buildURIfromLexicalQName($targetRole)"/>
                     <xsl:variable name="sourcesFound"
                         select="$bidirectionalConnectors/source/role/@name"/>
                     <xsl:for-each select="$sourcesFound">
-                        <xsl:variable name="sourceRole" select="f:lexicalQNameToWords(.)"/>
+                        <xsl:variable name="sourceRole" select="."/>
                         <xsl:variable name="sourceRoleURI"
-                            select="f:buildURIfromLexicalQName($sourceRole, fn:false(), fn:true())"/>
+                            select="f:buildURIfromLexicalQName($sourceRole)"/>
                         <rdf:Description rdf:about="{$targetRoleURI}">
                             <owl:inverseOf rdf:resource="{$sourceRoleURI}"/>
                         </rdf:Description>
@@ -328,9 +328,9 @@
                 $generalisation/properties/@stereotype = ('equivalent', 'complete') and
                 $generalisation/source/model/@type = 'Class' and $generalisation/target/model/@type = 'Class'">
             <xsl:variable name="sourceClassURI"
-                select="f:buildURIfromLexicalQName($generalisation/source/model/@name, fn:true(), fn:true())"/>
+                select="f:buildURIfromLexicalQName($generalisation/source/model/@name)"/>
             <xsl:variable name="targetClassURI"
-                select="f:buildURIfromLexicalQName($generalisation/target/model/@name, fn:true(), fn:true())"/>
+                select="f:buildURIfromLexicalQName($generalisation/target/model/@name)"/>
             <owl:Class rdf:about="{$sourceClassURI}">
                 <owl:equivalentClass rdf:resource="{$targetClassURI}"/>
             </owl:Class>
@@ -367,13 +367,13 @@
             <xsl:variable name="sourceConnector"
                 select="f:getConnectorByIdRef($sourceConnectorIdref, root($generalisation))"/>
             <xsl:variable name="targetConnectorTargetRoleURI"
-                select="f:buildURIfromLexicalQName($targetConnector/target/role/@name, fn:false(), fn:true())"/>
+                select="f:buildURIfromLexicalQName($targetConnector/target/role/@name)"/>
             <xsl:variable name="targetConnectorSourceRoleURI"
-                select="f:buildURIfromLexicalQName($targetConnector/source/role/@name, fn:false(), fn:true())"/>
+                select="f:buildURIfromLexicalQName($targetConnector/source/role/@name)"/>
             <xsl:variable name="sourceConnectorTargetRoleURI"
-                select="f:buildURIfromLexicalQName($sourceConnector/target/role/@name, fn:false(), fn:true())"/>
+                select="f:buildURIfromLexicalQName($sourceConnector/target/role/@name)"/>
             <xsl:variable name="sourceConnectorSourceRoleURI"
-                select="f:buildURIfromLexicalQName($sourceConnector/source/role/@name, fn:false(), fn:true())"/>
+                select="f:buildURIfromLexicalQName($sourceConnector/source/role/@name)"/>
             <owl:ObjectProperty rdf:about="{$sourceConnectorSourceRoleURI}">
                 <owl:equivalentProperty rdf:resource="{$targetConnectorSourceRoleURI}"/>
             </owl:ObjectProperty>
@@ -406,33 +406,33 @@
         <xsl:variable name="sourceMultiplicityMax"
             select="f:getMultiplicityMaxFromString($sourceMultiplicity)"/>
         <xsl:variable name="sourceClassURI"
-            select="f:buildURIfromLexicalQName($connector/source/model/@name, fn:true(), fn:true())"/>
+            select="f:buildURIfromLexicalQName($connector/source/model/@name)"/>
         <xsl:variable name="sourceRole"
             select="
                 if (boolean($connector/source/role/@name)) then
-                    f:lexicalQNameToWords($connector/source/role/@name)
+                    $connector/source/role/@name
                 else
                     ()
                 "/>
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
-                f:buildURIfromLexicalQName($sourceRole, fn:false(), fn:true())
+                f:buildURIfromLexicalQName($sourceRole)
                 else
                     ()"/>
         <xsl:variable name="targetClassURI"
-            select="f:buildURIfromLexicalQName($connector/target/model/@name, fn:true(), fn:true())"/>
+            select="f:buildURIfromLexicalQName($connector/target/model/@name)"/>
         <xsl:variable name="targetRole"
             select="
                 if (boolean($connector/target/role/@name)) then
-                    f:lexicalQNameToWords($connector/target/role/@name)
+                    $connector/target/role/@name
                 else
-                    concat($mockUnknownPrefix, ':', $mockUnnamedElement)"/>
+                    fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
         <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($targetRole, fn:false(), fn:true())"/>
+            select="f:buildURIfromLexicalQName($targetRole)"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:variable name="datatypeURI"
-            select="f:buildURIfromLexicalQName('xsd:integer', fn:false(), fn:true())"/>
+            select="f:buildURIfromLexicalQName('xsd:integer')"/>
 <!--        this is first restriction content-->
        <xsl:variable name="sourceDestinationRestrictionContent" as="item()*">
             <xsl:choose>

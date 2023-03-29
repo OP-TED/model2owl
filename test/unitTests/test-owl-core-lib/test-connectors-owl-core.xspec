@@ -120,8 +120,8 @@
     </x:scenario>
 
     <x:scenario label="Class with subclasses">
-        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
-            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[36]"/>
+        <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[8]"/>
         <x:call template="classGeneralization"/>
         <x:expect label="result" test="boolean(/owl:Class)"/>
         <x:expect label="result" test="boolean(/owl:Class/rdfs:subClassOf)"/>
