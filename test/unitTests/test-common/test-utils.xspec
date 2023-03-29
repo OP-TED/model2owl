@@ -43,52 +43,6 @@
         <x:expect label="result" select="fn:string('This')"/>
     </x:scenario>
 
-
-   <!-- <x:scenario label="Scenario for testing function normaliseLexicalQName as camelCase">
-        <x:call function="f:normaliseLexicalQName">
-            <x:param name="lexicalQName">this</x:param>
-            <x:param name="isPascalCase" select="fn:false()"/>
-            <x:param name="changeCase" select="fn:true()"/>
-        </x:call>
-        <!-\-<x:expect label="result" select="fn:string('unknown:this')"/>-\->
-        <x:expect label="result" select="fn:string('this')"/>
-    </x:scenario>
-    
-    <x:scenario label="Scenario for testing function normaliseLexicalQName as camelCase as sparse prefix">
-        <x:call function="f:normaliseLexicalQName">
-            <x:param name="lexicalQName">q w e:this is a name</x:param>
-            <x:param name="isPascalCase" select="fn:false()"/>
-            <x:param name="changeCase" select="fn:true()"/>
-        </x:call>
-        <x:expect label="result" select="fn:string('qwe:thisIsAName')"/>
-    </x:scenario>
-    
-    <x:scenario label="Scenario for testing function normaliseLexicalQName as PascalCase and no prefix">
-        <x:call function="f:normaliseLexicalQName">
-            <x:param name="lexicalQName">this</x:param>
-            <x:param name="isPascalCase" select="fn:true()"/>
-            <x:param name="changeCase" select="fn:true()"/>
-        </x:call>
-        <x:expect label="result" select="fn:string('This')"/>
-    </x:scenario>
-    
-    <x:scenario label="Scenario for testing function normaliseLexicalQName as PascalCase and no prefix">
-        <x:call function="f:normaliseLexicalQName">
-            <x:param name="lexicalQName">:this</x:param>
-            <x:param name="isPascalCase" select="fn:true()"/>
-            <x:param name="changeCase" select="fn:true()"/>
-        </x:call>
-        <x:expect label="result" select="fn:string('This')"/>
-    </x:scenario>
-    
-    <x:scenario label="Scenario for testing function normaliseLexicalQName as PascalCase and sparse prefix">
-        <x:call function="f:normaliseLexicalQName">
-            <x:param name="lexicalQName">q w e:this is a name</x:param>
-            <x:param name="isPascalCase" select="fn:true()"/>
-            <x:param name="changeCase" select="fn:true()"/>
-        </x:call>
-        <x:expect label="result" select="fn:string('qwe:ThisIsAName')"/>
-    </x:scenario>-->
     
    
     <x:scenario label="Scenario 1 for testing function getNamespaceURI ">
