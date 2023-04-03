@@ -72,32 +72,53 @@
     <xsl:variable name="allowedStrings" select="'^[\w\d-_:]+$'"/>
 
     <!--    Shapes Module URI-->
-    <xsl:variable name="shapeModuleURI" select="$base-shape-uri"/>
+    <xsl:variable name="shapeArtefactURI" select="'http://data.europa.eu/a4g/ontology#core-shape'"/>
     <!--    Restrictions Module URI-->
-    <xsl:variable name="restrictionsModuleURI" select="$base-rule-uri"/>
+    <xsl:variable name="restrictionsArtefactURI" select="'http://data.europa.eu/a4g/ontology#core-restriction'"/>
     <!--    Core Module URI-->
-    <xsl:variable name="coreModuleURI" select="$base-ontology-uri"/>
+    <xsl:variable name="coreArtefactURI" select="'http://data.europa.eu/a4g/ontology#core'"/>
 
     <xsl:variable name="reference-to-external-classes-in-glossary" select="fn:false()"/>
+    <!-- _______________________________________________________________________   -->
+    <!--                            METADATA SECTION                               -->
+    <!-- _______________________________________________________________________   -->
+    <!--    This section contains the variables used to build the ontology metadata-->
     
-    <!-- The metadata.xml is used to define the metadata for each input xmi file. The metadata.xml is found next to the input file. -->    
-    <xsl:variable name="m" select="document(concat(functx:substring-before-last(base-uri(), '/'), '/', 'metadata.xml'))" />
-    <!-- ontology title, version to be inserted in the ontology header -->
-    <!-- Customized metadata: title and description can be appended or extended -->    
-    <xsl:variable name="ontologyTitle" select="$m//title"/>    
-    <xsl:variable name="ontologyDescription" select="$m//description"/>
-    <!-- Common metadata (core, restrictions and shacle) -->    
-    <xsl:variable name="commonMetadata" 
-        select="
-        $m//rdfs:seeAlso| 
-        $m//owl:versionInfo|
-        $m//dc:contributor|
-        $m//dct:creator|
-        $m//dc:rights|
-        $m//dct:license|
-        $m//owl:incompatibleWith|
-        $m//cc:attributionName|
-        $m//cc:attributionURL|
-        $m//vann:preferredNamespacePrefix               
-        "/>    
+    <!--    dct:title -->
+    <xsl:variable name="ontologyTitle" select="'eProcurement Ontology - core'"/>
+    <!--    dct:description-->
+    <xsl:variable name="ontologyDescription" select="'This module provides the definitions for the eProcurement ontology core.
+        Procurement data has been identified as data with a high-reuse potential.
+        Given the increasing importance of data standards for eProcurement, a number of initiatives
+        driven by the public sector, the industry and academia have been kick-started in recent years.
+        Some have grown organically, while others are the result of standardisation work.
+        The vocabularies and the semantics that they are introducing, the phases of public procurement that they are covering,
+        and the technologies that they are using all differ. These differences hamper data interoperability and thus its reuse by them or by the wider public.
+        This creates the need for a common data standard for publishing procurement data, hence allowing data
+        from different sources to be easily accessed and linked, and consequently reused.'"/>
+    <!--    dct:abstract-->
+    <xsl:variable name="abstractCore" select="'This artefact provides the ontology core specification.'"/>
+    <xsl:variable name="abstractResctrictions" select="'This artefact provides the ontology extention with restrictions and inference-relaated specification.'"/>
+    <xsl:variable name="abstractShapes" select="'This artefact provides the datashape specification. '"/>
+    <!--    rdfs:seeAlso -->
+    <xsl:variable name="seeAlsoResources" select="('https://github.com/eprocurementontology/eprocurementontology',
+        'https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about', 'https://op.europa.eu/en/web/eu-vocabularies/e-procurement',
+        'https://docs.ted.europa.eu/EPO/latest/index.html')"/>
+    <!--    dct:created-->
+    <xsl:variable name="createdDate" select="''"/>
+    <!--    dct:issued-->
+    <xsl:variable name="issuedDate" select="''"/>
+    <!--    owl:incompatibleWith -->
+    <xsl:variable name="incompatibleWith" select="'2.1.0'"/>
+    <!--    owl:versionInfo -->
+    <xsl:variable name="versionInfo" select="'3.1.0'"/>
+    <!--    bibo:status-->
+    <xsl:variable name="ontologyStatus" select="'Semantic Specification Realease'"/>
+    <!--    owl:priorVersion -->
+    <xsl:variable name="priorVersion" select="'3.0.1'"/>
+    <!--    vann:preferredNamespaceUri -->
+    <xsl:variable name="preferredNamespaceUri" select="'http://data.europa.eu/a4g/ontology#'"/>
+    <!--    vann:preferredNamespacePrefix -->
+    <xsl:variable name="preferredNamespacePrefix" select="'epo'"/>
+    
 </xsl:stylesheet>

@@ -46,8 +46,8 @@
         <xd:desc>This will override the common selector when applying templates</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']"/>
-    
-    
+
+
 <!--    TODO RULE 27 should be removed? vvvv -->
 
     <!--<xd:doc>
@@ -179,7 +179,7 @@
                 </skos:definition>
             </xsl:if>
             <xsl:if test="fn:contains($data-type-URI, $base-ontology-uri)">
-                <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
             </xsl:if>
         </rdfs:Datatype>
     </xsl:template>
@@ -211,7 +211,7 @@
                 </skos:definition>
             </xsl:if>
             <xsl:if test="fn:contains($datatypeURI, $base-ontology-uri)">
-                <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
             </xsl:if>
         </owl:Class>
     </xsl:template>
@@ -319,7 +319,7 @@
                     </skos:definition>
                 </xsl:if>
                 <xsl:if test="fn:contains($attributeURI, $base-ontology-uri)">
-                    <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+                    <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
                 </xsl:if>
             </xsl:element>
         </xsl:if>

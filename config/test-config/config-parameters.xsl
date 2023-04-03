@@ -63,10 +63,10 @@
     <xsl:variable name="allowedStrings" select="'^[\w\d-_:]+$'"/>
 
     <!--    Shapes Module URI-->
-    <xsl:variable name="shapeModuleURI" select="fn:concat($base-uri, '/', 'ds')"/>
+    <xsl:variable name="shapeArtefactURI" select="'http://data.europa.eu/a4g/ontology#core-shape'"/>
     <!--    Restrictions Module URI-->
-    <xsl:variable name="restrictionsModuleURI" select="fn:concat($base-uri, '/', 'ext')"/>
+    <xsl:variable name="restrictionsArtefactURI" select="'http://data.europa.eu/a4g/ontology#core-restriction'"/>
     <!--    Core Module URI-->
-    <xsl:variable name="coreModuleURI" select="fn:concat($base-uri, '/', 'core')"/>
+    <xsl:variable name="coreArtefactURI" select="'http://data.europa.eu/a4g/ontology#core'"/>
 
 </xsl:stylesheet>

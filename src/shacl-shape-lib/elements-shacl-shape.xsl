@@ -51,7 +51,7 @@
             </xsl:if>
             <xsl:apply-templates select="attributes/attribute"/>
             <xsl:if test="fn:contains($classURI, $base-ontology-uri)">
-                <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
             </xsl:if>
 
         </sh:NodeShape>

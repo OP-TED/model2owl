@@ -12,6 +12,7 @@
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:dc="http://purl.org/dc/elements/1.1/" 
     xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:bibo="http://purl.org/ontology/bibo/" 
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
@@ -51,7 +52,7 @@
             <!--<xsl:namespace name="epor" select="concat($base-rule-uri, '#')"/>
             <xsl:namespace name="epos" select="concat($base-shape-uri, '#')"/>-->                        
             <xsl:namespace name="" select="concat($base-shape-uri, '#')"/>
-            <xsl:attribute name="xml:base" expand-text="true">{$shapeModuleURI}</xsl:attribute>
+            <xsl:attribute name="xml:base" expand-text="true">{$shapeArtefactURI}</xsl:attribute>
             
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
@@ -62,45 +63,34 @@
         <xd:desc> Ontology header </xd:desc>
     </xd:doc>
     <xsl:template name="ontology-header">
-        <owl:Ontology rdf:about="{$shapeModuleURI}">
+        <owl:Ontology rdf:about="{$shapeArtefactURI}">
             
-            <!-- imports some common resources from metadata.xml (next to the xmi input file)-->
-            <xsl:for-each select="$m//imports/@resource">
+            <xsl:for-each select="$namespacePrefixes/*:prefixes/*:prefix/@importURI">              
                 <owl:imports rdf:resource="{.}"/>
-            </xsl:for-each>  
-            
-            <owl:imports rdf:resource="{$coreModuleURI}"/>            
-            <owl:imports rdf:resource="http://datashapes.org/dash"/>            
-            <owl:imports rdf:resource="http://www.w3.org/ns/shacl#"/>
+            </xsl:for-each>      
             
             <dct:title xml:lang="en">
-                <xsl:value-of select="$ontologyTitle"/>. This module provides the datashape definitions.
+                <xsl:value-of select="$ontologyTitle"/>
             </dct:title>
             <dct:description xml:lang="en">
-                <xsl:value-of select="$ontologyDescription"/> (SHACL datashape)
+                <xsl:value-of select="$ontologyDescription"/>
             </dct:description>
-            
-            <xsl:copy-of select="$commonMetadata"></xsl:copy-of>
-            
-            <vann:preferredNamespaceUri>
-                <xsl:value-of select="fn:concat($base-ontology-uri, $defaultDelimiter)"/>                    
-            </vann:preferredNamespaceUri>
-             
-            <rdfs:label xml:lang="en">
-                <xsl:value-of select="$ontologyTitle"/>. This module provides the datashape definitions.
-            </rdfs:label>           
-            <owl:versionIRI rdf:resource="{fn:concat($shapeModuleURI,'#',tokenize(base-uri(.), '/')[last()],'-',format-date(current-date(),
-                '[Y0001]-[M01]-[D01]'))}"/>
-             
-            <rdfs:comment>This version is automatically generated from <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on <xsl:value-of
-                select="
-                format-date(current-date(),
-                '[Y0001]-[M01]-[D01]')"/>
-            </rdfs:comment>
-            <dct:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
-                <xsl:value-of select="format-date(current-date(),
-                    '[Y0001]-[M01]-[D01]')"/>
-            </dct:date>
+            <dct:abstract><xsl:value-of select="$abstractShapes"/></dct:abstract>
+            <skos:changeNote>This version is automatically generated from <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on 
+                <xsl:value-of select="format-date(current-date(),'[Y0001]-[M01]-[D01]')"/>
+            </skos:changeNote>
+            <xsl:for-each select="$seeAlsoResources">
+                <rdfs:seeAlso rdf:resource="{.}"/>
+            </xsl:for-each>
+            <dct:created><xsl:value-of select="$createdDate"/></dct:created>
+            <dct:issued><xsl:value-of select="$issuedDate"/></dct:issued>
+            <owl:versionInfo><xsl:value-of select="$versionInfo"/></owl:versionInfo>   
+            <owl:incompatibleWith><xsl:value-of select="$incompatibleWith"/></owl:incompatibleWith>
+            <owl:versionIRI><xsl:value-of select="fn:concat($coreArtefactURI,'-',$versionInfo)"/></owl:versionIRI>
+            <bibo:status><xsl:value-of select="$ontologyStatus"/></bibo:status>
+            <owl:priorVersion><xsl:value-of select="$priorVersion"/></owl:priorVersion>
+            <vann:preferredNamespaceUri><xsl:value-of select="$preferredNamespaceUri"/></vann:preferredNamespaceUri>
+            <vann:preferredNamespacePrefix><xsl:value-of select="$preferredNamespacePrefix"/></vann:preferredNamespacePrefix> 
             
         </owl:Ontology>
     </xsl:template>

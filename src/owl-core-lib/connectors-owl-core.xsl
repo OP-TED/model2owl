@@ -201,7 +201,7 @@
                 </rdfs:comment>
             </xsl:if>
             <xsl:if test="fn:contains($roleURI, $base-ontology-uri)">
-                <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
             </xsl:if>
         </owl:ObjectProperty>
     </xsl:template>
