@@ -40,7 +40,8 @@ OUTPUT_GLOSSARY_PATH?="../output/glossary"
 UML_INPUT_FILENAME?="test/test-multi-xmi/ePO_CM.xml"
 filename=$(shell basename -- "${UML_INPUT_FILENAME}") 
 UML_FILENAME_WITHOUT_EXTENSION=$(shell echo ${filename} | cut -f1 -d '.')
-RDF_FILE_PATH?="../"
+RDF_FILE_PATH?="../file.rdf"
+WIDOCO_OUTPUT_DIRECTORY_NAME?="widoco"
 
 OUTPUT_CORE_FILE_NAME?="ePO_CM-core.rdf"
 OUTPUT_RESTRICTIONS_FILE_NAME?="ePO_CM-restrictions.rdf"
@@ -152,10 +153,10 @@ convert-to-rdf:
 #@for filename in $$(ls $$FILELIST ); do echo Converting ${filename}; python3 scripts/rdfxml2turtle.py --input  ${filename} --output ${filename%.*}.ttl;  echo Input in RDF/XML format;  ls -lh ${filename};  echo Output in Turtle format;  ls -lh ${filename%.*}.ttl;  done;
 get-widoco:
 	@curl -L -o widoco.jar "https://github.com/dgarijo/Widoco/releases/download/v1.4.17/java-11-widoco-1.4.17-jar-with-dependencies.jar"
-#make generate-html-docs-from-rdf RDF_FILE_PATH=../Documents/model2owl-2023/owl-core.rdf
+#make generate-html-docs-from-rdf RDF_FILE_PATH=../Documents/model2owl-2023/owl-core.rdf WIDOCO_OUTPUT_DIRECTORY_NAME=core-html
 generate-html-docs-from-rdf: get-widoco
 	@echo ${RDF_FILE_PATH}
-	@java -jar widoco.jar -ontFile ${RDF_FILE_PATH}  -getOntologyMetadata -uniteSections -webVowl
+	@java -jar widoco.jar -ontFile ${RDF_FILE_PATH} -outFolder ${WIDOCO_OUTPUT_DIRECTORY_NAME}  -getOntologyMetadata -uniteSections -webVowl
 
 help:
 	@echo The automatic tasks available are defined as below
