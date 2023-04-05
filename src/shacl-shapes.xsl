@@ -37,7 +37,7 @@
     <xsl:import href="common/selectors.xsl"/>
     <xsl:import href="shacl-shape-lib/elements-shacl-shape.xsl"/>
     <xsl:import href="shacl-shape-lib/connectors-shacl-shape.xsl"/>
-    <!--<xsl:import href="../config/config-proxy.xsl"/>-->
+    <!--<xsl:import href="..config-proxy.xsl"/>-->
     
     
     <xsl:output name="data-shapes-ePO.shapes.rdf" method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"

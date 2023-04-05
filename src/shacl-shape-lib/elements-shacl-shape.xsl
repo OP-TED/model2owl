@@ -90,9 +90,9 @@
         <sh:name>
             <xsl:value-of select="$name"/>
         </sh:name>
-        <rdfs:label xml:lang="en">
+<!--        <rdfs:label xml:lang="en">
             <xsl:value-of select="$name"/>
-        </rdfs:label>
+        </rdfs:label>-->
     </xsl:template>
 
     <xd:doc>

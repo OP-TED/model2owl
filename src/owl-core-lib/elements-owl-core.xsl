@@ -107,9 +107,9 @@
 <!--            <skos:notation>
                 <xsl:value-of select="$notation"/>
             </skos:notation>-->
-            <rdfs:label xml:lang="en">
+<!--            <rdfs:label xml:lang="en">
                 <xsl:value-of select="$conceptName"/>
-            </rdfs:label>
+            </rdfs:label>-->
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$conceptName"/>
             </skos:prefLabel>
@@ -163,9 +163,9 @@
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
         
         <rdfs:Datatype rdf:about="{$data-type-URI}">
-            <rdfs:label xml:lang="en">
+<!--            <rdfs:label xml:lang="en">
                 <xsl:value-of select="$name"/>
-            </rdfs:label>
+            </rdfs:label>-->
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$name"/>
             </skos:prefLabel>
@@ -195,9 +195,9 @@
         
         
         <owl:Class rdf:about="{$datatypeURI}">
-            <rdfs:label xml:lang="en">
+  <!--          <rdfs:label xml:lang="en">
                 <xsl:value-of select="$datatypeName"/>
-            </rdfs:label>
+            </rdfs:label>-->
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$datatypeName"/>
             </skos:prefLabel>
@@ -304,9 +304,9 @@
         <xsl:if test="not($isAttributeWithDependencyName)">
             <xsl:element name="{$propertyType}">
                 <xsl:attribute name="rdf:about" select="$attributeURI"/>
-                <rdfs:label xml:lang="en">
+              <!--  <rdfs:label xml:lang="en">
                     <xsl:value-of select="$name"/>
-                </rdfs:label>
+                </rdfs:label>-->
                 <skos:prefLabel xml:lang="en">
                     <xsl:value-of select="$name"/>
                 </skos:prefLabel>

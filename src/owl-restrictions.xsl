@@ -29,7 +29,7 @@
         </xd:desc>
     </xd:doc>
     
-    <!--<xsl:import href="../config/config-proxy.xsl"/>-->
+    <!--<xsl:import href="../config-proxy.xsl"/>-->
     <xsl:import href="common/selectors.xsl"/>
     <xsl:import href="reasoning-layer-lib/elements-reasoning-layer.xsl"/>
     <xsl:import href="reasoning-layer-lib/connectors-reasoning-layer.xsl"/>

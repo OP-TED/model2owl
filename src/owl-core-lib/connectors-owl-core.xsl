@@ -178,9 +178,9 @@
 
 
         <owl:ObjectProperty rdf:about="{$roleURI}">
-            <rdfs:label xml:lang="en">
+<!--            <rdfs:label xml:lang="en">
                 <xsl:value-of select="$name"/>
-            </rdfs:label>
+            </rdfs:label>-->
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$name"/>
             </skos:prefLabel>

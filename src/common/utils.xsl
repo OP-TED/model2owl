@@ -19,7 +19,7 @@
         </xd:desc>
     </xd:doc>
 
-    <xsl:import href="../../config/config-proxy.xsl"/>
+    <xsl:import href="../../config-proxy.xsl"/>
     <xsl:import href="fetchers.xsl"/>
     <xsl:import href="functx-1.0.1-doc.xsl"/>
 

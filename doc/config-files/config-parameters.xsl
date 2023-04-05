@@ -16,48 +16,54 @@
     <xd:doc scope="stylesheet">
         <xd:desc>
             <xd:p><xd:b>Created on:</xd:b> Mar 22, 2020</xd:p>
-            <xd:p><xd:b>Author:</xd:b> lps</xd:p>
+            <xd:p><xd:b>Author:</xd:b> </xd:p>
             <xd:p>This module defines project level variables and parameters</xd:p>
         </xd:desc>
     </xd:doc>
     
-    <!-- some advanced xpath functions -->
-    <xsl:import href="../../src/common/functx-1.0.1-doc.xsl"/>
-    
     <!-- a set of prefix-baseURI definitions -->
     <xsl:variable name="namespacePrefixes" select="fn:doc('namespaces.xml')"/>
-
     <!-- a mapping between UML atomic types to XSD datatypes  -->
     <xsl:variable name="umlDataTypesMapping"
         select="fn:doc('umlToXsdDataTypes.xml')"/>
-
     <!-- XSD datatypes that conform to OWL2 requirements   -->
     <xsl:variable name="xsdAndRdfDataTypes"
         select="fn:doc('xsdAndRdfDataTypes.xml')"/>
+    
     <!--    set default namespace interpretation for lexical Qnames that are not prefix:localSegment or :localSegment. If this 
     is set to true localSegment will transform to :localSegment-->
     <xsl:variable name="defaultNamespaceInterpretation" select="fn:true()"/>
 
     <!-- Ontology base URI, configure as necessary. Do not use a trailing local delimiter 
-        like in the namespace definition-->
-    <!--<xsl:variable name="base-uri" select="'http://publications.europa.eu/ontology/ePO'"/>-->
-    <xsl:variable name="base-ontology-uri" select="'http://data.europa.eu/a4g/ontology'"/>
-    <xsl:variable name="base-shape-uri" select="'http://data.europa.eu/a4g/shape'"/>
-    <xsl:variable name="base-rule-uri" select="'http://data.europa.eu/a4g/rule'"/>
+        like in the namespace definition
+        Example:
+        <xsl:variable name="base-rule-uri" select="'http://data.europa.eu/a4g/rule'"/>
+    -->
+    <xsl:variable name="base-ontology-uri" select="''"/>
+    <xsl:variable name="base-shape-uri" select="''"/>
+    <xsl:variable name="base-rule-uri" select="''"/>
 
 
-    <!-- when a delimiter is missing in the base URI of a namespace, use this default value-->
-    <xsl:variable name="defaultDelimiter" select="'#'"/>
+    <!-- when a delimiter is missing in the base URI of a namespace, use this default value
+        Example:
+          <xsl:variable name="defaultDelimiter" select="'#'"/>
+    -->
+    <xsl:variable name="defaultDelimiter" select="''"/>
 
-    <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
+    <!-- types of elements and names for attribute types that are acceptable to produce object properties 
+     This is a list
+     Example:
+         <xsl:variable name="acceptableTypesForObjectProperties"
+        select="('sdd:Identifier', 'rdfs:Literal')"/>
+    -->
     <xsl:variable name="acceptableTypesForObjectProperties"
-        select="('epo:Identifier', 'rdfs:Literal')"/>
+        select="()"/>
+    
 <!--    the type of attributes which takes values from a controlled list-->
-    <xsl:variable name="controlledListType" select="'epo:Code'"/>
+    <xsl:variable name="controlledListType" select="''"/>
     <!-- Acceptable stereotypes -->
     <xsl:variable name="stereotypeValidOnAttributes" select="()"/>
-    <xsl:variable name="stereotypeValidOnGeneralisations"
-        select="('Disjoint', 'Equivalent', 'Complete')"/>
+    <xsl:variable name="stereotypeValidOnGeneralisations" select="()"/>
     <xsl:variable name="stereotypeValidOnAssociations" select="()"/>
     <xsl:variable name="stereotypeValidOnDependencies" select="('Disjoint', 'disjoint', 'join')"/>
     <xsl:variable name="stereotypeValidOnClasses" select="('Abstract')"/>
@@ -107,7 +113,7 @@
     <!--    dct:created-->
     <xsl:variable name="createdDate" select="''"/>
     <!--    dct:issued-->
-    <xsl:variable name="issuedDate" select="''"/>
+    <xsl:variable name="issuedDate" select="format-date(current-date(),'[Y0001]-[M01]-[D01]')"/>
     <!--    owl:incompatibleWith -->
     <xsl:variable name="incompatibleWith" select="'2.1.0'"/>
     <!--    owl:versionInfo -->
