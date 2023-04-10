@@ -17,9 +17,9 @@
         <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[224]"/>
         <x:expect label="there is a sh:NodeShape" test="boolean(sh:NodeShape) "/>
         <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:name)"/>
-        <x:expect label="there is a rdfs:label" test="boolean(sh:NodeShape/rdfs:label)"/>
+<!--        <x:expect label="there is a rdfs:label" test="boolean(sh:NodeShape/rdfs:label)"/>-->
         <x:expect label="there is  sh:description" test="boolean(sh:NodeShape/sh:description)"/>
-        <x:expect label="there is  rdfs:comment" test="boolean(sh:NodeShape/rdfs:comment)"/>
+<!--        <x:expect label="there is  rdfs:comment" test="boolean(sh:NodeShape/rdfs:comment)"/>-->
         <x:expect label="there is a not sh:minCount" test="not(boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount))"/>
     </x:scenario>
     
@@ -29,7 +29,7 @@
             <x:param name="name">Class name</x:param>
         </x:call>   
         <x:expect label="there is a sh:name" test="boolean(sh:name) "/>
-        <x:expect label="there is a rdfs:label" test="boolean(rdfs:label) "/>
+<!--        <x:expect label="there is a rdfs:label" test="boolean(rdfs:label) "/>-->
     </x:scenario>
 
     <x:scenario label="description for UML element">
@@ -37,14 +37,14 @@
             <x:param name="description">This is a description for UML element</x:param>
         </x:call>   
         <x:expect label="there is a sh:description" test="boolean(sh:description) "/>
-        <x:expect label="there is a rdfs:comment" test="boolean(rdfs:comment) "/>
+<!--        <x:expect label="there is a rdfs:comment" test="boolean(rdfs:comment) "/>-->
     </x:scenario>
 
     <x:scenario label="Scenario for class declaration for class that has no description">
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[34]"/>
         <x:expect label="there is a sh:NodeShape" test="boolean(sh:NodeShape) "/>
         <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:name)"/>
-        <x:expect label="there is a rdfs:label" test="boolean(sh:NodeShape/rdfs:label)"/>
+<!--        <x:expect label="there is a rdfs:label" test="boolean(sh:NodeShape/rdfs:label)"/>-->
         <x:expect label="there is no sh:description" test="not(boolean(sh:NodeShape/sh:description))"/>
         <x:expect label="there is no rdfs:comment" test="not(boolean(sh:NodeShape/rdfs:comment))"/>
     </x:scenario>
@@ -53,18 +53,18 @@
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[52]"/>
         <x:expect label="there is a sh:NodeShape" test="boolean(sh:NodeShape) "/>
         <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:name)"/>
-        <x:expect label="there is a rdfs:label" test="boolean(sh:NodeShape/rdfs:label) "/>
+<!--        <x:expect label="there is a rdfs:label" test="boolean(sh:NodeShape/rdfs:label) "/>-->
         <x:expect label="there is no sh:description" test="boolean(sh:NodeShape/sh:description)"/>
-        <x:expect label="there is no rdfs:comment" test="boolean(sh:NodeShape/rdfs:comment)"/>
+<!--        <x:expect label="there is no rdfs:comment" test="boolean(sh:NodeShape/rdfs:comment)"/>-->
     </x:scenario>
     
     <x:scenario label="Scenario for class declaration for an abstract class">
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[155]"/>
         <x:expect label="there is a sh:NodeShape" test="boolean(sh:NodeShape) "/>
         <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:name)"/>
-        <x:expect label="there is a rdfs:label" test="boolean(sh:NodeShape/rdfs:label) "/>
+<!--        <x:expect label="there is a rdfs:label" test="boolean(sh:NodeShape/rdfs:label) "/>-->
         <x:expect label="there is sh:description" test="boolean(sh:NodeShape/sh:description)"/>
-        <x:expect label="there is rdfs:comment" test="boolean(sh:NodeShape/rdfs:comment)"/>
+<!--        <x:expect label="there is rdfs:comment" test="boolean(sh:NodeShape/rdfs:comment)"/>-->
         <x:expect label="there is sh:sparql" test="boolean(sh:NodeShape/sh:sparql)"/>
         <x:expect label="there is sh:select" test="boolean(sh:NodeShape/sh:sparql/sh:select)"/>
     </x:scenario>

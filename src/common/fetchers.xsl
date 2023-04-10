@@ -24,7 +24,7 @@
         </xd:desc>
     </xd:doc>
     
-    <xsl:import href="../../config/config-proxy.xsl"/>
+    <xsl:import href="../../config-proxy.xsl"/>
     
     <xd:doc>
         <xd:desc>fetch the xmi:element with a given name</xd:desc>

@@ -51,7 +51,7 @@
             </xsl:if>
             <xsl:apply-templates select="attributes/attribute"/>
             <xsl:if test="fn:contains($classURI, $base-ontology-uri)">
-                <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
             </xsl:if>
 
         </sh:NodeShape>
@@ -90,9 +90,9 @@
         <sh:name>
             <xsl:value-of select="$name"/>
         </sh:name>
-        <rdfs:label xml:lang="en">
+<!--        <rdfs:label xml:lang="en">
             <xsl:value-of select="$name"/>
-        </rdfs:label>
+        </rdfs:label>-->
     </xsl:template>
 
     <xd:doc>
@@ -104,9 +104,9 @@
         <sh:description>
             <xsl:value-of select="$description"/>
         </sh:description>
-        <rdfs:comment xml:lang="en">
+<!--        <rdfs:comment xml:lang="en">
             <xsl:value-of select="$description"/>
-        </rdfs:comment>
+        </rdfs:comment>-->
     </xsl:template>
 
     <xd:doc>

@@ -46,8 +46,8 @@
         <xd:desc>This will override the common selector when applying templates</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']"/>
-    
-    
+
+
 <!--    TODO RULE 27 should be removed? vvvv -->
 
     <!--<xd:doc>
@@ -107,16 +107,16 @@
 <!--            <skos:notation>
                 <xsl:value-of select="$notation"/>
             </skos:notation>-->
-            <rdfs:label xml:lang="en">
+<!--            <rdfs:label xml:lang="en">
                 <xsl:value-of select="$conceptName"/>
-            </rdfs:label>
+            </rdfs:label>-->
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$conceptName"/>
             </skos:prefLabel>
             <xsl:if test="$documentation != ''">
-                <rdfs:comment xml:lang="en">
+<!--                <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>
-                </rdfs:comment>
+                </rdfs:comment>-->
                 <skos:definition xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
@@ -163,23 +163,23 @@
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
         
         <rdfs:Datatype rdf:about="{$data-type-URI}">
-            <rdfs:label xml:lang="en">
+<!--            <rdfs:label xml:lang="en">
                 <xsl:value-of select="$name"/>
-            </rdfs:label>
+            </rdfs:label>-->
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$name"/>
             </skos:prefLabel>
             
             <xsl:if test="$documentation != ''">
-                <rdfs:comment xml:lang="en">
+<!--                <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>
-                </rdfs:comment>
+                </rdfs:comment>-->
                 <skos:definition xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
             </xsl:if>
             <xsl:if test="fn:contains($data-type-URI, $base-ontology-uri)">
-                <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
             </xsl:if>
         </rdfs:Datatype>
     </xsl:template>
@@ -195,23 +195,23 @@
         
         
         <owl:Class rdf:about="{$datatypeURI}">
-            <rdfs:label xml:lang="en">
+  <!--          <rdfs:label xml:lang="en">
                 <xsl:value-of select="$datatypeName"/>
-            </rdfs:label>
+            </rdfs:label>-->
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$datatypeName"/>
             </skos:prefLabel>
             
             <xsl:if test="$documentation != ''">
-                <rdfs:comment xml:lang="en">
+<!--                <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>
-                </rdfs:comment>
+                </rdfs:comment>-->
                 <skos:definition xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
             </xsl:if>
             <xsl:if test="fn:contains($datatypeURI, $base-ontology-uri)">
-                <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
             </xsl:if>
         </owl:Class>
     </xsl:template>
@@ -304,22 +304,22 @@
         <xsl:if test="not($isAttributeWithDependencyName)">
             <xsl:element name="{$propertyType}">
                 <xsl:attribute name="rdf:about" select="$attributeURI"/>
-                <rdfs:label xml:lang="en">
+              <!--  <rdfs:label xml:lang="en">
                     <xsl:value-of select="$name"/>
-                </rdfs:label>
+                </rdfs:label>-->
                 <skos:prefLabel xml:lang="en">
                     <xsl:value-of select="$name"/>
                 </skos:prefLabel>
                 <xsl:if test="boolean($descriptionsWithAnnotations)">
-                    <rdfs:comment xml:lang="en">
+<!--                    <rdfs:comment xml:lang="en">
                         <xsl:value-of select="$descriptionsWithAnnotations"/>
-                    </rdfs:comment>
+                    </rdfs:comment>-->
                     <skos:definition xml:lang="en">
                         <xsl:value-of select="$descriptionsWithAnnotations"/>
                     </skos:definition>
                 </xsl:if>
                 <xsl:if test="fn:contains($attributeURI, $base-ontology-uri)">
-                    <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+                    <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
                 </xsl:if>
             </xsl:element>
         </xsl:if>

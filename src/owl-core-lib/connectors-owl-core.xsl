@@ -178,9 +178,9 @@
 
 
         <owl:ObjectProperty rdf:about="{$roleURI}">
-            <rdfs:label xml:lang="en">
+<!--            <rdfs:label xml:lang="en">
                 <xsl:value-of select="$name"/>
-            </rdfs:label>
+            </rdfs:label>-->
             <skos:prefLabel xml:lang="en">
                 <xsl:value-of select="$name"/>
             </skos:prefLabel>
@@ -188,20 +188,20 @@
                 <skos:definition xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
-                <rdfs:comment xml:lang="en">
+<!--                <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>
-                </rdfs:comment>
+                </rdfs:comment>-->
             </xsl:if>
             <xsl:if test="$note">
                 <skos:scopeNote xml:lang="en">
                     <xsl:value-of select="$note"/>
                 </skos:scopeNote>
-                <rdfs:comment xml:lang="en">
+<!--                <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$note"/>
-                </rdfs:comment>
+                </rdfs:comment>-->
             </xsl:if>
             <xsl:if test="fn:contains($roleURI, $base-ontology-uri)">
-                <rdfs:isDefinedBy rdf:resource="{$coreModuleURI}"/>
+                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
             </xsl:if>
         </owl:ObjectProperty>
     </xsl:template>

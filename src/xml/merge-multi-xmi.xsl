@@ -14,7 +14,7 @@
    
     <xsl:output version="1.0" encoding="windows-1252" indent="yes" /> 
     
-    <xsl:import href="../../config/config-proxy.xsl"/>
+    <xsl:import href="../common/functx-1.0.1-doc.xsl"/>
     
     <!-- List of xmi/xml UML files to be merged into a single file -->
     <!--<xsl:import href="../../src/common/functx-1.0.1-doc.xsl"/>-->

@@ -16,8 +16,8 @@
     <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class'] with a comment">
         <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]"/>
         <x:expect label="there is an owl:Class" test="boolean(/owl:Class) "/>
-        <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/rdfs:label) "/>
-        <x:expect label="there is a rdfs:comment" test="boolean(/owl:Class/rdfs:comment) "/>
+        <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/skos:prefLabel) "/>
+<!--        <x:expect label="there is a rdfs:comment" test="boolean(/owl:Class/rdfs:comment) "/>-->
         <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://data.europa.eu/a4g/ontology#Lot' "/>
     </x:scenario>
 
@@ -25,7 +25,7 @@
     <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class'] withhout a comment">
         <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[72]"/>
         <x:expect label="there is an owl:Class" test="boolean(/owl:Class)"/>
-        <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/rdfs:label) "/>
+        <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/skos:prefLabel) "/>
         <x:expect label="there is a rdfs:comment" test="not(boolean(/owl:Class/rdfs:comment))"/>
         <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://data.europa.eu/a4g/ontology#DesignContest' "/>
     </x:scenario>
@@ -48,7 +48,7 @@
         <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[43]"/>
         <x:expect label="there is an rdfs:Datatype" test="boolean(/rdfs:Datatype)"/>
-        <x:expect label="there is a rdfs:label" test="boolean(/rdfs:Datatype/rdfs:label)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(/rdfs:Datatype/skos:prefLabel)"/>
         <x:expect label="there is a correct URI" test="/rdfs:Datatype/@rdf:about = 'http://data.europa.eu/a4g/ontology#Indicator' "/>        
     </x:scenario>
     
@@ -57,7 +57,7 @@
         <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[44]"/>
         <x:expect label="there is an owl:Class" test="boolean(/owl:Class)"/>
-        <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/rdfs:label) "/>
+        <x:expect label="there is a rdfs:label" test="boolean(/owl:Class/skos:prefLabel) "/>
         <x:expect label="there is a rdfs:comment" test="not(boolean(/owl:Class/rdfs:comment))"/>
         <x:expect label="there is a correct URI" test="/owl:Class/@rdf:about = 'http://data.europa.eu/a4g/ontology#Measure' "/>     
     </x:scenario>
@@ -78,7 +78,7 @@
             <x:param name="root" href="../../testData/ePO-CM_v.3.0.1.eap.xmi" select="/"/>
         </x:call>
         <x:expect label="there is an owl:" test="boolean(/owl:ObjectProperty)"/>
-        <x:expect label="there is a rdfs:label" test="boolean(/owl:ObjectProperty/rdfs:label)"/>
+<!--        <x:expect label="there is a rdfs:label" test="boolean(/owl:ObjectProperty/rdfs:label)"/>-->
         <x:expect label="there is a rdfs:label" test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
         
         <x:expect label="there is a correct URI"
@@ -93,9 +93,9 @@
             <x:param name="root" href="../../testData/ePO-CM_v.3.0.1.eap.xmi" select="/"/>
         </x:call>
         <x:expect label="there is an owl:" test="boolean(/owl:DatatypeProperty)"/>
-        <x:expect label="there is a rdfs:label" test="boolean(/owl:DatatypeProperty/rdfs:label)"/>
+<!--        <x:expect label="there is a rdfs:label" test="boolean(/owl:DatatypeProperty/rdfs:label)"/>-->
         <x:expect label="there is a skos:prefLabel" test="boolean(/owl:DatatypeProperty/skos:prefLabel)"/>
-        <x:expect label="there is a rdfs:comment" test="(boolean(/owl:DatatypeProperty/rdfs:comment))"/>
+<!--        <x:expect label="there is a rdfs:comment" test="(boolean(/owl:DatatypeProperty/rdfs:comment))"/>-->
         <x:expect label="there is a skos:definition" test="(boolean(/owl:DatatypeProperty/skos:definition))"/>
         <x:expect label="there is a correct URI" 
             test="/owl:DatatypeProperty/@rdf:about='http://data.europa.eu/a4g/ontology#hasEstimatedInvitationToExpressInterestDate'"/>
