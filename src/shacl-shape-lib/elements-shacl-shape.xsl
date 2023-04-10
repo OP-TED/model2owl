@@ -104,9 +104,9 @@
         <sh:description>
             <xsl:value-of select="$description"/>
         </sh:description>
-        <rdfs:comment xml:lang="en">
+<!--        <rdfs:comment xml:lang="en">
             <xsl:value-of select="$description"/>
-        </rdfs:comment>
+        </rdfs:comment>-->
     </xsl:template>
 
     <xd:doc>

@@ -89,7 +89,7 @@
 <!--        <x:expect label="there is a rdfs:label" test="count(/owl:ObjectProperty/rdfs:label)=1"/>-->
         <x:expect label="there is a skos:prefLabel"
             test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
-        <x:expect label="there is a rdfs:comment" test="boolean(/owl:ObjectProperty/rdfs:comment)"/>
+<!--        <x:expect label="there is a rdfs:comment" test="boolean(/owl:ObjectProperty/rdfs:comment)"/>-->
         <x:expect label="there is no skos:definition"
             test="not(boolean(/owl:ObjectProperty/skos:definition))"/>
         <x:expect label="there is a skos:scopeNote"

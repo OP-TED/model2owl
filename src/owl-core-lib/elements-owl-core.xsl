@@ -114,9 +114,9 @@
                 <xsl:value-of select="$conceptName"/>
             </skos:prefLabel>
             <xsl:if test="$documentation != ''">
-                <rdfs:comment xml:lang="en">
+<!--                <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>
-                </rdfs:comment>
+                </rdfs:comment>-->
                 <skos:definition xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
@@ -171,9 +171,9 @@
             </skos:prefLabel>
             
             <xsl:if test="$documentation != ''">
-                <rdfs:comment xml:lang="en">
+<!--                <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>
-                </rdfs:comment>
+                </rdfs:comment>-->
                 <skos:definition xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
@@ -203,9 +203,9 @@
             </skos:prefLabel>
             
             <xsl:if test="$documentation != ''">
-                <rdfs:comment xml:lang="en">
+<!--                <rdfs:comment xml:lang="en">
                     <xsl:value-of select="$documentation"/>
-                </rdfs:comment>
+                </rdfs:comment>-->
                 <skos:definition xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
@@ -311,9 +311,9 @@
                     <xsl:value-of select="$name"/>
                 </skos:prefLabel>
                 <xsl:if test="boolean($descriptionsWithAnnotations)">
-                    <rdfs:comment xml:lang="en">
+<!--                    <rdfs:comment xml:lang="en">
                         <xsl:value-of select="$descriptionsWithAnnotations"/>
-                    </rdfs:comment>
+                    </rdfs:comment>-->
                     <skos:definition xml:lang="en">
                         <xsl:value-of select="$descriptionsWithAnnotations"/>
                     </skos:definition>
