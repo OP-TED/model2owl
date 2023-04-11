@@ -5,7 +5,7 @@ This project comprises a set of tools for transforming an UML (v2.5) model from 
 * UML -> OWL 2 (light / complete)
 * UML -> SHACL
 
-This work is developed in the context of [eProcurement ontology project](https://github.com/eprocurementontology/eprocurementontology) financed by ISA2 and led by the [Publications Office of the European Union](https://op.europa.eu/en/).
+This work is developed in the context of [eProcurement ontology project](https://github.com/eprocurementontology/eprocurementontology) financed by the Digital Europe Programme and led by the [Publications Office of the European Union](https://op.europa.eu/en/).
 
 ### Documents
 * The **architectural design** and the formal specifications are provided in the [Ontology architecture document](doc/ontology-architecture/ontology-architecture.pdf).  
