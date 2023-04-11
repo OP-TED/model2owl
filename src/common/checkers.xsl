@@ -19,7 +19,7 @@
 
     <xsl:import href="utils.xsl"/>
     <xsl:import href="../../config-proxy.xsl"/>
-    
+
     <xsl:variable name="uppercaseLetters" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
 
     <xd:doc>
@@ -392,30 +392,30 @@
                 "
         />
     </xsl:function>
-    
+
     <xd:doc>
         <xd:desc>Checks if first character is invalid in the local segment</xd:desc>
         <xd:param name="element"/>
     </xd:doc>
-    
+
     <xsl:function name="f:isValidFirstCharacterInLocalSegment">
         <xsl:param name="element"/>
         <xsl:variable name="localSegment" select="f:getLocalSegmentForElements($element)"/>
         <xsl:sequence
             select="
-            if (fn:matches(fn:substring($localSegment, 1, 1),'^[a-zA-Z_]+$')) then
+                if (fn:matches(fn:substring($localSegment, 1, 1), '^[a-zA-Z_]+$')) then
                     fn:true()
                 else
                     fn:false()"
         />
     </xsl:function>
-    
-    
+
+
     <xd:doc>
         <xd:desc>Checks if the local segment contains delimiters (spaces)</xd:desc>
         <xd:param name="element"/>
     </xd:doc>
-   
+
     <xsl:function name="f:isDelimitersInLocalSegment">
         <xsl:param name="element"/>
         <xsl:variable name="localSegment" select="f:getLocalSegmentForElements($element)"/>
@@ -428,5 +428,28 @@
                     fn:false()"
         />
     </xsl:function>
-    
+
+    <xd:doc>
+        <xd:desc> This function will check if a given list of namespaces are defined in
+            namespaces.xml file. If not all the namespaces were defined it will return a list with
+            those namespaces</xd:desc>
+        <xd:param name="listOfNamespaces"/>
+    </xd:doc>
+    <xsl:function name="f:isAllNamespacesDefined">
+        <xsl:param name="listOfNamespaces"/>
+        <xsl:variable name="definedNamespaces"
+            select="($namespacePrefixes/*:prefixes/*:prefix/@name)"/>
+        <xsl:variable name="listOfNotDefinedNamespaces"
+            select="functx:value-except($listOfNamespaces, $definedNamespaces)"/>
+        <xsl:sequence
+            select="
+                if (count($listOfNotDefinedNamespaces) = 0) then
+                    fn:true()
+                else
+                    $listOfNotDefinedNamespaces"/>
+
+    </xsl:function>
+
+
+
 </xsl:stylesheet>

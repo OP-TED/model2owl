@@ -454,5 +454,19 @@
         <x:expect label="boolean-false" select="false()"/>
     </x:scenario>
     
+    <x:scenario label="Check if all namespaces are defined - All used namespaces are defined">
+        <x:call function="f:isAllNamespacesDefined">
+            <x:param name="listOfNamespaces" select="('epo', 'xsd')"/>
+        </x:call>
+        <x:expect label="all namespaces were defined" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check if all namespaces are defined - not all namespaces were defined">
+        <x:call function="f:isAllNamespacesDefined">
+            <x:param name="listOfNamespaces" select="('epo', 'xsd', 'twe', 'cancan')"/>
+        </x:call>
+        <x:expect label="a list with namespaces that were not defined" select="('twe', 'cancan')"/>
+    </x:scenario>
+    
 </x:description>
 
