@@ -256,5 +256,13 @@
         </x:call>
         <x:expect label="correct name for the connector">epo:Procedure -> epo:StrategicProcurement (+epo:involvesOverallStrategicProcurement)</x:expect>
     </x:scenario>
+    
+    
+    <x:scenario label="Scenario for testing function getAllNamespacesUsed">
+        <x:call function="f:getAllNamespacesUsed">
+            <x:param name="root" href="../../testData/ePO-CM_v.3.0.1.eap.xmi" select="/"/>            
+        </x:call>
+        <x:expect label="there are 23 distinct namespaces" select="('epo', 'epo-not', 'at-voc', 'dul', 'adms', 'epo-ord', 'epo-cat', 'cpov', 'org', 'cpv', 'locn', 'cv', 'dct', 'person', 'foaf', 'epo-ful', 'cccev', 'at-voc-new', 'time', 'owl', 'rdfs', 'xsd', 'skos')"/>
+    </x:scenario>
    
 </x:description>

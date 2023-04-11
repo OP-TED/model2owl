@@ -262,4 +262,46 @@
             $connector/target/model/@name "
         />
     </xsl:function>
+    
+    
+    <xd:doc>
+        <xd:desc>Get all namespaces used in the XMI</xd:desc>
+        <xd:param name="root"/>
+    </xd:doc>
+    <xsl:function name="f:getAllNamespacesUsed">
+        <xsl:param name="root" as="node()"/>
+        <xsl:variable name="distinctElementNames" select="fn:distinct-values($root//element/@name)"/>
+        <xsl:variable name="distinctAttributeNames" select="fn:distinct-values($root//element/attributes/attribute/@name)"/>
+        <xsl:variable name="distinctConnectorNames"
+            select="fn:distinct-values($root//connectors/connector/(@name | */role/@name | */model/@name))"
+        />
+        <xsl:variable name="prefixesFromElements"
+            select="fn:distinct-values(
+            for $elementName in $distinctElementNames
+                return
+                    if (fn:contains($elementName, ':')) then
+                        fn:substring-before($elementName, ':')
+                    else
+                        ())"
+        />
+        <xsl:variable name="prefixesFromAttributes" select="fn:distinct-values(
+            for $attributeName in $distinctAttributeNames
+            return
+            if (fn:contains($attributeName, ':')) then
+            fn:substring-before($attributeName, ':')
+            else
+            ())"/>
+        <xsl:variable name="prefixesFromConnectors" select="fn:distinct-values(
+            for $connectorName in $distinctConnectorNames
+            return
+            if (fn:contains($connectorName, ':')) then
+            fn:substring-before($connectorName, ':')
+            else
+            ())"/>
+        <xsl:sequence
+            select="fn:distinct-values(fn:insert-before(fn:insert-before($prefixesFromAttributes, 1, $prefixesFromElements), 1, $prefixesFromConnectors))"
+        />
+
+    </xsl:function>
+    
 </xsl:stylesheet>
