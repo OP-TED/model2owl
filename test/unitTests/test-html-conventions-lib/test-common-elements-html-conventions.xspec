@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    stylesheet="../../../src/html-conventions-lib/common-elements-html-conventions.xsl">
+    
+    <x:scenario label="Scenario for finding a class name that is valid Qname">
+        <x:call template="namingFormat">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class name that is not a valid Qname">
+        <x:call template="namingFormat">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[34]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+   
+    <x:scenario label="Scenario for finding a class attribute name that is not a valid Qname">
+        <x:call template="namingFormat">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[3]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a class attribute name that is a valid Qname">
+        <x:call template="namingFormat">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[1]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select = "()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class with name">
+        <x:call template="missingName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[316]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class without a name">
+        <x:call template="missingName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[318]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a class name that is not missing the prefix">
+        <x:call template="missingNamePrefix">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class name with missing prefix">
+        <x:call template="missingNamePrefix">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[316]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class name that is not missing the local segment">
+        <x:call template="missingLocalSegmentName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class name with missing local segment">
+        <x:call template="missingLocalSegmentName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[73]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+     <x:scenario label="Scenario for finding a class name a valid prefix">
+        <x:call template="invalidNamePrefix">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class name with an invalid prefix">
+        <x:call template="invalidNamePrefix">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[73]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class name with the Qname prefix in namespaces">
+        <x:call template="undefinedPrefix">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class name with the Qname prefix not in the agreed namespaces">
+        <x:call template="undefinedPrefix">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[34]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a class name a valid local segment">
+        <x:call template="invalidNameLocalSegment">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class name with an invalid local segment">
+        <x:call template="invalidNameLocalSegment">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[95]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class name a valid local segment and a valid first character">
+        <x:call template="invalidFirstCharacterInLocalSegment">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class name with an invalid first character for the local segment">
+        <x:call template="invalidFirstCharacterInLocalSegment">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a class name a valid local segment no delimiter (spaces)">
+        <x:call template="delimitersInTheLocalSegment">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class name with an invalid delimiter in the local segment">
+        <x:call template="delimitersInTheLocalSegment">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[101]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+   
+    
+    <x:scenario label="Scenario for finding a class that has a description">
+        <x:call template="missingDescription">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class that has no description">
+        <x:call template="missingDescription">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[34]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    <x:scenario label="Scenario for finding a class with a correct stereotype ">
+        <x:call template="stereotypeProvided">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[35]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a class with no stereotype ">
+        <x:call template="stereotypeProvided">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class with an incorrect stereotype">
+        <x:call template="stereotypeProvided">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[34]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+
+</x:description>

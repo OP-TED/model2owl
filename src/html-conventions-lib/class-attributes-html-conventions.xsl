@@ -13,8 +13,11 @@
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:f="http://https://github.com/costezki/model2owl#" version="3.0">
 
+    
+    <!--
     <xsl:import href="../common/checkers.xsl"/>
-    <xsl:import href="utils-html-conventions.xsl"/>
+    <xsl:import href="utils-html-conventions.xsl"/>-->
+    <xsl:import href="common-elements-html-conventions.xsl"/>
 
     <xd:doc>
         <xd:desc>Getting all class attributes and show only the ones that have unmet conventions
@@ -24,6 +27,16 @@
 
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
         <xsl:variable name="classAttributeChecks" as="item()*">
+            
+            <!--    Start of common checkers rules     -->
+            <xsl:call-template name="missingName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="namingFormat">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <!--    End of common checkers rules     -->   
+            
             <xsl:call-template name="ca-attributeNameStartsWithLowerCase">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
@@ -42,9 +55,9 @@
             <xsl:call-template name="ca-stereotypeProvided">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="ca-missingName">
+<!--            <xsl:call-template name="ca-missingName">
                 <xsl:with-param name="classAttribute" select="."/>
-            </xsl:call-template>
+            </xsl:call-template>-->
             <xsl:call-template name="ca-missingNamePrefix">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
@@ -69,9 +82,9 @@
             <xsl:call-template name="ca-undefinedPrefix">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="ca-namingFormat">
+<!--            <xsl:call-template name="ca-namingFormat">
                 <xsl:with-param name="classAttribute" select="."/>
-            </xsl:call-template>
+            </xsl:call-template>-->
             <xsl:call-template name="ca-missingDescription">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
