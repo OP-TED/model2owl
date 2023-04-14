@@ -62,9 +62,11 @@
             </xsl:call-template>
             <xsl:call-template name="missingDescription">
                 <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="elementType" select="'class'"/>
             </xsl:call-template>
             <xsl:call-template name="stereotypeProvided">
                 <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="elementType" select="'class'"/>
             </xsl:call-template>
         <!--    End of common checkers rules     -->   
         <!--    Start of specific checker rules-->

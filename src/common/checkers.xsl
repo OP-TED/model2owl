@@ -148,8 +148,7 @@
         <xsl:param name="input"/>
         <xsl:sequence
             select="
-                if (boolean(f:getUmlDataTypeValues($input, $umlDataTypesMapping)) or
-                boolean(f:getXsdRdfDataTypeValues($input, $xsdAndRdfDataTypes)))
+                if (boolean(f:getXsdRdfDataTypeValues($input, $xsdAndRdfDataTypes)))
                 then
                     fn:true()
                 else
