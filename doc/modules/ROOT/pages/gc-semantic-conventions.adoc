@@ -1,0 +1,252 @@
+= Semantic conventions
+
+[[sec:sc-r1]]
+== Formal language choice
+
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Formal language choice
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* SC-R1
+
+|*Statement:*
+
+The formal ontology shall be expressed in OWL 2.
+|===
+
+*Description:*
+
+In the Semantic Web domain, two formal languages can be used for expressing the ontology: RDFS [xref:references.adoc#ref:rdfs[rdfs]]  and OWL 2 [xref:references.adoc#ref:owl2[owl2]]. RDFS is simpler and only allows for some of the recommended expressions (for example, the distinction between datatype and object properties is not possible). OWL 2 is more complex and more expressive than RDFS.
+
+We recommend using only a limited set of expression types available in OWL 2 language [xref:gc-semantic-conventions.adoc#sec:sc-r2[SC-R2]].
+
+****
+*Examples:*
+
+Core Vocabularies have an RDF representation as OWL 2 Ontology. In the example below, part of Core Person is depicted:
+
+[source, turtle]
+----
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schemas: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/ns/person#Person> a rdfs:Class;
+  rdfs:label "Person"@en .
+
+<https://data.europa.eu/m8g> a owl:Ontology;
+  rdfs:label "core-person-voc"@en,
+    "core-person-voc"@nl;
+  dc:contributor [
+    a foaf:Person;
+    foaf:firstName "Seth";
+    foaf:lastName "van Hooland";
+    schemas:affiliation [foaf:name "European Commission"]
+  ];
+  dc:license "https://creativecommons.org/licenses/by/4.0/",
+    <https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic>;
+  dc:mediator [
+    foaf:homepage <https://semic.eu>;
+    foaf:name "Semantic Interoperability Community (SEMIC)"
+  ].
+----
+
+****
+
+
+[[sec:sc-r2]]
+== Limited (OWL 2) expressivity
+
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Limited (OWL 2) expressivity
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* SC-R2
+
+|*Statement:*
+
+The formal ontology shall be _lightweight_ in its logical underpinning, focusing mainly on the concept declarations, generalisation axioms and annotations.
+|===
+
+*Description:*
+
+OWL 2 language provides a high level of expressivity. In the SEMIC interoperability context, the primary purpose of semantic artefacts is to establish the common set of concepts and how they are employed in data exchange. For this purpose, simple OWL 2 constructs suffice. Therefore, the OWL 2 ontology shall be kept _lightweight_, and no advanced logical definitions are necessary, which would make the ontology _heavyweight_. The Bulletin of the Association for Information Science and Technology, dedicated an https://asistdl.onlinelibrary.wiley.com/toc/23739223/2015/41/4[entire section] on the charm of weak semantics in the linked data world. Backer & Sutton explain well how lightweight semantics supports interoperability and reuse [xref:references.adoc#ref:baker15[baker15]].
+
+We recommend the formal ontology definition be limited to the following types of expressions:
+
+* class declarations (`owl:Class`, `rdfs:Class`)
+* datatype property declarations (`owl:DatatypeProperty`, `rdf:Property`)
+* object property declarations (`owl:ObjectProperty`, `rdf:Property`)
+* subclass relations (`rdfs:subClassOf`)
+* subproperty relations (`rdfs:subPropertyOf`)
+* annotations
+** concept labels (`rdfs:label`, `skos:prefLabel`, `skos:altLabel`)
+** concept definitions (`rdfs:comment`, `skos:definition`, `skos:scopeNote`)
+** notes and comments (`rdfs:comment`, `skos:editorialNote`, `skos:changeNote`, `skos:historyNote`, `skos:example`)
+* ontology header with
+** import statements (`owl:import`)
+** version metadata (`owl:versionInfo`, `owl:versionIRI`)
+** provenance metadata (e.g. `dct:issued`, `adms:status`)
+** descriptive metadata
+
+The formal ontology shall not include other types of statements unless justified as necessary. The properties used, in particular those related to the ontology header, shall be aligned with the governance process.
+
+No expressions of (a) property domain specification (`rdfs:domain`) and (b) property range specification (`rdfs:range`) shall be used unless justified as absolutely necessary. The need for setting property domain and range constraints shall be is better fulfilled by the data shapes expressed in SHACL language.
+
+Keeping the ontology lightweight allows the maximum freedom for reuse and does not interfere with the validation concerns covered by the data shapes.
+
+****
+*Examples:*
+
+For example, consider the (shortened) DCAT-AP imports header:
+
+[source]
+<http://data.europa.eu/r5r>
+  rdf:type owl:Ontology ;
+  owl:imports <https://www.w3.org/ns/dcat2.ttl> ;
+  owl:imports <http://dublincore.org/2020/01/20/dublin_core_terms.ttl> ;
+  owl:imports <https://www.w3.org/ns/locn.ttl> ;
+  owl:imports <http://www.w3.org/ns/prov-o.ttl> ;
+  owl:imports <http://www.w3.org/2006/time.ttl> ;
+  owl:imports <http://www.w3.org/2006/vcard/ns.ttl> ;
+  owl:imports <http://www.w3.org/ns/adms.ttl>
+  .
+
+Or consider, the (shortened) Core Person vocabulary header:
+
+[source]
+<https://data.europa.eu/m8g> a owl:Ontology;
+  rdfs:label "core-person-voc"@en,
+    "core-person-voc"@nl;
+  dc:contributor [
+    a foaf:Person;
+    foaf:firstName "Seth";
+    foaf:lastName "van Hooland";
+    schemas:affiliation [foaf:name "European Commission"]
+  ];
+  dc:license "https://creativecommons.org/licenses/by/4.0/",
+    <https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic>;
+****
+
+
+[[sec:sc-r3]]
+== Lexicalisation
+
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Lexicalisation
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* SC-R3
+
+|*Statement:*
+
+The choice in handling the lexicalisation of concepts shall be clearly defined and consistently implemented.
+|===
+
+*Description:*
+
+The lexicalisation of concepts in semantic artefacts can be implemented in multiple ways. Two popular approaches are used
+in practice: RDFS or SKOS lexicalisation. However, other types can be considered as well (e.g. [xref:references.adoc#ref:lemon[lemon]], [xref:references.adoc#ref:vann[vann]], etc.).
+
+RDFS allows for a simple lexicalisation and annotation:
+
+* labels
+** `rdfs:label` may be used to provide a human-readable version of a resource's name.
+* comments
+** `rdfs:comment` may be used to provide a human-readable description of a resource.
+
+SKOS offers a richer and more elaborate lexicalisation and annotation:
+
+* Lexical labels
+** `skos:prefLabel` and `skos:altLabel` are useful when generating or creating human-readable representations of a knowledge
+organisation system. These labels provide the strongest clues as to the meaning of a SKOS concept.
+** `skos:hiddenLabel` has a more technical nature and may be useful when a user is interacting with a knowledge organisation system via a text-based search function. The user may, for example, enter misspelled words when trying to find a relevant concept.
+* Documentation properties
+** `skos:definition` supplies a complete explanation of the intended meaning of a concept;
+** `skos:scopeNote` supplies some, possibly partial, information about the intended meaning of a concept, especially as an
+indication of how the use of a concept is limited in indexing practice;
+** `skos:note` useful for general documentation purposes;
+** `skos:example` supplies an example of the use of a concept;
+** `skos:historyNote` describes significant changes to the meaning or the form of a concept;
+** `skos:changeNote` documents fine-grained changes to a concept, for the purposes of administration and maintenance;
+** `skos:editorialNote` supplies information that is an aid to administrative housekeeping, such as reminders of editorial
+work still to be done, or warnings in the event that future editorial changes might be made.
+
+We recommend one, or the other is used. Both can be used at the same time without any consequence of semantics, but this will introduce redundancy and possibly a maintenance burden.
+
+****
+*Examples:*
+
+For example, in Core Person Vocabulary RDFS lexicalisation is used:
+
+[source]
+<http://data.europa.eu/m8g/birthDate> a rdf:Property;
+  rdfs:label "date of birth"@en .
+
+For example in ePO, both lexicalisations are provided (even if this may be considered redundant):
+
+[source]
+:Term a owl:Class ;
+    rdfs:label "Term"@en ;
+    rdfs:comment "A governing condition or stipulation."@en ;
+    rdfs:isDefinedBy <http://data.europa.eu/a4g/ontology> ;
+    skos:definition "A governing condition or stipulation."@en ;
+    skos:prefLabel "Term"@en .
+****
+
+[[sec:sc-r4]]
+== Reasoning assumption
+
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Reasoning assumption
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* SC-R4
+
+|*Statement:*
+
+No reasoning capabilities shall be assumed.
+|===
+
+*Description:*
+
+OWL 2 constructs correspond to Description Logic (DL) concepts (_direct semantics_). Logic, besides expressing knowledge in a knowledge base, can be used to perform automated reasoning, i.e.,  inferring new knowledge based on premises and reasoning rules. The inference is also possible with RDF-based semantics, based on translating the axioms into directed graphs. The latter is used for SPARQL entailments and SHACL data shape rules.
+
+Automated reasoning is not consistently available across environments: small differences in the usage context or reasoning patterns may lead to different outcomes.
+
+Therefore, the editors of interoperable semantic data specifications are strongly recommended to NOT rely on such capabilities. Thus, in practice, the model shall allow for an explicit statement of the intended knowledge, and as little as possible shall be left implicit.
+
+
+[[sec:sc-r5]]
+== Circular definitions
+
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Circular definitions
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* SC-R5
+
+|*Statement:*
+
+The data specification (semantic, conceptual, or shape) shall not use circular definitions.
+|===
+
+*Description:*
+
+Circular definition, i.e., definitions that use the element they define are incorrect.
+
+For instance, we say that an ontology element (a class, an object property or a datatype property) is circular when used in its own definition. This can occur in situations such as the following:
+
+* (a) the definition of a class as the enumeration of several classes including itself;
+* (b) the appearance of a class within its `owl:equivalentClass` or `rdfs:subClassOf` axioms;
+* (c) the appearance of an object property in its `rdfs:domain` or `rdfs:range` definitions; or
+* (d) the appearance of a datatype property in its `rdfs:domain` definition.

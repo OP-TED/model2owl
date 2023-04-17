@@ -1,0 +1,21 @@
+site:
+  title: model2owl
+  start_page: ROOT::index.adoc
+
+antora:
+  extensions:
+  - require: '@antora/lunr-extension'
+    snippet_length: 250
+
+
+content:
+  sources:
+    - url: .
+#    - url: https://github.com/OP-TED/model2owl
+#      branches: [ main ]
+      start_path: docs
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./supplemental-ui

@@ -1,0 +1,67 @@
+= Introduction
+
+// [[sec:context]]
+// == Context
+This document defines the style guide to be applied to the SEMIC's semantic data specifications, notably to the eGovernment
+Core Vocabularies and Application Profiles. It provides rules on naming conventions, syntax, artefact management and organisation.
+It is meant to be complemented with technical artefacts and implementations that enable automatic conformance checking and
+transformation of conceptual models into formal semantic representations.
+
+The content of these guides is part of the action to promote semantic interoperability amongst the EU Member States,
+with the objective of fostering the use of standards by, for example, offering guidelines and expert advice on semantic interoperability
+for public administrations.
+
+[[sec:target-audience]]
+== Target audience
+This style guide is intended primarily for semantic engineers, data architects and knowledge modelling specialists who are acting as editors or reusers of Core Vocabularies and Application Profiles.
+
+This style guide may constitute a good source of information and explanations for the European Commission's officers, collaborating consultants, and stakeholders involved in inter-institutional standardisation.
+
+[[sec:scope]]
+== Scope
+The main purpose of this style guide is to provide guidance and decision-making support for the creators, maintainers and publishers of the Core Vocabularies and Application Profiles. In the context of European Interoperability Framework (EIF) [xref:references.adoc#ref:eif[eif]] this style guide primarily addresses the _Semantic Interoperability_ layer.
+The main part of this document is organised as a series of self-contained rules and guidelines.
+
+In the scope of this document are included:
+
+* a terminological clarification for the significant SEMIC terms (including "reuse", "ontology", "Core Vocabulary", etc.);
+* an architecture overview, which interconnects various aspects and data specification types and how they are derived from a single
+conceptual model;
+* the concept of "reuse" in great detail and pinpoints exactly what is permitted and what is not permitted in the SEMIC context;
+* recommendations on organising the conceptual model, the semantic artefacts, and the data shapes;
+* some recommendations on the specification development methodology and some publication conventions.
+
+It is considered out of the scope of this document to provide:
+
+* a complete and specific modelling methodology,
+* a procedure for maintenance and publication,
+* governance (roles, processes, responsibilities, etc.), lifecycle and release management methodology (including the initiation and
+change requests),
+* any specific implementation instructions,
+* indications as to what set of tools shall be adopted,
+* specifications related to data serialisation, formats or any syntax mapping methods (including syntax binding instructions to for
+example XSD/XML; or JSON-LD contexts),
+* usage instructions for the end users.
+
+This style guide is recommended to be used in combination with complementary documents, among which we consider relevant, but not
+limited to, the following ones:
+
+* the  user manual of a transformation tool from UML into other representations explaining what transformation rules are supported
+(i.e. implemented by the tool),
+* the documentation (manuals, handbooks, specifications) of the reused data specifications,
+* the governance and methodology documentation of the organisation developing the new semantic data specification,
+the adopted URI policy documentation, which can be inter-institutional policy or organisation specific one
+[xref:references.adoc#ref:10rules-puri[10rules-puri]].
+
+[[sec:how-to-read]]
+== How to read this document
+This document is organised in two parts. The first part provides a brief context description and scope and offers an architectural
+overview. It introduces important terminological clarifications, the benefits of adopting the separation of concerns principle,
+and explanations of how it is played out in the SEMIC context.
+
+The second part of the document provides a series of guidelines, conventions and assumption specifications. These guidelines are
+organised according to the aspects they cover. A guideline is a stand-alone description containing an indicative statement and a
+detailed description providing the rationale, benefits and limitations, implications and practical requirements, and eventually examples.
+
+Users who may choose to bypass introductory details may decide to proceed with reading the
+xref:gc-general-conventions.adoc[general guidelines] and the ones on the xref:gc-conceptual-model-conventions.adoc[conceptual model] first.

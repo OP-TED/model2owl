@@ -1,0 +1,203 @@
+= Terminological clarifications
+
+Before detailed definitions and explanations are provided, let's align on the idea that xref:arhitectural-clarifications.adoc#sec:data-specification-and-artefact-types["semantic data specifications comprise artefacts"].
+
+*  There are xref:#sec:what-is-a-semantic-data-specification[_semantic data specifications_]. They comprise nothing else but a _collection of terms_, _structure and rule specifications_ on how to combine these terms and _(RE)use expectations_. In the SEMIC context, a semantic data specification can be either:
+** a _Core Vocabulary_, or
+** an _Application Profile_
+
+* There are xref:#sec:what-is-an-artefact[_Artefacts_]. They encode or indicate a representation _format_, attend a need or specific _purpose_, and address a clear _concern_. In the SEMIC context, we acknowledge, but not limited to, the following list of artefacts:
+** Persistent URIs
+** OWL 2 representation
+** SHACL representation
+** HTML representation
+** Pictures/Diagrams
+** UML representation
+** JSON-LD representation (+ JSON schema)
+** XML representation (+ XSD schema)
+** ...
+
+Note that **not** all artefacts are treated in the current style-guide, but only the ones that are in scope of the _Semantic Interoperability_ layer of the European Interoperability Framework (EIF) [xref:references.adoc#ref:eif[eif]].
+
+[[sec:what-is-a-conceptual-model]]
+== What is a conceptual model?
+
+*Definition* +
+A *_conceptual model_*, also referred to as *_conceptual model specification_*, is an abstract representation of a system and comprises well-defined concepts, their qualities or attributes, and their relationships to other concepts. A system is a group of interacting or interrelated
+elements that act according to a set of rules to form a unified whole.
+
+*Description* +
+A conceptual model is a representation of a system that uses concepts to form said representation. A concept can be viewed as an idea or notion, a unit of thought [xref:references.adoc#ref:skos[skos]]. However, what constitutes a unit of thought is subjective, and this definition is meant to be suggestive rather than restrictive. That is why each concept needs to be well named by providing preferred and alternative labels and should have a clear and precise definition supported by examples and explanatory notes. The conceptual model comprises representations of concepts, their qualities or attributes and relationships to other concepts. Most commonly, these are association and generalisation relations.
+
+In addition, the conceptual model can be materialised in a graphical representation facilitating knowledge elicitation, organisation and interaction with domain experts. This is relevant because interactions and discussions within a Working Group for a data specification are often driven by a graphical representation. However, the need for a conceptual model and a visual representation shall not be conflated. Thus, we keep clear separation of concerns, which is addressed in detailed in the next section [xref:arhitectural-clarifications.adoc#sec:separation-of-concerns-and-transformation[Separation of concerns in SEMIC]].
+
+There is no perfect candidate for representing the conceptual model. And, although not without limitations, risks for misunderstandings and mis-interpretations, we choose (a subset of) UML language [xref:references.adoc#ref:epo-cm2owl[epo-cm2owl]] as most appropriate and instrumental in addressing (a) the concern for having a conceptual model established and (b) the concern for providing a graphical representation. The UML appropriateness has been acknowledged based on a longstanding experience and practices. An entire section of this style guide is dedicated to (UML) conceptual model [xref:gc-conceptual-model-conventions.adoc[see Conceptual model conventions]].
+
+The subset of the UML language considered in this style guide is comprised (but not limited to) in the following set of UML elements:
+
+* Class
+* Class Attribute
+* Connector
+** Association
+** Dependency
+** Generalisation
+* Enumeration
+
+For visual representation only UML Class Diagrams are considered.
+
+*Note:* UML will be the recommended language for defining the conceptual models until a better and more appropriate alternative with robust tool support is developed, that is also addressing the SEMIC methods and practices [xref:arhitectural-clarifications.adoc[see Architectural clarification]].
+
+[[sec:what-is-an-ontology]]
+== What is an ontology?
+
+*Definition* +
+An *_ontology_*, also referred to as *_ontology specification_*, is a a formal specification describing the concepts and relationships that can formally exist for an agent or a community of agents (e.g. domain experts) [xref:references.adoc#ref:gruber93[gruber93]]. It encompasses a representation, formal naming, and definition of the categories, properties, and relations between the concepts, data, and entities that substantiate one, many, or all domains of discourse [xref:references.adoc#ref:wiki-onto[wiki-onto]].
+
+*Description* +
+The ontology constitutes the formal (machine-readable) definition of concepts. Although the languages for expressing ontologies vary in expressivity, we shall keep it light and simple, from the formal point of view, with minimal detail and level of expressivity [xref:gc-semantic-conventions.adoc#sec:sc-r2[SC-R2]]. Backer & Sutton explain well how lightweight semantics supports interoperability and reuse [xref:references.adoc#ref:baker15[baker15]].
+
+In the SEMIC context, we only consider _lightweight ontologies_ [xref:gc-semantic-conventions.adoc#sec:sc-r2[defined in rule SC-R2]]. Therefore, even if this aspect is not emphasised as "lightweight ontology", it is implicitly meant even when simple "ontology" reference is used.
+
+We assume that the ontology is expressed in OWL 2 language [xref:gc-semantic-conventions.adoc#sec:sc-r1[SC-R1]].
+
+The main purpose of this component is to declare the classes, properties, datatypes and controlled lists. Each construct is established by assigning a URI and decorating it with human-readable labels and descriptions, and constitutes the mechanism to establish common references for humans and machines.
+
+[[sec:what-is-a-data-shape-contraint]]
+== What is a data shape specification?
+
+*Definition* +
+A *_data shape specification_*, also referred to as *_data shape constraint specification_*, or simply as *_data shape constraint_* or *_data shape_*, provides a set of conditions on top of an ontology, limiting how the ontology can be instantiated.
+
+*Description* +
+The conditions and constraints that apply to a given ontology are provided as shapes and other constructs expressed in the form of an RDF graph.
+We assume that the data shapes are expressed in SHACL language.
+
+This document will refer to data shape constraint specifications simply as "data shapes", but occasionally also as "data shape constraints" or "data shape specifications".
+
+[[sec:what-is-a-specification-document]]
+== What is a data specification document?
+
+*Definition* +
+A *_data specification document_*, also referred to as *_specification document_*, is the human-readable representation of an ontology, a data shape, or a combination of both.
+
+*Description* +
+A data specification document is created with the objective of making it simple for the end-user to understand (a)
+how a model encodes knowledge of a particular domain, and (b) how this model can be technically adopted and used for a purpose.
+It is to serve as technical documentation for anyone interested in using (e.g. adopting or extending) a semantic data specification (see [xref:terminological-clarifications.adoc#sec:what-is-a-semantic-data-specification[What is a semantic data specification?]]).
+We assume that the data specification documents are published in HTML format (optionally, others). See, for example, the Core Person specification
+[xref:references.adoc#ref:cpv[cpv]] or the CPSV-AP specification [xref:references.adoc#ref:cpsv-ap[cpsv-ap]].
+
+
+[[sec:what-is-an-artefact]]
+== What is a data specification artefact?
+
+*Definition* +
+A *_data specification artefact_*, often referred to as *_specification artefact_* or simply *_artefact_*, is a materialisation of a semantic data specification in a concrete representation that is appropriate for addressing
+one or more concerns (e.g. use cases, requirements).
+
+*Description* +
+In the SEMIC context, we consider the following artefact types as primary: ontologies, data shapes, and specification documents.
+For a description of various concerns addressed in the SEMIC context, please see the section
+[xref:arhitectural-clarifications.adoc#sec:separation-of-concerns-and-transformation[Separation of concerns in SEMIC]].
+
+Additionally, we are concerned with syntax bindings and serialisation formats (XML/XSD and JSON-LD in particular).
+Still, these are not in the scope of this document and are addressed elsewhere. For more, see section on
+[xref:arhitectural-clarifications.adoc#sec:data-specification-and-artefact-types[Data specification and artefact types]].
+
+
+[[sec:what-is-a-semantic-data-specification]]
+== What is a semantic data specification?
+
+*Definition* +
+A *_semantic data specification_* , often called simply *_data specification_*, is a union of machine- and human-readable artefacts addressing clearly defined concerns, interoperability
+scope and use-cases. A semantic data specification comprises at least an ontology and a data shape (or either of them individually)
+accompanied by a human-readable data specification.
+
+*Description* +
+One general categorisation of semantic data specifications is along the reuse axis. 
+
+Some semantic data specifications are built with the intent that the terms of the conceptual model can be used in as much as possible contexts. Typically, it is possible to use the terms independently of each other. In this case, the definitions of the terms are usually very broad and abstract, and only the bare minimum of (usage) constraints are expressed. Often, the terms are presented as a list to the reader, with identifiers for each term in the same namespace. Those semantic data specifications are usually denoted with terms such as vocabularies or terminology.
+
+On the other side of the spectrum are the data specifications that precisely encode the semantics of the conceptual model that is being used in a single data exchange context, implemented in software or API. They usually have a strong connection with technical data representations (see section on [xref:arhitectural-clarifications.adoc#sec:technical-concerns-and-artefacts[Technical artefacts and concerns]]) and documentations such as XSD schema, OpenAPI specifications, etc. Conceptual models for this purpose will contain precise constraints, technical datatypes, the code-lists that are being used, refer to implementation decisions, etc. Semantic data specifications that are created for that purpose are denoted with Implementation Models. As that name indicate, their objective is to encode the conceptual model of an implementation.
+
+Between those two extremes, i.e. contextfree reuse (vocabularies) and unique usage context (Implementation Models), there are semantic data specifications that aim to capture the conceptual model for a broad, yet well-defined, usage context. Typically, these data specifications do not intend to introduce new terms in the conceptual model, but will exploit terms from other semantic data specifications. These exploited terms are augmented with additional usage constraints making the terms more fit for purpose.  These semantic data specifications are often denoted with terms such as Application Profiles or Profiles.
+
+Readers should understand that the usage relationships between semantic data specifications form a complex network. An attempt to provide a structured view on this network was initiated in the draft W3C Profile Guide [xref:references.adoc#ref:profile-guide[profile-guide]]. Also, the Application Profiles do not necessarily have to address all the technical needs related to an implemented system. Distinction between technical and semantic interoperability layers is attempted in xref:arhitectural-clarifications.adoc#sec:technical-concerns-and-artefacts[this section].
+
+This categorisation along the reuse axis indicates the importance of expressing the interoperability scope for semantic data specifications. However, due to the absence of widely accepted definitions for those categories, outlining the exact **__Do__**s and **__Don't__**s (for each category), may result to different expectations for each category. This style guide is a document that defines the commonly accepted and applied rules for SEMIC.
+
+In the SEMIC context, two types of semantic data specifications are considered: [xref:terminological-clarifications.adoc#sec:what-is-a-cv-specification[Core Vocabulary]] and [xref:terminological-clarifications.adoc#sec:what-is-an-ap-specification[Application Profile]]. Semantic data specifications of the third category, Implementation Models, are not part of the activities of SEMIC. Nevertheless, their existence, is taken into account when building the Core Vocabularies and Application Profiles.
+
+Occasionally, this document will refer to semantic data specifications shortly as "data specifications". With a similar meaning, the term "semantic asset" is used in the literature (e.g. ADMS [xref:references.adoc#ref:adms[adms]]). However, in our understanding, the term "semantic asset" is broader than "data specification" and includes controlled vocabularies and possibly other types of assets.
+
+[[sec:what-is-a-cv-specification]]
+== What is a Core Vocabulary (CV) specification?
+
+*Definition* +
+A Core Vocabulary (CV) is a basic, reusable and extensible data specification that captures the fundamental characteristics of an
+entity in a context-neutral fashion. Its main objective is to provide terms to be reused in the broadest possible context.
+
+*Broad context* (on vocabularies) +
+On the Semantic Web, vocabularies define the concepts and relationships (also referred to as "terms") used to describe and represent
+an area of concern. Vocabularies are used to classify the terms that can be used in a particular application, characterise possible
+relationships, and define possible constraints on using those terms. In practice, vocabularies can be very complex (with several
+thousands of terms) or very simple (describing one or two concepts only) [xref:references.adoc#ref:vocab[vocab]].
+
+There is no clear division between what is referred to as "vocabulary" and "ontology". The trend is to use the word "ontology"
+for a more complex and possibly quite formal collection of terms, whereas "vocabulary" is used when such strict formalism is not
+necessarily used or used only in a very loose sense [xref:references.adoc#ref:vocab[vocab]].
+
+*SEMIC context* (on Core Vocabularies) +
+Formally, a Core Vocabulary encompasses a lightweight ontology, and, optionally, a (permissive) data shape specification, and it
+is expressed in a condensed, comprehensive data specification document.
+
+* CV =
+** lightweight ontology {plus}
+** (optionally) a (permissive) data shape
+
+For more details see section on [xref:arhitectural-clarifications.adoc#sec:data-specification-and-artefact-types[Data specification and artefact types]].
+
+The qualifications _lightweight_ and _permissive_ are used to better emphasise the intention _to be reused in the broadest possible context_. More precise boundaries are defined further in this document.
+
+*NOTE:* "Vocabularies", in general, are not the same as "controlled vocabularies", as the latter usually refers to SKOS artefacts. However,
+in other contexts (similar to SEMIC), a Core Vocabulary might often be simply denoted as "vocabulary".
+
+
+[[sec:what-is-an-ap-specification]]
+== What is an Application Profile (AP) specification?
+
+*Definition* +
+An Application Profile is a data specification aimed to facilitate the data exchange in a well-defined  application context. It re-uses
+concepts from one or more semantic data specifications, while adding more specificity, by identifying mandatory, recommended, and
+optional elements, addressing particular application needs, and providing recommendations for controlled vocabularies to be used
+[xref:references.adoc#ref:dcat-ap[dcat-ap]].
+
+*Description* +
+An Application Profile (AP) is a data shape specification which addresses particular application needs (operating within some
+domain or community) while providing semantic interoperability with other applications based on one or more shared ontologies
+(vocabularies) [xref:references.adoc#ref:dc-ap[dc-ap]].
+
+Formally, the Application Profile encompasses (a) +++<u>+++reused+++</u>+++ ontology specifications (one or many) and
+(b) its +++<u>+++own+++</u>+++ data shape specification. Optionally it may include (c) +++<u>+++reused+++</u>+++ data shape
+specifications (one or many), and (d) it may provide its +++<u>+++own+++</u>+++ ontology specification to fill the ontological gaps.
+
+* AP =
+** reused lightweight ontology {plus}
+** own data shape {plus}
+** (optionally) reused (permissive) data shape {plus}
+** (optionally) own ontology
+
+*SEMIC context* +
+In SEMIC, Application Profiles encompass an ontology, which is largely composed of importing the reused ontologies, complemented
+with an appropriate data shape specification. Terms that are introduced because of the Application Profile needs are, by preference,
+added to existing Core Vocabularies. If this is not possible, an Application Profile-specific Vocabulary is created.
+
+* AP =
+** reused Core Vocabulary {plus}
+** own data shape {plus}
+** (optionally) own ontology
+
+The data specification document of an Application Profile is elaborated. It provides the application scope and context, and 
+documents the ontology and the data shapes through the conceptual model. It also provides additional information that stimulates
+the adoption and correct usage of the AP in implementations.
+
