@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>General conventions :: model2owl</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="..">
+            </a>
+        </div>
+    </nav>
+<nav class="navbar">
+    <div class="navbar-brand">
+    <img src="../_/img/semic-logo.png" class="logo" />
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs" >
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="public-review">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">model2owl Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminological-clarifications.html">Terminological clarifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="arhitectural-clarifications.html">Architectural clarifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="clarification-on-reuse.html">Clarifications on "reuse"</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="guidelines-and-conventions.html">Guidelines and conventions</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="gc-general-conventions.html">General conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-conceptual-model-conventions.html">Conceptual model conventions (UML)</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-semantic-conventions.html">Semantic conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-data-shape-conventions.html">Data shape conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-methodology-conventions.html">Methodology conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-publication-conventions.html">Publication conventions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Back matter</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="references.html">References</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="rule-template.html">Rule template</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index-of-rules.html">Index of rules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="style-guide-whole.html">Style guide as a whole</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">model2owl Documentation</span>
+    <span class="version">public-review</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="index.html">model2owl Documentation</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">public-review</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">model2owl Documentation</a></li>
+    <li><a href="guidelines-and-conventions.html">Guidelines and conventions</a></li>
+    <li><a href="gc-general-conventions.html">General conventions</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/gc-general-conventions.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">General conventions</h1>
+<div class="sect1">
+<h2 id="sec:gc-r1"><a class="anchor" href="#sec:gc-r1"></a>Reuse existing concepts as much as possible</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Reuse existing concepts as much as possible</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> GC-R1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">Reuse existing concepts as much as possible, respecting the original semantics and lexicalisation.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>Only use constructs with semantics (human and machine-readable) that support the use case or domain. A similar reflex must be considered by reusing properties and classes from other vocabularies. As a general rule, it is safe to reuse annotation properties, as they carry no logical semantics. Conversely, no concepts shall be redefined unless they are significant variations of the existent ones. In order to achieve a common approach to reuse, apply the reuse guidelines as specified above [<a href="clarification-on-reuse.html" class="xref page">Clarification on the reuse</a>].</p>
+</div>
+<div class="paragraph">
+<p>See more [
+<a href="references.html#ref:ld-bp" class="xref page">ld-bp</a>,
+<a href="references.html#ref:ld-bp" class="xref page">ldp-bp</a>,
+<a href="references.html#ref:dwbp" class="xref page">dwbp</a>,
+<a href="references.html#ref:epo-arch" class="xref page">epo-arch</a>,
+<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules</a>
+]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:gc-r2"><a class="anchor" href="#sec:gc-r2"></a>Prefer maintained vocabularies</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Prefer maintained vocabularies</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> GC-R2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
+Quality of maintenance and governance should be reviewed before reuse. Reuse mostly vocabularies that are well maintained and governed.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>Some projects are implemented and closed, while some other ones keep being maintained. The maintenance usually aims at (a) fixing errors, (b) making gradual improvements, and (c) supporting users in using the released data specification, to mention the least. Maintenance of the project can also include URI dereferencing and handling open issues in a timely fashion. Some projects may foresee an evolution roadmap, defined in a change and release policy, with a series of evolution
+stages planned.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:gc-r3"><a class="anchor" href="#sec:gc-r3"></a>Concept reference and terms</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Concept reference and terms</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> GC-R3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">Each concept shall be (a) referenceable by a URI, (b) formally defined and (c) described by a precise, unambiguous human-readable
+label and definition.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>Terms and concepts are not the same things. A term is a word, compound word, or multi-word expression that, in specific contexts, is given specific meanings – these may deviate from the meanings the same words have in other contexts and in everyday language.
+A concept can be viewed as an idea or notion, a unit of thought [<a href="references.html#ref:skos" class="xref page">skos</a>]. However, what constitutes a unit of thought is subjective, and this definition is meant to be suggestive rather than restrictive. That is why each concept needs to be well-named (termed) by providing preferred and alternative labels and should have a clear and precise definition supported by examples and explanatory notes. So, we need a precise way to refer to concepts. The mechanism offering such a possibility is using URIs to establish the identity of a concept&#8217;s "meaning". URIs also enable referencing, an essential feature of meaning exchange (communication).
+Such a reference allows for establishing a common meaning, not only between humans and machines but also among humans. Finally, the meaning of the term must be clear. Its definition is associated with the term via the URI. To make the term reusable, it should be published as part of a data specification.</p>
+</div>
+<div class="paragraph">
+<p>See more [
+<a href="references.html#ref:ld-bp" class="xref page">ld-bp</a>,
+<a href="references.html#ref:ld-bp" class="xref page">ldp-bp</a>,
+<a href="references.html#ref:dwbp" class="xref page">dwbp</a>,
+<a href="references.html#ref:epo-arch" class="xref page">epo-arch</a>,
+<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules</a>
+]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:gc-r4"><a class="anchor" href="#sec:gc-r4"></a>Vocabulary terminology style</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong>  Vocabulary terminology style</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> GC-R4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">The terminology style shall be consistent across the vocabulary.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>In practice, some variation in terminology style (concept naming conventions) can be noticed across a wide range of semantic
+data specifications. Whatever the adopted style may be, the author shall consistently apply it to the whole model. These
+names will be reflected in all artefacts and in the URIs.</p>
+</div>
+<div class="paragraph">
+<p>Next, we provide a set of loose recommendations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>British English is the lingua franca in the model.</p>
+</li>
+<li>
+<p>Avoid acronyms and abbreviations in concept names</p>
+</li>
+<li>
+<p>Classes are names with nouns and singular</p>
+</li>
+<li>
+<p>Names are case-sensitive.</p>
+</li>
+<li>
+<p>Relations and Properties use verbs at a present tense</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Some practices suggest adding the prefix "has" for quality attributes like "weight", "height", etc. or the prefix or
+"is" for boolean indicators, and some other practices recommend avoiding such prefixes as they add no additional information
+to the name.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Most often, the name of the inverse relation should not be a semantically inverted verb, such as in the case of "buys/sells"
+or "opens/closes". It should be done by changing the voice from active to passive, e.g. "plays/playedBy".</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:gc-r5"><a class="anchor" href="#sec:gc-r5"></a>Vocabulary definition styling</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Vocabulary definition styling</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> GC-R5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">The concept definitions shall be elaborated consistently across the vocabulary.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>In practice, different styles of defining concepts can be noticed across a range of semantic data specifications.</p>
+</div>
+<div class="paragraph">
+<p>The SEMIC Principles for creating good definitions [<a href="references.html#ref:semic-defs" class="xref page">semic-defs</a>] are a basis for writing definitions.
+They are based on advice found in the literature and are the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Be concise but complete,</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Avoid over-generalisations. Adapt and contextualise the definition to the surrounding/connected concepts.</p>
+</li>
+<li>
+<p>Make sure that every concept that occurs in the model is directly (or indirectly) defined</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Describe only one term</p>
+</li>
+<li>
+<p>Structure the definition in a standardised way:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the singular form to phrase the definition [<a href="#sec:gc-r4">GC-R4</a>]</p>
+</li>
+<li>
+<p>State what the term is, and don&#8217;t enumerate what it is NOT (no negative definition)</p>
+</li>
+<li>
+<p>Use only commonly understood abbreviations</p>
+</li>
+<li>
+<p>Use similar terminology for related definitions</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Don&#8217;t use  circular definitions, i.e. the term defined should not be part of the definition,</p>
+</li>
+<li>
+<p>Don&#8217;t add secondary information such as additional explanation, scoping, examples, etc. these are to be documented in usage notes.</p>
+</li>
+<li>
+<p>Form the definition in one or more sentences that start with a capital letter and end with a period.</p>
+</li>
+<li>
+<p>Do not start a definition with a repetition of the name of the concept.</p>
+</li>
+<li>
+<p>Rich standard encodings such as UTF-8 and UTF-16 are supported in notes and definitions. In the element names, however,
+we recommend avoiding any character encodings and using plain ASCII [<a href="references.html#ref:epo-cmc" class="xref page">epo-cmc, sec 4.2</a>].</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:gc-r6"><a class="anchor" href="#sec:gc-r6"></a>Reuse compliance</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Reuse compliance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> GC-R6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">Compliance with a semantic data specification is satisfied by appropriate usage of terms that is in accordance with definitions and constraints.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Compliance checking with an application semantic data specification shall be permissive. This means that what is not forbidden is permitted. If the context requires more restrictions,then an application profile needs to be established for a narrow(er) scenario.</p>
+</div>
+<div class="paragraph">
+<p>Technically, we envisage compliance checking limited to correct referencing of the concept URIs and respecting the cardinality constraints and value constraints in the case of properties. This falls within the scope of data shape definitions. Additionally, more specific compliance requirements and constraints can be added as necessary.</p>
+</div>
+<div class="paragraph">
+<p>Compliance checking may involve multiple levels of severity. For example in the SHACL specifications three levels are defined: <em>Violation</em>, <em>Warning</em>, <em>Info</em>. We assume by default the SHACL severity specifications unless other denotations systems are provided (i.e. different labels and delimitation of severity). Also in absense of specifications, any unfulfilled compliance check is considered a <em>Violation</em>.</p>
+</div>
+<div class="paragraph">
+<p>The semantic data specifications may provide such severity levels. How it is realised in the conceptual model is open at the moment. The main place to provide such specifications is the data shape artefact. In the future we can return to this aspect and provide more guidance.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:gc-r7"><a class="anchor" href="#sec:gc-r7"></a>Deontic modals</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Deontic modals</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> GC-R7</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">Indicators of deontic modalities for classes and properties do not have semantic or normative value. Still they may be used as editorial annotations.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Deontic modalities indicate levels <em>obligation</em>, <em>permission</em>, <em>necessity</em> and related concepts.</p>
+</div>
+<div class="paragraph">
+<p>As a general recommendation, to use deontic indicators in the semantic data specifications is discouraged. Such indicators could be of editorial or guiding role for the users and adopters of the data specifications. However, it should be noted that they are not considered as part of any compliance validation or semantic interpretation of the data model.</p>
+</div>
+<div class="paragraph">
+<p>In the standardisation community a common practice is to indicate levels of <em>obligation</em> or <em>permission</em> for concepts in a semantic data specification. <em>Obligation</em> indicator signals whether a statement using a class or a property is required in an instantiation; while, <em>Permission</em> indicator signals whether a statement using a class or a property is allowed or forbidden in an instantiation.</p>
+</div>
+<div class="paragraph">
+<p>The common deontic indicator values are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>mandatory</em> signifying that a statement using a class or property is required,</p>
+</li>
+<li>
+<p><em>recommended</em> signifying that a statement using a class or property is optional but recommended,</p>
+</li>
+<li>
+<p><em>optional</em> signifying that a statement using a class or property is optional,</p>
+</li>
+<li>
+<p><em>forbidden</em> signifying that a statement using a class or property is not permitted.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Still, there are ways to achieve the same effect as the these indicators through other means.
+For properties, the main instrument is employment of cardinality constraints (per property per class). To make a property <em>mandatory</em> set the minimum cardinality to one or more <code>[1..*]</code>,
+otherwise relax the minimum cardinality constraint to keep the property optional <code>[0..*]</code>.</p>
+</div>
+<div class="paragraph">
+<p>For classes, it is possible to mark a class as <em>abstract</em>, which means that it cannot be directly instantiated, therefore achieving the effect of <em>forbidden</em>. However, deontic indicators shall be avoided for classes because a class may be mandatory and optional in different instantiation or exchange scenarios within the same application profile.</p>
+</div>
+<div class="paragraph">
+<p>For example consider the DCAT-AP and two mandatory classes: <code>dcat:Catalog</code> and <code>dcat:Dataset</code>. When metadata of a catalogue (and its records) is exchanged, then both classes <code>dcat:Catalog</code> and <code>dcat:Dataset</code> must be instantiated; however when a single dataset metadata is being exchange then only <code>dcat:Dataset</code> instance shall be provided. Moreover, in the second scenario, providing an instance of <code>dcat:Catalog</code> will be counterproductive and possible leading to errors.</p>
+</div>
+<div class="paragraph">
+<p>Descriptions of what classes can or shall be bundled together when participating in information exchange belong in "data exchange contracts", "API endpoint scheme definitions" or the likes of these. Such specifications belong in the <em>Technical Interoperability</em> layer of the European Interoperability Framework (EIF) [<a href="references.html#ref:eif" class="xref page">eif</a>], and are (currently) out of scope of this style guide, which aims primarily at addressing the semantic interoperability.</p>
+</div>
+<div class="paragraph">
+<p>If semantic engineers prefer or are compelled to employ deontic indicators, then deontic indicators must be precisely defined and those definitions must be published. No reliance on common sense understanding shall be assumed as the meaning of such deontic indicators may (and certainly) differ not only among readers of data specifications but also in different data specifications.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+    <p style="text-align:center">This document is created by the European Commission and is licensed under the terms of
+        EUPL-1.2 license</a>.
+        <br/>This page was built using the Antora default UI. The source code for this UI is licensed under the terms of
+        the MPL-2.0 license.
+    </p>
+
+        <script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="150" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="150" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

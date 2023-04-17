@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Conceptual model conventions (UML) :: model2owl</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="..">
+            </a>
+        </div>
+    </nav>
+<nav class="navbar">
+    <div class="navbar-brand">
+    <img src="../_/img/semic-logo.png" class="logo" />
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs" >
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="public-review">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">model2owl Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminological-clarifications.html">Terminological clarifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="arhitectural-clarifications.html">Architectural clarifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="clarification-on-reuse.html">Clarifications on "reuse"</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="guidelines-and-conventions.html">Guidelines and conventions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-general-conventions.html">General conventions</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="gc-conceptual-model-conventions.html">Conceptual model conventions (UML)</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-semantic-conventions.html">Semantic conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-data-shape-conventions.html">Data shape conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-methodology-conventions.html">Methodology conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-publication-conventions.html">Publication conventions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Back matter</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="references.html">References</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="rule-template.html">Rule template</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index-of-rules.html">Index of rules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="style-guide-whole.html">Style guide as a whole</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">model2owl Documentation</span>
+    <span class="version">public-review</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="index.html">model2owl Documentation</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">public-review</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">model2owl Documentation</a></li>
+    <li><a href="guidelines-and-conventions.html">Guidelines and conventions</a></li>
+    <li><a href="gc-conceptual-model-conventions.html">Conceptual model conventions (UML)</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/gc-conceptual-model-conventions.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Conceptual model conventions (UML)</h1>
+<div class="sect1">
+<h2 id="sec:cmc-r1"><a class="anchor" href="#sec:cmc-r1"></a>Conceptual model as single source of truth</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Conceptual model as single source of truth</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement</strong></p>
+<p class="tableblock">The UML conceptual model should be used as single source of truth.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description</strong></p>
+</div>
+<div class="paragraph">
+<p>By applying this principle, we can achieve consistency among all derived artefacts.</p>
+</div>
+<div class="paragraph">
+<p>This implies:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Standard representation of the UML, such as XMI</p>
+</li>
+<li>
+<p>Existence of a well-defined set of rules and conventions to transform UML model into other artefacts, which can be executed,
+as much as possible automatically, by a dedicated software tool or toolchain [<a href="#sec:cmc-r2">CMC-R2</a>]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is recommended that recent versions of the UML (v2.5+) and XMI (v2.5+) specifications are used [<a href="references.html#ref:epo-cmc" class="xref page">epo-cmc, sec 4.1</a>].</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r2"><a class="anchor" href="#sec:cmc-r2"></a>Fixed UML interpretation</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Fixed UML interpretation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">The UML conceptual model must have a fixed interpretation.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>Using UML as a graphical language to encode a data specification according to the reuse guidelines requires defining a set of pre-established conventions on the UML notation to reach a fixed interpretation.</p>
+</div>
+<div class="paragraph">
+<p>The interpretation of UML as a logical structure, including OWL 2, was and still is an active research topic. But even the OMG Ontology Definition Metamodel [<a href="references.html#ref:omg-onto" class="xref page">omg-onto</a>] does not address the notion of reuse. The goal of using UML is to provide for the SEMIC semantic data specifications a standard graphical notation, which many are familiar with. Therefore, the graphical notation should facilitate the understanding of the data specification. The UML notation should match the semantics that are to be expressed in the data specification (the ontology, data shapes and human-readable documentation).</p>
+</div>
+<div class="paragraph">
+<p>The UML is the single source of truth [<a href="#sec:cmc-r1">CMC-R1</a>]. Using the conventions and associated interpretation expressed in this rule, other artefacts are derived from the UML. The benefit of defining such a precise set of mapping rules is that it allows for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Implementing tools to transform UML into derivative artefacts, thus enabling UML as the single source of truth.</p>
+</li>
+<li>
+<p>Implementing tools for formal checking against the established conventions (interpretation), thus enforcing correctness, conformance and consistency.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These rules will increase the coherency of the UML diagrams across projects and organisations.</p>
+</div>
+<div class="paragraph">
+<p>Within SEMIC, the interpretation is implemented by the SEMIC toolchain [<a href="references.html#ref:semic" class="xref page">semic</a>].</p>
+</div>
+<div class="paragraph">
+<p>The table below provides recommended interpretations of UML elements in OWL 2 and SHACL.
+These interpretations can be considered high-level mapping rules implementable into transformation tools that generate
+OWL 2 ontology and, respectively, SHACL constraints from the UML conceptual model.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"> <strong>UML model element</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>OWL 2 ontology element</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>SHACL data shape element</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Class</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">OWL 2 Class</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">SHACL Node Shape</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Abstract class</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">SHACL Node Shape with a SPARQL constraint that selects all instances of this class</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Attribute</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">OWL 2 datatype or object property, based on their type.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Property constraint, within the SHACL Node Shape corresponding
+to the source UML class (but the constraints are mentioned below on type and multiplicity)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Attribute type</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Property constraint, within the SHACL Node Shape corresponding to the UML class, indicating the range
+class or datatype.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Attribute multiplicity</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Property constraint(s), within the SHACL Node</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Association (target/source role names)</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Object property declaration axiom for the target (or source, or both) end of
+the association.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Association source</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Optional domain declaration (data shape constraints shall be preferred).</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Property constraint, within
+the SHACL Node Shape corresponding to the source UML class (but the constraints are mentioned below on target and multiplicity)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Association target</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Optional property range declaration (data shape constraints shall be preferred).</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Property constraint,
+within the SHACL Node Shape corresponding to the source UML class, indicating the range class</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Association multiplicity</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Property constraints, within the SHACL Node Shape corresponding to the source UML class, indicating
+the minimum and/or maximum or exact cardinality (similar to Attribute multiplicity).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Association symmetry</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">SPARQL constraint, within the SHACL Node Shape, corresponding to the UML constraint, within the class,
+which selects instances connected by the object property in a reciprocal manner.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Association inverse (for bidirectional associations only)</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Two object property declaration axioms, one for the target and
+the second for the source end of the association, and a declaration that the two properties stand in an inverse relationship
+to one another.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Dependency</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Object property declaration axiom for the target end of the association.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Dependency source</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Property constraint, within the SHACL Node Shape corresponding to the source UML class (but the constraints
+are mentioned below on target and multiplicity)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Dependency target</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Property constraints, within the SHACL Node Shape corresponding to the source UML class, indicating
+(a) the range class is skos:Concept and (b) the value is skos:inScheme the target name (expected an enumeration).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Dependency multiplicity</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Property constraints within the SHACL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Class generalisation</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Subclass axiom between the classes corresponding to the UML classes.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock"><strong>Property generalisation</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"><p class="tableblock">Sub-property axiom for the generalisation between UML associations and dependencies.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  none;"></td>
+</tr>
+</tbody>
+</table>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>The UML interpretation applied by the SEMIC toolchain is described in [<a href="references.html#ref:semic-toolchain" class="xref page">semic-toolchain</a>]. To assist the editor
+while data modelling to choose the best representation, a test suite is available covering all modelling patterns.</p>
+</div>
+<div class="paragraph">
+<p>The SEMIC toolchain shares the same interpretation as the OSLO toolchain [<a href="references.html#ref:oslo-toolchain" class="xref page">oslo-toolchain</a>].</p>
+</div>
+<div class="paragraph">
+<p>In the context of eProcurement ontology, a toolchain has been developed to transform and validate UML models. Such tools
+are based on two documents: UML convention specifications [<a href="references.html#ref:epo-cmc" class="xref page">epo-cmc</a>] and UML transformation specifications
+[<a href="references.html#ref:epo-cm2owl" class="xref page">epo-cm2owl</a>].</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r3"><a class="anchor" href="#sec:cmc-r3"></a>Element names and URIs</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Element names and URIs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">All UML Element names should be fit for URI generation with clear namespace organisation.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>This convention aims at ensuring that URIs can be generated from UML Element names and shall be treated as an extension to
+the terminology style conventions [<a href="gc-general-conventions.html#sec:gc-r4" class="xref page">GC-R4</a>].</p>
+</div>
+<div class="paragraph">
+<p>The Element names are intended as human-readable denominations (called labels) and as machine-readable denominations (called identifiers).</p>
+</div>
+<div class="paragraph">
+<p>This means that the Element names</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>serve as the primary source for generating URIs [<a href="references.html#ref:puri-bp" class="xref page">puri-bp</a>] to ensure unambiguous machine-readable
+reference to a formal construct.</p>
+</li>
+<li>
+<p>serve as the primary source for generating labels to ensure human readers' comprehension</p>
+</li>
+<li>
+<p>follow an organisation of namespaces</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Thus, in the UML model, the Element names must conform to RDF [<a href="references.html#ref:rdf" class="xref page">rdf</a>] and XML [<a href="references.html#ref:xml" class="xref page">xml</a>]
+format specifications. Both languages effectively require that terms begin with an upper or lower case letter from the ASCII
+character set or an underscore (_). This tight restriction means that, for example, terms may not begin with a number, hyphen
+or accented character [<a href="references.html#ref:cv-meth" class="xref page">cv-meth</a>]. Although underscores are permitted, they are discouraged as they may be,
+in some cases, misread as spaces. A formal definition of these restrictions is given in the XML specification document
+[<a href="references.html#ref:xml" class="xref page">xml</a>].</p>
+</div>
+<div class="paragraph">
+<p>Note that, when the UML Element name cannot be used to effectively denominate and identify the concept then, UML Element Tags
+may be used to express explicitly URIs, labels, notes and other types of annotations
+[<a href="#sec:cmc-r6">CMC-R6</a>].</p>
+</div>
+<div class="paragraph">
+<p>Internationalisation, if required, should be provided through the use of the UML Element Tags to specify labels that will be used for generation of specification documents in languages other than English.
+Country specific data specifications, which are meant to be used primarily at a national level, might decide to relax on this convention and permit the use of Unicode characters in the Element names, which will result in the generations of IRIs, instead of URIs [<a href="references.html#ref:iri" class="xref page">iri</a>]. However, this is unnecessary, and strongly discouraged, in the SEMIC context.</p>
+</div>
+<div class="paragraph">
+<p>Following this convention is also important in the context of generation of persistent URIs
+[<a href="gc-publication-conventions.html#sec:pc-r2" class="xref page">PC-R2</a>] according to the principles laid out in [<a href="references.html#ref:10rules-puri" class="xref page">10rules-puri</a>].</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>The class Address in Core Location has several properties. All the properties have a displayed name (e.g. "addressArea") with the UML class diagram and associated UML Tags, such as a label for the HTML specification ("address area"), definition, usage note and the related URI.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r3.png" alt="cmc r3">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r4"><a class="anchor" href="#sec:cmc-r4"></a>Case sensitivity and charset</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Case sensitivity and charset</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">All UML Element names are case-sensitive and shall follow the CamelCase convention.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>The names begin with an upper or lower case letter (A–Z, a–z) for all terms in the model. Digits (0–9) are allowed in the
+subsequent character positions. [<a href="references.html#ref:epo-cmc" class="xref page">epo-cmc, sec 4.2</a>]</p>
+</div>
+<div class="paragraph">
+<p>Moreover, we can significantly improve the readability of an ontology if we use consistent capitalisation for concept names; therefore, UML Element names shall be CamelCased [<a href="references.html#ref:epo-cmc" class="xref page">epo-cmc, sec 3.2</a>], [<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules, sec 3.2.20</a>].</p>
+</div>
+<div class="paragraph">
+<p>The names of</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>UML Classes and Datatypes shall start with an upper-case letter,</p>
+</li>
+<li>
+<p>UML Enumerations and Packages shall start with a lower-case letter,</p>
+</li>
+<li>
+<p>UML Attributes shall start with a lower-case letter,</p>
+</li>
+<li>
+<p>UML Connectors (including Target Roles and Source Roles) shall start with a lower-case letter</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>In the image below, there are two classes from Core Location with the related properties and a relation between them.
+The name of the classes are in UpperCamelCase, the name of the properties are in lowerCamelCase and the relation (adminUnit)
+is in lowerCamelCase.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r4.png" alt="cmc r4">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r5"><a class="anchor" href="#sec:cmc-r5"></a>Namespaces and prefixes in element names</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Namespaces and prefixes in element names</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">Element names shall be organised by namespaces. Namespaces may be indicated through prefixes delimited by colon (:) character, forming qualified names.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>To enable the reuse of names defined in other models and the reuse of unique references for names that support easy identification,
+namespace management must be considered. We adopt the XML and RDF approach to defining and managing namespaces
+[<a href="references.html#ref:xml-ns" class="xref page">xml-ns</a>].</p>
+</div>
+<div class="paragraph">
+<p>A namespace is a set of symbols that are used to organise objects of various kinds so that these objects may be referred
+to by name and uniquely identifiable [<a href="references.html#ref:urn" class="xref page">urn</a>].</p>
+</div>
+<div class="paragraph">
+<p>A qualified name denotes the URI, which is composed of concatenating the expanded prefix with the local segment
+[<a href="references.html#ref:turtle" class="xref page">turtle</a>]. A qualified name is a name subject to namespace interpretation [<a href="references.html#ref:xml-ns" class="xref page">xml-ns</a>]. Syntactically,
+they are either prefixed names or unprefixed names. A binding declaration shall be maintained, which binds prefixes to
+namespace URIs and a default namespace applicable to unprefixed Element names.</p>
+</div>
+<div class="paragraph">
+<p>As the Element name is the primary source for deriving URIs, a base URI and a local segment are necessary. The Element
+name prefix, before the colon, plays the role of namespace name indicating which base URI shall be used, while the Element
+name, after the colon, is the local segment. See [<a href="references.html#ref:xml-ns" class="xref page">xml-ns</a>] for more info.</p>
+</div>
+<div class="paragraph">
+<p>In case the editor decides to omit to specify a prefix in the Element name when a URI generation logic is devised, an implicit
+prefix can be assumed by default. The qualified names may be structured as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>prefix:localSegment</p>
+</li>
+<li>
+<p>:localSegment</p>
+</li>
+<li>
+<p>localSegment</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>When <code>dcat</code> a namespace name is declared as bound to base URI <code><a href="http://www.w3.org/ns/dcat#" class="bare">http://www.w3.org/ns/dcat#</a></code>, then <code>dcat:Catalog</code> is the
+qualified name  from which the <code><a href="http://www.w3.org/ns/dcat#Catalog" class="bare">http://www.w3.org/ns/dcat#Catalog</a></code> URI is interpreted.</p>
+</div>
+<div class="paragraph">
+<p>When <code>cv</code> (short for Core Vocabularies) namespace name is declared bound to base URI <code><a href="http://data.europa.eu/m8g/" class="bare">http://data.europa.eu/m8g/</a></code>, then
+<code>cv:adminUnit</code> is the qualified name from which the <code><a href="http://data.europa.eu/m8g/adminUnit" class="bare">http://data.europa.eu/m8g/adminUnit</a></code> URI is generated.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r6"><a class="anchor" href="#sec:cmc-r6"></a>Rich annotations through tags</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Rich annotations through tags</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">UML Tags can be conveniently used for annotating the Elements.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>UML Element tags are key-value pairs that are associated with a UML Element (class, attribute, connector, etc.). The tags
+can be used as an extension mechanism to the UML language. They can be used to provide information that is not expressible
+anywhere else on a UML Element.</p>
+</div>
+<div class="paragraph">
+<p>For example, in this style guide, we recommend that the UML Element name shall be used to derive both the concept URI and the concept preferred label. However, if the model editor chooses to use the UML Element name for deriving the concept label alone, then the URI needs to be specified elsewhere. This is one example of how the UML tags can be used: simply specify a new tag, "uri", and provide the concept URI as a value (see figure below).</p>
+</div>
+<div class="paragraph">
+<p>Another example where tags came in handy is the provisioning of notes of various types. According to the UML standard, UML Elements have only one general description. We recommend using this description solely for definitions. Yet the scope notes, examples, alternative labels, and any other annotations can be provisioned through the UML tagging mechanism (see figure below).</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r6.png" alt="cmc r6">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r7"><a class="anchor" href="#sec:cmc-r7"></a>Explicit depiction of external dependencies</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Explicit depiction of external dependencies</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R7</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
+The UML diagrams should depict how the developed model relates to external (reused) models.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>UML does not support an import mechanism comparable to the one specified in OWL 2. Yet, the reuse of models is a highly encouraged
+practice. To accommodate such practice, the reused Elements shall be created as in the original model and depicted in diagrams.</p>
+</div>
+<div class="paragraph">
+<p>The external Elements shall be clearly marked. The easiest way to do so is by providing  a namespace prefix. The original
+meaning shall be preserved without changes to the labels, concept definitions or URIs.</p>
+</div>
+<div class="paragraph">
+<p>Reused classes shall be depicted in the UML diagrams. Reused properties shall be depicted in diagrams as connectors and
+attributes. It is not necessary to depict unused classes or properties [<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules, sec 3.1.7</a>].</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>In the example below, a Core Vocabulary Person includes concepts from another vocabulary (FOAF); thus the two classes Person and
+Agent have the "foaf" namespace prefix specified in front.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r7.png" alt="cmc r7">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r8"><a class="anchor" href="#sec:cmc-r8"></a>Class inheritance</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Class inheritance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">Ensure that the attributes and associations of a superclass apply to all its subclasses.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>This is a general modelling principle that should be respected, yet when it comes to reusing, such a requirement is often
+overlooked. This means that the model editor shall carefully analyse the reused model as a whole and how it is integrated
+with their own model.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>In Core Public Organization, the class Public Organisation is a subclass of org:Organization from the Organization Ontology,
+and different properties/relations have been inherited such as hasSubOrganization, hasMember, hasUnit.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r8.png" alt="cmc r8">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>See more [<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules sec 3.2.3</a>]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r9"><a class="anchor" href="#sec:cmc-r9"></a>Abstract classes</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Abstract classes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R9</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">Classes that are not intended for instantiation can be marked as abstract.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>When a (super-)class is created for capturing a level of abstraction in the domain knowledge, it may not always be suitable
+for instantiation. Editors may choose to mark such classes as abstract and to indicate that their subclasses shall be used in
+practice. In UML, this can be done via &lt;&lt; abstract &gt;&gt; stereotype [see <a href="#sec:cmc-r17">CMC-R17: Using stereotypes</a>].</p>
+</div>
+<div class="paragraph">
+<p>Doing so has no impact on the OWL 2 [<a href="references.html#ref:owl2" class="xref page">owl2</a>] representation of the model (as this cannot be expressed in OWL). However, depending on the toolchain implementation, SHACL data shapes [<a href="references.html#ref:shacl" class="xref page">shacl</a>] can be generated to express that no instances of this class shall not occur in the data.</p>
+</div>
+<div class="paragraph">
+<p>See [<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules sec 3.2.6</a>,
+<a href="references.html#ref:epo-cmc" class="xref page">epo-cmc, sec 4.4</a>]</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>Both OSLO [<a href="references.html#ref:oslo-toolchain" class="xref page">oslo-toolchain</a>] and ePO [<a href="references.html#ref:epo" class="xref page">epo</a>] toolchains support such stereotypes.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r10"><a class="anchor" href="#sec:cmc-r10"></a>Attribute definition and usage</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Attribute definition and usage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">UML Attributes shall be used to define properties taking simple datatype values. An attribute declaration should specify
+its datatype and multiplicity whenever possible [<a href="#sec:cmc-r11">CMC-R11</a>].</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>We recommend atomic types are used as attribute types and avoid using another class as the attribute type. Instead,
+those should be expressed as relationships (represented by Association connectors) between the two classes
+[<a href="#sec:cmc-r12">CMC-R12</a>].</p>
+</div>
+<div class="paragraph">
+<p>In case of primitive datatypes, high preference shall be given to using OWL 2 compliant
+XSD [<a href="references.html#ref:xsd" class="xref page">xsd</a>] and RDF [<a href="references.html#ref:rdf" class="xref page">rdf</a>] standard datatypes.
+For more detailed recommendations on the use of primitive datatypes see convention [<a href="#sec:cmc-r18">CMC-R18</a>].</p>
+</div>
+<div class="paragraph">
+<p>Properties whose values come from a controlled vocabulary or authority table constitute a special case, because two
+modelling practices are recognised here: (a) as attributes with type “Code”, and (b) as dependency relations pointing to a UML Enumeration
+named after the controlled list.</p>
+</div>
+<div class="paragraph">
+<p>In the first case, the attribute type "Code" shall be mapped to the skos:Concept class. The advantage of this approach is the compactness of the diagrams, as fewer boxes appear in them.  The disadvantage is the omission to specify precisely, which list the property values are restricted to. Arguably, the controlled list can be provided via the additional UML Tags
+[<a href="#sec:cmc-r6">CMC-R6</a>], but that value will not be visible in the diagrams.</p>
+</div>
+<div class="paragraph">
+<p>In the second case, the property is modelled not as an attribute but by using a UML Dependency connector between the UML Class, and the UML Enumeration representing the controlled list, oriented from the Class towards the Enumeration. It denotes that the OWL 2 class has an owl:ObjectProperty whose range is of type skos:Concept and is limited to values of the specified controlled vocabulary. The connector must have a "Source&#8594;Target" direction. No other directions are acceptable, and a valid target role name and multiplicity shall be provided [<a href="#sec:cmc-r14">CMC-R14</a>].</p>
+</div>
+<div class="paragraph">
+<p>Finally, we emphasise that UML Connectors are reserved for the object properties only. Hence, none shall be established
+between a UML Class element and a UML Datatype element.</p>
+</div>
+<div id="ref:oslo-rules[oslo-rules" class="sidebarblock adoc">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>We exemplify the two approaches to specifying attribute datatypes described above. In CCCEV specification, the “Requirement”
+class attributes use loose UML and other datatypes: String, Literal, and Code. No precise definition of what they mean is
+provided. The attributes of the Requirement class are left underspecified and with generic datatypes: the “description”
+attribute is a generic String, while the “type” attribute is of Code (without explicitly indicating what this datatype means).
+It is also not clear what would be the difference between Literal and String, eventually one may gain intuition from the
+attribute name.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r10-1.png" alt="cmc r10 1">
+</div>
+</div>
+<div class="paragraph">
+<p>The same class is reused in ePO ontology. The <code>cccev:Requirement</code> attributes use explicitly standard datatypes and cardinalities.
+And the “type” attribute, indicated in the original specification, was converted to a dependency connector because it is using
+a non-atomic datatype, but a controlled list of <code>skos:Concept</code>(s).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r10-2.png" alt="cmc r10 2">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r11"><a class="anchor" href="#sec:cmc-r11"></a>Multiplicity of attributes and connectors</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Multiplicity of attributes and connectors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R11</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">The multiplicity of connectors and class attributes should be specified, indicating the minimum and maximum cardinality. The cardinality shall be as permissive as possible in Core Vocabularies and as restrictive as necessary in Application Profiles.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>If the UML model is developed to represent a Core Vocabulary, then the property cardinality (both UML Attributes and UML
+Association) shall be as permissive as possible, for example, [0..*], meaning any occurrence is allowed.</p>
+</div>
+<div class="paragraph">
+<p>If a structural feature (attribute or association) is irrelevant for the domain or the applications, instead of setting a lower limit of multiplicity to 0, simply remove it from the model [<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules, sec 3.2.15</a>].</p>
+</div>
+<div class="paragraph">
+<p>However, in the UML models representing Application Profiles, special attention shall be given to the multiplicity, reducing
+variation in the instance data to a minimum. And if a property (attribute or connector) is mandatory in the data, then its
+minimum cardinality shall be set to 1, for example [1..*] [<a href="references.html#ref:epo-cmc" class="xref page">epo-cmc, sec 4.5</a>].</p>
+</div>
+<div class="paragraph">
+<p>A good practice is to always indicate cardinality. It may be left unspecified, but this is not recommended. When in doubt,
+it is recommended to fall back on the implicit assumption of [0..*]. Not to be confused with the default cardinality assumed
+in tools. For example, Enterprise Architect by default assumes [1..1] cardinality for attributes and omits to display it; and a
+similar default assumption exists in XML/XSD.</p>
+</div>
+<div class="paragraph">
+<p>Notation for multiple cardinality can be either with '*' or 'n'. In principle using either notation is fine, however, it is
+recommended to use only one of those notations within a given data specification consistently, if possible, to enhance readability.
+It is worth highlighting this, as some UML tools, by default, might use a different notation for multiple cardinality depending
+on whether it is specifying the cardinality of attributes vs. that of connectors. The UML processing tools should be implemented so as to handle either of those notations, as their meaning is identical.</p>
+</div>
+<div class="paragraph">
+<p>Unless, well explained, no rigid constraints shall be imposed on attributes and associations. In other words, if specified,
+the cardinality shall be the most permissive, where possible [<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules, sec 3.2.15</a>].</p>
+</div>
+<div class="paragraph">
+<p>Limit the constraints to business rules, do not add technical constraints to the model [<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules, sec 3.2.16</a>].</p>
+</div>
+<div class="paragraph">
+<p>If an attribute or an association from a reused vocabulary is irrelevant, do not set the lower limit of multiplicity to 0, but simply omit it in the model [<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules, sec 3.2.15</a>].</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>All Core Vocabularies have set a permissive cardinality [0..*], for example, all the properties of Public Organisation, on the left, have multiplicity [0..\*] while the same Public Organisation, in blue on right, reused in CPSV-AP has mandatory properties:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r11-1.png" alt="cmc r11 1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r11-2.png" alt="cmc r11 2">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r12"><a class="anchor" href="#sec:cmc-r12"></a>Connector definition and usage</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Connector definition and usage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">UML Connectors shall be used to define relations and properties taking non-atomic type values. A connector declaration should specify multiplicity whenever possible [<a href="#sec:cmc-r11">CMC-R11</a>].</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>UML Connectors shall be used to denote object properties (see OWL 2 semantics, [<a href="references.html#ref:owl2" class="xref page">owl2</a>]).</p>
+</div>
+<div class="paragraph">
+<p>First, we explain how the connectors ought to be used, i.e., where to specify the relationship names and multiplicity. Then we
+explain the optional usage of the dependency connector type.</p>
+</div>
+<div class="paragraph">
+<p>On connector names, a generic UML connector may have a name applied to it, and it may have source/target roles specified in addition. This provides
+flexibility to how the domain knowledge may be expressed in UML; however, this freedom increases the level of ambiguity as well.
+Therefore, we foresee two distinct ways to express properties: using the connector (generic) name or using the connector
+source/target ends.</p>
+</div>
+<div class="paragraph">
+<p>We strongly recommend using the source/target role name to indicate the relation name and leave empty the (generic) element name. So, if a target role is specified, then no connector name can be specified. Optionally a source role may be provided to indicate the inverse relation.  In this case, the relation direction must be changed from "Source &#8594; Target" to "Bidirectional".</p>
+</div>
+<div class="paragraph">
+<p>Or conversely, if the connector direction is "Bidirectional", then source and target roles must be provided. No other directions are permitted.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended that each association has a definition. The definition is then used for each role as they represent the same meaning manifested in the inverse direction. Alternatively, definitions can be specified along the target and source roles.</p>
+</div>
+<div class="paragraph">
+<p>UML defines multiple types of connectors. We recommend relying mainly on the UML Association connector type. Optionally a UML Dependency Connector type may be used if the meaning and usage conditions are well-defined.</p>
+</div>
+<div class="paragraph">
+<p>The UML Association connectors represent relations between a source and a target classes. The association connector cannot be used between other kinds of UML Elements.</p>
+</div>
+<div class="paragraph">
+<p>The UML Dependency connector may be used between a UML Class and UML Enumeration boxes, oriented from the Class towards the Enumeration. It indicates the class has an <code>owl:ObjectProperty</code>, whose range is a controlled vocabulary
+[<a href="#sec:cmc-r14">CMC-R14</a>]. The connector must have the direction "Source &#8594; Target".
+No other directions are acceptable.</p>
+</div>
+<div class="paragraph">
+<p>The UML Generalization connector signifies a class-subClass relation and is transformed into <code>rdfs:subClassOf</code> relation standing between a source and target classes. The connector must have no name or source/target roles specified in the UML model. If a model class should inherit a class from an external model, then proxies must be created for those classes
+[<a href="gc-general-conventions.html#sec:gc-r1" class="xref page">GC-R1</a>,
+<a href="clarification-on-reuse.html#sec:reuse-of-a-class-with-semantic-adaptations" class="xref page">Reuse of a class with semantic adaptation</a>].
+For example, if <code>Person</code> specialises a <code>foaf:Agent</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r13"><a class="anchor" href="#sec:cmc-r13"></a>All elements are "public"</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> All elements are "public"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R13</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">The visibility of all UML Elements should be "public".</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>For semantic data specifications, accessibility to the information is not a concern. The sole concern is to specify the
+semantics of the information as precisely as possible. Therefore, the UML access or privacy annotations shall not be interpreted,
+and the "+" symbol shall always be used next to each property. This symbol means "public" [<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules, sec 3.2.22</a>].</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>The Person class in Core Vocabulary Person only has public properties indicated with a "+" symbol next to each property.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r13.png" alt="cmc r13">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r14"><a class="anchor" href="#sec:cmc-r14"></a>Controlled lists as Enumerations</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Controlled lists as Enumerations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R14</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">The controlled lists of values shall be referred to as UML Enumerations and specified whenever possible.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>References to controlled lists shall be done via UML Enumeration elements. Content and lifecycle management of controlled lists shall be separated from the management of the semantic data specification.</p>
+</div>
+<div class="paragraph">
+<p>Controlled lists play an essential role in establishing interoperability standards. Management and publication of controlled lists are not part of this style guide.
+The expectation is that the controlled lists are published in accordance with best practices and represented with the SKOS model using persistent identifiers. In such an approach, the controlled list is expressed as a <code>skos:ConceptScheme</code> and the specific values as <code>skos:Concept</code>(s). Also, such controlled lists are often developed,
+published and maintained independently following their own lifecycle, so that they can be reused in other models.</p>
+</div>
+<div class="paragraph">
+<p>Two use-cases can be identified in practice: (a) when the code list is known and is explicitly referred to as the range of a property, and (b) when a property is modelled but no code list reference is provided as its range.</p>
+</div>
+<div class="paragraph">
+<p>When the authors of a conceptual model intend to omit which controlled list shall be used, then a class attribute with the range <code>skos:Concept</code> (in some cases <code>Code</code> is preferred) can be created to indicate that. This approach can be useful in situations when multiple (external) controlled lists can be used interchangeably. For example, the <code>adms:status</code> property of a <code>dcat:CatalogueRecord</code> shall be a <code>skos:Concept</code>, without specifying the controlled list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dcatcatalogue.png" alt="dcatcatalogue">
+</div>
+</div>
+<div class="paragraph">
+<p>It is advisable, however, to be specific concerning which controlled list shall be used. In such cases, an Enumeration shall be created representing the controlled list. The Enumeration shall be empty, i.e., not specifying any value, because the values are assumed to be maintained externally and only the reference is necessary.</p>
+</div>
+<div class="paragraph">
+<p>The properties having this controlled list as range shall be depicted as UML connectors (dependencies or associations) between a Class and an Enumeration [<a href="#sec:cmc-r12">CMC-R2</a>]. For example, in ePO, <code>dct:Location</code> can have a country code represented as a dependency relation to <code>at-voc:country</code> (the country authority table published on the EU Vocabularies website).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r14-1.png" alt="cmc r14 1">
+</div>
+</div>
+<div class="paragraph">
+<p>The name of the Enumeration shall be resolved to a URI identical to that of the <code>skos:ConceptScheme</code>. As for the connector type we recommend using a dependency connector (depicted with a dashed line) because the semantic interpretation differs slightly from the association connector (depicted with a continuous line). Namely, the range of the property has to fulfil two constraints: (a) instantiating the skos:Concept class and (b) being <code>skos:inScheme</code> the intended controlled list [<a href="references.html#ref:epo-arch" class="xref page">epo-arch</a>].</p>
+</div>
+<div class="paragraph">
+<p>If the controlled list is specific to the model then the author shall define the values of the UML Enumeration inside of it, which are interpreted as concepts belonging to the containing concept scheme [<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules, sec 3.2.17</a>].</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>The COFOG controlled list is suggested in Core Public Organisation to describe the purpose of an Organisation (as depicted in the image on top) while in CPSV-AP, the same COFOG list is used to indicate the functions of government which a public service is intended for (as depicted in the image below).</p>
+</div>
+<div class="paragraph">
+<p>While the COFOG controlled list is owned by the UN and maintained by the Publications Office in the form of SKOS concept schemes, it can be reused by the Core Public Organisation and CPSV-AP independently.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r14-2.png" alt="cmc r14 2">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r14-3.png" alt="cmc r14 3">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r15"><a class="anchor" href="#sec:cmc-r15"></a>Partition the model into packages</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Partition the model into packages</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">Packages have no semantic value, but shall be used whenever possible to logically organise the model.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>It is highly recommended to avoid defining any semantic interpretation into UML Packages, as they are best used for organisational purposes,
+defining logical partitions in the model. Therefore, packages can serve as a method of slicing the conceptual model into
+subdomains.</p>
+</div>
+<div class="paragraph">
+<p>It is also possible to use packages as namespace indicators. Although it works well for classes, it fails to cover the needs for managing
+namespaces of connectors and attributes. Moreover, it does not work in cases when an attribute, or a connector is used multiple times in several packages. Hence, namespace management is easier attained by using other methods such as using prefixes in Element
+names or using Element tags [<a href="references.html#ref:epo-cmc" class="xref page">epo-cmc, sec 4.3</a>].</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>In the image below, each class is organised in a package mapped to a namespace. However, for convenience, Core Vocabularies are in multiple packages but mapped to the same namespace.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r15-example1.png" alt="cmc r15 example1">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r16"><a class="anchor" href="#sec:cmc-r16"></a>Diagram readability</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Diagram readability</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R16</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">UML class diagrams shall be organised for readability.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>UML class diagrams are used for depicting the conceptual model. Their primary purpose is to construe the meaning of concepts,
+relations and their organisation to the human reader. Therefore, the diagrams shall be optimised for readability.</p>
+</div>
+<div class="paragraph">
+<p>We recommend that the diagrams:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>are well spaced (proper space between lines, boxes and labels)</p>
+</li>
+<li>
+<p>minimise the number of crossing connectors</p>
+</li>
+<li>
+<p>prefer orthogonal to straight connectors</p>
+</li>
+<li>
+<p>align elements horizontally &amp; vertically</p>
+</li>
+<li>
+<p>space elements evenly</p>
+</li>
+<li>
+<p>avoid overlapping labels and depict all labels</p>
+</li>
+<li>
+<p>align labels horizontally and avoid vertical or oblique alignment</p>
+</li>
+<li>
+<p>place subclasses under or to the right of their parent</p>
+</li>
+<li>
+<p>place the part under or to the right of the whole at aggregates or composites .</p>
+</li>
+<li>
+<p>minimise the number of details</p>
+</li>
+<li>
+<p>are short and concise (multiple small(-er) diagrams are preferred to one large diagram)</p>
+</li>
+<li>
+<p>diagram size:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>prefer multiple themed small(er) diagrams to large and crowded ones</p>
+</li>
+<li>
+<p>diagrams shall not be bigger than one A4 page</p>
+</li>
+<li>
+<p>simplify complex diagrams:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>by breaking it down into several smaller diagrams</p>
+</li>
+<li>
+<p>by highlighting certain parts of the diagram</p>
+</li>
+<li>
+<p>by hiding attributes, role names, etc. that are not relevant</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>symbol size:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>symbols should be equal</p>
+</li>
+<li>
+<p>nothing shall draw more attention unless intended</p>
+</li>
+<li>
+<p>elements of equal importance  should be equally large</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>inherited attributes of a superclass shall be visible if the superclass is not in the diagram</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See also [
+<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules</a>,
+<a href="references.html#ref:semic-sgdraft" class="xref page">semic-sgdraft</a>
+]</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>In the example below, taken from Core Person, the classes are aligned vertically and horizontally, subclasses are placed just below the related parent class, the relations are horizontal, vertical, or orthogonal.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/core-person.png" alt="core person">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r17"><a class="anchor" href="#sec:cmc-r17"></a>Element stereotypes</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Element stereotypes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R17</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">Stereotypes do not have semantic or normative value. They shall be avoided in the conceptual models unless a good motivation, and a strong need is provided.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>We strongly encourage semantic practitioners to avoid stereotypes of any normative or semantic value. One common usage of stereotypes is to provide deontic indicators. See [<a href="gc-general-conventions.html#sec:gc-r7" class="xref page">GC-7 on Deontic modals</a>] where we explain why their use is discouraged and what can be done instead.</p>
+</div>
+<div class="paragraph">
+<p>There is a practice to mark some classes as "abstract" with the intention of preventing those from being instantiated. This is also a technical level constraint and does not belong in the semantic layer.</p>
+</div>
+<div class="paragraph">
+<p>We acknowledge that stereotypes can be useful for editorial and dissemination purposes; to indicate a classification or grouping of a specific sort. Stereotypes can be used to support concerns specific to an implementation of the transformation toolchain. See the examples below.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>Stereotypes can be used to indicate what content goes into various output file during the transformation process.</p>
+</div>
+<div class="paragraph">
+<p>Stereotypes can be used to visually group the class attributes. When applied on the relations (UMl connectors) stereotypes have the opposite effect: that of cluttering and decrease the diagram readability.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cmc-r17-stereotypes.png" alt="cmc r17 stereotypes">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:cmc-r18"><a class="anchor" href="#sec:cmc-r18"></a>Datatype definition and usage</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Datatype definition and usage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> CMC-R18</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">We strongly recommend that only OWL 2 compliant datatypes are used.
+The creation of custom datatypes shall be avoided.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>Similar to [<a href="references.html#ref:epo-cmc" class="xref page">epo-cmc, sec 4.7</a>], this convention draws the distinction between primitive (or atomic) types (consisting of single literal value) and composite types (consisting of multiple attributes) (see also [<a href="references.html#ref:cv-handbook" class="xref page">cv-handbook, sec 3.1</a>]). In fact, the composite datatypes must be defined as classes and handled as such. For example, Amount, Identifier, Quantity and Measurement are to be treated as classes, even if conceptually they could be seen as composite datatypes.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended to employ the primitive datatypes that are already defined in XSD [<a href="references.html#ref:xsd" class="xref page">xsd</a>] and RDF [<a href="references.html#ref:rdf" class="xref page">rdf</a>], in particular a subset of those that is OWL 2 compliant. This should cover the standard, and most common types. Thus, definitions of custom datatypes shall be avoided unless the model really needs them. Such cases are, however, rare.</p>
+</div>
+<div class="paragraph">
+<p>The definition of datatypes in the UML model should be also avoided, even in cases where a toolchain performing the transformation of UML can automatically resolve those into their XSD equivalent using a correspondence table, such as the one presented below.</p>
+</div>
+<div class="paragraph">
+<p>Note that from the family of string datatypes we recommend using the following ones (in this order of preference): <code>rdf:PlainLiteral</code>, <code>rdfs:Literal</code>, <code>xsd:string</code>, and <code>rdf:langString</code>. Often enabling multilingual data specification is a necessity.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>UML</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>XSD</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">xsd:boolean</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">Float</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">xsd:float</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">Integer</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">xsd:integer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">Character, String</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">xsd:string / rdf:langString</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">Short</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">xsd:short</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">Long</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">xsd:long</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">Decimal</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">xsd:decimal</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">Date</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">xsd:date</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">DateTime</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">xsd:dateTime</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">xsd:anyURI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">Code</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><em>see <a href="#sec:cmc-r14">CMC-R14</a></em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We strongly recommended the use of OWL 2 compliant XSD and RDF standard datatypes, if possible. They might be useful also for indicating a specific datatype, which is not possible with the UML ones. For example, making a distinction between a general string (<code>xsd:string</code>) and a literal with a language tag (<code>rdf:langString</code>), or XML encoded ones such as <code>rdf:HTML</code> and <code>rdf:XMLLiteral</code>.</p>
+</div>
+<div class="paragraph">
+<p>The table above provides a simplified correspondence between UML and XSD datatypes, but for a complete list of available recommended datatypes the standard specifications shall be consulted:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes">RDF working group XSD Datatype maps</a></p>
+</li>
+<li>
+<p><a href="https://www.w3.org/TR/rdf11-concepts/#section-Datatypes">RDF 1.1 Datatypes section</a></p>
+</li>
+<li>
+<p><a href="https://www.w3.org/TR/owl2-syntax/#Datatype_Maps">OWL 2 Datatype Maps</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+    <p style="text-align:center">This document is created by the European Commission and is licensed under the terms of
+        EUPL-1.2 license</a>.
+        <br/>This page was built using the Antora default UI. The source code for this UI is licensed under the terms of
+        the MPL-2.0 license.
+    </p>
+
+        <script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="150" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="150" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Publication conventions :: model2owl</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="..">
+            </a>
+        </div>
+    </nav>
+<nav class="navbar">
+    <div class="navbar-brand">
+    <img src="../_/img/semic-logo.png" class="logo" />
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs" >
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="public-review">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">model2owl Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminological-clarifications.html">Terminological clarifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="arhitectural-clarifications.html">Architectural clarifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="clarification-on-reuse.html">Clarifications on "reuse"</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="guidelines-and-conventions.html">Guidelines and conventions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-general-conventions.html">General conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-conceptual-model-conventions.html">Conceptual model conventions (UML)</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-semantic-conventions.html">Semantic conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-data-shape-conventions.html">Data shape conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-methodology-conventions.html">Methodology conventions</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="gc-publication-conventions.html">Publication conventions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Back matter</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="references.html">References</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="rule-template.html">Rule template</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index-of-rules.html">Index of rules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="style-guide-whole.html">Style guide as a whole</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">model2owl Documentation</span>
+    <span class="version">public-review</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="index.html">model2owl Documentation</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">public-review</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">model2owl Documentation</a></li>
+    <li><a href="guidelines-and-conventions.html">Guidelines and conventions</a></li>
+    <li><a href="gc-publication-conventions.html">Publication conventions</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/gc-publication-conventions.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Publication conventions</h1>
+<div class="sect1">
+<h2 id="sec:pc-r1"><a class="anchor" href="#sec:pc-r1"></a>5-star Linked Open Data</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> 5-star Linked Open Data</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> PC-R1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">Publishing the Core Vocabularies and Application Profiles shall be compliant with 5-star LOD criteria.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>Publishing a vocabulary as a Linked Open Data (LOD) resource means making it accessible, both human and machine-readable, in a
+standard way, thus supporting the semantic web. The publication as full LOD implies that the data is compliant with the
+highest grade of 5-Star [<a href="references.html#ref:5star-od" class="xref page">5star-od</a>] open data evaluation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The data is available on the Web under an open licence</p>
+</li>
+<li>
+<p>The data is available following a clear structure</p>
+</li>
+<li>
+<p>The data is available using a non-proprietary open format</p>
+</li>
+<li>
+<p>The data uses URIs to denote concepts</p>
+</li>
+<li>
+<p>The data is linked to other resources to provide context</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See more [
+<a href="references.html#ref:dwbp" class="xref page">dwbp</a>,
+<a href="references.html#ref:ld-bp" class="xref page">ld-bp</a>,
+<a href="references.html#ref:ld-bp" class="xref page">ldp-bp</a>
+]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:pc-r2"><a class="anchor" href="#sec:pc-r2"></a>Persistent URI policy</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Persistent URI policy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> PC-R2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">The URIs that are used to identify the terms modelled in the data specifications should be <em>dereferenceable Persistent URIs</em>
+[<a href="references.html#ref:10rules-puri" class="xref page">10rules-puri</a>] and comply with a URI policy (or URI strategy).</p>
+<p class="tableblock">URIs that are well-defined according to such criteria are often denoted as PURIs [<a href="references.html#ref:10rules-puri" class="xref page">10rules-puri</a>].</p>
+<p class="tableblock">SEMIC adheres to the EU persistent URI policy. Each SEMIC URI is dereferenceable in both machine representation (RDF
+artefacts) and human-readable (HTML artefact).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>When publishing  data on the web [<a href="references.html#ref:dwdp" class="xref page">dwdp</a>], it is crucial to have a structured and persistent system
+of URIs in place. Such URIs make it easy for the users to understand the vocabulary structure and retrieve information as they expect.</p>
+</div>
+<div class="paragraph">
+<p>The 10 rules for Persistent URIs [<a href="references.html#ref:10rules-puri" class="xref page">10rules-puri</a>] are base principles for the design of quality identifiers.
+Regarding URI design, the main consideration of creators should be that when a URI is created, all its parts should be
+resistant to change. For instance, locations and organisation names can change and therefore should not be used in URIs.
+First and foremost, when introducing semantics in URIs, the strings used need to reflect what the resources are (i.e. intrinsic
+characteristics such as the type or nature), not who owns them or where they are [<a href="references.html#ref:uri-dp" class="xref page">uri-dp</a>].</p>
+</div>
+<div class="paragraph">
+<p>In 2014, the ISA Programme devised a common policy for managing persistent HTTP-based URIs of EU institutions [<a href="references.html#ref:uri-dp" class="xref page">uri-dp</a>,
+<a href="references.html#ref:10rules-puri" class="xref page">10rules-puri</a>, <a href="references.html#ref:puri-gov-eu" class="xref page">puri-gov-eu</a>]. That has led to an EU wide URI resolution service, prescribing
+that each URI is of the following pattern:</p>
+</div>
+<div class="paragraph">
+<p><code><a href="http://data.europa.eu/{Collection}/{Reference}" class="bare">http://data.europa.eu/{Collection}/{Reference}</a></code></p>
+</div>
+<div class="paragraph">
+<p>The <code>{Collection}</code> is an organisation-agnostic name for a collection of terms. Within a <code>{Collection}</code> the local names, or
+references, are being maintained according to the policy of the <code>{Collection}</code>. For SEMIC data specifications, the names
+are dependent on the naming conventions mentioned in this style guide rules [<a href="gc-general-conventions.html#sec:gc-r4" class="xref page">GC-R4</a> + <a href="gc-conceptual-model-conventions.html#sec:cmc-r3" class="xref page">CMC-R3</a>].</p>
+</div>
+<div class="paragraph">
+<p>See more [
+<a href="references.html#ref:ld-bp" class="xref page">ld-bp</a>,
+<a href="references.html#ref:ld-bp" class="xref page">ldp-bp</a>,
+<a href="references.html#ref:dwbp" class="xref page">dwbp</a>,
+]</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>For example, the PURIs defined within the SEMIC Core Vocabularies are all within the <code>{Collection}</code> m8g. And thus  the term
+Evidence in the context of CCCEV is denoted with the PURI <code><a href="http://data.europa.eu/m8g/Evidence" class="bare">http://data.europa.eu/m8g/Evidence</a></code>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:pc-r3"><a class="anchor" href="#sec:pc-r3"></a>Version management</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Version management</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> PC-R3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">A consistent version management shall be implemented for the vocabulary evolution respecting the "semantic versioning"
+principles. [<a href="references.html#ref:sem-ver" class="xref page">sem-ver</a>]</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>The SEMIC versioning methodology is based on "semantic versioning" principles and implements a simple set of rules and
+requirements that dictate how version numbers are assigned and incremented. It involves describing clearly and precisely
+what is being published and which features are included, and what the limitations are, setting the expectations and scope.
+Once the artefacts are identified for the public, the changes to the data specifications are communicated  with specific
+increments to  the version number and with associated change notes.</p>
+</div>
+<div class="paragraph">
+<p>The version format is <em> X.Y.Z (Major.Minor.Patch)</em>.</p>
+</div>
+<div class="paragraph">
+<p>As a rule of thumb, bug fixes do not affect the artefact and increment the Patch version. Backwards compatible artefact
+additions/changes increment the Minor version. And, backwards-incompatible artefact changes increment the Major version.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>For example, evolving from version 1.3.5 to 1.3.6 represents a backwards-compatible patch, from 1.3.5 to 1.4.0, a
+backwards-compatible new development, while switching from 1.3.5 to 2.0.0 breaks the backwards compatibility.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/pc-r3.png" alt="pc r3">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:pc-r4"><a class="anchor" href="#sec:pc-r4"></a>Artefact versioning</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Artefact versioning</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> PC-R4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">The vocabularies and Application Profiles shall be versioned as a whole and never to atomic elements (concepts, relations
+or constraints).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>Create a new version with each publication. Using the semantic version principles to determine the exact version number
+depends on whether it is a major, minor or patch update.</p>
+</div>
+<div class="paragraph">
+<p>The version shall be assigned to the entire vocabulary or Application Profile and never to elements in the model
+(concepts, relations, constraints, etc.) [<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules, sec 3.1.6</a>]. The version shall be saved as the model metadata
+(for example, in the <code>owl:Ontology</code> header).</p>
+</div>
+<div class="paragraph">
+<p>No version information shall be embedded into any artefact URIs unless it is a version URI provided via <code>owl:versionIRI</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:pc-r5"><a class="anchor" href="#sec:pc-r5"></a>URI dereferencing</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> URI dereferencing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> PC-R5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">Any URI identifiable resource devised in a data specification shall be dereferenceable.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>Dereferencing means that one can use the URI as an URL to retrieve related information back. The format and representation
+in which the information is returned depend on content negotiation. Content negotiation is the interaction between the client
+application and the server in which the client informs the server about its preferred format and representation and the server
+responds with the best-fitting result it can provide.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended to provide (format) content negotiation for HTTP which is based on the interpretation of the HTTP header Accept.</p>
+</div>
+<div class="paragraph">
+<p>The dereferencing shall be provided for both human-readable and machine-readable formats. A human-aimed HTML representation is the
+default response (if no content type is specified), and the other is RDF [<a href="references.html#ref:10rules-puri" class="xref page">10rules-puri</a>].</p>
+</div>
+<div class="paragraph">
+<p>The HTML representation should have landing points based on the used fragment identifier. The other representations/formats.
+Further technical details can be found in "Best Practice Recipes for Publishing RDF Vocabularies" [<a href="references.html#ref:rdf-pub" class="xref page">rdf-pub</a>].</p>
+</div>
+<div class="paragraph">
+<p>See more [
+<a href="references.html#ref:ld-bp" class="xref page">ld-bp</a>,
+<a href="references.html#ref:ld-bp" class="xref page">ldp-bp</a>,
+<a href="references.html#ref:dwbp" class="xref page">dwbp</a>,
+]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:pc-r6"><a class="anchor" href="#sec:pc-r6"></a>Human-readable form</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Human-readable form</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> PC-R6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">Each artefact shall have a corresponding human-readable form representing the model documentation.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>The documentation content shall follow a standard template for consistent formatting and content structuring.</p>
+</div>
+<div class="paragraph">
+<p>It is a good practice to provide the following sections in the document:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Preamble with metadata indicating</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Title</p>
+</li>
+<li>
+<p>Abstract</p>
+</li>
+<li>
+<p>Date of publication/release</p>
+</li>
+<li>
+<p>Version information</p>
+</li>
+<li>
+<p>Authors, editors, contributors</p>
+</li>
+<li>
+<p>Licensing information</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Introduction describing the</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Background information</p>
+</li>
+<li>
+<p>Context &amp; Scope</p>
+</li>
+<li>
+<p>Intended audience</p>
+</li>
+<li>
+<p>UML diagrams of the model</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Description of each element in the model grouped by element type (e.g. class, property, constraint, controlled vocabulary). Each element shall be described by its URI and its Lexicalisation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>URI (shall be clearly visible)</p>
+</li>
+<li>
+<p>Labels (preferred and alternative)</p>
+</li>
+<li>
+<p>Definitions, scope notes, examples, editorial notes, etc.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The content of these fields shall be aligned as much as possible with the metadata published in the OWL 2 representation (see [<a href="gc-semantic-conventions.html#sec:sc-r2" class="xref page">SC-R2</a>]).</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+    <p style="text-align:center">This document is created by the European Commission and is licensed under the terms of
+        EUPL-1.2 license</a>.
+        <br/>This page was built using the Antora default UI. The source code for this UI is licensed under the terms of
+        the MPL-2.0 license.
+    </p>
+
+        <script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="150" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="150" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

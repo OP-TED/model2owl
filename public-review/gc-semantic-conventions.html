@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Semantic conventions :: model2owl</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="..">
+            </a>
+        </div>
+    </nav>
+<nav class="navbar">
+    <div class="navbar-brand">
+    <img src="../_/img/semic-logo.png" class="logo" />
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs" >
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="public-review">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">model2owl Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminological-clarifications.html">Terminological clarifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="arhitectural-clarifications.html">Architectural clarifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="clarification-on-reuse.html">Clarifications on "reuse"</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="guidelines-and-conventions.html">Guidelines and conventions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-general-conventions.html">General conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-conceptual-model-conventions.html">Conceptual model conventions (UML)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="gc-semantic-conventions.html">Semantic conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-data-shape-conventions.html">Data shape conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-methodology-conventions.html">Methodology conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-publication-conventions.html">Publication conventions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Back matter</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="references.html">References</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="rule-template.html">Rule template</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index-of-rules.html">Index of rules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="style-guide-whole.html">Style guide as a whole</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">model2owl Documentation</span>
+    <span class="version">public-review</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="index.html">model2owl Documentation</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">public-review</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">model2owl Documentation</a></li>
+    <li><a href="guidelines-and-conventions.html">Guidelines and conventions</a></li>
+    <li><a href="gc-semantic-conventions.html">Semantic conventions</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/gc-semantic-conventions.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Semantic conventions</h1>
+<div class="sect1">
+<h2 id="sec:sc-r1"><a class="anchor" href="#sec:sc-r1"></a>Formal language choice</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Formal language choice</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> SC-R1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">The formal ontology shall be expressed in OWL 2.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>In the Semantic Web domain, two formal languages can be used for expressing the ontology: RDFS [<a href="references.html#ref:rdfs" class="xref page">rdfs</a>]  and OWL 2 [<a href="references.html#ref:owl2" class="xref page">owl2</a>]. RDFS is simpler and only allows for some of the recommended expressions (for example, the distinction between datatype and object properties is not possible). OWL 2 is more complex and more expressive than RDFS.</p>
+</div>
+<div class="paragraph">
+<p>We recommend using only a limited set of expression types available in OWL 2 language [<a href="#sec:sc-r2">SC-R2</a>].</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>Core Vocabularies have an RDF representation as OWL 2 Ontology. In the example below, part of Core Person is depicted:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-turtle hljs" data-lang="turtle">@prefix dc: &lt;http://purl.org/dc/terms/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix schemas: &lt;https://schema.org/&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;http://www.w3.org/ns/person#Person&gt; a rdfs:Class;
+  rdfs:label "Person"@en .
+
+&lt;https://data.europa.eu/m8g&gt; a owl:Ontology;
+  rdfs:label "core-person-voc"@en,
+    "core-person-voc"@nl;
+  dc:contributor [
+    a foaf:Person;
+    foaf:firstName "Seth";
+    foaf:lastName "van Hooland";
+    schemas:affiliation [foaf:name "European Commission"]
+  ];
+  dc:license "https://creativecommons.org/licenses/by/4.0/",
+    &lt;https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic&gt;;
+  dc:mediator [
+    foaf:homepage &lt;https://semic.eu&gt;;
+    foaf:name "Semantic Interoperability Community (SEMIC)"
+  ].</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:sc-r2"><a class="anchor" href="#sec:sc-r2"></a>Limited (OWL 2) expressivity</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Limited (OWL 2) expressivity</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> SC-R2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">The formal ontology shall be <em>lightweight</em> in its logical underpinning, focusing mainly on the concept declarations, generalisation axioms and annotations.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>OWL 2 language provides a high level of expressivity. In the SEMIC interoperability context, the primary purpose of semantic artefacts is to establish the common set of concepts and how they are employed in data exchange. For this purpose, simple OWL 2 constructs suffice. Therefore, the OWL 2 ontology shall be kept <em>lightweight</em>, and no advanced logical definitions are necessary, which would make the ontology <em>heavyweight</em>. The Bulletin of the Association for Information Science and Technology, dedicated an <a href="https://asistdl.onlinelibrary.wiley.com/toc/23739223/2015/41/4">entire section</a> on the charm of weak semantics in the linked data world. Backer &amp; Sutton explain well how lightweight semantics supports interoperability and reuse [<a href="references.html#ref:baker15" class="xref page">baker15</a>].</p>
+</div>
+<div class="paragraph">
+<p>We recommend the formal ontology definition be limited to the following types of expressions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>class declarations (<code>owl:Class</code>, <code>rdfs:Class</code>)</p>
+</li>
+<li>
+<p>datatype property declarations (<code>owl:DatatypeProperty</code>, <code>rdf:Property</code>)</p>
+</li>
+<li>
+<p>object property declarations (<code>owl:ObjectProperty</code>, <code>rdf:Property</code>)</p>
+</li>
+<li>
+<p>subclass relations (<code>rdfs:subClassOf</code>)</p>
+</li>
+<li>
+<p>subproperty relations (<code>rdfs:subPropertyOf</code>)</p>
+</li>
+<li>
+<p>annotations</p>
+<div class="ulist">
+<ul>
+<li>
+<p>concept labels (<code>rdfs:label</code>, <code>skos:prefLabel</code>, <code>skos:altLabel</code>)</p>
+</li>
+<li>
+<p>concept definitions (<code>rdfs:comment</code>, <code>skos:definition</code>, <code>skos:scopeNote</code>)</p>
+</li>
+<li>
+<p>notes and comments (<code>rdfs:comment</code>, <code>skos:editorialNote</code>, <code>skos:changeNote</code>, <code>skos:historyNote</code>, <code>skos:example</code>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>ontology header with</p>
+<div class="ulist">
+<ul>
+<li>
+<p>import statements (<code>owl:import</code>)</p>
+</li>
+<li>
+<p>version metadata (<code>owl:versionInfo</code>, <code>owl:versionIRI</code>)</p>
+</li>
+<li>
+<p>provenance metadata (e.g. <code>dct:issued</code>, <code>adms:status</code>)</p>
+</li>
+<li>
+<p>descriptive metadata</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The formal ontology shall not include other types of statements unless justified as necessary. The properties used, in particular those related to the ontology header, shall be aligned with the governance process.</p>
+</div>
+<div class="paragraph">
+<p>No expressions of (a) property domain specification (<code>rdfs:domain</code>) and (b) property range specification (<code>rdfs:range</code>) shall be used unless justified as absolutely necessary. The need for setting property domain and range constraints shall be is better fulfilled by the data shapes expressed in SHACL language.</p>
+</div>
+<div class="paragraph">
+<p>Keeping the ontology lightweight allows the maximum freedom for reuse and does not interfere with the validation concerns covered by the data shapes.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>For example, consider the (shortened) DCAT-AP imports header:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">&lt;http://data.europa.eu/r5r&gt;
+  rdf:type owl:Ontology ;
+  owl:imports &lt;https://www.w3.org/ns/dcat2.ttl&gt; ;
+  owl:imports &lt;http://dublincore.org/2020/01/20/dublin_core_terms.ttl&gt; ;
+  owl:imports &lt;https://www.w3.org/ns/locn.ttl&gt; ;
+  owl:imports &lt;http://www.w3.org/ns/prov-o.ttl&gt; ;
+  owl:imports &lt;http://www.w3.org/2006/time.ttl&gt; ;
+  owl:imports &lt;http://www.w3.org/2006/vcard/ns.ttl&gt; ;
+  owl:imports &lt;http://www.w3.org/ns/adms.ttl&gt;
+  .</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or consider, the (shortened) Core Person vocabulary header:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">&lt;https://data.europa.eu/m8g&gt; a owl:Ontology;
+  rdfs:label "core-person-voc"@en,
+    "core-person-voc"@nl;
+  dc:contributor [
+    a foaf:Person;
+    foaf:firstName "Seth";
+    foaf:lastName "van Hooland";
+    schemas:affiliation [foaf:name "European Commission"]
+  ];
+  dc:license "https://creativecommons.org/licenses/by/4.0/",
+    &lt;https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic&gt;;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:sc-r3"><a class="anchor" href="#sec:sc-r3"></a>Lexicalisation</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Lexicalisation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> SC-R3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">The choice in handling the lexicalisation of concepts shall be clearly defined and consistently implemented.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>The lexicalisation of concepts in semantic artefacts can be implemented in multiple ways. Two popular approaches are used
+in practice: RDFS or SKOS lexicalisation. However, other types can be considered as well (e.g. [<a href="references.html#ref:lemon" class="xref page">lemon</a>], [<a href="references.html#ref:vann" class="xref page">vann</a>], etc.).</p>
+</div>
+<div class="paragraph">
+<p>RDFS allows for a simple lexicalisation and annotation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>labels</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>rdfs:label</code> may be used to provide a human-readable version of a resource&#8217;s name.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>comments</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>rdfs:comment</code> may be used to provide a human-readable description of a resource.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>SKOS offers a richer and more elaborate lexicalisation and annotation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Lexical labels</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>skos:prefLabel</code> and <code>skos:altLabel</code> are useful when generating or creating human-readable representations of a knowledge
+organisation system. These labels provide the strongest clues as to the meaning of a SKOS concept.</p>
+</li>
+<li>
+<p><code>skos:hiddenLabel</code> has a more technical nature and may be useful when a user is interacting with a knowledge organisation system via a text-based search function. The user may, for example, enter misspelled words when trying to find a relevant concept.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation properties</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>skos:definition</code> supplies a complete explanation of the intended meaning of a concept;</p>
+</li>
+<li>
+<p><code>skos:scopeNote</code> supplies some, possibly partial, information about the intended meaning of a concept, especially as an
+indication of how the use of a concept is limited in indexing practice;</p>
+</li>
+<li>
+<p><code>skos:note</code> useful for general documentation purposes;</p>
+</li>
+<li>
+<p><code>skos:example</code> supplies an example of the use of a concept;</p>
+</li>
+<li>
+<p><code>skos:historyNote</code> describes significant changes to the meaning or the form of a concept;</p>
+</li>
+<li>
+<p><code>skos:changeNote</code> documents fine-grained changes to a concept, for the purposes of administration and maintenance;</p>
+</li>
+<li>
+<p><code>skos:editorialNote</code> supplies information that is an aid to administrative housekeeping, such as reminders of editorial
+work still to be done, or warnings in the event that future editorial changes might be made.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We recommend one, or the other is used. Both can be used at the same time without any consequence of semantics, but this will introduce redundancy and possibly a maintenance burden.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>For example, in Core Person Vocabulary RDFS lexicalisation is used:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">&lt;http://data.europa.eu/m8g/birthDate&gt; a rdf:Property;
+  rdfs:label "date of birth"@en .</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example in ePO, both lexicalisations are provided (even if this may be considered redundant):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">:Term a owl:Class ;
+    rdfs:label "Term"@en ;
+    rdfs:comment "A governing condition or stipulation."@en ;
+    rdfs:isDefinedBy &lt;http://data.europa.eu/a4g/ontology&gt; ;
+    skos:definition "A governing condition or stipulation."@en ;
+    skos:prefLabel "Term"@en .</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:sc-r4"><a class="anchor" href="#sec:sc-r4"></a>Reasoning assumption</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Reasoning assumption</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> SC-R4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">No reasoning capabilities shall be assumed.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>OWL 2 constructs correspond to Description Logic (DL) concepts (<em>direct semantics</em>). Logic, besides expressing knowledge in a knowledge base, can be used to perform automated reasoning, i.e.,  inferring new knowledge based on premises and reasoning rules. The inference is also possible with RDF-based semantics, based on translating the axioms into directed graphs. The latter is used for SPARQL entailments and SHACL data shape rules.</p>
+</div>
+<div class="paragraph">
+<p>Automated reasoning is not consistently available across environments: small differences in the usage context or reasoning patterns may lead to different outcomes.</p>
+</div>
+<div class="paragraph">
+<p>Therefore, the editors of interoperable semantic data specifications are strongly recommended to NOT rely on such capabilities. Thus, in practice, the model shall allow for an explicit statement of the intended knowledge, and as little as possible shall be left implicit.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:sc-r5"><a class="anchor" href="#sec:sc-r5"></a>Circular definitions</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Circular definitions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> SC-R5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">The data specification (semantic, conceptual, or shape) shall not use circular definitions.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>Circular definition, i.e., definitions that use the element they define are incorrect.</p>
+</div>
+<div class="paragraph">
+<p>For instance, we say that an ontology element (a class, an object property or a datatype property) is circular when used in its own definition. This can occur in situations such as the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>(a) the definition of a class as the enumeration of several classes including itself;</p>
+</li>
+<li>
+<p>(b) the appearance of a class within its <code>owl:equivalentClass</code> or <code>rdfs:subClassOf</code> axioms;</p>
+</li>
+<li>
+<p>(c) the appearance of an object property in its <code>rdfs:domain</code> or <code>rdfs:range</code> definitions; or</p>
+</li>
+<li>
+<p>(d) the appearance of a datatype property in its <code>rdfs:domain</code> definition.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+    <p style="text-align:center">This document is created by the European Commission and is licensed under the terms of
+        EUPL-1.2 license</a>.
+        <br/>This page was built using the Antora default UI. The source code for this UI is licensed under the terms of
+        the MPL-2.0 license.
+    </p>
+
+        <script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="150" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="150" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

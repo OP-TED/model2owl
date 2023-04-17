@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Methodology conventions :: model2owl</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="..">
+            </a>
+        </div>
+    </nav>
+<nav class="navbar">
+    <div class="navbar-brand">
+    <img src="../_/img/semic-logo.png" class="logo" />
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs" >
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="public-review">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">model2owl Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminological-clarifications.html">Terminological clarifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="arhitectural-clarifications.html">Architectural clarifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="clarification-on-reuse.html">Clarifications on "reuse"</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="guidelines-and-conventions.html">Guidelines and conventions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-general-conventions.html">General conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-conceptual-model-conventions.html">Conceptual model conventions (UML)</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-semantic-conventions.html">Semantic conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-data-shape-conventions.html">Data shape conventions</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="gc-methodology-conventions.html">Methodology conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-publication-conventions.html">Publication conventions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Back matter</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="references.html">References</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="rule-template.html">Rule template</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index-of-rules.html">Index of rules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="style-guide-whole.html">Style guide as a whole</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">model2owl Documentation</span>
+    <span class="version">public-review</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="index.html">model2owl Documentation</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">public-review</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">model2owl Documentation</a></li>
+    <li><a href="guidelines-and-conventions.html">Guidelines and conventions</a></li>
+    <li><a href="gc-methodology-conventions.html">Methodology conventions</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/gc-methodology-conventions.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Methodology conventions</h1>
+<div class="sect1">
+<h2 id="sec:mc-r1"><a class="anchor" href="#sec:mc-r1"></a>Follow a methodology</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"><strong>Title:</strong> Follow a methodology</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> MC-R1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">It is strongly recommended that a clear, explicit methodology is adopted for the content development and lifecycle management
+of a semantic data specification. Conversely, no data specification shall be developed and managed without following a clear
+methodology.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>A methodology is a set of methods, processes, and practices that are repeatedly carried out to deliver projects
+(TOGAF [<a href="references.html#ref:togaf" class="xref page">togaf</a>]).
+It helps by using a clear set of processes for managing projects that everyone in the organisation understands, reducing risks,
+and improving the chances of success. A good methodology that fits the context and environment of an organisation can provide
+clear guidance on what, who, when, and how a project should be done. It also provides a clear path and a systematic strategy to
+solve the in-field problems.</p>
+</div>
+<div class="paragraph">
+<p>We do not outline a concrete methodology here but merely point to the benefits of adopting and using one. In the SEMIC context,
+conceptual model development will benefit greatly from embracing some or a combination of techniques and frameworks in
+data modelling (e.g. Bottom-Up, Top-Down, Case-Based, Entity-Relationship, Object-Oriented, Star/Snowflake Schema data modelling
+techniques, etc.), ontology engineering methodologies (e.g. Methontology [<a href="references.html#ref:fernandez-lopez97" class="xref page">fernandez-lopez97</a>],
+DOGMA [<a href="references.html#ref:jarrar08" class="xref page">jarrar08</a>],  OntoClean [<a href="references.html#ref:guarino04" class="xref page">guarino04</a>], TOVE [<a href="references.html#ref:fox92" class="xref page">fox92</a>],
+DILIGENT [<a href="references.html#ref:pinto04" class="xref page">pinto04</a>], NeOn [<a href="references.html#ref:neon" class="xref page">neon</a>], etc. [<a href="references.html#ref:sure09" class="xref page">sure09</a>]),
+data management body of knowledge (DAMA-DMBOK [<a href="references.html#ref:dama-dmbok" class="xref page">dama-dmbok</a>]) or architecture frameworks
+and practices (e.g. TOGAF [<a href="references.html#ref:togaf" class="xref page">togaf</a>], Zachman Framework [<a href="references.html#ref:zachman87" class="xref page">zachman87</a>],
+EAP [<a href="references.html#ref:spewak06" class="xref page">spewak06</a>], etc.).</p>
+</div>
+<div class="paragraph">
+<p>Among other benefits of adopting a clear and well-defined methodology are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Clear lifecycle management</p>
+</li>
+<li>
+<p>Connection between model and expressed (business) requirements</p>
+</li>
+<li>
+<p>Implementation consistency</p>
+</li>
+<li>
+<p>Proper business requirements management (specifications, use cases, scenarios, competency questions, etc. are collected,
+edited, maintained, referred by the concepts)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:mc-r2"><a class="anchor" href="#sec:mc-r2"></a>Scope and goals definition</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Scope and goals definition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> MC-R2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">A semantic data specification shall have clear goals and a well-established scope definition.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>Establishing project scope ensures that the modelling work is focused and executed to expectations. It also helps define
+where the boundary of the model is and what shall be left out.</p>
+</div>
+<div class="paragraph">
+<p>The clearer the scope the higher chances of success are.</p>
+</div>
+<div class="paragraph">
+<p>It shall be possible to determine the scope of a data specification from the use cases for which it is drawn up. [<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules, sec 3.1.4</a>]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:mc-r3"><a class="anchor" href="#sec:mc-r3"></a>Modularisation</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Modularisation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> MC-R3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">If a domain contains a lot of concepts that have to be modelled, then it is recommended to partition it into subdomains and manage them as connected modules. [<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules, sec 3.1.3</a>]</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>Divide and conquer method works in many situations, including in the modelling realm. It may not be easy, however, to make
+a clearcut separation between concepts belonging to one module or another, and such an attempt will certainly bring clarity.</p>
+</div>
+<div class="paragraph">
+<p>Sometimes, a concept can be used for several domains. Then it shall be placed in a separate module. [<a href="references.html#ref:oslo-rules" class="xref page">oslo-rules, sec 3.1.3</a>]</p>
+</div>
+<div class="paragraph">
+<p>The need for modularisation typically emerges when the to-be-modelled space grows. As the terms are to be identified by URIs
+[<a href="gc-publication-conventions.html#sec:pc-r2" class="xref page">PC-R2</a>], it is recommended to include in the used URI structure modularisation potential.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="paragraph">
+<p>For example, in the eProcurement ontology(ePO) [<a href="references.html#ref:epo" class="xref page">epo</a>], there is a core ontology and there are
+extension modules such as eCatalogue, eOrdering, and eNotice [<a href="references.html#ref:epo" class="xref page">epo</a>] that further refine and extend
+a specific part of the core.</p>
+</div>
+<div class="paragraph">
+<p>For example, Core Location is used across other Core Vocabularies and is established as a CV on its own.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+    <p style="text-align:center">This document is created by the European Commission and is licensed under the terms of
+        EUPL-1.2 license</a>.
+        <br/>This page was built using the Antora default UI. The source code for this UI is licensed under the terms of
+        the MPL-2.0 license.
+    </p>
+
+        <script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="150" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="150" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

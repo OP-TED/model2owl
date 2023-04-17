@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Clarifications on "reuse" :: model2owl</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="..">
+            </a>
+        </div>
+    </nav>
+<nav class="navbar">
+    <div class="navbar-brand">
+    <img src="../_/img/semic-logo.png" class="logo" />
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs" >
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="public-review">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">model2owl Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminological-clarifications.html">Terminological clarifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="arhitectural-clarifications.html">Architectural clarifications</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="clarification-on-reuse.html">Clarifications on "reuse"</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="guidelines-and-conventions.html">Guidelines and conventions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-general-conventions.html">General conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-conceptual-model-conventions.html">Conceptual model conventions (UML)</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-semantic-conventions.html">Semantic conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-data-shape-conventions.html">Data shape conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-methodology-conventions.html">Methodology conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-publication-conventions.html">Publication conventions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Back matter</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="references.html">References</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="rule-template.html">Rule template</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index-of-rules.html">Index of rules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="style-guide-whole.html">Style guide as a whole</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">model2owl Documentation</span>
+    <span class="version">public-review</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="index.html">model2owl Documentation</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">public-review</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">model2owl Documentation</a></li>
+    <li><a href="clarification-on-reuse.html">Clarifications on "reuse"</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/clarification-on-reuse.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Clarifications on "reuse"</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the Semantic Web literature, the term "reuse" appears very often, encouraging the adoption of data specifications in new data
+specifications rather than redefining the same/similar concepts once again. The term "reuse" is usually considered in a broad sense,
+and what it means in terms of specific implementations is often left underspecified. In this section, we aim to address this gap and
+provide a detailed account of what "reuse" means in the SEMIC context.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:what-is-the-reuse-of-a-specification"><a class="anchor" href="#sec:what-is-the-reuse-of-a-specification"></a>What is the reuse of an (ontology or data shape) specification?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specification reuse is the act of sourcing an established specification into a new one (referred to as the "current" or "own"
+specification).</p>
+</div>
+<div class="paragraph">
+<p>Technically, reuse may mean either or both of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Importing (using <code>owl:imports</code>) the contents of another ontology or data shape specification into a current one; OR</p>
+</li>
+<li>
+<p>relying on URI dereferencing to get the formal definition of the ontology (this, however, does not work for the data shapes)
+In the SEMIC context, for the purpose of interoperability, we need to carefully constrain the meaning of the term "reuse" with a
+fine-grained description on a construct-by-construct basis, and this is the aim of the remainder of this section.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following subsections offer a systematic description of six cases of reuse based on what is reused: (a) a class or
+(b) a property, and types of frequently encountered variations: (i) as-is, (ii) with terminological adaptations, and
+(iii) with semantic adaptations.</p>
+</div>
+<div class="paragraph">
+<p>In each case, we describe as appropriate the implications on the following aspects:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How to denote it: (a) <em>as-is</em> or (b) <em>as a specialisation</em></p>
+</li>
+<li>
+<p>Label</p>
+</li>
+<li>
+<p>Definition</p>
+</li>
+<li>
+<p>Impact of adding <em>new properties</em> (for classes only)</p>
+</li>
+<li>
+<p>Impact of <em>reusing original properties</em> (for classes only)</p>
+</li>
+<li>
+<p>Impact on <em>domain and range</em> (for properties only)</p>
+</li>
+<li>
+<p>Other constraints and additional information</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:reuse-of-a-class-as-is"><a class="anchor" href="#sec:reuse-of-a-class-as-is"></a>Reuse of a class as-is</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This scenario applies when the original class is reused without terminological or semantic changes.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Reuse Aspect</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>How to denote</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reuse as-is.</p>
+<p class="tableblock">Adopt the original URI and its definition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Label</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NO change allowed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NO change allowed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>New properties on the class</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In data shapes (SHACL), the class can be used for in domain/range property constraints.</p>
+<p class="tableblock">In UML, properties are depicted as new connections (object properties) that are incoming and outgoing to the class or as new attributes
+(datatype properties) that appear in the class.</p>
+<p class="tableblock">This works because OWL 2 semantics treats properties as first-class citizens (along with classes, datatypes and individuals). So even if the UML class diagram may visualise new properties on the class, they shall be read as constructs defined separately from one another, just as the OWL 2 specification defines it [<a href="references.html#ref:owl2" class="xref page">owl2</a>].</p>
+<p class="tableblock">The properties on the superclasses of the reused class are considered inherited. When introducing new properties, do not duplicate existing ones in the superclass(es). Also, make sure there are no logical contradictions [<a href="gc-semantic-conventions.html#sec:sc-r5" class="xref page">CS-R5</a>].</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Original properties on the class as defined in the context of a data specification</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In OWL 2 &amp; SHACL, when reusing a class as-is from an established ontology hereafter called the original, all properties and constraints associated with the class are considered adopted (even if some may be irrelevant).</p>
+<p class="tableblock">It is recommended to make the reuse of the original clear (by notes, hyperlinks or dereferenceable URIs of the terms) at the class level.</p>
+<p class="tableblock">In UML, all properties marked as mandatory in the original data specification are considered relevant and shall be depicted.
+Optional properties may be depicted only if relevant in the new context.</p>
+<p class="tableblock">The properties on the superclasses of the reused class are considered inherited and may be depicted in the UML diagram as necessary for reuse.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:reuse-of-a-class-with-terminological-adaptations"><a class="anchor" href="#sec:reuse-of-a-class-with-terminological-adaptations"></a>Reuse of a class with terminological adaptations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This scenario applies when the original class is reused without semantic changes. Still, a label or definition needs to be modified
+to reflect the meaning in the new context accurately.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Reuse Aspect</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>How to denote reuse</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reuse as-is.</p>
+<p class="tableblock">Adopt the original URI and its definition.</p>
+<p class="tableblock">If the goal of the terminological adaptations is to rely on the specification as provided for the original URI, apply the guidelines
+of reuse as-is. Add, if necessary, a note to clarify this.</p>
+<p class="tableblock">Creating a sub-class that captures the adaptations is recommended as the safe option.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Label</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Changes to the label are NOT recommended.</p>
+<p class="tableblock">Some exceptions may be accepted in the case of close synonyms, yet the meaning/semantics must stay the same.</p>
+<p class="tableblock">Differentiation through using preferred and alternative labels is a strong recommendation and should be implemented as described below.</p>
+<p class="tableblock">In UML,
+- the new label is indicated in the UML Element Name (in CamelCase, no spaces, to provide visibility for the User Community of the Model)
+- the (original) URI of the reused class shall be indicated (e.g. in a UML Element Tag)
+- the original label of the reused concept shall be preserved (e.g. in a UML Element Tag + a marker that special name management shall
+take place)</p>
+<p class="tableblock">In OWL 2,
+- the original label is adopted as is (e.g. either <code>rdfs:label</code> or <code>skos:prefLabel</code>)
+- the new label is added as an alternative label (e.g. <code>skos:altLabel</code>)</p>
+<p class="tableblock">In the documentation,
+- the new label displayed as the main label (in titles and any other fronting)
+- the original label (to be visibly mentioned)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NO change allowed</p>
+<p class="tableblock">Any scoping or nuancing provided in the original data specification should be copied.
+In addition, new scoping or nuancing shall be provided in the scope notes (e.g. <code>skos:scopeNote</code>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>New properties on the class</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Same recommendation as for reusing the class as-is</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Original properties on the class</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Same recommendation as for reusing the class as-is</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Example</strong></p>
+</div>
+<div class="paragraph">
+<p>For example, the wording of FOAF definitions can benefit from light adaptations and adjustments, yet the meaning is not changing.
+Hence, in Core Person Vocabulary, the definitions are slightly adjusted.
+Such adaptations might be made when the original label or definition does not follow the guidelines laid out in this document.
+For example, the one on circular definitions [<a href="gc-general-conventions.html#sec:gc-r5" class="xref page">GC-R5</a>].</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:reuse-of-a-class-with-semantic-adaptations"><a class="anchor" href="#sec:reuse-of-a-class-with-semantic-adaptations"></a>Reuse of a class with semantic adaptations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This scenario applies when the original class is reused with semantic changes, which also implies terminological adaptations.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Reuse Aspect</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>How to denote reuse</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Must reuse as a specialisation.</p>
+<p class="tableblock">Must create a subclass that captures the adaptations and indicate reuse by the subclass relationship.</p>
+<p class="tableblock">If the reused class is itself a specialisation of a third specification, then both shall be explicitly mentioned. In general,
+we shall show the whole reuse chain (in the conceptual model and especially in the documentation via notes and hyperlinks).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Label</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provide a new label that is more specific than the one in the reused class</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provide a new definition that is more specific than the reused class</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>New properties on the class</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add new properties as necessary on the new (owned) sub-class.</p>
+<p class="tableblock">The properties on the superclasses of the reused class are considered inherited. When introducing new properties, do not
+duplicate existing ones in the superclass(es). Make sure there are no logical contradictions [<a href="gc-semantic-conventions.html#sec:sc-r5" class="xref page">CS-R5</a>].</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Original properties on the class as defined in the context of a data specification</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When reusing a class as-is from a data
+specification, hereafter called the original, all properties and constraints associated with the class should be adopted.</p>
+<p class="tableblock">In UML, include all properties and constraints in the UML diagram if marked as mandatory in the original. For the sake of
+brevity, optional properties and constraints can be omitted.</p>
+<p class="tableblock">The properties on the superclasses of the reused class are considered inherited and may be depicted in the UML diagram as
+necessary for the purpose of reuse.</p>
+<p class="tableblock">If a reused original property must be made more specific or nuanced, then it is a good idea to create a sub-property of the
+already existing one. See property reuse recommendations below.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Example</strong></p>
+</div>
+<div class="paragraph">
+<p>For example, in the Core Public Organisation Vocabulary, the reused class <code>org:Organisation</code> is specialised as
+<code>cv:PublicOrganisation</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:reuse-of-a-property-as-is"><a class="anchor" href="#sec:reuse-of-a-property-as-is"></a>Reuse of a property as-is</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This scenario applies when the original property is reused without terminological or semantic changes.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Reuse Aspect</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>How to denote reuse</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Property as-is.</p>
+<p class="tableblock">Adopt the original URI and its definition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Label</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NO change allowed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NO change allowed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Domain and range</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the reused property</p>
+<p class="tableblock">* does not define a domain and range (in the original ontology) AND</p>
+<p class="tableblock">* its definition does NOT mention explicit restrictions on the domain and range (in the data shape)
+then it can be attached in UML diagrams (in the owned data specification) to any class either as a) a relation (pointing to
+another class) or b) as an attribute with a specific datatype.</p>
+<p class="tableblock">If the reused property</p>
+<p class="tableblock">* defines a domain and range (in the original ontology) OR</p>
+<p class="tableblock">* its definition DOES mention explicit restrictions on the domain and range (in the data shape),
+then it must be reflected in the UML diagrams (in the owned data specification) accordingly, i.e. it can be applied only on
+specified classes.</p>
+<p class="tableblock">When UML is transformed into other representations, it is not recommended to represent the domain/range definitions in the lightweight ontology (OWL 2). Still, it may be reflected in data shape definitions (SHACL) as constraints.</p>
+<p class="tableblock">When the UML is transformed into other representations, the inclusion of domain/range statements is dependent on the "reuse" intention of the data specification.</p>
+<p class="tableblock">In case of a broad reuse intention, as for the SEMIC Core Vocs, it is not recommended to include them in the lightweight ontology but better reflect them as constraints in SHACL, where necessary (i.e. optional properties can stay free of domain/range specification) [<a href="gc-semantic-conventions.html#sec:sc-r2" class="xref page">CS-R2</a>].
+Note: in the case of narrow reuse intention, as for the application profiles, it is recommended to provide domain/range constraints  in the data shape definitions (using SHACL) even if those are optional.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Other constraints and additional information</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When reusing a property as-is from a data specification, then all constraints
+associated with the property should be adopted.</p>
+<p class="tableblock">It is recommended to make the reuse of the original clear (by notes, hyperlinks or dereferenceable URIs of the terms) at the class level.</p>
+<p class="tableblock">In no way should the UML contain conflicting constraints compared to the original data specification.</p>
+<p class="tableblock">When the UML is transformed into other representations, the lightweight ontology may be augmented with descriptive information,
+while (logical) constraints are to be expressed as SHACL.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:reuse-of-a-property-with-terminological-adaptations"><a class="anchor" href="#sec:reuse-of-a-property-with-terminological-adaptations"></a>Reuse of a property with terminological adaptations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This scenario applies when the original property is reused without semantic changes. Still, a label or definition needs to be
+modified to reflect the meaning in the new context accurately.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Reuse Aspect</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>How to denote the reuse</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Property as-is.</p>
+<p class="tableblock">Adopt the original URI and its definition.</p>
+<p class="tableblock">If the goal of the terminological adaptations is to rely on the specification as provided for the original URI, apply the guidelines of reuse as-is. Add, if necessary, a note to clarify this.</p>
+<p class="tableblock">Creating a sub-property that captures the adaptations is  recommended as a safe option, however.</p>
+<p class="tableblock">If the reused property, is itself a specialisation of a third specification, then both shall be explicitly mentioned. In general, we shall show the whole reuse chain (in the conceptual model, and especially in the documentation via notes and hyperlinks).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Label</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Changes to the label are NOT recommended.</p>
+<p class="tableblock">Some exceptions may be accepted in the case of close synonyms, yet the meaning/semantics MUST stay the same.</p>
+<p class="tableblock">We strongly recommend differentiating between <em>preferred labels</em> and <em>alternative labels</em> and should be implemented as described below.</p>
+<p class="tableblock">In UML,</p>
+<p class="tableblock">* the new label is indicated in the UML Element Name (in CamelCase, no spaces, to provide visibility for the User Community
+of the Model)</p>
+<p class="tableblock">* URI of the reused property shall be indicated (e.g. in a UML Element Tag)</p>
+<p class="tableblock">* the original label of the reused concept shall be indicated (e.g. in a UML Element Tag + a marker that special name management
+shall take place)</p>
+<p class="tableblock">In OWL 2,</p>
+<p class="tableblock">* original label (as is, either rdfs:label or <code>skos:prefLabel</code>)</p>
+<p class="tableblock">* new label (as an alternative label, <code>skos:altLabel)</code></p>
+<p class="tableblock">In the documentation,</p>
+<p class="tableblock">* original label (to be visibly mentioned)</p>
+<p class="tableblock">* new label (in titles and any other fronting)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Changes are NOT allowed.</p>
+<p class="tableblock">Any scoping or nuancing provided in the original data specification should be copied. In addition, new scoping or nuancing shall be provided in the scope notes (e.g., skos:scopeNote ).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Domain and range</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Same recommendation as for reusing property, as is</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Other constraints and additional information</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Same recommendation as for reusing property, as is</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Example</strong></p>
+</div>
+<div class="paragraph">
+<p>For example, in DCAT-AP the reused property <code>adms:status</code> is relabeled from "status" to "change type" for Catalogue Record class. Note
+that the diagram does not reflect this, but it is reflected in the associated documentation.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/dcatcatalogue.png" alt="DCAT-AP Catalogue Record"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:reuse-of-a-property-with-semantic-adaptations"><a class="anchor" href="#sec:reuse-of-a-property-with-semantic-adaptations"></a>Reuse of a property with semantic adaptations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This scenario applies when the original property is reused with semantic changes, which also implies terminological adaptations.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Reuse Aspect</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>How to denote the reuse</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Must create a sub-property that captures the adaptations.</p>
+<p class="tableblock">In UML, a connector is created denoting a new property, which specialises another connector denoting the original property.</p>
+<p class="tableblock">Additionally, notes or hyperlinks shall be provided to the original source.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Label</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provide a new label that is more specific than the one in the reused property</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provide a new definition that is more specific than the one of the reused property</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Domain and range</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the reused super property does NOT define domain/range, then it is possible to add domain/range specifications
+to the sub-property, but only if justified and absolutely necessarily. In UML, feel free to attach it anywhere needed.</p>
+<p class="tableblock">If the reused super property DOES define a domain/range, DO not override them, i.e. do not specify a new domain/range that leads
+to logical inconsistencies. Specifically, if you do that, then make sure that the new Domain is a subclass of the Original Domain.</p>
+<p class="tableblock">If the property is used across multiple classes multiple domain/range specifications can be deemed appropriate. This shall be
+handled with care. Multiple domain/range definitions in OWL 2 mean intersection (i.e. joined by logical AND) and not the union
+(i.e. joined by logical OR), as most use cases may require.</p>
+<p class="tableblock">When the UML is transformed into other representations, the inclusion of domain/range statements is dependent on the "reuse"
+intention of the data specification.</p>
+<p class="tableblock">In case of a broad reuse intention, as for the SEMIC Core Vocabularies, it is not recommended to include them in the lightweight
+ontology but optionally reflect them as permissive constraints in SHACL.
+In case of narrow reuse intention, as for the Application Profiles, it is recommended to provide domain/range specifications
+in the data shape definitions even if those are optional.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Other constraints and additional information</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Feel free to provide any additional information that is deemed necessary.</p>
+<p class="tableblock">When the UML is transformed into other representations, the lightweight ontology may be augmented with descriptive information,
+while (logical) constraints are to be expressed as SHACL.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Example</strong></p>
+</div>
+<div class="paragraph">
+<p>For example, in the DCAT-AP the reused property <code>dct:hasPart</code> is specialised as <code>dcat:dataset</code>. Note that the subproperty
+relation between the two is not depicted in the diagram, but is stated in the data shape specification.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/dcatdataset.png" alt="DCAT-AP Dataset"></span></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+    <p style="text-align:center">This document is created by the European Commission and is licensed under the terms of
+        EUPL-1.2 license</a>.
+        <br/>This page was built using the Antora default UI. The source code for this UI is licensed under the terms of
+        the MPL-2.0 license.
+    </p>
+
+        <script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="150" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="150" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

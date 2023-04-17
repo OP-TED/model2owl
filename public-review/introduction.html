@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Introduction :: model2owl</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="..">
+            </a>
+        </div>
+    </nav>
+<nav class="navbar">
+    <div class="navbar-brand">
+    <img src="../_/img/semic-logo.png" class="logo" />
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs" >
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="public-review">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">model2owl Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminological-clarifications.html">Terminological clarifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="arhitectural-clarifications.html">Architectural clarifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="clarification-on-reuse.html">Clarifications on "reuse"</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="guidelines-and-conventions.html">Guidelines and conventions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-general-conventions.html">General conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-conceptual-model-conventions.html">Conceptual model conventions (UML)</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-semantic-conventions.html">Semantic conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-data-shape-conventions.html">Data shape conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-methodology-conventions.html">Methodology conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gc-publication-conventions.html">Publication conventions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Back matter</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="references.html">References</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="rule-template.html">Rule template</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index-of-rules.html">Index of rules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="style-guide-whole.html">Style guide as a whole</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">model2owl Documentation</span>
+    <span class="version">public-review</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="index.html">model2owl Documentation</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">public-review</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">model2owl Documentation</a></li>
+    <li><a href="introduction.html">Introduction</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/introduction.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Introduction</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document defines the style guide to be applied to the SEMIC&#8217;s semantic data specifications, notably to the eGovernment
+Core Vocabularies and Application Profiles. It provides rules on naming conventions, syntax, artefact management and organisation.
+It is meant to be complemented with technical artefacts and implementations that enable automatic conformance checking and
+transformation of conceptual models into formal semantic representations.</p>
+</div>
+<div class="paragraph">
+<p>The content of these guides is part of the action to promote semantic interoperability amongst the EU Member States,
+with the objective of fostering the use of standards by, for example, offering guidelines and expert advice on semantic interoperability
+for public administrations.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:target-audience"><a class="anchor" href="#sec:target-audience"></a>Target audience</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This style guide is intended primarily for semantic engineers, data architects and knowledge modelling specialists who are acting as editors or reusers of Core Vocabularies and Application Profiles.</p>
+</div>
+<div class="paragraph">
+<p>This style guide may constitute a good source of information and explanations for the European Commission&#8217;s officers, collaborating consultants, and stakeholders involved in inter-institutional standardisation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:scope"><a class="anchor" href="#sec:scope"></a>Scope</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The main purpose of this style guide is to provide guidance and decision-making support for the creators, maintainers and publishers of the Core Vocabularies and Application Profiles. In the context of European Interoperability Framework (EIF) [<a href="references.html#ref:eif" class="xref page">eif</a>] this style guide primarily addresses the <em>Semantic Interoperability</em> layer.
+The main part of this document is organised as a series of self-contained rules and guidelines.</p>
+</div>
+<div class="paragraph">
+<p>In the scope of this document are included:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a terminological clarification for the significant SEMIC terms (including "reuse", "ontology", "Core Vocabulary", etc.);</p>
+</li>
+<li>
+<p>an architecture overview, which interconnects various aspects and data specification types and how they are derived from a single
+conceptual model;</p>
+</li>
+<li>
+<p>the concept of "reuse" in great detail and pinpoints exactly what is permitted and what is not permitted in the SEMIC context;</p>
+</li>
+<li>
+<p>recommendations on organising the conceptual model, the semantic artefacts, and the data shapes;</p>
+</li>
+<li>
+<p>some recommendations on the specification development methodology and some publication conventions.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is considered out of the scope of this document to provide:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a complete and specific modelling methodology,</p>
+</li>
+<li>
+<p>a procedure for maintenance and publication,</p>
+</li>
+<li>
+<p>governance (roles, processes, responsibilities, etc.), lifecycle and release management methodology (including the initiation and
+change requests),</p>
+</li>
+<li>
+<p>any specific implementation instructions,</p>
+</li>
+<li>
+<p>indications as to what set of tools shall be adopted,</p>
+</li>
+<li>
+<p>specifications related to data serialisation, formats or any syntax mapping methods (including syntax binding instructions to for
+example XSD/XML; or JSON-LD contexts),</p>
+</li>
+<li>
+<p>usage instructions for the end users.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This style guide is recommended to be used in combination with complementary documents, among which we consider relevant, but not
+limited to, the following ones:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the  user manual of a transformation tool from UML into other representations explaining what transformation rules are supported
+(i.e. implemented by the tool),</p>
+</li>
+<li>
+<p>the documentation (manuals, handbooks, specifications) of the reused data specifications,</p>
+</li>
+<li>
+<p>the governance and methodology documentation of the organisation developing the new semantic data specification,
+the adopted URI policy documentation, which can be inter-institutional policy or organisation specific one
+[<a href="references.html#ref:10rules-puri" class="xref page">10rules-puri</a>].</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:how-to-read"><a class="anchor" href="#sec:how-to-read"></a>How to read this document</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document is organised in two parts. The first part provides a brief context description and scope and offers an architectural
+overview. It introduces important terminological clarifications, the benefits of adopting the separation of concerns principle,
+and explanations of how it is played out in the SEMIC context.</p>
+</div>
+<div class="paragraph">
+<p>The second part of the document provides a series of guidelines, conventions and assumption specifications. These guidelines are
+organised according to the aspects they cover. A guideline is a stand-alone description containing an indicative statement and a
+detailed description providing the rationale, benefits and limitations, implications and practical requirements, and eventually examples.</p>
+</div>
+<div class="paragraph">
+<p>Users who may choose to bypass introductory details may decide to proceed with reading the
+<a href="gc-general-conventions.html" class="xref page">general guidelines</a> and the ones on the <a href="gc-conceptual-model-conventions.html" class="xref page">conceptual model</a> first.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+    <p style="text-align:center">This document is created by the European Commission and is licensed under the terms of
+        EUPL-1.2 license</a>.
+        <br/>This page was built using the Antora default UI. The source code for this UI is licensed under the terms of
+        the MPL-2.0 license.
+    </p>
+
+        <script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="150" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="150" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>
