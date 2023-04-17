@@ -8,10 +8,10 @@ This project comprises a set of tools for transforming an UML (v2.5) model from 
 This work is developed in the context of [eProcurement ontology project](https://github.com/eprocurementontology/eprocurementontology) financed by the Digital Europe Programme and led by the [Publications Office of the European Union](https://op.europa.eu/en/).
 
 ### Documents
-* The **architectural design** and the formal specifications are provided in the [Ontology architecture document](doc/ontology-architecture/ontology-architecture.pdf).  
-* The technical **conventions** for the UML representation of the conceptual model are provided in [UML conventions document](doc/uml-conventions/uml-conventions.pdf)
-* An **inventory** of conformance tests derived from the UML conventions document are provided in the [Inventory Worksheet document](doc/checkers-inventory/eProcurement conceptual model checkers inventory.xlsx)
-* The **transformation rules** from UML into OWL and SHACL are provided in the [uml2owl transformation document](doc/uml2owl-transformation/uml2owl-transformation.pdf)
+* The **architectural design** and the formal specifications are provided in the [Ontology architecture document](docs/ontology-architecture/ontology-architecture.pdf).  
+* The technical **conventions** for the UML representation of the conceptual model are provided in [UML conventions document](docs/uml-conventions/uml-conventions.pdf)
+* An **inventory** of conformance tests derived from the UML conventions document are provided in the [Inventory Worksheet document](docs/checkers-inventory/eProcurement conceptual model checkers inventory.xlsx)
+* The **transformation rules** from UML into OWL and SHACL are provided in the [uml2owl transformation document](docs/uml2owl-transformation/uml2owl-transformation.pdf)
 
 ### Scripts
 * [html-conventions-report.xsl](src/html-conventions-report.xsl) is the script checking the conformance to the technical conventions of the conceptual model.   
