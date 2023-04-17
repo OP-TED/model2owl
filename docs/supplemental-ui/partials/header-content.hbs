@@ -1,0 +1,22 @@
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{{{or site.url (or siteRootUrl siteRootPath)}}}">
+            </a>
+        </div>
+    </nav>
+<nav class="navbar">
+    <div class="navbar-brand">
+    <img src="{{{uiRootPath}}}/img/semic-logo.png" class="logo" />
+{{!--        <a class="navbar-item" href="{{{or site.url (or siteRootUrl siteRootPath)}}}">{{site.title}}</a> --}}
+      <div class="navbar-item search hide-for-print">
+{{!--       <p class="nav-text">SEMIC Style Guide</p> --}}
+       {{#if env.SITE_SEARCH_PROVIDER}}
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs" {{#if page.home}} autofocus{{/if}}>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </nav>
+</header>
