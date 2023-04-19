@@ -79,10 +79,8 @@
             <!--    End of specific checker rules-->
 
         </xsl:variable>
-        <xsl:variable name="enumerationItemConventions" as="item()*">
-            <xsl:apply-templates select="attributes/attribute"/>
-        </xsl:variable>
-        <xsl:if test="boolean($enumerationConventions) or boolean($enumerationItemConventions)">
+
+        <xsl:if test="boolean($enumerationConventions)">
             <h2>
                 <xsl:value-of select="$enumeration"/>
             </h2>
@@ -92,9 +90,6 @@
                         <dt>Unmet enumeration conventions</dt>
                         <xsl:copy-of select="$enumerationConventions"/>
                     </dl>
-                </xsl:if>
-                <xsl:if test="boolean($enumerationItemConventions)">
-                    <xsl:copy-of select="$enumerationItemConventions"/>
                 </xsl:if>
             </section>
         </xsl:if>
@@ -137,7 +132,7 @@
   
 
     <xd:doc>
-        <xd:desc>[enumeration-name-8] - The name $value$ is not unique. The Concept names should be
+        <xd:desc>[enumeration-name-1] - The name $value$ is not unique. The Concept names should be
             unique within the model; while the relations may repeat but should not overlap with
             concept names. </xd:desc>
         <xd:param name="enumeration"/>

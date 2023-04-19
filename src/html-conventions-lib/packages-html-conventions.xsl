@@ -19,7 +19,7 @@
 
     <xd:doc>
         <xd:desc>Getting all packages and show only the ones that have unmet conventions
-            [package-name-43] [package-name-46]</xd:desc>
+            [package-name-1] [package-name-2] [package-owned-elements-3]</xd:desc>
     </xd:doc>
 
     <xsl:template match="element[@xmi:type = 'uml:Package']">
@@ -27,13 +27,10 @@
             <xsl:call-template name="p-invalidName">
                 <xsl:with-param name="package" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="p-missingDescription">
-                <xsl:with-param name="package" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="p-stereotypeProvided">
-                <xsl:with-param name="package" select="."/>
-            </xsl:call-template>
             <xsl:call-template name="p-missingName">
+                <xsl:with-param name="package" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="p-emptyPackage">
                 <xsl:with-param name="package" select="."/>
             </xsl:call-template>
         </xsl:variable>
@@ -72,7 +69,7 @@
 
 
     <xd:doc>
-        <xd:desc>[package-name-43] - The package name $packageName$ contains invalid characters.
+        <xd:desc>[package-name-1] - The package name $packageName$ contains invalid characters.
             Package name shall be a short alphanumeric string representing an acronym or a short
             name. Spaces are not premitted as packages could be used as namespace
             perfixes.</xd:desc>
@@ -85,56 +82,19 @@
         <xsl:if test="boolean($packageName)">
             <xsl:sequence
                 select="
-                    if (fn:matches($packageName, '^[\w\d]+$')) then
+                if (fn:matches($packageName, '^[a-zA-Z0-9 ]*$')) then
                         ()
                     else
-                        f:generateHtmlError(fn:concat('The package name ', $packageName, 'contains invalid characters. Package name shall be a short ',
-                        'alphanumeric string representing an acronym or a short name. ',
-                        'Spaces are not premitted as packages could be used as namespace perfixes.'))"
+                        f:generateHtmlWarning(fn:concat('The package name ', $packageName, ' contains invalid characters. Package name shall be a short ',
+                        'alphanumeric string representing an acronym or a short name.'))"
             />
         </xsl:if>
     </xsl:template>
 
-    <xd:doc>
-        <xd:desc>[common-description-9] - $elementName$ is missing a description. All concepts
-            should be defined or described.</xd:desc>
-        <xd:param name="package"/>
-    </xd:doc>
-
-    <xsl:template name="p-missingDescription">
-        <xsl:param name="package"/>
-        <xsl:variable name="packageName" select="$package/@name"/>
-        <xsl:variable name="noPackageDescription" select="$package/properties/not(@documentation)"/>
-        <xsl:sequence
-            select="
-                if ($noPackageDescription = fn:true()) then
-                    f:generateHtmlWarning(fn:concat($packageName, ' is missing a description. All concepts should be defined or described.'))
-                else
-                    ()"
-        />
-    </xsl:template>
+   
 
     <xd:doc>
-        <xd:desc>[common-stereotype-10] - The $stereotypeName$ stareotype is applied to
-            $elementName$. Stereotypes are discouraged in the current practice with some exceptions. </xd:desc>
-        <xd:param name="package"/>
-    </xd:doc>
-    <xsl:template name="p-stereotypeProvided">
-        <xsl:param name="package"/>
-        <xsl:sequence
-            select="
-                if (f:isElementStereotypeValid($package))
-                then
-                    ()
-                else
-                    f:generateHtmlWarning(fn:concat('The ', $package/properties/@stereotype,
-                    ' stareotype is applied to ', $package/@name,
-                    '. Stereotypes are discouraged in the current practice with some exceptions. '))"
-        />
-    </xsl:template>
-
-    <xd:doc>
-        <xd:desc>[package-name-46] - The name of the package $IdRef$ is missing.  Packages must be named".</xd:desc>
+        <xd:desc>[package-name-2] - The name of the package $IdRef$ is missing.  Packages must be named".</xd:desc>
         <xd:param name="package"/>
     </xd:doc>
     <xsl:template name="p-missingName">
@@ -150,7 +110,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[package-owned elements-47 ] - The package $packageName$ is empty. Packages must contain child classes and conenctors (i.e. owned elements). </xd:desc>
+        <xd:desc>[package-owned-elements-3 ] - The package $packageName$ is empty. Packages must contain child classes and conenctors (i.e. owned elements). </xd:desc>
         <xd:param name="package"/>
     </xd:doc>
     <xsl:template name="p-emptyPackage">
@@ -160,7 +120,7 @@
                 if (count(f:getPackageElements($package)) > 0) then
                     ()
                 else
-                f:generateHtmlError(fn:concat('The package ',$package/@name ,' is empty. Packages must contain child classes and conenctors (i.e. owned elements).'))"
+                f:generateHtmlWarning(fn:concat('The package ',$package/@name ,' is empty. Packages must contain child classes and conenctors (i.e. owned elements).'))"
         />
     </xsl:template>
 

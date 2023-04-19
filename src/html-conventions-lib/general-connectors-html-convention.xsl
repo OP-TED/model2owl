@@ -17,7 +17,7 @@
     <xsl:import href="utils-html-conventions.xsl"/>
 
     <xd:doc>
-        <xd:desc>[connector-name-27] - The connector has a general name, and it should not. The
+        <xd:desc>[connector-name-8] - The connector has a general name, and it should not. The
             names must be provided as connector source and target roles, not as connector name. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -36,7 +36,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[connector-description-28] - The connector $connectorName$ has no description. It
+        <xd:desc>[connector-description-9] - The connector $connectorName$ has no description. It
             is recommended to define and describe all the relations.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -54,7 +54,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[connector-source-29] - The connector $connectorName$ has no target role. The
+        <xd:desc>[connector-target-11] - The connector $connectorName$ has no target role. The
             connectors must have target roles.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -71,27 +71,9 @@
         />
     </xsl:template>
 
-    <xd:doc>
-        <xd:desc>[connector-source-30] - The connector $connectorName$ has no inverse. It is
-            recommended that each relation (here UML connector) includes a definition of its
-            inverse.</xd:desc>
-        <xd:param name="connector"/>
-    </xd:doc>
-
-    <xsl:template name="co-missingInverseRelation">
-        <xsl:param name="connector"/>
-        <xsl:sequence
-            select="
-                if (not(boolean($connector/source/role/@name) and boolean($connector/target/role/@name))) then
-                    f:generateHtmlWarning(fn:concat('The connector ', f:getConnectorName($connector),
-                    ' has no inverse relation. It is recommended that each relation (here UML connector) includes a definition of its inverse.'))
-                else
-                    ()"
-        />
-    </xsl:template>
 
     <xd:doc>
-        <xd:desc>[connector-source-31] - The connector $connectorName$ employ invalid direction
+        <xd:desc>[connector-direction-11] - The connector $connectorName$ employ invalid direction
             $direction$. Connectors must employ "Source->Destination" or "Bi-directional" directions
             only. </xd:desc>
         <xd:param name="connector"/>
@@ -112,7 +94,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[connector-multiplicity-32] - The target role of $connectorName$ has no
+        <xd:desc>[connector-multiplicity-12] - The target role of $connectorName$ has no
             multiplicity. Cardinality must be provided for each role.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -122,7 +104,7 @@
         <xsl:sequence
             select="
                 if ($connector/target/type/not(@multiplicity)) then
-                    f:generateHtmlError(fn:concat('The target role of ', f:getConnectorName($connector),
+                    f:generateHtmlWarning(fn:concat('The target role of ', f:getConnectorName($connector),
                     ' has no multiplicity. Cardinality must be provided for each role.'))
                 else
                     ()"
@@ -130,7 +112,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[connector-multiplicity-34] - The connector $connectorName$ has target multiplicity
+        <xd:desc>[connector-multiplicity-13] - The connector $connectorName$ has target multiplicity
             invalidly stated. Multiplicity must be specified in the form ['min'..'max'].</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -151,48 +133,10 @@
         </xsl:if>
     </xsl:template>
  
-    <xd:doc>
-        <xd:desc>[connector-multiplicity-33] - The target role of $connectorName$ has no
-            multiplicity. Cardinality must be provided for each role.</xd:desc>
-        <xd:param name="connector"/>
-    </xd:doc>
-    
-    <xsl:template name="co-missingSourceMultiplicity">
-        <xsl:param name="connector"/>
-        <xsl:sequence
-            select="
-            if ($connector/source/type/not(@multiplicity)) then
-            f:generateHtmlError(fn:concat('The source role of ', f:getConnectorName($connector),
-            ' has no multiplicity. Cardinality must be provided for each role.'))
-            else
-            ()"
-        />
-    </xsl:template>
-    
-    <xd:doc>
-        <xd:desc>[connector-multiplicity-35] - The connector $connectorName$ has source multiplicity
-            invalidly stated. Multiplicity must be specified in the form ['min'..'max'].</xd:desc>
-        <xd:param name="connector"/>
-    </xd:doc>
-    
-    <xsl:template name="co-invalidSourceMultiplicityFormat">
-        <xsl:param name="connector"/>
-        <xsl:variable name="multiplicityValue" select="$connector/source/type/@multiplicity"/>
-        <xsl:if test="boolean($multiplicityValue)">
-            <xsl:sequence
-                select="
-                    if (fn:matches($multiplicityValue, '^[0-9]..[0-9]$') or fn:matches($multiplicityValue, '^[0-9]..\*$')) then
-                        ()
-                    else
-                        f:generateHtmlWarning(fn:concat('The connector ', f:getConnectorName($connector),
-                        ' has source multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'))
-                    "
-            />
-        </xsl:if>
-    </xsl:template>
+  
 
     <xd:doc>
-        <xd:desc>[connector-direction-63] - The connector direction and roles are out of sync. When
+        <xd:desc>[connector-direction-14] - The connector direction and roles are out of sync. When
             the connector direction is "Source->Destination" then only a target role is expected,
             while for "Bi-Directional" direction source and a target roles are expected.</xd:desc>
         <xd:param name="connector"/>

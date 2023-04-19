@@ -18,9 +18,9 @@
 
     <xd:doc>
         <xd:desc>Applying the checkers to a group of connectors with same name
-            [connectors-with-same-name-multiplicity-68]
-            [connectors-with-same-name-definition-69]
-            [connectors-with-same-name-definition-70]</xd:desc>
+            [connectors-with-same-name-multiplicity-1]
+            [connectors-with-same-name-definition-2]
+     </xd:desc>
     </xd:doc>
 
     <xsl:template name="connectorsWithSameName">
@@ -53,7 +53,7 @@
 
 
     <xd:doc>
-        <xd:desc>[connectors-with-same-name-multiplicity-68]Check the multiplicity values from a group of connectors with same name</xd:desc>
+        <xd:desc>[connectors-with-same-name-multiplicity-1]Check the multiplicity values from a group of connectors with same name</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
     </xd:doc>
@@ -71,13 +71,13 @@
                 if (f:areStringsEqual($multiplicityValues) and $allConnectorsHaveMultiplicityValue) then
                     ()
                 else
-                f:generateHtmlWarning('When a property is reused in multiple contexts, the multiplicity is expected to be the same. Please check the nomenclature above for a summary.')"
+                f:generateHtmlInfo('When a property is reused in multiple contexts, the multiplicity is expected to be the same. Please check the nomenclature above for a summary.')"
         />
     </xsl:template>
 
 
     <xd:doc>
-        <xd:desc>[connectors-with-same-name-definition-69] [connectors-with-same-name-definition-70] Check the definition values from a group of connectors with same name</xd:desc>
+        <xd:desc>[connectors-with-same-name-definition-2] Check the definition values from a group of connectors with same name</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
     </xd:doc>
