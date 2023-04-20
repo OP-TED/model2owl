@@ -264,5 +264,18 @@
         </x:call>
         <x:expect label="there are 23 distinct namespaces" select="('epo', 'epo-not', 'at-voc', 'dul', 'adms', 'epo-ord', 'epo-cat', 'cpov', 'org', 'cpv', 'locn', 'cv', 'dct', 'person', 'foaf', 'epo-ful', 'cccev', 'at-voc-new', 'time', 'owl', 'rdfs', 'xsd', 'skos')"/>
     </x:scenario>
+    
+    <x:scenario label="Get element tags that has tags">
+        <x:call function="f:getElementTags">
+            <x:param name="element" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[211]"/>
+        </x:call>
+        <x:expect label="correct tags number" test="count(/tag)=9"/>
+    </x:scenario>
    
+    <x:scenario label="Get element tags that has no tags">
+        <x:call function="f:getElementTags">
+            <x:param name="element" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[210]"/>
+        </x:call>
+        <x:expect label="no tags" select="()"/>
+    </x:scenario>
 </x:description>

@@ -115,7 +115,8 @@
 
 
     <xd:doc>
-        <xd:desc>Return warning when an Enumeration doesn't have items </xd:desc>
+        <xd:desc>[enumeration-attribute-2] The enumeration $value$ shall have no values/attributes defined. 
+            An Enumeration stands for an controlled list and its management is out of model scope.  </xd:desc>
         <xd:param name="enumeration"/>
     </xd:doc>
 
@@ -123,8 +124,9 @@
         <xsl:param name="enumeration"/>
         <xsl:variable name="enumerationNumberOfAttributes"
             select="count($enumeration/attributes/attribute)"/>
-        <xsl:if test="$enumerationNumberOfAttributes = 0">
-            <xsl:sequence select="f:generateHtmlWarning('This enumeration has no items')"/>
+        <xsl:if test="$enumerationNumberOfAttributes > 0">
+            <xsl:sequence select="f:generateHtmlWarning(fn:concat('The enumeration ' ,$enumeration/@name, 
+                ' shall have no values/attributes defined. An Enumeration stands for an controlled list and its management is out of model scope. '))"/>
         </xsl:if>
     </xsl:template>
 

@@ -76,6 +76,12 @@
                 <xsl:call-template name="ca-incorrectDatatype">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
+            <xsl:call-template name="ca-missingMultiplicity">
+                <xsl:with-param name="classAttribute" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="ca-nonPublicAttribute">
+                <xsl:with-param name="classAttribute" select="."/>
+            </xsl:call-template>
             <!--    End of specific checker rules-->
         </xsl:variable>
         <xsl:if test="boolean($classAttributeChecks)">
@@ -185,6 +191,42 @@
         />
     </xsl:template>
     
+    <xd:doc>
+        <xd:desc>[class-attribute-multiplicity-4] - The attribute $attributeName$ multiplicity is missing. Multiplicity must be specified in the form ['min'..'max'] 
+            and the values should be defined with a digit or *</xd:desc>
+        <xd:param name="classAttribute"/>
+    </xd:doc>
+    <xsl:template name="ca-missingMultiplicity">
+        <xsl:param name="classAttribute"/>
+        <xsl:variable name="classAttributeMultiplicityMin" select="$classAttribute/bounds/@lower"/>
+        <xsl:variable name="classAttributeMultiplicityMax" select="$classAttribute/bounds/@upper"/>
+        <xsl:sequence
+            select="
+            if ($classAttributeMultiplicityMin and $classAttributeMultiplicityMax) then
+            ()
+            else
+            f:generateHtmlWarning(fn:concat('The attribute ', $classAttribute/@name, ' multiplicity is missing. ',
+            'Multiplicity must be specified in the form [min..max] and the values should ',
+            'be defined with a digit or *'))"
+        />
+    </xsl:template>
+    
+    
+    <xd:doc>
+        <xd:desc>[class-attribute-visibility-5] - The attribute type $attributeType$ is non-public. Attributes shall be public</xd:desc>
+        <xd:param name="classAttribute"/>
+    </xd:doc>
+    <xsl:template name="ca-nonPublicAttribute">
+        <xsl:param name="classAttribute"/>
+        <xsl:variable name="attributeScope" select="$classAttribute/@scope"/>
+        <xsl:sequence
+            select="
+            if ($attributeScope = 'Public') then
+            ()
+            else
+            f:generateHtmlWarning(fn:concat('The attribute ', $classAttribute/@name, ' is non-public. Attributes shall be public '))"
+        />
+    </xsl:template>
 
 
   

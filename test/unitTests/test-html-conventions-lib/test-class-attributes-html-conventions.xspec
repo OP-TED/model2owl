@@ -64,4 +64,25 @@
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
+    
+    <x:scenario label="Scenario for finding a class attribute with no multiplicity">
+        <x:call template="ca-missingMultiplicity">
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[1]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a class attribute that is public">
+        <x:call template="ca-nonPublicAttribute">
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[1]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a class attribute that is not public">
+        <x:call template="ca-nonPublicAttribute">
+            <x:param name="classAttribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[2]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+    </x:scenario>
 </x:description>

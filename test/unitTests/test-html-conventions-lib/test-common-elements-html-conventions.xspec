@@ -231,7 +231,7 @@
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     <x:scenario label="Scenario for finding a class with a correct stereotype ">
-        <x:call template="stereotypeProvided">
+        <x:call template="unknownStereotypeProvided">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[35]"/>
             <x:param name="elementType" select="'class'"/>
         </x:call>   
@@ -239,7 +239,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class with no stereotype ">
-        <x:call template="stereotypeProvided">
+        <x:call template="unknownStereotypeProvided">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]"/>
             <x:param name="elementType" select="'class'"/>
         </x:call>   
@@ -248,7 +248,7 @@
     
     
     <x:scenario label="Scenario for finding a class with an incorrect stereotype">
-        <x:call template="stereotypeProvided">
+        <x:call template="unknownStereotypeProvided">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[34]"/>
             <x:param name="elementType" select="'class'"/>
         </x:call>   
@@ -256,7 +256,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class attribute type that has a stereotype">
-        <x:call template="stereotypeProvided">
+        <x:call template="unknownStereotypeProvided">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[37]/attributes/attribute[6]"/>
             <x:param name="elementType" select="'classAttribute'"/>
         </x:call>   
@@ -264,7 +264,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class attribute that has no stereotype">
-        <x:call template="stereotypeProvided">
+        <x:call template="unknownStereotypeProvided">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]/attributes/attribute[3]"/>
             <x:param name="elementType" select="'classAttribute'"/>
         </x:call>   
@@ -286,6 +286,81 @@
             <x:param name="elementType" select="'classAttribute'"/>
         </x:call>   
         <x:expect label="expect to do nothing" select = "()"/>      
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class that has stereotype ">
+        <x:call template="stereotypeProvided">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[35]"/>
+            <x:param name="elementType" select="'class'"/>
+        </x:call>   
+        <x:expect label="expect a Description Element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a class that has no stereotype ">
+        <x:call template="stereotypeProvided">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[38]"/>
+            <x:param name="elementType" select="'class'"/>
+        </x:call>   
+        <x:expect label="expect no Description Element" select = "()"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding tag names that are not URIs in a class ">
+        <x:call template="invalidTagName">
+            <x:param name="element" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[211]"/>
+        </x:call>   
+        <x:expect label="expect a Description Element" test="count(/dd)=3"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a tag without name in a class ">
+        <x:call template="missingTagName">
+            <x:param name="element" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[211]"/>
+        </x:call>   
+        <x:expect label="expect a Description Element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding an attribute with names for all tags ">
+        <x:call template="missingTagName">
+            <x:param name="element" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[211]/attributes[1]/attribute[1]"/>
+        </x:call>   
+        <x:expect label="expect a Description Element" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding tags without value in a class ">
+        <x:call template="missingTagValue">
+            <x:param name="element" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[211]"/>
+        </x:call>   
+        <x:expect label="expect a Description Element" test="count(/dd)=3"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a class with plural name (s)">
+        <x:call template="namePlural">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[87]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a class with plural name (es)">
+        <x:call template="namePlural">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[59]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a class with no plural name">
+        <x:call template="namePlural">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[57]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding tags with undefiend prefixes in a class ">
+        <x:call template="missingPrefixTagName">
+            <x:param name="element" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[211]"/>
+        </x:call>   
+        <x:expect label="expect a Description Element" test="count(/dd)=4"/> 
     </x:scenario>
     
 
