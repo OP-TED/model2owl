@@ -17,7 +17,7 @@ The data shapes shall be expressed in SHACL.
 
 *Description:*
 
-There are various languages allowing for data shape expression and thus define validation rules for RDF data. Among the executable ones, the most well-known are SHACL [xref:references.adoc#ref:shacl[shacl]] and ShEx [xref:references.adoc#ref:shex[shex]].
+There are various languages allowing for data shape expression and thus define validation rules for RDF data. Among the executable ones, the most well-known are SHACL [xref:semicsg/references.adoc#ref:shacl[shacl]] and ShEx [xref:semicsg/references.adoc#ref:shex[shex]].
 We are aware that a strong community of practice exists for ShEx. However, as SHACL is a W3C standard, we strongly recommend using it.
 
 
@@ -72,7 +72,7 @@ If it is considered complete, then we say that we operate under the _closed-worl
 continually evolving and distributed data (that is more in line with reality), the data is considered possibly incomplete,
 and we say that operating is under the _open-world assumption_.
 
-Under the closed-world assumption, it is presumed that a true statement is also known to be true. Therefore, conversely, what is not currently known to be true, is false [xref:references.adoc#ref:reiter81[reiter81]]. The opposite of the closed-world assumption is the open-world assumption stating that lack of knowledge does not imply falsity. The truth value of a statement may be true despite whether or not it is known to be true.
+Under the closed-world assumption, it is presumed that a true statement is also known to be true. Therefore, conversely, what is not currently known to be true, is false [xref:semicsg/references.adoc#ref:reiter81[reiter81]]. The opposite of the closed-world assumption is the open-world assumption stating that lack of knowledge does not imply falsity. The truth value of a statement may be true despite whether or not it is known to be true.
 
 This means that when validating, the data must be considered complete to assess whether it fulfils the imposed constraints or recommended shapes. Therefore, everything that is not known to be true must be considered false.
 

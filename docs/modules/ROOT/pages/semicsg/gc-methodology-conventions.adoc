@@ -20,7 +20,7 @@ methodology.
 *Description:*
 
 A methodology is a set of methods, processes, and practices that are repeatedly carried out to deliver projects
-(TOGAF [xref:references.adoc#ref:togaf[togaf]]).
+(TOGAF [xref:semicsg/references.adoc#ref:togaf[togaf]]).
 It helps by using a clear set of processes for managing projects that everyone in the organisation understands, reducing risks,
 and improving the chances of success. A good methodology that fits the context and environment of an organisation can provide
 clear guidance on what, who, when, and how a project should be done. It also provides a clear path and a systematic strategy to
@@ -29,12 +29,12 @@ solve the in-field problems.
 We do not outline a concrete methodology here but merely point to the benefits of adopting and using one. In the SEMIC context,
 conceptual model development will benefit greatly from embracing some or a combination of techniques and frameworks in
 data modelling (e.g. Bottom-Up, Top-Down, Case-Based, Entity-Relationship, Object-Oriented, Star/Snowflake Schema data modelling
-techniques, etc.), ontology engineering methodologies (e.g. Methontology [xref:references.adoc#ref:fernandez-lopez97[fernandez-lopez97]],
-DOGMA [xref:references.adoc#ref:jarrar08[jarrar08]],  OntoClean [xref:references.adoc#ref:guarino04[guarino04]], TOVE [xref:references.adoc#ref:fox92[fox92]],
-DILIGENT [xref:references.adoc#ref:pinto04[pinto04]], NeOn [xref:references.adoc#ref:neon[neon]], etc. [xref:references.adoc#ref:sure09[sure09]]),
-data management body of knowledge (DAMA-DMBOK [xref:references.adoc#ref:dama-dmbok[dama-dmbok]]) or architecture frameworks
-and practices (e.g. TOGAF [xref:references.adoc#ref:togaf[togaf]], Zachman Framework [xref:references.adoc#ref:zachman87[zachman87]],
-EAP [xref:references.adoc#ref:spewak06[spewak06]], etc.).
+techniques, etc.), ontology engineering methodologies (e.g. Methontology [xref:semicsg/references.adoc#ref:fernandez-lopez97[fernandez-lopez97]],
+DOGMA [xref:semicsg/references.adoc#ref:jarrar08[jarrar08]],  OntoClean [xref:semicsg/references.adoc#ref:guarino04[guarino04]], TOVE [xref:semicsg/references.adoc#ref:fox92[fox92]],
+DILIGENT [xref:semicsg/references.adoc#ref:pinto04[pinto04]], NeOn [xref:semicsg/references.adoc#ref:neon[neon]], etc. [xref:semicsg/references.adoc#ref:sure09[sure09]]),
+data management body of knowledge (DAMA-DMBOK [xref:semicsg/references.adoc#ref:dama-dmbok[dama-dmbok]]) or architecture frameworks
+and practices (e.g. TOGAF [xref:semicsg/references.adoc#ref:togaf[togaf]], Zachman Framework [xref:semicsg/references.adoc#ref:zachman87[zachman87]],
+EAP [xref:semicsg/references.adoc#ref:spewak06[spewak06]], etc.).
 
 Among other benefits of adopting a clear and well-defined methodology are:
 
@@ -67,7 +67,7 @@ where the boundary of the model is and what shall be left out.
 
 The clearer the scope the higher chances of success are.
 
-It shall be possible to determine the scope of a data specification from the use cases for which it is drawn up. [xref:references.adoc#ref:oslo-rules[oslo-rules, sec 3.1.4]]
+It shall be possible to determine the scope of a data specification from the use cases for which it is drawn up. [xref:semicsg/references.adoc#ref:oslo-rules[oslo-rules, sec 3.1.4]]
 
 
 [[sec:mc-r3]]
@@ -82,7 +82,7 @@ It shall be possible to determine the scope of a data specification from the use
 
 |*Statement:*
 
-If a domain contains a lot of concepts that have to be modelled, then it is recommended to partition it into subdomains and manage them as connected modules. [xref:references.adoc#ref:oslo-rules[oslo-rules, sec 3.1.3]]
+If a domain contains a lot of concepts that have to be modelled, then it is recommended to partition it into subdomains and manage them as connected modules. [xref:semicsg/references.adoc#ref:oslo-rules[oslo-rules, sec 3.1.3]]
 |===
 
 *Description:*
@@ -90,17 +90,17 @@ If a domain contains a lot of concepts that have to be modelled, then it is reco
 Divide and conquer method works in many situations, including in the modelling realm. It may not be easy, however, to make
 a clearcut separation between concepts belonging to one module or another, and such an attempt will certainly bring clarity.
 
-Sometimes, a concept can be used for several domains. Then it shall be placed in a separate module. [xref:references.adoc#ref:oslo-rules[oslo-rules, sec 3.1.3]]
+Sometimes, a concept can be used for several domains. Then it shall be placed in a separate module. [xref:semicsg/references.adoc#ref:oslo-rules[oslo-rules, sec 3.1.3]]
 
 The need for modularisation typically emerges when the to-be-modelled space grows. As the terms are to be identified by URIs
-[xref:gc-publication-conventions.adoc#sec:pc-r2[PC-R2]], it is recommended to include in the used URI structure modularisation potential.
+[xref:semicsg/gc-publication-conventions.adoc#sec:pc-r2[PC-R2]], it is recommended to include in the used URI structure modularisation potential.
 
 
 ****
 *Examples:*
 
-For example, in the eProcurement ontology(ePO) [xref:references.adoc#ref:epo[epo]], there is a core ontology and there are
-extension modules such as eCatalogue, eOrdering, and eNotice [xref:references.adoc#ref:epo[epo]] that further refine and extend
+For example, in the eProcurement ontology(ePO) [xref:semicsg/references.adoc#ref:epo[epo]], there is a core ontology and there are
+extension modules such as eCatalogue, eOrdering, and eNotice [xref:semicsg/references.adoc#ref:epo[epo]] that further refine and extend
 a specific part of the core.
 
 For example, Core Location is used across other Core Vocabularies and is established as a CV on its own.

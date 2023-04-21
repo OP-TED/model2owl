@@ -17,9 +17,9 @@ The formal ontology shall be expressed in OWL 2.
 
 *Description:*
 
-In the Semantic Web domain, two formal languages can be used for expressing the ontology: RDFS [xref:references.adoc#ref:rdfs[rdfs]]  and OWL 2 [xref:references.adoc#ref:owl2[owl2]]. RDFS is simpler and only allows for some of the recommended expressions (for example, the distinction between datatype and object properties is not possible). OWL 2 is more complex and more expressive than RDFS.
+In the Semantic Web domain, two formal languages can be used for expressing the ontology: RDFS [xref:semicsg/references.adoc#ref:rdfs[rdfs]]  and OWL 2 [xref:semicsg/references.adoc#ref:owl2[owl2]]. RDFS is simpler and only allows for some of the recommended expressions (for example, the distinction between datatype and object properties is not possible). OWL 2 is more complex and more expressive than RDFS.
 
-We recommend using only a limited set of expression types available in OWL 2 language [xref:gc-semantic-conventions.adoc#sec:sc-r2[SC-R2]].
+We recommend using only a limited set of expression types available in OWL 2 language [xref:semicsg/gc-semantic-conventions.adoc#sec:sc-r2[SC-R2]].
 
 ****
 *Examples:*
@@ -76,7 +76,7 @@ The formal ontology shall be _lightweight_ in its logical underpinning, focusing
 
 *Description:*
 
-OWL 2 language provides a high level of expressivity. In the SEMIC interoperability context, the primary purpose of semantic artefacts is to establish the common set of concepts and how they are employed in data exchange. For this purpose, simple OWL 2 constructs suffice. Therefore, the OWL 2 ontology shall be kept _lightweight_, and no advanced logical definitions are necessary, which would make the ontology _heavyweight_. The Bulletin of the Association for Information Science and Technology, dedicated an https://asistdl.onlinelibrary.wiley.com/toc/23739223/2015/41/4[entire section] on the charm of weak semantics in the linked data world. Backer & Sutton explain well how lightweight semantics supports interoperability and reuse [xref:references.adoc#ref:baker15[baker15]].
+OWL 2 language provides a high level of expressivity. In the SEMIC interoperability context, the primary purpose of semantic artefacts is to establish the common set of concepts and how they are employed in data exchange. For this purpose, simple OWL 2 constructs suffice. Therefore, the OWL 2 ontology shall be kept _lightweight_, and no advanced logical definitions are necessary, which would make the ontology _heavyweight_. The Bulletin of the Association for Information Science and Technology, dedicated an https://asistdl.onlinelibrary.wiley.com/toc/23739223/2015/41/4[entire section] on the charm of weak semantics in the linked data world. Backer & Sutton explain well how lightweight semantics supports interoperability and reuse [xref:semicsg/references.adoc#ref:baker15[baker15]].
 
 We recommend the formal ontology definition be limited to the following types of expressions:
 
@@ -153,7 +153,7 @@ The choice in handling the lexicalisation of concepts shall be clearly defined a
 *Description:*
 
 The lexicalisation of concepts in semantic artefacts can be implemented in multiple ways. Two popular approaches are used
-in practice: RDFS or SKOS lexicalisation. However, other types can be considered as well (e.g. [xref:references.adoc#ref:lemon[lemon]], [xref:references.adoc#ref:vann[vann]], etc.).
+in practice: RDFS or SKOS lexicalisation. However, other types can be considered as well (e.g. [xref:semicsg/references.adoc#ref:lemon[lemon]], [xref:semicsg/references.adoc#ref:vann[vann]], etc.).
 
 RDFS allows for a simple lexicalisation and annotation:
 

@@ -52,9 +52,9 @@ In data shapes (SHACL), the class can be used for in domain/range property const
 In UML, properties are depicted as new connections (object properties) that are incoming and outgoing to the class or as new attributes
 (datatype properties) that appear in the class.
 
-This works because OWL 2 semantics treats properties as first-class citizens (along with classes, datatypes and individuals). So even if the UML class diagram may visualise new properties on the class, they shall be read as constructs defined separately from one another, just as the OWL 2 specification defines it [xref:references.adoc#ref:owl2[owl2]].
+This works because OWL 2 semantics treats properties as first-class citizens (along with classes, datatypes and individuals). So even if the UML class diagram may visualise new properties on the class, they shall be read as constructs defined separately from one another, just as the OWL 2 specification defines it [xref:semicsg/references.adoc#ref:owl2[owl2]].
 
-The properties on the superclasses of the reused class are considered inherited. When introducing new properties, do not duplicate existing ones in the superclass(es). Also, make sure there are no logical contradictions [xref:gc-semantic-conventions.adoc#sec:sc-r5[CS-R5]].
+The properties on the superclasses of the reused class are considered inherited. When introducing new properties, do not duplicate existing ones in the superclass(es). Also, make sure there are no logical contradictions [xref:semicsg/gc-semantic-conventions.adoc#sec:sc-r5[CS-R5]].
 |*Original properties on the class as defined in the context of a data specification*|In OWL 2 & SHACL, when reusing a class as-is from an established ontology hereafter called the original, all properties and constraints associated with the class are considered adopted (even if some may be irrelevant).
 
 It is recommended to make the reuse of the original clear (by notes, hyperlinks or dereferenceable URIs of the terms) at the class level.
@@ -115,7 +115,7 @@ In addition, new scoping or nuancing shall be provided in the scope notes (e.g. 
 For example, the wording of FOAF definitions can benefit from light adaptations and adjustments, yet the meaning is not changing.
 Hence, in Core Person Vocabulary, the definitions are slightly adjusted.
 Such adaptations might be made when the original label or definition does not follow the guidelines laid out in this document.
-For example, the one on circular definitions [xref:gc-general-conventions.adoc#sec:gc-r5[GC-R5]].
+For example, the one on circular definitions [xref:semicsg/gc-general-conventions.adoc#sec:gc-r5[GC-R5]].
 
 
 [[sec:reuse-of-a-class-with-semantic-adaptations]]
@@ -138,7 +138,7 @@ we shall show the whole reuse chain (in the conceptual model and especially in t
 |*New properties on the class*|Add new properties as necessary on the new (owned) sub-class.
 
 The properties on the superclasses of the reused class are considered inherited. When introducing new properties, do not
-duplicate existing ones in the superclass(es). Make sure there are no logical contradictions [xref:gc-semantic-conventions.adoc#sec:sc-r5[CS-R5]].
+duplicate existing ones in the superclass(es). Make sure there are no logical contradictions [xref:semicsg/gc-semantic-conventions.adoc#sec:sc-r5[CS-R5]].
 |*Original properties on the class as defined in the context of a data specification*|When reusing a class as-is from a data
 specification, hereafter called the original, all properties and constraints associated with the class should be adopted.
 
@@ -191,7 +191,7 @@ When UML is transformed into other representations, it is not recommended to rep
 
 When the UML is transformed into other representations, the inclusion of domain/range statements is dependent on the "reuse" intention of the data specification.
 
-In case of a broad reuse intention, as for the SEMIC Core Vocs, it is not recommended to include them in the lightweight ontology but better reflect them as constraints in SHACL, where necessary (i.e. optional properties can stay free of domain/range specification) [xref:gc-semantic-conventions.adoc#sec:sc-r2[CS-R2]].
+In case of a broad reuse intention, as for the SEMIC Core Vocs, it is not recommended to include them in the lightweight ontology but better reflect them as constraints in SHACL, where necessary (i.e. optional properties can stay free of domain/range specification) [xref:semicsg/gc-semantic-conventions.adoc#sec:sc-r2[CS-R2]].
 Note: in the case of narrow reuse intention, as for the application profiles, it is recommended to provide domain/range constraints  in the data shape definitions (using SHACL) even if those are optional.
 |*Other constraints and additional information*|When reusing a property as-is from a data specification, then all constraints
 associated with the property should be adopted.

@@ -1,8 +1,26 @@
-= The SEMIC Style Guide for Semantic Engineers
-:favicon: favicon.gif
-:description: The SEMIC Style Guide for Semantic Engineers.
+# model2owl Project Documentation
+:description: The documentation for the model2owl project.
 :sectanchors:
-:url-repo: https://github.com/SEMICeu/style-guide
+//:url-repo: https://github.com/SEMICeu/style-guide
+//:favicon: ../favicon.ico
+:license-url: https://creativecommons.org/licenses/by/4.0/deed.en
+:license-title: CC BY 4.0
+:docinfo: shared
+
+
+The *model2owl* https://github.com/OP-TED/model2owl/[GitHub project] comprises a set of tools for transforming a UML (v2.5) model from its XMI (v2.5.1) serialisation into a formal ontology. This transformation is performed using XSLT stylesheets under the assumption that the UML model conforms to the set of conventions outlined in this documentation.
+
+This documentation covers all the important aspects that one might be interested in when using these tools, including:
+
+* The architectural setup of the project and the ontology
+* The conceptual model conventions that the UML model should adhere to, in order to allow the tools to generate the best possible results.
+* The transformation rules applied in the process of conversion
+* ...
+
+This work is developed in the context of https://github.com/eprocurementontology/eprocurementontology[eProcurement ontology project] financed by the Digital Europe Programme and led by the https://op.europa.eu/en/[Publications Office of the European Union].
+
+'''
+**Ignore (from SEMIC Style GUIDE) **
 
 This document defines the style guide to be applied to the SEMIC's semantic data specifications, notably to the eGovernment Core Vocabularies and Application Profiles. It provides rules on naming conventions, syntax, artefact management and organisation. It is meant to be complemented with technical artefacts and implementations that enable automatic conformance checking and transformation of conceptual models into formal semantic representations.
 

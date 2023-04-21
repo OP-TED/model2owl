@@ -17,14 +17,14 @@ Reuse existing concepts as much as possible, respecting the original semantics a
 
 *Description:*
 
-Only use constructs with semantics (human and machine-readable) that support the use case or domain. A similar reflex must be considered by reusing properties and classes from other vocabularies. As a general rule, it is safe to reuse annotation properties, as they carry no logical semantics. Conversely, no concepts shall be redefined unless they are significant variations of the existent ones. In order to achieve a common approach to reuse, apply the reuse guidelines as specified above [xref:clarification-on-reuse.adoc[Clarification on the reuse]].
+Only use constructs with semantics (human and machine-readable) that support the use case or domain. A similar reflex must be considered by reusing properties and classes from other vocabularies. As a general rule, it is safe to reuse annotation properties, as they carry no logical semantics. Conversely, no concepts shall be redefined unless they are significant variations of the existent ones. In order to achieve a common approach to reuse, apply the reuse guidelines as specified above [xref:semicsg/clarification-on-reuse.adoc[Clarification on the reuse]].
 
 See more [
-xref:references.adoc#ref:ld-bp[ld-bp],
-xref:references.adoc#ref:ld-bp[ldp-bp],
-xref:references.adoc#ref:dwbp[dwbp],
-xref:references.adoc#ref:epo-arch[epo-arch],
-xref:references.adoc#ref:oslo-rules[oslo-rules]
+xref:semicsg/references.adoc#ref:ld-bp[ld-bp],
+xref:semicsg/references.adoc#ref:ld-bp[ldp-bp],
+xref:semicsg/references.adoc#ref:dwbp[dwbp],
+xref:semicsg/references.adoc#ref:epo-arch[epo-arch],
+xref:semicsg/references.adoc#ref:oslo-rules[oslo-rules]
 ]
 
 [[sec:gc-r2]]
@@ -67,15 +67,15 @@ label and definition.
 *Description:*
 
 Terms and concepts are not the same things. A term is a word, compound word, or multi-word expression that, in specific contexts, is given specific meanings – these may deviate from the meanings the same words have in other contexts and in everyday language.
-A concept can be viewed as an idea or notion, a unit of thought [xref:references.adoc#ref:skos[skos]]. However, what constitutes a unit of thought is subjective, and this definition is meant to be suggestive rather than restrictive. That is why each concept needs to be well-named (termed) by providing preferred and alternative labels and should have a clear and precise definition supported by examples and explanatory notes. So, we need a precise way to refer to concepts. The mechanism offering such a possibility is using URIs to establish the identity of a concept's "meaning". URIs also enable referencing, an essential feature of meaning exchange (communication).
+A concept can be viewed as an idea or notion, a unit of thought [xref:semicsg/references.adoc#ref:skos[skos]]. However, what constitutes a unit of thought is subjective, and this definition is meant to be suggestive rather than restrictive. That is why each concept needs to be well-named (termed) by providing preferred and alternative labels and should have a clear and precise definition supported by examples and explanatory notes. So, we need a precise way to refer to concepts. The mechanism offering such a possibility is using URIs to establish the identity of a concept's "meaning". URIs also enable referencing, an essential feature of meaning exchange (communication).
 Such a reference allows for establishing a common meaning, not only between humans and machines but also among humans. Finally, the meaning of the term must be clear. Its definition is associated with the term via the URI. To make the term reusable, it should be published as part of a data specification.
 
 See more [
-xref:references.adoc#ref:ld-bp[ld-bp],
-xref:references.adoc#ref:ld-bp[ldp-bp],
-xref:references.adoc#ref:dwbp[dwbp],
-xref:references.adoc#ref:epo-arch[epo-arch],
-xref:references.adoc#ref:oslo-rules[oslo-rules]
+xref:semicsg/references.adoc#ref:ld-bp[ld-bp],
+xref:semicsg/references.adoc#ref:ld-bp[ldp-bp],
+xref:semicsg/references.adoc#ref:dwbp[dwbp],
+xref:semicsg/references.adoc#ref:epo-arch[epo-arch],
+xref:semicsg/references.adoc#ref:oslo-rules[oslo-rules]
 ]
 
 [[sec:gc-r4]]
@@ -130,7 +130,7 @@ The concept definitions shall be elaborated consistently across the vocabulary.
 
 In practice, different styles of defining concepts can be noticed across a range of semantic data specifications.
 
-The SEMIC Principles for creating good definitions [xref:references.adoc#ref:semic-defs[semic-defs]] are a basis for writing definitions.
+The SEMIC Principles for creating good definitions [xref:semicsg/references.adoc#ref:semic-defs[semic-defs]] are a basis for writing definitions.
 They are based on advice found in the literature and are the following:
 
 * Be concise but complete,
@@ -138,7 +138,7 @@ They are based on advice found in the literature and are the following:
 ** Make sure that every concept that occurs in the model is directly (or indirectly) defined
 * Describe only one term
 * Structure the definition in a standardised way:
-** Use the singular form to phrase the definition [xref:gc-general-conventions.adoc#sec:gc-r4[GC-R4]]
+** Use the singular form to phrase the definition [xref:semicsg/gc-general-conventions.adoc#sec:gc-r4[GC-R4]]
 ** State what the term is, and don't enumerate what it is NOT (no negative definition)
 ** Use only commonly understood abbreviations
 ** Use similar terminology for related definitions
@@ -147,7 +147,7 @@ They are based on advice found in the literature and are the following:
 * Form the definition in one or more sentences that start with a capital letter and end with a period.
 * Do not start a definition with a repetition of the name of the concept.
 * Rich standard encodings such as UTF-8 and UTF-16 are supported in notes and definitions. In the element names, however,
-we recommend avoiding any character encodings and using plain ASCII [xref:references.adoc#ref:epo-cmc[epo-cmc, sec 4.2]].
+we recommend avoiding any character encodings and using plain ASCII [xref:semicsg/references.adoc#ref:epo-cmc[epo-cmc, sec 4.2]].
 
 [[sec:gc-r6]]
 == Reuse compliance
@@ -212,6 +212,6 @@ For classes, it is possible to mark a class as _abstract_, which means that it c
 
 For example consider the DCAT-AP and two mandatory classes: `dcat:Catalog` and `dcat:Dataset`. When metadata of a catalogue (and its records) is exchanged, then both classes `dcat:Catalog` and `dcat:Dataset` must be instantiated; however when a single dataset metadata is being exchange then only `dcat:Dataset` instance shall be provided. Moreover, in the second scenario, providing an instance of `dcat:Catalog` will be counterproductive and possible leading to errors.
 
-Descriptions of what classes can or shall be bundled together when participating in information exchange belong in "data exchange contracts", "API endpoint scheme definitions" or the likes of these. Such specifications belong in the _Technical Interoperability_ layer of the European Interoperability Framework (EIF) [xref:references.adoc#ref:eif[eif]], and are (currently) out of scope of this style guide, which aims primarily at addressing the semantic interoperability.
+Descriptions of what classes can or shall be bundled together when participating in information exchange belong in "data exchange contracts", "API endpoint scheme definitions" or the likes of these. Such specifications belong in the _Technical Interoperability_ layer of the European Interoperability Framework (EIF) [xref:semicsg/references.adoc#ref:eif[eif]], and are (currently) out of scope of this style guide, which aims primarily at addressing the semantic interoperability.
 
 If semantic engineers prefer or are compelled to employ deontic indicators, then deontic indicators must be precisely defined and those definitions must be published. No reliance on common sense understanding shall be assumed as the meaning of such deontic indicators may (and certainly) differ not only among readers of data specifications but also in different data specifications.
