@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>The SEMIC Style Guide for Semantic Engineers :: model2owl</title>
-    <meta name="description" content="The SEMIC Style Guide for Semantic Engineers.">
-    <meta name="generator" content="Antora 3.1.2">
+    <title>model2owl Project Documentation :: model2owl</title>
+    <meta name="description" content="The documentation for the model2owl project.">
+    <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../_/css/site.css">
     <script>var uiRootPath = '../_'</script>
   </head>
@@ -39,61 +39,38 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="introduction.html">Introduction</a>
+    <a class="nav-link" href="about.html">About model2OWL</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="terminological-clarifications.html">Terminological clarifications</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="arhitectural-clarifications.html">Architectural clarifications</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="clarification-on-reuse.html">Clarifications on "reuse"</a>
+    <a class="nav-link" href="architecture/ontology-architecture.html">Architectural Design</a>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="guidelines-and-conventions.html">Guidelines and conventions</a>
+    <a class="nav-link" href="uml/conceptual-model-conventions.html">UML Conceptual Model Conventions</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="gc-general-conventions.html">General conventions</a>
+    <a class="nav-link" href="uml/introduction.html">Introduction</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="gc-conceptual-model-conventions.html">Conceptual model conventions (UML)</a>
+    <a class="nav-link" href="uml/definitions.html">Definitions</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="gc-semantic-conventions.html">Semantic conventions</a>
+    <a class="nav-link" href="uml/general-conventions.html">General Conventions</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="gc-data-shape-conventions.html">Data shape conventions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="gc-methodology-conventions.html">Methodology conventions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="gc-publication-conventions.html">Publication conventions</a>
+    <a class="nav-link" href="uml/technical-conventions.html">Technical Conventions</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">Back matter</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="references.html">References</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="rule-template.html">Rule template</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="terminology.html">Terminology</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="index-of-rules.html">Index of rules</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="style-guide-whole.html">Style guide as a whole</a>
+    <a class="nav-link" href="transformation/uml2owl-transformation.html">Transformation Rules</a>
   </li>
 </ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="semicsg/semic-nav.html">(SEMIC Style Guide)</a>
   </li>
 </ul>
   </li>
@@ -126,7 +103,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">model2owl Documentation</a></li>
-    <li><a href="index.html">The SEMIC Style Guide for Semantic Engineers</a></li>
+    <li><a href="index.html">model2owl Project Documentation</a></li>
   </ul>
 </nav>
   <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
@@ -136,7 +113,36 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">The SEMIC Style Guide for Semantic Engineers</h1>
+<h1 class="page">model2owl Project Documentation</h1>
+<div class="paragraph">
+<p>The <strong>model2owl</strong> <a href="https://github.com/OP-TED/model2owl/">GitHub project</a> comprises a set of tools for transforming a UML (v2.5) model from its XMI (v2.5.1) serialisation into a formal ontology. This transformation is performed using XSLT stylesheets under the assumption that the UML model conforms to the set of conventions outlined in this documentation.</p>
+</div>
+<div class="paragraph">
+<p>This documentation covers all the important aspects that one might be interested in when using these tools, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The architectural setup of the project and the ontology</p>
+</li>
+<li>
+<p>The conceptual model conventions that the UML model should adhere to, in order to allow the tools to generate the best possible results.</p>
+</li>
+<li>
+<p>The transformation rules applied in the process of conversion</p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This work is developed in the context of <a href="https://github.com/eprocurementontology/eprocurementontology">eProcurement ontology project</a> financed by the Digital Europe Programme and led by the <a href="https://op.europa.eu/en/">Publications Office of the European Union</a>.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Ignore (from SEMIC Style GUIDE) </strong></p>
+</div>
 <div class="paragraph">
 <p>This document defines the style guide to be applied to the SEMIC&#8217;s semantic data specifications, notably to the eGovernment Core Vocabularies and Application Profiles. It provides rules on naming conventions, syntax, artefact management and organisation. It is meant to be complemented with technical artefacts and implementations that enable automatic conformance checking and transformation of conceptual models into formal semantic representations.</p>
 </div>

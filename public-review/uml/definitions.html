@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: model2owl</title>
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="../..">
+            </a>
+        </div>
+    </nav>
+<nav class="navbar">
+    <div class="navbar-brand">
+    <img src="../../_/img/semic-logo.png" class="logo" />
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs" >
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="public-review">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">model2owl Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About model2OWL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../architecture/ontology-architecture.html">Architectural Design</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="conceptual-model-conventions.html">UML Conceptual Model Conventions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="general-conventions.html">General Conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="technical-conventions.html">Technical Conventions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transformation/uml2owl-transformation.html">Transformation Rules</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../semicsg/semic-nav.html">(SEMIC Style Guide)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">model2owl Documentation</span>
+    <span class="version">public-review</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">model2owl Documentation</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">public-review</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">model2owl Documentation</a></li>
+    <li><a href="conceptual-model-conventions.html">UML Conceptual Model Conventions</a></li>
+    <li><a href="definitions.html">Definitions</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/uml/definitions.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="sect1">
+<h2 id="sec:definitions"><a class="anchor" href="#sec:definitions"></a>Preliminary definitions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this document three closely related and mostly overlapping domains are used interchangeably. They come from the worlds of: <em>enterprise architecture</em>, <em>software engineering and design</em> and <em>formal knowledge representation</em>. It is therefore necessary to establish the terms, especially the common ones, by defining what they mean in each of these domains.</p>
+</div>
+<div class="sect2">
+<h3 id="sec:cm"><a class="anchor" href="#sec:cm"></a>Conceptual Model</h3>
+<div class="paragraph">
+<p>A <em>conceptual model</em> is a representation of a system that uses concepts to form said representation. A <em>concept</em> can be viewed as an idea or notion; a unit of thought . However, what constitutes a unit of thought is subjective, and this definition is meant to be suggestive, rather than restrictive. That is why each concept needs to be well named by providing preferred and alternative labels, and a clear and precise definition supported by examples and explanatory notes.</p>
+</div>
+<div class="paragraph">
+<p>The conceptual model comprises representations of concepts, their qualities or attributes and relationships to other concepts. Most commonly these are association and generalisation relations. In addition, behaviour can be represented, ranging from the concept level up to the level of the system as a whole. Behavioural aspects, however, fall out of the scope in the current specification, which addresses at the structural elements mainly.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sec:uml"><a class="anchor" href="#sec:uml"></a>Unified Modelling Language (UML)</h3>
+<div class="paragraph">
+<p>The <em>Unified Modelling Language (UML)</em> is a general-purpose, developmental, modelling language in the field of software engineering that is intended to provide a standard way to visualise the design of a system .</p>
+</div>
+<div class="paragraph">
+<p>This set of specifications is based on the assumption that the conceptual models are represented with UML. Moreover, for the purposes of this convention only the structural elements of UML are considered, and in particular those comprising a class diagram. Next, the most important structural elements are introduced.</p>
+</div>
+<div class="paragraph">
+<p>A <em>class</em> represents a discrete concept within the domain being modelled. It is a description of a set of individual objects that share the same attributes, behaviour, relationships. Graphically, a class is rendered as a rectangle .</p>
+</div>
+<div class="paragraph">
+<p>An <em>instance</em> or <em>individual object</em> is a discrete (run-time) entity with identity, state and invocable behaviour and which can be distinguished from other (run-time) entities. We say that an individual object instantiates a class and represents a concrete (run-time) manifestation of that class. Conversely, a class represents the abstract concept by which to understand and describe the multitude of instantiated individual objects.</p>
+</div>
+<div class="paragraph">
+<p>A <em>property</em> is a structural feature which represents some named part of the structure of a class and characterises it in a particular fashion. It can be an attribute of a classifier or a member end of a relation.</p>
+</div>
+<div class="paragraph">
+<p>An attribute is a named property of a class that describes the type and a range of values that instances of the property may hold. An attribute may be conceptualised as a slot shared by all objects of that class that is filled by values through instantiation .</p>
+</div>
+<div class="paragraph">
+<p>When building abstractions very few classes stand alone. Instead most of them are connected to each other in a number of different ways. In UML, there are three kinds of <em>relationships</em> that are important in this specification: <em>dependencies</em>, which represent using relationships among classes (including refinement, trace, and bind relationships); <em>generalisations</em>, which link generalised classes to their specialisations; and <em>associations</em>, which represent structural relationships among objects. Each of these relationships provides a different way of combining your abstractions .</p>
+</div>
+<div class="paragraph">
+<p>When a class participates in an association, it has a specific role that it plays in that relationship. A <em>role</em> is the face the class at the near end of the association presents to the class at the other end of the association. It is possible to explicitly name the role a class plays in an association .</p>
+</div>
+<div class="paragraph">
+<p>An association represents a structural relationship among objects. In many modelling situations, it’s important for you to state how many objects may be connected across an instance of an association. This ``how many'' is called the <em>multiplicity</em> of an association’s role, and is written as an expression that evaluates to a range of values or an explicit value. It is possible to show a multiplicity of exactly one [1], zero or one [0..1], many [0..<strong>], one or more [1..</strong>], or even an exact number (for example, 3) . Multiplicity applies not only to associations, but to dependency relation as well, and also, to class attributes.</p>
+</div>
+<div class="paragraph">
+<p>A <em>stereotype</em> represents an extensibility mechanism that is foreseen in UML. It allows for the possibility to create new domain specific kinds of elements that are derived from the existing standard ones. In the simplest form, they act as annotations on the UML building blocks, but can redefine entirely the visual representation of the UML element. For example some elements may be considered, optional, recommended or required in the context of information exchange. This is possible by creating the three stereotypes and applying them accordingly .</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sec:ontology"><a class="anchor" href="#sec:ontology"></a>Formal ontology</h3>
+<div class="paragraph">
+<p>Much has been discussed about what an ontology is and is not . In computational context, an ontology encompasses a representation, formal naming and definition of the categories, properties and relations between the concepts, data and entities that substantiate one, many or all domains of discourse.</p>
+</div>
+<div class="paragraph">
+<p>Here we adopt definition that <em>``an ontology is a formal, explicit specification of a shared conceptualization''</em>. In this specification we adopt <em>Web Ontology Language (OWL 2)</em> to specify the formal ontologies. OWL 2 is a knowledge representation language, with formally defined meaning, designed to formulate, exchange and reason with knowledge about a domain of interest.</p>
+</div>
+<div class="paragraph">
+<p>OWL 2 ontologies can be used along with information written in <em>Resource Description Framework (RDF)</em> . RDF is a standard model for data interchange on the Web. And OWL 2 ontologies themselves are primarily exchanged as RDF documents.</p>
+</div>
+<div class="paragraph">
+<p>An RDF document is composed of RDF statements. The <em>RDF statement</em>, or <em>triple</em>, is a three-slotted structure of the form \(&lt;subject- predicate-object&gt;\). The RDF statement asserts that some relationship, indicated by the predicate, holds between the resources denoted by the subject and object . The subject is always a resource identified by an URI, while the object may be either a URI resource or a literal value. Next, the relevant OWL 2 concepts are introduced.</p>
+</div>
+<div class="paragraph">
+<p><em>Classes</em> provide an abstraction mechanism for grouping resources with similar characteristics. Classes can be understood as sets of individuals, called the class extension. The individuals in the class extension are called the instances of the class .</p>
+</div>
+<div class="paragraph">
+<p><em>Individuals</em> in OWL 2 represent actual objects from the domain. There can be named individuals, which are given an explicit name to refer to the same object; and anonymous individuals, which do not have an explicit name and are used locally.</p>
+</div>
+<div class="paragraph">
+<p><em>Datatypes</em> are entities that refer to sets of data values. Thus, datatypes are analogous to classes, the main difference being that the former contain data values such as strings and numbers, rather than individuals .</p>
+</div>
+<div class="paragraph">
+<p><em>Literals</em> represent data values such as particular strings or integers. They can also be understood as individuals denoting data values. Literals can be either plain (no datatype) or typed .</p>
+</div>
+<div class="paragraph">
+<p>In OWL 2 <em>properties</em> are defined as that which can take the <em>predicate</em> role in an RDF statement, and are distinguished as object properties and datatype properties. <em>Object properties</em> represent relationships between pairs of individuals. <em>Data properties</em> represent relationships between an individual and a literal. In some knowledge representation systems, functional data properties are called attributes .</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+    <p style="text-align:center">This document is created by the European Commission and is licensed under the terms of
+        EUPL-1.2 license</a>.
+        <br/>This page was built using the Antora default UI. The source code for this UI is licensed under the terms of
+        the MPL-2.0 license.
+    </p>
+
+        <script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="150" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="150" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
+  </body>
+</html>
