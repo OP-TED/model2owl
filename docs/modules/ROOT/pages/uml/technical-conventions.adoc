@@ -6,33 +6,33 @@
 
 In order to enable the reuse of names defined in other models and reuse of unique references for names that support easy identification, namespace management must be considered. We adopt XML approach to defining and managing namespaces as it is inherent in both XMI and OWL2 standards. Hence, a _namespace_ is a set of symbols that are used to organise objects of various kinds, so that these objects may be referred to by name and uniquely identifiable.
 
-Namespaces are commonly structured as hierarchies to allow reuse of names in different contexts . This mechanism can be implemented in UML through partitioning the model using packages, which are described in #sec:uml-package[1.3].
+Namespaces are commonly structured as hierarchies to allow reuse of names in different contexts [xref:references.adoc#ref:xml-namespaces[xml-namespaces]]. This mechanism can be implemented in UML through partitioning the model using packages, which are described in [xref:#sec:uml-package[uml:Package]].
 
-A namespace organises a collection of names obeying three constraints: each name is (1) unique, (2) assigned in a consistent way, and (3) assigned according to a common definition . An (expanded) _name_ in a namespace is a pair consisting of a _namespace name_, also called _base URI_ or just _base_, and a _local name_, also called _local segment_ . The combination of universally managed URI with the vocabulary local name is effective in avoiding name clashes. For example, in the expanded name "http://www.w3.org/ns/org#Organization", "http://www.w3.org/ns/org#" is the namespace name and "Organization" is the local name.
+A namespace organises a collection of names obeying three constraints: each name is (1) unique, (2) assigned in a consistent way, and (3) assigned according to a common definition [xref:references.adoc#ref:urn-rfc8141[urn-rfc8141]]. An (expanded) _name_ in a namespace is a pair consisting of a _namespace name_, also called _base URI_ or just _base_, and a _local name_, also called _local segment_ [xref:references.adoc#ref:xml1-spec[xml1-spec], xref:references.adoc#ref:urn-rfc2141[urn-rfc2141]]. The combination of universally managed URI with the vocabulary local name is effective in avoiding name clashes. For example, in the expanded name "http://www.w3.org/ns/org#Organization", "http://www.w3.org/ns/org#" is the namespace name and "Organization" is the local name.
 
-Unlike in the XML specifications, the constraints on the local name are slightly relaxed, allowing token delimitation by space character (see Section #sec:delimitation[[sec:delimitation]]). This provides an additional level of readability to the conceptual model users. Nevertheless, the local names must be _normalised strings_, which mean that only single occurrences of space character are permitted. Other delimiting characters, such as tab, line feed, carriage return must be replaced by an occurrence of space and trimmed. In the transformation process, when URIs are generated, the spaces are removed anyway and conform with the XML conventions (see Section #sec:name[[sec:name]]).
+Unlike in the XML specifications, the constraints on the local name are slightly relaxed, allowing token delimitation by space character (see Section [xref:uml/general-conventions.adoc#sec:delimitation[Delimitation]]). This provides an additional level of readability to the conceptual model users. Nevertheless, the local names must be _normalised strings_, which mean that only single occurrences of space character are permitted. Other delimiting characters, such as tab, line feed, carriage return must be replaced by an occurrence of space and trimmed. In the transformation process, when URIs are generated, the spaces are removed anyway and conform with the XML conventions (see Section #sec:name[[sec:name]]).
 
  +
 
 URI references are often inconveniently long, so expanded names should not be used directly. Instead _qualified names_ should be used while expanded names are strongly discouraged. A _qualified name_ is a name subject to namespace interpretation. Syntactically, they are either _prefixed names_ or _unprefixed names_.
 
-The namespace name is usually applied as a _prefix_ to the local name but it may be missing as well. specifies a declaration syntax which permits to bind prefixes to namespace names and also to bind a default namespace that applies to unprefixed element names. For example we can bind the namespace name "http://www.w3.org/ns/org#" to the prefix "org", which we can then use to create the same name as such "org:Organization". The prefix is subject to namespace interpretation and resolved to an URI .
+The namespace name is usually applied as a _prefix_ to the local name but it may be missing as well. [xref:references.adoc#ref:xml-namespaces[xml-namespaces]] specifies a declaration syntax which permits to bind prefixes to namespace names and also to bind a default namespace that applies to unprefixed element names. For example we can bind the namespace name "http://www.w3.org/ns/org#" to the prefix "org", which we can then use to create the same name as such "org:Organization". The prefix is subject to namespace interpretation and resolved to an URI [xref:references.adoc#ref:xml-namespaces[xml-namespaces]].
 
-It is recommended that the UML element names indicate the namespace prefix by prepending it to the name delimited by colon character (:). In case the namespace is not specified (no delimiter) then the name of the package containing the current element is used as namespace prefix. For example if a class "Contract" is placed in a package "epo" then the name of the containing package is used as the namespace prefix and resolved to "epo:Contract". If the delimiter (:) is used without any prefix, then the empty string prefix is resolved to the default namespace as defined in .
+It is recommended that the UML element names indicate the namespace prefix by prepending it to the name delimited by colon character (:). In case the namespace is not specified (no delimiter) then the name of the package containing the current element is used as namespace prefix. For example if a class "Contract" is placed in a package "epo" then the name of the containing package is used as the namespace prefix and resolved to "epo:Contract". If the delimiter (:) is used without any prefix, then the empty string prefix is resolved to the default namespace as defined in [xref:references.adoc#ref:xml-namespaces[xml-namespaces]].
 
 [[sec:charset]]
 === Character encoding
 
-In the formal ontology, the names must conform to RDF and XML format specifications. Both languages effectively require that terms begin with an upper or lower case letter from the ASCII character set, or an underscore (_). This tight restriction means that, for example, terms may not begin with a number, hyphen or accented character . Although underscores are permitted, they are discouraged as they may be, in some cases, misread as spaces. A formal definition of these restrictions is given in the XML specification document .
+In the formal ontology, the names must conform to RDF [xref:references.adoc#ref:rdf11[rdf11]] and XML[xref:references.adoc#ref:xml1-spec[xml1-spec]] format specifications. Both languages effectively require that terms begin with an upper or lower case letter from the ASCII character set, or an underscore (_). This tight restriction means that, for example, terms may not begin with a number, hyphen or accented character [xref:references.adoc#ref:d3.1-2015[d3.1-2015]]. Although underscores are permitted, they are discouraged as they may be, in some cases, misread as spaces. A formal definition of these restrictions is given in the XML specification document [xref:references.adoc#ref:xml1-spec[xml1-spec]].
 
 It is required that the names use words beginning with an upper or lower case letter (A–Z, a–z) or an underscore (_) for all terms in the model. Digits (0–9) are allowed in the subsequent character positions. Also, as mentioned above, spaces are permitted in the local segment of the name.
 
-Encoded UTF-8 and UTF-16 names are supported but we recommend avoiding any character encodings in the element names. Encoded characters are mostly not readable and require a decoding to become human friendly. Also unexpected results may occur in the transformation script. This recommendation does not apply to the content strings such as descriptions, notes and comments, which may use any character encoding.
+Encoded UTF-8 and UTF-16 names are supported [xref:references.adoc#ref:xml1-spec[xml1-spec], xref:references.adoc#ref:xml11-spec[xml11-spec]] but we recommend avoiding any character encodings in the element names. Encoded characters are mostly not readable and require a decoding to become human friendly. Also unexpected results may occur in the transformation script. This recommendation does not apply to the content strings such as descriptions, notes and comments, which may use any character encoding.
 
 [[sec:uml-package]]
 === uml:Package
 
-Packages should be used to define a logical partition of the model. They serve as the primary method for the vertical slicing of the conceptual model as described in the layering and slicing section of .
+Packages should be used to define a logical partition of the model. They serve as the primary method for the vertical slicing of the conceptual model as described in the layering and slicing section of [xref:references.adoc#ref:costetchi2020a[costetchi2020a]].
 
 Packages may form hierarchies. In this case the hierarchical relation is interpreted as _meronymy_, denoting a constituent parts of the package. Formally they are translated into owl:import statements.The module corresponding to the parent package imports modules corresponding to the child packages.
 
@@ -49,7 +49,7 @@ Optionally, in case there is a technical possibility to distinguish between UML 
 
 It is recommended that a uml:Class has relations, attributes, or both. A class must not miss both, attributes and relations associated with it. It is mandatory to avoid using the same name in a class, attribute or a relation.
 
-Classes may use _latexmath:[$<<abstract>>$] stereotype_. It means that no instances are allowed of this class in the datasets. This is not covered by the OWL 2 but can be expressed in SHACL data shapes .
+Classes may use _latexmath:[$<<abstract>>$] stereotype_. It means that no instances are allowed of this class in the datasets. This is not covered by the OWL 2 [xref:references.adoc#ref:owl2[owl2]] but can be expressed in SHACL data shapes [xref:references.adoc#ref:shacl-spec[shacl-spec]].
 
 [[sec:attributes-class]]
 === uml:Class attributes
@@ -68,16 +68,16 @@ It is recommended to avoid duplicate attributes names across multiple classes. U
 
 It is mandatory to avoid using the same name in an attribute and in a relation, unless there is an additional rule that handles intentional exceptions.
 
-All attribute data types must be defined in the model for reference, regardless if they are reused from other models or specific to the local model. In the case of reused external models, the local (re-)definitions serve merely as proxies as explained in Section #sec:datatype[1.7].
+All attribute data types must be defined in the model for reference, regardless if they are reused from other models or specific to the local model. In the case of reused external models, the local (re-)definitions serve merely as proxies as explained in Section [xref:#sec:datatype[uml:Datatype]].
 
-It is recommended that the attribute type is an atomic data type. It is possible to use a uml:Enumeration as an attribute type. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Dependency described in Section #sec:dependency[1.9].
+It is recommended that the attribute type is an atomic data type. It is possible to use a uml:Enumeration as an attribute type. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Dependency described in Section [xref:#sec:dependency[uml:Dependency]].
 
-It is recommended to avoid using another class as the attribute type. An acceptable exception for this is with a controlled set of classes. The list of allowed classes must be explicitly indicated in the transformations script. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Association described in Section #sec:association[1.8]. For the eProcurement project the set of exceptions is: Identifier, Amount, Quantity, Measure. These were initially defined as composite datatypes and then transformed into classes.
+It is recommended to avoid using another class as the attribute type. An acceptable exception for this is with a controlled set of classes. The list of allowed classes must be explicitly indicated in the transformations script. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Association described in Section [xref:#sec:association[uml:Association]]. For the eProcurement project the set of exceptions is: Identifier, Amount, Quantity, Measure. These were initially defined as composite datatypes and then transformed into classes.
 
 [[sec:enumeration]]
 === uml:Enumeration
 
-In UML the controlled lists, discussed in Section #sec:controlled-list[[sec:controlled-list]] are represented as uml:Enumeration. They are transformed into instances of a SKOS model .
+In UML the controlled lists, discussed in Section [xref:uml/general-conventions.adoc#sec:controlled-list[Controlled List]] are represented as uml:Enumeration. They are transformed into instances of a SKOS model [xref:references.adoc#ref:skos-spec[skos-spec]].
 
 Each uml:Enumeration element is transformed into skos:ConceptScheme and each enumeration item (represented by an uml:Attribute) is transformed into a skos:Concept. An enumeration must not be empty.
 
@@ -90,11 +90,11 @@ It is possible to employ the enumerations for class properties by drawing a depe
 [[sec:datatype]]
 === uml:Datatype
 
-This convention draws the distinction between primitive (or atomic) types (consisting of single literal value) and composite types (consisting of multiple attributes) . In fact, the composite datatypes must be defined as classes and handled as such. For example: AmountType, Identifier, Quantity and Measure are to be treated as classes even if conceptually they could be seen as composite data types.
+This convention draws the distinction between primitive (or atomic) types (consisting of single literal value) and composite types (consisting of multiple attributes) [xref:references.adoc#ref:isaHandbook2015[isaHandbook2015]]. In fact, the composite datatypes must be defined as classes and handled as such. For example: AmountType, Identifier, Quantity and Measure are to be treated as classes even if conceptually they could be seen as composite data types.
 
-It is recommended to employ the primitive datatypes that are already defined in XSD and RDF , which cover the standard and most common types. Thus definitions of custom data types shall be avoided unless the model really needs them. Such cases are, however, rare.
+It is recommended to employ the primitive datatypes that are already defined in XSD [xref:references.adoc#ref:xsd1.1-spec[xsd1.1-spec]] and RDF [xref:references.adoc#ref:rdf11[rdf11]], which cover the standard and most common types. Thus definitions of custom data types shall be avoided unless the model really needs them. Such cases are, however, rare.
 
-The data types defined in the UML model (and custom ones) are resolved into their XSD equivalent using the correspondences from Table #tab:uml2xsd[1]. Note that the family of string datatypes is mapped to _rdf:langString_. This means that the instance data should provide a language tag for the textual data indicating how it should be read. This enables multilingual data specification. Also, note that Date is mapped to xsd:date and DateTime is mapped to xsd:dateTime. However the xsd:date is not included in the OWL2 interpretation and instead a strong preference is expressed fro xsd:dateTime. Therefore it is recommended to follow the OWL2 specification, although the xsd:date is a valid datatype in the RDF data and in SPARQL queries.
+The data types defined in the UML model (and custom ones) are resolved into their XSD equivalent using the correspondences from the table xref:#tab:uml2xsd[below]. Note that the family of string datatypes is mapped to _rdf:langString_. This means that the instance data should provide a language tag for the textual data indicating how it should be read. This enables multilingual data specification. Also, note that Date is mapped to xsd:date and DateTime is mapped to xsd:dateTime. However the xsd:date is not included in the OWL2 interpretation and instead a strong preference is expressed fro xsd:dateTime. Therefore it is recommended to follow the OWL2 specification, although the xsd:date is a valid datatype in the RDF data and in SPARQL queries.
 
 [[tab:uml2xsd]]
 .UML to XSD datatype correspondences
