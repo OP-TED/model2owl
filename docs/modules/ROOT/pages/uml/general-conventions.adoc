@@ -8,7 +8,6 @@ UML is a language without formal semantics. Moreover, it is quite flexible and p
 In theory any name can be assigned to a concept, relationship or property. In practice, there are two types of constraints on the kind of names that should be used: _technical_ and _conventional_. This section deals with conventional constraint, while the technical constraints are addressed in [xref:uml/technical-conventions.adoc#sec:technical[Technical Conventions]] Section.
 
 [[sec:name]]
-
 === What is in a name?
 
 |===
@@ -28,7 +27,7 @@ The naming conventions apply to the _element names_ in the conceptual model. The
 
 The names should also belong to and be organised by _namespaces_. They can be provided as a short prefix to the elements name, for example "org:Organisation", "epo:Notice" or "skos:Concept". Namespaces are addressed in detail in Section [xref:uml/technical-conventions.adoc#sec:namespaces[Namespaces]].
 
-// In [xref:references.adoc#ref:isaHandbook2015[isaHandbook2015]] a simple convention is proposed: that the identifier of a conceptual model element is the name of the element, where spaces have been removed. For example, the identifier of the "Legal Entity" class is "LegalEntity". Note that the casing is important and is addressed in Section [xref:#sec:casing[Case sensitivity]].
+// In [xref:references.adoc#ref:isaHandbook2015[isaHandbook2015]] a simple convention is proposed: that the identifier of a conceptual model element is the name of the element, where spaces have been removed. For example, the identifier of the "Legal Entity" class is "LegalEntity". Note that the casing is important and is addressed in Section [xref:#sec:casing[]].
 
 It is recommended that the names and descriptions for classes and properties are expressed in British English [xref:references.adoc#ref:d2.01-2017[d2.01-2017]]. [see general conventions in styleguide]
 In addition, a mechanism for providing a multilingual labelling system should be adopted. [see lexicalisation in teh styleguide + tagging mechanism].
@@ -55,8 +54,8 @@ We can greatly improve the readability of an ontology if we use consistent capit
 All the names are case sensitive. This means that the class "Buyer" and the attribute "buyer" are two different names. Nonetheless such similarities are strongly discouraged and more elaborated names are highly encouraged. For example, a simple elaboration is to use suffixes or prefixes.
 
 [[sec:delimitation]]
-
 === Delimitation
+
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Delimitation
@@ -96,7 +95,7 @@ This means that there cannot exist a class and an attribute with the same name (
 
 Names that reduce to the same identifier are considered unique. For example "Legal Entity" and "LegalEntity" are different labels but they reduce to the same identifier "LegalEntity". In such cases the names are considered equal and the UML elements replicated.
 
-Nevertheless, name uniqueness is a recommendation but sometimes it is useful to replicate an UML element. In such cases, when the names are reused, the assumption is that the two UML elements represent manifestations of the same meaning. This is especially important for relations and is explained in Section [xref:#sec:relation-reusability[Relations reusability]].
+Nevertheless, name uniqueness is a recommendation but sometimes it is useful to replicate an UML element. In such cases, when the names are reused, the assumption is that the two UML elements represent manifestations of the same meaning. This is especially important for relations and is explained in Section [xref:#sec:relation-reusability[]].
 
 [[sec:suffix-prefix]]
 === Suffix and prefix
