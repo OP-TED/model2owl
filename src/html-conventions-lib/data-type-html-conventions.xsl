@@ -22,7 +22,6 @@
 
     <xd:doc>
         <xd:desc>Getting all data-types and show only the ones that have unmet conventions
-            [datatype-name-61
         </xd:desc>
     </xd:doc>
 
@@ -69,6 +68,25 @@
                 <xsl:with-param name="element" select="."/>
                 <xsl:with-param name="elementType" select="'dataType'"/>
             </xsl:call-template>
+            <xsl:call-template name="unknownStereotypeProvided">
+                <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="elementType" select="'dataType'"/>
+            </xsl:call-template>
+            <xsl:call-template name="invalidTagName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingTagValue">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingTagName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingPrefixTagName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="namePlural">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
             <!--    End of common checkers rules     -->   
             <!--    Start of specific checker rules-->
             
@@ -76,6 +94,12 @@
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
             <xsl:call-template name="d-uniqueName">
+                <xsl:with-param name="dataTypeElement" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="d-attributeChecker">
+                <xsl:with-param name="dataTypeElement" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="d-outgoingConnectors">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
             <!--    End of specific checker rules-->
@@ -153,6 +177,50 @@
                 'is not an XSD or RDF datatype.  It is recommended to use XSD and RDF datatypes mainly.'))"
             />
         </xsl:if>
+    </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>[datatype-attribute-3] The datatype $value$ is not atomic. 
+         Complex datatypes where attributes/components are specified shall be represented as classes. </xd:desc>
+        <xd:param name="dataTypeElement"/>
+    </xd:doc>
+    
+    <xsl:template name="d-attributeChecker">
+        <xsl:param name="dataTypeElement"/>
+        <xsl:variable name="dataTypeNumberOfAttributes"
+            select="count($dataTypeElement/attributes/attribute)"/>
+        
+        <xsl:sequence
+            select="
+            if ($dataTypeNumberOfAttributes > 0) then
+            f:generateHtmlWarning(fn:concat('The datatype ', $dataTypeElement/@name,
+            ' is not atomic. Complex datatypes where attributes/components are specified shall be represented as classes.'))
+            else
+            ()
+            "
+        />
+    </xsl:template>
+    
+    
+    <xd:doc>
+        <xd:desc>[datatype-connector-4] The datatype $value should not connect to othe elements.
+            A Datatype can only be referred to. </xd:desc>
+        <xd:param name="dataTypeElement"/>
+    </xd:doc>
+    
+    <xsl:template name="d-outgoingConnectors">
+        <xsl:param name="dataTypeElement"/>
+        <xsl:variable name="outgoingConnectors"
+            select="fn:count(f:getOutgoingConnectors($dataTypeElement))"/>
+        <xsl:sequence
+            select="
+            if ($outgoingConnectors > 0) then
+            f:generateHtmlError(fn:concat('The datatype ', $dataTypeElement/@name,
+            ' should not connect to othe elements. A Datatype can only be referred to.'))
+            else
+            ()
+            "
+        />
     </xsl:template>
 
    

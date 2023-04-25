@@ -27,6 +27,54 @@
         <xsl:variable name="associationChecks" as="item()*">
             <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">
                 <!--    Start of common connectors checkers rules     -->
+                <xsl:call-template name="co-namingFormat">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-missingNamePrefix">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-missingLocalSegmentName">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-invalidNamePrefix">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-undefinedPrefix">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-invalidNameLocalSegment">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-invalidFirstCharacterInLocalSegment">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-delimitersInTheLocalSegment">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-unknownStereotypeProvided">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-stereotypeProvided">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-invalidTagName">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-missingPrefixTagName">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-missingTagValue">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-missingTagName">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-targetTags">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="co-tags">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>           
                 <xsl:call-template name="co-generalNameProvided">
                     <xsl:with-param name="connector" select="."/>
                 </xsl:call-template>
@@ -51,6 +99,9 @@
                 <!--    End of common connectors checkers rules     -->  
                 <!--    Start of specific checker rules-->
                 <xsl:if test="f:getConnectorDirection(.) = 'Bi-Directional'">
+                    <xsl:call-template name="co-sourceTags">
+                        <xsl:with-param name="connector" select="."/>
+                    </xsl:call-template>   
                    <xsl:call-template name="association-missingSourceMultiplicity">
                        <xsl:with-param name="connector" select="."/>
                    </xsl:call-template>

@@ -55,7 +55,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[class-attributes-reuse-definition-4] Check the definition values from a group of
+        <xd:desc>[class-attributes-reuse-definition-1] Check the definition values from a group of
             class attributes with same name</xd:desc>
         <xd:param name="attributeName"/>
         <xd:param name="root"/>
@@ -93,7 +93,7 @@
 
 
     <xd:doc>
-        <xd:desc>[class-attributes-reuse-multiplicity-5 ]Check the multiplicity values from a group
+        <xd:desc>[class-attributes-reuse-multiplicity-2 ]Check the multiplicity values from a group
             of class attributes with same name</xd:desc>
         <xd:param name="attributeName"/>
         <xd:param name="root"/>

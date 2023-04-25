@@ -42,6 +42,20 @@
         <x:expect label="expect to find a Description Details element" select="()"/> 
     </x:scenario>
     
+    <x:scenario label="Scenario for finding a enumeration with no outgoing connectors">
+        <x:call template="e-outgoingConnectors">
+            <x:param name="enumeration" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[160]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a enumeration with  outgoing connectors">
+        <x:call template="e-outgoingConnectors">
+            <x:param name="enumeration" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[132]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
 
     
     <x:scenario label="Scenario for finding a enumeration with unique name">

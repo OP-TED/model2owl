@@ -103,7 +103,7 @@
         <xsl:param name="element"/>
         <xsl:sequence
             select="
-                if (f:isInvalidNamePrefix($element)) then
+                if (f:isInvalidElementNamePrefix($element)) then
                     f:generateHtmlError(fn:concat('The name prefix ', fn:substring-before($element/@name, ':'),
                     ' , is invalid. Please provide a short prefix name ',
                     'containing only alphanumeric characters [a-zA-Z0-9]+.'))
@@ -140,7 +140,7 @@
         <xsl:param name="element"/>
         <xsl:sequence
             select="
-                if (f:isInvalidLocalSegmentName($element)) then
+                if (f:isInvalidElementLocalSegmentName($element)) then
                     f:generateHtmlError(fn:concat('The local name segment ', fn:substring-after($element/@name, ':'),
                     ' , is invalid. Please provide a concise label using ',
                     'alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with ',
@@ -159,7 +159,7 @@
         <xsl:param name="element"/>
         <xsl:sequence
             select="
-                if (f:isValidFirstCharacterInLocalSegment($element)) then
+                if (f:isValidElementFirstCharacterInLocalSegment($element)) then
                     ()
                 else
                     f:generateHtmlError(fn:concat('The local name segment ', f:getLocalSegmentForElements($element),
@@ -178,7 +178,7 @@
         <xsl:param name="element"/>
         <xsl:sequence
             select="
-                if (f:isDelimitersInLocalSegment($element)) then
+                if (f:isDelimitersInElementLocalSegment($element)) then
                     f:generateHtmlWarning(fn:concat('The local name segment ', f:getLocalSegmentForElements($element),
                     ' contains token delimiters. It is best if the names ',
                     'are camel cased and delimiters removed.'))
@@ -214,10 +214,10 @@
                     ()"
         />
     </xsl:template>
-    
-    
-    
-    
+
+
+
+
     <xd:doc>
         <xd:desc>[common-stereotype-11] - The $stereotypeName$ stareotype is applied to
             $elementName$. Stereotypes are discouraged in the current practice with some exceptions. </xd:desc>
@@ -229,24 +229,25 @@
         <xsl:param name="elementType"/>
         <xsl:variable name="hasStereotype"
             select="
-            if ($elementType = ('class', 'enumeration', 'dataType', 'package')) then
-            $element/properties/@stereotype
-            else
-            $element/stereotype/@stereotype"/>
+                if ($elementType = ('class', 'enumeration', 'dataType', 'package')) then
+                    $element/properties/@stereotype
+                else
+                    $element/stereotype/@stereotype"/>
         <xsl:sequence
             select="
-            if ($hasStereotype)
-            then
-            f:generateHtmlInfo(fn:concat('The ', $element/*/@stereotype,
-            ' stareotype is applied to ', $element/@name,
-            '. Stereotypes are discouraged in the current practice with some exceptions. '))
-            else ()"
+                if ($hasStereotype)
+                then
+                    f:generateHtmlInfo(fn:concat('The ', $element/*/@stereotype,
+                    ' stareotype is applied to ', $element/@name,
+                    '. Stereotypes are discouraged in the current practice with some exceptions. '))
+                else
+                    ()"
         />
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[common-stereotype-12] - The $stereotypeName$ stareotype applied to
-            $elementName$ is not known and will be ignored. </xd:desc>
+        <xd:desc>[common-stereotype-12] - The $stereotypeName$ stareotype applied to $elementName$
+            is not known and will be ignored. </xd:desc>
         <xd:param name="element"/>
         <xd:param name="elementType"/>
     </xd:doc>
@@ -270,8 +271,8 @@
                     'is not known and will be ignored. '))"
         />
     </xsl:template>
-    
-    
+
+
     <xd:doc>
         <xd:desc>[common-tag-13] - The tag $tagName$ of element $elementName$ must be an URI. </xd:desc>
         <xd:param name="element"/>
@@ -281,17 +282,16 @@
         <xsl:variable name="tags" select="f:getElementTags($element)"/>
         <xsl:sequence
             select="
-            for $tag in $tags
-            return
-            if (fn:matches($tag/@name, '^(:\w+|[a-z][-a-z0-9]*:[-a-zA-Z0-9_@]+)$')) then
-            ()
-            else
-            f:generateHtmlError(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must be an URI.'))"
-        />
-        
+                for $tag in $tags
+                return
+                    if (f:isValidTagName($tag/@name)) then
+                        ()
+                    else
+                        f:generateHtmlError(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must be an URI.'))"/>
+
     </xsl:template>
-    
-    
+
+
     <xd:doc>
         <xd:desc>[common-tag-14] - The tag $tagName$ of element $elementName$ must have a value. </xd:desc>
         <xd:param name="element"/>
@@ -301,19 +301,19 @@
         <xsl:variable name="tags" select="f:getElementTags($element)"/>
         <xsl:sequence
             select="
-            for $tag in $tags
-            return
-            if ($tag/@value) then
-            ()
-            else
-            f:generateHtmlError(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must have a value'))"
-        />
-        
+                for $tag in $tags
+                return
+                    if ($tag/@value) then
+                        ()
+                    else
+                        f:generateHtmlError(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must have a value'))"/>
+
     </xsl:template>
-    
-    
+
+
     <xd:doc>
-        <xd:desc>[common-tag-15] - The tag $tagName$ of element $elementName$ must have a valid name. </xd:desc>
+        <xd:desc>[common-tag-15] - The tag $tagName$ of element $elementName$ must have a valid
+            name. </xd:desc>
         <xd:param name="element"/>
     </xd:doc>
     <xsl:template name="missingTagName">
@@ -326,14 +326,13 @@
                     if ($tag/@name) then
                         ()
                     else
-                    f:generateHtmlError(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must have a valid name'))"
-        />
+                        f:generateHtmlError(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must have a valid name'))"/>
 
     </xsl:template>
-    
+
     <xd:doc>
-        <xd:desc>[common-name-16] - The name $value is possibly in plural grammatical number.
-            Names shall be usually provided in singular number.  </xd:desc>
+        <xd:desc>[common-name-16] - The name $value is possibly in plural grammatical number. Names
+            shall be usually provided in singular number. </xd:desc>
         <xd:param name="element"/>
     </xd:doc>
     <xsl:template name="namePlural">
@@ -341,15 +340,16 @@
         <xsl:variable name="elementName" select="$element/@name"/>
         <xsl:sequence
             select="
-            if (fn:ends-with($elementName, 'es') or fn:ends-with($elementName, 's')) then
-            f:generateHtmlWarning('The class name is possibly in plural grammatical number. Names shall be usually provided in singular number.')
-            else
-            ()"
+                if (fn:ends-with($elementName, 'es') or fn:ends-with($elementName, 's')) then
+                    f:generateHtmlWarning('The class name is possibly in plural grammatical number. Names shall be usually provided in singular number.')
+                else
+                    ()"
         />
     </xsl:template>
-    
+
     <xd:doc>
-        <xd:desc>[common-prefix-17] - The Tag name prefix $value$ is not defined. A prefix must be associated to a namespace URI. </xd:desc>
+        <xd:desc>[common-tag-prefix-17] - The Tag name prefix $value$ is not defined. A prefix must
+            be associated to a namespace URI. </xd:desc>
         <xd:param name="element"/>
     </xd:doc>
     <xsl:template name="missingPrefixTagName">
@@ -359,14 +359,14 @@
             select="
                 for $tag in $tags
                 return
-                if (fn:contains($tag/@name, ':')) then
+                    if (fn:contains($tag/@name, ':')) then
                         if ((f:isValidNamespace($tag/@name)) or (fn:substring-before($tag/@name, ':') = '')) then
                             ()
                         else
+                            f:generateHtmlError(fn:concat('The prefix for ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
+                    else
                         f:generateHtmlError(fn:concat('The prefix for ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
-                    else 
-                    f:generateHtmlError(fn:concat('The prefix for ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
-                        "/>
+                "/>
 
     </xsl:template>
 

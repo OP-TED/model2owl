@@ -260,7 +260,7 @@
         </x:call>
         <x:expect label="result" select="false()"/>
     </x:scenario>
-<!--    -->
+
     
     <x:scenario label="Check  hasAttributeCorrespondingDependecy- no corresponding Dependency found ">
         <x:call function="f:hasAttributeCorrespondingDependecy">
@@ -366,15 +366,15 @@
     </x:scenario>
     
     <x:scenario label="Check an element with valid prefix">
-        <x:call function="f:isInvalidNamePrefix">
+        <x:call function="f:isInvalidElementNamePrefix">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
-                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[156]"/>
         </x:call>
         <x:expect label="boolean-false" select="false()"/>
     </x:scenario>
     
     <x:scenario label="Check an element with invalid prefix">
-        <x:call function="f:isInvalidNamePrefix">
+        <x:call function="f:isInvalidElementNamePrefix">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[73]"/>
         </x:call>
@@ -382,7 +382,7 @@
     </x:scenario>
     
     <x:scenario label="Check an element with valid local segment - not Qname">
-        <x:call function="f:isInvalidLocalSegmentName">
+        <x:call function="f:isInvalidElementLocalSegmentName">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]"/>
         </x:call>
@@ -390,7 +390,7 @@
     </x:scenario>
     
     <x:scenario label="Check an element with valid local segment">
-        <x:call function="f:isInvalidLocalSegmentName">
+        <x:call function="f:isInvalidElementLocalSegmentName">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
         </x:call>
@@ -398,7 +398,7 @@
     </x:scenario>
     
     <x:scenario label="Check an element with invalid local segment">
-        <x:call function="f:isInvalidLocalSegmentName">
+        <x:call function="f:isInvalidElementLocalSegmentName">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[95]"/>
         </x:call>
@@ -406,7 +406,7 @@
     </x:scenario>
     
     <x:scenario label="Check the local segment first character for an element which is valid">
-        <x:call function="f:isValidFirstCharacterInLocalSegment">
+        <x:call function="f:isValidElementFirstCharacterInLocalSegment">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
         </x:call>
@@ -414,7 +414,7 @@
     </x:scenario>
     
     <x:scenario label="Check the local segment first character for an element which is invalid">
-        <x:call function="f:isValidFirstCharacterInLocalSegment">
+        <x:call function="f:isValidElementFirstCharacterInLocalSegment">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]"/>
         </x:call>
@@ -422,7 +422,7 @@
     </x:scenario>
     
     <x:scenario label="Check an element that has the local segment with delimiters">
-        <x:call function="f:isDelimitersInLocalSegment">
+        <x:call function="f:isDelimitersInElementLocalSegment">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[101]"/>
         </x:call>
@@ -430,7 +430,7 @@
     </x:scenario>
     
     <x:scenario label="Check an element that has the local segment with no delimiters">
-        <x:call function="f:isDelimitersInLocalSegment">
+        <x:call function="f:isDelimitersInElementLocalSegment">
             <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
         </x:call>

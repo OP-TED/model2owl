@@ -48,5 +48,19 @@
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
+    <x:scenario label="Scenario for finding a Data-type element with no attributes">
+        <x:call template="d-attributeChecker">
+            <x:param name="dataTypeElement" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[261]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a Data-type element name with no outgoing connectors ">
+        <x:call template="d-outgoingConnectors">
+            <x:param name="dataTypeElement" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[261]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
   
 </x:description>

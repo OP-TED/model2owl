@@ -19,8 +19,8 @@
     <xsl:import href="common-elements-html-conventions.xsl"/>
 
     <xd:doc>
-        <xd:desc>Getting all enumerations and items and show only the ones with unmet
-            conventions [enumeration-name-59]</xd:desc>
+        <xd:desc>Getting all enumerations with unmet
+            conventions </xd:desc>
     </xd:doc>
 
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
@@ -66,6 +66,25 @@
                 <xsl:with-param name="element" select="."/>
                 <xsl:with-param name="elementType" select="'enumeration'"/>
             </xsl:call-template>
+            <xsl:call-template name="unknownStereotypeProvided">
+                <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="elementType" select="'enumeration'"/>
+            </xsl:call-template>
+            <xsl:call-template name="invalidTagName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingTagValue">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingTagName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingPrefixTagName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="namePlural">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
             <!--    End of common checkers rules     -->   
             <!--    Start of specific checker rules-->
 
@@ -74,6 +93,10 @@
             </xsl:call-template>
 
             <xsl:call-template name="e-uniqueName">
+                <xsl:with-param name="enumeration" select="."/>
+            </xsl:call-template>
+            
+            <xsl:call-template name="e-outgoingConnectors">
                 <xsl:with-param name="enumeration" select="."/>
             </xsl:call-template>
             <!--    End of specific checker rules-->
@@ -114,23 +137,6 @@
     </xsl:template>
 
 
-    <xd:doc>
-        <xd:desc>[enumeration-attribute-2] The enumeration $value$ shall have no values/attributes defined. 
-            An Enumeration stands for an controlled list and its management is out of model scope.  </xd:desc>
-        <xd:param name="enumeration"/>
-    </xd:doc>
-
-    <xsl:template name="e-itemsChecker">
-        <xsl:param name="enumeration"/>
-        <xsl:variable name="enumerationNumberOfAttributes"
-            select="count($enumeration/attributes/attribute)"/>
-        <xsl:if test="$enumerationNumberOfAttributes > 0">
-            <xsl:sequence select="f:generateHtmlWarning(fn:concat('The enumeration ' ,$enumeration/@name, 
-                ' shall have no values/attributes defined. An Enumeration stands for an controlled list and its management is out of model scope. '))"/>
-        </xsl:if>
-    </xsl:template>
-
-
   
 
     <xd:doc>
@@ -158,6 +164,50 @@
                     "
             />
         </xsl:if>
+    </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>[enumeration-attribute-2] The enumeration $value$ shall have no values/attributes defined. 
+            An Enumeration stands for an controlled list and its management is out of model scope.  </xd:desc>
+        <xd:param name="enumeration"/>
+    </xd:doc>
+    
+    <xsl:template name="e-itemsChecker">
+        <xsl:param name="enumeration"/>
+        <xsl:variable name="enumerationNumberOfAttributes"
+            select="count($enumeration/attributes/attribute)"/>
+        
+        <xsl:sequence
+            select="
+            if ($enumerationNumberOfAttributes > 0) then
+            f:generateHtmlWarning(fn:concat('The enumeration ', $enumeration/@name,
+            ' shall have no values/attributes defined. An Enumeration stands for an controlled list and its management is out of model scope. '))
+            else
+            ()
+            "
+        />
+    </xsl:template>
+    
+    
+    <xd:doc>
+        <xd:desc>[enumeration-connector-3] The enumeration $value should not connect to othe elements. 
+            An Enumeration stands for an controlled list and can only be referred to. </xd:desc>
+        <xd:param name="enumeration"/>
+    </xd:doc>
+    
+    <xsl:template name="e-outgoingConnectors">
+        <xsl:param name="enumeration"/>
+        <xsl:variable name="outgoingConnectors"
+            select="fn:count(f:getOutgoingConnectors($enumeration))"/>
+        <xsl:sequence
+            select="
+                if ($outgoingConnectors > 0) then
+                    f:generateHtmlError(fn:concat('The enumeration ', $enumeration/@name,
+                    ' should not connect to othe elements. An Enumeration stands for an controlled list and can only be referred to.'))
+                else
+                    ()
+                "
+        />
     </xsl:template>
 
 

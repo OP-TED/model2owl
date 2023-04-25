@@ -64,6 +64,25 @@
                 <xsl:with-param name="elementType" select="'classAttribute'"/>
                 <xsl:with-param name="element" select="."/>
             </xsl:call-template>
+            <xsl:call-template name="unknownStereotypeProvided">
+                <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="elementType" select="'classAttribute'"/>
+            </xsl:call-template>
+            <xsl:call-template name="invalidTagName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingTagValue">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingTagName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingPrefixTagName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="namePlural">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
             <!--    End of common checkers rules     -->  
             <!--    Start of specific checker rules-->
             
