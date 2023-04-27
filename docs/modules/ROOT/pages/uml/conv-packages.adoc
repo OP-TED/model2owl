@@ -1,0 +1,63 @@
+[[sec:uml-package]]
+== Conventions on uml:Package elements
+
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Partitioning of the model
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+Packages should be used to define a logical partition of the model.
+|===
+
+*Description:*
+
+Packages should be used to define a logical partition of the model. They serve as the primary method for the vertical slicing of the conceptual model as described in the layering and slicing section of [xref:references.adoc#ref:costetchi2020a[costetchi2020a]].
+
+
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Hierarchy of packages
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+Packages may form hierarchies.
+|===
+
+*Description:*
+
+Packages may form hierarchies. In this case the hierarchical relation is interpreted as _meronymy_, denoting a constituent parts of the package. Formally they are translated into owl:import statements.The module corresponding to the parent package imports modules corresponding to the child packages.
+
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Empty packages
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+There shall be no empty packages.
+|===
+
+*Description:*
+
+No empty packages shall be present in the model. A package is empty if it contains no child elements.
+
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Package naming
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+Package names shall be short lowercase strings representing an acronym or a short name.
+|===
+
+*Description:*
+
+Package names shall be short, lowercase, normalised strings representing an acronym or a short name. They may serve as proxies for the namespace prefixes and used to resolve the name of any comprised elements when the prefix is not provided. This however should not be used as a primary naming method, but rather for suggesting corrections in the element name.

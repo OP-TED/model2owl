@@ -1,15 +1,17 @@
 [[sec:general_conv]]
 == General Conventions
 
-Defining naming and structural conventions for concepts in an ontology and then strictly adhering to these conventions doesn’t only makes the ontology easier to understand, but also helps avoid some common modelling mistakes.
-
-UML is a language without formal semantics. Moreover, it is quite flexible and permissive with ways in which a concept can be expressed. Also, there are many alternatives in naming concepts. Often there is no particular reason to choose one or another alternative. However, we need to define a set of naming conventions for classes, relations, attributes, controlled lists and adhere to it [xref:references.adoc#ref:noy2001[noy2001]].
+In this section we provide a number of general conventions whose fundamental nature can be of two kind:  _technical_ or _conventional_. Regarding the topic of these conventions, they cover a number of topics: from naming things, to providing appropriate descriptions, to generic recommendations on technical aspects of encoding such information. On each of such topic we will start with _conventional recommendations_, followed by _technical conventions_.
 
 [[sec:names]]
 === Naming Related Conventions
 
-In theory any name can be assigned to a concept, relationship or property. In practice, there are two types of constraints on the kind of names that should be used: _technical_ and _conventional_. This section deals with  conventional constraint, while the technical constraints are addressed in the  [xref:uml/technical-conventions.adoc#sec:technical[Technical Conventions]] Section.
-// TODO check if we still want to use the "conventional constraint" /" technical constraints" distinction, or need to reformulate
+Defining naming and structural conventions for concepts in an ontology and then strictly adhering to these conventions don’t only make the ontology easier to understand, but also helps avoid some common modelling mistakes.
+
+UML is a language without formal semantics. Moreover, it is quite flexible and permissive with ways in which a concept can be expressed. Also, there are many alternatives in naming concepts. Often there is no particular reason to choose one or another alternative. However, we need to define a set of naming conventions for classes, relations, attributes, controlled lists and adhere to it [xref:references.adoc#ref:noy2001[noy2001]].
+
+In theory any name can be assigned to a concept, relationship or property. In practice, there are two types of constraints on the kind of names that should be used: _technical_ and _conventional_. This section deals with conventional recommendations, while the technical aspects are covered in later sections, such as [xref:sec:namespaces[]], [xref:sec:charset[]], and [xref:sec:stereotypes-tags[]] .
+
 
 |===
 |{set:cellbgcolor: #a8c6f7}
@@ -26,7 +28,6 @@ Element names shall follow the short URI notation:
 |===
 
 *Description:*
-
 
 The naming conventions apply to the _element names_ in the conceptual model. These names are intended for further use as human-readable denominations, called _labels_; and machine-readable denominations, called _identifiers_. The identifiers serve as a basis for generating URIs [xref:references.adoc#ref:rfc3986[rfc3986]] to ensure unambiguous reference to a formal construct; while the labels are meant to ease the comprehension by human-readers. For this reason we will consider that mostly the conventional recommendations provided here apply to them and none of the technical constraints.
 
@@ -142,6 +143,33 @@ Names that reduce to the same identifier are considered the same. For example "L
 
 Although name uniqueness is a recommendation, sometimes it is useful to replicate a UML element. In such cases, when the names are reused, the assumption is that the two UML elements represent manifestations of the same meaning. This is especially important for relations, and is explained in Section [xref:#sec:relation-reusability[]].
 
+
+[[sec:relation-reusability]]
+//=== Relations reusability
+
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Reuse of relations
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+Relation names shall be chosen to support the proper level of reusability.
+
+|===
+
+*Description:*
+
+The relation names should be chosen so that there is a balance of accuracy and precision on one hand and the relation reusability on the other hand. These two dimensions are inversely correlated: the higher the reuse the lower the accuracy and vice versa.
+
+On one hand, if we choose more generic predicates such as "isSpecifiedIn" this tends towards maximising relation reusability across the model. Yet at the same time the risk of overloading the relation meaning also increases.
+
+On the other hand, the above risk could be mitigated by simply appending the range class to the relation name: such "isSpecifiedInContract" and such "isSpecifiedInProcedure" following the following naming pattern: . This ensures predicate uniqueness and maximum level of specificity at the cost of reusability across and beyond the model. The latter can be achieved through inference, but an additional predicate inheritance structure must be defined. Another risk is that a change or evolution of the name of the class has a direct impact on all incoming predicates, and thus raising the chances of errors. This in turn may decrease the model agility and elasticity.
+
+Optionally, the transformation process from the conceptual model to the formal ontology, may contain a mechanism of appending the name of the range class to the predicate name in order to automatically produce a predicate with higher specificity, shall this be required.
+
+
 [[sec:suffix-prefix]]
 //=== Suffix and prefix
 
@@ -172,9 +200,10 @@ Optionally common and descriptive prefixes and suffixes for related properties o
 
 *See also:* SEMIC Style Guide Rule [https://semiceu.github.io/style-guide/public-review/gc-general-conventions.html#sec:gc-r4[GC-R4]]
 
+[[sec:descriptions]]
+=== Notes, descriptions and comments
 
-[[sec:description]]
-=== Description
+Large emphasis is set on the naming conventions. Nonetheless, most often, a good name is insufficient for an accurate or easy comprehension by human-readers. To mitigate this and increase the conceptual richness, practitioners may wish to provide human-readable definitions, notes, examples and comments grasping the underlying assumptions, usage examples, additional explanations and other types of information.
 
 |===
 |{set:cellbgcolor: #a8c6f7}
@@ -189,8 +218,7 @@ All elements shall have a definition providing a concise but complete descriptio
 
 *Description:*
 
-The SEMIC Principles for creating good definitions [xref:semicsg/references.adoc#ref:semic-defs[semic-defs]] are a basis for writing definitions.
-They are based on advice found in the literature and are the following:
+We adopt here the SEMIC Principles for creating good definitions [xref:semicsg/references.adoc#ref:semic-defs[semic-defs]]. They are based on advice found in the literature and are the following:
 
 * Be concise but complete,
 ** Avoid over-generalisations. Adapt and contextualise the definition to the surrounding/connected concepts.
@@ -200,7 +228,7 @@ They are based on advice found in the literature and are the following:
 ** Use the singular form to phrase the definition [xref:semicsg/gc-general-conventions.adoc#sec:gc-r4[GC-R4]]
 ** State what the term is, and don't enumerate what it is NOT (no negative definition)
 ** Use only commonly understood abbreviations
-** Use similar terminology for related definitions
+** Use similar terminology for definitions of related concepts
 * Don't use  circular definitions, i.e. the term defined should not be part of the definition,
 * Don't add secondary information such as additional explanation, scoping, examples, etc. these are to be documented in usage notes.
 * Form the definition in one or more sentences that start with a capital letter and end with a period.
@@ -210,10 +238,59 @@ They are based on advice found in the literature and are the following:
 
 *TODO:* Double check this list (including the commented items) to see if they are all accurate and relevant.
 
-*TODO:* Also add additional a separate list of items with recommendations for EPO descriptions, like references to BT terms, WG decisions, etc.
+In addition to these SEMIC recommendation for providing good definitions, we also add the following recommendations to adequately complete the description of an element:
+
+* It is recommended that each element is defined by a crisp, one-line definition. The definition starts with a capital letter and ends with a period.
+
+* A description may provide complementary information concerning the usage of the element or its relation to relevant standards. For example, a description may contain recommendations about which controlled vocabularies to use, describe the underlying assumptions and additional explanations for reducing ambiguity. Descriptions may contain multiple paragraphs separated by blank lines. The descriptions should not paraphrase the definitions.
+
+* In case the model editor provides concrete examples of possible element values or instances then they shall be provided as a comma-separated list. Each example value is enclosed in quotes and is optionally followed by a short explanation enclosed in parentheses [xref:references.adoc#ref:isaHandbook2015[isaHandbook2015]].
+
+
+*TODO:* Also add additionally a separate list of items with recommendations for EPO descriptions, like references to BT terms, WG decisions, etc.
 
 
 *See also:* SEMIC Style Guide Rule [https://semiceu.github.io/style-guide/public-review/gc-general-conventions.html#sec:gc-r4[GC-R5]] should be followed here.
+
+
+[[sec:technical]]
+//== Technical constraints
+
+
+[[sec:namespaces]]
+=== Namespaces
+
+In order to enable the reuse of names defined in other models and reuse of unique references for names that support easy identification, namespace management must be considered. We adopt XML approach to defining and managing namespaces as it is inherent in both XMI and OWL2 standards. Hence, a _namespace_ is a set of symbols that are used to organise objects of various kinds, so that these objects may be referred to by name and uniquely identifiable.
+
+Namespaces are commonly structured as hierarchies to allow reuse of names in different contexts [xref:references.adoc#ref:xml-namespaces[xml-namespaces]]. This mechanism can be implemented in UML through partitioning the model using packages, which are described in [xref:#sec:uml-package[]].
+
+A namespace organises a collection of names obeying three constraints: each name is (1) unique, (2) assigned in a consistent way, and (3) assigned according to a common definition [xref:references.adoc#ref:urn-rfc8141[urn-rfc8141]]. An (expanded) _name_ in a namespace is a pair consisting of a _namespace name_, also called _base URI_ or just _base_, and a _local name_, also called _local segment_ [xref:references.adoc#ref:xml1-spec[xml1-spec], xref:references.adoc#ref:urn-rfc2141[urn-rfc2141]]. The combination of universally managed URI with the vocabulary local name is effective in avoiding name clashes. For example, in the expanded name "http://www.w3.org/ns/org#Organization", "http://www.w3.org/ns/org#" is the namespace name and "Organization" is the local name.
+
+Unlike in the XML specifications, the constraints on the local name are slightly relaxed, allowing token delimitation by space character (see Section [xref:uml/general-conventions.adoc#sec:delimitation[Delimitation]]). This provides an additional level of readability to the conceptual model users. Nevertheless, the local names must be _normalised strings_, which mean that only single occurrences of space character are permitted. Other delimiting characters, such as tab, line feed, carriage return must be replaced by an occurrence of space and trimmed. In the transformation process, when URIs are generated, the spaces are removed anyway and conform with the XML conventions (see Section [xref:uml/general-conventions.adoc#sec:name[Name]]).
+
+```
+name = <namespace name>/<local name>
+name = <namespace name>#<local name>
+```
+
+URI references are often inconveniently long, so expanded names should not be used directly. Instead _qualified names_ should be used while expanded names are strongly discouraged. A _qualified name_ is a name subject to namespace interpretation. Syntactically, they are either _prefixed names_ or _unprefixed names_.
+
+```
+qualified name = [<namespace prefix>:]<local name>
+```
+
+The namespace name is usually applied as a _prefix_ to the local name but it may be missing as well. [xref:references.adoc#ref:xml-namespaces[xml-namespaces]] specifies a declaration syntax which permits to bind prefixes to namespace names and also to bind a default namespace that applies to unprefixed element names. For example we can bind the namespace name "http://www.w3.org/ns/org#" to the prefix "org", which we can then use to create the same name as such "org:Organization". The prefix is subject to namespace interpretation and resolved to an URI [xref:references.adoc#ref:xml-namespaces[xml-namespaces]].
+
+It is recommended that the UML element names indicate the namespace prefix by prepending it to the name delimited by colon character (:). In case the namespace is not specified (no delimiter) then the name of the package containing the current element is used as namespace prefix. For example if a class "Contract" is placed in a package "epo" then the name of the containing package is used as the namespace prefix and resolved to "epo:Contract". If the delimiter (:) is used without any prefix, then the empty string prefix is resolved to the default namespace as defined in [xref:references.adoc#ref:xml-namespaces[xml-namespaces]].
+
+[[sec:charset]]
+=== Character encoding
+
+In the formal ontology, the names must conform to RDF [xref:references.adoc#ref:rdf11[rdf11]] and XML[xref:references.adoc#ref:xml1-spec[xml1-spec]] format specifications. Both languages effectively require that terms begin with an upper or lower case letter from the ASCII character set, or an underscore (_). This tight restriction means that, for example, terms may not begin with a number, hyphen or accented character [xref:references.adoc#ref:d3.1-2015[d3.1-2015]]. Although underscores are permitted, they are discouraged as they may be, in some cases, misread as spaces. A formal definition of these restrictions is given in the XML specification document [xref:references.adoc#ref:xml1-spec[xml1-spec]].
+
+It is required that the names use words beginning with an upper or lower case letter (A–Z, a–z) or an underscore (_) for all terms in the model. Digits (0–9) are allowed in the subsequent character positions. Also, as mentioned above, spaces are permitted in the local segment of the name.
+
+Encoded UTF-8 and UTF-16 names are supported [xref:references.adoc#ref:xml1-spec[xml1-spec], xref:references.adoc#ref:xml11-spec[xml11-spec]] but we recommend avoiding any character encodings in the element names. Encoded characters are mostly not readable and require a decoding to become human friendly. Also unexpected results may occur in the transformation script. This recommendation does not apply to the content strings such as descriptions, notes and comments, which may use any character encoding.
 
 
 [[sec:stereotypes-tags]]
@@ -231,6 +308,7 @@ The use of stereotypes should be avoided, as much as possible. Only selected, ag
 |===
 
 *Description:*
+
 The use of common UML stereotypes is not recommended. There should be only a small set of stereotypes, with well-defined meaning and pre-established transformation rules that shall be used in the conceptual model.
 
 TODO: Give examples of supported (and not to be used) stereotypes in EPO
@@ -260,79 +338,3 @@ When providing additional information to an element (classes, enumerations, data
 TODO: Give examples from EPO
 
 See also:
-
-[[sec:classes]]
-=== Classes
-// TODO: this shall be combined with uml:Class
-
-When choosing class names, it is conventional to use simple nouns or noun phrases. In case the class refers to actions, states, relations or qualities, which are usually expressed in natural language by verbs or adjectives then they must be nominalised. We often form nouns from other parts of speech, most commonly from a verb or an adjective. We can then use the noun phrase instead of the verb or adjective to create a more formal style. This process is called nominalisation.
-
-A class name represents a collection of objects. For example, a class "Language" actually represents all languages. Therefore, it could be more natural for some model designers to call the class "Languages" rather than "Language". In practice, however, the singular is used more often for class names, while the plural for sets and collections [xref:references.adoc#ref:noy2001[noy2001]]. Therefore, it is required that the class names must always use the singular lexical form.
-
-When building the class hierarchy, names of direct subclasses of a class should consistently either all include or not include the name of the superclass. For example, if we are creating two subclasses of the "Wine" class to represent red and white wines, the two subclass names should be either "Red Wine" and "White Wine" or "Red" and "White", but not "Red Wine" and "White" [xref:references.adoc#ref:noy2001[noy2001]].
-
-Class specialisations with a single child must be avoided. This means that there should be at least two sibling subclasses specified in the model. By default the classes are not disjunctive, however, if required, the transformation script may generate disjunctive classes by default.
-
-Circular inheritance must be avoided. This means that if there is a B that specialises a class A then A may not specialise B or any of the sub-classes of B.
-
-[[sec:relations]]
-=== Relations
-// TODO: this shall be combined with uml:Connector
-
-When establishing relations between concepts it is conventional to use verbs of action, state, process or relation such as such as "includes", "replaces", "manages". It is required to use a verb or a verb phrase for relationship terms. It should be in _lowerCamelCase_ such that latexmath:[$<subject-predicate-object>$] triples may actually be read as natural language clauses, e.g. "EconomicOperator offers ProcuredItem" [xref:references.adoc#ref:d2.01-2017[d2.01-2017]].
-
-The verb phrase must be in present tense, if needed inflected as third person singular. If an additional level of specificity is needed a qualifying nominal phrase may be appended.
-
-Relationships are usually bi-directional and the inverse one should be provided where it makes sense. Adjust the verb phrases in the predicates as appropriate, usually, by employing the _active and passive voice_ in the term formulation brings the desired result. For example, "uses/isUsedBy" and "refersTo/isReferredToBy" or "offers/isOfferedBy" [xref:references.adoc#ref:d2.01-2017[d2.01-2017]].
-
-The name of the inverse relation should not be semantically inverted verb, such as in case of "buys/sells" , "open/closes". The semantically inverted dichotomies must be modelled in separate connectors because they represent different relations. For example the dichotomy "buys/sells" should be modelled as two pairs: "buys/isBoughtBy" and "sells/isSoldBy".
-
-When the relation is of different nature, more like an attribute, then prefixing and suffixing techniques can be employed. For example, in the Organisation Ontology [xref:references.adoc#ref:org-ontology[org-ontology]], the concepts of an "Organisation" and a "Site" are defined along with two relationships that are the inverse of each other: "Organisation hasSite Site" and "Site siteOf Organisation" [xref:references.adoc#ref:d3.1-2015[d3.1-2015]].
-
-It is recommended that each relationship includes a definition of its inverse.
-
-Models should define such inverse pairs for relationships although this does not extend to attributes. For example, Dublin Core [xref:references.adoc#ref:dublin-core-metadata[dublin-core-metadata]] includes a property of "dateAccepted", there is no inverse property that would link a given date, which is expressed as a simple value, to all the documents accepted for publication on that date.
-
-[[sec:relation-reusability]]
-=== Relations reusability
-// TODO: this shall be combined with name uniqueness
-
-The relation names should be chosen so that there is a balance of accuracy and precision on one hand and the relation reusability on the other hand. These two dimensions are inversely correlated: the higher the reuse the lower the accuracy and vice versa.
-
-On one hand, if we choose more generic predicates such as "isSpecifiedIn" this tends towards maximising relation reusability across the model. Yet at the same time the risk of overloading the relation meaning also increases.
-
-On the other hand, the above risk could be mitigated by simply appending the range class to the relation name: such "isSpecifiedInContract" and such "isSpecifiedInProcedure" following the following naming pattern: . This ensures predicate uniqueness and maximum level of specificity at the cost of reusability across and beyond the model. The latter can be achieved through inference, but an additional predicate inheritance structure must be defined. Another risk is that a change or evolution of the name of the class has a direct impact on all incoming predicates, and thus raising the chances of errors. This in turn may decrease the model agility and elasticity.
-
-Optionally, the transformation process from the conceptual model to the formal ontology, may contain a mechanism of appending the name of the range class to the predicate name in order to automatically produce a predicate with higher specificity, shall this be required.
-
-[[sec:attributes]]
-=== Attributes
-// TODO: this shall be moved to uml:Attribute
-
-When creating attribute names, it is conventional to use simple nouns such as "name", "weight", "colour". Attributes are a special type of relations that describe an entity in terms of its qualities. And so, to be consistent with the above convention and in order to increase the clarity, it is recommended to employ the prefix "has-" for each attribute even if it does not add much to the term’s meaning. So, it is preferred to use terms such as "hasName", "hasWeight" and "hasColour".
-
-It is recommended to use simple nouns for attribute names prepended with the verb "has-".
-
-To avoid laborious mechanical work of adding the prefix, it is possible to rely on the convention that the attribute names starting with a capital letter must be read as having the "has-" prefix. It means that the transformation script will prepend the "has-" prefix to all attributes starting with a capital letter.
-
-By default, the attribute multiplicity is "1". This should be read as any number which is expressed as "0..*". In special cases, a list of custom default multiplicities is defined for the transformation script. That means that some data types or classes that are used as attribute types are paired with a default multiplicity, for example "1..1", "0..1", "2..2".
-
-[[sec:controlled-list]]
-=== Controlled lists
-
-The controlled list is a carefully selected list of words and phrases and is often employed in the modelling practices. The controlled list has a name and a set of terms. For example the list of grammatical genders can be named "Gender" and comprise the terms "masculine", "feminine", "neuter" and "utrum".
-
-It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case.
-
-As a rule of thumb, but not always, the relationship between the controlled list as a whole and its comprising elements can be informally conceptualised as a class-instance, class-subclass, set-item, or part-whole.
-
-[[sec:descriptions]]
-=== Notes, descriptions and comments
-
-Large emphasis is set on the naming conventions. Nonetheless, most often, a good name is insufficient for an accurate or easy comprehension by human-readers. To mitigate this and increase the conceptual richness, practitioners may wish to provide human readable definitions, notes, examples and comments grasping the underlying assumptions, usage examples, additional explanations and other types of information.
-
-It is recommended that each element is defined by a crisp, one-line definition. The definition starts with a capital letter and ends with a period.
-
-A description may provide complementary information concerning the usage of the element or its relation to relevant standards. For example, a description may contain recommendations about which controlled vocabularies to use, describe the underlying assumptions and additional explanations for reducing ambiguity. Descriptions may contain multiple paragraphs separated by blank lines. The descriptions should not paraphrase the definitions.
-
-In case the model editor provides concrete examples of possible element values or instances then they shall be provided as a comma-separated list. Each example value is enclosed in quotes and is optionally followed by a short explanation enclosed in parentheses [xref:references.adoc#ref:isaHandbook2015[isaHandbook2015]].
