@@ -22,12 +22,12 @@
 
     <xd:doc>
         <xd:desc>Getting all generalizations and show only the ones that have unmet conventions
-            [generalisation-hierarchy-38]
-            [generalisation-hierarchy-39] 
-            [generalisation-multiplicity-40]
-            [generalisation-name-41] 
-            [generalisation-name-42]
-            [generalisation-direction-62]
+            [generalisation-hierarchy-1]
+            [generalisation-hierarchy-2] 
+            [generalisation-multiplicity-3]
+            [generalisation-name-4] 
+            [generalisation-name-5]
+            [generalisation-direction-6]
         </xd:desc>
     </xd:doc>
 
@@ -67,7 +67,7 @@
 
 
     <xd:doc>
-        <xd:desc>[generalisation-hierarchy-38] - The class $parent$ has only one sub-class $child$.
+        <xd:desc>[generalisation-hierarchy-1] - The class $parent$ has only one sub-class $child$.
             Class inheritance should be built employing at least two subclasses for each class or
             not at all. </xd:desc>
         <xd:param name="generalizationConnector"/>
@@ -82,14 +82,14 @@
                 if (count(f:getIncommingConnectors($targetElement)[properties/@ea_type = 'Generalization']) > 1) then
                     ()
                 else
-                    f:generateHtmlWarning(fn:concat('The class ', $generalizationConnector/target/model/@name, ' has only one sub-class ',
+                    f:generateHtmlInfo(fn:concat('The class ', $generalizationConnector/target/model/@name, ' has only one sub-class ',
                     $generalizationConnector/source/model/@name, '. Class inheritance should be built employing at least two subclasses for each class or',
                     ' not at all.'))"
         />
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[generalisation-hierarchy-39] - The classes $class1$ and $class2$ inherit one
+        <xd:desc>[generalisation-hierarchy-2] - The classes $class1$ and $class2$ inherit one
             another. Sub-class relation must be established in one direction only, forming a
             hierarchy. </xd:desc>
         <xd:param name="generalizationConnector"/>
@@ -112,7 +112,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[generalisation-name-40] - The generalisation has multiplicity. No multiplicity can
+        <xd:desc>[generalisation-name-3] - The generalisation has multiplicity. No multiplicity can
             be provided to generalisations. </xd:desc>
         <xd:param name="generalizationConnector"/>
     </xd:doc>
@@ -133,7 +133,7 @@
 
 
     <xd:doc>
-        <xd:desc>[generalisation-name-41] - The connector $connectorName$ has a name. No name can be
+        <xd:desc>[generalisation-name-4] - The connector $connectorName$ has a name. No name can be
             provided for generalisation relation. </xd:desc>
         <xd:param name="generalizationConnector"/>
     </xd:doc>
@@ -150,7 +150,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[generalisation-name-42] - The generalisation connector has a role name. No source
+        <xd:desc>[generalisation-name-5] - The generalisation connector has a role name. No source
             or target roles can be provided to generalisations. </xd:desc>
         <xd:param name="generalizationConnector"/>
     </xd:doc>
@@ -170,7 +170,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[generalisation-direction-62] - The $direction$ direction is invalid. Generalisations must employ "Source->Destination" direction only. </xd:desc>
+        <xd:desc>[generalisation-direction-6] - The $direction$ direction is invalid. Generalisations must employ "Source->Destination" direction only. </xd:desc>
         <xd:param name="generalizationConnector"/>
     </xd:doc>
     <xsl:template name="g-directionChecker">

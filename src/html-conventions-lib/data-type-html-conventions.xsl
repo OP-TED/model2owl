@@ -13,14 +13,15 @@
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:f="http://https://github.com/costezki/model2owl#" version="3.0">
 
+    <!--
     <xsl:import href="../common/checkers.xsl"/>
-    <xsl:import href="utils-html-conventions.xsl"/>
+    <xsl:import href="utils-html-conventions.xsl"/>-->
+    <xsl:import href="common-elements-html-conventions.xsl"/>
 
 
 
     <xd:doc>
         <xd:desc>Getting all data-types and show only the ones that have unmet conventions
-            [datatype-name-61
         </xd:desc>
     </xd:doc>
 
@@ -31,45 +32,78 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="dataTypeChecks" as="item()*">
+            <!--    Start of common checkers rules     -->
+            <xsl:call-template name="namingFormat">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingNamePrefix">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingLocalSegmentName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="invalidNamePrefix">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="undefinedPrefix">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="invalidNameLocalSegment">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="invalidFirstCharacterInLocalSegment">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="delimitersInTheLocalSegment">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingDescription">
+                <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="elementType" select="'dataType'"/>
+            </xsl:call-template>
+            <xsl:call-template name="stereotypeProvided">
+                <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="elementType" select="'dataType'"/>
+            </xsl:call-template>
+            <xsl:call-template name="unknownStereotypeProvided">
+                <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="elementType" select="'dataType'"/>
+            </xsl:call-template>
+            <xsl:call-template name="invalidTagName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingTagValue">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingTagName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="missingPrefixTagName">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="namePlural">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            <!--    End of common checkers rules     -->   
+            <!--    Start of specific checker rules-->
+            
             <xsl:call-template name="d-incorrectDataType">
-                <xsl:with-param name="dataTypeElement" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="d-stereotypeProvided">
-                <xsl:with-param name="dataTypeElement" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="d-missingDescription">
-                <xsl:with-param name="dataTypeElement" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="d-missingName">
-                <xsl:with-param name="dataTypeElement" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="d-missingNamePrefix">
-                <xsl:with-param name="dataTypeElement" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="d-missingLocalSegmentName">
-                <xsl:with-param name="dataTypeElement" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="d-invalidNamePrefix">
-                <xsl:with-param name="dataTypeElement" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="d-invalidNameLocalSegment">
-                <xsl:with-param name="dataTypeElement" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="d-invalidFirstCharacterInLocalSegment">
-                <xsl:with-param name="dataTypeElement" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="d-delimitersInTheLocalSegment">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
             <xsl:call-template name="d-uniqueName">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="d-undefinedPrefix">
+            <xsl:call-template name="d-attributeChecker">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="d-namingFormat">
+            <xsl:call-template name="d-outgoingConnectors">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
+            <!--    End of specific checker rules-->
+
         </xsl:variable>
         <xsl:if test="boolean($dataTypeChecks)">
             <h2><xsl:value-of select="$dataTypeName"/></h2>
@@ -98,191 +132,10 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
-    <xd:doc>
-        <xd:desc>[datatype-name-61] - This is not a valid xsd or rdf data-type. Is this suppose to be a Class instead?</xd:desc>
-        <xd:param name="dataTypeElement"/>
-    </xd:doc>
-    <xsl:template name="d-incorrectDataType">
-        <xsl:param name="dataTypeElement"/>
-        <xsl:variable name="dataTypeElementName" select="$dataTypeElement/@name"/>
-        <xsl:variable name="rdfOrXsdDataType"
-            select="f:getXsdRdfDataTypeValues($dataTypeElementName, $xsdAndRdfDataTypes)"/>
-        <xsl:if test="$rdfOrXsdDataType = ''">
-            <xsl:sequence
-                select="f:generateHtmlWarning('This is not a valid xsd or rdf data-type. Is this suppose to be a Class instead?')"
-            />
-        </xsl:if>
-    </xsl:template>
-
-    <xd:doc>
-        <xd:desc>[common-stereotype-10] - The $stereotypeName$ stareotype is applied to
-            $elementName$. Stereotypes are discouraged in the current practice with some exceptions. </xd:desc>
-        <xd:param name="dataTypeElement"/>
-    </xd:doc>
-    <xsl:template name="d-stereotypeProvided">
-        <xsl:param name="dataTypeElement"/>
-        <xsl:sequence
-            select="
-                if (f:isElementStereotypeValid($dataTypeElement))
-                then
-                    ()
-                else
-                    f:generateHtmlWarning(fn:concat('The ', $dataTypeElement/properties/@stereotype,
-                    ' stareotype is applied to ', $dataTypeElement/@name,
-                    '. Stereotypes are discouraged in the current practice with some exceptions. '))"
-        />
-    </xsl:template>
-
-    <xd:doc>
-        <xd:desc>[common-description-9] - $elementName$ is missing a description. All concepts
-            should be defined or described.</xd:desc>
-        <xd:param name="dataTypeElement"/>
-    </xd:doc>
-
-    <xsl:template name="d-missingDescription">
-        <xsl:param name="dataTypeElement"/>
-        <xsl:variable name="dataTypeElementName" select="$dataTypeElement/@name"/>
-        <xsl:variable name="noDescription" select="$dataTypeElement/properties/not(@documentation)"/>
-        <xsl:sequence
-            select="
-                if ($noDescription = fn:true()) then
-                    f:generateHtmlWarning(fn:concat($dataTypeElementName, ' is missing a description. All concepts should be defined or described.'))
-                else
-                    ()"
-        />
-    </xsl:template>
-    
-    <xd:doc>
-        <xd:desc>[common-name-1] - The name of the element $IdRef$ is missing. Please provide one
-            respecing the syntax "prefix:localSegment".</xd:desc>
-        <xd:param name="dataTypeElement"/>
-    </xd:doc>
-    <xsl:template name="d-missingName">
-        <xsl:param name="dataTypeElement"/>
-        <xsl:sequence
-            select="
-            if (f:isElementNameMissing($dataTypeElement)) then
-            f:generateHtmlError(fn:concat('The name of the element ', $dataTypeElement/@xmi:idref,
-            ' is missing. Please provide one respecing the syntax prefix:localSegment.'))
-            else
-            ()"
-        />
-    </xsl:template>
-    
-    <xd:doc>
-        <xd:desc>[common-name-2] - The name of element $elementName$ is missing a prefix. The name
-            should comprise a prefix respecing the syntax "prefix:localSegment".</xd:desc>
-        <xd:param name="dataTypeElement"/>
-    </xd:doc>
-    <xsl:template name="d-missingNamePrefix">
-        <xsl:param name="dataTypeElement"/>
-        <xsl:sequence
-            select="
-            if (f:isElementNamePrefixMissing($dataTypeElement)) then
-            f:generateHtmlWarning(fn:concat('The name of element ', $dataTypeElement/@name,
-            ' is missing a prefix. The name should comprise a prefix respecing the syntax prefix:localSegment.'))
-            else
-            ()"
-        />
-    </xsl:template>
-    
-    <xd:doc>
-        <xd:desc>[common-name-3] - The name of $elementName$ is missing a local segment. Please
-            provide one respecing the syntax "prefix:localSegment".".</xd:desc>
-        <xd:param name="dataTypeElement"/>
-    </xd:doc>
-    <xsl:template name="d-missingLocalSegmentName">
-        <xsl:param name="dataTypeElement"/>
-        <xsl:sequence
-            select="
-            if (f:isElementNameLocalSegmentMissing($dataTypeElement)) then
-            f:generateHtmlError(fn:concat('The name of element ', $dataTypeElement/@name,
-            ' is missing a local segment. Please provide one respecing the syntax prefix:localSegment.'))
-            else
-            ()"
-        />
-    </xsl:template>
-    
-    <xd:doc>
-        <xd:desc>[common-name-4] - The name prefix is invalid in $value$. Please provide a short
-            prefix name containing only alphanumeric characters [a-zA-Z0-9]+.</xd:desc>
-        <xd:param name="dataTypeElement"/>
-    </xd:doc>
-    <xsl:template name="d-invalidNamePrefix">
-        <xsl:param name="dataTypeElement"/>
-        <xsl:sequence
-            select="
-            if (f:isInvalidNamePrefix($dataTypeElement)) then
-            f:generateHtmlError(fn:concat('The name prefix ', fn:substring-before($dataTypeElement/@name, ':'),
-            ' , is invalid. Please provide a short prefix name ',
-            'containing only alphanumeric characters [a-zA-Z0-9]+.'))
-            else
-            ()"
-        />
-    </xsl:template>
     
     
     <xd:doc>
-        <xd:desc>[common-name-5] - The local name segment is invalid in $value$. Please provide a
-            concise label using alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase,
-            or possibly with tokens delimited by single spaces.</xd:desc>
-        <xd:param name="dataTypeElement"/>
-    </xd:doc>
-    <xsl:template name="d-invalidNameLocalSegment">
-        <xsl:param name="dataTypeElement"/>
-        <xsl:sequence
-            select="
-            if (f:isInvalidLocalSegmentName($dataTypeElement)) then
-            f:generateHtmlError(fn:concat('The local name segment ', fn:substring-after($dataTypeElement/@name, ':'),
-            ' , is invalid. Please provide a concise label using ',
-            'alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with ',
-            'tokens delimited by single spaces.'))
-            else
-            ()"
-        />
-    </xsl:template>
-    
-    <xd:doc>
-        <xd:desc>[common-name-6] - The local name segment $value$ starts with an invalid character.
-            The local segment must start with a letter or underscore. </xd:desc>
-        <xd:param name="dataTypeElement"/>
-    </xd:doc>
-    <xsl:template name="d-invalidFirstCharacterInLocalSegment">
-        <xsl:param name="dataTypeElement"/>
-        <xsl:sequence
-            select="
-            if (f:isValidFirstCharacterInLocalSegment($dataTypeElement)) then
-            ()
-            else
-            f:generateHtmlError(fn:concat('The local name segment ', f:getLocalSegmentForElements($dataTypeElement),
-            ' starts with an invalid character. The local segment ',
-            'must start with a letter or underscore.'))"
-        />
-    </xsl:template>
-    
-    
-    <xd:doc>
-        <xd:desc>[common-name-7] - The local name segment $value$ contains token delimiters. It is
-            best if the names are camel cased and delimiters removed. </xd:desc>
-        <xd:param name="dataTypeElement"/>
-    </xd:doc>
-    <xsl:template name="d-delimitersInTheLocalSegment">
-        <xsl:param name="dataTypeElement"/>
-        <xsl:sequence
-            select="
-            if (f:isDelimitersInLocalSegment($dataTypeElement)) then
-            f:generateHtmlWarning(fn:concat('The local name segment ', f:getLocalSegmentForElements($dataTypeElement),
-            ' contains token delimiters. It is best if the names ',
-            'are camel cased and delimiters removed.'))
-            else
-            ()
-            "
-        />
-    </xsl:template>
-    
-    <xd:doc>
-        <xd:desc>[common-name-8] - The name $value$ is not unique. The Concept names should be
+        <xd:desc>[datatype-name-1] - The name $value$ is not unique. The Concept names should be
             unique within the model; while the relations may repeat but should not overlap with
             concept names. </xd:desc>
         <xd:param name="dataTypeElement"/>
@@ -307,43 +160,72 @@
             />
         </xsl:if>
     </xsl:template>
-    
-    
+
     <xd:doc>
-        <xd:desc>[common-name-57]-The prefix $value$ is not defined. A prefix must be associated to
-            a namespace URI. </xd:desc>
+        <xd:desc>[datatype-name-2] - The datatype is not an XSD or RDF datatype. 
+            It is recommended to use XSD and RDF datatypes mainly. </xd:desc>
         <xd:param name="dataTypeElement"/>
     </xd:doc>
-    
-    <xsl:template name="d-undefinedPrefix">
+    <xsl:template name="d-incorrectDataType">
         <xsl:param name="dataTypeElement"/>
         <xsl:variable name="dataTypeElementName" select="$dataTypeElement/@name"/>
-        <xsl:if test="not(f:isValidNamespace($dataTypeElementName))">
+        <xsl:variable name="rdfOrXsdDataType"
+            select="f:getXsdRdfDataTypeValues($dataTypeElementName, $xsdAndRdfDataTypes)"/>
+        <xsl:if test="$rdfOrXsdDataType = ''">
             <xsl:sequence
-                select="
-                f:generateHtmlWarning(fn:concat('The prefix ', fn:substring-before($dataTypeElementName, ':'),
-                ' is not defined. A prefix must be associated to a namespace URI.'))"
+                select="f:generateHtmlWarning(fn:concat('The datatype', $dataTypeElementName, 
+                'is not an XSD or RDF datatype.  It is recommended to use XSD and RDF datatypes mainly.'))"
             />
         </xsl:if>
     </xsl:template>
     
-    
     <xd:doc>
-        <xd:desc>[common-name-58] - The name $elementName$ does not match the pattern. The name
-            should respect the syntax "prefix:localSegment" (similar to the XML QName).</xd:desc>
+        <xd:desc>[datatype-attribute-3] The datatype $value$ is not atomic. 
+         Complex datatypes where attributes/components are specified shall be represented as classes. </xd:desc>
         <xd:param name="dataTypeElement"/>
     </xd:doc>
     
-    <xsl:template name="d-namingFormat">
+    <xsl:template name="d-attributeChecker">
         <xsl:param name="dataTypeElement"/>
-        <xsl:variable name="dataTypeElementName" select="$dataTypeElement/@name"/>
-        <xsl:if test="f:isValidQname($dataTypeElementName) = fn:false()">
-            <xsl:sequence
-                select="
-                f:generateHtmlWarning(fn:concat('The name ', $dataTypeElementName, ' does not match the pattern. ', 
-                'The name should respect the syntax prefix:localSegment (similar to the XML QName).'))"
-            />
-        </xsl:if>
+        <xsl:variable name="dataTypeNumberOfAttributes"
+            select="count($dataTypeElement/attributes/attribute)"/>
+        
+        <xsl:sequence
+            select="
+            if ($dataTypeNumberOfAttributes > 0) then
+            f:generateHtmlWarning(fn:concat('The datatype ', $dataTypeElement/@name,
+            ' is not atomic. Complex datatypes where attributes/components are specified shall be represented as classes.'))
+            else
+            ()
+            "
+        />
     </xsl:template>
+    
+    
+    <xd:doc>
+        <xd:desc>[datatype-connector-4] The datatype $value should not connect to othe elements.
+            A Datatype can only be referred to. </xd:desc>
+        <xd:param name="dataTypeElement"/>
+    </xd:doc>
+    
+    <xsl:template name="d-outgoingConnectors">
+        <xsl:param name="dataTypeElement"/>
+        <xsl:variable name="outgoingConnectors"
+            select="fn:count(f:getOutgoingConnectors($dataTypeElement))"/>
+        <xsl:sequence
+            select="
+            if ($outgoingConnectors > 0) then
+            f:generateHtmlError(fn:concat('The datatype ', $dataTypeElement/@name,
+            ' should not connect to othe elements. A Datatype can only be referred to.'))
+            else
+            ()
+            "
+        />
+    </xsl:template>
+
+   
+    
+
+    
 
 </xsl:stylesheet>

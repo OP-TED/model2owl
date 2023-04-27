@@ -19,7 +19,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding an Dependency that has a wrong direction">
-        <x:call template="d-invalidDirection">
+        <x:call template="dependency-invalidDirection">
             <x:param name="dependencyConnector"
                 href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[5]"/>
@@ -29,7 +29,7 @@
     
     
     <x:scenario label="Scenario for finding an Dependency that has the right direction">
-        <x:call template="d-invalidDirection">
+        <x:call template="dependency-invalidDirection">
             <x:param name="dependencyConnector"
                 href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[173]"/>
