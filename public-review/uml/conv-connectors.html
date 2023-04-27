@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: model2owl</title>
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="../..">
+            </a>
+        </div>
+    </nav>
+<nav class="navbar">
+    <div class="navbar-brand">
+    <img src="../../_/img/semic-logo.png" class="logo" />
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs" >
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="public-review">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">model2owl Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About model2OWL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../architecture/ontology-architecture.html">Architectural Design</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="conceptual-model-conventions.html">UML Conceptual Model Conventions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="general-conventions.html">General Conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-packages.html">uml:Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-classes.html">uml:Class</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-attributes.html">uml:Attribute</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-enumerations.html">uml:Enumeration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-datatypes.html">uml:DataType</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="conv-connectors.html">UML Connector Elements</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transformation/uml2owl-transformation.html">Transformation Rules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../references.html">References</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../semicsg/semic-nav.html">(SEMIC Style Guide)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">model2owl Documentation</span>
+    <span class="version">public-review</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">model2owl Documentation</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">public-review</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">model2owl Documentation</a></li>
+    <li><a href="conceptual-model-conventions.html">UML Conceptual Model Conventions</a></li>
+    <li><a href="conv-connectors.html">UML Connector Elements</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/uml/conv-connectors.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="sect1">
+<h2 id="_uml_connector_elements"><a class="anchor" href="#_uml_connector_elements"></a>UML Connector Elements</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="sec:relations"><a class="anchor" href="#sec:relations"></a>Conventional recommendations on Relations</h3>
+<div class="paragraph">
+<p>When establishing relations between concepts it is conventional to use verbs of action, state, process or relation such as such as "includes", "replaces", "manages". It is required to use a verb or a verb phrase for relationship terms. It should be in <em>lowerCamelCase</em> such that \(&lt;subject-predicate-object&gt;\) triples may actually be read as natural language clauses, e.g. "EconomicOperator offers ProcuredItem" [<a href="../references.html#ref:d2.01-2017" class="xref page">d2.01-2017</a>].</p>
+</div>
+<div class="paragraph">
+<p>The verb phrase must be in present tense, if needed inflected as third person singular. If an additional level of specificity is needed a qualifying nominal phrase may be appended.</p>
+</div>
+<div class="paragraph">
+<p>Relationships are usually bi-directional and the inverse one should be provided where it makes sense. Adjust the verb phrases in the predicates as appropriate, usually, by employing the <em>active and passive voice</em> in the term formulation brings the desired result. For example, "uses/isUsedBy" and "refersTo/isReferredToBy" or "offers/isOfferedBy" [<a href="../references.html#ref:d2.01-2017" class="xref page">d2.01-2017</a>].</p>
+</div>
+<div class="paragraph">
+<p>The name of the inverse relation should not be semantically inverted verb, such as in case of "buys/sells" , "open/closes". The semantically inverted dichotomies must be modelled in separate connectors because they represent different relations. For example the dichotomy "buys/sells" should be modelled as two pairs: "buys/isBoughtBy" and "sells/isSoldBy".</p>
+</div>
+<div class="paragraph">
+<p>When the relation is of different nature, more like an attribute, then prefixing and suffixing techniques can be employed. For example, in the Organisation Ontology [<a href="../references.html#ref:org-ontology" class="xref page">org-ontology</a>], the concepts of an "Organisation" and a "Site" are defined along with two relationships that are the inverse of each other: "Organisation hasSite Site" and "Site siteOf Organisation" [<a href="../references.html#ref:d3.1-2015" class="xref page">d3.1-2015</a>].</p>
+</div>
+<div class="paragraph">
+<p>It is recommended that each relationship includes a definition of its inverse.</p>
+</div>
+<div class="paragraph">
+<p>Models should define such inverse pairs for relationships although this does not extend to attributes. For example, Dublin Core [<a href="../references.html#ref:dublin-core-metadata" class="xref page">dublin-core-metadata</a>] includes a property of "dateAccepted", there is no inverse property that would link a given date, which is expressed as a simple value, to all the documents accepted for publication on that date.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sec:association"><a class="anchor" href="#sec:association"></a>Technical conventions on uml:Association</h3>
+<div class="paragraph">
+<p>The uml:Association connectors represent relations between source and target classes. The association connector cannot be used between other kinds of UML elements.</p>
+</div>
+<div class="paragraph">
+<p>A generic UML connector may have a name applied to it, and it may have source/target roles specified in addition. This provides flexibility to how the domain knowledge may be expressed in UML, however this freedom increases the level of ambiguity as well. Therefore, we foresee two distinct ways to express properties: using the connector generic name, or using the connector source/target ends.</p>
+</div>
+<div class="paragraph">
+<p>First, if a connector name is specified then no source or target roles can be provided. The name must be valid as it is used to generate the OWL property URI. The minimum and maximum cardinality of the relation must be specified as target multiplicity.</p>
+</div>
+<div class="paragraph">
+<p>The second, and recommended approach is if the connector has no name then the target role must be specified. Or the converse, if a target role is specified then no connector name can be specified. Optionally a source role may be provided. In this case the relation direction must be changed from "Source&#8594;Target" to "Bidirectional". Or conversely, if the connector direction is "Bidirectional" then source and target roles must be provided. No other directions are permitted.</p>
+</div>
+<div class="paragraph">
+<p>The target and source multiplicity must be specified accordingly indicating the minimum and maximum cardinality.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended that each association has a definition. The definition is then used for each role as they stand for the same meaning manifested in the inverse direction. Additional, specific definition, can be specified along the target and source roles.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sec:dependency"><a class="anchor" href="#sec:dependency"></a>Technical conventions on uml:Dependency</h3>
+<div class="paragraph">
+<p>The dependency connector may be used between uml:Class and uml:Enumeration boxes, oriented from the class towards the enumeration. It indicates the class has an owl:ObjectProperty whose range is a controlled vocabulary. The connector must have direction "Source&#8594;Target". No other directions are acceptable.</p>
+</div>
+<div class="paragraph">
+<p>The connector must have a valid name and no source/target roles are acceptable. The multiplicity must be specified at the target of the connector.</p>
+</div>
+<div class="paragraph">
+<p>In the transformation process, for the reasoning purposes, the range of the property must be expressed as a range restriction using owl:oneOf the values from the enumeration Concept scheme. This is also valuable for generating SHACL shapes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sec:degenalization"><a class="anchor" href="#sec:degenalization"></a>Technical conventions on uml:Generalization</h3>
+<div class="paragraph">
+<p>The uml:Generalization connector signifies a class-subClass relation and is transformed into rdfs:subClassOf relation standing between source and target classes. The connector must have no name or source/target roles specified in the UML model.</p>
+</div>
+<div class="paragraph">
+<p>In case a model class should inherit a class from an external model then proxies must be created for those classes. For example if "Buyer" specialises an "org:Organization" then a proxy for "org:Organization" must be created in the "org" package.</p>
+</div>
+<div class="paragraph">
+<p>In this specification, the subclasses are assumed disjoint by default, unless otherwise specified in the transformations script, or explicitly marked on the generalisation relation with <a href="#non-disjoint">[non-disjoint]</a> stereotype. For the converse case the <a href="#disjoint">[disjoint]</a> stereotype shall be used.</p>
+</div>
+<div class="paragraph">
+<p>In case two classes are equivalent, then the \(&lt;&lt;equivalent&gt;&gt;\) or \(&lt;&lt;complete&gt;&gt;\) stereotype should be used as a marker.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+    <p style="text-align:center">This document is created by the European Commission and is licensed under the terms of
+        EUPL-1.2 license</a>.
+        <br/>This page was built using the Antora default UI. The source code for this UI is licensed under the terms of
+        the MPL-2.0 license.
+    </p>
+
+        <script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="150" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="150" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
+  </body>
+</html>

@@ -47,7 +47,7 @@
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="conceptual-model-conventions.html">UML Conceptual Model Conventions</a>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="introduction.html">Introduction</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -62,7 +62,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="conv-classes.html">uml:Class</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="conv-attributes.html">uml:Attribute</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -121,10 +121,10 @@
   <ul>
     <li><a href="../index.html">model2owl Documentation</a></li>
     <li><a href="conceptual-model-conventions.html">UML Conceptual Model Conventions</a></li>
-    <li><a href="introduction.html">Introduction</a></li>
+    <li><a href="conv-attributes.html">uml:Attribute</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/uml/introduction.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/uml/conv-attributes.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -132,91 +132,62 @@
 </aside>
 <article class="doc">
 <div class="sect1">
-<h2 id="sec:introduction"><a class="anchor" href="#sec:introduction"></a>Introduction</h2>
+<h2 id="_conventions_on_umlattribute_elements"><a class="anchor" href="#_conventions_on_umlattribute_elements"></a>Conventions on uml:Attribute elements</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>This document provides a working specification of the guidelines and conventions for the eProcurement conceptual model, such that it qualifies as suitable input for the transformation scripts meant to generate the formal eProcurement ontology.</p>
-</div>
-<div class="paragraph">
-<p>The business context and the project overview are detailed in [<a href="../references.html#ref:costetchi2020a" class="xref page">costetchi2020a</a>], while the next section provides the motivation and situates the current document within the project.</p>
-</div>
 <div class="sect2">
-<h3 id="_context"><a class="anchor" href="#_context"></a>Context</h3>
+<h3 id="sec:attributes"><a class="anchor" href="#sec:attributes"></a>Conventional recommendations on Attributes</h3>
 <div class="paragraph">
-<p>In the eProcurement ontology project, the conceptual model was decided [<a href="../references.html#ref:d2.01-2017" class="xref page">d2.01-2017</a>] to be represented in <em>Unified Modelling Language (UML)</em> [<a href="../references.html#ref:uml-userguide" class="xref page">uml-userguide</a>]. It is a visual representation language that facilitates understanding and convergence between stakeholders towards a common conceptualisation of the model.</p>
+<p>When creating attribute names, it is conventional to use simple nouns such as "name", "weight", "colour". Attributes are a special type of relations that describe an entity in terms of its qualities. And so, to be consistent with the above convention and in order to increase the clarity, it is recommended to employ the prefix "has-" for each attribute even if it does not add much to the term’s meaning. So, it is preferred to use terms such as "hasName", "hasWeight" and "hasColour".</p>
 </div>
 <div class="paragraph">
-<p>Generally, the primary application of UML [<a href="../references.html#ref:fowler2004" class="xref page">fowler2004</a>] for ontology design is in the specification of class diagrams initially conceived for object-oriented software. UML does not define a formal semantics that would permit to determine, from the class diagrams, whether an ontology is consistent, or to determine the correctness of the ontology implementation. Semantics in such cases becomes a subject to interpretation by the stakeholders involved in the development process and later by the users in the application and integration tasks [<a href="../references.html#ref:grunninger2003" class="xref page">grunninger2003</a>].</p>
+<p>It is recommended to use simple nouns for attribute names prepended with the verb "has-".</p>
 </div>
 <div class="paragraph">
-<p>On the other hand, UML is closer than more logic-oriented approaches to the programming languages in which enterprise applications are implemented. For this reason the current specification establishes conventions for interpretation of the UML-based conceptual model.</p>
+<p>To avoid laborious mechanical work of adding the prefix, it is possible to rely on the convention that the attribute names starting with a capital letter must be read as having the "has-" prefix. It means that the transformation script will prepend the "has-" prefix to all attributes starting with a capital letter.</p>
 </div>
 <div class="paragraph">
-<p>The UML Conceptual Model of the eProcurement domain serves as the single source of truth, which means that the formal eProcurement ontology is derived from it through a model transformation process. It is possible to generate automatically the formal ontology in RDF format [<a href="../references.html#ref:rdf11" class="xref page">rdf11</a>] from the XMI (v.2.5.1) serialisation [<a href="../references.html#ref:xmi2.5.1" class="xref page">xmi2.5.1</a>] of an UML (v.2.5) model [<a href="../references.html#ref:uml2.5" class="xref page">uml2.5</a>], provided that a set of clear transformation rules are established [<a href="../references.html#ref:costetchi2020c" class="xref page">costetchi2020c</a>], and that a set of modelling conventions is respected.</p>
-</div>
-<div class="paragraph">
-<p>This document provides the UML modelling constraints and a set of conventional and technical recommendations for naming and structuring the UML class diagram elements: packages, classes, data types, enumerations, enumeration items, class attributes, association relation and dependency relation. There are additional elements which will be addressed contextually in the following sections.</p>
+<p>By default, the attribute multiplicity is "1". This should be read as any number which is expressed as "0..*". In special cases, a list of custom default multiplicities is defined for the transformation script. That means that some data types or classes that are used as attribute types are paired with a default multiplicity, for example "1..1", "0..1", "2..2".</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sec:requirements"><a class="anchor" href="#sec:requirements"></a>Requirements</h3>
+<h3 id="sec:attributes-class"><a class="anchor" href="#sec:attributes-class"></a>uml:Class attributes</h3>
 <div class="paragraph">
-<p>The eProcurement conceptual model must fulfil mainly four fundamental objectives.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Facilitate understanding/comprehension of the represented system</p>
-</li>
-<li>
-<p>Promote efficient conveyance of system details between team members and external stakeholders.</p>
-</li>
-<li>
-<p>Provide a point of reference for system designers to gather system specifications and documentation.</p>
-</li>
-<li>
-<p>Serve as input for development of a (more) formal model.</p>
-</li>
-</ul>
+<p>uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty.</p>
 </div>
 <div class="paragraph">
-<p>In order to support objectives a conceptual model should fulfil the following requirements.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Be available to all team members, to facilitate collaboration and iteration.</p>
-</li>
-<li>
-<p>Be easily changeable, as a continuous reflection of up-to-date information.</p>
-</li>
-<li>
-<p>Contain both visual and written forms of diagramming, to better explain the abstract concepts it may represent.</p>
-</li>
-<li>
-<p>Establish relevant terms and concepts that will be used throughout the project.</p>
-</li>
-<li>
-<p>Define said terms and concepts.</p>
-</li>
-<li>
-<p>Provide a basic structure for entities of the project.</p>
-</li>
-<li>
-<p>Reduce the ambiguity while maintaining a simple and concise encoding.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sec:keywords"><a class="anchor" href="#sec:keywords"></a>Key words for Requirement Statements</h3>
-<div class="paragraph">
-<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [<a href="../references.html#ref:rfc2119" class="xref page">rfc2119</a>].</p>
+<p>Each uml:Attribute must have a name and attribute type. The name is used to generate URI and label while the type is used to define the range restriction.</p>
 </div>
 <div class="paragraph">
-<p>The key words "MUST (BUT WE KNOW YOU WON’T)", "SHOULD CONSIDER", "REALLY SHOULD NOT", "OUGHT TO", "WOULD PROBABLY", "MAY WISH TO", "COULD", "POSSIBLE", and "MIGHT" in this document are to be interpreted as described in RFC 6919 [<a href="../references.html#ref:rfc6919" class="xref page">rfc6919</a>].</p>
+<p>An attribute may contain an alias, which is used as an alternative label; and it may have initial value provided which is transferred into a definition.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended that the attribute type is one of the XSD and RDF datatypes compatible<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> with OWL 2. Exceptionally, generic data types such as "Numeric", "String", "Date" can be used. In such cases the transformation script uses a correspondence table defining which XSD data type shall be used for each atomic UML type. If the datatype is not found in the correspondence table then it is considered invalid.</p>
+</div>
+<div class="paragraph">
+<p>The attribute multiplicity should be specified indicating the minimum and maximum cardinality. The default [1] multiplicity shall be interpreted as unspecified as expressed as [0..*] in the OWL model.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended to avoid duplicate attributes names across multiple classes. Unless, by design, attributes with the same name are shared across multiple classes.</p>
+</div>
+<div class="paragraph">
+<p>It is mandatory to avoid using the same name in an attribute and in a relation, unless there is an additional rule that handles intentional exceptions.</p>
+</div>
+<div class="paragraph">
+<p>All attribute data types must be defined in the model for reference, regardless if they are reused from other models or specific to the local model. In the case of reused external models, the local (re-)definitions serve merely as proxies as explained in Section [<a href="#sec:datatype">[sec:datatype]</a>].</p>
+</div>
+<div class="paragraph">
+<p>It is recommended that the attribute type is an atomic data type. It is possible to use a uml:Enumeration as an attribute type. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Dependency described in Section [<a href="#sec:dependency">[sec:dependency]</a>].</p>
+</div>
+<div class="paragraph">
+<p>It is recommended to avoid using another class as the attribute type. An acceptable exception for this is with a controlled set of classes. The list of allowed classes must be explicitly indicated in the transformations script. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Association described in Section [<a href="#sec:association">[sec:association]</a>]. For the eProcurement project the set of exceptions is: Identifier, Amount, Quantity, Measure. These were initially defined as composite datatypes and then transformed into classes.</p>
 </div>
 </div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes" class="bare">https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes</a>
 </div>
 </div>
 </article>
