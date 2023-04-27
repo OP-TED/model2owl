@@ -81,7 +81,7 @@ OWL 2 language provides a high level of expressivity. In the SEMIC interoperabil
 We recommend the formal ontology definition be limited to the following types of expressions:
 
 * class declarations (`owl:Class`, `rdfs:Class`)
-* datatype property declarations (`owl:DatatypeProperty`, `rdf:Property`)
+* data property declarations (`owl:DatatypeProperty`, `rdf:Property`)
 * object property declarations (`owl:ObjectProperty`, `rdf:Property`)
 * subclass relations (`rdfs:subClassOf`)
 * subproperty relations (`rdfs:subPropertyOf`)
@@ -244,9 +244,9 @@ The data specification (semantic, conceptual, or shape) shall not use circular d
 
 Circular definition, i.e., definitions that use the element they define are incorrect.
 
-For instance, we say that an ontology element (a class, an object property or a datatype property) is circular when used in its own definition. This can occur in situations such as the following:
+For instance, we say that an ontology element (a class, an object property or a data property) is circular when used in its own definition. This can occur in situations such as the following:
 
 * (a) the definition of a class as the enumeration of several classes including itself;
 * (b) the appearance of a class within its `owl:equivalentClass` or `rdfs:subClassOf` axioms;
 * (c) the appearance of an object property in its `rdfs:domain` or `rdfs:range` definitions; or
-* (d) the appearance of a datatype property in its `rdfs:domain` definition.
+* (d) the appearance of a data property in its `rdfs:domain` definition.
