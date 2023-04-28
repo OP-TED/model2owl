@@ -120,7 +120,7 @@
     <li><a href="conv-attributes.html">uml:Attribute</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-725/docs/modules/ROOT/pages/uml/conv-attributes.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/uml/conv-attributes.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -132,117 +132,58 @@
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="sec:attributes"><a class="anchor" href="#sec:attributes"></a>Conventional recommendations on Attributes</h3>
-<table id="sec:attributes-names-with-verb" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Attribute names</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-It is recommended to use a verb in the attribute name, such as "has-" or "is-".</p></td>
-</tr>
-</tbody>
-</table>
 <div class="paragraph">
-<p><strong>Description:</strong></p>
-</div>
-<div class="paragraph">
-<p>When creating attribute names, it is conventional to use simple nouns such as "name", "weight", "colour". Attributes are a special type of relations that describe an entity in terms of its qualities. And so, to be consistent with the above convention and in order to increase the clarity, it is recommended to employ the prefix "has-" for each attribute even if it does not add much to the term&#8217;s meaning. So, it is preferred to use terms such as "hasName", "hasWeight" and "hasColour".</p>
+<p>When creating attribute names, it is conventional to use simple nouns such as "name", "weight", "colour". Attributes are a special type of relations that describe an entity in terms of its qualities. And so, to be consistent with the above convention and in order to increase the clarity, it is recommended to employ the prefix "has-" for each attribute even if it does not add much to the term’s meaning. So, it is preferred to use terms such as "hasName", "hasWeight" and "hasColour".</p>
 </div>
 <div class="paragraph">
 <p>It is recommended to use simple nouns for attribute names prepended with the verb "has-".</p>
 </div>
 <div class="paragraph">
-<p>It is recommended to avoid duplicate attributes names across multiple classes. Unless, by design, attributes with the same name are shared across multiple classes.</p>
+<p>To avoid laborious mechanical work of adding the prefix, it is possible to rely on the convention that the attribute names starting with a capital letter must be read as having the "has-" prefix. It means that the transformation script will prepend the "has-" prefix to all attributes starting with a capital letter.</p>
 </div>
-<table id="sec:attributes-multiplicity" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Attribute multiplicity</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Attributes shall be assigned cardinality specifications contextualised to the class carrying them.</p></td>
-</tr>
-</tbody>
-</table>
 <div class="paragraph">
-<p><strong>Description:</strong></p>
+<p>By default, the attribute multiplicity is "1". This should be read as any number which is expressed as "0..*". In special cases, a list of custom default multiplicities is defined for the transformation script. That means that some data types or classes that are used as attribute types are paired with a default multiplicity, for example "1..1", "0..1", "2..2".</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sec:attributes-class"><a class="anchor" href="#sec:attributes-class"></a>uml:Class attributes</h3>
+<div class="paragraph">
+<p>uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty.</p>
+</div>
+<div class="paragraph">
+<p>Each uml:Attribute must have a name and attribute type. The name is used to generate URI and label while the type is used to define the range restriction.</p>
+</div>
+<div class="paragraph">
+<p>An attribute may contain an alias, which is used as an alternative label; and it may have initial value provided which is transferred into a definition.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended that the attribute type is one of the XSD and RDF datatypes compatible<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> with OWL 2. Exceptionally, generic data types such as "Numeric", "String", "Date" can be used. In such cases the transformation script uses a correspondence table defining which XSD data type shall be used for each atomic UML type. If the datatype is not found in the correspondence table then it is considered invalid.</p>
 </div>
 <div class="paragraph">
 <p>The attribute multiplicity should be specified indicating the minimum and maximum cardinality. The default [1] multiplicity shall be interpreted as unspecified as expressed as [0..*] in the OWL model.</p>
 </div>
 <div class="paragraph">
-<p>In special cases, a list of custom default multiplicities is defined for the transformation script. That means that some data types or classes that are used as attribute types are paired with a default multiplicity, for example "1..1", "0..1", "2..2".</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sec:attributes-class"><a class="anchor" href="#sec:attributes-class"></a>uml:Class attributes</h3>
-<table id="sec:attributes-multiplicity" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Attribute datatypes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-uml:Attribute shall be defined with generally accepted primitive datatypes.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><strong>Description:</strong></p>
+<p>It is recommended to avoid duplicate attributes names across multiple classes. Unless, by design, attributes with the same name are shared across multiple classes.</p>
 </div>
 <div class="paragraph">
-<p>Each uml:Attribute must have a name and attribute type. uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty. High preference shall be given to using OWL 2 compliant XSD [<a href="../references.html#ref:xsd" class="xref page">xsd</a>] and RDF [<a href="../references.html#ref:rdf" class="xref page">rdf</a>] standard datatypes.</p>
+<p>It is mandatory to avoid using the same name in an attribute and in a relation, unless there is an additional rule that handles intentional exceptions.</p>
 </div>
 <div class="paragraph">
-<p>In cases when a property needs to be defined as ranging on an unknown controlled list or authority table constitute a special case. They can be expressed as uml:attribute with the datatype <code>skos:Concept</code>. These attributes are transformed into owl:ObjectProperty in a manner similarly to uml:Association.</p>
+<p>All attribute data types must be defined in the model for reference, regardless if they are reused from other models or specific to the local model. In the case of reused external models, the local (re-)definitions serve merely as proxies as explained in Section [<a href="#sec:datatype">[sec:datatype]</a>].</p>
 </div>
 <div class="paragraph">
-<p>An attribute may contain an alias, used as an alternative label. It can be specified via uml:Tags.</p>
-</div>
-<table id="sec:attributes-reuse" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Attribute name reuse</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Attribute names can be reused only as attributes in other classes, not as relations.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><strong>Description:</strong></p>
+<p>It is recommended that the attribute type is an atomic data type. It is possible to use a uml:Enumeration as an attribute type. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Dependency described in Section [<a href="#sec:dependency">[sec:dependency]</a>].</p>
 </div>
 <div class="paragraph">
-<p>It is mandatory to avoid using the same name in an attribute and in a relation, unless an additional rule that handles intentional exceptions exists.</p>
+<p>It is recommended to avoid using another class as the attribute type. An acceptable exception for this is with a controlled set of classes. The list of allowed classes must be explicitly indicated in the transformations script. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Association described in Section [<a href="#sec:association">[sec:association]</a>]. For the eProcurement project the set of exceptions is: Identifier, Amount, Quantity, Measure. These were initially defined as composite datatypes and then transformed into classes.</p>
 </div>
 </div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes" class="bare">https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes</a>
 </div>
 </div>
 </article>
