@@ -251,6 +251,7 @@ In addition to these SEMIC recommendation for providing good definitions, we als
 *See also:* SEMIC Style Guide Rule [https://semiceu.github.io/style-guide/public-review/gc-general-conventions.html#sec:gc-r5[GC-R5]], which provides more recommendations to be followed here.
 
 [[sec:controlled-lists]]
+=== Controlled lists
 
 The controlled list is a carefully selected list of words and phrases and is often employed in the modelling practices. The controlled list has a name, and a set of terms. For example, the list of grammatical genders can be named "Gender" and comprise the terms "masculine", "feminine", "neuter" and "utrum".
 
@@ -266,7 +267,7 @@ As a rule of thumb, but not always, the relationship between the controlled list
 
 |*Statement:*
 
-When the controlled list is known, and it can be referred to by a short URI then it
+When the controlled list is known, and it can be referred to by a short URI, then it
 shall be represented as uml:Enumeration element.
 |===
 
@@ -288,13 +289,13 @@ Two use-cases can be identified in practice: (a) when the code list is known and
 
 |*Statement:*
 
-When the controlled list is unknown then it shall not be referred to, but instead a class uml:Attribute shall be defined with datatype `skos:Concept` class.
+When the controlled list is unknown, then it shall not be referred to, but instead a class uml:Attribute shall be defined with datatype `skos:Concept` class.
 
 |===
 
 *Description:*
 
-When the authors of a conceptual model intend to omit, which controlled list shall be used, then a class attribute with the range `skos:Concept` (in some cases `Code` is preferred, but we strongly recommend to avoid this) can be created to indicate that. This approach can be useful in situations when multiple (external) controlled lists can be used interchangeably. For example, the `adms:status` property of a `dcat:CatalogueRecord` shall be a `skos:Concept`, without specifying the controlled list.
+When the authors of a conceptual model intend to omit which controlled list shall be used, then a class attribute with the range `skos:Concept` (in some cases `Code` is preferred, but we strongly recommend avoiding this) can be created to indicate that. This approach can be useful in situations when multiple (external) controlled lists can be used interchangeably. For example, the `adms:status` property of a `dcat:CatalogueRecord` shall be a `skos:Concept`, without specifying the controlled list.
 
 [[sec:gen-controlled-list-empty]]
 |===
@@ -306,7 +307,7 @@ When the authors of a conceptual model intend to omit, which controlled list sha
 
 |*Statement:*
 
-uml:Enumeration shall contain no values. Management of the controlled list of values shall not be done outside the scope of the conceptual model.
+uml:Enumeration shall contain no values. Management of the controlled list of values shall be done outside the scope of the conceptual model.
 |===
 *Description:*
 
@@ -336,7 +337,7 @@ In order to enable the reuse of names defined in other models and reuse of uniqu
 
 // Namespaces are commonly structured as hierarchies to allow reuse of names in different contexts [xref:references.adoc#ref:xml-namespaces[xml-namespaces]]. This mechanism can be implemented in UML through partitioning the model using packages, which are described in the [xref:uml/conv-packages.adoc#sec:uml-package[uml:Package]] Section.
 
-[[sec:gen-controlled-list-empty]]
+[[sec:known-namespaces]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Known namespaces
@@ -412,12 +413,12 @@ Encoded UTF-8 and UTF-16 names may be used [xref:references.adoc#ref:xml1-spec[x
 *Identifier* -
 
 |*Statement:*
-Stereotypes have no semantics and hence shall be avoided. Exceptionally some selected, agreed-upon stereotypes may be used.
+Stereotypes have no semantics and hence shall be avoided. Exceptionally, some selected, agreed-upon stereotypes may be used.
 |===
 
 *Description:*
 
-The use of stereotypes is not recommended. There should be only a small set of stereotypes, with well-defined meaning and pre-established transformation rules that shall be used in the conceptual model. In this set of rule the `\<<Abstract>>` stereotype is adopted to mark abstract classes [xref:uml/conv-classes.adoc.adoc[see section on Classes]].
+The use of stereotypes is not recommended. There should be only a small set of stereotypes, with well-defined meaning and pre-established transformation rules that shall be used in the conceptual model. In this set of rules the `\<<Abstract>>` stereotype is adopted to mark abstract classes [xref:uml/conv-classes.adoc#sec:abstract-class[see section on Abstract Classes]].
 
 *See also:* SEMIC Style Guide Rule [https://semiceu.github.io/style-guide/public-review/gc-conceptual-model-conventions.html#sec:cmc-r17[CMC-R17]]
 
