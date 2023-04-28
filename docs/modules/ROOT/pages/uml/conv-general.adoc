@@ -15,15 +15,13 @@ In theory any name can be assigned to a concept, relationship or property. In pr
 
 |===
 |{set:cellbgcolor: #a8c6f7}
- *Title:* Element names should support generation of human- and machine-readable denominations
+ *Title:* Support for generation of human- and machine-readable denominations
 
 |{set:cellbgcolor: #f5f8fc}
 *Identifier* -
 
 |*Statement:*
-Element names shall follow the short URI notation:
-
-`prefix:localSegment`
+Element names should support generation of human- and machine-readable denominations, and they shall follow the short URI notation: `prefix:localSegment`
 
 |===
 
@@ -203,7 +201,7 @@ Optionally common and descriptive prefixes and suffixes for related properties o
 [[sec:descriptions]]
 === Notes, descriptions and comments
 
-Large emphasis is set on the naming conventions. Nonetheless, most often, a good name is insufficient for an accurate or easy comprehension by human-readers. To mitigate this and increase the conceptual richness, practitioners may wish to provide human-readable definitions, notes, examples and comments grasping the underlying assumptions, usage examples, additional explanations and other types of information.
+Large emphasis is set on the naming conventions. Nonetheless, most often, a good name is insufficient for an accurate or easy comprehension by human-readers. To mitigate this, and to increase the conceptual richness, practitioners may wish to provide human-readable definitions, notes, examples and comments grasping the underlying assumptions, usage examples, additional explanations and other types of information.
 
 |===
 |{set:cellbgcolor: #a8c6f7}
@@ -253,18 +251,54 @@ In addition to these SEMIC recommendation for providing good definitions, we als
 *See also:* SEMIC Style Guide Rule [https://semiceu.github.io/style-guide/public-review/gc-general-conventions.html#sec:gc-r5[GC-R5]], which provides more recommendations to be followed here.
 
 
-[[sec:controlled-list]]
+[sec:controlled-lists]
 === Controlled lists
 
 The controlled list is a carefully selected list of words and phrases and is often employed in the modelling practices. The controlled list has a name and a set of terms. For example, the list of grammatical genders can be named "Gender" and comprise the terms "masculine", "feminine", "neuter" and "utrum".
 
-The controlled lists can be represented either as skos:
-
-It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case.
+[.line-through]##It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case.
+## *TODO:* Check if this is still valid. Remove it, if not.
 
 As a rule of thumb, but not always, the relationship between the controlled list as a whole and its comprising elements can be informally conceptualised as a class-instance, class-subclass, set-item, or part-whole.
 
+[[sec:gen-controlled-list]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Representation of controlled lists
 
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+
+The controlled lists of values shall be represented as uml:Enumeration elements and be specified whenever possible.
+|===
+
+*Description:*
+
+Controlled lists play an essential role in establishing interoperability standards. Management and publication of controlled lists should happen as a separate process, and are not addressed here. References to controlled lists shall be done via uml:Enumeration elements.
+
+The expectation is that the controlled lists are published in accordance with best practices and represented with the SKOS model using persistent identifiers. In such an approach, the controlled list is expressed as a `skos:ConceptScheme` and the specific values as `skos:Concept`(s). Also, such controlled lists are often developed,
+published and maintained independently following their own lifecycle, so that they can be reused in other models.
+
+Two use-cases can be identified in practice: (a) when the code list is known and is explicitly referred to as the range of a property, and (b) when a property is modelled but no code list reference is provided as its range.
+
+(OPTIONAL, **TODO ** check whether needed )
+When the authors of a conceptual model intend to omit which controlled list shall be used, then a class attribute with the range `skos:Concept` (in some cases `Code` is preferred) can be created to indicate that. This approach can be useful in situations when multiple (external) controlled lists can be used interchangeably. For example, the `adms:status` property of a `dcat:CatalogueRecord` shall be a `skos:Concept`, without specifying the controlled list. [TODO: use other example, from EPO]
+
+//image::dcatcatalogue.png[]
+
+It is advisable, however, to be specific concerning which controlled list shall be used. In such cases, an Enumeration shall be created representing the controlled list. The Enumeration shall be empty, i.e., not specifying any value, because the values are assumed to be maintained externally and only the reference is necessary.
+
+The properties having this controlled list as range shall be depicted as UML dependency connectors between a Class and an Enumeration [xref:uml/conv-connectors.adoc#sec:dependency[uml:Dependency]]. For example, in ePO, `dct:Location` can have a country code represented as a dependency relation to `at-voc:country` (the country authority table published on the EU Vocabularies website).
+
+image::cmc-r14-1.png[]
+
+The name of the Enumeration shall be resolved to a URI identical to that of the `skos:ConceptScheme`. As for the connector type we recommend using a dependency connector (depicted with a dashed line) because the semantic interpretation differs slightly from the association connector (depicted with a continuous line). Namely, the range of the property has to fulfil two constraints: (a) instantiating the skos:Concept class and (b) being `skos:inScheme` the intended controlled list [xref:semicsg/references.adoc#ref:epo-arch[epo-arch]]. [TODO: update reference]
+
+If the controlled list is specific to the model then the author shall define the values of the UML Enumeration inside of it, which are interpreted as concepts belonging to the containing concept scheme [xref:semicsg/references.adoc#ref:oslo-rules[oslo-rules, sec 3.2.17]]. [TODO: check if this is also the case for EPO, and if the reference is appropriate] [TODO: See if it makes sense to insert here the statement from above: "It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case."]
+
+More specific requirements on the use of the uml:Enumeration elements are provided in the Section [xref:uml/conv-enumerations.adoc#sec:enumeration[uml:Enumeration]].
 
 [[sec:technical]]
 //== Technical constraints
