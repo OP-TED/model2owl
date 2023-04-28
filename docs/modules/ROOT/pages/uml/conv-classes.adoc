@@ -64,24 +64,22 @@ Classes in a subclass hierarchy should be named consistently.
 
 *Description:*
 
-When building the class hierarchy, names of direct subclasses of a class should consistently either all include or not include the name of the superclass. For example, if we are creating two subclasses of the "Wine" class to represent red and white wines, the two subclass names should be either "Red Wine" and "White Wine" or "Red" and "White", but not "Red Wine" and "White" [xref:references.adoc#ref:noy2001[noy2001]].
-
+When building the class hierarchy, names of direct subclasses of a class should consistently either all include or not include the name of the superclass. For example, if we create two subclasses of `Wine` to represent red and white wines, then the two subclass names should be either `Red Wine` and `White Wine` or `Red` and `White`, but not `Red Wine` and `White` [xref:references.adoc#ref:noy2001[noy2001]].
 
 |===
 |{set:cellbgcolor: #a8c6f7}
- *Title:* Multiple subclasses
+ *Title:* Single subclass
 
 |{set:cellbgcolor: #f5f8fc}
 *Identifier* -
 
 |*Statement:*
-Class specialisations with a single child must be avoided.
+Class specialisations with a single child shall be avoided.
 |===
 
 *Description:*
 
 This means that there should be at least two sibling subclasses specified in the model. By default, the classes are not disjunctive, however, if required, the transformation script may generate disjunctive classes by default.
-
 
 |===
 |{set:cellbgcolor: #a8c6f7}
@@ -96,8 +94,7 @@ Circular inheritance must be avoided.
 
 *Description:*
 
-This means that if there is a B that specialises a class A then A may not specialise B or any of the sub-classes of B.
-
+This means that if a class B specialises a class A then A may not specialise B or any of the subclasses of B.
 
 [[sec:uml-class]]
 === Technical conventions on uml:Class elements
@@ -110,13 +107,12 @@ This means that if there is a B that specialises a class A then A may not specia
 *Identifier* -
 
 |*Statement:*
-Each uml:Class must have a name.
+Each uml:Class must have a short URI name.
 |===
 
 *Description:*
 
 uml:Class is transformed into an owl:Class. Each uml:Class must have a name.
-
 
 |===
 |{set:cellbgcolor: #a8c6f7}
@@ -135,6 +131,7 @@ Each uml:Class should have a description representing the human readable class d
 
 Optionally, in case there is a technical possibility to distinguish between UML notes, then additionally editorial, history notes or simply comments should be provided as class descriptors.
 
+Richer and structured descriptions can be provided by using uml:Tag(s).
 
 |===
 |{set:cellbgcolor: #a8c6f7}
@@ -144,7 +141,7 @@ Optionally, in case there is a technical possibility to distinguish between UML 
 *Identifier* -
 
 |*Statement:*
-uml:Class must have relations or attributes, or both.
+uml:Class must have connectors, attributes, or both.
 |===
 
 *Description:*

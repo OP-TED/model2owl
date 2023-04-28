@@ -217,7 +217,7 @@ Large emphasis is set on the naming conventions. Nonetheless, most often, a good
 *Identifier* -
 
 |*Statement:*
-All elements shall have a definition providing a concise but complete description of the concept.
+All elements must have a definition providing a concise but complete description of the concept.
 |===
 
 *Description:*
@@ -240,59 +240,75 @@ We adopt here the SEMIC Principles for creating good definitions [xref:reference
 //* Rich standard encodings such as UTF-8 and UTF-16 are supported in notes and definitions. In the element names, however,
 //we recommend avoiding any character encodings and using plain ASCII [xref:semicsg/references.adoc#ref:epo-cmc[epo-cmc, sec 4.2]].
 
-*TODO:* Double check this list (including the commented items) to see if they are all accurate and relevant.
-
 In addition to these SEMIC recommendation for providing good definitions, we also add the following recommendations to adequately complete the description of an element:
 
 * It is recommended that each element is defined by a crisp, one-line definition. The definition starts with a capital letter and ends with a period.
 
 * A description may provide complementary information concerning the usage of the element or its relation to relevant standards. For example, a description may contain recommendations about which controlled vocabularies to use, describe the underlying assumptions and additional explanations for reducing ambiguity. Descriptions may contain multiple paragraphs separated by blank lines. The descriptions should not paraphrase the definitions.
 
-* In case the model editor provides concrete examples of possible element values or instances then they shall be provided as a comma-separated list. Each example value is enclosed in quotes and is optionally followed by a short explanation enclosed in parentheses [xref:references.adoc#ref:isaHandbook2015[isaHandbook2015]].
-
-
-*TODO:* Also add additionally a separate list of items with recommendations for EPO descriptions, like references to BT terms, WG decisions, etc.
-
+* If the model editor provides concrete examples of possible element values or instances then they shall be provided as a comma-separated list. Each example value is enclosed in quotes and is optionally followed by a short explanation enclosed in parentheses [xref:references.adoc#ref:isaHandbook2015[isaHandbook2015]].
 
 *See also:* SEMIC Style Guide Rule [https://semiceu.github.io/style-guide/public-review/gc-general-conventions.html#sec:gc-r5[GC-R5]], which provides more recommendations to be followed here.
 
-
 [[sec:controlled-lists]]
-=== Controlled lists
 
-The controlled list is a carefully selected list of words and phrases and is often employed in the modelling practices. The controlled list has a name and a set of terms. For example, the list of grammatical genders can be named "Gender" and comprise the terms "masculine", "feminine", "neuter" and "utrum".
-
-[.line-through]##It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case.
-## *TODO:* Check if this is still valid. Remove it, if not.
+The controlled list is a carefully selected list of words and phrases and is often employed in the modelling practices. The controlled list has a name, and a set of terms. For example, the list of grammatical genders can be named "Gender" and comprise the terms "masculine", "feminine", "neuter" and "utrum".
 
 As a rule of thumb, but not always, the relationship between the controlled list as a whole and its comprising elements can be informally conceptualised as a class-instance, class-subclass, set-item, or part-whole.
 
 [[sec:gen-controlled-list]]
 |===
 |{set:cellbgcolor: #a8c6f7}
- *Title:* Representation of controlled lists
+ *Title:* Representation of known controlled lists
 
 |{set:cellbgcolor: #f5f8fc}
 *Identifier* -
 
 |*Statement:*
 
-The controlled lists of values shall be represented as uml:Enumeration elements and be specified whenever possible.
+When the controlled list is known, and it can be referred to by a short URI then it
+shall be represented as uml:Enumeration element.
 |===
 
 *Description:*
 
 Controlled lists play an essential role in establishing interoperability standards. Management and publication of controlled lists should happen as a separate process, and are not addressed here. References to controlled lists shall be done via uml:Enumeration elements.
 
-The expectation is that the controlled lists are published in accordance with best practices and represented with the SKOS model using persistent identifiers. In such an approach, the controlled list is expressed as a `skos:ConceptScheme` and the specific values as `skos:Concept`(s). Also, such controlled lists are often developed,
-published and maintained independently following their own lifecycle, so that they can be reused in other models.
+The expectation is that the controlled lists are published in accordance with best practices and represented with the SKOS model using persistent identifiers. In such an approach, the controlled list is expressed as a `skos:ConceptScheme` and the specific values as `skos:Concept`(s). Also, such controlled lists are often developed, published and maintained independently following their own lifecycle, so that they can be reused in other models.
 
 Two use-cases can be identified in practice: (a) when the code list is known and is explicitly referred to as the range of a property, and (b) when a property is modelled but no code list reference is provided as its range.
 
-(OPTIONAL, **TODO ** check whether needed )
-When the authors of a conceptual model intend to omit which controlled list shall be used, then a class attribute with the range `skos:Concept` (in some cases `Code` is preferred) can be created to indicate that. This approach can be useful in situations when multiple (external) controlled lists can be used interchangeably. For example, the `adms:status` property of a `dcat:CatalogueRecord` shall be a `skos:Concept`, without specifying the controlled list. [TODO: use other example, from EPO]
+[[sec:gen-controlled-list-unknown]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Representation of unknown controlled lists
 
-//image::dcatcatalogue.png[]
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+
+When the controlled list is unknown then it shall not be referred to, but instead a class uml:Attribute shall be defined with datatype `skos:Concept` class.
+
+|===
+
+*Description:*
+
+When the authors of a conceptual model intend to omit, which controlled list shall be used, then a class attribute with the range `skos:Concept` (in some cases `Code` is preferred, but we strongly recommend to avoid this) can be created to indicate that. This approach can be useful in situations when multiple (external) controlled lists can be used interchangeably. For example, the `adms:status` property of a `dcat:CatalogueRecord` shall be a `skos:Concept`, without specifying the controlled list.
+
+[[sec:gen-controlled-list-empty]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Controlled list values
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+
+uml:Enumeration shall contain no values. Management of the controlled list of values shall not be done outside the scope of the conceptual model.
+|===
+*Description:*
 
 It is advisable, however, to be specific concerning which controlled list shall be used. In such cases, an Enumeration shall be created representing the controlled list. The Enumeration shall be empty, i.e., not specifying any value, because the values are assumed to be maintained externally and only the reference is necessary.
 
@@ -302,9 +318,12 @@ image::cmc-r14-1.png[]
 
 The name of the Enumeration shall be resolved to a URI identical to that of the `skos:ConceptScheme`. As for the connector type we recommend using a dependency connector (depicted with a dashed line) because the semantic interpretation differs slightly from the association connector (depicted with a continuous line). Namely, the range of the property has to fulfil two constraints: (a) instantiating the skos:Concept class and (b) being `skos:inScheme` the intended controlled list [xref:references.adoc#ref:epo-arch[epo-arch]]. [TODO: update reference]
 
-If the controlled list is specific to the model then the author shall define the values of the UML Enumeration inside of it, which are interpreted as concepts belonging to the containing concept scheme [xref:references.adoc#ref:oslo-rules[oslo-rules, sec 3.2.17]]. [TODO: check if this is also the case for EPO, and if the reference is appropriate] [TODO: See if it makes sense to insert here the statement from above: "It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case."]
 
-More specific requirements on the use of the uml:Enumeration elements are provided in the Section [xref:uml/conv-enumerations.adoc#sec:enumeration[uml:Enumeration]].
+
+// If the controlled list is specific to the model then the author shall define the values of the UML Enumeration inside of it, which are interpreted as concepts belonging to the containing concept scheme [xref:references.adoc#ref:oslo-rules[oslo-rules, sec 3.2.17]].
+// [TODO: check if this is also the case for EPO, and if the reference is appropriate] [TODO: See if it makes sense to insert here the statement from above: "It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case."]
+
+More specific requirements on the uml:Enumeration elements are provided in the Section [xref:uml/conv-enumerations.adoc#sec:enumeration[uml:Enumeration]].
 
 [[sec:technical]]
 //== Technical constraints
@@ -315,42 +334,50 @@ More specific requirements on the use of the uml:Enumeration elements are provid
 
 In order to enable the reuse of names defined in other models and reuse of unique references for names that support easy identification, namespace management must be considered. We adopt XML approach to defining and managing namespaces as it is inherent in both XMI and OWL2 standards. Hence, a _namespace_ is a set of symbols that are used to organise objects of various kinds, so that these objects may be referred to by name and uniquely identifiable.
 
-Namespaces are commonly structured as hierarchies to allow reuse of names in different contexts [xref:references.adoc#ref:xml-namespaces[xml-namespaces]]. This mechanism can be implemented in UML through partitioning the model using packages, which are described in the [xref:uml/conv-packages.adoc#sec:uml-package[uml:Package]] Section.
+// Namespaces are commonly structured as hierarchies to allow reuse of names in different contexts [xref:references.adoc#ref:xml-namespaces[xml-namespaces]]. This mechanism can be implemented in UML through partitioning the model using packages, which are described in the [xref:uml/conv-packages.adoc#sec:uml-package[uml:Package]] Section.
 
-A namespace organises a collection of names obeying three constraints: each name is (1) unique, (2) assigned in a consistent way, and (3) assigned according to a common definition [xref:references.adoc#ref:urn-rfc8141[urn-rfc8141]]. An (expanded) _name_ in a namespace is a pair consisting of a _namespace name_, also called _base URI_ or just _base_, and a _local name_, also called _local segment_ [xref:references.adoc#ref:xml1-spec[xml1-spec], xref:references.adoc#ref:urn-rfc2141[urn-rfc2141]]. The combination of universally managed URI with the vocabulary local name is effective in avoiding name clashes. For example, in the expanded name "http://www.w3.org/ns/org#Organization", "http://www.w3.org/ns/org#" is the namespace name and "Organization" is the local name.
-
-Unlike in the XML specifications, the constraints on the local name are slightly relaxed, allowing token delimitation by space character (see Section [xref:uml/conv-general.adoc#sec:delimitation[Delimitation]]). This provides an additional level of readability to the conceptual model users. Nevertheless, the local names must be _normalised strings_, which mean that only single occurrences of space character are permitted. Other delimiting characters, such as tab, line feed, carriage return must be replaced by an occurrence of space and trimmed. In the transformation process, when URIs are generated, the spaces are removed anyway and conform with the XML conventions (see Section [xref:uml/conv-general.adoc#sec:name[Name]]). [*TODO:* Check whether use of space is still allowed]
-
-```
-name = <namespace name>/<local name>
-name = <namespace name>#<local name>
-```
-
-URI references are often inconveniently long, so expanded names should not be used directly. Instead, _qualified names_ should be used while expanded names are strongly discouraged. A _qualified name_ is a name subject to namespace interpretation. Syntactically, they are either _prefixed names_ or _unprefixed names_.
-
-```
-qualified name = [<namespace prefix>:]<local name>
-```
-
-The namespace name is usually applied as a _prefix_ to the local name but it may be missing as well. [xref:references.adoc#ref:xml-namespaces[xml-namespaces]] specifies a declaration syntax which permits the binding of prefixes to namespace names and also to bind a default namespace that applies to unprefixed element names. For example, we can bind the namespace name "http://www.w3.org/ns/org#" to the prefix "org", which we can then use to create the same name as such "org:Organization". The prefix is subject to namespace interpretation and resolved to an URI [xref:references.adoc#ref:xml-namespaces[xml-namespaces]].
-
-It is recommended that the UML element names indicate the namespace prefix by prepending it to the name delimited by colon character (:). In case the namespace is not specified (no delimiter) then the name of the package containing the current element is used as namespace prefix. For example, if a class "Contract" is placed in a package "epo" then the name of the containing package is used as the namespace prefix and resolved to "epo:Contract". If the delimiter (:) is used without any prefix, then the empty string prefix is resolved to the default namespace as defined in [xref:references.adoc#ref:xml-namespaces[xml-namespaces]].
-
-[[sec:charset]]
-=== Character encoding
-
-In the formal ontology, the names must conform to RDF [xref:references.adoc#ref:rdf11[rdf11]] and XML[xref:references.adoc#ref:xml1-spec[xml1-spec]] format specifications. Both languages effectively require that terms begin with an upper or lower case letter from the ASCII character set, or an underscore (_). This tight restriction means that, for example, terms may not begin with a number, hyphen or accented character [xref:references.adoc#ref:d3.1-2015[d3.1-2015]]. Although underscores are permitted, they are discouraged as they may be, in some cases, misread as spaces. A formal definition of these restrictions is given in the XML specification document [xref:references.adoc#ref:xml1-spec[xml1-spec]].
-
-
+[[sec:gen-controlled-list-empty]]
 |===
 |{set:cellbgcolor: #a8c6f7}
- *Title:* Valid characters in names
+ *Title:* Known namespaces
 
 |{set:cellbgcolor: #f5f8fc}
 *Identifier* -
 
 |*Statement:*
-Local names of elements should start with a letter or underscore. In subsequent positions numbers and (single) spaces are also allowed.
+
+Namespaces must be defined before used in the model. All prefixes shall be assigned a base URI.
+
+|===
+*Description:*
+
+A namespace organises a collection of names obeying three constraints: each name is (1) unique, (2) assigned consistently, and (3) assigned according to a common definition [xref:references.adoc#ref:urn-rfc8141[urn-rfc8141]]. An (expanded) _name_ in a namespace is a pair consisting of a _namespace name_, also called _base URI_ or just _base_, and a _local name_, also called _local segment_ [xref:references.adoc#ref:xml1-spec[xml1-spec], xref:references.adoc#ref:urn-rfc2141[urn-rfc2141]]. The combination of universally managed URIs with the vocabulary local name is effective in avoiding name clashes. For example, in the expanded name `http://www.w3.org/ns/org#Organization`, `http://www.w3.org/ns/org#` is the namespace name and `Organization` is the local name.
+
+// URI references are often inconveniently long, so expanded names should not be used directly. Instead, _qualified names_ should be used while expanded names are strongly discouraged. A _qualified name_ is a name subject to namespace interpretation. Syntactically, they are either _prefixed names_ or _unprefixed names_.
+//
+// ```
+// qualifiedName = [<namespacePrefix>:]<localName>
+// ```
+//
+// The namespace name is usually applied as a _prefix_ to the local name, but it may be missing as well. [xref:references.adoc#ref:xml-namespaces[xml-namespaces]] specifies a declaration syntax which permits the binding of prefixes to namespace names and also to bind a default namespace that applies to unprefixed element names. For example, we can bind the namespace name "http://www.w3.org/ns/org#" to the prefix "org", which we can then use to create the same name as such "org:Organization". The prefix is subject to namespace interpretation and resolved to an URI [xref:references.adoc#ref:xml-namespaces[xml-namespaces]].
+//
+// If the delimiter (:) is used without any prefix, then the empty string prefix is resolved to the default namespace as defined in [xref:references.adoc#ref:xml-namespaces[xml-namespaces]].
+
+[[sec:charset]]
+=== Character encoding
+
+In the formal ontology, the URIs must conform to RDF [xref:references.adoc#ref:rdf11[rdf11]] and XML[xref:references.adoc#ref:xml1-spec[xml1-spec]] format specifications. Both languages effectively require that terms begin with an upper or lower case letter from the ASCII character set, or an underscore (_). This tight restriction means that, for example, terms may not begin with a number, hyphen or accented character [xref:references.adoc#ref:d3.1-2015[d3.1-2015]]. Although underscores are permitted, they are discouraged as they may be, in some cases, misread as spaces. A formal definition of these restrictions is given in the XML specification document [xref:references.adoc#ref:xml1-spec[xml1-spec]].
+
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Valid characters in element and connector names
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+
+Local names of elements should start with a letter or underscore.
 |===
 
 *Description:*
@@ -360,18 +387,18 @@ It is required that the names use words beginning with an upper or lower case le
 
 |===
 |{set:cellbgcolor: #a8c6f7}
- *Title:* Character sets
+ *Title:* URI character sets
 
 |{set:cellbgcolor: #f5f8fc}
 *Identifier* -
 
 |*Statement:*
-Element names shall use only ASCII characters to generate valid URIs. UTF-8 and UTF-16 characters should be used in tags to support internatialisations, if necessary.
+Element names shall use only ASCII characters to generate valid URIs. UTF-8, UTF-16 and other character encodings should be avoided in the element names as they will lead to creation of IRIs.
 |===
 
 *Description:*
 
-Encoded UTF-8 and UTF-16 names are supported [xref:references.adoc#ref:xml1-spec[xml1-spec], xref:references.adoc#ref:xml11-spec[xml11-spec]], but we recommend avoiding any character encodings in the element names. Encoded characters are mostly not readable and require a decoding to become human friendly. Also, unexpected results may occur in the transformation script. This recommendation does not apply to the content strings such as descriptions, notes and comments, which may use any character encoding.
+Encoded UTF-8 and UTF-16 names may be used [xref:references.adoc#ref:xml1-spec[xml1-spec], xref:references.adoc#ref:xml11-spec[xml11-spec]], but we recommend avoiding any character encodings in the element names. Encoded characters are mostly not readable and require a decoding to become human friendly. Also, unexpected results may occur in the transformation script. This recommendation does not apply to the content strings such as descriptions, notes and comments, which may use any character encoding.
 
 
 [[sec:stereotypes-tags]]
@@ -385,27 +412,24 @@ Encoded UTF-8 and UTF-16 names are supported [xref:references.adoc#ref:xml1-spec
 *Identifier* -
 
 |*Statement:*
-The use of stereotypes should be avoided, as much as possible. Only selected, agreed-upon stereotypes should be used.
+Stereotypes have no semantics and hence shall be avoided. Exceptionally some selected, agreed-upon stereotypes may be used.
 |===
 
 *Description:*
 
-The use of common UML stereotypes is not recommended. There should be only a small set of stereotypes, with well-defined meaning and pre-established transformation rules that shall be used in the conceptual model.
-
-TODO: Give examples of supported (and not to be used) stereotypes in EPO
+The use of stereotypes is not recommended. There should be only a small set of stereotypes, with well-defined meaning and pre-established transformation rules that shall be used in the conceptual model. In this set of rule the `\<<Abstract>>` stereotype is adopted to mark abstract classes [xref:uml/conv-classes.adoc.adoc[see section on Classes]].
 
 *See also:* SEMIC Style Guide Rule [https://semiceu.github.io/style-guide/public-review/gc-conceptual-model-conventions.html#sec:cmc-r17[CMC-R17]]
 
-
 |===
 |{set:cellbgcolor: #a8c6f7}
- *Title:* Usage of tags
+ *Title:* Tags
 
 |{set:cellbgcolor: #f5f8fc}
 *Identifier* -
 
 |*Statement:*
-The use of UML tags is recommended to provide additional descriptions of the element in a consistent and structure manner.
+UML tags shall be used to provide additional descriptions of the element in a consistent and structure manner.
 |===
 
 *Description:*
@@ -413,9 +437,4 @@ The use of UML tags is recommended to provide additional descriptions of the ele
 When providing additional information to an element (classes, enumerations, datatypes, connectors, attributes, connector roles) through a tag ensure that:
 
 * The tag name should be a short URI or short URI with a language tag (e.g. @en).
-* The tag itself should have a (properly formatted) name
 * There should be a value associated to each tag that appears on an element.
-
-TODO: Give examples from EPO
-
-See also:
