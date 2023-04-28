@@ -56,9 +56,6 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="conv-general.html">General Conventions</a>
   </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-packages.html">uml:Package</a>
-  </li>
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="conv-classes.html">uml:Class</a>
   </li>
@@ -70,6 +67,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="conv-datatypes.html">uml:DataType</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-packages.html">uml:Package</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="conv-connectors.html">UML Connector Elements</a>
@@ -222,7 +222,7 @@ Classes in a subclass hierarchy should be named consistently.</p></td>
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>When building the class hierarchy, names of direct subclasses of a class should consistently either all include or not include the name of the superclass. For example, if we are creating two subclasses of the "Wine" class to represent red and white wines, the two subclass names should be either "Red Wine" and "White Wine" or "Red" and "White", but not "Red Wine" and "White" [<a href="../references.html#ref:noy2001" class="xref page">noy2001</a>].</p>
+<p>When building the class hierarchy, names of direct subclasses of a class should consistently either all include or not include the name of the superclass. For example, if we create two subclasses of <code>Wine</code> to represent red and white wines, then the two subclass names should be either <code>Red Wine</code> and <code>White Wine</code> or <code>Red</code> and <code>White</code>, but not <code>Red Wine</code> and <code>White</code> [<a href="../references.html#ref:noy2001" class="xref page">noy2001</a>].</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -230,14 +230,14 @@ Classes in a subclass hierarchy should be named consistently.</p></td>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Multiple subclasses</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Single subclass</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Class specialisations with a single child must be avoided.</p></td>
+Class specialisations with a single child shall be avoided.</p></td>
 </tr>
 </tbody>
 </table>
@@ -268,7 +268,7 @@ Circular inheritance must be avoided.</p></td>
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>This means that if there is a B that specialises a class A then A may not specialise B or any of the sub-classes of B.</p>
+<p>This means that if a class B specialises a class A then A may not specialise B or any of the subclasses of B.</p>
 </div>
 </div>
 <div class="sect2">
@@ -286,7 +286,7 @@ Circular inheritance must be avoided.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Each uml:Class must have a name.</p></td>
+Each uml:Class must have a short URI name.</p></td>
 </tr>
 </tbody>
 </table>
@@ -322,6 +322,9 @@ Each uml:Class should have a description.</p></td>
 <div class="paragraph">
 <p>Optionally, in case there is a technical possibility to distinguish between UML notes, then additionally editorial, history notes or simply comments should be provided as class descriptors.</p>
 </div>
+<div class="paragraph">
+<p>Richer and structured descriptions can be provided by using uml:Tag(s).</p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
@@ -335,7 +338,7 @@ Each uml:Class should have a description.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-uml:Class must have relations or attributes, or both.</p></td>
+uml:Class must have connectors, attributes, or both.</p></td>
 </tr>
 </tbody>
 </table>
