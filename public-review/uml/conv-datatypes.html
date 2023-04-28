@@ -120,7 +120,7 @@
     <li><a href="conv-datatypes.html">uml:DataType</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/uml/conv-datatypes.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-725/docs/modules/ROOT/pages/uml/conv-datatypes.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -184,6 +184,9 @@ For primitive data types the already existing (standardized or commonly used) da
 <div class="paragraph">
 <p>The data types defined in the UML model (and custom ones) are resolved into their XSD equivalent using the correspondences from the <a href="#tab:uml2xsd">UML to XSD datatype correspondences</a> table below. Note that the family of string datatypes is mapped to <em>rdf:langString</em>. This means that the instance data should provide a language tag for the textual data indicating how it should be read. This enables multilingual data specification. Also, note that Date is mapped to <code>xsd:date</code> and DateTime is mapped to <code>xsd:dateTime</code>. However, the <code>xsd:date</code> is not included in the OWL2 interpretation and instead a strong preference is expressed for <code>xsd:dateTime</code>. Therefore, it is recommended to follow the OWL2 specification, although the <code>xsd:date</code> is a valid datatype in the RDF data and in SPARQL queries.</p>
 </div>
+<div class="paragraph">
+<p>Note that from the family of string datatypes we recommend using the following ones (in this order of preference): <code>rdf:PlainLiteral</code>, <code>rdfs:Literal</code>, <code>xsd:string</code>, and <code>rdf:langString</code>. Often enabling multilingual data specification is a necessity.</p>
+</div>
 <table id="tab:uml2xsd" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. UML to XSD datatype correspondences</caption>
 <colgroup>
@@ -233,8 +236,32 @@ For primitive data types the already existing (standardized or commonly used) da
 <td class="tableblock halign-center valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">DateTime</p></td>
 <td class="tableblock halign-center valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">xsd:dateTime</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color:  #f5f8fc;"></td>
+<td class="tableblock halign-center valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">xsd:anyURI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">Code</p></td>
+<td class="tableblock halign-center valign-top" style="background-color:  #f5f8fc;"><p class="tableblock">skos:Concept</p></td>
+</tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>The table above provides a simplified correspondence between UML and XSD datatypes, but for a complete list of available recommended datatypes the standard specifications shall be consulted:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes">RDF working group XSD Datatype maps</a></p>
+</li>
+<li>
+<p><a href="https://www.w3.org/TR/rdf11-concepts/#section-Datatypes">RDF 1.1 Datatypes section</a></p>
+</li>
+<li>
+<p><a href="https://www.w3.org/TR/owl2-syntax/#Datatype_Maps">OWL 2 Datatype Maps</a></p>
+</li>
+</ul>
+</div>
 <table id="sec:owl2-datatypes" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
@@ -256,7 +283,7 @@ Even among the XSD and RDF datatypes, OWL 2 compliant datatypes shall be preferr
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>It is recommended to use OWL 2 compliant XSD and RDF standard data types. They may be useful in indicating a specific data type which is not possible with UML ones. For example, making a distinction between a general string (xsd:string) and a literal with a language tag (rdf:langString), or XML encoded ones such as rdf:HTML and rdf:XMLLiteral.</p>
+<p>We strongly recommended the use of OWL 2 compliant XSD and RDF standard datatypes, if possible. They might be useful also for indicating a specific datatype, which is impossible with the UML ones. For example, making a distinction between a general string (<code>xsd:string</code>) and a literal with a language tag (<code>rdf:langString</code>), or XML encoded ones such as <code>rdf:HTML</code> and <code>rdf:XMLLiteral</code>.</p>
 </div>
 <table id="sec:proxy-datatypes" class="tableblock frame-all grid-all stretch">
 <colgroup>
