@@ -179,13 +179,16 @@ For primitive data types the already existing (standardized or commonly used) da
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>It is recommended to employ the primitive datatypes that are already defined in XSD [<a href="../references.html#ref:xsd1.1-spec" class="xref page">xsd1.1-spec</a>] and RDF [<a href="../references.html#ref:rdf11" class="xref page">rdf11</a>], which cover the standard and most common types. Thus, definitions of custom data types shall be avoided unless the model really needs them. Such cases are, however, rare.</p>
+<p>It is recommended to employ the primitive datatypes that are already defined in XSD [<a href="../references.html#ref:xsd1.1-spec" class="xref page">xsd1.1-spec</a>] and RDF [<a href="../references.html#ref:rdf11" class="xref page">rdf11</a>], which cover the standard, and most common types. Thus, definitions of custom data types shall be avoided unless the model absolutely needs them. Such cases are, however, rare.</p>
 </div>
 <div class="paragraph">
-<p>The data types defined in the UML model (and custom ones) are resolved into their XSD equivalent using the correspondences from the <a href="#tab:uml2xsd">UML to XSD datatype correspondences</a> table below. Note that the family of string datatypes is mapped to <em>rdf:langString</em>. This means that the instance data should provide a language tag for the textual data indicating how it should be read. This enables multilingual data specification. Also, note that Date is mapped to <code>xsd:date</code> and DateTime is mapped to <code>xsd:dateTime</code>. However, the <code>xsd:date</code> is not included in the OWL2 interpretation and instead a strong preference is expressed for <code>xsd:dateTime</code>. Therefore, it is recommended to follow the OWL2 specification, although the <code>xsd:date</code> is a valid datatype in the RDF data and in SPARQL queries.</p>
+<p>The data types defined in the UML model (and custom ones) shall be reduced to their XSD equivalent using the correspondences from the <a href="#tab:uml2xsd">UML to XSD datatype correspondences</a> table below.</p>
 </div>
 <div class="paragraph">
 <p>Note that from the family of string datatypes we recommend using the following ones (in this order of preference): <code>rdf:PlainLiteral</code>, <code>rdfs:Literal</code>, <code>xsd:string</code>, and <code>rdf:langString</code>. Often enabling multilingual data specification is a necessity.</p>
+</div>
+<div class="paragraph">
+<p>Also, note that Date is mapped to <code>xsd:date</code> and DateTime is mapped to <code>xsd:dateTime</code>. However, the <code>xsd:date</code> is not included in the OWL2 interpretation and instead a strong preference is expressed for <code>xsd:dateTime</code>. Therefore, it is recommended to follow the OWL2 specification, although the <code>xsd:date</code> is a valid datatype in the RDF data and in SPARQL queries.</p>
 </div>
 <table id="tab:uml2xsd" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. UML to XSD datatype correspondences</caption>
