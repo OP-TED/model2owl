@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>UML Convention checker inventory :: model2owl</title>
+    <title>Untitled :: model2owl</title>
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script>var uiRootPath = '../../_'</script>
@@ -76,7 +76,7 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="model2owl-checkers.html">UML convention checking rules</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -114,22 +114,51 @@
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="../index.html">model2owl Documentation</a></li>
-    <li><a href="model2owl-checkers.html">UML convention checking rules</a></li>
-  </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-725/docs/modules/ROOT/pages/checkers/model2owl-checkers.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-725/docs/modules/ROOT/pages/checkers/connector-checkers.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">UML Convention checker inventory</h1>
-<div class="paragraph">
-<p><strong>[TODO: add text and pages]</strong></p>
-</div>
+<table id="tab:uml2xsd" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. General checkers</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Id</th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-center valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">general-connector-type-1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">connector-type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Only associations, dependecies, generalisations and realisation connectors are supported.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">general-element-type-2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">element-type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Only Class, Package, Datatype, Enumeration, and Object elements are supported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">general-prefix-3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">namespace definitions</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The prefixes $[list of undefined prefixes] are not defined. All used namespaces shall be defined ("prefix" = "base URI"), including the default one (""="base URI").</p></td>
+</tr>
+</tbody>
+</table>
 </article>
   </div>
 </main>

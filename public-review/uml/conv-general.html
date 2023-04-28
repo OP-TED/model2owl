@@ -120,7 +120,7 @@
     <li><a href="conv-general.html">General Conventions</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/uml/conv-general.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-725/docs/modules/ROOT/pages/uml/conv-general.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -496,10 +496,7 @@ All elements must have a definition providing a concise but complete description
 <div class="paragraph">
 <p><strong>See also:</strong> SEMIC Style Guide Rule [<a href="https://semiceu.github.io/style-guide/public-review/gc-general-conventions.html#sec:gc-r5">GC-R5</a>], which provides more recommendations to be followed here.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="sec:controlled-lists"><a class="anchor" href="#sec:controlled-lists"></a>Controlled lists</h3>
-<div class="paragraph">
+<div id="sec:controlled-lists" class="paragraph">
 <p>The controlled list is a carefully selected list of words and phrases and is often employed in the modelling practices. The controlled list has a name, and a set of terms. For example, the list of grammatical genders can be named "Gender" and comprise the terms "masculine", "feminine", "neuter" and "utrum".</p>
 </div>
 <div class="paragraph">
@@ -518,7 +515,7 @@ All elements must have a definition providing a concise but complete description
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
-<p class="tableblock">When the controlled list is known, and it can be referred to by a short URI, then it
+<p class="tableblock">When the controlled list is known, and it can be referred to by a short URI then it
 shall be represented as uml:Enumeration element.</p></td>
 </tr>
 </tbody>
@@ -548,7 +545,7 @@ shall be represented as uml:Enumeration element.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
-<p class="tableblock">When the controlled list is unknown, then it shall not be referred to, but instead a class uml:Attribute shall be defined with datatype <code>skos:Concept</code> class.</p></td>
+<p class="tableblock">When the controlled list is unknown then it shall not be referred to, but instead a class uml:Attribute shall be defined with datatype <code>skos:Concept</code> class.</p></td>
 </tr>
 </tbody>
 </table>
@@ -556,7 +553,7 @@ shall be represented as uml:Enumeration element.</p></td>
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>When the authors of a conceptual model intend to omit which controlled list shall be used, then a class attribute with the range <code>skos:Concept</code> (in some cases <code>Code</code> is preferred, but we strongly recommend avoiding this) can be created to indicate that. This approach can be useful in situations when multiple (external) controlled lists can be used interchangeably. For example, the <code>adms:status</code> property of a <code>dcat:CatalogueRecord</code> shall be a <code>skos:Concept</code>, without specifying the controlled list.</p>
+<p>When the authors of a conceptual model intend to omit, which controlled list shall be used, then a class attribute with the range <code>skos:Concept</code> (in some cases <code>Code</code> is preferred, but we strongly recommend to avoid this) can be created to indicate that. This approach can be useful in situations when multiple (external) controlled lists can be used interchangeably. For example, the <code>adms:status</code> property of a <code>dcat:CatalogueRecord</code> shall be a <code>skos:Concept</code>, without specifying the controlled list.</p>
 </div>
 <table id="sec:gen-controlled-list-empty" class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -571,7 +568,7 @@ shall be represented as uml:Enumeration element.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
-<p class="tableblock">uml:Enumeration shall contain no values. Management of the controlled list of values shall be done outside the scope of the conceptual model.</p></td>
+<p class="tableblock">uml:Enumeration shall contain no values. Management of the controlled list of values shall not be done outside the scope of the conceptual model.</p></td>
 </tr>
 </tbody>
 </table>
@@ -601,7 +598,7 @@ shall be represented as uml:Enumeration element.</p></td>
 <div class="paragraph">
 <p>In order to enable the reuse of names defined in other models and reuse of unique references for names that support easy identification, namespace management must be considered. We adopt XML approach to defining and managing namespaces as it is inherent in both XMI and OWL2 standards. Hence, a <em>namespace</em> is a set of symbols that are used to organise objects of various kinds, so that these objects may be referred to by name and uniquely identifiable.</p>
 </div>
-<table id="sec:known-namespaces" class="tableblock frame-all grid-all stretch">
+<table id="sec:gen-controlled-list-empty" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -692,7 +689,7 @@ Element names shall use only ASCII characters to generate valid URIs. UTF-8, UTF
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Stereotypes have no semantics and hence shall be avoided. Exceptionally, some selected, agreed-upon stereotypes may be used.</p></td>
+Stereotypes have no semantics and hence shall be avoided. Exceptionally some selected, agreed-upon stereotypes may be used.</p></td>
 </tr>
 </tbody>
 </table>
@@ -700,7 +697,7 @@ Stereotypes have no semantics and hence shall be avoided. Exceptionally, some se
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>The use of stereotypes is not recommended. There should be only a small set of stereotypes, with well-defined meaning and pre-established transformation rules that shall be used in the conceptual model. In this set of rules the <code>&lt;&lt;Abstract&gt;&gt;</code> stereotype is adopted to mark abstract classes [<a href="conv-classes.html#sec:abstract-class" class="xref page">see section on Abstract Classes</a>].</p>
+<p>The use of stereotypes is not recommended. There should be only a small set of stereotypes, with well-defined meaning and pre-established transformation rules that shall be used in the conceptual model. In this set of rule the <code>&lt;&lt;Abstract&gt;&gt;</code> stereotype is adopted to mark abstract classes [<a href="#uml/conv-classes.adoc.adoc" class="xref unresolved">see section on Classes</a>].</p>
 </div>
 <div class="paragraph">
 <p><strong>See also:</strong> SEMIC Style Guide Rule [<a href="https://semiceu.github.io/style-guide/public-review/gc-conceptual-model-conventions.html#sec:cmc-r17">CMC-R17</a>]</p>
