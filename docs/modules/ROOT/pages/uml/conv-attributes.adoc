@@ -3,36 +3,81 @@
 [[sec:attributes]]
 === Conventional recommendations on Attributes
 
-When creating attribute names, it is conventional to use simple nouns such as "name", "weight", "colour". Attributes are a special type of relations that describe an entity in terms of its qualities. And so, to be consistent with the above convention and in order to increase the clarity, it is recommended to employ the prefix "has-" for each attribute even if it does not add much to the term’s meaning. So, it is preferred to use terms such as "hasName", "hasWeight" and "hasColour".
+[[sec:attributes-names-with-verb]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Attribute names
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+It is recommended to use a verb in the attribute name, such as "has-" or "is-".
+|===
+
+*Description:*
+
+When creating attribute names, it is conventional to use simple nouns such as "name", "weight", "colour". Attributes are a special type of relations that describe an entity in terms of its qualities. And so, to be consistent with the above convention and in order to increase the clarity, it is recommended to employ the prefix "has-" for each attribute even if it does not add much to the term's meaning. So, it is preferred to use terms such as "hasName", "hasWeight" and "hasColour".
 
 It is recommended to use simple nouns for attribute names prepended with the verb "has-".
 
-To avoid laborious mechanical work of adding the prefix, it is possible to rely on the convention that the attribute names starting with a capital letter must be read as having the "has-" prefix. It means that the transformation script will prepend the "has-" prefix to all attributes starting with a capital letter.
+It is recommended to avoid duplicate attributes names across multiple classes. Unless, by design, attributes with the same name are shared across multiple classes.
 
-By default, the attribute multiplicity is "1". This should be read as any number which is expressed as "0..*". In special cases, a list of custom default multiplicities is defined for the transformation script. That means that some data types or classes that are used as attribute types are paired with a default multiplicity, for example "1..1", "0..1", "2..2".
+// To avoid laborious mechanical work of adding the prefix, it is possible to rely on the convention that the attribute names starting with a capital letter must be read as having the "has-" prefix. It means that the transformation script will prepend the "has-" prefix to all attributes starting with a capital letter.
 
+[[sec:attributes-multiplicity]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Attribute multiplicity
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+Attributes shall be assigned cardinality specifications contextualised to the class carrying them.
+|===
+
+*Description:*
+
+The attribute multiplicity should be specified indicating the minimum and maximum cardinality. The default [1] multiplicity shall be interpreted as unspecified as expressed as [0..*] in the OWL model.
+
+In special cases, a list of custom default multiplicities is defined for the transformation script. That means that some data types or classes that are used as attribute types are paired with a default multiplicity, for example "1..1", "0..1", "2..2".
 
 [[sec:attributes-class]]
 === uml:Class attributes
 
-uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty.
+[[sec:attributes-multiplicity]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Attribute datatypes
 
-Each uml:Attribute must have a name and attribute type. The name is used to generate URI and label while the type is used to define the range restriction.
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
 
-An attribute may contain an alias, which is used as an alternative label; and it may have initial value provided which is transferred into a definition.
+|*Statement:*
+uml:Attribute shall be defined with generally accepted primitive datatypes.
+|===
 
-It is recommended that the attribute type is one of the XSD and RDF datatypes compatiblefootnote:[https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes] with OWL 2. Exceptionally, generic data types such as "Numeric", "String", "Date" can be used. In such cases the transformation script uses a correspondence table defining which XSD data type shall be used for each atomic UML type. If the datatype is not found in the correspondence table then it is considered invalid.
+*Description:*
 
-The attribute multiplicity should be specified indicating the minimum and maximum cardinality. The default [1] multiplicity shall be interpreted as unspecified as expressed as [0..*] in the OWL model.
+Each uml:Attribute must have a name and attribute type. uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty. High preference shall be given to using OWL 2 compliant XSD [xref:references.adoc#ref:xsd[xsd]] and RDF [xref:references.adoc#ref:rdf[rdf]] standard datatypes.
 
-It is recommended to avoid duplicate attributes names across multiple classes. Unless, by design, attributes with the same name are shared across multiple classes.
+In cases when a property needs to be defined as ranging on an unknown controlled list or authority table constitute a special case. They can be expressed as uml:attribute with the datatype `skos:Concept`. These attributes are transformed into owl:ObjectProperty in a manner similarly to uml:Association.
 
-It is mandatory to avoid using the same name in an attribute and in a relation, unless there is an additional rule that handles intentional exceptions.
+An attribute may contain an alias, used as an alternative label. It can be specified via uml:Tags
 
-All attribute data types must be defined in the model for reference, regardless if they are reused from other models or specific to the local model. In the case of reused external models, the local (re-)definitions serve merely as proxies as explained in Section [xref:#sec:datatype[]].
+[[sec:attributes-reuse]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Attribute name reuse
 
-It is recommended that the attribute type is an atomic data type. It is possible to use a uml:Enumeration as an attribute type. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Dependency described in Section [xref:#sec:dependency[]].
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
 
-It is recommended to avoid using another class as the attribute type. An acceptable exception for this is with a controlled set of classes. The list of allowed classes must be explicitly indicated in the transformations script. These cases are transformed into owl:ObjectProperty in a manner similarly to uml:Association described in Section [xref:#sec:association[]]. For the eProcurement project the set of exceptions is: Identifier, Amount, Quantity, Measure. These were initially defined as composite datatypes and then transformed into classes.
+|*Statement:*
+Attribute names can be reused only as attributes in other classes, not as relations.
+|===
 
+*Description:*
 
+It is mandatory to avoid using the same name in an attribute and in a relation, unless an additional rule that handles intentional exceptions exists.
