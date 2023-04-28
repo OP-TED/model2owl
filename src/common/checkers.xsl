@@ -132,7 +132,7 @@
         <xsl:variable name="prefixToCheck" select="fn:substring-before($input, ':')"/>
         <xsl:sequence
             select="
-                if (boolean(fn:substring-before($input, ':'))) then
+            if (boolean($prefixToCheck)) then
                     boolean(f:getNamespaceValues($prefixToCheck, $namespacePrefixes))
                 else
                     fn:false()
@@ -148,8 +148,7 @@
         <xsl:param name="input"/>
         <xsl:sequence
             select="
-                if (boolean(f:getUmlDataTypeValues($input, $umlDataTypesMapping)) or
-                boolean(f:getXsdRdfDataTypeValues($input, $xsdAndRdfDataTypes)))
+                if (boolean(f:getXsdRdfDataTypeValues($input, $xsdAndRdfDataTypes)))
                 then
                     fn:true()
                 else
@@ -204,23 +203,26 @@
     </xd:doc>
     <xsl:function name="f:isConnectorStereotypeValid">
         <xsl:param name="connector" as="node()"/>
-        <xsl:sequence
-            select="
-                if (($connector/properties/@ea_type = 'Generalization' and
-                not(boolean($connector/properties/@stereotype)) or
-                $connector/properties/@stereotype = $stereotypeValidOnGeneralisations) or
-                ($connector/properties/@ea_type = 'Association' and
-                not(boolean($connector/properties/@stereotype)) or
-                $connector/properties/@stereotype = $stereotypeValidOnAssociations) or
-                ($connector/properties/@ea_type = 'Dependency' and
-                not(boolean($connector/properties/@stereotype)) or
-                $connector/properties/@stereotype = $stereotypeValidOnDependencies)
-                )
-                then
-                    true()
-                else
-                    false()"
-        />
+        <xsl:choose>
+            <xsl:when
+                test="boolean($connector/properties/@stereotype) or boolean($connector/*/role/@stereotype)">
+                <xsl:sequence
+                    select="
+                        if (($connector/properties/@ea_type = 'Generalization' and $connector/properties/@stereotype = $stereotypeValidOnGeneralisations or $connector/*/role/@stereotype = $stereotypeValidOnGeneralisations) or
+                        ($connector/properties/@ea_type = 'Association' and $connector/properties/@stereotype = $stereotypeValidOnAssociations or $connector/*/role/@stereotype = $stereotypeValidOnGeneralisations) or
+                        ($connector/properties/@ea_type = 'Dependency' and $connector/properties/@stereotype = $stereotypeValidOnDependencies or $connector/*/role/@stereotype = $stereotypeValidOnDependencies)
+                        )
+                        then
+                            true()
+                        else
+                            false()"/>
+
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="true()"/>
+            </xsl:otherwise>
+        </xsl:choose>
+
     </xsl:function>
 
     <xd:doc>
@@ -312,6 +314,123 @@
         />
     </xsl:function>
 
+
+    <xd:doc>
+        <xd:desc>Check is a name prefix is missing</xd:desc>
+        <xd:param name="name"/>
+    </xd:doc>
+    <xsl:function name="f:isNamePrefixMissing">
+        <xsl:param name="name"/>
+        <xsl:sequence
+            select="
+                if (fn:contains($name, ':'))
+                then
+                    fn:false()
+                else
+                    fn:true()"
+        />
+    </xsl:function>
+
+
+    <xd:doc>
+        <xd:desc>Check name local segment is missing</xd:desc>
+        <xd:param name="name"/>
+    </xd:doc>
+    <xsl:function name="f:isNameLocalSegmentMissing">
+        <xsl:param name="name"/>
+        <xsl:variable name="localSegment" select="f:getLocalSegment($name)"/>
+        <xsl:sequence select="not(boolean($localSegment))"/>
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>Checks regex for prefix</xd:desc>
+        <xd:param name="name"/>
+    </xd:doc>
+    <xsl:function name="f:isInvalidNamePrefix">
+        <xsl:param name="name"/>
+        <xsl:variable name="prefix" select="fn:substring-before($name, ':')"/>
+        <xsl:sequence
+            select="
+                if (fn:matches($prefix, '^[a-zA-Z0-9-_]+$'))
+                then
+                    fn:false()
+                else
+                    fn:true()
+                "
+        />
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>Checks regex for local segment</xd:desc>
+        <xd:param name="name"/>
+    </xd:doc>
+    <xsl:function name="f:isInvalidLocalSegmentName">
+        <xsl:param name="name"/>
+        <xsl:variable name="localSegment" select="f:getLocalSegment($name)"/>
+        <xsl:sequence
+            select="
+                if (fn:matches($localSegment, '^[a-zA-Z0-9_\-\s]+$'))
+                then
+                    fn:false()
+                else
+                    fn:true()
+                "
+        />
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>Checks if first character is invalid in the local segment</xd:desc>
+        <xd:param name="name"/>
+    </xd:doc>
+
+    <xsl:function name="f:isValidFirstCharacterInLocalSegment">
+        <xsl:param name="name"/>
+        <xsl:variable name="localSegment" select="f:getLocalSegment($name)"/>
+        <xsl:sequence
+            select="
+                if (fn:matches(fn:substring($localSegment, 1, 1), '^[a-zA-Z_]+$')) then
+                    fn:true()
+                else
+                    fn:false()"
+        />
+    </xsl:function>
+
+
+    <xd:doc>
+        <xd:desc>Checks if the local segment contains delimiters (spaces)</xd:desc>
+        <xd:param name="name"/>
+    </xd:doc>
+
+    <xsl:function name="f:isDelimitersInLocalSegment">
+        <xsl:param name="name"/>
+        <xsl:variable name="localSegment" select="f:getLocalSegment($name)"/>
+        <xsl:variable name="delimiters" select="'[\s]'"/>
+        <xsl:sequence
+            select="
+                if (fn:matches($localSegment, $delimiters)) then
+                    fn:true()
+                else
+                    fn:false()"
+        />
+    </xsl:function>
+
+
+    <xd:doc>
+        <xd:desc>Checks if tag name is an URI</xd:desc>
+        <xd:param name="tagName"/>
+    </xd:doc>
+
+    <xsl:function name="f:isValidTagName">
+        <xsl:param name="tagName"/>
+        <xsl:sequence
+            select="
+                if (fn:matches($tagName, '^(:\w+|[a-z][-a-z0-9]*:[-a-zA-Z0-9_@]+)$')) then
+                    fn:true()
+                else
+                    fn:false()"
+        />
+    </xsl:function>
+
     <xd:doc>
         <xd:desc>Check if the element or attribute is missing the name</xd:desc>
         <xd:param name="element"/>
@@ -335,14 +454,7 @@
     </xd:doc>
     <xsl:function name="f:isElementNamePrefixMissing">
         <xsl:param name="element" as="node()"/>
-        <xsl:sequence
-            select="
-                if (fn:contains($element/@name, ':'))
-                then
-                    fn:false()
-                else
-                    fn:true()"
-        />
+        <xsl:sequence select="f:isNamePrefixMissing($element/@name)"/>
     </xsl:function>
 
 
@@ -352,81 +464,48 @@
     </xd:doc>
     <xsl:function name="f:isElementNameLocalSegmentMissing">
         <xsl:param name="element" as="node()"/>
-        <xsl:variable name="localSegment" select="f:getLocalSegmentForElements($element)"/>
-        <xsl:sequence select="not(boolean($localSegment))"/>
+        <xsl:sequence select="f:isNameLocalSegmentMissing($element/@name)"/>
     </xsl:function>
 
 
     <xd:doc>
-        <xd:desc>Checks regex for prefix</xd:desc>
+        <xd:desc>Checks regex for element name prefix</xd:desc>
         <xd:param name="element"/>
     </xd:doc>
-    <xsl:function name="f:isInvalidNamePrefix">
+    <xsl:function name="f:isInvalidElementNamePrefix">
         <xsl:param name="element"/>
-        <xsl:variable name="prefix" select="fn:substring-before($element/@name, ':')"/>
-        <xsl:sequence
-            select="
-                if (fn:matches($prefix, '^[a-zA-Z0-9-_]+$'))
-                then
-                    fn:false()
-                else
-                    fn:true()
-                "
-        />
+        <xsl:sequence select="f:isInvalidNamePrefix($element/@name)"/>
     </xsl:function>
 
     <xd:doc>
-        <xd:desc>Checks regex for local segment</xd:desc>
+        <xd:desc>Checks regex for element name local segment</xd:desc>
         <xd:param name="element"/>
     </xd:doc>
-    <xsl:function name="f:isInvalidLocalSegmentName">
+    <xsl:function name="f:isInvalidElementLocalSegmentName">
         <xsl:param name="element"/>
-        <xsl:variable name="localSegment" select="f:getLocalSegmentForElements($element)"/>
-        <xsl:sequence
-            select="
-                if (fn:matches($localSegment, '^[a-zA-Z0-9_\-\s]+$'))
-                then
-                    fn:false()
-                else
-                    fn:true()
-                "
-        />
+        <xsl:sequence select="f:isInvalidLocalSegmentName($element/@name)"/>
     </xsl:function>
 
     <xd:doc>
-        <xd:desc>Checks if first character is invalid in the local segment</xd:desc>
+        <xd:desc>Checks if first character is invalid in the element name local segment</xd:desc>
         <xd:param name="element"/>
     </xd:doc>
 
-    <xsl:function name="f:isValidFirstCharacterInLocalSegment">
+    <xsl:function name="f:isValidElementFirstCharacterInLocalSegment">
         <xsl:param name="element"/>
-        <xsl:variable name="localSegment" select="f:getLocalSegmentForElements($element)"/>
-        <xsl:sequence
-            select="
-                if (fn:matches(fn:substring($localSegment, 1, 1), '^[a-zA-Z_]+$')) then
-                    fn:true()
-                else
-                    fn:false()"
-        />
+        <xsl:sequence select="f:isValidFirstCharacterInLocalSegment($element/@name)"/>
     </xsl:function>
 
 
     <xd:doc>
-        <xd:desc>Checks if the local segment contains delimiters (spaces)</xd:desc>
+        <xd:desc>Checks if the element name local segment contains delimiters (spaces)</xd:desc>
         <xd:param name="element"/>
     </xd:doc>
 
-    <xsl:function name="f:isDelimitersInLocalSegment">
+    <xsl:function name="f:isDelimitersInElementLocalSegment">
         <xsl:param name="element"/>
-        <xsl:variable name="localSegment" select="f:getLocalSegmentForElements($element)"/>
         <xsl:variable name="delimiters" select="'[\s]'"/>
-        <xsl:sequence
-            select="
-                if (fn:matches($localSegment, $delimiters)) then
-                    fn:true()
-                else
-                    fn:false()"
-        />
+        <xsl:sequence select="f:isDelimitersInLocalSegment($element/@name)"/>
     </xsl:function>
 
     <xd:doc>

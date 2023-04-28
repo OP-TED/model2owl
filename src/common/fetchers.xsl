@@ -304,4 +304,13 @@
 
     </xsl:function>
     
+    <xd:doc>
+        <xd:desc>fetch the all tags for a element</xd:desc>
+        <xd:param name="element"/>
+    </xd:doc>
+    <xsl:function name="f:getElementTags">
+        <xsl:param name="element"/>
+        <xsl:sequence select="$element/tags/tag"/>
+    </xsl:function>
+    
 </xsl:stylesheet>

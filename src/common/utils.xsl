@@ -2,13 +2,11 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" 
-    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:fn="http://www.w3.org/2005/xpath-functions"
     exclude-result-prefixes="xs math xd xsl uml xmi umldi fn"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
-    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"     
-    xmlns:functx="http://www.functx.com"    
+    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI" xmlns:functx="http://www.functx.com"
     xmlns:f="http://https://github.com/costezki/model2owl#" version="3.0">
 
     <xd:doc scope="stylesheet">
@@ -45,7 +43,7 @@
         <xd:param name="prefix"/>
         <xd:param name="namespaceDefinitions"/>
     </xd:doc>
-    
+
     <xsl:function name="f:getNamespaceValues" as="xs:string">
         <xsl:param name="prefix"/>
         <xsl:param name="namespaceDefinitions"/>
@@ -69,7 +67,7 @@
                 if (boolean($fetch)) then
                     string($fetch)
                 else
-                    fn:error(xs:QName('prefixes'),concat($prefix, ' is not found. Please check namespaces'))
+                    fn:error(xs:QName('prefixes'), concat($prefix, ' is not found. Please check namespaces'))
                 "
         />
     </xsl:function>
@@ -98,11 +96,22 @@
     <xsl:function name="f:getLocalSegmentForElements">
         <xsl:param name="element"/>
         <xsl:sequence
+            select="f:getLocalSegment($element/@name)"
+        />
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>Get the local segment from a Qname (prefix:LocalSegment)</xd:desc>
+        <xd:param name="name"/>
+    </xd:doc>
+    <xsl:function name="f:getLocalSegment">
+        <xsl:param name="name"/>
+        <xsl:sequence
             select="
-                if (fn:contains($element/@name, ':')) then
-                    fn:substring-after($element/@name, ':')
+                if (fn:contains($name, ':')) then
+                    fn:substring-after($name, ':')
                 else
-                    $element/@name"
+                    $name"
         />
     </xsl:function>
 
@@ -114,7 +123,7 @@
     </xd:doc>
     <xsl:function name="f:buildQNameFromLexicalQName" as="xs:QName">
         <xsl:param name="lexicalQName" as="xs:string"/>
-        
+
         <xsl:variable name="prefix"
             select="
                 if (fn:contains($lexicalQName, ':')) then
@@ -137,9 +146,8 @@
                     if ($defaultNamespaceInterpretation and not(fn:contains($lexicalQName, ':'))) then
                         $lexicalQName
                     else
-                        fn:substring-after($lexicalQName, ':')"
-        />
-                    
+                        fn:substring-after($lexicalQName, ':')"/>
+
         <xsl:sequence select="fn:QName($namespaceURI, $qname)"/>
     </xsl:function>
 
@@ -156,8 +164,7 @@
     <xsl:function name="f:buildURIfromLexicalQName" as="xs:anyURI">
         <xsl:param name="lexicalQName" as="xs:string"/>
 
-        <xsl:variable name="qname"
-            select="f:buildQNameFromLexicalQName($lexicalQName)"/>
+        <xsl:variable name="qname" select="f:buildQNameFromLexicalQName($lexicalQName)"/>
         <xsl:variable name="namespaceURI" select="fn:namespace-uri-from-QName($qname)"/>
         <xsl:variable name="fragmentIdentifier"
             select="substring($namespaceURI, string-length($namespaceURI), 1)"/>
@@ -170,21 +177,18 @@
                 "
         />
     </xsl:function>
-    
+
 
     <xd:doc>
         <xd:desc>Builds a URI for the element using the element @name attribute. The name expests a
-            prefix preceeded by colon (:).
-          </xd:desc>
+            prefix preceeded by colon (:). </xd:desc>
         <xd:param name="element"/>
     </xd:doc>
     <xsl:function name="f:buildURIFromElement">
         <xsl:param name="element" as="node()"/>
         <xsl:variable name="elementName" select="$element/@name"/>
 
-        <xsl:sequence
-            select="f:buildURIfromLexicalQName($elementName)"
-        />
+        <xsl:sequence select="f:buildURIfromLexicalQName($elementName)"/>
     </xsl:function>
 
 
@@ -353,7 +357,7 @@
                     select="
                         for $connector in $connectorElements
                         return
-                        if (f:getElementByIdRef($connector/target/@xmi:idref, $root)/@name) then
+                            if (f:getElementByIdRef($connector/target/@xmi:idref, $root)/@name) then
                                 fn:true()
                             else
                                 fn:false()"/>
@@ -361,7 +365,7 @@
                     select="
                         for $connector in $connectorElements
                         return
-                        if (f:getElementByIdRef($connector/source/@xmi:idref, $root)/@name) then
+                            if (f:getElementByIdRef($connector/source/@xmi:idref, $root)/@name) then
                                 fn:true()
                             else
                                 fn:false()"/>
@@ -375,7 +379,7 @@
                             satisfies $i = fn:false()"/>
                 <xsl:sequence
                     select="
-                    if ($externalSourceClasses or $externalTargetClasses) then
+                        if ($externalSourceClasses or $externalTargetClasses) then
                             fn:true()
                         else
                             fn:false()"/>
