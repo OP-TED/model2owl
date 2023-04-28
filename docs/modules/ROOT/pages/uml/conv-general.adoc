@@ -21,7 +21,7 @@ In theory any name can be assigned to a concept, relationship or property. In pr
 *Identifier* -
 
 |*Statement:*
-Element names should support generation of human- and machine-readable denominations, and they shall follow the short URI notation: `prefix:localSegment`.
+Element names should support generation of human- and machine-readable denominations, and they shall follow the short URI notation: `prefix:localSegment` .
 
 |===
 
@@ -75,7 +75,7 @@ Clear and plain language shall be used; and abbreviations, unpronounceable, easi
 
 *Description:*
 
-It is recommended to avoid abbreviations in concept names. Also, the words employed in the metamodel such as "class", "property", "attribute", "connector" etc. should be avoided as well. Names, which are nonsensical, unpronounceable, hard to read, or easily confusable with other names should not be employed [xref:references.adoc#ref:xml1-spec[xml1-spec]].
+It is recommended to avoid abbreviations in concept names. Also, the words employed in the metamodel such as "class", "property", "attribute", "connector" etc. should be avoided as well. Names that are nonsensical, unpronounceable, hard to read, or easily confusable with other names should not be employed [xref:references.adoc#ref:xml1-spec[xml1-spec]].
 
 
 // [[sec:casing]]
@@ -159,7 +159,7 @@ Although name uniqueness is a recommendation, sometimes it is useful to replicat
 *Identifier* -
 
 |*Statement:*
-Connector and Attribute names shall be chosen to support the appropriate level of reuse.
+Connector and Attribute names shall be chosen such as to support the appropriate level of reuse.
 
 |===
 
@@ -300,9 +300,9 @@ The properties having this controlled list as range shall be depicted as UML dep
 
 image::cmc-r14-1.png[]
 
-The name of the Enumeration shall be resolved to a URI identical to that of the `skos:ConceptScheme`. As for the connector type we recommend using a dependency connector (depicted with a dashed line) because the semantic interpretation differs slightly from the association connector (depicted with a continuous line). Namely, the range of the property has to fulfil two constraints: (a) instantiating the skos:Concept class and (b) being `skos:inScheme` the intended controlled list [xref:semicsg/references.adoc#ref:epo-arch[epo-arch]]. [TODO: update reference]
+The name of the Enumeration shall be resolved to a URI identical to that of the `skos:ConceptScheme`. As for the connector type we recommend using a dependency connector (depicted with a dashed line) because the semantic interpretation differs slightly from the association connector (depicted with a continuous line). Namely, the range of the property has to fulfil two constraints: (a) instantiating the skos:Concept class and (b) being `skos:inScheme` the intended controlled list [xref:references.adoc#ref:epo-arch[epo-arch]]. [TODO: update reference]
 
-If the controlled list is specific to the model then the author shall define the values of the UML Enumeration inside of it, which are interpreted as concepts belonging to the containing concept scheme [xref:semicsg/references.adoc#ref:oslo-rules[oslo-rules, sec 3.2.17]]. [TODO: check if this is also the case for EPO, and if the reference is appropriate] [TODO: See if it makes sense to insert here the statement from above: "It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case."]
+If the controlled list is specific to the model then the author shall define the values of the UML Enumeration inside of it, which are interpreted as concepts belonging to the containing concept scheme [xref:references.adoc#ref:oslo-rules[oslo-rules, sec 3.2.17]]. [TODO: check if this is also the case for EPO, and if the reference is appropriate] [TODO: See if it makes sense to insert here the statement from above: "It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case."]
 
 More specific requirements on the use of the uml:Enumeration elements are provided in the Section [xref:uml/conv-enumerations.adoc#sec:enumeration[uml:Enumeration]].
 
