@@ -22,7 +22,7 @@ This convention draws the distinction between primitive (or atomic) types (consi
 [[sec:uml-datatype]]
 === Technical conventions on uml:Datatype elements
 
-[[sec:composite-datatypes]]
+[[sec:primitive-datatypes]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* XSD and RDF datatypes
@@ -100,5 +100,7 @@ For the model consistency, it is recommended that the proxy data types be define
 |*Statement:*
 uml:DataType elements shall not connect to other elements. They can only be referred to.
 |===
+
+*Description:*
 
 There should be no outgoing connectors from a uml:DataType element. They should be only referred to, most commonly, by being used as the data type of a uml:Attribute element. Declarations of uml:Datatype elements that are not referred to should be avoided, in order to keep the model lean and clean.
