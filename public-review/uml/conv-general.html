@@ -120,7 +120,7 @@
     <li><a href="conv-general.html">General Conventions</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/uml/conv-general.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-725/docs/modules/ROOT/pages/uml/conv-general.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -416,7 +416,7 @@ Attributes and connector names shall contain a verb. Apply certain, well establi
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-All elements shall have a definition providing a concise but complete description of the concept.</p></td>
+All elements must have a definition providing a concise but complete description of the concept.</p></td>
 </tr>
 </tbody>
 </table>
@@ -478,9 +478,6 @@ All elements shall have a definition providing a concise but complete descriptio
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>TODO:</strong> Double check this list (including the commented items) to see if they are all accurate and relevant.</p>
-</div>
-<div class="paragraph">
 <p>In addition to these SEMIC recommendation for providing good definitions, we also add the following recommendations to adequately complete the description of an element:</p>
 </div>
 <div class="ulist">
@@ -492,12 +489,9 @@ All elements shall have a definition providing a concise but complete descriptio
 <p>A description may provide complementary information concerning the usage of the element or its relation to relevant standards. For example, a description may contain recommendations about which controlled vocabularies to use, describe the underlying assumptions and additional explanations for reducing ambiguity. Descriptions may contain multiple paragraphs separated by blank lines. The descriptions should not paraphrase the definitions.</p>
 </li>
 <li>
-<p>In case the model editor provides concrete examples of possible element values or instances then they shall be provided as a comma-separated list. Each example value is enclosed in quotes and is optionally followed by a short explanation enclosed in parentheses [<a href="../references.html#ref:isaHandbook2015" class="xref page">isaHandbook2015</a>].</p>
+<p>If the model editor provides concrete examples of possible element values or instances then they shall be provided as a comma-separated list. Each example value is enclosed in quotes and is optionally followed by a short explanation enclosed in parentheses [<a href="../references.html#ref:isaHandbook2015" class="xref page">isaHandbook2015</a>].</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><strong>TODO:</strong> Also add additionally a separate list of items with recommendations for EPO descriptions, like references to BT terms, WG decisions, etc.</p>
 </div>
 <div class="paragraph">
 <p><strong>See also:</strong> SEMIC Style Guide Rule [<a href="https://semiceu.github.io/style-guide/public-review/gc-general-conventions.html#sec:gc-r5">GC-R5</a>], which provides more recommendations to be followed here.</p>
@@ -506,11 +500,7 @@ All elements shall have a definition providing a concise but complete descriptio
 <div class="sect2">
 <h3 id="_controlled_lists"><a class="anchor" href="#_controlled_lists"></a>Controlled lists</h3>
 <div class="paragraph">
-<p>The controlled list is a carefully selected list of words and phrases and is often employed in the modelling practices. The controlled list has a name and a set of terms. For example, the list of grammatical genders can be named "Gender" and comprise the terms "masculine", "feminine", "neuter" and "utrum".</p>
-</div>
-<div class="paragraph">
-<p><span class="line-through">It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case.
-</span> <strong>TODO:</strong> Check if this is still valid. Remove it, if not.</p>
+<p>The controlled list is a carefully selected list of words and phrases and is often employed in the modelling practices. The controlled list has a name, and a set of terms. For example, the list of grammatical genders can be named "Gender" and comprise the terms "masculine", "feminine", "neuter" and "utrum".</p>
 </div>
 <div class="paragraph">
 <p>As a rule of thumb, but not always, the relationship between the controlled list as a whole and its comprising elements can be informally conceptualised as a class-instance, class-subclass, set-item, or part-whole.</p>
@@ -521,14 +511,15 @@ All elements shall have a definition providing a concise but complete descriptio
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Representation of controlled lists</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Representation of known controlled lists</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
-<p class="tableblock">The controlled lists of values shall be represented as uml:Enumeration elements and be specified whenever possible.</p></td>
+<p class="tableblock">When the controlled list is known, and it can be referred to by a short URI then it
+shall be represented as uml:Enumeration element.</p></td>
 </tr>
 </tbody>
 </table>
@@ -539,15 +530,53 @@ All elements shall have a definition providing a concise but complete descriptio
 <p>Controlled lists play an essential role in establishing interoperability standards. Management and publication of controlled lists should happen as a separate process, and are not addressed here. References to controlled lists shall be done via uml:Enumeration elements.</p>
 </div>
 <div class="paragraph">
-<p>The expectation is that the controlled lists are published in accordance with best practices and represented with the SKOS model using persistent identifiers. In such an approach, the controlled list is expressed as a <code>skos:ConceptScheme</code> and the specific values as <code>skos:Concept</code>(s). Also, such controlled lists are often developed,
-published and maintained independently following their own lifecycle, so that they can be reused in other models.</p>
+<p>The expectation is that the controlled lists are published in accordance with best practices and represented with the SKOS model using persistent identifiers. In such an approach, the controlled list is expressed as a <code>skos:ConceptScheme</code> and the specific values as <code>skos:Concept</code>(s). Also, such controlled lists are often developed, published and maintained independently following their own lifecycle, so that they can be reused in other models.</p>
 </div>
 <div class="paragraph">
 <p>Two use-cases can be identified in practice: (a) when the code list is known and is explicitly referred to as the range of a property, and (b) when a property is modelled but no code list reference is provided as its range.</p>
 </div>
+<table id="sec:gen-controlled-list-unknown" class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Representation of unknown controlled lists</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">When the controlled list is unknown then it shall not be referred to, but instead a class uml:Attribute shall be defined with datatype <code>skos:Concept</code> class.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
-<p>(OPTIONAL, <strong>TODO </strong> check whether needed )
-When the authors of a conceptual model intend to omit which controlled list shall be used, then a class attribute with the range <code>skos:Concept</code> (in some cases <code>Code</code> is preferred) can be created to indicate that. This approach can be useful in situations when multiple (external) controlled lists can be used interchangeably. For example, the <code>adms:status</code> property of a <code>dcat:CatalogueRecord</code> shall be a <code>skos:Concept</code>, without specifying the controlled list. [TODO: use other example, from EPO]</p>
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>When the authors of a conceptual model intend to omit, which controlled list shall be used, then a class attribute with the range <code>skos:Concept</code> (in some cases <code>Code</code> is preferred, but we strongly recommend to avoid this) can be created to indicate that. This approach can be useful in situations when multiple (external) controlled lists can be used interchangeably. For example, the <code>adms:status</code> property of a <code>dcat:CatalogueRecord</code> shall be a <code>skos:Concept</code>, without specifying the controlled list.</p>
+</div>
+<table id="sec:gen-controlled-list-empty" class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Controlled list values</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">uml:Enumeration shall contain no values. Management of the controlled list of values shall not be done outside the scope of the conceptual model.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
 <p>It is advisable, however, to be specific concerning which controlled list shall be used. In such cases, an Enumeration shall be created representing the controlled list. The Enumeration shall be empty, i.e., not specifying any value, because the values are assumed to be maintained externally and only the reference is necessary.</p>
@@ -564,10 +593,7 @@ When the authors of a conceptual model intend to omit which controlled list shal
 <p>The name of the Enumeration shall be resolved to a URI identical to that of the <code>skos:ConceptScheme</code>. As for the connector type we recommend using a dependency connector (depicted with a dashed line) because the semantic interpretation differs slightly from the association connector (depicted with a continuous line). Namely, the range of the property has to fulfil two constraints: (a) instantiating the skos:Concept class and (b) being <code>skos:inScheme</code> the intended controlled list [<a href="../references.html#ref:epo-arch" class="xref page">epo-arch</a>]. [TODO: update reference]</p>
 </div>
 <div class="paragraph">
-<p>If the controlled list is specific to the model then the author shall define the values of the UML Enumeration inside of it, which are interpreted as concepts belonging to the containing concept scheme [<a href="../references.html#ref:oslo-rules" class="xref page">oslo-rules, sec 3.2.17</a>]. [TODO: check if this is also the case for EPO, and if the reference is appropriate] [TODO: See if it makes sense to insert here the statement from above: "It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case."]</p>
-</div>
-<div class="paragraph">
-<p>More specific requirements on the use of the uml:Enumeration elements are provided in the Section [<a href="conv-enumerations.html#sec:enumeration" class="xref page">uml:Enumeration</a>].</p>
+<p>More specific requirements on the uml:Enumeration elements are provided in the Section [<a href="conv-enumerations.html#sec:enumeration" class="xref page">uml:Enumeration</a>].</p>
 </div>
 </div>
 <div class="sect2">
@@ -575,40 +601,34 @@ When the authors of a conceptual model intend to omit which controlled list shal
 <div class="paragraph">
 <p>In order to enable the reuse of names defined in other models and reuse of unique references for names that support easy identification, namespace management must be considered. We adopt XML approach to defining and managing namespaces as it is inherent in both XMI and OWL2 standards. Hence, a <em>namespace</em> is a set of symbols that are used to organise objects of various kinds, so that these objects may be referred to by name and uniquely identifiable.</p>
 </div>
+<table id="sec:gen-controlled-list-empty" class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Known namespaces</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">Namespaces must be defined before used in the model. All prefixes shall be assigned a base URI.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
-<p>Namespaces are commonly structured as hierarchies to allow reuse of names in different contexts [<a href="../references.html#ref:xml-namespaces" class="xref page">xml-namespaces</a>]. This mechanism can be implemented in UML through partitioning the model using packages, which are described in the [<a href="conv-packages.html#sec:uml-package" class="xref page">uml:Package</a>] Section.</p>
-</div>
-<div class="paragraph">
-<p>A namespace organises a collection of names obeying three constraints: each name is (1) unique, (2) assigned in a consistent way, and (3) assigned according to a common definition [<a href="../references.html#ref:urn-rfc8141" class="xref page">urn-rfc8141</a>]. An (expanded) <em>name</em> in a namespace is a pair consisting of a <em>namespace name</em>, also called <em>base URI</em> or just <em>base</em>, and a <em>local name</em>, also called <em>local segment</em> [<a href="../references.html#ref:xml1-spec" class="xref page">xml1-spec</a>, <a href="../references.html#ref:urn-rfc2141" class="xref page">urn-rfc2141</a>]. The combination of universally managed URI with the vocabulary local name is effective in avoiding name clashes. For example, in the expanded name "http://www.w3.org/ns/org#Organization", "http://www.w3.org/ns/org#" is the namespace name and "Organization" is the local name.</p>
-</div>
-<div class="paragraph">
-<p>Unlike in the XML specifications, the constraints on the local name are slightly relaxed, allowing token delimitation by space character (see Section [<a href="#sec:delimitation">Delimitation</a>]). This provides an additional level of readability to the conceptual model users. Nevertheless, the local names must be <em>normalised strings</em>, which mean that only single occurrences of space character are permitted. Other delimiting characters, such as tab, line feed, carriage return must be replaced by an occurrence of space and trimmed. In the transformation process, when URIs are generated, the spaces are removed anyway and conform with the XML conventions (see Section [<a href="#sec:name">Name</a>]). [<strong>TODO:</strong> Check whether use of space is still allowed]</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">name = &lt;namespace name&gt;/&lt;local name&gt;
-name = &lt;namespace name&gt;#&lt;local name&gt;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>URI references are often inconveniently long, so expanded names should not be used directly. Instead, <em>qualified names</em> should be used while expanded names are strongly discouraged. A <em>qualified name</em> is a name subject to namespace interpretation. Syntactically, they are either <em>prefixed names</em> or <em>unprefixed names</em>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">qualified name = [&lt;namespace prefix&gt;:]&lt;local name&gt;</code></pre>
-</div>
+<p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>The namespace name is usually applied as a <em>prefix</em> to the local name but it may be missing as well. [<a href="../references.html#ref:xml-namespaces" class="xref page">xml-namespaces</a>] specifies a declaration syntax which permits the binding of prefixes to namespace names and also to bind a default namespace that applies to unprefixed element names. For example, we can bind the namespace name "http://www.w3.org/ns/org#" to the prefix "org", which we can then use to create the same name as such "org:Organization". The prefix is subject to namespace interpretation and resolved to an URI [<a href="../references.html#ref:xml-namespaces" class="xref page">xml-namespaces</a>].</p>
-</div>
-<div class="paragraph">
-<p>It is recommended that the UML element names indicate the namespace prefix by prepending it to the name delimited by colon character (:). In case the namespace is not specified (no delimiter) then the name of the package containing the current element is used as namespace prefix. For example, if a class "Contract" is placed in a package "epo" then the name of the containing package is used as the namespace prefix and resolved to "epo:Contract". If the delimiter (:) is used without any prefix, then the empty string prefix is resolved to the default namespace as defined in [<a href="../references.html#ref:xml-namespaces" class="xref page">xml-namespaces</a>].</p>
+<p>A namespace organises a collection of names obeying three constraints: each name is (1) unique, (2) assigned consistently, and (3) assigned according to a common definition [<a href="../references.html#ref:urn-rfc8141" class="xref page">urn-rfc8141</a>]. An (expanded) <em>name</em> in a namespace is a pair consisting of a <em>namespace name</em>, also called <em>base URI</em> or just <em>base</em>, and a <em>local name</em>, also called <em>local segment</em> [<a href="../references.html#ref:xml1-spec" class="xref page">xml1-spec</a>, <a href="../references.html#ref:urn-rfc2141" class="xref page">urn-rfc2141</a>]. The combination of universally managed URIs with the vocabulary local name is effective in avoiding name clashes. For example, in the expanded name <code><a href="http://www.w3.org/ns/org#Organization" class="bare">http://www.w3.org/ns/org#Organization</a></code>, <code><a href="http://www.w3.org/ns/org#" class="bare">http://www.w3.org/ns/org#</a></code> is the namespace name and <code>Organization</code> is the local name.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="sec:charset"><a class="anchor" href="#sec:charset"></a>Character encoding</h3>
 <div class="paragraph">
-<p>In the formal ontology, the names must conform to RDF [<a href="../references.html#ref:rdf11" class="xref page">rdf11</a>] and XML[<a href="../references.html#ref:xml1-spec" class="xref page">xml1-spec</a>] format specifications. Both languages effectively require that terms begin with an upper or lower case letter from the ASCII character set, or an underscore (_). This tight restriction means that, for example, terms may not begin with a number, hyphen or accented character [<a href="../references.html#ref:d3.1-2015" class="xref page">d3.1-2015</a>]. Although underscores are permitted, they are discouraged as they may be, in some cases, misread as spaces. A formal definition of these restrictions is given in the XML specification document [<a href="../references.html#ref:xml1-spec" class="xref page">xml1-spec</a>].</p>
+<p>In the formal ontology, the URIs must conform to RDF [<a href="../references.html#ref:rdf11" class="xref page">rdf11</a>] and XML[<a href="../references.html#ref:xml1-spec" class="xref page">xml1-spec</a>] format specifications. Both languages effectively require that terms begin with an upper or lower case letter from the ASCII character set, or an underscore (_). This tight restriction means that, for example, terms may not begin with a number, hyphen or accented character [<a href="../references.html#ref:d3.1-2015" class="xref page">d3.1-2015</a>]. Although underscores are permitted, they are discouraged as they may be, in some cases, misread as spaces. A formal definition of these restrictions is given in the XML specification document [<a href="../references.html#ref:xml1-spec" class="xref page">xml1-spec</a>].</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -616,14 +636,14 @@ name = &lt;namespace name&gt;#&lt;local name&gt;</code></pre>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Valid characters in names</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Valid characters in element and connector names</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Local names of elements should start with a letter or underscore. In subsequent positions numbers and (single) spaces are also allowed.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong></p>
+<p class="tableblock">Local names of elements should start with a letter or underscore.</p></td>
 </tr>
 </tbody>
 </table>
@@ -639,14 +659,14 @@ Local names of elements should start with a letter or underscore. In subsequent 
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Character sets</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> URI character sets</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Element names shall use only ASCII characters to generate valid URIs. UTF-8 and UTF-16 characters should be used in tags to support internatialisations, if necessary.</p></td>
+Element names shall use only ASCII characters to generate valid URIs. UTF-8, UTF-16 and other character encodings should be avoided in the element names as they will lead to creation of IRIs.</p></td>
 </tr>
 </tbody>
 </table>
@@ -654,7 +674,7 @@ Element names shall use only ASCII characters to generate valid URIs. UTF-8 and 
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>Encoded UTF-8 and UTF-16 names are supported [<a href="../references.html#ref:xml1-spec" class="xref page">xml1-spec</a>, <a href="../references.html#ref:xml11-spec" class="xref page">xml11-spec</a>], but we recommend avoiding any character encodings in the element names. Encoded characters are mostly not readable and require a decoding to become human friendly. Also, unexpected results may occur in the transformation script. This recommendation does not apply to the content strings such as descriptions, notes and comments, which may use any character encoding.</p>
+<p>Encoded UTF-8 and UTF-16 names may be used [<a href="../references.html#ref:xml1-spec" class="xref page">xml1-spec</a>, <a href="../references.html#ref:xml11-spec" class="xref page">xml11-spec</a>], but we recommend avoiding any character encodings in the element names. Encoded characters are mostly not readable and require a decoding to become human friendly. Also, unexpected results may occur in the transformation script. This recommendation does not apply to the content strings such as descriptions, notes and comments, which may use any character encoding.</p>
 </div>
 </div>
 <div class="sect2">
@@ -672,7 +692,7 @@ Element names shall use only ASCII characters to generate valid URIs. UTF-8 and 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-The use of stereotypes should be avoided, as much as possible. Only selected, agreed-upon stereotypes should be used.</p></td>
+Stereotypes have no semantics and hence shall be avoided. Exceptionally some selected, agreed-upon stereotypes may be used.</p></td>
 </tr>
 </tbody>
 </table>
@@ -680,10 +700,7 @@ The use of stereotypes should be avoided, as much as possible. Only selected, ag
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>The use of common UML stereotypes is not recommended. There should be only a small set of stereotypes, with well-defined meaning and pre-established transformation rules that shall be used in the conceptual model.</p>
-</div>
-<div class="paragraph">
-<p>TODO: Give examples of supported (and not to be used) stereotypes in EPO</p>
+<p>The use of stereotypes is not recommended. There should be only a small set of stereotypes, with well-defined meaning and pre-established transformation rules that shall be used in the conceptual model. In this set of rule the <code>&lt;&lt;Abstract&gt;&gt;</code> stereotype is adopted to mark abstract classes [<a href="#uml/conv-classes.adoc.adoc" class="xref unresolved">see section on Classes</a>].</p>
 </div>
 <div class="paragraph">
 <p><strong>See also:</strong> SEMIC Style Guide Rule [<a href="https://semiceu.github.io/style-guide/public-review/gc-conceptual-model-conventions.html#sec:cmc-r17">CMC-R17</a>]</p>
@@ -694,14 +711,14 @@ The use of stereotypes should be avoided, as much as possible. Only selected, ag
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Usage of tags</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Tags</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-The use of UML tags is recommended to provide additional descriptions of the element in a consistent and structure manner.</p></td>
+UML tags shall be used to provide additional descriptions of the element in a consistent and structure manner.</p></td>
 </tr>
 </tbody>
 </table>
@@ -717,18 +734,9 @@ The use of UML tags is recommended to provide additional descriptions of the ele
 <p>The tag name should be a short URI or short URI with a language tag (e.g. @en).</p>
 </li>
 <li>
-<p>The tag itself should have a (properly formatted) name</p>
-</li>
-<li>
 <p>There should be a value associated to each tag that appears on an element.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>TODO: Give examples from EPO</p>
-</div>
-<div class="paragraph">
-<p>See also:</p>
 </div>
 </div>
 </div>
