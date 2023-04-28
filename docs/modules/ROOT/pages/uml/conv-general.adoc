@@ -1,7 +1,7 @@
 [[sec:general_conv]]
 == General Conventions
 
-In this section we provide a number of general conventions whose fundamental nature can be of two kind:  _technical_ or _conventional_. Regarding the topic of these conventions, they cover a number of topics: from naming things, to providing appropriate descriptions, to generic recommendations on technical aspects of encoding such information. On each of such topic we will start with _conventional recommendations_, followed by _technical conventions_.
+In this section we provide a number of general conventions whose fundamental nature can be of two kind:  _conventional_ or _technical_. Regarding the topic of these conventions, they cover a number of areas: from naming things, to providing appropriate descriptions, to generic recommendations on technical aspects of encoding such information. For each of such topic we will start with _conventional recommendations_, followed by _technical conventions_.
 
 [[sec:names]]
 === Naming Related Conventions
@@ -31,7 +31,7 @@ Element names shall follow the short URI notation:
 
 The naming conventions apply to the _element names_ in the conceptual model. These names are intended for further use as human-readable denominations, called _labels_; and machine-readable denominations, called _identifiers_. The identifiers serve as a basis for generating URIs [xref:references.adoc#ref:rfc3986[rfc3986]] to ensure unambiguous reference to a formal construct; while the labels are meant to ease the comprehension by human-readers. For this reason we will consider that mostly the conventional recommendations provided here apply to them and none of the technical constraints.
 
-The names should also belong to and be organised by _namespaces_. They can be provided as a short prefix to the elements name, for example "org:Organisation", "epo:Notice" or "skos:Concept". Namespaces are addressed in detail in Section [xref:uml/technical-conventions.adoc#sec:namespaces[Namespaces]].
+The names should also belong to and be organised by _namespaces_. They can be provided as a short prefix to the elements name, for example "org:Organisation", "epo:Notice" or "skos:Concept". Namespaces are addressed in detail in Section [xref:uml/conv-general.adoc#sec:namespaces[Namespaces]].
 
 All prefixes used in the element names must refer to a valid namespace declaration.
 
@@ -218,15 +218,15 @@ All elements shall have a definition providing a concise but complete descriptio
 
 *Description:*
 
-We adopt here the SEMIC Principles for creating good definitions [xref:semicsg/references.adoc#ref:semic-defs[semic-defs]]. They are based on advice found in the literature and are the following:
+We adopt here the SEMIC Principles for creating good definitions [xref:references.adoc#ref:semic-defs[semic-defs]]. They are based on advice found in the literature and are the following:
 
 * Be concise but complete,
 ** Avoid over-generalisations. Adapt and contextualise the definition to the surrounding/connected concepts.
 ** Make sure that every concept that occurs in the model is directly (or indirectly) defined
 * Describe only one term
 * Structure the definition in a standardised way:
-** Use the singular form to phrase the definition [xref:semicsg/gc-general-conventions.adoc#sec:gc-r4[GC-R4]]
-** State what the term is, and don't enumerate what it is NOT (no negative definition)
+** Use the singular form to phrase the definition (see [xref:sec:names[]])
+** State what the term is, and don't enumerate what it is NOT (i.e. no negative definition)
 ** Use only commonly understood abbreviations
 ** Use similar terminology for definitions of related concepts
 * Don't use  circular definitions, i.e. the term defined should not be part of the definition,
@@ -250,7 +250,20 @@ In addition to these SEMIC recommendation for providing good definitions, we als
 *TODO:* Also add additionally a separate list of items with recommendations for EPO descriptions, like references to BT terms, WG decisions, etc.
 
 
-*See also:* SEMIC Style Guide Rule [https://semiceu.github.io/style-guide/public-review/gc-general-conventions.html#sec:gc-r4[GC-R5]] should be followed here.
+*See also:* SEMIC Style Guide Rule [https://semiceu.github.io/style-guide/public-review/gc-general-conventions.html#sec:gc-r5[GC-R5]], which provides more recommendations to be followed here.
+
+
+[[sec:controlled-list]]
+=== Controlled lists
+
+The controlled list is a carefully selected list of words and phrases and is often employed in the modelling practices. The controlled list has a name and a set of terms. For example, the list of grammatical genders can be named "Gender" and comprise the terms "masculine", "feminine", "neuter" and "utrum".
+
+The controlled lists can be represented either as skos:
+
+It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case.
+
+As a rule of thumb, but not always, the relationship between the controlled list as a whole and its comprising elements can be informally conceptualised as a class-instance, class-subclass, set-item, or part-whole.
+
 
 
 [[sec:technical]]
@@ -266,7 +279,7 @@ Namespaces are commonly structured as hierarchies to allow reuse of names in dif
 
 A namespace organises a collection of names obeying three constraints: each name is (1) unique, (2) assigned in a consistent way, and (3) assigned according to a common definition [xref:references.adoc#ref:urn-rfc8141[urn-rfc8141]]. An (expanded) _name_ in a namespace is a pair consisting of a _namespace name_, also called _base URI_ or just _base_, and a _local name_, also called _local segment_ [xref:references.adoc#ref:xml1-spec[xml1-spec], xref:references.adoc#ref:urn-rfc2141[urn-rfc2141]]. The combination of universally managed URI with the vocabulary local name is effective in avoiding name clashes. For example, in the expanded name "http://www.w3.org/ns/org#Organization", "http://www.w3.org/ns/org#" is the namespace name and "Organization" is the local name.
 
-Unlike in the XML specifications, the constraints on the local name are slightly relaxed, allowing token delimitation by space character (see Section [xref:uml/general-conventions.adoc#sec:delimitation[Delimitation]]). This provides an additional level of readability to the conceptual model users. Nevertheless, the local names must be _normalised strings_, which mean that only single occurrences of space character are permitted. Other delimiting characters, such as tab, line feed, carriage return must be replaced by an occurrence of space and trimmed. In the transformation process, when URIs are generated, the spaces are removed anyway and conform with the XML conventions (see Section [xref:uml/general-conventions.adoc#sec:name[Name]]).
+Unlike in the XML specifications, the constraints on the local name are slightly relaxed, allowing token delimitation by space character (see Section [xref:uml/conv-general.adoc#sec:delimitation[Delimitation]]). This provides an additional level of readability to the conceptual model users. Nevertheless, the local names must be _normalised strings_, which mean that only single occurrences of space character are permitted. Other delimiting characters, such as tab, line feed, carriage return must be replaced by an occurrence of space and trimmed. In the transformation process, when URIs are generated, the spaces are removed anyway and conform with the XML conventions (see Section [xref:uml/conv-general.adoc#sec:name[Name]]).
 
 ```
 name = <namespace name>/<local name>
