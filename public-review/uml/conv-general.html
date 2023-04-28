@@ -37,7 +37,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../about.html">About model2OWL</a>
+    <a class="nav-link" href="#about.adoc">About model2OWL</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../architecture/ontology-architecture.html">Architectural Design</a>
@@ -83,13 +83,6 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../semicsg/semic-nav.html">(SEMIC Style Guide)</a>
-  </li>
-</ul>
-  </li>
 </ul>
   </nav>
 </div>
@@ -123,7 +116,7 @@
     <li><a href="conv-general.html">General Conventions</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/uml/conv-general.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-725/docs/modules/ROOT/pages/uml/conv-general.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -547,10 +540,10 @@ When the authors of a conceptual model intend to omit which controlled list shal
 </div>
 </div>
 <div class="paragraph">
-<p>The name of the Enumeration shall be resolved to a URI identical to that of the <code>skos:ConceptScheme</code>. As for the connector type we recommend using a dependency connector (depicted with a dashed line) because the semantic interpretation differs slightly from the association connector (depicted with a continuous line). Namely, the range of the property has to fulfil two constraints: (a) instantiating the skos:Concept class and (b) being <code>skos:inScheme</code> the intended controlled list [<a href="../semicsg/references.html#ref:epo-arch" class="xref page">epo-arch</a>]. [TODO: update reference]</p>
+<p>The name of the Enumeration shall be resolved to a URI identical to that of the <code>skos:ConceptScheme</code>. As for the connector type we recommend using a dependency connector (depicted with a dashed line) because the semantic interpretation differs slightly from the association connector (depicted with a continuous line). Namely, the range of the property has to fulfil two constraints: (a) instantiating the skos:Concept class and (b) being <code>skos:inScheme</code> the intended controlled list [<a href="#semicsg/references.adoc#ref:epo-arch" class="xref unresolved">epo-arch</a>]. [TODO: update reference]</p>
 </div>
 <div class="paragraph">
-<p>If the controlled list is specific to the model then the author shall define the values of the UML Enumeration inside of it, which are interpreted as concepts belonging to the containing concept scheme [<a href="../semicsg/references.html#ref:oslo-rules" class="xref page">oslo-rules, sec 3.2.17</a>]. [TODO: check if this is also the case for EPO, and if the reference is appropriate] [TODO: See if it makes sense to insert here the statement from above: "It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case."]</p>
+<p>If the controlled list is specific to the model then the author shall define the values of the UML Enumeration inside of it, which are interpreted as concepts belonging to the containing concept scheme [<a href="#semicsg/references.adoc#ref:oslo-rules" class="xref unresolved">oslo-rules, sec 3.2.17</a>]. [TODO: check if this is also the case for EPO, and if the reference is appropriate] [TODO: See if it makes sense to insert here the statement from above: "It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case."]</p>
 </div>
 <div class="paragraph">
 <p>More specific requirements on the use of the uml:Enumeration elements are provided in the Section [<a href="conv-enumerations.html#sec:enumeration" class="xref page">uml:Enumeration</a>].</p>
