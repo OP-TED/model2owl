@@ -20,7 +20,7 @@ This convention draws the distinction between primitive (or atomic) types (consi
 
 
 [[sec:uml-datatype]]
-=== Technical conventions on uml:Datatype elements
+=== Technical conventions on uml:DataType elements
 
 [[sec:primitive-datatypes]]
 |===
@@ -75,7 +75,7 @@ The table above provides a simplified correspondence between UML and XSD datatyp
 *Identifier* -
 
 |*Statement:*
-Even among the XSD and RDF datatypes, OWL 2 compliant datatypes shall be preferred.
+Whenever possible, OWL 2 compliant XSD and RDF datatypes shall be used.
 |===
 
 *Description:*
@@ -91,12 +91,12 @@ We strongly recommended the use of OWL 2 compliant XSD and RDF standard datatype
 *Identifier* -
 
 |*Statement:*
-For already existing datatypes, proxy uml:DataType elements should be defined.
+For already existing datatypes proxy uml:DataType elements should be defined.
 |===
 
 *Description:*
 
-For the model consistency, it is recommended that the proxy data types be defined in the model for the XSDfootnote:[https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes] and RDF data typesfootnote:[https://www.w3.org/TR/rdf11-concepts/#section-Datatypes] used in the model. The proxies must follow the standard namespace convention using the "rdf" and "xsd" prefixes.
+For the model consistency, it is recommended that the proxy data types be defined in the model for the XSDfootnote:[https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes] and RDF data typesfootnote:[https://www.w3.org/TR/rdf11-concepts/#section-Datatypes] used in the model. The proxies must follow the standard namespace convention using the `rdf:` and `xsd:` prefixes.
 
 
 [[sec:datatypes-references]]
@@ -113,4 +113,4 @@ uml:DataType elements shall not connect to other elements. They can only be refe
 
 *Description:*
 
-There should be no outgoing connectors from a uml:DataType element. They should be only referred to, most commonly, by being used as the data type of a uml:Attribute element. Declarations of uml:Datatype elements that are not referred to should be avoided, in order to keep the model lean and clean.
+There should be no outgoing connector from a uml:DataType element. uml:DataType elements should only be referred to, most commonly, by being used as the type of a uml:Attribute element. Declarations of uml:DataType elements that are not referred to should be avoided in order to keep the model lean and clean.

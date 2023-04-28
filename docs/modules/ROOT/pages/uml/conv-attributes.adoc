@@ -17,11 +17,11 @@ It is recommended to use a verb in the attribute name, such as "has-" or "is-".
 
 *Description:*
 
-When creating attribute names, it is conventional to use simple nouns such as "name", "weight", "colour". Attributes are a special type of relations that describe an entity in terms of its qualities. And so, to be consistent with the above convention and in order to increase the clarity, it is recommended to employ the prefix "has-" for each attribute even if it does not add much to the term's meaning. So, it is preferred to use terms such as "hasName", "hasWeight" and "hasColour".
+When creating attribute names, it is conventional to use simple nouns such as "name", "weight", "colour". Attributes are a special type of relations that describe an entity in terms of its qualities. And so, to be consistent with the above convention and in order to increase the clarity, it is recommended to employ the prefix "has-" for each attribute, even if it does not add much to the term's meaning. So, it is preferred to use terms such as "hasName", "hasWeight" and "hasColour".
 
 It is recommended to use simple nouns for attribute names prepended with the verb "has-".
 
-It is recommended to avoid duplicate attributes names across multiple classes. Unless, by design, attributes with the same name are shared across multiple classes.
+It is recommended to avoid duplicate attribute names across multiple classes. Unless, by design, attributes with the same name are shared across multiple classes.
 
 // To avoid laborious mechanical work of adding the prefix, it is possible to rely on the convention that the attribute names starting with a capital letter must be read as having the "has-" prefix. It means that the transformation script will prepend the "has-" prefix to all attributes starting with a capital letter.
 
@@ -39,14 +39,14 @@ Attributes shall be assigned cardinality specifications contextualised to the cl
 
 *Description:*
 
-The attribute multiplicity should be specified indicating the minimum and maximum cardinality. The default [1] multiplicity shall be interpreted as unspecified as expressed as [0..*] in the OWL model.
+The attribute multiplicity should be specified indicating the minimum and maximum cardinality. The default [1] multiplicity shall be interpreted as unspecified, and expressed as [0..*] in the OWL model.
 
 In special cases, a list of custom default multiplicities is defined for the transformation script. That means that some data types or classes that are used as attribute types are paired with a default multiplicity, for example "1..1", "0..1", "2..2".
 
 [[sec:attributes-class]]
 === uml:Class attributes
 
-[[sec:attributes-multiplicity]]
+[[sec:attributes-datatypes]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Attribute datatypes
@@ -60,11 +60,11 @@ uml:Attribute shall be defined with generally accepted primitive datatypes.
 
 *Description:*
 
-Each uml:Attribute must have a name and attribute type. uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty. High preference shall be given to using OWL 2 compliant XSD [xref:references.adoc#ref:xsd[xsd]] and RDF [xref:references.adoc#ref:rdf[rdf]] standard datatypes.
+Each uml:Attribute must have a name and an attribute type. uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty. High preference shall be given to using OWL 2 compliant XSD [xref:references.adoc#ref:xsd[xsd]] and RDF [xref:references.adoc#ref:rdf[rdf]] standard datatypes. [xref:uml/conv-datatypes.adoc#sec:primitive-datatypes[see Section on Primitive Data types]]
 
-In cases when a property needs to be defined as ranging on an unknown controlled list or authority table constitute a special case. They can be expressed as uml:attribute with the datatype `skos:Concept`. These attributes are transformed into owl:ObjectProperty in a manner similarly to uml:Association.
+In cases when a property needs to be defined as ranging on an unknown controlled list or authority table constitute a special case. They can be expressed as uml:Attribute with the datatype `skos:Concept`. These attributes are transformed into owl:ObjectProperty in a manner similarly to uml:Association.
 
-An attribute may contain an alias, used as an alternative label. It can be specified via uml:Tags.
+An attribute may contain an alias, used as an alternative label. It can be specified via uml:Tags. [xref:uml/conv-general.adoc#sec:tags[See section on uml:Tags]]
 
 [[sec:attributes-reuse]]
 |===
