@@ -176,7 +176,7 @@
         <xsl:variable name="connectorNames" select="f:getDistinctConnectorsNames($root)"/>
         <xsl:for-each select="$connectorNames">
             <xsl:sort select="." lang="en"/>
-            <xsl:if test="not(f:connector-to-or-from-external-class(., $root)) or $reference-to-external-classes-in-glossary">
+            <xsl:if test="not(f:connector-to-or-from-external-resource(., $root)) or $reference-to-external-classes-in-glossary">
             <xsl:variable name="connectorName" select="."/>
             <tr>
                 <td>

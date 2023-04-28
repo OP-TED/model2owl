@@ -341,7 +341,7 @@
         <xsl:sequence
             select="
                 if (fn:ends-with($elementName, 'es') or fn:ends-with($elementName, 's')) then
-                    f:generateHtmlWarning('The class name is possibly in plural grammatical number. Names shall be usually provided in singular number.')
+                    f:generateHtmlWarning('The name is possibly in plural grammatical number. Names shall be usually provided in singular number.')
                 else
                     ()"
         />

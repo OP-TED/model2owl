@@ -327,6 +327,9 @@
         <xd:desc>Check if connector target and source are in the model</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
+    
+<!--    TODO Deprecate this and replace with f:connector-to-or-from-external-resource-->
+    
     <xsl:function name="f:checkIfConnectorTargetAndSourceElementsExists">
         <xsl:param name="connector"/>
         <xsl:variable name="targetElementId" select="$connector/target/@xmi:idref"/>
@@ -347,7 +350,9 @@
         <xd:param name="root"/>
     </xd:doc>
 
-    <xsl:function name="f:connector-to-or-from-external-class">
+
+
+    <xsl:function name="f:connector-to-or-from-external-resource">
         <xsl:param name="connectorName"/>
         <xsl:param name="root"/>
         <xsl:variable name="connectorElements" select="f:getConnectorByName($connectorName, $root)"/>
