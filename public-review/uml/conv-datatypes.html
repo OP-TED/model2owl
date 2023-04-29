@@ -120,7 +120,7 @@
     <li><a href="conv-datatypes.html">uml:DataType</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-725/docs/modules/ROOT/pages/uml/conv-datatypes.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/epo-716/docs/modules/ROOT/pages/uml/conv-datatypes.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -157,7 +157,7 @@ Composite data types shall be represented as uml:Class elements. Primitive data 
 </div>
 </div>
 <div class="sect2">
-<h3 id="sec:uml-datatype"><a class="anchor" href="#sec:uml-datatype"></a>Technical conventions on uml:Datatype elements</h3>
+<h3 id="sec:uml-datatype"><a class="anchor" href="#sec:uml-datatype"></a>Technical conventions on uml:DataType elements</h3>
 <table id="sec:primitive-datatypes" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
@@ -179,16 +179,13 @@ For primitive data types the already existing (standardized or commonly used) da
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>It is recommended to employ the primitive datatypes that are already defined in XSD [<a href="../references.html#ref:xsd1.1-spec" class="xref page">xsd1.1-spec</a>] and RDF [<a href="../references.html#ref:rdf11" class="xref page">rdf11</a>], which cover the standard, and most common types. Thus, definitions of custom data types shall be avoided unless the model absolutely needs them. Such cases are, however, rare.</p>
+<p>It is recommended to employ the primitive datatypes that are already defined in XSD [<a href="../references.html#ref:xsd1.1-spec" class="xref page">xsd1.1-spec</a>] and RDF [<a href="../references.html#ref:rdf11" class="xref page">rdf11</a>], which cover the standard and most common types. Thus, definitions of custom data types shall be avoided unless the model really needs them. Such cases are, however, rare.</p>
 </div>
 <div class="paragraph">
-<p>The data types defined in the UML model (and custom ones) shall be reduced to their XSD equivalent using the correspondences from the <a href="#tab:uml2xsd">UML to XSD datatype correspondences</a> table below.</p>
+<p>The data types defined in the UML model (and custom ones) are resolved into their XSD equivalent using the correspondences from the <a href="#tab:uml2xsd">UML to XSD datatype correspondences</a> table below. Note that the family of string datatypes is mapped to <em>rdf:langString</em>. This means that the instance data should provide a language tag for the textual data indicating how it should be read. This enables multilingual data specification. Also, note that Date is mapped to <code>xsd:date</code> and DateTime is mapped to <code>xsd:dateTime</code>. However, the <code>xsd:date</code> is not included in the OWL2 interpretation and instead a strong preference is expressed for <code>xsd:dateTime</code>. Therefore, it is recommended to follow the OWL2 specification, although the <code>xsd:date</code> is a valid datatype in the RDF data and in SPARQL queries.</p>
 </div>
 <div class="paragraph">
 <p>Note that from the family of string datatypes we recommend using the following ones (in this order of preference): <code>rdf:PlainLiteral</code>, <code>rdfs:Literal</code>, <code>xsd:string</code>, and <code>rdf:langString</code>. Often enabling multilingual data specification is a necessity.</p>
-</div>
-<div class="paragraph">
-<p>Also, note that Date is mapped to <code>xsd:date</code> and DateTime is mapped to <code>xsd:dateTime</code>. However, the <code>xsd:date</code> is not included in the OWL2 interpretation and instead a strong preference is expressed for <code>xsd:dateTime</code>. Therefore, it is recommended to follow the OWL2 specification, although the <code>xsd:date</code> is a valid datatype in the RDF data and in SPARQL queries.</p>
 </div>
 <table id="tab:uml2xsd" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. UML to XSD datatype correspondences</caption>
@@ -278,7 +275,7 @@ For primitive data types the already existing (standardized or commonly used) da
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Even among the XSD and RDF datatypes, OWL 2 compliant datatypes shall be preferred.</p></td>
+Whenever possible, OWL 2 compliant XSD and RDF datatypes shall be used.</p></td>
 </tr>
 </tbody>
 </table>
@@ -301,7 +298,7 @@ Even among the XSD and RDF datatypes, OWL 2 compliant datatypes shall be preferr
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-For already existing datatypes, proxy uml:DataType elements should be defined.</p></td>
+For already existing datatypes proxy uml:DataType elements should be defined.</p></td>
 </tr>
 </tbody>
 </table>
@@ -309,7 +306,7 @@ For already existing datatypes, proxy uml:DataType elements should be defined.</
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>For the model consistency, it is recommended that the proxy data types be defined in the model for the XSD<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> and RDF data types<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> used in the model. The proxies must follow the standard namespace convention using the "rdf" and "xsd" prefixes.</p>
+<p>For the model consistency, it is recommended that the proxy data types be defined in the model for the XSD<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> and RDF data types<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> used in the model. The proxies must follow the standard namespace convention using the <code>rdf:</code> and <code>xsd:</code> prefixes.</p>
 </div>
 <table id="sec:datatypes-references" class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -332,7 +329,7 @@ uml:DataType elements shall not connect to other elements. They can only be refe
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>There should be no outgoing connectors from a uml:DataType element. They should be only referred to, most commonly, by being used as the data type of a uml:Attribute element. Declarations of uml:Datatype elements that are not referred to should be avoided, in order to keep the model lean and clean.</p>
+<p>There should be no outgoing connector from a uml:DataType element. uml:DataType elements should only be referred to, most commonly, by being used as the type of a uml:Attribute element. Declarations of uml:DataType elements that are not referred to should be avoided in order to keep the model lean and clean.</p>
 </div>
 </div>
 </div>
