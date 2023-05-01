@@ -22,13 +22,9 @@
 
     <xd:doc>
         <xd:desc>Getting all generalizations and show only the ones that have unmet conventions
-            [generalisation-hierarchy-1]
-            [generalisation-hierarchy-2] 
-            [generalisation-multiplicity-3]
-            [generalisation-name-4] 
-            [generalisation-name-5]
-            [generalisation-direction-6]
-        </xd:desc>
+            [generalisation-hierarchy-1] [generalisation-hierarchy-2]
+            [generalisation-multiplicity-3] [generalisation-name-4] [generalisation-name-5]
+            [generalisation-direction-6] </xd:desc>
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
@@ -50,6 +46,9 @@
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
                 <xsl:call-template name="g-directionChecker">
+                    <xsl:with-param name="generalizationConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="g-sourceTargetTypes">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
             </xsl:if>
@@ -79,7 +78,7 @@
             select="f:getElementByIdRef($idRefTarget, root($generalizationConnector))"/>
         <xsl:sequence
             select="
-                if (count(f:getIncommingConnectors($targetElement)[properties/@ea_type = 'Generalization']) > 1) then
+                if (count(f:getIncommingConnectors($targetElement)[properties/@ea_type = 'Generalization']) > 2) then
                     ()
                 else
                     f:generateHtmlInfo(fn:concat('The class ', $generalizationConnector/target/model/@name, ' has only one sub-class ',
@@ -170,7 +169,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[generalisation-direction-6] - The $direction$ direction is invalid. Generalisations must employ "Source->Destination" direction only. </xd:desc>
+        <xd:desc>[generalisation-direction-6] - The $direction$ direction is invalid.
+            Generalisations must employ "Source->Destination" direction only. </xd:desc>
         <xd:param name="generalizationConnector"/>
     </xd:doc>
     <xsl:template name="g-directionChecker">
@@ -181,9 +181,28 @@
             select="
                 if ($generalizationDirection != 'Source -&gt; Destination') then
                     f:generateHtmlError(fn:concat('The ', $generalizationDirection, ' direction is invalid. ',
-                                        'Generalisations must employ Source -&gt; Destination direction only.'))
+                    'Generalisations must employ Source -&gt; Destination direction only.'))
                 else
                     ()"
+        />
+    </xsl:template>
+
+    <xd:doc>
+        <xd:desc>[generalisation-source-target-types-3] - Generalisations can be provided only
+            between classes and connectors.</xd:desc>
+        <xd:param name="generalizationConnector"/>
+    </xd:doc>
+
+    <xsl:template name="g-sourceTargetTypes">
+        <xsl:param name="generalizationConnector"/>
+        <xsl:variable name="sourceType" select="$generalizationConnector/source/model/@type"/>
+        <xsl:variable name="targetType" select="$generalizationConnector/target/model/@type"/>
+        <xsl:sequence
+            select="
+                if (($sourceType = 'Class' and $targetType = 'Class') or ($sourceType = 'ProxyConnector' and $targetType = 'ProxyConnector')) then
+                    ()
+                else
+                f:generateHtmlError('Generalisations can be provided only between classes and connectors.')"
         />
     </xsl:template>
 

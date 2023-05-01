@@ -85,6 +85,9 @@
             <xsl:call-template name="namePlural">
                 <xsl:with-param name="element" select="."/>
             </xsl:call-template>
+            <xsl:call-template name="nonPublicElement">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
             <!--    End of common checkers rules     -->   
             <!--    Start of specific checker rules-->
 

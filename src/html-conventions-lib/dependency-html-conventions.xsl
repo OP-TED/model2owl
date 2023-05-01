@@ -102,6 +102,9 @@
                     <xsl:call-template name="dependency-invalidDirection">
                         <xsl:with-param name="dependencyConnector" select="."/>
                     </xsl:call-template>
+                    <xsl:call-template name="dependency-sourceTargetTypes">
+                        <xsl:with-param name="dependencyConnector" select="."/>
+                    </xsl:call-template>
                     <!--    End of specific checker rules-->  
                 </xsl:if>
             </xsl:variable>
@@ -133,6 +136,26 @@
                     f:generateHtmlError('The direction is not Source -&gt; Destination. Dependecy direction can be only Source -&gt; Destination. ')
                 else
                     ()"
+        />
+    </xsl:template>
+    
+    
+    <xd:doc>
+        <xd:desc>[dependency-source-target-types-3] - Dependecies can be provided only 
+            between classes and enumerations.</xd:desc>
+        <xd:param name="dependencyConnector"/>
+    </xd:doc>
+    
+    <xsl:template name="dependency-sourceTargetTypes">
+        <xsl:param name="dependencyConnector"/>
+        <xsl:variable name="sourceType" select="$dependencyConnector/source/model/@type"/>
+        <xsl:variable name="targetType" select="$dependencyConnector/target/model/@type"/>
+        <xsl:sequence
+            select="
+            if ($sourceType = 'Class' and $targetType = 'Enumeration') then
+            ()
+            else
+            f:generateHtmlError('Dependecies can be provided only between classes and enumerations.')"
         />
     </xsl:template>
 

@@ -72,6 +72,9 @@
                 <xsl:call-template name="co-targetTags">
                     <xsl:with-param name="connector" select="."/>
                 </xsl:call-template>
+                <xsl:call-template name="co-sourceTags">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>   
                 <xsl:call-template name="co-tags">
                     <xsl:with-param name="connector" select="."/>
                 </xsl:call-template>           
@@ -99,9 +102,7 @@
                 <!--    End of common connectors checkers rules     -->  
                 <!--    Start of specific checker rules-->
                 <xsl:if test="f:getConnectorDirection(.) = 'Bi-Directional'">
-                    <xsl:call-template name="co-sourceTags">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>   
+
                    <xsl:call-template name="association-missingSourceMultiplicity">
                        <xsl:with-param name="connector" select="."/>
                    </xsl:call-template>
@@ -109,6 +110,9 @@
                        <xsl:with-param name="connector" select="."/>
                    </xsl:call-template>
                 </xsl:if>
+                <xsl:call-template name="association-sourceTargetTypes">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
                 <!--    End of specific checker rules-->  
             </xsl:if>
         </xsl:variable>
@@ -163,6 +167,26 @@
                 "
             />
         </xsl:if>
+    </xsl:template>
+    
+    
+    <xd:doc>
+        <xd:desc>[association-source-target-types-3] - Associations can be 
+            provided only between classes to classes and classes to objects..</xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    
+    <xsl:template name="association-sourceTargetTypes">
+        <xsl:param name="connector"/>
+        <xsl:variable name="sourceType" select="$connector/source/model/@type"/>
+        <xsl:variable name="targetType" select="$connector/target/model/@type"/>
+        <xsl:sequence
+            select="
+                if ($sourceType = 'Class' and $targetType = ('Class', 'Object')) then
+                    ()
+                else
+                f:generateHtmlError('Associations can be provided only between classes to classes and classes to objects.')"
+        />
     </xsl:template>
     
     

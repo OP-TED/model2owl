@@ -55,6 +55,7 @@
     <xsl:variable name="controlledListType" select="'epo:Code'"/>
     <!-- Acceptable stereotypes -->
     <xsl:variable name="stereotypeValidOnAttributes" select="()"/>
+    <xsl:variable name="stereotypeValidOnObjects" select="()"/>
     <xsl:variable name="stereotypeValidOnGeneralisations"
         select="('Disjoint', 'Equivalent', 'Complete')"/>
     <xsl:variable name="stereotypeValidOnAssociations" select="()"/>

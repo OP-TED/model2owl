@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    stylesheet="../../../src/html-conventions-lib/general-html-conventions.xsl">
+    
+
+
+    <x:scenario label="Scenario for finding no undefined prefixes in the model">
+        <x:call template="undefinedPrefixes">
+            <x:param name="root" href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+                select="/"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding undefined prefixes in the model">
+        <x:call template="undefinedPrefixes">
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding unsupported element types">
+        <x:call template="elementTypes">
+            <x:param name="root" href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+                select="/"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding unsupported connector types">
+        <x:call template="connectorTypes">
+            <x:param name="root" href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+                select="/"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+</x:description>

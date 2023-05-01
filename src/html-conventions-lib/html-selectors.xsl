@@ -61,7 +61,11 @@
         <h1 class="selector-heading">Packages</h1>
         <xsl:apply-templates select="element[@xmi:type = 'uml:Package']">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
-        </xsl:apply-templates>        
+        </xsl:apply-templates> 
+        <h1 class="selector-heading">Object</h1>
+        <xsl:apply-templates select="element[@xmi:type = 'uml:Object']">
+            <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
+        </xsl:apply-templates>   
     </xsl:template>
     
     <xd:doc>
@@ -82,6 +86,11 @@
         </xsl:apply-templates>
         <h1 class="selector-heading">Dependencies</h1>
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Dependency']">
+            <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
+            <xsl:sort select="fn:lower-case(source/model/@name)" data-type="text" lang="en"/>
+        </xsl:apply-templates>
+        <h1 class="selector-heading">Realisations</h1>
+        <xsl:apply-templates select="connector[./properties/@ea_type = 'Realisation']">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
             <xsl:sort select="fn:lower-case(source/model/@name)" data-type="text" lang="en"/>
         </xsl:apply-templates>
