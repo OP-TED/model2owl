@@ -18,7 +18,7 @@
     
     
     <x:scenario label="Scenario for finding a Connector that has invalid format for source multiplicity">
-        <x:call template="association-invalidSourceMultiplicityFormat">
+        <x:call template="associationInvalidSourceMultiplicityFormat">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[111]"/>
         </x:call>   
@@ -26,7 +26,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has valid format for source multiplicity">
-        <x:call template="association-invalidSourceMultiplicityFormat">
+        <x:call template="associationInvalidSourceMultiplicityFormat">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[106]"/>
         </x:call>   
@@ -35,14 +35,14 @@
     
     
     <x:scenario label="Scenario for finding a Connector that is missing source multiplicity">
-        <x:call template="association-missingSourceMultiplicity">
+        <x:call template="associationMissingSourceMultiplicity">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[112]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has source multiplicity">
-        <x:call template="association-missingSourceMultiplicity">
+        <x:call template="associationMissingSourceMultiplicity">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[106]"/>
         </x:call>   
@@ -51,7 +51,7 @@
     
     
     <x:scenario label="Scenario for finding Association between classes">
-        <x:call template="association-sourceTargetTypes">
+        <x:call template="associationSourceTargetTypes">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[106]"/>
         </x:call>   
@@ -59,7 +59,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding Association that is not between classes or class and object">
-        <x:call template="association-sourceTargetTypes">
+        <x:call template="associationSourceTargetTypes">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[17]"/>
         </x:call>   

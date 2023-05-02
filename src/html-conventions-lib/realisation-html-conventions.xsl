@@ -29,19 +29,19 @@
         <xsl:variable name="realisationChecks" as="item()*">
 
 
-                <xsl:call-template name="realisation-hasName">
+                <xsl:call-template name="realisationHasName">
                     <xsl:with-param name="realisationConnector" select="."/>
                 </xsl:call-template>
-                <xsl:call-template name="realisation-hasRoleName">
+                <xsl:call-template name="realisationHasRoleName">
                     <xsl:with-param name="realisationConnector" select="."/>
                 </xsl:call-template>
-                <xsl:call-template name="realisation-hasMultiplicity">
+                <xsl:call-template name="realisationHasMultiplicity">
                     <xsl:with-param name="realisationConnector" select="."/>
                 </xsl:call-template>
-                <xsl:call-template name="realisation-directionChecker">
+                <xsl:call-template name="realisationDirectionChecker">
                     <xsl:with-param name="realisationConnector" select="."/>
                 </xsl:call-template>
-                <xsl:call-template name="realisation-sourceTargetTypes">
+                <xsl:call-template name="realisationSourceTargetTypes">
                     <xsl:with-param name="realisationConnector" select="."/>
                 </xsl:call-template>
             
@@ -65,7 +65,7 @@
             can be provided to realisations. </xd:desc>
         <xd:param name="realisationConnector"/>
     </xd:doc>
-    <xsl:template name="realisation-hasMultiplicity">
+    <xsl:template name="realisationHasMultiplicity">
         <xsl:param name="realisationConnector"/>
         <xsl:variable name="hasNoTargetMultiplicity"
             select="$realisationConnector/target/type/not(@multiplicity)"/>
@@ -86,7 +86,7 @@
             provided for realisation relation. </xd:desc>
         <xd:param name="realisationConnector"/>
     </xd:doc>
-    <xsl:template name="realisation-hasName">
+    <xsl:template name="realisationHasName">
         <xsl:param name="realisationConnector"/>
         <xsl:variable name="realisationHasNoName" select="$realisationConnector/not(@name)"/>
         <xsl:sequence
@@ -103,7 +103,7 @@
             target roles can be provided to realisations. </xd:desc>
         <xd:param name="realisationConnector"/>
     </xd:doc>
-    <xsl:template name="realisation-hasRoleName">
+    <xsl:template name="realisationHasRoleName">
         <xsl:param name="realisationConnector"/>
         <xsl:variable name="hasNoTargetRoleName"
             select="$realisationConnector/target/role/not(@name)"/>
@@ -123,7 +123,7 @@
             employ "Source->Destination" direction only. </xd:desc>
         <xd:param name="realisationConnector"/>
     </xd:doc>
-    <xsl:template name="realisation-directionChecker">
+    <xsl:template name="realisationDirectionChecker">
         <xsl:param name="realisationConnector"/>
         <xsl:variable name="realisationDirection"
             select="$realisationConnector/properties/@direction"/>
@@ -143,7 +143,7 @@
         <xd:param name="realisationConnector"/>
     </xd:doc>
 
-    <xsl:template name="realisation-sourceTargetTypes">
+    <xsl:template name="realisationSourceTargetTypes">
         <xsl:param name="realisationConnector"/>
         <xsl:variable name="sourceType" select="$realisationConnector/source/model/@type"/>
         <xsl:variable name="targetType" select="$realisationConnector/target/model/@type"/>

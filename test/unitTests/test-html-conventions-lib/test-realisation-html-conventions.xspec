@@ -22,14 +22,14 @@
     
     
     <x:scenario label="Scenario for finding a Realisation that has no name">
-        <x:call template="realisation-hasName">
+        <x:call template="realisationHasName">
             <x:param name="realisationConnector" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[146]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Realisation that has role names">
-        <x:call template="realisation-hasRoleName">
+        <x:call template="realisationHasRoleName">
             <x:param name="realisationConnector" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[147]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
@@ -37,14 +37,14 @@
     
     
     <x:scenario label="Scenario for finding a Realisation that has no role names">
-        <x:call template="realisation-hasRoleName">
+        <x:call template="realisationHasRoleName">
             <x:param name="realisationConnector" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[146]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Realisation that has multiplicity">
-        <x:call template="realisation-hasMultiplicity">
+        <x:call template="realisationHasMultiplicity">
             <x:param name="realisationConnector" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[147]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
@@ -52,7 +52,7 @@
     
     
     <x:scenario label="Scenario for finding a Realisation that has no multiplicity">
-        <x:call template="realisation-hasMultiplicity">
+        <x:call template="realisationHasMultiplicity">
             <x:param name="realisationConnector" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[146]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
@@ -60,7 +60,7 @@
         
     
     <x:scenario label="Scenario for finding a Realisation that has the right direction">
-        <x:call template="realisation-directionChecker">
+        <x:call template="realisationDirectionChecker">
             <x:param name="realisationConnector" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[146]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
@@ -68,7 +68,7 @@
     
    
     <x:scenario label="Scenario for finding a Realisation - Object -> Enumeration">
-        <x:call template="realisation-sourceTargetTypes">
+        <x:call template="realisationSourceTargetTypes">
             <x:param name="realisationConnector" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[146]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
@@ -76,7 +76,7 @@
     
     
     <x:scenario label="Scenario for finding a Realisation - Object -> Unknown">
-        <x:call template="realisation-sourceTargetTypes">
+        <x:call template="realisationSourceTargetTypes">
             <x:param name="realisationConnector" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[147]"/>
         </x:call>   
         <x:expect label="expect to do nothing" test="boolean(/dd)"/> 

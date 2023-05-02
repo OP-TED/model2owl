@@ -19,7 +19,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding an Dependency that has a wrong direction">
-        <x:call template="dependency-invalidDirection">
+        <x:call template="dependencyInvalidDirection">
             <x:param name="dependencyConnector"
                 href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[5]"/>
@@ -29,7 +29,7 @@
     
     
     <x:scenario label="Scenario for finding an Dependency that has the right direction">
-        <x:call template="dependency-invalidDirection">
+        <x:call template="dependencyInvalidDirection">
             <x:param name="dependencyConnector"
                 href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[173]"/>
@@ -38,7 +38,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding an Dependency that has correct source and target types">
-        <x:call template="dependency-sourceTargetTypes">
+        <x:call template="dependencySourceTargetTypes">
             <x:param name="dependencyConnector"
                 href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[173]"/>
@@ -47,7 +47,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding an Dependency that has incorrect source and target types">
-        <x:call template="dependency-sourceTargetTypes">
+        <x:call template="dependencySourceTargetTypes">
             <x:param name="dependencyConnector"
                 href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[5]"/>

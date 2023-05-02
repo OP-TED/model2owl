@@ -93,16 +93,16 @@
             <!--    End of common checkers rules     -->   
             <!--    Start of specific checker rules-->
             
-            <xsl:call-template name="d-incorrectDataType">
+            <xsl:call-template name="dataTypeIncorrectType">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="d-uniqueName">
+            <xsl:call-template name="dataTypeUniqueName">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="d-attributeChecker">
+            <xsl:call-template name="dataTypeAttributeChecker">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="d-outgoingConnectors">
+            <xsl:call-template name="dataTypeOutgoingConnectors">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
             <!--    End of specific checker rules-->
@@ -143,7 +143,7 @@
             concept names. </xd:desc>
         <xd:param name="dataTypeElement"/>
     </xd:doc>
-    <xsl:template name="d-uniqueName">
+    <xsl:template name="dataTypeUniqueName">
         <xsl:param name="dataTypeElement"/>
         <xsl:if test="boolean($dataTypeElement/@name)">
             <xsl:variable name="elementsFound"
@@ -169,7 +169,7 @@
             It is recommended to use XSD and RDF datatypes mainly. </xd:desc>
         <xd:param name="dataTypeElement"/>
     </xd:doc>
-    <xsl:template name="d-incorrectDataType">
+    <xsl:template name="dataTypeIncorrectType">
         <xsl:param name="dataTypeElement"/>
         <xsl:variable name="dataTypeElementName" select="$dataTypeElement/@name"/>
         <xsl:variable name="rdfOrXsdDataType"
@@ -188,7 +188,7 @@
         <xd:param name="dataTypeElement"/>
     </xd:doc>
     
-    <xsl:template name="d-attributeChecker">
+    <xsl:template name="dataTypeAttributeChecker">
         <xsl:param name="dataTypeElement"/>
         <xsl:variable name="dataTypeNumberOfAttributes"
             select="count($dataTypeElement/attributes/attribute)"/>
@@ -211,7 +211,7 @@
         <xd:param name="dataTypeElement"/>
     </xd:doc>
     
-    <xsl:template name="d-outgoingConnectors">
+    <xsl:template name="dataTypeOutgoingConnectors">
         <xsl:param name="dataTypeElement"/>
         <xsl:variable name="outgoingConnectors"
             select="fn:count(f:getOutgoingConnectors($dataTypeElement))"/>

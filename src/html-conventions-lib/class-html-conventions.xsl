@@ -93,16 +93,16 @@
             
         <!--    End of common checkers rules     -->   
         <!--    Start of specific checker rules-->
-            <xsl:call-template name="c-uniqueName">
+            <xsl:call-template name="classUniqueName">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="c-classIsNotPascalNamed">
+            <xsl:call-template name="classIsNotPascalNamed">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="c-underspecifiedClass">
+            <xsl:call-template name="classUnderspecified">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="c-disconnectedClass">
+            <xsl:call-template name="classDisconnected">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
          <!--    End of specific checker rules-->
@@ -152,7 +152,7 @@
         <xd:param name="class"/>
     </xd:doc>
 
-    <xsl:template name="c-disconnectedClass">
+    <xsl:template name="classDisconnected">
         <xsl:param name="class"/>
         <xsl:sequence
             select="
@@ -172,7 +172,7 @@
         <xd:param name="class"/>
     </xd:doc>
 
-    <xsl:template name="c-underspecifiedClass">
+    <xsl:template name="classUnderspecified">
         <xsl:param name="class"/>
         <xsl:variable name="classNumberOfAttributes" select="count($class/attributes/attribute)"/>
         <xsl:sequence
@@ -191,7 +191,7 @@
         <xd:param name="class"/>
     </xd:doc>
 
-    <xsl:template name="c-classIsNotPascalNamed">
+    <xsl:template name="classIsNotPascalNamed">
         <xsl:param name="class"/>
         <xsl:variable name="className" select="$class/@name"/>
         <xsl:sequence
@@ -221,7 +221,7 @@
             concept names. </xd:desc>
         <xd:param name="class"/>
     </xd:doc>
-    <xsl:template name="c-uniqueName">
+    <xsl:template name="classUniqueName">
         <xsl:param name="class"/>
         <xsl:if test="boolean($class/@name)">
             <xsl:variable name="elementsFound"

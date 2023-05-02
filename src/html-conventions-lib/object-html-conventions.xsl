@@ -93,19 +93,19 @@
             
             <!--    End of common checkers rules     -->   
             <!--    Start of specific checker rules-->
-            <xsl:call-template name="obj-itemsChecker">
+            <xsl:call-template name="objectItemsChecker">
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
             
-            <xsl:call-template name="obj-uniqueName">
+            <xsl:call-template name="objectUniqueName">
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
             
-            <xsl:call-template name="obj-outgoingConnectors">
+            <xsl:call-template name="objectOutgoingConnectors">
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
             
-            <xsl:call-template name="obj-instanceConnectors">
+            <xsl:call-template name="objectInstanceConnectors">
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
             <!--    End of specific checker rules-->
@@ -151,7 +151,7 @@
             concept names. </xd:desc>
         <xd:param name="object"/>
     </xd:doc>
-    <xsl:template name="obj-uniqueName">
+    <xsl:template name="objectUniqueName">
         <xsl:param name="object"/>
         <xsl:if test="boolean($object/@name)">
             <xsl:variable name="elementsFound"
@@ -178,7 +178,7 @@
         <xd:param name="object"/>
     </xd:doc>
     
-    <xsl:template name="obj-itemsChecker">
+    <xsl:template name="objectItemsChecker">
         <xsl:param name="object"/>
         <xsl:variable name="objectNumberOfAttributes"
             select="count($object/attributes/attribute)"/>
@@ -201,7 +201,7 @@
         <xd:param name="object"/>
     </xd:doc>
     
-    <xsl:template name="obj-outgoingConnectors">
+    <xsl:template name="objectOutgoingConnectors">
         <xsl:param name="object"/>
         <xsl:variable name="outgoingConnectors"
             select="f:getOutgoingConnectors($object)"/>
@@ -224,7 +224,7 @@
         <xd:param name="object"/>
     </xd:doc>
     
-    <xsl:template name="obj-instanceConnectors">
+    <xsl:template name="objectInstanceConnectors">
         <xsl:param name="object"/>
         <xsl:variable name="outgoingConnectors"
             select="f:getOutgoingConnectors($object)"/>

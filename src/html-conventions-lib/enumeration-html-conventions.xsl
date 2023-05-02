@@ -91,15 +91,15 @@
             <!--    End of common checkers rules     -->   
             <!--    Start of specific checker rules-->
 
-            <xsl:call-template name="e-itemsChecker">
+            <xsl:call-template name="enumerationItemsChecker">
                 <xsl:with-param name="enumeration" select="."/>
             </xsl:call-template>
 
-            <xsl:call-template name="e-uniqueName">
+            <xsl:call-template name="enumerationUniqueName">
                 <xsl:with-param name="enumeration" select="."/>
             </xsl:call-template>
             
-            <xsl:call-template name="e-outgoingConnectors">
+            <xsl:call-template name="enumerationOutgoingConnectors">
                 <xsl:with-param name="enumeration" select="."/>
             </xsl:call-template>
             <!--    End of specific checker rules-->
@@ -148,7 +148,7 @@
             concept names. </xd:desc>
         <xd:param name="enumeration"/>
     </xd:doc>
-    <xsl:template name="e-uniqueName">
+    <xsl:template name="enumerationUniqueName">
         <xsl:param name="enumeration"/>
         <xsl:if test="boolean($enumeration/@name)">
             <xsl:variable name="elementsFound"
@@ -175,7 +175,7 @@
         <xd:param name="enumeration"/>
     </xd:doc>
     
-    <xsl:template name="e-itemsChecker">
+    <xsl:template name="enumerationItemsChecker">
         <xsl:param name="enumeration"/>
         <xsl:variable name="enumerationNumberOfAttributes"
             select="count($enumeration/attributes/attribute)"/>
@@ -198,7 +198,7 @@
         <xd:param name="enumeration"/>
     </xd:doc>
     
-    <xsl:template name="e-outgoingConnectors">
+    <xsl:template name="enumerationOutgoingConnectors">
         <xsl:param name="enumeration"/>
         <xsl:variable name="outgoingConnectors"
             select="fn:count(f:getOutgoingConnectors($enumeration))"/>

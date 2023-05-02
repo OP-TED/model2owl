@@ -86,19 +86,19 @@
             <!--    End of common checkers rules     -->  
             <!--    Start of specific checker rules-->
             
-            <xsl:call-template name="ca-attributeNameStartsWithLowerCase">
+            <xsl:call-template name="classAttributeNameStartsWithLowerCase">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="ca-multiplicityIncorrectFormat">
+            <xsl:call-template name="classAttributeMultiplicityIncorrectFormat">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-                <xsl:call-template name="ca-incorrectDatatype">
+                <xsl:call-template name="classAttributeIncorrectDatatype">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="ca-missingMultiplicity">
+            <xsl:call-template name="classAttributeMissingMultiplicity">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="ca-nonPublicAttribute">
+            <xsl:call-template name="classAttributeNonPublic">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
             <!--    End of specific checker rules-->
@@ -140,7 +140,7 @@
         <xd:param name="classAttribute"/>
     </xd:doc>
 
-    <xsl:template name="ca-attributeNameStartsWithLowerCase">
+    <xsl:template name="classAttributeNameStartsWithLowerCase">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeName" select="$classAttribute/@name"/>
         <xsl:sequence
@@ -167,7 +167,7 @@
             should be defined with a digit or *</xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="ca-multiplicityIncorrectFormat">
+    <xsl:template name="classAttributeMultiplicityIncorrectFormat">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeMultiplicityMin" select="$classAttribute/bounds/@lower"/>
         <xsl:variable name="classAttributeMultiplicityMax" select="$classAttribute/bounds/@upper"/>
@@ -190,7 +190,7 @@
         <xd:param name="classAttribute"/>
     </xd:doc>
 
-    <xsl:template name="ca-incorrectDatatype">
+    <xsl:template name="classAttributeIncorrectDatatype">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeName" select="$classAttribute/@name"/>
         <xsl:sequence
@@ -215,7 +215,7 @@
             and the values should be defined with a digit or *</xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="ca-missingMultiplicity">
+    <xsl:template name="classAttributeMissingMultiplicity">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="classAttributeMultiplicityMin" select="$classAttribute/bounds/@lower"/>
         <xsl:variable name="classAttributeMultiplicityMax" select="$classAttribute/bounds/@upper"/>
@@ -235,7 +235,7 @@
         <xd:desc>[class-attribute-visibility-5] - The attribute type $attributeType$ is non-public. Attributes shall be public</xd:desc>
         <xd:param name="classAttribute"/>
     </xd:doc>
-    <xsl:template name="ca-nonPublicAttribute">
+    <xsl:template name="classAttributeNonPublic">
         <xsl:param name="classAttribute"/>
         <xsl:variable name="attributeScope" select="$classAttribute/@scope"/>
         <xsl:sequence

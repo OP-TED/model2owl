@@ -34,7 +34,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding a disconnected class">
-        <x:call template="c-disconnectedClass">
+        <x:call template="classDisconnected">
             <x:param name="class" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[262]"/>
         </x:call>   
@@ -43,7 +43,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class that is not disconnected">
-        <x:call template="c-disconnectedClass">
+        <x:call template="classDisconnected">
             <x:param name="class" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
@@ -51,7 +51,7 @@
     
     
     <x:scenario label="Scenario for finding a class that is PascalNamed">
-        <x:call template="c-classIsNotPascalNamed">
+        <x:call template="classIsNotPascalNamed">
             <x:param name="class" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
@@ -59,14 +59,14 @@
     
     
     <x:scenario label="Scenario for finding a class that is not PascalNamed">
-        <x:call template="c-classIsNotPascalNamed">
+        <x:call template="classIsNotPascalNamed">
             <x:param name="class" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class that is not underspecified">
-        <x:call template="c-underspecifiedClass">
+        <x:call template="classUnderspecified">
             <x:param name="class" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[33]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
@@ -74,7 +74,7 @@
     
     
     <x:scenario label="Scenario for finding a class that is underspecified">
-        <x:call template="c-underspecifiedClass">
+        <x:call template="classUnderspecified">
             <x:param name="class" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[34]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
@@ -82,14 +82,14 @@
     
  
     <x:scenario label="Scenario for finding a class that does not have an unique name">
-        <x:call template="c-uniqueName">
+        <x:call template="classUniqueName">
             <x:param name="class" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[101]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a class that has an unique name">
-        <x:call template="c-uniqueName">
+        <x:call template="classUniqueName">
             <x:param name="class" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 

@@ -17,7 +17,7 @@
     <xsl:import href="../common/checkers.xsl"/>
     <xsl:import href="utils-html-conventions.xsl"/>
 
-
+    <xsl:variable name="elementTypes" select="('class', 'enumeration', 'dataType', 'package', 'object')"/>
 
 
     <xd:doc>
@@ -202,7 +202,7 @@
         <xsl:variable name="elementName" select="$element/@name"/>
         <xsl:variable name="noElementDescription"
             select="
-            if ($elementType = ('class', 'enumeration', 'dataType', 'package', 'object')) then
+            if ($elementType = $elementTypes) then
                     $element/properties/not(@documentation)
                 else
                     $element/documentation/not(@value)"/>
@@ -229,7 +229,7 @@
         <xsl:param name="elementType"/>
         <xsl:variable name="hasStereotype"
             select="
-            if ($elementType = ('class', 'enumeration', 'dataType', 'package', 'object')) then
+            if ($elementType = $elementTypes) then
                     $element/properties/@stereotype
                 else
                     $element/stereotype/@stereotype"/>
@@ -256,7 +256,7 @@
         <xsl:param name="elementType"/>
         <xsl:variable name="isStereotypeValid"
             select="
-            if ($elementType = ('class', 'enumeration', 'dataType', 'package', 'object')) then
+            if ($elementType = $elementTypes) then
                     f:isElementStereotypeValid($element)
                 else
                     f:isAttributeStereotypeValid($element)"/>
