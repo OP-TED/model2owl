@@ -23,7 +23,7 @@
         <xd:param name="connector"/>
     </xd:doc>
 
-    <xsl:template name="co-namingFormat">
+    <xsl:template name="connectorNamingFormat">
         <xsl:param name="connector"/>
         <xsl:variable name="sourceRoleName" select="$connector/source/role/@name"/>
         <xsl:variable name="targetRoleName" select="$connector/target/role/@name"/>
@@ -57,7 +57,7 @@
             prefix respecing the syntax "prefix:localSegment".</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-missingNamePrefix">
+    <xsl:template name="connectorMissingNamePrefix">
         <xsl:param name="connector"/>
         <xsl:variable name="sourceRoleName" select="$connector/source/role/@name"/>
         <xsl:variable name="targetRoleName" select="$connector/target/role/@name"/>
@@ -91,7 +91,7 @@
             respecing the syntax "prefix:localSegment"</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-missingLocalSegmentName">
+    <xsl:template name="connectorMissingLocalSegmentName">
         <xsl:param name="connector"/>
         <xsl:variable name="sourceRoleName" select="$connector/source/role/@name"/>
         <xsl:variable name="targetRoleName" select="$connector/target/role/@name"/>
@@ -125,7 +125,7 @@
             prefix name containing only alphanumeric characters [a-zA-Z0-9]+.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-invalidNamePrefix">
+    <xsl:template name="connectorInvalidNamePrefix">
         <xsl:param name="connector"/>
         <xsl:variable name="sourceRoleName" select="$connector/source/role/@name"/>
         <xsl:variable name="targetRoleName" select="$connector/target/role/@name"/>
@@ -160,7 +160,7 @@
         <xd:param name="connector"/>
     </xd:doc>
 
-    <xsl:template name="co-undefinedPrefix">
+    <xsl:template name="connectorUndefinedPrefix">
         <xsl:param name="connector"/>
         <xsl:variable name="sourceRoleName" select="$connector/source/role/@name"/>
         <xsl:variable name="targetRoleName" select="$connector/target/role/@name"/>
@@ -194,7 +194,7 @@
             or possibly with tokens delimited by single spaces.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-invalidNameLocalSegment">
+    <xsl:template name="connectorInvalidNameLocalSegment">
         <xsl:param name="connector"/>
         <xsl:variable name="sourceRoleName" select="$connector/source/role/@name"/>
         <xsl:variable name="targetRoleName" select="$connector/target/role/@name"/>
@@ -230,7 +230,7 @@
             The local segment must start with a letter or underscore. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-invalidFirstCharacterInLocalSegment">
+    <xsl:template name="connectorInvalidFirstCharacterInLocalSegment">
         <xsl:param name="connector"/>
         <xsl:variable name="sourceRoleName" select="$connector/source/role/@name"/>
         <xsl:variable name="targetRoleName" select="$connector/target/role/@name"/>
@@ -266,7 +266,7 @@
             best if the names are camel cased and delimiters removed. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-delimitersInTheLocalSegment">
+    <xsl:template name="connectorDelimitersInTheLocalSegment">
         <xsl:param name="connector"/>
         <xsl:variable name="sourceRoleName" select="$connector/source/role/@name"/>
         <xsl:variable name="targetRoleName" select="$connector/target/role/@name"/>
@@ -304,7 +304,7 @@
             is not known and will be ignored. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-unknownStereotypeProvided">
+    <xsl:template name="connectorUnknownStereotypeProvided">
         <xsl:param name="connector"/>
         <xsl:variable name="isStereotypeValid" select="f:isConnectorStereotypeValid($connector)"/>
         <xsl:sequence
@@ -324,7 +324,7 @@
             Stereotypes are discouraged in the current practice with some exceptions. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-stereotypeProvided">
+    <xsl:template name="connectorStereotypeProvided">
         <xsl:param name="connector"/>
         <xsl:variable name="hasStereotype"
             select="$connector/properties/@stereotype or $connector/*/role/@stereotype"/>
@@ -346,7 +346,7 @@
         <xd:param name="connector"/>
     </xd:doc>
 
-    <xsl:template name="co-missingDescription">
+    <xsl:template name="connectorMissingDescription">
         <xsl:param name="connector"/>
         <xsl:variable name="connectorDirection" select="f:getConnectorDirection($connector)"/>
         <xsl:if test="f:getConnectorDirection($connector) = 'Source -&gt; Destination'">
@@ -375,7 +375,7 @@
         <xd:desc>[connector-tag-invalid-name-12] - The tag $tagName$ must be an URI. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-invalidTagName">
+    <xsl:template name="connectorInvalidTagName">
         <xsl:param name="connector"/>
         <xsl:variable name="sourceTags" select="$connector/source/tags/tag"/>
         <xsl:variable name="targetTags" select="$connector/target/tags/tag"/>
@@ -403,7 +403,7 @@
             must be associated to a namespace URI. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-missingPrefixTagName">
+    <xsl:template name="connectorMissingPrefixTagName">
         <xsl:param name="connector"/>
         <xsl:variable name="sourceTags" select="$connector/source/tags/tag"/>
         <xsl:variable name="targetTags" select="$connector/target/tags/tag"/>
@@ -439,7 +439,7 @@
         <xd:desc>[connector-tag-value-14] - The tag $tagName$ must have a value. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-missingTagValue">
+    <xsl:template name="connectorMissingTagValue">
         <xsl:param name="connector"/>
         <xsl:variable name="sourceTags" select="$connector/source/tags/tag"/>
         <xsl:variable name="targetTags" select="$connector/target/tags/tag"/>
@@ -467,7 +467,7 @@
         <xd:desc>[connector-tag-name-15] - The tag $tagName$ must have a valid name. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-missingTagName">
+    <xsl:template name="connectorMissingTagName">
         <xsl:param name="connector"/>
         <xsl:variable name="sourceTags" select="$connector/source/tags/tag"/>
         <xsl:variable name="targetTags" select="$connector/target/tags/tag"/>
@@ -495,7 +495,7 @@
             but no name. The connector must have a target role to sustain annotations. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-targetTags">
+    <xsl:template name="connectorTargetTags">
         <xsl:param name="connector"/>
         <xsl:variable name="numberOfTags" select="fn:count($connector/target/tags/tag)"/>
         <xsl:variable name="targetName" select="$connector/target/role/@name"/>
@@ -515,7 +515,7 @@
             but no name. The connector must have a source role to sustain annotations. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-sourceTags">
+    <xsl:template name="connectorSourceTags">
         <xsl:param name="connector"/>
         <xsl:variable name="numberOfTags" select="fn:count($connector/source/tags/tag)"/>
         <xsl:variable name="sourceName" select="$connector/source/role/@name"/>
@@ -535,7 +535,7 @@
             connector is not transformed into a property and therefore any tag will be ignored. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-tags">
+    <xsl:template name="connectorTags">
         <xsl:param name="connector"/>
         <xsl:variable name="numberOfTags" select="fn:count(f:getElementTags($connector))"/>
         <xsl:sequence
@@ -554,7 +554,7 @@
             must be provided as connector source and target roles, not as connector name. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
-    <xsl:template name="co-generalNameProvided">
+    <xsl:template name="connectorGeneralNameProvided">
         <xsl:param name="connector"/>
         <xsl:variable name="connectorHasNoName" select="$connector/not(@name)"/>
         <xsl:sequence
@@ -574,7 +574,7 @@
         <xd:param name="connector"/>
     </xd:doc>
 
-    <xsl:template name="co-missingTargetRole">
+    <xsl:template name="connectorMissingTargetRole">
         <xsl:param name="connector"/>
         <xsl:sequence
             select="
@@ -594,7 +594,7 @@
         <xd:param name="connector"/>
     </xd:doc>
 
-    <xsl:template name="co-invalidRelationshipDirection">
+    <xsl:template name="connectorInvalidRelationshipDirection">
         <xsl:param name="connector"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:sequence
@@ -614,7 +614,7 @@
         <xd:param name="connector"/>
     </xd:doc>
 
-    <xsl:template name="co-missingTargetMultiplicity">
+    <xsl:template name="connectorMissingTargetMultiplicity">
         <xsl:param name="connector"/>
         <xsl:sequence
             select="
@@ -632,7 +632,7 @@
         <xd:param name="connector"/>
     </xd:doc>
 
-    <xsl:template name="co-invalidTargetMultiplicityFormat ">
+    <xsl:template name="connectorInvalidTargetMultiplicityFormat">
         <xsl:param name="connector"/>
         <xsl:variable name="multiplicityValue" select="$connector/target/type/@multiplicity"/>
         <xsl:if test="boolean($multiplicityValue)">
@@ -657,7 +657,7 @@
         <xd:param name="connector"/>
     </xd:doc>
 
-    <xsl:template name="co-directionAndRolesOutOfSync">
+    <xsl:template name="connectorDirectionAndRolesOutOfSync">
         <xsl:param name="connector"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:variable name="missingSourceRole" select="$connector/source/role/not(@name)"/>

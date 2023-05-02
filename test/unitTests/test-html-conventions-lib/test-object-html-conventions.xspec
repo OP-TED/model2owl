@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    stylesheet="../../../src/html-conventions-lib/object-html-conventions.xsl">
+    
+    
+    <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Object']-finding object with unmet conventions">
+        <x:context href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[183]"/>
+        <x:expect label="there is a h2 with the object name" test="boolean(/h2)"/>
+        <x:expect label="there is a h3 with 'Unmet object conventions' as text " test="contains(section/dl/dt/text(),'Unmet object conventions')"/>
+        <x:expect label="there is a Description List element" test="boolean(section/dl)"/>
+        <x:expect label="there is an Description Term element" test="boolean(section/dl/dt)"/>
+        <x:expect label="there is an Description Details element" test="boolean(section/dl/dd)"/>
+    </x:scenario>
+    
+
+    
+    
+    <x:scenario label="Scenario for getting the object name">
+        <x:call template="getObjectName">
+            <x:param name="object" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[183]"/>
+        </x:call>   
+        <x:expect label="correct object name">Form17</x:expect> 
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding an object with no items">
+        <x:call template="objectItemsChecker">
+            <x:param name="object" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[183]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding an object with no outgoing connectors">
+        <x:call template="objectOutgoingConnectors">
+            <x:param name="object" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[65]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding an object with a realisation relation to enumeration">
+        <x:call template="objectInstanceConnectors">
+            <x:param name="object" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[65]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" select="()"/> 
+    </x:scenario>
+    
+
+    
+    <x:scenario label="Scenario for finding a object with unique name">
+        <x:call template="objectUniqueName">
+            <x:param name="object" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[65]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    
+    
+    
+    
+</x:description>

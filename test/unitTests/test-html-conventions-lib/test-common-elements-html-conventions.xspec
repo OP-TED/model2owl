@@ -363,5 +363,19 @@
         <x:expect label="expect a Description Element" test="count(/dd)=4"/> 
     </x:scenario>
     
+    <x:scenario label="Scenario for finding element that is public">
+        <x:call template="nonPublicElement">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[165]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding element that is not public">
+        <x:call template="nonPublicElement">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[164]"/>
+        </x:call>   
+        <x:expect label="expect a Description Element" test="count(/dd)=1"/> 
+    </x:scenario>
+    
 
 </x:description>

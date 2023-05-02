@@ -244,7 +244,10 @@
                 $element/properties/@stereotype = $stereotypeValidOnDatatypes) or
                 ($element/@xmi:type = 'uml:Package' and
                 not(boolean($element/properties/@stereotype)) or
-                $element/properties/@stereotype = $stereotypeValidOnPackages)
+                $element/properties/@stereotype = $stereotypeValidOnPackages) or
+                ($element/@xmi:type = 'uml:Object' and
+                not(boolean($element/properties/@stereotype)) or
+                $element/properties/@stereotype = $stereotypeValidOnObjects)
                 ) then
                     fn:true()
                 else

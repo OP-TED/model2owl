@@ -17,7 +17,7 @@
     <xsl:import href="../common/checkers.xsl"/>
     <xsl:import href="utils-html-conventions.xsl"/>
 
-
+    <xsl:variable name="elementTypes" select="('class', 'enumeration', 'dataType', 'package', 'object')"/>
 
 
     <xd:doc>
@@ -202,7 +202,7 @@
         <xsl:variable name="elementName" select="$element/@name"/>
         <xsl:variable name="noElementDescription"
             select="
-                if ($elementType = ('class', 'enumeration', 'dataType', 'package')) then
+            if ($elementType = $elementTypes) then
                     $element/properties/not(@documentation)
                 else
                     $element/documentation/not(@value)"/>
@@ -229,7 +229,7 @@
         <xsl:param name="elementType"/>
         <xsl:variable name="hasStereotype"
             select="
-                if ($elementType = ('class', 'enumeration', 'dataType', 'package')) then
+            if ($elementType = $elementTypes) then
                     $element/properties/@stereotype
                 else
                     $element/stereotype/@stereotype"/>
@@ -256,7 +256,7 @@
         <xsl:param name="elementType"/>
         <xsl:variable name="isStereotypeValid"
             select="
-                if ($elementType = ('class', 'enumeration', 'dataType', 'package')) then
+            if ($elementType = $elementTypes) then
                     f:isElementStereotypeValid($element)
                 else
                     f:isAttributeStereotypeValid($element)"/>
@@ -368,6 +368,22 @@
                         f:generateHtmlError(fn:concat('The prefix for ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
                 "/>
 
+    </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>[common-visibility-18] - The element $name$ is non-public. All elements shall be public.</xd:desc>
+        <xd:param name="element"/>
+    </xd:doc>
+    <xsl:template name="nonPublicElement">
+        <xsl:param name="element"/>
+        <xsl:variable name="elementScope" select="$element/@scope"/>
+        <xsl:sequence
+            select="
+            if ($elementScope = 'public') then
+            ()
+            else
+            f:generateHtmlWarning(fn:concat('The element ', $element/@name, ' is non-public. All elements shall be public '))"
+        />
     </xsl:template>
 
 </xsl:stylesheet>

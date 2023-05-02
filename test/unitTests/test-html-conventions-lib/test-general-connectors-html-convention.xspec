@@ -5,14 +5,14 @@
     stylesheet="../../../src/html-conventions-lib/general-connectors-html-convention.xsl">
     
     <x:scenario label="Scenario for finding a Connector with name with prefix when Bi-directional  ">
-        <x:call template="co-missingNamePrefix">
+        <x:call template="connectorMissingNamePrefix">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[38]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector with name missing prefix when Bi-directional  ">
-        <x:call template="co-missingNamePrefix">
+        <x:call template="connectorMissingNamePrefix">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[35]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details" test="count(/dd)=1"/> 
@@ -20,42 +20,42 @@
     
     
     <x:scenario label="Scenario for finding a Connector with wrong name when Source -> Destination  ">
-        <x:call template="co-namingFormat">
+        <x:call template="connectorNamingFormat">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[29]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="count(/dd)=1"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector with correct name when Source -> Destination  ">
-        <x:call template="co-namingFormat">
+        <x:call template="connectorNamingFormat">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[28]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" select="()"/> 
     </x:scenario>
    
     <x:scenario label="Scenario for finding a Connector with invalid stereotype - on target role ">
-        <x:call template="co-unknownStereotypeProvided">
+        <x:call template="connectorUnknownStereotypeProvided">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[70]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="count(/dd)=1"/> 
     </x:scenario>
    
     <x:scenario label="Scenario for finding a Connector with valid stereotype - on target role ">
-        <x:call template="co-unknownStereotypeProvided">
+        <x:call template="connectorUnknownStereotypeProvided">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[72]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" select="()"/> 
     </x:scenario>
    
     <x:scenario label="Scenario for finding a Connector with valid stereotype - on connector ">
-        <x:call template="co-unknownStereotypeProvided">
+        <x:call template="connectorUnknownStereotypeProvided">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[71]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector with valid stereotype - no stereotype ">
-        <x:call template="co-unknownStereotypeProvided">
+        <x:call template="connectorUnknownStereotypeProvided">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[27]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" select="()"/> 
@@ -63,14 +63,14 @@
     
     
     <x:scenario label="Scenario for finding a Connector with stereotype - on connector ">
-        <x:call template="co-stereotypeProvided">
+        <x:call template="connectorStereotypeProvided">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[71]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="count(/dd)=1"/>
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector with stereotype - on target role ">
-        <x:call template="co-stereotypeProvided">
+        <x:call template="connectorStereotypeProvided">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[47]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="count(/dd)=1"/>
@@ -78,56 +78,56 @@
     
     
     <x:scenario label="Scenario for finding a Connector with tags - the name not an URI ">
-        <x:call template="co-invalidTagName">
+        <x:call template="connectorInvalidTagName">
             <x:param name="connector" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[92]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="count(/dd)=4"/>
     </x:scenario>
    
     <x:scenario label="Scenario for finding a Connector with tags - missing prefix">
-        <x:call template="co-missingPrefixTagName">
+        <x:call template="connectorMissingPrefixTagName">
             <x:param name="connector" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[92]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="count(/dd)=5"/>
     </x:scenario>
    
     <x:scenario label="Scenario for finding a Connector with tags without value">
-        <x:call template="co-missingTagValue">
+        <x:call template="connectorMissingTagValue">
             <x:param name="connector" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[92]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="count(/dd)=1"/>
     </x:scenario>
    
     <x:scenario label="Scenario for finding a Connector with tags without name">
-        <x:call template="co-missingTagName">
+        <x:call template="connectorMissingTagName">
             <x:param name="connector" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[92]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="count(/dd)=1"/>
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector with target role name that has tags">
-        <x:call template="co-targetTags">
+        <x:call template="connectorTargetTags">
             <x:param name="connector" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[92]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector with no source role name that has tags">
-        <x:call template="co-sourceTags">
+        <x:call template="connectorSourceTags">
             <x:param name="connector" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[92]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has tags">
-        <x:call template="co-tags">
+        <x:call template="connectorTags">
             <x:param name="connector" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[92]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has no tags">
-        <x:call template="co-tags">
+        <x:call template="connectorTags">
             <x:param name="connector" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[91]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
@@ -137,7 +137,7 @@
     
     
     <x:scenario label="Scenario for finding a Connector that has a name">
-        <x:call template="co-generalNameProvided">
+        <x:call template="connectorGeneralNameProvided">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[5]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
@@ -145,14 +145,14 @@
     
     
     <x:scenario label="Scenario for finding a Connector that has no name">
-        <x:call template="co-generalNameProvided">
+        <x:call template="connectorGeneralNameProvided">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[173]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has a wrong direction">
-        <x:call template="co-invalidRelationshipDirection">
+        <x:call template="connectorInvalidRelationshipDirection">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[5]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
@@ -160,35 +160,35 @@
     
     
     <x:scenario label="Scenario for finding a Connector that has the right direction">
-        <x:call template="co-invalidRelationshipDirection">
+        <x:call template="connectorInvalidRelationshipDirection">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[173]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has no description">
-        <x:call template="co-missingDescription">
+        <x:call template="connectorMissingDescription">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[4]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has a description for target when Source -> Destination">
-        <x:call template="co-missingDescription">
+        <x:call template="connectorMissingDescription">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[2]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has a description">
-        <x:call template="co-missingDescription">
+        <x:call template="connectorMissingDescription">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[173]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has no target role">
-        <x:call template="co-missingTargetRole">
+        <x:call template="connectorMissingTargetRole">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[43]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
@@ -196,7 +196,7 @@
     
     
     <x:scenario label="Scenario for finding a Connector target role">
-        <x:call template="co-missingTargetRole">
+        <x:call template="connectorMissingTargetRole">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[173]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
@@ -205,28 +205,28 @@
    
     
     <x:scenario label="Scenario for finding a Connector that is missing target multiplicity">
-        <x:call template="co-missingTargetMultiplicity">
+        <x:call template="connectorMissingTargetMultiplicity">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[110]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has target multiplicity">
-        <x:call template="co-missingTargetMultiplicity">
+        <x:call template="connectorMissingTargetMultiplicity">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[106]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that is missing source multiplicity">
-        <x:call template="co-missingTargetMultiplicity">
+        <x:call template="connectorMissingTargetMultiplicity">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[110]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has source multiplicity">
-        <x:call template="co-missingTargetMultiplicity">
+        <x:call template="connectorMissingTargetMultiplicity">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[106]"/>
         </x:call>   
@@ -234,7 +234,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has invalid format for target multiplicity">
-        <x:call template="co-invalidTargetMultiplicityFormat">
+        <x:call template="connectorInvalidTargetMultiplicityFormat">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[111]"/>
         </x:call>   
@@ -242,7 +242,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has valid format for target multiplicity">
-        <x:call template="co-invalidTargetMultiplicityFormat">
+        <x:call template="connectorInvalidTargetMultiplicityFormat">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[106]"/>
         </x:call>   
@@ -252,7 +252,7 @@
   
     
     <x:scenario label="Scenario for finding a Connector that has no role and the direction is source -> destination">
-        <x:call template="co-directionAndRolesOutOfSync">
+        <x:call template="connectorDirectionAndRolesOutOfSync">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[43]"/>
         </x:call>   
@@ -261,7 +261,7 @@
     
     
     <x:scenario label="Scenario for finding a Connector that has role and the direction is source -> destination">
-        <x:call template="co-directionAndRolesOutOfSync">
+        <x:call template="connectorDirectionAndRolesOutOfSync">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[173]"/>
         </x:call>   
@@ -270,7 +270,7 @@
     
     
     <x:scenario label="Scenario for finding a Connector that has no source or target role and the direction is bi-directional">
-        <x:call template="co-directionAndRolesOutOfSync">
+        <x:call template="connectorDirectionAndRolesOutOfSync">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
         </x:call>   
@@ -278,7 +278,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding a Connector that has source and target role and the direction is bi-directional">
-        <x:call template="co-directionAndRolesOutOfSync">
+        <x:call template="connectorDirectionAndRolesOutOfSync">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[430]"/>
         </x:call>   
