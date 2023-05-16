@@ -180,7 +180,7 @@
             <sh:NodeShape rdf:about="{$targetRoleURI}">
                 <sh:property>
                     <sh:PropertyShape>
-                        <sh:path rdf:resource="skos:inScheme"/>
+                        <sh:path rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
                         <sh:hasValue rdf:resource="{$targetClassURI}"/>
                     </sh:PropertyShape>
                 </sh:property>

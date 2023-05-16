@@ -173,7 +173,7 @@
         <x:expect label="there is 1 sh:property" test="count(sh:NodeShape/sh:property) = 1"/>
         <x:expect label="there is 1 sh:PropertyShape" test="count(sh:NodeShape/sh:property/sh:PropertyShape) = 1"/>
         <x:expect label="there is 1 sh:path" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:path) = 1"/>
-        <x:expect label="there is sh:path = skos:inScheme" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:path/@rdf:resource = 'skos:inScheme'"/>
+        <x:expect label="there is sh:path = skos:inScheme" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:path/@rdf:resource = 'http://www.w3.org/2004/02/skos/core#inScheme'"/>
         <x:expect label="there is 1 sh:hasValue" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:hasValue) = 1"/>
     </x:scenario>
 </x:description>
