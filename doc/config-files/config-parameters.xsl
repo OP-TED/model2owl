@@ -48,7 +48,7 @@
         Example:
           <xsl:variable name="defaultDelimiter" select="'#'"/>
     -->
-    <xsl:variable name="defaultDelimiter" select="''"/>
+    <xsl:variable name="defaultDelimiter" select="'#'"/>
 
     <!-- types of elements and names for attribute types that are acceptable to produce object properties 
      This is a list
