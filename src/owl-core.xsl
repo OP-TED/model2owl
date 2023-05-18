@@ -49,8 +49,7 @@
         <rdf:RDF>
             <xsl:for-each select="$namespacePrefixes/*:prefixes/*:prefix">              
                 <xsl:namespace name="{./@name}" select="./@value"/>
-            </xsl:for-each>        
-            <xsl:attribute name="xml:base" expand-text="true">{$coreArtefactURI}</xsl:attribute>
+            </xsl:for-each>   
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
             <xsl:call-template name="connectorsOwlCore"/>

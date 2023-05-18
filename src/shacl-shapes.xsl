@@ -48,7 +48,6 @@
             <xsl:for-each select="$namespacePrefixes/*:prefixes/*:prefix">              
                 <xsl:namespace name="{./@name}" select="./@value"/>
             </xsl:for-each>  
-            <xsl:attribute name="xml:base" expand-text="true">{$shapeArtefactURI}</xsl:attribute>
             
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
