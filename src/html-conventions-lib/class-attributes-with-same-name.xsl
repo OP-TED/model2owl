@@ -45,10 +45,12 @@
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:if test="boolean($attributeChecks)">
-                    <dt>
-                        <xsl:value-of select="."/>
-                    </dt>
-                    <xsl:copy-of select="$attributeChecks"/>
+                    <dl id="attribute-{.}">
+                        <dt>
+                            <xsl:value-of select="."/>
+                        </dt>
+                        <xsl:copy-of select="$attributeChecks"/>
+                    </dl>
                 </xsl:if>
             </xsl:if>
         </xsl:for-each>
@@ -73,7 +75,7 @@
                     if ($attribute/documentation/@value) then
                         fn:concat(f:formatDocString($attribute/documentation/@value), ' (', $attribute/../../@name, ') ')
                     else
-                        ()"/>
+                    fn:concat('...', ' (', $attribute/../../@name, ') ')"/>
 
         <xsl:variable name="allAttributesHaveDefinition"
             select="fn:count($attributesWithSameName) = fn:count($definitionValues)"/>
@@ -105,6 +107,17 @@
             select="f:getClassAttributeByName($attributeName, $root)"/>
         <xsl:variable name="lowerBoundValues" select="$attributesWithSameName/bounds/@lower"/>
         <xsl:variable name="upperBoundValues" select="$attributesWithSameName/bounds/@upper"/>
+        <xsl:variable name="multiplicityUsage" as="item()*">
+            <xsl:for-each select="$attributesWithSameName">
+                <xsl:variable name="className" select="./parent::attributes/parent::element/@name"/>
+                <xsl:variable name="attributeType" select="./properties/@type"/>
+                <xsl:variable name="attributeMultiplicityMin" select="./bounds/@lower"/>
+                <xsl:variable name="attributeMultiplicityMax" select="./bounds/@upper"/>
+               
+                <xsl:sequence select="(fn:concat($className, ' (', $attributeType, ')', ' [', $attributeMultiplicityMin , '..', $attributeMultiplicityMax, ']'))"/>
+         
+            </xsl:for-each>
+        </xsl:variable>
         <xsl:variable name="allAttributesHaveMultiplicityValue"
             select="fn:count($attributesWithSameName) = fn:count($lowerBoundValues) and fn:count($lowerBoundValues) = fn:count($upperBoundValues)"/>
         <xsl:sequence
@@ -112,8 +125,9 @@
                 if (f:areStringsEqual($lowerBoundValues) and f:areStringsEqual($upperBoundValues) and $allAttributesHaveMultiplicityValue) then
                     ()
                 else
-                    f:generateHtmlInfo(fn:concat('The attribute ', $attributeName, ' is has different multiplicities in reuse contexts.
-                When a property is reused in multiple contexts, the multiplicity is expected to be the same. Please check the nomenclature above for a summary.'))"
+                    f:generateFormattedHtmlInfo((fn:concat('The attribute ', $attributeName, ' has different multiplicities in reuse contexts.
+                When a property is reused in multiple contexts, the multiplicity is expected to be the same. Please see usage below:'
+                )), $multiplicityUsage)"
         />
     </xsl:template>
 
