@@ -87,6 +87,8 @@
         <xsl:param name="connector"/>
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($connector/source/model/@name)"/>
+        <xsl:variable name="normalisedSourceClassName"
+            select="replace($connector/source/model/@name, ':', '-')"/>
         <xsl:variable name="sourceRole"
             select="
                 if (boolean($connector/source/role/@name)) then
@@ -94,6 +96,7 @@
                 else
                     ()
                 "/>
+        <xsl:variable name="normalisedSourceRole" select="replace($sourceRole, ':', '-')"/>
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
@@ -102,53 +105,66 @@
                     ()"/>
         <xsl:variable name="targetClassURI"
             select="f:buildURIfromLexicalQName($connector/target/model/@name)"/>
+        <xsl:variable name="normalisedTargetClassName"
+            select="replace($connector/target/model/@name, ':', '-')"/>
         <xsl:variable name="targetRole"
             select="
                 if (boolean($connector/target/role/@name)) then
                     $connector/target/role/@name
                 else
-                    fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
-        <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($targetRole)"/>
+                    fn:error(xs:QName('connectors'), concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
+        <xsl:variable name="normalisedTargetRole" select="replace($targetRole, ':', '-')"/>
+        <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
 
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
-
-            <sh:NodeShape rdf:about="{$sourceClassURI}">
-                <sh:property>
-                    <sh:PropertyShape>
-                        <sh:path rdf:resource="{$targetRoleURI}"/>
-                        <sh:name>
-                            <xsl:value-of select="f:lexicalQNameToWords($targetRole)"/>
-                        </sh:name>
-                        <sh:class rdf:resource="{$targetClassURI}"/>
-                    </sh:PropertyShape>
-                </sh:property>
-            </sh:NodeShape>
+            <rdf:Description
+                rdf:about="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+                <sh:path rdf:resource="{$targetRoleURI}"/>
+                <sh:name>
+                    <xsl:value-of select="f:lexicalQNameToWords($targetRole)"/>
+                </sh:name>
+                <sh:class rdf:resource="{$targetClassURI}"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="{$sourceClassURI}">
+                <sh:property
+                    rdf:resource="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
+                />
+            </rdf:Description>
         </xsl:if>
         <xsl:if test="$connectorDirection = 'Bi-Directional'">
-            <sh:NodeShape rdf:about="{$sourceClassURI}">
-                <sh:property>
-                    <sh:PropertyShape>
-                        <sh:path rdf:resource="{$targetRoleURI}"/>
-                        <sh:name>
-                            <xsl:value-of select="f:lexicalQNameToWords($targetRole)"/>
-                        </sh:name>
-                        <sh:class rdf:resource="{$targetClassURI}"/>
-                    </sh:PropertyShape>
-                </sh:property>
-            </sh:NodeShape>
-            <sh:NodeShape rdf:about="{$targetClassURI}">
-                <sh:property>
-                    <sh:PropertyShape>
-                        <sh:path rdf:resource="{$sourceRoleURI}"/>
-                        <sh:name>
-                            <xsl:value-of select="f:lexicalQNameToWords($sourceRole)"/>
-                        </sh:name>
-                        <sh:class rdf:resource="{$sourceClassURI}"/>
-                    </sh:PropertyShape>
-                </sh:property>
-            </sh:NodeShape>
+            <rdf:Description
+                rdf:about="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+                <sh:path rdf:resource="{$targetRoleURI}"/>
+                <sh:name>
+                    <xsl:value-of select="f:lexicalQNameToWords($targetRole)"/>
+                </sh:name>
+                <sh:class rdf:resource="{$targetClassURI}"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="{$sourceClassURI}">
+                <sh:property
+                    rdf:resource="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
+                />
+            </rdf:Description>
+
+            <rdf:Description
+                rdf:about="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}">
+                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+                <sh:path rdf:resource="{$sourceRoleURI}"/>
+                <sh:name>
+                    <xsl:value-of select="f:lexicalQNameToWords($sourceRole)"/>
+                </sh:name>
+                <sh:class rdf:resource="{$sourceClassURI}"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="{$targetClassURI}">
+                <sh:property
+                    rdf:resource="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}"
+                />
+            </rdf:Description>
+
+
         </xsl:if>
     </xsl:template>
 
@@ -165,26 +181,35 @@
 
         <xsl:variable name="targetClassURI"
             select="f:buildURIfromLexicalQName($connector/target/model/@name)"/>
+        <xsl:variable name="sourceClassURI"
+            select="f:buildURIfromLexicalQName($connector/source/model/@name)"/>
+        <xsl:variable name="normalisedSourceClassName"
+            select="replace($connector/source/model/@name, ':', '-')"/>
         <xsl:variable name="targetRole"
             select="
                 if (boolean($connector/target/role/@name)) then
                     $connector/target/role/@name
                 else
                     fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
+        <xsl:variable name="normalisedTargetRole" select="replace($targetRole, ':', '-')"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole)"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
 
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
 
-            <sh:NodeShape rdf:about="{$targetRoleURI}">
-                <sh:property>
-                    <sh:PropertyShape>
-                        <sh:path rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
-                        <sh:hasValue rdf:resource="{$targetClassURI}"/>
-                    </sh:PropertyShape>
-                </sh:property>
-            </sh:NodeShape>
+
+            <rdf:Description
+                rdf:about="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+                <sh:path rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
+                <sh:hasValue rdf:resource="{$targetClassURI}"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="{$targetRoleURI}">
+                <sh:property
+                    rdf:resource="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
+                />
+            </rdf:Description>
         </xsl:if>
     </xsl:template>
 
@@ -211,6 +236,10 @@
             select="f:getMultiplicityMaxFromString($sourceMultiplicity)"/>
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($connector/source/model/@name)"/>
+        <xsl:variable name="normalisedSourceClassName"
+            select="replace($connector/source/model/@name, ':', '-')"/>
+        <xsl:variable name="normalisedTargetClassName"
+            select="replace($connector/target/model/@name, ':', '-')"/>
         <!--  <xsl:value-of select="$connector/target/type/@multiplicity"/>-->
         <!--<xsl:value-of select="$targetMultiplicity"/>-->
         <xsl:variable name="sourceRole"
@@ -220,6 +249,7 @@
                 else
                     ()
                 "/>
+        <xsl:variable name="normalisedSourceRole" select="replace($sourceRole, ':', '-')"/>
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
@@ -236,6 +266,7 @@
                     fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole)"/>
+        <xsl:variable name="normalisedTargetRole" select="replace($targetRole, ':', '-')"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:variable name="datatypeURI"
             select="f:buildURIfromLexicalQName('xsd:integer')"/>
@@ -256,17 +287,21 @@
             test="
                 $connectorDirection = 'Source -&gt; Destination' and
                 boolean($targetMultiplicity) and boolean($sourceDestinationRestrictionContent)">
-            <sh:NodeShape rdf:about="{$sourceClassURI}">
-                <sh:property>
-                    <sh:PropertyShape>
-                        <sh:path rdf:resource="{$targetRoleURI}"/>
-                        <sh:name>
-                            <xsl:value-of select="f:lexicalQNameToWords($targetRole)"/>
-                        </sh:name>
-                        <xsl:copy-of select="$sourceDestinationRestrictionContent"/>
-                    </sh:PropertyShape>
-                </sh:property>
-            </sh:NodeShape>
+            
+            <rdf:Description
+                rdf:about="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+                <sh:path rdf:resource="{$targetRoleURI}"/>
+                <sh:name>
+                    <xsl:value-of select="f:lexicalQNameToWords($targetRole)"/>
+                </sh:name>
+                <xsl:copy-of select="$sourceDestinationRestrictionContent"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="{$targetRoleURI}">
+                <sh:property
+                    rdf:resource="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
+                />
+            </rdf:Description>
         </xsl:if>
         <!--        end of first property shape content-->
 
@@ -287,17 +322,22 @@
             test="
                 $connectorDirection = 'Bi-Directional' and
                 boolean($targetMultiplicity) and boolean($sourceInBidirectionalRestrictionContent)">
-            <sh:NodeShape rdf:about="{$sourceClassURI}">
-                <sh:property>
-                    <sh:PropertyShape>
-                        <sh:path rdf:resource="{$targetRoleURI}"/>
-                        <sh:name>
-                            <xsl:value-of select="f:lexicalQNameToWords($targetRole)"/>
-                        </sh:name>
-                        <xsl:copy-of select="$sourceInBidirectionalRestrictionContent"/>
-                    </sh:PropertyShape>
-                </sh:property>
-            </sh:NodeShape>
+            
+            <rdf:Description
+                rdf:about="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+                <sh:path rdf:resource="{$targetRoleURI}"/>
+                <sh:name>
+                    <xsl:value-of select="f:lexicalQNameToWords($targetRole)"/>
+                </sh:name>
+                <xsl:copy-of select="$sourceInBidirectionalRestrictionContent"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="{$targetRoleURI}">
+                <sh:property
+                    rdf:resource="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
+                />
+            </rdf:Description>
+            
         </xsl:if>
         <!--        end of second property shape content-->
 
@@ -318,17 +358,21 @@
             test="
                 $connectorDirection = 'Bi-Directional' and
                 boolean($sourceMultiplicity) and boolean($targetInBidirectionalRestrictionContent)">
-            <sh:NodeShape rdf:about="{$targetClassURI}">
-                <sh:property>
-                    <sh:PropertyShape>
-                        <sh:path rdf:resource="{$sourceRoleURI}"/>
-                        <sh:name>
-                            <xsl:value-of select="f:lexicalQNameToWords($sourceRole)"/>
-                        </sh:name>
-                        <xsl:copy-of select="$targetInBidirectionalRestrictionContent"/>
-                    </sh:PropertyShape>
-                </sh:property>
-            </sh:NodeShape>
+            
+            <rdf:Description
+                rdf:about="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}">
+                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+                <sh:path rdf:resource="{$sourceRoleURI}"/>
+                <sh:name>
+                    <xsl:value-of select="f:lexicalQNameToWords($sourceRole)"/>
+                </sh:name>
+                <xsl:copy-of select="$targetInBidirectionalRestrictionContent"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="{$sourceRoleURI}">
+                <sh:property
+                    rdf:resource="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}"
+                />
+            </rdf:Description>  
         </xsl:if>
         <!--        end of third property shape content-->
     </xsl:template>
@@ -345,6 +389,8 @@
         <xsl:param name="connector"/>
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($connector/source/model/@name)"/>
+        <xsl:variable name="normalisedSourceClassName"
+            select="replace($connector/source/model/@name, ':', '-')"/>
         <xsl:variable name="sourceRole"
             select="
                 if (boolean($connector/source/role/@name)) then
@@ -352,6 +398,7 @@
                 else
                     ()
                 "/>
+        <xsl:variable name="normalisedSourceRole" select="replace($sourceRole, ':', '-')"/>
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
@@ -360,40 +407,67 @@
                     ()"/>
         <xsl:variable name="targetClassURI"
             select="f:buildURIfromLexicalQName($connector/target/model/@name)"/>
+        <xsl:variable name="normalisedTargetClassName"
+            select="replace($connector/target/model/@name, ':', '-')"/>
         <xsl:variable name="targetRole"
             select="
                 if (boolean($connector/target/role/@name)) then
                     $connector/target/role/@name
                 else
                     fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
+        <xsl:variable name="normalisedTargetRole" select="replace($targetRole, ':', '-')"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole)"/>
 
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
-            <sh:NodeShape rdf:about="{$sourceClassURI}">
+            <rdf:Description
+                rdf:about="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
                 <sh:sparql rdf:parseType="Resource">
                     <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
-                            select="$targetRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
+                        select="$targetRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
                             select="$targetRoleURI"/>&gt; ?this .} </sh:select>
                 </sh:sparql>
-            </sh:NodeShape>
+            </rdf:Description>
+            <rdf:Description rdf:about="{$sourceClassURI}">
+                <sh:property
+                    rdf:resource="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
+                />
+            </rdf:Description>
+            
+        
         </xsl:if>
         <xsl:if test="$connectorDirection = 'Bi-Directional'">
-            <sh:NodeShape rdf:about="{$sourceClassURI}">
+            <rdf:Description
+                rdf:about="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
                 <sh:sparql rdf:parseType="Resource">
                     <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
-                            select="$targetRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
+                        select="$targetRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
                             select="$targetRoleURI"/>&gt; ?this .} </sh:select>
                 </sh:sparql>
-            </sh:NodeShape>
-            <sh:NodeShape rdf:about="{$targetClassURI}">
+            </rdf:Description>
+            <rdf:Description rdf:about="{$sourceClassURI}">
+                <sh:property
+                    rdf:resource="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
+                />
+            </rdf:Description>
+    
+            <rdf:Description
+                rdf:about="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}">
+                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
                 <sh:sparql rdf:parseType="Resource">
                     <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
-                            select="$sourceRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
+                        select="$sourceRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
                             select="$sourceRoleURI"/>&gt; ?this .} </sh:select>
                 </sh:sparql>
-            </sh:NodeShape>
+            </rdf:Description>
+            <rdf:Description rdf:about="{$targetClassURI}">
+                <sh:property
+                    rdf:resource="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}"
+                />
+            </rdf:Description>
         </xsl:if>
     </xsl:template>
 

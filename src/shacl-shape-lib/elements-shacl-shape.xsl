@@ -33,7 +33,8 @@
         <xsl:variable name="documentation"
             select="f:formatDocString($class/properties/@documentation)"/>
 
-        <sh:NodeShape rdf:about="{$classURI}">
+        <rdf:Description rdf:about="{$classURI}">
+            <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
             <sh:targetClass rdf:resource="{$classURI}"/>
             <xsl:call-template name="elementName">
                 <xsl:with-param name="name" select="f:lexicalQNameToWords($class/@name)"/>
@@ -54,7 +55,7 @@
                 <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
             </xsl:if>
 
-        </sh:NodeShape>
+        </rdf:Description>
     </xsl:template>
 
 
