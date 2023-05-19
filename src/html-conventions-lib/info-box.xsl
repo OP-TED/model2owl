@@ -48,8 +48,10 @@
                     else
                         ()"/>
             <li>
+                <a href="#{.}">
                 <xsl:value-of select="."/>
                 <xsl:value-of select="$occurences"/>
+                </a>
             </li>
         </xsl:for-each>
     </xsl:template>
@@ -60,35 +62,37 @@
         <xsl:variable name="attributeNames" select="f:getDistinctClassAttributeNames($root)"/>
         <xsl:for-each select="$attributeNames">
             <xsl:sort select="." lang="en"/>
+            <xsl:variable name="occurencesNumber" select="fn:count((f:getClassAttributeByName(., $root)))"/>
             <xsl:variable name="occurences"
                 select="
                     if (fn:count((f:getClassAttributeByName(., $root))) > 1) then
-                        fn:concat(' (', fn:string(fn:count((f:getClassAttributeByName(., $root)))), ')')
+                        fn:concat(' (', fn:string($occurencesNumber), ')')
                     else
                         ()"/>
             <xsl:variable name="attributeName" select="."/>
-            <xsl:variable name="hrefAttributeName"
-                select="
-                    if (fn:contains($attributeName, ':')) then
-                        f:camelCaseString(fn:substring-after($attributeName, ':'))
-                    else
-                        f:camelCaseString($attributeName)"/>
             <li>
-                <a data-toggle="collapse" href="#collapse{$hrefAttributeName}"
-                    role="button" aria-expanded="false" aria-controls="collapse{$hrefAttributeName}">
-                    <xsl:value-of select="$attributeName"/>
-                    <xsl:value-of select="$occurences"/>
-                </a>
-                <div class="collapse" id="collapse{$hrefAttributeName}">
-                    <div class="card card-body">
+                <xsl:choose>
+                    <xsl:when test="$occurencesNumber > 1">
+                        <a href="#attribute-{$attributeName}">
+                            <xsl:value-of select="$attributeName"/>
+                            <xsl:value-of select="$occurences"/>
+                        </a>
                         <ul>
-                            <xsl:call-template name="classAttributeUsage">
-                                <xsl:with-param name="attributeName" select="$attributeName"/>
-                                <xsl:with-param name="root" select="$root"/>
-                            </xsl:call-template>
+                            <em>
+                                <xsl:call-template name="classAttributeUsage">
+                                    <xsl:with-param name="attributeName" select="$attributeName"/>
+                                    <xsl:with-param name="root" select="$root"/>
+                                </xsl:call-template>
+                            </em>
                         </ul>
-                    </div>
-                </div>
+
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="$attributeName"/>
+                        <xsl:value-of select="$occurences"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+
             </li>
         </xsl:for-each>
     </xsl:template>
@@ -118,35 +122,37 @@
         <xsl:variable name="connectorNames" select="f:getDistinctConnectorsNames($root)"/>
         <xsl:for-each select="$connectorNames">
             <xsl:sort select="." lang="en"/>
+            <xsl:variable name="occurencesNumber"
+                select="fn:count((f:getConnectorByName(., $root)))"/>
             <xsl:variable name="occurences"
                 select="
                     if (fn:count((f:getConnectorByName(., $root))) > 1) then
-                        fn:concat(' (', fn:string(fn:count((f:getConnectorByName(., $root)))), ')')
+                        fn:concat(' (', fn:string($occurencesNumber), ')')
                     else
                         ()"/>
             <xsl:variable name="connectorName" select="."/>
-            <xsl:variable name="hrefConnectorName"
-                select="
-                    if (fn:contains($connectorName, ':')) then
-                        f:camelCaseString(fn:substring-after($connectorName, ':'))
-                    else
-                        f:camelCaseString($connectorName)"/>
             <li>
-                <a data-toggle="collapse" href="#collapse{$hrefConnectorName}"
-                    role="button" aria-expanded="false" aria-controls="collapse{$hrefConnectorName}">
-                    <xsl:value-of select="$connectorName"/>
-                    <xsl:value-of select="$occurences"/>
-                </a>
-                <div class="collapse" id="collapse{$hrefConnectorName}">
-                    <div class="card card-body">
+                <xsl:choose>
+                    <xsl:when test="$occurencesNumber > 1">
+                        <a href="#connector-{$connectorName}">
+                            <xsl:value-of select="$connectorName"/>
+                            <xsl:value-of select="$occurences"/>
+                        </a>
                         <ul>
-                            <xsl:call-template name="connectorUsage">
-                                <xsl:with-param name="connectorName" select="$connectorName"/>
-                                <xsl:with-param name="root" select="$root"/>
-                            </xsl:call-template>
+                            <em>
+                                <xsl:call-template name="connectorUsage">
+                                    <xsl:with-param name="connectorName" select="$connectorName"/>
+                                    <xsl:with-param name="root" select="$root"/>
+                                </xsl:call-template>
+                            </em>
                         </ul>
-                    </div>
-                </div>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="$connectorName"/>
+                        <xsl:value-of select="$occurences"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+
             </li>
         </xsl:for-each>
     </xsl:template>
