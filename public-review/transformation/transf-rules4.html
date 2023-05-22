@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: model2owl</title>
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <script>var uiRootPath = '../../_'</script>
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">  </head>
+  <body class="article">
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="../..">
+            </a>
+        </div>
+    </nav>
+<nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs" >
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="public-review">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">model2owl Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../epo-context.html">Context: model2owl and eProcurement ontology </a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../uml/definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../uml/conceptual-model-conventions.html">UML Model Conventions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../uml/on-conventions.html">On Conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../uml/conv-general.html">General Conventions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../uml/conv-classes.html">uml:Class</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../uml/conv-attributes.html">uml:Attribute</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../uml/conv-enumerations.html">uml:Enumeration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../uml/conv-datatypes.html">uml:DataType</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../uml/conv-packages.html">uml:Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../uml/conv-connectors.html">UML Connector Elements</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../checkers/model2owl-checkers.html">UML convention checking rules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="uml2owl-transformation.html">Transformation Rules</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="transf-rules1.html">Rules for UML Classes and Attributes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="transf-rules2.html">Rules for UML Connectors</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="transf-rules3.html">Rules for UML Datatypes</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="transf-rules4.html">Rules for UML Descriptors</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../references.html">References</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">model2owl Documentation</span>
+    <span class="version">public-review</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">model2owl Documentation</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">public-review</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">model2owl Documentation</a></li>
+    <li><a href="uml2owl-transformation.html">Transformation Rules</a></li>
+    <li><a href="transf-rules4.html">Rules for UML Descriptors</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/transformation/transf-rules4.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="sect1">
+<h2 id="sec:tran-rules4"><a class="anchor" href="#sec:tran-rules4"></a>Transformation of UML descriptors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section are specified transformation rules for UML descriptive elements. <a href="#tab:descriptiors-overview">Table 1</a> provides an overview of the section coverage.</p>
+</div>
+<table id="tab:descriptiors-overview" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Overview of transformation rules for UML descriptors</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">UML element</th>
+<th class="tableblock halign-left valign-top">Rules in core ontology layer</th>
+<th class="tableblock halign-left valign-top">Rules in data shape layer</th>
+<th class="tableblock halign-left valign-top">Rules in reasoning layer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-label">Rule T.01</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-label">Rule T.01</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-label">Rule T.01</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Note</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-definition">Rule T.02</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-definition">Rule T.02</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-definition">Rule T.02</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-external-comment">Rule T.03</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-external-comment">Rule T.03</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-external-comment">Rule T.03</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_name"><a class="anchor" href="#_name"></a>Name</h3>
+<div class="paragraph">
+<p>Most of the UML elements are named. The UML conventions dedicate an extensive section to the naming conventions and how deterministically to generate an URI and a label from the UML element name. The label should be associated to the resource URI by <code>rdfs:label</code> and, even if redundant, also as <code>skos:prefLabel</code>.</p>
+</div>
+<div id="rule:element-label" class="exampleblock">
+<div class="title">Rule T.01. Label</div>
+<div class="content">
+<div class="paragraph">
+<p>Specify a label for UML element.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 1. Labels in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ResourceName
+  rdfs:label "Resource name" ;
+  skos:prefLabel "Resource name"@en ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 2. Labels in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ResourceName"&gt;
+  &lt;rdfs:label&gt;Resource name&lt;/rdfs:label&gt;
+  &lt;skos:prefLabel xml:lang="en"&gt;Resource name&lt;/skos:prefLabel&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_note"><a class="anchor" href="#_note"></a>Note</h3>
+<div class="paragraph">
+<p>Most of the UML element foresee provisions of descriptions and notes. They should be transformed into <code>rdfs:comment</code> and <code>skos:definition</code>.</p>
+</div>
+<div id="rule:element-definition" class="exampleblock">
+<div class="title">Rule T.02. Description</div>
+<div class="content">
+<div class="paragraph">
+<p>Specify a description for UML element.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 3. Description in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ResourceName
+  rdfs:comment "Description of the resource meaning" ;
+  skos:definition "Resource name"@en ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 4. Description in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ResourceName"&gt;
+  &lt;rdfs:comment&gt;Description of the resource meaning&lt;/rdfs:comment&gt;
+  &lt;skos:definition xml:lang="en"&gt;Description of the resource meaning&lt;/skos:definition&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_comment"><a class="anchor" href="#_comment"></a>Comment</h3>
+<div class="paragraph">
+<p>In accordance with , every kind of UML Element may own Comments (see <a href="#fig:comment-visual">Figure 1</a>). They add no semantics but may represent information useful to the reader. In OWL it is possible to define the annotation axiom for OWL Class, Datatype, ObjectProperty, DataProperty, AnnotationProperty and NamedIndividual. The textual explanation added to UML Class is identified as useful for conceptual modelling , therefore the Comments that are connected to UML Classes are taken into consideration in the transformation.</p>
+</div>
+<div id="fig:comment-visual" class="imageblock">
+<div class="content">
+<img src="../_images/f19.png" alt="19">
+</div>
+<div class="title">Figure 1. Visual representation of a UML comment (on the left) and an OWL comment (on the right)</div>
+</div>
+<div class="paragraph">
+<p>As UML Comments add no semantics, they are not used in any method of semantic validation. In OWL the AnnotationAssertion axiom does not add any semantics either, and it only improves readability.</p>
+</div>
+<div id="rule:element-external-comment" class="exampleblock">
+<div class="title">Rule T.03. Comment</div>
+<div class="content">
+<div class="paragraph">
+<p>Specify annotation axiom for UML Comment associated to a UML element.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 5. Comment in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
+  rdfs:comment "This is an additional comment on ClassName" ;
+  skos:editorialNote "This is an additional comment on ClassName"@en ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 6. Comment in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ClassName"&gt;
+  &lt;rdfs:comment&gt;This is an additional comment on ClassName&lt;/rdfs:comment&gt;
+  &lt;skos:editorialNote xml:lang="en"&gt;This is an additional comment on ClassName&lt;/skos:definition&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+    <p style="text-align:center">This document is created by the European Commission and is licensed under the terms of
+        EUPL-1.2 license</a>.
+        <br/>This page was built using the Antora default UI. The source code for this UI is licensed under the terms of
+        the MPL-2.0 license.
+    </p>
+
+        <script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="150" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="150" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
+  </body>
+</html>
