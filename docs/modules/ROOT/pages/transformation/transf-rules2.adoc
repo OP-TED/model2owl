@@ -29,6 +29,11 @@ In this section are specified transformation rules for UML association, generali
 
 A binary Association specifies a semantic relationship between two member ends represented by properties. Please note that in accordance with specification , the association end names are not obligatory. However, we adhere to the UML conventions , where specification of at one member ends, for unidirectional association, and two member ends, for bidirectional association, is mandatory. Moreover, provision of a connector (general) name is discouraged.
 
+.Visual representation of a UML unidirectional association (on the left) and an OWL property with cardinality restriction on domain class (on the right)
+[#fig:association-uni-visual]
+image::f10.png[10]
+
+
 [#rule:association-uni-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:R.01}. Unidirectional association -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
 Specify object property declaration axiom for the target end of the association.
@@ -247,7 +252,13 @@ If the association multiplicity is exactly one, i.e. [1..1], specify functional 
 [[sec:association-self]]
 === Recursive association
 
-In case of recursive associations, that are from one class to itself, the transformation rules must be applied as in the case of regular unidirectional association, which are from <<rule:association-uni-core>> to <<rule:association-uni-multiplicity-one-rc>>. In addition the association must be marked as asymmetric expressed in <<rule:association-uni-asymetry-rc>>.
+In case of recursive associations, that are from one class to itself, (depicted in <<fig:association-self-visual>>), the transformation rules must be applied as in the case of regular unidirectional association, which are from <<rule:association-uni-core>> to <<rule:association-uni-multiplicity-one-rc>>. In addition, the association must be marked as asymmetric expressed in <<rule:association-uni-asymetry-ds>> and <<rule:association-uni-asymetry-rc>>.
+
+WARNING: *TODO:* Check if we really mean asymmetry/asymmetric and not reflexivity/reflexive?
+
+.Visual representation of a UML recursive association (on the left) and OWL recursive properties with cardinality restrictions on domain class (on the right)
+[#fig:association-self-visual]
+image::f11.png[11]
 
 [#rule:association-uni-asymetry-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association asymmetry -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
@@ -315,7 +326,12 @@ Specify the asymmetry object property axiom for each end of a recursive associat
 [[sec:association-bi]]
 === Bidirectional association
 
-The bidirectional associations should be treated, both on source and target ends, like two unidirectional associations. The transformation rules from <<rule:association-uni-core>> to <<rule:association-uni-multiplicity-one-rc>> must be applied to both ends. In addition, these rule the inverse relation axiom must be specified.
+The bidirectional associations should be treated, both on source and target ends, like two unidirectional associations (see <<fig:association-bi-visual>>). The transformation rules from <<rule:association-uni-core>> to <<rule:association-uni-multiplicity-one-rc>> must be applied to both ends. In addition, these rule the inverse relation axiom must be specified.
+
+.Visual representation of an UML bidirectional association (on the left) and OWL properties with cardinality restrictions on domain class (on the right)
+[#fig:association-bi-visual]
+image::f12.png[12]
+
 
 [#rule:association-bi-inverse-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association inverse -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
@@ -349,6 +365,11 @@ The UML dependency connectors should be transformed by the rules specified for U
 === Class generalisation
 
 Generalisation defines specialization relationship between Classifiers. In case of UML classes it relates a more specific Class to a more general Class.
+
+.Visual representation of UML generalisation (on the left) and OWL subclass relation (on the right)
+[#fig:generalisation-visual]
+image::f13.png[13]
+
 
 UML generalisation set groups generalizations; incomplete and disjoint constraints indicate that the set is not complete and its specific Classes have no common instances. The UML conventions specify that all sibling classes are by default disjoint, therefore even if no generalisation set is provided it is assumed to be implicit.
 
@@ -386,6 +407,11 @@ Specify subclass axiom for the generalisation between UML classes. Sibling class
 
 Generalization defines specialization relationship between Classifiers. In case of the UML associations it relates a more specific Association to more general Association.
 
+.Visual representation of UML property generalisation (on the left) and OWL sub-property relation (on the right)
+[#fig:generalisation-rel-visual]
+image::f14.png[14]
+
+
 [#rule:generalisation-property-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Property generalisation -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
 Specify sub-property axiom for the generalisation between UML associations and dependencies.
@@ -414,6 +440,11 @@ Specify sub-property axiom for the generalisation between UML associations and d
 |===
 
 === Class equivalence
+
+.Visual representation of UML class equivalence (on the left) and OWL class equivalence (on the right)
+[#fig:generalisation-equivalence-visual]
+image::f15.png[15]
+
 
 [#rule:equivalent-classes-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Equivalent classes -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====

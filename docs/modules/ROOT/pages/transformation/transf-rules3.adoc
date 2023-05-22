@@ -19,6 +19,12 @@ In this section are specified transformation rules for UML datatypes and enumera
 
 The UML primitive type defines a predefined datatype without any substructure. The UML specification predefines five primitive types: String, Integer, Boolean, UnlimitedNatural and Real. Here we extended those to the list provided in <<tab:type-mapping>>.
 
+
+.Visual representation of a UML Datatype (on the left) and an OWL Datatype (on the right)
+[#fig:datatype-visual]
+image::f16.png[16]
+
+
 [#rule:datatype-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.01}. Datatype -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
 Specify datatype declaration axiom for UML datatype as follows:
@@ -123,6 +129,16 @@ WARNING: *TODO: Should we keep this? Code examples missing!*
 === Enumeration
 
 UML Enumerations are kinds of datatypes, whose values correspond to one of user-defined literals. They should be transformed into SKOS concept schemes comprising the concepts corresponding to enumerated items.
+
+
+.Visual representation of a UML Enumeration
+[#fig:enumeration-uml-visual]
+image::f17.png[17]
+
+.Visual representation of a SKOS concept scheme with concepts
+[#fig:enumeration-owl-visual]
+image::f18.png[18]
+
 
 [#rule:enumeration-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D01}. Enumeration -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====

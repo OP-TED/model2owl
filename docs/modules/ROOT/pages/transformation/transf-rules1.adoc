@@ -23,6 +23,11 @@ In this section are specified transformation rules for UML class and attribute e
 
 In UML, a Class is purposed to specify a classification of objects. UML represents atomic classes as named elements of type _Class_ without further features. In OWL, the atomic class, `owl:Class`, has no intension. It can only be interpreted by its name that has a meaning in the world outside the ontology. The atomic class is a class description that is simultaneously a class axiom .
 
+.Visual representation of a class in UML (on the left) and OWL (on the right)
+[#fig:class-visual]
+image::f6.png[6]
+
+
 [#rule:class-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:C.01}. Class -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
 Specify declaration axiom for UML Class as OWL Class where the URI and a label are deterministically generated from the class name. The label and, if available, the description are ascribed to the class.
@@ -97,6 +102,11 @@ In UML, an abstract Class cannot have any instances and only its subclasses can 
 
 OWL follows the Open World Assumption , therefore, even if the ontology does not contain any instances for a specific class, it is unknown whether the class has any instances. We cannot confirm that the UML abstract class is correctly defined with respect to the OWL domain ontology, but we can detect if it is not using SHACL constraints.
 
+.Visual representation of an abstract class in UML (on the left) and OWL (on the right)
+[#fig:class-abstract-visual]
+image::f7.png[7]
+
+
 [#rule:class-abstract-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Abstract class -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
 Specify declaration axiom for UML Class as SHACL Node Shape with a SPARQL constraint that selects all instances of this class.
@@ -139,6 +149,11 @@ Specify declaration axiom for UML Class as SHACL Node Shape with a SPARQL constr
 === Attribute
 
 The UML attributes are properties that are owned by a Classifier, e.g. Class. Both UML attributes and associations are represented by one meta-model element – Property. OWL also allows one to define properties. A transformation of UML attribute to OWL data property or OWL object property bases on its type. If the type of the attribute is a primitive type it should be transformed into OWL data property. However, if the type of the attribute is a structured datatype, class of enumeration, it should be transformed into an OWL object property.
+
+.Visual representation of class attributes in UML (on the left) and OWL properties (on the right)
+[#fig:attribute-visual]
+image::f8.png[8]
+
 
 [#rule:attribute-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
@@ -342,6 +357,12 @@ Within the SHACL Node Shape corresponding to the UML class, specify property con
 === Attribute multiplicity
 
 In , multiplicity bounds of multiplicity element are specified in the form of `[<lower-bound> .. <upper-bound>]`. The lower-bound, also referred here as minimum cardinality or `min` is of a non-negative Integer type and the upper-bound, also referred here as maximum cardinality or `max`, is of an UnlimitedNatural type (see Section xref:transformation/transf-rules3.adoc#sec:primitive-type[Primitive datatype]). The strictly compliant specification of UML in version 2.5 defines only a single value range for MultiplicityElement. not limit oneself to a single interval. Therefore, the below UML to OWL mapping covers a wider case – a possibility of specifying more value ranges for a multiplicity element. Nevertheless, if the reader would like to strictly follow the current UML specification, the particular single lower..upper bound interval is therein also comprised.
+
+
+.Visual representation of class attributes with multiplicity in UML (on the left) and OWL class specialising an anonymous restriction of properties (on the right)
+[#fig:attribute-multiplicity-visual]
+image::f9.png[9]
+
 
 [#rule:attribute-ds-multiplicity,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute range shape -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====

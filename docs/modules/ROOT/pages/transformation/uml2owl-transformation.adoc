@@ -37,15 +37,39 @@ Each transformation rule is accompanied by the formal OWL representation, in Tur
 
 This section provides the main UML elements employed in this document. A detailed description can be consulted in the standard specifications and in the user guide .
 
-Figure #fig:uml-sheat-sheet-classes[1] depicts simple, abstract and regular classes with and without attribute specifications. Note that no class methods are ever employed as this document as the transformations aim at data structures only.
 
-Figure #fig:uml-sheat-sheet-datatypes[2] depicts a primitive datatype and an enumeration. No complex datatypes are depicted as they are treated in the same manner as classes are.
+.UML visual notation for classes and attributes
+[#fig:uml-classes]
+image::f1.png[1]
 
-Figure #fig:uml-sheat-sheet-associations[3] depicts association, generalisation and dependency connectors as the only ones necessary to model the eProcurement conceptual model.
+.UML visual notation for datatypes and enumerations
+[#fig:uml-datatypes]
+image::f2.png[2]
+
+.UML visual notation for association, generalisation, and dependency
+[#fig:uml-associations]
+image::f3.png[3]
+
+
+<<fig:uml-classes>> depicts simple, abstract and regular classes with and without attribute specifications. Note that no class methods are ever employed as this document as the transformations aim at data structures only.
+
+<<#fig:uml-datatypes>> depicts a primitive datatype and an enumeration. No complex datatypes are depicted as they are treated in the same manner as classes are.
+
+<<fig:uml-associations>> depicts association, generalisation and dependency connectors as the only ones necessary to model the eProcurement conceptual model.
 
 === Graffoo visual notation
 
 This section provides the main Graffoo elements employed in this document. A detailed description can be consulted in the OWL standard specifications and in the Graffoo user guide .
+
+
+.Graffoo visual notation for classes, instances and datatypes
+[#fig:graffoo-classes]
+image::f4.png[4]
+
+.Graffoo visual notation for object and data properties and generic links
+[#fig:graffoo-predicates]
+image::f5.png[5]
+
 
 A yellow rectangle with solid black border is used to declare classes. Solid black and labelled arrows are used to declare class axioms. A green rhomboid with solid black border is used to declare datatypes. Solid black and labelled arrows are used to declare class axioms.
 
