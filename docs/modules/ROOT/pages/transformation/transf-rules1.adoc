@@ -47,7 +47,7 @@ Specify declaration axiom for UML Class as OWL Class where the URI and a label a
 .Class declaration in RDF/XML syntax
 [source,XML]
 ----
-<owl:Class rdf:about="http://base.uri/ClassName">
+<owl:Class rdf:about="http://base.onto.uri/ClassName">
   <rdfs:label xml:lang="en">Class name</rdfs:label>
 </owl:Class>
 ----
@@ -175,7 +175,7 @@ Specify declaration axiom(s) for attribute(s) as OWL data or object properties d
 .Data property declaration in RDF/XML syntax
 [source,XML]
 ----
-<owl:DatatypeProperty rdf:about="http://base.uri/attribute1">
+<owl:DatatypeProperty rdf:about="http://base.onto.uri/attribute1">
   <rdfs:label xml:lang="en">attribute 1</rdfs:label>
   <skos:definition xml:lang="en">Description of the attribute meaning</skos:definition>
 </owl:DatatypeProperty>
@@ -194,7 +194,7 @@ Specify declaration axiom(s) for attribute(s) as OWL data or object properties d
 .Object property declaration in RDF/XML syntax
 [source,XML]
 ----
-<owl:ObjectProperty rdf:about="http://base.uri/attribute2">
+<owl:ObjectProperty rdf:about="http://base.onto.uri/attribute2">
   <rdfs:label xml:lang="en">attribute 1</rdfs:label>
   <skos:definition xml:lang="en">Description of the attribute meaning</skos:definition>
 </owl:ObjectProperty>
@@ -222,8 +222,8 @@ Specify data (or object) property domains for attribute(s).
 .Data property domain specification in RDF/XML syntax
 [source,XML]
 ----
-<owl:DatatypeProperty rdf:about="http://base.uri/attribute1">
-  <rdfs:domain rdf:resource="http://base.uri/ClassName"/>
+<owl:DatatypeProperty rdf:about="http://base.onto.uri/attribute1">
+  <rdfs:domain rdf:resource="http://base.onto.uri/ClassName"/>
 </owl:DatatypeProperty>
 ----
 
@@ -239,8 +239,8 @@ Specify data (or object) property domains for attribute(s).
 .Object property domain specification in RDF/XML syntax
 [source,XML]
 ----
-<owl:ObjectProperty rdf:about="http://base.uri/attribute2">
-  <rdfs:domain rdf:resource="http://base.uri/ClassName"/>
+<owl:ObjectProperty rdf:about="http://base.onto.uri/attribute2">
+  <rdfs:domain rdf:resource="http://base.onto.uri/ClassName"/>
 </owl:ObjectProperty>
 ----
 |===
@@ -266,7 +266,7 @@ Specify data (or object) property range for attribute(s).
 .Data property range specification in RDF/XML syntax
 [source,XML]
 ----
-<owl:DatatypeProperty rdf:about="http://base.uri/attribute1">
+<owl:DatatypeProperty rdf:about="http://base.onto.uri/attribute1">
   <rdfs:range rdf:resource="http://www.w3c.org...#string"/>
 </owl:DatatypeProperty>
 ----
@@ -283,8 +283,8 @@ Specify data (or object) property range for attribute(s).
 .Object property range specification in RDF/XML syntax
 [source,XML]
 ----
-<owl:ObjectProperty rdf:about="http://base.uri/attribute2">
-  <rdfs:range rdf:resource="http://base.uri/OtherClass"/>
+<owl:ObjectProperty rdf:about="http://base.onto.uri/attribute2">
+  <rdfs:range rdf:resource="http://base.onto.uri/OtherClass"/>
 </owl:ObjectProperty>
 ----
 |===
@@ -524,10 +524,10 @@ For each attribute multiplicity of the form ( min .. max ), where min and max ar
 .Exact cardinality constraint in RDF/XML syntax
 [source,XML]
 ----
-<owl:Class rdf:about="http://base.uri/ClassName">
+<owl:Class rdf:about="http://base.onto.uri/ClassName">
   <rdfs:subClassOf>
     <owl:Restriction>
-      <owl:onProperty rdf:resource="http://base.uri/attribute1"/>
+      <owl:onProperty rdf:resource="http://base.onto.uri/attribute1"/>
       <owl:cardinality rdf:datatype="http://www.w3.org...#integer" >2</owl:cardinality>
     </owl:Restriction>
   </rdfs:subClassOf>
@@ -549,10 +549,10 @@ For each attribute multiplicity of the form ( min .. max ), where min and max ar
 .Min cardinality constraint in RDF/XML syntax
 [source,XML]
 ----
-<owl:Class rdf:about="http://base.uri/ClassName">
+<owl:Class rdf:about="http://base.onto.uri/ClassName">
   <rdfs:subClassOf>
     <owl:Restriction>
-      <owl:onProperty rdf:resource="http://base.uri/attribute2"/>
+      <owl:onProperty rdf:resource="http://base.onto.uri/attribute2"/>
       <owl:minCardinality rdf:datatype="http://www.w3.org...#integer" >1</owl:cardinality>
     </owl:Restriction>
   </rdfs:subClassOf>
@@ -574,10 +574,10 @@ For each attribute multiplicity of the form ( min .. max ), where min and max ar
 .Max cardinality constraint in RDF/XML syntax
 [source,XML]
 ----
-<owl:Class rdf:about="http://base.uri/ClassName">
+<owl:Class rdf:about="http://base.onto.uri/ClassName">
   <rdfs:subClassOf>
     <owl:Restriction>
-      <owl:onProperty rdf:resource="http://base.uri/attribute3"/>
+      <owl:onProperty rdf:resource="http://base.onto.uri/attribute3"/>
       <owl:maxCardinality rdf:datatype="http://www.w3.org...#integer" >2</owl:cardinality>
     </owl:Restriction>
   </rdfs:subClassOf>
@@ -606,17 +606,17 @@ For each attribute multiplicity of the form ( min .. max ), where min and max ar
 .Min and max cardinality constraint in RDF/XML syntax
 [source,XML]
 ----
-<owl:Class rdf:about="http://base.uri/ClassName">
+<owl:Class rdf:about="http://base.onto.uri/ClassName">
   <rdfs:subClassOf>
     <owl:Class>
       <owl:intersectionOf rdf:parseType="Collection">
         <owl:Restriction>
-          <owl:onProperty rdf:resource="http://base.uri/attribute4"/>
+          <owl:onProperty rdf:resource="http://base.onto.uri/attribute4"/>
           <owl:minCardinality rdf:datatype="...#integer"
           >1</owl:minCardinality>
         </owl:Restriction>
         <owl:Restriction>
-          <owl:onProperty rdf:resource="http://base.uri/attribute4"/>
+          <owl:onProperty rdf:resource="http://base.onto.uri/attribute4"/>
           <owl:maxCardinality rdf:datatype="...#integer"
           >2</owl:maxCardinality>
         </owl:Restriction>
@@ -646,7 +646,7 @@ For each attribute that has multiplicity exactly one, i.e. [1..1], specify funct
 .Declaring a functional property in RDF/XML syntax
 [source,XML]
 ----
-<rdf:Description rdf:about="http://base.uri/attribute5">
+<rdf:Description rdf:about="http://base.onto.uri/attribute5">
   <rdf:type rdf:resource="http://...owl#FunctionalProperty"/>
 </rdf:Description>
 ----

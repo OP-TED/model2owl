@@ -8,16 +8,16 @@ In this section are specified transformation rules for UML descriptive elements.
 [cols="<,<,<,<",options="header",]
 |===
 |UML element |Rules in core ontology layer |Rules in data shape layer |Rules in reasoning layer
-|Name |<<rule:elemen-label>> |<<rule:elemen-label>> |<<rule:elemen-label>>
-|Note |<<rule:elemen-definition>> |<<rule:elemen-definition>> |<<rule:elemen-definition>>
-|Comment |<<rule:elemen-external-comment>> |<<rule:elemen-external-comment>> |<<rule:elemen-external-comment>>
+|Name |<<rule:element-label>> |<<rule:element-label>> |<<rule:element-label>>
+|Note |<<rule:element-definition>> |<<rule:element-definition>> |<<rule:element-definition>>
+|Comment |<<rule:element-external-comment>> |<<rule:element-external-comment>> |<<rule:element-external-comment>>
 |===
 
 === Name
 
 Most of the UML elements are named. The UML conventions dedicate an extensive section to the naming conventions and how deterministically to generate an URI and a label from the UML element name. The label should be associated to the resource URI by `rdfs:label` and, even if redundant, also as `skos:prefLabel`.
 
-[#rule:elemen-label,source,XML,caption='',title='{example-caption} {counter:rule-cnt:T.01}. Label',reftext='{example-caption} {rule-cnt}']
+[#rule:element-label,source,XML,caption='',title='{example-caption} {counter:rule-cnt:T.01}. Label',reftext='{example-caption} {rule-cnt}']
 ====
 Specify a label for UML element.
 ====
@@ -37,7 +37,7 @@ Specify a label for UML element.
 .Labels in RDF/XML syntax
 [source,XML]
 ----
-<rdf:Description rdf:about="http://base.uri/ResourceName">
+<rdf:Description rdf:about="http://base.onto.uri/ResourceName">
   <rdfs:label>Resource name</rdfs:label>
   <skos:prefLabel xml:lang="en">Resource name</skos:prefLabel>
 </rdf:Description>
@@ -48,7 +48,7 @@ Specify a label for UML element.
 
 Most of the UML element foresee provisions of descriptions and notes. They should be transformed into `rdfs:comment` and `skos:definition`.
 
-[#rule:elemen-definition,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Description',reftext='{example-caption} {rule-cnt}']
+[#rule:element-definition,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Description',reftext='{example-caption} {rule-cnt}']
 ====
 Specify a description for UML element.
 ====
@@ -60,7 +60,7 @@ Specify a description for UML element.
 [source,Turtle]
 ----
 :ResourceName
-  rdfs:comment "Description of teh resource meaning" ;
+  rdfs:comment "Description of the resource meaning" ;
   skos:definition "Resource name"@en ;
 .
 ----
@@ -68,9 +68,9 @@ Specify a description for UML element.
 .Description in RDF/XML syntax
 [source,XML]
 ----
-<rdf:Description rdf:about="http://base.uri/ResourceName">
-  <rdfs:comment>Description of teh resource meaning</rdfs:comment>
-  <skos:definition xml:lang="en">Description of teh resource meaning</skos:definition>
+<rdf:Description rdf:about="http://base.onto.uri/ResourceName">
+  <rdfs:comment>Description of the resource meaning</rdfs:comment>
+  <skos:definition xml:lang="en">Description of the resource meaning</skos:definition>
 </rdf:Description>
 ----
 |===
@@ -87,7 +87,7 @@ image::f19.png[19]
 
 As UML Comments add no semantics, they are not used in any method of semantic validation. In OWL the AnnotationAssertion axiom does not add any semantics either, and it only improves readability.
 
-[#rule:elemen-external-comment,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Comment',reftext='{example-caption} {rule-cnt}']
+[#rule:element-external-comment,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Comment',reftext='{example-caption} {rule-cnt}']
 ====
 Specify annotation axiom for UML Comment associated to a UML element.
 ====
@@ -107,7 +107,7 @@ Specify annotation axiom for UML Comment associated to a UML element.
 .Comment in RDF/XML syntax
 [source,XML]
 ----
-<rdf:Description rdf:about="http://base.uri/ClassName">
+<rdf:Description rdf:about="http://base.onto.uri/ClassName">
   <rdfs:comment>This is an additional comment on ClassName</rdfs:comment>
   <skos:editorialNote xml:lang="en">This is an additional comment on ClassName</skos:definition>
 </rdf:Description>

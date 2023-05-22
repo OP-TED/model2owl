@@ -108,7 +108,7 @@ xsd:boolean a rdfs:Datatype ;
 .Model specific datatype declaration in RDF/XML syntax
 [source,XML]
 ----
-<rdfs:Datatype rdf:about="http://base.uri/DatatypeName">
+<rdfs:Datatype rdf:about="http://base.onto.uri/DatatypeName">
   <rdfs:label xml:lang="en">Datatype name</rdfs:label>
   <skos:definition xml:lang="en">Description of the datatype meaning</skos:definition>
 </rdfs:Datatype>
@@ -161,7 +161,7 @@ Specify SKOS concept scheme instantiation axiom for a UML enumeration.
 .Concept scheme instantiation in RDF/XML syntax
 [source,XML]
 ----
-<skos:ConceptScheme rdf:about="http://base.uri/ControlledList">
+<skos:ConceptScheme rdf:about="http://base.onto.uri/ControlledList">
   <rdfs:label>Controlled list</rdfs:label>
   <skos:prefLabel xml:lang="en">Controlled list</skos:prefLabel>
   <skos:definition xml:lang="en">Definition of the concept scheme meaning</skos:definition>
@@ -200,15 +200,15 @@ Specify SKOS concept instantiation axiom for each UML enumeration item.
 .Concept scheme instantiation in RDF/XML syntax
 [source,XML]
 ----
-<skos:Concept rdf:about="http://base.uri/itemA">
-  <skos:inScheme rdf:resource="http://base.uri/ControlledList"/>
+<skos:Concept rdf:about="http://base.onto.uri/itemA">
+  <skos:inScheme rdf:resource="http://base.onto.uri/ControlledList"/>
   <rdfs:label>Item A</rdfs:label>
   <skos:prefLabel xml:lang="en">Item A</skos:prefLabel>
   <skos:definition xml:lang="en">Description fo the concept meaning</skos:definition>
 </skos:Concept>
 
-<skos:Concept rdf:about="http://base.uri/itemB">
-  <skos:inScheme rdf:resource="http://base.uri/ControlledList"/>
+<skos:Concept rdf:about="http://base.onto.uri/itemB">
+  <skos:inScheme rdf:resource="http://base.onto.uri/ControlledList"/>
   <rdfs:label>Item B</rdfs:label>
   <skos:prefLabel xml:lang="en">Item B</skos:prefLabel>
   <skos:definition xml:lang="en">Description fo the concept meaning</skos:definition>
@@ -239,11 +239,11 @@ For a UML enumeration, specify an equivalent class restriction covering the set 
 .In-scheme equivalent class in RDF/XML syntax
 [source,XML]
 ----
-<owl:Class rdf:about="http://base.uri/ControlledList">
+<owl:Class rdf:about="http://base.onto.uri/ControlledList">
   <owl:equivalentClass>
     <owl:Restriction>
       <owl:onProperty rdf:resource=".../02/skos/core#inScheme"/>
-      <owl:hasValue rdf:resource="http://base.uri/ControlledList"/>
+      <owl:hasValue rdf:resource="http://base.onto.uri/ControlledList"/>
     </owl:Restriction>
   </owl:equivalentClass>
 </owl:Class>
