@@ -129,28 +129,33 @@ Within the SHACL Node Shape corresponding to the source UML class, specify prope
 .Property class constraint in Turtle syntax
 [source,Turtle]
 ----
-:ClassName a sh:NodeShape ;
-  sh:property [
-    a sh:PropertyShape ;
-    sh:path :relatesTo ;
-    sh:class :OtherClass ;
-    sh:name "relates to" ;
-  ];
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-relatesTo ;
+.
+shape:ClassName-relatesTo a sh:PropertyShape ;
+  sh:path :relatesTo ;
+  sh:class :OtherClass ;
+  sh:name "relates to" ;
 .
 ----
 |
 .Property class constraint in RDF/XML syntax
 [source,XML]
 ----
-<sh:NodeShape rdf:about="http://base.uri/ClassName">
-<sh:property>
-  <sh:PropertyShape>
-    <sh:path rdf:resource="http://base.uri/relatesTo"/>
-    <sh:name>relates to</sh:name>
-    <sh:class rdf:resource="http://base.uri/OtherClass"/>
-  </sh:PropertyShape>
-</sh:property>
+<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
+  <sh:property rdf:resource="http://base.shape.uri/ClassName-relatesTo"/>
 </sh:NodeShape>
+
+<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relatesTo">
+  <sh:path rdf:resource="http://base.onto.uri/relatesTo"/>
+  <sh:name>relates to</sh:name>
+  <sh:class rdf:resource="http://base.onto.uri/OtherClass"/>
+</sh:PropertyShape>
 ----
 |===
 
@@ -168,28 +173,34 @@ Within the SHACL Node Shape corresponding to the source UML class, specify prope
 .Min cardinality constraint in Turtle syntax
 [source,Turtle]
 ----
-:ClassName a sh:NodeShape ;
-   sh:property [
-       sh:path :relatesTo;
-       sh:minCount 1 ;
-       sh:name "relates to" ;
-     ] ;
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-relatesTo ;
+.
+shape:ClassName-relatesTo a sh:PropertyShape ;
+  sh:path :relatesTo;
+  sh:minCount 1 ;
+  sh:name "relates to" ;
  .
 ----
 |
 .Min cardinality constraint in RDF/XML syntax
 [source,XML]
 ----
-<sh:NodeShape rdf:about="http://base.uri/ClassName">
-<sh:property>
-  <sh:PropertyShape>
-    <sh:path rdf:resource="http://base.uri/relatesTo"/>
-    <sh:name>relates to</sh:name>
-    <sh:minCount rdf:datatype="http://www.w3.org...#integer"
-        >1</sh:minCount>
-  </sh:PropertyShape>
-</sh:property>
+<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
+  <sh:property rdf:resource="http://base.shape.uri/ClassName-relatesTo"/>
 </sh:NodeShape>
+
+<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relatesTo">
+  <sh:path rdf:resource="http://base.onto.uri/relatesTo"/>
+  <sh:name>relates to</sh:name>
+  <sh:minCount rdf:datatype="http://www.w3.org...#integer"
+      >1</sh:minCount>
+</sh:PropertyShape>
 ----
 |===
 
@@ -254,8 +265,6 @@ If the association multiplicity is exactly one, i.e. [1..1], specify functional 
 
 In case of recursive associations, that are from one class to itself, (depicted in <<fig:association-self-visual>>), the transformation rules must be applied as in the case of regular unidirectional association, which are from <<rule:association-uni-core>> to <<rule:association-uni-multiplicity-one-rc>>. In addition, the association must be marked as asymmetric expressed in <<rule:association-uni-asymetry-ds>> and <<rule:association-uni-asymetry-rc>>.
 
-WARNING: *TODO:* Check if we really mean asymmetry/asymmetric and not reflexivity/reflexive?
-
 .Visual representation of a UML recursive association (on the left) and OWL recursive properties with cardinality restrictions on domain class (on the right)
 [#fig:association-self-visual]
 image::f11.png[11]
@@ -265,13 +274,20 @@ image::f11.png[11]
 Within the SHACL Node Shape corresponding to the UML class, specify SPARQL constraint selecting instances connected by the object property in a reciprocal manner.
 ====
 
+WARNING: **TODO:** Check if the code snippets do what they need to do, i.e. to check that there is NO relationship that exists both between `a` and `b`, and between `b` and `a` in the same time.
+
 [cols="a,a", options="noheader"]
 |===
 |
 .Declaring an asymmetric property in Turtle syntax
 [source,Turtle]
 ----
-:ClassName a sh:NodeShape ;
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
    sh:sparql [
      sh:select """
         SELECT ?this ?that
@@ -279,13 +295,13 @@ Within the SHACL Node Shape corresponding to the UML class, specify SPARQL const
         ?this :relatesTo ?that .
         ?that :relatesTo this .
         }""" ; ] ;
- .
+.
 ----
 |
 .Declaring an asymmetric property in RDF/XML syntax
 [source,XML]
 ----
-<sh:NodeShape rdf:about="http://base.uri/ClassName">
+<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
   <sh:sparql rdf:parseType="Resource">
     <sh:select>
       SELECT ?this ?that
@@ -538,6 +554,9 @@ Specify object property range for the target end of the dependency.
 ====
 Within the SHACL Node Shape corresponding to the source UML class, specify property constraints indicating the range class.
 ====
+
+WARNING: **TODO:** Check these transformation rule examples and see if they make sense. It doesn't seem to.
+
 [cols="a,a", options="noheader"]
 |===
 |
