@@ -119,7 +119,7 @@
 
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
                 <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
                 <sh:path rdf:resource="{$targetRoleURI}"/>
                 <sh:name>
@@ -129,13 +129,13 @@
             </rdf:Description>
             <rdf:Description rdf:about="{$sourceClassURI}">
                 <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
+                    rdf:resource="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
                 />
             </rdf:Description>
         </xsl:if>
         <xsl:if test="$connectorDirection = 'Bi-Directional'">
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
                 <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
                 <sh:path rdf:resource="{$targetRoleURI}"/>
                 <sh:name>
@@ -145,7 +145,7 @@
             </rdf:Description>
             <rdf:Description rdf:about="{$sourceClassURI}">
                 <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
+                    rdf:resource="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
                 />
             </rdf:Description>
 
@@ -200,14 +200,14 @@
 
 
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
                 <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
                 <sh:path rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
                 <sh:hasValue rdf:resource="{$targetClassURI}"/>
             </rdf:Description>
             <rdf:Description rdf:about="{$targetRoleURI}">
                 <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
+                    rdf:resource="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
                 />
             </rdf:Description>
         </xsl:if>
@@ -289,7 +289,7 @@
                 boolean($targetMultiplicity) and boolean($sourceDestinationRestrictionContent)">
             
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
                 <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
                 <sh:path rdf:resource="{$targetRoleURI}"/>
                 <sh:name>
@@ -299,7 +299,7 @@
             </rdf:Description>
             <rdf:Description rdf:about="{$targetRoleURI}">
                 <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
+                    rdf:resource="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
                 />
             </rdf:Description>
         </xsl:if>
@@ -324,7 +324,7 @@
                 boolean($targetMultiplicity) and boolean($sourceInBidirectionalRestrictionContent)">
             
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
                 <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
                 <sh:path rdf:resource="{$targetRoleURI}"/>
                 <sh:name>
@@ -334,7 +334,7 @@
             </rdf:Description>
             <rdf:Description rdf:about="{$targetRoleURI}">
                 <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
+                    rdf:resource="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
                 />
             </rdf:Description>
             
@@ -422,7 +422,7 @@
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
                 <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
                 <sh:sparql rdf:parseType="Resource">
                     <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
@@ -432,7 +432,7 @@
             </rdf:Description>
             <rdf:Description rdf:about="{$sourceClassURI}">
                 <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
+                    rdf:resource="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
                 />
             </rdf:Description>
             
@@ -440,7 +440,7 @@
         </xsl:if>
         <xsl:if test="$connectorDirection = 'Bi-Directional'">
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
                 <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
                 <sh:sparql rdf:parseType="Resource">
                     <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
@@ -450,7 +450,7 @@
             </rdf:Description>
             <rdf:Description rdf:about="{$sourceClassURI}">
                 <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
+                    rdf:resource="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
                 />
             </rdf:Description>
     
