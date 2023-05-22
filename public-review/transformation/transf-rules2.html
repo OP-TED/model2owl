@@ -390,28 +390,33 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 7. Property class constraint in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a sh:NodeShape ;
-  sh:property [
-    a sh:PropertyShape ;
-    sh:path :relatesTo ;
-    sh:class :OtherClass ;
-    sh:name "relates to" ;
-  ];
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-relatesTo ;
+.
+shape:ClassName-relatesTo a sh:PropertyShape ;
+  sh:path :relatesTo ;
+  sh:class :OtherClass ;
+  sh:name "relates to" ;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 8. Property class constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.uri/ClassName"&gt;
-&lt;sh:property&gt;
-  &lt;sh:PropertyShape&gt;
-    &lt;sh:path rdf:resource="http://base.uri/relatesTo"/&gt;
-    &lt;sh:name&gt;relates to&lt;/sh:name&gt;
-    &lt;sh:class rdf:resource="http://base.uri/OtherClass"/&gt;
-  &lt;/sh:PropertyShape&gt;
-&lt;/sh:property&gt;
-&lt;/sh:NodeShape&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-relatesTo"/&gt;
+&lt;/sh:NodeShape&gt;
+
+&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relatesTo"&gt;
+  &lt;sh:path rdf:resource="http://base.onto.uri/relatesTo"/&gt;
+  &lt;sh:name&gt;relates to&lt;/sh:name&gt;
+  &lt;sh:class rdf:resource="http://base.onto.uri/OtherClass"/&gt;
+&lt;/sh:PropertyShape&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -438,28 +443,34 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 9. Min cardinality constraint in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a sh:NodeShape ;
-   sh:property [
-       sh:path :relatesTo;
-       sh:minCount 1 ;
-       sh:name "relates to" ;
-     ] ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-relatesTo ;
+.
+shape:ClassName-relatesTo a sh:PropertyShape ;
+  sh:path :relatesTo;
+  sh:minCount 1 ;
+  sh:name "relates to" ;
  .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 10. Min cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.uri/ClassName"&gt;
-&lt;sh:property&gt;
-  &lt;sh:PropertyShape&gt;
-    &lt;sh:path rdf:resource="http://base.uri/relatesTo"/&gt;
-    &lt;sh:name&gt;relates to&lt;/sh:name&gt;
-    &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
-        &gt;1&lt;/sh:minCount&gt;
-  &lt;/sh:PropertyShape&gt;
-&lt;/sh:property&gt;
-&lt;/sh:NodeShape&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-relatesTo"/&gt;
+&lt;/sh:NodeShape&gt;
+
+&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relatesTo"&gt;
+  &lt;sh:path rdf:resource="http://base.onto.uri/relatesTo"/&gt;
+  &lt;sh:name&gt;relates to&lt;/sh:name&gt;
+  &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
+      &gt;1&lt;/sh:minCount&gt;
+&lt;/sh:PropertyShape&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -545,18 +556,6 @@
 <div class="paragraph">
 <p>In case of recursive associations, that are from one class to itself, (depicted in <a href="#fig:association-self-visual">Figure 2</a>), the transformation rules must be applied as in the case of regular unidirectional association, which are from <a href="#rule:association-uni-core">Rule R.01</a> to <a href="#rule:association-uni-multiplicity-one-rc">Rule R.07</a>. In addition, the association must be marked as asymmetric expressed in <a href="#rule:association-uni-asymetry-ds">Rule R.08</a> and <a href="#rule:association-uni-asymetry-rc">Rule R.09</a>.</p>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<strong>TODO:</strong> Check if we really mean asymmetry/asymmetric and not reflexivity/reflexive?
-</td>
-</tr>
-</table>
-</div>
 <div id="fig:association-self-visual" class="imageblock">
 <div class="content">
 <img src="../_images/f11.png" alt="11">
@@ -571,6 +570,18 @@
 </div>
 </div>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<strong>TODO:</strong> Check if the code snippets do what they need to do, i.e. to check that there is NO relationship that exists both between <code>a</code> and <code>b</code>, and between <code>b</code> and <code>a</code> in the same time.
+</td>
+</tr>
+</table>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -581,7 +592,12 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 15. Declaring an asymmetric property in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a sh:NodeShape ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
    sh:sparql [
      sh:select """
         SELECT ?this ?that
@@ -589,13 +605,13 @@
         ?this :relatesTo ?that .
         ?that :relatesTo this .
         }""" ; ] ;
- .</code></pre>
+.</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 16. Declaring an asymmetric property in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.uri/ClassName"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
   &lt;sh:sparql rdf:parseType="Resource"&gt;
     &lt;sh:select&gt;
       SELECT ?this ?that
@@ -924,6 +940,18 @@
 <p>Within the SHACL Node Shape corresponding to the source UML class, specify property constraints indicating the range class.</p>
 </div>
 </div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<strong>TODO:</strong> Check these transformation rule examples and see if they make sense. It doesn&#8217;t seem to.
+</td>
+</tr>
+</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>

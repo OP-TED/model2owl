@@ -292,16 +292,35 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 3. Node shape declaration in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a sh:NodeShape .</code></pre>
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+    sh:targetClass :ClassName ;
+.</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 4. Node shape declaration in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.uri/ClassName"&gt;
-&lt;rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"&gt;
-&lt;rdf:Description&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/&gt;
+  &lt;sh:targetClass rdf:resource="http://base.onto.uri/ClassName"/&gt;
+&lt;/rdf:Description&gt;</code></pre>
 </div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Why don&#8217;t we use the <code>&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;</code> syntax?
+</td>
+</tr>
+</table>
 </div></div></td>
 </tr>
 </tbody>
@@ -329,6 +348,18 @@
 </div>
 </div>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<strong>TODO:</strong> Check if the code snippets do what they need to do, i.e. to check that there is NO instance of the given abstract class
+</td>
+</tr>
+</table>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -339,8 +370,12 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 5. Instance checking constraint in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
-  rdf:type sh:NodeShape ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+  sh:targetClass :ClassName ;
   sh:sparql [
     sh:select """SELECT $this
       WHERE {
@@ -354,11 +389,12 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 6. Instance checking constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.uri/ClassName"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;sh:targetClass rdf:resource="http://base.onto.uri/ClassName"/&gt;
   &lt;sh:sparql rdf:parseType="Resource"&gt;
     &lt;sh:select&gt;SELECT $this
       WHERE {
-      $this a :ClassName .
+        $this a :ClassName .
       }
     &lt;/sh:select&gt;
   &lt;/sh:sparql&gt;
@@ -564,28 +600,33 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 19. Property datatype constraint in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a sh:NodeShape ;
-  sh:property [
-    a sh:PropertyShape ;
-    sh:path :attribute1 ;
-    sh:datatype xsd:string ;
-    sh:name "attribute 1" ;
-  ];
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-attribute1 ;
+.
+shape:ClassName-attribute1 a sh:PropertyShape ;
+  sh:path :attribute1 ;
+  sh:datatype xsd:string ;
+  sh:name "attribute 1" ;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 20. Property datatype constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.uri/ClassName"&gt;
-&lt;sh:property&gt;
-  &lt;sh:PropertyShape&gt;
-    &lt;sh:path rdf:resource="http://base.uri/attribute1"/&gt;
-    &lt;sh:name&gt;attribute 1&lt;/sh:name&gt;
-    &lt;sh:datatype rdf:resource="http://www.w3c.org...#string"/&gt;
-  &lt;/sh:PropertyShape&gt;
-&lt;/sh:property&gt;
-&lt;/sh:NodeShape&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attribute1"/&gt;
+&lt;/sh:NodeShape&gt;
+
+&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute1"&gt;
+  &lt;sh:path rdf:resource="http://base.onto.uri/attribute1"/&gt;
+  &lt;sh:name&gt;attribute 1&lt;/sh:name&gt;
+  &lt;sh:datatype rdf:resource="http://www.w3c.org...#string"/&gt;
+&lt;/sh:PropertyShape&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -593,28 +634,33 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 21. Property class constraint in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a sh:NodeShape ;
-  sh:property [
-    a sh:PropertyShape ;
-    sh:path :attribute2 ;
-    sh:class :OtherClass ;
-    sh:name "attribute 2" ;
-  ];
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-attribute2 ;
+.
+shape:ClassName-attribute2 a sh:PropertyShape ;
+  sh:path :attribute2 ;
+  sh:class :OtherClass ;
+  sh:name "attribute 2" ;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 22. Property class constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.uri/ClassName"&gt;
-&lt;sh:property&gt;
-  &lt;sh:PropertyShape&gt;
-    &lt;sh:path rdf:resource="http://base.uri/attribute2"/&gt;
-    &lt;sh:name&gt;attribute 2&lt;/sh:name&gt;
-    &lt;sh:class rdf:resource="http://base.uri/OtherClass"/&gt;
-  &lt;/sh:PropertyShape&gt;
-&lt;/sh:property&gt;
-&lt;/sh:NodeShape&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attribute2"/&gt;
+&lt;/sh:NodeShape&gt;
+
+&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute2"&gt;
+  &lt;sh:path rdf:resource="http://base.onto.uri/attribute2"/&gt;
+  &lt;sh:name&gt;attribute 2&lt;/sh:name&gt;
+  &lt;sh:class rdf:resource="http://base.onto.uri/OtherClass"/&gt;
+&lt;/sh:PropertyShape&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -666,31 +712,37 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 23. Exact cardinality constraint in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a sh:NodeShape ;
-   sh:property [
-       sh:path :attribute1;
-       sh:minCount 2 ;
-       sh:maxCount 2 ;
-       sh:name "attribute 1" ;
-     ] ;
- .</code></pre>
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-attribute1 ;
+.
+shape:ClassName-attribute1 a sh:PropertyShape ;
+  sh:path :attribute1;
+  sh:minCount 2 ;
+  sh:maxCount 2 ;
+  sh:name "attribute 1" ;
+.</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 24. Exact cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.uri/ClassName"&gt;
-&lt;sh:property&gt;
-  &lt;sh:PropertyShape&gt;
-    &lt;sh:path rdf:resource="http://base.uri/attribute1"/&gt;
-    &lt;sh:name&gt;attribute 1&lt;/sh:name&gt;
-    &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
-        &gt;2&lt;/sh:minCount&gt;
-    &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
-        &gt;2&lt;/sh:maxCount&gt;
-  &lt;/sh:PropertyShape&gt;
-&lt;/sh:property&gt;
-&lt;/sh:NodeShape&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attribute1"/&gt;
+&lt;/sh:NodeShape&gt;
+
+&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute1"&gt;
+  &lt;sh:path rdf:resource="http://base.onto.uri/attribute1"/&gt;
+  &lt;sh:name&gt;attribute 1&lt;/sh:name&gt;
+  &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
+      &gt;2&lt;/sh:minCount&gt;
+  &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
+      &gt;2&lt;/sh:maxCount&gt;
+&lt;/sh:PropertyShape&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -698,28 +750,34 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 25. Min cardinality constraint in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a sh:NodeShape ;
-   sh:property [
-       sh:path :attribute2;
-       sh:minCount 1 ;
-       sh:name "attribute 2" ;
-     ] ;
- .</code></pre>
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-attribute2 ;
+.
+shape:ClassName-attribute2 a sh:PropertyShape ;
+  sh:path :attribute2;
+  sh:minCount 1 ;
+  sh:name "attribute 2" ;
+.</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 26. Min cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.uri/ClassName"&gt;
-&lt;sh:property&gt;
-  &lt;sh:PropertyShape&gt;
-    &lt;sh:path rdf:resource="http://base.uri/attribute2"/&gt;
-    &lt;sh:name&gt;attribute 2&lt;/sh:name&gt;
-    &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
-        &gt;1&lt;/sh:minCount&gt;
-  &lt;/sh:PropertyShape&gt;
-&lt;/sh:property&gt;
-&lt;/sh:NodeShape&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attribute2"/&gt;
+&lt;/sh:NodeShape&gt;
+
+&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute2"&gt;
+  &lt;sh:path rdf:resource="http://base.onto.uri/attribute2"/&gt;
+  &lt;sh:name&gt;attribute 2&lt;/sh:name&gt;
+  &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
+      &gt;1&lt;/sh:minCount&gt;
+&lt;/sh:PropertyShape&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -727,28 +785,34 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 27. Max cardinality constraint in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a sh:NodeShape ;
-   sh:property [
-       sh:path :attribute3;
-       sh:maxCount 2 ;
-       sh:name "attribute 3" ;
-     ] ;
- .</code></pre>
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-attribute3 ;
+.
+shape:ClassName-attribute3 a sh:PropertyShape ;
+  sh:path :attribute3;
+  sh:maxCount 2 ;
+  sh:name "attribute 3" ;
+.</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 28. Max cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.uri/ClassName"&gt;
-&lt;sh:property&gt;
-  &lt;sh:PropertyShape&gt;
-    &lt;sh:path rdf:resource="http://base.uri/attribute3"/&gt;
-    &lt;sh:name&gt;attribute 3&lt;/sh:name&gt;
-    &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
-        &gt;2&lt;/sh:maxCount&gt;
-  &lt;/sh:PropertyShape&gt;
-&lt;/sh:property&gt;
-&lt;/sh:NodeShape&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attribute3"/&gt;
+&lt;/sh:NodeShape&gt;
+
+&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute3"&gt;
+  &lt;sh:path rdf:resource="http://base.onto.uri/attribute3"/&gt;
+  &lt;sh:name&gt;attribute 3&lt;/sh:name&gt;
+  &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
+      &gt;2&lt;/sh:maxCount&gt;
+&lt;/sh:PropertyShape&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -756,31 +820,37 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 29. Min and max cardinality constraint in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a sh:NodeShape ;
-   sh:property [
-       sh:path :attribute4;
-       sh:minCount 1 ;
-       sh:maxCount 2 ;
-       sh:name "attribute 4" ;
-     ] ;
- .</code></pre>
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-attribute4 ;
+.
+shape:ClassName-attribute4 a sh:PropertyShape ;
+  sh:path :attribute4;
+  sh:minCount 1 ;
+  sh:maxCount 2 ;
+  sh:name "attribute 4" ;
+.</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 30. Min and max cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.uri/ClassName"&gt;
-&lt;sh:property&gt;
-  &lt;sh:PropertyShape&gt;
-    &lt;sh:path rdf:resource="http://base.uri/attribute4"/&gt;
-    &lt;sh:name&gt;attribute 4&lt;/sh:name&gt;
-    &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
-        &gt;1&lt;/sh:minCount&gt;
-    &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
-        &gt;2&lt;/sh:maxCount&gt;
-  &lt;/sh:PropertyShape&gt;
-&lt;/sh:property&gt;
-&lt;/sh:NodeShape&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attribute4"/&gt;
+&lt;/sh:NodeShape&gt;
+
+&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute4"&gt;
+  &lt;sh:path rdf:resource="http://base.onto.uri/attribute4"/&gt;
+  &lt;sh:name&gt;attribute 4&lt;/sh:name&gt;
+  &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
+      &gt;1&lt;/sh:minCount&gt;
+  &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
+      &gt;2&lt;/sh:maxCount&gt;
+&lt;/sh:PropertyShape&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
