@@ -124,7 +124,7 @@ The UML structured datatype has attributes and is used to define complex data ty
 Specify OWL class declaration axiom for UML structured datatype.
 ====
 
-WARNING: *TODO: Should we keep this? Code examples missing!*
+See applicable rules in Section on xref:transformation/transf-rules1.adoc#sec:class[Class Rules].
 
 === Enumeration
 
@@ -151,7 +151,7 @@ Specify SKOS concept scheme instantiation axiom for a UML enumeration.
 .Concept scheme instantiation in Turtle syntax
 [source,Turtle]
 ----
-:ControlledList a skos:ConceptScheme ;
+:EnumerationName a skos:ConceptScheme ;
   rdfs:label "Controlled list" ;
   skos:prefLabel "Controlled list"@en ;
   skos:definition "Definition of the concept scheme meaning"@en ;
@@ -161,7 +161,7 @@ Specify SKOS concept scheme instantiation axiom for a UML enumeration.
 .Concept scheme instantiation in RDF/XML syntax
 [source,XML]
 ----
-<skos:ConceptScheme rdf:about="http://base.onto.uri/ControlledList">
+<skos:ConceptScheme rdf:about="http://base.onto.uri/EnumerationName">
   <rdfs:label>Controlled list</rdfs:label>
   <skos:prefLabel xml:lang="en">Controlled list</skos:prefLabel>
   <skos:definition xml:lang="en">Definition of the concept scheme meaning</skos:definition>
@@ -182,14 +182,14 @@ Specify SKOS concept instantiation axiom for each UML enumeration item.
 [source,Turtle]
 ----
 :itemA a skos:Concept ;
-  skos:inScheme :ControlledList ;
+  skos:inScheme :EnumerationName ;
   rdfs:label "Item A" ;
   skos:prefLabel "Item A"@en ;
   skos:definition "Description fo the concept meaning"@en ;
 .
 
 :itemB a skos:Concept ;
-  skos:inScheme :ControlledList ;
+  skos:inScheme :EnumerationName ;
   rdfs:label "Item B" ;
   skos:prefLabel "Item B"@en ;
   skos:definition "Description fo the concept meaning"@en ;
@@ -201,14 +201,14 @@ Specify SKOS concept instantiation axiom for each UML enumeration item.
 [source,XML]
 ----
 <skos:Concept rdf:about="http://base.onto.uri/itemA">
-  <skos:inScheme rdf:resource="http://base.onto.uri/ControlledList"/>
+  <skos:inScheme rdf:resource="http://base.onto.uri/EnumerationName"/>
   <rdfs:label>Item A</rdfs:label>
   <skos:prefLabel xml:lang="en">Item A</skos:prefLabel>
   <skos:definition xml:lang="en">Description fo the concept meaning</skos:definition>
 </skos:Concept>
 
 <skos:Concept rdf:about="http://base.onto.uri/itemB">
-  <skos:inScheme rdf:resource="http://base.onto.uri/ControlledList"/>
+  <skos:inScheme rdf:resource="http://base.onto.uri/EnumerationName"/>
   <rdfs:label>Item B</rdfs:label>
   <skos:prefLabel xml:lang="en">Item B</skos:prefLabel>
   <skos:definition xml:lang="en">Description fo the concept meaning</skos:definition>
@@ -227,26 +227,31 @@ For a UML enumeration, specify an equivalent class restriction covering the set 
 .In-scheme equivalent class in Turtle syntax
 [source,Turtle]
 ----
-:ControlledList a owl:Class ;
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+:EnumerationName a owl:Class ;
   owl:equivalentClass [
     rdf:type owl:Restriction ;
-    owl:allValuesFrom :ControlledList ;
+    owl:allValuesFrom :EnumerationName ;
     owl:onProperty skos:inScheme ;
   ] ;
+  rdfs:subClassOf skos:Concept;
 .
 ----
 |
 .In-scheme equivalent class in RDF/XML syntax
 [source,XML]
 ----
-<owl:Class rdf:about="http://base.onto.uri/ControlledList">
+<owl:Class rdf:about="http://base.onto.uri/EnumerationName">
   <owl:equivalentClass>
     <owl:Restriction>
       <owl:onProperty rdf:resource=".../02/skos/core#inScheme"/>
-      <owl:hasValue rdf:resource="http://base.onto.uri/ControlledList"/>
+      <owl:hasValue rdf:resource="http://base.onto.uri/EnumerationName"/>
     </owl:Restriction>
   </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource=".../02/skos/core#Concept"/>
 </owl:Class>
 ----
 |===
 
+WARNING: *TODO:* Explain that we expect the controlled list to be defined externally and be imported into the SHACL shapes. +
+*TODO:* Explain that the restriction module should be imported into the SHACL module alongside the OWL core module.

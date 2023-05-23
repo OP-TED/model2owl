@@ -293,7 +293,7 @@ shape:ClassName a sh:NodeShape ;
         SELECT ?this ?that
         WHERE {
         ?this :relatesTo ?that .
-        ?that :relatesTo this .
+        ?that :relatesTo ?this .
         }""" ; ] ;
 .
 ----
@@ -544,11 +544,13 @@ Specify object property range for the target end of the dependency.
 [source,XML]
 ----
 <owl:ObjectProperty rdf:about="http://base.onto.uri/relatesTo">
-	<rdfs:range rdf:resource="skos:Concept"/>
+	<rdfs:range rdf:resource=".../02/skos/core#Concept"/>
 	</owl:ObjectProperty>
 
 ----
 |===
+
+WARNING: *TODO:* Explain that In OWL we want to state only that range is a skos:Concept, without committing to a specific list. We do this additional restriction in the data shape.
 
 [#rule:dependency-uni-range-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Dependency range shape -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
@@ -564,28 +566,31 @@ WARNING: **TODO:** Check these transformation rule examples and see if they make
 .Property class constraint in Turtle syntax
 [source,Turtle]
 ----
-:relatesTo a sh:NodeShape ;
-	sh:property [
-	a sh:PropertyShape ;
-	sh:path skos:inScheme ;
-	sh:hasValue :OtherClass ;
-	];
-	.
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-relatesTo ;
+.
+shape:ClassName-relatesTo a sh:PropertyShape ;
+  sh:path :relatesTo ;
+  sh:class :EnumerationName ;
+.
 ----
 |
 //TODO: Check if it's OK to use the same caption as for the previous rule
 .Property class constraint in RDF/XML syntax
 [source,XML]
 ----
-<sh:NodeShape rdf:about="http://base.uri/relatesTo">
-	<sh:property>
-	<sh:PropertyShape>
-	<sh:path rdf:resource="skos:inScheme"/>
-	<sh:hasValue rdf:resource="http://base.uri/OtherClass"/>
-	</sh:PropertyShape>
-	</sh:property>
-	</sh:NodeShape>
+<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
+  <sh:property rdf:resource="http://base.shape.uri/ClassName-relatesTo"/>
+</sh:NodeShape>
 
+<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relatesTo">
+  <sh:path rdf:resource="http://base.onto.uri/relatesTo"/>
+  <sh:class rdf:resource="http://base.onto.uri/EnumerationName"/>
+</sh:PropertyShape>
 ----
 |===
