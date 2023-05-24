@@ -169,6 +169,46 @@ Specify SKOS concept scheme instantiation axiom for a UML enumeration.
 ----
 |===
 
+[#rule:enumeration-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D01}. Enumeration -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+For a UML enumeration, specify an equivalent class restriction covering the set of individuals that are `skos:inScheme` of this enumeration.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.In-scheme equivalent class in Turtle syntax
+[source,Turtle]
+----
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+:EnumerationName a owl:Class ;
+  owl:equivalentClass [
+    rdf:type owl:Restriction ;
+    owl:allValuesFrom :EnumerationName ;
+    owl:onProperty skos:inScheme ;
+  ] ;
+  rdfs:subClassOf skos:Concept;
+.
+----
+|
+.In-scheme equivalent class in RDF/XML syntax
+[source,XML]
+----
+<owl:Class rdf:about="http://base.onto.uri/EnumerationName">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource=".../02/skos/core#inScheme"/>
+      <owl:hasValue rdf:resource="http://base.onto.uri/EnumerationName"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource=".../02/skos/core#Concept"/>
+</owl:Class>
+----
+|===
+
+WARNING: *TODO:* Explain that we expect the controlled list to be defined externally and be imported into the SHACL shapes. +
+*TODO:* Explain that the restriction module should be imported into the SHACL module alongside the OWL core module.
+
 [#rule:enumeration-item-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D01}. Enumeration items -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
 Specify SKOS concept instantiation axiom for each UML enumeration item.
@@ -215,43 +255,3 @@ Specify SKOS concept instantiation axiom for each UML enumeration item.
 </skos:Concept>
 ----
 |===
-
-[#rule:enumeration-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D01}. Enumeration -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
-====
-For a UML enumeration, specify an equivalent class restriction covering the set of individuals that are `skos:inScheme` of this enumeration.
-====
-
-[cols="a,a", options="noheader"]
-|===
-|
-.In-scheme equivalent class in Turtle syntax
-[source,Turtle]
-----
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-:EnumerationName a owl:Class ;
-  owl:equivalentClass [
-    rdf:type owl:Restriction ;
-    owl:allValuesFrom :EnumerationName ;
-    owl:onProperty skos:inScheme ;
-  ] ;
-  rdfs:subClassOf skos:Concept;
-.
-----
-|
-.In-scheme equivalent class in RDF/XML syntax
-[source,XML]
-----
-<owl:Class rdf:about="http://base.onto.uri/EnumerationName">
-  <owl:equivalentClass>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource=".../02/skos/core#inScheme"/>
-      <owl:hasValue rdf:resource="http://base.onto.uri/EnumerationName"/>
-    </owl:Restriction>
-  </owl:equivalentClass>
-  <rdfs:subClassOf rdf:resource=".../02/skos/core#Concept"/>
-</owl:Class>
-----
-|===
-
-WARNING: *TODO:* Explain that we expect the controlled list to be defined externally and be imported into the SHACL shapes. +
-*TODO:* Explain that the restriction module should be imported into the SHACL module alongside the OWL core module.

@@ -162,48 +162,6 @@ shape:ClassName-relatesTo a sh:PropertyShape ;
 === Association multiplicity
 
 
-[#rule:association-uni-multiplicity-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association multiplicity -- in data shape layer',reftext='{example-caption} {rule-cnt}']
-====
-Within the SHACL Node Shape corresponding to the source UML class, specify property constraints indicating minimum and maximum cardinality according to cases provided by xref:transformation/transf-rules1.adoc#rule:attribute-ds-multiplicity[rule:attribute-ds-multiplicity].
-====
-
-[cols="a,a", options="noheader"]
-|===
-|
-.Min cardinality constraint in Turtle syntax
-[source,Turtle]
-----
-@prefix : <http://base.onto.uri/> .
-@prefix shape: <http://base.shape.uri/> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
-
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-relatesTo ;
-.
-shape:ClassName-relatesTo a sh:PropertyShape ;
-  sh:path :relatesTo;
-  sh:minCount 1 ;
-  sh:name "relates to" ;
- .
-----
-|
-.Min cardinality constraint in RDF/XML syntax
-[source,XML]
-----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-relatesTo"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relatesTo">
-  <sh:path rdf:resource="http://base.onto.uri/relatesTo"/>
-  <sh:name>relates to</sh:name>
-  <sh:minCount rdf:datatype="http://www.w3.org...#integer"
-      >1</sh:minCount>
-</sh:PropertyShape>
-----
-|===
-
 [#rule:association-uni-multiplicity-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association multiplicity -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
 For the association target multiplicity, where min and max are different than ``*'' (any) and multiplicity is not [1..1], specify a subclass axiom where the source class specialises an anonymous restriction of properties formulated according to cases provided by xref:transformation/transf-rules1.adoc#rule:attribute-rc-multiplicity[rule:attribute-rc-multiplicity].
@@ -260,6 +218,48 @@ If the association multiplicity is exactly one, i.e. [1..1], specify functional 
 ----
 |===
 
+[#rule:association-uni-multiplicity-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association multiplicity -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+Within the SHACL Node Shape corresponding to the source UML class, specify property constraints indicating minimum and maximum cardinality according to cases provided by xref:transformation/transf-rules1.adoc#rule:attribute-ds-multiplicity[rule:attribute-ds-multiplicity].
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Min cardinality constraint in Turtle syntax
+[source,Turtle]
+----
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-relatesTo ;
+.
+shape:ClassName-relatesTo a sh:PropertyShape ;
+  sh:path :relatesTo;
+  sh:minCount 1 ;
+  sh:name "relates to" ;
+ .
+----
+|
+.Min cardinality constraint in RDF/XML syntax
+[source,XML]
+----
+<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
+  <sh:property rdf:resource="http://base.shape.uri/ClassName-relatesTo"/>
+</sh:NodeShape>
+
+<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relatesTo">
+  <sh:path rdf:resource="http://base.onto.uri/relatesTo"/>
+  <sh:name>relates to</sh:name>
+  <sh:minCount rdf:datatype="http://www.w3.org...#integer"
+      >1</sh:minCount>
+</sh:PropertyShape>
+----
+|===
+
 [[sec:association-self]]
 === Recursive association
 
@@ -268,6 +268,31 @@ In case of recursive associations, that are from one class to itself, (depicted 
 .Visual representation of a UML recursive association (on the left) and OWL recursive properties with cardinality restrictions on domain class (on the right)
 [#fig:association-self-visual]
 image::f11.png[11]
+
+[#rule:association-uni-asymetry-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association asymmetry -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify the asymmetry object property axiom for each end of a recursive association.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+//TODO: Check if it's OK to use the same caption as for the previous rule
+.Declaring an asymmetric property in Turtle syntax
+[source,Turtle]
+----
+:relatesTo a owl:AsymmetricProperty .
+----
+|
+//TODO: Check if it's OK to use the same caption as for the previous rule
+.Declaring an asymmetric property in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about="http://base.onto.uri/relatesTo">
+  <rdf:type rdf:resource="http://...owl#AsymmetricProperty"/>
+</rdf:Description>
+----
+|===
 
 [#rule:association-uni-asymetry-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association asymmetry -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
@@ -314,31 +339,6 @@ shape:ClassName a sh:NodeShape ;
 ----
 |===
 
-[#rule:association-uni-asymetry-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association asymmetry -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
-====
-Specify the asymmetry object property axiom for each end of a recursive association.
-====
-
-[cols="a,a", options="noheader"]
-|===
-|
-//TODO: Check if it's OK to use the same caption as for the previous rule
-.Declaring an asymmetric property in Turtle syntax
-[source,Turtle]
-----
-:relatesTo a owl:AsymmetricProperty .
-----
-|
-//TODO: Check if it's OK to use the same caption as for the previous rule
-.Declaring an asymmetric property in RDF/XML syntax
-[source,XML]
-----
-<rdf:Description rdf:about="http://base.onto.uri/relatesTo">
-  <rdf:type rdf:resource="http://...owl#AsymmetricProperty"/>
-</rdf:Description>
-----
-|===
-
 [[sec:association-bi]]
 === Bidirectional association
 
@@ -375,7 +375,84 @@ Specify inverse object property between the source and target ends of the associ
 [[sec:dependecy]]
 === Unidirectional dependency
 
-The UML dependency connectors should be transformed by the rules specified for UML association connectors.
+In general the UML dependency connectors should be transformed by the rules specified for UML association connectors.
+
+The following two rules, concerning the transformation of dependency targets, are different from the rules for the transformation of  association targets.
+
+[#rule:dependency-uni-range-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Dependency target -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify object property range for the target end of the dependency.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+//TODO: Check if it's OK to use the same caption as for the previous rule
+.Range specification in Turtle syntax
+[source,Turtle]
+----
+:relatesTo a owl:ObjectProperty ;
+	rdfs:range skos:Concept ;
+	.
+
+----
+|
+//TODO: Check if it's OK to use the same caption as for the previous rule
+.Range specification in RDF/XML syntax
+[source,XML]
+----
+<owl:ObjectProperty rdf:about="http://base.onto.uri/relatesTo">
+	<rdfs:range rdf:resource=".../02/skos/core#Concept"/>
+	</owl:ObjectProperty>
+
+----
+|===
+
+WARNING: *TODO:* Explain that In OWL we want to state only that range is a skos:Concept, without committing to a specific list. We do this additional restriction in the data shape.
+
+[#rule:dependency-uni-range-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Dependency range shape -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+Within the SHACL Node Shape corresponding to the source UML class, specify property constraints indicating the range class.
+====
+
+WARNING: **TODO:** Check these transformation rule examples and see if they make sense. It doesn't seem to.
+
+[cols="a,a", options="noheader"]
+|===
+|
+//TODO: Check if it's OK to use the same caption as for the previous rule
+.Property class constraint in Turtle syntax
+[source,Turtle]
+----
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-relatesTo ;
+.
+shape:ClassName-relatesTo a sh:PropertyShape ;
+  sh:path :relatesTo ;
+  sh:class :EnumerationName ;
+.
+----
+|
+//TODO: Check if it's OK to use the same caption as for the previous rule
+.Property class constraint in RDF/XML syntax
+[source,XML]
+----
+<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
+  <sh:property rdf:resource="http://base.shape.uri/ClassName-relatesTo"/>
+</sh:NodeShape>
+
+<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relatesTo">
+  <sh:path rdf:resource="http://base.onto.uri/relatesTo"/>
+  <sh:class rdf:resource="http://base.onto.uri/EnumerationName"/>
+</sh:PropertyShape>
+----
+|===
+
 
 [[sec:generalisation]]
 === Class generalisation
@@ -515,82 +592,3 @@ Specify equivalent property axiom for the generalisation with `\<<equivalent>>` 
 |===
 
 
-
-[[sec:tran-rules5]]
-== Additional rules
-
-In this section are specified new transformation rules that were implemented after the UML model refactoring.
-
-[#rule:dependency-uni-range-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Dependency target -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
-====
-Specify object property range for the target end of the dependency.
-====
-
-[cols="a,a", options="noheader"]
-|===
-|
-//TODO: Check if it's OK to use the same caption as for the previous rule
-.Range specification in Turtle syntax
-[source,Turtle]
-----
-:relatesTo a owl:ObjectProperty ;
-	rdfs:range skos:Concept ;
-	.
-
-----
-|
-//TODO: Check if it's OK to use the same caption as for the previous rule
-.Range specification in RDF/XML syntax
-[source,XML]
-----
-<owl:ObjectProperty rdf:about="http://base.onto.uri/relatesTo">
-	<rdfs:range rdf:resource=".../02/skos/core#Concept"/>
-	</owl:ObjectProperty>
-
-----
-|===
-
-WARNING: *TODO:* Explain that In OWL we want to state only that range is a skos:Concept, without committing to a specific list. We do this additional restriction in the data shape.
-
-[#rule:dependency-uni-range-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Dependency range shape -- in data shape layer',reftext='{example-caption} {rule-cnt}']
-====
-Within the SHACL Node Shape corresponding to the source UML class, specify property constraints indicating the range class.
-====
-
-WARNING: **TODO:** Check these transformation rule examples and see if they make sense. It doesn't seem to.
-
-[cols="a,a", options="noheader"]
-|===
-|
-//TODO: Check if it's OK to use the same caption as for the previous rule
-.Property class constraint in Turtle syntax
-[source,Turtle]
-----
-@prefix : <http://base.onto.uri/> .
-@prefix shape: <http://base.shape.uri/> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
-
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-relatesTo ;
-.
-shape:ClassName-relatesTo a sh:PropertyShape ;
-  sh:path :relatesTo ;
-  sh:class :EnumerationName ;
-.
-----
-|
-//TODO: Check if it's OK to use the same caption as for the previous rule
-.Property class constraint in RDF/XML syntax
-[source,XML]
-----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-relatesTo"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relatesTo">
-  <sh:path rdf:resource="http://base.onto.uri/relatesTo"/>
-  <sh:class rdf:resource="http://base.onto.uri/EnumerationName"/>
-</sh:PropertyShape>
-----
-|===

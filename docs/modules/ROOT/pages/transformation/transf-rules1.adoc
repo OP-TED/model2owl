@@ -389,161 +389,6 @@ In , multiplicity bounds of multiplicity element are specified in the form of `[
 image::f9.png[9]
 
 
-[#rule:attribute-ds-multiplicity,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute range shape -- in data shape layer',reftext='{example-caption} {rule-cnt}']
-====
-Within the SHACL Node Shape corresponding to the UML class, specify property constraints, corresponding to each attribute, indicating the minimum and maximum cardinality, only where min and max are different from ``*'' (any) and multiplicity is not [1..1]. The expressions are formulated according to the following cases.
-
-. exact cardinality, e.g. [2..2]
-. minimum cardinality only, e.g. [1..*]
-. maximum cardinality only, e.g. [*..2]
-. minimum and maximum cardinality , e.g. [1..2]
-====
-
-[cols="a,a", options="noheader"]
-|===
-|
-.Exact cardinality constraint in Turtle syntax
-[source,Turtle]
-----
-@prefix : <http://base.onto.uri/> .
-@prefix shape: <http://base.shape.uri/> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
-
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-attribute1 ;
-.
-shape:ClassName-attribute1 a sh:PropertyShape ;
-  sh:path :attribute1;
-  sh:minCount 2 ;
-  sh:maxCount 2 ;
-  sh:name "attribute 1" ;
-.
-----
-|
-.Exact cardinality constraint in RDF/XML syntax
-[source,XML]
-----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-attribute1"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute1">
-  <sh:path rdf:resource="http://base.onto.uri/attribute1"/>
-  <sh:name>attribute 1</sh:name>
-  <sh:minCount rdf:datatype="http://www.w3.org...#integer"
-      >2</sh:minCount>
-  <sh:maxCount rdf:datatype="http://www.w3.org...#integer"
-      >2</sh:maxCount>
-</sh:PropertyShape>
-----
-
-|
-.Min cardinality constraint in Turtle syntax
-[source,Turtle]
-----
-@prefix : <http://base.onto.uri/> .
-@prefix shape: <http://base.shape.uri/> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
-
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-attribute2 ;
-.
-shape:ClassName-attribute2 a sh:PropertyShape ;
-  sh:path :attribute2;
-  sh:minCount 1 ;
-  sh:name "attribute 2" ;
-.
-----
-|
-.Min cardinality constraint in RDF/XML syntax
-[source,XML]
-----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-attribute2"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute2">
-  <sh:path rdf:resource="http://base.onto.uri/attribute2"/>
-  <sh:name>attribute 2</sh:name>
-  <sh:minCount rdf:datatype="http://www.w3.org...#integer"
-      >1</sh:minCount>
-</sh:PropertyShape>
-----
-
-|
-.Max cardinality constraint in Turtle syntax
-[source,Turtle]
-----
-@prefix : <http://base.onto.uri/> .
-@prefix shape: <http://base.shape.uri/> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
-
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-attribute3 ;
-.
-shape:ClassName-attribute3 a sh:PropertyShape ;
-  sh:path :attribute3;
-  sh:maxCount 2 ;
-  sh:name "attribute 3" ;
-.
-----
-|
-.Max cardinality constraint in RDF/XML syntax
-[source,XML]
-----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-attribute3"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute3">
-  <sh:path rdf:resource="http://base.onto.uri/attribute3"/>
-  <sh:name>attribute 3</sh:name>
-  <sh:maxCount rdf:datatype="http://www.w3.org...#integer"
-      >2</sh:maxCount>
-</sh:PropertyShape>
-----
-
-|
-.Min and max cardinality constraint in Turtle syntax
-[source,Turtle]
-----
-@prefix : <http://base.onto.uri/> .
-@prefix shape: <http://base.shape.uri/> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
-
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-attribute4 ;
-.
-shape:ClassName-attribute4 a sh:PropertyShape ;
-  sh:path :attribute4;
-  sh:minCount 1 ;
-  sh:maxCount 2 ;
-  sh:name "attribute 4" ;
-.
-----
-|
-.Min and max cardinality constraint in RDF/XML syntax
-[source,XML]
-----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-attribute4"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute4">
-  <sh:path rdf:resource="http://base.onto.uri/attribute4"/>
-  <sh:name>attribute 4</sh:name>
-  <sh:minCount rdf:datatype="http://www.w3.org...#integer"
-      >1</sh:minCount>
-  <sh:maxCount rdf:datatype="http://www.w3.org...#integer"
-      >2</sh:maxCount>
-</sh:PropertyShape>
-----
-|===
-
 It should be noted that upper-bound of UML MultiplicityElement can be specified as unlimited: ``*''. In OWL, cardinality expressions serve to restrict the number of individuals that are connected by an object property expression to a given number of instances of a specified class expression . Therefore, UML unlimited upper-bound does not add any information to OWL ontology, hence it is not transformed.
 
 [#rule:attribute-rc-multiplicity,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute multiplicity -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
@@ -698,5 +543,160 @@ For each attribute that has multiplicity exactly one, i.e. [1..1], specify funct
 <rdf:Description rdf:about="http://base.onto.uri/attribute5">
   <rdf:type rdf:resource="http://...owl#FunctionalProperty"/>
 </rdf:Description>
+----
+|===
+
+[#rule:attribute-ds-multiplicity,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute range shape -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+Within the SHACL Node Shape corresponding to the UML class, specify property constraints, corresponding to each attribute, indicating the minimum and maximum cardinality, only where min and max are different from ``*'' (any) and multiplicity is not [1..1]. The expressions are formulated according to the following cases.
+
+. exact cardinality, e.g. [2..2]
+. minimum cardinality only, e.g. [1..*]
+. maximum cardinality only, e.g. [*..2]
+. minimum and maximum cardinality , e.g. [1..2]
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Exact cardinality constraint in Turtle syntax
+[source,Turtle]
+----
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-attribute1 ;
+.
+shape:ClassName-attribute1 a sh:PropertyShape ;
+  sh:path :attribute1;
+  sh:minCount 2 ;
+  sh:maxCount 2 ;
+  sh:name "attribute 1" ;
+.
+----
+|
+.Exact cardinality constraint in RDF/XML syntax
+[source,XML]
+----
+<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
+  <sh:property rdf:resource="http://base.shape.uri/ClassName-attribute1"/>
+</sh:NodeShape>
+
+<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute1">
+  <sh:path rdf:resource="http://base.onto.uri/attribute1"/>
+  <sh:name>attribute 1</sh:name>
+  <sh:minCount rdf:datatype="http://www.w3.org...#integer"
+      >2</sh:minCount>
+  <sh:maxCount rdf:datatype="http://www.w3.org...#integer"
+      >2</sh:maxCount>
+</sh:PropertyShape>
+----
+
+|
+.Min cardinality constraint in Turtle syntax
+[source,Turtle]
+----
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-attribute2 ;
+.
+shape:ClassName-attribute2 a sh:PropertyShape ;
+  sh:path :attribute2;
+  sh:minCount 1 ;
+  sh:name "attribute 2" ;
+.
+----
+|
+.Min cardinality constraint in RDF/XML syntax
+[source,XML]
+----
+<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
+  <sh:property rdf:resource="http://base.shape.uri/ClassName-attribute2"/>
+</sh:NodeShape>
+
+<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute2">
+  <sh:path rdf:resource="http://base.onto.uri/attribute2"/>
+  <sh:name>attribute 2</sh:name>
+  <sh:minCount rdf:datatype="http://www.w3.org...#integer"
+      >1</sh:minCount>
+</sh:PropertyShape>
+----
+
+|
+.Max cardinality constraint in Turtle syntax
+[source,Turtle]
+----
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-attribute3 ;
+.
+shape:ClassName-attribute3 a sh:PropertyShape ;
+  sh:path :attribute3;
+  sh:maxCount 2 ;
+  sh:name "attribute 3" ;
+.
+----
+|
+.Max cardinality constraint in RDF/XML syntax
+[source,XML]
+----
+<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
+  <sh:property rdf:resource="http://base.shape.uri/ClassName-attribute3"/>
+</sh:NodeShape>
+
+<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute3">
+  <sh:path rdf:resource="http://base.onto.uri/attribute3"/>
+  <sh:name>attribute 3</sh:name>
+  <sh:maxCount rdf:datatype="http://www.w3.org...#integer"
+      >2</sh:maxCount>
+</sh:PropertyShape>
+----
+
+|
+.Min and max cardinality constraint in Turtle syntax
+[source,Turtle]
+----
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-attribute4 ;
+.
+shape:ClassName-attribute4 a sh:PropertyShape ;
+  sh:path :attribute4;
+  sh:minCount 1 ;
+  sh:maxCount 2 ;
+  sh:name "attribute 4" ;
+.
+----
+|
+.Min and max cardinality constraint in RDF/XML syntax
+[source,XML]
+----
+<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
+  <sh:property rdf:resource="http://base.shape.uri/ClassName-attribute4"/>
+</sh:NodeShape>
+
+<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute4">
+  <sh:path rdf:resource="http://base.onto.uri/attribute4"/>
+  <sh:name>attribute 4</sh:name>
+  <sh:minCount rdf:datatype="http://www.w3.org...#integer"
+      >1</sh:minCount>
+  <sh:maxCount rdf:datatype="http://www.w3.org...#integer"
+      >2</sh:maxCount>
+</sh:PropertyShape>
 ----
 |===
