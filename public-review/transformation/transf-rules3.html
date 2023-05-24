@@ -181,11 +181,11 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enumeration</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:enumeration-core">Rule D.03</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:enumeration-rc">Rule D.05</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:enumeration-rc">Rule D.04</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enumeration item</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:enumeration-item-core">Rule D.04</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:enumeration-item-core">Rule D.05</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -368,17 +368,8 @@
 </div>
 </div>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<strong>TODO: Should we keep this? Code examples missing!</strong>
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>See applicable rules in Section on <a href="transf-rules1.html#sec:class" class="xref page">Class Rules</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -416,7 +407,7 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 7. Concept scheme instantiation in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ControlledList a skos:ConceptScheme ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:EnumerationName a skos:ConceptScheme ;
   rdfs:label "Controlled list" ;
   skos:prefLabel "Controlled list"@en ;
   skos:definition "Definition of the concept scheme meaning"@en ;
@@ -426,7 +417,7 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 8. Concept scheme instantiation in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;skos:ConceptScheme rdf:about="http://base.onto.uri/ControlledList"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;skos:ConceptScheme rdf:about="http://base.onto.uri/EnumerationName"&gt;
   &lt;rdfs:label&gt;Controlled list&lt;/rdfs:label&gt;
   &lt;skos:prefLabel xml:lang="en"&gt;Controlled list&lt;/skos:prefLabel&gt;
   &lt;skos:definition xml:lang="en"&gt;Definition of the concept scheme meaning&lt;/skos:definition&gt;
@@ -436,62 +427,8 @@
 </tr>
 </tbody>
 </table>
-<div id="rule:enumeration-item-core" class="exampleblock">
-<div class="title">Rule D.04. Enumeration items&#8201;&#8212;&#8201;in core ontology layer</div>
-<div class="content">
-<div class="paragraph">
-<p>Specify SKOS concept instantiation axiom for each UML enumeration item.</p>
-</div>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 9. Concept scheme instantiation in Turtle syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:itemA a skos:Concept ;
-  skos:inScheme :ControlledList ;
-  rdfs:label "Item A" ;
-  skos:prefLabel "Item A"@en ;
-  skos:definition "Description fo the concept meaning"@en ;
-.
-
-:itemB a skos:Concept ;
-  skos:inScheme :ControlledList ;
-  rdfs:label "Item B" ;
-  skos:prefLabel "Item B"@en ;
-  skos:definition "Description fo the concept meaning"@en ;
-.</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 10. Concept scheme instantiation in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;skos:Concept rdf:about="http://base.onto.uri/itemA"&gt;
-  &lt;skos:inScheme rdf:resource="http://base.onto.uri/ControlledList"/&gt;
-  &lt;rdfs:label&gt;Item A&lt;/rdfs:label&gt;
-  &lt;skos:prefLabel xml:lang="en"&gt;Item A&lt;/skos:prefLabel&gt;
-  &lt;skos:definition xml:lang="en"&gt;Description fo the concept meaning&lt;/skos:definition&gt;
-&lt;/skos:Concept&gt;
-
-&lt;skos:Concept rdf:about="http://base.onto.uri/itemB"&gt;
-  &lt;skos:inScheme rdf:resource="http://base.onto.uri/ControlledList"/&gt;
-  &lt;rdfs:label&gt;Item B&lt;/rdfs:label&gt;
-  &lt;skos:prefLabel xml:lang="en"&gt;Item B&lt;/skos:prefLabel&gt;
-  &lt;skos:definition xml:lang="en"&gt;Description fo the concept meaning&lt;/skos:definition&gt;
-&lt;/skos:Concept&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
 <div id="rule:enumeration-rc" class="exampleblock">
-<div class="title">Rule D.05. Enumeration&#8201;&#8212;&#8201;in reasoning layer</div>
+<div class="title">Rule D.04. Enumeration&#8201;&#8212;&#8201;in reasoning layer</div>
 <div class="content">
 <div class="paragraph">
 <p>For a UML enumeration, specify an equivalent class restriction covering the set of individuals that are <code>skos:inScheme</code> of this enumeration.</p>
@@ -506,28 +443,98 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 11. In-scheme equivalent class in Turtle syntax</div>
+<div class="title">Listing 9. In-scheme equivalent class in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ControlledList a owl:Class ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+:EnumerationName a owl:Class ;
   owl:equivalentClass [
     rdf:type owl:Restriction ;
-    owl:allValuesFrom :ControlledList ;
+    owl:allValuesFrom :EnumerationName ;
     owl:onProperty skos:inScheme ;
   ] ;
+  rdfs:subClassOf skos:Concept;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 12. In-scheme equivalent class in RDF/XML syntax</div>
+<div class="title">Listing 10. In-scheme equivalent class in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ControlledList"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/EnumerationName"&gt;
   &lt;owl:equivalentClass&gt;
     &lt;owl:Restriction&gt;
       &lt;owl:onProperty rdf:resource=".../02/skos/core#inScheme"/&gt;
-      &lt;owl:hasValue rdf:resource="http://base.onto.uri/ControlledList"/&gt;
+      &lt;owl:hasValue rdf:resource="http://base.onto.uri/EnumerationName"/&gt;
     &lt;/owl:Restriction&gt;
   &lt;/owl:equivalentClass&gt;
+  &lt;rdfs:subClassOf rdf:resource=".../02/skos/core#Concept"/&gt;
 &lt;/owl:Class&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<strong>TODO:</strong> Explain that we expect the controlled list to be defined externally and be imported into the SHACL shapes.<br>
+<strong>TODO:</strong> Explain that the restriction module should be imported into the SHACL module alongside the OWL core module.
+</td>
+</tr>
+</table>
+</div>
+<div id="rule:enumeration-item-core" class="exampleblock">
+<div class="title">Rule D.05. Enumeration items&#8201;&#8212;&#8201;in core ontology layer</div>
+<div class="content">
+<div class="paragraph">
+<p>Specify SKOS concept instantiation axiom for each UML enumeration item.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 11. Concept scheme instantiation in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:itemA a skos:Concept ;
+  skos:inScheme :EnumerationName ;
+  rdfs:label "Item A" ;
+  skos:prefLabel "Item A"@en ;
+  skos:definition "Description fo the concept meaning"@en ;
+.
+
+:itemB a skos:Concept ;
+  skos:inScheme :EnumerationName ;
+  rdfs:label "Item B" ;
+  skos:prefLabel "Item B"@en ;
+  skos:definition "Description fo the concept meaning"@en ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 12. Concept scheme instantiation in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;skos:Concept rdf:about="http://base.onto.uri/itemA"&gt;
+  &lt;skos:inScheme rdf:resource="http://base.onto.uri/EnumerationName"/&gt;
+  &lt;rdfs:label&gt;Item A&lt;/rdfs:label&gt;
+  &lt;skos:prefLabel xml:lang="en"&gt;Item A&lt;/skos:prefLabel&gt;
+  &lt;skos:definition xml:lang="en"&gt;Description fo the concept meaning&lt;/skos:definition&gt;
+&lt;/skos:Concept&gt;
+
+&lt;skos:Concept rdf:about="http://base.onto.uri/itemB"&gt;
+  &lt;skos:inScheme rdf:resource="http://base.onto.uri/EnumerationName"/&gt;
+  &lt;rdfs:label&gt;Item B&lt;/rdfs:label&gt;
+  &lt;skos:prefLabel xml:lang="en"&gt;Item B&lt;/skos:prefLabel&gt;
+  &lt;skos:definition xml:lang="en"&gt;Description fo the concept meaning&lt;/skos:definition&gt;
+&lt;/skos:Concept&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>

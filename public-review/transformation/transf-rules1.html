@@ -192,8 +192,8 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Attribute multiplicity</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:attribute-ds-multiplicity">Rule C.08</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:attribute-rc-multiplicity">Rule C.09</a>, <a href="#rule:attribute-rc-multiplicity-one">Rule C.10</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:attribute-ds-multiplicity">Rule C.10</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:attribute-rc-multiplicity">Rule C.08</a>, <a href="#rule:attribute-rc-multiplicity-one">Rule C.09</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -583,7 +583,7 @@ shape:ClassName a sh:NodeShape ;
 </tbody>
 </table>
 <div id="rule:attribute-ds-range" class="exampleblock">
-<div class="title">Rule C.07. Attribute type&#8201;&#8212;&#8201;in reasoning layer</div>
+<div class="title">Rule C.07. Attribute type&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
 <p>Within the SHACL Node Shape corresponding to the UML class, specify property constraints, for each UML attribute, indicating the range class or datatype.</p>
@@ -678,189 +678,11 @@ shape:ClassName-attribute2 a sh:PropertyShape ;
 </div>
 <div class="title">Figure 4. Visual representation of class attributes with multiplicity in UML (on the left) and OWL class specialising an anonymous restriction of properties (on the right)</div>
 </div>
-<div id="rule:attribute-ds-multiplicity" class="exampleblock">
-<div class="title">Rule C.08. Attribute range shape&#8201;&#8212;&#8201;in data shape layer</div>
-<div class="content">
-<div class="paragraph">
-<p>Within the SHACL Node Shape corresponding to the UML class, specify property constraints, corresponding to each attribute, indicating the minimum and maximum cardinality, only where min and max are different from ``*'' (any) and multiplicity is not [1..1]. The expressions are formulated according to the following cases.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>exact cardinality, e.g. [2..2]</p>
-</li>
-<li>
-<p>minimum cardinality only, e.g. [1..*]</p>
-</li>
-<li>
-<p>maximum cardinality only, e.g. [*..2]</p>
-</li>
-<li>
-<p>minimum and maximum cardinality , e.g. [1..2]</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 23. Exact cardinality constraint in Turtle syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
-@prefix shape: &lt;http://base.shape.uri/&gt; .
-@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
-
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-attribute1 ;
-.
-shape:ClassName-attribute1 a sh:PropertyShape ;
-  sh:path :attribute1;
-  sh:minCount 2 ;
-  sh:maxCount 2 ;
-  sh:name "attribute 1" ;
-.</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 24. Exact cardinality constraint in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
-  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attribute1"/&gt;
-&lt;/sh:NodeShape&gt;
-
-&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute1"&gt;
-  &lt;sh:path rdf:resource="http://base.onto.uri/attribute1"/&gt;
-  &lt;sh:name&gt;attribute 1&lt;/sh:name&gt;
-  &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
-      &gt;2&lt;/sh:minCount&gt;
-  &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
-      &gt;2&lt;/sh:maxCount&gt;
-&lt;/sh:PropertyShape&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 25. Min cardinality constraint in Turtle syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
-@prefix shape: &lt;http://base.shape.uri/&gt; .
-@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
-
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-attribute2 ;
-.
-shape:ClassName-attribute2 a sh:PropertyShape ;
-  sh:path :attribute2;
-  sh:minCount 1 ;
-  sh:name "attribute 2" ;
-.</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 26. Min cardinality constraint in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
-  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attribute2"/&gt;
-&lt;/sh:NodeShape&gt;
-
-&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute2"&gt;
-  &lt;sh:path rdf:resource="http://base.onto.uri/attribute2"/&gt;
-  &lt;sh:name&gt;attribute 2&lt;/sh:name&gt;
-  &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
-      &gt;1&lt;/sh:minCount&gt;
-&lt;/sh:PropertyShape&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 27. Max cardinality constraint in Turtle syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
-@prefix shape: &lt;http://base.shape.uri/&gt; .
-@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
-
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-attribute3 ;
-.
-shape:ClassName-attribute3 a sh:PropertyShape ;
-  sh:path :attribute3;
-  sh:maxCount 2 ;
-  sh:name "attribute 3" ;
-.</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 28. Max cardinality constraint in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
-  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attribute3"/&gt;
-&lt;/sh:NodeShape&gt;
-
-&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute3"&gt;
-  &lt;sh:path rdf:resource="http://base.onto.uri/attribute3"/&gt;
-  &lt;sh:name&gt;attribute 3&lt;/sh:name&gt;
-  &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
-      &gt;2&lt;/sh:maxCount&gt;
-&lt;/sh:PropertyShape&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 29. Min and max cardinality constraint in Turtle syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
-@prefix shape: &lt;http://base.shape.uri/&gt; .
-@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
-
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-attribute4 ;
-.
-shape:ClassName-attribute4 a sh:PropertyShape ;
-  sh:path :attribute4;
-  sh:minCount 1 ;
-  sh:maxCount 2 ;
-  sh:name "attribute 4" ;
-.</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 30. Min and max cardinality constraint in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
-  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attribute4"/&gt;
-&lt;/sh:NodeShape&gt;
-
-&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute4"&gt;
-  &lt;sh:path rdf:resource="http://base.onto.uri/attribute4"/&gt;
-  &lt;sh:name&gt;attribute 4&lt;/sh:name&gt;
-  &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
-      &gt;1&lt;/sh:minCount&gt;
-  &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
-      &gt;2&lt;/sh:maxCount&gt;
-&lt;/sh:PropertyShape&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
 <div class="paragraph">
 <p>It should be noted that upper-bound of UML MultiplicityElement can be specified as unlimited: ``*''. In OWL, cardinality expressions serve to restrict the number of individuals that are connected by an object property expression to a given number of instances of a specified class expression . Therefore, UML unlimited upper-bound does not add any information to OWL ontology, hence it is not transformed.</p>
 </div>
 <div id="rule:attribute-rc-multiplicity" class="exampleblock">
-<div class="title">Rule C.09. Attribute multiplicity&#8201;&#8212;&#8201;in reasoning layer</div>
+<div class="title">Rule C.08. Attribute multiplicity&#8201;&#8212;&#8201;in reasoning layer</div>
 <div class="content">
 <div class="paragraph">
 <p>For each attribute multiplicity of the form ( min .. max ), where min and max are different than ``*'' (any), specify a subclass axiom where the OWL class, corresponding to the UML class, specialises an anonymous restriction of properties formulated according to the following cases.</p>
@@ -891,7 +713,7 @@ shape:ClassName-attribute4 a sh:PropertyShape ;
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 31. Exact cardinality constraint in Turtle syntax</div>
+<div class="title">Listing 23. Exact cardinality constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a owl:Class ;
   rdfs:subClassOf [ a owl:Restriction ;
@@ -902,7 +724,7 @@ shape:ClassName-attribute4 a sh:PropertyShape ;
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 32. Exact cardinality constraint in RDF/XML syntax</div>
+<div class="title">Listing 24. Exact cardinality constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
   &lt;rdfs:subClassOf&gt;
@@ -917,7 +739,7 @@ shape:ClassName-attribute4 a sh:PropertyShape ;
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 33. Min cardinality constraint in Turtle syntax</div>
+<div class="title">Listing 25. Min cardinality constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a owl:Class ;
   rdfs:subClassOf [ a owl:Restriction ;
@@ -928,7 +750,7 @@ shape:ClassName-attribute4 a sh:PropertyShape ;
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 34. Min cardinality constraint in RDF/XML syntax</div>
+<div class="title">Listing 26. Min cardinality constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
   &lt;rdfs:subClassOf&gt;
@@ -943,7 +765,7 @@ shape:ClassName-attribute4 a sh:PropertyShape ;
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 35. Max cardinality constraint in Turtle syntax</div>
+<div class="title">Listing 27. Max cardinality constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a owl:Class ;
   rdfs:subClassOf [ a owl:Restriction ;
@@ -954,7 +776,7 @@ shape:ClassName-attribute4 a sh:PropertyShape ;
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 36. Max cardinality constraint in RDF/XML syntax</div>
+<div class="title">Listing 28. Max cardinality constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
   &lt;rdfs:subClassOf&gt;
@@ -969,7 +791,7 @@ shape:ClassName-attribute4 a sh:PropertyShape ;
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 37. Min and max cardinality constraint in Turtle syntax</div>
+<div class="title">Listing 29. Min and max cardinality constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a owl:Class ;
   rdfs:subClassOf [
@@ -987,7 +809,7 @@ shape:ClassName-attribute4 a sh:PropertyShape ;
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 38. Min and max cardinality constraint in RDF/XML syntax</div>
+<div class="title">Listing 30. Min and max cardinality constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
   &lt;rdfs:subClassOf&gt;
@@ -1016,7 +838,7 @@ shape:ClassName-attribute4 a sh:PropertyShape ;
 <p>Attributes with multiplicity exactly one correspond to functional object or data properties in OWL. If we apply the previous rule specifying min and max cardinality will lead to inconsistent ontology. To avoid that it is important that min and max cardinality are not generated from [1..1] multiplicity but only functional property axiom.</p>
 </div>
 <div id="rule:attribute-rc-multiplicity-one" class="exampleblock">
-<div class="title">Rule C.10. Attribute multiplicity "one" &#8201;&#8212;&#8201;in reasoning layer</div>
+<div class="title">Rule C.09. Attribute multiplicity "one" &#8201;&#8212;&#8201;in reasoning layer</div>
 <div class="content">
 <div class="paragraph">
 <p>For each attribute that has multiplicity exactly one, i.e. [1..1], specify functional property axiom.</p>
@@ -1031,17 +853,195 @@ shape:ClassName-attribute4 a sh:PropertyShape ;
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 39. Declaring a functional property in Turtle syntax</div>
+<div class="title">Listing 31. Declaring a functional property in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute5 a owl:FunctionalProperty .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 40. Declaring a functional property in RDF/XML syntax</div>
+<div class="title">Listing 32. Declaring a functional property in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/attribute5"&gt;
   &lt;rdf:type rdf:resource="http://...owl#FunctionalProperty"/&gt;
 &lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="rule:attribute-ds-multiplicity" class="exampleblock">
+<div class="title">Rule C.10. Attribute range shape&#8201;&#8212;&#8201;in data shape layer</div>
+<div class="content">
+<div class="paragraph">
+<p>Within the SHACL Node Shape corresponding to the UML class, specify property constraints, corresponding to each attribute, indicating the minimum and maximum cardinality, only where min and max are different from ``*'' (any) and multiplicity is not [1..1]. The expressions are formulated according to the following cases.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>exact cardinality, e.g. [2..2]</p>
+</li>
+<li>
+<p>minimum cardinality only, e.g. [1..*]</p>
+</li>
+<li>
+<p>maximum cardinality only, e.g. [*..2]</p>
+</li>
+<li>
+<p>minimum and maximum cardinality , e.g. [1..2]</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 33. Exact cardinality constraint in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-attribute1 ;
+.
+shape:ClassName-attribute1 a sh:PropertyShape ;
+  sh:path :attribute1;
+  sh:minCount 2 ;
+  sh:maxCount 2 ;
+  sh:name "attribute 1" ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 34. Exact cardinality constraint in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attribute1"/&gt;
+&lt;/sh:NodeShape&gt;
+
+&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute1"&gt;
+  &lt;sh:path rdf:resource="http://base.onto.uri/attribute1"/&gt;
+  &lt;sh:name&gt;attribute 1&lt;/sh:name&gt;
+  &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
+      &gt;2&lt;/sh:minCount&gt;
+  &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
+      &gt;2&lt;/sh:maxCount&gt;
+&lt;/sh:PropertyShape&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 35. Min cardinality constraint in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-attribute2 ;
+.
+shape:ClassName-attribute2 a sh:PropertyShape ;
+  sh:path :attribute2;
+  sh:minCount 1 ;
+  sh:name "attribute 2" ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 36. Min cardinality constraint in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attribute2"/&gt;
+&lt;/sh:NodeShape&gt;
+
+&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute2"&gt;
+  &lt;sh:path rdf:resource="http://base.onto.uri/attribute2"/&gt;
+  &lt;sh:name&gt;attribute 2&lt;/sh:name&gt;
+  &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
+      &gt;1&lt;/sh:minCount&gt;
+&lt;/sh:PropertyShape&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 37. Max cardinality constraint in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-attribute3 ;
+.
+shape:ClassName-attribute3 a sh:PropertyShape ;
+  sh:path :attribute3;
+  sh:maxCount 2 ;
+  sh:name "attribute 3" ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 38. Max cardinality constraint in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attribute3"/&gt;
+&lt;/sh:NodeShape&gt;
+
+&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute3"&gt;
+  &lt;sh:path rdf:resource="http://base.onto.uri/attribute3"/&gt;
+  &lt;sh:name&gt;attribute 3&lt;/sh:name&gt;
+  &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
+      &gt;2&lt;/sh:maxCount&gt;
+&lt;/sh:PropertyShape&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 39. Min and max cardinality constraint in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-attribute4 ;
+.
+shape:ClassName-attribute4 a sh:PropertyShape ;
+  sh:path :attribute4;
+  sh:minCount 1 ;
+  sh:maxCount 2 ;
+  sh:name "attribute 4" ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 40. Min and max cardinality constraint in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attribute4"/&gt;
+&lt;/sh:NodeShape&gt;
+
+&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute4"&gt;
+  &lt;sh:path rdf:resource="http://base.onto.uri/attribute4"/&gt;
+  &lt;sh:name&gt;attribute 4&lt;/sh:name&gt;
+  &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
+      &gt;1&lt;/sh:minCount&gt;
+  &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
+      &gt;2&lt;/sh:maxCount&gt;
+&lt;/sh:PropertyShape&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>

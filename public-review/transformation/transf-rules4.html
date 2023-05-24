@@ -167,34 +167,34 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-label">Rule T.01</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-label">Rule T.01</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-label">Rule T.01</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-label-core">Rule T.01</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-label-ds">Rule T.02</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Note</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-definition">Rule T.02</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-definition">Rule T.02</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-definition">Rule T.02</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-definition-core">Rule T.03</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-definition-ds">Rule T.04</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-external-comment">Rule T.03</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-external-comment">Rule T.03</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-external-comment">Rule T.03</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-external-comment-core">Rule T.05</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-external-comment-ds">Rule T.06</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
 <div class="sect2">
 <h3 id="_name"><a class="anchor" href="#_name"></a>Name</h3>
 <div class="paragraph">
-<p>Most of the UML elements are named. The UML conventions dedicate an extensive section to the naming conventions and how deterministically to generate an URI and a label from the UML element name. The label should be associated to the resource URI by <code>rdfs:label</code> and, even if redundant, also as <code>skos:prefLabel</code>.</p>
+<p>Most of the UML elements are named. The UML conventions dedicate an extensive section to the naming conventions and how to deterministically generate a URI and a label from the UML element name. By default, we recommend the use of the SKOS lexicalization (<code>skos:prefLabel</code>) in the core ontology layer. In the future, this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (<code>rdfs:label</code>) instead of, or in addition to, the SKOS lexicalization.</p>
 </div>
-<div id="rule:element-label" class="exampleblock">
-<div class="title">Rule T.01. Label</div>
+<div id="rule:element-label-core" class="exampleblock">
+<div class="title">Rule T.01. Label&#8201;&#8212;&#8201;in core ontology layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify a label for UML element.</p>
+<p>Specify a label for UML element. <strong>TODO:</strong> Update</p>
 </div>
 </div>
 </div>
@@ -209,7 +209,6 @@
 <div class="title">Listing 1. Labels in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ResourceName
-  rdfs:label "Resource name" ;
   skos:prefLabel "Resource name"@en ;
 .</code></pre>
 </div>
@@ -218,7 +217,6 @@
 <div class="title">Listing 2. Labels in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ResourceName"&gt;
-  &lt;rdfs:label&gt;Resource name&lt;/rdfs:label&gt;
   &lt;skos:prefLabel xml:lang="en"&gt;Resource name&lt;/skos:prefLabel&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
@@ -226,17 +224,11 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="sect2">
-<h3 id="_note"><a class="anchor" href="#_note"></a>Note</h3>
-<div class="paragraph">
-<p>Most of the UML element foresee provisions of descriptions and notes. They should be transformed into <code>rdfs:comment</code> and <code>skos:definition</code>.</p>
-</div>
-<div id="rule:element-definition" class="exampleblock">
-<div class="title">Rule T.02. Description</div>
+<div id="rule:element-label-ds" class="exampleblock">
+<div class="title">Rule T.02. Label&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify a description for UML element.</p>
+<p>Specify a label for UML element. <strong>TODO:</strong> Update</p>
 </div>
 </div>
 </div>
@@ -248,20 +240,141 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 3. Description in Turtle syntax</div>
+<div class="title">Listing 3. Label declaration for NodeShape in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ResourceName
-  rdfs:comment "Description of the resource meaning" ;
-  skos:definition "Resource name"@en ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+shape:ClassName
+  rdfs:label "Class name" ;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 4. Description in RDF/XML syntax</div>
+<div class="title">Listing 4. Label declaration for NodeShape in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;rdfs:label&gt;Class name&lt;/rdfs:label&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 5. Label declaration for PropertyShape in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName-PropertyName
+  sh:name "Property name" ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 6. Label declaration for PropertyShape in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-PropertyName"&gt;
+  &lt;sh:name&gt;Property name&lt;/sh:name&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_note"><a class="anchor" href="#_note"></a>Note</h3>
+<div class="paragraph">
+<p>Most of the UML element foresee provisions of descriptions and notes. They should be transformed into <code>rdfs:comment</code> and <code>skos:definition</code>.
+By default, we recommend the use of the SKOS lexicalization (<code>skos:definition</code>) in the core ontology layer. In the future this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (<code>rdfs:comment</code>) instead of, or in addition to, the SKOS lexicalization.</p>
+</div>
+<div id="rule:element-definition-core" class="exampleblock">
+<div class="title">Rule T.03. Description&#8201;&#8212;&#8201;in core ontology layer</div>
+<div class="content">
+<div class="paragraph">
+<p>Specify a description for UML element. <strong>TODO:</strong> Update</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 7. Description in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ResourceName
+  skos:definition "Description of the resource meaning"@en ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 8. Description in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ResourceName"&gt;
-  &lt;rdfs:comment&gt;Description of the resource meaning&lt;/rdfs:comment&gt;
   &lt;skos:definition xml:lang="en"&gt;Description of the resource meaning&lt;/skos:definition&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="rule:element-definition-ds" class="exampleblock">
+<div class="title">Rule T.04. Description&#8201;&#8212;&#8201;in data shape layer</div>
+<div class="content">
+<div class="paragraph">
+<p>Specify a description for UML element. <strong>TODO:</strong> Update</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 9. Note declaration for NodeShape in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+shape:ClassName
+  rdfs:comment "Description of the meaning of the class" ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 10. Note declaration for NodeShape in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;rdfs:comment&gt;Description of the meaning of the class&lt;/rdfs:label&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 11. Note declaration for PropertyShape in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName-PropertyName
+  sh:description "Description of the meaning of the property" ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 12. Note declaration for PropertyShape in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-PropertyName"&gt;
+  &lt;sh:description&gt;Description of the meaning of the property&lt;/sh:description&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -280,11 +393,26 @@
 </div>
 <div class="title">Figure 1. Visual representation of a UML comment (on the left) and an OWL comment (on the right)</div>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<strong>TODO:</strong> Should we update the image to better reflect how the transformation is being done now?
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>As UML Comments add no semantics, they are not used in any method of semantic validation. In OWL the AnnotationAssertion axiom does not add any semantics either, and it only improves readability.</p>
 </div>
-<div id="rule:element-external-comment" class="exampleblock">
-<div class="title">Rule T.03. Comment</div>
+<div class="paragraph">
+<p>By default, we recommend the use of the SKOS lexicalization (<code>skos:editorialNote</code>) in the core ontology layer. In the future this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (<code>rdfs:comment</code>) instead of, or in addition to, the SKOS lexicalization.</p>
+</div>
+<div id="rule:element-external-comment-core" class="exampleblock">
+<div class="title">Rule T.05. Comment&#8201;&#8212;&#8201;in core ontology layer</div>
 <div class="content">
 <div class="paragraph">
 <p>Specify annotation axiom for UML Comment associated to a UML element.</p>
@@ -299,26 +427,107 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 5. Comment in Turtle syntax</div>
+<div class="title">Listing 13. Comment in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
-  rdfs:comment "This is an additional comment on ClassName" ;
   skos:editorialNote "This is an additional comment on ClassName"@en ;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 6. Comment in RDF/XML syntax</div>
+<div class="title">Listing 14. Comment in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ClassName"&gt;
-  &lt;rdfs:comment&gt;This is an additional comment on ClassName&lt;/rdfs:comment&gt;
-  &lt;skos:editorialNote xml:lang="en"&gt;This is an additional comment on ClassName&lt;/skos:definition&gt;
+  &lt;skos:editorialNote xml:lang="en"&gt;This is an additional comment on ClassName&lt;/skos:editorialNote&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
 </tbody>
 </table>
+<div id="rule:element-external-comment-ds" class="exampleblock">
+<div class="title">Rule T.06. Comment&#8201;&#8212;&#8201;in data shape layer</div>
+<div class="content">
+<div class="paragraph">
+<p>Specify an annotation on the data shape for the UML Comment associated to a UML element.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 15. Note declaration for NodeShape in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+shape:ClassName
+  rdfs:comment "This is an additional comment on ClassName" ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 16. Note declaration for NodeShape in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;rdfs:comment&gt;This is an additional comment on ClassName&lt;/rdfs:label&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 17. Note declaration for PropertyShape in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+shape:ClassName-PropertyName
+  sh:description "This is an additional comment on PropertyName" ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 18. Note declaration for PropertyShape in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-PropertyName"&gt;
+  &lt;sh:description&gt;This is an additional comment on PropertyName&lt;/sh:description&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<strong>QUESTION:</strong> should we use here <code>rdfs:comment</code> instead of adding a second value to <code>sh:description</code>?
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+TODO: Discuss whether we should include language tags (by default, or if explicitly specified in the model, or if controlled by configuration)?
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>

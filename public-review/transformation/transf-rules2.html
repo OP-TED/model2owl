@@ -186,14 +186,14 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Association multiplicity</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:association-uni-multiplicity-ds">Rule R.05</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:association-uni-multiplicity-rc">Rule R.06</a>, <a href="#rule:association-uni-multiplicity-one-rc">Rule R.07</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:association-uni-multiplicity-ds">Rule R.07</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:association-uni-multiplicity-rc">Rule R.05</a>, <a href="#rule:association-uni-multiplicity-one-rc">Rule R.06</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Association asymmetry</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:association-uni-asymetry-ds">Rule R.08</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:association-uni-asymetry-rc">Rule R.09</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:association-uni-asymetry-ds">Rule R.09</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:association-uni-asymetry-rc">Rule R.08</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Association inverse</p></td>
@@ -216,24 +216,24 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Dependency range</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:dependency-uni-range-ds">Rule R.16</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:dependency-uni-range-rc">Rule R.15</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:dependency-uni-range-ds">Rule R.12</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:dependency-uni-range-rc">Rule R.11</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Dependency multiplicity</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:association-uni-multiplicity-ds">Rule R.05</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:association-uni-multiplicity-rc">Rule R.06</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:association-uni-multiplicity-ds">Rule R.07</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:association-uni-multiplicity-rc">Rule R.05</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Class generalisation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:generalisation-class-core">Rule R.11</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:generalisation-class-core">Rule R.13</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Property generalisation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:generalisation-property-core">Rule R.12</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:generalisation-property-core">Rule R.14</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -241,13 +241,13 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Class equivalence</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:equivalent-classes-rc">Rule R.13</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:equivalent-classes-rc">Rule R.15</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Property equivalence</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:equivalent-properties-rc">Rule R.14</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:equivalent-properties-rc">Rule R.16</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -425,8 +425,82 @@ shape:ClassName-relatesTo a sh:PropertyShape ;
 </div>
 <div class="sect2">
 <h3 id="_association_multiplicity"><a class="anchor" href="#_association_multiplicity"></a>Association multiplicity</h3>
+<div id="rule:association-uni-multiplicity-rc" class="exampleblock">
+<div class="title">Rule R.05. Association multiplicity&#8201;&#8212;&#8201;in reasoning layer</div>
+<div class="content">
+<div class="paragraph">
+<p>For the association target multiplicity, where min and max are different than ``*'' (any) and multiplicity is not [1..1], specify a subclass axiom where the source class specialises an anonymous restriction of properties formulated according to cases provided by <a href="transf-rules1.html#rule:attribute-rc-multiplicity" class="xref page">rule:attribute-rc-multiplicity</a>.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 9. Min cardinality restriction in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a owl:Class ;
+  rdfs:subClassOf [ a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:integer;
+      owl:onProperty :relatesTo ;
+    ] ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 10. Min cardinality restriction in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
+  &lt;rdfs:subClassOf&gt;
+    &lt;owl:Restriction&gt;
+      &lt;owl:onProperty rdf:resource="http://base.onto.uri/relatesTo"/&gt;
+      &lt;owl:minCardinality rdf:datatype="http://www.w3.org...#integer" &gt;1&lt;/owl:cardinality&gt;
+    &lt;/owl:Restriction&gt;
+  &lt;/rdfs:subClassOf&gt;
+&lt;/owl:Class&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="rule:association-uni-multiplicity-one-rc" class="exampleblock">
+<div class="title">Rule R.06. Association multiplicity "one"&#8201;&#8212;&#8201;in reasoning layer</div>
+<div class="content">
+<div class="paragraph">
+<p>If the association multiplicity is exactly one, i.e. [1..1], specify functional property axiom like in <a href="transf-rules1.html#rule:attribute-rc-multiplicity-one" class="xref page">rule:attribute-rc-multiplicity-one</a>.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 11. Declaring a functional property in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relatesTo a owl:FunctionalProperty .</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 12. Declaring a functional property in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/relatesTo"&gt;
+  &lt;rdf:type rdf:resource="http://...owl#FunctionalProperty"/&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div id="rule:association-uni-multiplicity-ds" class="exampleblock">
-<div class="title">Rule R.05. Association multiplicity&#8201;&#8212;&#8201;in data shape layer</div>
+<div class="title">Rule R.07. Association multiplicity&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
 <p>Within the SHACL Node Shape corresponding to the source UML class, specify property constraints indicating minimum and maximum cardinality according to cases provided by <a href="transf-rules1.html#rule:attribute-ds-multiplicity" class="xref page">rule:attribute-ds-multiplicity</a>.</p>
@@ -441,7 +515,7 @@ shape:ClassName-relatesTo a sh:PropertyShape ;
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 9. Min cardinality constraint in Turtle syntax</div>
+<div class="title">Listing 13. Min cardinality constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
 @prefix shape: &lt;http://base.shape.uri/&gt; .
@@ -459,7 +533,7 @@ shape:ClassName-relatesTo a sh:PropertyShape ;
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 10. Min cardinality constraint in RDF/XML syntax</div>
+<div class="title">Listing 14. Min cardinality constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
   &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-relatesTo"/&gt;
@@ -476,85 +550,11 @@ shape:ClassName-relatesTo a sh:PropertyShape ;
 </tr>
 </tbody>
 </table>
-<div id="rule:association-uni-multiplicity-rc" class="exampleblock">
-<div class="title">Rule R.06. Association multiplicity&#8201;&#8212;&#8201;in reasoning layer</div>
-<div class="content">
-<div class="paragraph">
-<p>For the association target multiplicity, where min and max are different than ``*'' (any) and multiplicity is not [1..1], specify a subclass axiom where the source class specialises an anonymous restriction of properties formulated according to cases provided by <a href="transf-rules1.html#rule:attribute-rc-multiplicity" class="xref page">rule:attribute-rc-multiplicity</a>.</p>
-</div>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 11. Min cardinality restriction in Turtle syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a owl:Class ;
-  rdfs:subClassOf [ a owl:Restriction ;
-      owl:minCardinality "1"^^xsd:integer;
-      owl:onProperty :relatesTo ;
-    ] ;
-.</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 12. Min cardinality restriction in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
-  &lt;rdfs:subClassOf&gt;
-    &lt;owl:Restriction&gt;
-      &lt;owl:onProperty rdf:resource="http://base.onto.uri/relatesTo"/&gt;
-      &lt;owl:minCardinality rdf:datatype="http://www.w3.org...#integer" &gt;1&lt;/owl:cardinality&gt;
-    &lt;/owl:Restriction&gt;
-  &lt;/rdfs:subClassOf&gt;
-&lt;/owl:Class&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div id="rule:association-uni-multiplicity-one-rc" class="exampleblock">
-<div class="title">Rule R.07. Association multiplicity "one"&#8201;&#8212;&#8201;in reasoning layer</div>
-<div class="content">
-<div class="paragraph">
-<p>If the association multiplicity is exactly one, i.e. [1..1], specify functional property axiom like in <a href="transf-rules1.html#rule:attribute-rc-multiplicity-one" class="xref page">rule:attribute-rc-multiplicity-one</a>.</p>
-</div>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 13. Declaring a functional property in Turtle syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relatesTo a owl:FunctionalProperty .</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 14. Declaring a functional property in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/relatesTo"&gt;
-  &lt;rdf:type rdf:resource="http://...owl#FunctionalProperty"/&gt;
-&lt;/rdf:Description&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="sect2">
 <h3 id="sec:association-self"><a class="anchor" href="#sec:association-self"></a>Recursive association</h3>
 <div class="paragraph">
-<p>In case of recursive associations, that are from one class to itself, (depicted in <a href="#fig:association-self-visual">Figure 2</a>), the transformation rules must be applied as in the case of regular unidirectional association, which are from <a href="#rule:association-uni-core">Rule R.01</a> to <a href="#rule:association-uni-multiplicity-one-rc">Rule R.07</a>. In addition, the association must be marked as asymmetric expressed in <a href="#rule:association-uni-asymetry-ds">Rule R.08</a> and <a href="#rule:association-uni-asymetry-rc">Rule R.09</a>.</p>
+<p>In case of recursive associations, that are from one class to itself, (depicted in <a href="#fig:association-self-visual">Figure 2</a>), the transformation rules must be applied as in the case of regular unidirectional association, which are from <a href="#rule:association-uni-core">Rule R.01</a> to <a href="#rule:association-uni-multiplicity-one-rc">Rule R.06</a>. In addition, the association must be marked as asymmetric expressed in <a href="#rule:association-uni-asymetry-ds">Rule R.09</a> and <a href="#rule:association-uni-asymetry-rc">Rule R.08</a>.</p>
 </div>
 <div id="fig:association-self-visual" class="imageblock">
 <div class="content">
@@ -562,8 +562,40 @@ shape:ClassName-relatesTo a sh:PropertyShape ;
 </div>
 <div class="title">Figure 2. Visual representation of a UML recursive association (on the left) and OWL recursive properties with cardinality restrictions on domain class (on the right)</div>
 </div>
+<div id="rule:association-uni-asymetry-rc" class="exampleblock">
+<div class="title">Rule R.08. Association asymmetry&#8201;&#8212;&#8201;in reasoning layer</div>
+<div class="content">
+<div class="paragraph">
+<p>Specify the asymmetry object property axiom for each end of a recursive association.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 15. Declaring an asymmetric property in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relatesTo a owl:AsymmetricProperty .</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 16. Declaring an asymmetric property in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/relatesTo"&gt;
+  &lt;rdf:type rdf:resource="http://...owl#AsymmetricProperty"/&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div id="rule:association-uni-asymetry-ds" class="exampleblock">
-<div class="title">Rule R.08. Association asymmetry&#8201;&#8212;&#8201;in data shape layer</div>
+<div class="title">Rule R.09. Association asymmetry&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
 <p>Within the SHACL Node Shape corresponding to the UML class, specify SPARQL constraint selecting instances connected by the object property in a reciprocal manner.</p>
@@ -590,7 +622,7 @@ shape:ClassName-relatesTo a sh:PropertyShape ;
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 15. Declaring an asymmetric property in Turtle syntax</div>
+<div class="title">Listing 17. Declaring an asymmetric property in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
 @prefix shape: &lt;http://base.shape.uri/&gt; .
@@ -603,13 +635,13 @@ shape:ClassName a sh:NodeShape ;
         SELECT ?this ?that
         WHERE {
         ?this :relatesTo ?that .
-        ?that :relatesTo this .
+        ?that :relatesTo ?this .
         }""" ; ] ;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 16. Declaring an asymmetric property in RDF/XML syntax</div>
+<div class="title">Listing 18. Declaring an asymmetric property in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
   &lt;sh:sparql rdf:parseType="Resource"&gt;
@@ -626,43 +658,11 @@ shape:ClassName a sh:NodeShape ;
 </tr>
 </tbody>
 </table>
-<div id="rule:association-uni-asymetry-rc" class="exampleblock">
-<div class="title">Rule R.09. Association asymmetry&#8201;&#8212;&#8201;in reasoning layer</div>
-<div class="content">
-<div class="paragraph">
-<p>Specify the asymmetry object property axiom for each end of a recursive association.</p>
-</div>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 17. Declaring an asymmetric property in Turtle syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relatesTo a owl:AsymmetricProperty .</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 18. Declaring an asymmetric property in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/relatesTo"&gt;
-  &lt;rdf:type rdf:resource="http://...owl#AsymmetricProperty"/&gt;
-&lt;/rdf:Description&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="sect2">
 <h3 id="sec:association-bi"><a class="anchor" href="#sec:association-bi"></a>Bidirectional association</h3>
 <div class="paragraph">
-<p>The bidirectional associations should be treated, both on source and target ends, like two unidirectional associations (see <a href="#fig:association-bi-visual">Figure 3</a>). The transformation rules from <a href="#rule:association-uni-core">Rule R.01</a> to <a href="#rule:association-uni-multiplicity-one-rc">Rule R.07</a> must be applied to both ends. In addition, these rule the inverse relation axiom must be specified.</p>
+<p>The bidirectional associations should be treated, both on source and target ends, like two unidirectional associations (see <a href="#fig:association-bi-visual">Figure 3</a>). The transformation rules from <a href="#rule:association-uni-core">Rule R.01</a> to <a href="#rule:association-uni-multiplicity-one-rc">Rule R.06</a> must be applied to both ends. In addition, these rule the inverse relation axiom must be specified.</p>
 </div>
 <div id="fig:association-bi-visual" class="imageblock">
 <div class="content">
@@ -706,201 +706,13 @@ shape:ClassName a sh:NodeShape ;
 <div class="sect2">
 <h3 id="sec:dependecy"><a class="anchor" href="#sec:dependecy"></a>Unidirectional dependency</h3>
 <div class="paragraph">
-<p>The UML dependency connectors should be transformed by the rules specified for UML association connectors.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sec:generalisation"><a class="anchor" href="#sec:generalisation"></a>Class generalisation</h3>
-<div class="paragraph">
-<p>Generalisation defines specialization relationship between Classifiers. In case of UML classes it relates a more specific Class to a more general Class.</p>
-</div>
-<div id="fig:generalisation-visual" class="imageblock">
-<div class="content">
-<img src="../_images/f13.png" alt="13">
-</div>
-<div class="title">Figure 4. Visual representation of UML generalisation (on the left) and OWL subclass relation (on the right)</div>
+<p>In general the UML dependency connectors should be transformed by the rules specified for UML association connectors.</p>
 </div>
 <div class="paragraph">
-<p>UML generalisation set groups generalizations; incomplete and disjoint constraints indicate that the set is not complete and its specific Classes have no common instances. The UML conventions specify that all sibling classes are by default disjoint, therefore even if no generalisation set is provided it is assumed to be implicit.</p>
-</div>
-<div id="rule:generalisation-class-core" class="exampleblock">
-<div class="title">Rule R.11. Class generalisation&#8201;&#8212;&#8201;in core ontology layer</div>
-<div class="content">
-<div class="paragraph">
-<p>Specify subclass axiom for the generalisation between UML classes. Sibling classes must be disjoint with one another.</p>
-</div>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 21. Subclass declaration in Turtle syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName rdfs:subClassOf :SuperClass.
-:OtherClass rdfs:subClassOf :SuperClass;
-   owl:disjointWith :ClassName ;
-.</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 22. Subclass declaration in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
-  &lt;rdfs:subClassOf rdf:resource="http://base.onto.uri/SuperClass"/&gt;
-&lt;/owl:Class&gt;
-&lt;owl:Class rdf:about="http://base.onto.uri/OtherClass"&gt;
-  &lt;rdfs:subClassOf rdf:resource="http://base.onto.uri/SuperClass"/&gt;
-  &lt;owl:disjointWith rdf:resource="http://base.onto.uri/ClassName"/&gt;
-&lt;/owl:Class&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_property_generalisation"><a class="anchor" href="#_property_generalisation"></a>Property generalisation</h3>
-<div class="paragraph">
-<p>Generalization defines specialization relationship between Classifiers. In case of the UML associations it relates a more specific Association to more general Association.</p>
-</div>
-<div id="fig:generalisation-rel-visual" class="imageblock">
-<div class="content">
-<img src="../_images/f14.png" alt="14">
-</div>
-<div class="title">Figure 5. Visual representation of UML property generalisation (on the left) and OWL sub-property relation (on the right)</div>
-</div>
-<div id="rule:generalisation-property-core" class="exampleblock">
-<div class="title">Rule R.12. Property generalisation&#8201;&#8212;&#8201;in core ontology layer</div>
-<div class="content">
-<div class="paragraph">
-<p>Specify sub-property axiom for the generalisation between UML associations and dependencies.</p>
-</div>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 23. Property specialisation in Turtle syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:hasSister rdfs:subPropertyOf :relatesTo .
-:isSisterOf rdfs:subPropertyOf :isRelatedTo .</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 24. Property specialisation in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/hasSister"&gt;
-  &lt;rdfs:subPropertyOf rdf:resource="http://base.onto.uri/relatesTo"/&gt;
-&lt;/owl:ObjectProperty&gt;
-&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/isSisterOf"&gt;
-  &lt;rdfs:subPropertyOf rdf:resource="http://base.onto.uri/isRelatedTo"/&gt;
-&lt;/owl:ObjectProperty&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_class_equivalence"><a class="anchor" href="#_class_equivalence"></a>Class equivalence</h3>
-<div id="fig:generalisation-equivalence-visual" class="imageblock">
-<div class="content">
-<img src="../_images/f15.png" alt="15">
-</div>
-<div class="title">Figure 6. Visual representation of UML class equivalence (on the left) and OWL class equivalence (on the right)</div>
-</div>
-<div id="rule:equivalent-classes-rc" class="exampleblock">
-<div class="title">Rule R.13. Equivalent classes&#8201;&#8212;&#8201;in reasoning layer</div>
-<div class="content">
-<div class="paragraph">
-<p>Specify equivalent class axiom for the generalisation with <code>&lt;&lt;equivalent&gt;&gt;</code> or <code>&lt;&lt;complete&gt;&gt;</code> stereotype between UML classes.</p>
-</div>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 25. Class equivalence in Turtle syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName owl:equivalentClass :SuperClass.</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 26. Class equivalence in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
-  &lt;owl:equivalentClass rdf:resource="http://base.onto.uri/SuperClass"/&gt;
-&lt;/owl:Class&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_property_equivalence"><a class="anchor" href="#_property_equivalence"></a>Property equivalence</h3>
-<div id="rule:equivalent-properties-rc" class="exampleblock">
-<div class="title">Rule R.14. Equivalent properties&#8201;&#8212;&#8201;in reasoning layer</div>
-<div class="content">
-<div class="paragraph">
-<p>Specify equivalent property axiom for the generalisation with <code>&lt;&lt;equivalent&gt;&gt;</code> or <code>&lt;&lt;complete&gt;&gt;</code> stereotype between UML properties.</p>
-</div>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 27. Property equivalence in Turtle syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:hasSister owl:equivalentProperty :relatesTo .
-:isSisterOf owl:equivalentProperty :isRelatedTo .</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 28. Property equivalence in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/hasSister"&gt;
-  &lt;owl:equivalentProperty rdf:resource="http://base.onto.uri/relatesTo"/&gt;
-&lt;/owl:ObjectProperty&gt;
-&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/isSisterOf"&gt;
-  &lt;owl:equivalentProperty rdf:resource="http://base.onto.uri/isRelatedTo"/&gt;
-&lt;/owl:ObjectProperty&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="sec:tran-rules5"><a class="anchor" href="#sec:tran-rules5"></a>Additional rules</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In this section are specified new transformation rules that were implemented after the UML model refactoring.</p>
+<p>The following two rules, concerning the transformation of dependency targets, are different from the rules for the transformation of  association targets.</p>
 </div>
 <div id="rule:dependency-uni-range-rc" class="exampleblock">
-<div class="title">Rule R.15. Dependency target&#8201;&#8212;&#8201;in reasoning layer</div>
+<div class="title">Rule R.11. Dependency target&#8201;&#8212;&#8201;in reasoning layer</div>
 <div class="content">
 <div class="paragraph">
 <p>Specify object property range for the target end of the dependency.</p>
@@ -915,7 +727,7 @@ shape:ClassName a sh:NodeShape ;
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 29. Range specification in Turtle syntax</div>
+<div class="title">Listing 21. Range specification in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relatesTo a owl:ObjectProperty ;
 	rdfs:range skos:Concept ;
@@ -923,18 +735,30 @@ shape:ClassName a sh:NodeShape ;
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 30. Range specification in RDF/XML syntax</div>
+<div class="title">Listing 22. Range specification in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/relatesTo"&gt;
-	&lt;rdfs:range rdf:resource="skos:Concept"/&gt;
+	&lt;rdfs:range rdf:resource=".../02/skos/core#Concept"/&gt;
 	&lt;/owl:ObjectProperty&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<strong>TODO:</strong> Explain that In OWL we want to state only that range is a skos:Concept, without committing to a specific list. We do this additional restriction in the data shape.
+</td>
+</tr>
+</table>
+</div>
 <div id="rule:dependency-uni-range-ds" class="exampleblock">
-<div class="title">Rule R.16. Dependency range shape&#8201;&#8212;&#8201;in data shape layer</div>
+<div class="title">Rule R.12. Dependency range shape&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
 <p>Within the SHACL Node Shape corresponding to the source UML class, specify property constraints indicating the range class.</p>
@@ -961,33 +785,221 @@ shape:ClassName a sh:NodeShape ;
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 31. Property class constraint in Turtle syntax</div>
+<div class="title">Listing 23. Property class constraint in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relatesTo a sh:NodeShape ;
-	sh:property [
-	a sh:PropertyShape ;
-	sh:path skos:inScheme ;
-	sh:hasValue :OtherClass ;
-	];
-	.</code></pre>
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
+@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName a sh:NodeShape ;
+#  sh:targetClass :ClassName ;
+  sh:property shape:ClassName-relatesTo ;
+.
+shape:ClassName-relatesTo a sh:PropertyShape ;
+  sh:path :relatesTo ;
+  sh:class :EnumerationName ;
+.</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 32. Property class constraint in RDF/XML syntax</div>
+<div class="title">Listing 24. Property class constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.uri/relatesTo"&gt;
-	&lt;sh:property&gt;
-	&lt;sh:PropertyShape&gt;
-	&lt;sh:path rdf:resource="skos:inScheme"/&gt;
-	&lt;sh:hasValue rdf:resource="http://base.uri/OtherClass"/&gt;
-	&lt;/sh:PropertyShape&gt;
-	&lt;/sh:property&gt;
-	&lt;/sh:NodeShape&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
+  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-relatesTo"/&gt;
+&lt;/sh:NodeShape&gt;
+
+&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relatesTo"&gt;
+  &lt;sh:path rdf:resource="http://base.onto.uri/relatesTo"/&gt;
+  &lt;sh:class rdf:resource="http://base.onto.uri/EnumerationName"/&gt;
+&lt;/sh:PropertyShape&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect2">
+<h3 id="sec:generalisation"><a class="anchor" href="#sec:generalisation"></a>Class generalisation</h3>
+<div class="paragraph">
+<p>Generalisation defines specialization relationship between Classifiers. In case of UML classes it relates a more specific Class to a more general Class.</p>
+</div>
+<div id="fig:generalisation-visual" class="imageblock">
+<div class="content">
+<img src="../_images/f13.png" alt="13">
+</div>
+<div class="title">Figure 4. Visual representation of UML generalisation (on the left) and OWL subclass relation (on the right)</div>
+</div>
+<div class="paragraph">
+<p>UML generalisation set groups generalizations; incomplete and disjoint constraints indicate that the set is not complete and its specific Classes have no common instances. The UML conventions specify that all sibling classes are by default disjoint, therefore even if no generalisation set is provided it is assumed to be implicit.</p>
+</div>
+<div id="rule:generalisation-class-core" class="exampleblock">
+<div class="title">Rule R.13. Class generalisation&#8201;&#8212;&#8201;in core ontology layer</div>
+<div class="content">
+<div class="paragraph">
+<p>Specify subclass axiom for the generalisation between UML classes. Sibling classes must be disjoint with one another.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 25. Subclass declaration in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName rdfs:subClassOf :SuperClass.
+:OtherClass rdfs:subClassOf :SuperClass;
+   owl:disjointWith :ClassName ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 26. Subclass declaration in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
+  &lt;rdfs:subClassOf rdf:resource="http://base.onto.uri/SuperClass"/&gt;
+&lt;/owl:Class&gt;
+&lt;owl:Class rdf:about="http://base.onto.uri/OtherClass"&gt;
+  &lt;rdfs:subClassOf rdf:resource="http://base.onto.uri/SuperClass"/&gt;
+  &lt;owl:disjointWith rdf:resource="http://base.onto.uri/ClassName"/&gt;
+&lt;/owl:Class&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_property_generalisation"><a class="anchor" href="#_property_generalisation"></a>Property generalisation</h3>
+<div class="paragraph">
+<p>Generalization defines specialization relationship between Classifiers. In case of the UML associations it relates a more specific Association to more general Association.</p>
+</div>
+<div id="fig:generalisation-rel-visual" class="imageblock">
+<div class="content">
+<img src="../_images/f14.png" alt="14">
+</div>
+<div class="title">Figure 5. Visual representation of UML property generalisation (on the left) and OWL sub-property relation (on the right)</div>
+</div>
+<div id="rule:generalisation-property-core" class="exampleblock">
+<div class="title">Rule R.14. Property generalisation&#8201;&#8212;&#8201;in core ontology layer</div>
+<div class="content">
+<div class="paragraph">
+<p>Specify sub-property axiom for the generalisation between UML associations and dependencies.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 27. Property specialisation in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:hasSister rdfs:subPropertyOf :relatesTo .
+:isSisterOf rdfs:subPropertyOf :isRelatedTo .</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 28. Property specialisation in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/hasSister"&gt;
+  &lt;rdfs:subPropertyOf rdf:resource="http://base.onto.uri/relatesTo"/&gt;
+&lt;/owl:ObjectProperty&gt;
+&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/isSisterOf"&gt;
+  &lt;rdfs:subPropertyOf rdf:resource="http://base.onto.uri/isRelatedTo"/&gt;
+&lt;/owl:ObjectProperty&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_class_equivalence"><a class="anchor" href="#_class_equivalence"></a>Class equivalence</h3>
+<div id="fig:generalisation-equivalence-visual" class="imageblock">
+<div class="content">
+<img src="../_images/f15.png" alt="15">
+</div>
+<div class="title">Figure 6. Visual representation of UML class equivalence (on the left) and OWL class equivalence (on the right)</div>
+</div>
+<div id="rule:equivalent-classes-rc" class="exampleblock">
+<div class="title">Rule R.15. Equivalent classes&#8201;&#8212;&#8201;in reasoning layer</div>
+<div class="content">
+<div class="paragraph">
+<p>Specify equivalent class axiom for the generalisation with <code>&lt;&lt;equivalent&gt;&gt;</code> or <code>&lt;&lt;complete&gt;&gt;</code> stereotype between UML classes.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 29. Class equivalence in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName owl:equivalentClass :SuperClass.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 30. Class equivalence in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
+  &lt;owl:equivalentClass rdf:resource="http://base.onto.uri/SuperClass"/&gt;
+&lt;/owl:Class&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_property_equivalence"><a class="anchor" href="#_property_equivalence"></a>Property equivalence</h3>
+<div id="rule:equivalent-properties-rc" class="exampleblock">
+<div class="title">Rule R.16. Equivalent properties&#8201;&#8212;&#8201;in reasoning layer</div>
+<div class="content">
+<div class="paragraph">
+<p>Specify equivalent property axiom for the generalisation with <code>&lt;&lt;equivalent&gt;&gt;</code> or <code>&lt;&lt;complete&gt;&gt;</code> stereotype between UML properties.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 31. Property equivalence in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:hasSister owl:equivalentProperty :relatesTo .
+:isSisterOf owl:equivalentProperty :isRelatedTo .</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 32. Property equivalence in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/hasSister"&gt;
+  &lt;owl:equivalentProperty rdf:resource="http://base.onto.uri/relatesTo"/&gt;
+&lt;/owl:ObjectProperty&gt;
+&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/isSisterOf"&gt;
+  &lt;owl:equivalentProperty rdf:resource="http://base.onto.uri/isRelatedTo"/&gt;
+&lt;/owl:ObjectProperty&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </article>
