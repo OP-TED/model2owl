@@ -15,9 +15,7 @@ In this section are specified transformation rules for UML descriptive elements.
 
 === Name
 
-Most of the UML elements are named. The UML conventions dedicate an extensive section to the naming conventions and how to deterministically generate a URI and a label from the UML element name. The label should be associated to the resource URI by `rdfs:label` and, even if redundant, also as `skos:prefLabel`.
-
-WARNING: **TODO:** Update recommendation text.
+Most of the UML elements are named. The UML conventions dedicate an extensive section to the naming conventions and how to deterministically generate a URI and a label from the UML element name. By default, we recommend the use of the SKOS lexicalization (`skos:prefLabel`) in the core ontology layer. In the future, this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (`rdfs:label`) instead of, or in addition to, the SKOS lexicalization.
 
 [#rule:element-label-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:T.01}. Label -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
@@ -31,7 +29,6 @@ Specify a label for UML element. *TODO:* Update
 [source,Turtle]
 ----
 :ResourceName
-  rdfs:label "Resource name" ;
   skos:prefLabel "Resource name"@en ;
 .
 ----
@@ -40,7 +37,6 @@ Specify a label for UML element. *TODO:* Update
 [source,XML]
 ----
 <rdf:Description rdf:about="http://base.onto.uri/ResourceName">
-  <rdfs:label>Resource name</rdfs:label>
   <skos:prefLabel xml:lang="en">Resource name</skos:prefLabel>
 </rdf:Description>
 ----
@@ -98,8 +94,8 @@ shape:ClassName-PropertyName
 === Note
 
 Most of the UML element foresee provisions of descriptions and notes. They should be transformed into `rdfs:comment` and `skos:definition`.
+By default, we recommend the use of the SKOS lexicalization (`skos:definition`) in the core ontology layer. In the future this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (`rdfs:comment`) instead of, or in addition to, the SKOS lexicalization.
 
-WARNING: **TODO:** Update recommendation text.
 
 [#rule:element-definition-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Description -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
@@ -113,8 +109,7 @@ Specify a description for UML element. *TODO:* Update
 [source,Turtle]
 ----
 :ResourceName
-  rdfs:comment "Description of the resource meaning" ;
-  skos:definition "Resource name"@en ;
+  skos:definition "Description of the resource meaning"@en ;
 .
 ----
 |
@@ -122,7 +117,6 @@ Specify a description for UML element. *TODO:* Update
 [source,XML]
 ----
 <rdf:Description rdf:about="http://base.onto.uri/ResourceName">
-  <rdfs:comment>Description of the resource meaning</rdfs:comment>
   <skos:definition xml:lang="en">Description of the resource meaning</skos:definition>
 </rdf:Description>
 ----
@@ -189,6 +183,8 @@ WARNING: **TODO:** Should we update the image to better reflect how the transfor
 
 As UML Comments add no semantics, they are not used in any method of semantic validation. In OWL the AnnotationAssertion axiom does not add any semantics either, and it only improves readability.
 
+By default, we recommend the use of the SKOS lexicalization (`skos:editorialNote`) in the core ontology layer. In the future this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (`rdfs:comment`) instead of, or in addition to, the SKOS lexicalization.
+
 [#rule:element-external-comment-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Comment -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
 Specify annotation axiom for UML Comment associated to a UML element.
@@ -201,7 +197,6 @@ Specify annotation axiom for UML Comment associated to a UML element.
 [source,Turtle]
 ----
 :ClassName
-  rdfs:comment "This is an additional comment on ClassName" ;
   skos:editorialNote "This is an additional comment on ClassName"@en ;
 .
 ----
@@ -210,8 +205,7 @@ Specify annotation axiom for UML Comment associated to a UML element.
 [source,XML]
 ----
 <rdf:Description rdf:about="http://base.onto.uri/ClassName">
-  <rdfs:comment>This is an additional comment on ClassName</rdfs:comment>
-  <skos:editorialNote xml:lang="en">This is an additional comment on ClassName</skos:definition>
+  <skos:editorialNote xml:lang="en">This is an additional comment on ClassName</skos:editorialNote>
 </rdf:Description>
 ----
 |===
