@@ -13,7 +13,7 @@ In this section are specified transformation rules for UML class and attribute e
 |UML element |Rules in core ontology layer |Rules in data shape layer |Rules in reasoning layer
 |Class |<<rule:class-core>> |<<rule:class-ds>> |
 |Abstract class | |<<rule:class-abstract-ds>> |
-|Attribute |<<rule:attribute-core>> | |<<rule:attribute-rc-domain>>
+|Attribute |<<rule:attribute-core>> |<<rule:attribute-ds>> |<<rule:attribute-rc-domain>>
 |Attribute type | |<<rule:attribute-ds-range>> |<<rule:attribute-rc-range>>
 |Attribute multiplicity | |<<rule:attribute-ds-multiplicity>> |<<rule:attribute-rc-multiplicity>>, <<rule:attribute-rc-multiplicity-one>>
 |===
@@ -52,6 +52,8 @@ Specify declaration axiom for UML Class as OWL Class where the URI and a label a
 </owl:Class>
 ----
 |===
+
+WARNING: **TODO:** See if we want to add the `rdfs:label` here, or we just rely on this information being added at the time of processing the Element's descriptors, based on the lexicalization, as described in the xref:transformation/transf-rules4.adoc[Section on Transformation of UML descriptors].
 
 *Alternative layouts:*
 [IMPORTANT]
@@ -95,12 +97,10 @@ shape:ClassName a sh:NodeShape ;
 .Node shape declaration in RDF/XML syntax
 [source,XML]
 ----
-<rdf:Description rdf:about="http://base.shape.uri/ClassName">
-  <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
   <sh:targetClass rdf:resource="http://base.onto.uri/ClassName"/>
-</rdf:Description>
+</sh:NodeShape>
 ----
-WARNING: Why don't we use the `<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">` syntax?
 |===
 
 [[sec:class-abstract]]
@@ -119,8 +119,6 @@ image::f7.png[7]
 ====
 Specify declaration axiom for UML Class as SHACL Node Shape with a SPARQL constraint that selects all instances of this class.
 ====
-
-WARNING: **TODO:** Check if the code snippets do what they need to do, i.e. to check that there is NO instance of the given abstract class
 
 [cols="a,a", options="noheader"]
 |===
@@ -216,6 +214,8 @@ Specify declaration axiom(s) for attribute(s) as OWL data or object properties d
 ----
 |===
 
+WARNING: **TODO:** See if we want to add the `rdfs:label` and `skos:definition` here, or we just rely on this information being added at the time of processing the Element's descriptors, based on the lexicalization, as described in the xref:transformation/transf-rules4.adoc[Section on Transformation of UML descriptors].
+
 === Attribute owner
 
 [#rule:attribute-rc-domain,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute domain -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
@@ -259,6 +259,43 @@ Specify data (or object) property domains for attribute(s).
 </owl:ObjectProperty>
 ----
 |===
+
+[#rule:attribute-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Class attribute -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify PropertyShape declaration axiom(s) for attribute(s).
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.PropertyShape declaration for attributes in Turtle syntax
+[source,Turtle]
+----
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName
+  sh:property shape:ClassName-attributeName ;
+.
+shape:ClassName-attributeName a sh:PropertyShape ;
+  sh:path :attributeName ;
+.
+----
+|
+.PropertyShape declaration for attributes in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about="http://base.shape.uri/ClassName">
+  <sh:property rdf:resource="http://base.shape.uri/ClassName-attributeName"/>
+</rdf:Description>
+<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attributeName">
+  <sh:path rdf:resource="http://base.onto.uri/attributeName"/>
+</sh:PropertyShape>
+
+----
+|===
+
 
 === Attribute type
 
@@ -315,33 +352,22 @@ Within the SHACL Node Shape corresponding to the UML class, specify property con
 .Property datatype constraint in Turtle syntax
 [source,Turtle]
 ----
-@prefix : <http://base.onto.uri/> .
+# @prefix : <http://base.onto.uri/> .
 @prefix shape: <http://base.shape.uri/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-attribute1 ;
-.
-shape:ClassName-attribute1 a sh:PropertyShape ;
-  sh:path :attribute1 ;
+shape:ClassName-attribute1
   sh:datatype xsd:string ;
-  sh:name "attribute 1" ;
 .
 ----
 |
 .Property datatype constraint in RDF/XML syntax
 [source,XML]
 ----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-attribute1"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute1">
-  <sh:path rdf:resource="http://base.onto.uri/attribute1"/>
-  <sh:name>attribute 1</sh:name>
+<rdf:Description rdf:about="http://base.shape.uri/ClassName-attribute1">
   <sh:datatype rdf:resource="http://www.w3c.org...#string"/>
-</sh:PropertyShape>
+</rdf:Description>
 ----
 
 |
@@ -352,29 +378,18 @@ shape:ClassName-attribute1 a sh:PropertyShape ;
 @prefix shape: <http://base.shape.uri/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-attribute2 ;
-.
-shape:ClassName-attribute2 a sh:PropertyShape ;
-  sh:path :attribute2 ;
+shape:ClassName-attribute2
   sh:class :OtherClass ;
-  sh:name "attribute 2" ;
 .
 ----
 |
 .Property class constraint in RDF/XML syntax
 [source,XML]
 ----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-attribute2"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute2">
-  <sh:path rdf:resource="http://base.onto.uri/attribute2"/>
-  <sh:name>attribute 2</sh:name>
+<rdf:Description rdf:about="http://base.shape.uri/ClassName-attribute2">
   <sh:class rdf:resource="http://base.onto.uri/OtherClass"/>
-</sh:PropertyShape>
+</rdf:Description>
+
 ----
 |===
 
@@ -534,6 +549,9 @@ For each attribute that has multiplicity exactly one, i.e. [1..1], specify funct
 .Declaring a functional property in Turtle syntax
 [source,Turtle]
 ----
+@prefix : <http://base.onto.uri/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
 :attribute5 a owl:FunctionalProperty .
 ----
 |
@@ -562,141 +580,89 @@ Within the SHACL Node Shape corresponding to the UML class, specify property con
 .Exact cardinality constraint in Turtle syntax
 [source,Turtle]
 ----
-@prefix : <http://base.onto.uri/> .
 @prefix shape: <http://base.shape.uri/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-attribute1 ;
-.
-shape:ClassName-attribute1 a sh:PropertyShape ;
-  sh:path :attribute1;
+shape:ClassName-attribute1
   sh:minCount 2 ;
   sh:maxCount 2 ;
-  sh:name "attribute 1" ;
 .
 ----
 |
 .Exact cardinality constraint in RDF/XML syntax
 [source,XML]
 ----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-attribute1"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute1">
-  <sh:path rdf:resource="http://base.onto.uri/attribute1"/>
-  <sh:name>attribute 1</sh:name>
+<rdf:Description rdf:about="http://base.shape.uri/ClassName-attribute1">
   <sh:minCount rdf:datatype="http://www.w3.org...#integer"
       >2</sh:minCount>
   <sh:maxCount rdf:datatype="http://www.w3.org...#integer"
       >2</sh:maxCount>
-</sh:PropertyShape>
+</rdf:Description>
 ----
 
 |
 .Min cardinality constraint in Turtle syntax
 [source,Turtle]
 ----
-@prefix : <http://base.onto.uri/> .
 @prefix shape: <http://base.shape.uri/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-attribute2 ;
-.
-shape:ClassName-attribute2 a sh:PropertyShape ;
-  sh:path :attribute2;
+shape:ClassName-attribute2
   sh:minCount 1 ;
-  sh:name "attribute 2" ;
 .
 ----
 |
 .Min cardinality constraint in RDF/XML syntax
 [source,XML]
 ----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-attribute2"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute2">
-  <sh:path rdf:resource="http://base.onto.uri/attribute2"/>
-  <sh:name>attribute 2</sh:name>
+<rdf:Description rdf:about="http://base.shape.uri/ClassName-attribute2">
   <sh:minCount rdf:datatype="http://www.w3.org...#integer"
       >1</sh:minCount>
-</sh:PropertyShape>
+</rdf:Description>
 ----
 
 |
 .Max cardinality constraint in Turtle syntax
 [source,Turtle]
 ----
-@prefix : <http://base.onto.uri/> .
 @prefix shape: <http://base.shape.uri/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-attribute3 ;
-.
-shape:ClassName-attribute3 a sh:PropertyShape ;
-  sh:path :attribute3;
+shape:ClassName-attribute3
   sh:maxCount 2 ;
-  sh:name "attribute 3" ;
 .
 ----
 |
 .Max cardinality constraint in RDF/XML syntax
 [source,XML]
 ----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-attribute3"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute3">
-  <sh:path rdf:resource="http://base.onto.uri/attribute3"/>
-  <sh:name>attribute 3</sh:name>
+<rdf:Description rdf:about="http://base.shape.uri/ClassName-attribute3">
   <sh:maxCount rdf:datatype="http://www.w3.org...#integer"
       >2</sh:maxCount>
-</sh:PropertyShape>
+</rdf:Description>
 ----
 
 |
 .Min and max cardinality constraint in Turtle syntax
 [source,Turtle]
 ----
-@prefix : <http://base.onto.uri/> .
 @prefix shape: <http://base.shape.uri/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-attribute4 ;
-.
-shape:ClassName-attribute4 a sh:PropertyShape ;
-  sh:path :attribute4;
+shape:ClassName-attribute4
   sh:minCount 1 ;
   sh:maxCount 2 ;
-  sh:name "attribute 4" ;
 .
 ----
 |
 .Min and max cardinality constraint in RDF/XML syntax
 [source,XML]
 ----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-attribute4"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attribute4">
-  <sh:path rdf:resource="http://base.onto.uri/attribute4"/>
-  <sh:name>attribute 4</sh:name>
+<rdf:Description rdf:about="http://base.shape.uri/ClassName-attribute4">
   <sh:minCount rdf:datatype="http://www.w3.org...#integer"
       >1</sh:minCount>
   <sh:maxCount rdf:datatype="http://www.w3.org...#integer"
       >2</sh:maxCount>
-</sh:PropertyShape>
+</rdf:Description>
 ----
 |===
