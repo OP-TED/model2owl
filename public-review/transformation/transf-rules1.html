@@ -200,7 +200,7 @@
 <div class="sect2">
 <h3 id="sec:class"><a class="anchor" href="#sec:class"></a>Class</h3>
 <div class="paragraph">
-<p>In UML, a Class is purposed to specify a classification of objects. UML represents atomic classes as named elements of type <em>Class</em> without further features. In OWL, the atomic class, <code>owl:Class</code>, has no intension. It can only be interpreted by its name that has a meaning in the world outside the ontology. The atomic class is a class description that is simultaneously a class axiom .</p>
+<p>In UML, a Class is purposed to specify a classification of objects. UML represents atomic classes as named elements of type <em>Class</em> without further features. In OWL, the atomic class, <code>owl:Class</code>, has no intention. It can only be interpreted by its name that has a meaning in the world outside the ontology. The atomic class is a class description that is simultaneously a class axiom .</p>
 </div>
 <div id="fig:class-visual" class="imageblock">
 <div class="content">
@@ -530,7 +530,7 @@ shape:ClassName a sh:NodeShape ;
 <div class="title">Rule C.06. Class attribute&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify PropertyShape declaration axiom(s) for attribute(s).</p>
+<p>Specify PropertyShape declaration axiom for each attribute.</p>
 </div>
 </div>
 </div>
@@ -574,7 +574,7 @@ shape:ClassName-attributeName a sh:PropertyShape ;
 <div class="sect2">
 <h3 id="_attribute_type"><a class="anchor" href="#_attribute_type"></a>Attribute type</h3>
 <div id="rule:attribute-rc-range" class="exampleblock">
-<div class="title">Rule C.07. Attribute type&#8201;&#8212;&#8201;in reasoning  layer</div>
+<div class="title">Rule C.07. Attribute type&#8201;&#8212;&#8201;in reasoning layer</div>
 <div class="content">
 <div class="paragraph">
 <p>Specify data (or object) property range for attribute(s).</p>
@@ -735,7 +735,7 @@ shape:ClassName-attribute2
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 25. Exact cardinality constraint in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a owl:Class ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
       owl:cardinality "2"^^xsd:integer;
       owl:onProperty :attribute1 ;
@@ -746,14 +746,14 @@ shape:ClassName-attribute2
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 26. Exact cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ClassName"&gt;
   &lt;rdfs:subClassOf&gt;
     &lt;owl:Restriction&gt;
       &lt;owl:onProperty rdf:resource="http://base.onto.uri/attribute1"/&gt;
       &lt;owl:cardinality rdf:datatype="http://www.w3.org...#integer" &gt;2&lt;/owl:cardinality&gt;
     &lt;/owl:Restriction&gt;
   &lt;/rdfs:subClassOf&gt;
-&lt;/owl:Class&gt;</code></pre>
+&lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -761,7 +761,7 @@ shape:ClassName-attribute2
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 27. Min cardinality constraint in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a owl:Class ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
       owl:minCardinality "1"^^xsd:integer;
       owl:onProperty :attribute2 ;
@@ -772,14 +772,14 @@ shape:ClassName-attribute2
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 28. Min cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ClassName"&gt;
   &lt;rdfs:subClassOf&gt;
     &lt;owl:Restriction&gt;
       &lt;owl:onProperty rdf:resource="http://base.onto.uri/attribute2"/&gt;
       &lt;owl:minCardinality rdf:datatype="http://www.w3.org...#integer" &gt;1&lt;/owl:cardinality&gt;
     &lt;/owl:Restriction&gt;
   &lt;/rdfs:subClassOf&gt;
-&lt;/owl:Class&gt;</code></pre>
+&lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -787,7 +787,7 @@ shape:ClassName-attribute2
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 29. Max cardinality constraint in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a owl:Class ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
       owl:maxCardinality "2"^^xsd:integer;
       owl:onProperty :attribute3 ;
@@ -798,14 +798,14 @@ shape:ClassName-attribute2
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 30. Max cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ClassName"&gt;
   &lt;rdfs:subClassOf&gt;
     &lt;owl:Restriction&gt;
       &lt;owl:onProperty rdf:resource="http://base.onto.uri/attribute3"/&gt;
       &lt;owl:maxCardinality rdf:datatype="http://www.w3.org...#integer" &gt;2&lt;/owl:cardinality&gt;
     &lt;/owl:Restriction&gt;
   &lt;/rdfs:subClassOf&gt;
-&lt;/owl:Class&gt;</code></pre>
+&lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -813,7 +813,7 @@ shape:ClassName-attribute2
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 31. Min and max cardinality constraint in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a owl:Class ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
   rdfs:subClassOf [
     rdf:type owl:Class ;
     owl:intersectionOf (
@@ -831,7 +831,7 @@ shape:ClassName-attribute2
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 32. Min and max cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ClassName"&gt;
   &lt;rdfs:subClassOf&gt;
     &lt;owl:Class&gt;
       &lt;owl:intersectionOf rdf:parseType="Collection"&gt;
@@ -848,7 +848,7 @@ shape:ClassName-attribute2
       &lt;/owl:intersectionOf&gt;
     &lt;/owl:Class&gt;
   &lt;/rdfs:subClassOf&gt;
-&lt;/owl:Class&gt;</code></pre>
+&lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
