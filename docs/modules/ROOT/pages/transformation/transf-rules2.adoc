@@ -8,16 +8,16 @@ In this section are specified transformation rules for UML association, generali
 [cols="<,<,<,<",options="header",]
 |===
 |UML element |Rules in core ontology layer |Rules in data shape layer |Rules in reasoning layer
-|Association |<<rule:association-uni-core>> | |
+|Association |<<rule:association-uni-core>> |<<rule:association-uni-ds>> |
 |Association domain | | |<<rule:association-uni-domain-rc>>
 |Association range | |<<rule:association-uni-range-ds>> |<<rule:association-uni-range-rc>>
 |Association multiplicity | |<<rule:association-uni-multiplicity-ds>> |<<rule:association-uni-multiplicity-rc>>, <<rule:association-uni-multiplicity-one-rc>>
 |Association asymmetry | |<<rule:association-uni-asymetry-ds>> |<<rule:association-uni-asymetry-rc>>
 |Association inverse | | |<<rule:association-bi-inverse-rc>>
-|Dependency |<<rule:association-uni-core>> | |
+|Dependency |<<rule:association-uni-core>> |<<rule:association-uni-ds>> |
 |Dependency domain | | |<<rule:association-uni-domain-rc>>
 |Dependency range | |<<rule:dependency-uni-range-ds>> |<<rule:dependency-uni-range-rc>>
-|Dependency multiplicity | |<<rule:association-uni-multiplicity-ds>> |<<rule:association-uni-multiplicity-rc>>
+|Dependency multiplicity | |<<rule:association-uni-multiplicity-ds>> |<<rule:association-uni-multiplicity-rc>>, <<rule:association-uni-multiplicity-one-rc>>
 |Class generalisation |<<rule:generalisation-class-core>> | |
 |Property generalisation |<<rule:generalisation-property-core>> | |
 |Class equivalence | | |<<rule:equivalent-classes-rc>>
@@ -36,7 +36,7 @@ image::f10.png[10]
 
 [#rule:association-uni-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:R.01}. Unidirectional association -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify object property declaration axiom for the target end of the association.
+Specify object property declaration axiom for the target end of the association/dependency.
 ====
 
 [cols="a,a", options="noheader"]
@@ -61,12 +61,53 @@ Specify object property declaration axiom for the target end of the association.
 ----
 |===
 
+
+[#rule:association-uni-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Unidirectional association -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify PropertyShape declaration axiom for each association/dependency.
+====
+
+WARNING: **TODO:** See how we will deal with bidirectional associations. Do we need two such declarations? Or will it be handled automatically when the associations at the class of the "other" end are being processed? +
+If we create a different rule for bidirectional associations, add the word "unidirectional" to this rule, to differentiate the two rules.
+
+[cols="a,a", options="noheader"]
+|===
+|
+.PropertyShape declaration for associations in Turtle syntax
+[source,Turtle]
+----
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName
+  sh:property shape:ClassName-relationName ;
+.
+shape:ClassName-relationName a sh:PropertyShape ;
+  sh:path :relationName ;
+.
+----
+|
+.PropertyShape declaration for associations in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about="http://base.shape.uri/ClassName">
+  <sh:property rdf:resource="http://base.shape.uri/ClassName-relationName"/>
+</rdf:Description>
+<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relationName">
+  <sh:path rdf:resource="http://base.onto.uri/relationName"/>
+</sh:PropertyShape>
+
+----
+|===
+
+
 === Association source
 
 
 [#rule:association-uni-domain-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association source -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify object property domain for the target end of the association.
+Specify object property domain for the target end of the association/dependency.
 ====
 
 [cols="a,a", options="noheader"]
@@ -120,7 +161,7 @@ Specify object property range for the target end of the association.
 
 [#rule:association-uni-range-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association range shape -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Within the SHACL Node Shape corresponding to the source UML class, specify property constraints indicating the range class.
+Within the SHACL PropertyShape corresponding to an association relation linked to a given source UML class, specify property constraints indicating the range class.
 ====
 
 [cols="a,a", options="noheader"]
@@ -133,29 +174,17 @@ Within the SHACL Node Shape corresponding to the source UML class, specify prope
 @prefix shape: <http://base.shape.uri/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-relatesTo ;
-.
-shape:ClassName-relatesTo a sh:PropertyShape ;
-  sh:path :relatesTo ;
+shape:ClassName-relationName
   sh:class :OtherClass ;
-  sh:name "relates to" ;
 .
 ----
 |
 .Property class constraint in RDF/XML syntax
 [source,XML]
 ----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-relatesTo"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relatesTo">
-  <sh:path rdf:resource="http://base.onto.uri/relatesTo"/>
-  <sh:name>relates to</sh:name>
+<rdf:Description rdf:about="http://base.shape.uri/ClassName-relationName">
   <sh:class rdf:resource="http://base.onto.uri/OtherClass"/>
-</sh:PropertyShape>
+</rdf:Description>
 ----
 |===
 
@@ -164,7 +193,7 @@ shape:ClassName-relatesTo a sh:PropertyShape ;
 
 [#rule:association-uni-multiplicity-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association multiplicity -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
-For the association target multiplicity, where min and max are different than ``*'' (any) and multiplicity is not [1..1], specify a subclass axiom where the source class specialises an anonymous restriction of properties formulated according to cases provided by xref:transformation/transf-rules1.adoc#rule:attribute-rc-multiplicity[rule:attribute-rc-multiplicity].
+For the association/dependency target multiplicity, where min and max are different than ``*'' (any) and multiplicity is not [1..1], specify a subclass axiom where the source class specialises an anonymous restriction of properties formulated according to cases provided by xref:transformation/transf-rules1.adoc#rule:attribute-rc-multiplicity[rule:attribute-rc-multiplicity].
 ====
 
 [cols="a,a", options="noheader"]
@@ -197,7 +226,7 @@ For the association target multiplicity, where min and max are different than ``
 
 [#rule:association-uni-multiplicity-one-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association multiplicity "one" -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
-If the association multiplicity is exactly one, i.e. [1..1], specify functional property axiom like in xref:transformation/transf-rules1.adoc#rule:attribute-rc-multiplicity-one[rule:attribute-rc-multiplicity-one].
+If the association/dependency multiplicity is exactly one, i.e. [1..1], specify functional property axiom like in xref:transformation/transf-rules1.adoc#rule:attribute-rc-multiplicity-one[rule:attribute-rc-multiplicity-one].
 ====
 
 [cols="a,a", options="noheader"]
@@ -220,7 +249,7 @@ If the association multiplicity is exactly one, i.e. [1..1], specify functional 
 
 [#rule:association-uni-multiplicity-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association multiplicity -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Within the SHACL Node Shape corresponding to the source UML class, specify property constraints indicating minimum and maximum cardinality according to cases provided by xref:transformation/transf-rules1.adoc#rule:attribute-ds-multiplicity[rule:attribute-ds-multiplicity].
+Within the SHACL PropertyShape corresponding to an association/dependency relation linked to a given source UML class, specify property constraints indicating minimum and maximum cardinality, according to cases provided by xref:transformation/transf-rules1.adoc#rule:attribute-ds-multiplicity[rule:attribute-ds-multiplicity].
 ====
 
 [cols="a,a", options="noheader"]
@@ -229,34 +258,21 @@ Within the SHACL Node Shape corresponding to the source UML class, specify prope
 .Min cardinality constraint in Turtle syntax
 [source,Turtle]
 ----
-@prefix : <http://base.onto.uri/> .
 @prefix shape: <http://base.shape.uri/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-relatesTo ;
-.
-shape:ClassName-relatesTo a sh:PropertyShape ;
-  sh:path :relatesTo;
+shape:ClassName-relationName
   sh:minCount 1 ;
-  sh:name "relates to" ;
- .
+.
 ----
 |
 .Min cardinality constraint in RDF/XML syntax
 [source,XML]
 ----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-relatesTo"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relatesTo">
-  <sh:path rdf:resource="http://base.onto.uri/relatesTo"/>
-  <sh:name>relates to</sh:name>
+<rdf:Description rdf:about="http://base.shape.uri/ClassName-relationName">
   <sh:minCount rdf:datatype="http://www.w3.org...#integer"
       >1</sh:minCount>
-</sh:PropertyShape>
+</rdf:Description>
 ----
 |===
 
@@ -311,8 +327,7 @@ WARNING: **TODO:** Check if the code snippets do what they need to do, i.e. to c
 @prefix shape: <http://base.shape.uri/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
+shape:ClassName
    sh:sparql [
      sh:select """
         SELECT ?this ?that
@@ -326,7 +341,7 @@ shape:ClassName a sh:NodeShape ;
 .Declaring an asymmetric property in RDF/XML syntax
 [source,XML]
 ----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
+<rdf:Description rdf:about="http://base.shape.uri/ClassName">
   <sh:sparql rdf:parseType="Resource">
     <sh:select>
       SELECT ?this ?that
@@ -335,14 +350,14 @@ shape:ClassName a sh:NodeShape ;
       ?that :relatesTo ?this .}
     </sh:select>
   </sh:sparql>
-</sh:NodeShape>
+</rdf:Description>
 ----
 |===
 
 [[sec:association-bi]]
 === Bidirectional association
 
-The bidirectional associations should be treated, both on source and target ends, like two unidirectional associations (see <<fig:association-bi-visual>>). The transformation rules from <<rule:association-uni-core>> to <<rule:association-uni-multiplicity-one-rc>> must be applied to both ends. In addition, these rule the inverse relation axiom must be specified.
+The bidirectional associations should be treated, both on source and target ends, like two unidirectional associations (see <<fig:association-bi-visual>>). The transformation rules from <<rule:association-uni-core>> and <<rule:association-uni-ds>>, and all the other rules for unidirectional associations shown in <<tab:connectors-overview>> must be applied to both ends. In addition to these rules, the inverse relation axiom must be specified.
 
 .Visual representation of a UML bidirectional association (on the left) and OWL properties with cardinality restrictions on domain class (on the right)
 [#fig:association-bi-visual]
@@ -351,7 +366,7 @@ image::f12.png[12]
 
 [#rule:association-bi-inverse-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association inverse -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify inverse object property between the source and target ends of the association.
+Specify inverse object property between the source and target ends of the bidirectional association.
 ====
 
 [cols="a,a", options="noheader"]
@@ -412,7 +427,7 @@ WARNING: *TODO:* Explain that In OWL we want to state only that range is a skos:
 
 [#rule:dependency-uni-range-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Dependency range shape -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Within the SHACL Node Shape corresponding to the source UML class, specify property constraints indicating the range class.
+Within the SHACL PropertyShape corresponding to a dependency relation linked to a given source UML class, specify property constraints indicating the range class.
 ====
 
 WARNING: **TODO:** Check these transformation rule examples and see if they make sense. It doesn't seem to.
@@ -428,12 +443,7 @@ WARNING: **TODO:** Check these transformation rule examples and see if they make
 @prefix shape: <http://base.shape.uri/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-shape:ClassName a sh:NodeShape ;
-#  sh:targetClass :ClassName ;
-  sh:property shape:ClassName-relatesTo ;
-.
-shape:ClassName-relatesTo a sh:PropertyShape ;
-  sh:path :relatesTo ;
+shape:ClassName-relationName
   sh:class :EnumerationName ;
 .
 ----
@@ -442,14 +452,9 @@ shape:ClassName-relatesTo a sh:PropertyShape ;
 .Property class constraint in RDF/XML syntax
 [source,XML]
 ----
-<sh:NodeShape rdf:about="http://base.shape.uri/ClassName">
-  <sh:property rdf:resource="http://base.shape.uri/ClassName-relatesTo"/>
-</sh:NodeShape>
-
-<sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relatesTo">
-  <sh:path rdf:resource="http://base.onto.uri/relatesTo"/>
+<rdf:Description rdf:about="http://base.shape.uri/ClassName-relationName">
   <sh:class rdf:resource="http://base.onto.uri/EnumerationName"/>
-</sh:PropertyShape>
+</rdf:Description>
 ----
 |===
 
@@ -507,7 +512,7 @@ image::f14.png[14]
 
 [#rule:generalisation-property-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Property generalisation -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify sub-property axiom for the generalisation between UML associations and dependencies.
+Specify sub-property axiom for the generalisation between UML association/dependency connectors.
 ====
 
 [cols="a,a", options="noheader"]
