@@ -21,7 +21,7 @@ In this section are specified transformation rules for UML class and attribute e
 [[sec:class]]
 === Class
 
-In UML, a Class is purposed to specify a classification of objects. UML represents atomic classes as named elements of type _Class_ without further features. In OWL, the atomic class, `owl:Class`, has no intension. It can only be interpreted by its name that has a meaning in the world outside the ontology. The atomic class is a class description that is simultaneously a class axiom .
+In UML, a Class is purposed to specify a classification of objects. UML represents atomic classes as named elements of type _Class_ without further features. In OWL, the atomic class, `owl:Class`, has no intention. It can only be interpreted by its name that has a meaning in the world outside the ontology. The atomic class is a class description that is simultaneously a class axiom .
 
 .Visual representation of a class in UML (on the left) and OWL (on the right)
 [#fig:class-visual]
@@ -262,7 +262,7 @@ Specify data (or object) property domains for attribute(s).
 
 [#rule:attribute-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Class attribute -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify PropertyShape declaration axiom(s) for attribute(s).
+Specify PropertyShape declaration axiom for each attribute.
 ====
 
 [cols="a,a", options="noheader"]
@@ -299,7 +299,7 @@ shape:ClassName-attributeName a sh:PropertyShape ;
 
 === Attribute type
 
-[#rule:attribute-rc-range,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute type -- in reasoning  layer',reftext='{example-caption} {rule-cnt}']
+[#rule:attribute-rc-range,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute type -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
 Specify data (or object) property range for attribute(s).
 ====
@@ -422,7 +422,7 @@ For each attribute multiplicity of the form ( min .. max ), where min and max ar
 .Exact cardinality constraint in Turtle syntax
 [source,Turtle]
 ----
-:ClassName a owl:Class ;
+:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
       owl:cardinality "2"^^xsd:integer;
       owl:onProperty :attribute1 ;
@@ -433,21 +433,21 @@ For each attribute multiplicity of the form ( min .. max ), where min and max ar
 .Exact cardinality constraint in RDF/XML syntax
 [source,XML]
 ----
-<owl:Class rdf:about="http://base.onto.uri/ClassName">
+<rdf:Description rdf:about="http://base.onto.uri/ClassName">
   <rdfs:subClassOf>
     <owl:Restriction>
       <owl:onProperty rdf:resource="http://base.onto.uri/attribute1"/>
       <owl:cardinality rdf:datatype="http://www.w3.org...#integer" >2</owl:cardinality>
     </owl:Restriction>
   </rdfs:subClassOf>
-</owl:Class>
+</rdf:Description>
 ----
 
 |
 .Min cardinality constraint in Turtle syntax
 [source,Turtle]
 ----
-:ClassName a owl:Class ;
+:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
       owl:minCardinality "1"^^xsd:integer;
       owl:onProperty :attribute2 ;
@@ -458,21 +458,21 @@ For each attribute multiplicity of the form ( min .. max ), where min and max ar
 .Min cardinality constraint in RDF/XML syntax
 [source,XML]
 ----
-<owl:Class rdf:about="http://base.onto.uri/ClassName">
+<rdf:Description rdf:about="http://base.onto.uri/ClassName">
   <rdfs:subClassOf>
     <owl:Restriction>
       <owl:onProperty rdf:resource="http://base.onto.uri/attribute2"/>
       <owl:minCardinality rdf:datatype="http://www.w3.org...#integer" >1</owl:cardinality>
     </owl:Restriction>
   </rdfs:subClassOf>
-</owl:Class>
+</rdf:Description>
 ----
 
 |
 .Max cardinality constraint in Turtle syntax
 [source,Turtle]
 ----
-:ClassName a owl:Class ;
+:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
       owl:maxCardinality "2"^^xsd:integer;
       owl:onProperty :attribute3 ;
@@ -483,21 +483,21 @@ For each attribute multiplicity of the form ( min .. max ), where min and max ar
 .Max cardinality constraint in RDF/XML syntax
 [source,XML]
 ----
-<owl:Class rdf:about="http://base.onto.uri/ClassName">
+<rdf:Description rdf:about="http://base.onto.uri/ClassName">
   <rdfs:subClassOf>
     <owl:Restriction>
       <owl:onProperty rdf:resource="http://base.onto.uri/attribute3"/>
       <owl:maxCardinality rdf:datatype="http://www.w3.org...#integer" >2</owl:cardinality>
     </owl:Restriction>
   </rdfs:subClassOf>
-</owl:Class>
+</rdf:Description>
 ----
 
 |
 .Min and max cardinality constraint in Turtle syntax
 [source,Turtle]
 ----
-:ClassName a owl:Class ;
+:ClassName
   rdfs:subClassOf [
     rdf:type owl:Class ;
     owl:intersectionOf (
@@ -515,7 +515,7 @@ For each attribute multiplicity of the form ( min .. max ), where min and max ar
 .Min and max cardinality constraint in RDF/XML syntax
 [source,XML]
 ----
-<owl:Class rdf:about="http://base.onto.uri/ClassName">
+<rdf:Description rdf:about="http://base.onto.uri/ClassName">
   <rdfs:subClassOf>
     <owl:Class>
       <owl:intersectionOf rdf:parseType="Collection">
@@ -532,7 +532,7 @@ For each attribute multiplicity of the form ( min .. max ), where min and max ar
       </owl:intersectionOf>
     </owl:Class>
   </rdfs:subClassOf>
-</owl:Class>
+</rdf:Description>
 ----
 |===
 
