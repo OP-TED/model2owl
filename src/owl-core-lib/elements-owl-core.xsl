@@ -185,35 +185,29 @@
     </xsl:template>
     
     <xd:doc>
-        <xd:desc></xd:desc>
+        <xd:desc>Rule C.01 Specify declaration axiom for UML Class as OWL Class where the URI and a label are 
+            deterministically generated from the class name. The label and, if available, the description are ascribed to the class.</xd:desc>
     </xd:doc>
     <xsl:template name="classDeclaration">
-        <xsl:variable name="datatypeName" select="f:lexicalQNameToWords(./@name)"/>
+        <xsl:variable name="className" select="f:lexicalQNameToWords(./@name)"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
-        <xsl:variable name="datatypeURI" select="f:buildURIFromElement(.)"/>
+        <xsl:variable name="classURI" select="f:buildURIFromElement(.)"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
-        
-        
-        <owl:Class rdf:about="{$datatypeURI}">
-  <!--          <rdfs:label xml:lang="en">
-                <xsl:value-of select="$datatypeName"/>
-            </rdfs:label>-->
+           
+        <owl:Class rdf:about="{$classURI}">
             <skos:prefLabel xml:lang="en">
-                <xsl:value-of select="$datatypeName"/>
+                <xsl:value-of select="$className"/>
             </skos:prefLabel>
-            
             <xsl:if test="$documentation != ''">
-<!--                <rdfs:comment xml:lang="en">
-                    <xsl:value-of select="$documentation"/>
-                </rdfs:comment>-->
                 <skos:definition xml:lang="en">
                     <xsl:value-of select="$documentation"/>
                 </skos:definition>
             </xsl:if>
-            <xsl:if test="fn:contains($datatypeURI, $base-ontology-uri)">
+            <xsl:if test="fn:contains($classURI, $base-ontology-uri)">
                 <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
             </xsl:if>
         </owl:Class>
+        
     </xsl:template>
     
     

@@ -37,13 +37,13 @@
     <xsl:variable name="base-restriction-uri" select="$base-ontology-uri"/>
     <!--    Shapes Module URI-->
     <xsl:variable name="shapeArtefactURI"
-        select="fn:concat($base-ontology-uri, $defaultDelimiter, $moduleReference, '-shape')"/>
+        select="fn:concat($base-shape-uri,$defaultDelimiter, $moduleReference, '-shape')"/>
     <!--    Restrictions Module URI-->
     <xsl:variable name="restrictionsArtefactURI"
         select="fn:concat($base-restriction-uri, $defaultDelimiter, $moduleReference, '-restriction')"/>
     <!--    Core Module URI-->
     <xsl:variable name="coreArtefactURI"
-        select="fn:concat($base-shape-uri, $defaultDelimiter, $moduleReference)"/>
+        select="fn:concat($base-ontology-uri, $defaultDelimiter, $moduleReference)"/>
 
     <!-- when a delimiter is missing in the base URI of a namespace, use this default value-->
     <xsl:variable name="defaultDelimiter" select="'#'"/>
