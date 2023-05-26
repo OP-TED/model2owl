@@ -19,7 +19,7 @@ Most of the UML elements are named. The UML conventions dedicate an extensive se
 
 [#rule:element-label-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:T.01}. Label -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify a label for UML element. *TODO:* Update
+Specify a label for the OWL entity based on the name of the UML element.
 ====
 
 [cols="a,a", options="noheader"]
@@ -45,7 +45,7 @@ Specify a label for UML element. *TODO:* Update
 
 [#rule:element-label-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:T.01}. Label -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify a label for UML element. *TODO:* Update
+Specify a label for the SHACL shape, based on the name of the UML element.
 ====
 
 [cols="a,a", options="noheader"]
@@ -99,7 +99,7 @@ By default, we recommend the use of the SKOS lexicalization (`skos:definition`) 
 
 [#rule:element-definition-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Description -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify a description for UML element. *TODO:* Update
+Specify a description for the OWL entity based on the note on the UML element.
 ====
 
 [cols="a,a", options="noheader"]
@@ -124,7 +124,7 @@ Specify a description for UML element. *TODO:* Update
 
 [#rule:element-definition-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Description -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify a description for UML element. *TODO:* Update
+Specify an annotation (comment or description) for the SHACL shape based on the note on the UML element.
 ====
 
 [cols="a,a", options="noheader"]
@@ -187,7 +187,7 @@ By default, we recommend the use of the SKOS lexicalization (`skos:editorialNote
 
 [#rule:element-external-comment-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Comment -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify annotation axiom for UML Comment associated to a UML element.
+Specify an annotation axiom (comment or editorial note) on the OWL entity for the UML Comment associated to a UML element.
 ====
 
 [cols="a,a", options="noheader"]
@@ -212,7 +212,7 @@ Specify annotation axiom for UML Comment associated to a UML element.
 
 [#rule:element-external-comment-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Comment -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify an annotation on the data shape for the UML Comment associated to a UML element.
+Specify an annotation axiom (comment or description) on the SHACL shape for the UML Comment associated to a UML element.
 ====
 
 [cols="a,a", options="noheader"]
