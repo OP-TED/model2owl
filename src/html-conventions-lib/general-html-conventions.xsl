@@ -22,7 +22,7 @@
 
     <xsl:template name="generalConventions">
         <xsl:variable name="root" select="root()"/>
-        <h1>General conventions</h1>
+        <h1 id="generalConventions">General conventions</h1>
 
         <xsl:variable name="generalChecks" as="item()*">
             <xsl:call-template name="connectorTypes">

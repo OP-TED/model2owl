@@ -111,7 +111,7 @@
             <xsl:apply-templates select="attributes/attribute"/>
         </xsl:variable>
         <xsl:if test="boolean($classConventions) or boolean($classAttributeConventions)">
-            <h2>
+            <h2 id="{$class}">
                 <xsl:value-of select="$class"/>
             </h2>
             <section>

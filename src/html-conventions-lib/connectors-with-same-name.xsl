@@ -26,7 +26,7 @@
     <xsl:template name="connectorsWithSameName">
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
-        <h1>Connectors with multiple usages</h1>
+        <h1 id="connectorsUsage">Connectors with multiple usages</h1>
         <xsl:for-each select="$distinctNames">  
             <xsl:sort select="." lang="en"/>
             <xsl:if test="fn:count(f:getConnectorByName(., $root)) > 1">
@@ -45,9 +45,11 @@
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:if test="boolean($connectorsChecks)">
+                    <dl id="connector-{.}">
                     <dt>
                         <xsl:value-of select="."/>
                     </dt>
+                    </dl>
                     <xsl:copy-of select="$connectorsChecks"/>
                 </xsl:if>
             </xsl:if>
@@ -100,7 +102,7 @@
                     if ($connector/documentation/@value) then
                         fn:concat($connector/documentation/@value, ' (', f:getConnectorName($connector), ') ')
                     else
-                        ()"/>
+                    fn:concat('...', ' (', f:getConnectorName($connector), ') ')"/>
 
         <xsl:variable name="allConnectorsHaveDefinition"
             select="fn:count($connectorsWithSameName) = fn:count($definitionValues)"/>
