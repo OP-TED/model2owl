@@ -38,7 +38,7 @@
     </xd:doc>
     <xsl:template match="elements">
         
-        <h1 class="selector-heading">Classes</h1>
+        <h1 class="selector-heading" id="classes">Classes</h1>
         <xsl:apply-templates select="element[@xmi:type = 'uml:Class']">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
         </xsl:apply-templates>
@@ -46,7 +46,7 @@
         <xsl:apply-templates select="element[@xmi:type = 'uml:Class']/attributes/attribute">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
         </xsl:apply-templates>-->
-        <h1 class="selector-heading">Enumerations</h1>
+        <h1 class="selector-heading" id="enumerations">Enumerations</h1>
         <xsl:apply-templates select="element[@xmi:type = 'uml:Enumeration']">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
         </xsl:apply-templates>
@@ -54,15 +54,15 @@
         <xsl:apply-templates select="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
         </xsl:apply-templates>-->
-        <h1 class="selector-heading">Data-types</h1>
+        <h1 class="selector-heading" id="dataTypes">Data-types</h1>
         <xsl:apply-templates select="element[@xmi:type = 'uml:DataType']">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
         </xsl:apply-templates>
-        <h1 class="selector-heading">Packages</h1>
+        <h1 class="selector-heading" id="packages">Packages</h1>
         <xsl:apply-templates select="element[@xmi:type = 'uml:Package']">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
         </xsl:apply-templates> 
-        <h1 class="selector-heading">Object</h1>
+        <h1 class="selector-heading" id="object">Object</h1>
         <xsl:apply-templates select="element[@xmi:type = 'uml:Object']">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
         </xsl:apply-templates>   
@@ -74,22 +74,22 @@
         </xd:desc>
     </xd:doc>
     <xsl:template match="connectors">
-        <h1 class="selector-heading">Generalizations</h1>
+        <h1 class="selector-heading" id="generalizations">Generalizations</h1>
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Generalization']">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
             <xsl:sort select="fn:lower-case(source/model/@name)" data-type="text" lang="en"/>
         </xsl:apply-templates>
-        <h1 class="selector-heading">Associations</h1>
+        <h1 class="selector-heading" id="associations">Associations</h1>
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Association']">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
             <xsl:sort select="fn:lower-case(source/model/@name)" data-type="text" lang="en"/>
         </xsl:apply-templates>
-        <h1 class="selector-heading">Dependencies</h1>
+        <h1 class="selector-heading" id="dependencies">Dependencies</h1>
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Dependency']">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
             <xsl:sort select="fn:lower-case(source/model/@name)" data-type="text" lang="en"/>
         </xsl:apply-templates>
-        <h1 class="selector-heading">Realisations</h1>
+        <h1 class="selector-heading" id="realisations">Realisations</h1>
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Realisation']">
             <xsl:sort select="fn:lower-case(@name)" data-type="text" lang="en"/>
             <xsl:sort select="fn:lower-case(source/model/@name)" data-type="text" lang="en"/>

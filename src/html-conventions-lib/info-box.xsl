@@ -20,16 +20,16 @@
 
 
     <xsl:template name="infoBox">
-        <h1>Nomenclature</h1>
-        <h2>Class names</h2>
+        <h1 id="nomenclature">Nomenclature</h1>
+        <h2 id="classNames">Class names</h2>
         <ul class="display-in-two-columns">
             <xsl:call-template name="listOfClassNamesAndOccurrences"/>
         </ul>
-        <h2>Class attribute names</h2>
+        <h2 id="classAttributesNames">Class attribute names</h2>
         <ul>
             <xsl:call-template name="listOfClassAttributeNamesAndOccurences"/>
         </ul>
-        <h2>Connector names</h2>
+        <h2 id="connectorNames">Connector names</h2>
         <ul>
             <xsl:call-template name="listOfConnectorsAndOccurrences"/>
         </ul>
@@ -73,7 +73,7 @@
             <li>
                 <xsl:choose>
                     <xsl:when test="$occurencesNumber > 1">
-                        <a href="#attribute-{$attributeName}">
+                        <a href="#attribute-{$attributeName}-usage">
                             <xsl:value-of select="$attributeName"/>
                             <xsl:value-of select="$occurences"/>
                         </a>
@@ -88,8 +88,10 @@
 
                     </xsl:when>
                     <xsl:otherwise>
+                        <a href="#attribute-{$attributeName}">
                         <xsl:value-of select="$attributeName"/>
                         <xsl:value-of select="$occurences"/>
+                        </a>
                     </xsl:otherwise>
                 </xsl:choose>
 
