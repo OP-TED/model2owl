@@ -2,19 +2,16 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" 
+    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
     xmlns:f="http://https://github.com/costezki/model2owl#"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     exclude-result-prefixes="xs math xd xsl uml xmi fn f"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
-    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"         
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#" 
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:foaf="http://xmlns.com/foaf/0.1/"    
-    version="3.0">
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/" version="3.0">
 
     <xd:doc scope="stylesheet">
         <xd:desc>
@@ -32,185 +29,81 @@
     <xsl:output method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
 
+
     <xd:doc>
-        <xd:desc> [Rule 2]- (Class in data shape layer). Specify declaration axiom for UML Class as
-            SHACL Node Shape where the URI and a label are deterministically generated from the
-            class name.</xd:desc>
+        <xd:desc>Rule T.01. Label - Specify a label for UML element</xd:desc>
+        <xd:param name="elementName"/>
+    </xd:doc>
+    <xsl:template name="coreLayerName">
+        <xsl:param name="elementName"/>
+        <skos:prefLabel xml:lang="en">
+            <xsl:value-of select="$elementName"/>
+        </skos:prefLabel>
+    </xsl:template>
+
+    <xd:doc>
+        <xd:desc>Rule T.03. Description - Specify a description for UML element</xd:desc>
+        <xd:param name="definition"/>
+    </xd:doc>
+    <xsl:template name="coreLayerDescription">
+        <xsl:param name="definition"/>
+        <skos:definition xml:lang="en">
+            <xsl:value-of select="$definition"/>
+        </skos:definition>
+    </xsl:template>
+
+    <xd:doc>
+        <xd:desc>Rule T.05. Comment - Specify annotation axiom for UML Comment associated to a UML
+            element</xd:desc>
+        <xd:param name="comment"/>
+    </xd:doc>
+    <xsl:template name="coreLayerComment">
+        <xsl:param name="comment"/>
+        <rdfs:comment xml:lang="en">
+            <xsl:value-of select="$comment"/>
+        </rdfs:comment>
+    </xsl:template>
+
+
+
+
+    <xd:doc>
+        <xd:desc> Selector to run core layer transformation rules for classes</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
         <xsl:call-template name="classDeclaration"/>
     </xsl:template>
 
-
     <xd:doc>
-        <xd:desc>This will override the common selector when applying templates</xd:desc>
-    </xd:doc>
-    <xsl:template match="element[@xmi:type = 'uml:Enumeration']"/>
-
-
-<!--    TODO RULE 27 should be removed? vvvv -->
-
-    <!--<xd:doc>
-        <xd:desc>[Rule 27]-(Enumeration in core ontology layer) .
-            instantiation axiom for an UML enumeration.Specify SKOS concept scheme</xd:desc>
-    </xd:doc>
-    <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
-
-        <xsl:variable name="conceptSchemeName" select="f:lexicalQNameToWords(./@name)"/>
-
-        <xsl:variable name="conceptSchemeURI"
-            select="f:buildURIFromElement(.)"/>
-        <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
-        <!-\- generating the actual CS content -\->
-        <skos:ConceptScheme rdf:about="{$conceptSchemeURI}">
-            <rdfs:label xml:lang="en">
-                <xsl:value-of select="$conceptSchemeName"/>
-            </rdfs:label>
-            <skos:prefLabel>
-                <xsl:value-of select="$conceptSchemeName"/>
-            </skos:prefLabel>
-
-            <xsl:if test="$documentation != ''">
-                <rdfs:comment xml:lang="en">
-                    <xsl:value-of select="$documentation"/>
-                </rdfs:comment>
-                <skos:definition xml:lang="en">
-                    <xsl:value-of select="$documentation"/>
-                </skos:definition>
-            </xsl:if>     
-        </skos:ConceptScheme>
-    </xsl:template>-->
-
-    <xd:doc>
-        <xd:desc>[Rule 28]-(Enumeration items in core ontology layer) .
-            instantiation axiom for an UML enumeration item. Specify SKOS concept</xd:desc>
-    </xd:doc>
-    <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
-        
-        <xsl:if test="$enableGenerationOfSkosConcept">
-        <xsl:variable name="conceptName"
-            select="
-                if (boolean(./initial/@body)) then
-                    ./initial/@body
-                else
-                    f:lexicalQNameToWords(./@name)"/>
-        <xsl:variable name="conceptURI" select="f:buildURIFromElement(.)"/>
-        <xsl:variable name="notation" select="f:camelCaseString($conceptName)"/>
-        <xsl:variable name="conceptSchemeURI"
-            select="f:buildURIFromElement(../..)"/>
-        <xsl:variable name="documentation" select="f:formatDocString(./documentation/@value)"/>
-
-        <xsl:variable name="initialValue" select="./initial/@body"/>
-
-        <skos:Concept rdf:about="{$conceptURI}">
-            <skos:inScheme rdf:resource="{$conceptSchemeURI}"/>
-<!--            <skos:notation>
-                <xsl:value-of select="$notation"/>
-            </skos:notation>-->
-<!--            <rdfs:label xml:lang="en">
-                <xsl:value-of select="$conceptName"/>
-            </rdfs:label>-->
-            <skos:prefLabel xml:lang="en">
-                <xsl:value-of select="$conceptName"/>
-            </skos:prefLabel>
-            <xsl:if test="$documentation != ''">
-<!--                <rdfs:comment xml:lang="en">
-                    <xsl:value-of select="$documentation"/>
-                </rdfs:comment>-->
-                <skos:definition xml:lang="en">
-                    <xsl:value-of select="$documentation"/>
-                </skos:definition>
-            </xsl:if>
-        </skos:Concept>
-            </xsl:if>
-    </xsl:template>
-
-
-<!--    <xd:doc>
-        <xd:desc>uml:Package has no equivalent on OWL ontology.</xd:desc>
-    </xd:doc>
-    <xsl:template match="element[@xmi:type = 'uml:Package']"/>-->
-
-    <xd:doc>
-        <xd:desc>
-            <xd:p>[Rule 25]-(Datatype in core ontology layer) .Specify datatype declaration
-                axiom.</xd:p>
-            <xd:p>p [Rule 26]-(Structured Datatype in core ontology layer) . Specify OWL class
-                declaration axiom for UML structured datatype.</xd:p>
-        </xd:desc>
-    </xd:doc>
-    <xsl:template match="element[@xmi:type = 'uml:DataType']">
-        <xsl:choose>
-            <xsl:when test="./not(attributes) = fn:true()">
-                <xsl:call-template name="datatypeDeclaration"/>
-            </xsl:when>
-            <xsl:otherwise>
-                 <xsl:call-template name="classDeclaration"/>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
-    
-    <xd:doc>
-        <xd:desc>
-            <xd:p>[Rule 25]-(Datatype in core ontology layer) .Specify datatype declaration
-                axiom.</xd:p>           
-        </xd:desc>
-    </xd:doc>
-    <xsl:template name="datatypeDeclaration">
-        <xsl:variable name="name" select="f:lexicalQNameToWords(./@name)"/>
-        <xsl:variable name="idref" select="./@xmi:idref"/>
-        <xsl:variable name="data-type-URI" select="f:buildURIFromElement(.)"/>
-        <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
-        
-        <rdfs:Datatype rdf:about="{$data-type-URI}">
-<!--            <rdfs:label xml:lang="en">
-                <xsl:value-of select="$name"/>
-            </rdfs:label>-->
-            <skos:prefLabel xml:lang="en">
-                <xsl:value-of select="$name"/>
-            </skos:prefLabel>
-            
-            <xsl:if test="$documentation != ''">
-<!--                <rdfs:comment xml:lang="en">
-                    <xsl:value-of select="$documentation"/>
-                </rdfs:comment>-->
-                <skos:definition xml:lang="en">
-                    <xsl:value-of select="$documentation"/>
-                </skos:definition>
-            </xsl:if>
-            <xsl:if test="fn:contains($data-type-URI, $base-ontology-uri)">
-                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
-            </xsl:if>
-        </rdfs:Datatype>
-    </xsl:template>
-    
-    <xd:doc>
-        <xd:desc>Rule C.01 Specify declaration axiom for UML Class as OWL Class where the URI and a label are 
-            deterministically generated from the class name. The label and, if available, the description are ascribed to the class.</xd:desc>
+        <xd:desc>Rule C.01 Specify declaration axiom for UML Class as OWL Class where the URI and a
+            label are deterministically generated from the class name. The label and, if available,
+            the description are ascribed to the class.</xd:desc>
     </xd:doc>
     <xsl:template name="classDeclaration">
         <xsl:variable name="className" select="f:lexicalQNameToWords(./@name)"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
         <xsl:variable name="classURI" select="f:buildURIFromElement(.)"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
-           
+
         <owl:Class rdf:about="{$classURI}">
-            <skos:prefLabel xml:lang="en">
-                <xsl:value-of select="$className"/>
-            </skos:prefLabel>
+            <xsl:call-template name="coreLayerName">
+                <xsl:with-param name="elementName" select="$className"/>
+            </xsl:call-template>
             <xsl:if test="$documentation != ''">
-                <skos:definition xml:lang="en">
-                    <xsl:value-of select="$documentation"/>
-                </skos:definition>
+                <xsl:call-template name="coreLayerDescription">
+                    <xsl:with-param name="definition" select="$documentation"/>
+                </xsl:call-template>
             </xsl:if>
+            <!--   TODO ADD COMMENT RULE T05-->
+
             <xsl:if test="fn:contains($classURI, $base-ontology-uri)">
                 <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
             </xsl:if>
+
         </owl:Class>
-        
+
     </xsl:template>
-    
-    
+
     <xd:doc>
         <xd:desc>This will override the common selector when applying templates</xd:desc>
     </xd:doc>
@@ -220,7 +113,8 @@
 
 
     <xd:doc>
-        <xd:desc/>
+        <xd:desc> Getting all distinct attributes and run core layer transformation rules for class
+            attributes</xd:desc>
     </xd:doc>
     <xsl:template name="generatePropertiesFromDistinctAttributeNamesInCore">
         <xsl:variable name="root" select="root()"/>
@@ -232,19 +126,18 @@
             </xsl:call-template>
         </xsl:for-each>
     </xsl:template>
-    
+
     <xd:doc>
-        <xd:desc> [Rule 4] -(Attribute in core ontology layer). Specify declaration axiom(s) for
-            attribute(s) as OWL data or object properties deciding based on their types. The
-            attributes with primary types should be treated as data properties, whereas those typed
-            with classes or enumerations should be treated as object properties.></xd:desc>
+        <xd:desc> Rule C.04. Class attribute — in core ontology layer - Specify declaration axiom(s)
+            for attribute(s) of a UML Class as OWL data or object properties, deciding based on
+            their types. The attributes with primary types should be treated as data properties,
+            whereas those typed with classes or enumerations should be treated as object
+            properties.></xd:desc>
         <xd:param name="attributeName"/>
         <xd:param name="root"/>
     </xd:doc>
-    
 
 
-        
     <xsl:template name="generatePropertyFromAttribute">
         <xsl:param name="attributeName"/>
         <xsl:param name="root"/>
@@ -252,8 +145,7 @@
             select="f:getClassAttributeByName($attributeName, $root)"/>
         <xsl:variable name="distinctAttributeTypesFound"
             select="fn:distinct-values($attributesWithSameName/properties/@type)"/>
-        <xsl:variable name="attributeURI"
-            select="f:buildURIFromElement($attributesWithSameName[1])"/>
+        <xsl:variable name="attributeURI" select="f:buildURIFromElement($attributesWithSameName[1])"/>
 
         <!--    begin aggregate definitions-->
         <xsl:variable name="definitionValues" select="$attributesWithSameName/documentation/@value"/>
@@ -265,60 +157,176 @@
                         fn:concat(f:formatDocString($attribute/documentation/@value), ' (', $attribute/../../@name, ') ')
                     else
                         ()"/>
-        <xsl:variable name="descriptionsWithAnnotations" as="xs:string" select="fn:string-join($descriptionsWithAnnotationsSequnce)"/>
+        <xsl:variable name="descriptionsWithAnnotations" as="xs:string"
+            select="fn:string-join($descriptionsWithAnnotationsSequnce)"/>
 
         <!--    end agrregate definitions-->
         <xsl:variable name="firstAttribute" select="$attributesWithSameName[1]"/>
         <!--   decide what type of property is defined -->
         <xsl:variable name="propertyType"
             select="
-            if (f:isAttributeTypeValidForDatatypeProperty($firstAttribute)) then
+                if (f:isAttributeTypeValidForDatatypeProperty($firstAttribute)) then
                     'owl:DatatypeProperty'
                 else
-                if (f:isAttributeTypeValidForObjectProperty($firstAttribute)) then
+                    if (f:isAttributeTypeValidForObjectProperty($firstAttribute)) then
                         'owl:ObjectProperty'
                     else
                         'rdf:Property'"/>
 
         <xsl:variable name="name"
             select="
-            if (boolean($firstAttribute/@name)) then
+                if (boolean($firstAttribute/@name)) then
                     f:lexicalQNameToWords($firstAttribute/@name)
                 else
-                fn:error(xs:QName('attribute'),concat($firstAttribute/@xmi:idref, ' - Attribute with no name'))"/>
+                    fn:error(xs:QName('attribute'), concat($firstAttribute/@xmi:idref, ' - Attribute with no name'))"/>
         <xsl:variable name="className" select="$firstAttribute/../../@name" as="xs:string"/>
-     <!--   <xsl:variable name="attributeNormalizedLocalName"
-            select="fn:concat(fn:substring-before($firstAttribute/@name, ':'), ':has', f:getLocalSegmentForElements($firstAttribute))
-            "/>
-        <xsl:variable name="isAttributeWithDependencyName"
-            select="f:getConnectorByName($attributeNormalizedLocalName, $root)[source/model/@name = $className]"/>-->
         <xsl:variable name="isAttributeWithDependencyName"
             select="f:getConnectorByName($firstAttribute/@name, $root)[source/model/@name = $className]"/>
-        
+
         <xsl:if test="not($isAttributeWithDependencyName)">
             <xsl:element name="{$propertyType}">
                 <xsl:attribute name="rdf:about" select="$attributeURI"/>
-              <!--  <rdfs:label xml:lang="en">
-                    <xsl:value-of select="$name"/>
-                </rdfs:label>-->
-                <skos:prefLabel xml:lang="en">
-                    <xsl:value-of select="$name"/>
-                </skos:prefLabel>
+
+                <xsl:call-template name="coreLayerName">
+                    <xsl:with-param name="elementName" select="$className"/>
+                </xsl:call-template>
+
                 <xsl:if test="boolean($descriptionsWithAnnotations)">
-<!--                    <rdfs:comment xml:lang="en">
-                        <xsl:value-of select="$descriptionsWithAnnotations"/>
-                    </rdfs:comment>-->
-                    <skos:definition xml:lang="en">
-                        <xsl:value-of select="$descriptionsWithAnnotations"/>
-                    </skos:definition>
+                    <xsl:call-template name="coreLayerDescription">
+                        <xsl:with-param name="definition" select="$descriptionsWithAnnotations"/>
+                    </xsl:call-template>
                 </xsl:if>
+
+                <!--   TODO ADD COMMENT RULE T05-->
+
                 <xsl:if test="fn:contains($attributeURI, $base-ontology-uri)">
                     <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
                 </xsl:if>
             </xsl:element>
         </xsl:if>
-        
-      
+
+
     </xsl:template>
+
+    <xd:doc>
+        <xd:desc>
+            <xd:desc> Selector to run core layer transformation rules for data types Rule D.02. will
+                be applied using class declaration template </xd:desc>
+        </xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:DataType']">
+        <xsl:choose>
+            <xsl:when test="./not(attributes) = fn:true()">
+                <xsl:call-template name="datatypeDeclaration"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:call-template name="classDeclaration"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+    <xd:doc>
+        <xd:desc>
+            <xd:p> Rule D.01. Datatype — in core ontology layer.Specify datatype declaration
+                axiom.</xd:p>
+        </xd:desc>
+    </xd:doc>
+    <xsl:template name="datatypeDeclaration">
+        <xsl:variable name="dataTypeName" select="f:lexicalQNameToWords(./@name)"/>
+        <xsl:variable name="idref" select="./@xmi:idref"/>
+        <xsl:variable name="dataTypeURI" select="f:buildURIFromElement(.)"/>
+        <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
+
+        <rdfs:Datatype rdf:about="{$dataTypeURI}">
+            <xsl:call-template name="coreLayerName">
+                <xsl:with-param name="elementName" select="$dataTypeName"/>
+            </xsl:call-template>
+            <xsl:if test="$documentation != ''">
+                <xsl:call-template name="coreLayerDescription">
+                    <xsl:with-param name="definition" select="$documentation"/>
+                </xsl:call-template>
+            </xsl:if>
+            <!--   TODO ADD COMMENT RULE T05-->
+
+            <xsl:if test="fn:contains($dataTypeURI, $base-ontology-uri)">
+                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
+            </xsl:if>
+        </rdfs:Datatype>
+    </xsl:template>
+
+
+
+    <xd:doc>
+        <xd:desc>Rule D.03. Enumeration — in core ontology layer. Specify SKOS concept scheme
+            instantiation axiom for a UML enumeration. </xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
+
+        <xsl:variable name="conceptSchemeName" select="f:lexicalQNameToWords(./@name)"/>
+
+        <xsl:variable name="conceptSchemeURI" select="f:buildURIFromElement(.)"/>
+        <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
+
+        <skos:ConceptScheme rdf:about="{$conceptSchemeURI}">
+            <xsl:call-template name="coreLayerName">
+                <xsl:with-param name="elementName" select="$conceptSchemeName"/>
+            </xsl:call-template>
+            <xsl:if test="$documentation != ''">
+                <xsl:call-template name="coreLayerDescription">
+                    <xsl:with-param name="definition" select="$documentation"/>
+                </xsl:call-template>
+            </xsl:if>
+            <!--   TODO ADD COMMENT RULE T05-->
+
+        </skos:ConceptScheme>
+    </xsl:template>
+
+
+
+    <xd:doc>
+        <xd:desc>Rule D.05. Enumeration items — in core ontology layer. Specify SKOS concept
+            instantiation axiom for each UML enumeration item. </xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
+
+        <xsl:if test="$enableGenerationOfSkosConcept">
+            <xsl:variable name="enumerationAttributeName"
+                select="
+                    if (boolean(./initial/@body)) then
+                        ./initial/@body
+                    else
+                        f:lexicalQNameToWords(./@name)"/>
+            <xsl:variable name="enumerationAttributeURI" select="f:buildURIFromElement(.)"/>
+            <xsl:variable name="enumerationURI" select="f:buildURIFromElement(../..)"/>
+            <xsl:variable name="documentation" select="f:formatDocString(./documentation/@value)"/>
+
+
+            <skos:Concept rdf:about="{$enumerationAttributeURI}">
+                <skos:inScheme rdf:resource="{$enumerationURI}"/>
+
+                <xsl:call-template name="coreLayerName">
+                    <xsl:with-param name="elementName" select="$enumerationAttributeName"/>
+                </xsl:call-template>
+                <xsl:if test="$documentation != ''">
+                    <xsl:call-template name="coreLayerDescription">
+                        <xsl:with-param name="definition" select="$documentation"/>
+                    </xsl:call-template>
+                </xsl:if>
+                <!--   TODO ADD COMMENT RULE T05-->
+            </skos:Concept>
+        </xsl:if>
+    </xsl:template>
+
+
+    <!--    <xd:doc>
+        <xd:desc>uml:Package has no equivalent on OWL ontology.</xd:desc>
+    </xd:doc>
+    <xsl:template match="element[@xmi:type = 'uml:Package']"/>-->
+
+
+
+
+
+
 
 </xsl:stylesheet>
