@@ -212,9 +212,21 @@
 <div class="title">Rule C.01. Class&#8201;&#8212;&#8201;in core ontology layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify declaration axiom for UML Class as OWL Class where the URI and a label are deterministically generated from the class name. The label and, if available, the description are ascribed to the class.</p>
+<p>Specify an OWL Class declaration axiom for each UML Class, where the URI of the OWL class is deterministically generated from the UML Class name.</p>
 </div>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the <a href="transf-rules4.html" class="xref page">Transformation of UML descriptors</a> section, to provide labels and documentation for the class at the time of its creation.
+</td>
+</tr>
+</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -226,73 +238,38 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 1. Class declaration in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a owl:Class ;
-  rdfs:label "Class name"@en ;
-.</code></pre>
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a owl:Class .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 2. Class declaration in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
-  &lt;rdfs:label xml:lang="en"&gt;Class name&lt;/rdfs:label&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about = "http://base.onto.uri/ClassName"&gt;
 &lt;/owl:Class&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<strong>TODO:</strong> See if we want to add the <code>rdfs:label</code> here, or we just rely on this information being added at the time of processing the Element&#8217;s descriptors, based on the lexicalization, as described in the <a href="transf-rules4.html" class="xref page">Section on Transformation of UML descriptors</a>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><strong>Alternative layouts:</strong></p>
-</div>
-<div id="rule:test1" class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Rule C.01"></i>
-</td>
-<td class="content">
-<div class="title">Rule C.01: Class&#8201;&#8212;&#8201;in data shape layer</div>
-<div class="paragraph">
-<p>Specify declaration axiom for UML Class as OWL Class where the URI and a label are deterministically generated from the class name. The label and, if available, the description are ascribed to the class.</p>
-</div>
-<div class="paragraph">
-<p><code>[IMPORTANT]</code></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div id="rule:test2" class="sidebarblock">
-<div class="content">
-<div class="title">Rule C.01: Class&#8201;&#8212;&#8201;in data shape layer</div>
-<div class="paragraph">
-<p>Specify declaration axiom for UML Class as SHACL Node Shape where the URI and a label are deterministically generated from the class name.</p>
-</div>
-<div class="paragraph">
-<p><code>[sidebar]</code></p>
-</div>
-</div>
-</div>
 <div id="rule:class-ds" class="exampleblock">
 <div class="title">Rule C.02. Class&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify declaration axiom for UML Class as SHACL Node Shape where the URI and a label are deterministically generated from the class name.</p>
+<p>Specify a SHACL NodeShape declaration axiom for each UML Class. The URIs of the node shape and of the OWL class they refer to, are deterministically generated from the UML Class name.</p>
 </div>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the data shape layer) in the <a href="transf-rules4.html" class="xref page">Transformation of UML descriptors</a> section, to provide labels and documentation for the node shape at the time of its creation.
+</td>
+</tr>
+</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -309,15 +286,15 @@
 @prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
 
 shape:ClassName a sh:NodeShape ;
-    sh:targetClass :ClassName ;
+  sh:targetClass :ClassName ;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 4. Node shape declaration in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
-  &lt;sh:targetClass rdf:resource="http://base.onto.uri/ClassName"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about = "http://base.shape.uri/ClassName"&gt;
+    &lt;sh:targetClass rdf:resource = "http://base.onto.uri/ClassName"/&gt;
 &lt;/sh:NodeShape&gt;</code></pre>
 </div>
 </div></div></td>
@@ -343,9 +320,21 @@ shape:ClassName a sh:NodeShape ;
 <div class="title">Rule C.03. Abstract class&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify declaration axiom for UML Class as SHACL Node Shape with a SPARQL constraint that selects all instances of this class.</p>
+<p>Specify a SHACL NodeShape declaration axiom for each abstract UML Class, with a SPARQL constraint that selects all instances of this class.</p>
 </div>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the data shape layer) in the <a href="transf-rules4.html" class="xref page">Transformation of UML descriptors</a> section, to provide labels and documentation for the node shape at the time of its creation.
+</td>
+</tr>
+</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -368,23 +357,23 @@ shape:ClassName a sh:NodeShape ;
       WHERE {
         $this a :ClassName .
       }
-      """ ;
-   ] ;
+    """ ;
+  ] ;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 6. Instance checking constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about="http://base.shape.uri/ClassName"&gt;
-  &lt;sh:targetClass rdf:resource="http://base.onto.uri/ClassName"/&gt;
-  &lt;sh:sparql rdf:parseType="Resource"&gt;
-    &lt;sh:select&gt;SELECT $this
-      WHERE {
-        $this a :ClassName .
-      }
-    &lt;/sh:select&gt;
-  &lt;/sh:sparql&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;sh:NodeShape rdf:about = "http://base.shape.uri/ClassName"&gt;
+    &lt;sh:targetClass rdf:resource = "http://base.onto.uri/ClassName"/&gt;
+    &lt;sh:sparql rdf:parseType="Resource"&gt;
+        &lt;sh:select&gt;SELECT $this
+          WHERE {
+          $this a :ClassName .
+        }
+        &lt;/sh:select&gt;
+    &lt;/sh:sparql&gt;
 &lt;/sh:NodeShape&gt;</code></pre>
 </div>
 </div></div></td>
@@ -407,9 +396,21 @@ shape:ClassName a sh:NodeShape ;
 <div class="title">Rule C.04. Attribute&#8201;&#8212;&#8201;in core ontology layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify declaration axiom(s) for attribute(s) as OWL data or object properties deciding based on their types. The attributes with primary types should be treated as data properties, whereas those typed with classes or enumerations should be treated as object properties.</p>
+<p>Specify declaration axiom(s) for attribute(s) of a UML Class as OWL data or object properties, deciding based on their types. The attributes with primary types should be treated as data properties, whereas those typed with classes or enumerations should be treated as object properties.</p>
 </div>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the <a href="transf-rules4.html" class="xref page">Transformation of UML descriptors</a> section, to provide labels and documentation for the property at the time of its creation.
+</td>
+</tr>
+</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -422,17 +423,13 @@ shape:ClassName a sh:NodeShape ;
 <div class="title">Listing 7. Data property declaration in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute1 a owl:DatatypeProperty ;
-  rdfs:label "attribute 1"@en;
-  skos:definition "Description of the attribute meaning"@en;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 8. Data property declaration in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:DatatypeProperty rdf:about="http://base.onto.uri/attribute1"&gt;
-  &lt;rdfs:label xml:lang="en"&gt;attribute 1&lt;/rdfs:label&gt;
-  &lt;skos:definition xml:lang="en"&gt;Description of the attribute meaning&lt;/skos:definition&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:DatatypeProperty rdf:about = "http://base.onto.uri/attribute1"&gt;
 &lt;/owl:DatatypeProperty&gt;</code></pre>
 </div>
 </div></div></td>
@@ -441,36 +438,19 @@ shape:ClassName a sh:NodeShape ;
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 9. Object property declaration in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute2 a owl:ObjectProperty ;
-  rdfs:label "attribute 2"@en;
-  skos:definition "Description of the attribute meaning"@en;
-.</code></pre>
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute2 a owl:ObjectProperty .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 10. Object property declaration in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/attribute2"&gt;
-  &lt;rdfs:label xml:lang="en"&gt;attribute 1&lt;/rdfs:label&gt;
-  &lt;skos:definition xml:lang="en"&gt;Description of the attribute meaning&lt;/skos:definition&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2"&gt;
 &lt;/owl:ObjectProperty&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<strong>TODO:</strong> See if we want to add the <code>rdfs:label</code> and <code>skos:definition</code> here, or we just rely on this information being added at the time of processing the Element&#8217;s descriptors, based on the lexicalization, as described in the <a href="transf-rules4.html" class="xref page">Section on Transformation of UML descriptors</a>.
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_attribute_owner"><a class="anchor" href="#_attribute_owner"></a>Attribute owner</h3>
@@ -500,8 +480,8 @@ shape:ClassName a sh:NodeShape ;
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 12. Data property domain specification in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:DatatypeProperty rdf:about="http://base.onto.uri/attribute1"&gt;
-  &lt;rdfs:domain rdf:resource="http://base.onto.uri/ClassName"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:DatatypeProperty rdf:about = "http://base.onto.uri/attribute1"&gt;
+    &lt;rdfs:domain rdf:resource = "http://base.onto.uri/ClassName"/&gt;
 &lt;/owl:DatatypeProperty&gt;</code></pre>
 </div>
 </div></div></td>
@@ -518,8 +498,8 @@ shape:ClassName a sh:NodeShape ;
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 14. Object property domain specification in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/attribute2"&gt;
-  &lt;rdfs:domain rdf:resource="http://base.onto.uri/ClassName"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2"&gt;
+    &lt;rdfs:domain rdf:resource = "http://base.onto.uri/ClassName"/&gt;
 &lt;/owl:ObjectProperty&gt;</code></pre>
 </div>
 </div></div></td>
@@ -530,9 +510,21 @@ shape:ClassName a sh:NodeShape ;
 <div class="title">Rule C.06. Class attribute&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify PropertyShape declaration axiom for each attribute.</p>
+<p>Specify a SHACL PropertyShape declaration axiom for each attribute.</p>
 </div>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the <a href="transf-rules4.html" class="xref page">Transformation of UML descriptors</a> section, to provide labels and documentation for the property shape at the time of its creation.
+</td>
+</tr>
+</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -559,11 +551,11 @@ shape:ClassName-attributeName a sh:PropertyShape ;
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 16. PropertyShape declaration for attributes in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName"&gt;
-  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-attributeName"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName"&gt;
+    &lt;sh:property rdf:resource = "http://base.shape.uri/ClassName-attributeName"/&gt;
 &lt;/rdf:Description&gt;
-&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-attributeName"&gt;
-  &lt;sh:path rdf:resource="http://base.onto.uri/attributeName"/&gt;
+&lt;sh:PropertyShape rdf:about = "http://base.shape.uri/ClassName-attributeName"&gt;
+    &lt;sh:path rdf:resource = "http://base.onto.uri/attributeName"/&gt;
 &lt;/sh:PropertyShape&gt;</code></pre>
 </div>
 </div></div></td>
@@ -599,8 +591,8 @@ shape:ClassName-attributeName a sh:PropertyShape ;
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 18. Data property range specification in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:DatatypeProperty rdf:about="http://base.onto.uri/attribute1"&gt;
-  &lt;rdfs:range rdf:resource="http://www.w3c.org...#string"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:DatatypeProperty rdf:about = "http://base.onto.uri/attribute1"&gt;
+    &lt;rdfs:range rdf:resource = "http://www.w3c.org...#string"/&gt;
 &lt;/owl:DatatypeProperty&gt;</code></pre>
 </div>
 </div></div></td>
@@ -617,8 +609,8 @@ shape:ClassName-attributeName a sh:PropertyShape ;
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 20. Object property range specification in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/attribute2"&gt;
-  &lt;rdfs:range rdf:resource="http://base.onto.uri/OtherClass"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2"&gt;
+    &lt;rdfs:range rdf:resource = "http://base.onto.uri/OtherClass"/&gt;
 &lt;/owl:ObjectProperty&gt;</code></pre>
 </div>
 </div></div></td>
@@ -629,7 +621,7 @@ shape:ClassName-attributeName a sh:PropertyShape ;
 <div class="title">Rule C.08. Attribute type&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Within the SHACL Node Shape corresponding to the UML class, specify property constraints, for each UML attribute, indicating the range class or datatype.</p>
+<p>Within the SHACL PropertyShape corresponding to an attribute of a UML Class, specify property constraints indicating the range class or datatype.</p>
 </div>
 </div>
 </div>
@@ -656,8 +648,8 @@ shape:ClassName-attribute1
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 22. Property datatype constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-attribute1"&gt;
-  &lt;sh:datatype rdf:resource="http://www.w3c.org...#string"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-attribute1"&gt;
+    &lt;sh:datatype rdf:resource = "http://www.w3c.org...#string"/&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -678,8 +670,8 @@ shape:ClassName-attribute2
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 24. Property class constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-attribute2"&gt;
-  &lt;sh:class rdf:resource="http://base.onto.uri/OtherClass"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-attribute2"&gt;
+    &lt;sh:class rdf:resource = "http://base.onto.uri/OtherClass"/&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -705,7 +697,7 @@ shape:ClassName-attribute2
 <div class="title">Rule C.09. Attribute multiplicity&#8201;&#8212;&#8201;in reasoning layer</div>
 <div class="content">
 <div class="paragraph">
-<p>For each attribute multiplicity of the form ( min .. max ), where min and max are different than ``*'' (any), specify a subclass axiom where the OWL class, corresponding to the UML class, specialises an anonymous restriction of properties formulated according to the following cases.</p>
+<p>For each attribute multiplicity of the form ( min .. max ), where min and max are different than ``*'' (any), specify a subclass axiom where the OWL class, corresponding to the UML Class, specialises an anonymous restriction of properties formulated according to the following cases.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -737,22 +729,22 @@ shape:ClassName-attribute2
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
-      owl:cardinality "2"^^xsd:integer;
-      owl:onProperty :attribute1 ;
-    ] ;
+    owl:cardinality "2"^^xsd:integer;
+    owl:onProperty :attribute1 ;
+  ] ;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 26. Exact cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ClassName"&gt;
-  &lt;rdfs:subClassOf&gt;
-    &lt;owl:Restriction&gt;
-      &lt;owl:onProperty rdf:resource="http://base.onto.uri/attribute1"/&gt;
-      &lt;owl:cardinality rdf:datatype="http://www.w3.org...#integer" &gt;2&lt;/owl:cardinality&gt;
-    &lt;/owl:Restriction&gt;
-  &lt;/rdfs:subClassOf&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
+    &lt;rdfs:subClassOf&gt;
+        &lt;owl:Restriction&gt;
+            &lt;owl:onProperty rdf:resource = "http://base.onto.uri/attribute1"/&gt;
+            &lt;owl:cardinality rdf:datatype="http://www.w3.org...#integer" &gt;2&lt;/owl:cardinality&gt;
+        &lt;/owl:Restriction&gt;
+    &lt;/rdfs:subClassOf&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -763,22 +755,22 @@ shape:ClassName-attribute2
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
-      owl:minCardinality "1"^^xsd:integer;
-      owl:onProperty :attribute2 ;
-    ] ;
+    owl:minCardinality "1"^^xsd:integer;
+    owl:onProperty :attribute2 ;
+  ] ;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 28. Min cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ClassName"&gt;
-  &lt;rdfs:subClassOf&gt;
-    &lt;owl:Restriction&gt;
-      &lt;owl:onProperty rdf:resource="http://base.onto.uri/attribute2"/&gt;
-      &lt;owl:minCardinality rdf:datatype="http://www.w3.org...#integer" &gt;1&lt;/owl:cardinality&gt;
-    &lt;/owl:Restriction&gt;
-  &lt;/rdfs:subClassOf&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
+    &lt;rdfs:subClassOf&gt;
+        &lt;owl:Restriction&gt;
+            &lt;owl:onProperty rdf:resource = "http://base.onto.uri/attribute2"/&gt;
+            &lt;owl:minCardinality rdf:datatype="http://www.w3.org...#integer" &gt;1&lt;/owl:cardinality&gt;
+        &lt;/owl:Restriction&gt;
+    &lt;/rdfs:subClassOf&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -789,22 +781,22 @@ shape:ClassName-attribute2
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
-      owl:maxCardinality "2"^^xsd:integer;
-      owl:onProperty :attribute3 ;
-    ] ;
+    owl:maxCardinality "2"^^xsd:integer;
+    owl:onProperty :attribute3 ;
+  ] ;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 30. Max cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ClassName"&gt;
-  &lt;rdfs:subClassOf&gt;
-    &lt;owl:Restriction&gt;
-      &lt;owl:onProperty rdf:resource="http://base.onto.uri/attribute3"/&gt;
-      &lt;owl:maxCardinality rdf:datatype="http://www.w3.org...#integer" &gt;2&lt;/owl:cardinality&gt;
-    &lt;/owl:Restriction&gt;
-  &lt;/rdfs:subClassOf&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
+    &lt;rdfs:subClassOf&gt;
+        &lt;owl:Restriction&gt;
+            &lt;owl:onProperty rdf:resource = "http://base.onto.uri/attribute3"/&gt;
+            &lt;owl:maxCardinality rdf:datatype="http://www.w3.org...#integer" &gt;2&lt;/owl:cardinality&gt;
+        &lt;/owl:Restriction&gt;
+    &lt;/rdfs:subClassOf&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -831,17 +823,17 @@ shape:ClassName-attribute2
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 32. Min and max cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ClassName"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
   &lt;rdfs:subClassOf&gt;
     &lt;owl:Class&gt;
       &lt;owl:intersectionOf rdf:parseType="Collection"&gt;
         &lt;owl:Restriction&gt;
-          &lt;owl:onProperty rdf:resource="http://base.onto.uri/attribute4"/&gt;
+          &lt;owl:onProperty rdf:resource = "http://base.onto.uri/attribute4"/&gt;
           &lt;owl:minCardinality rdf:datatype="...#integer"
           &gt;1&lt;/owl:minCardinality&gt;
         &lt;/owl:Restriction&gt;
         &lt;owl:Restriction&gt;
-          &lt;owl:onProperty rdf:resource="http://base.onto.uri/attribute4"/&gt;
+          &lt;owl:onProperty rdf:resource = "http://base.onto.uri/attribute4"/&gt;
           &lt;owl:maxCardinality rdf:datatype="...#integer"
           &gt;2&lt;/owl:maxCardinality&gt;
         &lt;/owl:Restriction&gt;
@@ -861,7 +853,7 @@ shape:ClassName-attribute2
 <div class="title">Rule C.10. Attribute multiplicity "one" &#8201;&#8212;&#8201;in reasoning layer</div>
 <div class="content">
 <div class="paragraph">
-<p>For each attribute that has multiplicity exactly one, i.e. [1..1], specify functional property axiom.</p>
+<p>For each attribute that has multiplicity exactly one, i.e. [1..1], specify a functional property axiom.</p>
 </div>
 </div>
 </div>
@@ -884,8 +876,8 @@ shape:ClassName-attribute2
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 34. Declaring a functional property in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/attribute5"&gt;
-  &lt;rdf:type rdf:resource="http://...owl#FunctionalProperty"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/attribute5"&gt;
+    &lt;rdf:type rdf:resource = "http://...owl#FunctionalProperty"/&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -896,7 +888,7 @@ shape:ClassName-attribute2
 <div class="title">Rule C.11. Attribute range shape&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Within the SHACL Node Shape corresponding to the UML class, specify property constraints, corresponding to each attribute, indicating the minimum and maximum cardinality, only where min and max are different from ``*'' (any) and multiplicity is not [1..1]. The expressions are formulated according to the following cases.</p>
+<p>Within the SHACL PropertyShape corresponding to an attribute of a UML Class, specify property constraints indicating the minimum and maximum cardinality, only where min and max are different from ``*'' (any) and multiplicity is not [1..1]. The expressions are formulated according to the following cases.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -938,10 +930,10 @@ shape:ClassName-attribute1
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 36. Exact cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-attribute1"&gt;
-  &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-attribute1"&gt;
+    &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
       &gt;2&lt;/sh:minCount&gt;
-  &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
+    &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
       &gt;2&lt;/sh:maxCount&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
@@ -962,8 +954,8 @@ shape:ClassName-attribute2
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 38. Min cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-attribute2"&gt;
-  &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-attribute2"&gt;
+    &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
       &gt;1&lt;/sh:minCount&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
@@ -984,8 +976,8 @@ shape:ClassName-attribute3
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 40. Max cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-attribute3"&gt;
-  &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-attribute3"&gt;
+    &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
       &gt;2&lt;/sh:maxCount&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
@@ -1007,10 +999,10 @@ shape:ClassName-attribute4
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 42. Min and max cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-attribute4"&gt;
-  &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-attribute4"&gt;
+    &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
       &gt;1&lt;/sh:minCount&gt;
-  &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
+    &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
       &gt;2&lt;/sh:maxCount&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>

@@ -223,6 +223,18 @@
 </div>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the <a href="transf-rules4.html" class="xref page">Transformation of UML descriptors</a> section, to provide labels and documentation for the datatype at the time of its creation.
+</td>
+</tr>
+</table>
+</div>
 <table id="tab:type-mapping" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 2. Mapping of UML primitive types to XSD datatypes</caption>
 <colgroup>
@@ -294,20 +306,15 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 1. UML primitive datatype declaration in Turtle syntax</div>
+<div class="title">Listing 1. UML primitive datatype declaration (String) in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">xsd:string a rdfs:Datatype ;
-  rdfs:label "String"@en ;
-  skos:definition "Description of the datatype meaning"@en ;
-.</code></pre>
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">xsd:string a rdfs:Datatype .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 2. UML primitive datatype declaration in RDF/XML syntax</div>
+<div class="title">Listing 2. UML primitive datatype declaration (String) in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#string"&gt;
-  &lt;rdfs:label xml:lang="en"&gt;String&lt;/rdfs:label&gt;
-  &lt;skos:definition xml:lang="en"&gt;Description of the datatype meaning&lt;/skos:definition&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdfs:Datatype rdf:about = "http://www.w3.org/2001/XMLSchema#string"&gt;
 &lt;/rdfs:Datatype&gt;</code></pre>
 </div>
 </div></div></td>
@@ -316,18 +323,13 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 3. XSD and RDF(S) datatype declaration in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">xsd:boolean a rdfs:Datatype ;
-  rdfs:label "Boolean"@en ;
-  skos:definition "Description of the datatype meaning"@en ;
-.</code></pre>
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">xsd:boolean a rdfs:Datatype .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 4. XSD and RDF(S) datatype declaration in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#boolean"&gt;
-  &lt;rdfs:label xml:lang="en"&gt;Boolean&lt;/rdfs:label&gt;
-  &lt;skos:definition xml:lang="en"&gt;Description of the datatype meaning&lt;/skos:definition&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdfs:Datatype rdf:about = "http://www.w3.org/2001/XMLSchema#boolean"&gt;
 &lt;/rdfs:Datatype&gt;</code></pre>
 </div>
 </div></div></td>
@@ -336,18 +338,13 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 5. Model specific datatype declaration in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:DatatypeName a rdfs:Datatype ;
-  rdfs:label "Datatype name"@en ;
-  skos:definition "Description of the datatype meaning"@en ;
-.</code></pre>
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:DatatypeName a rdfs:Datatype .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 6. Model specific datatype declaration in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdfs:Datatype rdf:about="http://base.onto.uri/DatatypeName"&gt;
-  &lt;rdfs:label xml:lang="en"&gt;Datatype name&lt;/rdfs:label&gt;
-  &lt;skos:definition xml:lang="en"&gt;Description of the datatype meaning&lt;/skos:definition&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdfs:Datatype rdf:about = "http://base.onto.uri/DatatypeName"&gt;
 &lt;/rdfs:Datatype&gt;</code></pre>
 </div>
 </div></div></td>
@@ -397,6 +394,18 @@
 </div>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the <a href="transf-rules4.html" class="xref page">Transformation of UML descriptors</a> section, to provide labels and documentation for the class/individual representing the enumeration at the time of its creation.
+</td>
+</tr>
+</table>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -407,20 +416,13 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 7. Concept scheme instantiation in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:EnumerationName a skos:ConceptScheme ;
-  rdfs:label "Controlled list" ;
-  skos:prefLabel "Controlled list"@en ;
-  skos:definition "Definition of the concept scheme meaning"@en ;
-.</code></pre>
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:EnumerationName a skos:ConceptScheme .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 8. Concept scheme instantiation in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;skos:ConceptScheme rdf:about="http://base.onto.uri/EnumerationName"&gt;
-  &lt;rdfs:label&gt;Controlled list&lt;/rdfs:label&gt;
-  &lt;skos:prefLabel xml:lang="en"&gt;Controlled list&lt;/skos:prefLabel&gt;
-  &lt;skos:definition xml:lang="en"&gt;Definition of the concept scheme meaning&lt;/skos:definition&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;skos:ConceptScheme rdf:about = "http://base.onto.uri/EnumerationName"&gt;
 &lt;/skos:ConceptScheme&gt;</code></pre>
 </div>
 </div></div></td>
@@ -459,20 +461,32 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 10. In-scheme equivalent class in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/EnumerationName"&gt;
-  &lt;owl:equivalentClass&gt;
-    &lt;owl:Restriction&gt;
-      &lt;owl:onProperty rdf:resource=".../02/skos/core#inScheme"/&gt;
-      &lt;owl:hasValue rdf:resource="http://base.onto.uri/EnumerationName"/&gt;
-    &lt;/owl:Restriction&gt;
-  &lt;/owl:equivalentClass&gt;
-  &lt;rdfs:subClassOf rdf:resource=".../02/skos/core#Concept"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about = "http://base.onto.uri/EnumerationName"&gt;
+    &lt;owl:equivalentClass&gt;
+        &lt;owl:Restriction&gt;
+            &lt;owl:onProperty rdf:resource = ".../02/skos/core#inScheme"/&gt;
+            &lt;owl:hasValue rdf:resource = "http://base.onto.uri/EnumerationName"/&gt;
+        &lt;/owl:Restriction&gt;
+    &lt;/owl:equivalentClass&gt;
+    &lt;rdfs:subClassOf rdf:resource = ".../02/skos/core#Concept"/&gt;
 &lt;/owl:Class&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Should this be subclass of <code>skos:Concept</code> or <code>skos:ConceptScheme</code>? More likely the latter. Update if confirmed.
+</td>
+</tr>
+</table>
+</div>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -494,6 +508,18 @@
 </div>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the <a href="transf-rules4.html" class="xref page">Transformation of UML descriptors</a> section, to provide labels and documentation for the individual representing the enumeration item at the time of its creation.
+</td>
+</tr>
+</table>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -506,34 +532,22 @@
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:itemA a skos:Concept ;
   skos:inScheme :EnumerationName ;
-  rdfs:label "Item A" ;
-  skos:prefLabel "Item A"@en ;
-  skos:definition "Description fo the concept meaning"@en ;
 .
 
 :itemB a skos:Concept ;
   skos:inScheme :EnumerationName ;
-  rdfs:label "Item B" ;
-  skos:prefLabel "Item B"@en ;
-  skos:definition "Description fo the concept meaning"@en ;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 12. Concept scheme instantiation in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;skos:Concept rdf:about="http://base.onto.uri/itemA"&gt;
-  &lt;skos:inScheme rdf:resource="http://base.onto.uri/EnumerationName"/&gt;
-  &lt;rdfs:label&gt;Item A&lt;/rdfs:label&gt;
-  &lt;skos:prefLabel xml:lang="en"&gt;Item A&lt;/skos:prefLabel&gt;
-  &lt;skos:definition xml:lang="en"&gt;Description fo the concept meaning&lt;/skos:definition&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;skos:Concept rdf:about = "http://base.onto.uri/itemA"&gt;
+    &lt;skos:inScheme rdf:resource = "http://base.onto.uri/EnumerationName"/&gt;
 &lt;/skos:Concept&gt;
 
-&lt;skos:Concept rdf:about="http://base.onto.uri/itemB"&gt;
-  &lt;skos:inScheme rdf:resource="http://base.onto.uri/EnumerationName"/&gt;
-  &lt;rdfs:label&gt;Item B&lt;/rdfs:label&gt;
-  &lt;skos:prefLabel xml:lang="en"&gt;Item B&lt;/skos:prefLabel&gt;
-  &lt;skos:definition xml:lang="en"&gt;Description fo the concept meaning&lt;/skos:definition&gt;
+&lt;skos:Concept rdf:about = "http://base.onto.uri/itemB"&gt;
+    &lt;skos:inScheme rdf:resource = "http://base.onto.uri/EnumerationName"/&gt;
 &lt;/skos:Concept&gt;</code></pre>
 </div>
 </div></div></td>

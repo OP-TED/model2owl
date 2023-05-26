@@ -270,6 +270,18 @@
 </div>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the <a href="transf-rules4.html" class="xref page">Transformation of UML descriptors</a> section, to provide labels and documentation for the property at the time of its creation.
+</td>
+</tr>
+</table>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -280,36 +292,19 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 1. Property declaration in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relationName a owl:ObjectProperty ;
-  rdfs:label "relates oo"@en;
-  skos:definition "Description of the relationship meaning"@en;
-.</code></pre>
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relationName a owl:ObjectProperty .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 2. Property declaration in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/relationName"&gt;
-  &lt;rdfs:label xml:lang="en"&gt;relates to&lt;/rdfs:label&gt;
-  &lt;skos:definition xml:lang="en"&gt;Description of the relationship meaning&lt;/skos:definition&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/relationName"&gt;
 &lt;/owl:ObjectProperty&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<strong>TODO:</strong> See if we want to add the <code>rdfs:label</code> and <code>skos:definition</code> here, or we just rely on this information being added at the time of processing the Element&#8217;s descriptors, based on the lexicalization, as described in the <a href="transf-rules4.html" class="xref page">Section on Transformation of UML descriptors</a>.
-</td>
-</tr>
-</table>
-</div>
 <div id="rule:association-uni-ds" class="exampleblock">
 <div class="title">Rule R.02. Unidirectional association&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
@@ -318,15 +313,26 @@
 </div>
 </div>
 </div>
-<div class="admonitionblock warning">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<strong>TODO:</strong> See how we will deal with bidirectional associations. Do we need two such declarations? Or will it be handled automatically when the associations at the class of the "other" end are being processed?<br>
-If we create a different rule for bidirectional associations, add the word "unidirectional" to this rule, to differentiate the two rules.
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the data shape layer) in the <a href="transf-rules4.html" class="xref page">Transformation of UML descriptors</a> section, to provide labels and documentation for the property shape at the time of its creation.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For handling bidirectional associations refer to the <a href="#sec:association-bi">Bidirectional association</a> section.
 </td>
 </tr>
 </table>
@@ -356,11 +362,11 @@ shape:ClassName-relationName a sh:PropertyShape ;
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 4. PropertyShape declaration for associations in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName"&gt;
-  &lt;sh:property rdf:resource="http://base.shape.uri/ClassName-relationName"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName"&gt;
+    &lt;sh:property rdf:resource = "http://base.shape.uri/ClassName-relationName"/&gt;
 &lt;/rdf:Description&gt;
-&lt;sh:PropertyShape rdf:about="http://base.shape.uri/ClassName-relationName"&gt;
-  &lt;sh:path rdf:resource="http://base.onto.uri/relationName"/&gt;
+&lt;sh:PropertyShape rdf:about = "http://base.shape.uri/ClassName-relationName"&gt;
+    &lt;sh:path rdf:resource = "http://base.onto.uri/relationName"/&gt;
 &lt;/sh:PropertyShape&gt;</code></pre>
 </div>
 </div></div></td>
@@ -396,8 +402,8 @@ shape:ClassName-relationName a sh:PropertyShape ;
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 6. Domain specification in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/relationName"&gt;
-  &lt;rdfs:domain rdf:resource="http://base.onto.uri/ClassName"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/relationName"&gt;
+    &lt;rdfs:domain rdf:resource = "http://base.onto.uri/ClassName"/&gt;
 &lt;/owl:ObjectProperty&gt;</code></pre>
 </div>
 </div></div></td>
@@ -433,8 +439,8 @@ shape:ClassName-relationName a sh:PropertyShape ;
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 8. Range specification in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/relationName"&gt;
-  &lt;rdfs:range rdf:resource="http://base.onto.uri/ClassName"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/relationName"&gt;
+    &lt;rdfs:range rdf:resource = "http://base.onto.uri/ClassName"/&gt;
 &lt;/owl:ObjectProperty&gt;</code></pre>
 </div>
 </div></div></td>
@@ -445,7 +451,7 @@ shape:ClassName-relationName a sh:PropertyShape ;
 <div class="title">Rule R.05. Association range shape&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Within the SHACL PropertyShape corresponding to an association relation linked to a given source UML class, specify property constraints indicating the range class.</p>
+<p>Within the SHACL PropertyShape corresponding to an association relation linked to a given source UML Class, specify property constraints indicating the range class.</p>
 </div>
 </div>
 </div>
@@ -471,8 +477,8 @@ shape:ClassName-relationName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 10. Property class constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-relationName"&gt;
-  &lt;sh:class rdf:resource="http://base.onto.uri/OtherClass"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-relationName"&gt;
+    &lt;sh:class rdf:resource = "http://base.onto.uri/OtherClass"/&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -502,22 +508,22 @@ shape:ClassName-relationName
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName a owl:Class ;
   rdfs:subClassOf [ a owl:Restriction ;
-      owl:minCardinality "1"^^xsd:integer;
-      owl:onProperty :relationName ;
-    ] ;
+    owl:minCardinality "1"^^xsd:integer;
+    owl:onProperty :relationName ;
+  ] ;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 12. Min cardinality restriction in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
-  &lt;rdfs:subClassOf&gt;
-    &lt;owl:Restriction&gt;
-      &lt;owl:onProperty rdf:resource="http://base.onto.uri/relationName"/&gt;
-      &lt;owl:minCardinality rdf:datatype="http://www.w3.org...#integer" &gt;1&lt;/owl:cardinality&gt;
-    &lt;/owl:Restriction&gt;
-  &lt;/rdfs:subClassOf&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about = "http://base.onto.uri/ClassName"&gt;
+    &lt;rdfs:subClassOf&gt;
+        &lt;owl:Restriction&gt;
+            &lt;owl:onProperty rdf:resource = "http://base.onto.uri/relationName"/&gt;
+            &lt;owl:minCardinality rdf:datatype="http://www.w3.org...#integer" &gt;1&lt;/owl:cardinality&gt;
+        &lt;/owl:Restriction&gt;
+    &lt;/rdfs:subClassOf&gt;
 &lt;/owl:Class&gt;</code></pre>
 </div>
 </div></div></td>
@@ -528,7 +534,7 @@ shape:ClassName-relationName
 <div class="title">Rule R.07. Association multiplicity "one"&#8201;&#8212;&#8201;in reasoning layer</div>
 <div class="content">
 <div class="paragraph">
-<p>If the association/dependency multiplicity is exactly one, i.e. [1..1], specify functional property axiom like in <a href="transf-rules1.html#rule:attribute-rc-multiplicity-one" class="xref page">rule:attribute-rc-multiplicity-one</a>.</p>
+<p>If the association/dependency multiplicity is exactly one, i.e. [1..1], specify a functional property axiom like in <a href="transf-rules1.html#rule:attribute-rc-multiplicity-one" class="xref page">rule:attribute-rc-multiplicity-one</a>.</p>
 </div>
 </div>
 </div>
@@ -548,8 +554,8 @@ shape:ClassName-relationName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 14. Declaring a functional property in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/relationName"&gt;
-  &lt;rdf:type rdf:resource="http://...owl#FunctionalProperty"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/relationName"&gt;
+    &lt;rdf:type rdf:resource = "http://...owl#FunctionalProperty"/&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -560,7 +566,7 @@ shape:ClassName-relationName
 <div class="title">Rule R.08. Association multiplicity&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Within the SHACL PropertyShape corresponding to an association/dependency relation linked to a given source UML class, specify property constraints indicating minimum and maximum cardinality, according to cases provided by <a href="transf-rules1.html#rule:attribute-ds-multiplicity" class="xref page">rule:attribute-ds-multiplicity</a>.</p>
+<p>Within the SHACL PropertyShape corresponding to an association/dependency relation linked to a given source UML Class, specify property constraints indicating minimum and maximum cardinality, according to cases provided by <a href="transf-rules1.html#rule:attribute-ds-multiplicity" class="xref page">rule:attribute-ds-multiplicity</a>.</p>
 </div>
 </div>
 </div>
@@ -585,8 +591,8 @@ shape:ClassName-relationName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 16. Min cardinality constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-relationName"&gt;
-  &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-relationName"&gt;
+    &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
       &gt;1&lt;/sh:minCount&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
@@ -610,7 +616,7 @@ shape:ClassName-relationName
 <div class="title">Rule R.09. Association asymmetry&#8201;&#8212;&#8201;in reasoning layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify the asymmetry object property axiom for each end of a recursive association.</p>
+<p>Specify an asymmetric object property axiom for each end of a recursive association.</p>
 </div>
 </div>
 </div>
@@ -630,8 +636,8 @@ shape:ClassName-relationName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 18. Declaring an asymmetric property in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/relatesTo"&gt;
-  &lt;rdf:type rdf:resource="http://...owl#AsymmetricProperty"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/relatesTo"&gt;
+    &lt;rdf:type rdf:resource = "http://...owl#AsymmetricProperty"/&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -642,21 +648,9 @@ shape:ClassName-relationName
 <div class="title">Rule R.10. Association asymmetry&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Within the SHACL Node Shape corresponding to the UML class, specify SPARQL constraint selecting instances connected by the object property in a reciprocal manner.</p>
+<p>Within the SHACL Node Shape corresponding to the UML Class, specify SPARQL constraint selecting instances connected by the object property in a reciprocal manner.</p>
 </div>
 </div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<strong>TODO:</strong> Check if the code snippets do what they need to do, i.e. to check that there is NO relationship that exists both between <code>a</code> and <code>b</code>, and between <code>b</code> and <code>a</code> in the same time.
-</td>
-</tr>
-</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -673,28 +667,30 @@ shape:ClassName-relationName
 @prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
 
 shape:ClassName
-   sh:sparql [
-     sh:select """
-        SELECT ?this ?that
-        WHERE {
+  sh:sparql [
+    sh:select """
+      SELECT ?this ?that
+      WHERE {
         ?this :relatesTo ?that .
         ?that :relatesTo ?this .
-        }""" ; ] ;
+      }
+    """ ;
+  ] ;
 .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 20. Declaring an asymmetric property in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName"&gt;
-  &lt;sh:sparql rdf:parseType="Resource"&gt;
-    &lt;sh:select&gt;
-      SELECT ?this ?that
-      WHERE {
-      ?this :relatesTo ?that .
-      ?that :relatesTo ?this .}
-    &lt;/sh:select&gt;
-  &lt;/sh:sparql&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName"&gt;
+    &lt;sh:sparql rdf:parseType="Resource"&gt;
+        &lt;sh:select&gt;
+          SELECT ?this ?that
+          WHERE {
+            ?this :relatesTo ?that .
+            ?that :relatesTo ?this .}
+        &lt;/sh:select&gt;
+    &lt;/sh:sparql&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -705,7 +701,7 @@ shape:ClassName
 <div class="sect2">
 <h3 id="sec:association-bi"><a class="anchor" href="#sec:association-bi"></a>Bidirectional association</h3>
 <div class="paragraph">
-<p>The bidirectional associations should be treated, both on source and target ends, like two unidirectional associations (see <a href="#fig:association-bi-visual">Figure 3</a>). The transformation rules from <a href="#rule:association-uni-core">Rule R.01</a> and <a href="#rule:association-uni-ds">Rule R.02</a>, and all the other rules for unidirectional associations shown in <a href="#tab:connectors-overview">Table 1</a> must be applied to both ends. In addition to these rules, the inverse relation axiom must be specified.</p>
+<p>The bidirectional associations should be treated, both on source and target ends, like two unidirectional associations (see <a href="#fig:association-bi-visual">Figure 3</a>). The transformation rules from <a href="#rule:association-uni-core">Rule R.01</a> and <a href="#rule:association-uni-ds">Rule R.02</a>, and all the other rules for unidirectional associations shown in <a href="#tab:connectors-overview">Table 1</a> must be applied to both ends. In addition to those rules, the inverse relation axiom must be specified.</p>
 </div>
 <div id="fig:association-bi-visual" class="imageblock">
 <div class="content">
@@ -717,7 +713,7 @@ shape:ClassName
 <div class="title">Rule R.11. Association inverse&#8201;&#8212;&#8201;in reasoning layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify inverse object property between the source and target ends of the bidirectional association.</p>
+<p>Specify an inverse object property axiom between the source and target ends of the bidirectional association.</p>
 </div>
 </div>
 </div>
@@ -737,8 +733,8 @@ shape:ClassName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 22. Declaring an inverse property in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/relatesTo"&gt;
-  &lt;owl:inverseOf rdf:resource="http://base.onto.uri/isRelatedTo"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/relatesTo"&gt;
+    &lt;owl:inverseOf rdf:resource = "http://base.onto.uri/isRelatedTo"/&gt;
 &lt;/owl:ObjectProperty&gt;</code></pre>
 </div>
 </div></div></td>
@@ -749,7 +745,7 @@ shape:ClassName
 <div class="sect2">
 <h3 id="sec:dependecy"><a class="anchor" href="#sec:dependecy"></a>Unidirectional dependency</h3>
 <div class="paragraph">
-<p>In general the UML dependency connectors should be transformed by the rules specified for UML association connectors.</p>
+<p>In general the UML dependency connectors should be transformed by the rules specified for UML association connectors (see <a href="#tab:connectors-overview">Table 1</a>).</p>
 </div>
 <div class="paragraph">
 <p>The following two rules, concerning the transformation of dependency targets, are different from the rules for the transformation of  association targets.</p>
@@ -773,16 +769,16 @@ shape:ClassName
 <div class="title">Listing 23. Range specification in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relationName a owl:ObjectProperty ;
-	rdfs:range skos:Concept ;
-	.</code></pre>
+  rdfs:range skos:Concept ;
+.</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 24. Range specification in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/relationName"&gt;
-	&lt;rdfs:range rdf:resource=".../02/skos/core#Concept"/&gt;
-	&lt;/owl:ObjectProperty&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/relationName"&gt;
+    &lt;rdfs:range rdf:resource = ".../02/skos/core#Concept"/&gt;
+&lt;/owl:ObjectProperty&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -804,7 +800,7 @@ shape:ClassName
 <div class="title">Rule R.13. Dependency range shape&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Within the SHACL PropertyShape corresponding to a dependency relation linked to a given source UML class, specify property constraints indicating the range class.</p>
+<p>Within the SHACL PropertyShape corresponding to a dependency relation linked to a given source UML Class, specify property constraints indicating the range class.</p>
 </div>
 </div>
 </div>
@@ -842,8 +838,8 @@ shape:ClassName-relationName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 26. Property class constraint in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-relationName"&gt;
-  &lt;sh:class rdf:resource="http://base.onto.uri/EnumerationName"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-relationName"&gt;
+    &lt;sh:class rdf:resource = "http://base.onto.uri/EnumerationName"/&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -854,7 +850,7 @@ shape:ClassName-relationName
 <div class="sect2">
 <h3 id="sec:generalisation"><a class="anchor" href="#sec:generalisation"></a>Class generalisation</h3>
 <div class="paragraph">
-<p>Generalisation defines specialization relationship between Classifiers. In case of UML classes it relates a more specific Class to a more general Class.</p>
+<p>Generalisation defines specialization relationship between Classifiers. In case of UML Classes it relates a more specific Class to a more general Class.</p>
 </div>
 <div id="fig:generalisation-visual" class="imageblock">
 <div class="content">
@@ -863,13 +859,13 @@ shape:ClassName-relationName
 <div class="title">Figure 4. Visual representation of UML generalisation (on the left) and OWL subclass relation (on the right)</div>
 </div>
 <div class="paragraph">
-<p>UML generalisation set groups generalizations; incomplete and disjoint constraints indicate that the set is not complete and its specific Classes have no common instances. The UML conventions specify that all sibling classes are by default disjoint, therefore even if no generalisation set is provided it is assumed to be implicit.</p>
+<p>UML generalisation set groups generalisations; incomplete and disjoint constraints indicate that the set is not complete and its specific Classes have no common instances. The UML conventions specify that all sibling classes are by default disjoint, therefore even if no generalisation set is provided it is assumed to be implicit.</p>
 </div>
 <div id="rule:generalisation-class-core" class="exampleblock">
 <div class="title">Rule R.14. Class generalisation&#8201;&#8212;&#8201;in core ontology layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify subclass axiom for the generalisation between UML classes. Sibling classes must be disjoint with one another.</p>
+<p>Specify subclass axiom for the generalisation between UML Classes. Sibling classes must be disjoint with one another.</p>
 </div>
 </div>
 </div>
@@ -892,12 +888,12 @@ shape:ClassName-relationName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 28. Subclass declaration in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
-  &lt;rdfs:subClassOf rdf:resource="http://base.onto.uri/SuperClass"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about = "http://base.onto.uri/ClassName"&gt;
+    &lt;rdfs:subClassOf rdf:resource = "http://base.onto.uri/SuperClass"/&gt;
 &lt;/owl:Class&gt;
-&lt;owl:Class rdf:about="http://base.onto.uri/OtherClass"&gt;
-  &lt;rdfs:subClassOf rdf:resource="http://base.onto.uri/SuperClass"/&gt;
-  &lt;owl:disjointWith rdf:resource="http://base.onto.uri/ClassName"/&gt;
+&lt;owl:Class rdf:about = "http://base.onto.uri/OtherClass"&gt;
+    &lt;rdfs:subClassOf rdf:resource = "http://base.onto.uri/SuperClass"/&gt;
+    &lt;owl:disjointWith rdf:resource = "http://base.onto.uri/ClassName"/&gt;
 &lt;/owl:Class&gt;</code></pre>
 </div>
 </div></div></td>
@@ -941,11 +937,11 @@ shape:ClassName-relationName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 30. Property specialisation in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/hasSister"&gt;
-  &lt;rdfs:subPropertyOf rdf:resource="http://base.onto.uri/relatesTo"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/hasSister"&gt;
+    &lt;rdfs:subPropertyOf rdf:resource = "http://base.onto.uri/relatesTo"/&gt;
 &lt;/owl:ObjectProperty&gt;
-&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/isSisterOf"&gt;
-  &lt;rdfs:subPropertyOf rdf:resource="http://base.onto.uri/isRelatedTo"/&gt;
+&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/isSisterOf"&gt;
+    &lt;rdfs:subPropertyOf rdf:resource = "http://base.onto.uri/isRelatedTo"/&gt;
 &lt;/owl:ObjectProperty&gt;</code></pre>
 </div>
 </div></div></td>
@@ -965,7 +961,7 @@ shape:ClassName-relationName
 <div class="title">Rule R.16. Equivalent classes&#8201;&#8212;&#8201;in reasoning layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify equivalent class axiom for the generalisation with <code>&lt;&lt;equivalent&gt;&gt;</code> or <code>&lt;&lt;complete&gt;&gt;</code> stereotype between UML classes.</p>
+<p>Specify equivalent class axiom for the generalisation with <code>&lt;&lt;equivalent&gt;&gt;</code> or <code>&lt;&lt;complete&gt;&gt;</code> stereotype between UML Classes.</p>
 </div>
 </div>
 </div>
@@ -985,8 +981,8 @@ shape:ClassName-relationName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 32. Class equivalence in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/ClassName"&gt;
-  &lt;owl:equivalentClass rdf:resource="http://base.onto.uri/SuperClass"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about = "http://base.onto.uri/ClassName"&gt;
+    &lt;owl:equivalentClass rdf:resource = "http://base.onto.uri/SuperClass"/&gt;
 &lt;/owl:Class&gt;</code></pre>
 </div>
 </div></div></td>
@@ -1021,11 +1017,11 @@ shape:ClassName-relationName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 34. Property equivalence in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/hasSister"&gt;
-  &lt;owl:equivalentProperty rdf:resource="http://base.onto.uri/relatesTo"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/hasSister"&gt;
+  &lt;owl:equivalentProperty rdf:resource = "http://base.onto.uri/relatesTo"/&gt;
 &lt;/owl:ObjectProperty&gt;
-&lt;owl:ObjectProperty rdf:about="http://base.onto.uri/isSisterOf"&gt;
-  &lt;owl:equivalentProperty rdf:resource="http://base.onto.uri/isRelatedTo"/&gt;
+&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/isSisterOf"&gt;
+  &lt;owl:equivalentProperty rdf:resource = "http://base.onto.uri/isRelatedTo"/&gt;
 &lt;/owl:ObjectProperty&gt;</code></pre>
 </div>
 </div></div></td>

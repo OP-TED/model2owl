@@ -194,7 +194,7 @@
 <div class="title">Rule T.01. Label&#8201;&#8212;&#8201;in core ontology layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify a label for UML element. <strong>TODO:</strong> Update</p>
+<p>Specify a label for the OWL entity based on the name of the UML element.</p>
 </div>
 </div>
 </div>
@@ -216,8 +216,8 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 2. Labels in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ResourceName"&gt;
-  &lt;skos:prefLabel xml:lang="en"&gt;Resource name&lt;/skos:prefLabel&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ResourceName"&gt;
+    &lt;skos:prefLabel xml:lang="en"&gt;Resource name&lt;/skos:prefLabel&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -228,7 +228,7 @@
 <div class="title">Rule T.02. Label&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify a label for UML element. <strong>TODO:</strong> Update</p>
+<p>Specify a label for the SHACL shape, based on the name of the UML element.</p>
 </div>
 </div>
 </div>
@@ -253,8 +253,8 @@ shape:ClassName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 4. Label declaration for NodeShape in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName"&gt;
-  &lt;rdfs:label&gt;Class name&lt;/rdfs:label&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName"&gt;
+    &lt;rdfs:label&gt;Class name&lt;/rdfs:label&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -274,8 +274,8 @@ shape:ClassName-PropertyName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 6. Label declaration for PropertyShape in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-PropertyName"&gt;
-  &lt;sh:name&gt;Property name&lt;/sh:name&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-PropertyName"&gt;
+    &lt;sh:name&gt;Property name&lt;/sh:name&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -293,7 +293,7 @@ By default, we recommend the use of the SKOS lexicalization (<code>skos:definiti
 <div class="title">Rule T.03. Description&#8201;&#8212;&#8201;in core ontology layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify a description for UML element. <strong>TODO:</strong> Update</p>
+<p>Specify a description for the OWL entity based on the note on the UML element.</p>
 </div>
 </div>
 </div>
@@ -315,8 +315,8 @@ By default, we recommend the use of the SKOS lexicalization (<code>skos:definiti
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 8. Description in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ResourceName"&gt;
-  &lt;skos:definition xml:lang="en"&gt;Description of the resource meaning&lt;/skos:definition&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ResourceName"&gt;
+    &lt;skos:definition xml:lang="en"&gt;Description of the resource meaning&lt;/skos:definition&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -327,7 +327,7 @@ By default, we recommend the use of the SKOS lexicalization (<code>skos:definiti
 <div class="title">Rule T.04. Description&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify a description for UML element. <strong>TODO:</strong> Update</p>
+<p>Specify an annotation (comment or description) for the SHACL shape based on the note on the UML element.</p>
 </div>
 </div>
 </div>
@@ -352,8 +352,8 @@ shape:ClassName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 10. Note declaration for NodeShape in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName"&gt;
-  &lt;rdfs:comment&gt;Description of the meaning of the class&lt;/rdfs:label&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName"&gt;
+    &lt;rdfs:comment&gt;Description of the meaning of the class&lt;/rdfs:label&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -373,8 +373,8 @@ shape:ClassName-PropertyName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 12. Note declaration for PropertyShape in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-PropertyName"&gt;
-  &lt;sh:description&gt;Description of the meaning of the property&lt;/sh:description&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-PropertyName"&gt;
+    &lt;sh:description&gt;Description of the meaning of the property&lt;/sh:description&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -415,7 +415,7 @@ shape:ClassName-PropertyName
 <div class="title">Rule T.05. Comment&#8201;&#8212;&#8201;in core ontology layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify annotation axiom for UML Comment associated to a UML element.</p>
+<p>Specify an annotation axiom (comment or editorial note) on the OWL entity for the UML Comment associated to a UML element.</p>
 </div>
 </div>
 </div>
@@ -437,8 +437,8 @@ shape:ClassName-PropertyName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 14. Comment in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.onto.uri/ClassName"&gt;
-  &lt;skos:editorialNote xml:lang="en"&gt;This is an additional comment on ClassName&lt;/skos:editorialNote&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
+    &lt;skos:editorialNote xml:lang="en"&gt;This is an additional comment on ClassName&lt;/skos:editorialNote&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -449,7 +449,7 @@ shape:ClassName-PropertyName
 <div class="title">Rule T.06. Comment&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify an annotation on the data shape for the UML Comment associated to a UML element.</p>
+<p>Specify an annotation axiom (comment or description) on the SHACL shape for the UML Comment associated to a UML element.</p>
 </div>
 </div>
 </div>
@@ -474,8 +474,8 @@ shape:ClassName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 16. Note declaration for NodeShape in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName"&gt;
-  &lt;rdfs:comment&gt;This is an additional comment on ClassName&lt;/rdfs:label&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName"&gt;
+    &lt;rdfs:comment&gt;This is an additional comment on ClassName&lt;/rdfs:label&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -496,8 +496,8 @@ shape:ClassName-PropertyName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 18. Note declaration for PropertyShape in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about="http://base.shape.uri/ClassName-PropertyName"&gt;
-  &lt;sh:description&gt;This is an additional comment on PropertyName&lt;/sh:description&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-PropertyName"&gt;
+    &lt;sh:description&gt;This is an additional comment on PropertyName&lt;/sh:description&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div>
