@@ -34,6 +34,9 @@ Specify datatype declaration axiom for UML datatype as follows:
 * Model specific datatypes are declared as such.
 ====
 
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the datatype at the time of its creation.
+
 [[tab:type-mapping]]
 .Mapping of UML primitive types to XSD datatypes
 [cols="<,<",options="header",]
@@ -56,21 +59,16 @@ Specify datatype declaration axiom for UML datatype as follows:
 [cols="a,a", options="noheader"]
 |===
 |
-.UML primitive datatype declaration in Turtle syntax
+.UML primitive datatype declaration (String) in Turtle syntax
 [source,Turtle]
 ----
-xsd:string a rdfs:Datatype ;
-  rdfs:label "String"@en ;
-  skos:definition "Description of the datatype meaning"@en ;
-.
+xsd:string a rdfs:Datatype .
 ----
 |
-.UML primitive datatype declaration in RDF/XML syntax
+.UML primitive datatype declaration (String) in RDF/XML syntax
 [source,XML]
 ----
-<rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#string">
-  <rdfs:label xml:lang="en">String</rdfs:label>
-  <skos:definition xml:lang="en">Description of the datatype meaning</skos:definition>
+<rdfs:Datatype rdf:about = "http://www.w3.org/2001/XMLSchema#string">
 </rdfs:Datatype>
 ----
 
@@ -80,18 +78,13 @@ xsd:string a rdfs:Datatype ;
 .XSD and RDF(S) datatype declaration in Turtle syntax
 [source,Turtle]
 ----
-xsd:boolean a rdfs:Datatype ;
-  rdfs:label "Boolean"@en ;
-  skos:definition "Description of the datatype meaning"@en ;
-.
+xsd:boolean a rdfs:Datatype .
 ----
 |
 .XSD and RDF(S) datatype declaration in RDF/XML syntax
 [source,XML]
 ----
-<rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#boolean">
-  <rdfs:label xml:lang="en">Boolean</rdfs:label>
-  <skos:definition xml:lang="en">Description of the datatype meaning</skos:definition>
+<rdfs:Datatype rdf:about = "http://www.w3.org/2001/XMLSchema#boolean">
 </rdfs:Datatype>
 ----
 
@@ -99,18 +92,13 @@ xsd:boolean a rdfs:Datatype ;
 .Model specific datatype declaration in Turtle syntax
 [source,Turtle]
 ----
-:DatatypeName a rdfs:Datatype ;
-  rdfs:label "Datatype name"@en ;
-  skos:definition "Description of the datatype meaning"@en ;
-.
+:DatatypeName a rdfs:Datatype .
 ----
 |
 .Model specific datatype declaration in RDF/XML syntax
 [source,XML]
 ----
-<rdfs:Datatype rdf:about="http://base.onto.uri/DatatypeName">
-  <rdfs:label xml:lang="en">Datatype name</rdfs:label>
-  <skos:definition xml:lang="en">Description of the datatype meaning</skos:definition>
+<rdfs:Datatype rdf:about = "http://base.onto.uri/DatatypeName">
 </rdfs:Datatype>
 ----
 |===
@@ -145,26 +133,22 @@ image::f18.png[18]
 Specify SKOS concept scheme instantiation axiom for a UML enumeration.
 ====
 
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the class/individual representing the enumeration at the time of its creation.
+
 [cols="a,a", options="noheader"]
 |===
 |
 .Concept scheme instantiation in Turtle syntax
 [source,Turtle]
 ----
-:EnumerationName a skos:ConceptScheme ;
-  rdfs:label "Controlled list" ;
-  skos:prefLabel "Controlled list"@en ;
-  skos:definition "Definition of the concept scheme meaning"@en ;
-.
+:EnumerationName a skos:ConceptScheme .
 ----
 |
 .Concept scheme instantiation in RDF/XML syntax
 [source,XML]
 ----
-<skos:ConceptScheme rdf:about="http://base.onto.uri/EnumerationName">
-  <rdfs:label>Controlled list</rdfs:label>
-  <skos:prefLabel xml:lang="en">Controlled list</skos:prefLabel>
-  <skos:definition xml:lang="en">Definition of the concept scheme meaning</skos:definition>
+<skos:ConceptScheme rdf:about = "http://base.onto.uri/EnumerationName">
 </skos:ConceptScheme>
 ----
 |===
@@ -194,17 +178,19 @@ For a UML enumeration, specify an equivalent class restriction covering the set 
 .In-scheme equivalent class in RDF/XML syntax
 [source,XML]
 ----
-<owl:Class rdf:about="http://base.onto.uri/EnumerationName">
-  <owl:equivalentClass>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource=".../02/skos/core#inScheme"/>
-      <owl:hasValue rdf:resource="http://base.onto.uri/EnumerationName"/>
-    </owl:Restriction>
-  </owl:equivalentClass>
-  <rdfs:subClassOf rdf:resource=".../02/skos/core#Concept"/>
+<owl:Class rdf:about = "http://base.onto.uri/EnumerationName">
+    <owl:equivalentClass>
+        <owl:Restriction>
+            <owl:onProperty rdf:resource = ".../02/skos/core#inScheme"/>
+            <owl:hasValue rdf:resource = "http://base.onto.uri/EnumerationName"/>
+        </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource = ".../02/skos/core#Concept"/>
 </owl:Class>
 ----
 |===
+
+WARNING: Should this be subclass of `skos:Concept` or `skos:ConceptScheme`? More likely the latter. Update if confirmed.
 
 WARNING: *TODO:* Explain that we expect the controlled list to be defined externally and be imported into the SHACL shapes. +
 *TODO:* Explain that the restriction module should be imported into the SHACL module alongside the OWL core module.
@@ -213,6 +199,9 @@ WARNING: *TODO:* Explain that we expect the controlled list to be defined extern
 ====
 Specify SKOS concept instantiation axiom for each UML enumeration item.
 ====
+
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the individual representing the enumeration item at the time of its creation.
 
 [cols="a,a", options="noheader"]
 |===
@@ -223,16 +212,10 @@ Specify SKOS concept instantiation axiom for each UML enumeration item.
 ----
 :itemA a skos:Concept ;
   skos:inScheme :EnumerationName ;
-  rdfs:label "Item A" ;
-  skos:prefLabel "Item A"@en ;
-  skos:definition "Description fo the concept meaning"@en ;
 .
 
 :itemB a skos:Concept ;
   skos:inScheme :EnumerationName ;
-  rdfs:label "Item B" ;
-  skos:prefLabel "Item B"@en ;
-  skos:definition "Description fo the concept meaning"@en ;
 .
 ----
 |
@@ -240,18 +223,12 @@ Specify SKOS concept instantiation axiom for each UML enumeration item.
 .Concept scheme instantiation in RDF/XML syntax
 [source,XML]
 ----
-<skos:Concept rdf:about="http://base.onto.uri/itemA">
-  <skos:inScheme rdf:resource="http://base.onto.uri/EnumerationName"/>
-  <rdfs:label>Item A</rdfs:label>
-  <skos:prefLabel xml:lang="en">Item A</skos:prefLabel>
-  <skos:definition xml:lang="en">Description fo the concept meaning</skos:definition>
+<skos:Concept rdf:about = "http://base.onto.uri/itemA">
+    <skos:inScheme rdf:resource = "http://base.onto.uri/EnumerationName"/>
 </skos:Concept>
 
-<skos:Concept rdf:about="http://base.onto.uri/itemB">
-  <skos:inScheme rdf:resource="http://base.onto.uri/EnumerationName"/>
-  <rdfs:label>Item B</rdfs:label>
-  <skos:prefLabel xml:lang="en">Item B</skos:prefLabel>
-  <skos:definition xml:lang="en">Description fo the concept meaning</skos:definition>
+<skos:Concept rdf:about = "http://base.onto.uri/itemB">
+    <skos:inScheme rdf:resource = "http://base.onto.uri/EnumerationName"/>
 </skos:Concept>
 ----
 |===

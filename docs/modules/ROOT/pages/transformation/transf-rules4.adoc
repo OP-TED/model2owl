@@ -36,8 +36,8 @@ Specify a label for UML element. *TODO:* Update
 .Labels in RDF/XML syntax
 [source,XML]
 ----
-<rdf:Description rdf:about="http://base.onto.uri/ResourceName">
-  <skos:prefLabel xml:lang="en">Resource name</skos:prefLabel>
+<rdf:Description rdf:about = "http://base.onto.uri/ResourceName">
+    <skos:prefLabel xml:lang="en">Resource name</skos:prefLabel>
 </rdf:Description>
 ----
 |===
@@ -65,8 +65,8 @@ shape:ClassName
 .Label declaration for NodeShape in RDF/XML syntax
 [source,XML]
 ----
-<rdf:Description rdf:about="http://base.shape.uri/ClassName">
-  <rdfs:label>Class name</rdfs:label>
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName">
+    <rdfs:label>Class name</rdfs:label>
 </rdf:Description>
 ----
 
@@ -85,8 +85,8 @@ shape:ClassName-PropertyName
 .Label declaration for PropertyShape in RDF/XML syntax
 [source,XML]
 ----
-<rdf:Description rdf:about="http://base.shape.uri/ClassName-PropertyName">
-  <sh:name>Property name</sh:name>
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName-PropertyName">
+    <sh:name>Property name</sh:name>
 </rdf:Description>
 ----
 |===
@@ -116,8 +116,8 @@ Specify a description for UML element. *TODO:* Update
 .Description in RDF/XML syntax
 [source,XML]
 ----
-<rdf:Description rdf:about="http://base.onto.uri/ResourceName">
-  <skos:definition xml:lang="en">Description of the resource meaning</skos:definition>
+<rdf:Description rdf:about = "http://base.onto.uri/ResourceName">
+    <skos:definition xml:lang="en">Description of the resource meaning</skos:definition>
 </rdf:Description>
 ----
 |===
@@ -144,8 +144,8 @@ shape:ClassName
 .Note declaration for NodeShape in RDF/XML syntax
 [source,XML]
 ----
-<rdf:Description rdf:about="http://base.shape.uri/ClassName">
-  <rdfs:comment>Description of the meaning of the class</rdfs:label>
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName">
+    <rdfs:comment>Description of the meaning of the class</rdfs:label>
 </rdf:Description>
 ----
 
@@ -164,8 +164,8 @@ shape:ClassName-PropertyName
 .Note declaration for PropertyShape in RDF/XML syntax
 [source,XML]
 ----
-<rdf:Description rdf:about="http://base.shape.uri/ClassName-PropertyName">
-  <sh:description>Description of the meaning of the property</sh:description>
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName-PropertyName">
+    <sh:description>Description of the meaning of the property</sh:description>
 </rdf:Description>
 ----
 |===
@@ -204,8 +204,8 @@ Specify annotation axiom for UML Comment associated to a UML element.
 .Comment in RDF/XML syntax
 [source,XML]
 ----
-<rdf:Description rdf:about="http://base.onto.uri/ClassName">
-  <skos:editorialNote xml:lang="en">This is an additional comment on ClassName</skos:editorialNote>
+<rdf:Description rdf:about = "http://base.onto.uri/ClassName">
+    <skos:editorialNote xml:lang="en">This is an additional comment on ClassName</skos:editorialNote>
 </rdf:Description>
 ----
 |===
@@ -232,8 +232,8 @@ shape:ClassName
 .Note declaration for NodeShape in RDF/XML syntax
 [source,XML]
 ----
-<rdf:Description rdf:about="http://base.shape.uri/ClassName">
-  <rdfs:comment>This is an additional comment on ClassName</rdfs:label>
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName">
+    <rdfs:comment>This is an additional comment on ClassName</rdfs:label>
 </rdf:Description>
 ----
 
@@ -253,8 +253,8 @@ shape:ClassName-PropertyName
 .Note declaration for PropertyShape in RDF/XML syntax
 [source,XML]
 ----
-<rdf:Description rdf:about="http://base.shape.uri/ClassName-PropertyName">
-  <sh:description>This is an additional comment on PropertyName</sh:description>
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName-PropertyName">
+    <sh:description>This is an additional comment on PropertyName</sh:description>
 </rdf:Description>
 ----
 WARNING: *QUESTION:* should we use here `rdfs:comment` instead of adding a second value to `sh:description`?
