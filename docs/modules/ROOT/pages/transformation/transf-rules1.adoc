@@ -30,8 +30,11 @@ image::f6.png[6]
 
 [#rule:class-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:C.01}. Class -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify declaration axiom for UML Class as OWL Class where the URI and a label are deterministically generated from the class name. The label and, if available, the description are ascribed to the class.
+Specify an OWL Class declaration axiom for each UML Class, where the URI of the OWL class is deterministically generated from the UML Class name.
 ====
+
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the class at the time of its creation.
 
 [cols="a,a", options="noheader"]
 |===
@@ -40,7 +43,6 @@ Specify declaration axiom for UML Class as OWL Class where the URI and a label a
 [source,Turtle]
 ----
 :ClassName a owl:Class ;
-  rdfs:label "Class name"@en ;
 .
 ----
 |
@@ -48,36 +50,38 @@ Specify declaration axiom for UML Class as OWL Class where the URI and a label a
 [source,XML]
 ----
 <owl:Class rdf:about="http://base.onto.uri/ClassName">
-  <rdfs:label xml:lang="en">Class name</rdfs:label>
 </owl:Class>
 ----
 |===
 
-WARNING: **TODO:** See if we want to add the `rdfs:label` here, or we just rely on this information being added at the time of processing the Element's descriptors, based on the lexicalization, as described in the xref:transformation/transf-rules4.adoc[Section on Transformation of UML descriptors].
+//WARNING: **TODO:** See if we want to add the `rdfs:label` here, or we just rely on this information being added at the time of processing the Element's descriptors, based on the lexicalization, as described in the xref:transformation/transf-rules4.adoc[Section on Transformation of UML descriptors].
 
-*Alternative layouts:*
-[IMPORTANT]
-[#rule:test1,caption='{example-caption} {rule-cnt}',title='{example-caption} {rule-cnt}: Class -- in data shape layer',reftext='{example-caption} {rule-cnt}']
-====
-
-Specify declaration axiom for UML Class as OWL Class where the URI and a label are deterministically generated from the class name. The label and, if available, the description are ascribed to the class.
-
-`[IMPORTANT]`
-====
-
-[#rule:test2,caption=Rule,title='{example-caption} {rule-cnt}: Class -- in data shape layer',reftext='{example-caption} {rule-cnt}']
-****
-Specify declaration axiom for UML Class as SHACL Node Shape where the URI and a label are deterministically generated from the class name.
-
-`[sidebar]`
-****
-
+//*Alternative layouts:*
+//[IMPORTANT]
+//[#rule:test1,caption='{example-caption} {rule-cnt}',title='{example-caption} {rule-cnt}: Class -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+//====
+//
+//Specify declaration axiom for UML Class as OWL Class where the URI and a label are deterministically generated from the class name. The label and, if available, the description are ascribed to the class.
+//
+//`[IMPORTANT]`
+//====
+//
+//[#rule:test2,caption=Rule,title='{example-caption} {rule-cnt}: Class -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+//****
+//Specify declaration axiom for UML Class as SHACL Node Shape where the URI and a label are deterministically generated from the class name.
+//
+//`[sidebar]`
+//****
+//
 
 
 [#rule:class-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Class -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify declaration axiom for UML Class as SHACL Node Shape where the URI and a label are deterministically generated from the class name.
+Specify a SHACL NodeShape declaration axiom for each UML Class. The URIs of the node shape and of the OWL class they refer to, are deterministically generated from the UML Class name.
 ====
+
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the data shape layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the node shape at the time of its creation.
 
 [cols="a,a", options="noheader"]
 |===
@@ -103,6 +107,7 @@ shape:ClassName a sh:NodeShape ;
 ----
 |===
 
+
 [[sec:class-abstract]]
 === Abstract class
 
@@ -117,8 +122,11 @@ image::f7.png[7]
 
 [#rule:class-abstract-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Abstract class -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify declaration axiom for UML Class as SHACL Node Shape with a SPARQL constraint that selects all instances of this class.
+Specify a SHACL NodeShape declaration axiom for each abstract UML Class, with a SPARQL constraint that selects all instances of this class.
 ====
+
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the data shape layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the node shape at the time of its creation.
 
 [cols="a,a", options="noheader"]
 |===
@@ -158,6 +166,7 @@ shape:ClassName a sh:NodeShape ;
 ----
 |===
 
+
 [[sec:attribute]]
 === Attribute
 
@@ -170,8 +179,11 @@ image::f8.png[8]
 
 [#rule:attribute-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify declaration axiom(s) for attribute(s) as OWL data or object properties deciding based on their types. The attributes with primary types should be treated as data properties, whereas those typed with classes or enumerations should be treated as object properties.
+Specify declaration axiom(s) for attribute(s) of a UML Class as OWL data or object properties, deciding based on their types. The attributes with primary types should be treated as data properties, whereas those typed with classes or enumerations should be treated as object properties.
 ====
+
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the property at the time of its creation.
 
 [cols="a,a", options="noheader"]
 |===
@@ -180,8 +192,6 @@ Specify declaration axiom(s) for attribute(s) as OWL data or object properties d
 [source,Turtle]
 ----
 :attribute1 a owl:DatatypeProperty ;
-  rdfs:label "attribute 1"@en;
-  skos:definition "Description of the attribute meaning"@en;
 .
 ----
 |
@@ -189,8 +199,6 @@ Specify declaration axiom(s) for attribute(s) as OWL data or object properties d
 [source,XML]
 ----
 <owl:DatatypeProperty rdf:about="http://base.onto.uri/attribute1">
-  <rdfs:label xml:lang="en">attribute 1</rdfs:label>
-  <skos:definition xml:lang="en">Description of the attribute meaning</skos:definition>
 </owl:DatatypeProperty>
 ----
 
@@ -199,8 +207,6 @@ Specify declaration axiom(s) for attribute(s) as OWL data or object properties d
 [source,Turtle]
 ----
 :attribute2 a owl:ObjectProperty ;
-  rdfs:label "attribute 2"@en;
-  skos:definition "Description of the attribute meaning"@en;
 .
 ----
 |
@@ -208,13 +214,12 @@ Specify declaration axiom(s) for attribute(s) as OWL data or object properties d
 [source,XML]
 ----
 <owl:ObjectProperty rdf:about="http://base.onto.uri/attribute2">
-  <rdfs:label xml:lang="en">attribute 1</rdfs:label>
-  <skos:definition xml:lang="en">Description of the attribute meaning</skos:definition>
 </owl:ObjectProperty>
 ----
 |===
 
-WARNING: **TODO:** See if we want to add the `rdfs:label` and `skos:definition` here, or we just rely on this information being added at the time of processing the Element's descriptors, based on the lexicalization, as described in the xref:transformation/transf-rules4.adoc[Section on Transformation of UML descriptors].
+//WARNING: **TODO:** See if we want to add the `rdfs:label` and `skos:definition` here, or we just rely on this information being added at the time of processing the Element's descriptors, based on the lexicalization, as described in the xref:transformation/transf-rules4.adoc[Section on Transformation of UML descriptors].
+
 
 === Attribute owner
 
@@ -262,8 +267,11 @@ Specify data (or object) property domains for attribute(s).
 
 [#rule:attribute-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Class attribute -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify PropertyShape declaration axiom for each attribute.
+Specify a SHACL PropertyShape declaration axiom for each attribute.
 ====
+
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the property shape at the time of its creation.
 
 [cols="a,a", options="noheader"]
 |===
@@ -343,7 +351,7 @@ Specify data (or object) property range for attribute(s).
 
 [#rule:attribute-ds-range,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute type -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Within the SHACL Node Shape corresponding to the UML class, specify property constraints, for each UML attribute, indicating the range class or datatype.
+Within the SHACL PropertyShape corresponding to an attribute of a UML Class, specify property constraints indicating the range class or datatype.
 ====
 
 [cols="a,a", options="noheader"]
@@ -408,7 +416,7 @@ It should be noted that upper-bound of UML MultiplicityElement can be specified 
 
 [#rule:attribute-rc-multiplicity,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute multiplicity -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
-For each attribute multiplicity of the form ( min .. max ), where min and max are different than ``*'' (any), specify a subclass axiom where the OWL class, corresponding to the UML class, specialises an anonymous restriction of properties formulated according to the following cases.
+For each attribute multiplicity of the form ( min .. max ), where min and max are different than ``*'' (any), specify a subclass axiom where the OWL class, corresponding to the UML Class, specialises an anonymous restriction of properties formulated according to the following cases.
 
 . exact cardinality, e.g. [2..2]
 . minimum cardinality only, e.g. [1..*]
@@ -540,7 +548,7 @@ Attributes with multiplicity exactly one correspond to functional object or data
 
 [#rule:attribute-rc-multiplicity-one,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute multiplicity "one"  -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
-For each attribute that has multiplicity exactly one, i.e. [1..1], specify functional property axiom.
+For each attribute that has multiplicity exactly one, i.e. [1..1], specify a functional property axiom.
 ====
 
 [cols="a,a", options="noheader"]
@@ -566,7 +574,7 @@ For each attribute that has multiplicity exactly one, i.e. [1..1], specify funct
 
 [#rule:attribute-ds-multiplicity,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute range shape -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Within the SHACL Node Shape corresponding to the UML class, specify property constraints, corresponding to each attribute, indicating the minimum and maximum cardinality, only where min and max are different from ``*'' (any) and multiplicity is not [1..1]. The expressions are formulated according to the following cases.
+Within the SHACL PropertyShape corresponding to an attribute of a UML Class, specify property constraints indicating the minimum and maximum cardinality, only where min and max are different from ``*'' (any) and multiplicity is not [1..1]. The expressions are formulated according to the following cases.
 
 . exact cardinality, e.g. [2..2]
 . minimum cardinality only, e.g. [1..*]

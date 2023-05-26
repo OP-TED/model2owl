@@ -39,6 +39,9 @@ image::f10.png[10]
 Specify object property declaration axiom for the target end of the association/dependency.
 ====
 
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the property at the time of its creation.
+
 [cols="a,a", options="noheader"]
 |===
 |
@@ -46,8 +49,6 @@ Specify object property declaration axiom for the target end of the association/
 [source,Turtle]
 ----
 :relationName a owl:ObjectProperty ;
-  rdfs:label "relates oo"@en;
-  skos:definition "Description of the relationship meaning"@en;
 .
 ----
 |
@@ -55,22 +56,23 @@ Specify object property declaration axiom for the target end of the association/
 [source,XML]
 ----
 <owl:ObjectProperty rdf:about="http://base.onto.uri/relationName">
-  <rdfs:label xml:lang="en">relates to</rdfs:label>
-  <skos:definition xml:lang="en">Description of the relationship meaning</skos:definition>
 </owl:ObjectProperty>
 ----
 |===
 
-WARNING: **TODO:** See if we want to add the `rdfs:label` and `skos:definition` here, or we just rely on this information being added at the time of processing the Element's descriptors, based on the lexicalization, as described in the xref:transformation/transf-rules4.adoc[Section on Transformation of UML descriptors].
-
+//WARNING: **TODO:** See if we want to add the `rdfs:label` and `skos:definition` here, or we just rely on this information being added at the time of processing the Element's descriptors, based on the lexicalization, as described in the xref:transformation/transf-rules4.adoc[Section on Transformation of UML descriptors].
+//
 
 [#rule:association-uni-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Unidirectional association -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
 Specify PropertyShape declaration axiom for each association/dependency.
 ====
 
-WARNING: **TODO:** See how we will deal with bidirectional associations. Do we need two such declarations? Or will it be handled automatically when the associations at the class of the "other" end are being processed? +
-If we create a different rule for bidirectional associations, add the word "unidirectional" to this rule, to differentiate the two rules.
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the data shape layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the property shape at the time of its creation.
+
+[NOTE]
+For handling bidirectional associations refer to the <<sec:association-bi>> section.
 
 [cols="a,a", options="noheader"]
 |===
@@ -163,7 +165,7 @@ Specify object property range for the target end of the association.
 
 [#rule:association-uni-range-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association range shape -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Within the SHACL PropertyShape corresponding to an association relation linked to a given source UML class, specify property constraints indicating the range class.
+Within the SHACL PropertyShape corresponding to an association relation linked to a given source UML Class, specify property constraints indicating the range class.
 ====
 
 [cols="a,a", options="noheader"]
@@ -228,7 +230,7 @@ For the association/dependency target multiplicity, where min and max are differ
 
 [#rule:association-uni-multiplicity-one-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association multiplicity "one" -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
-If the association/dependency multiplicity is exactly one, i.e. [1..1], specify functional property axiom like in xref:transformation/transf-rules1.adoc#rule:attribute-rc-multiplicity-one[rule:attribute-rc-multiplicity-one].
+If the association/dependency multiplicity is exactly one, i.e. [1..1], specify a functional property axiom like in xref:transformation/transf-rules1.adoc#rule:attribute-rc-multiplicity-one[rule:attribute-rc-multiplicity-one].
 ====
 
 [cols="a,a", options="noheader"]
@@ -251,7 +253,7 @@ If the association/dependency multiplicity is exactly one, i.e. [1..1], specify 
 
 [#rule:association-uni-multiplicity-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association multiplicity -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Within the SHACL PropertyShape corresponding to an association/dependency relation linked to a given source UML class, specify property constraints indicating minimum and maximum cardinality, according to cases provided by xref:transformation/transf-rules1.adoc#rule:attribute-ds-multiplicity[rule:attribute-ds-multiplicity].
+Within the SHACL PropertyShape corresponding to an association/dependency relation linked to a given source UML Class, specify property constraints indicating minimum and maximum cardinality, according to cases provided by xref:transformation/transf-rules1.adoc#rule:attribute-ds-multiplicity[rule:attribute-ds-multiplicity].
 ====
 
 [cols="a,a", options="noheader"]
@@ -289,7 +291,7 @@ image::f11.png[11]
 
 [#rule:association-uni-asymetry-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association asymmetry -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify the asymmetry object property axiom for each end of a recursive association.
+Specify an asymmetric object property axiom for each end of a recursive association.
 ====
 
 [cols="a,a", options="noheader"]
@@ -314,10 +316,8 @@ Specify the asymmetry object property axiom for each end of a recursive associat
 
 [#rule:association-uni-asymetry-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association asymmetry -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Within the SHACL Node Shape corresponding to the UML class, specify SPARQL constraint selecting instances connected by the object property in a reciprocal manner.
+Within the SHACL Node Shape corresponding to the UML Class, specify SPARQL constraint selecting instances connected by the object property in a reciprocal manner.
 ====
-
-WARNING: **TODO:** Check if the code snippets do what they need to do, i.e. to check that there is NO relationship that exists both between `a` and `b`, and between `b` and `a` in the same time.
 
 [cols="a,a", options="noheader"]
 |===
@@ -359,7 +359,7 @@ shape:ClassName
 [[sec:association-bi]]
 === Bidirectional association
 
-The bidirectional associations should be treated, both on source and target ends, like two unidirectional associations (see <<fig:association-bi-visual>>). The transformation rules from <<rule:association-uni-core>> and <<rule:association-uni-ds>>, and all the other rules for unidirectional associations shown in <<tab:connectors-overview>> must be applied to both ends. In addition to these rules, the inverse relation axiom must be specified.
+The bidirectional associations should be treated, both on source and target ends, like two unidirectional associations (see <<fig:association-bi-visual>>). The transformation rules from <<rule:association-uni-core>> and <<rule:association-uni-ds>>, and all the other rules for unidirectional associations shown in <<tab:connectors-overview>> must be applied to both ends. In addition to those rules, the inverse relation axiom must be specified.
 
 .Visual representation of a UML bidirectional association (on the left) and OWL properties with cardinality restrictions on domain class (on the right)
 [#fig:association-bi-visual]
@@ -368,7 +368,7 @@ image::f12.png[12]
 
 [#rule:association-bi-inverse-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association inverse -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify inverse object property between the source and target ends of the bidirectional association.
+Specify an inverse object property axiom between the source and target ends of the bidirectional association.
 ====
 
 [cols="a,a", options="noheader"]
@@ -392,7 +392,7 @@ Specify inverse object property between the source and target ends of the bidire
 [[sec:dependecy]]
 === Unidirectional dependency
 
-In general the UML dependency connectors should be transformed by the rules specified for UML association connectors.
+In general the UML dependency connectors should be transformed by the rules specified for UML association connectors (see <<tab:connectors-overview>>).
 
 The following two rules, concerning the transformation of dependency targets, are different from the rules for the transformation of  association targets.
 
@@ -429,7 +429,7 @@ WARNING: *TODO:* Explain that In OWL we want to state only that range is a skos:
 
 [#rule:dependency-uni-range-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Dependency range shape -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
-Within the SHACL PropertyShape corresponding to a dependency relation linked to a given source UML class, specify property constraints indicating the range class.
+Within the SHACL PropertyShape corresponding to a dependency relation linked to a given source UML Class, specify property constraints indicating the range class.
 ====
 
 WARNING: **TODO:** Check these transformation rule examples and see if they make sense. It doesn't seem to.
@@ -464,18 +464,18 @@ shape:ClassName-relationName
 [[sec:generalisation]]
 === Class generalisation
 
-Generalisation defines specialization relationship between Classifiers. In case of UML classes it relates a more specific Class to a more general Class.
+Generalisation defines specialization relationship between Classifiers. In case of UML Classes it relates a more specific Class to a more general Class.
 
 .Visual representation of UML generalisation (on the left) and OWL subclass relation (on the right)
 [#fig:generalisation-visual]
 image::f13.png[13]
 
-
-UML generalisation set groups generalizations; incomplete and disjoint constraints indicate that the set is not complete and its specific Classes have no common instances. The UML conventions specify that all sibling classes are by default disjoint, therefore even if no generalisation set is provided it is assumed to be implicit.
+//TODO: Verify this statement. It doesn't make too much sense. Needs reformulation. Plus, it might be irrelevant if we don't make a rule for generating (optional) disjoint classes statements
+UML generalisation set groups generalisations; incomplete and disjoint constraints indicate that the set is not complete and its specific Classes have no common instances. The UML conventions specify that all sibling classes are by default disjoint, therefore even if no generalisation set is provided it is assumed to be implicit.
 
 [#rule:generalisation-class-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Class generalisation -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify subclass axiom for the generalisation between UML classes. Sibling classes must be disjoint with one another.
+Specify subclass axiom for the generalisation between UML Classes. Sibling classes must be disjoint with one another.
 ====
 
 [cols="a,a", options="noheader"]
@@ -548,7 +548,7 @@ image::f15.png[15]
 
 [#rule:equivalent-classes-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Equivalent classes -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify equivalent class axiom for the generalisation with `\<<equivalent>>` or `\<<complete>>` stereotype between UML classes.
+Specify equivalent class axiom for the generalisation with `\<<equivalent>>` or `\<<complete>>` stereotype between UML Classes.
 ====
 
 [cols="a,a", options="noheader"]
