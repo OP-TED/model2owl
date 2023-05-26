@@ -26,8 +26,14 @@
     </xd:doc>
 
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
+        <xsl:variable name="classAttributeName">
+            <xsl:call-template name="getClassAttributeName">
+                <xsl:with-param name="classAttribute" select="."/>
+            </xsl:call-template>
+        </xsl:variable>
+
         <xsl:variable name="classAttributeChecks" as="item()*">
-            
+
             <!--    Start of common checkers rules     -->
             <xsl:call-template name="namingFormat">
                 <xsl:with-param name="element" select="."/>
@@ -83,16 +89,16 @@
             <xsl:call-template name="namePlural">
                 <xsl:with-param name="element" select="."/>
             </xsl:call-template>
-            <!--    End of common checkers rules     -->  
+            <!--    End of common checkers rules     -->
             <!--    Start of specific checker rules-->
-            
+
             <xsl:call-template name="classAttributeNameStartsWithLowerCase">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
             <xsl:call-template name="classAttributeMultiplicityIncorrectFormat">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
-                <xsl:call-template name="classAttributeIncorrectDatatype">
+            <xsl:call-template name="classAttributeIncorrectDatatype">
                 <xsl:with-param name="classAttribute" select="."/>
             </xsl:call-template>
             <xsl:call-template name="classAttributeMissingMultiplicity">
@@ -104,11 +110,9 @@
             <!--    End of specific checker rules-->
         </xsl:variable>
         <xsl:if test="boolean($classAttributeChecks)">
-            <dl>
+            <dl id="attribute-{$classAttributeName}">
                 <dt>
-                    <xsl:call-template name="getClassAttributeName">
-                        <xsl:with-param name="classAttribute" select="."/>
-                    </xsl:call-template>
+                    <xsl:value-of select="$classAttributeName"/>
                 </dt>
                 <xsl:copy-of select="$classAttributeChecks"/>
             </dl>

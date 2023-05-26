@@ -26,7 +26,7 @@
     <xsl:template name="classAttributesWithSameName">
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctClassAttributeNames($root)"/>
-        <h1>Class attributes with multiple usages</h1>
+        <h1 id="classAttributesUsage">Class attributes with multiple usages</h1>
         <xsl:for-each select="$distinctNames">
             <xsl:sort select="." lang="en"/>
             <xsl:if test="fn:count(f:getClassAttributeByName(., $root)) > 1">
@@ -45,7 +45,7 @@
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:if test="boolean($attributeChecks)">
-                    <dl id="attribute-{.}">
+                    <dl id="attribute-{.}-usage">
                         <dt>
                             <xsl:value-of select="."/>
                         </dt>
