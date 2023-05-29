@@ -73,8 +73,9 @@ xsd:string a rdfs:Datatype .
 ----
 
 |
-//TODO: Should we change the rdfs:label to xsd:boolean? Is this, in fact, an example of XSD and RDF(S) (re-)declaration,
-//      or just another example of UML primitive datatype declaration? If yes, is this necessary at all?
+//TODO: Is this, in fact, an example of XSD and RDF(S) (re-)declaration,
+//      or just another example of UML primitive datatype declaration? If the latter, is this necessary at all?
+//      What labels/descriptions should be assigned to it (when combined with T.01-T.03)?
 .XSD and RDF(S) datatype declaration in Turtle syntax
 [source,Turtle]
 ----
@@ -206,8 +207,7 @@ Ideally, in the implementation, this rule would be combined with the relevant ru
 [cols="a,a", options="noheader"]
 |===
 |
-//TODO: Check if it's OK to use the same caption as for the previous rule
-.Concept scheme instantiation in Turtle syntax
+.Concept scheme items instantiation in Turtle syntax
 [source,Turtle]
 ----
 :itemA a skos:Concept ;
@@ -219,8 +219,7 @@ Ideally, in the implementation, this rule would be combined with the relevant ru
 .
 ----
 |
-//TODO: Check if it's OK to use the same caption as for the previous rule
-.Concept scheme instantiation in RDF/XML syntax
+.Concept scheme items instantiation in RDF/XML syntax
 [source,XML]
 ----
 <skos:Concept rdf:about = "http://base.onto.uri/itemA">
