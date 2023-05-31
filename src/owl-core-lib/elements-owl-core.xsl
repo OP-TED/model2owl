@@ -25,46 +25,10 @@
     <xsl:import href="../common/utils.xsl"/>
     <xsl:import href="../common/formatters.xsl"/>
     <xsl:import href="../common/checkers.xsl"/>
+    <xsl:import href="descriptors-owl-core.xsl"/>
 
     <xsl:output method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
-
-
-    <xd:doc>
-        <xd:desc>Rule T.01. Label - Specify a label for UML element</xd:desc>
-        <xd:param name="elementName"/>
-    </xd:doc>
-    <xsl:template name="coreLayerName">
-        <xsl:param name="elementName"/>
-        <skos:prefLabel xml:lang="en">
-            <xsl:value-of select="$elementName"/>
-        </skos:prefLabel>
-    </xsl:template>
-
-    <xd:doc>
-        <xd:desc>Rule T.03. Description - Specify a description for UML element</xd:desc>
-        <xd:param name="definition"/>
-    </xd:doc>
-    <xsl:template name="coreLayerDescription">
-        <xsl:param name="definition"/>
-        <skos:definition xml:lang="en">
-            <xsl:value-of select="$definition"/>
-        </skos:definition>
-    </xsl:template>
-
-    <xd:doc>
-        <xd:desc>Rule T.05. Comment - Specify annotation axiom for UML Comment associated to a UML
-            element</xd:desc>
-        <xd:param name="comment"/>
-    </xd:doc>
-    <xsl:template name="coreLayerComment">
-        <xsl:param name="comment"/>
-        <rdfs:comment xml:lang="en">
-            <xsl:value-of select="$comment"/>
-        </rdfs:comment>
-    </xsl:template>
-
-
 
 
     <xd:doc>
