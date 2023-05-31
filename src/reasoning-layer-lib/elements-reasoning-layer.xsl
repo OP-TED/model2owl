@@ -28,7 +28,7 @@
 
 
     <xd:doc>
-        <xd:desc>Applying rules to the attributes</xd:desc>
+        <xd:desc>Applying reasoning layer rule to all attributes</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
         <xsl:call-template name="attributeMultiplicity">
@@ -37,7 +37,7 @@
     </xsl:template>
     
     <xd:doc>
-        <xd:desc>Applying rule 5 and 6 to attributes with distinct names</xd:desc>
+        <xd:desc>Applying reasoning layer rules to attributes with distinct names</xd:desc>
     </xd:doc>
     <xsl:template name="distinctAttributeNamesInReasoningLayer">
         <xsl:variable name="root" select="root()"/>
@@ -61,7 +61,7 @@
 
 
     <xd:doc>
-        <xd:desc>Rule 10 (Attribute multiplicity one in reasnoning layer) . For each attribute that
+        <xd:desc>Rule C.10. Attribute multiplicity "one"  — in reasoning layer . For each attribute that
             has multiplicity exactly one, i.e. [1..1], specify functional property axiom.</xd:desc>
         <xd:param name="root"/>
         <xd:param name="attributeName"/>
@@ -86,7 +86,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Rule 5 (Attribute domain in reasnoning layer) Specify data (or object) property
+        <xd:desc>Rule C.05. Attribute domain — in reasoning layer. Specify data (or object) property
             domains for attribute(s).</xd:desc>
         <xd:param name="root"/>
         <xd:param name="attributeName"/>
@@ -100,12 +100,12 @@
             select="f:buildURIFromElement($attributesWithSameName[1])"/>
         <xsl:choose>
             <xsl:when test="fn:count($attributesWithSameName) = 1">
-                <rdf:Description rdf:about="{$attributeURI}">
+                <owl:DatatypeProperty rdf:about="{$attributeURI}">
                     <rdfs:domain rdf:resource="{f:buildURIfromLexicalQName($attributesWithSameName/../../@name)}"/>
-                </rdf:Description>
+                </owl:DatatypeProperty>
             </xsl:when>
             <xsl:otherwise>
-                <rdf:Description rdf:about="{$attributeURI}">
+                <owl:DatatypeProperty rdf:about="{$attributeURI}">
                     <rdfs:domain>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -115,13 +115,13 @@
                         </owl:unionOf>
                     </owl:Class>
                     </rdfs:domain>
-                </rdf:Description>
+                </owl:DatatypeProperty>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Rule 6 (Attribute type in reasnoning layer) . Specify data (or object) property
+        <xd:desc> Rule C.07. Attribute type — in reasoning layer. Specify data (or object) property
             range for attribute(s).</xd:desc>
         <xd:param name="root"/>
         <xd:param name="attributeName"/>
@@ -154,12 +154,12 @@
                         f:buildURIfromLexicalQName($attributeTypeChecked)"
                 />
 
-                <rdf:Description rdf:about="{$attributeURI}">
+                <owl:DatatypeProperty rdf:about="{$attributeURI}">
                     <rdfs:range rdf:resource="{$attributeTypeURI}"/>
-                </rdf:Description>
+                </owl:DatatypeProperty>
             </xsl:when>
             <xsl:otherwise>
-                <rdf:Description rdf:about="{$attributeURI}">
+                <owl:DatatypeProperty rdf:about="{$attributeURI}">
                     <rdfs:range>
                         <owl:Class>
                             <owl:unionOf rdf:parseType="Collection">
@@ -176,7 +176,7 @@
                             </owl:unionOf>
                         </owl:Class>
                     </rdfs:range>
-                </rdf:Description>
+                </owl:DatatypeProperty>
             </xsl:otherwise>
         </xsl:choose>
 
@@ -184,10 +184,15 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Rule 9 (Attribute multiplicity in reasnoning layer).For each attribute multiplicity
+        <xd:desc>Rule C.09. Attribute multiplicity — in reasoning layer .For each attribute multiplicity
             of the form ( min .. max ), where min and max are diferent than * (any), specify a
             subclass axiom where the OWL class, corresponding to the UML class, specialises an
-            anonymous restriction of properties formulated according to the cases</xd:desc>
+            anonymous restriction of properties formulated according to the following cases
+               1. exact cardinality, e.g. [2..2]
+               2. minimum cardinality only, e.g. [1..*]
+               3. maximum cardinality only, e.g. [*..2]
+               4. maximum and maximum cardinality , e.g. [1..2]    
+        </xd:desc>
         <xd:param name="attribute"/>
     </xd:doc>
 
@@ -205,7 +210,7 @@
             select="f:buildURIFromElement($attribute)"/>
         <!--if both min and max vaules are present choose whether they are equal or not-->
         <xsl:if test="boolean($attributeMultiplicityMin) and boolean($attributeMultiplicityMax)">
-            <owl:Class rdf:about="{$classURI}">
+            <rdf:Description rdf:about="{$classURI}">
                 <rdfs:subClassOf>
                     <xsl:choose>
                         <xsl:when test="$attributeMultiplicityMin = $attributeMultiplicityMax">
@@ -236,12 +241,12 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </rdfs:subClassOf>
-            </owl:Class>
+            </rdf:Description>
         </xsl:if>
 <!--        if only min or max is present choose the value that exist-->
         <xsl:if
             test="not(boolean($attributeMultiplicityMin)) and boolean($attributeMultiplicityMax)">
-            <owl:Class rdf:about="{$classURI}">
+            <rdf:Description rdf:about="{$classURI}">
                 <rdfs:subClassOf>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="{$attributeURI}"/>
@@ -250,11 +255,11 @@
                         </owl:maxCardinality>
                     </owl:Restriction>
                 </rdfs:subClassOf>
-            </owl:Class>
+            </rdf:Description>
         </xsl:if>
         <xsl:if
             test="not(boolean($attributeMultiplicityMax)) and boolean($attributeMultiplicityMin)">
-            <owl:Class rdf:about="{$classURI}">
+            <rdf:Description rdf:about="{$classURI}">
                 <rdfs:subClassOf>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="{$attributeURI}"/>
@@ -263,7 +268,7 @@
                         </owl:minCardinality>
                     </owl:Restriction>
                 </rdfs:subClassOf>
-            </owl:Class>
+            </rdf:Description>
         </xsl:if>
 
     </xsl:template>
@@ -276,10 +281,6 @@
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']"/>
 
-    <xd:doc>
-        <xd:desc>This will override the common selector when applying templates</xd:desc>
-    </xd:doc>
-    <xsl:template match="element[@xmi:type = 'uml:Enumeration']"/>
     
     <xd:doc>
         <xd:desc>This will override the common selector when applying templates</xd:desc>
@@ -293,26 +294,26 @@
 
     
     
-<!--    TODO Is this rule still needed? vvv -->
-<!--
+  
+
     <xd:doc>
-        <xd:desc>(Enumeration in reasnoning layer) . Concept instantiation in RDF/XML For an UML
-            enumeration, specify an equivalent class restriction covering the set of individuals
+        <xd:desc>Rule D.04. Enumeration — in reasoning layer . For a UML enumeration, 
+            specify an equivalent class restriction covering the set of individuals
             that are skos:inScheme of this enumeration.</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
         <xsl:variable name="enumerationURI" select="f:buildURIFromElement(.)"/>
         <owl:Class rdf:about="{$enumerationURI}">
-            <!-\- <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>-\->
             <owl:equivalentClass>
                 <owl:Restriction>
                     <owl:onProperty rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
                     <owl:hasValue rdf:resource="{$enumerationURI}"/>
                 </owl:Restriction>
             </owl:equivalentClass>
+             <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         </owl:Class>
     </xsl:template>
--->
+
 
 
 
