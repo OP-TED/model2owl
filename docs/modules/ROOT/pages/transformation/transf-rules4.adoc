@@ -1,21 +1,23 @@
 [[sec:tran-rules4]]
-== Transformation of UML descriptors
+== Transformation of UML descriptors and tags
 
 In this section are specified transformation rules for UML descriptive elements. <<tab:descriptiors-overview>> provides an overview of the section coverage.
 
 [[tab:descriptiors-overview]]
-.Overview of transformation rules for UML descriptors
+.Overview of transformation rules for UML descriptors and tags
 [cols="<,<,<,<",options="header",]
 |===
 |UML element |Rules in core ontology layer |Rules in data shape layer |Rules in reasoning layer
 |Name |<<rule:element-label-core>> |<<rule:element-label-ds>> |
 |Note |<<rule:element-definition-core>> |<<rule:element-definition-ds>> |
 |Comment |<<rule:element-external-comment-core>> |<<rule:element-external-comment-ds>> |
+|Tag |<<rule:element-tag-core>> | |
 |===
 
 === Name
 
 Most of the UML elements are named. The UML conventions dedicate an extensive section to the naming conventions and how to deterministically generate a URI and a label from the UML element name. By default, we recommend the use of the SKOS lexicalization (`skos:prefLabel`) in the core ontology layer. In the future, this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (`rdfs:label`) instead of, or in addition to, the SKOS lexicalization.
+
 
 [#rule:element-label-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:T.01}. Label -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
@@ -122,6 +124,7 @@ Specify a description for the OWL entity based on the note on the UML element.
 ----
 |===
 
+
 [#rule:element-definition-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Description -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
 Specify an annotation (comment or description) for the SHACL shape based on the note on the UML element.
@@ -185,6 +188,7 @@ As UML Comments add no semantics, they are not used in any method of semantic va
 
 By default, we recommend the use of the SKOS lexicalization (`skos:editorialNote`) in the core ontology layer. In the future this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (`rdfs:comment`) instead of, or in addition to, the SKOS lexicalization.
 
+
 [#rule:element-external-comment-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Comment -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
 Specify an annotation axiom (comment or editorial note) on the OWL entity for the UML Comment associated to a UML element.
@@ -209,6 +213,7 @@ Specify an annotation axiom (comment or editorial note) on the OWL entity for th
 </rdf:Description>
 ----
 |===
+
 
 [#rule:element-external-comment-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Comment -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
@@ -262,3 +267,39 @@ WARNING: *QUESTION:* should we use here `rdfs:comment` instead of adding a secon
 
 
 WARNING: TODO: Discuss whether we should include language tags (by default, or if explicitly specified in the model, or if controlled by configuration)?
+
+=== Tags
+
+Any UML element can have additional information provided by means of tags, represented by UML Tag elements. Such tags should be transformed into annotation on the RDF resource representing the UML element (e.g. Class, Attribute, Connector). The language tags that are provided on the tag, can be used to generate multilingual ontologies/specifications. For example, the highlighted elements in <<fig:transf-tag-marked>> would be transformed in the following Turtle statement `epo:Procedure skos:definition "this is the definition in French"@fr .`
+
+.Example depicting the specification of UML tags
+[#fig:transf-tag-marked]
+image::transf-tags-marked.png[20]
+
+[TIP]
+The generation of annotations from tags could be controlled by a flag in the configuration of the transformation tool.
+
+[#rule:element-tag-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Tag -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify an annotation axiom on the OWL entity for each UML Tag associated to a UML element. If a tag has an associated language tag, it should be attached to the value.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Tags in Turtle syntax
+[source,Turtle]
+----
+:ClassName
+  tagName "tag value"@langTag ;
+.
+----
+|
+.Tags in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/ClassName">
+    <tagName xml:lang="langTag">tag value</tagName>
+</rdf:Description>
+----
+|===
