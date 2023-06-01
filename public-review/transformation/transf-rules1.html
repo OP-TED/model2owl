@@ -384,13 +384,22 @@ shape:ClassName a sh:NodeShape ;
 <div class="sect2">
 <h3 id="sec:attribute"><a class="anchor" href="#sec:attribute"></a>Attribute</h3>
 <div class="paragraph">
-<p>The UML attributes are properties that are owned by a Classifier, e.g. Class. Both UML attributes and associations are represented by one meta-model element – Property. OWL also allows one to define properties. A transformation of UML attribute to OWL data property or OWL object property bases on its type. If the type of the attribute is a primitive type it should be transformed into OWL data property. However, if the type of the attribute is a structured datatype, class of enumeration, it should be transformed into an OWL object property.</p>
+<p>The UML attributes are properties that are owned by a Classifier, e.g. Class. Both UML attributes and associations are represented by one meta-model element – Property. OWL also allows one to define properties. A transformation of UML attribute to OWL data property or OWL object property is done based  on its type. If the type of the attribute is a primitive type it should be transformed into OWL data property. However, if the type of the attribute is a structured datatype, class or enumeration, it should be transformed into an OWL object property. These cases are illustrated in <a href="#fig:attribute-visual">Figure 3</a>.</p>
 </div>
 <div id="fig:attribute-visual" class="imageblock">
 <div class="content">
 <img src="../_images/f8.png" alt="8">
 </div>
 <div class="title">Figure 3. Visual representation of class attributes in UML (on the left) and OWL properties (on the right)</div>
+</div>
+<div class="paragraph">
+<p>Attributes can also be reused across multiple classes (i.e. multiple UML classes can own the same attributes), as illustrated in <a href="#fig:attribute-visual-reuse">Figure 4</a>. In such cases there should be special logic applied when defining the domain and range of these properties (see rules <a href="#rule:attribute-rc-domain">Rule C.05</a>, <a href="#rule:attribute-rc-range">Rule C.07</a>).</p>
+</div>
+<div id="fig:attribute-visual-reuse" class="imageblock">
+<div class="content">
+<img src="../_images/f8-2.png" alt="8b">
+</div>
+<div class="title">Figure 4. Visual representation of reused class attributes in UML (on the left) and OWL properties (on the right)</div>
 </div>
 <div id="rule:attribute-core" class="exampleblock">
 <div class="title">Rule C.04. Attribute&#8201;&#8212;&#8201;in core ontology layer</div>
@@ -458,7 +467,8 @@ Ideally, in the implementation, this rule would be combined with the relevant ru
 <div class="title">Rule C.05. Attribute domain&#8201;&#8212;&#8201;in reasoning layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify data (or object) property domains for attribute(s).</p>
+<p>Specify data (or object) property domains for attribute(s).
+The domain of properties created for attributes that are reused in multiple classes should be the union of all the classes where the attribute is reused.</p>
 </div>
 </div>
 </div>
@@ -506,6 +516,79 @@ Ideally, in the implementation, this rule would be combined with the relevant ru
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>For reused attributes, like the ones depicted in <a href="#fig:attribute-visual-reuse">Figure 4</a>, the generated output should have the following form.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 15. Data property domain specification for reused attributes in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute1 a owl:DatatypeProperty ;
+  rdfs:domain [
+    rdf:type owl:Class ;
+    owl:unionOf (
+      :ClassName1
+      :ClassName2
+    )
+  ]
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 16. Data property domain specification for reused attributes in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:DatatypeProperty rdf:about = "http://base.onto.uri/attribute1"&gt;
+    &lt;rdfs:domain&gt;
+        &lt;owl:Class&gt;
+            &lt;owl:unionOf rdf:parseType="Collection"&gt;
+                &lt;rdf:Description rdf:about="http://base.onto.uri/ClassName1"/&gt;
+                &lt;rdf:Description rdf:about="http://base.onto.uri/ClassName2"/&gt;
+            &lt;/owl:unionOf&gt;
+        &lt;/owl:Class&gt;
+    &lt;/rdfs:domain&gt;
+&lt;/owl:DatatypeProperty&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 17. Object property domain specification for reused attributes in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute2 a owl:ObjectProperty ;
+  rdfs:domain [
+    rdf:type owl:Class ;
+    owl:unionOf (
+      :ClassName1
+      :ClassName2
+    )
+  ]
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 18. Object property domain specification for reused attributes in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2"&gt;
+    &lt;rdfs:domain&gt;
+        &lt;owl:Class&gt;
+            &lt;owl:unionOf rdf:parseType="Collection"&gt;
+                &lt;rdf:Description rdf:about="http://base.onto.uri/ClassName1"/&gt;
+                &lt;rdf:Description rdf:about="http://base.onto.uri/ClassName2"/&gt;
+            &lt;/owl:unionOf&gt;
+        &lt;/owl:Class&gt;
+    &lt;/rdfs:domain&gt;
+&lt;/owl:ObjectProperty&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div id="rule:attribute-ds" class="exampleblock">
 <div class="title">Rule C.06. Class attribute&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
@@ -534,7 +617,7 @@ Ideally, in the implementation, this rule would be combined with the relevant ru
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 15. PropertyShape declaration for attributes in Turtle syntax</div>
+<div class="title">Listing 19. PropertyShape declaration for attributes in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
 @prefix shape: &lt;http://base.shape.uri/&gt; .
@@ -549,7 +632,7 @@ shape:ClassName-attributeName a sh:PropertyShape ;
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 16. PropertyShape declaration for attributes in RDF/XML syntax</div>
+<div class="title">Listing 20. PropertyShape declaration for attributes in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName"&gt;
     &lt;sh:property rdf:resource = "http://base.shape.uri/ClassName-attributeName"/&gt;
@@ -569,7 +652,8 @@ shape:ClassName-attributeName a sh:PropertyShape ;
 <div class="title">Rule C.07. Attribute type&#8201;&#8212;&#8201;in reasoning layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify data (or object) property range for attribute(s).</p>
+<p>Specify data (or object) property range for attribute(s).
+The range of object properties created for attributes that are reused in multiple classes should be the union of all the classes specified as values for those attributes.</p>
 </div>
 </div>
 </div>
@@ -581,7 +665,7 @@ shape:ClassName-attributeName a sh:PropertyShape ;
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 17. Data property range specification in Turtle syntax</div>
+<div class="title">Listing 21. Data property range specification in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute1 a owl:DatatypeProperty;
   rdfs:range xsd:string;
@@ -589,7 +673,7 @@ shape:ClassName-attributeName a sh:PropertyShape ;
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 18. Data property range specification in RDF/XML syntax</div>
+<div class="title">Listing 22. Data property range specification in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:DatatypeProperty rdf:about = "http://base.onto.uri/attribute1"&gt;
     &lt;rdfs:range rdf:resource = "http://www.w3c.org...#string"/&gt;
@@ -599,7 +683,7 @@ shape:ClassName-attributeName a sh:PropertyShape ;
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 19. Object property range specification in Turtle syntax</div>
+<div class="title">Listing 23. Object property range specification in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute2 a owl:ObjectProperty;
   rdfs:range :OtherClass;
@@ -607,10 +691,52 @@ shape:ClassName-attributeName a sh:PropertyShape ;
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 20. Object property range specification in RDF/XML syntax</div>
+<div class="title">Listing 24. Object property range specification in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2"&gt;
     &lt;rdfs:range rdf:resource = "http://base.onto.uri/OtherClass"/&gt;
+&lt;/owl:ObjectProperty&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>For reused attributes, like the ones depicted in <a href="#fig:attribute-visual-reuse">Figure 4</a>, the generated output should have the following form.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 25. Object property range specification for reused attributes in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute2 a owl:ObjectProperty;
+  rdfs:range [
+    rdf:type owl:Class ;
+    owl:unionOf (
+      :OtherClass1
+      :OtherClass2
+    )
+  ]
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 26. Object property range specification for reused attributes in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2"&gt;
+    &lt;rdfs:range&gt;
+        &lt;owl:Class&gt;
+            &lt;owl:unionOf rdf:parseType="Collection"&gt;
+                &lt;rdf:Description rdf:about="http://base.onto.uri/ClassName1"/&gt;
+                &lt;rdf:Description rdf:about="http://base.onto.uri/ClassName2"/&gt;
+            &lt;/owl:unionOf&gt;
+        &lt;/owl:Class&gt;
+    &lt;/rdfs:range&gt;
 &lt;/owl:ObjectProperty&gt;</code></pre>
 </div>
 </div></div></td>
@@ -633,7 +759,7 @@ shape:ClassName-attributeName a sh:PropertyShape ;
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 21. Property datatype constraint in Turtle syntax</div>
+<div class="title">Listing 27. Property datatype constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle"># @prefix : &lt;http://base.onto.uri/&gt; .
 @prefix shape: &lt;http://base.shape.uri/&gt; .
@@ -646,7 +772,7 @@ shape:ClassName-attribute1
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 22. Property datatype constraint in RDF/XML syntax</div>
+<div class="title">Listing 28. Property datatype constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-attribute1"&gt;
     &lt;sh:datatype rdf:resource = "http://www.w3c.org...#string"/&gt;
@@ -656,7 +782,7 @@ shape:ClassName-attribute1
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 23. Property class constraint in Turtle syntax</div>
+<div class="title">Listing 29. Property class constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
 @prefix shape: &lt;http://base.shape.uri/&gt; .
@@ -668,7 +794,7 @@ shape:ClassName-attribute2
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 24. Property class constraint in RDF/XML syntax</div>
+<div class="title">Listing 30. Property class constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-attribute2"&gt;
     &lt;sh:class rdf:resource = "http://base.onto.uri/OtherClass"/&gt;
@@ -688,7 +814,7 @@ shape:ClassName-attribute2
 <div class="content">
 <img src="../_images/f9.png" alt="9">
 </div>
-<div class="title">Figure 4. Visual representation of class attributes with multiplicity in UML (on the left) and OWL class specialising an anonymous restriction of properties (on the right)</div>
+<div class="title">Figure 5. Visual representation of class attributes with multiplicity in UML (on the left) and OWL class specialising an anonymous restriction of properties (on the right)</div>
 </div>
 <div class="paragraph">
 <p>It should be noted that upper-bound of UML MultiplicityElement can be specified as unlimited: ``*''. In OWL, cardinality expressions serve to restrict the number of individuals that are connected by an object property expression to a given number of instances of a specified class expression . Therefore, UML unlimited upper-bound does not add any information to OWL ontology, hence it is not transformed.</p>
@@ -725,7 +851,7 @@ shape:ClassName-attribute2
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 25. Exact cardinality constraint in Turtle syntax</div>
+<div class="title">Listing 31. Exact cardinality constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
@@ -736,7 +862,7 @@ shape:ClassName-attribute2
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 26. Exact cardinality constraint in RDF/XML syntax</div>
+<div class="title">Listing 32. Exact cardinality constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
     &lt;rdfs:subClassOf&gt;
@@ -751,7 +877,7 @@ shape:ClassName-attribute2
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 27. Min cardinality constraint in Turtle syntax</div>
+<div class="title">Listing 33. Min cardinality constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
@@ -762,7 +888,7 @@ shape:ClassName-attribute2
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 28. Min cardinality constraint in RDF/XML syntax</div>
+<div class="title">Listing 34. Min cardinality constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
     &lt;rdfs:subClassOf&gt;
@@ -777,7 +903,7 @@ shape:ClassName-attribute2
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 29. Max cardinality constraint in Turtle syntax</div>
+<div class="title">Listing 35. Max cardinality constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
@@ -788,7 +914,7 @@ shape:ClassName-attribute2
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 30. Max cardinality constraint in RDF/XML syntax</div>
+<div class="title">Listing 36. Max cardinality constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
     &lt;rdfs:subClassOf&gt;
@@ -803,7 +929,7 @@ shape:ClassName-attribute2
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 31. Min and max cardinality constraint in Turtle syntax</div>
+<div class="title">Listing 37. Min and max cardinality constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
   rdfs:subClassOf [
@@ -821,7 +947,7 @@ shape:ClassName-attribute2
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 32. Min and max cardinality constraint in RDF/XML syntax</div>
+<div class="title">Listing 38. Min and max cardinality constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
   &lt;rdfs:subClassOf&gt;
@@ -865,7 +991,7 @@ shape:ClassName-attribute2
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 33. Declaring a functional property in Turtle syntax</div>
+<div class="title">Listing 39. Declaring a functional property in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
@@ -874,7 +1000,7 @@ shape:ClassName-attribute2
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 34. Declaring a functional property in RDF/XML syntax</div>
+<div class="title">Listing 40. Declaring a functional property in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/attribute5"&gt;
     &lt;rdf:type rdf:resource = "http://...owl#FunctionalProperty"/&gt;
@@ -916,7 +1042,7 @@ shape:ClassName-attribute2
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 35. Exact cardinality constraint in Turtle syntax</div>
+<div class="title">Listing 41. Exact cardinality constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
 @prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
@@ -928,7 +1054,7 @@ shape:ClassName-attribute1
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 36. Exact cardinality constraint in RDF/XML syntax</div>
+<div class="title">Listing 42. Exact cardinality constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-attribute1"&gt;
     &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
@@ -941,7 +1067,7 @@ shape:ClassName-attribute1
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 37. Min cardinality constraint in Turtle syntax</div>
+<div class="title">Listing 43. Min cardinality constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
 @prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
@@ -952,7 +1078,7 @@ shape:ClassName-attribute2
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 38. Min cardinality constraint in RDF/XML syntax</div>
+<div class="title">Listing 44. Min cardinality constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-attribute2"&gt;
     &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
@@ -963,7 +1089,7 @@ shape:ClassName-attribute2
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 39. Max cardinality constraint in Turtle syntax</div>
+<div class="title">Listing 45. Max cardinality constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
 @prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
@@ -974,7 +1100,7 @@ shape:ClassName-attribute3
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 40. Max cardinality constraint in RDF/XML syntax</div>
+<div class="title">Listing 46. Max cardinality constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-attribute3"&gt;
     &lt;sh:maxCount rdf:datatype="http://www.w3.org...#integer"
@@ -985,7 +1111,7 @@ shape:ClassName-attribute3
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 41. Min and max cardinality constraint in Turtle syntax</div>
+<div class="title">Listing 47. Min and max cardinality constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
 @prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
@@ -997,7 +1123,7 @@ shape:ClassName-attribute4
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 42. Min and max cardinality constraint in RDF/XML syntax</div>
+<div class="title">Listing 48. Min and max cardinality constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-attribute4"&gt;
     &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"

@@ -143,13 +143,13 @@
 </aside>
 <article class="doc">
 <div class="sect1">
-<h2 id="sec:tran-rules4"><a class="anchor" href="#sec:tran-rules4"></a>Transformation of UML descriptors</h2>
+<h2 id="sec:tran-rules4"><a class="anchor" href="#sec:tran-rules4"></a>Transformation of UML descriptors and tags</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In this section are specified transformation rules for UML descriptive elements. <a href="#tab:descriptiors-overview">Table 1</a> provides an overview of the section coverage.</p>
 </div>
 <table id="tab:descriptiors-overview" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Overview of transformation rules for UML descriptors</caption>
+<caption class="title">Table 1. Overview of transformation rules for UML descriptors and tags</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -181,6 +181,12 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comment</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-external-comment-core">Rule T.05</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-external-comment-ds">Rule T.06</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-tag-core">Rule T.07</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
@@ -528,6 +534,64 @@ TODO: Discuss whether we should include language tags (by default, or if explici
 </tr>
 </table>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_tags"><a class="anchor" href="#_tags"></a>Tags</h3>
+<div class="paragraph">
+<p>Any UML element can have additional information provided by means of tags, represented by UML Tag elements. Such tags should be transformed into annotation on the RDF resource representing the UML element (e.g. Class, Attribute, Connector). The language tags that are provided on the tag, can be used to generate multilingual ontologies/specifications. For example, the highlighted elements in <a href="#fig:transf-tag-marked">Figure 2</a> would be transformed in the following Turtle statement <code>epo:Procedure skos:definition "this is the definition in French"@fr .</code></p>
+</div>
+<div id="fig:transf-tag-marked" class="imageblock">
+<div class="content">
+<img src="../_images/transf-tags-marked.png" alt="20">
+</div>
+<div class="title">Figure 2. Example depicting the specification of UML tags</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The generation of annotations from tags could be controlled by a flag in the configuration of the transformation tool.
+</td>
+</tr>
+</table>
+</div>
+<div id="rule:element-tag-core" class="exampleblock">
+<div class="title">Rule T.07. Tag&#8201;&#8212;&#8201;in core ontology layer</div>
+<div class="content">
+<div class="paragraph">
+<p>Specify an annotation axiom on the OWL entity for each UML Tag associated to a UML element. If a tag has an associated language tag, it should be attached to the value.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 19. Tags in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
+  tagName "tag value"@langTag ;
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 20. Tags in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
+    &lt;tagName xml:lang="langTag"&gt;tag value&lt;/tagName&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
