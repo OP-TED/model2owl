@@ -167,11 +167,18 @@ shape:ClassName a sh:NodeShape ;
 [[sec:attribute]]
 === Attribute
 
-The UML attributes are properties that are owned by a Classifier, e.g. Class. Both UML attributes and associations are represented by one meta-model element – Property. OWL also allows one to define properties. A transformation of UML attribute to OWL data property or OWL object property bases on its type. If the type of the attribute is a primitive type it should be transformed into OWL data property. However, if the type of the attribute is a structured datatype, class of enumeration, it should be transformed into an OWL object property.
+The UML attributes are properties that are owned by a Classifier, e.g. Class. Both UML attributes and associations are represented by one meta-model element – Property. OWL also allows one to define properties. A transformation of UML attribute to OWL data property or OWL object property is done based  on its type. If the type of the attribute is a primitive type it should be transformed into OWL data property. However, if the type of the attribute is a structured datatype, class or enumeration, it should be transformed into an OWL object property. These cases are illustrated in <<fig:attribute-visual>>.
 
 .Visual representation of class attributes in UML (on the left) and OWL properties (on the right)
 [#fig:attribute-visual]
 image::f8.png[8]
+
+Attributes can also be reused across multiple classes (i.e. multiple UML classes can own the same attributes), as illustrated in <<fig:attribute-visual-reuse>>. In such cases there should be special logic applied when defining the domain and range of these properties (see rules <<rule:attribute-rc-domain>>, <<rule:attribute-rc-range>>).
+
+.Visual representation of reused class attributes in UML (on the left) and OWL properties (on the right)
+[#fig:attribute-visual-reuse]
+image::f8-2.png[8b]
+
 
 
 [#rule:attribute-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
@@ -220,6 +227,7 @@ Ideally, in the implementation, this rule would be combined with the relevant ru
 [#rule:attribute-rc-domain,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute domain -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
 Specify data (or object) property domains for attribute(s).
+The domain of properties created for attributes that are reused in multiple classes should be the union of all the classes where the attribute is reused.
 ====
 
 [cols="a,a", options="noheader"]
@@ -258,6 +266,72 @@ Specify data (or object) property domains for attribute(s).
 </owl:ObjectProperty>
 ----
 |===
+
+For reused attributes, like the ones depicted in <<fig:attribute-visual-reuse>>, the generated output should have the following form.
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Data property domain specification for reused attributes in Turtle syntax
+[source,Turtle]
+----
+:attribute1 a owl:DatatypeProperty ;
+  rdfs:domain [
+    rdf:type owl:Class ;
+    owl:unionOf (
+      :ClassName1
+      :ClassName2
+    )
+  ]
+.
+----
+|
+.Data property domain specification for reused attributes in RDF/XML syntax
+[source,XML]
+----
+<owl:DatatypeProperty rdf:about = "http://base.onto.uri/attribute1">
+    <rdfs:domain>
+        <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="http://base.onto.uri/ClassName1"/>
+                <rdf:Description rdf:about="http://base.onto.uri/ClassName2"/>
+            </owl:unionOf>
+        </owl:Class>
+    </rdfs:domain>
+</owl:DatatypeProperty>
+----
+
+|
+.Object property domain specification for reused attributes in Turtle syntax
+[source,Turtle]
+----
+:attribute2 a owl:ObjectProperty ;
+  rdfs:domain [
+    rdf:type owl:Class ;
+    owl:unionOf (
+      :ClassName1
+      :ClassName2
+    )
+  ]
+.
+----
+|
+.Object property domain specification for reused attributes in RDF/XML syntax
+[source,XML]
+----
+<owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2">
+    <rdfs:domain>
+        <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="http://base.onto.uri/ClassName1"/>
+                <rdf:Description rdf:about="http://base.onto.uri/ClassName2"/>
+            </owl:unionOf>
+        </owl:Class>
+    </rdfs:domain>
+</owl:ObjectProperty>
+----
+|===
+
 
 [#rule:attribute-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Class attribute -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
@@ -304,6 +378,7 @@ shape:ClassName-attributeName a sh:PropertyShape ;
 [#rule:attribute-rc-range,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute type -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====
 Specify data (or object) property range for attribute(s).
+The range of object properties created for attributes that are reused in multiple classes should be the union of all the classes specified as values for those attributes.
 ====
 
 [cols="a,a", options="noheader"]
@@ -342,6 +417,43 @@ Specify data (or object) property range for attribute(s).
 </owl:ObjectProperty>
 ----
 |===
+
+For reused attributes, like the ones depicted in <<fig:attribute-visual-reuse>>, the generated output should have the following form.
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Object property range specification for reused attributes in Turtle syntax
+[source,Turtle]
+----
+:attribute2 a owl:ObjectProperty;
+  rdfs:range [
+    rdf:type owl:Class ;
+    owl:unionOf (
+      :OtherClass1
+      :OtherClass2
+    )
+  ]
+.
+----
+|
+.Object property range specification for reused attributes in RDF/XML syntax
+[source,XML]
+----
+<owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2">
+    <rdfs:range>
+        <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="http://base.onto.uri/ClassName1"/>
+                <rdf:Description rdf:about="http://base.onto.uri/ClassName2"/>
+            </owl:unionOf>
+        </owl:Class>
+    </rdfs:range>
+</owl:ObjectProperty>
+----
+|===
+
+
 
 [#rule:attribute-ds-range,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute type -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====
