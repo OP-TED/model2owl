@@ -660,7 +660,7 @@ shape:ClassName-relationName
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 19. Declaring an asymmetric property in Turtle syntax</div>
+<div class="title">Listing 19. Adding details to a NodeShape for an asymmetric property in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
 @prefix shape: &lt;http://base.shape.uri/&gt; .
@@ -680,7 +680,7 @@ shape:ClassName
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 20. Declaring an asymmetric property in RDF/XML syntax</div>
+<div class="title">Listing 20. Adding details to a NodeShape for an asymmetric property in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName"&gt;
     &lt;sh:sparql rdf:parseType="Resource"&gt;
@@ -803,18 +803,6 @@ shape:ClassName
 <p>Within the SHACL PropertyShape corresponding to a dependency relation linked to a given source UML Class, specify property constraints indicating the range class.</p>
 </div>
 </div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<strong>TODO:</strong> Check these transformation rule examples and see if they make sense. It doesn&#8217;t seem to.
-</td>
-</tr>
-</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
