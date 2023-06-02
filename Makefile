@@ -30,11 +30,11 @@ INPUT_XMI_DIR?=$(shell dirname ${FIRST_INPUT_XMI_FILE})
 RDF_LIB_VERSION?=6.2.0
 SAXON?="../saxon-he-10.6.jar"
 # Output directory containing combined file from multiple xmi / xml UML models
-COMBINED_XMI_DIRECTORY?="../output/combined-xmi"
+COMBINED_XMI_DIRECTORY?="output/combined-xmi"
 COMBINED_FILE_NAME?=ePO-combined.xmi
 XMI_DIRECTORY?="../output/combined-xmi"
 # Glossary output directory
-OUTPUT_GLOSSARY_PATH?="../output/glossary"
+OUTPUT_GLOSSARY_PATH?="output/glossary"
 
 # Input XMI/XML UML file path
 UML_INPUT_FILENAME?="test/test-multi-xmi/ePO_CM.xml"
@@ -95,6 +95,7 @@ update-metadata.xml-to-test-data:
 	@echo "${MODEL2OWL_DIR}/test/testData ${MODEL2OWL_DIR}/test/test-multi-xmi ${MODEL2OWL_DIR}/test/test-merge-xmi" | xargs -n 1 cp -v ${MODEL2OWL_DIR}/config/metadata.xml
 
 # Combine xmi UML files
+# all files for combine should be in test/test-multi-xmi
 merge-xmi:
 	@mkdir -p ${COMBINED_XMI_DIRECTORY}
 	@java -jar ${SAXON} -s:${FIRST_INPUT_XMI_FILE} -xsl:${MODEL2OWL_DIR}/src/xml/merge-multi-xmi.xsl -o:${COMBINED_XMI_DIRECTORY}/${COMBINED_FILE_NAME}
