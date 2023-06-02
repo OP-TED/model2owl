@@ -24,70 +24,56 @@
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Dependency']">
         <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[398]"/>
-        <x:expect label="there is 3 sh:NodeShape" test="count(sh:NodeShape)=3"/>
-        <x:expect label="there is a sh:property" test="boolean(sh:NodeShape/sh:property)"/>
-        <x:expect label="there is ash:PropertyShape" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape)"/>
-        <x:expect label="there is a sh:path" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:path)"/>
-        <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:name)"/>
-        <x:expect label="there is a sh:minCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount)"/>
-        <x:expect label="there is no sh:maxCount" test="not(boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount))"/>
+        <x:expect label="there is 5 rdf:Description" test="count(rdf:Description)=5"/>
+        <x:expect label="there is a sh:class" test="boolean(rdf:Description/sh:class)"/>
+        <x:expect label="there is a sh:PropertyShape" test="boolean(sh:PropertyShape)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(rdf:Description/rdfs:label)"/>
+        <x:expect label="there is a sh:minCount" test="boolean(rdf:Description/sh:minCount)"/>
+        <x:expect label="there is no sh:maxCount" test="not(boolean(rdf:Description/sh:maxCount))"/>
     </x:scenario>
     
     <x:scenario
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Association']">
         <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[259]"/>
-        <x:expect label="there is 3 sh:NodeShape" test="count(sh:NodeShape)=3"/>
-        <x:expect label="there is a sh:property" test="boolean(sh:NodeShape/sh:property)"/>
-        <x:expect label="there is ash:PropertyShape" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape)"/>
-        <x:expect label="there is a sh:path" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:path)"/>
-        <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:name)"/>
-        <x:expect label="there is no sh:minCount" test="not(boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount))"/>
-        <x:expect label="there is a sh:maxCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount)"/>
+        <x:expect label="there is 6 rdf:Description" test="count(rdf:Description)=6"/>
+        <x:expect label="there is a sh:class" test="boolean(rdf:Description/sh:class)"/>
+        <x:expect label="there is a sh:PropertyShape" test="boolean(sh:PropertyShape)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(rdf:Description/rdfs:label)"/>
+        <x:expect label="there is a sh:minCount" test="not(boolean(rdf:Description/sh:minCount))"/>
+        <x:expect label="there is no sh:maxCount" test="boolean(rdf:Description/sh:maxCount)"/>
     </x:scenario>
     
     <x:scenario
         label="Scenario for no empty property shapes - epo:hasAvailabilityRestriction">
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[115]"/>
-        <x:expect label="there is 6 sh:NodeShape" test="count(sh:NodeShape)=6"/>
-        <x:expect label="there is a sh:property" test="boolean(sh:NodeShape/sh:property)"/>
-        <x:expect label="there is ash:PropertyShape" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape)"/>
-        <x:expect label="there is a sh:path" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:path)"/>
-        <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:name)"/>
-        <x:expect label="there is no sh:minCount" test="boolean(not(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount))"/>
-        <x:expect label="there is  sh:maxCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount)"/>
+        <x:expect label="there is rdf:Description" test="boolean(rdf:Description)"/>
+        <x:expect label="there is a sh:class" test="boolean(rdf:Description/sh:class)"/>
+        <x:expect label="there is a sh:PropertyShape" test="boolean(sh:PropertyShape)"/>
+        <x:expect label="there is a rdfs:label" test="boolean(rdf:Description/rdfs:label)"/>
+        <x:expect label="there is a sh:minCount" test="not(boolean(rdf:Description/sh:minCount))"/>
+        <x:expect label="there is no sh:maxCount" test="boolean(rdf:Description/sh:maxCount)"/>
     </x:scenario>
     
     <x:scenario label="Scenario for association with Source -&gt; Destination direction">
         <x:call template="connectorRange">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[100]"/>
         </x:call>   
-        <x:expect label="there is a sh:NodeShape" test="boolean(sh:NodeShape)"/>
-        <x:expect label="there is a sh:property" test="boolean(sh:NodeShape/sh:property)"/>
-        <x:expect label="there is ash:PropertyShape" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape)"/>
-        <x:expect label="there is a sh:path" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:path)"/>
-        <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:name)"/>
-        <x:expect label="there is a sh:name = Has" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:name/text() = 'Has'"/>
-        <x:expect label="there is a sh:class" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:class)"/>
-        <x:expect label="correct target class URI" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:class/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Channel'"/>
+        <x:expect label="there is rdf:Description" test="boolean(rdf:Description)"/>
+        <x:expect label="there is a sh:class" test="boolean(rdf:Description/sh:class)"/>
+        <x:expect label="correct target class URI" test="rdf:Description/sh:class/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Channel'"/>
     </x:scenario>
     
     <x:scenario label="Scenario for association with Bi-Directional direction">
         <x:call template="connectorRange">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[115]"/>
         </x:call>   
-        <x:expect label="there is a sh:NodeShape" test="boolean(sh:NodeShape)"/>
-        <x:expect label="there are 2 sh:NodeShape" test="count(sh:NodeShape) = 2"/>
-        <x:expect label="there is a sh:property" test="boolean(sh:NodeShape/sh:property)"/>
-        <x:expect label="there is ash:PropertyShape" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape)"/>
-        <x:expect label="there is a sh:path" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:path)"/>
-        <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:name)"/>
-        <x:expect label="there is a sh:name = Is role of contact person" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:name/text() = 'Is role of contact person'"/>
-        <x:expect label="there is a sh:name = Has person role" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:name/text() = 'Has person role'"/>
-        <x:expect label="there is a sh:class" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:class)"/>
-        <x:expect label="correct target class URI" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:class/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Role'"/>
-        <x:expect label="correct target class URI" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:class/@rdf:resource = 'http://data.europa.eu/a4g/ontology#ContactPoint'"/>
+        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description)"/>
+        <x:expect label="there are 2 rdf:Description" test="count(rdf:Description) = 2"/>
+        <x:expect label="there is a sh:class" test="boolean(rdf:Description/sh:class)"/>
+        <x:expect label="correct target class URI" test="rdf:Description/sh:class/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Role'"/>
+        <x:expect label="correct target class URI" test="rdf:Description/sh:class/@rdf:resource = 'http://data.europa.eu/a4g/ontology#ContactPoint'"/>
     </x:scenario>
 
 
@@ -95,28 +81,19 @@
         <x:call template="connectorMultiplicity">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[100]"/>
         </x:call>   
-        <x:expect label="there is a sh:NodeShape" test="boolean(sh:NodeShape)"/>
-        <x:expect label="there is a sh:property" test="boolean(sh:NodeShape/sh:property)"/>
-        <x:expect label="there is ash:PropertyShape" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape)"/>
-        <x:expect label="there is a sh:path" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:path)"/>
-        <x:expect label="there is a sh:name" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:name)"/>
-        <x:expect label="there is a sh:name = Has" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:name/text() = 'Has'"/>
-        <x:expect label="there is a sh:minCount" test="boolean(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount)"/>
-        <x:expect label="there is a sh:minCount with correct value" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount/text() = '2'"/>
-        <x:expect label="there is no sh:maxCount" test="not(boolean(sh:property/sh:PropertyShape/sh:maxCount))"/>
+        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description)"/>
+        <x:expect label="there is a sh:minCount" test="boolean(rdf:Description/sh:minCount)"/>
+        <x:expect label="there is a sh:minCount with correct value" test="rdf:Description/sh:minCount/text() = '2'"/>
+        <x:expect label="there is no sh:maxCount" test="not(boolean(rdf:Description/sh:maxCount))"/>
     </x:scenario>
     
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and both target and source have multiplicity ">
         <x:call template="connectorMultiplicity">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[115]"/>
         </x:call>   
-        <x:expect label="there is 2 sh:NodeShape" test="count(sh:NodeShape) = 2"/>
-        <x:expect label="there is 2 sh:property" test="count(sh:NodeShape/sh:property) = 2"/>
-        <x:expect label="there is 2 sh:PropertyShape" test="count(sh:NodeShape/sh:property/sh:PropertyShape) = 2"/>
-        <x:expect label="there is 2 sh:path" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:path) = 2"/>
-        <x:expect label="there is 2 sh:name" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:name) = 2"/>
-        <x:expect label="there is only one sh:minCount" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount) = 0"/>
-        <x:expect label="there is 2 sh:maxCount" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount)=2"/>
+        <x:expect label="there is 2 rdf:Description" test="count(rdf:Description) = 2"/>
+        <x:expect label="there is only one sh:minCount" test="count(rdf:Description/sh:minCount) = 0"/>
+        <x:expect label="there is 2 sh:maxCount" test="count(rdf:Description/sh:maxCount)=2"/>
     </x:scenario>
     
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction and the target has no multiplicity">
@@ -137,43 +114,35 @@
         <x:call template="connectorMultiplicity">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[56]"/>
         </x:call>   
-        <x:expect label="there is 2 sh:NodeShape" test="count(sh:NodeShape) = 1"/>
-        <x:expect label="there is 2 sh:property" test="count(sh:NodeShape/sh:property) = 1"/>
-        <x:expect label="there is 2 sh:PropertyShape" test="count(sh:NodeShape/sh:property/sh:PropertyShape) = 1"/>
-        <x:expect label="there is 2 sh:path" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:path) = 1"/>
-        <x:expect label="there is 2 sh:name" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:name) = 1"/>
-        <x:expect label="there is only one sh:minCount" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount) = 1"/>
-        <x:expect label="there is a sh:minCount with correct value" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:minCount/text() = '1'"/>
-        <x:expect label="there is 2 sh:maxCount" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:maxCount)=1"/>
+        <x:expect label="there is 1 rdf:Description" test="count(rdf:Description) = 1"/>
+        <x:expect label="there is only one sh:minCount" test="count(rdf:Description/sh:minCount) = 1"/>
+        <x:expect label="there is a sh:minCount with correct value" test="rdf:Description/sh:minCount/text() = '1'"/>
+        <x:expect label="there is 1 sh:maxCount" test="count(rdf:Description/sh:maxCount)=1"/>
     </x:scenario>
     
     <x:scenario label="Scenario for association asymetry with Source -&gt; Destination direction">
         <x:call template="connectorAsymmetry">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[100]"/>
         </x:call>   
-        <x:expect label="there is a sh:NodeShape" test="boolean(sh:NodeShape)"/>
-        <x:expect label="there is a sh:sparql" test="boolean(sh:NodeShape/sh:sparql)"/>
-        <x:expect label="there is a sh:select" test="boolean(sh:NodeShape/sh:sparql/sh:select)"/>
+        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description)"/>
+        <x:expect label="there is a sh:sparql" test="boolean(rdf:Description/sh:sparql)"/>
+        <x:expect label="there is a sh:select" test="boolean(rdf:Description/sh:sparql/sh:select)"/>
     </x:scenario>
     
     <x:scenario label="Scenario for association asymetry with Bi-Directional direction">
         <x:call template="connectorAsymmetry">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[56]"/>
         </x:call>   
-        <x:expect label="there is 2 sh:NodeShape" test="count(sh:NodeShape)=2"/>
-        <x:expect label="there is 2 sh:sparql" test="count(sh:NodeShape/sh:sparql)=2"/>
-        <x:expect label="there is 2 sh:select" test="count(sh:NodeShape/sh:sparql/sh:select)=2"/>
+        <x:expect label="there is 2 rdf:Description" test="count(rdf:Description)=2"/>
+        <x:expect label="there is 2 sh:sparql" test="count(rdf:Description/sh:sparql)=2"/>
+        <x:expect label="there is 2 sh:select" test="count(rdf:Description/sh:sparql/sh:select)=2"/>
     </x:scenario>
     
     <x:scenario label="Scenario for dependency range (Class -> Enumeration)">
         <x:call template="connectorRangeClassToEnumeration">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[247]"/>
         </x:call>   
-        <x:expect label="there is 1 sh:NodeShape" test="count(sh:NodeShape) = 1"/>
-        <x:expect label="there is 1 sh:property" test="count(sh:NodeShape/sh:property) = 1"/>
-        <x:expect label="there is 1 sh:PropertyShape" test="count(sh:NodeShape/sh:property/sh:PropertyShape) = 1"/>
-        <x:expect label="there is 1 sh:path" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:path) = 1"/>
-        <x:expect label="there is sh:path = skos:inScheme" test="sh:NodeShape/sh:property/sh:PropertyShape/sh:path/@rdf:resource = 'http://www.w3.org/2004/02/skos/core#inScheme'"/>
-        <x:expect label="there is 1 sh:hasValue" test="count(sh:NodeShape/sh:property/sh:PropertyShape/sh:hasValue) = 1"/>
+        <x:expect label="there is 1 rdf:Description" test="count(rdf:Description) = 1"/>
+        <x:expect label="there is 1 sh:class" test="count(rdf:Description/sh:class) = 1"/>
     </x:scenario>
 </x:description>

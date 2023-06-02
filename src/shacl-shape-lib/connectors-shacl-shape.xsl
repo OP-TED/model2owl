@@ -17,6 +17,7 @@
     <xsl:import href="../common/utils.xsl"/>
     <xsl:import href="../common/formatters.xsl"/>
     <xsl:import href="../common/checkers.xsl"/>
+    <xsl:import href="descriptors-shacl-shape.xsl"/>
 
     <xsl:output method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
@@ -40,6 +41,9 @@
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
             <xsl:call-template name="connectorAsymmetry">
+                <xsl:with-param name="connector" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="connectorDeclaration">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
         </xsl:if>
@@ -69,14 +73,140 @@
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="connectorAsymmetry">
+            <xsl:call-template name="connectorDeclaration">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
+<!--            <xsl:call-template name="connectorAsymmetry">
+                <xsl:with-param name="connector" select="."/>
+            </xsl:call-template>-->
+        </xsl:if>
+    </xsl:template>
+    
+    
+    <xd:doc>
+        <xd:desc>Rule R.02. Unidirectional association — in data shape layer. 
+            Specify PropertyShape declaration axiom for each association/dependency.</xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    
+    
+    <xsl:template name="connectorDeclaration">
+        <xsl:param name="connector"/>
+        <xsl:variable name="sourceClassURI"
+            select="f:buildURIfromLexicalQName($connector/source/model/@name)"/>
+        <xsl:variable name="normalisedSourceClassName"
+            select="replace($connector/source/model/@name, ':', '-')"/>
+
+        <xsl:variable name="sourceDocumentation"
+            select="
+                if (boolean($connector/source/documentation/@value)) then
+                    $connector/source/documentation/@value
+                else
+                    if (boolean($connector/documentation/@value)) then
+                        $connector/documentation/@value
+                    else
+                        ()
+                "/>
+        <xsl:variable name="targetDocumentation"
+            select="
+                if (boolean($connector/target/documentation/@value)) then
+                    $connector/target/documentation/@value
+                else
+                    if (boolean($connector/documentation/@value)) then
+                        $connector/documentation/@value
+                    else
+                        ()
+                "/>
+        <xsl:variable name="sourceRole"
+            select="
+                if (boolean($connector/source/role/@name)) then
+                    $connector/source/role/@name
+                else
+                    ()
+                "/>
+        <xsl:variable name="normalisedSourceRole" select="replace($sourceRole, ':', '-')"/>
+        <xsl:variable name="sourceRoleURI"
+            select="
+                if (boolean($sourceRole)) then
+                    f:buildURIfromLexicalQName($sourceRole)
+                else
+                    ()"/>
+        <xsl:variable name="targetClassURI"
+            select="f:buildURIfromLexicalQName($connector/target/model/@name)"/>
+        <xsl:variable name="normalisedTargetClassName"
+            select="replace($connector/target/model/@name, ':', '-')"/>
+        <xsl:variable name="targetRole"
+            select="
+                if (boolean($connector/target/role/@name)) then
+                    $connector/target/role/@name
+                else
+                    fn:error(xs:QName('connectors'), concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
+        <xsl:variable name="normalisedTargetRole" select="replace($targetRole, ':', '-')"/>
+        <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
+        <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
+        <xsl:variable name="propertyShapeURITarget"
+            select="fn:concat($base-shape-uri, $defaultDelimiter, $normalisedSourceClassName, '-', $normalisedTargetRole)"/>
+        <xsl:variable name="propertyShapeURISource"
+            select="fn:concat($base-shape-uri, $defaultDelimiter, $normalisedTargetClassName, '-', $normalisedSourceRole)"/>
+        <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
+            <rdf:Description rdf:about="{$propertyShapeURITarget}">
+                <sh:property rdf:resource="{$propertyShapeURITarget}"/>
+            </rdf:Description>
+            <sh:PropertyShape rdf:about="{$propertyShapeURITarget}">
+                <sh:path rdf:resource="{$targetRoleURI}"/>
+            </sh:PropertyShape>
+            <xsl:call-template name="shapeLayerName">
+                <xsl:with-param name="elementName" select="$targetRole"/>
+                <xsl:with-param name="uri" select="$propertyShapeURITarget"/>
+            </xsl:call-template>
+            <xsl:if test="$targetDocumentation != ''">
+                <xsl:call-template name="shapeLayerDescription">
+                    <xsl:with-param name="definition" select="$targetDocumentation"/>
+                    <xsl:with-param name="uri" select="$propertyShapeURITarget"/>
+                    <xsl:with-param name="rdfsComment" select="fn:false()"/>
+                </xsl:call-template>
+            </xsl:if>
+        </xsl:if>
+        <xsl:if test="$connectorDirection = 'Bi-Directional'">
+            <rdf:Description rdf:about="{$propertyShapeURITarget}">
+                <sh:property rdf:resource="{$propertyShapeURITarget}"/>
+            </rdf:Description>
+            <sh:PropertyShape rdf:about="{$propertyShapeURITarget}">
+                <sh:path rdf:resource="{$targetRoleURI}"/>
+            </sh:PropertyShape>
+            <xsl:call-template name="shapeLayerName">
+                <xsl:with-param name="elementName" select="$targetRole"/>
+                <xsl:with-param name="uri" select="$propertyShapeURITarget"/>
+            </xsl:call-template>
+            <xsl:if test="$targetDocumentation != ''">
+                <xsl:call-template name="shapeLayerDescription">
+                    <xsl:with-param name="definition" select="$targetDocumentation"/>
+                    <xsl:with-param name="uri" select="$propertyShapeURITarget"/>
+                    <xsl:with-param name="rdfsComment" select="fn:false()"/>
+                </xsl:call-template>
+            </xsl:if>
+            <rdf:Description rdf:about="{$propertyShapeURISource}">
+                <sh:property rdf:resource="{$propertyShapeURISource}"/>
+            </rdf:Description>
+            <sh:PropertyShape rdf:about="{$propertyShapeURISource}">
+                <sh:path rdf:resource="{$sourceRoleURI}"/>
+            </sh:PropertyShape>
+            <xsl:call-template name="shapeLayerName">
+                <xsl:with-param name="elementName" select="$sourceRole"/>
+                <xsl:with-param name="uri" select="$propertyShapeURISource"/>
+            </xsl:call-template>
+            <xsl:if test="$targetDocumentation != ''">
+                <xsl:call-template name="shapeLayerDescription">
+                    <xsl:with-param name="definition" select="$sourceDocumentation"/>
+                    <xsl:with-param name="uri" select="$propertyShapeURISource"/>
+                    <xsl:with-param name="rdfsComment" select="fn:false()"/>
+                </xsl:call-template>
+            </xsl:if>
         </xsl:if>
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[Rule 14]-(Association range shape in data shape layer) . Within the SHACL Node
+        <xd:desc>Rule R.05. Association range shape — in data shape layer . Within the SHACL Node
             Shape corresponding to the source UML class, specify property constraints indicating the
             range class.</xd:desc>
         <xd:param name="connector"/>
@@ -120,48 +250,18 @@
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
             <rdf:Description
                 rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
-                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-                <sh:path rdf:resource="{$targetRoleURI}"/>
-                <sh:name>
-                    <xsl:value-of select="f:lexicalQNameToWords($targetRole)"/>
-                </sh:name>
                 <sh:class rdf:resource="{$targetClassURI}"/>
-            </rdf:Description>
-            <rdf:Description rdf:about="{$sourceClassURI}">
-                <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
-                />
             </rdf:Description>
         </xsl:if>
         <xsl:if test="$connectorDirection = 'Bi-Directional'">
             <rdf:Description
                 rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
-                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-                <sh:path rdf:resource="{$targetRoleURI}"/>
-                <sh:name>
-                    <xsl:value-of select="f:lexicalQNameToWords($targetRole)"/>
-                </sh:name>
                 <sh:class rdf:resource="{$targetClassURI}"/>
-            </rdf:Description>
-            <rdf:Description rdf:about="{$sourceClassURI}">
-                <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
-                />
             </rdf:Description>
 
             <rdf:Description
                 rdf:about="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}">
-                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-                <sh:path rdf:resource="{$sourceRoleURI}"/>
-                <sh:name>
-                    <xsl:value-of select="f:lexicalQNameToWords($sourceRole)"/>
-                </sh:name>
                 <sh:class rdf:resource="{$sourceClassURI}"/>
-            </rdf:Description>
-            <rdf:Description rdf:about="{$targetClassURI}">
-                <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}"
-                />
             </rdf:Description>
 
 
@@ -169,9 +269,9 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[Rule 34]-(Dependency range shape in data shape layer) . Within the SHACL Node
-            Shape corresponding to the source UML class, specify property constraints indicating the
-            range class.</xd:desc>
+        <xd:desc>Rule R.13. Dependency range shape — in data shape layer. Within the SHACL PropertyShape 
+            corresponding to a dependency relation linked to a given source UML Class, 
+            specify property constraints indicating the range class.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
 
@@ -201,22 +301,16 @@
 
             <rdf:Description
                 rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
-                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-                <sh:path rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
-                <sh:hasValue rdf:resource="{$targetClassURI}"/>
-            </rdf:Description>
-            <rdf:Description rdf:about="{$targetRoleURI}">
-                <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
-                />
+                <sh:class rdf:resource="{$targetClassURI}"/>
             </rdf:Description>
         </xsl:if>
     </xsl:template>
 
     <xd:doc>
-        <xd:desc> Rule 15 (Association multiplicity in data shape layer) . Within the SHACL Node
-            Shape corresponding to the source UML class, specify property constraints indicating
-            minimum and maximum cardinality according to cases provided by Rule 8 </xd:desc>
+        <xd:desc>Rule R.08. Association multiplicity — in data shape layer. 
+            Within the SHACL PropertyShape corresponding to an association/dependency relation 
+            linked to a given source UML Class, specify property constraints indicating minimum 
+            and maximum cardinality, according to cases provided by rule:attribute-ds-multiplicity. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
 
@@ -290,18 +384,9 @@
             
             <rdf:Description
                 rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
-                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-                <sh:path rdf:resource="{$targetRoleURI}"/>
-                <sh:name>
-                    <xsl:value-of select="f:lexicalQNameToWords($targetRole)"/>
-                </sh:name>
                 <xsl:copy-of select="$sourceDestinationRestrictionContent"/>
             </rdf:Description>
-            <rdf:Description rdf:about="{$targetRoleURI}">
-                <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
-                />
-            </rdf:Description>
+
         </xsl:if>
         <!--        end of first property shape content-->
 
@@ -325,18 +410,9 @@
             
             <rdf:Description
                 rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
-                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-                <sh:path rdf:resource="{$targetRoleURI}"/>
-                <sh:name>
-                    <xsl:value-of select="f:lexicalQNameToWords($targetRole)"/>
-                </sh:name>
                 <xsl:copy-of select="$sourceInBidirectionalRestrictionContent"/>
             </rdf:Description>
-            <rdf:Description rdf:about="{$targetRoleURI}">
-                <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
-                />
-            </rdf:Description>
+
             
         </xsl:if>
         <!--        end of second property shape content-->
@@ -361,25 +437,15 @@
             
             <rdf:Description
                 rdf:about="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}">
-                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-                <sh:path rdf:resource="{$sourceRoleURI}"/>
-                <sh:name>
-                    <xsl:value-of select="f:lexicalQNameToWords($sourceRole)"/>
-                </sh:name>
                 <xsl:copy-of select="$targetInBidirectionalRestrictionContent"/>
             </rdf:Description>
-            <rdf:Description rdf:about="{$sourceRoleURI}">
-                <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}"
-                />
-            </rdf:Description>  
         </xsl:if>
         <!--        end of third property shape content-->
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Rule 18 (Association asymmetry in data shape layer) . Within the SHACL Node Shape
-            corresponding to the UML class, specify SPARQL constraint selecting instances connected
+        <xd:desc>Rule R.10. Association asymmetry — in data shape layer .Within the SHACL Node Shape 
+            corresponding to the UML Class, specify SPARQL constraint selecting instances connected 
             by the object property in a reciprocal manner.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -423,51 +489,36 @@
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
             <rdf:Description
                 rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
-                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
                 <sh:sparql rdf:parseType="Resource">
                     <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
                         select="$targetRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
                             select="$targetRoleURI"/>&gt; ?this .} </sh:select>
                 </sh:sparql>
             </rdf:Description>
-            <rdf:Description rdf:about="{$sourceClassURI}">
-                <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
-                />
-            </rdf:Description>
+
             
         
         </xsl:if>
         <xsl:if test="$connectorDirection = 'Bi-Directional'">
             <rdf:Description
                 rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
-                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
                 <sh:sparql rdf:parseType="Resource">
                     <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
                         select="$targetRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
                             select="$targetRoleURI"/>&gt; ?this .} </sh:select>
                 </sh:sparql>
             </rdf:Description>
-            <rdf:Description rdf:about="{$sourceClassURI}">
-                <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}"
-                />
-            </rdf:Description>
+
     
             <rdf:Description
                 rdf:about="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}">
-                <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
                 <sh:sparql rdf:parseType="Resource">
                     <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
                         select="$sourceRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
                             select="$sourceRoleURI"/>&gt; ?this .} </sh:select>
                 </sh:sparql>
             </rdf:Description>
-            <rdf:Description rdf:about="{$targetClassURI}">
-                <sh:property
-                    rdf:resource="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}"
-                />
-            </rdf:Description>
+
         </xsl:if>
     </xsl:template>
 
