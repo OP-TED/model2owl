@@ -48,8 +48,8 @@ OUTPUT_RESTRICTIONS_FILE_NAME?="ePO_CM-restrictions.rdf"
 OUTPUT_SHACL_SHAPES_FILE_NAME?="ePO_CM-shacl.rdf"
 
 # Output ontologies
-OUTPUT_PATH_OWL?="../output/epo-ontologies"
-ONTOLOGY_DIR?=${OUTPUT_PATH_OWL}
+OUTPUT_FOLDER_PATH?="../output/epo-ontologies"
+ONTOLOGY_DIR?=${OUTPUT_FOLDER_PATH}
 FILELIST=$(shell ls ${ONTOLOGY_DIR}/*.rdf)
 TURTLE_FILELIST=$(shell ls ${ONTOLOGY_DIR}/*.ttl)
 # download saxon library 	
@@ -115,21 +115,26 @@ generate-glossary:
 	@ls -lh ${OUTPUT_GLOSSARY_PATH}/${UML_FILENAME_WITHOUT_EXTENSION}-glossary.html
 	@echo
 	 
-
+#Example how to run transformation commands :
+# make owl-core UML_INPUT_FILENAME=/home/mypc/work/model2owl/eNotice_CM.xml OUTPUT_FOLDER_PATH=./my-folder
 owl-core:
-	@java -jar ${SAXON} -s:${UML_INPUT_FILENAME} -xsl:${MODEL2OWL_DIR}/src/owl-core.xsl -o:${OUTPUT_PATH_OWL}/${OUTPUT_CORE_FILE_NAME}
+	@java -jar ${SAXON} -s:${UML_INPUT_FILENAME} -xsl:${MODEL2OWL_DIR}/src/owl-core.xsl -o:${OUTPUT_FOLDER_PATH}/${OUTPUT_CORE_FILE_NAME}
 	@echo Output owl core file:
-	@ls -lh ${OUTPUT_PATH_OWL}/${OUTPUT_CORE_FILE_NAME}
+	@ls -lh ${OUTPUT_FOLDER_PATH}/${OUTPUT_CORE_FILE_NAME}
 owl-restrictions:
-	@java -jar ${SAXON} -s:${UML_INPUT_FILENAME} -xsl:${MODEL2OWL_DIR}/src/owl-restrictions.xsl -o:${OUTPUT_PATH_OWL}/${OUTPUT_RESTRICTIONS_FILE_NAME}
+	@java -jar ${SAXON} -s:${UML_INPUT_FILENAME} -xsl:${MODEL2OWL_DIR}/src/owl-restrictions.xsl -o:${OUTPUT_FOLDER_PATH}/${OUTPUT_RESTRICTIONS_FILE_NAME}
     @echo Output owl restrictions file:
-	@ls -lh ${OUTPUT_PATH_OWL}/${OUTPUT_RESTRICTIONS_FILE_NAME}
+	@ls -lh ${OUTPUT_FOLDER_PATH}/${OUTPUT_RESTRICTIONS_FILE_NAME}
 shacl:
-	@java -jar ${SAXON} -s:${UML_INPUT_FILENAME} -xsl:${MODEL2OWL_DIR}/src/shacl-shapes.xsl -o:${OUTPUT_PATH_OWL}/${OUTPUT_SHACL_SHAPES_FILE_NAME}
+	@java -jar ${SAXON} -s:${UML_INPUT_FILENAME} -xsl:${MODEL2OWL_DIR}/src/shacl-shapes.xsl -o:${OUTPUT_FOLDER_PATH}/${OUTPUT_SHACL_SHAPES_FILE_NAME}
 	@echo Output shacl file:
-	@ls -lh ${OUTPUT_PATH_OWL}/${OUTPUT_SHACL_SHAPES_FILE_NAME}
+	@ls -lh ${OUTPUT_FOLDER_PATH}/${OUTPUT_SHACL_SHAPES_FILE_NAME}
 
 transform: owl-core owl-restrictions shacl
+
+#Example how to run transformation commands :
+# make convert-to-turtle OUTPUT_FOLDER_PATH=./my-folder
+# OUTPUT_FOLDER_PATH is the the path to the folder containing .rdf files for converting to turtle or .ttl files to convert to rdf
 convert-to-turtle:
 	@for filename in ${FILELIST}; do \
 		echo Converting $${filename} into Turtle; \
