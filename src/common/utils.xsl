@@ -407,5 +407,50 @@
 
 
     </xsl:function>
+    
+    
+    <xd:doc>
+        <xd:desc>Normalise URI from prefix:localSegment to prefix-localSegment</xd:desc>
+        <xd:param name="uri"/>
+    </xd:doc>
+    <xsl:function name="f:normaliseURI">
+        <xsl:param name="uri"/>
+        <xsl:sequence select="replace($uri, ':', '-')"/>
+    </xsl:function>
+    
+    
+    
+    <xd:doc>
+        <xd:desc>This function is used to combine 2 URIs to build the property shape URI
+        shape-base-uri:{SourceClassURI}-{PropertyOrAttributeURI}
+        Example:
+        Class URI - prefix:Procedure
+        Attribute URI - prefix:hasScope
+        Result will be http://base.uri/data-shape/prefix-Procedure-prefix-hasScope</xd:desc>
+        <xd:param name="firstUri"/>
+        <xd:param name="secondUri"/>
+    </xd:doc>
+    <xsl:function name="f:buildPropertyShapeURI">
+        <xsl:param name="firstUri"/>
+        <xsl:param name="secondUri"/>
+        <xsl:variable name="normalisedFirstUri" select="f:normaliseURI($firstUri)"/>
+        <xsl:variable name="normalisedSecondUri" select="f:normaliseURI($secondUri)"/>
+        <xsl:sequence select="fn:concat($base-shape-uri, $defaultDelimiter, $normalisedFirstUri, '-', $normalisedSecondUri)"/>
+        
+    </xsl:function>
+    
+    <xd:doc>
+        <xd:desc> This function is used to build the shape URI from a given URI
+            shape-base-uri:{ClassURI}
+            Example:
+            Class URI - prefix:Human
+            Result will be  http://base.uri/data-shape/prefix-Human
+        </xd:desc>
+        <xd:param name="uri"/>
+    </xd:doc>
+    <xsl:function name="f:buildShapeURI">
+        <xsl:param name="uri"/>
+        <xsl:sequence select="fn:concat($base-shape-uri, $defaultDelimiter, f:normaliseURI($uri))"/>
+    </xsl:function>
 
 </xsl:stylesheet>

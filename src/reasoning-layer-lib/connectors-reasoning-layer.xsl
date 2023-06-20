@@ -132,9 +132,9 @@
                     else
                         f:buildURIfromLexicalQName($filteredConnectorsWithSameName/target/model/@name)
             "/>
-            <owl:ObjectProperty rdf:about="{$targetRoleURI}">
+            <rdf:Description rdf:about="{$targetRoleURI}">
                 <rdfs:domain rdf:resource="{$classURI}"/>
-            </owl:ObjectProperty>
+            </rdf:Description>
         </xsl:if>
         <xsl:if test="fn:count($filteredConnectorsWithSameName) > 1">
             <xsl:variable name="targetDomains"
@@ -145,7 +145,7 @@
                 as="xs:string*"/>
             <xsl:variable name="domains"
                 select="functx:value-union($targetDomains, $sourceDomains)"/>
-            <owl:ObjectProperty rdf:about="{$targetRoleURI}">
+            <rdf:Description rdf:about="{$targetRoleURI}">
                 <rdfs:domain>
                     <owl:Class>
                         <xsl:choose>
@@ -165,7 +165,7 @@
                         </xsl:choose>
                     </owl:Class>
                 </rdfs:domain>
-            </owl:ObjectProperty>
+            </rdf:Description>
         </xsl:if>
     </xsl:template>
 
@@ -191,11 +191,11 @@
         />
         
             <xsl:if test="fn:count($filteredConnectorsWithSameName) = 1 and fn:boolean($filteredConnectorsWithSameName/*[role/@name =$connectorName]/model/@name)">
-                <owl:ObjectProperty rdf:about="{$targetRoleURI}">
+                <rdf:Description rdf:about="{$targetRoleURI}">
                     <rdfs:range
                         rdf:resource="{f:buildURIfromLexicalQName($filteredConnectorsWithSameName/*[role/@name =$connectorName]/model/@name)}"
                     />
-                </owl:ObjectProperty>
+                </rdf:Description>
             </xsl:if>
             <xsl:if test="fn:count($filteredConnectorsWithSameName) > 1">
                 <xsl:variable name="targetRanges"
@@ -206,7 +206,7 @@
                     as="xs:string*"/>
                 <xsl:variable name="ranges"
                     select="functx:value-union($targetRanges, $sourceRanges)"/>
-                <owl:ObjectProperty rdf:about="{$targetRoleURI}">
+                <rdf:Description rdf:about="{$targetRoleURI}">
                     <rdfs:range>
                     <owl:Class>
                         <xsl:choose>
@@ -225,7 +225,7 @@
                         </xsl:choose>
                     </owl:Class>
                     </rdfs:range>
-                </owl:ObjectProperty>
+                </rdf:Description>
             </xsl:if>
        
 
@@ -247,9 +247,9 @@
         <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
         <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
 
-        <owl:ObjectProperty rdf:about="{$targetRoleURI}">
+        <rdf:Description rdf:about="{$targetRoleURI}">
             <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-        </owl:ObjectProperty>
+        </rdf:Description>
 
     </xsl:template>
 
@@ -309,9 +309,9 @@
                         fn:error(xs:QName('connectors'),concat($bidirectionalConnectors/@xmi:idref, ' - connector source role name is empty'))"/>
                 <xsl:variable name="sourceRoleURI"
                     select="f:buildURIfromLexicalQName($sourceRole)"/>
-                <owl:ObjectProperty rdf:about="{$targetRoleURI}">
+                <rdf:Description rdf:about="{$targetRoleURI}">
                     <owl:inverseOf rdf:resource="{$sourceRoleURI}"/>
-                </owl:ObjectProperty>
+                </rdf:Description>
             </xsl:if>
         <xsl:if test="fn:count($bidirectionalConnectors) > 1" >
                 <xsl:for-each select="$distinctTargets">
@@ -325,9 +325,9 @@
                         <xsl:variable name="sourceRole" select="."/>
                         <xsl:variable name="sourceRoleURI"
                             select="f:buildURIfromLexicalQName($sourceRole)"/>
-                        <owl:ObjectProperty rdf:about="{$targetRoleURI}">
+                        <rdf:Description rdf:about="{$targetRoleURI}">
                             <owl:inverseOf rdf:resource="{$sourceRoleURI}"/>
-                        </owl:ObjectProperty>
+                        </rdf:Description>
                     </xsl:for-each>
                 </xsl:for-each>
             </xsl:if>
@@ -395,12 +395,12 @@
                 select="f:buildURIfromLexicalQName($sourceConnector/target/role/@name)"/>
             <xsl:variable name="sourceConnectorSourceRoleURI"
                 select="f:buildURIfromLexicalQName($sourceConnector/source/role/@name)"/>
-            <owl:ObjectProperty rdf:about="{$sourceConnectorSourceRoleURI}">
+            <rdf:Description rdf:about="{$sourceConnectorSourceRoleURI}">
                 <owl:equivalentProperty rdf:resource="{$targetConnectorSourceRoleURI}"/>
-            </owl:ObjectProperty>
-            <owl:ObjectProperty rdf:about="{$sourceConnectorTargetRoleURI}">
+            </rdf:Description>
+            <rdf:Description rdf:about="{$sourceConnectorTargetRoleURI}">
                 <owl:equivalentProperty rdf:resource="{$targetConnectorTargetRoleURI}"/>
-            </owl:ObjectProperty>
+            </rdf:Description>
         </xsl:if>
     </xsl:template>
 

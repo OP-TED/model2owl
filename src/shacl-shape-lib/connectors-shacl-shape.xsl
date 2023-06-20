@@ -94,8 +94,7 @@
         <xsl:param name="connector"/>
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($connector/source/model/@name)"/>
-        <xsl:variable name="normalisedSourceClassName"
-            select="replace($connector/source/model/@name, ':', '-')"/>
+        <xsl:variable name="sourceClassName" select="$connector/source/model/@name"/>
 
         <xsl:variable name="sourceDocumentation"
             select="
@@ -124,7 +123,6 @@
                 else
                     ()
                 "/>
-        <xsl:variable name="normalisedSourceRole" select="replace($sourceRole, ':', '-')"/>
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
@@ -133,21 +131,20 @@
                     ()"/>
         <xsl:variable name="targetClassURI"
             select="f:buildURIfromLexicalQName($connector/target/model/@name)"/>
-        <xsl:variable name="normalisedTargetClassName"
-            select="replace($connector/target/model/@name, ':', '-')"/>
+        <xsl:variable name="targetClassName" select="$connector/target/model/@name"/>
         <xsl:variable name="targetRole"
             select="
                 if (boolean($connector/target/role/@name)) then
                     $connector/target/role/@name
                 else
                     fn:error(xs:QName('connectors'), concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
-        <xsl:variable name="normalisedTargetRole" select="replace($targetRole, ':', '-')"/>
+
         <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:variable name="propertyShapeURITarget"
-            select="fn:concat($base-shape-uri, $defaultDelimiter, $normalisedSourceClassName, '-', $normalisedTargetRole)"/>
+            select="f:buildPropertyShapeURI($sourceClassName, $targetRole)"/>
         <xsl:variable name="propertyShapeURISource"
-            select="fn:concat($base-shape-uri, $defaultDelimiter, $normalisedTargetClassName, '-', $normalisedSourceRole)"/>
+            select="f:buildPropertyShapeURI($targetClassName, $sourceRole)"/>
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
             <rdf:Description rdf:about="{$propertyShapeURITarget}">
                 <sh:property rdf:resource="{$propertyShapeURITarget}"/>
@@ -217,8 +214,8 @@
         <xsl:param name="connector"/>
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($connector/source/model/@name)"/>
-        <xsl:variable name="normalisedSourceClassName"
-            select="replace($connector/source/model/@name, ':', '-')"/>
+        <xsl:variable name="sourceClassName"
+            select="$connector/source/model/@name"/>
         <xsl:variable name="sourceRole"
             select="
                 if (boolean($connector/source/role/@name)) then
@@ -226,7 +223,6 @@
                 else
                     ()
                 "/>
-        <xsl:variable name="normalisedSourceRole" select="replace($sourceRole, ':', '-')"/>
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
@@ -235,32 +231,31 @@
                     ()"/>
         <xsl:variable name="targetClassURI"
             select="f:buildURIfromLexicalQName($connector/target/model/@name)"/>
-        <xsl:variable name="normalisedTargetClassName"
-            select="replace($connector/target/model/@name, ':', '-')"/>
+        <xsl:variable name="targetClassName"
+            select="$connector/target/model/@name"/>
         <xsl:variable name="targetRole"
             select="
                 if (boolean($connector/target/role/@name)) then
                     $connector/target/role/@name
                 else
                     fn:error(xs:QName('connectors'), concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
-        <xsl:variable name="normalisedTargetRole" select="replace($targetRole, ':', '-')"/>
         <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
 
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                rdf:about="{f:buildPropertyShapeURI($sourceClassName,$targetRole)}">
                 <sh:class rdf:resource="{$targetClassURI}"/>
             </rdf:Description>
         </xsl:if>
         <xsl:if test="$connectorDirection = 'Bi-Directional'">
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                rdf:about="{f:buildPropertyShapeURI($sourceClassName,$targetRole)}">
                 <sh:class rdf:resource="{$targetClassURI}"/>
             </rdf:Description>
 
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}">
+                rdf:about="{f:buildPropertyShapeURI($targetClassName,$sourceRole)}">
                 <sh:class rdf:resource="{$sourceClassURI}"/>
             </rdf:Description>
 
@@ -283,15 +278,15 @@
             select="f:buildURIfromLexicalQName($connector/target/model/@name)"/>
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($connector/source/model/@name)"/>
-        <xsl:variable name="normalisedSourceClassName"
-            select="replace($connector/source/model/@name, ':', '-')"/>
+        <xsl:variable name="sourceClassName"
+            select="$connector/source/model/@name"/>
         <xsl:variable name="targetRole"
             select="
                 if (boolean($connector/target/role/@name)) then
                     $connector/target/role/@name
                 else
                     fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
-        <xsl:variable name="normalisedTargetRole" select="replace($targetRole, ':', '-')"/>
+       
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole)"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
@@ -300,7 +295,7 @@
 
 
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                rdf:about="{f:buildPropertyShapeURI($sourceClassName,$targetRole)}">
                 <sh:class rdf:resource="{$targetClassURI}"/>
             </rdf:Description>
         </xsl:if>
@@ -330,10 +325,10 @@
             select="f:getMultiplicityMaxFromString($sourceMultiplicity)"/>
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($connector/source/model/@name)"/>
-        <xsl:variable name="normalisedSourceClassName"
-            select="replace($connector/source/model/@name, ':', '-')"/>
-        <xsl:variable name="normalisedTargetClassName"
-            select="replace($connector/target/model/@name, ':', '-')"/>
+        <xsl:variable name="sourceClassName"
+            select="$connector/source/model/@name"/>
+        <xsl:variable name="targetClassName"
+            select="$connector/target/model/@name"/>
         <!--  <xsl:value-of select="$connector/target/type/@multiplicity"/>-->
         <!--<xsl:value-of select="$targetMultiplicity"/>-->
         <xsl:variable name="sourceRole"
@@ -343,7 +338,7 @@
                 else
                     ()
                 "/>
-        <xsl:variable name="normalisedSourceRole" select="replace($sourceRole, ':', '-')"/>
+
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
@@ -360,7 +355,7 @@
                     fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole)"/>
-        <xsl:variable name="normalisedTargetRole" select="replace($targetRole, ':', '-')"/>
+
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:variable name="datatypeURI"
             select="f:buildURIfromLexicalQName('xsd:integer')"/>
@@ -383,7 +378,7 @@
                 boolean($targetMultiplicity) and boolean($sourceDestinationRestrictionContent)">
             
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                rdf:about="{f:buildPropertyShapeURI($sourceClassName,$targetRole)}">
                 <xsl:copy-of select="$sourceDestinationRestrictionContent"/>
             </rdf:Description>
 
@@ -409,7 +404,7 @@
                 boolean($targetMultiplicity) and boolean($sourceInBidirectionalRestrictionContent)">
             
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                rdf:about="{f:buildPropertyShapeURI($sourceClassName,$targetRole)}">
                 <xsl:copy-of select="$sourceInBidirectionalRestrictionContent"/>
             </rdf:Description>
 
@@ -436,7 +431,7 @@
                 boolean($sourceMultiplicity) and boolean($targetInBidirectionalRestrictionContent)">
             
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}">
+                rdf:about="{f:buildPropertyShapeURI($targetClassName,$sourceRole)}">
                 <xsl:copy-of select="$targetInBidirectionalRestrictionContent"/>
             </rdf:Description>
         </xsl:if>
@@ -455,8 +450,8 @@
         <xsl:param name="connector"/>
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($connector/source/model/@name)"/>
-        <xsl:variable name="normalisedSourceClassName"
-            select="replace($connector/source/model/@name, ':', '-')"/>
+        <xsl:variable name="sourceClassName"
+            select="$connector/source/model/@name"/>
         <xsl:variable name="sourceRole"
             select="
                 if (boolean($connector/source/role/@name)) then
@@ -464,7 +459,6 @@
                 else
                     ()
                 "/>
-        <xsl:variable name="normalisedSourceRole" select="replace($sourceRole, ':', '-')"/>
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
@@ -473,22 +467,21 @@
                     ()"/>
         <xsl:variable name="targetClassURI"
             select="f:buildURIfromLexicalQName($connector/target/model/@name)"/>
-        <xsl:variable name="normalisedTargetClassName"
-            select="replace($connector/target/model/@name, ':', '-')"/>
+        <xsl:variable name="targetClassName"
+            select="$connector/target/model/@name"/>
         <xsl:variable name="targetRole"
             select="
                 if (boolean($connector/target/role/@name)) then
                     $connector/target/role/@name
                 else
                     fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
-        <xsl:variable name="normalisedTargetRole" select="replace($targetRole, ':', '-')"/>
         <xsl:variable name="targetRoleURI"
             select="f:buildURIfromLexicalQName($targetRole)"/>
 
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                rdf:about="{f:buildPropertyShapeURI($sourceClassName,$targetRole)}">
                 <sh:sparql rdf:parseType="Resource">
                     <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
                         select="$targetRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
@@ -501,7 +494,7 @@
         </xsl:if>
         <xsl:if test="$connectorDirection = 'Bi-Directional'">
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$defaultDelimiter,$normalisedSourceClassName,'-',$normalisedTargetRole)}">
+                rdf:about="{f:buildPropertyShapeURI($sourceClassName,$targetRole)}">
                 <sh:sparql rdf:parseType="Resource">
                     <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
                         select="$targetRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
@@ -511,7 +504,7 @@
 
     
             <rdf:Description
-                rdf:about="{fn:concat($base-shape-uri,$normalisedTargetClassName,'-',$normalisedSourceRole)}">
+                rdf:about="{f:buildPropertyShapeURI($targetClassName,$sourceRole)}">
                 <sh:sparql rdf:parseType="Resource">
                     <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
                         select="$sourceRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of

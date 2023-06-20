@@ -21,7 +21,7 @@
                 statements</xd:p>
         </xd:desc>
     </xd:doc>
-
+    <xsl:import href="../common/utils.xsl"/>
 
     <xd:doc>
         <xd:desc>Rule T.02. Label — in data shape layer. Specify a label for the SHACL shape, based on the name of the UML element.</xd:desc>
@@ -82,6 +82,21 @@
                 </xsl:otherwise>
             </xsl:choose>
         </rdf:Description>
+    </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>Rule T.09. Defined by - Specify if UML element is defined by the core
+            ontology</xd:desc>
+        <xd:param name="uri"/>
+    </xd:doc>
+        
+    <xsl:template name="shapeLayerDefinedBy">
+        <xsl:param name="uri"/>
+        <xsl:if test="fn:contains($uri, $base-ontology-uri)">
+            <rdf:Description rdf:about="{$uri}">
+                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
+            </rdf:Description>
+        </xsl:if>
     </xsl:template>
 
 </xsl:stylesheet>

@@ -22,7 +22,7 @@
         </xd:desc>
     </xd:doc>
 
-    <xsl:import href="../common/utils.xsl"/>
+
     <xsl:import href="../common/formatters.xsl"/>
     <xsl:import href="../common/checkers.xsl"/>
     <xsl:import href="descriptors-owl-core.xsl"/>
@@ -49,22 +49,23 @@
         <xsl:variable name="classURI" select="f:buildURIFromElement(.)"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
 
-        <owl:Class rdf:about="{$classURI}">
-            <xsl:call-template name="coreLayerName">
-                <xsl:with-param name="elementName" select="$className"/>
+        <owl:Class rdf:about="{$classURI}"/>
+
+        <xsl:call-template name="coreLayerName">
+            <xsl:with-param name="elementName" select="$className"/>
+            <xsl:with-param name="elementUri" select="$classURI"/>
+        </xsl:call-template>
+        <xsl:if test="$documentation != ''">
+            <xsl:call-template name="coreLayerDescription">
+                <xsl:with-param name="definition" select="$documentation"/>
+                <xsl:with-param name="elementUri" select="$classURI"/>
             </xsl:call-template>
-            <xsl:if test="$documentation != ''">
-                <xsl:call-template name="coreLayerDescription">
-                    <xsl:with-param name="definition" select="$documentation"/>
-                </xsl:call-template>
-            </xsl:if>
-            <!--   TODO ADD COMMENT RULE T05-->
+        </xsl:if>
+        <!--   TODO ADD COMMENT RULE T05-->
 
-            <xsl:if test="fn:contains($classURI, $base-ontology-uri)">
-                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
-            </xsl:if>
-
-        </owl:Class>
+        <xsl:call-template name="coreDefinedBy">
+            <xsl:with-param name="elementUri" select="$classURI"/>
+        </xsl:call-template>
 
     </xsl:template>
 
@@ -150,23 +151,28 @@
         <xsl:if test="not($isAttributeWithDependencyName)">
             <xsl:element name="{$propertyType}">
                 <xsl:attribute name="rdf:about" select="$attributeURI"/>
-
-                <xsl:call-template name="coreLayerName">
-                    <xsl:with-param name="elementName" select="$className"/>
-                </xsl:call-template>
-
-                <xsl:if test="boolean($descriptionsWithAnnotations)">
-                    <xsl:call-template name="coreLayerDescription">
-                        <xsl:with-param name="definition" select="$descriptionsWithAnnotations"/>
-                    </xsl:call-template>
-                </xsl:if>
-
-                <!--   TODO ADD COMMENT RULE T05-->
-
-                <xsl:if test="fn:contains($attributeURI, $base-ontology-uri)">
-                    <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
-                </xsl:if>
             </xsl:element>
+
+
+            <xsl:call-template name="coreLayerName">
+                <xsl:with-param name="elementName" select="$attributeName"/>
+                <xsl:with-param name="elementUri" select="$attributeURI"/>
+            </xsl:call-template>
+
+            <xsl:if test="boolean($descriptionsWithAnnotations)">
+                <xsl:call-template name="coreLayerDescription">
+                    <xsl:with-param name="definition" select="$descriptionsWithAnnotations"/>
+                    <xsl:with-param name="elementUri" select="$attributeURI"/>
+                </xsl:call-template>
+            </xsl:if>
+
+            <!--   TODO ADD COMMENT RULE T05-->
+
+            <xsl:call-template name="coreDefinedBy">
+                <xsl:with-param name="elementUri" select="$attributeURI"/>
+            </xsl:call-template>
+
+
         </xsl:if>
 
 
@@ -201,21 +207,24 @@
         <xsl:variable name="dataTypeURI" select="f:buildURIFromElement(.)"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
 
-        <rdfs:Datatype rdf:about="{$dataTypeURI}">
-            <xsl:call-template name="coreLayerName">
-                <xsl:with-param name="elementName" select="$dataTypeName"/>
-            </xsl:call-template>
-            <xsl:if test="$documentation != ''">
-                <xsl:call-template name="coreLayerDescription">
-                    <xsl:with-param name="definition" select="$documentation"/>
-                </xsl:call-template>
-            </xsl:if>
-            <!--   TODO ADD COMMENT RULE T05-->
+        <rdfs:Datatype rdf:about="{$dataTypeURI}"/>
 
-            <xsl:if test="fn:contains($dataTypeURI, $base-ontology-uri)">
-                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
-            </xsl:if>
-        </rdfs:Datatype>
+        <xsl:call-template name="coreLayerName">
+            <xsl:with-param name="elementName" select="$dataTypeName"/>
+            <xsl:with-param name="elementUri" select="$dataTypeURI"/>
+        </xsl:call-template>
+        <xsl:if test="$documentation != ''">
+            <xsl:call-template name="coreLayerDescription">
+                <xsl:with-param name="definition" select="$documentation"/>
+                <xsl:with-param name="elementUri" select="$dataTypeURI"/>
+            </xsl:call-template>
+        </xsl:if>
+        <!--   TODO ADD COMMENT RULE T05-->
+
+        <xsl:call-template name="coreDefinedBy">
+            <xsl:with-param name="elementUri" select="$dataTypeURI"/>
+        </xsl:call-template>
+
     </xsl:template>
 
 
@@ -225,24 +234,32 @@
             instantiation axiom for a UML enumeration. </xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
+        <xsl:if test="$enableGenerationOfConceptSchemes">
+            <xsl:variable name="conceptSchemeName" select="f:lexicalQNameToWords(./@name)"/>
 
-        <xsl:variable name="conceptSchemeName" select="f:lexicalQNameToWords(./@name)"/>
+            <xsl:variable name="conceptSchemeURI" select="f:buildURIFromElement(.)"/>
+            <xsl:variable name="documentation"
+                select="f:formatDocString(./properties/@documentation)"/>
 
-        <xsl:variable name="conceptSchemeURI" select="f:buildURIFromElement(.)"/>
-        <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
+            <skos:ConceptScheme rdf:about="{$conceptSchemeURI}"/>
 
-        <skos:ConceptScheme rdf:about="{$conceptSchemeURI}">
             <xsl:call-template name="coreLayerName">
                 <xsl:with-param name="elementName" select="$conceptSchemeName"/>
+                <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
             </xsl:call-template>
             <xsl:if test="$documentation != ''">
                 <xsl:call-template name="coreLayerDescription">
                     <xsl:with-param name="definition" select="$documentation"/>
+                    <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
                 </xsl:call-template>
             </xsl:if>
             <!--   TODO ADD COMMENT RULE T05-->
 
-        </skos:ConceptScheme>
+            <xsl:call-template name="coreDefinedBy">
+                <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
+            </xsl:call-template>
+        </xsl:if>
+
     </xsl:template>
 
 
@@ -267,17 +284,25 @@
 
             <skos:Concept rdf:about="{$enumerationAttributeURI}">
                 <skos:inScheme rdf:resource="{$enumerationURI}"/>
-
-                <xsl:call-template name="coreLayerName">
-                    <xsl:with-param name="elementName" select="$enumerationAttributeName"/>
-                </xsl:call-template>
-                <xsl:if test="$documentation != ''">
-                    <xsl:call-template name="coreLayerDescription">
-                        <xsl:with-param name="definition" select="$documentation"/>
-                    </xsl:call-template>
-                </xsl:if>
-                <!--   TODO ADD COMMENT RULE T05-->
+                
             </skos:Concept>
+
+            <xsl:call-template name="coreLayerName">
+                <xsl:with-param name="elementName" select="$enumerationAttributeName"/>
+                <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
+            </xsl:call-template>
+            <xsl:if test="$documentation != ''">
+                <xsl:call-template name="coreLayerDescription">
+                    <xsl:with-param name="definition" select="$documentation"/>
+                    <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
+                </xsl:call-template>
+            </xsl:if>
+            <!--   TODO ADD COMMENT RULE T05-->
+
+            <xsl:call-template name="coreDefinedBy">
+                <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
+            </xsl:call-template>
+
         </xsl:if>
     </xsl:template>
 

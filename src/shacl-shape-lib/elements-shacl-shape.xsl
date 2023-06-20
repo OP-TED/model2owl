@@ -14,7 +14,7 @@
     xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:functx="http://www.functx.com"
     version="3.0">
 
-    <xsl:import href="../common/utils.xsl"/>
+
     <xsl:import href="../common/formatters.xsl"/>
     <xsl:import href="../common/checkers.xsl"/>
     <xsl:import href="descriptors-shacl-shape.xsl"/>
@@ -31,23 +31,22 @@
     <xsl:template match="element[@xmi:type = 'uml:Class']">
         <xsl:variable name="class" select="."/>
         <xsl:variable name="shapeClassUri"
-            select="fn:concat($base-shape-uri, $defaultDelimiter, replace($class/@name, ':', '-'))"/>
+            select="f:buildShapeURI($class/@name)"/>
         <xsl:variable name="classURI" select="f:buildURIFromElement($class)"/>
         <xsl:variable name="documentation"
             select="f:formatDocString($class/properties/@documentation)"/>
 
         <sh:NodeShape rdf:about="{$shapeClassUri}">
             <sh:targetClass rdf:resource="{$classURI}"/>
-            <xsl:if test="fn:contains($classURI, $base-ontology-uri)">
-                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
-            </xsl:if>
-            <xsl:if test="$class/properties/@stereotype = ('Abstract', 'abstract class', 'abstract')">
+            <xsl:call-template name="shapeLayerDefinedBy">
+                <xsl:with-param name="uri" select="$classURI"/>
+            </xsl:call-template>
+
+            <xsl:if test="$class/properties/@stereotype = $abstractClassesStereotypes">
                 <xsl:call-template name="abstractClassDeclaration">
                     <xsl:with-param name="classURI" select="$classURI"/>
                 </xsl:call-template>
             </xsl:if>
-            
-            
             
             
         <xsl:call-template name="shapeLayerName">
@@ -61,6 +60,7 @@
                 <xsl:with-param name="rdfsComment" select="fn:true()"/>
             </xsl:call-template>
         </xsl:if>
+
             
             
         </sh:NodeShape>
@@ -114,12 +114,11 @@
         <xsl:variable name="attributeURI"
             select="f:buildURIFromElement($attribute)"/>
         <xsl:variable name="documentation" select="$attribute/documentation/@value"/>
-        <xsl:variable name="normalisedAttributeName" select="replace($attribute/@name, ':', '-')"/>
-        <xsl:variable name="normalisedClassName" select="replace($className, ':', '-')"/>
+
         <xsl:variable name="shapePropertyUri"
-            select="fn:concat($base-shape-uri, $defaultDelimiter, $normalisedClassName, '-', $normalisedAttributeName)"/>
+            select="f:buildPropertyShapeURI($className,$attribute/@name)"/>
         <xsl:variable name="shapeClassUri"
-            select="fn:concat($base-shape-uri, $defaultDelimiter, replace($className, ':', '-'))"/>
+            select="f:buildShapeURI($className)"/>
         
         <rdf:Description rdf:about="{$shapeClassUri}">
             <sh:property rdf:resource="{$shapePropertyUri}"/>
@@ -169,10 +168,8 @@
             select="f:buildURIFromElement($attribute)"/>
         <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
         <xsl:variable name="attributeType" select="$attribute/properties/@type"/>
-        <xsl:variable name="normalisedAttributeName" select="replace($attribute/@name, ':', '-')"/>
-        <xsl:variable name="normalisedClassName" select="replace($className, ':', '-')"/>
         <xsl:variable name="shapePropertyUri"
-            select="fn:concat($base-shape-uri, $defaultDelimiter, $normalisedClassName, '-', $normalisedAttributeName)"/>
+            select="f:buildPropertyShapeURI($className,$attribute/@name)"/>
         
         <xsl:if test="f:isAttributeTypeValidForDatatypeProperty($attribute)">
             <xsl:variable name="datatype"
@@ -237,11 +234,8 @@
         <xsl:variable name="datatypeURI" select="f:buildURIfromLexicalQName('xsd:integer')"/>
         <xsl:variable name="attributeURI" select="f:buildURIFromElement($attribute)"/>
         <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
-
-        <xsl:variable name="normalisedAttributeName" select="replace($attribute/@name, ':', '-')"/>
-        <xsl:variable name="normalisedClassName" select="replace($className, ':', '-')"/>
         <xsl:variable name="shapePropertyUri"
-            select="fn:concat($base-shape-uri, $defaultDelimiter, $normalisedClassName, '-', $normalisedAttributeName)"/>
+            select="f:buildPropertyShapeURI($className,$attribute/@name)"/>
 
         <xsl:variable name="propertyRestriction" as="item()*">
             <xsl:if test="boolean($attributeMultiplicityMin) and boolean($attributeMultiplicityMax)">

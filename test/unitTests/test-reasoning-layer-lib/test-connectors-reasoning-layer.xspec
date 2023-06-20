@@ -48,10 +48,10 @@
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']">
         <x:context href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[11]"/>
-        <x:expect label="there is 2 owl:ObjectProperty" test="boolean(owl:ObjectProperty)"/>
-        <x:expect label="there is 2 owl:equivalentProperty" test="boolean(owl:ObjectProperty/owl:equivalentProperty)"/>
-        <x:expect label="there is a equivalentProperty" test="owl:ObjectProperty/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isRoleOfContactPerson'"/>
-        <x:expect label="there is a equivalentProperty" test="owl:ObjectProperty/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#hasPersonRole'"/>
+        <x:expect label="there is 2 owl:ObjectProperty" test="boolean(rdf:Description)"/>
+        <x:expect label="there is 2 owl:equivalentProperty" test="boolean(rdf:Description/owl:equivalentProperty)"/>
+        <x:expect label="there is a equivalentProperty" test="rdf:Description/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isRoleOfContactPerson'"/>
+        <x:expect label="there is a equivalentProperty" test="rdf:Description/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#hasPersonRole'"/>
     </x:scenario>
 
     <x:scenario label="Scenario for association asymetry">
@@ -66,9 +66,9 @@
             <x:param name="connectorName">epo:acceptsProposalOf</x:param>
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
         </x:call>   
-        <x:expect label="there is a rdf:Description" test="boolean(owl:ObjectProperty)"/>
-        <x:expect label="there is a owl:inverseOf" test="boolean(owl:ObjectProperty/owl:inverseOf)"/>
-        <x:expect label=" correct rdf:resource" test="owl:ObjectProperty/owl:inverseOf/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isReferredToIn'"/>
+        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description)"/>
+        <x:expect label="there is a owl:inverseOf" test="boolean(rdf:Description/owl:inverseOf)"/>
+        <x:expect label=" correct rdf:resource" test="rdf:Description/owl:inverseOf/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isReferredToIn'"/>
     </x:scenario>
     
     <x:scenario label="Scenario for association inverse - group of connectors with the same name">
@@ -76,8 +76,8 @@
             <x:param name="connectorName">epo:appliesTo</x:param>
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
         </x:call>   
-        <x:expect label="there is a rdf:Description" test="count(owl:ObjectProperty) = 3"/>
-        <x:expect label="there is a owl:inverseOf" test="count(owl:ObjectProperty/owl:inverseOf) = 3"/>
+        <x:expect label="there is a rdf:Description" test="count(rdf:Description) = 3"/>
+        <x:expect label="there is a owl:inverseOf" test="count(rdf:Description/owl:inverseOf) = 3"/>
     </x:scenario>
     
     <x:scenario label="Scenario for class equivalence ">
@@ -93,10 +93,10 @@
         <x:call template="propertiesEquivalence">
             <x:param name="generalisation" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[11]"/>
         </x:call>   
-        <x:expect label="there is 2 owl:ObjectProperty" test="boolean(owl:ObjectProperty)"/>
-        <x:expect label="there is 2 owl:equivalentProperty" test="boolean(owl:ObjectProperty/owl:equivalentProperty)"/>
-        <x:expect label="there is a equivalentProperty" test="owl:ObjectProperty/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isRoleOfContactPerson'"/>
-        <x:expect label="there is a equivalentProperty" test="owl:ObjectProperty/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#hasPersonRole'"/>
+        <x:expect label="there is 2 owl:ObjectProperty" test="boolean(rdf:Description)"/>
+        <x:expect label="there is 2 owl:equivalentProperty" test="boolean(rdf:Description/owl:equivalentProperty)"/>
+        <x:expect label="there is a equivalentProperty" test="rdf:Description/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isRoleOfContactPerson'"/>
+        <x:expect label="there is a equivalentProperty" test="rdf:Description/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#hasPersonRole'"/>
     </x:scenario>
 
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction ">
@@ -157,9 +157,9 @@
             <x:param name="connectorName">epo:appliesTo</x:param>
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
         </x:call>   
-        <x:expect label="there is a rdf:Description" test="boolean(owl:ObjectProperty) "/>
-        <x:expect label="there is a rdfs:domain" test="boolean(owl:ObjectProperty/rdfs:range)"/>
-        <x:expect label="there is a rdf:Description for classes" test="count(owl:ObjectProperty/rdfs:range/owl:Class/owl:unionOf/rdf:Description) = 2"/>
+        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
+        <x:expect label="there is a rdfs:domain" test="boolean(rdf:Description/rdfs:range)"/>
+        <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:range/owl:Class/owl:unionOf/rdf:Description) = 2"/>
 
     </x:scenario>
     
@@ -168,9 +168,9 @@
             <x:param name="connectorName">epo:appliesTo</x:param>
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
         </x:call>   
-        <x:expect label="there is a rdf:Description" test="boolean(owl:ObjectProperty) "/>
-        <x:expect label="there is a rdfs:domain" test="boolean(owl:ObjectProperty/rdfs:domain)"/>
-        <x:expect label="there is a rdf:Description for classes" test="count(owl:ObjectProperty/rdfs:domain/owl:Class/owl:unionOf/rdf:Description) = 9"/>
+        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
+        <x:expect label="there is a rdfs:domain" test="boolean(rdf:Description/rdfs:domain)"/>
+        <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:domain/owl:Class/owl:unionOf/rdf:Description) = 9"/>
         
     </x:scenario>
     
@@ -179,10 +179,10 @@
             <x:param name="connectorName">epo:actsAs</x:param>
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
         </x:call>   
-        <x:expect label="there is a rdf:Description" test="boolean(owl:ObjectProperty)"/>
-        <x:expect label="correct target URI" test="owl:ObjectProperty/@rdf:about = 'http://data.europa.eu/a4g/ontology#actsAs'"/>
-        <x:expect label="there is a rdfs:domain" test="boolean(owl:ObjectProperty/rdfs:domain)"/>
-        <x:expect label="correct class URI" test="owl:ObjectProperty/rdfs:domain/@rdf:resource = 'http://data.europa.eu/a4g/ontology#CentralPurchasingBody'"/>
+        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description)"/>
+        <x:expect label="correct target URI" test="rdf:Description/@rdf:about = 'http://data.europa.eu/a4g/ontology#actsAs'"/>
+        <x:expect label="there is a rdfs:domain" test="boolean(rdf:Description/rdfs:domain)"/>
+        <x:expect label="correct class URI" test="rdf:Description/rdfs:domain/@rdf:resource = 'http://data.europa.eu/a4g/ontology#CentralPurchasingBody'"/>
 
         
     </x:scenario>
@@ -193,10 +193,10 @@
             <x:param name="connectorName">epo:actsAs</x:param>
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
         </x:call>   
-        <x:expect label="there is a rdf:Description" test="boolean(owl:ObjectProperty)"/>
-        <x:expect label="correct target URI" test="owl:ObjectProperty/@rdf:about = 'http://data.europa.eu/a4g/ontology#actsAs'"/>
-        <x:expect label="there is a rdfs:range" test="boolean(owl:ObjectProperty/rdfs:range)"/>
-        <x:expect label="correct class URI" test="owl:ObjectProperty/rdfs:range/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Buyer'"/>
+        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description)"/>
+        <x:expect label="correct target URI" test="rdf:Description/@rdf:about = 'http://data.europa.eu/a4g/ontology#actsAs'"/>
+        <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
+        <x:expect label="correct class URI" test="rdf:Description/rdfs:range/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Buyer'"/>
         
     </x:scenario>
     
@@ -205,9 +205,9 @@
         <x:call template="connectorDependencyRange">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[247]"/>
         </x:call>   
-        <x:expect label="there is a rdf:Description" test="boolean(owl:ObjectProperty) "/>
-        <x:expect label="there is a rdfs:range" test="boolean(owl:ObjectProperty/rdfs:range)"/>
-        <x:expect label="range is skos:Concept" test="owl:ObjectProperty/rdfs:range/@rdf:resource = 'http://www.w3.org/2004/02/skos/core#Concept'"/>
+        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
+        <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
+        <x:expect label="range is skos:Concept" test="rdf:Description/rdfs:range/@rdf:resource = 'http://www.w3.org/2004/02/skos/core#Concept'"/>
     </x:scenario>
 
     

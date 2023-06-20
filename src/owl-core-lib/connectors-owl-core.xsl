@@ -22,7 +22,6 @@
     </xd:doc>
 
     <xsl:import href="../common/fetchers.xsl"/>
-    <xsl:import href="../common/utils.xsl"/>
     <xsl:import href="../common/formatters.xsl"/>
     <xsl:import href="descriptors-owl-core.xsl"/>
 
@@ -176,20 +175,23 @@
         <xsl:variable name="name" select="f:lexicalQNameToWords($connectorName)"/>
 
 
-        <owl:ObjectProperty rdf:about="{$roleURI}">
+        <owl:ObjectProperty rdf:about="{$roleURI}"/>
             <xsl:call-template name="coreLayerName">
                 <xsl:with-param name="elementName" select="$name"/>
+                <xsl:with-param name="elementUri" select="$roleURI"/>
             </xsl:call-template>
             <xsl:if test="$documentation">
                 <xsl:call-template name="coreLayerDescription">
                     <xsl:with-param name="definition" select="$documentation"/>
+                    <xsl:with-param name="elementUri" select="$roleURI"/>
                 </xsl:call-template>
             </xsl:if>
-            <!--   TODO ADD COMMENT RULE T05-->
-            <xsl:if test="fn:contains($roleURI, $base-ontology-uri)">
-                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
-            </xsl:if>
-        </owl:ObjectProperty>
+           <!--   TODO ADD COMMENT RULE T05-->
+        <xsl:call-template name="coreDefinedBy">
+            <xsl:with-param name="elementUri" select="$roleURI"/>
+        </xsl:call-template>
+         
+     
     </xsl:template>
 
     <xd:doc>
