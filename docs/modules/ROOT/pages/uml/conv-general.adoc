@@ -6,7 +6,7 @@ In this section we provide a number of general conventions whose fundamental nat
 [[sec:names]]
 === Naming Conventions
 
-Defining naming and structural conventions for concepts in an ontology and then strictly adhering to these conventions don’t only make the ontology easier to understand, but also helps avoid some common modelling mistakes.
+Defining naming and structural conventions for concepts in an ontology, and then strictly adhering to these conventions, don’t only make the ontology easier to understand, but also helps avoid some common modelling mistakes.
 
 UML is a language without formal semantics. Moreover, it is quite flexible and permissive with ways in which a concept can be expressed. Also, there are many alternatives in naming concepts. Often there is no particular reason to choose one or another alternative. However, we need to define a set of naming conventions for classes, relations, attributes, controlled lists and adhere to it [xref:references.adoc#ref:noy2001[noy2001]].
 
@@ -58,7 +58,7 @@ All prefixes used in the element names must refer to a valid namespace declarati
 |===
 *Description:*
 
-The names should also belong to and be organised by _namespaces_. They can be provided as a short prefix to the elements name, for example "org:Organisation", "epo:Notice" or "skos:Concept". Namespaces are addressed in detail in Section [xref:uml/conv-general.adoc#sec:namespaces[Namespaces]].
+The names should also belong to and be organised by _namespaces_. They can be provided as a short prefix to the elements name, for example "org:Organization", "epo:Notice" or "skos:Concept". Namespaces are addressed in detail in Section [xref:uml/conv-general.adoc#sec:namespaces[Namespaces]].
 
 *See also:* SEMIC Style Guide Rules [https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r4[GC-R4]], [https://semiceu.github.io/style-guide/1.0.0/gc-semantic-conventions.html#sec:sc-r3[SC-R3]] and [https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6[CMC-R6]]
 
@@ -81,6 +81,7 @@ It is recommended to avoid abbreviations in concept names. Also, the words emplo
 // [[sec:casing]]
 //=== Case sensitivity
 
+[[rule:gen-names-case]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Case sensitivity
@@ -103,6 +104,7 @@ All the names are case-sensitive. This means that the class "Buyer" and the attr
 [[sec:delimitation]]
 //=== Delimitation
 
+[[rule:gen-names-multi]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Delimitation in multi-word names
@@ -126,6 +128,7 @@ Exceptionally, if the conceptual model authors must maintain high readability of
 [[sec:uniqueness]]
 //=== Name uniqueness
 
+[[rule:gen-names-unique]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Name uniqueness and reuse
@@ -145,12 +148,13 @@ This means that there cannot exist a class and an attribute with the same name (
 
 Names that reduce to the same identifier are considered the same. For example "Legal Entity" and "LegalEntity" are different labels, but they reduce to the same identifier "LegalEntity". In such cases the names are considered equal and the UML elements replicated.
 
-Although name uniqueness is a recommendation, sometimes it is useful to replicate a UML element. In such cases, when the names are reused, the assumption is that the two UML elements represent manifestations of the same meaning. This is especially important for relations, and is explained in Section [xref:#sec:relation-reusability[]].
+Although name uniqueness is a recommendation, sometimes it is useful to replicate a UML element. In such cases, when the names are reused, the assumption is that the two UML elements represent manifestations of the same meaning. This is especially important for relations, and is explained in Convention [xref:#rule:gen-relation-reuse[]].
 
 
-[[sec:relation-reusability]]
+//[[sec:relation-reusability]]
 //=== Relations reusability
 
+[[rule:gen-relation-reuse]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Reuse of relations
@@ -177,6 +181,7 @@ Optionally, the transformation process from the conceptual model to the formal o
 [[sec:suffix-prefix]]
 //=== Suffix and prefix
 
+[[rule:gen-names-suffix-prefix]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Use of suffixes and prefixes
@@ -257,7 +262,7 @@ The controlled list is a carefully selected list of words and phrases and is oft
 
 As a rule of thumb, but not always, the relationship between the controlled list as a whole and its comprising elements can be informally conceptualised as a class-instance, class-subclass, set-item, or part-whole.
 
-[[sec:gen-controlled-list]]
+[[rule:gen-controlled-list]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Representation of known controlled lists
@@ -279,7 +284,7 @@ The expectation is that the controlled lists are published in accordance with be
 
 Two use-cases can be identified in practice: (a) when the code list is known and is explicitly referred to as the range of a property, and (b) when a property is modelled but no code list reference is provided as its range.
 
-[[sec:gen-controlled-list-unknown]]
+[[rule:gen-controlled-list-unknown]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Representation of unknown controlled lists
@@ -297,7 +302,7 @@ When the controlled list is unknown, then it shall not be referred to, but inste
 
 When the authors of a conceptual model intend to omit which controlled list shall be used, then a class attribute with the range `skos:Concept` (in some cases `Code` is preferred, but we strongly recommend avoiding this) can be created to indicate that. This approach can be useful in situations when multiple (external) controlled lists can be used interchangeably. For example, the `adms:status` property of a `dcat:CatalogueRecord` shall be a `skos:Concept`, without specifying the controlled list.
 
-[[sec:gen-controlled-list-empty]]
+[[rule:gen-controlled-list-empty]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Controlled list values
@@ -337,7 +342,7 @@ In order to enable the reuse of names defined in other models and reuse of uniqu
 
 // Namespaces are commonly structured as hierarchies to allow reuse of names in different contexts [xref:references.adoc#ref:xml-namespaces[xml-namespaces]]. This mechanism can be implemented in UML through partitioning the model using packages, which are described in the [xref:uml/conv-packages.adoc#sec:uml-package[uml:Package]] Section.
 
-[[sec:known-namespaces]]
+[[rule:gen-known-namespaces]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Known namespaces
@@ -405,7 +410,7 @@ Encoded UTF-8 and UTF-16 names may be used [xref:references.adoc#ref:xml1-spec[x
 [[sec:stereotypes-tags]]
 === Stereotypes and Tags
 
-[[sec:stereotypes]]
+[[rule:gen-stereotypes]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Stereotypes
@@ -419,11 +424,11 @@ Stereotypes have no semantics and hence shall be avoided. Exceptionally, some se
 
 *Description:*
 
-The use of stereotypes is not recommended. There should be only a small set of stereotypes, with well-defined meaning and pre-established transformation rules that shall be used in the conceptual model. In this set of rules the `\<<Abstract>>` stereotype is adopted to mark abstract classes [xref:uml/conv-classes.adoc#sec:abstract-class[see section on Abstract Classes]].
+The use of stereotypes is not recommended. There should be only a small set of stereotypes, with well-defined meaning and pre-established transformation rules that shall be used in the conceptual model. In this set of rules the `\<<Abstract>>` stereotype is adopted to mark abstract classes [xref:uml/conv-classes.adoc#rule:class-abstract[see convention on Abstract Classes]].
 
 *See also:* SEMIC Style Guide Rule [https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r17[CMC-R17]]
 
-[[sec:tags]]
+[[rule:gen-tags]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Tags

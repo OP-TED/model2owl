@@ -4,7 +4,7 @@
 === Conventional recommendations on Relations
 
 
-[[sec:connetors-names-with-verb]]
+[[rule:connetors-names-with-verb]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* uml:Connector names
@@ -23,7 +23,7 @@ When establishing relations between concepts it is conventional to use verbs of 
 The verb phrase must be in present tense, if needed inflected as third person singular. If an additional level of specificity is needed a qualifying nominal phrase may be appended.
 
 
-[[sec:connetors-bidirectional]]
+[[rule:connetors-bidirectional]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Bi-directional relations
@@ -40,7 +40,7 @@ Relationships are usually bi-directional, and the name for both directions shoul
 Relationships are usually bi-directional and the inverse one should be provided where it makes sense. Adjust the verb phrases in the predicates as appropriate, usually, by employing the _active and passive voice_ in the term formulation brings the desired result. For example, "uses/isUsedBy" and "refersTo/isReferredToBy" or "offers/isOfferedBy" [xref:references.adoc#ref:d2.01-2017[d2.01-2017]].
 
 
-[[sec:connetors-inverse]]
+[[rule:connetors-inverse]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Inverse relation
@@ -56,10 +56,10 @@ Semantically inverse relationships should be represented as two distinct uml:Con
 
 The name of the inverse relation should not be semantically inverted verb, such as in case of "buys/sells" , "open/closes". The semantically inverted dichotomies must be modelled in separate connectors because they represent different relations. For example the dichotomy "buys/sells" should be modelled as two pairs: "buys/isBoughtBy" and "sells/isSoldBy".
 
-When the relation is of different nature, more like an attribute, then prefixing and suffixing techniques can be employed. For example, in the Organisation Ontology [xref:references.adoc#ref:org-ontology[org-ontology]], the concepts of an "Organisation" and a "Site" are defined along with two relationships that are the inverse of each other: "Organisation hasSite Site" and "Site siteOf Organisation" [xref:references.adoc#ref:d3.1-2015[d3.1-2015]].
+When the relation is of different nature, more like an attribute, then prefixing and suffixing techniques can be employed. For example, in the Organization Ontology [xref:references.adoc#ref:org-ontology[org-ontology]], the concepts of an "Organization" and a "Site" are defined along with two relationships that are the inverse of each other: "Organisation hasSite Site" and "Site siteOf Organisation" [xref:references.adoc#ref:d3.1-2015[d3.1-2015]].
 
 
-[[sec:connetors-inverse-def]]
+[[rule:connetors-inverse-def]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Definition of inverse relations
@@ -81,7 +81,7 @@ Models should define such inverse pairs for relationships although this does not
 [[sec:association]]
 === Technical conventions on uml:Association
 
-[[sec:association-btw-classes]]
+[[rule:association-btw-classes]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* uml:Associations connect classes
@@ -98,7 +98,7 @@ uml:Association elements connect two uml:Classes.
 The uml:Association connectors represent relations between source and target classes. The association connector cannot be used between other kinds of UML elements.
 
 
-[[sec:association-target]]
+[[rule:association-target]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* uml:Association connector name
@@ -119,7 +119,7 @@ First, if a connector name is specified then no source or target roles can be pr
 The second, and recommended approach is if the connector has no name then the target role must be specified. Or the converse, if a target role is specified then no connector name can be specified. Optionally a source role may be provided. In this case the relation direction must be changed from "Source->Target" to "Bidirectional". Or conversely, if the connector direction is "Bidirectional" then source and target roles must be provided. No other directions are permitted.
 
 
-[[sec:association-multiplicity]]
+[[rule:association-multiplicity]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* uml:Association multiplicity
@@ -136,7 +136,7 @@ uml:Association connector elements shall have their target multiplicity specifie
 The target and source multiplicity must be specified accordingly indicating the minimum and maximum cardinality.
 
 
-[[sec:association-definition]]
+[[rule:association-definition]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* uml:Association definition
@@ -157,7 +157,7 @@ It is recommended that each association has a definition. The definition is then
 === Technical conventions on uml:Dependency
 
 
-[[sec:dependency-btw-class-and-enum]]
+[[rule:dependency-btw-class-and-enum]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* uml:Dependency connects classes to enumerations
@@ -174,7 +174,7 @@ uml:Dependency connectors connect a uml:Class element to a uml:Enumeration eleme
 The dependency connector may be used between uml:Class and uml:Enumeration boxes, oriented from the class towards the enumeration. It indicates the class has an owl:ObjectProperty whose range is a controlled vocabulary. The connector must have direction "Source->Target". No other directions are acceptable.
 
 
-[[sec:dependency-name]]
+[[rule:dependency-name]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* uml:Dependency connector name
@@ -191,7 +191,7 @@ uml:Dependency connector elements shall have a valid name.
 The connector must have a valid name and no source/target roles are acceptable.
 
 
-[[sec:dependency-multiplicity]]
+[[rule:dependency-multiplicity]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* uml:Dependency multiplicity
@@ -214,7 +214,7 @@ In the transformation process, for the reasoning purposes, the range of the prop
 === Technical conventions on uml:Generalization
 
 
-[[sec:generalization-btw-classes]]
+[[rule:generalization-btw-classes]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* uml:Generalization connects classes and sub-classes
@@ -231,7 +231,7 @@ uml:Generalization connectors connect a uml:Class element to its superclass uml:
 The uml:Generalization connector signifies a class-subClass relation and is transformed into `rdfs:subClassOf` relation standing between source and target classes.
 
 
-[[sec:generalization-name]]
+[[rule:generalization-name]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* uml:Generalization connector with no name
@@ -248,7 +248,7 @@ uml:Generalization connector elements shall have no name or a target role specif
 The uml:Generalization connectors must have no name or source/target roles specified in the UML model.
 
 
-[[sec:proxy-classes]]
+[[rule:proxy-classes]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Proxy classes
@@ -265,7 +265,7 @@ For classes defined in external models proxy uml:Class elements should be define
 In case a model class should inherit a class from an external model then proxies must be created for those classes. For example, if `Buyer` specialises an `org:Organization`, then a proxy for `org:Organization` must be created in the `org` package.
 
 
-[[sec:disjoint-subclasses]]
+[[rule:disjoint-subclasses]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Disjoint subclasses
@@ -283,7 +283,7 @@ In this specification, the subclasses are assumed disjoint by default, unless ot
 
 
 
-[[sec:equivalent-classes]]
+[[rule:equivalent-classes]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Equivalent classes
