@@ -3,7 +3,7 @@
 [[sec:attributes]]
 === Conventional recommendations on Attributes
 
-[[sec:attributes-names-with-verb]]
+[[rule:attributes-names-with-verb]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Attribute names
@@ -25,7 +25,7 @@ It is recommended to avoid duplicate attribute names across multiple classes. Un
 
 // To avoid laborious mechanical work of adding the prefix, it is possible to rely on the convention that the attribute names starting with a capital letter must be read as having the "has-" prefix. It means that the transformation script will prepend the "has-" prefix to all attributes starting with a capital letter.
 
-[[sec:attributes-multiplicity]]
+[[rule:attributes-multiplicity]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Attribute multiplicity
@@ -46,7 +46,7 @@ In special cases, a list of custom default multiplicities is defined for the tra
 [[sec:attributes-class]]
 === uml:Class attributes
 
-[[sec:attributes-datatypes]]
+[[rule:attributes-datatypes]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Attribute datatypes
@@ -60,13 +60,13 @@ uml:Attribute shall be defined with generally accepted primitive datatypes.
 
 *Description:*
 
-Each uml:Attribute must have a name and an attribute type. uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty. High preference shall be given to using OWL 2 compliant XSD [xref:references.adoc#ref:xsd[xsd]] and RDF [xref:references.adoc#ref:rdf[rdf]] standard datatypes. [xref:uml/conv-datatypes.adoc#sec:primitive-datatypes[see Section on Primitive Data types]]
+Each uml:Attribute must have a name and an attribute type. uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty. High preference shall be given to using OWL 2 compliant XSD [xref:references.adoc#ref:xsd[xsd]] and RDF [xref:references.adoc#ref:rdf[rdf]] standard datatypes. [xref:uml/conv-datatypes.adoc#rule:datatypes-primitive[See convention on Primitive Data types]]
 
 In cases when a property needs to be defined as ranging on an unknown controlled list or authority table constitute a special case. They can be expressed as uml:Attribute with the datatype `skos:Concept`. These attributes are transformed into owl:ObjectProperty in a manner similarly to uml:Association.
 
-An attribute may contain an alias, used as an alternative label. It can be specified via uml:Tags. [xref:uml/conv-general.adoc#sec:tags[See section on uml:Tags]]
+An attribute may contain an alias, used as an alternative label. It can be specified via uml:Tags. [xref:uml/conv-general.adoc#rule:gen-tags[See convention on uml:Tags]]
 
-[[sec:attributes-reuse]]
+[[rule:attributes-reuse]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Attribute name reuse

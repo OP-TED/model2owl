@@ -2,7 +2,7 @@
 
 === Conventional recommendations on datatypes
 
-[[sec:composite-datatypes]]
+[[rule:datatypes-composite]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Primitive vs. composite datatypes
@@ -22,7 +22,7 @@ This convention draws the distinction between primitive (or atomic) types (consi
 [[sec:uml-datatype]]
 === Technical conventions on uml:DataType elements
 
-[[sec:primitive-datatypes]]
+[[rule:datatypes-primitive]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* XSD and RDF datatypes
@@ -66,7 +66,7 @@ The table above provides a simplified correspondence between UML and XSD datatyp
 * https://www.w3.org/TR/rdf11-concepts/#section-Datatypes[RDF 1.1 Datatypes section]
 * https://www.w3.org/TR/owl2-syntax/#Datatype_Maps[OWL 2 Datatype Maps]
 
-[[sec:owl2-datatypes]]
+[[rule:datatypes-owl2]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* OWL 2 datatypes
@@ -82,7 +82,7 @@ Whenever possible, OWL 2 compliant XSD and RDF datatypes shall be used.
 
 We strongly recommended the use of OWL 2 compliant XSD and RDF standard datatypes, if possible. They might be useful also for indicating a specific datatype, which is impossible with the UML ones. For example, making a distinction between a general string (`xsd:string`) and a literal with a language tag (`rdf:langString`), or XML encoded ones such as `rdf:HTML` and `rdf:XMLLiteral`.
 
-[[sec:proxy-datatypes]]
+[[rule:datatypes-proxy]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Proxy datatypes
@@ -99,7 +99,7 @@ For already existing datatypes proxy uml:DataType elements should be defined.
 For the model consistency, it is recommended that the proxy data types be defined in the model for the XSDfootnote:[https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes] and RDF data typesfootnote:[https://www.w3.org/TR/rdf11-concepts/#section-Datatypes] used in the model. The proxies must follow the standard namespace convention using the `rdf:` and `xsd:` prefixes.
 
 
-[[sec:datatypes-references]]
+[[rule:datatypes-references]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Datatypes references
