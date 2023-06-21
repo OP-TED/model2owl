@@ -135,8 +135,8 @@
     <li><a href="conv-datatypes.html">uml:DataType</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/uml/conv-datatypes.adoc">Edit this Page</a></div>
-  </div>
+<div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/uml/conv-datatypes.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
@@ -147,7 +147,7 @@
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_conventional_recommendations_on_datatypes"><a class="anchor" href="#_conventional_recommendations_on_datatypes"></a>Conventional recommendations on datatypes</h3>
-<table id="sec:composite-datatypes" class="tableblock frame-all grid-all stretch">
+<table id="rule:datatypes-composite" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -173,7 +173,7 @@ Composite data types shall be represented as uml:Class elements. Primitive data 
 </div>
 <div class="sect2">
 <h3 id="sec:uml-datatype"><a class="anchor" href="#sec:uml-datatype"></a>Technical conventions on uml:DataType elements</h3>
-<table id="sec:primitive-datatypes" class="tableblock frame-all grid-all stretch">
+<table id="rule:datatypes-primitive" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -277,7 +277,7 @@ For primitive data types the already existing (standardized or commonly used) da
 </li>
 </ul>
 </div>
-<table id="sec:owl2-datatypes" class="tableblock frame-all grid-all stretch">
+<table id="rule:datatypes-owl2" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -300,7 +300,7 @@ Whenever possible, OWL 2 compliant XSD and RDF datatypes shall be used.</p></td>
 <div class="paragraph">
 <p>We strongly recommended the use of OWL 2 compliant XSD and RDF standard datatypes, if possible. They might be useful also for indicating a specific datatype, which is impossible with the UML ones. For example, making a distinction between a general string (<code>xsd:string</code>) and a literal with a language tag (<code>rdf:langString</code>), or XML encoded ones such as <code>rdf:HTML</code> and <code>rdf:XMLLiteral</code>.</p>
 </div>
-<table id="sec:proxy-datatypes" class="tableblock frame-all grid-all stretch">
+<table id="rule:datatypes-proxy" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -323,7 +323,7 @@ For already existing datatypes proxy uml:DataType elements should be defined.</p
 <div class="paragraph">
 <p>For the model consistency, it is recommended that the proxy data types be defined in the model for the XSD<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> and RDF data types<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> used in the model. The proxies must follow the standard namespace convention using the <code>rdf:</code> and <code>xsd:</code> prefixes.</p>
 </div>
-<table id="sec:datatypes-references" class="tableblock frame-all grid-all stretch">
+<table id="rule:datatypes-references" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>

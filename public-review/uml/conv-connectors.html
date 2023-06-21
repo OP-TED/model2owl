@@ -135,8 +135,8 @@
     <li><a href="conv-connectors.html">UML Connector Elements</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/uml/conv-connectors.adoc">Edit this Page</a></div>
-  </div>
+<div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/uml/conv-connectors.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
@@ -147,7 +147,7 @@
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="sec:relations"><a class="anchor" href="#sec:relations"></a>Conventional recommendations on Relations</h3>
-<table id="sec:connetors-names-with-verb" class="tableblock frame-all grid-all stretch">
+<table id="rule:connetors-names-with-verb" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -173,7 +173,7 @@ Relations are to be expressed through uml:Connector elements. It is recommended 
 <div class="paragraph">
 <p>The verb phrase must be in present tense, if needed inflected as third person singular. If an additional level of specificity is needed a qualifying nominal phrase may be appended.</p>
 </div>
-<table id="sec:connetors-bidirectional" class="tableblock frame-all grid-all stretch">
+<table id="rule:connetors-bidirectional" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -196,7 +196,7 @@ Relationships are usually bi-directional, and the name for both directions shoul
 <div class="paragraph">
 <p>Relationships are usually bi-directional and the inverse one should be provided where it makes sense. Adjust the verb phrases in the predicates as appropriate, usually, by employing the <em>active and passive voice</em> in the term formulation brings the desired result. For example, "uses/isUsedBy" and "refersTo/isReferredToBy" or "offers/isOfferedBy" [<a href="../references.html#ref:d2.01-2017" class="xref page">d2.01-2017</a>].</p>
 </div>
-<table id="sec:connetors-inverse" class="tableblock frame-all grid-all stretch">
+<table id="rule:connetors-inverse" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -220,9 +220,9 @@ Semantically inverse relationships should be represented as two distinct uml:Con
 <p>The name of the inverse relation should not be semantically inverted verb, such as in case of "buys/sells" , "open/closes". The semantically inverted dichotomies must be modelled in separate connectors because they represent different relations. For example the dichotomy "buys/sells" should be modelled as two pairs: "buys/isBoughtBy" and "sells/isSoldBy".</p>
 </div>
 <div class="paragraph">
-<p>When the relation is of different nature, more like an attribute, then prefixing and suffixing techniques can be employed. For example, in the Organisation Ontology [<a href="../references.html#ref:org-ontology" class="xref page">org-ontology</a>], the concepts of an "Organisation" and a "Site" are defined along with two relationships that are the inverse of each other: "Organisation hasSite Site" and "Site siteOf Organisation" [<a href="../references.html#ref:d3.1-2015" class="xref page">d3.1-2015</a>].</p>
+<p>When the relation is of different nature, more like an attribute, then prefixing and suffixing techniques can be employed. For example, in the Organization Ontology [<a href="../references.html#ref:org-ontology" class="xref page">org-ontology</a>], the concepts of an "Organization" and a "Site" are defined along with two relationships that are the inverse of each other: "Organisation hasSite Site" and "Site siteOf Organisation" [<a href="../references.html#ref:d3.1-2015" class="xref page">d3.1-2015</a>].</p>
 </div>
-<table id="sec:connetors-inverse-def" class="tableblock frame-all grid-all stretch">
+<table id="rule:connetors-inverse-definition" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -251,7 +251,7 @@ It is recommended that the definition of both the relation and its inverse relat
 </div>
 <div class="sect2">
 <h3 id="sec:association"><a class="anchor" href="#sec:association"></a>Technical conventions on uml:Association</h3>
-<table id="sec:association-btw-classes" class="tableblock frame-all grid-all stretch">
+<table id="rule:association-btw-classes" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -274,7 +274,7 @@ uml:Association elements connect two uml:Classes.</p></td>
 <div class="paragraph">
 <p>The uml:Association connectors represent relations between source and target classes. The association connector cannot be used between other kinds of UML elements.</p>
 </div>
-<table id="sec:association-target" class="tableblock frame-all grid-all stretch">
+<table id="rule:association-target" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -303,7 +303,7 @@ uml:Association connector elements shall have either a name or a target role spe
 <div class="paragraph">
 <p>The second, and recommended approach is if the connector has no name then the target role must be specified. Or the converse, if a target role is specified then no connector name can be specified. Optionally a source role may be provided. In this case the relation direction must be changed from "Source&#8594;Target" to "Bidirectional". Or conversely, if the connector direction is "Bidirectional" then source and target roles must be provided. No other directions are permitted.</p>
 </div>
-<table id="sec:association-multiplicity" class="tableblock frame-all grid-all stretch">
+<table id="rule:association-multiplicity" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -326,7 +326,7 @@ uml:Association connector elements shall have their target multiplicity specifie
 <div class="paragraph">
 <p>The target and source multiplicity must be specified accordingly indicating the minimum and maximum cardinality.</p>
 </div>
-<table id="sec:association-definition" class="tableblock frame-all grid-all stretch">
+<table id="rule:association-definition" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -352,7 +352,7 @@ uml:Association connector shall have a definition.</p></td>
 </div>
 <div class="sect2">
 <h3 id="sec:dependency"><a class="anchor" href="#sec:dependency"></a>Technical conventions on uml:Dependency</h3>
-<table id="sec:dependency-btw-class-and-enum" class="tableblock frame-all grid-all stretch">
+<table id="rule:dependency-btw-class-and-enum" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -375,7 +375,7 @@ uml:Dependency connectors connect a uml:Class element to a uml:Enumeration eleme
 <div class="paragraph">
 <p>The dependency connector may be used between uml:Class and uml:Enumeration boxes, oriented from the class towards the enumeration. It indicates the class has an owl:ObjectProperty whose range is a controlled vocabulary. The connector must have direction "Source&#8594;Target". No other directions are acceptable.</p>
 </div>
-<table id="sec:dependency-name" class="tableblock frame-all grid-all stretch">
+<table id="rule:dependency-name" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -398,7 +398,7 @@ uml:Dependency connector elements shall have a valid name.</p></td>
 <div class="paragraph">
 <p>The connector must have a valid name and no source/target roles are acceptable.</p>
 </div>
-<table id="sec:dependency-multiplicity" class="tableblock frame-all grid-all stretch">
+<table id="rule:dependency-multiplicity" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -427,7 +427,7 @@ uml:Dependency connector elements shall have their target multiplicity specified
 </div>
 <div class="sect2">
 <h3 id="sec:genaralization"><a class="anchor" href="#sec:genaralization"></a>Technical conventions on uml:Generalization</h3>
-<table id="sec:generalization-btw-classes" class="tableblock frame-all grid-all stretch">
+<table id="rule:generalization-btw-classes" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -450,7 +450,7 @@ uml:Generalization connectors connect a uml:Class element to its superclass uml:
 <div class="paragraph">
 <p>The uml:Generalization connector signifies a class-subClass relation and is transformed into <code>rdfs:subClassOf</code> relation standing between source and target classes.</p>
 </div>
-<table id="sec:generalization-name" class="tableblock frame-all grid-all stretch">
+<table id="rule:generalization-name" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -473,7 +473,7 @@ uml:Generalization connector elements shall have no name or a target role specif
 <div class="paragraph">
 <p>The uml:Generalization connectors must have no name or source/target roles specified in the UML model.</p>
 </div>
-<table id="sec:proxy-classes" class="tableblock frame-all grid-all stretch">
+<table id="rule:connetors-proxy-classes" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -496,7 +496,7 @@ For classes defined in external models proxy uml:Class elements should be define
 <div class="paragraph">
 <p>In case a model class should inherit a class from an external model then proxies must be created for those classes. For example, if <code>Buyer</code> specialises an <code>org:Organization</code>, then a proxy for <code>org:Organization</code> must be created in the <code>org</code> package.</p>
 </div>
-<table id="sec:disjoint-subclasses" class="tableblock frame-all grid-all stretch">
+<table id="rule:connetors-disjoint-subclasses" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -519,7 +519,7 @@ Subclasses of the same class, represented by multiple uml:Generalization connect
 <div class="paragraph">
 <p>In this specification, the subclasses are assumed disjoint by default, unless otherwise specified in the transformations script, or explicitly marked on the generalisation relation with <code>&lt;&lt;non-disjoint&gt;&gt;</code> stereotype. For the converse case the <code>&lt;&lt;disjoint&gt;&gt;</code> stereotype shall be used.</p>
 </div>
-<table id="sec:equivalent-classes" class="tableblock frame-all grid-all stretch">
+<table id="rule:connetors-equivalent-classes" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>

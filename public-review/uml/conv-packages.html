@@ -135,8 +135,8 @@
     <li><a href="conv-packages.html">uml:Package</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/uml/conv-packages.adoc">Edit this Page</a></div>
-  </div>
+<div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/uml/conv-packages.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
@@ -145,7 +145,7 @@
 <div class="sect1">
 <h2 id="sec:uml-package"><a class="anchor" href="#sec:uml-package"></a>Conventions on uml:Package elements</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
+<table id="rule:package-partitioning" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -169,9 +169,9 @@ Packages should be used to define a logical partition of the model.</p></td>
 <p>Packages should be used to define a logical partition of the model. They serve as the primary method for the vertical slicing of the conceptual model as described in the layering and slicing section of [<a href="../references.html#ref:costetchi2020a" class="xref page">costetchi2020a</a>].</p>
 </div>
 <div class="paragraph">
-<p><strong>See also:</strong> SEMIC Style Guide Rule [<a href="https://semiceu.github.io/style-guide/public-review/gc-conceptual-model-conventions.html#sec:cmc-r15">CMC-R15</a>]</p>
+<p><strong>See also:</strong> SEMIC Style Guide Rule [<a href="https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r15">CMC-R15</a>]</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="rule:package-hierarchy" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -194,7 +194,7 @@ Packages may form hierarchies.</p></td>
 <div class="paragraph">
 <p>Packages may form hierarchies. In this case the hierarchical relation is interpreted as <em>meronymy</em>, denoting a constituent parts of the package. Formally they are translated into owl:import statements.The module corresponding to the parent package imports modules corresponding to the child packages.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="rule:package-empty" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -217,7 +217,7 @@ There shall be no empty packages.</p></td>
 <div class="paragraph">
 <p>No empty packages shall be present in the model. A package is empty if it contains no child elements.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="rule:package-names" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>

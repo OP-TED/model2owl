@@ -135,8 +135,8 @@
     <li><a href="conv-classes.html">uml:Class</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/uml/conv-classes.adoc">Edit this Page</a></div>
-  </div>
+<div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/uml/conv-classes.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
@@ -147,7 +147,7 @@
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="sec:classes"><a class="anchor" href="#sec:classes"></a>Conventional recommendations on Classes</h3>
-<table class="tableblock frame-all grid-all stretch">
+<table id="rule:class-name-gen" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -170,7 +170,7 @@ Class names shall be simple nouns or noun phrases.</p></td>
 <div class="paragraph">
 <p>When choosing class names, it is conventional to use simple nouns or noun phrases. In case the class refers to actions, states, relations or qualities, which are usually expressed in natural language by verbs or adjectives then they must be nominalised. We often form nouns from other parts of speech, most commonly from a verb or an adjective. We can then use the noun phrase instead of the verb or adjective to create a more formal style. This process is called nominalisation.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="rule:class-name-singular" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -192,6 +192,9 @@ Class names shall be formulated in singular.</p></td>
 </div>
 <div class="paragraph">
 <p>A class name represents a collection of objects. For example, a class "Language" actually represents all languages. Therefore, it could be more natural for some model designers to call the class "Languages" rather than "Language". In practice, however, the singular is used more often for class names, while the plural for sets and collections [<a href="../references.html#ref:noy2001" class="xref page">noy2001</a>]. Therefore, it is required that the class names must always use the singular lexical form.</p>
+</div>
+<div class="paragraph">
+<p>[[rule:class-name-capitalisation]</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -216,7 +219,7 @@ Class names shall be written in Pascal case.</p></td>
 <div class="paragraph">
 <p>The local segment in the name of a uml:Class element must start with a capital letter, and multiple words must be combined based on the Pascal case rules.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="rule:class-name-subclass" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -239,7 +242,7 @@ Classes in a subclass hierarchy should be named consistently.</p></td>
 <div class="paragraph">
 <p>When building the class hierarchy, names of direct subclasses of a class should consistently either all include or not include the name of the superclass. For example, if we create two subclasses of <code>Wine</code> to represent red and white wines, then the two subclass names should be either <code>Red Wine</code> and <code>White Wine</code> or <code>Red</code> and <code>White</code>, but not <code>Red Wine</code> and <code>White</code> [<a href="../references.html#ref:noy2001" class="xref page">noy2001</a>].</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="rule:class-single-subclass" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -261,6 +264,9 @@ Class specialisations with a single child shall be avoided.</p></td>
 </div>
 <div class="paragraph">
 <p>This means that there should be at least two sibling subclasses specified in the model. By default, the classes are not disjunctive, however, if required, the transformation script may generate disjunctive classes by default.</p>
+</div>
+<div class="paragraph">
+<p>[[rule:class-circular]</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -288,7 +294,7 @@ Circular inheritance must be avoided.</p></td>
 </div>
 <div class="sect2">
 <h3 id="sec:uml-class"><a class="anchor" href="#sec:uml-class"></a>Technical conventions on uml:Class elements</h3>
-<table class="tableblock frame-all grid-all stretch">
+<table id="rule:class-name-mandatory" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -311,7 +317,7 @@ Each uml:Class must have a short URI name.</p></td>
 <div class="paragraph">
 <p>uml:Class is transformed into an owl:Class. Each uml:Class must have a name.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="rule:class-description" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -340,7 +346,7 @@ Each uml:Class should have a description.</p></td>
 <div class="paragraph">
 <p>Richer and structured descriptions can be provided by using uml:Tag(s).</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="rule:class-properties" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -363,7 +369,7 @@ uml:Class must have connectors, attributes, or both.</p></td>
 <div class="paragraph">
 <p>It is recommended that a uml:Class has relations, attributes, or both. A class must not miss both, attributes and relations associated with it. It is mandatory to avoid using the same name in a class, attribute or a relation.</p>
 </div>
-<table id="sec:abstract-class" class="tableblock frame-all grid-all stretch">
+<table id="rule:class-abstract" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>

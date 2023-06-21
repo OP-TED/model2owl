@@ -135,8 +135,8 @@
     <li><a href="conv-attributes.html">uml:Attribute</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/uml/conv-attributes.adoc">Edit this Page</a></div>
-  </div>
+<div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/uml/conv-attributes.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
@@ -147,7 +147,7 @@
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="sec:attributes"><a class="anchor" href="#sec:attributes"></a>Conventional recommendations on Attributes</h3>
-<table id="sec:attributes-names-with-verb" class="tableblock frame-all grid-all stretch">
+<table id="rule:attributes-names-with-verb" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -176,7 +176,7 @@ It is recommended to use a verb in the attribute name, such as "has-" or "is-".<
 <div class="paragraph">
 <p>It is recommended to avoid duplicate attribute names across multiple classes. Unless, by design, attributes with the same name are shared across multiple classes.</p>
 </div>
-<table id="sec:attributes-multiplicity" class="tableblock frame-all grid-all stretch">
+<table id="rule:attributes-multiplicity" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -205,7 +205,7 @@ Attributes shall be assigned cardinality specifications contextualised to the cl
 </div>
 <div class="sect2">
 <h3 id="sec:attributes-class"><a class="anchor" href="#sec:attributes-class"></a>uml:Class attributes</h3>
-<table id="sec:attributes-datatypes" class="tableblock frame-all grid-all stretch">
+<table id="rule:attributes-datatypes" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -226,15 +226,15 @@ uml:Attribute shall be defined with generally accepted primitive datatypes.</p><
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>Each uml:Attribute must have a name and an attribute type. uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty. High preference shall be given to using OWL 2 compliant XSD [<a href="../references.html#ref:xsd" class="xref page">xsd</a>] and RDF [<a href="../references.html#ref:rdf" class="xref page">rdf</a>] standard datatypes. [<a href="conv-datatypes.html#sec:primitive-datatypes" class="xref page">see Section on Primitive Data types</a>]</p>
+<p>Each uml:Attribute must have a name and an attribute type. uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty. High preference shall be given to using OWL 2 compliant XSD [<a href="../references.html#ref:xsd" class="xref page">xsd</a>] and RDF [<a href="../references.html#ref:rdf" class="xref page">rdf</a>] standard datatypes. [<a href="conv-datatypes.html#rule:datatypes-primitive" class="xref page">See convention on Primitive Data types</a>]</p>
 </div>
 <div class="paragraph">
 <p>In cases when a property needs to be defined as ranging on an unknown controlled list or authority table constitute a special case. They can be expressed as uml:Attribute with the datatype <code>skos:Concept</code>. These attributes are transformed into owl:ObjectProperty in a manner similarly to uml:Association.</p>
 </div>
 <div class="paragraph">
-<p>An attribute may contain an alias, used as an alternative label. It can be specified via uml:Tags. [<a href="conv-general.html#sec:tags" class="xref page">See section on uml:Tags</a>]</p>
+<p>An attribute may contain an alias, used as an alternative label. It can be specified via uml:Tags. [<a href="conv-general.html#rule:gen-tags" class="xref page">See convention on uml:Tags</a>]</p>
 </div>
-<table id="sec:attributes-reuse" class="tableblock frame-all grid-all stretch">
+<table id="rule:attributes-reuse" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
