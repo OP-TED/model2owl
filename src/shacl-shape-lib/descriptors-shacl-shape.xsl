@@ -84,7 +84,7 @@
         </rdf:Description>
     </xsl:template>
     
-    <xd:doc>
+<!--    <xd:doc>
         <xd:desc>Rule T.09. Defined by - Specify if UML element is defined by the core
             ontology</xd:desc>
         <xd:param name="uri"/>
@@ -97,6 +97,6 @@
                 <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
             </rdf:Description>
         </xsl:if>
-    </xsl:template>
+    </xsl:template>-->
 
 </xsl:stylesheet>

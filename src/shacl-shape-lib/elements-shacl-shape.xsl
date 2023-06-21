@@ -38,9 +38,9 @@
 
         <sh:NodeShape rdf:about="{$shapeClassUri}">
             <sh:targetClass rdf:resource="{$classURI}"/>
-            <xsl:call-template name="shapeLayerDefinedBy">
+<!--            <xsl:call-template name="shapeLayerDefinedBy">
                 <xsl:with-param name="uri" select="$classURI"/>
-            </xsl:call-template>
+            </xsl:call-template>-->
 
             <xsl:if test="$class/properties/@stereotype = $abstractClassesStereotypes">
                 <xsl:call-template name="abstractClassDeclaration">
