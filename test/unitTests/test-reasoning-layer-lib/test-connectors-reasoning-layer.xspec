@@ -48,17 +48,17 @@
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']">
         <x:context href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[11]"/>
-        <x:expect label="there is 2 owl:ObjectProperty" test="boolean(owl:ObjectProperty)"/>
-        <x:expect label="there is 2 owl:equivalentProperty" test="boolean(owl:ObjectProperty/owl:equivalentProperty)"/>
-        <x:expect label="there is a equivalentProperty" test="owl:ObjectProperty/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isRoleOfContactPerson'"/>
-        <x:expect label="there is a equivalentProperty" test="owl:ObjectProperty/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#hasPersonRole'"/>
+        <x:expect label="there is 2 owl:ObjectProperty" test="boolean(rdf:Description)"/>
+        <x:expect label="there is 2 owl:equivalentProperty" test="boolean(rdf:Description/owl:equivalentProperty)"/>
+        <x:expect label="there is a equivalentProperty" test="rdf:Description/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isRoleOfContactPerson'"/>
+        <x:expect label="there is a equivalentProperty" test="rdf:Description/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#hasPersonRole'"/>
     </x:scenario>
 
     <x:scenario label="Scenario for association asymetry">
         <x:call template="connectorAsymetry">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[33]"/>
         </x:call>   
-        <x:expect label="there is a owl:AsymmetricProperty" test="boolean(owl:AsymmetricProperty)"/>
+        <x:expect label="there is a owl:AsymmetricProperty" test="boolean(rdf:Description/rdf:type/@rdf:resource)"/>
     </x:scenario>
     
     <x:scenario label="Scenario for association inverse">
@@ -93,10 +93,10 @@
         <x:call template="propertiesEquivalence">
             <x:param name="generalisation" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[11]"/>
         </x:call>   
-        <x:expect label="there is 2 owl:ObjectProperty" test="boolean(owl:ObjectProperty)"/>
-        <x:expect label="there is 2 owl:equivalentProperty" test="boolean(owl:ObjectProperty/owl:equivalentProperty)"/>
-        <x:expect label="there is a equivalentProperty" test="owl:ObjectProperty/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isRoleOfContactPerson'"/>
-        <x:expect label="there is a equivalentProperty" test="owl:ObjectProperty/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#hasPersonRole'"/>
+        <x:expect label="there is 2 owl:ObjectProperty" test="boolean(rdf:Description)"/>
+        <x:expect label="there is 2 owl:equivalentProperty" test="boolean(rdf:Description/owl:equivalentProperty)"/>
+        <x:expect label="there is a equivalentProperty" test="rdf:Description/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isRoleOfContactPerson'"/>
+        <x:expect label="there is a equivalentProperty" test="rdf:Description/owl:equivalentProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#hasPersonRole'"/>
     </x:scenario>
 
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction ">

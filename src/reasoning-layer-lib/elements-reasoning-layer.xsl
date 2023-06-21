@@ -7,15 +7,11 @@
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
-    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" 
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
-    xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:f="http://https://github.com/costezki/model2owl#" 
-    xmlns:sh="http://www.w3.org/ns/shacl#"
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#" 
-    xmlns:functx="http://www.functx.com"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:sh="http://www.w3.org/ns/shacl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:functx="http://www.functx.com"
     version="3.0">
 
     <xsl:import href="../common/utils.xsl"/>
@@ -28,16 +24,16 @@
 
 
     <xd:doc>
-        <xd:desc>Applying rules to the attributes</xd:desc>
+        <xd:desc>Applying reasoning layer rule to all attributes</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
         <xsl:call-template name="attributeMultiplicity">
             <xsl:with-param name="attribute" select="."/>
         </xsl:call-template>
     </xsl:template>
-    
+
     <xd:doc>
-        <xd:desc>Applying rule 5 and 6 to attributes with distinct names</xd:desc>
+        <xd:desc>Applying reasoning layer rules to attributes with distinct names</xd:desc>
     </xd:doc>
     <xsl:template name="distinctAttributeNamesInReasoningLayer">
         <xsl:variable name="root" select="root()"/>
@@ -55,38 +51,45 @@
                 <xsl:with-param name="attributeName" select="."/>
                 <xsl:with-param name="root" select="$root"/>
             </xsl:call-template>
-            
+
         </xsl:for-each>
     </xsl:template>
 
 
     <xd:doc>
-        <xd:desc>Rule 10 (Attribute multiplicity one in reasnoning layer) . For each attribute that
-            has multiplicity exactly one, i.e. [1..1], specify functional property axiom.</xd:desc>
+        <xd:desc>Rule C.10. Attribute multiplicity "one"  — in reasoning layer . For each attribute
+            that has multiplicity exactly one, i.e. [1..1], specify functional property
+            axiom.</xd:desc>
         <xd:param name="root"/>
         <xd:param name="attributeName"/>
     </xd:doc>
     <xsl:template name="attributeMultiplicityOne">
         <xsl:param name="attributeName"/>
         <xsl:param name="root"/>
-        <xsl:variable name="attributesWithSameName" select="f:getClassAttributeByName($attributeName, $root)"/>
-        <xsl:variable name="attributeURI"
-            select="f:buildURIFromElement($attributesWithSameName[1])"/>
-        <xsl:variable name="attributeMultiplicityMinValues" select="$attributesWithSameName/bounds/@lower"/>
-        <xsl:variable name="attributeMultiplicityMaxValues" select="$attributesWithSameName/bounds/@upper"/>
-        <xsl:variable name="areAllMinValuesOne" select="f:areStringsEqual($attributeMultiplicityMinValues) and $attributeMultiplicityMinValues[1] = '1'" as='xs:boolean'/>
-        <xsl:variable name="areAllMaxValuesOne" select="f:areStringsEqual($attributeMultiplicityMaxValues) and $attributeMultiplicityMaxValues[1] = '1'" as='xs:boolean'/>
-               
-            <xsl:if test="$areAllMinValuesOne and $areAllMaxValuesOne">
-                <rdf:Description rdf:about="{$attributeURI}">
-                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-                </rdf:Description>
-            </xsl:if>
+        <xsl:variable name="attributesWithSameName"
+            select="f:getClassAttributeByName($attributeName, $root)"/>
+        <xsl:variable name="attributeURI" select="f:buildURIFromElement($attributesWithSameName[1])"/>
+        <xsl:variable name="attributeMultiplicityMinValues"
+            select="$attributesWithSameName/bounds/@lower"/>
+        <xsl:variable name="attributeMultiplicityMaxValues"
+            select="$attributesWithSameName/bounds/@upper"/>
+        <xsl:variable name="areAllMinValuesOne"
+            select="f:areStringsEqual($attributeMultiplicityMinValues) and $attributeMultiplicityMinValues[1] = '1'"
+            as="xs:boolean"/>
+        <xsl:variable name="areAllMaxValuesOne"
+            select="f:areStringsEqual($attributeMultiplicityMaxValues) and $attributeMultiplicityMaxValues[1] = '1'"
+            as="xs:boolean"/>
+
+        <xsl:if test="$areAllMinValuesOne and $areAllMaxValuesOne">
+            <rdf:Description rdf:about="{$attributeURI}">
+                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+            </rdf:Description>
+        </xsl:if>
 
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Rule 5 (Attribute domain in reasnoning layer) Specify data (or object) property
+        <xd:desc>Rule C.05. Attribute domain — in reasoning layer. Specify data (or object) property
             domains for attribute(s).</xd:desc>
         <xd:param name="root"/>
         <xd:param name="attributeName"/>
@@ -95,25 +98,28 @@
     <xsl:template name="attributeDomain">
         <xsl:param name="root"/>
         <xsl:param name="attributeName"/>
-        <xsl:variable name="attributesWithSameName" select="f:getClassAttributeByName($attributeName, $root)"/>
-        <xsl:variable name="attributeURI"
-            select="f:buildURIFromElement($attributesWithSameName[1])"/>
+        <xsl:variable name="attributesWithSameName"
+            select="f:getClassAttributeByName($attributeName, $root)"/>
+        <xsl:variable name="attributeURI" select="f:buildURIFromElement($attributesWithSameName[1])"/>
         <xsl:choose>
             <xsl:when test="fn:count($attributesWithSameName) = 1">
                 <rdf:Description rdf:about="{$attributeURI}">
-                    <rdfs:domain rdf:resource="{f:buildURIfromLexicalQName($attributesWithSameName/../../@name)}"/>
+                    <rdfs:domain
+                        rdf:resource="{f:buildURIfromLexicalQName($attributesWithSameName/../../@name)}"
+                    />
                 </rdf:Description>
             </xsl:when>
             <xsl:otherwise>
                 <rdf:Description rdf:about="{$attributeURI}">
                     <rdfs:domain>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <xsl:for-each select="$attributesWithSameName">
-                                <rdf:Description rdf:about="{f:buildURIfromLexicalQName(./../../@name)}"/> 
-                            </xsl:for-each>
-                        </owl:unionOf>
-                    </owl:Class>
+                        <owl:Class>
+                            <owl:unionOf rdf:parseType="Collection">
+                                <xsl:for-each select="$attributesWithSameName">
+                                    <rdf:Description
+                                        rdf:about="{f:buildURIfromLexicalQName(./../../@name)}"/>
+                                </xsl:for-each>
+                            </owl:unionOf>
+                        </owl:Class>
                     </rdfs:domain>
                 </rdf:Description>
             </xsl:otherwise>
@@ -121,7 +127,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Rule 6 (Attribute type in reasnoning layer) . Specify data (or object) property
+        <xd:desc> Rule C.07. Attribute type — in reasoning layer. Specify data (or object) property
             range for attribute(s).</xd:desc>
         <xd:param name="root"/>
         <xd:param name="attributeName"/>
@@ -130,10 +136,11 @@
     <xsl:template name="attributeRange">
         <xsl:param name="root"/>
         <xsl:param name="attributeName"/>
-        <xsl:variable name="attributesWithSameName" select="f:getClassAttributeByName($attributeName, $root)"/>
-        <xsl:variable name="distinctAttributeTypesFound" select="fn:distinct-values($attributesWithSameName/properties/@type)"/>
-        <xsl:variable name="attributeURI"
-            select="f:buildURIFromElement($attributesWithSameName[1])"/>
+        <xsl:variable name="attributesWithSameName"
+            select="f:getClassAttributeByName($attributeName, $root)"/>
+        <xsl:variable name="distinctAttributeTypesFound"
+            select="fn:distinct-values($attributesWithSameName/properties/@type)"/>
+        <xsl:variable name="attributeURI" select="f:buildURIFromElement($attributesWithSameName[1])"/>
         <xsl:choose>
             <xsl:when
                 test="fn:count($attributesWithSameName) = 1 or fn:count($distinctAttributeTypesFound) = 1">
@@ -149,10 +156,9 @@
                 <xsl:variable name="attributeTypeURI"
                     select="
                         if ($attributeType = $controlledListType) then
-                        f:buildURIfromLexicalQName('skos:Concept')
+                            f:buildURIfromLexicalQName('skos:Concept')
                         else
-                        f:buildURIfromLexicalQName($attributeTypeChecked)"
-                />
+                            f:buildURIfromLexicalQName($attributeTypeChecked)"/>
 
                 <rdf:Description rdf:about="{$attributeURI}">
                     <rdfs:range rdf:resource="{$attributeTypeURI}"/>
@@ -166,12 +172,11 @@
                                 <xsl:for-each select="$distinctAttributeTypesFound">
                                     <xsl:variable name="attributeTypeURI"
                                         select="
-                                        if (. = $controlledListType) then
-                                        f:buildURIfromLexicalQName('skos:Concept')
-                                        else
-                                        f:buildURIfromLexicalQName(.)"
-                                    />
-                                    <rdf:Description rdf:about="{$attributeTypeURI}"/> 
+                                            if (. = $controlledListType) then
+                                                f:buildURIfromLexicalQName('skos:Concept')
+                                            else
+                                                f:buildURIfromLexicalQName(.)"/>
+                                    <rdf:Description rdf:about="{$attributeTypeURI}"/>
                                 </xsl:for-each>
                             </owl:unionOf>
                         </owl:Class>
@@ -184,10 +189,12 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Rule 9 (Attribute multiplicity in reasnoning layer).For each attribute multiplicity
-            of the form ( min .. max ), where min and max are diferent than * (any), specify a
-            subclass axiom where the OWL class, corresponding to the UML class, specialises an
-            anonymous restriction of properties formulated according to the cases</xd:desc>
+        <xd:desc>Rule C.09. Attribute multiplicity — in reasoning layer .For each attribute
+            multiplicity of the form ( min .. max ), where min and max are diferent than * (any),
+            specify a subclass axiom where the OWL class, corresponding to the UML class,
+            specialises an anonymous restriction of properties formulated according to the following
+            cases 1. exact cardinality, e.g. [2..2] 2. minimum cardinality only, e.g. [1..*] 3.
+            maximum cardinality only, e.g. [*..2] 4. maximum and maximum cardinality , e.g. [1..2] </xd:desc>
         <xd:param name="attribute"/>
     </xd:doc>
 
@@ -199,13 +206,11 @@
             select="f:getAttributeValueToDisplay($attribute/bounds/@upper)"/>
         <xsl:variable name="className" select="$attribute/../../@name"/>
         <xsl:variable name="classURI" select="f:buildURIfromLexicalQName($className)"/>
-        <xsl:variable name="datatypeURI"
-            select="f:buildURIfromLexicalQName('xsd:integer')"/>
-        <xsl:variable name="attributeURI"
-            select="f:buildURIFromElement($attribute)"/>
+        <xsl:variable name="datatypeURI" select="f:buildURIfromLexicalQName('xsd:integer')"/>
+        <xsl:variable name="attributeURI" select="f:buildURIFromElement($attribute)"/>
         <!--if both min and max vaules are present choose whether they are equal or not-->
         <xsl:if test="boolean($attributeMultiplicityMin) and boolean($attributeMultiplicityMax)">
-            <owl:Class rdf:about="{$classURI}">
+            <rdf:Description rdf:about="{$classURI}">
                 <rdfs:subClassOf>
                     <xsl:choose>
                         <xsl:when test="$attributeMultiplicityMin = $attributeMultiplicityMax">
@@ -236,12 +241,12 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </rdfs:subClassOf>
-            </owl:Class>
+            </rdf:Description>
         </xsl:if>
-<!--        if only min or max is present choose the value that exist-->
+        <!--        if only min or max is present choose the value that exist-->
         <xsl:if
             test="not(boolean($attributeMultiplicityMin)) and boolean($attributeMultiplicityMax)">
-            <owl:Class rdf:about="{$classURI}">
+            <rdf:Description rdf:about="{$classURI}">
                 <rdfs:subClassOf>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="{$attributeURI}"/>
@@ -250,11 +255,11 @@
                         </owl:maxCardinality>
                     </owl:Restriction>
                 </rdfs:subClassOf>
-            </owl:Class>
+            </rdf:Description>
         </xsl:if>
         <xsl:if
             test="not(boolean($attributeMultiplicityMax)) and boolean($attributeMultiplicityMin)">
-            <owl:Class rdf:about="{$classURI}">
+            <rdf:Description rdf:about="{$classURI}">
                 <rdfs:subClassOf>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="{$attributeURI}"/>
@@ -263,7 +268,7 @@
                         </owl:minCardinality>
                     </owl:Restriction>
                 </rdfs:subClassOf>
-            </owl:Class>
+            </rdf:Description>
         </xsl:if>
 
     </xsl:template>
@@ -276,43 +281,41 @@
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']"/>
 
-    <xd:doc>
-        <xd:desc>This will override the common selector when applying templates</xd:desc>
-    </xd:doc>
-    <xsl:template match="element[@xmi:type = 'uml:Enumeration']"/>
-    
+
     <xd:doc>
         <xd:desc>This will override the common selector when applying templates</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:DataType']"/>
-    
+
     <xd:doc>
         <xd:desc>This will override the common selector when applying templates</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute"/>
 
-    
-    
-<!--    TODO Is this rule still needed? vvv -->
-<!--
+
+
+
+
     <xd:doc>
-        <xd:desc>(Enumeration in reasnoning layer) . Concept instantiation in RDF/XML For an UML
-            enumeration, specify an equivalent class restriction covering the set of individuals
-            that are skos:inScheme of this enumeration.</xd:desc>
+        <xd:desc>Rule D.04. Enumeration — in reasoning layer . For a UML enumeration, specify an
+            equivalent class restriction covering the set of individuals that are skos:inScheme of
+            this enumeration.</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
-        <xsl:variable name="enumerationURI" select="f:buildURIFromElement(.)"/>
-        <owl:Class rdf:about="{$enumerationURI}">
-            <!-\- <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>-\->
-            <owl:equivalentClass>
-                <owl:Restriction>
-                    <owl:onProperty rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
-                    <owl:hasValue rdf:resource="{$enumerationURI}"/>
-                </owl:Restriction>
-            </owl:equivalentClass>
-        </owl:Class>
+        <xsl:if test="$enableGenerationOfConceptSchemes">
+            <xsl:variable name="enumerationURI" select="f:buildURIFromElement(.)"/>
+            <owl:Class rdf:about="{$enumerationURI}">
+                <owl:equivalentClass>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
+                        <owl:hasValue rdf:resource="{$enumerationURI}"/>
+                    </owl:Restriction>
+                </owl:equivalentClass>
+                <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+            </owl:Class>
+        </xsl:if>
     </xsl:template>
--->
+
 
 
 

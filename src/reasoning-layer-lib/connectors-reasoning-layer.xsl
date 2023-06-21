@@ -22,7 +22,7 @@
         cdata-section-elements="lines"/>
 
     <xd:doc>
-        <xd:desc>applying the rules to associations</xd:desc>
+        <xd:desc>applying the reasoning layer rules to associations</xd:desc>
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
@@ -39,7 +39,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>applying the rules to dependencies</xd:desc>
+        <xd:desc>applying the reasoning layer rules to dependencies</xd:desc>
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
@@ -60,7 +60,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>applying the rules to generalisations</xd:desc>
+        <xd:desc>applying the reasoning layer rules to generalisations</xd:desc>
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
@@ -76,12 +76,13 @@
     
     
     <xd:doc>
-        <xd:desc>Applying rule 12,13 and 20 to connectors with distinct names</xd:desc>
+        <xd:desc>Applying reasoning layer rules to connectors with distinct names [Dependency and Association]</xd:desc>
     </xd:doc>
     <xsl:template name="distinctConnectorsNamesInReasoningLayer">
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
         <xsl:for-each select="$distinctNames">
+            <xsl:if test="f:getConnectorByName(.,$root)[1]/properties/@ea_type=('Dependency', 'Association')">
             <xsl:call-template name="connectorDomain">
                 <xsl:with-param name="connectorName" select="."/>
                 <xsl:with-param name="root" select="$root"/>
@@ -94,12 +95,13 @@
                 <xsl:with-param name="connectorName" select="."/>
                 <xsl:with-param name="root" select="$root"/>
             </xsl:call-template>
+            </xsl:if>
         </xsl:for-each>
     </xsl:template>
 
 
     <xd:doc>
-        <xd:desc>Rule 12 (Association source in reasnoning layer). Specify object property domain
+        <xd:desc>Rule R.03. Association source — in reasoning layer. Specify object property domain
             for the target end of the association.</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
@@ -169,7 +171,7 @@
 
 
     <xd:doc>
-        <xd:desc>Rule 13 (Association target in reasnoning layer) . Specify object property range
+        <xd:desc> Rule R.04. Association target — in reasoning layer. Specify object property range
             for the target end of the association.</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
@@ -232,7 +234,7 @@
 
 
     <xd:doc>
-        <xd:desc>Rule 33 (Dependency target in reasnoning layer) . Specify object property range
+        <xd:desc>Rule R.12. Dependency target — in reasoning layer. Specify object property range
             for the target end of the dependency.</xd:desc>
         <xd:param name="connector"/>
         <xd:param name="root"/>
@@ -243,19 +245,16 @@
         <xsl:param name="root"/>
 
         <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
-        <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($targetRole)"/>
+        <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
 
-            <rdf:Description rdf:about="{$targetRoleURI}">
-                <rdfs:range
-                    rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"
-                />
-            </rdf:Description>
-       
+        <rdf:Description rdf:about="{$targetRoleURI}">
+            <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        </rdf:Description>
+
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Rule 19 (Association asymmetry in reasnoning layer) . Specify the asymmetry object
+        <xd:desc>Rule R.09. Association asymmetry — in reasoning layer. Specify the asymmetry object
             property axiom for each end of a recursive association.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -271,12 +270,17 @@
                     fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
             <xsl:variable name="targetRoleURI"
                 select="f:buildURIfromLexicalQName($targetRole)"/>
-            <owl:AsymmetricProperty rdf:about="{$targetRoleURI}"/>
+            
+            
+            <rdf:Description rdf:about="{$targetRoleURI}">
+                <rdf:type rdf:resource = "http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+            </rdf:Description>
+            
         </xsl:if>
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Rule 20 (Association inverse in reasnoning layer) . Specify inverse object property
+        <xd:desc>Rule R.11. Association inverse — in reasoning layer . Specify inverse object property
             between the source and target ends of the association.</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
@@ -334,7 +338,7 @@
 
 
     <xd:doc>
-        <xd:desc>Rule 23 (Equivalent classes in reasnoning layer) .Specify equivalent class axiom
+        <xd:desc>Rule R.16. Equivalent classes — in reasoning layer .Specify equivalent class axiom
             for the generalisation with equivalent or complete stereotype between UML classes. </xd:desc>
         <xd:param name="generalisation"/>
     </xd:doc>
@@ -356,7 +360,7 @@
 
 
     <xd:doc>
-        <xd:desc>Rule 24 (Equivalent properties in reasnoning layer) .Specify equivalent property
+        <xd:desc>Rule R.17. Equivalent properties — in reasoning layer. Specify equivalent property
             axiom for the generalisation with equivalent or complete stereotype between UML
             properties. </xd:desc>
         <xd:param name="generalisation"/>
@@ -391,17 +395,18 @@
                 select="f:buildURIfromLexicalQName($sourceConnector/target/role/@name)"/>
             <xsl:variable name="sourceConnectorSourceRoleURI"
                 select="f:buildURIfromLexicalQName($sourceConnector/source/role/@name)"/>
-            <owl:ObjectProperty rdf:about="{$sourceConnectorSourceRoleURI}">
+            <rdf:Description rdf:about="{$sourceConnectorSourceRoleURI}">
                 <owl:equivalentProperty rdf:resource="{$targetConnectorSourceRoleURI}"/>
-            </owl:ObjectProperty>
-            <owl:ObjectProperty rdf:about="{$sourceConnectorTargetRoleURI}">
+            </rdf:Description>
+            <rdf:Description rdf:about="{$sourceConnectorTargetRoleURI}">
                 <owl:equivalentProperty rdf:resource="{$targetConnectorTargetRoleURI}"/>
-            </owl:ObjectProperty>
+            </rdf:Description>
         </xsl:if>
     </xsl:template>
 
     <xd:doc>
-        <xd:desc> Rule 16,17 (Association multiplicity in reasnoning layer) . For the association
+        <xd:desc> Rule R.06. Association multiplicity — in reasoning layer, 
+            Rule R.07. Association multiplicity "one" — in reasoning layer . For the association
             target multiplicity, where min and max are different than * (any) and multiplicity is
             not [1..1], specify a subclass axiom where the source class specialises an anonymous
             restriction of properties formulated according to cases provided by Rule 9.</xd:desc>
