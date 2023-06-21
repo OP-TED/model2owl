@@ -59,7 +59,7 @@
             test="not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector') and f:checkIfConnectorTargetAndSourceElementsExists(.)">
             <xsl:choose>
                 <xsl:when
-                    test="not(./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')">
+                    test="not(./source/model/@type = 'Class' and ./target/model/@type = ('Enumeration', 'Object'))">
                     <xsl:call-template name="connectorRange">
                         <xsl:with-param name="connector" select="."/>
                     </xsl:call-template>
