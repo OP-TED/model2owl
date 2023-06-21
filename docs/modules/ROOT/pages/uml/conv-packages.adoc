@@ -1,6 +1,7 @@
 [[sec:uml-package]]
 == Conventions on uml:Package elements
 
+[[rule:package-partitioning]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Partitioning of the model
@@ -18,6 +19,7 @@ Packages should be used to define a logical partition of the model. They serve a
 
 *See also:* SEMIC Style Guide Rule [https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r15[CMC-R15]]
 
+[[rule:package-hierarchy]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Hierarchy of packages
@@ -33,6 +35,7 @@ Packages may form hierarchies.
 
 Packages may form hierarchies. In this case the hierarchical relation is interpreted as _meronymy_, denoting a constituent parts of the package. Formally they are translated into owl:import statements.The module corresponding to the parent package imports modules corresponding to the child packages.
 
+[[rule:package-empty]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Empty packages
@@ -48,6 +51,7 @@ There shall be no empty packages.
 
 No empty packages shall be present in the model. A package is empty if it contains no child elements.
 
+[[rule:package-names]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Package naming

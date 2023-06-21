@@ -60,11 +60,11 @@ uml:Attribute shall be defined with generally accepted primitive datatypes.
 
 *Description:*
 
-Each uml:Attribute must have a name and an attribute type. uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty. High preference shall be given to using OWL 2 compliant XSD [xref:references.adoc#ref:xsd[xsd]] and RDF [xref:references.adoc#ref:rdf[rdf]] standard datatypes. [xref:uml/conv-datatypes.adoc#rule:primitive-datatypes[see Section on Primitive Data types]]
+Each uml:Attribute must have a name and an attribute type. uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty. High preference shall be given to using OWL 2 compliant XSD [xref:references.adoc#ref:xsd[xsd]] and RDF [xref:references.adoc#ref:rdf[rdf]] standard datatypes. [xref:uml/conv-datatypes.adoc#rule:datatypes-primitive[See convention on Primitive Data types]]
 
 In cases when a property needs to be defined as ranging on an unknown controlled list or authority table constitute a special case. They can be expressed as uml:Attribute with the datatype `skos:Concept`. These attributes are transformed into owl:ObjectProperty in a manner similarly to uml:Association.
 
-An attribute may contain an alias, used as an alternative label. It can be specified via uml:Tags. [xref:uml/conv-general.adoc#rule:gen-tags[See section on uml:Tags]]
+An attribute may contain an alias, used as an alternative label. It can be specified via uml:Tags. [xref:uml/conv-general.adoc#rule:gen-tags[See convention on uml:Tags]]
 
 [[rule:attributes-reuse]]
 |===
