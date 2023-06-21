@@ -81,8 +81,9 @@
     <xsl:template name="distinctConnectorsNamesInReasoningLayer">
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
+<!--        TODO Figure out dependencies to Objects -->
         <xsl:for-each select="$distinctNames">
-            <xsl:if test="f:getConnectorByName(.,$root)[1]/properties/@ea_type=('Dependency', 'Association')">
+            <xsl:if test="f:getConnectorByName(.,$root)[1]/properties/@ea_type=('Dependency', 'Association') and f:getConnectorByName(.,$root)[1]/target/model/@type != 'Object'">
             <xsl:call-template name="connectorDomain">
                 <xsl:with-param name="connectorName" select="."/>
                 <xsl:with-param name="root" select="$root"/>
