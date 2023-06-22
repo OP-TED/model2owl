@@ -47,8 +47,8 @@
                     <xsl:with-param name="classURI" select="$classURI"/>
                 </xsl:call-template>
             </xsl:if>
-            
-            
+     
+        </sh:NodeShape>
         <xsl:call-template name="shapeLayerName">
             <xsl:with-param name="elementName" select="$class/@name"/>
             <xsl:with-param name="uri" select="$shapeClassUri"/>
@@ -60,10 +60,7 @@
                 <xsl:with-param name="rdfsComment" select="fn:true()"/>
             </xsl:call-template>
         </xsl:if>
-
-            
-            
-        </sh:NodeShape>
+        
 
 
 
