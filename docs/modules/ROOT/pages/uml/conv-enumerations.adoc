@@ -3,7 +3,7 @@
 [[sec:enumeration]]
 ===  Technical conventions on uml:Enumeration elements
 
-In UML the controlled lists, discussed in Section [xref:uml/conv-general.adoc#sec:controlled-list[Controlled List]] are represented as uml:Enumeration. They are transformed into instances of a SKOS model [xref:references.adoc#ref:skos-spec[skos-spec]].
+In UML the controlled lists, discussed in Section [xref:uml/conv-general.adoc#sec:controlled-lists[Controlled List]] are represented as uml:Enumeration. They are transformed into instances of a SKOS model [xref:references.adoc#ref:skos-spec[skos-spec]].
 
 
 [[rule:enumeration-to-skos]]
@@ -28,4 +28,4 @@ In a uml:Enumeration element, the name shall be interpreted as the controlled li
 
 In case no attribute alias is specified then the attribute name is used as preferred label of the skos:Concept. This happens as skos:prefLabel is a mandatory property in the SKOS model.
 
-It is possible to employ the enumerations for class properties by drawing a dependency (uml:Dependency) relation from the class to the enumeration and provide a relation target role.
+It is possible to employ the enumerations for class properties by drawing a dependency (uml:Dependency) relation from the class to the enumeration and provide a relation target role. However, the enumeration should not connect to other elements.
