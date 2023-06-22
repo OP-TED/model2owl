@@ -451,5 +451,7 @@ UML tags shall be used to provide additional descriptions of the element in a co
 
 When providing additional information to an element (classes, enumerations, datatypes, connectors, attributes, connector roles) through a tag ensure that:
 
-* The tag name should be a short URI or short URI with a language tag (e.g. @en).
+* The tag name should be provided and should be either a short URI or short URI with a language tag (e.g. @en).
 * There should be a value associated to each tag that appears on an element.
+
+*Note:* Tags should not be used as the sole (or primary) source of concept identifier generation, i.e. every UML element that has tags attached, should, in the first place, have a proper name provided, according to the conventions in the [xref:sec:names[]] section.
