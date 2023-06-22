@@ -159,7 +159,7 @@
         </x:call>   
         <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
         <x:expect label="there is a rdfs:domain" test="boolean(rdf:Description/rdfs:range)"/>
-        <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:range/owl:Class/owl:unionOf/rdf:Description) = 2"/>
+        <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:range/owl:Class/owl:unionOf/owl:Class) = 2"/>
 
     </x:scenario>
     
@@ -170,7 +170,7 @@
         </x:call>   
         <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
         <x:expect label="there is a rdfs:domain" test="boolean(rdf:Description/rdfs:domain)"/>
-        <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:domain/owl:Class/owl:unionOf/rdf:Description) = 9"/>
+        <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:domain/owl:Class/owl:unionOf/owl:Class) = 9"/>
         
     </x:scenario>
     
