@@ -153,7 +153,7 @@
                             <xsl:when test="fn:count($domains) > 1">
                                 <owl:unionOf rdf:parseType="Collection">
                                     <xsl:for-each select="$domains">
-                                        <rdf:Description
+                                        <owl:Class
                                             rdf:about="{f:buildURIfromLexicalQName(.)}"/>
                                     </xsl:for-each>
                                 </owl:unionOf>
@@ -214,13 +214,13 @@
                             <xsl:when test="fn:count($ranges) > 1">
                                 <owl:unionOf rdf:parseType="Collection">
                                     <xsl:for-each select="$ranges">
-                                        <rdf:Description rdf:about="{f:buildURIfromLexicalQName(.)}"/>
+                                        <owl:Class rdf:about="{f:buildURIfromLexicalQName(.)}"/>
                                     </xsl:for-each>
                                 </owl:unionOf>
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:for-each select="$ranges">
-                                    <rdfs:range rdf:about="{f:buildURIfromLexicalQName(.)}"/>
+                                    <rdfs:range rdf:resource="{f:buildURIfromLexicalQName(.)}"/>
                                 </xsl:for-each>
                             </xsl:otherwise>
                         </xsl:choose>

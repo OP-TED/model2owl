@@ -115,7 +115,7 @@
                         <owl:Class>
                             <owl:unionOf rdf:parseType="Collection">
                                 <xsl:for-each select="$attributesWithSameName">
-                                    <rdf:Description
+                                    <owl:Class
                                         rdf:about="{f:buildURIfromLexicalQName(./../../@name)}"/>
                                 </xsl:for-each>
                             </owl:unionOf>
@@ -176,7 +176,7 @@
                                                 f:buildURIfromLexicalQName('skos:Concept')
                                             else
                                                 f:buildURIfromLexicalQName(.)"/>
-                                    <rdf:Description rdf:about="{$attributeTypeURI}"/>
+                                    <owl:Class rdf:about="{$attributeTypeURI}"/>
                                 </xsl:for-each>
                             </owl:unionOf>
                         </owl:Class>
