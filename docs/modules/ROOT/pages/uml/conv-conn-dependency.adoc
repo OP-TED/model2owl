@@ -1,0 +1,56 @@
+[[sec:dependency]]
+== Conventions on uml:Dependency Connectors
+
+
+[[rule:dependency-btw-class-and-enum]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Dependency connects classes to enumerations
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+uml:Dependency connectors connect a uml:Class element to a uml:Enumeration element.
+|===
+
+*Description:*
+
+The dependency connector may be used between uml:Class and uml:Enumeration boxes, oriented from the class towards the enumeration. It indicates the class has an owl:ObjectProperty whose range is a controlled vocabulary. The connector must have direction "Source->Target". No other directions are acceptable.
+
+
+[[rule:dependency-name]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Dependency connector name
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+uml:Dependency connector elements shall have a valid name.
+|===
+
+*Description:*
+
+The connector must have a valid name and no source/target roles are acceptable.
+
+
+[[rule:dependency-multiplicity]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Dependency multiplicity
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+uml:Dependency connector elements shall have their target multiplicity specified.
+|===
+
+*Description:*
+
+The multiplicity must be specified at the target of the uml:Dependency connector indicating the minimum and maximum cardinality.
+
+In the transformation process, for the reasoning purposes, the range of the property must be expressed as a range restriction using `owl:oneOf` the values from the enumeration Concept scheme. This is also valuable for generating SHACL shapes.
+

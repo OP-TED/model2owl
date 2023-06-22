@@ -1,0 +1,54 @@
+[[sec:realization]]
+== Conventions on uml:Realization Connectors
+
+
+[[rule:realization-btw-classes-and-objects]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Realization connects classes and objects
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+uml:Realization connectors connect a uml:Object element to a uml:Class element.
+|===
+
+*Description:*
+
+The uml:Realization connector signifies an instantiation relation, and is transformed into `rdf:type` relation standing between the source object and the target class.
+
+
+[[rule:realization-name]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Realization connector with no name
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+uml:Realization connector elements shall have no name or a target role specified.
+|===
+
+*Description:*
+
+The uml:Realization connectors must have no name or source/target roles specified in the UML model.
+
+
+[[rule:connetors-proxy-objects]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Proxy objects
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+For objects defined in external models proxy uml:Object elements should be defined.
+|===
+
+*Description:*
+
+In case an object that is to be used in this model is defined in an external model a proxy uml:Object element should be created so that we can connect it to classes in our model. For example, if we want to refer to the `time:unitMonth` instance of the class `time:TemporalUnit`, then a proxy for `time:unitMonth` individual (and in this case also of the class `time:TemporalUnit`) must be created (ideally in a dedicated `time` package).
+

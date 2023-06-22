@@ -1,0 +1,74 @@
+[[sec:association]]
+== Conventions on uml:Association Connectors
+
+[[rule:association-btw-classes]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Associations connect classes
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+uml:Association elements connect two uml:Classes.
+|===
+
+*Description:*
+
+The uml:Association connectors represent relations between source and target classes. The association connector cannot be used between other kinds of UML elements.
+
+
+[[rule:association-target]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Association connector name
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+uml:Association connector elements shall have either a name or a target role specified .
+|===
+
+*Description:*
+
+A generic UML connector may have a name applied to it, and it may have source/target roles specified in addition. This provides flexibility to how the domain knowledge may be expressed in UML, however this freedom increases the level of ambiguity as well. Therefore, we foresee two distinct ways to express properties: using the connector generic name, or using the connector source/target ends.
+
+First, if a connector name is specified then no source or target roles can be provided. The name must be valid as it is used to generate the OWL property URI. The minimum and maximum cardinality of the relation must be specified as target multiplicity. This approach is discouraged.
+
+The second approach, which is the recommended one, is to use the target role to express the property. If the connector has no name then the target role must be specified. Or the converse, if a target role is specified then no connector name can be specified. Optionally a source role may be provided. In this case the relation direction must be changed from "Source->Target" to "Bidirectional". Or conversely, if the connector direction is "Bidirectional" then source and target roles must be provided. No other directions are permitted.
+
+
+[[rule:association-multiplicity]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Association multiplicity
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+uml:Association connector elements shall have their target multiplicity specified. If source role is specified, also their source multiplicity must be specified.
+|===
+
+*Description:*
+
+The target and source multiplicity must be specified accordingly indicating the minimum and maximum cardinality.
+
+
+[[rule:association-definition]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Association definition
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+uml:Association connector shall have a definition.
+|===
+
+*Description:*
+
+It is recommended that each association has a definition. The definition is then used for each role as they stand for the same meaning manifested in the inverse direction. Additional, specific definition, can be specified along the target and source roles.
+
