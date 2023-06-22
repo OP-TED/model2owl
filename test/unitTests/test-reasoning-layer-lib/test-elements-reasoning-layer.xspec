@@ -33,7 +33,7 @@
         </x:call>
         <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
         <x:expect label="there is a rdfs:domain" test="boolean(rdf:Description/rdfs:domain)"/>
-        <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:domain/owl:Class/owl:unionOf/rdf:Description) = 3"/>
+        <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:domain/owl:Class/owl:unionOf/owl:Class) = 3"/>
     </x:scenario>
     
     <x:scenario label="Scenario for attribute range - Object property">
@@ -93,7 +93,7 @@
         </x:call>   
         <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
         <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
-        <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:range/owl:Class/owl:unionOf/rdf:Description) = 2"/>
+        <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:range/owl:Class/owl:unionOf/owl:Class) = 2"/>
     </x:scenario>
 
     
@@ -164,7 +164,7 @@
         </x:call>   
         <x:expect label="there is a owl:DatatypeProperty" test="boolean(rdf:Description) "/>
         <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
-        <x:expect label="there is a correct datatype URI " test="rdf:Description/rdfs:range/owl:Class/owl:unionOf/rdf:Description[1]/@rdf:about = 'http://www.w3.org/2004/02/skos/core#Concept'"/>
+        <x:expect label="there is a correct datatype URI " test="rdf:Description/rdfs:range/owl:Class/owl:unionOf/owl:Class[1]/@rdf:about = 'http://www.w3.org/2004/02/skos/core#Concept'"/>
     </x:scenario>
     
 
