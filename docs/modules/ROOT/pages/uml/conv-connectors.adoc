@@ -26,18 +26,18 @@ The verb phrase must be in present tense, if needed inflected as third person si
 [[rule:connetors-bidirectional]]
 |===
 |{set:cellbgcolor: #a8c6f7}
- *Title:* Bi-directional relations
+ *Title:* Bidirectional relations
 
 |{set:cellbgcolor: #f5f8fc}
 *Identifier* -
 
 |*Statement:*
-Relationships are usually bi-directional, and the name for both directions should be provided.
+Relationships are usually bidirectional, and the name for both directions should be provided.
 |===
 
 *Description:*
 
-Relationships are usually bi-directional and the inverse one should be provided where it makes sense. Adjust the verb phrases in the predicates as appropriate, usually, by employing the _active and passive voice_ in the term formulation brings the desired result. For example, "uses/isUsedBy" and "refersTo/isReferredToBy" or "offers/isOfferedBy" [xref:references.adoc#ref:d2.01-2017[d2.01-2017]].
+Relationships are usually bidirectional and the inverse one should be provided where it makes sense. Adjust the verb phrases in the predicates as appropriate, usually, by employing the _active and passive voice_ in the term formulation brings the desired result. For example, "uses/isUsedBy" and "refersTo/isReferredToBy" or "offers/isOfferedBy" [xref:references.adoc#ref:d2.01-2017[d2.01-2017]].
 
 
 [[rule:connetors-inverse]]
@@ -114,9 +114,9 @@ uml:Association connector elements shall have either a name or a target role spe
 
 A generic UML connector may have a name applied to it, and it may have source/target roles specified in addition. This provides flexibility to how the domain knowledge may be expressed in UML, however this freedom increases the level of ambiguity as well. Therefore, we foresee two distinct ways to express properties: using the connector generic name, or using the connector source/target ends.
 
-First, if a connector name is specified then no source or target roles can be provided. The name must be valid as it is used to generate the OWL property URI. The minimum and maximum cardinality of the relation must be specified as target multiplicity.
+First, if a connector name is specified then no source or target roles can be provided. The name must be valid as it is used to generate the OWL property URI. The minimum and maximum cardinality of the relation must be specified as target multiplicity. This approach is discouraged.
 
-The second, and recommended approach is if the connector has no name then the target role must be specified. Or the converse, if a target role is specified then no connector name can be specified. Optionally a source role may be provided. In this case the relation direction must be changed from "Source->Target" to "Bidirectional". Or conversely, if the connector direction is "Bidirectional" then source and target roles must be provided. No other directions are permitted.
+The second approach, which is the recommended one, is to use the target role to express the property. If the connector has no name then the target role must be specified. Or the converse, if a target role is specified then no connector name can be specified. Optionally a source role may be provided. In this case the relation direction must be changed from "Source->Target" to "Bidirectional". Or conversely, if the connector direction is "Bidirectional" then source and target roles must be provided. No other directions are permitted.
 
 
 [[rule:association-multiplicity]]
@@ -205,7 +205,7 @@ uml:Dependency connector elements shall have their target multiplicity specified
 
 *Description:*
 
-The multiplicity must be specified at the target of the uml:Dependency connector.
+The multiplicity must be specified at the target of the uml:Dependency connector indicating the minimum and maximum cardinality.
 
 In the transformation process, for the reasoning purposes, the range of the property must be expressed as a range restriction using `owl:oneOf` the values from the enumeration Concept scheme. This is also valuable for generating SHACL shapes.
 
