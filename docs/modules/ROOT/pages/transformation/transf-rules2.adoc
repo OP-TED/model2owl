@@ -22,6 +22,7 @@ In this section are specified transformation rules for UML association, generali
 |Property generalisation |<<rule:generalisation-property-core>> | |
 |Class equivalence | | |<<rule:equivalent-classes-rc>>
 |Property equivalence | | |<<rule:equivalent-properties-rc>>
+|Disjoint classes | | |<<rule:disjoint-classes-rc>>
 |===
 
 [[sec:association-uni]]
@@ -460,12 +461,13 @@ Generalisation defines specialization relationship between Classifiers. In case 
 [#fig:generalisation-visual]
 image::f13.png[13]
 
-//TODO: Verify this statement. It doesn't make too much sense. Needs reformulation. Plus, it might be irrelevant if we don't make a rule for generating (optional) disjoint classes statements
+//TODO: Verify this statement. It doesn't make too much sense. Needs reformulation. Plus, it might be irrelevant if we don't make a rule for generating (optional) disjoint classes statements. Adding a sentence about this to refer to an individual rule for generating disjoint statements.
 UML generalisation set groups generalisations; incomplete and disjoint constraints indicate that the set is not complete and its specific Classes have no common instances. The UML conventions specify that all sibling classes are by default disjoint, therefore even if no generalisation set is provided it is assumed to be implicit.
+Sibling classes will be declared disjoint with one another in the reasoning layer (see xref:rule:disjoint-classes-rc[]).
 
 [#rule:generalisation-class-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Class generalisation -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
-Specify subclass axiom for the generalisation between UML Classes. Sibling classes must be disjoint with one another.
+Specify subclass axiom for the generalisation between UML Classes.
 ====
 
 [cols="a,a", options="noheader"]
@@ -475,9 +477,7 @@ Specify subclass axiom for the generalisation between UML Classes. Sibling class
 [source,Turtle]
 ----
 :ClassName rdfs:subClassOf :SuperClass.
-:OtherClass rdfs:subClassOf :SuperClass;
-   owl:disjointWith :ClassName ;
-.
+:OtherClass rdfs:subClassOf :SuperClass.
 ----
 |
 .Subclass declaration in RDF/XML syntax
@@ -488,7 +488,6 @@ Specify subclass axiom for the generalisation between UML Classes. Sibling class
 </owl:Class>
 <owl:Class rdf:about = "http://base.onto.uri/OtherClass">
     <rdfs:subClassOf rdf:resource = "http://base.onto.uri/SuperClass"/>
-    <owl:disjointWith rdf:resource = "http://base.onto.uri/ClassName"/>
 </owl:Class>
 ----
 |===
@@ -588,4 +587,36 @@ Specify equivalent property axiom for the generalisation with `\<<equivalent>>` 
 ----
 |===
 
+=== Disjoint classes
+
+[#rule:disjoint-classes-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Disjoint classes -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify a disjoint classes axiom for all "sibling" classes, i.e. for multiple UML Classes that have generalisation connectors to the same UML Class.
+====
+
+For the generalisation relations depicted in xref:fig:generalisation-visual[], the generated output should have the following form.
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Disjoint classes declaration in Turtle syntax
+[source,Turtle]
+----
+[ a owl:AllDisjointClasses ;
+  owl:members  ( :ClassName :OtherClass )
+] .
+----
+|
+.Disjoint classes declaration in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description>
+    <rdf:type rdf:resource="http://...owl#AllDisjointClasses"/>
+    <owl:members rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://base.onto.uri/ClassName"/>
+        <rdf:Description rdf:about="http://base.onto.uri/OtherClass"/>
+    </owl:members>
+</rdf:Description>
+----
+|===
 
