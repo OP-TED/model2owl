@@ -1,22 +1,23 @@
 [[sec:association]]
 == Conventions on uml:Association Connectors
 
-[[rule:association-btw-classes]]
+[[rule:association-btw-class-and-class-or-object]]
 |===
 |{set:cellbgcolor: #a8c6f7}
- *Title:* uml:Associations connect classes
+ *Title:* uml:Associations connect classes to classes or objects
 
 |{set:cellbgcolor: #f5f8fc}
 *Identifier* -
 
 |*Statement:*
-uml:Association elements connect two uml:Classes.
+uml:Association elements connect two uml:Classes, or a uml:Class to a uml:Object.
 |===
 
 *Description:*
 
-The uml:Association connectors represent relations between source and target classes. The association connector cannot be used between other kinds of UML elements.
+The uml:Association connectors represent relations between source and target classes, or a source class and an object target. The association connector cannot be used between other kinds of UML elements.
 
+*[TODO:]* Should we include here what is the OWL interpretation of these two kinds of association relations? Is it `someValuesFrom` and `hasValue` respectively, or will it be domain/range specification, at least in case of class-to-class association (in the reasoning layer)? Or should this be only described in the transformation rules?
 
 [[rule:association-target]]
 |===
