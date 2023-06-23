@@ -79,9 +79,6 @@ It is recommended that each relationship includes a definition of its inverse.
 Models should define such inverse pairs for relationships although this does not extend to attributes. For example, Dublin Core [xref:references.adoc#ref:dublin-core-metadata[dublin-core-metadata]] includes a property of "dateAccepted", there is no inverse property that would link a given date, which is expressed as a simple value, to all the documents accepted for publication on that date.
 
 
-[[sec:relations-reuse]]
-=== Reuse of Relations
-
 [[sec:connectors]]
 === Technical conventions on connectors
 
@@ -110,7 +107,7 @@ For uml:Association and uml:Dependency connectors the name of the relation (and 
 [[rule:connectors-direction]]
 |===
 |{set:cellbgcolor: #a8c6f7}
- *Title:* Direction of UML Connector names
+ *Title:* Direction of UML Connectors
 
 |{set:cellbgcolor: #f5f8fc}
 *Identifier* -
@@ -122,3 +119,30 @@ All uml:Connectors must employ "Source->Target" directions only, with uml:Associ
 *Description:*
 
 All supported UML connectors shall have direction "Source->Target". In addition, uml:Association connectors can also be "Bidirectional".
+
+
+[[sec:relations-reuse]]
+=== Reuse of Relations
+
+[[rule:connectors-reuse]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Reuse of UML Connector roles
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+Connector role names can be reused, but only as role names in other connectors of the same type.
+|===
+
+*Description:*
+
+Connector role names can be reused, but only as role names in other connectors of the same type.
+That is, uml:Association role names can be reused only as role names in other uml:Association connectors,
+and uml:Dependency role names can be reused only as role names in other uml:Dependency connectors.
+No other connector role name reuse is permitted.
+
+The definition of the connector (and its role) should be the same in all occurrences where its target/source role is reused. In most cases this should apply also to the multiplicity of the reused connector roles.
+
+See also generic conventions about also xref:uml/conv-general.adoc#rule:gen-names-unique[Uniqueness and reuse of names] and xref:uml/conv-general.adoc#rule:gen-relation-reuse[Reuse of relations].
