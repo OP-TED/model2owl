@@ -57,22 +57,40 @@
     <a class="nav-link" href="conv-general.html">General Conventions</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-classes.html">uml:Class</a>
+    <a class="nav-link" href="conv-classes.html">Classes</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-attributes.html">uml:Attribute</a>
+    <a class="nav-link" href="conv-attributes.html">Class Attributes</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-enumerations.html">uml:Enumeration</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="conv-connectors.html">Connectors</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-association.html">Association</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-dependency.html">Dependency</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-generalization.html">Generalization</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-realization.html">Realization</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-datatypes.html">uml:DataType</a>
+    <a class="nav-link" href="conv-datatypes.html">Data Types</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-packages.html">uml:Package</a>
+    <a class="nav-link" href="conv-enumerations.html">Enumerations</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-connectors.html">UML Connector Elements</a>
+    <a class="nav-link" href="conv-objects.html">Objects</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-packages.html">Packages</a>
   </li>
 </ul>
   </li>
@@ -143,10 +161,83 @@
 </aside>
 <article class="doc">
 <div class="sect1">
-<h2 id="sec:general_conv"><a class="anchor" href="#sec:general_conv"></a>General Conventions</h2>
+<h2 id="sec:general-conv"><a class="anchor" href="#sec:general-conv"></a>General Conventions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this section we provide a number of general conventions whose fundamental nature can be of two kind:  <em>conventional</em> or <em>technical</em>. Regarding the topic of these conventions, they cover a number of areas: from naming things, to providing appropriate descriptions, to generic recommendations on technical aspects of encoding such information. For each of such topic we will start with <em>conventional recommendations</em>, followed by <em>technical conventions</em>.</p>
+<p>In this section we provide a number of general conventions whose fundamental nature can be of two kind:  <em>conventional</em> or <em>technical</em>. Regarding the topic of these conventions we start with some fundamental ones, and then we cover a number of generic areas: from naming things, to providing appropriate descriptions, to generic recommendations on technical aspects of encoding such information. For each of such topic we will start with <em>conventional recommendations</em>, followed by <em>technical conventions</em>, if both aspects are relevant.</p>
+</div>
+<div class="sect2">
+<h3 id="sec:general-model"><a class="anchor" href="#sec:general-model"></a>Generic conventions on the UML Model</h3>
+<div class="paragraph">
+<p>To reduce the complexity of UML models that one can build, and the conversion of those UML models into derivative artefacts (i.e. OWL ontologies and SHACL shapes), we identified a minimal set of UML model components (UML elements and connectors) that are necessary and sufficient to express most ontological statements that might be needed in practice. For this minimal set of UML model components we convened on a <a href="../transformation/uml2owl-transformation.html" class="xref page">well-defined set of transformation rules</a> to ensure that the generation of derivative artefacts is deterministic and complete. The use of other UML components will be ignored.</p>
+</div>
+<table id="rule:gen-model-elements" class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Supported UML model elements</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
+The UML model shall contain only the following types of UML elements: Class, DataType, Enumeration, Object and Package.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>The Model2OWL tool deals only with the conversion of the following UML elements: Class, DataType, Enumeration, Object and Package. Other UML elements will be ignored, and therefore should not be used.</p>
+</div>
+<table id="rule:gen-model-connectors" class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Supported UML connectors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
+The UML model shall contain only the following types of UML Connectors: Association, Dependency, Generalization and Realization.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="paragraph">
+<p>The Model2OWL tool deals only with the conversion of the following UML connectors: Association, Dependency, Generalization and Realization. Other types of UML connectors will be ignored, and therefore should not be used.</p>
+</div>
+<table id="rule:gen-element-visibility" class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> UML model components should be public</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
+All UML model elements and connectors must be declared with the visibility set to "Public".</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Description:</strong>
+This convention also includes that the UML class attributes have their visibility (or "Scope") set to "Public", and that all named roles specified at either end of any of the connectors have their visibility (or "Access") set to "Public".</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="sec:names"><a class="anchor" href="#sec:names"></a>Naming Conventions</h3>
@@ -323,7 +414,7 @@ Names containing multiple words shall use <em>camelCase</em> or <em>PascalCase</
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Element names (Class, Datatype, Package, Enumeration) must be unique, while the Connector and Attribute names can be reused.</p></td>
+Element names (Class, Datatype, Enumeration, Object, Package) must be unique, while the Attribute and Connector role names, with certain restrictions, can be reused.</p></td>
 </tr>
 </tbody>
 </table>
@@ -341,6 +432,28 @@ Element names (Class, Datatype, Package, Enumeration) must be unique, while the 
 </div>
 <div class="paragraph">
 <p>Although name uniqueness is a recommendation, sometimes it is useful to replicate a UML element. In such cases, when the names are reused, the assumption is that the two UML elements represent manifestations of the same meaning. This is especially important for relations, and is explained in convention [<a href="#rule:gen-relation-reuse">[rule:gen-relation-reuse]</a>].</p>
+</div>
+<div class="paragraph">
+<p>The names of the following THINGS shall be unique against the OTHER THINGS (i.e. shall not be reused as names of the other things):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>elements (Class, DataType, Enumeration, Object, Package) &#8594; elements, attributes, connector roles (dependency &amp; association)</p>
+</li>
+<li>
+<p>attributes &#8594; elements, connector roles (dependency &amp; association)</p>
+</li>
+<li>
+<p>connector role (dependecy &amp; association) &#8594; elements, attributes</p>
+</li>
+<li>
+<p>dependency connector role  → association connector role</p>
+</li>
+<li>
+<p>association connector role → dependency connector role</p>
+</li>
+</ul>
 </div>
 <table id="rule:gen-relation-reuse" class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -746,12 +859,15 @@ UML tags shall be used to provide additional descriptions of the element in a co
 <div class="ulist">
 <ul>
 <li>
-<p>The tag name should be a short URI or short URI with a language tag (e.g. @en).</p>
+<p>The tag name should be provided and should be either a short URI or short URI with a language tag (e.g. @en).</p>
 </li>
 <li>
 <p>There should be a value associated to each tag that appears on an element.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> Tags should not be used as the sole (or primary) source of concept identifier generation, i.e. every UML element that has tags attached, should, in the first place, have a proper name provided, according to the conventions in the [<a href="#sec:names">Naming Conventions</a>] section.</p>
 </div>
 </div>
 </div>

@@ -57,22 +57,40 @@
     <a class="nav-link" href="conv-general.html">General Conventions</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-classes.html">uml:Class</a>
+    <a class="nav-link" href="conv-classes.html">Classes</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-attributes.html">uml:Attribute</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-enumerations.html">uml:Enumeration</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-datatypes.html">uml:DataType</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-packages.html">uml:Package</a>
+    <a class="nav-link" href="conv-attributes.html">Class Attributes</a>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="conv-connectors.html">UML Connector Elements</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="conv-connectors.html">Connectors</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-association.html">Association</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-dependency.html">Dependency</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-generalization.html">Generalization</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-realization.html">Realization</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-datatypes.html">Data Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-enumerations.html">Enumerations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-objects.html">Objects</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-packages.html">Packages</a>
   </li>
 </ul>
   </li>
@@ -132,7 +150,7 @@
   <ul>
     <li><a href="../index.html">model2owl Documentation</a></li>
     <li><a href="conceptual-model-conventions.html">UML Model Conventions</a></li>
-    <li><a href="conv-connectors.html">UML Connector Elements</a></li>
+    <li><a href="conv-connectors.html">Connectors</a></li>
   </ul>
 </nav>
 <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/uml/conv-connectors.adoc">Edit this Page</a></div>
@@ -143,24 +161,24 @@
 </aside>
 <article class="doc">
 <div class="sect1">
-<h2 id="_uml_connector_elements"><a class="anchor" href="#_uml_connector_elements"></a>UML Connector Elements</h2>
+<h2 id="_modeling_relations_with_uml_connectors"><a class="anchor" href="#_modeling_relations_with_uml_connectors"></a>Modeling Relations with UML Connectors</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="sec:relations"><a class="anchor" href="#sec:relations"></a>Conventional recommendations on Relations</h3>
-<table id="rule:connetors-names-with-verb" class="tableblock frame-all grid-all stretch">
+<table id="rule:connectors-names-with-verb" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> uml:Connector names</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Naming relations</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Relations are to be expressed through uml:Connector elements. It is recommended to use a verb in the uml:Connector element names.</p></td>
+Relations are to be expressed through UML Connectors. It is recommended to use a verb in the relation names.</p></td>
 </tr>
 </tbody>
 </table>
@@ -171,22 +189,25 @@ Relations are to be expressed through uml:Connector elements. It is recommended 
 <p>When establishing relations between concepts it is conventional to use verbs of action, state, process or relation, such as "includes", "replaces", "manages". It is required to use a verb or a verb phrase for relationship terms. It should be in <em>lowerCamelCase</em> such that \(&lt;subject-predicate-object&gt;\) triples may actually be read as natural language clauses, e.g. "EconomicOperator offers ProcuredItem" [<a href="../references.html#ref:d2.01-2017" class="xref page">d2.01-2017</a>].</p>
 </div>
 <div class="paragraph">
-<p>The verb phrase must be in present tense, if needed inflected as third person singular. If an additional level of specificity is needed a qualifying nominal phrase may be appended.</p>
+<p>The verb phrase must be in present tense, and, if needed, inflected for third person singular. If an additional level of specificity is needed a qualifying nominal phrase may be appended.</p>
 </div>
-<table id="rule:connetors-bidirectional" class="tableblock frame-all grid-all stretch">
+<div class="paragraph">
+<p>The relation names should be provided as target, and in case of bidirectional association relations also source, role names. For more details on this, see convention about [<a href="#rule:connectors-name">UML Connector names</a>].</p>
+</div>
+<table id="rule:connectors-bidirectional" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Bi-directional relations</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Bidirectional relations</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Relationships are usually bi-directional, and the name for both directions should be provided.</p></td>
+Relationships are usually bidirectional, and the name for both directions should be provided, where it makes sense.</p></td>
 </tr>
 </tbody>
 </table>
@@ -194,9 +215,9 @@ Relationships are usually bi-directional, and the name for both directions shoul
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>Relationships are usually bi-directional and the inverse one should be provided where it makes sense. Adjust the verb phrases in the predicates as appropriate, usually, by employing the <em>active and passive voice</em> in the term formulation brings the desired result. For example, "uses/isUsedBy" and "refersTo/isReferredToBy" or "offers/isOfferedBy" [<a href="../references.html#ref:d2.01-2017" class="xref page">d2.01-2017</a>].</p>
+<p>Relationships are usually bidirectional, and the names of the relations in both directions should be provided, where it makes sense from the modeling point of view. Adjust the verb phrases in the predicates as appropriate. Usually, by employing the <em>active and passive voice</em> in the term formulation brings the desired result. For example, "uses/isUsedBy" and "refersTo/isReferredToBy" or "offers/isOfferedBy" [<a href="../references.html#ref:d2.01-2017" class="xref page">d2.01-2017</a>].</p>
 </div>
-<table id="rule:connetors-inverse" class="tableblock frame-all grid-all stretch">
+<table id="rule:connectors-inverse" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -209,7 +230,7 @@ Relationships are usually bi-directional, and the name for both directions shoul
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Semantically inverse relationships should be represented as two distinct uml:Connector elements.</p></td>
+Semantically inverse relationships should be represented as two distinct UML connectors.</p></td>
 </tr>
 </tbody>
 </table>
@@ -222,7 +243,7 @@ Semantically inverse relationships should be represented as two distinct uml:Con
 <div class="paragraph">
 <p>When the relation is of different nature, more like an attribute, then prefixing and suffixing techniques can be employed. For example, in the Organization Ontology [<a href="../references.html#ref:org-ontology" class="xref page">org-ontology</a>], the concepts of an "Organization" and a "Site" are defined along with two relationships that are the inverse of each other: "Organisation hasSite Site" and "Site siteOf Organisation" [<a href="../references.html#ref:d3.1-2015" class="xref page">d3.1-2015</a>].</p>
 </div>
-<table id="rule:connetors-inverse-definition" class="tableblock frame-all grid-all stretch">
+<table id="rule:connectors-inverse-definition" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -250,21 +271,21 @@ It is recommended that the definition of both the relation and its inverse relat
 </div>
 </div>
 <div class="sect2">
-<h3 id="sec:association"><a class="anchor" href="#sec:association"></a>Technical conventions on uml:Association</h3>
-<table id="rule:association-btw-classes" class="tableblock frame-all grid-all stretch">
+<h3 id="sec:connectors"><a class="anchor" href="#sec:connectors"></a>Technical conventions on connectors</h3>
+<table id="rule:connectors-name" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> uml:Associations connect classes</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> UML Connector names</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-uml:Association elements connect two uml:Classes.</p></td>
+The name of a uml:Connector shall not be specified. For named relations, represented by uml:Association and uml:Dependency connectors, the relation names are to be specified as the target/source role names.</p></td>
 </tr>
 </tbody>
 </table>
@@ -272,22 +293,28 @@ uml:Association elements connect two uml:Classes.</p></td>
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>The uml:Association connectors represent relations between source and target classes. The association connector cannot be used between other kinds of UML elements.</p>
+<p>A generic UML connector may have a name applied to it, and, in addition, it may also have source/target roles specified. This provides flexibility for how the domain knowledge may be expressed in UML. However, this freedom increases the level of ambiguity as well. To reduce ambiguity, streamline the modeling process, and simplify the transformation rules, we convened to express named relations using the connector source/target ends.</p>
 </div>
-<table id="rule:association-target" class="tableblock frame-all grid-all stretch">
+<div class="paragraph">
+<p>This convention prescribes that the name of any of the supported uml:Connector types (see <a href="conv-general.html#rule:gen-model-connectors" class="xref page">Supported UML connectors</a>) should not be specified.</p>
+</div>
+<div class="paragraph">
+<p>For uml:Association and uml:Dependency connectors the name of the relation (and the property to be generated) should be specified through the target role name of the connector. Additionally, for bidirectional uml:Association connectors the source role name should be specified as well. See conventions on <a href="conv-conn-association.html#rule:association-target" class="xref page">Association name</a> and <a href="conv-conn-dependency.html#rule:dependency-target" class="xref page">Dependency name</a>. The role name(s) must be valid, as it is used to generate the OWL property URI.</p>
+</div>
+<table id="rule:connectors-direction" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> uml:Association connector name</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Direction of UML Connectors</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-uml:Association connector elements shall have either a name or a target role specified .</p></td>
+All uml:Connectors must employ "Source&#8594;Target" directions only, with uml:Association connectors allowing also "Bidirectional" direction.</p></td>
 </tr>
 </tbody>
 </table>
@@ -295,77 +322,25 @@ uml:Association connector elements shall have either a name or a target role spe
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>A generic UML connector may have a name applied to it, and it may have source/target roles specified in addition. This provides flexibility to how the domain knowledge may be expressed in UML, however this freedom increases the level of ambiguity as well. Therefore, we foresee two distinct ways to express properties: using the connector generic name, or using the connector source/target ends.</p>
-</div>
-<div class="paragraph">
-<p>First, if a connector name is specified then no source or target roles can be provided. The name must be valid as it is used to generate the OWL property URI. The minimum and maximum cardinality of the relation must be specified as target multiplicity.</p>
-</div>
-<div class="paragraph">
-<p>The second, and recommended approach is if the connector has no name then the target role must be specified. Or the converse, if a target role is specified then no connector name can be specified. Optionally a source role may be provided. In this case the relation direction must be changed from "Source&#8594;Target" to "Bidirectional". Or conversely, if the connector direction is "Bidirectional" then source and target roles must be provided. No other directions are permitted.</p>
-</div>
-<table id="rule:association-multiplicity" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> uml:Association multiplicity</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-uml:Association connector elements shall have their target multiplicity specified. If source role is specified, also their source multiplicity must be specified.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><strong>Description:</strong></p>
-</div>
-<div class="paragraph">
-<p>The target and source multiplicity must be specified accordingly indicating the minimum and maximum cardinality.</p>
-</div>
-<table id="rule:association-definition" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> uml:Association definition</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-uml:Association connector shall have a definition.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><strong>Description:</strong></p>
-</div>
-<div class="paragraph">
-<p>It is recommended that each association has a definition. The definition is then used for each role as they stand for the same meaning manifested in the inverse direction. Additional, specific definition, can be specified along the target and source roles.</p>
+<p>All supported UML connectors shall have direction "Source&#8594;Target". In addition, uml:Association connectors can also be "Bidirectional".</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sec:dependency"><a class="anchor" href="#sec:dependency"></a>Technical conventions on uml:Dependency</h3>
-<table id="rule:dependency-btw-class-and-enum" class="tableblock frame-all grid-all stretch">
+<h3 id="sec:relations-reuse"><a class="anchor" href="#sec:relations-reuse"></a>Reuse of Relations</h3>
+<table id="rule:connectors-reuse" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> uml:Dependency connects classes to enumerations</p></td>
+<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Reuse of UML Connector roles</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-uml:Dependency connectors connect a uml:Class element to a uml:Enumeration element.</p></td>
+Connector role names can be reused, but only as role names in other connectors of the same type.</p></td>
 </tr>
 </tbody>
 </table>
@@ -373,174 +348,16 @@ uml:Dependency connectors connect a uml:Class element to a uml:Enumeration eleme
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>The dependency connector may be used between uml:Class and uml:Enumeration boxes, oriented from the class towards the enumeration. It indicates the class has an owl:ObjectProperty whose range is a controlled vocabulary. The connector must have direction "Source&#8594;Target". No other directions are acceptable.</p>
-</div>
-<table id="rule:dependency-name" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> uml:Dependency connector name</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-uml:Dependency connector elements shall have a valid name.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><strong>Description:</strong></p>
+<p>Connector role names can be reused, but only as role names in other connectors of the same type.
+That is, uml:Association role names can be reused only as role names in other uml:Association connectors,
+and uml:Dependency role names can be reused only as role names in other uml:Dependency connectors.
+No other connector role name reuse is permitted.</p>
 </div>
 <div class="paragraph">
-<p>The connector must have a valid name and no source/target roles are acceptable.</p>
-</div>
-<table id="rule:dependency-multiplicity" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> uml:Dependency multiplicity</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-uml:Dependency connector elements shall have their target multiplicity specified.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><strong>Description:</strong></p>
+<p>The definition of the connector (and its role) should be the same in all occurrences where its target/source role is reused. In most cases this should apply also to the multiplicity of the reused connector roles.</p>
 </div>
 <div class="paragraph">
-<p>The multiplicity must be specified at the target of the uml:Dependency connector.</p>
-</div>
-<div class="paragraph">
-<p>In the transformation process, for the reasoning purposes, the range of the property must be expressed as a range restriction using <code>owl:oneOf</code> the values from the enumeration Concept scheme. This is also valuable for generating SHACL shapes.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sec:genaralization"><a class="anchor" href="#sec:genaralization"></a>Technical conventions on uml:Generalization</h3>
-<table id="rule:generalization-btw-classes" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> uml:Generalization connects classes and sub-classes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-uml:Generalization connectors connect a uml:Class element to its superclass uml:Class element.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><strong>Description:</strong></p>
-</div>
-<div class="paragraph">
-<p>The uml:Generalization connector signifies a class-subClass relation and is transformed into <code>rdfs:subClassOf</code> relation standing between source and target classes.</p>
-</div>
-<table id="rule:generalization-name" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> uml:Generalization connector with no name</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-uml:Generalization connector elements shall have no name or a target role specified.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><strong>Description:</strong></p>
-</div>
-<div class="paragraph">
-<p>The uml:Generalization connectors must have no name or source/target roles specified in the UML model.</p>
-</div>
-<table id="rule:connetors-proxy-classes" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Proxy classes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-For classes defined in external models proxy uml:Class elements should be defined.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><strong>Description:</strong></p>
-</div>
-<div class="paragraph">
-<p>In case a model class should inherit a class from an external model then proxies must be created for those classes. For example, if <code>Buyer</code> specialises an <code>org:Organization</code>, then a proxy for <code>org:Organization</code> must be created in the <code>org</code> package.</p>
-</div>
-<table id="rule:connetors-disjoint-subclasses" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Disjoint subclasses</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Subclasses of the same class, represented by multiple uml:Generalization connectors pointing to the same superclass, are assumed disjoint by default. Exceptions may exist and can be encoded.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><strong>Description:</strong></p>
-</div>
-<div class="paragraph">
-<p>In this specification, the subclasses are assumed disjoint by default, unless otherwise specified in the transformations script, or explicitly marked on the generalisation relation with <code>&lt;&lt;non-disjoint&gt;&gt;</code> stereotype. For the converse case the <code>&lt;&lt;disjoint&gt;&gt;</code> stereotype shall be used.</p>
-</div>
-<table id="rule:connetors-equivalent-classes" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Equivalent classes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier</strong> -</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Equivalent classes can be represented by using stereotypes on the uml:Generalization connectors.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><strong>Description:</strong></p>
-</div>
-<div class="paragraph">
-<p>In case two classes are equivalent, then the \(&lt;&lt;equivalent&gt;&gt;\) or \(&lt;&lt;complete&gt;&gt;\) stereotype should be used as a marker.</p>
+<p>See also generic conventions about also <a href="conv-general.html#rule:gen-names-unique" class="xref page">Uniqueness and reuse of names</a> and <a href="conv-general.html#rule:gen-relation-reuse" class="xref page">Reuse of relations</a>.</p>
 </div>
 </div>
 </div>

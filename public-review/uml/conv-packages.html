@@ -57,22 +57,40 @@
     <a class="nav-link" href="conv-general.html">General Conventions</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-classes.html">uml:Class</a>
+    <a class="nav-link" href="conv-classes.html">Classes</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-attributes.html">uml:Attribute</a>
+    <a class="nav-link" href="conv-attributes.html">Class Attributes</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-enumerations.html">uml:Enumeration</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="conv-connectors.html">Connectors</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-association.html">Association</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-dependency.html">Dependency</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-generalization.html">Generalization</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-realization.html">Realization</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-datatypes.html">uml:DataType</a>
+    <a class="nav-link" href="conv-datatypes.html">Data Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-enumerations.html">Enumerations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-objects.html">Objects</a>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="conv-packages.html">uml:Package</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-connectors.html">UML Connector Elements</a>
+    <a class="nav-link" href="conv-packages.html">Packages</a>
   </li>
 </ul>
   </li>
@@ -132,7 +150,7 @@
   <ul>
     <li><a href="../index.html">model2owl Documentation</a></li>
     <li><a href="conceptual-model-conventions.html">UML Model Conventions</a></li>
-    <li><a href="conv-packages.html">uml:Package</a></li>
+    <li><a href="conv-packages.html">Packages</a></li>
   </ul>
 </nav>
 <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/uml/conv-packages.adoc">Edit this Page</a></div>
@@ -217,7 +235,7 @@ There shall be no empty packages.</p></td>
 <div class="paragraph">
 <p>No empty packages shall be present in the model. A package is empty if it contains no child elements.</p>
 </div>
-<table id="rule:package-names" class="tableblock frame-all grid-all stretch">
+<table id="rule:package-name" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -238,7 +256,7 @@ Package names shall be short lowercase strings representing an acronym or a shor
 <p><strong>Description:</strong></p>
 </div>
 <div class="paragraph">
-<p>Package names shall be short, lowercase, normalised strings representing an acronym or a short name. They may serve as proxies for the namespace prefixes and used to resolve the name of any comprised elements when the prefix is not provided. This however should not be used as a primary naming method, but rather for suggesting corrections in the element name.</p>
+<p>All packages shall have a name. Package names shall be short, lowercase, normalised strings representing an acronym or a short name. They may serve as proxies for the namespace prefixes and used to resolve the name of any comprised elements when the prefix is not provided. This however should not be used as a primary naming method, but rather for suggesting corrections in the element name.</p>
 </div>
 </div>
 </div>

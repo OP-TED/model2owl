@@ -57,22 +57,40 @@
     <a class="nav-link" href="conv-general.html">General Conventions</a>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="conv-classes.html">uml:Class</a>
+    <a class="nav-link" href="conv-classes.html">Classes</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-attributes.html">uml:Attribute</a>
+    <a class="nav-link" href="conv-attributes.html">Class Attributes</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-enumerations.html">uml:Enumeration</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="conv-connectors.html">Connectors</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-association.html">Association</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-dependency.html">Dependency</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-generalization.html">Generalization</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-realization.html">Realization</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-datatypes.html">uml:DataType</a>
+    <a class="nav-link" href="conv-datatypes.html">Data Types</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-packages.html">uml:Package</a>
+    <a class="nav-link" href="conv-enumerations.html">Enumerations</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-connectors.html">UML Connector Elements</a>
+    <a class="nav-link" href="conv-objects.html">Objects</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-packages.html">Packages</a>
   </li>
 </ul>
   </li>
@@ -132,7 +150,7 @@
   <ul>
     <li><a href="../index.html">model2owl Documentation</a></li>
     <li><a href="conceptual-model-conventions.html">UML Model Conventions</a></li>
-    <li><a href="conv-classes.html">uml:Class</a></li>
+    <li><a href="conv-classes.html">Classes</a></li>
   </ul>
 </nav>
 <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/uml/conv-classes.adoc">Edit this Page</a></div>
@@ -194,7 +212,7 @@ Class names shall be formulated in singular.</p></td>
 <p>A class name represents a collection of objects. For example, a class "Language" actually represents all languages. Therefore, it could be more natural for some model designers to call the class "Languages" rather than "Language". In practice, however, the singular is used more often for class names, while the plural for sets and collections [<a href="../references.html#ref:noy2001" class="xref page">noy2001</a>]. Therefore, it is required that the class names must always use the singular lexical form.</p>
 </div>
 <div class="paragraph">
-<p>[[rule:class-name-capitalisation]</p>
+<p>[[rule:class-name-capitalise]</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>

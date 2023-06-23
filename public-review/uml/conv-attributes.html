@@ -57,22 +57,40 @@
     <a class="nav-link" href="conv-general.html">General Conventions</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-classes.html">uml:Class</a>
+    <a class="nav-link" href="conv-classes.html">Classes</a>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="conv-attributes.html">uml:Attribute</a>
+    <a class="nav-link" href="conv-attributes.html">Class Attributes</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-enumerations.html">uml:Enumeration</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="conv-connectors.html">Connectors</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-association.html">Association</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-dependency.html">Dependency</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-generalization.html">Generalization</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="conv-conn-realization.html">Realization</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-datatypes.html">uml:DataType</a>
+    <a class="nav-link" href="conv-datatypes.html">Data Types</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-packages.html">uml:Package</a>
+    <a class="nav-link" href="conv-enumerations.html">Enumerations</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-connectors.html">UML Connector Elements</a>
+    <a class="nav-link" href="conv-objects.html">Objects</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="conv-packages.html">Packages</a>
   </li>
 </ul>
   </li>
@@ -132,7 +150,7 @@
   <ul>
     <li><a href="../index.html">model2owl Documentation</a></li>
     <li><a href="conceptual-model-conventions.html">UML Model Conventions</a></li>
-    <li><a href="conv-attributes.html">uml:Attribute</a></li>
+    <li><a href="conv-attributes.html">Class Attributes</a></li>
   </ul>
 </nav>
 <div class="edit-this-page"><a href="https://github.com/OP-TED/model2owl/edit/feature/EPO-721/docs/modules/ROOT/pages/uml/conv-attributes.adoc">Edit this Page</a></div>
@@ -143,7 +161,7 @@
 </aside>
 <article class="doc">
 <div class="sect1">
-<h2 id="_conventions_on_umlattribute_elements"><a class="anchor" href="#_conventions_on_umlattribute_elements"></a>Conventions on uml:Attribute elements</h2>
+<h2 id="_conventions_on_attributes_of_umlclass_elements"><a class="anchor" href="#_conventions_on_attributes_of_umlclass_elements"></a>Conventions on Attributes of uml:Class elements</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="sec:attributes"><a class="anchor" href="#sec:attributes"></a>Conventional recommendations on Attributes</h3>
@@ -256,6 +274,9 @@ Attribute names can be reused only as attributes in other classes, not as relati
 </div>
 <div class="paragraph">
 <p>It is mandatory to avoid using the same name in an attribute and in a relation, unless an additional rule that handles intentional exceptions exists.</p>
+</div>
+<div class="paragraph">
+<p>The definition and datatype (and in most cases also the multiplicity) of the attribute should be the same in all classes where it is reused.</p>
 </div>
 </div>
 </div>
