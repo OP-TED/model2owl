@@ -6,7 +6,58 @@ In this section we provide a number of general conventions whose fundamental nat
 [[sec:general-model]]
 === Generic conventions on the UML Model
 
-TODO: add generic rules
+To reduce the complexity of UML models that one can build, and the conversion of those UML models into derivative artefacts (i.e. OWL ontologies and SHACL shapes), we identified a minimal set of UML model components (UML elements and connectors) that are necessary and sufficient to express most ontological statements that might be needed in practice. For this minimal set of UML model components we convened on a xref:transformation/uml2owl-transformation.adoc[well-defined set of transformation rules] to ensure that the generation of derivative artefacts is deterministic and complete. The use of other UML components will be ignored.
+
+
+[[rule:gen-model-elements]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Supported UML model elements
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+The UML model shall contain only the following types of UML elements: Class, DataType, Enumeration, Object and Package.
+|===
+
+*Description:*
+
+The Model2OWL tool deals only with the conversion of the following UML elements: Class, DataType, Enumeration, Object and Package. Other UML elements will be ignored, and therefore should not be used.
+
+
+[[rule:gen-model-connectors]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Supported UML connectors
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+The UML model shall contain only the following types of UML Connectors: Association, Dependency, Generalization and Realization.
+|===
+
+*Description:*
+
+The Model2OWL tool deals only with the conversion of the following UML connectors: Association, Dependency, Generalization and Realization. Other types of UML connectors will be ignored, and therefore should not be used.
+
+
+[[rule:gen-element-visibility]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* UML model components should be public
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+All UML model elements and connectors must be declared with the visibility set to "Public".
+|===
+
+*Description:*
+This convention also includes that the UML class attributes have their visibility (or "Scope") set to "Public", and that all named roles specified at either end of any of the connectors have their visibility (or "Access") set to "Public".
+
 
 [[sec:names]]
 === Naming Conventions
