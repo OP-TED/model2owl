@@ -27,16 +27,14 @@ The uml:Association connectors represent relations between source and target cla
 *Identifier* -
 
 |*Statement:*
-uml:Association connector elements shall have either a name or a target role specified .
+uml:Association connectors shall have no name specified. They shall have a valid target role (and optionally a source role) name specified.
 |===
 
 *Description:*
 
-A generic UML connector may have a name applied to it, and it may have source/target roles specified in addition. This provides flexibility to how the domain knowledge may be expressed in UML, however this freedom increases the level of ambiguity as well. Therefore, we foresee two distinct ways to express properties: using the connector generic name, or using the connector source/target ends.
+An Association connector shall have no name specified (see the xref:uml/conv-connectors.adoc#rule:connectors-name[General convention on connector names]).
 
-First, if a connector name is specified then no source or target roles can be provided. The name must be valid as it is used to generate the OWL property URI. The minimum and maximum cardinality of the relation must be specified as target multiplicity. This approach is discouraged.
-
-The second approach, which is the recommended one, is to use the target role to express the property. If the connector has no name then the target role must be specified. Or the converse, if a target role is specified then no connector name can be specified. Optionally a source role may be provided. In this case the relation direction must be changed from "Source->Target" to "Bidirectional". Or conversely, if the connector direction is "Bidirectional" then source and target roles must be provided. No other directions are permitted.
+An Association connector shall have a target role specified. The target role name is used to specify the property that this connector represents. Optionally, a source role may also be provided. In this case the relation direction must be changed from "Source->Target" to "Bidirectional". Or conversely, if the connector direction is "Bidirectional" then source and target roles must be provided. No other directions are permitted. The role name(s) must be valid, as it is used to generate the OWL property URI(s).
 
 
 [[rule:association-multiplicity]]
@@ -48,7 +46,7 @@ The second approach, which is the recommended one, is to use the target role to 
 *Identifier* -
 
 |*Statement:*
-uml:Association connector elements shall have their target multiplicity specified. If source role is specified, also their source multiplicity must be specified.
+uml:Association connectors shall have their target multiplicity specified. If source role is specified, also their source multiplicity must be specified.
 |===
 
 *Description:*

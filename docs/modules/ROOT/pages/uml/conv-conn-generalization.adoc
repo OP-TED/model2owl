@@ -28,7 +28,7 @@ The uml:Generalization connector signifies a class-subClass relation and is tran
 *Identifier* -
 
 |*Statement:*
-uml:Generalization connector elements shall have no name or a target role specified.
+uml:Generalization connectors shall have no name or a target role specified.
 |===
 
 *Description:*
@@ -36,7 +36,7 @@ uml:Generalization connector elements shall have no name or a target role specif
 The uml:Generalization connectors must have no name or source/target roles specified in the UML model.
 
 
-[[rule:connetors-proxy-classes]]
+[[rule:generalization-proxy-classes]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Proxy classes
@@ -53,7 +53,7 @@ For classes defined in external models proxy uml:Class elements should be define
 In case a model class should inherit a class from an external model then proxies must be created for those classes. For example, if `Buyer` specialises an `org:Organization`, then a proxy for `org:Organization` must be created in the `org` package.
 
 
-[[rule:connetors-disjoint-subclasses]]
+[[rule:generalization-disjoint-subclasses]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Disjoint subclasses
@@ -71,7 +71,7 @@ In this specification, the subclasses are assumed disjoint by default, unless ot
 
 
 
-[[rule:connetors-equivalent-classes]]
+[[rule:generalization-equivalent-classes]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* Equivalent classes
