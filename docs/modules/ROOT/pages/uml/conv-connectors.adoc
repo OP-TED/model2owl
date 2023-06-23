@@ -105,3 +105,20 @@ A generic UML connector may have a name applied to it, and, in addition, it may 
 This convention prescribes that the name of any of the supported uml:Connector types (see xref:uml/conv-general.adoc#rule:gen-model-connectors[Supported UML connectors]) should not be specified.
 
 For uml:Association and uml:Dependency connectors the name of the relation (and the property to be generated) should be specified through the target role name of the connector. Additionally, for bidirectional uml:Association connectors the source role name should be specified as well. See conventions on xref:uml/conv-conn-association.adoc#rule:association-target[Association name] and xref:uml/conv-conn-dependency.adoc#rule:dependency-target[Dependency name]. The role name(s) must be valid, as it is used to generate the OWL property URI.
+
+
+[[rule:connectors-direction]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Direction of UML Connector names
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier* -
+
+|*Statement:*
+All uml:Connectors must employ "Source->Target" directions only, with uml:Association connectors allowing also "Bidirectional" direction.
+|===
+
+*Description:*
+
+All supported UML connectors shall have direction "Source->Target". In addition, uml:Association connectors can also be "Bidirectional".
