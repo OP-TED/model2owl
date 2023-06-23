@@ -2,21 +2,21 @@
 == Conventions on uml:Dependency Connectors
 
 
-[[rule:dependency-btw-class-and-enum]]
+[[rule:dependency-btw-class-and-enum-or-object      rule:dependency-btw-class-and-enum-or-object]]
 |===
 |{set:cellbgcolor: #a8c6f7}
- *Title:* uml:Dependency connects classes to enumerations
+ *Title:* uml:Dependency connects classes to enumerations or objects
 
 |{set:cellbgcolor: #f5f8fc}
 *Identifier* -
 
 |*Statement:*
-uml:Dependency connectors connect a uml:Class element to a uml:Enumeration element.
+uml:Dependency connectors connect a uml:Class element to a uml:Enumeration element or a uml:Object element.
 |===
 
 *Description:*
 
-The dependency connector may be used between uml:Class and uml:Enumeration boxes, oriented from the class towards the enumeration. It indicates the class has an owl:ObjectProperty whose range is a controlled vocabulary. The connector must have direction "Source->Target". No other directions are acceptable.
+The dependency connector may be used between uml:Class and uml:Enumeration or uml:Object boxes, oriented from the class towards the enumeration or object. It indicates the class has an owl:ObjectProperty whose range is a controlled vocabulary. The connector must have direction "Source->Target". No other directions are acceptable.
 
 
 [[rule:dependency-target]]
