@@ -197,7 +197,7 @@ Exceptionally, if the conceptual model authors must maintain high readability of
 *Identifier* -
 
 |*Statement:*
-Element names (Class, Datatype, Package, Enumeration) must be unique, while the Connector and Attribute names can be reused.
+Element names (Class, Datatype, Enumeration, Object, Package) must be unique, while the Attribute and Connector role names, with certain restrictions, can be reused.
 |===
 
 *Description:*
@@ -209,6 +209,14 @@ This means that there cannot exist a class and an attribute with the same name (
 Names that reduce to the same identifier are considered the same. For example "Legal Entity" and "LegalEntity" are different labels, but they reduce to the same identifier "LegalEntity". In such cases the names are considered equal and the UML elements replicated.
 
 Although name uniqueness is a recommendation, sometimes it is useful to replicate a UML element. In such cases, when the names are reused, the assumption is that the two UML elements represent manifestations of the same meaning. This is especially important for relations, and is explained in convention [xref:#rule:gen-relation-reuse[]].
+
+The names of the following THINGS shall be unique against the OTHER THINGS (i.e. shall not be reused as names of the other things):
+
+* elements (Class, DataType, Enumeration, Object, Package) -> elements, attributes, connector roles (dependency & association)
+* attributes -> elements, connector roles (dependency & association)
+* connector role (dependecy & association) -> elements, attributes
+* dependency connector role  → association connector role
+* association connector role → dependency connector role
 
 
 //[[sec:relation-reusability]]
