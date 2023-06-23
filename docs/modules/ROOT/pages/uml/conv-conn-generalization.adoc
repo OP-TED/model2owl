@@ -2,22 +2,24 @@
 == Conventions on uml:Generalization Connectors
 
 
-[[rule:generalization-btw-classes]]
+[[rule:generalization-btw-classes-or-connectors]]
 |===
 |{set:cellbgcolor: #a8c6f7}
- *Title:* uml:Generalization connects classes and sub-classes
+ *Title:* uml:Generalization connects two classes or two connectors
 
 |{set:cellbgcolor: #f5f8fc}
 *Identifier* -
 
 |*Statement:*
-uml:Generalization connectors connect a uml:Class element to its superclass uml:Class element.
+uml:Generalization connectors connect a uml:Class element to its superclass uml:Class element, or a uml:Connector to its super-property uml:Connector.
 |===
 
 *Description:*
 
-The uml:Generalization connector signifies a class-subClass relation and is transformed into `rdfs:subClassOf` relation standing between source and target classes.
+The uml:Generalization connector signifies either:
 
+* a class-subClass relation and is transformed into `rdfs:subClassOf` relation standing between source and target classes, or
+* a property-subProperty relation and is transformed into `rdfs:subPropertyOf` relation standing between source and target properties
 
 [[rule:generalization-name]]
 |===
