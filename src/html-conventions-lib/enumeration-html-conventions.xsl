@@ -88,6 +88,10 @@
             <xsl:call-template name="nonPublicElement">
                 <xsl:with-param name="element" select="."/>
             </xsl:call-template>
+            <xsl:call-template name="elementUniqueName">
+                <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="isAttribute" select="fn:false()"/>
+            </xsl:call-template>
             <!--    End of common checkers rules     -->   
             <!--    Start of specific checker rules-->
 
@@ -95,9 +99,9 @@
                 <xsl:with-param name="enumeration" select="."/>
             </xsl:call-template>
 
-            <xsl:call-template name="enumerationUniqueName">
+  <!--          <xsl:call-template name="enumerationUniqueName">
                 <xsl:with-param name="enumeration" select="."/>
-            </xsl:call-template>
+            </xsl:call-template>-->
             
             <xsl:call-template name="enumerationOutgoingConnectors">
                 <xsl:with-param name="enumeration" select="."/>
@@ -142,7 +146,7 @@
 
   
 
-    <xd:doc>
+<!--    <xd:doc>
         <xd:desc>[enumeration-name-1] - The name $value$ is not unique. The Concept names should be
             unique within the model; while the relations may repeat but should not overlap with
             concept names. </xd:desc>
@@ -167,7 +171,7 @@
                     "
             />
         </xsl:if>
-    </xsl:template>
+    </xsl:template>-->
     
     <xd:doc>
         <xd:desc>[enumeration-attribute-2] The enumeration $value$ shall have no values/attributes defined. 

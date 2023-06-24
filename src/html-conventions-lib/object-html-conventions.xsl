@@ -90,21 +90,25 @@
             <xsl:call-template name="nonPublicElement">
                 <xsl:with-param name="element" select="."/>
             </xsl:call-template>
-            
-            <!--    End of common checkers rules     -->   
+            <xsl:call-template name="elementUniqueName">
+                <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="isAttribute" select="fn:false()"/>
+            </xsl:call-template>
+
+            <!--    End of common checkers rules     -->
             <!--    Start of specific checker rules-->
             <xsl:call-template name="objectItemsChecker">
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
-            
-            <xsl:call-template name="objectUniqueName">
+
+<!--            <xsl:call-template name="objectUniqueName">
                 <xsl:with-param name="object" select="."/>
-            </xsl:call-template>
-            
+            </xsl:call-template>-->
+
             <xsl:call-template name="objectOutgoingConnectors">
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
-            
+
             <xsl:call-template name="objectInstanceConnectors">
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
@@ -145,7 +149,7 @@
         </xsl:choose>
     </xsl:template>
     
-    <xd:doc>
+<!--    <xd:doc>
         <xd:desc>[object-name-1] - The name $value$ is not unique. The Concept names should be
             unique within the model; while the relations may repeat but should not overlap with
             concept names. </xd:desc>
@@ -170,7 +174,7 @@
                 "
             />
         </xsl:if>
-    </xsl:template>
+    </xsl:template>-->
     
     <xd:doc>
         <xd:desc>[object-attribute-2] The object $value$ shall have no values/attributes defined. 

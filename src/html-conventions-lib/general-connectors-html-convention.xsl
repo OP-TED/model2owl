@@ -320,8 +320,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[connector-stereotype-10] - The $stereotypeName$ stareotype is applied to connector.
-            Stereotypes are discouraged in the current practice with some exceptions. </xd:desc>
+        <xd:desc>[connector-stereotype-10] - The $stereotypeName$ stareotype is applied to
+            connector. Stereotypes are discouraged in the current practice with some exceptions. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
     <xsl:template name="connectorStereotypeProvided">
@@ -501,7 +501,7 @@
         <xsl:variable name="targetName" select="$connector/target/role/@name"/>
         <xsl:sequence
             select="
-            if (($numberOfTags > 0) and not(boolean($targetName))) then
+                if (($numberOfTags > 0) and not(boolean($targetName))) then
                     f:generateHtmlWarning(fn:concat('The connector ', f:getConnectorName($connector), ' target role has tag annotations but no name. The connector must have a target role to sustain annotations.'))
                 else
                     ()
@@ -541,8 +541,8 @@
         <xsl:sequence
             select="
                 if ($numberOfTags > 0) then
-                    f:generateHtmlWarning(fn:concat('The connector ', f:getConnectorName($connector), ' has tag annotations.', 
-            'The connector is not transformed into a property and therefore any tag will be ignored.'))
+                    f:generateHtmlWarning(fn:concat('The connector ', f:getConnectorName($connector), ' has tag annotations.',
+                    'The connector is not transformed into a property and therefore any tag will be ignored.'))
                 else
                     ()
                 "
@@ -550,8 +550,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[connector-name-19] - The connector has a general name, and it should not. The names
-            must be provided as connector source and target roles, not as connector name. </xd:desc>
+        <xd:desc>[connector-name-19] - The connector has a general name, and it should not. The
+            names must be provided as connector source and target roles, not as connector name. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
     <xsl:template name="connectorGeneralNameProvided">
@@ -687,5 +687,134 @@
             />
         </xsl:if>
     </xsl:template>
+
+    <xd:doc>
+        <xd:desc>[common-name-unique] - The connector role name $value$ is not unique. </xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    <xsl:template name="connectorUniqueName">
+        <xsl:param name="connector"/>
+        <xsl:variable name="sourceRole" select="$connector/source/role/@name"/>
+        <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
+
+        <xsl:if test="boolean($sourceRole)">
+            <xsl:variable name="elementsFound"
+                select="f:getElementByName($sourceRole, root($connector))"/>
+            <xsl:variable name="attributesFound"
+                select="f:getAttributeByName($sourceRole, root($connector))"/>
+
+            <xsl:sequence
+                select="
+                    if (count($elementsFound) > 1 or count($attributesFound) > 0) then
+                        f:generateHtmlError(fn:concat('The connector role name ', $sourceRole, ' is not unique.'))
+                    else
+                        ()
+                    
+                    "
+            />
+        </xsl:if>
+        <xsl:if test="boolean($targetRole)">
+            <xsl:variable name="elementsFound"
+                select="f:getElementByName($targetRole, root($connector))"/>
+            <xsl:variable name="attributesFound"
+                select="f:getAttributeByName($targetRole, root($connector))"/>
+
+            <xsl:sequence
+                select="
+                    if (count($elementsFound) > 1 or count($attributesFound) > 0) then
+                        f:generateHtmlError(fn:concat('The connector role name ', $targetRole, ' is not unique.'))
+                    else
+                        ()
+                    
+                    "
+            />
+        </xsl:if>
+    </xsl:template>
+
+
+    <xd:doc>
+        <xd:desc>[association-dependency-checker] - Connector role names are used in other
+            connectors </xd:desc>
+        <xd:param name="connector"/>
+        <xd:param name="isDependency"/>
+    </xd:doc>
+    <xsl:template name="connectorRoleCheck">
+        <xsl:param name="isDependency"/>
+        <xsl:param name="connector"/>
+        <xsl:variable name="sourceRole" select="$connector/source/role/@name"/>
+        <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
+
+
+        <xsl:if test="boolean($sourceRole)">
+            <xsl:choose>
+                <xsl:when test="$isDependency = fn:true()">
+                    <xsl:variable name="connectorsFound"
+                        select="f:getConnectorByName($sourceRole, root($connector))/properties[@ea_type = 'Association']"/>
+
+                    <xsl:sequence
+                        select="
+                            if (count($connectorsFound) > 0) then
+                                f:generateHtmlError(fn:concat('The connector role name ', $sourceRole, ' is used in other connectors.'))
+                            else
+                                ()
+                            
+                            "
+                    />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:variable name="connectorsFound"
+                        select="f:getConnectorByName($sourceRole, root($connector))/properties[@ea_type = 'Dependency']"/>
+
+                    <xsl:sequence
+                        select="
+                            if (count($connectorsFound) > 0) then
+                                f:generateHtmlError(fn:concat('The connector role name ', $sourceRole, ' is used in other connectors.'))
+                            else
+                                ()
+                            
+                            "
+                    />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
+
+        <xsl:if test="boolean($targetRole)">
+            <xsl:choose>
+                <xsl:when test="$isDependency = fn:true()">
+                    <xsl:variable name="connectorsFound"
+                        select="f:getConnectorByName($targetRole, root($connector))/properties[@ea_type = 'Association']"/>
+
+                    <xsl:sequence
+                        select="
+                            if (count($connectorsFound) > 0) then
+                                f:generateHtmlError(fn:concat('The connector role name ', $targetRole, ' is used in other connectors.'))
+                            else
+                                ()
+                            
+                            "
+                    />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:variable name="connectorsFound"
+                        select="f:getConnectorByName($targetRole, root($connector))/properties[@ea_type = 'Dependency']"/>
+
+                    <xsl:sequence
+                        select="
+                            if (count($connectorsFound) > 0) then
+                                f:generateHtmlError(fn:concat('The connector role name ', $targetRole, ' is used in other connectors.'))
+                            else
+                                ()
+                            
+                            "
+                    />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
+
+    </xsl:template>
+
+
+
+
 
 </xsl:stylesheet>

@@ -49,8 +49,9 @@
 
     
     <x:scenario label="Scenario for finding a object with unique name">
-        <x:call template="objectUniqueName">
-            <x:param name="object" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[65]"/>
+        <x:call template="elementUniqueName">
+            <x:param name="element" href="../../testData/eNotice_CM.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[65]"/>
+            <x:param name="isAttribute" select="false()"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>

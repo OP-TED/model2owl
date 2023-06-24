@@ -90,15 +90,20 @@
             <xsl:call-template name="nonPublicElement">
                 <xsl:with-param name="element" select="."/>
             </xsl:call-template>
+            
+            <xsl:call-template name="elementUniqueName">
+                <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="isAttribute" select="fn:false()"/>
+            </xsl:call-template>
             <!--    End of common checkers rules     -->   
             <!--    Start of specific checker rules-->
             
             <xsl:call-template name="dataTypeIncorrectType">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="dataTypeUniqueName">
+<!--            <xsl:call-template name="dataTypeUniqueName">
                 <xsl:with-param name="dataTypeElement" select="."/>
-            </xsl:call-template>
+            </xsl:call-template>-->
             <xsl:call-template name="dataTypeAttributeChecker">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
@@ -137,7 +142,7 @@
     </xsl:template>
     
     
-    <xd:doc>
+<!--    <xd:doc>
         <xd:desc>[datatype-name-1] - The name $value$ is not unique. The Concept names should be
             unique within the model; while the relations may repeat but should not overlap with
             concept names. </xd:desc>
@@ -162,7 +167,7 @@
                 "
             />
         </xsl:if>
-    </xsl:template>
+    </xsl:template>-->
 
     <xd:doc>
         <xd:desc>[datatype-name-2] - The datatype is not an XSD or RDF datatype. 
