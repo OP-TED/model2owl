@@ -23,6 +23,7 @@ In this section are specified transformation rules for UML association, generali
 |Class equivalence | | |<<rule:equivalent-classes-rc>>
 |Property equivalence | | |<<rule:equivalent-properties-rc>>
 |Disjoint classes | | |<<rule:disjoint-classes-rc>>
+|Realisation |<<rule:realisation-class-core>> | |
 |===
 
 [[sec:association-uni]]
@@ -620,3 +621,36 @@ For the generalisation relations depicted in xref:fig:generalisation-visual[], t
 ----
 |===
 
+
+[[sec:realisation]]
+=== Realisation relations
+
+Realisation defines a relationship between an Object element and a UML Class or Enumeration element. At the moment we only provide transformation rules for UML Realization connectors that connect to UML Classes.
+
+//.Visual representation of UML realisation (on the left) and OWL instanceOf relation (on the right)
+//[#fig:realisation-visual]
+//image::fxxx.png[xxx]
+
+
+[#rule:realisation-class-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Class realisation -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Declare an individual with a specified class as its type, for a UML Realization connector between a UML Object and a UML Class.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Individual declaration in Turtle syntax
+[source,Turtle]
+----
+:ObjectName a owl:NamedIndividual, :ClassName .
+----
+|
+.Individual declaration in RDF/XML syntax
+[source,XML]
+----
+<owl:NamedIndividual rdf:about="http://base.onto.uri/ObjectName">
+    <rdf:type rdf:resource="http://base.onto.uri/ClassName"/>
+</owl:NamedIndividual>
+----
+|===
