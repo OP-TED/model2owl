@@ -705,7 +705,7 @@
 
             <xsl:sequence
                 select="
-                    if (count($elementsFound) > 1 or count($attributesFound) > 0) then
+                    if (count($elementsFound) > 0 or count($attributesFound) > 0) then
                         f:generateHtmlError(fn:concat('The connector role name ', $sourceRole, ' is not unique.'))
                     else
                         ()
@@ -721,7 +721,7 @@
 
             <xsl:sequence
                 select="
-                    if (count($elementsFound) > 1 or count($attributesFound) > 0) then
+                    if (count($elementsFound) > 0 or count($attributesFound) > 0) then
                         f:generateHtmlError(fn:concat('The connector role name ', $targetRole, ' is not unique.'))
                     else
                         ()
@@ -734,7 +734,7 @@
 
     <xd:doc>
         <xd:desc>[association-dependency-checker] - Connector role names are used in other
-            connectors </xd:desc>
+            connectors types </xd:desc>
         <xd:param name="connector"/>
         <xd:param name="isDependency"/>
     </xd:doc>

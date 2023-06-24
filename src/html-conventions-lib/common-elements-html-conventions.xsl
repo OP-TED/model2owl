@@ -409,7 +409,7 @@
                 <xsl:when test="$isAttribute = fn:true()">
                     <xsl:sequence
                         select="
-                            if (count($elementsFound) > 1 or count($connectorsFound) > 0) then
+                            if (count($elementsFound) > 0 or count($connectorsFound) > 0) then
                                 f:generateHtmlError(fn:concat('The name ', $element/@name, ' is not unique. The Concept names ',
                                 'should be unique within the model; while the relations may repeat ',
                                 'but should not overlap with concept names. '))

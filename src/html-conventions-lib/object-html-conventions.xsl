@@ -101,9 +101,7 @@
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
 
-<!--            <xsl:call-template name="objectUniqueName">
-                <xsl:with-param name="object" select="."/>
-            </xsl:call-template>-->
+
 
             <xsl:call-template name="objectOutgoingConnectors">
                 <xsl:with-param name="object" select="."/>
@@ -149,32 +147,7 @@
         </xsl:choose>
     </xsl:template>
     
-<!--    <xd:doc>
-        <xd:desc>[object-name-1] - The name $value$ is not unique. The Concept names should be
-            unique within the model; while the relations may repeat but should not overlap with
-            concept names. </xd:desc>
-        <xd:param name="object"/>
-    </xd:doc>
-    <xsl:template name="objectUniqueName">
-        <xsl:param name="object"/>
-        <xsl:if test="boolean($object/@name)">
-            <xsl:variable name="elementsFound"
-                select="f:getElementByName($object/@name, root($object))"/>
-            <xsl:variable name="connectorsFound"
-                select="f:getConnectorByName($object/@name, root($object))"/>
-            <xsl:sequence
-                select="
-                if (count($elementsFound) > 1 or count($connectorsFound) > 0) then
-                f:generateHtmlError(fn:concat('The name ', $object/@name, ' is not unique. The Concept names ',
-                'should be unique within the model; while the relations may repeat ',
-                'but should not overlap with concept names. '))
-                else
-                ()
-                
-                "
-            />
-        </xsl:if>
-    </xsl:template>-->
+
     
     <xd:doc>
         <xd:desc>[object-attribute-2] The object $value$ shall have no values/attributes defined. 

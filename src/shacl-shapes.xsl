@@ -64,6 +64,7 @@
                 <owl:imports rdf:resource="{.}"/>
             </xsl:for-each>      
             <owl:imports rdf:resource="{$coreArtefactURI}"/>
+            <owl:imports rdf:resource="{$restrictionsArtefactURI}"/>
             
             <dct:title xml:lang="en">
                 <xsl:value-of select="$ontologyTitle"/>
