@@ -118,7 +118,7 @@ Specify object property domain for the target end of the association/dependency.
 .Domain specification in Turtle syntax
 [source,Turtle]
 ----
-:relationName a owl:ObjectProperty ;
+:relationName
   rdfs:domain :ClassName ;
 .
 ----
@@ -126,9 +126,9 @@ Specify object property domain for the target end of the association/dependency.
 .Domain specification in RDF/XML syntax
 [source,XML]
 ----
-<owl:ObjectProperty rdf:about = "http://base.onto.uri/relationName">
+<rdf:Description rdf:about = "http://base.onto.uri/relationName">
     <rdfs:domain rdf:resource = "http://base.onto.uri/ClassName"/>
-</owl:ObjectProperty>
+</rdf:Description>
 ----
 |===
 
@@ -146,7 +146,7 @@ Specify object property range for the target end of the association.
 .Range specification in Turtle syntax
 [source,Turtle]
 ----
-:relationName a owl:ObjectProperty ;
+:relationName
   rdfs:range :ClassName ;
 .
 ----
@@ -154,9 +154,9 @@ Specify object property range for the target end of the association.
 .Range specification in RDF/XML syntax
 [source,XML]
 ----
-<owl:ObjectProperty rdf:about = "http://base.onto.uri/relationName">
+<rdf:Description rdf:about = "http://base.onto.uri/relationName">
     <rdfs:range rdf:resource = "http://base.onto.uri/ClassName"/>
-</owl:ObjectProperty>
+</rdf:Description>
 ----
 |===
 
@@ -204,7 +204,7 @@ For the association/dependency target multiplicity, where min and max are differ
 .Min cardinality restriction in Turtle syntax
 [source,Turtle]
 ----
-:ClassName a owl:Class ;
+:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
     owl:minCardinality "1"^^xsd:integer;
     owl:onProperty :relationName ;
@@ -215,14 +215,14 @@ For the association/dependency target multiplicity, where min and max are differ
 .Min cardinality restriction in RDF/XML syntax
 [source,XML]
 ----
-<owl:Class rdf:about = "http://base.onto.uri/ClassName">
+<rdf:Description rdf:about = "http://base.onto.uri/ClassName">
     <rdfs:subClassOf>
         <owl:Restriction>
             <owl:onProperty rdf:resource = "http://base.onto.uri/relationName"/>
             <owl:minCardinality rdf:datatype="http://www.w3.org...#integer" >1</owl:cardinality>
         </owl:Restriction>
     </rdfs:subClassOf>
-</owl:Class>
+</rdf:Description>
 ----
 |===
 
@@ -381,9 +381,9 @@ Specify an inverse object property axiom between the source and target ends of t
 .Declaring an inverse property in RDF/XML syntax
 [source,XML]
 ----
-<owl:ObjectProperty rdf:about = "http://base.onto.uri/relatesTo">
+<rdf:Description rdf:about = "http://base.onto.uri/relatesTo">
     <owl:inverseOf rdf:resource = "http://base.onto.uri/isRelatedTo"/>
-</owl:ObjectProperty>
+</rdf:Description>
 ----
 |===
 
@@ -413,9 +413,9 @@ Specify object property range for the target end of the dependency.
 .Range specification in RDF/XML syntax
 [source,XML]
 ----
-<owl:ObjectProperty rdf:about = "http://base.onto.uri/relationName">
+<rdf:Description rdf:about = "http://base.onto.uri/relationName">
     <rdfs:range rdf:resource = ".../02/skos/core#Concept"/>
-</owl:ObjectProperty>
+</rdf:Description>
 
 ----
 |===
@@ -552,9 +552,9 @@ Specify equivalent class axiom for the generalisation with `\<<equivalent>>` or 
 .Class equivalence in RDF/XML syntax
 [source,XML]
 ----
-<owl:Class rdf:about = "http://base.onto.uri/ClassName">
+<rdf:Description rdf:about = "http://base.onto.uri/ClassName">
     <owl:equivalentClass rdf:resource = "http://base.onto.uri/SuperClass"/>
-</owl:Class>
+</rdf:Description>
 ----
 |===
 
@@ -578,12 +578,12 @@ Specify equivalent property axiom for the generalisation with `\<<equivalent>>` 
 .Property equivalence in RDF/XML syntax
 [source,XML]
 ----
-<owl:ObjectProperty rdf:about = "http://base.onto.uri/hasSister">
+<rdf:Description rdf:about = "http://base.onto.uri/hasSister">
   <owl:equivalentProperty rdf:resource = "http://base.onto.uri/relatesTo"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about = "http://base.onto.uri/isSisterOf">
+</rdf:Description>
+<rdf:Description rdf:about = "http://base.onto.uri/isSisterOf">
   <owl:equivalentProperty rdf:resource = "http://base.onto.uri/isRelatedTo"/>
-</owl:ObjectProperty>
+</rdf:Description>
 ----
 |===
 

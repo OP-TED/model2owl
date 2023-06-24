@@ -236,7 +236,7 @@ The domain of properties created for attributes that are reused in multiple clas
 .Data property domain specification in Turtle syntax
 [source,Turtle]
 ----
-:attribute1 a owl:DatatypeProperty ;
+:attribute1
   rdfs:domain :ClassName ;
 .
 ----
@@ -244,16 +244,16 @@ The domain of properties created for attributes that are reused in multiple clas
 .Data property domain specification in RDF/XML syntax
 [source,XML]
 ----
-<owl:DatatypeProperty rdf:about = "http://base.onto.uri/attribute1">
+<rdf:Description rdf:about = "http://base.onto.uri/attribute1">
     <rdfs:domain rdf:resource = "http://base.onto.uri/ClassName"/>
-</owl:DatatypeProperty>
+</rdf:Description>
 ----
 
 |
 .Object property domain specification in Turtle syntax
 [source,Turtle]
 ----
-:attribute2 a owl:ObjectProperty ;
+:attribute2
   rdfs:domain :ClassName ;
 .
 ----
@@ -261,9 +261,9 @@ The domain of properties created for attributes that are reused in multiple clas
 .Object property domain specification in RDF/XML syntax
 [source,XML]
 ----
-<owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2">
+<rdf:Description rdf:about = "http://base.onto.uri/attribute2">
     <rdfs:domain rdf:resource = "http://base.onto.uri/ClassName"/>
-</owl:ObjectProperty>
+</rdf:Description>
 ----
 |===
 
@@ -275,7 +275,7 @@ For reused attributes, like the ones depicted in <<fig:attribute-visual-reuse>>,
 .Data property domain specification for reused attributes in Turtle syntax
 [source,Turtle]
 ----
-:attribute1 a owl:DatatypeProperty ;
+:attribute1
   rdfs:domain [
     rdf:type owl:Class ;
     owl:unionOf (
@@ -289,7 +289,7 @@ For reused attributes, like the ones depicted in <<fig:attribute-visual-reuse>>,
 .Data property domain specification for reused attributes in RDF/XML syntax
 [source,XML]
 ----
-<owl:DatatypeProperty rdf:about = "http://base.onto.uri/attribute1">
+<rdf:Description rdf:about = "http://base.onto.uri/attribute1">
     <rdfs:domain>
         <owl:Class>
             <owl:unionOf rdf:parseType="Collection">
@@ -298,14 +298,14 @@ For reused attributes, like the ones depicted in <<fig:attribute-visual-reuse>>,
             </owl:unionOf>
         </owl:Class>
     </rdfs:domain>
-</owl:DatatypeProperty>
+</rdf:Description>
 ----
 
 |
 .Object property domain specification for reused attributes in Turtle syntax
 [source,Turtle]
 ----
-:attribute2 a owl:ObjectProperty ;
+:attribute2
   rdfs:domain [
     rdf:type owl:Class ;
     owl:unionOf (
@@ -319,7 +319,7 @@ For reused attributes, like the ones depicted in <<fig:attribute-visual-reuse>>,
 .Object property domain specification for reused attributes in RDF/XML syntax
 [source,XML]
 ----
-<owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2">
+<rdf:Description rdf:about = "http://base.onto.uri/attribute2">
     <rdfs:domain>
         <owl:Class>
             <owl:unionOf rdf:parseType="Collection">
@@ -328,7 +328,7 @@ For reused attributes, like the ones depicted in <<fig:attribute-visual-reuse>>,
             </owl:unionOf>
         </owl:Class>
     </rdfs:domain>
-</owl:ObjectProperty>
+</rdf:Description>
 ----
 |===
 
@@ -387,7 +387,7 @@ The range of object properties created for attributes that are reused in multipl
 .Data property range specification in Turtle syntax
 [source,Turtle]
 ----
-:attribute1 a owl:DatatypeProperty;
+:attribute1
   rdfs:range xsd:string;
 .
 ----
@@ -395,16 +395,16 @@ The range of object properties created for attributes that are reused in multipl
 .Data property range specification in RDF/XML syntax
 [source,XML]
 ----
-<owl:DatatypeProperty rdf:about = "http://base.onto.uri/attribute1">
+<rdf:Description rdf:about = "http://base.onto.uri/attribute1">
     <rdfs:range rdf:resource = "http://www.w3c.org...#string"/>
-</owl:DatatypeProperty>
+</rdf:Description>
 ----
 
 |
 .Object property range specification in Turtle syntax
 [source,Turtle]
 ----
-:attribute2 a owl:ObjectProperty;
+:attribute2
   rdfs:range :OtherClass;
 .
 ----
@@ -412,9 +412,9 @@ The range of object properties created for attributes that are reused in multipl
 .Object property range specification in RDF/XML syntax
 [source,XML]
 ----
-<owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2">
+<rdf:Description rdf:about = "http://base.onto.uri/attribute2">
     <rdfs:range rdf:resource = "http://base.onto.uri/OtherClass"/>
-</owl:ObjectProperty>
+</rdf:Description>
 ----
 |===
 
@@ -426,7 +426,7 @@ For reused attributes, like the ones depicted in <<fig:attribute-visual-reuse>>,
 .Object property range specification for reused attributes in Turtle syntax
 [source,Turtle]
 ----
-:attribute2 a owl:ObjectProperty;
+:attribute2
   rdfs:range [
     rdf:type owl:Class ;
     owl:unionOf (
@@ -440,7 +440,7 @@ For reused attributes, like the ones depicted in <<fig:attribute-visual-reuse>>,
 .Object property range specification for reused attributes in RDF/XML syntax
 [source,XML]
 ----
-<owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2">
+<rdf:Description rdf:about = "http://base.onto.uri/attribute2">
     <rdfs:range>
         <owl:Class>
             <owl:unionOf rdf:parseType="Collection">
@@ -449,7 +449,7 @@ For reused attributes, like the ones depicted in <<fig:attribute-visual-reuse>>,
             </owl:unionOf>
         </owl:Class>
     </rdfs:range>
-</owl:ObjectProperty>
+</rdf:Description>
 ----
 |===
 
