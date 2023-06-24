@@ -270,6 +270,12 @@
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:disjoint-classes-rc">Rule R.18</a></p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Realisation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:realisation-class-core">Rule R.19</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
 </tbody>
 </table>
 <div class="sect2">
@@ -1074,6 +1080,44 @@ Sibling classes will be declared disjoint with one another in the reasoning laye
         &lt;rdf:Description rdf:about="http://base.onto.uri/OtherClass"/&gt;
     &lt;/owl:members&gt;
 &lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="sec:realisation"><a class="anchor" href="#sec:realisation"></a>Realisation relations</h3>
+<div class="paragraph">
+<p>Realisation defines a relationship between an Object element and a UML Class or Enumeration element. At the moment we only provide transformation rules for UML Realization connectors that connect to UML Classes.</p>
+</div>
+<div id="rule:realisation-class-core" class="exampleblock">
+<div class="title">Rule R.19. Class realisation&#8201;&#8212;&#8201;in core ontology layer</div>
+<div class="content">
+<div class="paragraph">
+<p>Declare an individual with a specified class as its type, for a UML Realization connector between a UML Object and a UML Class.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 37. Subclass declaration in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ObjectName a owl:NamedIndividual, :ClassName .</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 38. Subclass declaration in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:NamedIndividual rdf:about="http://base.onto.uri/ObjectName"&gt;
+    &lt;rdf:type rdf:resource="http://base.onto.uri/ClassName"/&gt;
+&lt;/owl:NamedIndividual&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
