@@ -50,9 +50,6 @@
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="conceptual-model-conventions.html">UML Model Conventions</a>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="on-conventions.html">On Conventions</a>
-  </li>
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="conv-general.html">General Conventions</a>
   </li>
@@ -718,7 +715,7 @@ shall be represented as uml:Enumeration element.</p></td>
 </div>
 </div>
 <div class="paragraph">
-<p>The name of the Enumeration shall be resolved to a URI identical to that of the <code>skos:ConceptScheme</code>. As for the connector type we recommend using a dependency connector (depicted with a dashed line) because the semantic interpretation differs slightly from the association connector (depicted with a continuous line). Namely, the range of the property has to fulfil two constraints: (a) instantiating the skos:Concept class and (b) being <code>skos:inScheme</code> the intended controlled list [<a href="../references.html#ref:epo-arch" class="xref page">epo-arch</a>]. [TODO: update reference]</p>
+<p>The name of the Enumeration shall be resolved to a URI identical to that of the <code>skos:ConceptScheme</code>. As for the connector type we recommend using a dependency connector (depicted with a dashed line) because the semantic interpretation differs slightly from the association connector (depicted with a continuous line). Namely, the range of the property has to fulfil two constraints: (a) instantiating the <code>skos:Concept</code> class and (b) being <code>skos:inScheme</code> the intended controlled list [<a href="../references.html#ref:epo-arch" class="xref page">epo-arch</a>].</p>
 </div>
 <div class="paragraph">
 <p>More specific requirements on the uml:Enumeration elements are provided in the Section [<a href="conv-enumerations.html#sec:enumeration" class="xref page">uml:Enumeration</a>].</p>

@@ -51,9 +51,6 @@
     <a class="nav-link" href="conceptual-model-conventions.html">UML Model Conventions</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="on-conventions.html">On Conventions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="conv-general.html">General Conventions</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -186,9 +183,6 @@ uml:Realization connectors connect a uml:Object element to a uml:Class or uml:En
 </div>
 <div class="paragraph">
 <p>The uml:Realization connector signifies an instantiation relation, and is transformed into <code>rdf:type</code> relation standing between the source object and the target class. In case the target is a uml:Enumeration element (and the enum is converted into a <code>skos:ConceptScheme</code> instance, and the object into a <code>skos:Concept</code>), then the relation should be translated into a <code>skos:inScheme</code> relation.</p>
-</div>
-<div class="paragraph">
-<p>[TODO:] Check if the last sentence is correct. Also, wouldn&#8217;t it be more appropriate if we would use a "composition", or at least "aggregation", relation to connect object to enums?</p>
 </div>
 <table id="rule:realization-name" class="tableblock frame-all grid-all stretch">
 <colgroup>

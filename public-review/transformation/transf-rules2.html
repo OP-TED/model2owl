@@ -51,9 +51,6 @@
     <a class="nav-link" href="../uml/conceptual-model-conventions.html">UML Model Conventions</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../uml/on-conventions.html">On Conventions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../uml/conv-general.html">General Conventions</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -792,7 +789,7 @@ shape:ClassName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 23. Range specification in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relationName a owl:ObjectProperty ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relationName
   rdfs:range skos:Concept ;
 .</code></pre>
 </div>
@@ -808,14 +805,14 @@ shape:ClassName
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock warning">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<strong>TODO:</strong> Explain that In OWL we want to state only that range is a skos:Concept, without committing to a specific list. We do this additional restriction in the data shape.
+In OWL we want to state only that the range of a Dependency connector is a <code>skos:Concept</code>, without committing to a specific list. We do this additional restriction in the data shape.
 </td>
 </tr>
 </table>

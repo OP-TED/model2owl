@@ -51,9 +51,6 @@
     <a class="nav-link" href="conceptual-model-conventions.html">UML Model Conventions</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="on-conventions.html">On Conventions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="conv-general.html">General Conventions</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -160,8 +157,54 @@
 </aside>
 <article class="doc">
 <h1 class="page">UML Conceptual Model Conventions</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>This part of the <strong>model2owl</strong> project documentation describes <em>the conventions that the UML conceptual model should adhere to</em> in order to allow the tools provided within the <strong>model2owl</strong> project to generate the best possible result, i.e. the most complete and correct OWL ontologies and SHACL shapes.</p>
+<p>This part of the <strong>model2owl</strong> project documentation describes <em>the conventions that the UML conceptual model should adhere to</em> in order to allow the tools provided within the <strong>model2owl</strong> project to generate the best possible derivate artefacts, i.e. the most complete and correct OWL ontologies and SHACL shapes.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:on-conventions"><a class="anchor" href="#sec:on-conventions"></a>UML Model Conventions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The current set of UML Model Conventions are meant to guide the semantic engineers and ontology editors on producing consistent, uniform and uniquely interpretable conceptual models. Also, it is meant to help the readers of the conceptual models to interpret the meaning and eliminate any ambiguities. Finally, the conventions are fit for implementation.</p>
+</div>
+<div class="paragraph">
+<p>This set of guidelines is aligned with the SEMIC style guide [<a href="../references.html#ref:semic-style-guide" class="xref page">semic-style-guide</a>] and constitutes an extension and further elaboration of it.</p>
+</div>
+<div class="paragraph">
+<p>The guidelines provided here are either of general or technical nature. They are formulated so, as to be not only easily understandable by the semantic engineer, but also to allow the implementation of automatic model checkers (see Section <a href="../checkers/model2owl-checkers.html" class="xref page">UML Convention checker inventory</a>]) as well as the definition of precise transformation rules that can be implemented in tools to automatically generate the semantic derivate artefacts (see Section <a href="../transformation/uml2owl-transformation.html" class="xref page">Transformation of the UML model into derivative artefacts</a>]).</p>
+</div>
+<div class="paragraph">
+<p>We organized the conventions into subsections covering:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>general conventions, which apply to multiple model components</p>
+</li>
+<li>
+<p>conventions specific to particular UML elements (Classes and their Attributes, Data Types, Enumerations, Objects, Packages)</p>
+</li>
+<li>
+<p>general conventions on UML connectors</p>
+</li>
+<li>
+<p>conventions specific to particular UML connector types (Associations, Dependencies, Generalisations, Realisations)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec:keywords"><a class="anchor" href="#sec:keywords"></a>Key words for Requirement Statements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [<a href="../references.html#ref:rfc2119" class="xref page">rfc2119</a>].</p>
+</div>
+<div class="paragraph">
+<p>The key words "MUST (BUT WE KNOW YOU WON’T)", "SHOULD CONSIDER", "REALLY SHOULD NOT", "OUGHT TO", "WOULD PROBABLY", "MAY WISH TO", "COULD", "POSSIBLE", and "MIGHT" in this document are to be interpreted as described in RFC 6919 [<a href="../references.html#ref:rfc6919" class="xref page">rfc6919</a>].</p>
 </div>
 <div class="ulist">
 <div class="title">In the following sections we describe <strong>[TODO: update this list]</strong>:</div>
@@ -182,6 +225,8 @@
 <p>&#8230;&#8203;</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </article>
   </div>

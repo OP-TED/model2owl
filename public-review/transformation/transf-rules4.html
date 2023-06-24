@@ -51,9 +51,6 @@
     <a class="nav-link" href="../uml/conceptual-model-conventions.html">UML Model Conventions</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../uml/on-conventions.html">On Conventions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../uml/conv-general.html">General Conventions</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -205,6 +202,12 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tag</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-tag-core">Rule T.07</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-source-core">Rule T.08</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:element-source-ds">Rule T.09</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
@@ -377,7 +380,7 @@ shape:ClassName
 <div class="title">Listing 10. Note declaration for NodeShape in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName"&gt;
-    &lt;rdfs:comment&gt;Description of the meaning of the class&lt;/rdfs:label&gt;
+    &lt;rdfs:comment&gt;Description of the meaning of the class&lt;/rdfs:comment&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -416,18 +419,6 @@ shape:ClassName-PropertyName
 <img src="../_images/f19.png" alt="19">
 </div>
 <div class="title">Figure 1. Visual representation of a UML comment (on the left) and an OWL comment (on the right)</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<strong>TODO:</strong> Should we update the image to better reflect how the transformation is being done now?
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>As UML Comments add no semantics, they are not used in any method of semantic validation. In OWL the AnnotationAssertion axiom does not add any semantics either, and it only improves readability.</p>
@@ -499,7 +490,7 @@ shape:ClassName
 <div class="title">Listing 16. Note declaration for NodeShape in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName"&gt;
-    &lt;rdfs:comment&gt;This is an additional comment on ClassName&lt;/rdfs:label&gt;
+    &lt;rdfs:comment&gt;This is an additional comment on ClassName&lt;/rdfs:comment&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -524,34 +515,10 @@ shape:ClassName-PropertyName
     &lt;sh:description&gt;This is an additional comment on PropertyName&lt;/sh:description&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<strong>QUESTION:</strong> should we use here <code>rdfs:comment</code> instead of adding a second value to <code>sh:description</code>?
-</td>
-</tr>
-</table>
 </div></div></td>
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-TODO: Discuss whether we should include language tags (by default, or if explicitly specified in the model, or if controlled by configuration)?
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_tags"><a class="anchor" href="#_tags"></a>Tags</h3>
@@ -604,6 +571,103 @@ The generation of annotations from tags could be controlled by a flag in the con
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
     &lt;tagName xml:lang="langTag"&gt;tag value&lt;/tagName&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_source"><a class="anchor" href="#_source"></a>Source</h3>
+<div class="paragraph">
+<p>It is a good practice to annotate all concepts in an ontology with the IRI of the ontology where these concepts are defined. RDFS provides a dedicated property for purpose, called <code>rdfs:isDefinedBy</code>, which we will use.</p>
+</div>
+<div id="rule:element-source-core" class="exampleblock">
+<div class="title">Rule T.08. Source specification&#8201;&#8212;&#8201;in core ontology layer</div>
+<div class="content">
+<div class="paragraph">
+<p>Annotate all locally defined OWL concepts with the name of the (core) ontology that defines them.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 21. Source in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+:ResourceName
+  rdfs:isDefinedBy &lt;http://base.onto.uri#core&gt; .</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 22. Source in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ResourceName"&gt;
+    &lt;rdfs:isDefinedBy rdf:resource="http://base.onto.uri#core" /&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="rule:element-source-ds" class="exampleblock">
+<div class="title">Rule T.09. Source specification&#8201;&#8212;&#8201;in data shape layer</div>
+<div class="content">
+<div class="paragraph">
+<p>For all SHACL shapes specify the source ontology defining the shape.</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 23. Source declaration for NodeShape in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+shape:ClassName
+  rdfs:isDefinedBy &lt;http://base.shape.uri/#core-shapes&gt; .</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 24. Source declaration for NodeShape in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName"&gt;
+    &lt;rdfs:isDefinedBy rdf:resource="http://base.shape.uri/#core-shapes" /&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 25. Source declaration for PropertyShape in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+
+shape:ClassName-PropertyName
+  rdfs:isDefinedBy &lt;http://base.shape.uri/#core-shapes&gt; .</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 26. Source declaration for PropertyShape in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-PropertyName"&gt;
+    &lt;rdfs:isDefinedBy rdf:resource="http://base.shape.uri/#core-shapes" /&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>

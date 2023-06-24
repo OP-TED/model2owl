@@ -51,9 +51,6 @@
     <a class="nav-link" href="../uml/conceptual-model-conventions.html">UML Model Conventions</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../uml/on-conventions.html">On Conventions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../uml/conv-general.html">General Conventions</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -404,6 +401,18 @@ Ideally, in the implementation, this rule would be combined with the relevant ru
 </div>
 <div class="title">Figure 3. Visual representation of a SKOS concept scheme with concepts</div>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Normally, the controlled list represented by UML Enumerations will be defined externally. In order to be ale to validate some data against the generate SHACL shapes, these controlled lists need to be imported into the SHACL shapes. Moreover, the restriction module should be also imported into the SHACL module, alongside the OWL core module.
+</td>
+</tr>
+</table>
+</div>
 <div id="rule:enumeration-core" class="exampleblock">
 <div class="title">Rule D.03. Enumeration&#8201;&#8212;&#8201;in core ontology layer</div>
 <div class="content">
@@ -493,31 +502,6 @@ Ideally, in the implementation, this rule would be combined with the relevant ru
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Should this be subclass of <code>skos:Concept</code> or <code>skos:ConceptScheme</code>? More likely the latter. Update if confirmed.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<strong>TODO:</strong> Explain that we expect the controlled list to be defined externally and be imported into the SHACL shapes.<br>
-<strong>TODO:</strong> Explain that the restriction module should be imported into the SHACL module alongside the OWL core module.
-</td>
-</tr>
-</table>
-</div>
 <div id="rule:enumeration-item-core" class="exampleblock">
 <div class="title">Rule D.05. Enumeration items&#8201;&#8212;&#8201;in core ontology layer</div>
 <div class="content">
