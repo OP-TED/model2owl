@@ -500,7 +500,7 @@ The domain of properties created for attributes that are reused in multiple clas
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 11. Data property domain specification in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute1 a owl:DatatypeProperty ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute1
   rdfs:domain :ClassName ;
 .</code></pre>
 </div>
@@ -508,9 +508,9 @@ The domain of properties created for attributes that are reused in multiple clas
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 12. Data property domain specification in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:DatatypeProperty rdf:about = "http://base.onto.uri/attribute1"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/attribute1"&gt;
     &lt;rdfs:domain rdf:resource = "http://base.onto.uri/ClassName"/&gt;
-&lt;/owl:DatatypeProperty&gt;</code></pre>
+&lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -518,7 +518,7 @@ The domain of properties created for attributes that are reused in multiple clas
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 13. Object property domain specification in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute2 a owl:ObjectProperty ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute2
   rdfs:domain :ClassName ;
 .</code></pre>
 </div>
@@ -526,9 +526,9 @@ The domain of properties created for attributes that are reused in multiple clas
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 14. Object property domain specification in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/attribute2"&gt;
     &lt;rdfs:domain rdf:resource = "http://base.onto.uri/ClassName"/&gt;
-&lt;/owl:ObjectProperty&gt;</code></pre>
+&lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -547,7 +547,7 @@ The domain of properties created for attributes that are reused in multiple clas
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 15. Data property domain specification for reused attributes in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute1 a owl:DatatypeProperty ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute1
   rdfs:domain [
     rdf:type owl:Class ;
     owl:unionOf (
@@ -561,7 +561,7 @@ The domain of properties created for attributes that are reused in multiple clas
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 16. Data property domain specification for reused attributes in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:DatatypeProperty rdf:about = "http://base.onto.uri/attribute1"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/attribute1"&gt;
     &lt;rdfs:domain&gt;
         &lt;owl:Class&gt;
             &lt;owl:unionOf rdf:parseType="Collection"&gt;
@@ -570,7 +570,7 @@ The domain of properties created for attributes that are reused in multiple clas
             &lt;/owl:unionOf&gt;
         &lt;/owl:Class&gt;
     &lt;/rdfs:domain&gt;
-&lt;/owl:DatatypeProperty&gt;</code></pre>
+&lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -578,7 +578,7 @@ The domain of properties created for attributes that are reused in multiple clas
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 17. Object property domain specification for reused attributes in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute2 a owl:ObjectProperty ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute2
   rdfs:domain [
     rdf:type owl:Class ;
     owl:unionOf (
@@ -592,7 +592,7 @@ The domain of properties created for attributes that are reused in multiple clas
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 18. Object property domain specification for reused attributes in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/attribute2"&gt;
     &lt;rdfs:domain&gt;
         &lt;owl:Class&gt;
             &lt;owl:unionOf rdf:parseType="Collection"&gt;
@@ -601,7 +601,7 @@ The domain of properties created for attributes that are reused in multiple clas
             &lt;/owl:unionOf&gt;
         &lt;/owl:Class&gt;
     &lt;/rdfs:domain&gt;
-&lt;/owl:ObjectProperty&gt;</code></pre>
+&lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -685,7 +685,7 @@ The range of object properties created for attributes that are reused in multipl
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 21. Data property range specification in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute1 a owl:DatatypeProperty;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute1
   rdfs:range xsd:string;
 .</code></pre>
 </div>
@@ -693,9 +693,9 @@ The range of object properties created for attributes that are reused in multipl
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 22. Data property range specification in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:DatatypeProperty rdf:about = "http://base.onto.uri/attribute1"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/attribute1"&gt;
     &lt;rdfs:range rdf:resource = "http://www.w3c.org...#string"/&gt;
-&lt;/owl:DatatypeProperty&gt;</code></pre>
+&lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -703,7 +703,7 @@ The range of object properties created for attributes that are reused in multipl
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 23. Object property range specification in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute2 a owl:ObjectProperty;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute2
   rdfs:range :OtherClass;
 .</code></pre>
 </div>
@@ -711,9 +711,9 @@ The range of object properties created for attributes that are reused in multipl
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 24. Object property range specification in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/attribute2"&gt;
     &lt;rdfs:range rdf:resource = "http://base.onto.uri/OtherClass"/&gt;
-&lt;/owl:ObjectProperty&gt;</code></pre>
+&lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -732,7 +732,7 @@ The range of object properties created for attributes that are reused in multipl
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 25. Object property range specification for reused attributes in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute2 a owl:ObjectProperty;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:attribute2
   rdfs:range [
     rdf:type owl:Class ;
     owl:unionOf (
@@ -746,7 +746,7 @@ The range of object properties created for attributes that are reused in multipl
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 26. Object property range specification for reused attributes in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/attribute2"&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/attribute2"&gt;
     &lt;rdfs:range&gt;
         &lt;owl:Class&gt;
             &lt;owl:unionOf rdf:parseType="Collection"&gt;
@@ -755,7 +755,7 @@ The range of object properties created for attributes that are reused in multipl
             &lt;/owl:unionOf&gt;
         &lt;/owl:Class&gt;
     &lt;/rdfs:range&gt;
-&lt;/owl:ObjectProperty&gt;</code></pre>
+&lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
 </tr>
