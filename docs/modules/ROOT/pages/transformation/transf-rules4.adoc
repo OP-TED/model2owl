@@ -12,6 +12,7 @@ In this section are specified transformation rules for UML descriptive elements.
 |Note |<<rule:element-definition-core>> |<<rule:element-definition-ds>> |
 |Comment |<<rule:element-external-comment-core>> |<<rule:element-external-comment-ds>> |
 |Tag |<<rule:element-tag-core>> | |
+|Source |<<rule:element-source-core>> |<<rule:element-source-ds>> |
 |===
 
 === Name
@@ -300,6 +301,84 @@ Specify an annotation axiom on the OWL entity for each UML Tag associated to a U
 ----
 <rdf:Description rdf:about = "http://base.onto.uri/ClassName">
     <tagName xml:lang="langTag">tag value</tagName>
+</rdf:Description>
+----
+|===
+
+=== Source
+
+It is a good practice to annotate all concepts in an ontology with the IRI of the ontology where these concepts are defined. RDFS provides a dedicated property for purpose, called `rdfs:isDefinedBy`, which we will use.
+
+
+[#rule:element-source-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:T.01}. Source specification -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Annotate all locally defined OWL concepts with the name of the (core) ontology that defines them.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Source in Turtle syntax
+[source,Turtle]
+----
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:ResourceName
+  rdfs:isDefinedBy <http://base.onto.uri#core> .
+----
+|
+.Source in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/ResourceName">
+    <rdfs:isDefinedBy rdf:resource="http://base.onto.uri#core" />
+</rdf:Description>
+----
+|===
+
+
+[#rule:element-source-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:T.01}. Source specification -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+For all SHACL shapes specify the source ontology defining the shape.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Source declaration for NodeShape in Turtle syntax
+[source,Turtle]
+----
+@prefix shape: <http://base.shape.uri/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+shape:ClassName
+  rdfs:isDefinedBy <http://base.shape.uri/#core-shapes> .
+----
+|
+.Source declaration for NodeShape in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName">
+    <rdfs:isDefinedBy rdf:resource="http://base.shape.uri/#core-shapes" />
+</rdf:Description>
+----
+
+|
+.Source declaration for PropertyShape in Turtle syntax
+[source,Turtle]
+----
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName-PropertyName
+  rdfs:isDefinedBy <http://base.shape.uri/#core-shapes> .
+----
+|
+.Source declaration for PropertyShape in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName-PropertyName">
+    <rdfs:isDefinedBy rdf:resource="http://base.shape.uri/#core-shapes" />
 </rdf:Description>
 ----
 |===
