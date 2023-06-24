@@ -182,7 +182,7 @@ In UML, the spaces in names are allowed and using them may be the most intuitive
 
 It is recommended that the element names avoid using spaces and instead follow a camel-case convention. _CamelCasing_ is the practice of writing phrases such that the word or abbreviation in the middle of the phrase begins with a capital case.
 
-[TODO: Check if the following is still holds]
+//[TODO: Check if the following is still holds]
 Exceptionally, if the conceptual model authors must maintain high readability of the UML diagrams, spaces may be tolerated and handled by the conversion script. In the conversion process, spaces are trimmed and phrases turned into camel-case form. For example " Pre-award catalogue request " is transformed into "Pre-AwardCatalogueRequest".
 
 [[sec:uniqueness]]
@@ -391,7 +391,8 @@ The properties having this controlled list as range shall be depicted as UML dep
 
 image::cmc-r14-1.png[]
 
-The name of the Enumeration shall be resolved to a URI identical to that of the `skos:ConceptScheme`. As for the connector type we recommend using a dependency connector (depicted with a dashed line) because the semantic interpretation differs slightly from the association connector (depicted with a continuous line). Namely, the range of the property has to fulfil two constraints: (a) instantiating the skos:Concept class and (b) being `skos:inScheme` the intended controlled list [xref:references.adoc#ref:epo-arch[epo-arch]]. [TODO: update reference]
+The name of the Enumeration shall be resolved to a URI identical to that of the `skos:ConceptScheme`. As for the connector type we recommend using a dependency connector (depicted with a dashed line) because the semantic interpretation differs slightly from the association connector (depicted with a continuous line). Namely, the range of the property has to fulfil two constraints: (a) instantiating the `skos:Concept` class and (b) being `skos:inScheme` the intended controlled list [xref:references.adoc#ref:epo-arch[epo-arch]].
+//TODO: this reference can be replaced with a cross-reference to the architecture section of this Model2OWL documentation, when that part will be updated.
 
 
 

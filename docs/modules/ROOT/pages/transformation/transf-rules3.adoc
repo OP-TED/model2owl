@@ -128,6 +128,8 @@ image::f17.png[17]
 [#fig:enumeration-owl-visual]
 image::f18.png[18]
 
+IMPORTANT: Normally, the controlled list represented by UML Enumerations will be defined externally. In order to be ale to validate some data against the generate SHACL shapes, these controlled lists need to be imported into the SHACL shapes. Moreover, the restriction module should be also imported into the SHACL module, alongside the OWL core module.
+
 
 [#rule:enumeration-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D01}. Enumeration -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
@@ -190,11 +192,6 @@ For a UML enumeration, specify an equivalent class restriction covering the set 
 </owl:Class>
 ----
 |===
-
-WARNING: Should this be subclass of `skos:Concept` or `skos:ConceptScheme`? More likely the latter. Update if confirmed.
-
-WARNING: *TODO:* Explain that we expect the controlled list to be defined externally and be imported into the SHACL shapes. +
-*TODO:* Explain that the restriction module should be imported into the SHACL module alongside the OWL core module.
 
 [#rule:enumeration-item-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D01}. Enumeration items -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====

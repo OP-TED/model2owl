@@ -22,10 +22,13 @@ An uml:Enumeration element is transformed into `skos:ConceptScheme`, and an enum
 *Description:*
 
 
-Each uml:Enumeration element is transformed into skos:ConceptScheme, and each enumeration item (represented by an uml:Attribute) is transformed into a skos:Concept. An enumeration must not be empty. [TODO: Is this last sentence still valid? How about in case of Enumerations that refer to external controlled lists? If this is statement is valid, would it make sense to make sense to create a separate rule for it?]
+Each uml:Enumeration element is transformed into skos:ConceptScheme, and each enumeration item, if present as an uml:Attribute value, is transformed into a `skos:Concept`. An enumeration might be empty, especially when they refer to externally specified controlled lists.
 
-In a uml:Enumeration element, the name shall be interpreted as the controlled list name; it must be a normalised string. Each attribute name is used as a local segment in the generation of the concept URI. The attribute type is ignored and by default is considered to be skos:Concept. The attribute alias is transformed into skos:Concept preferred label. The attribute initial value is transformed into the alternative label of the concept. If the attribute alias is longer than the attribute initial value, then it is considered that the two fields have been swapped by mistake. [TODO: Check whether these assumptions and manipulations are still valid]
+//TODO We need in fact a flag that controlled whether the Enum definitions shall be present in the core layer (at all), or not.
+
+In a uml:Enumeration element, the name shall be interpreted as the controlled list name; it must be a normalised string. Each attribute name is used as a local segment in the generation of the concept URI. The attribute type is ignored and by default is considered to be `skos:Concept`. The attribute alias is transformed into the `skos:Concept`s preferred label. The attribute initial value is transformed into the alternative label of the concept.
+//TODO see if we need to specify additional rules for this.
 
 In case no attribute alias is specified then the attribute name is used as preferred label of the skos:Concept. This happens as skos:prefLabel is a mandatory property in the SKOS model.
 
-It is possible to employ the enumerations for class properties by drawing a dependency (uml:Dependency) relation from the class to the enumeration and provide a relation target role. However, the enumeration should not connect to other elements. [TODO: Check whether we shouldn't talk about Object to Enum relationships here]
+It is possible to employ the enumerations for class properties by drawing a dependency (uml:Dependency) relation from the class to the enumeration and provide a relation target role. However, the enumeration should not connect to other elements.

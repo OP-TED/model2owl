@@ -405,7 +405,7 @@ Specify object property range for the target end of the dependency.
 .Range specification in Turtle syntax
 [source,Turtle]
 ----
-:relationName a owl:ObjectProperty ;
+:relationName
   rdfs:range skos:Concept ;
 .
 ----
@@ -420,7 +420,7 @@ Specify object property range for the target end of the dependency.
 ----
 |===
 
-WARNING: *TODO:* Explain that In OWL we want to state only that range is a skos:Concept, without committing to a specific list. We do this additional restriction in the data shape.
+NOTE: In OWL we want to state only that the range of a Dependency connector is a `skos:Concept`, without committing to a specific list. We do this additional restriction in the data shape.
 
 [#rule:dependency-uni-range-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Dependency range shape -- in data shape layer',reftext='{example-caption} {rule-cnt}']
 ====

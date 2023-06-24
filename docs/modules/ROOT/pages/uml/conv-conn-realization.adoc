@@ -18,7 +18,7 @@ uml:Realization connectors connect a uml:Object element to a uml:Class or uml:En
 
 The uml:Realization connector signifies an instantiation relation, and is transformed into `rdf:type` relation standing between the source object and the target class. In case the target is a uml:Enumeration element (and the enum is converted into a `skos:ConceptScheme` instance, and the object into a `skos:Concept`), then the relation should be translated into a `skos:inScheme` relation.
 
-[TODO:] Check if the last sentence is correct. Also, wouldn't it be more appropriate if we would use a "composition", or at least "aggregation", relation to connect object to enums?
+//[TODO:] Check if the last sentence is correct. Also, wouldn't it be more appropriate if we would use a "composition", or at least "aggregation", relation to connect object to enums?
 
 
 [[rule:realization-name]]

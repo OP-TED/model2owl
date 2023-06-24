@@ -183,7 +183,6 @@ In accordance with , every kind of UML Element may own Comments (see <<fig:comme
 .Visual representation of a UML comment (on the left) and an OWL comment (on the right)
 [#fig:comment-visual]
 image::f19.png[19]
-WARNING: **TODO:** Should we update the image to better reflect how the transformation is being done now?
 
 As UML Comments add no semantics, they are not used in any method of semantic validation. In OWL the AnnotationAssertion axiom does not add any semantics either, and it only improves readability.
 
@@ -263,11 +262,11 @@ shape:ClassName-PropertyName
     <sh:description>This is an additional comment on PropertyName</sh:description>
 </rdf:Description>
 ----
-WARNING: *QUESTION:* should we use here `rdfs:comment` instead of adding a second value to `sh:description`?
+//WARNING: TODO: *QUESTION:* should we use here `rdfs:comment` instead of adding a second value to `sh:description`?
 |===
 
 
-WARNING: TODO: Discuss whether we should include language tags (by default, or if explicitly specified in the model, or if controlled by configuration)?
+// TODO: Discuss whether we should include language tags (by default, or if explicitly specified in the model, or if controlled by configuration) for comments, notes and/or labels.
 
 === Tags
 
