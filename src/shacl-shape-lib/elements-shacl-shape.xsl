@@ -48,7 +48,7 @@
      
         </sh:NodeShape>
         <xsl:call-template name="shapeLayerName">
-            <xsl:with-param name="elementName" select="f:lexicalQNameToWords($class/@name)"/>
+            <xsl:with-param name="elementName" select="$class/@name"/>
             <xsl:with-param name="uri" select="$shapeClassUri"/>
             <xsl:with-param name="isPropertyShape" select="fn:false()"/>
         </xsl:call-template>
@@ -128,7 +128,7 @@
         </sh:PropertyShape>
         
         <xsl:call-template name="shapeLayerName">
-            <xsl:with-param name="elementName" select="f:lexicalQNameToWords($attribute/@name)"/>
+            <xsl:with-param name="elementName" select="$attribute/@name"/>
             <xsl:with-param name="uri" select="$shapePropertyUri"/>
             <xsl:with-param name="isPropertyShape" select="fn:true()"/>
         </xsl:call-template>

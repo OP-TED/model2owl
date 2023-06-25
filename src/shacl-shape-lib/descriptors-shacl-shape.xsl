@@ -36,10 +36,10 @@
         <rdf:Description rdf:about = "{$uri}">
             <xsl:choose>
                 <xsl:when test="$isPropertyShape=fn:true()">
-                    <sh:name><xsl:value-of select="$elementName"/></sh:name> 
+                    <sh:name><xsl:value-of select="f:lexicalQNameToWords($elementName)"/></sh:name> 
                 </xsl:when>
                 <xsl:otherwise>
-                     <rdfs:label><xsl:value-of select="$elementName"/></rdfs:label>  
+                     <rdfs:label><xsl:value-of select="f:lexicalQNameToWords($elementName)"/></rdfs:label>  
                 </xsl:otherwise>
             </xsl:choose>
         </rdf:Description>

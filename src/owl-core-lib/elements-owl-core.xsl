@@ -155,7 +155,7 @@
 
 
             <xsl:call-template name="coreLayerName">
-                <xsl:with-param name="elementName" select="$attributeName"/>
+                <xsl:with-param name="elementName" select="f:lexicalQNameToWords($attributeName)"/>
                 <xsl:with-param name="elementUri" select="$attributeURI"/>
             </xsl:call-template>
 
