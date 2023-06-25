@@ -95,6 +95,7 @@
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($connector/source/model/@name)"/>
         <xsl:variable name="sourceClassName" select="$connector/source/model/@name"/>
+        <xsl:variable name="sourceNodeShapeURI" select="f:buildShapeURI($sourceClassName)"/>
 
         <xsl:variable name="sourceDocumentation"
             select="
@@ -132,6 +133,7 @@
         <xsl:variable name="targetClassURI"
             select="f:buildURIfromLexicalQName($connector/target/model/@name)"/>
         <xsl:variable name="targetClassName" select="$connector/target/model/@name"/>
+        <xsl:variable name="targetNodeShapeURI" select="f:buildShapeURI($targetClassName)"/>
         <xsl:variable name="targetRole"
             select="
                 if (boolean($connector/target/role/@name)) then
@@ -146,7 +148,7 @@
         <xsl:variable name="propertyShapeURISource"
             select="f:buildPropertyShapeURI($targetClassName, $sourceRole)"/>
         <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
-            <rdf:Description rdf:about="{$propertyShapeURITarget}">
+            <rdf:Description rdf:about="{$sourceNodeShapeURI}">
                 <sh:property rdf:resource="{$propertyShapeURITarget}"/>
             </rdf:Description>
             <sh:PropertyShape rdf:about="{$propertyShapeURITarget}">
@@ -166,7 +168,7 @@
             </xsl:if>
         </xsl:if>
         <xsl:if test="$connectorDirection = 'Bi-Directional'">
-            <rdf:Description rdf:about="{$propertyShapeURITarget}">
+            <rdf:Description rdf:about="{$sourceNodeShapeURI}">
                 <sh:property rdf:resource="{$propertyShapeURITarget}"/>
             </rdf:Description>
             <sh:PropertyShape rdf:about="{$propertyShapeURITarget}">
@@ -184,7 +186,7 @@
                     <xsl:with-param name="rdfsComment" select="fn:false()"/>
                 </xsl:call-template>
             </xsl:if>
-            <rdf:Description rdf:about="{$propertyShapeURISource}">
+            <rdf:Description rdf:about="{$targetNodeShapeURI}">
                 <sh:property rdf:resource="{$propertyShapeURISource}"/>
             </rdf:Description>
             <sh:PropertyShape rdf:about="{$propertyShapeURISource}">

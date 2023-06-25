@@ -172,12 +172,11 @@
                             ()"/>
 
         <xsl:variable name="note" select="f:formatDocString(fn:string-join($connectorNotes))"/>
-        <xsl:variable name="name" select="f:lexicalQNameToWords($connectorName)"/>
 
 
         <owl:ObjectProperty rdf:about="{$roleURI}"/>
             <xsl:call-template name="coreLayerName">
-                <xsl:with-param name="elementName" select="$name"/>
+                <xsl:with-param name="elementName" select="$connectorName"/>
                 <xsl:with-param name="elementUri" select="$roleURI"/>
             </xsl:call-template>
             <xsl:if test="$documentation">

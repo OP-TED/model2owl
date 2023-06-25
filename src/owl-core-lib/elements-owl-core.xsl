@@ -44,7 +44,7 @@
             the description are ascribed to the class.</xd:desc>
     </xd:doc>
     <xsl:template name="classDeclaration">
-        <xsl:variable name="className" select="f:lexicalQNameToWords(./@name)"/>
+        <xsl:variable name="className" select="./@name"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
         <xsl:variable name="classURI" select="f:buildURIFromElement(.)"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
@@ -202,7 +202,7 @@
         </xd:desc>
     </xd:doc>
     <xsl:template name="datatypeDeclaration">
-        <xsl:variable name="dataTypeName" select="f:lexicalQNameToWords(./@name)"/>
+        <xsl:variable name="dataTypeName" select="./@name"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
         <xsl:variable name="dataTypeURI" select="f:buildURIFromElement(.)"/>
         <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
@@ -235,7 +235,7 @@
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
         <xsl:if test="$enableGenerationOfConceptSchemes">
-            <xsl:variable name="conceptSchemeName" select="f:lexicalQNameToWords(./@name)"/>
+            <xsl:variable name="conceptSchemeName" select="./@name"/>
 
             <xsl:variable name="conceptSchemeURI" select="f:buildURIFromElement(.)"/>
             <xsl:variable name="documentation"
@@ -276,7 +276,7 @@
                     if (boolean(./initial/@body)) then
                         ./initial/@body
                     else
-                        f:lexicalQNameToWords(./@name)"/>
+                        ./@name"/>
             <xsl:variable name="enumerationAttributeURI" select="f:buildURIFromElement(.)"/>
             <xsl:variable name="enumerationURI" select="f:buildURIFromElement(../..)"/>
             <xsl:variable name="documentation" select="f:formatDocString(./documentation/@value)"/>
