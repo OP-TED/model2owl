@@ -46,17 +46,11 @@
     </xd:doc>
     <xsl:template match="/">
         <rdf:RDF>
-            <xsl:for-each select="$namespacePrefixes/*:prefixes/*:prefix">  
-                <xsl:choose>
-                    <xsl:when test="./@name!=''">
-                        <xsl:namespace name="{./@name}" select="./@value"/> 
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:namespace name="{./@name}" select="$base-shape-uri"/>
-                    </xsl:otherwise>
-                </xsl:choose>
-               
-            </xsl:for-each>  
+            <xsl:for-each select="$namespacePrefixes/*:prefixes/*:prefix">              
+                <xsl:namespace name="{./@name}" select="./@value"/>
+            </xsl:for-each>
+            <xsl:namespace name="{fn:concat($moduleReference, '-res')}" select="fn:concat($base-restriction-uri,$defaultDelimiter)"/>
+            <xsl:namespace name="{fn:concat($moduleReference, '-shape')}" select="fn:concat($base-shape-uri,$defaultDelimiter)"/>
             
             
             <xsl:call-template name="ontology-header"/>
@@ -89,11 +83,11 @@
             <xsl:for-each select="$seeAlsoResources">
                 <rdfs:seeAlso rdf:resource="{.}"/>
             </xsl:for-each>
-            <dct:created><xsl:value-of select="$createdDate"/></dct:created>
-            <dct:issued><xsl:value-of select="$issuedDate"/></dct:issued>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="$createdDate"/></dct:created>
+            <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="$issuedDate"/></dct:issued>
             <owl:versionInfo><xsl:value-of select="$versionInfo"/></owl:versionInfo>   
             <owl:incompatibleWith><xsl:value-of select="$incompatibleWith"/></owl:incompatibleWith>
-            <owl:versionIRI><xsl:value-of select="fn:concat($coreArtefactURI,'-',$versionInfo)"/></owl:versionIRI>
+            <owl:versionIRI rdf:resource="{fn:concat($coreArtefactURI,'-',$versionInfo)}"/>
             <bibo:status><xsl:value-of select="$ontologyStatus"/></bibo:status>
             <owl:priorVersion><xsl:value-of select="$priorVersion"/></owl:priorVersion>
             <vann:preferredNamespaceUri><xsl:value-of select="$preferredNamespaceUri"/></vann:preferredNamespaceUri>

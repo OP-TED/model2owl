@@ -7,12 +7,11 @@
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
-    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:sh="http://www.w3.org/ns/shacl#"
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:functx="http://www.functx.com"
-    version="3.0">
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"  xmlns:functx="http://www.functx.com" 
+    xmlns:f="http://https://github.com/costezki/model2owl#" version="3.0">
 
     <xsl:import href="../common/utils.xsl"/>
     <xsl:import href="../common/formatters.xsl"/>
@@ -151,24 +150,26 @@
                 as="xs:string*"/>
             <xsl:variable name="domains" select="functx:value-union($targetDomains, $sourceDomains)"/>
             <rdf:Description rdf:about="{$targetRoleURI}">
-                <rdfs:domain>
-                    <owl:Class>
-                        <xsl:choose>
-                            <xsl:when test="fn:count($domains) > 1">
+
+                <xsl:choose>
+                    <xsl:when test="fn:count($domains) > 1">
+                        <rdfs:domain>
+                            <owl:Class>
                                 <owl:unionOf rdf:parseType="Collection">
                                     <xsl:for-each select="$domains">
-                                        <owl:Class rdf:about="{f:buildURIfromLexicalQName(.)}"/>
+                                        <rdf:Description rdf:about="{f:buildURIfromLexicalQName(.)}"
+                                        />
                                     </xsl:for-each>
                                 </owl:unionOf>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:for-each select="$domains">
-                                    <rdf:domain rdf:resource="{f:buildURIfromLexicalQName(.)}"/>
-                                </xsl:for-each>
-                            </xsl:otherwise>
-                        </xsl:choose>
-                    </owl:Class>
-                </rdfs:domain>
+                            </owl:Class>
+                        </rdfs:domain>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:for-each select="$domains">
+                            <rdf:domain rdf:resource="{f:buildURIfromLexicalQName(.)}"/>
+                        </xsl:for-each>
+                    </xsl:otherwise>
+                </xsl:choose>
             </rdf:Description>
         </xsl:if>
     </xsl:template>
@@ -209,24 +210,29 @@
                 as="xs:string*"/>
             <xsl:variable name="ranges" select="functx:value-union($targetRanges, $sourceRanges)"/>
             <rdf:Description rdf:about="{$targetRoleURI}">
-                <rdfs:range>
-                    <owl:Class>
-                        <xsl:choose>
-                            <xsl:when test="fn:count($ranges) > 1">
+
+
+                <xsl:choose>
+                    <xsl:when test="fn:count($ranges) > 1">
+                        <rdfs:range>
+                            <owl:Class>
                                 <owl:unionOf rdf:parseType="Collection">
                                     <xsl:for-each select="$ranges">
-                                        <owl:Class rdf:about="{f:buildURIfromLexicalQName(.)}"/>
+                                        <rdf:Description rdf:about="{f:buildURIfromLexicalQName(.)}"
+                                        />
                                     </xsl:for-each>
                                 </owl:unionOf>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:for-each select="$ranges">
-                                    <rdfs:range rdf:resource="{f:buildURIfromLexicalQName(.)}"/>
-                                </xsl:for-each>
-                            </xsl:otherwise>
-                        </xsl:choose>
-                    </owl:Class>
-                </rdfs:range>
+                            </owl:Class>
+                        </rdfs:range>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:for-each select="$ranges">
+                            <rdfs:range rdf:resource="{f:buildURIfromLexicalQName(.)}"/>
+                        </xsl:for-each>
+                    </xsl:otherwise>
+                </xsl:choose>
+
+
             </rdf:Description>
         </xsl:if>
 
