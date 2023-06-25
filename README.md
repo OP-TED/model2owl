@@ -24,9 +24,10 @@ The UML transformation is performed using XSLT stylesheets under the assumption 
 The following capabilities are addressed:
 
 * UML -> Compliance report (ideal for checking the model against the established conventions) 
-* UML -> OWL 2 (lightweight ontology suitable as a Core Cocabulary)
+* UML -> Glossary (ideal for a quick overview of terminology defined)
+* UML -> OWL 2 (lightweight ontology suitable as a core vocabulary)
 * UML -> OWL 2 (heavyweight ontology with additional axioms suitable for reasoning purposes)
-* UML -> SHACL (data shapes suitable for validation)
+* UML -> SHACL (data shapes suitable for representing an application profile)
 
 This work is developed in the context of [eProcurement ontology project](https://github.com/eprocurementontology/eprocurementontology) financed by the Digital Europe Programme and led by the [Publications Office of the European Union](https://op.europa.eu/en/).
 
