@@ -17,7 +17,8 @@
     <xsl:import href="../common/checkers.xsl"/>
     <xsl:import href="utils-html-conventions.xsl"/>
 
-    <xsl:variable name="elementTypes" select="('class', 'enumeration', 'dataType', 'package', 'object')"/>
+    <xsl:variable name="elementTypes"
+        select="('class', 'enumeration', 'dataType', 'package', 'object')"/>
 
 
     <xd:doc>
@@ -202,7 +203,7 @@
         <xsl:variable name="elementName" select="$element/@name"/>
         <xsl:variable name="noElementDescription"
             select="
-            if ($elementType = $elementTypes) then
+                if ($elementType = $elementTypes) then
                     $element/properties/not(@documentation)
                 else
                     $element/documentation/not(@value)"/>
@@ -229,7 +230,7 @@
         <xsl:param name="elementType"/>
         <xsl:variable name="hasStereotype"
             select="
-            if ($elementType = $elementTypes) then
+                if ($elementType = $elementTypes) then
                     $element/properties/@stereotype
                 else
                     $element/stereotype/@stereotype"/>
@@ -256,7 +257,7 @@
         <xsl:param name="elementType"/>
         <xsl:variable name="isStereotypeValid"
             select="
-            if ($elementType = $elementTypes) then
+                if ($elementType = $elementTypes) then
                     f:isElementStereotypeValid($element)
                 else
                     f:isAttributeStereotypeValid($element)"/>
@@ -369,9 +370,10 @@
                 "/>
 
     </xsl:template>
-    
+
     <xd:doc>
-        <xd:desc>[common-visibility-18] - The element $name$ is non-public. All elements shall be public.</xd:desc>
+        <xd:desc>[common-visibility-18] - The element $name$ is non-public. All elements shall be
+            public.</xd:desc>
         <xd:param name="element"/>
     </xd:doc>
     <xsl:template name="nonPublicElement">
@@ -379,11 +381,60 @@
         <xsl:variable name="elementScope" select="$element/@scope"/>
         <xsl:sequence
             select="
-            if ($elementScope = 'public') then
-            ()
-            else
-            f:generateHtmlWarning(fn:concat('The element ', $element/@name, ' is non-public. All elements shall be public '))"
+                if ($elementScope = 'public') then
+                    ()
+                else
+                    f:generateHtmlWarning(fn:concat('The element ', $element/@name, ' is non-public. All elements shall be public '))"
         />
+    </xsl:template>
+
+    <xd:doc>
+        <xd:desc>[common-name-unique] - The name $value$ is not unique. The Concept names should be
+            unique within the model; while the relations may repeat but should not overlap with
+            concept names. </xd:desc>
+        <xd:param name="element"/>
+        <xd:param name="isAttribute"/>
+    </xd:doc>
+    <xsl:template name="elementUniqueName">
+        <xsl:param name="element"/>
+        <xsl:param name="isAttribute"/>
+        <xsl:if test="boolean($element/@name)">
+            <xsl:variable name="elementsFound"
+                select="f:getElementByName($element/@name, root($element))"/>
+            <xsl:variable name="connectorsFound"
+                select="f:getConnectorByName($element/@name, root($element))"/>
+            <xsl:variable name="attributesFound"
+                select="f:getAttributeByName($element/@name, root($element))"/>
+            <xsl:choose>
+                <xsl:when test="$isAttribute = fn:true()">
+                    <xsl:sequence
+                        select="
+                            if (count($elementsFound) > 0 or count($connectorsFound) > 0) then
+                                f:generateHtmlError(fn:concat('The name ', $element/@name, ' is not unique. The Concept names ',
+                                'should be unique within the model; while the relations may repeat ',
+                                'but should not overlap with concept names. '))
+                            else
+                                ()
+                            
+                            "
+                    />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:sequence
+                        select="
+                        if (count($elementsFound) > 1 or count($connectorsFound) > 0 or count($attributesFound) > 0) then
+                                f:generateHtmlError(fn:concat('The name ', $element/@name, ' is not unique. The Concept names ',
+                                'should be unique within the model; while the relations may repeat ',
+                                'but should not overlap with concept names. '))
+                            else
+                                ()
+                            
+                            "
+                    />
+                </xsl:otherwise>
+            </xsl:choose>
+
+        </xsl:if>
     </xsl:template>
 
 </xsl:stylesheet>

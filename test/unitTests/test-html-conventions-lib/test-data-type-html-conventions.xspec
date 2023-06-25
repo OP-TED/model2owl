@@ -34,16 +34,18 @@
  
     
     <x:scenario label="Scenario for finding a Data-type element that doesn't have a unique name">
-        <x:call template="dataTypeUniqueName">
-            <x:param name="dataTypeElement" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[295]"/>
+        <x:call template="elementUniqueName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[295]"/>
+            <x:param name="isAttribute" select="false()"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
     
     <x:scenario label="Scenario for finding a Data-type element name with unique name ">
-        <x:call template="dataTypeUniqueName">
-            <x:param name="dataTypeElement" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[261]"/>
+        <x:call template="elementUniqueName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[261]"/>
+            <x:param name="isAttribute" select="false()"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>

@@ -88,6 +88,10 @@
             <xsl:call-template name="nonPublicElement">
                 <xsl:with-param name="element" select="."/>
             </xsl:call-template>
+            <xsl:call-template name="elementUniqueName">
+                <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="isAttribute" select="fn:false()"/>
+            </xsl:call-template>
             <!--    End of common checkers rules     -->   
             <!--    Start of specific checker rules-->
 
@@ -95,9 +99,6 @@
                 <xsl:with-param name="enumeration" select="."/>
             </xsl:call-template>
 
-            <xsl:call-template name="enumerationUniqueName">
-                <xsl:with-param name="enumeration" select="."/>
-            </xsl:call-template>
             
             <xsl:call-template name="enumerationOutgoingConnectors">
                 <xsl:with-param name="enumeration" select="."/>
@@ -140,34 +141,6 @@
     </xsl:template>
 
 
-  
-
-    <xd:doc>
-        <xd:desc>[enumeration-name-1] - The name $value$ is not unique. The Concept names should be
-            unique within the model; while the relations may repeat but should not overlap with
-            concept names. </xd:desc>
-        <xd:param name="enumeration"/>
-    </xd:doc>
-    <xsl:template name="enumerationUniqueName">
-        <xsl:param name="enumeration"/>
-        <xsl:if test="boolean($enumeration/@name)">
-            <xsl:variable name="elementsFound"
-                select="f:getElementByName($enumeration/@name, root($enumeration))"/>
-            <xsl:variable name="connectorsFound"
-                select="f:getConnectorByName($enumeration/@name, root($enumeration))"/>
-            <xsl:sequence
-                select="
-                    if (count($elementsFound) > 1 or count($connectorsFound) > 0) then
-                        f:generateHtmlError(fn:concat('The name ', $enumeration/@name, ' is not unique. The Concept names ',
-                        'should be unique within the model; while the relations may repeat ',
-                        'but should not overlap with concept names. '))
-                    else
-                        ()
-                    
-                    "
-            />
-        </xsl:if>
-    </xsl:template>
     
     <xd:doc>
         <xd:desc>[enumeration-attribute-2] The enumeration $value$ shall have no values/attributes defined. 

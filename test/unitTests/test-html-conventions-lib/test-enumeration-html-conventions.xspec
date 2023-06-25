@@ -59,16 +59,18 @@
 
     
     <x:scenario label="Scenario for finding a enumeration with unique name">
-        <x:call template="enumerationUniqueName">
-            <x:param name="enumeration" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[172]"/>
+        <x:call template="elementUniqueName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[172]"/>
+            <x:param name="isAttribute" select="false()"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
     
     <x:scenario label="Scenario for finding a enumeration name that is not unique">
-        <x:call template="enumerationUniqueName">
-            <x:param name="enumeration" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[217]"/>
+        <x:call template="elementUniqueName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[217]"/>
+            <x:param name="isAttribute" select="false()"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>

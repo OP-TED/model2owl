@@ -89,6 +89,10 @@
             <xsl:call-template name="namePlural">
                 <xsl:with-param name="element" select="."/>
             </xsl:call-template>
+            <xsl:call-template name="elementUniqueName">
+                <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="isAttribute" select="fn:true()"/>
+            </xsl:call-template>
             <!--    End of common checkers rules     -->
             <!--    Start of specific checker rules-->
 

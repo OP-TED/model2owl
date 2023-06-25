@@ -90,13 +90,15 @@
             <xsl:call-template name="nonPublicElement">
                 <xsl:with-param name="element" select="."/>
             </xsl:call-template>
+            
+            <xsl:call-template name="elementUniqueName">
+                <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="isAttribute" select="fn:false()"/>
+            </xsl:call-template>
             <!--    End of common checkers rules     -->   
             <!--    Start of specific checker rules-->
             
             <xsl:call-template name="dataTypeIncorrectType">
-                <xsl:with-param name="dataTypeElement" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="dataTypeUniqueName">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
             <xsl:call-template name="dataTypeAttributeChecker">
@@ -136,33 +138,6 @@
         </xsl:choose>
     </xsl:template>
     
-    
-    <xd:doc>
-        <xd:desc>[datatype-name-1] - The name $value$ is not unique. The Concept names should be
-            unique within the model; while the relations may repeat but should not overlap with
-            concept names. </xd:desc>
-        <xd:param name="dataTypeElement"/>
-    </xd:doc>
-    <xsl:template name="dataTypeUniqueName">
-        <xsl:param name="dataTypeElement"/>
-        <xsl:if test="boolean($dataTypeElement/@name)">
-            <xsl:variable name="elementsFound"
-                select="f:getElementByName($dataTypeElement/@name, root($dataTypeElement))"/>
-            <xsl:variable name="connectorsFound"
-                select="f:getConnectorByName($dataTypeElement/@name, root($dataTypeElement))"/>
-            <xsl:sequence
-                select="
-                if (count($elementsFound) > 1 or count($connectorsFound) > 0) then
-                f:generateHtmlError(fn:concat('The name ', $dataTypeElement/@name, ' is not unique. The Concept names ',
-                'should be unique within the model; while the relations may repeat ',
-                'but should not overlap with concept names. '))
-                else
-                ()
-                
-                "
-            />
-        </xsl:if>
-    </xsl:template>
 
     <xd:doc>
         <xd:desc>[datatype-name-2] - The datatype is not an XSD or RDF datatype. 

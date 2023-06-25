@@ -90,12 +90,13 @@
             <xsl:call-template name="nonPublicElement">
                 <xsl:with-param name="element" select="."/>
             </xsl:call-template>
+            <xsl:call-template name="elementUniqueName">
+                <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="isAttribute" select="fn:false()"/>
+            </xsl:call-template>
             
         <!--    End of common checkers rules     -->   
         <!--    Start of specific checker rules-->
-            <xsl:call-template name="classUniqueName">
-                <xsl:with-param name="class" select="."/>
-            </xsl:call-template>
             <xsl:call-template name="classIsNotPascalNamed">
                 <xsl:with-param name="class" select="."/>
             </xsl:call-template>
@@ -210,37 +211,6 @@
                     else
                         f:generateHtmlWarning(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'))"
         />
-    </xsl:template>
-
-
- 
-
-    <xd:doc>
-        <xd:desc>[class-name-1] - The name $value$ is not unique. The Concept names should be
-            unique within the model; while the relations may repeat but should not overlap with
-            concept names. </xd:desc>
-        <xd:param name="class"/>
-    </xd:doc>
-    <xsl:template name="classUniqueName">
-        <xsl:param name="class"/>
-        <xsl:if test="boolean($class/@name)">
-            <xsl:variable name="elementsFound"
-                select="f:getElementByName($class/@name, root($class))"/>
-            <xsl:variable name="connectorsFound"
-                select="f:getConnectorByName($class/@name, root($class))"/>
-            <xsl:sequence
-                select="
-                    if (count($elementsFound) > 1 or count($connectorsFound) > 0) then
-                        f:generateHtmlError(fn:concat('The name ', $class/@name, ' is not unique. The Concept names ',
-                        'should be unique within the model; while the relations may repeat ',
-                        'but should not overlap with concept names. '))
-                    else
-                        ()
-                    
-                    "
-            />
-        </xsl:if>
-    </xsl:template>
-    
+    </xsl:template>    
     
 </xsl:stylesheet>

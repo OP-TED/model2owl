@@ -105,6 +105,13 @@
                     <xsl:call-template name="dependencySourceTargetTypes">
                         <xsl:with-param name="dependencyConnector" select="."/>
                     </xsl:call-template>
+                    <xsl:call-template name="connectorUniqueName">
+                        <xsl:with-param name="connector" select="."/>
+                    </xsl:call-template> 
+                    <xsl:call-template name="connectorRoleCrossTypeReuseCheck">
+                        <xsl:with-param name="connector" select="."/>
+                        <xsl:with-param name="isDependency" select="fn:true()"/>
+                    </xsl:call-template> 
                     <!--    End of specific checker rules-->  
                 </xsl:if>
             </xsl:variable>

@@ -99,6 +99,8 @@
                 <xsl:call-template name="connectorDirectionAndRolesOutOfSync">
                     <xsl:with-param name="connector" select="."/>
                 </xsl:call-template> 
+
+                
                 <!--    End of common connectors checkers rules     -->  
                 <!--    Start of specific checker rules-->
                 <xsl:if test="f:getConnectorDirection(.) = 'Bi-Directional'">
@@ -113,6 +115,13 @@
                 <xsl:call-template name="associationSourceTargetTypes">
                     <xsl:with-param name="connector" select="."/>
                 </xsl:call-template>
+                <xsl:call-template name="connectorUniqueName">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template> 
+                <xsl:call-template name="connectorRoleCrossTypeReuseCheck">
+                    <xsl:with-param name="connector" select="."/>
+                    <xsl:with-param name="isDependency" select="fn:false()"/>
+                </xsl:call-template> 
                 <!--    End of specific checker rules-->  
             </xsl:if>
         </xsl:variable>

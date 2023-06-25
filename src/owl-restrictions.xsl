@@ -59,7 +59,7 @@
             <xsl:for-each select="$namespacePrefixes/*:prefixes/*:prefix/@importURI">              
                 <owl:imports rdf:resource="{.}"/>
             </xsl:for-each>      
-            
+            <owl:imports rdf:resource="{$coreArtefactURI}"/>
             <dct:title xml:lang="en">
                 <xsl:value-of select="$ontologyTitle"/>
             </dct:title>
