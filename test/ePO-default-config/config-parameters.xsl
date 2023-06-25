@@ -128,5 +128,17 @@
     <xsl:variable name="preferredNamespaceUri" select="'http://data.europa.eu/a4g/ontology#'"/>
     <!--    vann:preferredNamespacePrefix -->
     <xsl:variable name="preferredNamespacePrefix" select="'epo'"/>
+    
+    <xsl:variable name="rightsLiteral" select="'The Commission’s reuse policy is implemented by Commission Decision2011/833/EU of 12 December 2011 on the reuse of Commission documents 
+        (OJ L 330,14.12.2011, p. 39 – https://eur-lex.europa.eu/eli/dec/2011/833/oj). Unlessotherwise noted, the reuse of this document is authorised under the 
+        CreativeCommons Attribution 4.0 International (CC BY 4.0) licence (https://creativecommons.org/licenses/by/4.0/).This means that reuse is allowed, provided 
+        that appropriate credit is given and any changes are indicated.'"/>
+    <xsl:variable name="licenseURI" select="'http://creativecommons.org/licenses/by-sa/4.0'"/>
+    <xsl:variable name="attributionNameLiteral" select="'European Union'"/>
+    <xsl:variable name="attributionURL" select="'http://publications.europa.eu/resource/authority/corporate-body/EURUN'"/>
+    
+
+    
+    
 
 </xsl:stylesheet>

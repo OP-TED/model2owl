@@ -19,6 +19,7 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:cc="http://creativecommons.org/ns#"
     exclude-result-prefixes="xs math xd xsl uml xmi umldi fn f"
     version="3.0">
 
@@ -96,7 +97,11 @@
             <bibo:status><xsl:value-of select="$ontologyStatus"/></bibo:status>
             <owl:priorVersion><xsl:value-of select="$priorVersion"/></owl:priorVersion>
             <vann:preferredNamespaceUri><xsl:value-of select="$preferredNamespaceUri"/></vann:preferredNamespaceUri>
-            <vann:preferredNamespacePrefix><xsl:value-of select="$preferredNamespacePrefix"/></vann:preferredNamespacePrefix> 
+            <vann:preferredNamespacePrefix><xsl:value-of select="$preferredNamespacePrefix"/></vann:preferredNamespacePrefix>
+            <dct:rights><xsl:value-of select="$rightsLiteral"/></dct:rights>
+            <dct:license rdf:resource="{$licenseURI}"/>
+            <cc:attributionName><xsl:value-of select="$attributionNameLiteral"/></cc:attributionName>
+            <cc:attributionURL rdf:resource="{$attributionURL}"/>
             
         </owl:Ontology>
     </xsl:template>
