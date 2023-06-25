@@ -27,13 +27,21 @@
         <xd:desc>Rule T.02. Label — in data shape layer. Specify a label for the SHACL shape, based on the name of the UML element.</xd:desc>
         <xd:param name="uri"/>
         <xd:param name="elementName"/>
+        <xd:param name="isPropertyShape"/>
     </xd:doc>
     <xsl:template name="shapeLayerName">
         <xsl:param name="elementName"/>
         <xsl:param name="uri"/>
-        
+        <xsl:param name="isPropertyShape"/>
         <rdf:Description rdf:about = "{$uri}">
-            <rdfs:label><xsl:value-of select="$elementName"/></rdfs:label>
+            <xsl:choose>
+                <xsl:when test="$isPropertyShape=fn:true()">
+                    <sh:name><xsl:value-of select="$elementName"/></sh:name> 
+                </xsl:when>
+                <xsl:otherwise>
+                     <rdfs:label><xsl:value-of select="$elementName"/></rdfs:label>  
+                </xsl:otherwise>
+            </xsl:choose>
         </rdf:Description>
     </xsl:template>
 
@@ -84,7 +92,7 @@
         </rdf:Description>
     </xsl:template>
     
-<!--    <xd:doc>
+    <xd:doc>
         <xd:desc>Rule T.09. Defined by - Specify if UML element is defined by the core
             ontology</xd:desc>
         <xd:param name="uri"/>
@@ -92,11 +100,11 @@
         
     <xsl:template name="shapeLayerDefinedBy">
         <xsl:param name="uri"/>
-        <xsl:if test="fn:contains($uri, $base-ontology-uri)">
+        <xsl:if test="fn:contains($uri, $base-shape-uri)">
             <rdf:Description rdf:about="{$uri}">
-                <rdfs:isDefinedBy rdf:resource="{$coreArtefactURI}"/>
+                <rdfs:isDefinedBy rdf:resource="{$shapeArtefactURI}"/>
             </rdf:Description>
         </xsl:if>
-    </xsl:template>-->
+    </xsl:template>
 
 </xsl:stylesheet>

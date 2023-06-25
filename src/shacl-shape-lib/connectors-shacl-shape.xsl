@@ -155,6 +155,7 @@
             <xsl:call-template name="shapeLayerName">
                 <xsl:with-param name="elementName" select="$targetRole"/>
                 <xsl:with-param name="uri" select="$propertyShapeURITarget"/>
+                <xsl:with-param name="isPropertyShape" select="fn:true()"/>
             </xsl:call-template>
             <xsl:if test="$targetDocumentation != ''">
                 <xsl:call-template name="shapeLayerDescription">
@@ -174,6 +175,7 @@
             <xsl:call-template name="shapeLayerName">
                 <xsl:with-param name="elementName" select="$targetRole"/>
                 <xsl:with-param name="uri" select="$propertyShapeURITarget"/>
+                <xsl:with-param name="isPropertyShape" select="fn:true()"/>
             </xsl:call-template>
             <xsl:if test="$targetDocumentation != ''">
                 <xsl:call-template name="shapeLayerDescription">
@@ -191,6 +193,7 @@
             <xsl:call-template name="shapeLayerName">
                 <xsl:with-param name="elementName" select="$sourceRole"/>
                 <xsl:with-param name="uri" select="$propertyShapeURISource"/>
+                <xsl:with-param name="isPropertyShape" select="fn:true()"/>
             </xsl:call-template>
             <xsl:if test="$targetDocumentation != ''">
                 <xsl:call-template name="shapeLayerDescription">
