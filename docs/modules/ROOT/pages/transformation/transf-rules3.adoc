@@ -17,7 +17,7 @@ In this section are specified transformation rules for UML datatypes and enumera
 [[sec:primitive-type]]
 === Primitive datatype
 
-The UML primitive type defines a predefined datatype without any substructure. The UML specification predefines five primitive types: String, Integer, Boolean, UnlimitedNatural and Real. Here we extended those to the list provided in <<tab:type-mapping>>.
+The UML primitive type defines a predefined datatype without any substructure. The UML specification [xref:references.adoc#ref:uml2.5[uml2.5]] predefines five primitive types: String, Integer, Boolean, UnlimitedNatural and Real. Here we extended those to the list provided in <<tab:type-mapping>>.
 
 
 .Visual representation of a UML Datatype (on the left) and an OWL Datatype (on the right)
@@ -106,7 +106,7 @@ xsd:boolean a rdfs:Datatype .
 
 === Structured datatypes
 
-The UML structured datatype has attributes and is used to define complex data types. The structured datatypes should be treated as classes.
+The UML structured datatype [xref:references.adoc#ref:uml2.5[uml2.5]] has attributes and is used to define complex data types. The structured datatypes should be treated as classes.
 
 [#rule:datatype-structured-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D01}. Structured Datatype -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
 ====
@@ -117,7 +117,7 @@ See applicable rules in Section on xref:transformation/transf-rules1.adoc#sec:cl
 
 === Enumeration
 
-UML Enumerations are kinds of datatypes, whose values correspond to one of user-defined literals. They should be transformed into SKOS concept schemes comprising the concepts corresponding to enumerated items.
+UML Enumerations [xref:references.adoc#ref:uml2.5[uml2.5]] are kinds of datatypes, whose values correspond to one of user-defined literals. They should be transformed into SKOS [xref:references.adoc#ref:skos-spec[skos-spec]] concept schemes comprising the concepts corresponding to enumerated items.
 
 
 .Visual representation of a UML Enumeration

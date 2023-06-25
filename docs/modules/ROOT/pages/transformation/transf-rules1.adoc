@@ -21,7 +21,7 @@ In this section are specified transformation rules for UML class and attribute e
 [[sec:class]]
 === Class
 
-In UML, a Class is purposed to specify a classification of objects. UML represents atomic classes as named elements of type _Class_ without further features. In OWL, the atomic class, `owl:Class`, has no intention. It can only be interpreted by its name that has a meaning in the world outside the ontology. The atomic class is a class description that is simultaneously a class axiom .
+In UML, a Class [xref:references.adoc#ref:uml2.5[uml2.5]] is purposed to specify a classification of objects. UML represents atomic classes as named elements of type _Class_ without further features. In OWL, the atomic class, `owl:Class`, has no intention. It can only be interpreted by its name that has a meaning in the world outside the ontology. The atomic class is a class description that is simultaneously a class axiom .
 
 .Visual representation of a class in UML (on the left) and OWL (on the right)
 [#fig:class-visual]
@@ -108,9 +108,9 @@ shape:ClassName a sh:NodeShape ;
 [[sec:class-abstract]]
 === Abstract class
 
-In UML, an abstract Class cannot have any instances and only its subclasses can be instantiated. The abstract classes are declared just like the regular ones (<<rule:class-core>> and <<rule:class-ds>>) and in addition a constraint validation rule is generated to ensure that no instance of this class is permitted.
+In UML, an abstract Class [xref:references.adoc#ref:uml2.5[uml2.5]] cannot have any instances and only its subclasses can be instantiated. The abstract classes are declared just like the regular ones (<<rule:class-core>> and <<rule:class-ds>>) and in addition a constraint validation rule is generated to ensure that no instance of this class is permitted.
 
-OWL follows the Open World Assumption , therefore, even if the ontology does not contain any instances for a specific class, it is unknown whether the class has any instances. We cannot confirm that the UML abstract class is correctly defined with respect to the OWL domain ontology, but we can detect if it is not using SHACL constraints.
+OWL follows the Open World Assumption [xref:references.adoc#ref:owl2[owl2]], therefore, even if the ontology does not contain any instances for a specific class, it is unknown whether the class has any instances. We cannot confirm that the UML abstract class is correctly defined with respect to the OWL domain ontology, but we can detect if it is not using SHACL constraints.
 
 .Visual representation of an abstract class in UML (on the left) and OWL (on the right)
 [#fig:class-abstract-visual]
@@ -167,7 +167,7 @@ shape:ClassName a sh:NodeShape ;
 [[sec:attribute]]
 === Attribute
 
-The UML attributes are properties that are owned by a Classifier, e.g. Class. Both UML attributes and associations are represented by one meta-model element – Property. OWL also allows one to define properties. A transformation of UML attribute to OWL data property or OWL object property is done based  on its type. If the type of the attribute is a primitive type it should be transformed into OWL data property. However, if the type of the attribute is a structured datatype, class or enumeration, it should be transformed into an OWL object property. These cases are illustrated in <<fig:attribute-visual>>.
+The UML attributes [xref:references.adoc#ref:uml2.5[uml2.5]] are properties that are owned by a Classifier, e.g. Class. Both UML attributes and associations are represented by one meta-model element – Property. OWL also allows one to define properties. A transformation of UML attribute to OWL data property or OWL object property is done based  on its type. If the type of the attribute is a primitive type it should be transformed into OWL data property. However, if the type of the attribute is a structured datatype, class or enumeration, it should be transformed into an OWL object property. These cases are illustrated in <<fig:attribute-visual>>.
 
 .Visual representation of class attributes in UML (on the left) and OWL properties (on the right)
 [#fig:attribute-visual]
@@ -509,7 +509,7 @@ shape:ClassName-attribute2
 [[sec:attribute-multiplicity]]
 === Attribute multiplicity
 
-In , multiplicity bounds of multiplicity element are specified in the form of `[<lower-bound> .. <upper-bound>]`. The lower-bound, also referred here as minimum cardinality or `min` is of a non-negative Integer type and the upper-bound, also referred here as maximum cardinality or `max`, is of an UnlimitedNatural type (see Section xref:transformation/transf-rules3.adoc#sec:primitive-type[Primitive datatype]). The strictly compliant specification of UML in version 2.5 defines only a single value range for MultiplicityElement. not limit oneself to a single interval. Therefore, the below UML to OWL mapping covers a wider case – a possibility of specifying more value ranges for a multiplicity element. Nevertheless, if the reader would like to strictly follow the current UML specification, the particular single lower..upper bound interval is therein also comprised.
+In [xref:references.adoc#ref:uml2.5[uml2.5]], multiplicity bounds of multiplicity element are specified in the form of `[<lower-bound> .. <upper-bound>]`. The lower-bound, also referred here as minimum cardinality or `min` is of a non-negative Integer type and the upper-bound, also referred here as maximum cardinality or `max`, is of an UnlimitedNatural type (see Section xref:transformation/transf-rules3.adoc#sec:primitive-type[Primitive datatype]). The strictly compliant specification of UML in version 2.5 defines only a single value range for MultiplicityElement. not limit oneself to a single interval. Therefore, the below UML to OWL mapping covers a wider case – a possibility of specifying more value ranges for a multiplicity element. Nevertheless, if the reader would like to strictly follow the current UML specification, the particular single lower..upper bound interval is therein also comprised.
 
 
 .Visual representation of class attributes with multiplicity in UML (on the left) and OWL class specialising an anonymous restriction of properties (on the right)
@@ -517,7 +517,7 @@ In , multiplicity bounds of multiplicity element are specified in the form of `[
 image::f9.png[9]
 
 
-It should be noted that upper-bound of UML MultiplicityElement can be specified as unlimited: ``*''. In OWL, cardinality expressions serve to restrict the number of individuals that are connected by an object property expression to a given number of instances of a specified class expression . Therefore, UML unlimited upper-bound does not add any information to OWL ontology, hence it is not transformed.
+It should be noted that upper-bound of UML MultiplicityElement can be specified as unlimited: ``*''. In OWL, cardinality expressions serve to restrict the number of individuals that are connected by an object property expression to a given number of instances of a specified class expression [xref:references.adoc#ref:owl2[owl2]]. Therefore, UML unlimited upper-bound does not add any information to OWL ontology, hence it is not transformed.
 
 [#rule:attribute-rc-multiplicity,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Attribute multiplicity -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
 ====

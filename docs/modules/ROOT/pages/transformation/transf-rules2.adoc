@@ -29,7 +29,7 @@ In this section are specified transformation rules for UML association, generali
 [[sec:association-uni]]
 === Unidirectional association
 
-A binary Association specifies a semantic relationship between two member ends represented by properties. Please note that in accordance with specification , the association end names are not obligatory. However, we adhere to the UML conventions , where specification of at one member ends, for unidirectional association, and two member ends, for bidirectional association, is mandatory. Moreover, provision of a connector (general) name is discouraged.
+A binary Association specifies a semantic relationship between two member ends represented by properties. Please note that in accordance with specification [xref:references.adoc#ref:uml2.5[uml2.5]], the association end names are not obligatory. However, we adhere to the UML conventions , where specification of at one member ends, for unidirectional association, and two member ends, for bidirectional association, is mandatory. Moreover, provision of a connector (general) name is discouraged.
 
 .Visual representation of a UML unidirectional association (on the left) and an OWL property with cardinality restriction on domain class (on the right)
 [#fig:association-uni-visual]
@@ -515,14 +515,14 @@ shape:ClassName-relationName
 [[sec:generalisation]]
 === Class generalisation
 
-Generalisation defines specialization relationship between Classifiers. In case of UML Classes it relates a more specific Class to a more general Class.
+Generalisation [xref:references.adoc#ref:uml2.5[uml2.5]] defines specialization relationship between Classifiers. In case of UML Classes it relates a more specific Class to a more general Class.
 
 .Visual representation of UML generalisation (on the left) and OWL subclass relation (on the right)
 [#fig:generalisation-visual]
 image::f13.png[13]
 
 //TODO: Verify this statement. It doesn't make too much sense. Needs reformulation. Plus, it might be irrelevant if we don't make a rule for generating (optional) disjoint classes statements. Adding a sentence about this to refer to an individual rule for generating disjoint statements.
-UML generalisation set groups generalisations; incomplete and disjoint constraints indicate that the set is not complete and its specific Classes have no common instances. The UML conventions specify that all sibling classes are by default disjoint, therefore even if no generalisation set is provided it is assumed to be implicit.
+UML generalisation set [xref:references.adoc#ref:uml2.5[uml2.5]] groups generalisations; incomplete and disjoint constraints indicate that the set is not complete and its specific Classes have no common instances. The UML conventions specify that all sibling classes are by default disjoint, therefore even if no generalisation set is provided it is assumed to be implicit.
 Sibling classes will be declared disjoint with one another in the reasoning layer (see xref:rule:disjoint-classes-rc[]).
 
 [#rule:generalisation-class-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Class generalisation -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
@@ -554,7 +554,7 @@ Specify subclass axiom for the generalisation between UML Classes.
 
 === Property generalisation
 
-Generalization defines specialization relationship between Classifiers. In case of the UML associations it relates a more specific Association to more general Association.
+Generalisation [xref:references.adoc#ref:uml2.5[uml2.5]] defines specialization relationship between Classifiers. In case of the UML associations it relates a more specific Association to more general Association.
 
 .Visual representation of UML property generalisation (on the left) and OWL sub-property relation (on the right)
 [#fig:generalisation-rel-visual]
