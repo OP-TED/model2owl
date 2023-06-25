@@ -733,12 +733,12 @@
 
 
     <xd:doc>
-        <xd:desc>[association-dependency-checker] - Connector role names are used in other
-            connectors types </xd:desc>
+        <xd:desc>[association-dependency-checker] - Check if connector role names are used in other
+            connectors types.  </xd:desc>
         <xd:param name="connector"/>
         <xd:param name="isDependency"/>
     </xd:doc>
-    <xsl:template name="connectorRoleCheck">
+    <xsl:template name="connectorRoleCrossTypeReuseCheck">
         <xsl:param name="isDependency"/>
         <xsl:param name="connector"/>
         <xsl:variable name="sourceRole" select="$connector/source/role/@name"/>

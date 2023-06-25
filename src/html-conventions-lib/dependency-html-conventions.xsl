@@ -108,7 +108,7 @@
                     <xsl:call-template name="connectorUniqueName">
                         <xsl:with-param name="connector" select="."/>
                     </xsl:call-template> 
-                    <xsl:call-template name="connectorRoleCheck">
+                    <xsl:call-template name="connectorRoleCrossTypeReuseCheck">
                         <xsl:with-param name="connector" select="."/>
                         <xsl:with-param name="isDependency" select="fn:true()"/>
                     </xsl:call-template> 
