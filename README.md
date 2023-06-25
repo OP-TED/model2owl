@@ -39,7 +39,7 @@ This work is developed in the context of [eProcurement ontology project](https:/
 ### Scripts
 * [html-conventions-report.xsl](src/html-conventions-report.xsl) is the script checking the conformance to the technical conventions of the conceptual model.   
 * [owl-core.xsl](src/owl-core.xsl) is the transformation script for the core OWL ontology.
-* [shacl-shapes.xsl](src/shacl-shapes.xsl) is the transformation script for the SHACL data shape constraints
+* [shacl-shapes.xsl](src/shacl-shapes.xsl) is the transformation script for the SHACL data shape constraints.
 * [owl-restrictions.xsl](src/owl-restrictions.xsl) is the transformation script for the restrictions of OWL ontology (on classes and properties).
 
 ### Script unit tests
