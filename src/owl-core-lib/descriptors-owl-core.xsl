@@ -72,8 +72,7 @@
 
 
     <xd:doc>
-        <xd:desc>Rule T.08. Defined by - Specify if UML element is defined by the core
-            ontology</xd:desc>
+        <xd:desc>Rule T.08. Annotate all locally defined OWL concepts with the name of the (core) ontology that defines them.</xd:desc>
         <xd:param name="elementUri"/>
     </xd:doc>
     <xsl:template name="coreDefinedBy">

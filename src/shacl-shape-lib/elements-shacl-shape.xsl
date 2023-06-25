@@ -38,9 +38,7 @@
 
         <sh:NodeShape rdf:about="{$shapeClassUri}">
             <sh:targetClass rdf:resource="{$classURI}"/>
-<!--            <xsl:call-template name="shapeLayerDefinedBy">
-                <xsl:with-param name="uri" select="$classURI"/>
-            </xsl:call-template>-->
+
 
             <xsl:if test="$class/properties/@stereotype = $abstractClassesStereotypes">
                 <xsl:call-template name="abstractClassDeclaration">
@@ -50,8 +48,9 @@
      
         </sh:NodeShape>
         <xsl:call-template name="shapeLayerName">
-            <xsl:with-param name="elementName" select="$class/@name"/>
+            <xsl:with-param name="elementName" select="f:lexicalQNameToWords($class/@name)"/>
             <xsl:with-param name="uri" select="$shapeClassUri"/>
+            <xsl:with-param name="isPropertyShape" select="fn:false()"/>
         </xsl:call-template>
         <xsl:if test="$documentation != ''">
             <xsl:call-template name="shapeLayerDescription">
@@ -60,6 +59,10 @@
                 <xsl:with-param name="rdfsComment" select="fn:true()"/>
             </xsl:call-template>
         </xsl:if>
+        <xsl:call-template name="shapeLayerDefinedBy">
+            <xsl:with-param name="uri" select="$shapeClassUri"/>
+        </xsl:call-template>
+        
         
 
 
@@ -125,16 +128,20 @@
         </sh:PropertyShape>
         
         <xsl:call-template name="shapeLayerName">
-            <xsl:with-param name="elementName" select="$attribute/@name"/>
+            <xsl:with-param name="elementName" select="f:lexicalQNameToWords($attribute/@name)"/>
             <xsl:with-param name="uri" select="$shapePropertyUri"/>
+            <xsl:with-param name="isPropertyShape" select="fn:true()"/>
         </xsl:call-template>
         <xsl:if test="$documentation != ''">
             <xsl:call-template name="shapeLayerDescription">
                 <xsl:with-param name="definition" select="$documentation"/>
-                <xsl:with-param name="uri" select="$shapeClassUri"/>
+                <xsl:with-param name="uri" select="$shapePropertyUri"/>
                 <xsl:with-param name="rdfsComment" select="fn:false()"/>
             </xsl:call-template>
         </xsl:if>
+        <xsl:call-template name="shapeLayerDefinedBy">
+            <xsl:with-param name="uri" select="$shapePropertyUri"/>
+        </xsl:call-template>
     </xsl:template>
    
 
