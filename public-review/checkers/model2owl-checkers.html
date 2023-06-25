@@ -157,8 +157,1089 @@
 </aside>
 <article class="doc">
 <h1 class="page">UML Convention checker inventory</h1>
-<div class="paragraph">
-<p><strong>[TODO: add text and pages]</strong></p>
+<div class="sect1">
+<h2 id="_general_checkers"><a class="anchor" href="#_general_checkers"></a>General Checkers</h2>
+<div class="sectionbody">
+<table id="tab:general" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Checkers for category: <code>general</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>general-connector-type-1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">connector type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Only associations, dependecies, generalisations and realisation connectors are supported.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that the connector type is only associations, dependecies, generalisations and realisation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>general-element-type-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">element type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Only Class, Package, Datatype, Enumeration, and Object elements are supported</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that Class, Package, Datatype, Enumeration, and Object elements are used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>general-prefix-3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">namespace definitions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The prefixes $[list of undefined prefixes] are not defined. All used namespaces shall be defined ("prefix" = "base URI"), including the default one (""="base URI").</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that all used prefixes are defined</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_common_checkers_for_all_elements"><a class="anchor" href="#_common_checkers_for_all_elements"></a>Common Checkers for all Elements</h2>
+<div class="sectionbody">
+<table id="tab:common" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Checkers for category: <code>common</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-name-1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">naming format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name $elementName$ does not match the pattern. The name should respect the syntax "prefix:localSegment" (similar to the XML QName).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if it is a valid Qname- XML</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-name-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the element $IdRef$ is missing. Please provide one respecting the syntax "prefix:localSegment".</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name value is empty or missing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-name-3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing name prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name $elementName$ is missing a prefix. The name should comprise a prefix respecting the syntax "prefix:localSegment".</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the prefix is missing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-name-4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing local segment name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of $elementName$ is missing a local segment. The name should comprise a local segment respecting the syntax "prefix:localSegment".</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the local segment is missing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-name-5</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid name prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name prefix is invalid in $value$. Please provide a short prefix name containing only alphanumeric characters [a-zA-Z0-9]+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check regex for prefix</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-name-6</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">undefined prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The prefix $value$ is not defined. A prefix must be associated to a namespace URI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">collect the names of classes, enumerations, datatypes, connectors, attributes, connector roles and check if the namespace is known.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-name-7</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid name local segment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The local name segment is invalid in $value$. Please provide a concise label using alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with tokens delimited by single spaces.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check regex for local segment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-name-8</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid first character in the local segment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The local name segment $value$ starts with an invalid character. The local segment must start with a letter or underscore.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if the first charater is not a letter or underscore</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-name-9</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delimiters in the name local segment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The local name segment $value$ contains token delimiters. It is best if the names are camel-cased and delimiters removed.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if local segment contains delimiters (spaces) regex [\s]+</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-description-10</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$elementName$ is missing a description. All concepts and properties should be defined and/or described.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if the $element$ has a description/documentation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-stereotype-11</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">info</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stereotype provided</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The $stereotypeName$ stereotype is applied to $elementName$. Stereotypes are discouraged in the current practice.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if element has stereotype</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-stereotype-12</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unknown stereotype provided</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The $stereotypeName$ stereotype applied to $elementName$ is not known and will be ignored.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if element has stereotype and if it is in the set of exceptions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-tag-13</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid tag name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The tag $tagName$ of element $elementName$ must be an URI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For all tags of an element (classes, enumerations, datatypes, connectors, attributes, connector roles) select the tag name and check that it is a short URI or short URI with a language tag (e.g. @en).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-tag-14</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing tag value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The tag $tagName$ of element $elementName$ must have a value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For all tags of an element select the tag and check if it has value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-tag-15</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing tag name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The tag $tagName$ of element $elementName$ must have a valid name.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For all tags of an element check it has a name.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-name-16</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">plural name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name $value is possibly in plural grammatical number. Names shall be usually provided in singular number.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if the name ends in -s or-es</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-prefix-17</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">undefined prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Tag name prefix $value$ is not defined. A prefix must be associated to a namespace URI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">collect the names of the tags and check if the namespace is known.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-visibility-18</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">element non-public</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The element $name$ is non-public. All elements shall be public.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check if the element visibility is public</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-name-19</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">names must be unique</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name $value$ is not unique. The Concept names should be unique within the model. The following list specifies the names of the which things are not to be reused as the names of which other things: (a) elements (Class, Datatype, Enumeration, Object) &#8594; elements, attributes, connector roles (dependency &amp; association); and (b) attributes &#8594; elements, connector roles (dependency &amp; association)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check that the names of the following things are not being reused as the names of something else: (a) elements (Class, Datatype, Enumeration, Object) &#8594; elements, attributes, connector roles (dependency &amp; association); and (b) attributes &#8594; elements, connector roles (dependency &amp; association)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_checkers_for_classes"><a class="anchor" href="#_checkers_for_classes"></a>Checkers for Classes</h2>
+<div class="sectionbody">
+<table id="tab:class" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Checkers for category: <code>class</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class&#8594;common&#8212;&#8203;0</code></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inherits all from checkers in category <a href="#tab:common"><code>common</code></a> and subcategory name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class-name-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class is not PascalCased</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The class name $value$ is invalid. The class name must start with a capital case.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check first letter of the local segment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class-attribute-3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">info</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">underspecified class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The class $className$ has no attributes provided. A class should define some attributes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if class has at least one attribute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class-connector-4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disconnected class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The class $className$ is disconnected. A class should be connected to other elements.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if there is at least one connector that has this class as the source</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_checkers_for_class_attributes"><a class="anchor" href="#_checkers_for_class_attributes"></a>Checkers for Class Attributes</h2>
+<div class="sectionbody">
+<table id="tab:class-attribute" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Checkers for category: <code>class-attribute</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class-attribute&#8594;common&#8212;&#8203;0</code></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inherits all from <a href="#tab:common"><code>common</code></a> element checkers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class-attribute-name-1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid name case</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The attribute name $value$ is invalid. Class attribute names must start with a lower case.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check first letter of the local segment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class-attribute-multiplicity-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid multiplicity format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The attribute $attributeName$ multiplicity is invalid. Multiplicity must be specified in the form ['min'..'max'] and the values should be defined with a digit or *</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the multiplicity format</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class-attribute-type-3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid datatype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The attribute type $attributeType$ is invalid. Attributes must use datatypes that are either: (a) XSD or RDF datatypes or (b) belonging to a shortlist of custom URIs (datatypes or classes).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that datatype is legal, i.e. in the list of permitted standard or custom datatypes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class-attribute-multiplicity-4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing multiplicity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The attribute $attributeName$ multiplicity is missing. Multiplicity must be specified in the form ['min'..'max'] and the values should be defined with a digit or *</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the multiplicity is present</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class-attribute-visibility-5</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">attribute non-public</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The attribute type $attributeType$ is non-public. Attributes shall be public</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if the attribute visibility is public</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_checkers_for_reused_class_attributes"><a class="anchor" href="#_checkers_for_reused_class_attributes"></a>Checkers for Reused Class Attributes</h2>
+<div class="sectionbody">
+<table id="tab:class-attributes-reuse" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Checkers for category: <code>class-attributes-reuse</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class-attributes-reuse-definition-1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Definition of class attributes with same name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The attribute $value$ is defined differently in reuse contexts. When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. In this case, multiple definitions are found: $Definitions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">compare definition values for a group of class attributes with the same name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class-attributes-reuse-multiplicity-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">info</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiplicity of class attributes with same name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The attribute $value$ is has different multiplicities in reuse contexts. When a property is reused in multiple contexts, the multiplicity is expected to be the same. Please check the nomenclature above for a summary.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">compare multiplicity values for a group of class attributes with the same name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class-attributes-reuse-data-types-3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data-types of class attributes with same name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The attribute $value$ has different datatypes in reuse contexts. When a property is reused in multiple contexts, the data-type is expected to be the same. In this case, multiple data-types are found: $Data-types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">compare data-types for a group of class attributes with the same name</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_checkers_for_enumerations"><a class="anchor" href="#_checkers_for_enumerations"></a>Checkers for Enumerations</h2>
+<div class="sectionbody">
+<table id="tab:enumeration" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Checkers for category: <code>enumeration</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>enumeration&#8594;common&#8212;&#8203;0</code></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inherits all from <a href="#tab:common"><code>common</code></a> element checkers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>enumeration-attribute-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enumeration values provided</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The enumeration $value$ shall have no values/attributes defined.  An Enumeration stands for a controlled list and its management is out of model scope.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if the enumeration has any "attributes" and warn about that</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>enumeration-connector-3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enumeration connected to other elements</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The enumeration $value should not connect to other elements. An Enumeration stands for a controlled list and can only be referred to.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if there are outgoing connectors from an enumeration and error about that</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_checkers_for_data_types"><a class="anchor" href="#_checkers_for_data_types"></a>Checkers for Data Types</h2>
+<div class="sectionbody">
+<table id="tab:datatype" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Checkers for category: <code>datatype</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datatype&#8594;common&#8212;&#8203;0</code></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inherits all from <a href="#tab:common"><code>common</code></a> element checkers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datatype-name-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid datatype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The datatype $value$ is not an XSD or RDF datatype. It is recommended to use XSD and RDF datatypes mainly.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if name is a valid xsd/rdf datatype</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datatype-attribute-3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">non-atomic datatype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The datatype $value$ is not atomic. Complex datatypes where attributes/components are specified shall be represented as classes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if datatype has attributes and report that</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datatype-datatype-4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">datatype connected to other elements</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The datatype $value should not connect to other elements. A Datatype can only be referred to.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if there are outgoing connectors from an datatype and error about that</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_checkers_for_packages"><a class="anchor" href="#_checkers_for_packages"></a>Checkers for Packages</h2>
+<div class="sectionbody">
+<table id="tab:package" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Checkers for category: <code>package</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>package-name-1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bad name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The package name $packageName$ contains invalid characters. Package name shall be a short alphanumeric string representing an acronym or a short name.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if name matches regex [a-zA-Z0-9\s]+</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>package-name-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The package name is missing. Packages must be named.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if name value is empty or missing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>package-owned-elements-3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">empty package</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The package $packageName$ is empty. Packages must contain child classes and connectors (i.e. owned elements).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if there are any owned elments in the package</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_general_checkers_2"><a class="anchor" href="#_general_checkers_2"></a>General Checkers</h2>
+<div class="sectionbody">
+<table id="tab:object" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. Checkers for category: <code>object</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object&#8594;common&#8212;&#8203;0</code></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inherits all from <a href="#tab:common"><code>common</code></a> element checkers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object-attribute-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">object attributes provided</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The object $name$ shall have no values/attributes defined.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if the object has any "attributes" and warn about that</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object-connector-3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">object connected to other elements</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The object $value should not connect to other elements. An object stands for an controlled list and can only be referred to.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check if there are outgoing connectors from an object and error about that. Except realisation connectors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object-connector-4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">object must instanciate a Class or Enumeration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The object $name should instanciate a Class or Enumeration. There shall be at least one Realisation relationship between the Object and a Class or Enumeration.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if the object has at least one realisation relationship with a Class or Enumeration.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_common_checkers_for_all_connectors"><a class="anchor" href="#_common_checkers_for_all_connectors"></a>Common Checkers for all Connectors</h2>
+<div class="sectionbody">
+<table id="tab:connector" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. Checkers for category: <code>connector</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-name-1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">naming format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name $connector$ does not match the pattern. The name should respect the syntax "prefix:localSegment" (similar to the XML QName).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if it is a valid Qname- XML</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-name-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing name prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name $connector$ is missing a prefix. The name should comprise a prefix respecting the syntax "prefix:localSegment".</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the prefix is missing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-name-3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing local segment name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of $connector$ is missing a local segment. The name should comprise a local segment respecting the syntax "prefix:localSegment".</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the local segment is missing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-name-4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid name prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name prefix is invalid in $value$. Please provide a short prefix name containing only alphanumeric characters [a-zA-Z0-9]+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check regex for prefix</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-name-5</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">undefined prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The prefix $value$ is not defined. A prefix must be associated to a namespace URI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check connector roles names and check if the namespace is known.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-name-6</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid name local segment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The local name segment is invalid in $value$. Please provide a concise label using alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with tokens delimited by single spaces.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check regex for local segment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-name-7</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid first character in the local segment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The local name segment $value$ starts with an invalid character. The local segment must start with a letter or underscore.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if the first charater is not a letter or underscore</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-name-8</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delimiters in the name local segment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The local name segment $value$ contains token delimiters. It is best if the names are camel-cased and delimiters removed.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if local segment contains delimiters (spaces) regex [\s]+</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-stereotype-9</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unknown stereotype provided</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The $stereotypeName$ stereotype applied to $connector$ is not known and will be ignored.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if element has stereotype and if it is in the set of exceptions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-stereotype-10</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">info</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stereotype provided</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The $stereotypeName$ stereotype is applied to $connector$. Stereotypes are discouraged in the current practice.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if connector has stereotype</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-description-11</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$connector$ is missing a description. All concepts and properties should be defined and/or described.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if the connector roles have a description/documentation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-tag-12</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid tag name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The tag $tagName$ of element $connector$ must be an URI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For all tags of an element (classes, enumerations, datatypes, connectors, attributes, connector roles) select the tag name and check that it is a short URI or short URI with a language tag (e.g. @en).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-tag-prefix-13</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">undefined prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Tag name prefix $value$ is not defined. A prefix must be associated to a namespace URI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">collect the names of the tags and check if the namespace is known.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-tag-14</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing tag value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The tag $tagName$ of element $connector$ must have a value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For all tags of an element select the tag and check if it has value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-tag-15</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing tag name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The tag $tagName$ of element $connector$ must have a valid name.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For all tags of an element check it has a name.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-target-tag-16</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">connector target role with tags but without a name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The connector $connectorName$ target role has tag annotations but no name. The connector must have a target role to sustain annotations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if target role has tags but no name, raise a warning</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-source-tag-17</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">connector source role with tags but without a name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The connector $connectorName$ source role has tag annotations but no name. The connector must have a source role to sustain annotations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if source role has tags but no name, raise a warning</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-tag-18</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">connector with tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The connector $connectorName$ has tag annotations. The connector is not transformed into a property and therefore any tag will be ignored.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if connector has tags, raise a warning</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-name-19</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">general name provided</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The connector $connectorName$ has a general name, and it should not. The names must be provided as connector source and target roles, not as connector name.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the connector name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-target-20</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing target role</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The connector $connectorName$ has no target role. The connectors must have target roles.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the connector target role name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-direction-21</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid relationship direction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The connector $connectorName$ employs invalid direction $direction$. Connectors must employ "Source&#8594;Destination" or "Bidirectional" directions only.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the connector direction is in the list ["src&#8594;dest", "bidir"]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-multiplicity-22</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing target multiplicity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The target role of $connectorName$ has no multiplicity. Cardinality must be provided for each role.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the connector has target role name and multiplicity is empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-multiplicity-23</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid target multiplicity format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The connector $connectorName$ has target multiplicity invalidly stated. Multiplicity must be specified in the form ['min'..'max'].</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the multiplicity format in target</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-direction-24</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">direction and roles are out of sync</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The connector direction and roles are out of sync. When the connector direction is Source&#8594;Destination then only a target role is expected, while for Bi-Directional direction source and a target roles are expected.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">if the connector direction is S&#8594;D, then only target role must be provided; else if the direction is BiDir, then source and target roles msut be provided.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-name-25</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">connector role names must be unique</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name $value$ is not unique. The Connector role names can be reused within the model, but only as connector role names on the same type of connector. I.e. the  name of (dependecy &amp; association) connector roles should not be reused as the name of elements  (Class, Datatype, Enumeration, Object) or attributes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check that the names of (dependecy &amp; association) connector roles are not being reused as names of elements  (Class, Datatype, Enumeration, Object) or attributes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-name-26</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">connector role names reused only on same connector type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name $value$ is not unique. The Connector role names can be reused within the model, but only as connector role names on the same type of connector. I.e. the  name of a dependecy role should not be reused as the name of association role, and the name of association role should not be reused as the  name of a dependecy role.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check that the name of the dependecy role is not reused as the name of an association role, and the name of the association role is not reused as the  name of a dependecy role.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_checkers_for_reused_connectors"><a class="anchor" href="#_checkers_for_reused_connectors"></a>Checkers for Reused Connectors</h2>
+<div class="sectionbody">
+<table id="tab:connectors-with-same-name" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 11. Checkers for category: <code>connectors-with-same-name</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connectors-with-same-name-multiplicity-1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">info</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiplicity of connectors with same name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When a property is reused in multiple contexts, the multiplicity is expected to be the same. Please check the nomenclature above for a summary.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">compare multiplicity values for a group of connectors with the same name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connectors-with-same-name-definition-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Definition of connectors with same name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. In this case, multiple definitions are found: $Definitions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">compare definition values for a group of connectors with the same name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connectors-with-same-name-name-3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a name is used in different conenctor types e.g. in dependecy and in association</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name $Name appears on connectors of different types.  A name shall be reused only on connectors of the same type.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if the the name appears only on conenctors of the same type.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_checkers_for_association_connectors"><a class="anchor" href="#_checkers_for_association_connectors"></a>Checkers for Association Connectors</h2>
+<div class="sectionbody">
+<table id="tab:association" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 12. Checkers for category: <code>association</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>association&#8594;connector&#8212;&#8203;0</code></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inherits all from checkers in category <a href="#tab:connector"><code>connector</code></a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>association-multiplicity-1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">missing source multiplicity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The source role of $connectorName$ has no multiplicity. Cardinality must be provided for each role.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the connector has source role name and multiplicity is empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>association-multiplicity-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid source multiplicity format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The connector $connectorName$ has source multiplicity invalidly stated. Multiplicity must be specified in the form ['min'..'max'].</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">if source role si available check the multiplicity format in source</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>association-source-target-types-3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">only associations of classes to classes and classes to objects are allowed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associations can be provided only between classes to classes and classes to objects.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that Associations are be provided only between classes to classes and classes to objects. ONLY: Class&#8594;Class or Class&#8594;Object</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_checkers_for_dependency_connectors"><a class="anchor" href="#_checkers_for_dependency_connectors"></a>Checkers for Dependency Connectors</h2>
+<div class="sectionbody">
+<table id="tab:dependency" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 13. Checkers for category: <code>dependency</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dependency&#8594;connector&#8212;&#8203;0</code></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inherits all from checkers in category <a href="#tab:connector"><code>connector</code></a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dependency-direction-1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid direction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The direction is not 'Source&#8594;Destination'. Dependency direction can be only 'Source&#8594;Destination'.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if the direction is 'S&#8594;D'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dependency-source-target-types-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">only dependecies of classes to enumerations or objects are allowed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dependecies can be provided only between classes and enumerations or objects.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that Dependecies are provided only between classes and enumerations or objects. ONLY: Class &#8594; Enumeration or Class &#8594; Object</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_checkers_for_generalisation_connectors"><a class="anchor" href="#_checkers_for_generalisation_connectors"></a>Checkers for Generalisation Connectors</h2>
+<div class="sectionbody">
+<table id="tab:generalisation" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 14. Checkers for category: <code>generalisation</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-hierarchy-1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">info</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class with a single child</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The class $parent$ has only one sub-class $child$. Class inheritance should be built employing at least two subclasses for each class or not at all.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This applies to class generalisation only, and not to connector generalisation. Select the target name of the generalisation connector; then count how many generalisations have the same target; they must be 2 or more.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-hierarchy-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inverse inheritance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The classes $class1$ and $class2$ inherit one another. Sub-class relation must be established in one direction only, forming a hierarchy.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">select sourceName and targetName of a generalisation; check if there is another generalisation in the inverse order fom targetName to sourceName</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-multiplicity-3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">generalisation with multiplicity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The generalisation has multiplicity. No multiplicity can be provided to generalisations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that no multiplicity is provided in the source or target roles</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-name-4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">generalisation with a name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The connector $connectorName$ has a name. No name can be provided for generalisation relation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that no name is provided for the generalisation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-name-5</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">generalisation has a role name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The generalisation connector has a role name. No source or target roles can be provided to generalisations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that no name is provided for the generalisation source and target roles</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-direction-6</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid relationship direction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The $direction$ direction is invalid. Generalisations must employ "Source&#8594;Destination" direction only.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check generalization direction to be only Source &#8594; Destination</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-source-target-types-7</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">only generalisations of classes and properties are allowed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generalisations can be provided only between classes or between connectors.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that generalisations are provided only between Classes or between connectors (ProxyConnector). ONLY: Class &#8594; Class or ProxyConnector &#8594; ProxyConnector</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_checkers_for_realisation_connectors"><a class="anchor" href="#_checkers_for_realisation_connectors"></a>Checkers for Realisation Connectors</h2>
+<div class="sectionbody">
+<table id="tab:realisation" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 15. Checkers for category: <code>realisation</code></caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checker ID<br>
+<code>cat-subcat-idx</code></th>
+<th class="tableblock halign-center valign-top">Severity</th>
+<th class="tableblock halign-left valign-top">Checker name</th>
+<th class="tableblock halign-left valign-top">Message</th>
+<th class="tableblock halign-left valign-top">Pseudo code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>realisation-multiplicity-1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">realisation with multiplicity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The realisation has multiplicity. No multiplicity can be provided to realisations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that no multiplicity is provided in the source or target roles</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>realisation-name-2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">realisation with a name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The connector $connectorName$ has a name. No name can be provided for realisation relation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that no name is provided for the realisation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>realisation-name-3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">realisation has a role name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The realisation connector has a role name. No source or target roles can be provided to realisations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that no name is provided for the realisation source and target roles</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>realisation-direction-4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid relationship direction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The $direction$ direction is invalid. realisations must employ "Source&#8594;Destination" direction only.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check realisation direction to be only Source &#8594; Destination</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>realisation-source-target-types-5</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">only realisations of classes or enumerations as object are allowed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The realisation can be provided only from an Object to a Class or Enumeration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that the realisations are between an Object and classes or enumerations. ONLY: Object&#8594;Class or Object&#8594;Enumeration</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </article>
   </div>
