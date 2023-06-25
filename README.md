@@ -1,6 +1,6 @@
 # model2owl
 
-This project comprises a set of tools for transforming an UML (v2.5) model from its XMI (v2.5.1) serialisation into a formal ontology. This transformation is performed using XSLT stylesheets under the assumption that the UML model conforms to the set of conventions outlined in the documentation.    
+This project comprises a set of tools for transforming an UML (v2.5) model from its XMI (v2.5.1) serialisation into a formal OWL ontology, and a SHACL shape. This transformation is performed using XSLT stylesheets under the assumption that the UML model conforms to the set of conventions outlined in the documentation.    
 
 * UML -> OWL 2 (light / complete)
 * UML -> SHACL
