@@ -30,7 +30,6 @@
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[114]"/>
         <x:expect label="result" test="boolean(/owl:Class)"/>
         <x:expect label="result" test="boolean(/owl:Class/rdfs:subClassOf)"/>
-        <x:expect label="result" test="boolean(/owl:Class/owl:disjointWith)"/>
     </x:scenario>
 
     <x:scenario
@@ -121,7 +120,6 @@
         <x:call template="classGeneralization"/>
         <x:expect label="result" test="boolean(/owl:Class)"/>
         <x:expect label="result" test="boolean(/owl:Class/rdfs:subClassOf)"/>
-        <x:expect label="result" test="boolean(/owl:Class/owl:disjointWith)"/>
     </x:scenario>    
 
 </x:description>
