@@ -8,7 +8,7 @@
  *Title:* uml:Realization connects objects with classes or enumerations
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:realization-btw-object-and-class-or-enum
 
 |*Statement:*
 uml:Realization connectors connect a uml:Object element to a uml:Class or uml:Enumeration element.
@@ -27,7 +27,7 @@ The uml:Realization connector signifies an instantiation relation, and is transf
  *Title:* uml:Realization connector with no name
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:realization-name
 
 |*Statement:*
 uml:Realization connectors shall have no name or a target role specified.
@@ -44,7 +44,7 @@ The uml:Realization connectors must have no name (see the xref:uml/conv-connecto
  *Title:* uml:Realization connector with no multiplicity
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:realization-multiplicity
 
 |*Statement:*
 uml:Realization connectors shall have no target or source multiplicity specified.
@@ -61,7 +61,7 @@ The multiplicity must not be specified neither at the target nor at the source e
  *Title:* Proxy objects
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:realization-proxy-objects
 
 |*Statement:*
 For objects defined in external models proxy uml:Object elements should be defined.

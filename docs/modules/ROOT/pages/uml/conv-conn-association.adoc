@@ -7,7 +7,7 @@
  *Title:* uml:Associations connect classes to classes or objects
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:association-btw-class-and-class-or-object
 
 |*Statement:*
 uml:Association elements connect two uml:Classes, or a uml:Class to a uml:Object.
@@ -25,7 +25,7 @@ The uml:Association connectors represent relations between source and target cla
  *Title:* uml:Association connector name
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:association-target
 
 |*Statement:*
 uml:Association connectors shall have no name specified. They shall have a valid target role (and optionally a source role) name specified.
@@ -44,7 +44,7 @@ An Association connector shall have a target role specified. The target role nam
  *Title:* uml:Association multiplicity
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:association-multiplicity
 
 |*Statement:*
 uml:Association connectors shall have their target multiplicity specified. If source role is specified, also their source multiplicity must be specified.
@@ -61,7 +61,7 @@ The target and source multiplicity must be specified accordingly indicating the 
  *Title:* uml:Association definition
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:association-definition
 
 |*Statement:*
 uml:Association connector shall have a definition.

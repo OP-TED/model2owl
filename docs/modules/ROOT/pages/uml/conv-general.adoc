@@ -15,7 +15,7 @@ To reduce the complexity of UML models that one can build, and the conversion of
  *Title:* Supported UML model elements
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-model-elements
 
 |*Statement:*
 The UML model shall contain only the following types of UML elements: Class, DataType, Enumeration, Object and Package.
@@ -32,7 +32,7 @@ The Model2OWL tool deals only with the conversion of the following UML elements:
  *Title:* Supported UML connectors
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-model-connectors
 
 |*Statement:*
 The UML model shall contain only the following types of UML Connectors: Association, Dependency, Generalization and Realization.
@@ -49,7 +49,7 @@ The Model2OWL tool deals only with the conversion of the following UML connector
  *Title:* UML model components should be public
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-element-visibility
 
 |*Statement:*
 All UML model elements and connectors must be declared with the visibility set to "Public".
@@ -75,7 +75,7 @@ In theory any name can be assigned to a concept, relationship or property. In pr
  *Title:* Support for generation of human- and machine-readable denominations
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-names-labels-and-ids
 
 |*Statement:*
 Element names should support generation of human- and machine-readable denominations, and they shall follow the short URI notation: `prefix:localSegment` .
@@ -92,7 +92,7 @@ The naming conventions apply to the _element names_ in the conceptual model. The
  *Title:* Recommendation on language
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-names-language
 
 |*Statement:*
 Element names shall be formulated using British English. Multilingual support, if needed, should be provided through additional labels.
@@ -110,7 +110,7 @@ In addition, a mechanism for providing a multilingual labelling system should be
  *Title:* Namespace definition
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-names-namespaces
 
 |*Statement:*
 All prefixes used in the element names must refer to a valid namespace declaration, including a default namespace.
@@ -127,7 +127,7 @@ The names should also belong to and be organised by _namespaces_. They can be pr
  *Title:* Use clear language
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-clear-language
 
 |*Statement:*
 Clear and plain language shall be used; and abbreviations, unpronounceable, easily confusable, cryptic, and other difficult terms shall be avoided in element names.
@@ -147,7 +147,7 @@ It is recommended to avoid abbreviations in concept names. Also, the words emplo
  *Title:* Case sensitivity
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-names-case
 
 |*Statement:*
 Names are case-sensitive. Names of elements of the same type should use consistent capitalisation.
@@ -170,7 +170,7 @@ All the names are case-sensitive. This means that the class "Buyer" and the attr
  *Title:* Delimitation in multi-word names
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-names-multi
 
 |*Statement:*
 Names containing multiple words shall use _camelCase_ or _PascalCase_ as word delimiting mechanism.
@@ -194,7 +194,7 @@ Exceptionally, if the conceptual model authors must maintain high readability of
  *Title:* Name uniqueness and reuse
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-names-unique
 
 |*Statement:*
 Element names (Class, Datatype, Enumeration, Object, Package) must be unique, while the Attribute and Connector role names, with certain restrictions, can be reused.
@@ -228,7 +228,7 @@ The names of the following THINGS shall be unique against the OTHER THINGS (i.e.
  *Title:* Reuse of relations
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-relation-reuse
 
 |*Statement:*
 Connector and Attribute names shall be chosen such as to support the appropriate level of reuse.
@@ -255,7 +255,7 @@ Optionally, the transformation process from the conceptual model to the formal o
  *Title:* Use of suffixes and prefixes
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-names-suffix-prefix
 
 |*Statement:*
 Attributes and connector names shall contain a verb. Apply certain, well establish, prefixes and/or suffixes, in a consistent fashion, to achieve this goal.
@@ -288,7 +288,7 @@ Large emphasis is set on the naming conventions. Nonetheless, most often, a good
  *Title:* Description of elements
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-description
 
 |*Statement:*
 All elements must have a definition providing a concise but complete description of the concept.
@@ -337,7 +337,7 @@ As a rule of thumb, but not always, the relationship between the controlled list
  *Title:* Representation of known controlled lists
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-controlled-list
 
 |*Statement:*
 
@@ -359,7 +359,7 @@ Two use-cases can be identified in practice: (a) when the code list is known and
  *Title:* Representation of unknown controlled lists
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-controlled-list-unknown
 
 |*Statement:*
 
@@ -377,7 +377,7 @@ When the authors of a conceptual model intend to omit which controlled list shal
  *Title:* Controlled list values
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-controlled-list-empty
 
 |*Statement:*
 
@@ -418,7 +418,7 @@ In order to enable the reuse of names defined in other models and reuse of uniqu
  *Title:* Known namespaces
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-namespaces-declared
 
 |*Statement:*
 
@@ -450,7 +450,7 @@ In the formal ontology, the URIs must conform to RDF [xref:references.adoc#ref:r
  *Title:* Valid characters in element and connector names
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-names-characters
 
 |*Statement:*
 
@@ -468,7 +468,7 @@ It is required that the names use words beginning with an upper or lower case le
  *Title:* URI character sets
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-names-charsets
 
 |*Statement:*
 Element names shall use only ASCII characters to generate valid URIs. UTF-8, UTF-16 and other character encodings should be avoided in the element names as they will lead to creation of IRIs.
@@ -488,7 +488,7 @@ Encoded UTF-8 and UTF-16 names may be used [xref:references.adoc#ref:xml1-spec[x
  *Title:* Stereotypes
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-stereotypes
 
 |*Statement:*
 Stereotypes have no semantics and hence shall be avoided. Exceptionally, some selected, agreed-upon stereotypes may be used.
@@ -506,7 +506,7 @@ The use of stereotypes is not recommended. There should be only a small set of s
  *Title:* Tags
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:gen-tags
 
 |*Statement:*
 UML tags shall be used to provide additional descriptions of the element in a consistent and structure manner.

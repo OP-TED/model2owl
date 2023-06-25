@@ -8,7 +8,7 @@
  *Title:* uml:Generalization connects two classes or two connectors
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:generalization-btw-classes-or-connectors
 
 |*Statement:*
 uml:Generalization connectors connect a uml:Class element to its superclass uml:Class element, or a uml:Connector to its super-property uml:Connector.
@@ -27,7 +27,7 @@ The uml:Generalization connector signifies either:
  *Title:* uml:Generalization connector with no name
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:generalization-name
 
 |*Statement:*
 uml:Generalization connectors shall have no name or a target role specified.
@@ -44,7 +44,7 @@ The uml:Generalization connectors must have no name (see the xref:uml/conv-conne
  *Title:* uml:Generalization connector with no multiplicity
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:generalization-multiplicity
 
 |*Statement:*
 uml:Generalization connectors shall have no target or source multiplicity specified.
@@ -61,7 +61,7 @@ The multiplicity must not be specified neither at the target nor at the source e
  *Title:* Proxy classes
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:generalization-proxy-classes
 
 |*Statement:*
 For classes defined in external models proxy uml:Class elements should be defined.
@@ -78,7 +78,7 @@ In case a model class should inherit a class from an external model then proxies
  *Title:* Disjoint subclasses
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:generalization-disjoint-subclasses
 
 |*Statement:*
 Subclasses of the same class, represented by multiple uml:Generalization connectors pointing to the same superclass, are assumed disjoint by default. Exceptions may exist and can be encoded.
@@ -96,7 +96,7 @@ In this specification, the subclasses are assumed disjoint by default, unless ot
  *Title:* Equivalent classes
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:generalization-equivalent-classes
 
 |*Statement:*
 Equivalent classes can be represented by using stereotypes on the uml:Generalization connectors.

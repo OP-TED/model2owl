@@ -2,13 +2,13 @@
 == Conventions on uml:Dependency Connectors
 
 
-[[rule:dependency-btw-class-and-enum-or-object      rule:dependency-btw-class-and-enum-or-object]]
+[[rule:dependency-btw-class-and-enum-or-object]]
 |===
 |{set:cellbgcolor: #a8c6f7}
  *Title:* uml:Dependency connects classes to enumerations or objects
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:dependency-btw-class-and-enum-or-object
 
 |*Statement:*
 uml:Dependency connectors connect a uml:Class element to a uml:Enumeration element or a uml:Object element.
@@ -25,7 +25,7 @@ The dependency connector may be used between uml:Class and uml:Enumeration or um
  *Title:* uml:Dependency connector name
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:dependency-target
 
 |*Statement:*
 uml:Dependency connectors shall have no name specified. They shall have a valid target role name specified.
@@ -43,7 +43,7 @@ A Dependency connector shall have only a target role specified. The target role 
  *Title:* uml:Dependency multiplicity
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:dependency-multiplicity
 
 |*Statement:*
 uml:Dependency connectors shall have their target multiplicity specified.

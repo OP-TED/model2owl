@@ -10,7 +10,7 @@
  *Title:* Naming relations
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:connectors-names-with-verb
 
 |*Statement:*
 Relations are to be expressed through UML Connectors. It is recommended to use a verb in the relation names.
@@ -30,7 +30,7 @@ The relation names should be provided as target, and in case of bidirectional as
  *Title:* Bidirectional relations
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:connectors-bidirectional
 
 |*Statement:*
 Relationships are usually bidirectional, and the name for both directions should be provided, where it makes sense.
@@ -47,7 +47,7 @@ Relationships are usually bidirectional, and the names of the relations in both 
  *Title:* Inverse relation
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:connectors-inverse
 
 |*Statement:*
 Semantically inverse relationships should be represented as two distinct UML connectors.
@@ -66,7 +66,7 @@ When the relation is of different nature, more like an attribute, then prefixing
  *Title:* Definition of inverse relations
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:connectors-inverse-definition
 
 |*Statement:*
 It is recommended that the definition of both the relation and its inverse relation is provided.
@@ -89,7 +89,7 @@ Models should define such inverse pairs for relationships although this does not
  *Title:* UML Connector names
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:connectors-name
 
 |*Statement:*
 The name of a uml:Connector shall not be specified. For named relations, represented by uml:Association and uml:Dependency connectors, the relation names are to be specified as the target/source role names.
@@ -110,7 +110,7 @@ For uml:Association and uml:Dependency connectors the name of the relation (and 
  *Title:* Direction of UML Connectors
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:connectors-direction
 
 |*Statement:*
 All uml:Connectors must employ "Source->Target" directions only, with uml:Association connectors allowing also "Bidirectional" direction.
@@ -130,7 +130,7 @@ All supported UML connectors shall have direction "Source->Target". In addition,
  *Title:* Reuse of UML Connector roles
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:connectors-reuse
 
 |*Statement:*
 Connector role names can be reused, but only as role names in other connectors of the same type.

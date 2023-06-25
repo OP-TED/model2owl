@@ -8,7 +8,7 @@
  *Title:* Primitive vs. composite datatypes
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:datatypes-composite
 
 |*Statement:*
 Composite data types shall be represented as uml:Class elements. Primitive data types, if needed to be modelled, shall be represented as uml:DataType elements.
@@ -28,7 +28,7 @@ This convention draws the distinction between primitive (or atomic) types (consi
  *Title:* XSD and RDF datatypes
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:datatypes-primitive
 
 |*Statement:*
 For primitive data types the already existing (standardized or commonly used) datatypes, in particular those from XSD and RDF, shall be reused.
@@ -72,7 +72,7 @@ The table above provides a simplified correspondence between UML and XSD datatyp
  *Title:* OWL 2 datatypes
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:datatypes-owl2
 
 |*Statement:*
 Whenever possible, OWL 2 compliant XSD and RDF datatypes shall be used.
@@ -88,7 +88,7 @@ We strongly recommended the use of OWL 2 compliant XSD and RDF standard datatype
  *Title:* Proxy datatypes
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:datatypes-proxy
 
 |*Statement:*
 For already existing datatypes proxy uml:DataType elements should be defined.
@@ -105,7 +105,7 @@ For the model consistency, it is recommended that the proxy data types be define
  *Title:* Datatypes references
 
 |{set:cellbgcolor: #f5f8fc}
-*Identifier* -
+*Identifier:* rule:datatypes-references
 
 |*Statement:*
 uml:DataType elements shall not connect to other elements. They can only be referred to.
