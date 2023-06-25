@@ -131,6 +131,36 @@ Specify object property domain for the target end of the association/dependency.
     <rdfs:domain rdf:resource = "http://base.onto.uri/ClassName"/>
 </rdf:Description>
 ----
+
+|
+.Object property domain specification for reused relations in Turtle syntax
+[source,Turtle]
+----
+:relationName
+  rdfs:domain [
+    rdf:type owl:Class ;
+    owl:unionOf (
+      :ClassName1
+      :ClassName2
+    )
+  ]
+.
+----
+|
+.Object property domain specification for reused relations in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/relationName">
+    <rdfs:domain>
+        <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="http://base.onto.uri/ClassName1"/>
+                <rdf:Description rdf:about="http://base.onto.uri/ClassName2"/>
+            </owl:unionOf>
+        </owl:Class>
+    </rdfs:domain>
+</rdf:Description>
+----
 |===
 
 === Association target
@@ -157,6 +187,35 @@ Specify object property range for the target end of the association.
 ----
 <rdf:Description rdf:about = "http://base.onto.uri/relationName">
     <rdfs:range rdf:resource = "http://base.onto.uri/ClassName"/>
+</rdf:Description>
+----
+|
+.Object property range specification for reused relations in Turtle syntax
+[source,Turtle]
+----
+:relationName
+  rdfs:range [
+    rdf:type owl:Class ;
+    owl:unionOf (
+      :OtherClass1
+      :OtherClass2
+    )
+  ]
+.
+----
+|
+.Object property range specification for reused relations in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/relationName">
+    <rdfs:range>
+        <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="http://base.onto.uri/OtherClass1"/>
+                <rdf:Description rdf:about="http://base.onto.uri/OtherClass2"/>
+            </owl:unionOf>
+        </owl:Class>
+    </rdfs:range>
 </rdf:Description>
 ----
 |===
