@@ -26,7 +26,7 @@
     <xsl:template name="connectorsWithSameName">
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
-        <h1>Connectors with multiple usages</h1>
+        <h1 id="connectorsUsage">Connectors with multiple usages</h1>
         <xsl:for-each select="$distinctNames">  
             <xsl:sort select="." lang="en"/>
             <xsl:if test="fn:count(f:getConnectorByName(., $root)) > 1">
@@ -39,11 +39,17 @@
                         <xsl:with-param name="connectorName" select="."/>
                         <xsl:with-param name="root" select="$root"/>
                     </xsl:call-template>
+                    <xsl:call-template name="checkNameOfConnectorsWithSameName">
+                        <xsl:with-param name="connectorName" select="."/>
+                        <xsl:with-param name="root" select="$root"/>
+                    </xsl:call-template>
                 </xsl:variable>
                 <xsl:if test="boolean($connectorsChecks)">
+                    <dl id="connector-{.}">
                     <dt>
                         <xsl:value-of select="."/>
                     </dt>
+                    </dl>
                     <xsl:copy-of select="$connectorsChecks"/>
                 </xsl:if>
             </xsl:if>
@@ -96,7 +102,7 @@
                     if ($connector/documentation/@value) then
                         fn:concat($connector/documentation/@value, ' (', f:getConnectorName($connector), ') ')
                     else
-                        ()"/>
+                    fn:concat('...', ' (', f:getConnectorName($connector), ') ')"/>
 
         <xsl:variable name="allConnectorsHaveDefinition"
             select="fn:count($connectorsWithSameName) = fn:count($definitionValues)"/>
@@ -111,6 +117,30 @@
                                                     'In this case, multiple definitions are found: '), $descriptionsWithAnnotations)
                     else
                         ()"
+        />
+    </xsl:template>
+    
+    
+    <xd:doc>
+        <xd:desc>[connectors-with-same-name-name-3] Check if the name is used on group of connectors have the same type</xd:desc>
+        <xd:param name="connectorName"/>
+        <xd:param name="root"/>
+    </xd:doc>
+    <xsl:template name="checkNameOfConnectorsWithSameName">
+        <xsl:param name="connectorName"/>
+        <xsl:param name="root"/>
+        <xsl:variable name="connectorsWithSameName"
+            select="f:getConnectorByName($connectorName, $root)"/>
+        <xsl:variable name="typeValues"
+            select="$connectorsWithSameName/*[role/@name = $connectorName]/../properties/@ea_type"/>
+        
+        <xsl:sequence
+            select="
+            if (f:areStringsEqual($typeValues)) then
+            ()
+            else
+            f:generateHtmlWarning(fn:concat('The name ', $connectorName,
+            ' appears on connectors of different types.  A name shall be reused only on connectors of the same type.'))"
         />
     </xsl:template>
 

@@ -7,12 +7,11 @@
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
-    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:sh="http://www.w3.org/ns/shacl#"
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:functx="http://www.functx.com"
-    version="3.0">
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"  xmlns:functx="http://www.functx.com" 
+    xmlns:f="http://https://github.com/costezki/model2owl#" version="3.0">
 
     <xsl:import href="../common/utils.xsl"/>
     <xsl:import href="../common/formatters.xsl"/>
@@ -22,13 +21,14 @@
         cdata-section-elements="lines"/>
 
     <xd:doc>
-        <xd:desc>applying the rules to associations</xd:desc>
+        <xd:desc>applying the reasoning layer rules to associations</xd:desc>
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
         <xsl:if
-            test="./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
-            f:checkIfConnectorTargetAndSourceElementsExists(.)">
+            test="
+                ./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
+                f:checkIfConnectorTargetAndSourceElementsExists(.)">
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -39,12 +39,14 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>applying the rules to dependencies</xd:desc>
+        <xd:desc>applying the reasoning layer rules to dependencies</xd:desc>
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
-        <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class' and 
-            f:checkIfConnectorTargetAndSourceElementsExists(.)">
+        <xsl:if
+            test="
+                ./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
+                f:checkIfConnectorTargetAndSourceElementsExists(.)">
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -60,46 +62,54 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>applying the rules to generalisations</xd:desc>
+        <xd:desc>applying the reasoning layer rules to generalisations</xd:desc>
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
         <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">
-        <xsl:call-template name="classEquivalence">
-            <xsl:with-param name="generalisation" select="."/>
-        </xsl:call-template>
-        <xsl:call-template name="propertiesEquivalence">
-            <xsl:with-param name="generalisation" select="."/>
-        </xsl:call-template>
+            <xsl:call-template name="classEquivalence">
+                <xsl:with-param name="generalisation" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="propertiesEquivalence">
+                <xsl:with-param name="generalisation" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="disjointClasses">
+                <xsl:with-param name="generalisation" select="."/>
+            </xsl:call-template>
         </xsl:if>
     </xsl:template>
-    
-    
+
+
     <xd:doc>
-        <xd:desc>Applying rule 12,13 and 20 to connectors with distinct names</xd:desc>
+        <xd:desc>Applying reasoning layer rules to connectors with distinct names [Dependency and
+            Association]</xd:desc>
     </xd:doc>
     <xsl:template name="distinctConnectorsNamesInReasoningLayer">
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
+        <!--        TODO Figure out dependencies to Objects -->
         <xsl:for-each select="$distinctNames">
-            <xsl:call-template name="connectorDomain">
-                <xsl:with-param name="connectorName" select="."/>
-                <xsl:with-param name="root" select="$root"/>
-            </xsl:call-template>
-            <xsl:call-template name="connectorRange">
-                <xsl:with-param name="connectorName" select="."/>
-                <xsl:with-param name="root" select="$root"/>
-            </xsl:call-template>
-            <xsl:call-template name="connectorInverse">
-                <xsl:with-param name="connectorName" select="."/>
-                <xsl:with-param name="root" select="$root"/>
-            </xsl:call-template>
+            <xsl:if
+                test="f:getConnectorByName(., $root)[1]/properties/@ea_type = ('Dependency', 'Association') and f:getConnectorByName(., $root)[1]/target/model/@type != 'Object'">
+                <xsl:call-template name="connectorDomain">
+                    <xsl:with-param name="connectorName" select="."/>
+                    <xsl:with-param name="root" select="$root"/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorRange">
+                    <xsl:with-param name="connectorName" select="."/>
+                    <xsl:with-param name="root" select="$root"/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorInverse">
+                    <xsl:with-param name="connectorName" select="."/>
+                    <xsl:with-param name="root" select="$root"/>
+                </xsl:call-template>
+            </xsl:if>
         </xsl:for-each>
     </xsl:template>
 
 
     <xd:doc>
-        <xd:desc>Rule 12 (Association source in reasnoning layer). Specify object property domain
+        <xd:desc>Rule R.03. Association source — in reasoning layer. Specify object property domain
             for the target end of the association.</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
@@ -111,17 +121,14 @@
         <xsl:variable name="connectorsWithSameName"
             select="f:getConnectorByName($connectorName, $root)"/>
         <xsl:variable name="targetRole" select="$connectorName"/>
-        <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($targetRole)"/>
-<!--        This will filter out all Dependencies that are from a Class to an Enumeration-->
+        <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
+        <!--        This will filter out all Dependencies that are from a Class to an Enumeration-->
         <!--<xsl:variable name="filteredConnectorsWithSameName"
             select="$connectorsWithSameName[not(./properties/@ea_type = 'Dependency' and ./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')]"
         />-->
         <!-- We need to provide Domain for Dependencies relations also (cf. EPO-620)-->
-        <xsl:variable name="filteredConnectorsWithSameName"
-            select="$connectorsWithSameName"
-        />
-        
+        <xsl:variable name="filteredConnectorsWithSameName" select="$connectorsWithSameName"/>
+
         <xsl:if test="fn:count($filteredConnectorsWithSameName) = 1">
             <xsl:variable name="classURI"
                 select="
@@ -129,7 +136,7 @@
                         f:buildURIfromLexicalQName($filteredConnectorsWithSameName/source/model/@name)
                     else
                         f:buildURIfromLexicalQName($filteredConnectorsWithSameName/target/model/@name)
-            "/>
+                    "/>
             <rdf:Description rdf:about="{$targetRoleURI}">
                 <rdfs:domain rdf:resource="{$classURI}"/>
             </rdf:Description>
@@ -141,26 +148,35 @@
             <xsl:variable name="sourceDomains"
                 select="$filteredConnectorsWithSameName/source[role/@name = $connectorName]/../target/model/@name"
                 as="xs:string*"/>
-            <xsl:variable name="domains"
-                select="functx:value-union($targetDomains, $sourceDomains)"/>
+            <xsl:variable name="domains" select="functx:value-union($targetDomains, $sourceDomains)"/>
             <rdf:Description rdf:about="{$targetRoleURI}">
-                <rdfs:domain>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <xsl:for-each select="$domains">
-                                <rdf:Description
-                                    rdf:about="{f:buildURIfromLexicalQName(.)}"/>
-                            </xsl:for-each>
-                        </owl:unionOf>
-                    </owl:Class>
-                </rdfs:domain>
+
+                <xsl:choose>
+                    <xsl:when test="fn:count($domains) > 1">
+                        <rdfs:domain>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <xsl:for-each select="$domains">
+                                        <rdf:Description rdf:about="{f:buildURIfromLexicalQName(.)}"
+                                        />
+                                    </xsl:for-each>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </rdfs:domain>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:for-each select="$domains">
+                            <rdf:domain rdf:resource="{f:buildURIfromLexicalQName(.)}"/>
+                        </xsl:for-each>
+                    </xsl:otherwise>
+                </xsl:choose>
             </rdf:Description>
         </xsl:if>
     </xsl:template>
 
 
     <xd:doc>
-        <xd:desc>Rule 13 (Association target in reasnoning layer) . Specify object property range
+        <xd:desc> Rule R.04. Association target — in reasoning layer. Specify object property range
             for the target end of the association.</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
@@ -172,73 +188,81 @@
         <xsl:variable name="connectorsWithSameName"
             select="f:getConnectorByName($connectorName, $root)"/>
         <xsl:variable name="targetRole" select="$connectorName"/>
-        <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($targetRole)"/>
+        <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
         <!-- This will filter out all Dependencies that are from a Class to an Enumeration-->
         <xsl:variable name="filteredConnectorsWithSameName"
-            select="$connectorsWithSameName[not(./properties/@ea_type = 'Dependency' and ./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')]"
-        />
-        
-            <xsl:if test="fn:count($filteredConnectorsWithSameName) = 1 and fn:boolean($filteredConnectorsWithSameName/*[role/@name =$connectorName]/model/@name)">
-                <rdf:Description rdf:about="{$targetRoleURI}">
-                    <rdfs:range
-                        rdf:resource="{f:buildURIfromLexicalQName($filteredConnectorsWithSameName/*[role/@name =$connectorName]/model/@name)}"
-                    />
-                </rdf:Description>
-            </xsl:if>
-            <xsl:if test="fn:count($filteredConnectorsWithSameName) > 1">
-                <xsl:variable name="targetRanges"
-                    select="$filteredConnectorsWithSameName/target[role/@name = $connectorName]/model/@name"
-                    as="xs:string*"/>
-                <xsl:variable name="sourceRanges"
-                    select="$filteredConnectorsWithSameName/source[role/@name = $connectorName]/model/@name"
-                    as="xs:string*"/>
-                <xsl:variable name="ranges"
-                    select="functx:value-union($targetRanges, $sourceRanges)"/>
-                <rdf:Description rdf:about="{$targetRoleURI}">
-                    <rdfs:range>
-                        <owl:Class>
-                            <owl:unionOf rdf:parseType="Collection">
-                                <xsl:for-each select="$ranges">
-                                    <rdf:Description
-                                        rdf:about="{f:buildURIfromLexicalQName(.)}"/>
-                                </xsl:for-each>
-                            </owl:unionOf>
-                        </owl:Class>
-                    </rdfs:range>
-                </rdf:Description>
-            </xsl:if>
-       
+            select="$connectorsWithSameName[not(./properties/@ea_type = 'Dependency' and ./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')]"/>
+
+        <xsl:if
+            test="fn:count($filteredConnectorsWithSameName) = 1 and fn:boolean($filteredConnectorsWithSameName/*[role/@name = $connectorName]/model/@name)">
+            <rdf:Description rdf:about="{$targetRoleURI}">
+                <rdfs:range
+                    rdf:resource="{f:buildURIfromLexicalQName($filteredConnectorsWithSameName/*[role/@name =$connectorName]/model/@name)}"
+                />
+            </rdf:Description>
+        </xsl:if>
+        <xsl:if test="fn:count($filteredConnectorsWithSameName) > 1">
+            <xsl:variable name="targetRanges"
+                select="$filteredConnectorsWithSameName/target[role/@name = $connectorName]/model/@name"
+                as="xs:string*"/>
+            <xsl:variable name="sourceRanges"
+                select="$filteredConnectorsWithSameName/source[role/@name = $connectorName]/model/@name"
+                as="xs:string*"/>
+            <xsl:variable name="ranges" select="functx:value-union($targetRanges, $sourceRanges)"/>
+            <rdf:Description rdf:about="{$targetRoleURI}">
+
+
+                <xsl:choose>
+                    <xsl:when test="fn:count($ranges) > 1">
+                        <rdfs:range>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <xsl:for-each select="$ranges">
+                                        <rdf:Description rdf:about="{f:buildURIfromLexicalQName(.)}"
+                                        />
+                                    </xsl:for-each>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </rdfs:range>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:for-each select="$ranges">
+                            <rdfs:range rdf:resource="{f:buildURIfromLexicalQName(.)}"/>
+                        </xsl:for-each>
+                    </xsl:otherwise>
+                </xsl:choose>
+
+
+            </rdf:Description>
+        </xsl:if>
+
 
     </xsl:template>
 
 
 
     <xd:doc>
-        <xd:desc>Rule 33 (Dependency target in reasnoning layer) . Specify object property range
+        <xd:desc>Rule R.12. Dependency target — in reasoning layer. Specify object property range
             for the target end of the dependency.</xd:desc>
         <xd:param name="connector"/>
         <xd:param name="root"/>
     </xd:doc>
-    
+
     <xsl:template name="connectorDependencyRange">
         <xsl:param name="connector"/>
         <xsl:param name="root"/>
 
         <xsl:variable name="targetRole" select="$connector/target/role/@name"/>
-        <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($targetRole)"/>
+        <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
 
-            <rdf:Description rdf:about="{$targetRoleURI}">
-                <rdfs:range
-                    rdf:resource="skos:Concept"
-                />
-            </rdf:Description>
-       
+        <rdf:Description rdf:about="{$targetRoleURI}">
+            <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        </rdf:Description>
+
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Rule 19 (Association asymmetry in reasnoning layer) . Specify the asymmetry object
+        <xd:desc>Rule R.09. Association asymmetry — in reasoning layer. Specify the asymmetry object
             property axiom for each end of a recursive association.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -251,16 +275,20 @@
                     if (boolean($connector/target/role/@name)) then
                         $connector/target/role/@name
                     else
-                    fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
-            <xsl:variable name="targetRoleURI"
-                select="f:buildURIfromLexicalQName($targetRole)"/>
-            <owl:AsymmetricProperty rdf:about="{$targetRoleURI}"/>
+                        fn:error(xs:QName('connectors'), concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
+            <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
+
+
+            <rdf:Description rdf:about="{$targetRoleURI}">
+                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+            </rdf:Description>
+
         </xsl:if>
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Rule 20 (Association inverse in reasnoning layer) . Specify inverse object property
-            between the source and target ends of the association.</xd:desc>
+        <xd:desc>Rule R.11. Association inverse — in reasoning layer . Specify inverse object
+            property between the source and target ends of the association.</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
     </xd:doc>
@@ -274,50 +302,46 @@
             select="$connectorsWithSameName[properties/@direction = 'Bi-Directional' and target/role/@name = $connectorName]"/>
         <xsl:variable name="distinctTargets"
             select="fn:distinct-values($bidirectionalConnectors/target/role/@name)"/>
-        
-            <xsl:if test="fn:count($bidirectionalConnectors) = 1">
-                <xsl:variable name="targetRole"
-                    select="$bidirectionalConnectors/target/role/@name"/>
-                <xsl:variable name="targetRoleURI"
-                    select="f:buildURIfromLexicalQName($targetRole)"/>
-                <xsl:variable name="sourceRole"
-                    select="
-                        if (boolean($bidirectionalConnectors/source/role/@name)) then
-                            $bidirectionalConnectors/source/role/@name
-                        else
-                        fn:error(xs:QName('connectors'),concat($bidirectionalConnectors/@xmi:idref, ' - connector source role name is empty'))"/>
-                <xsl:variable name="sourceRoleURI"
-                    select="f:buildURIfromLexicalQName($sourceRole)"/>
-                <rdf:Description rdf:about="{$targetRoleURI}">
-                    <owl:inverseOf rdf:resource="{$sourceRoleURI}"/>
-                </rdf:Description>
-            </xsl:if>
-        <xsl:if test="fn:count($bidirectionalConnectors) > 1" >
-                <xsl:for-each select="$distinctTargets">
-                    <xsl:variable name="targetName" select="."/>
-                    <xsl:variable name="targetRole" select="$targetName"/>
-                    <xsl:variable name="targetRoleURI"
-                        select="f:buildURIfromLexicalQName($targetRole)"/>
-                    <xsl:variable name="sourcesFound"
-                        select="$bidirectionalConnectors/source/role/@name"/>
-                    <xsl:for-each select="$sourcesFound">
-                        <xsl:variable name="sourceRole" select="."/>
-                        <xsl:variable name="sourceRoleURI"
-                            select="f:buildURIfromLexicalQName($sourceRole)"/>
-                        <rdf:Description rdf:about="{$targetRoleURI}">
-                            <owl:inverseOf rdf:resource="{$sourceRoleURI}"/>
-                        </rdf:Description>
-                    </xsl:for-each>
+
+        <xsl:if test="fn:count($bidirectionalConnectors) = 1">
+            <xsl:variable name="targetRole" select="$bidirectionalConnectors/target/role/@name"/>
+            <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
+            <xsl:variable name="sourceRole"
+                select="
+                    if (boolean($bidirectionalConnectors/source/role/@name)) then
+                        $bidirectionalConnectors/source/role/@name
+                    else
+                        fn:error(xs:QName('connectors'), concat($bidirectionalConnectors/@xmi:idref, ' - connector source role name is empty'))"/>
+            <xsl:variable name="sourceRoleURI" select="f:buildURIfromLexicalQName($sourceRole)"/>
+            <rdf:Description rdf:about="{$targetRoleURI}">
+                <owl:inverseOf rdf:resource="{$sourceRoleURI}"/>
+            </rdf:Description>
+        </xsl:if>
+        <xsl:if test="fn:count($bidirectionalConnectors) > 1">
+            <xsl:for-each select="$distinctTargets">
+                <xsl:variable name="targetName" select="."/>
+                <xsl:variable name="targetRole" select="$targetName"/>
+                <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
+                <xsl:variable name="sourcesFound"
+                    select="$bidirectionalConnectors/source/role/@name"/>
+                <xsl:for-each select="$sourcesFound">
+                    <xsl:variable name="sourceRole" select="."/>
+                    <xsl:variable name="sourceRoleURI"
+                        select="f:buildURIfromLexicalQName($sourceRole)"/>
+                    <rdf:Description rdf:about="{$targetRoleURI}">
+                        <owl:inverseOf rdf:resource="{$sourceRoleURI}"/>
+                    </rdf:Description>
                 </xsl:for-each>
-            </xsl:if>
-        
+            </xsl:for-each>
+        </xsl:if>
+
     </xsl:template>
-    
-    
+
+
 
 
     <xd:doc>
-        <xd:desc>Rule 23 (Equivalent classes in reasnoning layer) .Specify equivalent class axiom
+        <xd:desc>Rule R.16. Equivalent classes — in reasoning layer .Specify equivalent class axiom
             for the generalisation with equivalent or complete stereotype between UML classes. </xd:desc>
         <xd:param name="generalisation"/>
     </xd:doc>
@@ -331,15 +355,15 @@
                 select="f:buildURIfromLexicalQName($generalisation/source/model/@name)"/>
             <xsl:variable name="targetClassURI"
                 select="f:buildURIfromLexicalQName($generalisation/target/model/@name)"/>
-            <owl:Class rdf:about="{$sourceClassURI}">
+            <rdf:Description rdf:about="{$sourceClassURI}">
                 <owl:equivalentClass rdf:resource="{$targetClassURI}"/>
-            </owl:Class>
+            </rdf:Description>
         </xsl:if>
     </xsl:template>
 
 
     <xd:doc>
-        <xd:desc>Rule 24 (Equivalent properties in reasnoning layer) .Specify equivalent property
+        <xd:desc>Rule R.17. Equivalent properties — in reasoning layer. Specify equivalent property
             axiom for the generalisation with equivalent or complete stereotype between UML
             properties. </xd:desc>
         <xd:param name="generalisation"/>
@@ -374,20 +398,21 @@
                 select="f:buildURIfromLexicalQName($sourceConnector/target/role/@name)"/>
             <xsl:variable name="sourceConnectorSourceRoleURI"
                 select="f:buildURIfromLexicalQName($sourceConnector/source/role/@name)"/>
-            <owl:ObjectProperty rdf:about="{$sourceConnectorSourceRoleURI}">
+            <rdf:Description rdf:about="{$sourceConnectorSourceRoleURI}">
                 <owl:equivalentProperty rdf:resource="{$targetConnectorSourceRoleURI}"/>
-            </owl:ObjectProperty>
-            <owl:ObjectProperty rdf:about="{$sourceConnectorTargetRoleURI}">
+            </rdf:Description>
+            <rdf:Description rdf:about="{$sourceConnectorTargetRoleURI}">
                 <owl:equivalentProperty rdf:resource="{$targetConnectorTargetRoleURI}"/>
-            </owl:ObjectProperty>
+            </rdf:Description>
         </xsl:if>
     </xsl:template>
 
     <xd:doc>
-        <xd:desc> Rule 16,17 (Association multiplicity in reasnoning layer) . For the association
-            target multiplicity, where min and max are different than * (any) and multiplicity is
-            not [1..1], specify a subclass axiom where the source class specialises an anonymous
-            restriction of properties formulated according to cases provided by Rule 9.</xd:desc>
+        <xd:desc> Rule R.06. Association multiplicity — in reasoning layer, Rule R.07. Association
+            multiplicity "one" — in reasoning layer . For the association target multiplicity, where
+            min and max are different than * (any) and multiplicity is not [1..1], specify a
+            subclass axiom where the source class specialises an anonymous restriction of properties
+            formulated according to cases provided by Rule 9.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
 
@@ -417,7 +442,7 @@
         <xsl:variable name="sourceRoleURI"
             select="
                 if (boolean($sourceRole)) then
-                f:buildURIfromLexicalQName($sourceRole)
+                    f:buildURIfromLexicalQName($sourceRole)
                 else
                     ()"/>
         <xsl:variable name="targetClassURI"
@@ -427,14 +452,12 @@
                 if (boolean($connector/target/role/@name)) then
                     $connector/target/role/@name
                 else
-                    fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
-        <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($targetRole)"/>
+                    fn:error(xs:QName('connectors'), concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
+        <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
         <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
-        <xsl:variable name="datatypeURI"
-            select="f:buildURIfromLexicalQName('xsd:integer')"/>
-<!--        this is first restriction content-->
-       <xsl:variable name="sourceDestinationRestrictionContent" as="item()*">
+        <xsl:variable name="datatypeURI" select="f:buildURIfromLexicalQName('xsd:integer')"/>
+        <!--        this is first restriction content-->
+        <xsl:variable name="sourceDestinationRestrictionContent" as="item()*">
             <xsl:choose>
                 <xsl:when
                     test="
@@ -458,28 +481,28 @@
                     </xsl:if>
                 </xsl:otherwise>
             </xsl:choose>
-       </xsl:variable>
+        </xsl:variable>
         <xsl:if
             test="
                 $connectorDirection = 'Source -&gt; Destination' and
                 boolean($targetMultiplicity) and boolean($sourceDestinationRestrictionContent)">
-            <owl:Class rdf:about="{$sourceClassURI}">
+            <rdf:Description rdf:about="{$sourceClassURI}">
                 <rdfs:subClassOf>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="{$targetRoleURI}"/>
                         <xsl:copy-of select="$sourceDestinationRestrictionContent"/>
                     </owl:Restriction>
                 </rdfs:subClassOf>
-            </owl:Class>
+            </rdf:Description>
             <xsl:if test="$targetMultiplicityMin = '1' and $targetMultiplicityMax = '1'">
                 <rdf:Description rdf:about="{$targetRoleURI}">
                     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
                 </rdf:Description>
             </xsl:if>
         </xsl:if>
-<!--        end of first restrictions content-->
-        
- <!--        this is second restriction content-->
+        <!--        end of first restrictions content-->
+
+        <!--        this is second restriction content-->
         <xsl:variable name="sourceInBidirectionalRestrictionContent" as="item()*">
             <xsl:choose>
                 <xsl:when
@@ -510,14 +533,14 @@
             test="
                 $connectorDirection = 'Bi-Directional' and
                 boolean($targetMultiplicity) and boolean($sourceInBidirectionalRestrictionContent)">
-            <owl:Class rdf:about="{$sourceClassURI}">
+            <rdf:Description rdf:about="{$sourceClassURI}">
                 <rdfs:subClassOf>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="{$targetRoleURI}"/>
                         <xsl:copy-of select="$sourceInBidirectionalRestrictionContent"/>
                     </owl:Restriction>
                 </rdfs:subClassOf>
-            </owl:Class>
+            </rdf:Description>
             <xsl:if test="$targetMultiplicityMin = '1' and $targetMultiplicityMax = '1'">
                 <rdf:Description rdf:about="{$targetRoleURI}">
                     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
@@ -555,14 +578,14 @@
             test="
                 $connectorDirection = 'Bi-Directional' and
                 boolean($sourceMultiplicity) and boolean($targetInBidirectionalRestrictionContent)">
-            <owl:Class rdf:about="{$targetClassURI}">
+            <rdf:Description rdf:about="{$targetClassURI}">
                 <rdfs:subClassOf>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="{$sourceRoleURI}"/>
                         <xsl:copy-of select="$targetInBidirectionalRestrictionContent"/>
                     </owl:Restriction>
                 </rdfs:subClassOf>
-            </owl:Class>
+            </rdf:Description>
             <xsl:if test="$sourceMultiplicityMin = '1' and $sourceMultiplicityMax = '1'">
                 <rdf:Description rdf:about="{$sourceRoleURI}">
                     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
@@ -571,6 +594,34 @@
         </xsl:if>
         <!--       end of third restriction content-->
     </xsl:template>
+
+    <xd:doc>
+        <xd:desc>Rule R.18. Disjoint classes — in reasoning layer. Specify a disjoint classes axiom
+            for all "sibling" classes, i.e. for multiple UML Classes that have generalisation
+            connectors to the same UML Class. </xd:desc>
+        <xd:param name="generalisation"/>
+    </xd:doc>
+
+    <xsl:template name="disjointClasses">
+        <xsl:param name="generalisation"/>
+        <xsl:variable name="superClass" select="f:getSuperClassFromGeneralization($generalisation)"/>
+        <xsl:variable name="superClassURI" select="f:buildURIFromElement($superClass)"/>
+        <xsl:variable name="subClasses" select="f:getSubClassesFromGeneralization($generalisation)"/>
+        <xsl:if test="f:getElementByIdRef($generalisation/source/@xmi:idref, root(.)) and count($subClasses) > 1">
+
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl##AllDisjointClasses"/>
+                <owl:members rdf:parseType="Collection">
+                    <xsl:for-each select="$subClasses">
+                        <xsl:variable name="subClassURI" select="f:buildURIFromElement(.)"/>
+                        <rdf:Description rdf:about="{$subClassURI}"/>
+                    </xsl:for-each>
+                </owl:members>
+            </rdf:Description>
+
+        </xsl:if>
+    </xsl:template>
+
 </xsl:stylesheet>
 
 

@@ -55,6 +55,25 @@
         <x:expect label="expect to find a warning" test="/dd/@class = 'filter warnings'"/>
         
     </x:scenario>
+    
+    <x:scenario
+        label="definition for connectors with the same name - all connectors are the same type">
+        <x:call template="checkNameOfConnectorsWithSameName">
+            <x:param name="connectorName">epo:has</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="there is no warning" select="()"/>        
+    </x:scenario>
+    
+    <x:scenario
+        label="definition for connectors with the same name - not all the connectors are the same type">
+        <x:call template="checkNameOfConnectorsWithSameName">
+            <x:param name="connectorName">epo:isSubmittedBy</x:param>
+            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+        <x:expect label="expect to find a warning" test="/dd/@class = 'filter warnings'"/>     
+    </x:scenario>
 
 
 </x:description>

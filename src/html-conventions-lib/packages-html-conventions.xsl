@@ -24,13 +24,13 @@
 
     <xsl:template match="element[@xmi:type = 'uml:Package']">
         <xsl:variable name="packageChecks" as="item()*">
-            <xsl:call-template name="p-invalidName">
+            <xsl:call-template name="packageInvalidName">
                 <xsl:with-param name="package" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="p-missingName">
+            <xsl:call-template name="packageMissingName">
                 <xsl:with-param name="package" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="p-emptyPackage">
+            <xsl:call-template name="packageEmpty">
                 <xsl:with-param name="package" select="."/>
             </xsl:call-template>
         </xsl:variable>
@@ -76,7 +76,7 @@
         <xd:param name="package"/>
     </xd:doc>
 
-    <xsl:template name="p-invalidName">
+    <xsl:template name="packageInvalidName">
         <xsl:param name="package"/>
         <xsl:variable name="packageName" select="$package/@name"/>
         <xsl:if test="boolean($packageName)">
@@ -97,7 +97,7 @@
         <xd:desc>[package-name-2] - The name of the package $IdRef$ is missing.  Packages must be named".</xd:desc>
         <xd:param name="package"/>
     </xd:doc>
-    <xsl:template name="p-missingName">
+    <xsl:template name="packageMissingName">
         <xsl:param name="package"/>
         <xsl:sequence
             select="
@@ -113,7 +113,7 @@
         <xd:desc>[package-owned-elements-3 ] - The package $packageName$ is empty. Packages must contain child classes and conenctors (i.e. owned elements). </xd:desc>
         <xd:param name="package"/>
     </xd:doc>
-    <xsl:template name="p-emptyPackage">
+    <xsl:template name="packageEmpty">
         <xsl:param name="package"/>
         <xsl:sequence
             select="

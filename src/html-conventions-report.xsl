@@ -21,10 +21,13 @@
     <xsl:import href="html-conventions-lib/class-attributes-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/enumeration-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/data-type-html-conventions.xsl"/>
+    <xsl:import href="html-conventions-lib/object-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/packages-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/association-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/generalization-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/dependency-html-conventions.xsl"/>
+    <xsl:import href="html-conventions-lib/realisation-html-conventions.xsl"/>
+    <xsl:import href="html-conventions-lib/general-html-conventions.xsl"/>
     <xsl:import href="html-conventions-lib/info-box.xsl"/>
     <xsl:import href="html-conventions-lib/connectors-with-same-name.xsl"/>
     <xsl:import href="html-conventions-lib/class-attributes-with-same-name.xsl"/>
@@ -79,6 +82,7 @@
                             <xsl:apply-templates/>
                             <xsl:call-template name="connectorsWithSameName"/>
                             <xsl:call-template name="classAttributesWithSameName"/>
+                            <xsl:call-template name="generalConventions"/>
                         </main>
                         <xsl:call-template name="footer"/>
                     </body>

@@ -22,34 +22,33 @@
 
     <xd:doc>
         <xd:desc>Getting all generalizations and show only the ones that have unmet conventions
-            [generalisation-hierarchy-1]
-            [generalisation-hierarchy-2] 
-            [generalisation-multiplicity-3]
-            [generalisation-name-4] 
-            [generalisation-name-5]
-            [generalisation-direction-6]
-        </xd:desc>
+            [generalisation-hierarchy-1] [generalisation-hierarchy-2]
+            [generalisation-multiplicity-3] [generalisation-name-4] [generalisation-name-5]
+            [generalisation-direction-6] </xd:desc>
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
         <xsl:variable name="generalizationChecks" as="item()*">
             <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">
-                <xsl:call-template name="g-classWithSingleChild">
+                <xsl:call-template name="generalizationClassWithSingleChild">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
-                <xsl:call-template name="g-inverseInheritance">
+                <xsl:call-template name="generalizationInverseInheritance">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
-                <xsl:call-template name="g-hasName">
+                <xsl:call-template name="generalizationHasName">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
-                <xsl:call-template name="g-hasRoleName">
+                <xsl:call-template name="generalizationHasRoleName">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
-                <xsl:call-template name="g-hasMultiplicity">
+                <xsl:call-template name="generalizationHasMultiplicity">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
-                <xsl:call-template name="g-directionChecker">
+                <xsl:call-template name="generalizationDirectionChecker">
+                    <xsl:with-param name="generalizationConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="generalizationSourceTargetTypes">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
             </xsl:if>
@@ -72,14 +71,14 @@
             not at all. </xd:desc>
         <xd:param name="generalizationConnector"/>
     </xd:doc>
-    <xsl:template name="g-classWithSingleChild">
+    <xsl:template name="generalizationClassWithSingleChild">
         <xsl:param name="generalizationConnector"/>
         <xsl:variable name="idRefTarget" select="$generalizationConnector/target/@xmi:idref"/>
         <xsl:variable name="targetElement"
             select="f:getElementByIdRef($idRefTarget, root($generalizationConnector))"/>
         <xsl:sequence
             select="
-                if (count(f:getIncommingConnectors($targetElement)[properties/@ea_type = 'Generalization']) > 1) then
+                if (count(f:getIncommingConnectors($targetElement)[properties/@ea_type = 'Generalization']) > 2) then
                     ()
                 else
                     f:generateHtmlInfo(fn:concat('The class ', $generalizationConnector/target/model/@name, ' has only one sub-class ',
@@ -95,7 +94,7 @@
         <xd:param name="generalizationConnector"/>
     </xd:doc>
 
-    <xsl:template name="g-inverseInheritance">
+    <xsl:template name="generalizationInverseInheritance">
         <xsl:param name="generalizationConnector"/>
         <xsl:variable name="idRefTarget" select="$generalizationConnector/target/@xmi:idref"/>
         <xsl:variable name="targetElement"
@@ -116,7 +115,7 @@
             be provided to generalisations. </xd:desc>
         <xd:param name="generalizationConnector"/>
     </xd:doc>
-    <xsl:template name="g-hasMultiplicity">
+    <xsl:template name="generalizationHasMultiplicity">
         <xsl:param name="generalizationConnector"/>
         <xsl:variable name="hasNoTargetMultiplicity"
             select="$generalizationConnector/target/type/not(@multiplicity)"/>
@@ -137,7 +136,7 @@
             provided for generalisation relation. </xd:desc>
         <xd:param name="generalizationConnector"/>
     </xd:doc>
-    <xsl:template name="g-hasName">
+    <xsl:template name="generalizationHasName">
         <xsl:param name="generalizationConnector"/>
         <xsl:variable name="generalizationHasNoName" select="$generalizationConnector/not(@name)"/>
         <xsl:sequence
@@ -154,7 +153,7 @@
             or target roles can be provided to generalisations. </xd:desc>
         <xd:param name="generalizationConnector"/>
     </xd:doc>
-    <xsl:template name="g-hasRoleName">
+    <xsl:template name="generalizationHasRoleName">
         <xsl:param name="generalizationConnector"/>
         <xsl:variable name="hasNoTargetRoleName"
             select="$generalizationConnector/target/role/not(@name)"/>
@@ -170,10 +169,11 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[generalisation-direction-6] - The $direction$ direction is invalid. Generalisations must employ "Source->Destination" direction only. </xd:desc>
+        <xd:desc>[generalisation-direction-6] - The $direction$ direction is invalid.
+            Generalisations must employ "Source->Destination" direction only. </xd:desc>
         <xd:param name="generalizationConnector"/>
     </xd:doc>
-    <xsl:template name="g-directionChecker">
+    <xsl:template name="generalizationDirectionChecker">
         <xsl:param name="generalizationConnector"/>
         <xsl:variable name="generalizationDirection"
             select="$generalizationConnector/properties/@direction"/>
@@ -181,9 +181,28 @@
             select="
                 if ($generalizationDirection != 'Source -&gt; Destination') then
                     f:generateHtmlError(fn:concat('The ', $generalizationDirection, ' direction is invalid. ',
-                                        'Generalisations must employ Source -&gt; Destination direction only.'))
+                    'Generalisations must employ Source -&gt; Destination direction only.'))
                 else
                     ()"
+        />
+    </xsl:template>
+
+    <xd:doc>
+        <xd:desc>[generalisation-source-target-types-3] - Generalisations can be provided only
+            between classes and connectors.</xd:desc>
+        <xd:param name="generalizationConnector"/>
+    </xd:doc>
+
+    <xsl:template name="generalizationSourceTargetTypes">
+        <xsl:param name="generalizationConnector"/>
+        <xsl:variable name="sourceType" select="$generalizationConnector/source/model/@type"/>
+        <xsl:variable name="targetType" select="$generalizationConnector/target/model/@type"/>
+        <xsl:sequence
+            select="
+                if (($sourceType = 'Class' and $targetType = 'Class') or ($sourceType = 'ProxyConnector' and $targetType = 'ProxyConnector')) then
+                    ()
+                else
+                f:generateHtmlError('Generalisations can be provided only between classes and connectors.')"
         />
     </xsl:template>
 

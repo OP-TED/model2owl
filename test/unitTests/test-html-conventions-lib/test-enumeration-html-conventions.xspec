@@ -28,7 +28,7 @@
     </x:scenario>
     
     <x:scenario label="Scenario for finding a enumeration with one or more items">
-        <x:call template="e-itemsChecker">
+        <x:call template="enumerationItemsChecker">
             <x:param name="enumeration" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[159]"/>
         </x:call>   
         <x:expect label="expect to do nothing" test="boolean(/dd)"/> 
@@ -36,21 +36,21 @@
     
     
     <x:scenario label="Scenario for finding a enumeration with no items">
-        <x:call template="e-itemsChecker">
+        <x:call template="enumerationItemsChecker">
             <x:param name="enumeration" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[160]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a enumeration with no outgoing connectors">
-        <x:call template="e-outgoingConnectors">
+        <x:call template="enumerationOutgoingConnectors">
             <x:param name="enumeration" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[160]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a enumeration with  outgoing connectors">
-        <x:call template="e-outgoingConnectors">
+        <x:call template="enumerationOutgoingConnectors">
             <x:param name="enumeration" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[132]"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
@@ -59,16 +59,18 @@
 
     
     <x:scenario label="Scenario for finding a enumeration with unique name">
-        <x:call template="e-uniqueName">
-            <x:param name="enumeration" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[172]"/>
+        <x:call template="elementUniqueName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[172]"/>
+            <x:param name="isAttribute" select="false()"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
     
     <x:scenario label="Scenario for finding a enumeration name that is not unique">
-        <x:call template="e-uniqueName">
-            <x:param name="enumeration" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[217]"/>
+        <x:call template="elementUniqueName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[217]"/>
+            <x:param name="isAttribute" select="false()"/>
         </x:call>   
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>

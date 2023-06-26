@@ -30,15 +30,12 @@
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[114]"/>
         <x:expect label="result" test="boolean(/owl:Class)"/>
         <x:expect label="result" test="boolean(/owl:Class/rdfs:subClassOf)"/>
-        <x:expect label="result" test="boolean(/rdf:Description)"/>
-        <x:expect label="result" test="boolean(/rdf:Description/owl:disjointWith)"/>
     </x:scenario>
 
     <x:scenario
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']">
         <x:context href="../../testData/ePO-CM-v2.0.1-2022-04-29_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/*[namespace-uri()='' and local-name()='connectors'][1]/*[namespace-uri()='' and local-name()='connector'][4]"/>
-        <x:expect label="result" test="boolean(/owl:Class)"/>
-        <x:expect label="result" test="boolean(/rdf:Description)"/>        
+        <x:expect label="result" test="boolean(/owl:Class)"/>        
         <x:expect label="result" test="/owl:Class/@rdf:about='http://data.europa.eu/a4g/ontology#ElementChangeSpecification'"/>        
     </x:scenario>
 
@@ -51,10 +48,10 @@
 
     <!--    <x:expect label="there is a rdfs:label" test="count(/owl:ObjectProperty/rdfs:label)=1"/>-->
         <x:expect label="there is a skos:prefLabel"
-            test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
-        <x:expect label="there is no rdfs:comment" test="(boolean(/owl:ObjectProperty/rdfs:comment)=false())"/>
+            test="boolean(/rdf:Description/skos:prefLabel)"/>
+        <x:expect label="there is no rdfs:comment" test="(boolean(/rdf:Description/rdfs:comment)=false())"/>
         <x:expect label="there is no skos:definition"
-            test="(boolean(/owl:ObjectProperty/skos:definition)=false())"/>
+            test="(boolean(/rdf:Description/skos:definition)=false())"/>
         <x:expect label="there is a correct URI"
             test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/a4g/ontology#isRoleOf'])"
         />
@@ -69,12 +66,12 @@
         </x:call>
   <!--      <x:expect label="there is a rdfs:label" test="count(/owl:ObjectProperty/rdfs:label)=1"/>-->
         <x:expect label="there is a skos:prefLabel"
-            test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
-        <x:expect label="there is no rdfs:comment" test="boolean(/owl:ObjectProperty/rdfs:comment)=false()"/>
+            test="boolean(/rdf:Description/skos:prefLabel)"/>
+        <x:expect label="there is no rdfs:comment" test="boolean(/rdf:Description/rdfs:comment)=false()"/>
         <x:expect label="there is a skos:definition"
-            test="not(boolean(/owl:ObjectProperty/skos:definition))"/>
+            test="not(boolean(/rdf:Description/skos:definition))"/>
         <x:expect label="there is no skos:scopeNote"
-            test="count(/owl:ObjectProperty/skos:scopeNote)=0"/>
+            test="count(/rdf:Description/skos:scopeNote)=0"/>
         <x:expect label="there is a correct URI"
             test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/a4g/ontology#isNotifiedThrough'])"
         />
@@ -88,12 +85,10 @@
         </x:call>
 <!--        <x:expect label="there is a rdfs:label" test="count(/owl:ObjectProperty/rdfs:label)=1"/>-->
         <x:expect label="there is a skos:prefLabel"
-            test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
+            test="boolean(/rdf:Description/skos:prefLabel)"/>
 <!--        <x:expect label="there is a rdfs:comment" test="boolean(/owl:ObjectProperty/rdfs:comment)"/>-->
         <x:expect label="there is no skos:definition"
-            test="not(boolean(/owl:ObjectProperty/skos:definition))"/>
-        <x:expect label="there is a skos:scopeNote"
-            test="count(/owl:ObjectProperty/skos:scopeNote)=1"/>
+            test="not(boolean(/rdf:Description/skos:definition))"/>
         <x:expect label="there is a correct URI"
             test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/a4g/ontology#hasUnofficialLanguage'])"
         />
@@ -107,13 +102,13 @@
         </x:call>
 <!--        <x:expect label="there is a rdfs:label" test="count(/owl:ObjectProperty/rdfs:label)=1"/>-->
         <x:expect label="there is a skos:prefLabel"
-            test="boolean(/owl:ObjectProperty/skos:prefLabel)"/>
+            test="boolean(/rdf:Description/skos:prefLabel)"/>
         <x:expect label="there is a rdfs:comment"
-            test="not(boolean(/owl:ObjectProperty/rdfs:comment))"/>
+            test="not(boolean(/rdf:Description/rdfs:comment))"/>
         <x:expect label="there is a skos:definition"
-            test="not(boolean(/owl:ObjectProperty/skos:definition))"/>
+            test="not(boolean(/rdf:Description/skos:definition))"/>
         <x:expect label="there is a skos:scopeNote"
-            test="count(/owl:ObjectProperty/skos:scopeNote)=0"/>
+            test="count(/rdf:Description/skos:scopeNote)=0"/>
         <x:expect label="there is a correct URI"
             test="boolean(/owl:ObjectProperty[@rdf:about='http://data.europa.eu/a4g/ontology#hasDesignContestType'])"
         />
@@ -125,8 +120,6 @@
         <x:call template="classGeneralization"/>
         <x:expect label="result" test="boolean(/owl:Class)"/>
         <x:expect label="result" test="boolean(/owl:Class/rdfs:subClassOf)"/>
-        <x:expect label="result" test="boolean(/rdf:Description)"/>
-        <x:expect label="result" test="boolean(/rdf:Description/owl:disjointWith)"/>
     </x:scenario>    
 
 </x:description>

@@ -16,7 +16,7 @@
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
         <x:call template="listOfClassNamesAndOccurrences"/>
         <x:expect label="there is an list element" test="boolean(/li)"/>
-        <x:expect label="there correct text inside the list element" test="/li[3]/text() = 'Description (2)'"/>
+        <x:expect label="there correct text inside the list element" test="/li[3]/a/text() = 'Description (2)'"/>
         <x:expect label="there are 135 distinct classes" test="count(/li) = 135"/>
     </x:scenario>
     
@@ -26,7 +26,7 @@
         <x:call template="listOfClassAttributeNamesAndOccurences"/>
         <x:expect label="there is an link element" test="boolean(li/a)"/>
         <x:expect label="there correct text inside the anchor element" test="li[6]/a/text() = 'epo:AbnormallyLowTendersLot'"/>
-        <x:expect label="there are 285 distinct class attributes" test="count(li/a) = 285"/>
+        <x:expect label="there are 285 distinct class attributes" test="count(li) = 285"/>
     </x:scenario>
     
     
@@ -45,8 +45,8 @@
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
         <x:call template="listOfConnectorsAndOccurrences"/>
         <x:expect label="there is an link element" test="boolean(li/a)"/>
-        <x:expect label="there correct text inside the anchor element" test="li[2]/a/text() = 'apply'"/>
-        <x:expect label="there are 271 distinct class attributes" test="count(li/a) = 271"/>
+        <x:expect label="there correct text inside the anchor element" test="li[2]/text() = 'apply'"/>
+        <x:expect label="there are 271 distinct class attributes" test="count(li) = 271"/>
     </x:scenario>
     
     

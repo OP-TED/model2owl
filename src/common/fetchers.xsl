@@ -38,6 +38,19 @@
     </xsl:function>
     
     <xd:doc>
+        <xd:desc>fetch the element attribute with a given name</xd:desc>
+        <xd:param name="name"/>
+        <xd:param name="root"/>
+    </xd:doc>
+    <xsl:function name="f:getAttributeByName" as="node()*">
+        <xsl:param name="name" as="xs:string"/>
+        <xsl:param name="root" as="node()"/>
+        <xsl:sequence select="$root//elements/element/attributes/attribute[@name=$name]"/>
+    </xsl:function>
+    
+
+    
+    <xd:doc>
         <xd:desc>fetch the xmi:element with a given idRef</xd:desc>
         <xd:param name="idRef"/>
         <xd:param name="root"/>

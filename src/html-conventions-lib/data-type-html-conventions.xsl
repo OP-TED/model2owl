@@ -87,19 +87,24 @@
             <xsl:call-template name="namePlural">
                 <xsl:with-param name="element" select="."/>
             </xsl:call-template>
+            <xsl:call-template name="nonPublicElement">
+                <xsl:with-param name="element" select="."/>
+            </xsl:call-template>
+            
+            <xsl:call-template name="elementUniqueName">
+                <xsl:with-param name="element" select="."/>
+                <xsl:with-param name="isAttribute" select="fn:false()"/>
+            </xsl:call-template>
             <!--    End of common checkers rules     -->   
             <!--    Start of specific checker rules-->
             
-            <xsl:call-template name="d-incorrectDataType">
+            <xsl:call-template name="dataTypeIncorrectType">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="d-uniqueName">
+            <xsl:call-template name="dataTypeAttributeChecker">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
-            <xsl:call-template name="d-attributeChecker">
-                <xsl:with-param name="dataTypeElement" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="d-outgoingConnectors">
+            <xsl:call-template name="dataTypeOutgoingConnectors">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
             <!--    End of specific checker rules-->
@@ -133,40 +138,13 @@
         </xsl:choose>
     </xsl:template>
     
-    
-    <xd:doc>
-        <xd:desc>[datatype-name-1] - The name $value$ is not unique. The Concept names should be
-            unique within the model; while the relations may repeat but should not overlap with
-            concept names. </xd:desc>
-        <xd:param name="dataTypeElement"/>
-    </xd:doc>
-    <xsl:template name="d-uniqueName">
-        <xsl:param name="dataTypeElement"/>
-        <xsl:if test="boolean($dataTypeElement/@name)">
-            <xsl:variable name="elementsFound"
-                select="f:getElementByName($dataTypeElement/@name, root($dataTypeElement))"/>
-            <xsl:variable name="connectorsFound"
-                select="f:getConnectorByName($dataTypeElement/@name, root($dataTypeElement))"/>
-            <xsl:sequence
-                select="
-                if (count($elementsFound) > 1 or count($connectorsFound) > 0) then
-                f:generateHtmlError(fn:concat('The name ', $dataTypeElement/@name, ' is not unique. The Concept names ',
-                'should be unique within the model; while the relations may repeat ',
-                'but should not overlap with concept names. '))
-                else
-                ()
-                
-                "
-            />
-        </xsl:if>
-    </xsl:template>
 
     <xd:doc>
         <xd:desc>[datatype-name-2] - The datatype is not an XSD or RDF datatype. 
             It is recommended to use XSD and RDF datatypes mainly. </xd:desc>
         <xd:param name="dataTypeElement"/>
     </xd:doc>
-    <xsl:template name="d-incorrectDataType">
+    <xsl:template name="dataTypeIncorrectType">
         <xsl:param name="dataTypeElement"/>
         <xsl:variable name="dataTypeElementName" select="$dataTypeElement/@name"/>
         <xsl:variable name="rdfOrXsdDataType"
@@ -185,7 +163,7 @@
         <xd:param name="dataTypeElement"/>
     </xd:doc>
     
-    <xsl:template name="d-attributeChecker">
+    <xsl:template name="dataTypeAttributeChecker">
         <xsl:param name="dataTypeElement"/>
         <xsl:variable name="dataTypeNumberOfAttributes"
             select="count($dataTypeElement/attributes/attribute)"/>
@@ -208,7 +186,7 @@
         <xd:param name="dataTypeElement"/>
     </xd:doc>
     
-    <xsl:template name="d-outgoingConnectors">
+    <xsl:template name="dataTypeOutgoingConnectors">
         <xsl:param name="dataTypeElement"/>
         <xsl:variable name="outgoingConnectors"
             select="fn:count(f:getOutgoingConnectors($dataTypeElement))"/>
