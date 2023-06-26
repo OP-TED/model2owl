@@ -1,0 +1,80 @@
+= Transformation of the UML model into derivative artefacts
+
+[[sec:introduction]]
+== Introduction
+
+Publications Office of the European Union set off to build an eProcurement ontology well motivated in [xref:references.adoc#ref:costetchi2020a[costetchi2020a, p.5-9]]. The ultimate objective of the project is to put forth a commonly agreed ontology that will conceptualise, formally encode and make available in an open, structured and machine-readable format data about public procurement, covering end-to-end procurement, i.e. from notification, through tendering to awarding, ordering, invoicing and payment .
+
+The process and the methodology adopted involve modelling the conceptual model in Unified Modelling Language (UML) [xref:references.adoc#ref:uml2.5[uml2.5]] and then, by abiding a set of conventions and recommendations, transform that model into a formal ontology expressed in Web Ontology Language (OWL) .
+
+This document provides a working definition of the transformation rules from the UML conceptual model into the formal ontology and validation data shapes. These rules are organised in accordance with the eProcurement ontology architecture [xref:references.adoc#ref:costetchi2020a[costetchi2020a, p.21-27]].
+
+=== State of the art
+
+Much has been written about correspondences and between and transformation from UML to OWL and vice versa [xref:references.adoc#ref:sadowska2019[sadowska2019]]. The most significant literature on this topic was published between 2006 and 2019 comprising three book chapters, nine journal papers and multiple conference papers.
+
+The work presented in [xref:references.adoc#ref:khan2015[khan2015]] transforms into OWL some selected elements of UML models containing multiple UML class, object and state-chart diagrams in order to analyse consistency of the models. A similar approach is presented in [xref:references.adoc#ref:khan2013[khan2013]], which is focused on detecting inconsistency in models containing UML class and state-chart diagrams.
+
+The papers [xref:references.adoc#ref:hajjamy2016[hajjamy2016]], [xref:references.adoc#ref:zedlitz2012[zedlitz2012]], [xref:references.adoc#ref:zedlitz2014[zedlitz2014]] investigate the differences and similarities between UML and OWL in order to present transformations of selected (and identified as useful) elements of UML class diagram. In [xref:references.adoc#ref:zedlitz2014conceptual[zedlitz2014conceptual]], the need for UML–OWL transformation is additionally motivated by not repeating the modelling independently in both languages.
+
+The paper [xref:references.adoc#ref:kiko2008[kiko2008]] compares OWL abstract syntax elements to the equivalent UML features and appropriate OCL statements. The analysis is conducted in the direction from OWL to UML. For every OWL construct its UML interpretation is proposed.
+
+The works presented in [xref:references.adoc#ref:xu2012[xu2012]], [xref:references.adoc#ref:xu2009[xu2009]], [xref:references.adoc#ref:na2006[na2006]] are focused on extracting ontological knowledge from UML class diagrams and describe some UML–OWL mappings with the aim to reuse the existing UML models and stream the building of OWL domain ontologies.
+
+In [xref:references.adoc#ref:sadowska2019[sadowska2019]] is presented a comprehensive review of the related work. We use it as a guideline for ensuring the necessary coverage of the transformation rules specified in this report. It is important to note here that all the UML elements are treated here, but only the ones employed in the eProcurement conceptual model.
+
+=== How to read this document
+
+The reminder of this document comprises four sections covering major UML aspects. Section xref:transformation/transf-rules1.adoc#sec:tran-rules[Transformation of UML classes and attributes] treats classes and attributes. Following section deals with the main connector types employed in the eProcurement model, namely: associations, dependencies and generalisations. Section #sec:tran-rules3[[sec:tran-rules3]] explains how the datatypes and enumerations should be transformed and, finally, Section #sec:tran-rules4[[sec:tran-rules4]] provides a few transformation rules that are applicable to all UML elements and are concerned with comments, labels and notes.
+
+Each section provides a table with overview of the transformation rule set comprised within. The table provides three columns, one for every layer of the ontology architecture comprising rules: (a) , (b) , and (c) .
+
+Transformation rules are specified in a normative language and are aided by prototypical UML diagram fragments (usually preceding the rule) along with representation of the corresponding OWL fragment depicted in Graffoo visual notation [xref:references.adoc#ref:graffoo[graffoo]]. The diagrams are provided side to side in order to increase comprehension, with UML fragment on the left constituting the source of the transformation and the OWL fragment on the right representing the final result of the transformation.
+
+Each transformation rule is accompanied by the formal OWL representation, in Turtle [xref:references.adoc#ref:turtle[turtle]] and RDF/XML syntaxes [xref:references.adoc#ref:rdf-xml-syntax-spec[rdf-xml-syntax-spec]] [xref:references.adoc#ref:rdf1.1-xml-syntax[rdf1.1-xml-syntax]], corresponding to the depicted UML fragment from the preceding figure. RDF/XML is a syntax to express RDF graphs as an XML document. Turtle is a textual syntax for RDF that is compact and resembles a natural text form with abbreviations for common usage patterns and datatypes.
+
+=== UML visual notation
+
+This section provides the main UML elements employed in this document. A detailed description can be consulted in the standard specifications [xref:references.adoc#ref:uml2.5[uml2.5]] and in the UML user guide [xref:references.adoc#ref:uml-userguide[uml-userguide]].
+
+
+.UML visual notation for classes and attributes
+[#fig:uml-classes]
+image::f1.png[1]
+
+.UML visual notation for datatypes and enumerations
+[#fig:uml-datatypes]
+image::f2.png[2]
+
+.UML visual notation for association, generalisation, and dependency
+[#fig:uml-associations]
+image::f3.png[3]
+
+
+<<fig:uml-classes>> depicts simple, abstract and regular classes with and without attribute specifications. Note that no class methods are ever employed as this document as the transformations aim at data structures only.
+
+<<#fig:uml-datatypes>> depicts a primitive datatype and an enumeration. No complex datatypes are depicted as they are treated in the same manner as classes are.
+
+<<fig:uml-associations>> depicts association, generalisation and dependency connectors as the only ones necessary to model the eProcurement conceptual model.
+
+=== Graffoo visual notation
+
+This section provides the main Graffoo elements employed in this document. A detailed description can be consulted in the OWL standard specifications [xref:references.adoc#ref:owl2[owl2]] and in the Graffoo user guide [xref:references.adoc#ref:graffoo[graffoo]].
+
+
+.Graffoo visual notation for classes, instances and datatypes
+[#fig:graffoo-classes]
+image::f4.png[4]
+
+.Graffoo visual notation for object and data properties and generic links
+[#fig:graffoo-predicates]
+image::f5.png[5]
+
+
+A yellow rectangle with solid black border is used to declare classes. Solid black and labelled arrows are used to declare class axioms. A green rhomboid with solid black border is used to declare datatypes. Solid black and labelled arrows are used to declare class axioms.
+
+A pink circle with solid black border is used to declare individuals. Solid black and labelled arrows are used to declare axioms and assertions among individuals.
+
+A green solid line is used to declare data properties, where the empty circle at the beginning identifies the property domain while the empty arrow at the end indicates the property range. A blue solid line is used to declare object properties, where the solid circle at the beginning identifies the property domain while the solid arrow at the end indicates the property range.
+
+The following sections present the transformation rules necessary for converting the UML eProcurement conceptual model into a formal OWL ontology.

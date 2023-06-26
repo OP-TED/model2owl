@@ -1,0 +1,28 @@
+= UML Conceptual Model Conventions
+
+This part of the *model2owl* project documentation describes _the conventions that the UML conceptual model should adhere to_ in order to allow the tools provided within the *model2owl* project to generate the best possible derivate artefacts, i.e. the most complete and correct OWL ontologies and SHACL shapes.
+
+
+[[sec:on-conventions]]
+== UML Model Conventions
+
+The current set of UML Model Conventions are meant to guide the semantic engineers and ontology editors on producing consistent, uniform and uniquely interpretable conceptual models. Also, it is meant to help the readers of the conceptual models to interpret the meaning and eliminate any ambiguities. Finally, the conventions are fit for implementation.
+
+This set of guidelines is aligned with the SEMIC style guide [xref:references.adoc#ref:semic-style-guide[semic-style-guide]] and constitutes an extension and further elaboration of it.
+
+The guidelines provided here are either of general or technical nature. They are formulated so, as to be not only easily understandable by the semantic engineer, but also to allow the implementation of automatic model checkers (see Section xref:checkers/model2owl-checkers.adoc[]]) as well as the definition of precise transformation rules that can be implemented in tools to automatically generate the semantic derivate artefacts (see Section xref:transformation/uml2owl-transformation.adoc[]]).
+
+We organized the conventions into subsections covering:
+
+* general conventions, which apply to multiple model components
+* conventions specific to particular UML elements (Classes and their Attributes, Data Types, Enumerations, Objects, Packages)
+* general conventions on UML connectors
+* conventions specific to particular UML connector types (Associations, Dependencies, Generalisations, Realisations)
+
+
+[[sec:keywords]]
+== Key words for Requirement Statements
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [xref:references.adoc#ref:rfc2119[rfc2119]].
+
+The key words "MUST (BUT WE KNOW YOU WON’T)", "SHOULD CONSIDER", "REALLY SHOULD NOT", "OUGHT TO", "WOULD PROBABLY", "MAY WISH TO", "COULD", "POSSIBLE", and "MIGHT" in this document are to be interpreted as described in RFC 6919 [xref:references.adoc#ref:rfc6919[rfc6919]].

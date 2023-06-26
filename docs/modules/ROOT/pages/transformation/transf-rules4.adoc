@@ -1,0 +1,383 @@
+[[sec:tran-rules4]]
+== Transformation of UML descriptors and tags
+
+In this section are specified transformation rules for UML descriptive elements. <<tab:descriptiors-overview>> provides an overview of the section coverage.
+
+[[tab:descriptiors-overview]]
+.Overview of transformation rules for UML descriptors and tags
+[cols="<,<,<,<",options="header",]
+|===
+|UML element |Rules in core ontology layer |Rules in data shape layer |Rules in reasoning layer
+|Name |<<rule:element-label-core>> |<<rule:element-label-ds>> |
+|Note |<<rule:element-definition-core>> |<<rule:element-definition-ds>> |
+|Comment |<<rule:element-external-comment-core>> |<<rule:element-external-comment-ds>> |
+|Tag |<<rule:element-tag-core>> | |
+|Source |<<rule:element-source-core>> |<<rule:element-source-ds>> |
+|===
+
+=== Name
+
+Most of the UML elements are named. The xref:uml/conceptual-model-conventions.adoc[UML conventions] dedicate an extensive section to the naming conventions and how to deterministically generate a URI and a label from the UML element name. By default, we recommend the use of the SKOS lexicalization (`skos:prefLabel`) in the core ontology layer. In the future, this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (`rdfs:label`) instead of, or in addition to, the SKOS lexicalization.
+
+
+[#rule:element-label-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:T.01}. Label -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify a label for the OWL entity based on the name of the UML element.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Labels in Turtle syntax
+[source,Turtle]
+----
+:ResourceName
+  skos:prefLabel "Resource name"@en ;
+.
+----
+|
+.Labels in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/ResourceName">
+    <skos:prefLabel xml:lang="en">Resource name</skos:prefLabel>
+</rdf:Description>
+----
+|===
+
+
+[#rule:element-label-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:T.01}. Label -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify a label for the SHACL shape, based on the name of the UML element.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Label declaration for NodeShape in Turtle syntax
+[source,Turtle]
+----
+@prefix shape: <http://base.shape.uri/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+shape:ClassName
+  rdfs:label "Class name" ;
+.
+----
+|
+.Label declaration for NodeShape in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName">
+    <rdfs:label>Class name</rdfs:label>
+</rdf:Description>
+----
+
+|
+.Label declaration for PropertyShape in Turtle syntax
+[source,Turtle]
+----
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName-PropertyName
+  sh:name "Property name" ;
+.
+----
+|
+.Label declaration for PropertyShape in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName-PropertyName">
+    <sh:name>Property name</sh:name>
+</rdf:Description>
+----
+|===
+
+=== Note
+
+Most of the UML element foresee provisions of descriptions and notes. They should be transformed into `rdfs:comment` and `skos:definition`.
+By default, we recommend the use of the SKOS lexicalization (`skos:definition`) in the core ontology layer. In the future this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (`rdfs:comment`) instead of, or in addition to, the SKOS lexicalization.
+
+
+[#rule:element-definition-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Description -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify a description for the OWL entity based on the note on the UML element.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Description in Turtle syntax
+[source,Turtle]
+----
+:ResourceName
+  skos:definition "Description of the resource meaning"@en ;
+.
+----
+|
+.Description in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/ResourceName">
+    <skos:definition xml:lang="en">Description of the resource meaning</skos:definition>
+</rdf:Description>
+----
+|===
+
+
+[#rule:element-definition-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Description -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify an annotation (comment or description) for the SHACL shape based on the note on the UML element.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Note declaration for NodeShape in Turtle syntax
+[source,Turtle]
+----
+@prefix shape: <http://base.shape.uri/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+shape:ClassName
+  rdfs:comment "Description of the meaning of the class" ;
+.
+----
+|
+.Note declaration for NodeShape in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName">
+    <rdfs:comment>Description of the meaning of the class</rdfs:comment>
+</rdf:Description>
+----
+
+|
+.Note declaration for PropertyShape in Turtle syntax
+[source,Turtle]
+----
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName-PropertyName
+  sh:description "Description of the meaning of the property" ;
+.
+----
+|
+.Note declaration for PropertyShape in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName-PropertyName">
+    <sh:description>Description of the meaning of the property</sh:description>
+</rdf:Description>
+----
+|===
+
+
+=== Comment
+
+In accordance with [xref:references.adoc#ref:uml2.5[uml2.5]], every kind of UML Element may own Comments (see <<fig:comment-visual>>). They add no semantics but may represent information useful to the reader. In OWL it is possible to define the annotation axiom for OWL Class, Datatype, ObjectProperty, DataProperty, AnnotationProperty and NamedIndividual. The textual explanation added to UML Class is identified as useful for conceptual modelling , therefore the Comments that are connected to UML Classes are taken into consideration in the transformation.
+
+
+.Visual representation of a UML comment (on the left) and an OWL comment (on the right)
+[#fig:comment-visual]
+image::f19.png[19]
+
+As UML Comments add no semantics, they are not used in any method of semantic validation. In OWL the AnnotationAssertion axiom [xref:references.adoc#ref:owl2[owl2]] does not add any semantics either, and it only improves readability.
+
+By default, we recommend the use of the SKOS lexicalization (`skos:editorialNote`) in the core ontology layer. In the future this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (`rdfs:comment`) instead of, or in addition to, the SKOS lexicalization.
+
+
+[#rule:element-external-comment-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Comment -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify an annotation axiom (comment or editorial note) on the OWL entity for the UML Comment associated to a UML element.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Comment in Turtle syntax
+[source,Turtle]
+----
+:ClassName
+  skos:editorialNote "This is an additional comment on ClassName"@en ;
+.
+----
+|
+.Comment in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/ClassName">
+    <skos:editorialNote xml:lang="en">This is an additional comment on ClassName</skos:editorialNote>
+</rdf:Description>
+----
+|===
+
+
+[#rule:element-external-comment-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Comment -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify an annotation axiom (comment or description) on the SHACL shape for the UML Comment associated to a UML element.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Note declaration for NodeShape in Turtle syntax
+[source,Turtle]
+----
+@prefix shape: <http://base.shape.uri/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+shape:ClassName
+  rdfs:comment "This is an additional comment on ClassName" ;
+.
+----
+|
+.Note declaration for NodeShape in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName">
+    <rdfs:comment>This is an additional comment on ClassName</rdfs:comment>
+</rdf:Description>
+----
+
+|
+.Note declaration for PropertyShape in Turtle syntax
+[source,Turtle]
+----
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+shape:ClassName-PropertyName
+  sh:description "This is an additional comment on PropertyName" ;
+.
+----
+|
+.Note declaration for PropertyShape in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName-PropertyName">
+    <sh:description>This is an additional comment on PropertyName</sh:description>
+</rdf:Description>
+----
+//WARNING: TODO: *QUESTION:* should we use here `rdfs:comment` instead of adding a second value to `sh:description`?
+|===
+
+
+// TODO: Discuss whether we should include language tags (by default, or if explicitly specified in the model, or if controlled by configuration) for comments, notes and/or labels.
+
+=== Tags
+
+Any UML element can have additional information provided by means of tags, represented by UML Tag elements. Such tags should be transformed into annotation on the RDF resource representing the UML element (e.g. Class, Attribute, Connector). The language tags that are provided on the tag, can be used to generate multilingual ontologies/specifications. For example, the highlighted elements in <<fig:transf-tag-marked>> would be transformed in the following Turtle statement `epo:Procedure skos:definition "this is the definition in French"@fr .`
+
+.Example depicting the specification of UML tags
+[#fig:transf-tag-marked]
+image::transf-tags-marked.png[20]
+
+[TIP]
+The generation of annotations from tags could be controlled by a flag in the configuration of the transformation tool.
+
+[#rule:element-tag-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.1}. Tag -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify an annotation axiom on the OWL entity for each UML Tag associated to a UML element. If a tag has an associated language tag, it should be attached to the value.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Tags in Turtle syntax
+[source,Turtle]
+----
+:ClassName
+  tagName "tag value"@langTag ;
+.
+----
+|
+.Tags in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/ClassName">
+    <tagName xml:lang="langTag">tag value</tagName>
+</rdf:Description>
+----
+|===
+
+=== Source
+
+It is a good practice to annotate all concepts in an ontology with the IRI of the ontology where these concepts are defined. RDFS provides a dedicated property for purpose, called `rdfs:isDefinedBy`, which we will use.
+
+
+[#rule:element-source-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:T.01}. Source specification -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Annotate all locally defined OWL concepts with the name of the (core) ontology that defines them.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Source in Turtle syntax
+[source,Turtle]
+----
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:ResourceName
+  rdfs:isDefinedBy <http://base.onto.uri#core> .
+----
+|
+.Source in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/ResourceName">
+    <rdfs:isDefinedBy rdf:resource="http://base.onto.uri#core" />
+</rdf:Description>
+----
+|===
+
+
+[#rule:element-source-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:T.01}. Source specification -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+For all SHACL shapes specify the source ontology defining the shape.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Source declaration for NodeShape in Turtle syntax
+[source,Turtle]
+----
+@prefix shape: <http://base.shape.uri/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+shape:ClassName
+  rdfs:isDefinedBy <http://base.shape.uri/#core-shapes> .
+----
+|
+.Source declaration for NodeShape in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName">
+    <rdfs:isDefinedBy rdf:resource="http://base.shape.uri/#core-shapes" />
+</rdf:Description>
+----
+
+|
+.Source declaration for PropertyShape in Turtle syntax
+[source,Turtle]
+----
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName-PropertyName
+  rdfs:isDefinedBy <http://base.shape.uri/#core-shapes> .
+----
+|
+.Source declaration for PropertyShape in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName-PropertyName">
+    <rdfs:isDefinedBy rdf:resource="http://base.shape.uri/#core-shapes" />
+</rdf:Description>
+----
+|===

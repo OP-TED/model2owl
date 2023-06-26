@@ -1,0 +1,42 @@
+[[sec:uml-object]]
+== Conventions on uml:Object elements
+
+The generic conventions that are defined for all UML elements in the xref:uml/conv-general.adoc[General conventions] section apply also for the uml:Object element. This section provides a few additional conventions in addition to those.
+
+[[rule:objects-attributes]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Objects with no Attributes
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:objects-attributes
+
+|*Statement:*
+uml:Object elements shall have no attributes specified.
+|===
+
+*Description:*
+
+Objects in the UML model should be "empty", i.e. have no additional values/attributes specified.
+
+They often would serve as a "proxy" for an individual, or SKOS concept, defined outside the current model.
+
+
+[[rule:objects-relations]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Relations of Objects
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:objects-relations
+
+|*Statement:*
+uml:Object element shall have no outgoing connectors, except uml:Realization connector(s) to some Class or Enumeration.
+|===
+
+*Description:*
+
+Each Object should instantiate a Class or an Enumeration. Therefore, there shall be at least one uml:Realization relationship between the Object and a Class or Enumeration.
+
+Except these realisation connectors, an Object should not connect to any other elements. An Object stands for a specific instance of a class and/or an element of a controlled list, and can only be referred to.
+

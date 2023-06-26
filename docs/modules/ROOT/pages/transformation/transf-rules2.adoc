@@ -1,0 +1,715 @@
+[[sec:tran-rules2]]
+== Transformation of UML connectors
+
+In this section are specified transformation rules for UML association, generalisation and dependency connectors. <<tab:connectors-overview>> provides an overview of the section coverage.
+
+[[tab:connectors-overview]]
+.Transformation rules overview for UML connectors
+[cols="<,<,<,<",options="header",]
+|===
+|UML element |Rules in core ontology layer |Rules in data shape layer |Rules in reasoning layer
+|Association |<<rule:association-uni-core>> |<<rule:association-uni-ds>> |
+|Association domain | | |<<rule:association-uni-domain-rc>>
+|Association range | |<<rule:association-uni-range-ds>> |<<rule:association-uni-range-rc>>
+|Association multiplicity | |<<rule:association-uni-multiplicity-ds>> |<<rule:association-uni-multiplicity-rc>>, <<rule:association-uni-multiplicity-one-rc>>
+|Association asymmetry | |<<rule:association-uni-asymetry-ds>> |<<rule:association-uni-asymetry-rc>>
+|Association inverse | | |<<rule:association-bi-inverse-rc>>
+|Dependency |<<rule:association-uni-core>> |<<rule:association-uni-ds>> |
+|Dependency domain | | |<<rule:association-uni-domain-rc>>
+|Dependency range | |<<rule:dependency-uni-range-ds>> |<<rule:dependency-uni-range-rc>>
+|Dependency multiplicity | |<<rule:association-uni-multiplicity-ds>> |<<rule:association-uni-multiplicity-rc>>, <<rule:association-uni-multiplicity-one-rc>>
+|Class generalisation |<<rule:generalisation-class-core>> | |
+|Property generalisation |<<rule:generalisation-property-core>> | |
+|Class equivalence | | |<<rule:equivalent-classes-rc>>
+|Property equivalence | | |<<rule:equivalent-properties-rc>>
+|Disjoint classes | | |<<rule:disjoint-classes-rc>>
+|Realisation |<<rule:realisation-class-core>> | |
+|===
+
+[[sec:association-uni]]
+=== Unidirectional association
+
+A binary Association specifies a semantic relationship between two member ends represented by properties. Please note that in accordance with specification [xref:references.adoc#ref:uml2.5[uml2.5]], the association end names are not obligatory. However, we adhere to the UML conventions , where specification of at one member ends, for unidirectional association, and two member ends, for bidirectional association, is mandatory. Moreover, provision of a connector (general) name is discouraged.
+
+.Visual representation of a UML unidirectional association (on the left) and an OWL property with cardinality restriction on domain class (on the right)
+[#fig:association-uni-visual]
+image::f10.png[10]
+
+
+[#rule:association-uni-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:R.01}. Unidirectional association -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify object property declaration axiom for the target end of the association/dependency.
+====
+
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the property at the time of its creation.
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Property declaration in Turtle syntax
+[source,Turtle]
+----
+:relationName a owl:ObjectProperty .
+----
+|
+.Property declaration in RDF/XML syntax
+[source,XML]
+----
+<owl:ObjectProperty rdf:about = "http://base.onto.uri/relationName">
+</owl:ObjectProperty>
+----
+|===
+
+
+[#rule:association-uni-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:1.1}. Unidirectional association -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify PropertyShape declaration axiom for each association/dependency.
+====
+
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the data shape layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the property shape at the time of its creation.
+
+[NOTE]
+For handling bidirectional associations refer to the <<sec:association-bi>> section.
+
+[cols="a,a", options="noheader"]
+|===
+|
+.PropertyShape declaration for associations in Turtle syntax
+[source,Turtle]
+----
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName
+  sh:property shape:ClassName-relationName ;
+.
+shape:ClassName-relationName a sh:PropertyShape ;
+  sh:path :relationName ;
+.
+----
+|
+.PropertyShape declaration for associations in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName">
+    <sh:property rdf:resource = "http://base.shape.uri/ClassName-relationName"/>
+</rdf:Description>
+<sh:PropertyShape rdf:about = "http://base.shape.uri/ClassName-relationName">
+    <sh:path rdf:resource = "http://base.onto.uri/relationName"/>
+</sh:PropertyShape>
+
+----
+|===
+
+
+=== Association source
+
+
+[#rule:association-uni-domain-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association source -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify object property domain for the target end of the association/dependency.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Domain specification in Turtle syntax
+[source,Turtle]
+----
+:relationName
+  rdfs:domain :ClassName ;
+.
+----
+|
+.Domain specification in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/relationName">
+    <rdfs:domain rdf:resource = "http://base.onto.uri/ClassName"/>
+</rdf:Description>
+----
+
+|
+.Object property domain specification for reused relations in Turtle syntax
+[source,Turtle]
+----
+:relationName
+  rdfs:domain [
+    rdf:type owl:Class ;
+    owl:unionOf (
+      :ClassName1
+      :ClassName2
+    )
+  ]
+.
+----
+|
+.Object property domain specification for reused relations in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/relationName">
+    <rdfs:domain>
+        <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="http://base.onto.uri/ClassName1"/>
+                <rdf:Description rdf:about="http://base.onto.uri/ClassName2"/>
+            </owl:unionOf>
+        </owl:Class>
+    </rdfs:domain>
+</rdf:Description>
+----
+|===
+
+=== Association target
+
+
+[#rule:association-uni-range-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association target -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify object property range for the target end of the association.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Range specification in Turtle syntax
+[source,Turtle]
+----
+:relationName
+  rdfs:range :ClassName ;
+.
+----
+|
+.Range specification in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/relationName">
+    <rdfs:range rdf:resource = "http://base.onto.uri/ClassName"/>
+</rdf:Description>
+----
+|
+.Object property range specification for reused relations in Turtle syntax
+[source,Turtle]
+----
+:relationName
+  rdfs:range [
+    rdf:type owl:Class ;
+    owl:unionOf (
+      :OtherClass1
+      :OtherClass2
+    )
+  ]
+.
+----
+|
+.Object property range specification for reused relations in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/relationName">
+    <rdfs:range>
+        <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="http://base.onto.uri/OtherClass1"/>
+                <rdf:Description rdf:about="http://base.onto.uri/OtherClass2"/>
+            </owl:unionOf>
+        </owl:Class>
+    </rdfs:range>
+</rdf:Description>
+----
+|===
+
+
+[#rule:association-uni-range-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association range shape -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+Within the SHACL PropertyShape corresponding to an association relation linked to a given source UML Class, specify property constraints indicating the range class.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Property class constraint in Turtle syntax
+[source,Turtle]
+----
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName-relationName
+  sh:class :OtherClass ;
+.
+----
+|
+.Property class constraint in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName-relationName">
+    <sh:class rdf:resource = "http://base.onto.uri/OtherClass"/>
+</rdf:Description>
+----
+|===
+
+=== Association multiplicity
+
+
+[#rule:association-uni-multiplicity-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association multiplicity -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+For the association/dependency target multiplicity, where min and max are different than ``*'' (any) and multiplicity is not [1..1], specify a subclass axiom where the source class specialises an anonymous restriction of properties formulated according to cases provided by xref:transformation/transf-rules1.adoc#rule:attribute-rc-multiplicity[rule:attribute-rc-multiplicity].
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Min cardinality restriction in Turtle syntax
+[source,Turtle]
+----
+:ClassName
+  rdfs:subClassOf [ a owl:Restriction ;
+    owl:minCardinality "1"^^xsd:integer;
+    owl:onProperty :relationName ;
+  ] ;
+.
+----
+|
+.Min cardinality restriction in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/ClassName">
+    <rdfs:subClassOf>
+        <owl:Restriction>
+            <owl:onProperty rdf:resource = "http://base.onto.uri/relationName"/>
+            <owl:minCardinality rdf:datatype="http://www.w3.org...#integer" >1</owl:cardinality>
+        </owl:Restriction>
+    </rdfs:subClassOf>
+</rdf:Description>
+----
+|===
+
+[#rule:association-uni-multiplicity-one-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association multiplicity "one" -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+If the association/dependency multiplicity is exactly one, i.e. [1..1], specify a functional property axiom like in xref:transformation/transf-rules1.adoc#rule:attribute-rc-multiplicity-one[rule:attribute-rc-multiplicity-one].
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Declaring a functional property in Turtle syntax
+[source,Turtle]
+----
+:relationName a owl:FunctionalProperty .
+----
+|
+.Declaring a functional property in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/relationName">
+    <rdf:type rdf:resource = "http://...owl#FunctionalProperty"/>
+</rdf:Description>
+----
+|===
+
+[#rule:association-uni-multiplicity-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association multiplicity -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+Within the SHACL PropertyShape corresponding to an association/dependency relation linked to a given source UML Class, specify property constraints indicating minimum and maximum cardinality, according to cases provided by xref:transformation/transf-rules1.adoc#rule:attribute-ds-multiplicity[rule:attribute-ds-multiplicity].
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Min cardinality constraint in Turtle syntax
+[source,Turtle]
+----
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName-relationName
+  sh:minCount 1 ;
+.
+----
+|
+.Min cardinality constraint in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName-relationName">
+    <sh:minCount rdf:datatype="http://www.w3.org...#integer"
+      >1</sh:minCount>
+</rdf:Description>
+----
+|===
+
+[[sec:association-self]]
+=== Recursive association
+
+In case of recursive associations, that are from one class to itself, (depicted in <<fig:association-self-visual>>), the transformation rules must be applied as in the case of regular unidirectional association, which are from <<rule:association-uni-core>> to <<rule:association-uni-multiplicity-one-rc>>. In addition, the association must be marked as asymmetric expressed in <<rule:association-uni-asymetry-ds>> and <<rule:association-uni-asymetry-rc>>.
+
+.Visual representation of a UML recursive association (on the left) and OWL recursive properties with cardinality restrictions on domain class (on the right)
+[#fig:association-self-visual]
+image::f11.png[11]
+
+[#rule:association-uni-asymetry-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association asymmetry -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify an asymmetric object property axiom for each end of a recursive association.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Declaring an asymmetric property in Turtle syntax
+[source,Turtle]
+----
+:relatesTo a owl:AsymmetricProperty .
+----
+|
+.Declaring an asymmetric property in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/relatesTo">
+    <rdf:type rdf:resource = "http://...owl#AsymmetricProperty"/>
+</rdf:Description>
+----
+|===
+
+[#rule:association-uni-asymetry-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association asymmetry -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+Within the SHACL Node Shape corresponding to the UML Class, specify SPARQL constraint selecting instances connected by the object property in a reciprocal manner.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Adding details to a NodeShape for an asymmetric property in Turtle syntax
+[source,Turtle]
+----
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName
+  sh:sparql [
+    sh:select """
+      SELECT ?this ?that
+      WHERE {
+        ?this :relatesTo ?that .
+        ?that :relatesTo ?this .
+      }
+    """ ;
+  ] ;
+.
+----
+|
+.Adding details to a NodeShape for an asymmetric property in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName">
+    <sh:sparql rdf:parseType="Resource">
+        <sh:select>
+          SELECT ?this ?that
+          WHERE {
+            ?this :relatesTo ?that .
+            ?that :relatesTo ?this .}
+        </sh:select>
+    </sh:sparql>
+</rdf:Description>
+----
+|===
+
+[[sec:association-bi]]
+=== Bidirectional association
+
+The bidirectional associations should be treated, both on source and target ends, like two unidirectional associations (see <<fig:association-bi-visual>>). The transformation rules from <<rule:association-uni-core>> and <<rule:association-uni-ds>>, and all the other rules for unidirectional associations shown in <<tab:connectors-overview>> must be applied to both ends. In addition to those rules, the inverse relation axiom must be specified.
+
+.Visual representation of a UML bidirectional association (on the left) and OWL properties with cardinality restrictions on domain class (on the right)
+[#fig:association-bi-visual]
+image::f12.png[12]
+
+
+[#rule:association-bi-inverse-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Association inverse -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify an inverse object property axiom between the source and target ends of the bidirectional association.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Declaring an inverse property in Turtle syntax
+[source,Turtle]
+----
+:relatesTo owl:inverseOf :isRelatedTo .
+----
+|
+.Declaring an inverse property in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/relatesTo">
+    <owl:inverseOf rdf:resource = "http://base.onto.uri/isRelatedTo"/>
+</rdf:Description>
+----
+|===
+
+[[sec:dependecy]]
+=== Unidirectional dependency
+
+In general the UML dependency connectors should be transformed by the rules specified for UML association connectors (see <<tab:connectors-overview>>).
+
+The following two rules, concerning the transformation of dependency targets, are different from the rules for the transformation of  association targets.
+
+[#rule:dependency-uni-range-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Dependency target -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify object property range for the target end of the dependency.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Range specification in Turtle syntax
+[source,Turtle]
+----
+:relationName
+  rdfs:range skos:Concept ;
+.
+----
+|
+.Range specification in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/relationName">
+    <rdfs:range rdf:resource = ".../02/skos/core#Concept"/>
+</rdf:Description>
+
+----
+|===
+
+NOTE: In OWL we want to state only that the range of a Dependency connector is a `skos:Concept`, without committing to a specific list. We do this additional restriction in the data shape.
+
+[#rule:dependency-uni-range-ds,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Dependency range shape -- in data shape layer',reftext='{example-caption} {rule-cnt}']
+====
+Within the SHACL PropertyShape corresponding to a dependency relation linked to a given source UML Class, specify property constraints indicating the range class.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Property class constraint in Turtle syntax
+[source,Turtle]
+----
+@prefix : <http://base.onto.uri/> .
+@prefix shape: <http://base.shape.uri/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shape:ClassName-relationName
+  sh:class :EnumerationName ;
+.
+----
+|
+.Property class constraint in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.shape.uri/ClassName-relationName">
+    <sh:class rdf:resource = "http://base.onto.uri/EnumerationName"/>
+</rdf:Description>
+----
+|===
+
+
+[[sec:generalisation]]
+=== Class generalisation
+
+Generalisation [xref:references.adoc#ref:uml2.5[uml2.5]] defines specialization relationship between Classifiers. In case of UML Classes it relates a more specific Class to a more general Class.
+
+.Visual representation of UML generalisation (on the left) and OWL subclass relation (on the right)
+[#fig:generalisation-visual]
+image::f13.png[13]
+
+//TODO: Verify this statement. It doesn't make too much sense. Needs reformulation. Plus, it might be irrelevant if we don't make a rule for generating (optional) disjoint classes statements. Adding a sentence about this to refer to an individual rule for generating disjoint statements.
+UML generalisation set [xref:references.adoc#ref:uml2.5[uml2.5]] groups generalisations; incomplete and disjoint constraints indicate that the set is not complete and its specific Classes have no common instances. The UML conventions specify that all sibling classes are by default disjoint, therefore even if no generalisation set is provided it is assumed to be implicit.
+Sibling classes will be declared disjoint with one another in the reasoning layer (see xref:rule:disjoint-classes-rc[]).
+
+[#rule:generalisation-class-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Class generalisation -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify subclass axiom for the generalisation between UML Classes.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Subclass declaration in Turtle syntax
+[source,Turtle]
+----
+:ClassName rdfs:subClassOf :SuperClass.
+:OtherClass rdfs:subClassOf :SuperClass.
+----
+|
+.Subclass declaration in RDF/XML syntax
+[source,XML]
+----
+<owl:Class rdf:about = "http://base.onto.uri/ClassName">
+    <rdfs:subClassOf rdf:resource = "http://base.onto.uri/SuperClass"/>
+</owl:Class>
+<owl:Class rdf:about = "http://base.onto.uri/OtherClass">
+    <rdfs:subClassOf rdf:resource = "http://base.onto.uri/SuperClass"/>
+</owl:Class>
+----
+|===
+
+=== Property generalisation
+
+Generalisation [xref:references.adoc#ref:uml2.5[uml2.5]] defines specialization relationship between Classifiers. In case of the UML associations it relates a more specific Association to more general Association.
+
+.Visual representation of UML property generalisation (on the left) and OWL sub-property relation (on the right)
+[#fig:generalisation-rel-visual]
+image::f14.png[14]
+
+
+[#rule:generalisation-property-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Property generalisation -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify sub-property axiom for the generalisation between UML association/dependency connectors.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Property specialisation in Turtle syntax
+[source,Turtle]
+----
+:hasSister rdfs:subPropertyOf :relatesTo .
+:isSisterOf rdfs:subPropertyOf :isRelatedTo .
+----
+|
+.Property specialisation in RDF/XML syntax
+[source,XML]
+----
+<owl:ObjectProperty rdf:about = "http://base.onto.uri/hasSister">
+    <rdfs:subPropertyOf rdf:resource = "http://base.onto.uri/relatesTo"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about = "http://base.onto.uri/isSisterOf">
+    <rdfs:subPropertyOf rdf:resource = "http://base.onto.uri/isRelatedTo"/>
+</owl:ObjectProperty>
+----
+|===
+
+=== Class equivalence
+
+.Visual representation of UML class equivalence (on the left) and OWL class equivalence (on the right)
+[#fig:generalisation-equivalence-visual]
+image::f15.png[15]
+
+
+[#rule:equivalent-classes-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Equivalent classes -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify equivalent class axiom for the generalisation with `\<<equivalent>>` or `\<<complete>>` stereotype between UML Classes.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Class equivalence in Turtle syntax
+[source,Turtle]
+----
+:ClassName owl:equivalentClass :SuperClass.
+----
+|
+.Class equivalence in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/ClassName">
+    <owl:equivalentClass rdf:resource = "http://base.onto.uri/SuperClass"/>
+</rdf:Description>
+----
+|===
+
+=== Property equivalence
+
+[#rule:equivalent-properties-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Equivalent properties -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify equivalent property axiom for the generalisation with `\<<equivalent>>` or `\<<complete>>` stereotype between UML properties.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Property equivalence in Turtle syntax
+[source,Turtle]
+----
+:hasSister owl:equivalentProperty :relatesTo .
+:isSisterOf owl:equivalentProperty :isRelatedTo .
+----
+|
+.Property equivalence in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description rdf:about = "http://base.onto.uri/hasSister">
+  <owl:equivalentProperty rdf:resource = "http://base.onto.uri/relatesTo"/>
+</rdf:Description>
+<rdf:Description rdf:about = "http://base.onto.uri/isSisterOf">
+  <owl:equivalentProperty rdf:resource = "http://base.onto.uri/isRelatedTo"/>
+</rdf:Description>
+----
+|===
+
+=== Disjoint classes
+
+[#rule:disjoint-classes-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Disjoint classes -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify a disjoint classes axiom for all "sibling" classes, i.e. for multiple UML Classes that have generalisation connectors to the same UML Class.
+====
+
+For the generalisation relations depicted in xref:fig:generalisation-visual[], the generated output should have the following form.
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Disjoint classes declaration in Turtle syntax
+[source,Turtle]
+----
+[ a owl:AllDisjointClasses ;
+  owl:members  ( :ClassName :OtherClass )
+] .
+----
+|
+.Disjoint classes declaration in RDF/XML syntax
+[source,XML]
+----
+<rdf:Description>
+    <rdf:type rdf:resource="http://...owl#AllDisjointClasses"/>
+    <owl:members rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://base.onto.uri/ClassName"/>
+        <rdf:Description rdf:about="http://base.onto.uri/OtherClass"/>
+    </owl:members>
+</rdf:Description>
+----
+|===
+
+
+[[sec:realisation]]
+=== Realisation relations
+
+Realisation defines a relationship between an Object element and a UML Class or Enumeration element. At the moment we only provide transformation rules for UML Realization connectors that connect to UML Classes.
+
+//.Visual representation of UML realisation (on the left) and OWL instanceOf relation (on the right)
+//[#fig:realisation-visual]
+//image::fxxx.png[xxx]
+
+
+[#rule:realisation-class-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:2.1}. Class realisation -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Declare an individual with a specified class as its type, for a UML Realization connector between a UML Object and a UML Class.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Individual declaration in Turtle syntax
+[source,Turtle]
+----
+:ObjectName a owl:NamedIndividual, :ClassName .
+----
+|
+.Individual declaration in RDF/XML syntax
+[source,XML]
+----
+<owl:NamedIndividual rdf:about="http://base.onto.uri/ObjectName">
+    <rdf:type rdf:resource="http://base.onto.uri/ClassName"/>
+</owl:NamedIndividual>
+----
+|===

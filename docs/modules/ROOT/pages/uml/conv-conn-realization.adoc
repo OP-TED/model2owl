@@ -1,0 +1,73 @@
+[[sec:realization]]
+== Conventions on uml:Realization Connectors
+
+
+[[rule:realization-btw-object-and-class-or-enum]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Realization connects objects with classes or enumerations
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:realization-btw-object-and-class-or-enum
+
+|*Statement:*
+uml:Realization connectors connect a uml:Object element to a uml:Class or uml:Enumeration element.
+|===
+
+*Description:*
+
+The uml:Realization connector signifies an instantiation relation, and is transformed into `rdf:type` relation standing between the source object and the target class. In case the target is a uml:Enumeration element (and the enum is converted into a `skos:ConceptScheme` instance, and the object into a `skos:Concept`), then the relation should be translated into a `skos:inScheme` relation.
+
+//[TODO:] Check if the last sentence is correct. Also, wouldn't it be more appropriate if we would use a "composition", or at least "aggregation", relation to connect object to enums?
+
+
+[[rule:realization-name]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Realization connector with no name
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:realization-name
+
+|*Statement:*
+uml:Realization connectors shall have no name or a target role specified.
+|===
+
+*Description:*
+
+The uml:Realization connectors must have no name (see the xref:uml/conv-connectors.adoc#rule:connectors-name[General convention on connector names]) nor source/target roles specified in the UML model.
+
+
+[[rule:realization-multiplicity]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Realization connector with no multiplicity
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:realization-multiplicity
+
+|*Statement:*
+uml:Realization connectors shall have no target or source multiplicity specified.
+|===
+
+*Description:*
+
+The multiplicity must not be specified neither at the target nor at the source end of the uml:Realization connector.
+
+
+[[rule:realization-proxy-objects]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Proxy objects
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:realization-proxy-objects
+
+|*Statement:*
+For objects defined in external models proxy uml:Object elements should be defined.
+|===
+
+*Description:*
+
+In case an object that is to be used in this model is defined in an external model a proxy uml:Object element should be created so that we can connect it to classes in our model. For example, if we want to refer to the `time:unitMonth` instance of the class `time:TemporalUnit`, then a proxy for `time:unitMonth` individual (and in this case also of the class `time:TemporalUnit`) must be created (ideally in a dedicated `time` package).
+

@@ -1,0 +1,107 @@
+[[sec:genaralization]]
+== Conventions on uml:Generalization Connectors
+
+
+[[rule:generalization-btw-classes-or-connectors]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Generalization connects two classes or two connectors
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:generalization-btw-classes-or-connectors
+
+|*Statement:*
+uml:Generalization connectors connect a uml:Class element to its superclass uml:Class element, or a uml:Connector to its super-property uml:Connector.
+|===
+
+*Description:*
+
+The uml:Generalization connector signifies either:
+
+* a class-subClass relation and is transformed into `rdfs:subClassOf` relation standing between source and target classes, or
+* a property-subProperty relation and is transformed into `rdfs:subPropertyOf` relation standing between source and target properties
+
+[[rule:generalization-name]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Generalization connector with no name
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:generalization-name
+
+|*Statement:*
+uml:Generalization connectors shall have no name or a target role specified.
+|===
+
+*Description:*
+
+The uml:Generalization connectors must have no name (see the xref:uml/conv-connectors.adoc#rule:connectors-name[General convention on connector names]) nor source/target roles specified in the UML model.
+
+
+[[rule:generalization-multiplicity]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Generalization connector with no multiplicity
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:generalization-multiplicity
+
+|*Statement:*
+uml:Generalization connectors shall have no target or source multiplicity specified.
+|===
+
+*Description:*
+
+The multiplicity must not be specified neither at the target nor at the source end of the uml:Generalization connector.
+
+
+[[rule:generalization-proxy-classes]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Proxy classes
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:generalization-proxy-classes
+
+|*Statement:*
+For classes defined in external models proxy uml:Class elements should be defined.
+|===
+
+*Description:*
+
+In case a model class should inherit a class from an external model then proxies must be created for those classes. For example, if `Buyer` specialises an `org:Organization`, then a proxy for `org:Organization` must be created in the `org` package.
+
+
+[[rule:generalization-disjoint-subclasses]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Disjoint subclasses
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:generalization-disjoint-subclasses
+
+|*Statement:*
+Subclasses of the same class, represented by multiple uml:Generalization connectors pointing to the same superclass, are assumed disjoint by default. Exceptions may exist and can be encoded.
+|===
+
+*Description:*
+
+In this specification, the subclasses are assumed disjoint by default, unless otherwise specified in the transformations script, or explicitly marked on the generalisation relation with `\<<non-disjoint>>` stereotype. For the converse case the `\<<disjoint>>` stereotype shall be used.
+
+
+
+[[rule:generalization-equivalent-classes]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Equivalent classes
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:generalization-equivalent-classes
+
+|*Statement:*
+Equivalent classes can be represented by using stereotypes on the uml:Generalization connectors.
+|===
+
+*Description:*
+
+In case two classes are equivalent, then the latexmath:[$<<equivalent>>$] or latexmath:[$<<complete>>$] stereotype should be used as a marker.

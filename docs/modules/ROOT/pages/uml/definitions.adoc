@@ -1,0 +1,55 @@
+[[sec:definitions]]
+== Preliminary definitions
+
+In this document three closely related and mostly overlapping domains are used interchangeably. They come from the worlds of: _enterprise architecture_, _software engineering and design_ and _formal knowledge representation_. It is therefore necessary to establish the terms, especially the common ones, by defining what they mean in each of these domains.
+
+[[sec:cm]]
+=== Conceptual Model
+
+A _conceptual model_ is a representation of a system that uses concepts to form said representation. A _concept_ can be viewed as an idea or notion; a unit of thought [xref:references.adoc#ref:skos-spec[skos-spec]]. However, what constitutes a unit of thought is subjective, and this definition is meant to be suggestive, rather than restrictive. That is why each concept needs to be well named by providing preferred and alternative labels, and a clear and precise definition supported by examples and explanatory notes.
+
+The conceptual model comprises representations of concepts, their qualities or attributes and relationships to other concepts. Most commonly these are association and generalisation relations. In addition, behaviour can be represented, ranging from the concept level up to the level of the system as a whole. Behavioural aspects, however, fall out of the scope in the current specification, which addresses at the structural elements mainly.
+
+[[sec:uml]]
+=== Unified Modelling Language (UML)
+
+The _Unified Modelling Language (UML)_ is a general-purpose, developmental, modelling language in the field of software engineering that is intended to provide a standard way to visualise the design of a system [xref:references.adoc#ref:uml-userguide[uml-userguide]].
+
+This set of specifications is based on the assumption that the conceptual models are represented with UML. Moreover, for the purposes of this convention only the structural elements of UML are considered, and in particular those comprising a class diagram. Next, the most important structural elements are introduced.
+
+A _class_ represents a discrete concept within the domain being modelled. It is a description of a set of individual objects that share the same attributes, behaviour, relationships. Graphically, a class is rendered as a rectangle [xref:references.adoc#ref:uml-userguide[uml-userguide]].
+
+An _instance_ or _individual object_ is a discrete (run-time) entity with identity, state and invocable behaviour and which can be distinguished from other (run-time) entities. We say that an individual object instantiates a class and represents a concrete (run-time) manifestation of that class. Conversely, a class represents the abstract concept by which to understand and describe the multitude of instantiated individual objects.
+
+A _property_ is a structural feature which represents some named part of the structure of a class and characterises it in a particular fashion. It can be an attribute of a classifier or a member end of a relation.
+
+An attribute is a named property of a class that describes the type and a range of values that instances of the property may hold. An attribute may be conceptualised as a slot shared by all objects of that class that is filled by values through instantiation [xref:references.adoc#ref:uml-userguide[uml-userguide]].
+
+When building abstractions very few classes stand alone. Instead most of them are connected to each other in a number of different ways. In UML, there are three kinds of _relationships_ that are important in this specification: _dependencies_, which represent using relationships among classes (including refinement, trace, and bind relationships); _generalisations_, which link generalised classes to their specialisations; and _associations_, which represent structural relationships among objects. Each of these relationships provides a different way of combining your abstractions [xref:references.adoc#ref:uml-userguide[uml-userguide]].
+
+When a class participates in an association, it has a specific role that it plays in that relationship. A _role_ is the face the class at the near end of the association presents to the class at the other end of the association. It is possible to explicitly name the role a class plays in an association [xref:references.adoc#ref:uml-userguide[uml-userguide]].
+
+An association represents a structural relationship among objects. In many modelling situations, it’s important for you to state how many objects may be connected across an instance of an association. This ``how many'' is called the _multiplicity_ of an association’s role, and is written as an expression that evaluates to a range of values or an explicit value. It is possible to show a multiplicity of exactly one [1], zero or one [0..1], many [0..*], one or more [1..*], or even an exact number (for example, 3) [xref:references.adoc#ref:uml-userguide[uml-userguide]]. Multiplicity applies not only to associations, but to dependency relation as well, and also, to class attributes.
+
+A _stereotype_ represents an extensibility mechanism that is foreseen in UML. It allows for the possibility to create new domain specific kinds of elements that are derived from the existing standard ones. In the simplest form, they act as annotations on the UML building blocks, but can redefine entirely the visual representation of the UML element. For example some elements may be considered, optional, recommended or required in the context of information exchange. This is possible by creating the three stereotypes and applying them accordingly [xref:references.adoc#ref:uml-userguide[uml-userguide]].
+
+[[sec:ontology]]
+=== Formal ontology
+
+Much has been discussed about what an ontology is and is not [xref:references.adoc#ref:guarino2009ontology[guarino2009ontology]]. In computational context, an ontology encompasses a representation, formal naming and definition of the categories, properties and relations between the concepts, data and entities that substantiate one, many or all domains of discourse.
+
+Here we adopt the definition from [xref:references.adoc#ref:studer1998[studer1998]] that _``an ontology is a formal, explicit specification of a shared conceptualization''_. In this specification we adopt _Web Ontology Language (OWL 2)_[xref:references.adoc#ref:owl2[owl2]] to specify the formal ontologies. OWL 2 is a knowledge representation language, with formally defined meaning, designed to formulate, exchange and reason with knowledge about a domain of interest.
+
+OWL 2 ontologies can be used along with information written in _Resource Description Framework (RDF)_ [xref:references.adoc#ref:rdf11[rdf11]]. RDF is a standard model for data interchange on the Web. And OWL 2 ontologies themselves are primarily exchanged as RDF documents.
+
+An RDF document is composed of RDF statements. The _RDF statement_, or _triple_, is a three-slotted structure of the form latexmath:[$<subject- predicate-object>$]. The RDF statement asserts that some relationship, indicated by the predicate, holds between the resources denoted by the subject and object [xref:references.adoc#ref:rdf11[rdf11]]. The subject is always a resource identified by an URI, while the object may be either a URI resource or a literal value. Next, the relevant OWL 2 concepts are introduced.
+
+_Classes_ provide an abstraction mechanism for grouping resources with similar characteristics. Classes can be understood as sets of individuals, called the class extension. The individuals in the class extension are called the instances of the class [xref:references.adoc#ref:owl1[owl1]].
+
+_Individuals_ in OWL 2 represent actual objects from the domain. There can be named individuals, which are given an explicit name to refer to the same object; and anonymous individuals, which do not have an explicit name and are used locally.
+
+_Datatypes_ are entities that refer to sets of data values. Thus, datatypes are analogous to classes, the main difference being that the former contain data values such as strings and numbers, rather than individuals [xref:references.adoc#ref:owl2[owl2]].
+
+_Literals_ represent data values such as particular strings or integers. They can also be understood as individuals denoting data values. Literals can be either plain (no datatype) or typed [xref:references.adoc#ref:owl2[owl2]].
+
+In OWL 2 _properties_ are defined as that which can take the _predicate_ role in an RDF statement, and are distinguished as object properties and data properties. _Object properties_ represent relationships between pairs of individuals. _Data properties_ represent relationships between an individual and a literal. In some knowledge representation systems, functional data properties are called attributes [xref:references.adoc#ref:owl2[owl2]].

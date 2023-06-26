@@ -1,0 +1,148 @@
+== Modeling Relations with UML Connectors
+
+[[sec:relations]]
+=== Conventional recommendations on Relations
+
+
+[[rule:connectors-names-with-verb]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Naming relations
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:connectors-names-with-verb
+
+|*Statement:*
+Relations are to be expressed through UML Connectors. It is recommended to use a verb in the relation names.
+|===
+
+*Description:*
+
+When establishing relations between concepts it is conventional to use verbs of action, state, process or relation, such as "includes", "replaces", "manages". It is required to use a verb or a verb phrase for relationship terms. It should be in _lowerCamelCase_ such that latexmath:[$<subject-predicate-object>$] triples may actually be read as natural language clauses, e.g. "EconomicOperator offers ProcuredItem" [xref:references.adoc#ref:d2.01-2017[d2.01-2017]].
+
+The verb phrase must be in present tense, and, if needed, inflected for third person singular. If an additional level of specificity is needed a qualifying nominal phrase may be appended.
+
+The relation names should be provided as target, and in case of bidirectional association relations also source, role names. For more details on this, see convention about [xref:rule:connectors-name[UML Connector names]].
+
+[[rule:connectors-bidirectional]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Bidirectional relations
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:connectors-bidirectional
+
+|*Statement:*
+Relationships are usually bidirectional, and the name for both directions should be provided, where it makes sense.
+|===
+
+*Description:*
+
+Relationships are usually bidirectional, and the names of the relations in both directions should be provided, where it makes sense from the modeling point of view. Adjust the verb phrases in the predicates as appropriate. Usually, by employing the _active and passive voice_ in the term formulation brings the desired result. For example, "uses/isUsedBy" and "refersTo/isReferredToBy" or "offers/isOfferedBy" [xref:references.adoc#ref:d2.01-2017[d2.01-2017]].
+
+
+[[rule:connectors-inverse]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Inverse relation
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:connectors-inverse
+
+|*Statement:*
+Semantically inverse relationships should be represented as two distinct UML connectors.
+|===
+
+*Description:*
+
+The name of the inverse relation should not be semantically inverted verb, such as in case of "buys/sells" , "open/closes". The semantically inverted dichotomies must be modelled in separate connectors because they represent different relations. For example the dichotomy "buys/sells" should be modelled as two pairs: "buys/isBoughtBy" and "sells/isSoldBy".
+
+When the relation is of different nature, more like an attribute, then prefixing and suffixing techniques can be employed. For example, in the Organization Ontology [xref:references.adoc#ref:org-ontology[org-ontology]], the concepts of an "Organization" and a "Site" are defined along with two relationships that are the inverse of each other: "Organisation hasSite Site" and "Site siteOf Organisation" [xref:references.adoc#ref:d3.1-2015[d3.1-2015]].
+
+
+[[rule:connectors-inverse-definition]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Definition of inverse relations
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:connectors-inverse-definition
+
+|*Statement:*
+It is recommended that the definition of both the relation and its inverse relation is provided.
+|===
+
+*Description:*
+
+It is recommended that each relationship includes a definition of its inverse.
+
+Models should define such inverse pairs for relationships although this does not extend to attributes. For example, Dublin Core [xref:references.adoc#ref:dublin-core-metadata[dublin-core-metadata]] includes a property of "dateAccepted", there is no inverse property that would link a given date, which is expressed as a simple value, to all the documents accepted for publication on that date.
+
+
+[[sec:connectors]]
+=== Technical conventions on connectors
+
+
+[[rule:connectors-name]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* UML Connector names
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:connectors-name
+
+|*Statement:*
+The name of a uml:Connector shall not be specified. For named relations, represented by uml:Association and uml:Dependency connectors, the relation names are to be specified as the target/source role names.
+|===
+
+*Description:*
+
+A generic UML connector may have a name applied to it, and, in addition, it may also have source/target roles specified. This provides flexibility for how the domain knowledge may be expressed in UML. However, this freedom increases the level of ambiguity as well. To reduce ambiguity, streamline the modeling process, and simplify the transformation rules, we convened to express named relations using the connector source/target ends.
+
+This convention prescribes that the name of any of the supported uml:Connector types (see xref:uml/conv-general.adoc#rule:gen-model-connectors[Supported UML connectors]) should not be specified.
+
+For uml:Association and uml:Dependency connectors the name of the relation (and the property to be generated) should be specified through the target role name of the connector. Additionally, for bidirectional uml:Association connectors the source role name should be specified as well. See conventions on xref:uml/conv-conn-association.adoc#rule:association-target[Association name] and xref:uml/conv-conn-dependency.adoc#rule:dependency-target[Dependency name]. The role name(s) must be valid, as it is used to generate the OWL property URI.
+
+
+[[rule:connectors-direction]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Direction of UML Connectors
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:connectors-direction
+
+|*Statement:*
+All uml:Connectors must employ "Source->Target" directions only, with uml:Association connectors allowing also "Bidirectional" direction.
+|===
+
+*Description:*
+
+All supported UML connectors shall have direction "Source->Target". In addition, uml:Association connectors can also be "Bidirectional".
+
+
+[[sec:relations-reuse]]
+=== Reuse of Relations
+
+[[rule:connectors-reuse]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Reuse of UML Connector roles
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:connectors-reuse
+
+|*Statement:*
+Connector role names can be reused, but only as role names in other connectors of the same type.
+|===
+
+*Description:*
+
+Connector role names can be reused, but only as role names in other connectors of the same type.
+That is, uml:Association role names can be reused only as role names in other uml:Association connectors,
+and uml:Dependency role names can be reused only as role names in other uml:Dependency connectors.
+No other connector role name reuse is permitted.
+
+The definition of the connector (and its role) should be the same in all occurrences where its target/source role is reused. In most cases this should apply also to the multiplicity of the reused connector roles.
+
+See also generic conventions about also xref:uml/conv-general.adoc#rule:gen-names-unique[Uniqueness and reuse of names] and xref:uml/conv-general.adoc#rule:gen-relation-reuse[Reuse of relations].

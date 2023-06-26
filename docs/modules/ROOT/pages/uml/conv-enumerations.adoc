@@ -1,0 +1,34 @@
+== Conventions on uml:Enumeration elements
+
+[[sec:enumeration]]
+===  Technical conventions on uml:Enumeration elements
+
+In UML the controlled lists, discussed in Section [xref:uml/conv-general.adoc#sec:controlled-lists[Controlled List]] are represented as uml:Enumeration. They are transformed into instances of a SKOS model [xref:references.adoc#ref:skos-spec[skos-spec]].
+
+
+[[rule:enumeration-to-skos]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Interpretation of uml:Enumeration
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:enumeration-to-skos
+
+|*Statement:*
+
+An uml:Enumeration element is transformed into `skos:ConceptScheme`, and an enumeration item into a `skos:Concept`.
+|===
+
+*Description:*
+
+
+Each uml:Enumeration element is transformed into skos:ConceptScheme, and each enumeration item, if present as an uml:Attribute value, is transformed into a `skos:Concept`. An enumeration might be empty, especially when they refer to externally specified controlled lists.
+
+//TODO We need in fact a flag that controlled whether the Enum definitions shall be present in the core layer (at all), or not.
+
+In a uml:Enumeration element, the name shall be interpreted as the controlled list name; it must be a normalised string. Each attribute name is used as a local segment in the generation of the concept URI. The attribute type is ignored and by default is considered to be `skos:Concept`. The attribute alias is transformed into the `skos:Concept`s preferred label. The attribute initial value is transformed into the alternative label of the concept.
+//TODO see if we need to specify additional rules for this.
+
+In case no attribute alias is specified then the attribute name is used as preferred label of the skos:Concept. This happens as skos:prefLabel is a mandatory property in the SKOS model.
+
+It is possible to employ the enumerations for class properties by drawing a dependency (uml:Dependency) relation from the class to the enumeration and provide a relation target role. However, the enumeration should not connect to other elements.

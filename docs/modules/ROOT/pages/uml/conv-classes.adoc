@@ -1,0 +1,176 @@
+== Conventions on uml:Class elements
+
+[[sec:classes]]
+=== Conventional recommendations on Classes
+
+[[rule:class-name-gen]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Naming of classes
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:class-name-gen
+
+|*Statement:*
+Class names shall be simple nouns or noun phrases.
+|===
+
+*Description:*
+
+When choosing class names, it is conventional to use simple nouns or noun phrases. In case the class refers to actions, states, relations or qualities, which are usually expressed in natural language by verbs or adjectives then they must be nominalised. We often form nouns from other parts of speech, most commonly from a verb or an adjective. We can then use the noun phrase instead of the verb or adjective to create a more formal style. This process is called nominalisation.
+
+
+[[rule:class-name-singular]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Use of singular class names
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:class-name-singular
+
+|*Statement:*
+Class names shall be formulated in singular.
+|===
+
+*Description:*
+
+A class name represents a collection of objects. For example, a class "Language" actually represents all languages. Therefore, it could be more natural for some model designers to call the class "Languages" rather than "Language". In practice, however, the singular is used more often for class names, while the plural for sets and collections [xref:references.adoc#ref:noy2001[noy2001]]. Therefore, it is required that the class names must always use the singular lexical form.
+
+
+[[rule:class-name-capitalise]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Capitalise class names
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:class-name-capitalise
+
+|*Statement:*
+Class names shall be written in Pascal case.
+|===
+
+*Description:*
+
+The local segment in the name of a uml:Class element must start with a capital letter, and multiple words must be combined based on the Pascal case rules.
+
+
+[[rule:class-name-subclass]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Subclass naming
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:class-name-subclass
+
+|*Statement:*
+Classes in a subclass hierarchy should be named consistently.
+|===
+
+*Description:*
+
+When building the class hierarchy, names of direct subclasses of a class should consistently either all include or not include the name of the superclass. For example, if we create two subclasses of `Wine` to represent red and white wines, then the two subclass names should be either `Red Wine` and `White Wine` or `Red` and `White`, but not `Red Wine` and `White` [xref:references.adoc#ref:noy2001[noy2001]].
+
+[[rule:class-single-subclass]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Single subclass
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:class-single-subclass
+
+|*Statement:*
+Class specialisations with a single child shall be avoided.
+|===
+
+*Description:*
+
+This means that there should be at least two sibling subclasses specified in the model. By default, the classes are not disjunctive, however, if required, the transformation script may generate disjunctive classes by default.
+
+[[rule:class-circular]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Circular inheritance
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:class-circular
+
+|*Statement:*
+Circular inheritance must be avoided.
+|===
+
+*Description:*
+
+This means that if a class `B` specialises a class `A`, then `A` may not specialise `B` or any of the subclasses of `B`.
+
+[[sec:uml-class]]
+=== Technical conventions on uml:Class elements
+
+[[rule:class-name-mandatory]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Mandatory class names
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:class-name-mandatory
+
+|*Statement:*
+Each uml:Class must have a short URI name.
+|===
+
+*Description:*
+
+uml:Class is transformed into an owl:Class. Each uml:Class must have a name.
+
+[[rule:class-description]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Class description
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:class-description
+
+|*Statement:*
+Each uml:Class should have a description.
+|===
+
+*Description:*
+
+Each uml:Class should have a description representing the human readable class definition in the domain context.
+
+Optionally, in case there is a technical possibility to distinguish between UML notes, then additionally editorial, history notes or simply comments should be provided as class descriptors.
+
+Richer and structured descriptions can be provided by using uml:Tag(s).
+
+[[rule:class-properties]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Class properties
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:class-properties
+
+|*Statement:*
+uml:Class must have connectors, attributes, or both.
+|===
+
+*Description:*
+
+It is recommended that a uml:Class has relations, attributes, or both. A class must not miss both, attributes and relations associated with it. It is mandatory to avoid using the same name in a class, attribute or a relation.
+
+[[rule:class-abstract]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Abstract Classes
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:class-abstract
+
+|*Statement:*
+A uml:Class may use the `\<<abstract>>` stereotype to signal that the class is not instantiatable.
+|===
+
+*Description:*
+
+Classes may use the _\<<abstract>> stereotype_. It means that no instances are allowed of this class in the datasets. This is not covered by the OWL 2 [xref:references.adoc#ref:owl2[owl2]] but can be expressed in SHACL data shapes [xref:references.adoc#ref:shacl-spec[shacl-spec]].
+
+

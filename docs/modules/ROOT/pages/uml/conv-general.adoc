@@ -1,0 +1,522 @@
+[[sec:general-conv]]
+== General Conventions
+
+In this section we provide a number of general conventions whose fundamental nature can be of two kind:  _conventional_ or _technical_. Regarding the topic of these conventions we start with some fundamental ones, and then we cover a number of generic areas: from naming things, to providing appropriate descriptions, to generic recommendations on technical aspects of encoding such information. For each of such topic we will start with _conventional recommendations_, followed by _technical conventions_, if both aspects are relevant.
+
+[[sec:general-model]]
+=== Generic conventions on the UML Model
+
+To reduce the complexity of UML models that one can build, and the conversion of those UML models into derivative artefacts (i.e. OWL ontologies and SHACL shapes), we identified a minimal set of UML model components (UML elements and connectors) that are necessary and sufficient to express most ontological statements that might be needed in practice. For this minimal set of UML model components we convened on a xref:transformation/uml2owl-transformation.adoc[well-defined set of transformation rules] to ensure that the generation of derivative artefacts is deterministic and complete. The use of other UML components will be ignored.
+
+
+[[rule:gen-model-elements]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Supported UML model elements
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-model-elements
+
+|*Statement:*
+The UML model shall contain only the following types of UML elements: Class, DataType, Enumeration, Object and Package.
+|===
+
+*Description:*
+
+The Model2OWL tool deals only with the conversion of the following UML elements: Class, DataType, Enumeration, Object and Package. Other UML elements will be ignored, and therefore should not be used.
+
+
+[[rule:gen-model-connectors]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Supported UML connectors
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-model-connectors
+
+|*Statement:*
+The UML model shall contain only the following types of UML Connectors: Association, Dependency, Generalization and Realization.
+|===
+
+*Description:*
+
+The Model2OWL tool deals only with the conversion of the following UML connectors: Association, Dependency, Generalization and Realization. Other types of UML connectors will be ignored, and therefore should not be used.
+
+
+[[rule:gen-element-visibility]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* UML model components should be public
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-element-visibility
+
+|*Statement:*
+All UML model elements and connectors must be declared with the visibility set to "Public".
+|===
+
+*Description:*
+This convention also includes that the UML class attributes have their visibility (or "Scope") set to "Public", and that all named roles specified at either end of any of the connectors have their visibility (or "Access") set to "Public".
+
+
+[[sec:names]]
+=== Naming Conventions
+
+Defining naming and structural conventions for concepts in an ontology, and then strictly adhering to these conventions, don’t only make the ontology easier to understand, but also helps avoid some common modelling mistakes.
+
+UML is a language without formal semantics. Moreover, it is quite flexible and permissive with ways in which a concept can be expressed. Also, there are many alternatives in naming concepts. Often there is no particular reason to choose one or another alternative. However, we need to define a set of naming conventions for classes, relations, attributes, controlled lists and adhere to it [xref:references.adoc#ref:noy2001[noy2001]].
+
+In theory any name can be assigned to a concept, relationship or property. In practice, there are two types of constraints on the kind of names that should be used: _technical_ and _conventional_. This section deals with conventional recommendations, while the technical aspects are covered in later sections, such as [xref:sec:namespaces[]], [xref:sec:charset[]], and [xref:sec:stereotypes-tags[]] .
+
+
+[[rule:gen-names-labels-and-ids]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Support for generation of human- and machine-readable denominations
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-names-labels-and-ids
+
+|*Statement:*
+Element names should support generation of human- and machine-readable denominations, and they shall follow the short URI notation: `prefix:localSegment` .
+
+|===
+
+*Description:*
+
+The naming conventions apply to the _element names_ in the conceptual model. These names are intended for further use as human-readable denominations, called _labels_; and machine-readable denominations, called _identifiers_. The identifiers serve as a basis for generating URIs [xref:references.adoc#ref:rfc3986[rfc3986]] to ensure unambiguous reference to a formal construct; while the labels are meant to ease the comprehension by human-readers. For this reason we will consider that mostly the conventional recommendations provided here apply to them and none of the technical constraints.
+
+[[rule:gen-names-language]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Recommendation on language
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-names-language
+
+|*Statement:*
+Element names shall be formulated using British English. Multilingual support, if needed, should be provided through additional labels.
+
+|===
+*Description:*
+
+It is recommended that the names and descriptions for classes and properties are expressed in British English [xref:references.adoc#ref:d2.01-2017[d2.01-2017]].
+In addition, a mechanism for providing a multilingual labelling system should be adopted.
+
+
+[[rule:gen-names-namespaces]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Namespace definition
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-names-namespaces
+
+|*Statement:*
+All prefixes used in the element names must refer to a valid namespace declaration, including a default namespace.
+|===
+*Description:*
+
+The names should also belong to and be organised by _namespaces_. They can be provided as a short prefix to the elements name, for example "org:Organization", "epo:Notice" or "skos:Concept". Namespaces are addressed in detail in Section [xref:uml/conv-general.adoc#sec:namespaces[Namespaces]].
+
+*See also:* SEMIC Style Guide Rules [https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r4[GC-R4]], [https://semiceu.github.io/style-guide/1.0.0/gc-semantic-conventions.html#sec:sc-r3[SC-R3]] and [https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6[CMC-R6]]
+
+[[rule:gen-clear-language]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Use clear language
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-clear-language
+
+|*Statement:*
+Clear and plain language shall be used; and abbreviations, unpronounceable, easily confusable, cryptic, and other difficult terms shall be avoided in element names.
+|===
+
+*Description:*
+
+It is recommended to avoid abbreviations in concept names. Also, the words employed in the metamodel such as "class", "property", "attribute", "connector" etc. should be avoided as well. Names that are nonsensical, unpronounceable, hard to read, or easily confusable with other names should not be employed [xref:references.adoc#ref:xml1-spec[xml1-spec]].
+
+
+// [[sec:casing]]
+//=== Case sensitivity
+
+[[rule:gen-names-case]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Case sensitivity
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-names-case
+
+|*Statement:*
+Names are case-sensitive. Names of elements of the same type should use consistent capitalisation.
+|===
+
+*Description:*
+
+We can greatly improve the readability of an ontology if we use consistent capitalisation for concept names. For example, it is common to capitalise class names and use lower case for property names. And so, the names of classes, data-types and enumerations must begin with a capital letter while the names of class attributes, enumeration items, association and dependency relations, including their source and target roles, must begin with a lower case character.
+
+All the names are case-sensitive. This means that the class "Buyer" and the attribute "buyer" are two different names. Nonetheless, such similarities are strongly discouraged and more elaborated names are highly encouraged. For example, a simple elaboration is to use suffixes or prefixes.  See rules:
+
+//TODO: add reference to rules about avoiding duplication and usage of suffix/prefix
+
+[[sec:delimitation]]
+//=== Delimitation
+
+[[rule:gen-names-multi]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Delimitation in multi-word names
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-names-multi
+
+|*Statement:*
+Names containing multiple words shall use _camelCase_ or _PascalCase_ as word delimiting mechanism.
+|===
+
+*Description:*
+
+In UML, the spaces in names are allowed and using them may be the most intuitive solution for many ontology developers. It is however, important to consider other systems with which your system may interact. If those systems do not use spaces or if your presentation medium does not handle spaces well, it can be useful to use another method [xref:references.adoc#ref:noy2001[noy2001]].
+
+It is recommended that the element names avoid using spaces and instead follow a camel-case convention. _CamelCasing_ is the practice of writing phrases such that the word or abbreviation in the middle of the phrase begins with a capital case.
+
+//[TODO: Check if the following is still holds]
+Exceptionally, if the conceptual model authors must maintain high readability of the UML diagrams, spaces may be tolerated and handled by the conversion script. In the conversion process, spaces are trimmed and phrases turned into camel-case form. For example " Pre-award catalogue request " is transformed into "Pre-AwardCatalogueRequest".
+
+[[sec:uniqueness]]
+//=== Name uniqueness
+
+[[rule:gen-names-unique]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Name uniqueness and reuse
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-names-unique
+
+|*Statement:*
+Element names (Class, Datatype, Enumeration, Object, Package) must be unique, while the Attribute and Connector role names, with certain restrictions, can be reused.
+|===
+
+*Description:*
+
+In the formal ontology, each class, property or individual must be uniquely identifiable by its identifier. Therefore, the elements of the conceptual model, classes, attributes, connectors, instance, should have unique names.
+
+This means that there cannot exist a class and an attribute with the same name (such as a class "Buyer" and a property "Buyer"). Neither can there exist a class and an instance, or an instance and a relation, with the same name.
+
+Names that reduce to the same identifier are considered the same. For example "Legal Entity" and "LegalEntity" are different labels, but they reduce to the same identifier "LegalEntity". In such cases the names are considered equal and the UML elements replicated.
+
+Although name uniqueness is a recommendation, sometimes it is useful to replicate a UML element. In such cases, when the names are reused, the assumption is that the two UML elements represent manifestations of the same meaning. This is especially important for relations, and is explained in convention [xref:#rule:gen-relation-reuse[]].
+
+The names of the following THINGS shall be unique against the OTHER THINGS (i.e. shall not be reused as names of the other things):
+
+* elements (Class, DataType, Enumeration, Object, Package) -> elements, attributes, connector roles (dependency & association)
+* attributes -> elements, connector roles (dependency & association)
+* connector role (dependecy & association) -> elements, attributes
+* dependency connector role  → association connector role
+* association connector role → dependency connector role
+
+
+//[[sec:relation-reusability]]
+//=== Relations reusability
+
+[[rule:gen-relation-reuse]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Reuse of relations
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-relation-reuse
+
+|*Statement:*
+Connector and Attribute names shall be chosen such as to support the appropriate level of reuse.
+
+|===
+
+*Description:*
+
+The relation names should be chosen so that there is a balance of accuracy and precision on one hand and the relation reusability on the other hand. These two dimensions are inversely correlated: the higher the reuse the lower the accuracy and vice versa.
+
+On one hand, if we choose more generic predicates such as "isSpecifiedIn" this tends towards maximising relation reusability across the model. Yet at the same time the risk of overloading the relation meaning also increases.
+
+On the other hand, the above risk could be mitigated by simply appending the range class to the relation name: such "isSpecifiedInContract" and such "isSpecifiedInProcedure" following the following naming pattern: . This ensures predicate uniqueness and maximum level of specificity at the cost of reusability across and beyond the model. The latter can be achieved through inference, but an additional predicate inheritance structure must be defined. Another risk is that a change or evolution of the name of the class has a direct impact on all incoming predicates, and thus raising the chances of errors. This in turn may decrease the model agility and elasticity.
+
+Optionally, the transformation process from the conceptual model to the formal ontology, may contain a mechanism of appending the name of the range class to the predicate name in order to automatically produce a predicate with higher specificity, shall this be required.
+
+
+[[sec:suffix-prefix]]
+//=== Suffix and prefix
+
+[[rule:gen-names-suffix-prefix]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Use of suffixes and prefixes
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-names-suffix-prefix
+
+|*Statement:*
+Attributes and connector names shall contain a verb. Apply certain, well establish, prefixes and/or suffixes, in a consistent fashion, to achieve this goal.
+|===
+
+*Description:*
+
+Some ontology engineering methodologies suggest using prefix and suffix conventions in the names to distinguish between classes and attributes. Two common practices are to add a "has-" prefix or a "-of" suffix to attribute names. Thus, our attributes become "hasAwardStatus" and ”hasBuyer” if we chose the "has-" convention. The attributes become "awardStatusOf" and "buyerOf" if we chose the "-of" convention. This approach allows anyone looking at a term to determine immediately if the term is a class or an attribute. However, the term names become slightly longer [xref:references.adoc#ref:noy2001[noy2001]].
+
+We recommend that the names of class attributes employ the "has-" suffix. For boolean properties we recommend the use of the "is-" prefix.
+
+Other common suffixes are the prepositions "-by" and "-to". The organisation ontology [xref:references.adoc#ref:org-ontology[org-ontology]] exemplifies their usage in cases such as "embodiedBy" and "conformsTo". However, if the preposition can be avoided, then do so [xref:references.adoc#ref:d3.1-2015[d3.1-2015]].
+
+It is recommended to use prepositions in the ontology terms only if necessary (CN: I would say: every time when it makes the meaning more clear)
+
+Optionally common and descriptive prefixes and suffixes for related properties or classes may be used. While they are just labels and their names have no inherent semantic meaning, it is still a useful way for humans to cluster and understand the vocabulary. For example, properties about languages or tools might contain suffixes such as "Language" (e.g. "displayLanguage") or "Tool" (e.g. "validationTool") for all related properties [xref:references.adoc#ref:d2.01-2017[d2.01-2017]].
+
+
+
+*See also:* SEMIC Style Guide Rule [https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r4[GC-R4]]
+
+[[sec:descriptions]]
+=== Notes, descriptions and comments
+
+Large emphasis is set on the naming conventions. Nonetheless, most often, a good name is insufficient for an accurate or easy comprehension by human-readers. To mitigate this, and to increase the conceptual richness, practitioners may wish to provide human-readable definitions, notes, examples and comments grasping the underlying assumptions, usage examples, additional explanations and other types of information.
+
+[[rule:gen-description]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Description of elements
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-description
+
+|*Statement:*
+All elements must have a definition providing a concise but complete description of the concept.
+|===
+
+*Description:*
+
+We adopt here the SEMIC Principles for creating good definitions [xref:references.adoc#ref:semic-defs[semic-defs]]. They are based on advice found in the literature and are the following:
+
+* Be concise but complete,
+** Avoid over-generalisations. Adapt and contextualise the definition to the surrounding/connected concepts.
+** Make sure that every concept that occurs in the model is directly (or indirectly) defined
+* Describe only one term
+* Structure the definition in a standardised way:
+** Use the singular form to phrase the definition (see [xref:sec:names[]])
+** State what the term is, and don't enumerate what it is NOT (i.e. no negative definition)
+** Use only commonly understood abbreviations
+** Use similar terminology for definitions of related concepts
+* Don't use  circular definitions, i.e. the term defined should not be part of the definition,
+* Don't add secondary information such as additional explanation, scoping, examples, etc. these are to be documented in usage notes.
+* Form the definition in one or more sentences that start with a capital letter and end with a period.
+* Do not start a definition with a repetition of the name of the concept.
+//* Rich standard encodings such as UTF-8 and UTF-16 are supported in notes and definitions. In the element names, however,
+//we recommend avoiding any character encodings and using plain ASCII [xref:semicsg/references.adoc#ref:epo-cmc[epo-cmc, sec 4.2]].
+
+In addition to these SEMIC recommendation for providing good definitions, we also add the following recommendations to adequately complete the description of an element:
+
+* It is recommended that each element is defined by a crisp, one-line definition. The definition starts with a capital letter and ends with a period.
+
+* A description may provide complementary information concerning the usage of the element or its relation to relevant standards. For example, a description may contain recommendations about which controlled vocabularies to use, describe the underlying assumptions and additional explanations for reducing ambiguity. Descriptions may contain multiple paragraphs separated by blank lines. The descriptions should not paraphrase the definitions.
+
+* If the model editor provides concrete examples of possible element values or instances then they shall be provided as a comma-separated list. Each example value is enclosed in quotes and is optionally followed by a short explanation enclosed in parentheses [xref:references.adoc#ref:isaHandbook2015[isaHandbook2015]].
+
+*See also:* SEMIC Style Guide Rule [https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r5[GC-R5]], which provides more recommendations to be followed here.
+
+[[sec:controlled-lists]]
+=== Controlled lists
+
+The controlled list is a carefully selected list of words and phrases and is often employed in the modelling practices. The controlled list has a name, and a set of terms. For example, the list of grammatical genders can be named "Gender" and comprise the terms "masculine", "feminine", "neuter" and "utrum".
+
+As a rule of thumb, but not always, the relationship between the controlled list as a whole and its comprising elements can be informally conceptualised as a class-instance, class-subclass, set-item, or part-whole.
+
+[[rule:gen-controlled-list]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Representation of known controlled lists
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-controlled-list
+
+|*Statement:*
+
+When the controlled list is known, and it can be referred to by a short URI, then it
+shall be represented as uml:Enumeration element.
+|===
+
+*Description:*
+
+Controlled lists play an essential role in establishing interoperability standards. Management and publication of controlled lists should happen as a separate process, and are not addressed here. References to controlled lists shall be done via uml:Enumeration elements.
+
+The expectation is that the controlled lists are published in accordance with best practices and represented with the SKOS model using persistent identifiers. In such an approach, the controlled list is expressed as a `skos:ConceptScheme` and the specific values as `skos:Concept`(s). Also, such controlled lists are often developed, published and maintained independently following their own lifecycle, so that they can be reused in other models.
+
+Two use-cases can be identified in practice: (a) when the code list is known and is explicitly referred to as the range of a property, and (b) when a property is modelled but no code list reference is provided as its range.
+
+[[rule:gen-controlled-list-unknown]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Representation of unknown controlled lists
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-controlled-list-unknown
+
+|*Statement:*
+
+When the controlled list is unknown, then it shall not be referred to, but instead a class uml:Attribute shall be defined with datatype `skos:Concept` class.
+
+|===
+
+*Description:*
+
+When the authors of a conceptual model intend to omit which controlled list shall be used, then a class attribute with the range `skos:Concept` (in some cases `Code` is preferred, but we strongly recommend avoiding this) can be created to indicate that. This approach can be useful in situations when multiple (external) controlled lists can be used interchangeably. For example, the `adms:status` property of a `dcat:CatalogueRecord` shall be a `skos:Concept`, without specifying the controlled list.
+
+[[rule:gen-controlled-list-empty]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Controlled list values
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-controlled-list-empty
+
+|*Statement:*
+
+uml:Enumeration shall contain no values. Management of the controlled list of values shall be done outside the scope of the conceptual model.
+|===
+*Description:*
+
+It is advisable, however, to be specific concerning which controlled list shall be used. In such cases, an Enumeration shall be created representing the controlled list. The Enumeration shall be empty, i.e., not specifying any value, because the values are assumed to be maintained externally and only the reference is necessary.
+
+The properties having this controlled list as range shall be depicted as UML dependency connectors between a Class and an Enumeration [xref:uml/conv-connectors.adoc#sec:dependency[uml:Dependency]]. For example, in ePO, `dct:Location` can have a country code represented as a dependency relation to `at-voc:country` (the country authority table published on the EU Vocabularies website).
+
+image::cmc-r14-1.png[]
+
+The name of the Enumeration shall be resolved to a URI identical to that of the `skos:ConceptScheme`. As for the connector type we recommend using a dependency connector (depicted with a dashed line) because the semantic interpretation differs slightly from the association connector (depicted with a continuous line). Namely, the range of the property has to fulfil two constraints: (a) instantiating the `skos:Concept` class and (b) being `skos:inScheme` the intended controlled list [xref:references.adoc#ref:epo-arch[epo-arch]].
+//TODO: this reference can be replaced with a cross-reference to the architecture section of this Model2OWL documentation, when that part will be updated.
+
+
+
+// If the controlled list is specific to the model then the author shall define the values of the UML Enumeration inside of it, which are interpreted as concepts belonging to the containing concept scheme [xref:references.adoc#ref:oslo-rules[oslo-rules, sec 3.2.17]].
+// [TODO: check if this is also the case for EPO, and if the reference is appropriate] [TODO: See if it makes sense to insert here the statement from above: "It is required that the controlled lists are named using nouns or nominal phrases starting with a capital letter. The enumeration items must start with a lower case."]
+
+More specific requirements on the uml:Enumeration elements are provided in the Section [xref:uml/conv-enumerations.adoc#sec:enumeration[uml:Enumeration]].
+
+[[sec:technical]]
+//== Technical constraints
+
+
+[[sec:namespaces]]
+=== Namespaces
+
+In order to enable the reuse of names defined in other models and reuse of unique references for names that support easy identification, namespace management must be considered. We adopt XML approach to defining and managing namespaces as it is inherent in both XMI and OWL2 standards. Hence, a _namespace_ is a set of symbols that are used to organise objects of various kinds, so that these objects may be referred to by name and uniquely identifiable.
+
+// Namespaces are commonly structured as hierarchies to allow reuse of names in different contexts [xref:references.adoc#ref:xml-namespaces[xml-namespaces]]. This mechanism can be implemented in UML through partitioning the model using packages, which are described in the [xref:uml/conv-packages.adoc#sec:uml-package[uml:Package]] Section.
+
+[[rule:gen-namespaces-declared]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Known namespaces
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-namespaces-declared
+
+|*Statement:*
+
+Namespaces must be defined before used in the model. All prefixes shall be assigned a base URI.
+
+|===
+*Description:*
+
+A namespace organises a collection of names obeying three constraints: each name is (1) unique, (2) assigned consistently, and (3) assigned according to a common definition [xref:references.adoc#ref:urn-rfc8141[urn-rfc8141]]. An (expanded) _name_ in a namespace is a pair consisting of a _namespace name_, also called _base URI_ or just _base_, and a _local name_, also called _local segment_ [xref:references.adoc#ref:xml1-spec[xml1-spec], xref:references.adoc#ref:urn-rfc2141[urn-rfc2141]]. The combination of universally managed URIs with the vocabulary local name is effective in avoiding name clashes. For example, in the expanded name `http://www.w3.org/ns/org#Organization`, `http://www.w3.org/ns/org#` is the namespace name and `Organization` is the local name.
+
+// URI references are often inconveniently long, so expanded names should not be used directly. Instead, _qualified names_ should be used while expanded names are strongly discouraged. A _qualified name_ is a name subject to namespace interpretation. Syntactically, they are either _prefixed names_ or _unprefixed names_.
+//
+// ```
+// qualifiedName = [<namespacePrefix>:]<localName>
+// ```
+//
+// The namespace name is usually applied as a _prefix_ to the local name, but it may be missing as well. [xref:references.adoc#ref:xml-namespaces[xml-namespaces]] specifies a declaration syntax which permits the binding of prefixes to namespace names and also to bind a default namespace that applies to unprefixed element names. For example, we can bind the namespace name "http://www.w3.org/ns/org#" to the prefix "org", which we can then use to create the same name as such "org:Organization". The prefix is subject to namespace interpretation and resolved to an URI [xref:references.adoc#ref:xml-namespaces[xml-namespaces]].
+//
+// If the delimiter (:) is used without any prefix, then the empty string prefix is resolved to the default namespace as defined in [xref:references.adoc#ref:xml-namespaces[xml-namespaces]].
+
+[[sec:charset]]
+=== Character encoding
+
+In the formal ontology, the URIs must conform to RDF [xref:references.adoc#ref:rdf11[rdf11]] and XML[xref:references.adoc#ref:xml1-spec[xml1-spec]] format specifications. Both languages effectively require that terms begin with an upper or lower case letter from the ASCII character set, or an underscore (_). This tight restriction means that, for example, terms may not begin with a number, hyphen or accented character [xref:references.adoc#ref:d3.1-2015[d3.1-2015]]. Although underscores are permitted, they are discouraged as they may be, in some cases, misread as spaces. A formal definition of these restrictions is given in the XML specification document [xref:references.adoc#ref:xml1-spec[xml1-spec]].
+
+[[rule:gen-names-characters]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Valid characters in element and connector names
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-names-characters
+
+|*Statement:*
+
+Local names of elements should start with a letter or underscore.
+|===
+
+*Description:*
+
+It is required that the names use words beginning with an upper or lower case letter (A–Z, a–z) or an underscore (_) for all terms in the model. Digits (0–9) are allowed in the subsequent character positions. Also, as mentioned above, spaces are permitted in the local segment of the name.
+
+
+[[rule:gen-names-charsets]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* URI character sets
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-names-charsets
+
+|*Statement:*
+Element names shall use only ASCII characters to generate valid URIs. UTF-8, UTF-16 and other character encodings should be avoided in the element names as they will lead to creation of IRIs.
+|===
+
+*Description:*
+
+Encoded UTF-8 and UTF-16 names may be used [xref:references.adoc#ref:xml1-spec[xml1-spec], xref:references.adoc#ref:xml11-spec[xml11-spec]], but we recommend avoiding any character encodings in the element names. Encoded characters are mostly not readable and require a decoding to become human friendly. Also, unexpected results may occur in the transformation script. This recommendation does not apply to the content strings such as descriptions, notes and comments, which may use any character encoding.
+
+
+[[sec:stereotypes-tags]]
+=== Stereotypes and Tags
+
+[[rule:gen-stereotypes]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Stereotypes
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-stereotypes
+
+|*Statement:*
+Stereotypes have no semantics and hence shall be avoided. Exceptionally, some selected, agreed-upon stereotypes may be used.
+|===
+
+*Description:*
+
+The use of stereotypes is not recommended. There should be only a small set of stereotypes, with well-defined meaning and pre-established transformation rules that shall be used in the conceptual model. In this set of rules the `\<<Abstract>>` stereotype is adopted to mark abstract classes [xref:uml/conv-classes.adoc#rule:class-abstract[see convention on Abstract Classes]].
+
+*See also:* SEMIC Style Guide Rule [https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r17[CMC-R17]]
+
+[[rule:gen-tags]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Tags
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:gen-tags
+
+|*Statement:*
+UML tags shall be used to provide additional descriptions of the element in a consistent and structure manner.
+|===
+
+*Description:*
+
+When providing additional information to an element (classes, enumerations, datatypes, connectors, attributes, connector roles) through a tag ensure that:
+
+* The tag name should be provided and should be either a short URI or short URI with a language tag (e.g. @en).
+* There should be a value associated to each tag that appears on an element.
+
+*Note:* Tags should not be used as the sole (or primary) source of concept identifier generation, i.e. every UML element that has tags attached, should, in the first place, have a proper name provided, according to the conventions in the [xref:sec:names[]] section.

@@ -1,0 +1,38 @@
+[[sec:introduction]]
+== model2owl in eProcurement context
+
+This document provides a working specification of the guidelines and conventions for the eProcurement conceptual model, such that it qualifies as suitable input for the transformation scripts meant to generate the formal eProcurement ontology.
+
+The business context and the project overview are detailed in [xref:references.adoc#ref:costetchi2020a[costetchi2020a]], while the next section provides the motivation and situates the current document within the project.
+
+=== Background
+
+In the eProcurement ontology project, the conceptual model was decided [xref:references.adoc#ref:d2.01-2017[d2.01-2017]] to be represented in _Unified Modelling Language (UML)_ [xref:references.adoc#ref:uml-userguide[uml-userguide]]. It is a visual representation language that facilitates understanding and convergence between stakeholders towards a common conceptualisation of the model.
+
+Generally, the primary application of UML [xref:references.adoc#ref:fowler2004[fowler2004]] for ontology design is in the specification of class diagrams initially conceived for object-oriented software. UML does not define a formal semantics that would permit to determine, from the class diagrams, whether an ontology is consistent, or to determine the correctness of the ontology implementation. Semantics in such cases becomes a subject to interpretation by the stakeholders involved in the development process and later by the users in the application and integration tasks [xref:references.adoc#ref:grunninger2003[grunninger2003]].
+
+On the other hand, UML is closer than more logic-oriented approaches to the programming languages in which enterprise applications are implemented. For this reason the current specification establishes conventions for interpretation of the UML-based conceptual model.
+
+The UML Conceptual Model of the eProcurement domain serves as the single source of truth, which means that the formal eProcurement ontology is derived from it through a model transformation process. It is possible to generate automatically the formal ontology in RDF format [xref:references.adoc#ref:rdf11[rdf11]] from the XMI (v.2.5.1) serialisation [xref:references.adoc#ref:xmi2.5.1[xmi2.5.1]] of a UML (v.2.5) model [xref:references.adoc#ref:uml2.5[uml2.5]], provided that xref:transformation/uml2owl-transformation.adoc[a set of clear transformation rules] are established, and that xref:uml/conceptual-model-conventions.adoc[a set of modelling conventions] is respected.
+
+This document provides the UML modelling constraints and a set of conventional and technical recommendations for naming and structuring the UML class diagram elements: packages, classes, data types, enumerations, enumeration items, class attributes, association relation and dependency relation. These will be addressed contextually in the subsections of xref::uml/conceptual-model-conventions.adoc[UML conventions specification].
+
+[[sec:requirements]]
+=== eProcurement conceptual model requirements
+
+The eProcurement conceptual model must fulfil mainly four fundamental objectives.
+
+* Facilitate understanding/comprehension of the represented system
+* Promote efficient conveyance of system details between team members and external stakeholders.
+* Provide a point of reference for system designers to gather system specifications and documentation.
+* Serve as input for development of a (more) formal model.
+
+In order to support objectives a conceptual model should fulfil the following requirements.
+
+* Be available to all team members, to facilitate collaboration and iteration.
+* Be easily changeable, as a continuous reflection of up-to-date information.
+* Contain both visual and written forms of diagramming, to better explain the abstract concepts it may represent.
+* Establish relevant terms and concepts that will be used throughout the project.
+* Define said terms and concepts.
+* Provide a basic structure for entities of the project.
+* Reduce the ambiguity while maintaining a simple and concise encoding.

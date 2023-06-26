@@ -1,0 +1,116 @@
+== Conventions on uml:DataType elements
+
+=== Conventional recommendations on datatypes
+
+[[rule:datatypes-composite]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Primitive vs. composite datatypes
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:datatypes-composite
+
+|*Statement:*
+Composite data types shall be represented as uml:Class elements. Primitive data types, if needed to be modelled, shall be represented as uml:DataType elements.
+|===
+
+*Description:*
+
+This convention draws the distinction between primitive (or atomic) types (consisting of single literal value) and composite types (consisting of multiple attributes) [xref:references.adoc#ref:isaHandbook2015[isaHandbook2015]]. In fact, the composite datatypes must be defined as classes and handled as such. For example: AmountType, Identifier, Quantity and Measure are to be treated as classes even if conceptually they could be seen as composite data types.
+
+
+[[sec:uml-datatype]]
+=== Technical conventions on uml:DataType elements
+
+[[rule:datatypes-primitive]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* XSD and RDF datatypes
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:datatypes-primitive
+
+|*Statement:*
+For primitive data types the already existing (standardized or commonly used) datatypes, in particular those from XSD and RDF, shall be reused.
+|===
+
+*Description:*
+
+It is recommended to employ the primitive datatypes that are already defined in XSD [xref:references.adoc#ref:xsd1.1-spec[xsd1.1-spec]] and RDF [xref:references.adoc#ref:rdf11[rdf11]], which cover the standard and most common types. Thus, definitions of custom data types shall be avoided unless the model really needs them. Such cases are, however, rare.
+
+The data types defined in the UML model (and custom ones) are resolved into their XSD equivalent using the correspondences from the xref:#tab:uml2xsd[] table below. Note that the family of string datatypes is mapped to _rdf:langString_. This means that the instance data should provide a language tag for the textual data indicating how it should be read. This enables multilingual data specification. Also, note that Date is mapped to `xsd:date` and DateTime is mapped to `xsd:dateTime`. However, the `xsd:date` is not included in the OWL2 interpretation and instead a strong preference is expressed for `xsd:dateTime`. Therefore, it is recommended to follow the OWL2 specification, although the `xsd:date` is a valid datatype in the RDF data and in SPARQL queries.
+
+Note that from the family of string datatypes we recommend using the following ones (in this order of preference): `rdf:PlainLiteral`, `rdfs:Literal`, `xsd:string`, and `rdf:langString`. Often enabling multilingual data specification is a necessity.
+
+[[tab:uml2xsd]]
+.UML to XSD datatype correspondences
+[cols="^,^",options="header",]
+|===
+|UML |XSD
+|Boolean |xsd:boolean
+|Float |xsd:float
+|Integer |xsd:integer
+|Char, Character, String |rdf:langString
+|Short |xsd:short
+|Long |xsd:long
+|Decimal |xsd:decimal
+|Date |xsd:date
+|DateTime |xsd:dateTime
+| |xsd:anyURI
+|Code |skos:Concept
+|===
+
+The table above provides a simplified correspondence between UML and XSD datatypes, but for a complete list of available recommended datatypes the standard specifications shall be consulted:
+
+* https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes[RDF working group XSD Datatype maps]
+* https://www.w3.org/TR/rdf11-concepts/#section-Datatypes[RDF 1.1 Datatypes section]
+* https://www.w3.org/TR/owl2-syntax/#Datatype_Maps[OWL 2 Datatype Maps]
+
+[[rule:datatypes-owl2]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* OWL 2 datatypes
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:datatypes-owl2
+
+|*Statement:*
+Whenever possible, OWL 2 compliant XSD and RDF datatypes shall be used.
+|===
+
+*Description:*
+
+We strongly recommended the use of OWL 2 compliant XSD and RDF standard datatypes, if possible. They might be useful also for indicating a specific datatype, which is impossible with the UML ones. For example, making a distinction between a general string (`xsd:string`) and a literal with a language tag (`rdf:langString`), or XML encoded ones such as `rdf:HTML` and `rdf:XMLLiteral`.
+
+[[rule:datatypes-proxy]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Proxy datatypes
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:datatypes-proxy
+
+|*Statement:*
+For already existing datatypes proxy uml:DataType elements should be defined.
+|===
+
+*Description:*
+
+For the model consistency, it is recommended that the proxy data types be defined in the model for the XSDfootnote:[https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes] and RDF data typesfootnote:[https://www.w3.org/TR/rdf11-concepts/#section-Datatypes] used in the model. The proxies must follow the standard namespace convention using the `rdf:` and `xsd:` prefixes.
+
+
+[[rule:datatypes-references]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* Datatypes references
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:datatypes-references
+
+|*Statement:*
+uml:DataType elements shall not connect to other elements. They can only be referred to.
+|===
+
+*Description:*
+
+There should be no outgoing connector from a uml:DataType element. uml:DataType elements should only be referred to, most commonly, by being used as the type of a uml:Attribute element. Declarations of uml:DataType elements that are not referred to should be avoided in order to keep the model lean and clean.

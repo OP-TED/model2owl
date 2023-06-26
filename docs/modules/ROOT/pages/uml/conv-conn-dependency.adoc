@@ -1,0 +1,57 @@
+[[sec:dependency]]
+== Conventions on uml:Dependency Connectors
+
+
+[[rule:dependency-btw-class-and-enum-or-object]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Dependency connects classes to enumerations or objects
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:dependency-btw-class-and-enum-or-object
+
+|*Statement:*
+uml:Dependency connectors connect a uml:Class element to a uml:Enumeration element or a uml:Object element.
+|===
+
+*Description:*
+
+The dependency connector may be used between uml:Class and uml:Enumeration or uml:Object boxes, oriented from the class towards the enumeration or object. It indicates the class has an owl:ObjectProperty whose range is a controlled vocabulary. The connector must have direction "Source->Target". No other directions are acceptable.
+
+
+[[rule:dependency-target]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Dependency connector name
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:dependency-target
+
+|*Statement:*
+uml:Dependency connectors shall have no name specified. They shall have a valid target role name specified.
+|===
+
+*Description:*
+
+A Dependency connector shall have no name specified (see the xref:uml/conv-connectors.adoc#rule:connectors-name[General convention on connector names]).
+
+A Dependency connector shall have only a target role specified. The target role name must be valid, as it is used to generate the OWL property URI that this connector represents. The source role of the Dependency connector shall not be specified.
+
+[[rule:dependency-multiplicity]]
+|===
+|{set:cellbgcolor: #a8c6f7}
+ *Title:* uml:Dependency multiplicity
+
+|{set:cellbgcolor: #f5f8fc}
+*Identifier:* rule:dependency-multiplicity
+
+|*Statement:*
+uml:Dependency connectors shall have their target multiplicity specified.
+|===
+
+*Description:*
+
+The multiplicity must be specified at the target of the uml:Dependency connector indicating the minimum and maximum cardinality.
+
+In the transformation process, for the reasoning purposes, the range of the property must be expressed as a range restriction using `owl:oneOf` the values from the enumeration Concept scheme. This is also valuable for generating SHACL shapes.
+

@@ -1,0 +1,230 @@
+[[sec:tran-rules3]]
+== Transformation of UML datatypes
+
+In this section are specified transformation rules for UML datatypes and enumerations. <<tab:datatype-overview>> provides an overview of the section coverage.
+
+[[tab:datatype-overview]]
+.Overview of transformation rules for UML datatypes
+[cols="<,<,<,<",options="header",]
+|===
+|UML element |Rules in core ontology layer |Rules in data shape layer |Rules in reasoning layer
+|Primitive datatype |<<rule:datatype-core>> | |
+|Structured datatype |<<rule:datatype-structured-core>> | |
+|Enumeration |<<rule:enumeration-core>> | |<<rule:enumeration-rc>>
+|Enumeration item |<<rule:enumeration-item-core>> | |
+|===
+
+[[sec:primitive-type]]
+=== Primitive datatype
+
+The UML primitive type defines a predefined datatype without any substructure. The UML specification [xref:references.adoc#ref:uml2.5[uml2.5]] predefines five primitive types: String, Integer, Boolean, UnlimitedNatural and Real. Here we extended those to the list provided in <<tab:type-mapping>>.
+
+
+.Visual representation of a UML Datatype (on the left) and an OWL Datatype (on the right)
+[#fig:datatype-visual]
+image::f16.png[16]
+
+
+[#rule:datatype-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D.01}. Datatype -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify datatype declaration axiom for UML datatype as follows:
+
+* UML primitive datatypes are declared as the mapped XSD datatype in <<tab:type-mapping>>.
+* XSD and RDF(S) datatypes are declared as such.
+* Model specific datatypes are declared as such.
+====
+
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the datatype at the time of its creation.
+
+[[tab:type-mapping]]
+.Mapping of UML primitive types to XSD datatypes
+[cols="<,<",options="header",]
+|===
+|UML datatype |XSD datatype
+|Boolean |xsd:boolean
+|Float |xsd:float
+|Integer |xsd:integer
+|Char |xsd:string
+|String |xsd:string
+|Short |xsd:short
+|Long |xsd:long
+|Decimal |xsd:decimal
+|Real |xsd:float
+|Date |xsd:date
+|Numeric |xsd:integer
+|Text |xsd:string
+|===
+
+[cols="a,a", options="noheader"]
+|===
+|
+.UML primitive datatype declaration (String) in Turtle syntax
+[source,Turtle]
+----
+xsd:string a rdfs:Datatype .
+----
+|
+.UML primitive datatype declaration (String) in RDF/XML syntax
+[source,XML]
+----
+<rdfs:Datatype rdf:about = "http://www.w3.org/2001/XMLSchema#string">
+</rdfs:Datatype>
+----
+
+|
+//TODO: Is this, in fact, an example of XSD and RDF(S) (re-)declaration,
+//      or just another example of UML primitive datatype declaration? If the latter, is this necessary at all?
+//      What labels/descriptions should be assigned to it (when combined with T.01-T.03)?
+.XSD and RDF(S) datatype declaration in Turtle syntax
+[source,Turtle]
+----
+xsd:boolean a rdfs:Datatype .
+----
+|
+.XSD and RDF(S) datatype declaration in RDF/XML syntax
+[source,XML]
+----
+<rdfs:Datatype rdf:about = "http://www.w3.org/2001/XMLSchema#boolean">
+</rdfs:Datatype>
+----
+
+|
+.Model specific datatype declaration in Turtle syntax
+[source,Turtle]
+----
+:DatatypeName a rdfs:Datatype .
+----
+|
+.Model specific datatype declaration in RDF/XML syntax
+[source,XML]
+----
+<rdfs:Datatype rdf:about = "http://base.onto.uri/DatatypeName">
+</rdfs:Datatype>
+----
+|===
+
+=== Structured datatypes
+
+The UML structured datatype [xref:references.adoc#ref:uml2.5[uml2.5]] has attributes and is used to define complex data types. The structured datatypes should be treated as classes.
+
+[#rule:datatype-structured-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D01}. Structured Datatype -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify OWL class declaration axiom for UML structured datatype.
+====
+
+See applicable rules in Section on xref:transformation/transf-rules1.adoc#sec:class[Class Rules].
+
+=== Enumeration
+
+UML Enumerations [xref:references.adoc#ref:uml2.5[uml2.5]] are kinds of datatypes, whose values correspond to one of user-defined literals. They should be transformed into SKOS [xref:references.adoc#ref:skos-spec[skos-spec]] concept schemes comprising the concepts corresponding to enumerated items.
+
+
+.Visual representation of a UML Enumeration
+[#fig:enumeration-uml-visual]
+image::f17.png[17]
+
+.Visual representation of a SKOS concept scheme with concepts
+[#fig:enumeration-owl-visual]
+image::f18.png[18]
+
+IMPORTANT: Normally, the controlled list represented by UML Enumerations will be defined externally. In order to be ale to validate some data against the generate SHACL shapes, these controlled lists need to be imported into the SHACL shapes. Moreover, the restriction module should be also imported into the SHACL module, alongside the OWL core module.
+
+
+[#rule:enumeration-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D01}. Enumeration -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify SKOS concept scheme instantiation axiom for a UML enumeration.
+====
+
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the class/individual representing the enumeration at the time of its creation.
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Concept scheme instantiation in Turtle syntax
+[source,Turtle]
+----
+:EnumerationName a skos:ConceptScheme .
+----
+|
+.Concept scheme instantiation in RDF/XML syntax
+[source,XML]
+----
+<skos:ConceptScheme rdf:about = "http://base.onto.uri/EnumerationName">
+</skos:ConceptScheme>
+----
+|===
+
+[#rule:enumeration-rc,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D01}. Enumeration -- in reasoning layer',reftext='{example-caption} {rule-cnt}']
+====
+For a UML enumeration, specify an equivalent class restriction covering the set of individuals that are `skos:inScheme` of this enumeration.
+====
+
+[cols="a,a", options="noheader"]
+|===
+|
+.In-scheme equivalent class in Turtle syntax
+[source,Turtle]
+----
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+:EnumerationName a owl:Class ;
+  owl:equivalentClass [
+    rdf:type owl:Restriction ;
+    owl:allValuesFrom :EnumerationName ;
+    owl:onProperty skos:inScheme ;
+  ] ;
+  rdfs:subClassOf skos:Concept;
+.
+----
+|
+.In-scheme equivalent class in RDF/XML syntax
+[source,XML]
+----
+<owl:Class rdf:about = "http://base.onto.uri/EnumerationName">
+    <owl:equivalentClass>
+        <owl:Restriction>
+            <owl:onProperty rdf:resource = ".../02/skos/core#inScheme"/>
+            <owl:hasValue rdf:resource = "http://base.onto.uri/EnumerationName"/>
+        </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource = ".../02/skos/core#Concept"/>
+</owl:Class>
+----
+|===
+
+[#rule:enumeration-item-core,source,XML,caption='',title='{example-caption} {counter:rule-cnt:D01}. Enumeration items -- in core ontology layer',reftext='{example-caption} {rule-cnt}']
+====
+Specify SKOS concept instantiation axiom for each UML enumeration item.
+====
+
+[TIP]
+Ideally, in the implementation, this rule would be combined with the relevant rules (those for the core ontology layer) in the xref:transformation/transf-rules4.adoc[Transformation of UML descriptors] section, to provide labels and documentation for the individual representing the enumeration item at the time of its creation.
+
+[cols="a,a", options="noheader"]
+|===
+|
+.Concept scheme items instantiation in Turtle syntax
+[source,Turtle]
+----
+:itemA a skos:Concept ;
+  skos:inScheme :EnumerationName ;
+.
+
+:itemB a skos:Concept ;
+  skos:inScheme :EnumerationName ;
+.
+----
+|
+.Concept scheme items instantiation in RDF/XML syntax
+[source,XML]
+----
+<skos:Concept rdf:about = "http://base.onto.uri/itemA">
+    <skos:inScheme rdf:resource = "http://base.onto.uri/EnumerationName"/>
+</skos:Concept>
+
+<skos:Concept rdf:about = "http://base.onto.uri/itemB">
+    <skos:inScheme rdf:resource = "http://base.onto.uri/EnumerationName"/>
+</skos:Concept>
+----
+|===
