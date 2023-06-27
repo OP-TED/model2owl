@@ -18,8 +18,7 @@
     <xsl:import href="common-elements-html-conventions.xsl"/>
     
     <xd:doc>
-        <xd:desc>Getting all objectes and attributes and show only the ones with unmet conventions
-            [object->common-name-11] [object->common-description-12] [object->common-stereotype-13]
+        <xd:desc>Getting all objectes and show only the ones with unmet conventions
         </xd:desc>
     </xd:doc>
     
@@ -196,7 +195,7 @@
     
     <xd:doc>
         <xd:desc>[object-connector-4] The object $name should instanciate a Class or Enumeration. 
-            There shall be at least one Realisation relationship between Object and a Class or Enumeration. 
+            There shall be at least one Realisation relationship between the Object and a Class or Enumeration. 
         </xd:desc>
         <xd:param name="object"/>
     </xd:doc>

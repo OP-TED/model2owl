@@ -134,7 +134,7 @@
             <xsl:sequence
                 select="
                     if (f:isInvalidNamePrefix($targetRoleName)) then
-                        f:generateHtmlWarning(fn:concat('The target role name ', $targetRoleName,
+                        f:generateHtmlError(fn:concat('The target role name ', $targetRoleName,
                         ' , is invalid. Please provide a short prefix name ',
                         'containing only alphanumeric characters [a-zA-Z0-9]+.'))
                     else
@@ -145,7 +145,7 @@
             <xsl:sequence
                 select="
                     if (f:isInvalidNamePrefix($targetRoleName) or f:isInvalidNamePrefix($sourceRoleName)) then
-                        f:generateHtmlWarning(fn:concat('The target role name prefix ', $targetRoleName, ' or source role name prefix ', $sourceRoleName,
+                        f:generateHtmlError(fn:concat('The target role name prefix ', $targetRoleName, ' or source role name prefix ', $sourceRoleName,
                         ' , is invalid. Please provide a short prefix name ',
                         'containing only alphanumeric characters [a-zA-Z0-9]+.'))
                     else
@@ -203,7 +203,7 @@
             <xsl:sequence
                 select="
                     if (f:isInvalidLocalSegmentName($targetRoleName)) then
-                        f:generateHtmlWarning(fn:concat('The local name from target role name ', $targetRoleName,
+                        f:generateHtmlError(fn:concat('The local name from target role name ', $targetRoleName,
                         ' , is invalid. Please provide a concise label using ',
                         'alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with ',
                         'tokens delimited by single spaces.'))
@@ -215,7 +215,7 @@
             <xsl:sequence
                 select="
                     if (f:isInvalidLocalSegmentName($targetRoleName) or f:isInvalidLocalSegmentName($sourceRoleName)) then
-                        f:generateHtmlWarning(fn:concat('The local name segment from target role name ', $targetRoleName, ' or source role name ', $sourceRoleName,
+                        f:generateHtmlError(fn:concat('The local name segment from target role name ', $targetRoleName, ' or source role name ', $sourceRoleName,
                         ' , is invalid. Please provide a concise label using ',
                         'alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with ',
                         'tokens delimited by single spaces.'))
@@ -240,7 +240,7 @@
                     if (f:isValidFirstCharacterInLocalSegment($targetRoleName)) then
                         ()
                     else
-                        f:generateHtmlWarning(fn:concat('The local name from target role name ', $targetRoleName,
+                        f:generateHtmlError(fn:concat('The local name from target role name ', $targetRoleName,
                         ' starts with an invalid character. The local segment ',
                         'must start with a letter or underscore.'))
                     "
@@ -252,7 +252,7 @@
                     if (f:isValidFirstCharacterInLocalSegment($targetRoleName) and f:isValidFirstCharacterInLocalSegment($sourceRoleName)) then
                         ()
                     else
-                        f:generateHtmlWarning(fn:concat('The local name segment from target role name ', $targetRoleName, ' or source role name ', $sourceRoleName,
+                        f:generateHtmlError(fn:concat('The local name segment from target role name ', $targetRoleName, ' or source role name ', $sourceRoleName,
                         ' starts with an invalid character. The local segment ',
                         'must start with a letter or underscore.'))
                     "
@@ -275,7 +275,7 @@
             <xsl:sequence
                 select="
                     if (f:isDelimitersInLocalSegment($targetRoleName)) then
-                        f:generateHtmlWarning(fn:concat('The local name segment from target role name ', $targetRoleName,
+                        f:generateHtmlError(fn:concat('The local name segment from target role name ', $targetRoleName,
                         ' contains token delimiters. It is best if the names ',
                         'are camel cased and delimiters removed.'))
                     else
@@ -286,7 +286,7 @@
             <xsl:sequence
                 select="
                     if (f:isInvalidLocalSegmentName($targetRoleName) or f:isInvalidLocalSegmentName($sourceRoleName)) then
-                        f:generateHtmlWarning(fn:concat('The local name segment from target role name ', $targetRoleName, ' or source role name ', $sourceRoleName,
+                        f:generateHtmlError(fn:concat('The local name segment from target role name ', $targetRoleName, ' or source role name ', $sourceRoleName,
                         ' contains token delimiters. It is best if the names ',
                         'are camel cased and delimiters removed.'))
                     else
@@ -341,8 +341,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[connector-description-11] - The connector is missing a description. All connectors
-            should be defined or described.</xd:desc>
+        <xd:desc>[connector-description-11] - The connector is missing a description. All concepts and properties 
+            should be defined and/or described.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
 
@@ -372,7 +372,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[connector-tag-invalid-name-12] - The tag $tagName$ must be an URI. </xd:desc>
+        <xd:desc>[connector-tag-12] - The tag $tagName$ must be an URI. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
     <xsl:template name="connectorInvalidTagName">
@@ -415,9 +415,9 @@
                         if ((f:isValidNamespace($tag/@name)) or (fn:substring-before($tag/@name, ':') = '')) then
                             ()
                         else
-                            f:generateHtmlError(fn:concat('The prefix for source ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
+                            f:generateHtmlWarning(fn:concat('The prefix for source role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
                     else
-                        f:generateHtmlError(fn:concat('The prefix for source ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
+                        f:generateHtmlWarning(fn:concat('The prefix for source role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
                 "/>
         <xsl:sequence
             select="
@@ -427,16 +427,16 @@
                         if ((f:isValidNamespace($tag/@name)) or (fn:substring-before($tag/@name, ':') = '')) then
                             ()
                         else
-                            f:generateHtmlError(fn:concat('The prefix for target ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
+                            f:generateHtmlWarning(fn:concat('The prefix for target role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
                     else
-                        f:generateHtmlError(fn:concat('The prefix for target ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
+                        f:generateHtmlWarning(fn:concat('The prefix for target role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
                 "/>
 
     </xsl:template>
 
 
     <xd:doc>
-        <xd:desc>[connector-tag-value-14] - The tag $tagName$ must have a value. </xd:desc>
+        <xd:desc>[connector-tag-14] - The tag $tagName$ must have a value. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
     <xsl:template name="connectorMissingTagValue">
@@ -464,7 +464,7 @@
 
 
     <xd:doc>
-        <xd:desc>[connector-tag-name-15] - The tag $tagName$ must have a valid name. </xd:desc>
+        <xd:desc>[connector-tag-15] - The tag $tagName$ must have a valid name. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
     <xsl:template name="connectorMissingTagName">
@@ -491,7 +491,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[connector-tag-16] - The connector $connectorName$ target role has tag annotations
+        <xd:desc>[connector-target-tag-16] - The connector $connectorName$ target role has tag annotations
             but no name. The connector must have a target role to sustain annotations. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -511,7 +511,7 @@
 
 
     <xd:doc>
-        <xd:desc>[connector-tag-17] - The connector $connectorName$ source role has tag annotations
+        <xd:desc>[connector-source-tag-17] - The connector $connectorName$ source role has tag annotations
             but no name. The connector must have a source role to sustain annotations. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -562,7 +562,7 @@
                 if ($connectorHasNoName) then
                     ()
                 else
-                    f:generateHtmlError(fn:concat('The connector has a general name, and it ',
+                    f:generateHtmlError(fn:concat('The connector has a general name (', $connector/@name, '), and it ',
                     'should not. The names must be provided as connector source and target roles, not as ',
                     'connector name.'))"
         />
@@ -588,9 +588,8 @@
 
 
     <xd:doc>
-        <xd:desc>[connector-direction-21] - The connector $connectorName$ employ invalid direction
-            $direction$. Connectors must employ "Source->Destination" or "Bi-directional" directions
-            only. </xd:desc>
+        <xd:desc>[connector-direction-21] - The connector $connectorName$ employs invalid direction $direction$. 
+            Connectors must employ "Source->Destination" or "Bidirectional" directions only.  </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
 
@@ -689,7 +688,10 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[common-name-unique] - The connector role name $value$ is not unique. </xd:desc>
+        <xd:desc>[connector-name-25] - The name $value$ is not unique. The Connector role names can be reused within the model,
+            but only as connector role names on the same type of connector. I.e. the  name of 
+            (dependecy and association) connector roles should not be reused as the name of 
+            elements  (Class, Datatype, Enumeration, Object) or attributes. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
     <xsl:template name="connectorUniqueName">
@@ -706,7 +708,9 @@
             <xsl:sequence
                 select="
                     if (count($elementsFound) > 0 or count($attributesFound) > 0) then
-                        f:generateHtmlError(fn:concat('The connector role name ', $sourceRole, ' is not unique.'))
+                        f:generateHtmlError(fn:concat('The connector source role name ', $sourceRole, ' is not unique.',
+                        'The Connector role names can be reused within the model, but only as connector role names on the same type of connector.', 
+                        'I.e. the  name of (dependecy and association) connector roles should not be reused as the name of elements  (Class, Datatype, Enumeration, Object) or attributes.'))
                     else
                         ()
                     
@@ -722,7 +726,9 @@
             <xsl:sequence
                 select="
                     if (count($elementsFound) > 0 or count($attributesFound) > 0) then
-                        f:generateHtmlError(fn:concat('The connector role name ', $targetRole, ' is not unique.'))
+                        f:generateHtmlError(fn:concat('The connector target role name ', $targetRole, ' is not unique.',
+                        'The Connector role names can be reused within the model, but only as connector role names on the same type of connector.', 
+                        'I.e. the  name of (dependecy and association) connector roles should not be reused as the name of elements  (Class, Datatype, Enumeration, Object) or attributes.'))
                     else
                         ()
                     
@@ -733,8 +739,11 @@
 
 
     <xd:doc>
-        <xd:desc>[association-dependency-checker] - Check if connector role names are used in other
-            connectors types.  </xd:desc>
+        <xd:desc>[connector-name-26] - The name $value$ is not unique. The Connector role names can be reused within the model, 
+            but only as connector role names on the same type of connector. 
+            I.e. the  name of a dependecy role should not be reused as the name of association role, 
+            and the name of association role should not be reused as the  name of a dependecy role.
+          </xd:desc>
         <xd:param name="connector"/>
         <xd:param name="isDependency"/>
     </xd:doc>
@@ -754,7 +763,9 @@
                     <xsl:sequence
                         select="
                             if (count($connectorsFound) > 0) then
-                                f:generateHtmlError(fn:concat('The connector role name ', $sourceRole, ' is used in other connectors.'))
+                            f:generateHtmlError(fn:concat('The connector source role name ', $sourceRole, ' is not unique.',
+                            'The Connector role names can be reused within the model, but only as connector role names on the same type of connector.', 
+                            ' I.e. the  name of a dependecy role should not be reused as the name of association role, and the name of association role should not be reused as the  name of a dependecy role.'))
                             else
                                 ()
                             
@@ -768,7 +779,9 @@
                     <xsl:sequence
                         select="
                             if (count($connectorsFound) > 0) then
-                                f:generateHtmlError(fn:concat('The connector role name ', $sourceRole, ' is used in other connectors.'))
+                            f:generateHtmlError(fn:concat('The connector source role name ', $sourceRole, ' is not unique.',
+                            'The Connector role names can be reused within the model, but only as connector role names on the same type of connector.', 
+                            ' I.e. the  name of a dependecy role should not be reused as the name of association role, and the name of association role should not be reused as the  name of a dependecy role.'))
                             else
                                 ()
                             
@@ -787,7 +800,9 @@
                     <xsl:sequence
                         select="
                             if (count($connectorsFound) > 0) then
-                                f:generateHtmlError(fn:concat('The connector role name ', $targetRole, ' is used in other connectors.'))
+                            f:generateHtmlError(fn:concat('The connector source role name ', $targetRole, ' is not unique.',
+                            'The Connector role names can be reused within the model, but only as connector role names on the same type of connector.', 
+                            ' I.e. the  name of a dependecy role should not be reused as the name of association role, and the name of association role should not be reused as the  name of a dependecy role.'))
                             else
                                 ()
                             
@@ -801,7 +816,9 @@
                     <xsl:sequence
                         select="
                             if (count($connectorsFound) > 0) then
-                                f:generateHtmlError(fn:concat('The connector role name ', $targetRole, ' is used in other connectors.'))
+                            f:generateHtmlError(fn:concat('The connector source role name ', $targetRole, ' is not unique.',
+                            'The Connector role names can be reused within the model, but only as connector role names on the same type of connector.', 
+                            ' I.e. the  name of a dependecy role should not be reused as the name of association role, and the name of association role should not be reused as the  name of a dependecy role.'))
                             else
                                 ()
                             

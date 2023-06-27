@@ -18,9 +18,7 @@
     <xsl:import href="../common/formatters.xsl"/>
 
     <xd:doc>
-        <xd:desc>Applying the checkers to a group of class attributes with same name
-            [class-attributes-reuse-definition-4] [class-attributes-reuse-multiplicity-5]
-            [class-attributes-reuse-data-types-6] </xd:desc>
+        <xd:desc>Applying the checkers to a group of class attributes with same name </xd:desc>
     </xd:doc>
 
     <xsl:template name="classAttributesWithSameName">
@@ -57,8 +55,9 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[class-attributes-reuse-definition-1] Check the definition values from a group of
-            class attributes with same name</xd:desc>
+        <xd:desc>[class-attributes-reuse-definition-1] The attribute $value$ is defined differently in reuse contexts. 
+            When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. 
+            In this case, multiple definitions are found: $Definitions</xd:desc>
         <xd:param name="attributeName"/>
         <xd:param name="root"/>
     </xd:doc>
@@ -95,8 +94,9 @@
 
 
     <xd:doc>
-        <xd:desc>[class-attributes-reuse-multiplicity-2 ]Check the multiplicity values from a group
-            of class attributes with same name</xd:desc>
+        <xd:desc>[class-attributes-reuse-multiplicity-2 ] - The attribute $value$ is has different multiplicities in reuse contexts. 
+            When a property is reused in multiple contexts, the multiplicity is expected to be the same.
+            Please check the nomenclature above for a summary. </xd:desc>
         <xd:param name="attributeName"/>
         <xd:param name="root"/>
     </xd:doc>
@@ -136,8 +136,9 @@
 
 
     <xd:doc>
-        <xd:desc>[class-attributes-reuse-data-types-6] Check the data-type from a group of class
-            attributes with same name</xd:desc>
+        <xd:desc>[class-attributes-reuse-data-types-3] - The attribute $value$ has different datatypes in reuse contexts.
+            When a property is reused in multiple contexts, the data-type is expected to be the same.
+            In this case, multiple data-types are found: $Data-types</xd:desc>
         <xd:param name="attributeName"/>
         <xd:param name="root"/>
     </xd:doc>
@@ -166,7 +167,7 @@
                     ()
                 else
                     if (fn:boolean($datatypeValues)) then
-                        f:generateFormattedHtmlError(fn:concat('The attribute ', $attributeName, ' is has different datatypes in reuse contexts.',
+                        f:generateFormattedHtmlWarning(fn:concat('The attribute ', $attributeName, ' is has different datatypes in reuse contexts.',
                         'When a property is reused in multiple contexts, the data-type is expected to be the same.',
                         'In this case, multiple data-types are found: '), $datatypeWithAnnotations)
                     else

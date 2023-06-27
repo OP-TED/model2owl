@@ -171,8 +171,8 @@
 
 
     <xd:doc>
-        <xd:desc>[common-name-9] - The local name segment $value$ contains token delimiters. It is
-            best if the names are camel cased and delimiters removed. </xd:desc>
+        <xd:desc>[common-name-9] - The local name segment $value$ contains token delimiters. 
+            It is best if the names are camel-cased and delimiters removed. </xd:desc>
         <xd:param name="element"/>
     </xd:doc>
     <xsl:template name="delimitersInTheLocalSegment">
@@ -191,8 +191,8 @@
 
 
     <xd:doc>
-        <xd:desc>[common-description-10] - $elementName$ is missing a description. All concepts
-            should be defined or described.</xd:desc>
+        <xd:desc>[common-description-10] - $elementName$ is missing a description. 
+            All concepts and properties should be defined and/or described.</xd:desc>
         <xd:param name="element"/>
         <xd:param name="elementType"/>
     </xd:doc>
@@ -389,9 +389,10 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[common-name-unique] - The name $value$ is not unique. The Concept names should be
-            unique within the model; while the relations may repeat but should not overlap with
-            concept names. </xd:desc>
+        <xd:desc>[common-name-19] - The name $value$ is not unique. The Concept names should be unique within the model. 
+            The following list specifies the names of the which things are not to be reused as the names of which other things:
+            (a) elements (Class, Datatype, Enumeration, Object) -> elements, attributes, connector roles (dependency and association);
+            (b) attributes -> elements, connector roles (dependency and association) </xd:desc>
         <xd:param name="element"/>
         <xd:param name="isAttribute"/>
     </xd:doc>
@@ -411,8 +412,10 @@
                         select="
                             if (count($elementsFound) > 0 or count($connectorsFound) > 0) then
                                 f:generateHtmlError(fn:concat('The name ', $element/@name, ' is not unique. The Concept names ',
-                                'should be unique within the model; while the relations may repeat ',
-                                'but should not overlap with concept names. '))
+                                'should be unique within the model. ',
+                                'The following specifies the names of the which things are not to be reused as the names of which other things: ',
+                                'attributes -> elements, connector roles (dependency and association)'
+                                ))
                             else
                                 ()
                             
@@ -424,8 +427,9 @@
                         select="
                         if (count($elementsFound) > 1 or count($connectorsFound) > 0 or count($attributesFound) > 0) then
                                 f:generateHtmlError(fn:concat('The name ', $element/@name, ' is not unique. The Concept names ',
-                                'should be unique within the model; while the relations may repeat ',
-                                'but should not overlap with concept names. '))
+                                'should be unique within the model. ',
+                                'The following specifies the names of the which things are not to be reused as the names of which other things: ',
+                                'elements (Class, Datatype, Enumeration, Object) -> elements, attributes, connector roles (dependency and association)'))
                             else
                                 ()
                             

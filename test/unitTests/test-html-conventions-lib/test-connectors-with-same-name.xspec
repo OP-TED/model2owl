@@ -72,7 +72,7 @@
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-06-08.eap.xmi" select="/"/>
         </x:call>
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
-        <x:expect label="expect to find a warning" test="/dd/@class = 'filter warnings'"/>     
+        <x:expect label="expect to find a error" test="/dd/@class = 'filter errors'"/>     
     </x:scenario>
 
 

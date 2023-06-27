@@ -43,7 +43,7 @@
 
 
     <xd:doc>
-        <xd:desc>[general-connector-type-2] Only associations, dependecies, generalisations and
+        <xd:desc>[general-connector-type-1] Only associations, dependecies, generalisations and
             realisation connectors are supported. </xd:desc>
         <xd:param name="root"/>
     </xd:doc>
@@ -92,7 +92,7 @@
 
 
     <xd:doc>
-        <xd:desc>[general-prefixes-3] The prefixes $[list of undefined prefixes] are not defined.
+        <xd:desc>[general-prefix-3] The prefixes $[list of undefined prefixes] are not defined.
             All used namespaces shall be defined ("prefix" = "base URI"), including the default one
             (""="base URI"). </xd:desc>
         <xd:param name="root"/>
