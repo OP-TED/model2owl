@@ -284,4 +284,42 @@
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
+    
+    
+    <x:scenario label="Scenario for finding a dependency connector that has reused role name in Association">
+        <x:call template="connectorRoleCrossTypeReuseCheck">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2022-04-29_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[449]"/>
+            <x:param name="isDependency" select="true()"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+    </x:scenario>
+    
+
+        
+    <x:scenario label="Scenario for finding a Association connector that has no reused role name in Dependency">
+        <x:call template="connectorRoleCrossTypeReuseCheck">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2022-04-29_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[443]"/>
+            <x:param name="isDependency" select="false()"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a Association connector the has a role name that is not unique">
+        <x:call template="connectorUniqueName">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2022-04-29_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[443]"/>
+        </x:call>   
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for finding a dependency connector that has unique role names">
+        <x:call template="connectorUniqueName">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2022-04-29_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[449]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
 </x:description>
