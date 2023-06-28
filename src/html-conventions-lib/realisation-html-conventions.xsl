@@ -138,8 +138,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[realisation-source-target-types-5] - realisations can be provided only between
-            classes and objects.</xd:desc>
+        <xd:desc>[realisation-source-target-types-5] - The realisation can be provided only from an Object to a Class or Enumeration</xd:desc>
         <xd:param name="realisationConnector"/>
     </xd:doc>
 
@@ -152,7 +151,7 @@
             if ($sourceType = 'Object' and ($targetType = 'Class' or $targetType = 'Enumeration')) then
                     ()
                 else
-                    f:generateHtmlError('Realisations can be provided only between objects and classes or enumerations.')"
+                f:generateHtmlError('The realisation can be provided only from an Object to a Class or Enumeration.')"
         />
     </xsl:template>
 

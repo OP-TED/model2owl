@@ -19,7 +19,6 @@
 
     <xd:doc>
         <xd:desc>Getting all classes and attributes and show only the ones with unmet conventions
-            [class->common-name-11] [class->common-description-12] [class->common-stereotype-13]
         </xd:desc>
     </xd:doc>
 
@@ -148,8 +147,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[class-connector-4] - The class $className$ is not connected to anything. A class
-            should be connected to otehr elements.</xd:desc>
+        <xd:desc>[class-connector-4] - The class $className$ is disconnected. A class should be 
+            connected to other elements.</xd:desc>
         <xd:param name="class"/>
     </xd:doc>
 
@@ -162,7 +161,7 @@
                     ()
                 else
                     f:generateHtmlWarning(fn:concat('The class ', $class/@name,
-                    ' is not connected to anything. A class should be connected to other elements.'))"
+                    ' is is disconnected. A class should be connected to other elements.'))"
         />
     </xsl:template>
 

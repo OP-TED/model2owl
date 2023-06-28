@@ -21,10 +21,7 @@
 
 
     <xd:doc>
-        <xd:desc>Getting all generalizations and show only the ones that have unmet conventions
-            [generalisation-hierarchy-1] [generalisation-hierarchy-2]
-            [generalisation-multiplicity-3] [generalisation-name-4] [generalisation-name-5]
-            [generalisation-direction-6] </xd:desc>
+        <xd:desc>Getting all generalisations and show only the ones that have unmet conventions </xd:desc>
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
@@ -58,7 +55,7 @@
                 <xsl:value-of select="f:getConnectorName(.)"/>
             </h2>
             <dl>
-                <dt> Unmet generalization conventions </dt>
+                <dt> Unmet generalisation conventions </dt>
                 <xsl:copy-of select="$generalizationChecks"/>
             </dl>
         </xsl:if>
@@ -111,7 +108,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[generalisation-name-3] - The generalisation has multiplicity. No multiplicity can
+        <xd:desc>[generalisation-multiplicity-3] - The generalisation has multiplicity. No multiplicity can
             be provided to generalisations. </xd:desc>
         <xd:param name="generalizationConnector"/>
     </xd:doc>
@@ -189,7 +186,7 @@
 
     <xd:doc>
         <xd:desc>[generalisation-source-target-types-3] - Generalisations can be provided only
-            between classes and connectors.</xd:desc>
+            between classes or between connectors.</xd:desc>
         <xd:param name="generalizationConnector"/>
     </xd:doc>
 
@@ -202,7 +199,7 @@
                 if (($sourceType = 'Class' and $targetType = 'Class') or ($sourceType = 'ProxyConnector' and $targetType = 'ProxyConnector')) then
                     ()
                 else
-                f:generateHtmlError('Generalisations can be provided only between classes and connectors.')"
+                f:generateHtmlError('Generalisations can be provided only between classes or between connectors.')"
         />
     </xsl:template>
 

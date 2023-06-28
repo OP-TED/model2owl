@@ -20,8 +20,7 @@
 
 
     <xd:doc>
-        <xd:desc>Getting all dependencies and show only the ones that have unmet conventions
-            [dependency-direction-64]</xd:desc>
+        <xd:desc>Getting all dependencies and show only the ones that have unmet conventions</xd:desc>
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
@@ -130,7 +129,7 @@
 
 
     <xd:doc>
-        <xd:desc>[dependency-direction-64] - The direction is not 'Source->Destination'. Dependecy
+        <xd:desc>[dependency-direction-1] - The direction is not 'Source->Destination'. Dependecy
             direction can be only 'Source->Destination'. </xd:desc>
         <xd:param name="dependencyConnector"/>
     </xd:doc>
@@ -148,8 +147,8 @@
     
     
     <xd:doc>
-        <xd:desc>[dependency-source-target-types-3] - Dependecies can be provided only between classes and 
-            enumerations or objects..</xd:desc>
+        <xd:desc>[dependency-source-target-types-2] - Dependecies can be provided only between classes 
+            and enumerations or objects.</xd:desc>
         <xd:param name="dependencyConnector"/>
     </xd:doc>
     

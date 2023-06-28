@@ -18,8 +18,7 @@
 
 
     <xd:doc>
-        <xd:desc>Getting all packages and show only the ones that have unmet conventions
-            [package-name-1] [package-name-2] [package-owned-elements-3]</xd:desc>
+        <xd:desc>Getting all packages and show only the ones that have unmet conventions</xd:desc>
     </xd:doc>
 
     <xsl:template match="element[@xmi:type = 'uml:Package']">
@@ -71,8 +70,7 @@
     <xd:doc>
         <xd:desc>[package-name-1] - The package name $packageName$ contains invalid characters.
             Package name shall be a short alphanumeric string representing an acronym or a short
-            name. Spaces are not premitted as packages could be used as namespace
-            perfixes.</xd:desc>
+            name. </xd:desc>
         <xd:param name="package"/>
     </xd:doc>
 
@@ -94,7 +92,7 @@
    
 
     <xd:doc>
-        <xd:desc>[package-name-2] - The name of the package $IdRef$ is missing.  Packages must be named".</xd:desc>
+        <xd:desc>[package-name-2] - The name of the package $IdRef$ is missing.  Packages must be named.</xd:desc>
         <xd:param name="package"/>
     </xd:doc>
     <xsl:template name="packageMissingName">
@@ -110,7 +108,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[package-owned-elements-3 ] - The package $packageName$ is empty. Packages must contain child classes and conenctors (i.e. owned elements). </xd:desc>
+        <xd:desc>[package-owned-elements-3] - The package $packageName$ is empty.
+            Packages must contain child classes and conenctors (i.e. owned elements). </xd:desc>
         <xd:param name="package"/>
     </xd:doc>
     <xsl:template name="packageEmpty">

@@ -181,7 +181,7 @@
     
     
     <xd:doc>
-        <xd:desc>[datatype-connector-4] The datatype $value should not connect to othe elements.
+        <xd:desc>[datatype-datatype-4] The datatype $value should not connect to other elements.
             A Datatype can only be referred to. </xd:desc>
         <xd:param name="dataTypeElement"/>
     </xd:doc>
@@ -194,7 +194,7 @@
             select="
             if ($outgoingConnectors > 0) then
             f:generateHtmlError(fn:concat('The datatype ', $dataTypeElement/@name,
-            ' should not connect to othe elements. A Datatype can only be referred to.'))
+            ' should not connect to other elements. A Datatype can only be referred to.'))
             else
             ()
             "

@@ -18,8 +18,6 @@
 
     <xd:doc>
         <xd:desc>Applying the checkers to a group of connectors with same name
-            [connectors-with-same-name-multiplicity-1]
-            [connectors-with-same-name-definition-2]
      </xd:desc>
     </xd:doc>
 
@@ -59,7 +57,7 @@
 
 
     <xd:doc>
-        <xd:desc>[connectors-with-same-name-multiplicity-1]Check the multiplicity values from a group of connectors with same name</xd:desc>
+        <xd:desc>[connectors-with-same-name-multiplicity-1] - Check the multiplicity values from a group of connectors with same name</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
     </xd:doc>
@@ -83,7 +81,9 @@
 
 
     <xd:doc>
-        <xd:desc>[connectors-with-same-name-definition-2] Check the definition values from a group of connectors with same name</xd:desc>
+        <xd:desc>[connectors-with-same-name-definition-2] - When a property is reused in multiple contexts, 
+            the meaning given by the definition is expected to be the same. In this case, multiple definitions 
+            are found: $Definitions</xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
     </xd:doc>
@@ -122,7 +122,8 @@
     
     
     <xd:doc>
-        <xd:desc>[connectors-with-same-name-name-3] Check if the name is used on group of connectors have the same type</xd:desc>
+        <xd:desc>[connectors-with-same-name-name-3] - The name $Name appears on connectors of different types.  
+            A name shall be reused only on connectors of the same type. </xd:desc>
         <xd:param name="connectorName"/>
         <xd:param name="root"/>
     </xd:doc>
@@ -139,7 +140,7 @@
             if (f:areStringsEqual($typeValues)) then
             ()
             else
-            f:generateHtmlWarning(fn:concat('The name ', $connectorName,
+            f:generateHtmlError(fn:concat('The name ', $connectorName,
             ' appears on connectors of different types.  A name shall be reused only on connectors of the same type.'))"
         />
     </xsl:template>

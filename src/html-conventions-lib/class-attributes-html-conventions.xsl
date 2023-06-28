@@ -21,8 +21,7 @@
 
     <xd:doc>
         <xd:desc>Getting all class attributes and show only the ones that have unmet conventions
-            [class-attribute-name-21] [class-attribute-multiplicity-22] [class-attribute-type-23]
-            [class-attribute-type-24] [class-attribute-type-25] [class-attribute-counter-part-65] </xd:desc>
+ </xd:desc>
     </xd:doc>
 
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">

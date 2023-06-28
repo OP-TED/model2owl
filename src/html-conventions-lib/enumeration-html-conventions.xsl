@@ -144,7 +144,7 @@
     
     <xd:doc>
         <xd:desc>[enumeration-attribute-2] The enumeration $value$ shall have no values/attributes defined. 
-            An Enumeration stands for an controlled list and its management is out of model scope.  </xd:desc>
+            An Enumeration stands for a controlled list and its management is out of model scope.  </xd:desc>
         <xd:param name="enumeration"/>
     </xd:doc>
     
@@ -157,7 +157,7 @@
             select="
             if ($enumerationNumberOfAttributes > 0) then
             f:generateHtmlWarning(fn:concat('The enumeration ', $enumeration/@name,
-            ' shall have no values/attributes defined. An Enumeration stands for an controlled list and its management is out of model scope. '))
+            ' shall have no values/attributes defined. An Enumeration stands for a controlled list and its management is out of model scope. '))
             else
             ()
             "
@@ -166,7 +166,7 @@
     
     
     <xd:doc>
-        <xd:desc>[enumeration-connector-3] The enumeration $value should not connect to othe elements. 
+        <xd:desc>[enumeration-connector-3] The enumeration $value should not connect to other elements. 
             An Enumeration stands for an controlled list and can only be referred to. </xd:desc>
         <xd:param name="enumeration"/>
     </xd:doc>
@@ -179,7 +179,7 @@
             select="
                 if ($outgoingConnectors > 0) then
                     f:generateHtmlError(fn:concat('The enumeration ', $enumeration/@name,
-                    ' should not connect to othe elements. An Enumeration stands for an controlled list and can only be referred to.'))
+                    ' should not connect to other elements. An Enumeration stands for an controlled list and can only be referred to.'))
                 else
                     ()
                 "
