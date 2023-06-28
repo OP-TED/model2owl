@@ -210,4 +210,14 @@
         <x:expect label="range is skos:Concept" test="rdf:Description/rdfs:range/@rdf:resource = 'http://www.w3.org/2004/02/skos/core#Concept'"/>
     </x:scenario>
     
+    <x:scenario label="Scenario for disjoint classes">
+        <x:call template="disjointClasses">
+            <x:param name="generalisation" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[43]"/>
+        </x:call>   
+        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
+        <x:expect label="there is a rdf:type with correct URI" test="boolean(rdf:Description/rdf:type) and rdf:Description/rdf:type/@rdf:resource = 'http://www.w3.org/2002/07/owl##AllDisjointClasses'"/>
+        <x:expect label="there is a 3 disjoint classes" test="count(rdf:Description/owl:members/rdf:Description)=3 "/>
+
+    </x:scenario>
+    
 </x:description>

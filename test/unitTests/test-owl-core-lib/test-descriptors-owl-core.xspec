@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
+    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    stylesheet="../../../src/owl-core-lib/descriptors-owl-core.xsl">
+
+
+
+    <x:scenario
+        label="Scenario for testing generation of label">
+
+        <x:call template="coreLayerName">
+            <x:param name="elementName">epo:DynamicProcedure</x:param>
+            <x:param name="elementUri" select="'http:/fake.uri#something'"/>
+            </x:call>
+            <x:expect label="there is rdf:Description"
+                test="boolean(/rdf:Description[@rdf:about='http:/fake.uri#something'])"
+            />
+        <x:expect label="correct label" test="rdf:Description/skos:prefLabel/text() = 'Dynamic procedure'"/>
+            
+        
+    </x:scenario>
+    
+    <x:scenario
+        label="Scenario for testing generation of description">
+        
+        <x:call template="coreLayerDescription">
+            <x:param name="definition">This is a description</x:param>
+            <x:param name="elementUri" select="'http:/fake.uri#something'"/>
+        </x:call>
+        <x:expect label="there is rdf:Description"
+            test="boolean(/rdf:Description[@rdf:about='http:/fake.uri#something'])"
+        />
+        <x:expect label="correct description" test="rdf:Description/skos:definition /text() = 'This is a description'"/>
+        
+        
+    </x:scenario>
+    
+    <x:scenario
+        label="Scenario for testing generation of definedBy">
+        
+        <x:call template="coreDefinedBy">
+            <x:param name="elementUri" select="'http://data.europa.eu/a4g/ontology#Lot'"/>
+        </x:call>
+
+        <x:expect label="there is rdf:Description"
+            test="boolean(/rdf:Description[@rdf:about='http://data.europa.eu/a4g/ontology#Lot'])"
+        />
+        <x:expect label="there is rdfs:isDefinedBy"
+            test="boolean(/rdf:Description[@rdf:about='http://data.europa.eu/a4g/ontology#Lot']/rdfs:isDefinedBy)"
+        />
+
+        
+        
+    </x:scenario>
+    
+    
+    
+    
+</x:description>
