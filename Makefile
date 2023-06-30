@@ -17,7 +17,7 @@ XMI_INPUT_FILE_PATH?=test/test-multi-xmi/ePO_CM.xml
 XMI_INPUT_FILENAME=$(shell basename -- "${XMI_INPUT_FILE_PATH}")
 XMI_INPUT_FILENAME_WITHOUT_EXTENSION=$(shell echo ${XMI_INPUT_FILENAME} | cut -f1 -d '.')
 # Output directory containing combined file from multiple xmi / xml UML models
-XMI_FILES_TO_MERGE_FOLDER_PATH?=output/combined-xmi
+XMI_MERGED_OUTPUT_FOLDER_PATH?=output/combined-xmi
 MERGED_XMIS_FILE_NAME?=ontologies-combined.xmi
 # Path to one of the xmi input files to be merged into a single UML xmi/xml file
 # All XMIs files to combine need to be in the same directory
@@ -106,15 +106,15 @@ shacl:
 
 
 # Combine xmi UML files
-# all files for combine should be in test/test-multi-xmi (or in XMI_FILES_TO_MERGE_FOLDER_PATH)
+# all files for combine should be in test/test-multi-xmi (or in XMI_MERGED_OUTPUT_FOLDER_PATH)
 merge-xmi:
-	@mkdir -p ${XMI_FILES_TO_MERGE_FOLDER_PATH}
-	@java -jar ${SAXON} -s:${FIRST_XMI_TO_BE_MERGED_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/xml/merge-multi-xmi.xsl -o:${XMI_FILES_TO_MERGE_FOLDER_PATH}/${MERGED_XMIS_FILE_NAME}
+	@mkdir -p ${XMI_MERGED_OUTPUT_FOLDER_PATH}
+	@java -jar ${SAXON} -s:${FIRST_XMI_TO_BE_MERGED_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/xml/merge-multi-xmi.xsl -o:${XMI_MERGED_OUTPUT_FOLDER_PATH}/${MERGED_XMIS_FILE_NAME}
 	@echo Input files to be combined are located at the directory containing this input file: ${FIRST_XMI_TO_BE_MERGED_FILE_PATH} under directory ${MERGE_XMIS_FOLDER_NAME}
 	@ls -lh ${MERGE_XMIS_FOLDER_NAME}
 	@echo 
 	@echo "==> The combined document is located at the following location" 
-	@ls -lh ${XMI_FILES_TO_MERGE_FOLDER_PATH}/${MERGED_XMIS_FILE_NAME}
+	@ls -lh ${XMI_MERGED_OUTPUT_FOLDER_PATH}/${MERGED_XMIS_FILE_NAME}
 
 
 
