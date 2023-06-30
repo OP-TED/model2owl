@@ -1,3 +1,4 @@
+
 # Model2owl directory
 MODEL2OWL_FOLDER?=.
 # rdflib version
