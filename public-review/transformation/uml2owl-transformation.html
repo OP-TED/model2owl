@@ -161,33 +161,33 @@
 <h2 id="sec:introduction"><a class="anchor" href="#sec:introduction"></a>Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Publications Office of the European Union set off to build an eProcurement ontology well motivated in . The ultimate objective of the project is to put forth a commonly agreed ontology that will conceptualise, formally encode and make available in an open, structured and machine-readable format data about public procurement, covering end-to-end procurement, i.e. from notification, through tendering to awarding, ordering, invoicing and payment .</p>
+<p>Publications Office of the European Union set off to build an eProcurement ontology well motivated in [<a href="../references.html#ref:costetchi2020a" class="xref page">costetchi2020a, p.5-9</a>]. The ultimate objective of the project is to put forth a commonly agreed ontology that will conceptualise, formally encode and make available in an open, structured and machine-readable format data about public procurement, covering end-to-end procurement, i.e. from notification, through tendering to awarding, ordering, invoicing and payment .</p>
 </div>
 <div class="paragraph">
-<p>The process and the methodology adopted involve modelling the conceptual model in Unified Modelling Language (UML) and then, by abiding a set of conventions and recommendations, transform that model into a formal ontology expressed in Web Ontology Language (OWL) .</p>
+<p>The process and the methodology adopted involve modelling the conceptual model in Unified Modelling Language (UML) [<a href="../references.html#ref:uml2.5" class="xref page">uml2.5</a>] and then, by abiding a set of conventions and recommendations, transform that model into a formal ontology expressed in Web Ontology Language (OWL) .</p>
 </div>
 <div class="paragraph">
-<p>This document provides a working definition of the transformation rules from the UML conceptual model into the formal ontology and validation data shapes. These rules are organised in accordance with the eProcurement ontology architecture .</p>
+<p>This document provides a working definition of the transformation rules from the UML conceptual model into the formal ontology and validation data shapes. These rules are organised in accordance with the eProcurement ontology architecture [<a href="../references.html#ref:costetchi2020a" class="xref page">costetchi2020a, p.21-27</a>].</p>
 </div>
 <div class="sect2">
 <h3 id="_state_of_the_art"><a class="anchor" href="#_state_of_the_art"></a>State of the art</h3>
 <div class="paragraph">
-<p>Much has been written about correspondences and between and transformation from UML to OWL and vice versa . The most significant literature on this topic was published between 2006 and 2019 comprising three book chapters, nine journal papers and multiple conference papers.</p>
+<p>Much has been written about correspondences and between and transformation from UML to OWL and vice versa [<a href="../references.html#ref:sadowska2019" class="xref page">sadowska2019</a>]. The most significant literature on this topic was published between 2006 and 2019 comprising three book chapters, nine journal papers and multiple conference papers.</p>
 </div>
 <div class="paragraph">
-<p>The work presented in transforms into OWL some selected elements of UML models containing multiple UML class, object and state-chart diagrams in order to analyse consistency of the models. A similar approach is presented in , which is focused on detecting inconsistency in models containing UML class and state-chart diagrams.</p>
+<p>The work presented in [<a href="../references.html#ref:khan2015" class="xref page">khan2015</a>] transforms into OWL some selected elements of UML models containing multiple UML class, object and state-chart diagrams in order to analyse consistency of the models. A similar approach is presented in [<a href="../references.html#ref:khan2013" class="xref page">khan2013</a>], which is focused on detecting inconsistency in models containing UML class and state-chart diagrams.</p>
 </div>
 <div class="paragraph">
-<p>The papers investigate the differences and similarities between UML and OWL in order to present transformations of selected (and identified as useful) elements of UML class diagram. In , the need for UML–OWL transformation is additionally motivated by not repeating the modelling independently in both languages.</p>
+<p>The papers [<a href="../references.html#ref:hajjamy2016" class="xref page">hajjamy2016</a>], [<a href="../references.html#ref:zedlitz2012" class="xref page">zedlitz2012</a>], [<a href="../references.html#ref:zedlitz2014" class="xref page">zedlitz2014</a>] investigate the differences and similarities between UML and OWL in order to present transformations of selected (and identified as useful) elements of UML class diagram. In [<a href="../references.html#ref:zedlitz2014conceptual" class="xref page">zedlitz2014conceptual</a>], the need for UML–OWL transformation is additionally motivated by not repeating the modelling independently in both languages.</p>
 </div>
 <div class="paragraph">
-<p>The paper compares OWL abstract syntax elements to the equivalent UML features and appropriate OCL statements. The analysis is conducted in the direction from OWL to UML. For every OWL construct its UML interpretation is proposed.</p>
+<p>The paper [<a href="../references.html#ref:kiko2008" class="xref page">kiko2008</a>] compares OWL abstract syntax elements to the equivalent UML features and appropriate OCL statements. The analysis is conducted in the direction from OWL to UML. For every OWL construct its UML interpretation is proposed.</p>
 </div>
 <div class="paragraph">
-<p>The works presented in are focused on extracting ontological knowledge from UML class diagrams and describe some UML–OWL mappings with the aim to reuse the existing UML models and stream the building of OWL domain ontologies.</p>
+<p>The works presented in [<a href="../references.html#ref:xu2012" class="xref page">xu2012</a>], [<a href="../references.html#ref:xu2009" class="xref page">xu2009</a>], [<a href="../references.html#ref:na2006" class="xref page">na2006</a>] are focused on extracting ontological knowledge from UML class diagrams and describe some UML–OWL mappings with the aim to reuse the existing UML models and stream the building of OWL domain ontologies.</p>
 </div>
 <div class="paragraph">
-<p>In is presented a comprehensive review of the related work. We use it as a guideline for ensuring the necessary coverage of the transformation rules specified in this report. It is important to note here that all the UML elements are treated here, but only the ones employed in the eProcurement conceptual model.</p>
+<p>In [<a href="../references.html#ref:sadowska2019" class="xref page">sadowska2019</a>] is presented a comprehensive review of the related work. We use it as a guideline for ensuring the necessary coverage of the transformation rules specified in this report. It is important to note here that all the UML elements are treated here, but only the ones employed in the eProcurement conceptual model.</p>
 </div>
 </div>
 <div class="sect2">
@@ -199,16 +199,16 @@
 <p>Each section provides a table with overview of the transformation rule set comprised within. The table provides three columns, one for every layer of the ontology architecture comprising rules: (a) , (b) , and (c) .</p>
 </div>
 <div class="paragraph">
-<p>Transformation rules are specified in a normative language and are aided by prototypical UML diagram fragments (usually preceding the rule) along with representation of the corresponding OWL fragment depicted in Graffoo visual notation . The diagrams are provided side to side in order to increase comprehension, with UML fragment on the left constituting the source of the transformation and the OWL fragment on the right representing the final result of the transformation.</p>
+<p>Transformation rules are specified in a normative language and are aided by prototypical UML diagram fragments (usually preceding the rule) along with representation of the corresponding OWL fragment depicted in Graffoo visual notation [<a href="../references.html#ref:graffoo" class="xref page">graffoo</a>]. The diagrams are provided side to side in order to increase comprehension, with UML fragment on the left constituting the source of the transformation and the OWL fragment on the right representing the final result of the transformation.</p>
 </div>
 <div class="paragraph">
-<p>Each transformation rule is accompanied by the formal OWL representation, in Turtle and RDF/XML syntaxes, corresponding to the depicted UML fragment from the preceding figure. RDF/XML is a syntax to express RDF graphs as an XML document. Turtle is a textual syntax for RDF that is compact and resembles a natural text form with abbreviations for common usage patterns and datatypes.</p>
+<p>Each transformation rule is accompanied by the formal OWL representation, in Turtle [<a href="../references.html#ref:turtle" class="xref page">turtle</a>] and RDF/XML syntaxes [<a href="../references.html#ref:rdf-xml-syntax-spec" class="xref page">rdf-xml-syntax-spec</a>] [<a href="../references.html#ref:rdf1.1-xml-syntax" class="xref page">rdf1.1-xml-syntax</a>], corresponding to the depicted UML fragment from the preceding figure. RDF/XML is a syntax to express RDF graphs as an XML document. Turtle is a textual syntax for RDF that is compact and resembles a natural text form with abbreviations for common usage patterns and datatypes.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_uml_visual_notation"><a class="anchor" href="#_uml_visual_notation"></a>UML visual notation</h3>
 <div class="paragraph">
-<p>This section provides the main UML elements employed in this document. A detailed description can be consulted in the standard specifications and in the user guide .</p>
+<p>This section provides the main UML elements employed in this document. A detailed description can be consulted in the standard specifications [<a href="../references.html#ref:uml2.5" class="xref page">uml2.5</a>] and in the UML user guide [<a href="../references.html#ref:uml-userguide" class="xref page">uml-userguide</a>].</p>
 </div>
 <div id="fig:uml-classes" class="imageblock">
 <div class="content">
@@ -241,7 +241,7 @@
 <div class="sect2">
 <h3 id="_graffoo_visual_notation"><a class="anchor" href="#_graffoo_visual_notation"></a>Graffoo visual notation</h3>
 <div class="paragraph">
-<p>This section provides the main Graffoo elements employed in this document. A detailed description can be consulted in the OWL standard specifications and in the Graffoo user guide .</p>
+<p>This section provides the main Graffoo elements employed in this document. A detailed description can be consulted in the OWL standard specifications [<a href="../references.html#ref:owl2" class="xref page">owl2</a>] and in the Graffoo user guide [<a href="../references.html#ref:graffoo" class="xref page">graffoo</a>].</p>
 </div>
 <div id="fig:graffoo-classes" class="imageblock">
 <div class="content">

@@ -215,7 +215,7 @@
 <div class="sect2">
 <h3 id="_name"><a class="anchor" href="#_name"></a>Name</h3>
 <div class="paragraph">
-<p>Most of the UML elements are named. The UML conventions dedicate an extensive section to the naming conventions and how to deterministically generate a URI and a label from the UML element name. By default, we recommend the use of the SKOS lexicalization (<code>skos:prefLabel</code>) in the core ontology layer. In the future, this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (<code>rdfs:label</code>) instead of, or in addition to, the SKOS lexicalization.</p>
+<p>Most of the UML elements are named. The <a href="../uml/conceptual-model-conventions.html" class="xref page">UML conventions</a> dedicate an extensive section to the naming conventions and how to deterministically generate a URI and a label from the UML element name. By default, we recommend the use of the SKOS lexicalization (<code>skos:prefLabel</code>) in the core ontology layer. In the future, this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (<code>rdfs:label</code>) instead of, or in addition to, the SKOS lexicalization.</p>
 </div>
 <div id="rule:element-label-core" class="exampleblock">
 <div class="title">Rule T.01. Label&#8201;&#8212;&#8201;in core ontology layer</div>
@@ -412,7 +412,7 @@ shape:ClassName-PropertyName
 <div class="sect2">
 <h3 id="_comment"><a class="anchor" href="#_comment"></a>Comment</h3>
 <div class="paragraph">
-<p>In accordance with , every kind of UML Element may own Comments (see <a href="#fig:comment-visual">Figure 1</a>). They add no semantics but may represent information useful to the reader. In OWL it is possible to define the annotation axiom for OWL Class, Datatype, ObjectProperty, DataProperty, AnnotationProperty and NamedIndividual. The textual explanation added to UML Class is identified as useful for conceptual modelling , therefore the Comments that are connected to UML Classes are taken into consideration in the transformation.</p>
+<p>In accordance with [<a href="../references.html#ref:uml2.5" class="xref page">uml2.5</a>], every kind of UML Element may own Comments (see <a href="#fig:comment-visual">Figure 1</a>). They add no semantics but may represent information useful to the reader. In OWL it is possible to define the annotation axiom for OWL Class, Datatype, ObjectProperty, DataProperty, AnnotationProperty and NamedIndividual. The textual explanation added to UML Class is identified as useful for conceptual modelling , therefore the Comments that are connected to UML Classes are taken into consideration in the transformation.</p>
 </div>
 <div id="fig:comment-visual" class="imageblock">
 <div class="content">
@@ -421,7 +421,7 @@ shape:ClassName-PropertyName
 <div class="title">Figure 1. Visual representation of a UML comment (on the left) and an OWL comment (on the right)</div>
 </div>
 <div class="paragraph">
-<p>As UML Comments add no semantics, they are not used in any method of semantic validation. In OWL the AnnotationAssertion axiom does not add any semantics either, and it only improves readability.</p>
+<p>As UML Comments add no semantics, they are not used in any method of semantic validation. In OWL the AnnotationAssertion axiom [<a href="../references.html#ref:owl2" class="xref page">owl2</a>] does not add any semantics either, and it only improves readability.</p>
 </div>
 <div class="paragraph">
 <p>By default, we recommend the use of the SKOS lexicalization (<code>skos:editorialNote</code>) in the core ontology layer. In the future this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (<code>rdfs:comment</code>) instead of, or in addition to, the SKOS lexicalization.</p>

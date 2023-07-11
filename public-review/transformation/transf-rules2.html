@@ -281,7 +281,7 @@
 <div class="sect2">
 <h3 id="sec:association-uni"><a class="anchor" href="#sec:association-uni"></a>Unidirectional association</h3>
 <div class="paragraph">
-<p>A binary Association specifies a semantic relationship between two member ends represented by properties. Please note that in accordance with specification , the association end names are not obligatory. However, we adhere to the UML conventions , where specification of at one member ends, for unidirectional association, and two member ends, for bidirectional association, is mandatory. Moreover, provision of a connector (general) name is discouraged.</p>
+<p>A binary Association specifies a semantic relationship between two member ends represented by properties. Please note that in accordance with specification [<a href="../references.html#ref:uml2.5" class="xref page">uml2.5</a>], the association end names are not obligatory. However, we adhere to the UML conventions , where specification of at one member ends, for unidirectional association, and two member ends, for bidirectional association, is mandatory. Moreover, provision of a connector (general) name is discouraged.</p>
 </div>
 <div id="fig:association-uni-visual" class="imageblock">
 <div class="content">
@@ -435,6 +435,37 @@ shape:ClassName-relationName a sh:PropertyShape ;
 </div>
 </div></div></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 7. Object property domain specification for reused relations in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relationName
+  rdfs:domain [
+    rdf:type owl:Class ;
+    owl:unionOf (
+      :ClassName1
+      :ClassName2
+    )
+  ]
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 8. Object property domain specification for reused relations in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/relationName"&gt;
+    &lt;rdfs:domain&gt;
+        &lt;owl:Class&gt;
+            &lt;owl:unionOf rdf:parseType="Collection"&gt;
+                &lt;rdf:Description rdf:about="http://base.onto.uri/ClassName1"/&gt;
+                &lt;rdf:Description rdf:about="http://base.onto.uri/ClassName2"/&gt;
+            &lt;/owl:unionOf&gt;
+        &lt;/owl:Class&gt;
+    &lt;/rdfs:domain&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -456,7 +487,7 @@ shape:ClassName-relationName a sh:PropertyShape ;
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 7. Range specification in Turtle syntax</div>
+<div class="title">Listing 9. Range specification in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relationName
   rdfs:range :ClassName ;
@@ -464,10 +495,41 @@ shape:ClassName-relationName a sh:PropertyShape ;
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 8. Range specification in RDF/XML syntax</div>
+<div class="title">Listing 10. Range specification in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/relationName"&gt;
     &lt;rdfs:range rdf:resource = "http://base.onto.uri/ClassName"/&gt;
+&lt;/rdf:Description&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 11. Object property range specification for reused relations in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relationName
+  rdfs:range [
+    rdf:type owl:Class ;
+    owl:unionOf (
+      :OtherClass1
+      :OtherClass2
+    )
+  ]
+.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 12. Object property range specification for reused relations in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/relationName"&gt;
+    &lt;rdfs:range&gt;
+        &lt;owl:Class&gt;
+            &lt;owl:unionOf rdf:parseType="Collection"&gt;
+                &lt;rdf:Description rdf:about="http://base.onto.uri/OtherClass1"/&gt;
+                &lt;rdf:Description rdf:about="http://base.onto.uri/OtherClass2"/&gt;
+            &lt;/owl:unionOf&gt;
+        &lt;/owl:Class&gt;
+    &lt;/rdfs:range&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -490,7 +552,7 @@ shape:ClassName-relationName a sh:PropertyShape ;
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 9. Property class constraint in Turtle syntax</div>
+<div class="title">Listing 13. Property class constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
 @prefix shape: &lt;http://base.shape.uri/&gt; .
@@ -502,7 +564,7 @@ shape:ClassName-relationName
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 10. Property class constraint in RDF/XML syntax</div>
+<div class="title">Listing 14. Property class constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-relationName"&gt;
     &lt;sh:class rdf:resource = "http://base.onto.uri/OtherClass"/&gt;
@@ -531,7 +593,7 @@ shape:ClassName-relationName
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 11. Min cardinality restriction in Turtle syntax</div>
+<div class="title">Listing 15. Min cardinality restriction in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
@@ -542,7 +604,7 @@ shape:ClassName-relationName
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 12. Min cardinality restriction in RDF/XML syntax</div>
+<div class="title">Listing 16. Min cardinality restriction in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
     &lt;rdfs:subClassOf&gt;
@@ -573,13 +635,13 @@ shape:ClassName-relationName
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 13. Declaring a functional property in Turtle syntax</div>
+<div class="title">Listing 17. Declaring a functional property in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relationName a owl:FunctionalProperty .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 14. Declaring a functional property in RDF/XML syntax</div>
+<div class="title">Listing 18. Declaring a functional property in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/relationName"&gt;
     &lt;rdf:type rdf:resource = "http://...owl#FunctionalProperty"/&gt;
@@ -605,7 +667,7 @@ shape:ClassName-relationName
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 15. Min cardinality constraint in Turtle syntax</div>
+<div class="title">Listing 19. Min cardinality constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
 @prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
@@ -616,7 +678,7 @@ shape:ClassName-relationName
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 16. Min cardinality constraint in RDF/XML syntax</div>
+<div class="title">Listing 20. Min cardinality constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-relationName"&gt;
     &lt;sh:minCount rdf:datatype="http://www.w3.org...#integer"
@@ -655,13 +717,13 @@ shape:ClassName-relationName
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 17. Declaring an asymmetric property in Turtle syntax</div>
+<div class="title">Listing 21. Declaring an asymmetric property in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relatesTo a owl:AsymmetricProperty .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 18. Declaring an asymmetric property in RDF/XML syntax</div>
+<div class="title">Listing 22. Declaring an asymmetric property in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/relatesTo"&gt;
     &lt;rdf:type rdf:resource = "http://...owl#AsymmetricProperty"/&gt;
@@ -687,7 +749,7 @@ shape:ClassName-relationName
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 19. Adding details to a NodeShape for an asymmetric property in Turtle syntax</div>
+<div class="title">Listing 23. Adding details to a NodeShape for an asymmetric property in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
 @prefix shape: &lt;http://base.shape.uri/&gt; .
@@ -707,7 +769,7 @@ shape:ClassName
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 20. Adding details to a NodeShape for an asymmetric property in RDF/XML syntax</div>
+<div class="title">Listing 24. Adding details to a NodeShape for an asymmetric property in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName"&gt;
     &lt;sh:sparql rdf:parseType="Resource"&gt;
@@ -752,13 +814,13 @@ shape:ClassName
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 21. Declaring an inverse property in Turtle syntax</div>
+<div class="title">Listing 25. Declaring an inverse property in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relatesTo owl:inverseOf :isRelatedTo .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 22. Declaring an inverse property in RDF/XML syntax</div>
+<div class="title">Listing 26. Declaring an inverse property in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/relatesTo"&gt;
     &lt;owl:inverseOf rdf:resource = "http://base.onto.uri/isRelatedTo"/&gt;
@@ -793,7 +855,7 @@ shape:ClassName
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 23. Range specification in Turtle syntax</div>
+<div class="title">Listing 27. Range specification in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:relationName
   rdfs:range skos:Concept ;
@@ -801,7 +863,7 @@ shape:ClassName
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 24. Range specification in RDF/XML syntax</div>
+<div class="title">Listing 28. Range specification in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/relationName"&gt;
     &lt;rdfs:range rdf:resource = ".../02/skos/core#Concept"/&gt;
@@ -839,7 +901,7 @@ In OWL we want to state only that the range of a Dependency connector is a <code
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 25. Property class constraint in Turtle syntax</div>
+<div class="title">Listing 29. Property class constraint in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix : &lt;http://base.onto.uri/&gt; .
 @prefix shape: &lt;http://base.shape.uri/&gt; .
@@ -851,7 +913,7 @@ shape:ClassName-relationName
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 26. Property class constraint in RDF/XML syntax</div>
+<div class="title">Listing 30. Property class constraint in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-relationName"&gt;
     &lt;sh:class rdf:resource = "http://base.onto.uri/EnumerationName"/&gt;
@@ -865,7 +927,7 @@ shape:ClassName-relationName
 <div class="sect2">
 <h3 id="sec:generalisation"><a class="anchor" href="#sec:generalisation"></a>Class generalisation</h3>
 <div class="paragraph">
-<p>Generalisation defines specialization relationship between Classifiers. In case of UML Classes it relates a more specific Class to a more general Class.</p>
+<p>Generalisation [<a href="../references.html#ref:uml2.5" class="xref page">uml2.5</a>] defines specialization relationship between Classifiers. In case of UML Classes it relates a more specific Class to a more general Class.</p>
 </div>
 <div id="fig:generalisation-visual" class="imageblock">
 <div class="content">
@@ -874,7 +936,7 @@ shape:ClassName-relationName
 <div class="title">Figure 4. Visual representation of UML generalisation (on the left) and OWL subclass relation (on the right)</div>
 </div>
 <div class="paragraph">
-<p>UML generalisation set groups generalisations; incomplete and disjoint constraints indicate that the set is not complete and its specific Classes have no common instances. The UML conventions specify that all sibling classes are by default disjoint, therefore even if no generalisation set is provided it is assumed to be implicit.
+<p>UML generalisation set [<a href="../references.html#ref:uml2.5" class="xref page">uml2.5</a>] groups generalisations; incomplete and disjoint constraints indicate that the set is not complete and its specific Classes have no common instances. The UML conventions specify that all sibling classes are by default disjoint, therefore even if no generalisation set is provided it is assumed to be implicit.
 Sibling classes will be declared disjoint with one another in the reasoning layer (see <a href="#rule:disjoint-classes-rc">Rule R.18</a>).</p>
 </div>
 <div id="rule:generalisation-class-core" class="exampleblock">
@@ -893,14 +955,14 @@ Sibling classes will be declared disjoint with one another in the reasoning laye
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 27. Subclass declaration in Turtle syntax</div>
+<div class="title">Listing 31. Subclass declaration in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName rdfs:subClassOf :SuperClass.
 :OtherClass rdfs:subClassOf :SuperClass.</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 28. Subclass declaration in RDF/XML syntax</div>
+<div class="title">Listing 32. Subclass declaration in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about = "http://base.onto.uri/ClassName"&gt;
     &lt;rdfs:subClassOf rdf:resource = "http://base.onto.uri/SuperClass"/&gt;
@@ -917,7 +979,7 @@ Sibling classes will be declared disjoint with one another in the reasoning laye
 <div class="sect2">
 <h3 id="_property_generalisation"><a class="anchor" href="#_property_generalisation"></a>Property generalisation</h3>
 <div class="paragraph">
-<p>Generalization defines specialization relationship between Classifiers. In case of the UML associations it relates a more specific Association to more general Association.</p>
+<p>Generalisation [<a href="../references.html#ref:uml2.5" class="xref page">uml2.5</a>] defines specialization relationship between Classifiers. In case of the UML associations it relates a more specific Association to more general Association.</p>
 </div>
 <div id="fig:generalisation-rel-visual" class="imageblock">
 <div class="content">
@@ -941,14 +1003,14 @@ Sibling classes will be declared disjoint with one another in the reasoning laye
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 29. Property specialisation in Turtle syntax</div>
+<div class="title">Listing 33. Property specialisation in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:hasSister rdfs:subPropertyOf :relatesTo .
 :isSisterOf rdfs:subPropertyOf :isRelatedTo .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 30. Property specialisation in RDF/XML syntax</div>
+<div class="title">Listing 34. Property specialisation in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:ObjectProperty rdf:about = "http://base.onto.uri/hasSister"&gt;
     &lt;rdfs:subPropertyOf rdf:resource = "http://base.onto.uri/relatesTo"/&gt;
@@ -986,13 +1048,13 @@ Sibling classes will be declared disjoint with one another in the reasoning laye
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 31. Class equivalence in Turtle syntax</div>
+<div class="title">Listing 35. Class equivalence in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName owl:equivalentClass :SuperClass.</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 32. Class equivalence in RDF/XML syntax</div>
+<div class="title">Listing 36. Class equivalence in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
     &lt;owl:equivalentClass rdf:resource = "http://base.onto.uri/SuperClass"/&gt;
@@ -1021,14 +1083,14 @@ Sibling classes will be declared disjoint with one another in the reasoning laye
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 33. Property equivalence in Turtle syntax</div>
+<div class="title">Listing 37. Property equivalence in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:hasSister owl:equivalentProperty :relatesTo .
 :isSisterOf owl:equivalentProperty :isRelatedTo .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 34. Property equivalence in RDF/XML syntax</div>
+<div class="title">Listing 38. Property equivalence in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/hasSister"&gt;
   &lt;owl:equivalentProperty rdf:resource = "http://base.onto.uri/relatesTo"/&gt;
@@ -1063,7 +1125,7 @@ Sibling classes will be declared disjoint with one another in the reasoning laye
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 35. Disjoint classes declaration in Turtle syntax</div>
+<div class="title">Listing 39. Disjoint classes declaration in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">[ a owl:AllDisjointClasses ;
   owl:members  ( :ClassName :OtherClass )
@@ -1071,7 +1133,7 @@ Sibling classes will be declared disjoint with one another in the reasoning laye
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 36. Disjoint classes declaration in RDF/XML syntax</div>
+<div class="title">Listing 40. Disjoint classes declaration in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description&gt;
     &lt;rdf:type rdf:resource="http://...owl#AllDisjointClasses"/&gt;
@@ -1107,13 +1169,13 @@ Sibling classes will be declared disjoint with one another in the reasoning laye
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 37. Individual declaration in Turtle syntax</div>
+<div class="title">Listing 41. Individual declaration in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ObjectName a owl:NamedIndividual, :ClassName .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 38. Individual declaration in RDF/XML syntax</div>
+<div class="title">Listing 42. Individual declaration in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:NamedIndividual rdf:about="http://base.onto.uri/ObjectName"&gt;
     &lt;rdf:type rdf:resource="http://base.onto.uri/ClassName"/&gt;

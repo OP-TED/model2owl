@@ -159,10 +159,35 @@
 <article class="doc">
 <h1 class="page">model2owl Project Documentation</h1>
 <div class="paragraph">
-<p>The <strong>model2owl</strong> <a href="https://github.com/OP-TED/model2owl/">GitHub project</a> comprises a set of tools for transforming a UML (v2.5) model from its XMI (v2.5.1) serialisation into the formal ontology and associated SHACL data shapes. This transformation is performed using XSLT stylesheets under the assumption that the UML model conforms to the set of conventions outlined in this documentation. In addition, we provide a UML conventions checker that validates the conformity of the input XMI.</p>
+<p>The <a href="https://github.com/OP-TED/model2owl/"><strong>model2owl</strong></a> project comprises a set of tools for transforming an UML (v2.5) model from its XMI (v2.5.1) serialisation into a formal OWL ontology, and a SHACL shape. This approach is conformant to the <a href="https://semiceu.github.io/style-guide/1.0.0/index.html">SEMIC Style Guide</a> and with <a href="https://github.com/meaningfy-ws/model2owl/blob/master/doc/ontology-architecture/ontology-architecture.pdf">eProcurement Ontology Architecture specification</a>.</p>
 </div>
 <div class="paragraph">
-<p>This documentation covers all the important aspects that one might be interested in when using these tools, including:</p>
+<p>The UML transformation is performed using XSLT stylesheets under the assumption that the UML model conforms to the set of conventions outlined in the <a href="https://meaningfy-ws.github.io/model2owl-docs/public-review/uml/conceptual-model-conventions.html">EPO UML conventions specification</a>. This set of UML conventions is aligned with and extends the UML conventions specified in <a href="https://semiceu.github.io/style-guide/1.0.0/index.html">SEMIC Style Guide</a>.</p>
+</div>
+<div class="paragraph">
+<p>The following capabilities are implemented:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>UML &#8594; Compliance report (ideal for checking the model against the established conventions)</p>
+</li>
+<li>
+<p>UML &#8594; Glossary (ideal for a quick overview of terminology defined)</p>
+</li>
+<li>
+<p>UML &#8594; OWL 2 (lightweight ontology suitable as a core vocabulary)</p>
+</li>
+<li>
+<p>UML &#8594; OWL 2 (heavyweight ontology with additional axioms suitable for reasoning purposes)</p>
+</li>
+<li>
+<p>UML &#8594; SHACL (data shapes suitable for representing an application profile)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This documentation is evolving and aims at covering the important aspects that one might be interested in when using these tools, including:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -170,13 +195,13 @@
 <p>The architectural setup of the project and the ontology</p>
 </li>
 <li>
-<p>The conceptual model conventions that the UML model should adhere to, in order to allow the tools to generate the best possible results.</p>
+<p>The conceptual model conventions that the UML model should adhere to, in order to enable the tools to generate the best possible results.</p>
 </li>
 <li>
-<p>The transformation rules applied in the process of conversion</p>
+<p>The transformation rules applied in the process of conversion.</p>
 </li>
 <li>
-<p>&#8230;&#8203;</p>
+<p>The set of validation rules that realise the established conventions (and UML interpretations).</p>
 </li>
 </ul>
 </div>
@@ -184,7 +209,7 @@
 <p>This work is developed in the context of <a href="https://github.com/eprocurementontology/eprocurementontology">eProcurement ontology project</a> financed by the Digital Europe Programme and led by the <a href="https://op.europa.eu/en/">Publications Office of the European Union</a>.</p>
 </div>
 <div class="paragraph">
-<p>The tools can be used on any other ontology that is built according to the <a href="architecture/ontology-architecture.html" class="xref page">architectural design</a> and <a href="uml/conceptual-model-conventions.html" class="xref page">conceptual model conventions</a> described in this documentation.</p>
+<p>The tools can be used on any other ontology that is built according to the provided <a href="https://github.com/meaningfy-ws/model2owl/blob/master/doc/ontology-architecture/ontology-architecture.pdf">modelling architecture</a> and <a href="uml/conceptual-model-conventions.html" class="xref page">UML conceptual model conventions</a>.</p>
 </div>
 </article>
   </div>
