@@ -80,6 +80,14 @@
 
 
     <xsl:variable name="reference-to-external-classes-in-glossary" select="fn:false()"/>
+    <xsl:variable name="generateObjectsAndRealisations" select="fn:false()"/>
+    
+    <xsl:variable name="conventionReportCopyrightText" select="'Publications Office of the European Union, 2023'"/>
+    <xsl:variable name="conventionReportAuthor" select="'Publications Office of the European Union'"/>
+    <xsl:variable name="conventionReportAuthorLocation" select="'Luxembourg'"/>
+    <xsl:variable name="conventionReportAuthorWebsite" select="'https://op.europa.eu'"/>
+    <xsl:variable name="conventionReportUMLModelName" select="'eProcurement'"/>
+    
     <!-- _______________________________________________________________________   -->
     <!--                            METADATA SECTION                               -->
     <!-- _______________________________________________________________________   -->

@@ -121,5 +121,16 @@
         <x:expect label="result" test="boolean(/owl:Class)"/>
         <x:expect label="result" test="boolean(/owl:Class/rdfs:subClassOf)"/>
     </x:scenario>    
+    
+    
+    <x:scenario
+        label="Scenario for testing class realisation">
+        <x:call template="classRealisation">
+            <x:param name="realisation" href="../../testData/ePO_CM-v.4.0.0.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[574]"/>
+        </x:call>
+   
+        <x:expect label="skos:Concept" test="boolean(/skos:Concept)"/>
+        <x:expect label="skos:inScheme" test="boolean(/skos:Concept/skos:inScheme)"/>
+    </x:scenario>
 
 </x:description>

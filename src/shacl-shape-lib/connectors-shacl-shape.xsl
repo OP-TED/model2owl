@@ -519,6 +519,11 @@
 
         </xsl:if>
     </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
+    </xd:doc>
+    <xsl:template match="connector[./properties/@ea_type = 'Realisation']"/>
 
 
 </xsl:stylesheet>

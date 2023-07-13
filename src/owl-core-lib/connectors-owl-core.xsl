@@ -38,7 +38,16 @@
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']"/>
 
-
+    <xd:doc>
+        <xd:desc>This will apply transformation rules to Realisations</xd:desc>
+    </xd:doc>
+    <xsl:template match="connector[./properties/@ea_type = 'Realisation']">
+        <xsl:if test="$generateObjectsAndRealisations">
+            <xsl:call-template name="classRealisation">
+                <xsl:with-param name="realisation" select="."/>
+            </xsl:call-template>
+        </xsl:if>
+    </xsl:template>
 
 
     <xd:doc>
@@ -212,6 +221,35 @@
             </xsl:for-each>
             
         </xsl:if>
+    </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>Rule R.19. - Declare an individual with a specified class as its type,
+            for a UML Realization connector between a UML Object and a UML Class. </xd:desc>
+        <xd:param name="realisation"/>
+    </xd:doc>
+    
+    <xsl:template name="classRealisation">
+        <xsl:param name="realisation" as="node()*"/>
+        <xsl:variable name="sourceRole" select="$realisation/source/model/@name"/>
+        <xsl:variable name="sourceRoleURI" select="f:buildURIfromLexicalQName($sourceRole)"/>
+        <xsl:variable name="targetRole" select="$realisation/target/model/@name"/>
+        <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
+        <xsl:choose>
+            <xsl:when test="$realisation/target/model/@type = 'Enumeration'">
+                <skos:Concept rdf:about = "{$sourceRoleURI}">
+                    <skos:inScheme rdf:resource = "{$targetRoleURI}"/>
+                </skos:Concept>
+            </xsl:when>
+            <xsl:otherwise>
+                <owl:NamedIndividual rdf:about="{$sourceRoleURI}">
+                    <rdf:type rdf:resource="{$targetRoleURI}"/>
+                </owl:NamedIndividual>
+            </xsl:otherwise>
+        </xsl:choose>
+
+            
+
     </xsl:template>
 
 </xsl:stylesheet>
