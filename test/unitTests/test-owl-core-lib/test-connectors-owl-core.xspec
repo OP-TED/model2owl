@@ -126,7 +126,7 @@
     <x:scenario
         label="Scenario for testing class realisation">
         <x:call template="classRealisation">
-            <x:param name="realisation" href="../../testData/ePO_CM-v.4.0.0.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[574]"/>
+            <x:param name="realisation" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[433]"/>
         </x:call>
    
         <x:expect label="skos:Concept" test="boolean(/skos:Concept)"/>
