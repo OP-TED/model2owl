@@ -24,7 +24,7 @@
                     eProcurement Ontology initiative</a>.</p>
             <p>The template of this report is based on the <a
                     href="https://github.com/thomaspark/pubcss">PubCSS library</a>.</p>
-            <p>&#169; Publications Office of the European Union, 2022</p>
+            <p>&#169; <xsl:value-of select="$conventionReportCopyrightText"/></p>
         </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         

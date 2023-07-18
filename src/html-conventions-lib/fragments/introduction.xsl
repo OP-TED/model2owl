@@ -23,25 +23,24 @@
                 '[D01]/[M01]/[Y0001]')"/> ]</h2>
             <!--<h2>[ <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> ]</h2>-->
             
-            <!-- begin hardcoded author -->
             <div class="authors col-span">
                 <div class="author">
-                    <div>Publications Office of the European Union</div>
-                    <div>Luxembourg</div>
-                    <div><a href="https://op.europa.eu">https://op.europa.eu</a></div>
+                    <div><xsl:value-of select="$conventionReportAuthor"/></div>
+                    <div><xsl:value-of select="$conventionReportAuthorLocation"/></div>
+                    <div><a href="{$conventionReportAuthorWebsite}"><xsl:value-of select="$conventionReportAuthorWebsite"/></a></div>
                 </div>
             </div>
-            <!-- end hardcoded author -->
+       
         </header>
     </xsl:template>
     
     <xd:doc>
-        <xd:desc>The static abstract of teh report. This should act the introduction</xd:desc>
+        <xd:desc>The static abstract of the report. This should act the introduction</xd:desc>
     </xd:doc>
     <xsl:template name="abstract">
         <div class="abstract counter-skip">
             <h1>Abstract</h1>
-            <p>eProcurement UML model needs to conform to a set of UML conventions described
+            <p><xsl:value-of select="$conventionReportUMLModelName"/> UML model needs to conform to a set of UML conventions described
                 <a href="https://meaningfy-ws.github.io/model2owl-docs/public-review/uml/conceptual-model-conventions.html" target="_blank">elsewhere</a>. A conformance checking script was developed to execute tests to the UML
                 model and generate errors or warnings when encountered. </p>
             
@@ -49,9 +48,9 @@
                 comprises the UML conformance violations.</p>
             
             <p>The organisation of this document is based on major types of UML elements and
-                connectors that are employed in the eProcurement conceptual model. They are as
+                connectors that are employed in the <xsl:value-of select="$conventionReportUMLModelName"/> conceptual model. They are as
                 follows: 
-                <em>Classes, Enumerations, Datatypes, Packages, Associations, Dependencies and
+                <em>Classes, Enumerations, Datatypes, Packages, Objects, Associations, Dependencies, Realisations and
                     Generalisations</em>. Each major section lists model items that need correction of errors
                 or consideration of warnings.</p>
             

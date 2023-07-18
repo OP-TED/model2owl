@@ -50,6 +50,7 @@
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Generalization']"/>
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Association']"/>
         <xsl:apply-templates select="connector[./properties/@ea_type = 'Dependency']"/>
+        <xsl:apply-templates select="connector[./properties/@ea_type = 'Realisation']"/>
     </xsl:template>
 
     <xd:doc>
