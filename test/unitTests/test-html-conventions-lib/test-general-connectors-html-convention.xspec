@@ -249,6 +249,14 @@
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
+    <x:scenario label="Scenario for finding a Connector that has valid format for target multiplicity - one digit format">
+        <x:call template="connectorInvalidTargetMultiplicityFormat">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[113]"/>
+        </x:call>   
+        <x:expect label="expect to do nothing" select="()"/> 
+    </x:scenario>
+    
   
     
     <x:scenario label="Scenario for finding a Connector that has no role and the direction is source -> destination">
