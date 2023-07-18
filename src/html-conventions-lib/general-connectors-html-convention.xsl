@@ -637,7 +637,9 @@
         <xsl:if test="boolean($multiplicityValue)">
             <xsl:sequence
                 select="
-                    if (fn:matches($multiplicityValue, '^[0-9]..[0-9]$') or fn:matches($multiplicityValue, '^[0-9]..\*$')) then
+                    if (fn:matches($multiplicityValue, '^[0-9]..[0-9]$') or 
+                    fn:matches($multiplicityValue, '^[0-9]..\*$') or
+                    fn:matches($multiplicityValue, '^[0-9]')) then
                         ()
                     else
                         f:generateHtmlWarning(fn:concat('The connector ', f:getConnectorName($connector),
