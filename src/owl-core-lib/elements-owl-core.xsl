@@ -35,7 +35,14 @@
         <xd:desc> Selector to run core layer transformation rules for classes</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
-        <xsl:call-template name="classDeclaration"/>
+        <xsl:if
+            test="not(fn:contains(f:buildURIfromLexicalQName(./@name), $base-ontology-uri)) and $generateReusedConcepts">
+            <xsl:call-template name="classDeclaration"/>
+        </xsl:if>
+        <xsl:if test="fn:contains(f:buildURIfromLexicalQName(./@name), $base-ontology-uri)">
+            <xsl:call-template name="classDeclaration"/>
+        </xsl:if>
+
     </xsl:template>
 
     <xd:doc>
@@ -85,10 +92,19 @@
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctClassAttributeNames($root)"/>
         <xsl:for-each select="$distinctNames">
-            <xsl:call-template name="generatePropertyFromAttribute">
-                <xsl:with-param name="attributeName" select="."/>
-                <xsl:with-param name="root" select="$root"/>
-            </xsl:call-template>
+            <xsl:if
+                test="not(fn:contains(f:buildURIfromLexicalQName(.), $base-ontology-uri)) and $generateReusedConcepts">
+                <xsl:call-template name="generatePropertyFromAttribute">
+                    <xsl:with-param name="attributeName" select="."/>
+                    <xsl:with-param name="root" select="$root"/>
+                </xsl:call-template>
+            </xsl:if>
+            <xsl:if test="fn:contains(f:buildURIfromLexicalQName(.), $base-ontology-uri)">
+                <xsl:call-template name="generatePropertyFromAttribute">
+                    <xsl:with-param name="attributeName" select="."/>
+                    <xsl:with-param name="root" select="$root"/>
+                </xsl:call-template>
+            </xsl:if>
         </xsl:for-each>
     </xsl:template>
 
@@ -185,14 +201,27 @@
         </xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:DataType']">
-        <xsl:choose>
-            <xsl:when test="./not(attributes) = fn:true()">
-                <xsl:call-template name="datatypeDeclaration"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:call-template name="classDeclaration"/>
-            </xsl:otherwise>
-        </xsl:choose>
+        <xsl:if
+            test="not(fn:contains(f:buildURIfromLexicalQName(./@name), $base-ontology-uri)) and $generateReusedConcepts">
+            <xsl:choose>
+                <xsl:when test="./not(attributes) = fn:true()">
+                    <xsl:call-template name="datatypeDeclaration"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:call-template name="classDeclaration"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
+        <xsl:if test="fn:contains(f:buildURIfromLexicalQName(./@name), $base-ontology-uri)">
+            <xsl:choose>
+                <xsl:when test="./not(attributes) = fn:true()">
+                    <xsl:call-template name="datatypeDeclaration"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:call-template name="classDeclaration"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
     </xsl:template>
 
     <xd:doc>
@@ -284,7 +313,7 @@
 
             <skos:Concept rdf:about="{$enumerationAttributeURI}">
                 <skos:inScheme rdf:resource="{$enumerationURI}"/>
-                
+
             </skos:Concept>
 
             <xsl:call-template name="coreLayerName">
