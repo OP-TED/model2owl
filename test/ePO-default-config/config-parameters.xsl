@@ -66,10 +66,10 @@
     <xsl:variable name="stereotypeValidOnPackages" select="()"/>
     <xsl:variable name="abstractClassesStereotypes" select="('Abstract', 'abstract class', 'abstract')"/>
 
-    <!--    This variable controlls whether the enumeration items are transformed into skos concepts or ignored-->
+    <!--    This variable controls whether the enumeration items are transformed into skos concepts or ignored-->
     <xsl:variable name="enableGenerationOfSkosConcept" select="fn:false()"/>
     
-    <!--    This variable controlls whether the enumerations are transformed into skos schemes or ignored-->
+    <!--    This variable controls whether the enumerations are transformed into skos schemes or ignored-->
     <xsl:variable name="enableGenerationOfConceptSchemes" select="fn:false()"/>
     
     
