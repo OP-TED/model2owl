@@ -52,10 +52,10 @@ https://github.com/meaningfy-ws/model2owl/tree/master/test/unitTests/test-html-c
 * [test/unitTest/test-shacl-shape-lib](https://github.com/meaningfy-ws/model2owl/tree/master/test/unitTests/test-shacl-shape-lib) is the location of the unit tests for the transformation script for the SHACL data shape constraints.
 * [test/unitTest/reasoning-layer-lib](https://github.com/meaningfy-ws/model2owl/tree/master/test/unitTests/reasoning-layer-lib) is the location of the unit tests for the transformation script for the restrictions of OWL ontology (on classes and properties).
 
-#How to use
+# How to use
 This project can be used in 2 different ways as follows.
-##Locally
-###Makefile
+## Locally
+### Makefile
 The Makefile is a powerful tool that automates different commands for software projects. It provides a convenient way to define and execute various tasks, 
 such as using source code, generating documentation, running tests, and more. This will help the user to easily use the software.
 
@@ -72,13 +72,13 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 ```
 
 
-####Setting up commands
+#### Setting up commands
 * **get-saxon** - this will install saxon in a folder inside the project
 * **get-rdflib** - this will install rdflib library
 * **get-widoco** - this will install saxon in a folder inside the project
 * **install** - this will automatically execute all the commands above
 * **create-virtual-env** - this creates a virtual environment for the project
-####Functionality commands
+#### Functionality commands
 * **generate-glossary** - this generates a glossary from the UML export (xml/xmi)
   * parameters:
     * XMI_INPUT_FILE_PATH - path to the xmi file
@@ -135,7 +135,7 @@ The model2owl configuration is formed from 4 files that should be in one folder:
 * xsdAndRdfDataTypes.xml - configure datatypes used
 
 To start just copy the default configuration files from [ePO-default-config folder](test/ePO-default-config) in your new configuration folder.
-####Changing config parameters
+#### Changing config parameters
 To change the configuration in the config-parameters.xsl just simply change the value of the variable.
 Notes: 
 * Do not change the values from the namespacePrefixes, umlDataTypesMapping, xsdAndRdfDataTypes variables as these will 
@@ -153,7 +153,7 @@ already work with having one config folder with all config files.
 ``<xsl:variable name="stereotypeValidOnAssociations" select="()"/>``
 
 
-####Namespaces configuration
+#### Namespaces configuration
 In the namespaces.xml file you can add the namespaces that you use in UML model and also can control which of them should
 appear as import in the final output.
 
@@ -169,7 +169,7 @@ Example
 #Output will have the following import statement
 <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
 ```
-####XSD/RDF datatypes
+#### XSD/RDF datatypes
 Use xsdAndRdfDataTypes.xml file to define the datatypes used in the UML model.
 
 Example
@@ -177,7 +177,7 @@ Example
 ```shell
     <datatype namespace="xsd" qname="xsd:date"/>
 ```
-####UML to XSD mappings
+#### UML to XSD mappings
 If the model uses UML datatypes these should be mapped in the umlToXsdDataTypes.xml file.
 
 Example
@@ -203,7 +203,7 @@ Example:
 # to
  <xsl:import href="my-pc/user/my-config-folder/config-parameters.xsl"/>
 ```
-###Running transformations
+### Running transformations
 After installing and creating your configuration folder use the available make targets described above to transform/generate 
 output from you XMI/XML export file. The command should be executed from the root folder of this project.
 
@@ -213,7 +213,7 @@ Example
 # generate lightweight ontology from the UML export (xml/xmi)
 make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOLDER_PATH=./my-folder
 ```
-##Online
+## Online
 To use model2owl in an automatic way, we have created a github repository [model2owl-boilerplate](https://github.com/meaningfy-ws/model2owl-boilerplate) that will no longer require for you to install or to execute anything.
 Follow the instructions found there for using this model2owl automation.
 
