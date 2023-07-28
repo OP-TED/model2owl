@@ -286,4 +286,29 @@
         <x:expect label="result" select="fn:false()"/>
     </x:scenario>
     
+    
+    <x:scenario label="Scenario for checking if connector is used to reused classes - False">
+        <x:call function="f:connectorToReusedClasses">
+            <x:param name="connector" href="../../testData/ePO_core.xml"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[76]"/>            
+        </x:call>
+        <x:expect label="result" select="fn:false()"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for checking if connector is used to reused classes - True">
+        <x:call function="f:connectorToReusedClasses">
+            <x:param name="connector" href="../../testData/ePO_core.xml"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[77]"/>            
+        </x:call>
+        <x:expect label="result" select="fn:true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for checking if connector is used to reused classes using the name - True">
+        <x:call function="f:connectorToReusedClassesByName">
+            <x:param name="connectorName"
+                select="'adms:identifier'"/>            
+        </x:call>
+        <x:expect label="result" select="fn:true()"/>
+    </x:scenario>
 </x:description>
