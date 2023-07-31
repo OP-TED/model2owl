@@ -55,17 +55,32 @@
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
         <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">
-            <xsl:choose>
-                <xsl:when
-                    test="
+            <xsl:if test="f:connectorToReusedClasses(.) and $generateReusedConcepts">
+                <xsl:choose>
+                    <xsl:when
+                        test="
                         ./source/model/@type = 'ProxyConnector' and
                         ./target/model/@type = 'ProxyConnector'">
-                    <xsl:call-template name="propertyGeneralization"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:call-template name="classGeneralization"/>
-                </xsl:otherwise>
-            </xsl:choose>
+                        <xsl:call-template name="propertyGeneralization"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:call-template name="classGeneralization"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:if>
+            <xsl:if test="not(f:connectorToReusedClasses(.))">
+                <xsl:choose>
+                    <xsl:when
+                        test="
+                        ./source/model/@type = 'ProxyConnector' and
+                        ./target/model/@type = 'ProxyConnector'">
+                        <xsl:call-template name="propertyGeneralization"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:call-template name="classGeneralization"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:if> 
         </xsl:if>
     </xsl:template>
 
@@ -134,10 +149,19 @@
                 test="
                     f:getConnectorByName(., $root)/source/model/@type != 'ProxyConnector' and f:getConnectorByName(., $root)/target/model/@type != 'ProxyConnector'
                     and f:getConnectorByName(., $root)/properties/@ea_type = ('Association', 'Dependency')">
-                <xsl:call-template name="genericConnector">
-                    <xsl:with-param name="connectorName" select="."/>
-                    <xsl:with-param name="root" select="$root"/>
-                </xsl:call-template>
+                
+                <xsl:if test="f:connectorToReusedClassesByName(.) and $generateReusedConcepts">
+                    <xsl:call-template name="genericConnector">
+                        <xsl:with-param name="connectorName" select="."/>
+                        <xsl:with-param name="root" select="$root"/>
+                    </xsl:call-template>
+                </xsl:if>
+                <xsl:if test="not(f:connectorToReusedClassesByName(.))">
+                    <xsl:call-template name="genericConnector">
+                        <xsl:with-param name="connectorName" select="."/>
+                        <xsl:with-param name="root" select="$root"/>
+                    </xsl:call-template>
+                </xsl:if>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
