@@ -83,5 +83,43 @@
             </rdf:Description>
         </xsl:if>
     </xsl:template>
+    
+    
+    <xd:doc>
+        <xd:desc>Rule T.07. Tag — in core ontology layer. Specify an annotation axiom on the OWL entity for each UML Tag associated to a UML element.
+            If a tag has an associated language tag, it should be attached to the value.</xd:desc>
+        <xd:param name="elementUri"/>
+        <xd:param name="tagName"/>
+        <xd:param name="tagValue"/>
+    </xd:doc>
+    <xsl:template name="coreLayerTags">
+        <xsl:param name="tagName"/>
+        <xsl:param name="tagValue"/>
+        <xsl:param name="elementUri"/>
+        <rdf:Description rdf:about="{$elementUri}">
+        <xsl:choose>
+            <xsl:when test="fn:contains($tagName, '@')">
+                    <xsl:variable name="langTag" select="fn:substring-after($tagName, '@')"/>
+                    <xsl:variable name="normalisedTagName"
+                        select="fn:substring-before($tagName, '@')"/>
+                    <xsl:element name="{$normalisedTagName}">
+                        <xsl:attribute name="xml:lang">
+                            <xsl:value-of select="$langTag"/>
+                        </xsl:attribute>
+                        <xsl:value-of select="$tagValue"/>
+                    </xsl:element>
+                </xsl:when>
+            <xsl:otherwise>
+                <xsl:element name="{$tagName}">
+                    <xsl:attribute name="xml:lang">
+                        <xsl:value-of select="'en'"/>
+                    </xsl:attribute>
+                    <xsl:value-of select="$tagValue"/>
+                </xsl:element>
+            </xsl:otherwise>
+        </xsl:choose>      
+        </rdf:Description>
+    </xsl:template>
+    
 
 </xsl:stylesheet>
