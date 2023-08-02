@@ -21,6 +21,81 @@
 
     <xsl:output method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
+    
+    
+    <xd:doc>
+        <xd:desc> Rule T.06. Comment — in data shape layer. Specify an annotation axiom (comment or description)
+            on the SHACL shape for the UML Comment associated to a UML element.
+            Selector to run core layer transfomation rules for commnents </xd:desc>
+    </xd:doc>
+    <xsl:template match="ownedComment[@xmi:type='uml:Comment']">
+        <xsl:variable name="commentText" select="./@body"/>
+        <xsl:for-each select="./annotatedElement/@xmi:idref">
+            <xsl:variable name="elementFound" select="f:getElementByIdRef(.,root(.))"/>
+            <xsl:if test="boolean($elementFound)">
+                <xsl:variable name="elementUri" select="f:buildShapeURI($elementFound/@name)"/>
+                <xsl:call-template name="shapeLayerComment">
+                    <xsl:with-param name="uri" select="$elementUri"/>
+                    <xsl:with-param name="rdfsComment" select="fn:true()"/>
+                    <xsl:with-param name="comment" select="$commentText"/>
+                </xsl:call-template>
+            </xsl:if>
+            <xsl:variable name="connectorFound" select="f:getConnectorByIdRef(.,root(.))"/>
+            <xsl:if test="fn:boolean($connectorFound)">
+                <xsl:variable name="connectorDirection"
+                    select="$connectorFound/properties/@direction"/>
+                <xsl:choose>
+                    <xsl:when test="$connectorDirection = 'Source -&gt; Destination'">
+                        <xsl:variable name="connectorShapeUri"
+                            select="
+                            if ($connectorFound/target/role/not(@name) = fn:true()) then
+                            ()
+                            else
+                            f:buildPropertyShapeURI($connectorFound/source/model/@name,$connectorFound/target/role/@name)"/>
+                        <xsl:if test="boolean($connectorShapeUri)">
+                            <xsl:call-template name="shapeLayerComment">
+                                <xsl:with-param name="uri" select="$connectorShapeUri"/>
+                                <xsl:with-param name="comment" select="$commentText"/>
+                                <xsl:with-param name="rdfsComment" select="fn:false()"/>
+                            </xsl:call-template>
+                        </xsl:if>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:variable name="connectorTargetRoleShapeUri"
+                            select="
+                            if ($connectorFound/target/role/not(@name) = fn:true()) then
+                            ()
+                            else
+                            f:buildPropertyShapeURI($connectorFound/source/model/@name,$connectorFound/target/role/@name)"/>
+                        <xsl:variable name="connectorSourceRoleShapeUri"
+                            select="
+                            if ($connectorFound/source/role/not(@name) = fn:true()) then
+                            ()
+                            else
+                            f:buildPropertyShapeURI($connectorFound/target/model/@name,$connectorFound/source/role/@name)"/>
+                        <xsl:if test="boolean($connectorSourceRoleShapeUri)">
+                            <xsl:call-template name="shapeLayerComment">
+                                <xsl:with-param name="uri" select="$connectorSourceRoleShapeUri"/>
+                                <xsl:with-param name="comment" select="$commentText"/>
+                                <xsl:with-param name="rdfsComment" select="fn:false()"/>
+                            </xsl:call-template>
+                        </xsl:if>
+                        <xsl:if test="boolean($connectorTargetRoleShapeUri)">
+                            <xsl:call-template name="shapeLayerComment">
+                                <xsl:with-param name="uri" select="$connectorTargetRoleShapeUri"/>
+                                <xsl:with-param name="comment" select="$commentText"/>
+                                <xsl:with-param name="rdfsComment" select="fn:false()"/>
+                            </xsl:call-template>
+                        </xsl:if>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:if>
+        </xsl:for-each>
+    </xsl:template>
+    
+    
+    
+    
 
 
     <xd:doc>

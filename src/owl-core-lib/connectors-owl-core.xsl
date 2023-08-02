@@ -218,7 +218,7 @@
                     <xsl:with-param name="elementUri" select="$roleURI"/>
                 </xsl:call-template>
             </xsl:if>
-           <!--   TODO ADD COMMENT RULE T05-->
+  
         <xsl:call-template name="coreDefinedBy">
             <xsl:with-param name="elementUri" select="$roleURI"/>
         </xsl:call-template>
