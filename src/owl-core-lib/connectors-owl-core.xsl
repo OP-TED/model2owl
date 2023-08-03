@@ -223,6 +223,24 @@
             <xsl:with-param name="elementUri" select="$roleURI"/>
         </xsl:call-template>
          
+        <xsl:for-each select="$connectorsWithSameName">
+            <xsl:variable name="sourceTags" select="./source/tags/tag"/>
+            <xsl:variable name="targetTags" select="./target/tags/tag"/>
+            <xsl:for-each select="$sourceTags">
+                <xsl:call-template name="coreLayerTags">
+                    <xsl:with-param name="elementUri" select="$roleURI"/>
+                    <xsl:with-param name="tagName" select="./@name"/>
+                    <xsl:with-param name="tagValue" select="./@value"/>
+                </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="$targetTags">
+                <xsl:call-template name="coreLayerTags">
+                    <xsl:with-param name="elementUri" select="$roleURI"/>
+                    <xsl:with-param name="tagName" select="./@name"/>
+                    <xsl:with-param name="tagValue" select="./@value"/>
+                </xsl:call-template>
+            </xsl:for-each>
+         </xsl:for-each>
      
     </xsl:template>
 
