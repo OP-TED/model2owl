@@ -140,6 +140,14 @@
         <xsl:call-template name="coreDefinedBy">
             <xsl:with-param name="elementUri" select="$classURI"/>
         </xsl:call-template>
+        
+        <xsl:for-each select="f:getElementTags(.)">
+            <xsl:call-template name="coreLayerTags">
+                <xsl:with-param name="elementUri" select="$classURI"/>
+                <xsl:with-param name="tagName" select="./@name"/>
+                <xsl:with-param name="tagValue" select="./@value"/>
+            </xsl:call-template>
+        </xsl:for-each>
 
     </xsl:template>
 
@@ -253,6 +261,14 @@
             <xsl:call-template name="coreDefinedBy">
                 <xsl:with-param name="elementUri" select="$attributeURI"/>
             </xsl:call-template>
+            
+            <xsl:for-each select="f:getElementTags($firstAttribute)">
+                <xsl:call-template name="coreLayerTags">
+                    <xsl:with-param name="elementUri" select="$attributeURI"/>
+                    <xsl:with-param name="tagName" select="./@name"/>
+                    <xsl:with-param name="tagValue" select="./@value"/>
+                </xsl:call-template>
+            </xsl:for-each>
 
 
         </xsl:if>
@@ -318,6 +334,14 @@
         <xsl:call-template name="coreDefinedBy">
             <xsl:with-param name="elementUri" select="$dataTypeURI"/>
         </xsl:call-template>
+        
+        <xsl:for-each select="f:getElementTags(.)">
+            <xsl:call-template name="coreLayerTags">
+                <xsl:with-param name="elementUri" select="$dataTypeURI"/>
+                <xsl:with-param name="tagName" select="./@name"/>
+                <xsl:with-param name="tagValue" select="./@value"/>
+            </xsl:call-template>
+        </xsl:for-each>
 
     </xsl:template>
 
@@ -355,6 +379,15 @@
                 <xsl:call-template name="coreDefinedBy">
                     <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
                 </xsl:call-template>
+                
+                <xsl:for-each select="f:getElementTags(.)">
+                    <xsl:call-template name="coreLayerTags">
+                        <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
+                        <xsl:with-param name="tagName" select="./@name"/>
+                        <xsl:with-param name="tagValue" select="./@value"/>
+                    </xsl:call-template>
+                </xsl:for-each>
+                
             </xsl:if>
             <xsl:if test="fn:contains($conceptSchemeURI, $base-ontology-uri)">
                 <skos:ConceptScheme rdf:about="{$conceptSchemeURI}"/>
@@ -374,6 +407,14 @@
                 <xsl:call-template name="coreDefinedBy">
                     <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
                 </xsl:call-template>
+                
+                <xsl:for-each select="f:getElementTags(.)">
+                    <xsl:call-template name="coreLayerTags">
+                        <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
+                        <xsl:with-param name="tagName" select="./@name"/>
+                        <xsl:with-param name="tagValue" select="./@value"/>
+                    </xsl:call-template>
+                </xsl:for-each>
             </xsl:if>
         </xsl:if>
 
@@ -421,6 +462,14 @@
                 <xsl:call-template name="coreDefinedBy">
                     <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
                 </xsl:call-template>
+                
+                <xsl:for-each select="f:getElementTags(.)">
+                    <xsl:call-template name="coreLayerTags">
+                        <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
+                        <xsl:with-param name="tagName" select="./@name"/>
+                        <xsl:with-param name="tagValue" select="./@value"/>
+                    </xsl:call-template>
+                </xsl:for-each>
             </xsl:if>
             <xsl:if test="fn:contains($enumerationAttributeURI, $base-ontology-uri)">
                 
@@ -444,6 +493,14 @@
                 <xsl:call-template name="coreDefinedBy">
                     <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
                 </xsl:call-template>
+                
+                <xsl:for-each select="f:getElementTags(.)">
+                    <xsl:call-template name="coreLayerTags">
+                        <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
+                        <xsl:with-param name="tagName" select="./@name"/>
+                        <xsl:with-param name="tagValue" select="./@value"/>
+                    </xsl:call-template>
+                </xsl:for-each>
             </xsl:if>
         </xsl:if>
     </xsl:template>
