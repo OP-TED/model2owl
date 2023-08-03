@@ -113,5 +113,16 @@
         <x:expect label="there is  sh:description" test="boolean(rdf:Description/sh:description)"/>
         <x:expect label="there is no rdfs:comment" test="not(boolean(rdf:Description/rdfs:comment))"/>
         
+               
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for testing template with match 'ownedComment[@xmi:type='uml:Comment']">
+        <x:context href="../../testData/ePO_CM-v.4.0.0.xml" select="/xmi:XMI/uml:Model[1]/packagedElement[1]/packagedElement[1]/packagedElement[39]/packagedElement[1]/ownedComment[1]"/>
+        <x:expect label="there is a rdf:Description" test="boolean(/rdf:Description)"/>
+        <x:expect label="there is 2 rdf:Description" test="count(/rdf:Description) = 2 "/>
+        <x:expect label="there is a sh:description" test="boolean(/rdf:Description/sh:description)"/>
+        <x:expect label="there is a correct URI" test="/rdf:Description/@rdf:about = 'http://data.europa.eu/a4g/data-shape#epo-LotAwardOutcome-epo-hasAwardedValue'"/>
+        <x:expect label="there is a correct URI" test="/rdf:Description[2]/@rdf:about = 'http://data.europa.eu/a4g/data-shape#epo-LotAwardOutcome-epo-hasAwardedEstimatedValue'"/>
     </x:scenario>
 </x:description>

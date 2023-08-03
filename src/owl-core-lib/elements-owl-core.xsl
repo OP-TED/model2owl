@@ -30,6 +30,74 @@
     <xsl:output method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"
         cdata-section-elements="lines"/>
 
+    <xd:doc>
+        <xd:desc> Rule T.05. Comment — in core ontology layer. Specify an annotation axiom (comment or editorial note)
+            on the OWL entity for the UML Comment associated to a UML element.
+            Selector to run core layer transfomation rules for commnents </xd:desc>
+    </xd:doc>
+    <xsl:template match="ownedComment[@xmi:type='uml:Comment']">
+        <xsl:variable name="commentText" select="./@body"/>
+        <xsl:for-each select="./annotatedElement/@xmi:idref">
+            <xsl:variable name="elementFound" select="f:getElementByIdRef(.,root(.))"/>
+            <xsl:if test="boolean($elementFound)">
+                <xsl:variable name="elementUri" select="f:buildURIFromElement($elementFound)"/>
+                <xsl:call-template name="coreLayerComment">
+                    <xsl:with-param name="elementUri" select="$elementUri"/>
+                    <xsl:with-param name="comment" select="$commentText"/>
+                </xsl:call-template>
+            </xsl:if>
+            <xsl:variable name="connectorFound" select="f:getConnectorByIdRef(.,root(.))"/>
+            <xsl:if test="fn:boolean($connectorFound)">
+                <xsl:variable name="connectorDirection"
+                    select="$connectorFound/properties/@direction"/>
+                <xsl:choose>
+                    <xsl:when test="$connectorDirection = 'Source -&gt; Destination'">
+                        <xsl:variable name="connectorTargetRoleUri"
+                            select="
+                            if ($connectorFound/target/role/not(@name) = fn:true()) then
+                            ()
+                            else
+                            f:buildURIfromLexicalQName($connectorFound/target/role/@name)"/>
+                        <xsl:if test="boolean($connectorTargetRoleUri)">
+                            <xsl:call-template name="coreLayerComment">
+                                <xsl:with-param name="elementUri" select="$connectorTargetRoleUri"/>
+                                <xsl:with-param name="comment" select="$commentText"/>
+                            </xsl:call-template>
+                        </xsl:if>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:variable name="connectorTargetRoleUri"
+                            select="
+                            if ($connectorFound/target/role/not(@name) = fn:true()) then
+                            ()
+                            else
+                            f:buildURIfromLexicalQName($connectorFound/target/role/@name)"/>
+                        <xsl:variable name="connectorSourceRoleUri"
+                            select="
+                            if ($connectorFound/source/role/not(@name) = fn:true()) then
+                            ()
+                            else
+                            f:buildURIfromLexicalQName($connectorFound/source/role/@name)"/>
+                        <xsl:if test="boolean($connectorSourceRoleUri)">
+                            <xsl:call-template name="coreLayerComment">
+                                <xsl:with-param name="elementUri" select="$connectorSourceRoleUri"/>
+                                <xsl:with-param name="comment" select="$commentText"/>
+                            </xsl:call-template>
+                        </xsl:if>
+                        <xsl:if test="boolean($connectorTargetRoleUri)">
+                            <xsl:call-template name="coreLayerComment">
+                                <xsl:with-param name="elementUri" select="$connectorTargetRoleUri"/>
+                                <xsl:with-param name="comment" select="$commentText"/>
+                            </xsl:call-template>
+                        </xsl:if>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:if>
+        </xsl:for-each>
+    </xsl:template>
+
+
+
 
     <xd:doc>
         <xd:desc> Selector to run core layer transformation rules for classes</xd:desc>
@@ -68,8 +136,7 @@
                 <xsl:with-param name="elementUri" select="$classURI"/>
             </xsl:call-template>
         </xsl:if>
-        <!--   TODO ADD COMMENT RULE T05-->
-
+       
         <xsl:call-template name="coreDefinedBy">
             <xsl:with-param name="elementUri" select="$classURI"/>
         </xsl:call-template>
@@ -182,7 +249,6 @@
                 </xsl:call-template>
             </xsl:if>
 
-            <!--   TODO ADD COMMENT RULE T05-->
 
             <xsl:call-template name="coreDefinedBy">
                 <xsl:with-param name="elementUri" select="$attributeURI"/>
@@ -248,7 +314,6 @@
                 <xsl:with-param name="elementUri" select="$dataTypeURI"/>
             </xsl:call-template>
         </xsl:if>
-        <!--   TODO ADD COMMENT RULE T05-->
 
         <xsl:call-template name="coreDefinedBy">
             <xsl:with-param name="elementUri" select="$dataTypeURI"/>
@@ -285,7 +350,7 @@
                         <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
                     </xsl:call-template>
                 </xsl:if>
-                <!--   TODO ADD COMMENT RULE T05-->
+
 
                 <xsl:call-template name="coreDefinedBy">
                     <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
@@ -304,7 +369,7 @@
                         <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
                     </xsl:call-template>
                 </xsl:if>
-                <!--   TODO ADD COMMENT RULE T05-->
+
                 
                 <xsl:call-template name="coreDefinedBy">
                     <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
@@ -351,7 +416,7 @@
                         <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
                     </xsl:call-template>
                 </xsl:if>
-                <!--   TODO ADD COMMENT RULE T05-->
+
 
                 <xsl:call-template name="coreDefinedBy">
                     <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
@@ -374,7 +439,7 @@
                         <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
                     </xsl:call-template>
                 </xsl:if>
-                <!--   TODO ADD COMMENT RULE T05-->
+            
                 
                 <xsl:call-template name="coreDefinedBy">
                     <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>

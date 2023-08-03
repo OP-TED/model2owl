@@ -55,7 +55,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Rule T.05. Comment - Specify annotation axiom for UML Comment associated to a UML
+        <xd:desc>Rule T.06. Comment - Specify annotation axiom for UML Comment associated to a UML
             element</xd:desc>
         <xd:param name="comment"/>
         <xd:param name="elementUri"/>
@@ -64,9 +64,9 @@
         <xsl:param name="comment"/>
         <xsl:param name="elementUri"/>
         <rdf:Description rdf:about="{$elementUri}">
-            <rdfs:comment xml:lang="en">
+            <skos:editorialNote xml:lang="en">
                 <xsl:value-of select="$comment"/>
-            </rdfs:comment>
+            </skos:editorialNote>
         </rdf:Description>
     </xsl:template>
 
