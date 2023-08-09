@@ -39,7 +39,7 @@
         <xsl:variable name="commentText" select="./@body"/>
         <xsl:for-each select="./annotatedElement/@xmi:idref">
             <xsl:variable name="elementFound" select="f:getElementByIdRef(.,root(.))"/>
-            <xsl:if test="boolean($elementFound)">
+            <xsl:if test="boolean($elementFound) and $elementFound/@xmi:type != 'uml:Package'">
                 <xsl:variable name="elementUri" select="f:buildURIFromElement($elementFound)"/>
                 <xsl:call-template name="coreLayerComment">
                     <xsl:with-param name="elementUri" select="$elementUri"/>
