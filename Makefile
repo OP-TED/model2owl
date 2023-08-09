@@ -146,7 +146,7 @@ convert-to-rdf:
 #make generate-html-docs-from-rdf WIDOCO_RDF_INPUT_FILE_PATH=../Documents/model2owl-2023/owl-core.rdf WIDOCO_OUTPUT_FOLDER_PATH=core-html
 generate-html-docs-from-rdf: get-widoco
 	@echo ${WIDOCO_RDF_INPUT_FILE_PATH}
-	@java -jar widoco.jar -ontFile ${WIDOCO_RDF_INPUT_FILE_PATH} -outFolder ${WIDOCO_OUTPUT_FOLDER_PATH}  -getOntologyMetadata -uniteSections -webVowl
+	@java -jar widoco/widoco.jar -ontFile ${WIDOCO_RDF_INPUT_FILE_PATH} -outFolder ${WIDOCO_OUTPUT_FOLDER_PATH}  -getOntologyMetadata -uniteSections -webVowl
 
 SHELL=/bin/bash -o pipefail
 BUILD_PRINT = \e[1;34mSTEP:
