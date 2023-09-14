@@ -65,17 +65,19 @@
             <dct:title xml:lang="en">
                 <xsl:value-of select="$ontologyTitle"/>
             </dct:title>
+            <dct:publisher>
+                <xsl:value-of select="$publisher"/>
+            </dct:publisher>
             <dct:description xml:lang="en">
                 <xsl:value-of select="$ontologyDescription"/>
             </dct:description>
-            <dct:abstract><xsl:value-of select="$abstractResctrictions"/></dct:abstract>
-            <skos:changeNote>This version is automatically generated from <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on 
+            <rdfs:comment>This version is automatically generated from <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on 
                 <xsl:value-of select="format-date(current-date(),'[Y0001]-[M01]-[D01]')"/>
-            </skos:changeNote>
+                </rdfs:comment>
             <xsl:for-each select="$seeAlsoResources">
                 <rdfs:seeAlso rdf:resource="{.}"/>
             </xsl:for-each>
-            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="$createdDate"/></dct:created>
+
             <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="$issuedDate"/></dct:issued>
             <owl:versionInfo><xsl:value-of select="$versionInfo"/></owl:versionInfo>   
             <owl:incompatibleWith><xsl:value-of select="$incompatibleWith"/></owl:incompatibleWith>

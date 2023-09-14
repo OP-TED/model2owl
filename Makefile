@@ -92,17 +92,17 @@ generate-convention-report:
 #Example how to run transformation commands :
 # make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/eNotice_CM.xml OUTPUT_FOLDER_PATH=./my-folder
 owl-core:
-	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/owl-core.xsl -o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}-core.rdf
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/owl-core.xsl -o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}-core.owl.rdf
 	@echo Output owl core file:
-	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}-core.rdf
+	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}-core.owl.rdf
 owl-restrictions:
-	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/owl-restrictions.xsl -o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}-restrictions.rdf
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/owl-restrictions.xsl -o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}-restrictions.owl.rdf
     @echo Output owl restrictions file:
-	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}-restrictions.rdf
+	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}-restrictions.owl.rdf
 shacl:
-	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/shacl-shapes.xsl -o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}-shacl.rdf
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/shacl-shapes.xsl -o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}-shapes.shacl.rdf
 	@echo Output shacl file location:
-	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}-shacl.rdf
+	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}-shapes.shacl.rdf
 
 
 # Combine xmi UML files
@@ -121,8 +121,8 @@ merge-xmi:
 
 #Example how to run converting commands :
 # make convert-to-turtle ONTOLOGY_FOLDER_PATH=./my-folder
-# OUTPUT_FOLDER_PATH is the the path to the folder containing .rdf files for converting to turtle or .ttl files to convert to rdf
-convert-to-turtle:
+# ONTOLOGY_FOLDER_PATH is the the path to the folder containing .rdf files for converting to turtle or .ttl files to convert to rdf
+convert-rdf-to-turtle:
 	@for FILE_PATH in ${RDF_FILELIST}; do \
 		echo Converting $${FILE_PATH} into Turtle; \
 		source model2owl-venv/bin/activate; \
@@ -132,7 +132,7 @@ convert-to-turtle:
 		echo " ==> Output in Turtle format";  \
 		ls -lh $${FILE_PATH%.*}.ttl;  \
 	done
-convert-to-rdf:
+convert-turtle-to-rdf:
 	@for FILE_PATH in ${TURTLE_FILELIST}; do \
 		echo Converting $${FILE_PATH} into RDF/XML; \
 		source model2owl-venv/bin/activate; \
@@ -143,6 +143,27 @@ convert-to-rdf:
 		ls -lh $${FILE_PATH%.*}.rdf;  \
 	done	
 
+convert-rdf-to-jsonld:
+	@for FILE_PATH in ${RDF_FILELIST}; do \
+		echo Converting $${FILE_PATH} into JSON-LD; \
+		source model2owl-venv/bin/activate; \
+		rdfpipe -i application/rdf+xml -o json-ld  $${FILE_PATH} > $${FILE_PATH%.*}.json; \
+		echo Input in RDF/XML format;  \
+		echo $${FILE_PATH};  \
+		echo " ==> Output in JSON-LD format";  \
+		ls -lh $${FILE_PATH%.*}.json;  \
+	done
+convert-rdf-to-rdf:
+	@for FILE_PATH in ${RDF_FILELIST}; do \
+		echo Converting $${FILE_PATH} into RDF/XML; \
+		source model2owl-venv/bin/activate; \
+		rdfpipe -i application/rdf+xml -o application/rdf+xml $${FILE_PATH} > $${FILE_PATH%.*}.rdf2; \
+		mv -v $${FILE_PATH%.*}.rdf2 $${FILE_PATH%.*}.rdf; \
+		echo Input in RDF/XML format;  \
+		ls -lh $${FILE_PATH};  \
+		echo " ==> Output in RDF/XML format";  \
+		ls -lh $${FILE_PATH%.*}.rdf;  \
+	done
 #make generate-html-docs-from-rdf WIDOCO_RDF_INPUT_FILE_PATH=../Documents/model2owl-2023/owl-core.rdf WIDOCO_OUTPUT_FOLDER_PATH=core-html
 generate-html-docs-from-rdf: get-widoco
 	@echo ${WIDOCO_RDF_INPUT_FILE_PATH}
