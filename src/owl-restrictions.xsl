@@ -63,13 +63,13 @@
             </xsl:for-each>      
             <owl:imports rdf:resource="{$coreArtefactURI}"/>
             <dct:title xml:lang="en">
-                <xsl:value-of select="$ontologyTitle"/>
+                <xsl:value-of select="$ontologyTitleRestrictions"/>
             </dct:title>
             <dct:publisher>
                 <xsl:value-of select="$publisher"/>
             </dct:publisher>
             <dct:description xml:lang="en">
-                <xsl:value-of select="$ontologyDescription"/>
+                <xsl:value-of select="$ontologyDescriptionRestrictions"/>
             </dct:description>
             <rdfs:comment>This version is automatically generated from <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on 
                 <xsl:value-of select="format-date(current-date(),'[Y0001]-[M01]-[D01]')"/>
