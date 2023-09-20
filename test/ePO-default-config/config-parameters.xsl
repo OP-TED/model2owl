@@ -95,20 +95,28 @@
     <!-- _______________________________________________________________________   -->
     <!--    This section contains the variables used to build the ontology metadata-->
     <xsl:variable name="moduleReference" select="'core'"/>
-    <!--    dct:title -->
-    <xsl:variable name="ontologyTitle" select="'eProcurement Ontology - core'"/>
+    <!--    dct:title-->
+    <xsl:variable name="ontologyTitleCore" select="'ePO Core core'"/>
+    <xsl:variable name="ontologyTitleRestrictions" select="'ePO Core restrictions'"/>
+    <xsl:variable name="ontologyTitleShapes" select="'ePO Core shapes'"/>
     <!--    dct:description-->
-    <xsl:variable name="ontologyDescription"
+    <xsl:variable name="ontologyDescriptionCore"
         select="
-            'This module provides the definitions for the eProcurement ontology core.
-        Procurement data has been identified as data with a high-reuse potential.
-        Given the increasing importance of data standards for eProcurement, a number of initiatives
-        driven by the public sector, the industry and academia have been kick-started in recent years.
-        Some have grown organically, while others are the result of standardisation work.
-        The vocabularies and the semantics that they are introducing, the phases of public procurement that they are covering,
-        and the technologies that they are using all differ. These differences hamper data interoperability and thus its reuse by them or by the wider public.
-        This creates the need for a common data standard for publishing procurement data, hence allowing data
-        from different sources to be easily accessed and linked, and consequently reused.'"/>
+        'This artefact provides the definitions for the eProcurement Ontology Core.
+        This artefact excludes the restrictions.
+        The eProcurement Ontology describes objects and concepts, with definitions, attributes and relationships which are present within the European public procurement domain.
+        The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.'"/>
+    <xsl:variable name="ontologyDescriptionRestrictions"
+        select="
+        'This artefact provides the restrictions and inference-related specifications for the eProcurement Ontology Core.
+        This artefact excludes the definitions of concepts.
+        The eProcurement Ontology describes objects and concepts, with definitions, attributes and relationships which are present within the European public procurement domain.
+        The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.'"/>
+    <xsl:variable name="ontologyDescriptionShapes"
+        select="
+        'This artefact provides the generic datashape specifications for the eProcurement Ontology Core.
+        The eProcurement Ontology describes objects and concepts, with definitions, attributes and relationships which are present within the European public procurement domain.
+        The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.'"/>
    
     <!--    rdfs:seeAlso -->
     <xsl:variable name="seeAlsoResources"

@@ -68,10 +68,10 @@
             </xsl:for-each>      
              
             <dct:title xml:lang="en">
-                <xsl:value-of select="$ontologyTitle"/>
+                <xsl:value-of select="$ontologyTitleCore"/>
             </dct:title>
             <dct:description xml:lang="en">
-                <xsl:value-of select="$ontologyDescription"/>
+                <xsl:value-of select="$ontologyDescriptionCore"/>
             </dct:description>
             <dct:publisher>
                 <xsl:value-of select="$publisher"/>
