@@ -22,8 +22,11 @@
 
     <xsl:template name="generalConventions">
         <xsl:variable name="root" select="root()"/>
-        <h1 id="generalConventions">General conventions</h1>
-
+        
+        <xsl:if test="$reportType = 'HTML'">
+           <h1 id="generalConventions">General conventions</h1> 
+        </xsl:if>
+ 
         <xsl:variable name="generalChecks" as="item()*">
             <xsl:call-template name="connectorTypes">
                 <xsl:with-param name="root" select="$root"/>
@@ -58,7 +61,12 @@
         <xsl:sequence
             select="
                 if (count($unsupportedConnectorTypes) > 0) then
-                    f:generateFormattedHtmlWarning('Only associations, dependecies, generalisations and realisation connectors are supported. The following connector types were found in model and are not supported', $unsupportedConnectorTypes)
+                    f:generateFormattedWarningMessage('Only associations, dependecies, generalisations and realisation connectors are supported. The following connector types were found in model and are not supported', $unsupportedConnectorTypes,
+                    'Only associations, dependecies, generalisations and
+                    realisation connectors are supported.',
+                    '//connectors/connector/properties/@ea_type',
+                    'general-connector-type-1'
+                    )
                 else
                     ()
                 "
@@ -82,7 +90,12 @@
         <xsl:sequence
             select="
                 if (count($unsupportedElementTypes) > 0) then
-                    f:generateFormattedHtmlWarning('Only Class, Package, Datatype, Enumeration, and Object elements are supported. The following element types were found in model and are not supported', $unsupportedElementTypes)
+                    f:generateFormattedWarningMessage('Only Class, Package, Datatype, Enumeration, and Object elements are supported. The following element types were found in model and are not supported', $unsupportedElementTypes,
+                    'Only Class, Package, Datatype, Enumeration, and Object
+                    elements are supported',
+                    '//elements/element/@xmi:type',
+                    'general-element-type-2'
+                    )
                 else
                     ()
                 "
@@ -107,8 +120,13 @@
                 if ($areAllPrefixesDefined instance of xs:boolean) then
                     ()
                 else
-                    f:generateFormattedHtmlError(fn:concat('Not all prefixes ',
-                    ' are defined. All used namespaces shall be defined (prefix = base URI), including the default one. Here is the list of undefined prefixes'), $areAllPrefixesDefined)"
+                    f:generateFormattedErrorMessage(fn:concat('Not all prefixes ',
+                    ' are defined. All used namespaces shall be defined (prefix = base URI), including the default one. Here is the list of undefined prefixes'), $areAllPrefixesDefined,
+                    'The prefixes $[list of undefined prefixes] are not defined.
+                    All used namespaces shall be defined (prefix = base URI), including the default one.',
+                    '/',
+                    'general-prefix-3'
+                    )"
         />
     </xsl:template>
 

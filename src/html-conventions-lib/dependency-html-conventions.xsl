@@ -24,106 +24,113 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
-            <xsl:variable name="dependencyChecks" as="item()*">
-                <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">
-                    <!--    Start of common connectors checkers rules     -->
-                    <xsl:call-template name="connectorNamingFormat">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorMissingNamePrefix">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorMissingLocalSegmentName">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorInvalidNamePrefix">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorUndefinedPrefix">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorInvalidNameLocalSegment">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorInvalidFirstCharacterInLocalSegment">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorDelimitersInTheLocalSegment">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorUnknownStereotypeProvided">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorStereotypeProvided">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorInvalidTagName">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorMissingPrefixTagName">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorMissingTagValue">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorMissingTagName">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorTargetTags">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorTags">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>           
-                    <xsl:call-template name="connectorGeneralNameProvided">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorMissingDescription">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorMissingTargetRole">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorInvalidRelationshipDirection">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorMissingTargetMultiplicity">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorInvalidTargetMultiplicityFormat">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorDirectionAndRolesOutOfSync">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template> 
-                    <!--    End of common connectors checkers rules     -->  
-                    <!--    Start of specific checker rules-->
-                    <xsl:call-template name="dependencyInvalidDirection">
-                        <xsl:with-param name="dependencyConnector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="dependencySourceTargetTypes">
-                        <xsl:with-param name="dependencyConnector" select="."/>
-                    </xsl:call-template>
-                    <xsl:call-template name="connectorUniqueName">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template> 
-                    <xsl:call-template name="connectorRoleCrossTypeReuseCheck">
-                        <xsl:with-param name="connector" select="."/>
-                        <xsl:with-param name="isDependency" select="fn:true()"/>
-                    </xsl:call-template> 
-                    <!--    End of specific checker rules-->  
-                </xsl:if>
-            </xsl:variable>
-            <xsl:if test="boolean($dependencyChecks)">
-                <h2>
-                    <xsl:value-of select="f:getConnectorName(.)"/>
-                </h2>
-                <dl>
-                    <dt> Unmet dependency conventions </dt>
-                    <xsl:copy-of select="$dependencyChecks"/>
-                </dl>
+        <xsl:variable name="dependencyChecks" as="item()*">
+            <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">
+                <!--    Start of common connectors checkers rules     -->
+                <xsl:call-template name="connectorNamingFormat">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorMissingNamePrefix">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorMissingLocalSegmentName">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorInvalidNamePrefix">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorUndefinedPrefix">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorInvalidNameLocalSegment">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorInvalidFirstCharacterInLocalSegment">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorDelimitersInTheLocalSegment">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorUnknownStereotypeProvided">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorStereotypeProvided">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorInvalidTagName">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorMissingPrefixTagName">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorMissingTagValue">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorMissingTagName">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorTargetTags">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorTags">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorGeneralNameProvided">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorMissingDescription">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorMissingTargetRole">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorInvalidRelationshipDirection">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorMissingTargetMultiplicity">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorInvalidTargetMultiplicityFormat">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorDirectionAndRolesOutOfSync">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <!--    End of common connectors checkers rules     -->
+                <!--    Start of specific checker rules-->
+                <xsl:call-template name="dependencyInvalidDirection">
+                    <xsl:with-param name="dependencyConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="dependencySourceTargetTypes">
+                    <xsl:with-param name="dependencyConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorUniqueName">
+                    <xsl:with-param name="connector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="connectorRoleCrossTypeReuseCheck">
+                    <xsl:with-param name="connector" select="."/>
+                    <xsl:with-param name="isDependency" select="fn:true()"/>
+                </xsl:call-template>
+                <!--    End of specific checker rules-->
             </xsl:if>
- 
+        </xsl:variable>
+        <xsl:if test="boolean($dependencyChecks)">
+            <xsl:choose>
+                <xsl:when test="$reportType = 'HTML'">
+                    <h2>
+                        <xsl:value-of select="f:getConnectorName(.)"/>
+                    </h2>
+                    <dl>
+                        <dt> Unmet dependency conventions </dt>
+                        <xsl:copy-of select="$dependencyChecks"/>
+                    </dl>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:copy-of select="$dependencyChecks"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
+
     </xsl:template>
 
 
@@ -139,7 +146,12 @@
         <xsl:sequence
             select="
                 if ($dependencyDirection != 'Source -&gt; Destination') then
-                    f:generateHtmlError('The direction is not Source -&gt; Destination. Dependecy direction can be only Source -&gt; Destination. ')
+                    f:generateErrorMessage('The direction is not Source -&gt; Destination. Dependecy direction can be only Source -&gt; Destination. ',
+                    'The direction is not Source->Destination. Dependecy
+                    direction can be only Source->Destination.',
+                    'connectors/connector[./properties/@ea_type = Dependency]',
+                    'dependency-direction-1'
+                    )
                 else
                     ()"
         />
@@ -161,7 +173,12 @@
                 if ($sourceType = 'Class' and $targetType = ('Enumeration', 'Object')) then
                     ()
                 else
-                f:generateHtmlError('Dependecies can be provided only between classes and enumerations or objects.')"
+                f:generateErrorMessage('Dependecies can be provided only between classes and enumerations or objects.',
+                'Dependecies can be provided only between classes 
+                and enumerations or objects.',
+                'connectors/connector[./properties/@ea_type = Dependency]',
+                'dependency-source-target-types-2'
+                )"
         />
     </xsl:template>
 

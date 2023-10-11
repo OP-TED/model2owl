@@ -90,14 +90,14 @@
             <xsl:call-template name="nonPublicElement">
                 <xsl:with-param name="element" select="."/>
             </xsl:call-template>
-            
+
             <xsl:call-template name="elementUniqueName">
                 <xsl:with-param name="element" select="."/>
                 <xsl:with-param name="isAttribute" select="fn:false()"/>
             </xsl:call-template>
-            <!--    End of common checkers rules     -->   
+            <!--    End of common checkers rules     -->
             <!--    Start of specific checker rules-->
-            
+
             <xsl:call-template name="dataTypeIncorrectType">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
@@ -111,13 +111,21 @@
 
         </xsl:variable>
         <xsl:if test="boolean($dataTypeChecks)">
-            <h2><xsl:value-of select="$dataTypeName"/></h2>
-            <dl>
-                <dt>
-                    Unmet data-type conventions
-                </dt>
-                <xsl:copy-of select="$dataTypeChecks"/>
-            </dl>
+            <xsl:choose>
+                <xsl:when test="$reportType = 'HTML'">
+                    <h2>
+                        <xsl:value-of select="$dataTypeName"/>
+                    </h2>
+                    <dl>
+                        <dt> Unmet data-type conventions </dt>
+                        <xsl:copy-of select="$dataTypeChecks"/>
+                    </dl>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:copy-of select="$dataTypeChecks"/>
+                </xsl:otherwise>
+            </xsl:choose>
+
         </xsl:if>
     </xsl:template>
 
@@ -151,8 +159,13 @@
             select="f:getXsdRdfDataTypeValues($dataTypeElementName, $xsdAndRdfDataTypes)"/>
         <xsl:if test="$rdfOrXsdDataType = ''">
             <xsl:sequence
-                select="f:generateHtmlWarning(fn:concat('The datatype', $dataTypeElementName, 
-                'is not an XSD or RDF datatype.  It is recommended to use XSD and RDF datatypes mainly.'))"
+                select="f:generateWarningMessage(fn:concat('The datatype', $dataTypeElementName, 
+                'is not an XSD or RDF datatype.  It is recommended to use XSD and RDF datatypes mainly.'),
+                'The datatype is not an XSD or RDF datatype. 
+                It is recommended to use XSD and RDF datatypes mainly.',
+                '//elements/element[xmi:type=uml:DataType]',
+                'datatype-name-2'
+                )"
             />
         </xsl:if>
     </xsl:template>
@@ -171,8 +184,13 @@
         <xsl:sequence
             select="
             if ($dataTypeNumberOfAttributes > 0) then
-            f:generateHtmlWarning(fn:concat('The datatype ', $dataTypeElement/@name,
-            ' is not atomic. Complex datatypes where attributes/components are specified shall be represented as classes.'))
+            f:generateWarningMessage(fn:concat('The datatype ', $dataTypeElement/@name,
+            ' is not atomic. Complex datatypes where attributes/components are specified shall be represented as classes.'),
+            'The datatype $value$ is not atomic. 
+            Complex datatypes where attributes/components are specified shall be represented as classes.',
+            '//elements/element[xmi:type=uml:DataType]',
+            'datatype-attribute-3'
+            )
             else
             ()
             "
@@ -193,8 +211,13 @@
         <xsl:sequence
             select="
             if ($outgoingConnectors > 0) then
-            f:generateHtmlError(fn:concat('The datatype ', $dataTypeElement/@name,
-            ' should not connect to other elements. A Datatype can only be referred to.'))
+            f:generateErrorMessage(fn:concat('The datatype ', $dataTypeElement/@name,
+            ' should not connect to other elements. A Datatype can only be referred to.'),
+            'The datatype $value should not connect to other elements.
+            A Datatype can only be referred to.',
+            '//elements/element[xmi:type=uml:DataType]',
+            'datatype-attribute-3'
+            )
             else
             ()
             "

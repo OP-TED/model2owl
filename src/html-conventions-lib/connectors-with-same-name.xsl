@@ -24,7 +24,9 @@
     <xsl:template name="connectorsWithSameName">
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
-        <h1 id="connectorsUsage">Connectors with multiple usages</h1>
+        <xsl:if test="$reportType = 'HTML'">
+             <h1 id="connectorsUsage">Connectors with multiple usages</h1> 
+        </xsl:if>
         <xsl:for-each select="$distinctNames">  
             <xsl:sort select="." lang="en"/>
             <xsl:if test="fn:count(f:getConnectorByName(., $root)) > 1">
@@ -43,12 +45,20 @@
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:if test="boolean($connectorsChecks)">
-                    <dl id="connector-{.}">
-                    <dt>
-                        <xsl:value-of select="."/>
-                    </dt>
-                    </dl>
-                    <xsl:copy-of select="$connectorsChecks"/>
+                    <xsl:choose>
+                        <xsl:when test="$reportType = 'HTML'">
+                            <dl id="connector-{.}">
+                                <dt>
+                                    <xsl:value-of select="."/>
+                                </dt>
+                            </dl>
+                            <xsl:copy-of select="$connectorsChecks"/>
+
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:copy-of select="$connectorsChecks"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:if>
             </xsl:if>
         </xsl:for-each>
@@ -75,7 +85,13 @@
                 if (f:areStringsEqual($multiplicityValues) and $allConnectorsHaveMultiplicityValue) then
                     ()
                 else
-                f:generateHtmlInfo('When a property is reused in multiple contexts, the multiplicity is expected to be the same. Please check the nomenclature above for a summary.')"
+                f:generateInfoMessage(
+                'When a property is reused in multiple contexts the multiplicity is expected to be the same.',
+                'Check the multiplicity values from a group of connectors with same name',
+                '//connectors/connector',
+                'connectors-with-same-name-multiplicity-1'
+                
+                )"
         />
     </xsl:template>
 
@@ -109,12 +125,24 @@
         <xsl:sequence
             select="
                 if (f:areStringsEqual($definitionValues) and fn:boolean($definitionValues and $allConnectorsHaveDefinition)) then
-                f:generateFormattedHtmlInfo(fn:concat('The property is reused in multiple contexts, the meaning given by the definition is the same.  ',
-                    'Here is the property usage: '), $descriptionsWithAnnotations)
+                f:generateFormattedInfoMessage(fn:concat('The property is reused in multiple contexts, the meaning given by the definition is the same.  ',
+                    'Here is the property usage: '), $descriptionsWithAnnotations,
+                    'When a property is reused in multiple contexts, 
+                    the meaning given by the definition is expected to be the same. In this case, multiple definitions 
+                    are found.',
+                    '//connectors/connector',
+                    'connectors-with-same-name-definition-2'
+                    )
                 else
                     if (fn:boolean($definitionValues)) then
-                    f:generateFormattedHtmlWarning(fn:concat('When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. ',
-                                                    'In this case, multiple definitions are found: '), $descriptionsWithAnnotations)
+                    f:generateFormattedWarningMessage(fn:concat('When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. ',
+                                                    'In this case, multiple definitions are found: '), $descriptionsWithAnnotations,
+                                                    'When a property is reused in multiple contexts, 
+                                                    the meaning given by the definition is expected to be the same. In this case, multiple definitions 
+                                                    are found.',
+                                                    '//connectors/connector',
+                                                    'connectors-with-same-name-definition-2'
+                                                    )
                     else
                         ()"
         />
@@ -140,8 +168,13 @@
             if (f:areStringsEqual($typeValues)) then
             ()
             else
-            f:generateHtmlError(fn:concat('The name ', $connectorName,
-            ' appears on connectors of different types.  A name shall be reused only on connectors of the same type.'))"
+            f:generateErrorMessage(fn:concat('The name ', $connectorName,
+            ' appears on connectors of different types.  A name shall be reused only on connectors of the same type.'),
+            'The name $Name appears on connectors of different types.  
+            A name shall be reused only on connectors of the same type.',
+            '//connectors/connector',
+            'connectors-with-same-name-name-3'
+            )"
         />
     </xsl:template>
 

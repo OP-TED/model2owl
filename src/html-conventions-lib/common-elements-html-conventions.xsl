@@ -33,8 +33,13 @@
         <xsl:if test="f:isValidQname($elementName) = fn:false()">
             <xsl:sequence
                 select="
-                    f:generateHtmlWarning(fn:concat('The name ', $elementName, ' does not match the pattern. ',
-                    'The name should respect the syntax prefix:localSegment (similar to the XML QName).'))"
+                    f:generateWarningMessage(fn:concat('The name ', $elementName, ' does not match the pattern. ',
+                    'The name should respect the syntax prefix:localSegment (similar to the XML QName).'),
+                    'The name $elementName$ does not match the pattern. The name
+                    should respect the syntax prefix:localSegment (similar to the XML QName).',
+                    '//elements/element',
+                    'common-name-1'
+                    )"
             />
         </xsl:if>
     </xsl:template>
@@ -52,8 +57,13 @@
         <xsl:sequence
             select="
                 if (f:isElementNameMissing($element)) then
-                    f:generateHtmlError(fn:concat('The name of the element ', $element/@xmi:idref,
-                    ' is missing. Please provide one respecing the syntax prefix:localSegment.'))
+                    f:generateErrorMessage(fn:concat('The name of the element ', $element/@xmi:idref,
+                    ' is missing. Please provide one respecing the syntax prefix:localSegment.'),
+                    'The name of the element $IdRef$ is missing. Please provide one
+                    respecing the syntax prefix:localSegment',
+                    '//elements/element',
+                    'common-name-2'
+                    )
                 else
                     ()"
         />
@@ -69,8 +79,13 @@
         <xsl:sequence
             select="
                 if (f:isElementNamePrefixMissing($element)) then
-                    f:generateHtmlWarning(fn:concat('The name of element ', $element/@name,
-                    ' is missing a prefix. The name should comprise a prefix respecing the syntax prefix:localSegment.'))
+                    f:generateWarningMessage(fn:concat('The name of element ', $element/@name,
+                    ' is missing a prefix. The name should comprise a prefix respecing the syntax prefix:localSegment.'),
+                    'The name of element $elementName$ is missing a prefix. The name
+                    should comprise a prefix respecing the syntax prefix:localSegment',
+                    '//elements/element',
+                    'common-name-3'
+                    )
                 else
                     ()"
         />
@@ -87,8 +102,13 @@
         <xsl:sequence
             select="
                 if (f:isElementNameLocalSegmentMissing($element)) then
-                    f:generateHtmlError(fn:concat('The name of element ', $element/@name,
-                    ' is missing a local segment. Please provide one respecing the syntax prefix:localSegment.'))
+                    f:generateErrorMessage(fn:concat('The name of element ', $element/@name,
+                    ' is missing a local segment. Please provide one respecing the syntax prefix:localSegment.'),
+                    'The name of $elementName$ is missing a local segment. Please
+                    provide one respecing the syntax prefix:localSegment.',
+                    '//elements/element',
+                    'common-name-4'
+                    )
                 else
                     ()"
         />
@@ -105,9 +125,14 @@
         <xsl:sequence
             select="
                 if (f:isInvalidElementNamePrefix($element)) then
-                    f:generateHtmlError(fn:concat('The name prefix ', fn:substring-before($element/@name, ':'),
+                    f:generateErrorMessage(fn:concat('The name prefix ', fn:substring-before($element/@name, ':'),
                     ' , is invalid. Please provide a short prefix name ',
-                    'containing only alphanumeric characters [a-zA-Z0-9]+.'))
+                    'containing only alphanumeric characters [a-zA-Z0-9]+.'),
+                    'The name prefix is invalid in $value$. Please provide a short
+                    prefix name containing only alphanumeric characters [a-zA-Z0-9]+.',
+                    '//elements/element',
+                    'common-name-5'
+                    )
                 else
                     ()"
         />
@@ -125,8 +150,13 @@
         <xsl:if test="not(f:isValidNamespace($elementName))">
             <xsl:sequence
                 select="
-                    f:generateHtmlWarning(fn:concat('The prefix ', fn:substring-before($elementName, ':'),
-                    ' is not defined. A prefix must be associated to a namespace URI.'))"
+                    f:generateWarningMessage(fn:concat('The prefix ', fn:substring-before($elementName, ':'),
+                    ' is not defined. A prefix must be associated to a namespace URI.'),
+                    'The prefix $value$ is not defined. A prefix must be associated to a
+                    namespace URI.',
+                    '//elements/element',
+                    'common-name-6'
+                    )"
             />
         </xsl:if>
     </xsl:template>
@@ -142,10 +172,16 @@
         <xsl:sequence
             select="
                 if (f:isInvalidElementLocalSegmentName($element)) then
-                    f:generateHtmlError(fn:concat('The local name segment ', fn:substring-after($element/@name, ':'),
+                    f:generateErrorMessage(fn:concat('The local name segment ', fn:substring-after($element/@name, ':'),
                     ' , is invalid. Please provide a concise label using ',
                     'alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with ',
-                    'tokens delimited by single spaces.'))
+                    'tokens delimited by single spaces.'),
+                    'The local name segment is invalid in $value$. Please provide a
+                    concise label using alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase,
+                    or possibly with tokens delimited by single spaces.',
+                    '//elements/element',
+                    'common-name-7'
+                    )
                 else
                     ()"
         />
@@ -163,9 +199,14 @@
                 if (f:isValidElementFirstCharacterInLocalSegment($element)) then
                     ()
                 else
-                    f:generateHtmlError(fn:concat('The local name segment ', f:getLocalSegmentForElements($element),
+                    f:generateErrorMessage(fn:concat('The local name segment ', f:getLocalSegmentForElements($element),
                     ' starts with an invalid character. The local segment ',
-                    'must start with a letter or underscore.'))"
+                    'must start with a letter or underscore.'),
+                    'The local name segment $value$ starts with an invalid character.
+                    The local segment must start with a letter or underscore.',
+                    '//elements/element',
+                    'common-name-8'
+                    )"
         />
     </xsl:template>
 
@@ -180,9 +221,14 @@
         <xsl:sequence
             select="
                 if (f:isDelimitersInElementLocalSegment($element)) then
-                    f:generateHtmlWarning(fn:concat('The local name segment ', f:getLocalSegmentForElements($element),
+                    f:generateWarningMessage(fn:concat('The local name segment ', f:getLocalSegmentForElements($element),
                     ' contains token delimiters. It is best if the names ',
-                    'are camel cased and delimiters removed.'))
+                    'are camel cased and delimiters removed.'),
+                    'The local name segment $value$ contains token delimiters. 
+                    It is best if the names are camel-cased and delimiters removed.',
+                    '//elements/element',
+                    'common-name-9'
+                    )
                 else
                     ()
                 "
@@ -210,7 +256,12 @@
         <xsl:sequence
             select="
                 if ($noElementDescription = fn:true()) then
-                    f:generateHtmlWarning(fn:concat($elementName, ' is missing a description. All concepts should be defined or described.'))
+                    f:generateWarningMessage(fn:concat($elementName, ' is missing a description. All concepts should be defined or described.'),
+                    '$elementName$ is missing a description. 
+                    All concepts and properties should be defined and/or described.',
+                    '//elements/element',
+                    'common-description-10'
+                    )
                 else
                     ()"
         />
@@ -238,9 +289,14 @@
             select="
                 if ($hasStereotype)
                 then
-                    f:generateHtmlInfo(fn:concat('The ', $element/*/@stereotype,
+                    f:generateInfoMessage(fn:concat('The ', $element/*/@stereotype,
                     ' stareotype is applied to ', $element/@name,
-                    '. Stereotypes are discouraged in the current practice with some exceptions. '))
+                    '. Stereotypes are discouraged in the current practice with some exceptions. '),
+                    'The $stereotypeName$ stareotype is applied to
+                    $elementName$. Stereotypes are discouraged in the current practice with some exceptions.',
+                    '//elements/element',
+                    'common-stereotype-11'
+                    )
                 else
                     ()"
         />
@@ -267,9 +323,14 @@
                 then
                     ()
                 else
-                    f:generateHtmlWarning(fn:concat('The ', $element/*/@stereotype,
+                    f:generateWarningMessage(fn:concat('The ', $element/*/@stereotype,
                     ' stareotype applied to ', $element/@name,
-                    'is not known and will be ignored. '))"
+                    'is not known and will be ignored. '),
+                    'The $stereotypeName$ stareotype applied to $elementName$
+                    is not known and will be ignored.',
+                    '//elements/element',
+                    'common-stereotype-12'
+                    )"
         />
     </xsl:template>
 
@@ -288,7 +349,11 @@
                     if (f:isValidTagName($tag/@name)) then
                         ()
                     else
-                        f:generateHtmlError(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must be an URI.'))"/>
+                        f:generateErrorMessage(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must be an URI.'),
+                        'The tag $tagName$ of element $elementName$ must be an URI.',
+                        '//elements/element',
+                        'common-tag-13'
+                        )"/>
 
     </xsl:template>
 
@@ -307,7 +372,11 @@
                     if ($tag/@value) then
                         ()
                     else
-                        f:generateHtmlError(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must have a value'))"/>
+                        f:generateErrorMessage(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must have a value'),
+                        'The tag $tagName$ of element $elementName$ must have a value.',
+                        '//elements/element',
+                        'common-tag-14]'
+                        )"/>
 
     </xsl:template>
 
@@ -327,7 +396,12 @@
                     if ($tag/@name) then
                         ()
                     else
-                        f:generateHtmlError(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must have a valid name'))"/>
+                        f:generateErrorMessage(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must have a valid name'),
+                        'The tag $tagName$ of element $elementName$ must have a valid
+                        name.',
+                        '//elements/element',
+                        'common-tag-15'
+                        )"/>
 
     </xsl:template>
 
@@ -342,7 +416,11 @@
         <xsl:sequence
             select="
                 if (fn:ends-with($elementName, 'es') or fn:ends-with($elementName, 's')) then
-                    f:generateHtmlWarning('The name is possibly in plural grammatical number. Names shall be usually provided in singular number.')
+                f:generateWarningMessage(fn:concat('The name (', $elementName,') is possibly in plural grammatical number. Names shall be usually provided in singular number.'),
+                    'The name $value is possibly in plural grammatical number. Names shall be usually provided in singular number.',
+                    '//elements/element',
+                    'common-name-16'
+                    )
                 else
                     ()"
         />
@@ -364,9 +442,19 @@
                         if ((f:isValidNamespace($tag/@name)) or (fn:substring-before($tag/@name, ':') = '')) then
                             ()
                         else
-                            f:generateHtmlError(fn:concat('The prefix for ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
+                            f:generateErrorMessage(fn:concat('The prefix for ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
+                            'The Tag name prefix $value$ is not defined. A prefix must
+                            be associated to a namespace URI.',
+                            '//elements/element',
+                            'common-tag-prefix-17'
+                            )
                     else
-                        f:generateHtmlError(fn:concat('The prefix for ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
+                        f:generateErrorMessage(fn:concat('The prefix for ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
+                        'The Tag name prefix $value$ is not defined. A prefix must
+                        be associated to a namespace URI.',
+                        '//elements/element',
+                        'common-tag-prefix-17'
+                        )
                 "/>
 
     </xsl:template>
@@ -381,10 +469,15 @@
         <xsl:variable name="elementScope" select="$element/@scope"/>
         <xsl:sequence
             select="
-                if ($elementScope = 'public') then
-                    ()
-                else
-                    f:generateHtmlWarning(fn:concat('The element ', $element/@name, ' is non-public. All elements shall be public '))"
+            if ($elementScope = 'public') then
+            ()
+            else
+            f:generateWarningMessage(fn:concat('The element ', $element/@name, ' is non-public. All elements shall be public '),
+            'The element $name$ is non-public. All elements shall be
+            public.',
+            '//elements/element',
+            'common-visibility-18'
+            )"
         />
     </xsl:template>
 
@@ -411,11 +504,18 @@
                     <xsl:sequence
                         select="
                             if (count($elementsFound) > 0 or count($connectorsFound) > 0) then
-                                f:generateHtmlError(fn:concat('The name ', $element/@name, ' is not unique. The Concept names ',
+                                f:generateErrorMessage(fn:concat('The name ', $element/@name, ' is not unique. The Concept names ',
                                 'should be unique within the model. ',
                                 'The following specifies the names of the which things are not to be reused as the names of which other things: ',
                                 'attributes -> elements, connector roles (dependency and association)'
-                                ))
+                                ),
+                                'The name $value$ is not unique. The Concept names should be unique within the model. 
+                                The following list specifies the names of the which things are not to be reused as the names of which other things:
+                                (a) elements (Class, Datatype, Enumeration, Object) -> elements, attributes, connector roles (dependency and association);
+                                (b) attributes -> elements, connector roles (dependency and association)',
+                                '//elements/element',
+                                'common-name-19'
+                                )
                             else
                                 ()
                             
@@ -426,13 +526,19 @@
                     <xsl:sequence
                         select="
                         if (count($elementsFound) > 1 or count($connectorsFound) > 0 or count($attributesFound) > 0) then
-                                f:generateHtmlError(fn:concat('The name ', $element/@name, ' is not unique. The Concept names ',
+                                f:generateErrorMessage(fn:concat('The name ', $element/@name, ' is not unique. The Concept names ',
                                 'should be unique within the model. ',
                                 'The following specifies the names of the which things are not to be reused as the names of which other things: ',
-                                'elements (Class, Datatype, Enumeration, Object) -> elements, attributes, connector roles (dependency and association)'))
+                                'elements (Class, Datatype, Enumeration, Object) -> elements, attributes, connector roles (dependency and association)'),
+                                'The name $value$ is not unique. The Concept names should be unique within the model. 
+                                The following list specifies the names of the which things are not to be reused as the names of which other things:
+                                (a) elements (Class, Datatype, Enumeration, Object) -> elements, attributes, connector roles (dependency and association);
+                                (b) attributes -> elements, connector roles (dependency and association)',
+                                '//elements/element',
+                                'common-name-19'
+                                )
                             else
-                                ()
-                            
+                                ()  
                             "
                     />
                 </xsl:otherwise>

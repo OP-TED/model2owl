@@ -3,7 +3,7 @@
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:f="http://https://github.com/costezki/model2owl#"
     stylesheet="../../../src/html-conventions-lib/general-connectors-html-convention.xsl">
-    
+    <x:param name="reportType" select="'HTML'"/>
     <x:scenario label="Scenario for finding a Connector with name with prefix when Bi-directional  ">
         <x:call template="connectorMissingNamePrefix">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[38]"/>
