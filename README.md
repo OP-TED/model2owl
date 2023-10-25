@@ -17,9 +17,9 @@ _Transform a UML model into a formal OWL ontology, and a SHACL shape based on es
 
 ## About 
 
-This project comprises a set of tools for transforming an UML (v2.5) model from its XMI (v2.5.1) serialisation into a formal OWL ontology, and a SHACL shape. This approach is conformant to the [SEMIC Style Guide](https://OP-TED.github.io/style-guide/1.0.0/index.html) and with [eProcurement Ontology Architecture specification](https://github.com/meaningfy-ws/model2owl/blob/master/doc/ontology-architecture/ontology-architecture.pdf). 
+This project comprises a set of tools for transforming an UML (v2.5) model from its XMI (v2.5.1) serialisation into a formal OWL ontology, and a SHACL shape. This approach is conformant to the [SEMIC Style Guide](https://semiceu.github.io/style-guide/1.0.0/index.html) and with [eProcurement Ontology Architecture specification](https://github.com/meaningfy-ws/model2owl/blob/master/docs/ontology-architecture/ontology-architecture.pdf). 
 
-The UML transformation is performed using XSLT stylesheets under the assumption that the UML model conforms to the set of conventions outlined in the [EPO UML conventions documentation](https://meaningfy-ws.github.io/model2owl-docs/public-review/uml/conceptual-model-conventions.html). This set of UML conventions is an extension to the UML conventions specified in [SEMIC Style Guide](https://OP-TED.github.io/style-guide/1.0.0/index.html). 
+The UML transformation is performed using XSLT stylesheets under the assumption that the UML model conforms to the set of conventions outlined in the [EPO UML conventions documentation](https://meaningfy-ws.github.io/model2owl-docs/public-review/uml/conceptual-model-conventions.html). This set of UML conventions is an extension to the UML conventions specified in [SEMIC Style Guide](https://semiceu.github.io/style-guide/1.0.0/index.html). 
 
 The following capabilities are addressed:
 
@@ -32,7 +32,7 @@ The following capabilities are addressed:
 This work is developed in the context of [eProcurement ontology project](https://github.com/eprocurementontology/eprocurementontology) financed by the Digital Europe Programme and led by the [Publications Office of the European Union](https://op.europa.eu/en/).
 
 ### Documents
-* The **architectural design** and the formal specifications are provided in the [eProcurement Ontology Architecture specification](https://github.com/meaningfy-ws/model2owl/blob/master/doc/ontology-architecture/ontology-architecture.pdf).  
+* The **architectural design** and the formal specifications are provided in the [eProcurement Ontology Architecture specification](https://github.com/meaningfy-ws/model2owl/blob/master/docs/ontology-architecture/ontology-architecture.pdf).  
 * The technical **conventions** for the UML representation of the conceptual model are provided in [EPO UML conventions documentation](https://meaningfy-ws.github.io/model2owl-docs/public-review/uml/conceptual-model-conventions.html).
 * An **inventory** of conformance tests derived from the UML conventions document are provided in the [EPO UML conventions checking specification](https://meaningfy-ws.github.io/model2owl-docs/public-review/checkers/model2owl-checkers.html).
 * The **transformation rules** from UML into OWL and SHACL are provided in the [UML2OWL transformation rules](https://meaningfy-ws.github.io/model2owl-docs/public-review/transformation/uml2owl-transformation.html).
@@ -50,7 +50,7 @@ This work is developed in the context of [eProcurement ontology project](https:/
 https://github.com/meaningfy-ws/model2owl/tree/master/test/unitTests/test-html-conventions-lib) is the location of the unit tests for the script checking the conformance to the technical conventions of the conceptual model are
 * [test/unitTest/test-owl-core-lib](https://github.com/meaningfy-ws/model2owl/tree/master/test/unitTests/test-owl-core-lib) is the location of the unit tests for the transformation script for the core OWL ontology.
 * [test/unitTest/test-shacl-shape-lib](https://github.com/meaningfy-ws/model2owl/tree/master/test/unitTests/test-shacl-shape-lib) is the location of the unit tests for the transformation script for the SHACL data shape constraints.
-* [test/unitTest/reasoning-layer-lib](https://github.com/meaningfy-ws/model2owl/tree/master/test/unitTests/reasoning-layer-lib) is the location of the unit tests for the transformation script for the restrictions of OWL ontology (on classes and properties).
+* [test/unitTest/test-reasoning-layer-lib](https://github.com/meaningfy-ws/model2owl/tree/master/test/unitTests/test-reasoning-layer-lib) is the location of the unit tests for the transformation script for the restrictions of OWL ontology (on classes and properties).
 
 # How to use
 This project can be used in 2 different ways as follows.
