@@ -83,10 +83,10 @@
         <rdf:Description rdf:about="{$uri}">
             <xsl:choose>
                 <xsl:when test="$rdfsComment=fn:true()">
-                    <rdfs:comment><xsl:value-of select="$comment"/></rdfs:comment>
+                    <rdfs:comment><xsl:value-of select="fn:normalize-space($comment)"/></rdfs:comment>
                 </xsl:when>
                 <xsl:otherwise>
-                    <sh:description><xsl:value-of select="$comment"/></sh:description>
+                    <sh:description><xsl:value-of select="fn:normalize-space($comment)"/></sh:description>
                 </xsl:otherwise>
             </xsl:choose>
         </rdf:Description>

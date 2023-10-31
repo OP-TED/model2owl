@@ -229,8 +229,7 @@
     <xsl:template name="abstractClassDeclaration">
         <xsl:param name="classURI"/>
         <sh:sparql rdf:parseType="Resource">
-            <sh:select>SELECT ?this WHERE { ?this a &lt;<xsl:value-of select="$classURI"/>&gt; . }
-            </sh:select>
+            <sh:select>SELECT ?this WHERE { ?this a &lt;<xsl:value-of select="$classURI"/>&gt; . }</sh:select>
         </sh:sparql>
     </xsl:template>
 
