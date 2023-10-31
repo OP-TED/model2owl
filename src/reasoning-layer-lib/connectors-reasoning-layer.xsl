@@ -610,7 +610,7 @@
         <xsl:if test="f:getElementByIdRef($generalisation/source/@xmi:idref, root($generalisation)) and count($subClasses) > 1">
             
             <rdf:Description>
-                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl##AllDisjointClasses"/>
+                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
                 <owl:members rdf:parseType="Collection">
                     <xsl:for-each select="$subClasses">
                         <xsl:variable name="subClassURI" select="f:buildURIFromElement(.)"/>

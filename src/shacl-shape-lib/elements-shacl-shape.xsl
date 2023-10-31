@@ -109,7 +109,7 @@
             select="f:buildShapeURI($class/@name)"/>
         <xsl:variable name="classURI" select="f:buildURIFromElement($class)"/>
         <xsl:variable name="documentation"
-            select="f:formatDocString($class/properties/@documentation)"/>
+            select="fn:normalize-space(f:formatDocString($class/properties/@documentation))"/>
 
         <sh:NodeShape rdf:about="{$shapeClassUri}">
             <sh:targetClass rdf:resource="{$classURI}"/>
