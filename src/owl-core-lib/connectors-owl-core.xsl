@@ -190,7 +190,7 @@
                         ()"/>
 
         <xsl:variable name="documentation"
-            select="f:formatDocString(fn:string-join($connectorDocumentations))"/>
+            select="fn:normalize-space(f:formatDocString(fn:string-join($connectorDocumentations)))"/>
 
         <xsl:variable name="connectorNotes" as="xs:string*"
             select="
@@ -204,7 +204,7 @@
                         else
                             ()"/>
 
-        <xsl:variable name="note" select="f:formatDocString(fn:string-join($connectorNotes))"/>
+        <xsl:variable name="note" select="fn:normalize-space(f:formatDocString(fn:string-join($connectorNotes)))"/>
 
 
         <owl:ObjectProperty rdf:about="{$roleURI}"/>

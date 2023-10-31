@@ -109,7 +109,7 @@
             select="f:buildShapeURI($class/@name)"/>
         <xsl:variable name="classURI" select="f:buildURIFromElement($class)"/>
         <xsl:variable name="documentation"
-            select="f:formatDocString($class/properties/@documentation)"/>
+            select="fn:normalize-space(f:formatDocString($class/properties/@documentation))"/>
 
         <sh:NodeShape rdf:about="{$shapeClassUri}">
             <sh:targetClass rdf:resource="{$classURI}"/>
@@ -229,8 +229,7 @@
     <xsl:template name="abstractClassDeclaration">
         <xsl:param name="classURI"/>
         <sh:sparql rdf:parseType="Resource">
-            <sh:select>SELECT ?this WHERE { ?this a &lt;<xsl:value-of select="$classURI"/>&gt; . }
-            </sh:select>
+            <sh:select>SELECT ?this WHERE { ?this a &lt;<xsl:value-of select="$classURI"/>&gt; . }</sh:select>
         </sh:sparql>
     </xsl:template>
 

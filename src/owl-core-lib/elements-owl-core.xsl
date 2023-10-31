@@ -122,7 +122,7 @@
         <xsl:variable name="className" select="./@name"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
         <xsl:variable name="classURI" select="f:buildURIFromElement(.)"/>
-        <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
+        <xsl:variable name="documentation" select="fn:normalize-space(f:formatDocString(./properties/@documentation))"/>
 
         <owl:Class rdf:about="{$classURI}"/>
 
@@ -210,7 +210,7 @@
                 for $attribute in $attributesWithSameName
                 return
                     if ($attribute/documentation/@value) then
-                        fn:concat(f:formatDocString($attribute/documentation/@value), ' (', $attribute/../../@name, ') ')
+                    fn:concat(fn:normalize-space(f:formatDocString($attribute/documentation/@value)), ' (', $attribute/../../@name, ') ')
                     else
                         ()"/>
         <xsl:variable name="descriptionsWithAnnotations" as="xs:string"
@@ -316,7 +316,7 @@
         <xsl:variable name="dataTypeName" select="./@name"/>
         <xsl:variable name="idref" select="./@xmi:idref"/>
         <xsl:variable name="dataTypeURI" select="f:buildURIFromElement(.)"/>
-        <xsl:variable name="documentation" select="f:formatDocString(./properties/@documentation)"/>
+        <xsl:variable name="documentation" select="fn:normalize-space(f:formatDocString(./properties/@documentation))"/>
 
         <rdfs:Datatype rdf:about="{$dataTypeURI}"/>
 
@@ -357,7 +357,7 @@
 
             <xsl:variable name="conceptSchemeURI" select="f:buildURIFromElement(.)"/>
             <xsl:variable name="documentation"
-                select="f:formatDocString(./properties/@documentation)"/>
+                select="fn:normalize-space(f:formatDocString(./properties/@documentation))"/>
 
 
             <xsl:if
@@ -437,7 +437,7 @@
                         ./@name"/>
             <xsl:variable name="enumerationAttributeURI" select="f:buildURIFromElement(.)"/>
             <xsl:variable name="enumerationURI" select="f:buildURIFromElement(../..)"/>
-            <xsl:variable name="documentation" select="f:formatDocString(./documentation/@value)"/>
+            <xsl:variable name="documentation" select="fn:normalize-space(f:formatDocString(./documentation/@value))"/>
 
             <xsl:if
                 test="not(fn:contains($enumerationAttributeURI, $base-ontology-uri)) and $generateReusedConcepts">
