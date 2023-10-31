@@ -49,7 +49,7 @@
         <xsl:param name="elementUri"/>
         <rdf:Description rdf:about="{$elementUri}">
             <skos:definition xml:lang="en">
-                <xsl:value-of select="$definition"/>
+                <xsl:value-of select="fn:normalize-space($definition)"/>
             </skos:definition>
         </rdf:Description>
     </xsl:template>
