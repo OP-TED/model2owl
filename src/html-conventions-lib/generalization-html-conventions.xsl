@@ -91,7 +91,7 @@
                     'The class $parent$ has only one sub-class $child$.
                     Class inheritance should be built employing at least two subclasses for each class or
                     not at all.',
-                    'connector[./properties/@ea_type = Generalization]',
+                    path($generalizationConnector),
                     'generalisation-hierarchy-1'
                     )"
         />
@@ -118,7 +118,7 @@
                     'The classes $class1$ and $class2$ inherit one
                     another. Sub-class relation must be established in one direction only, forming a
                     hierarchy.',
-                    'connector[./properties/@ea_type = Generalization]',
+                    path($generalizationConnector),
                     'generalisation-hierarchy-2'
                     )
                 else
@@ -145,7 +145,7 @@
                     f:generateErrorMessage('The generalisation has multiplicity. No multiplicity can be provided to generalisations.',
                     'The generalisation has multiplicity. No multiplicity can
                     be provided to generalisations.',
-                    'connector[./properties/@ea_type = Generalization]',
+                    path($generalizationConnector),
                     'generalisation-multiplicity-3'
                     )"
         />
@@ -166,7 +166,7 @@
                     f:generateErrorMessage(fn:concat('The connector ', $generalizationConnector/@name, ' has a name. No name can be provided for generalisation relation.'),
                     'The connector $connectorName$ has a name. No name can be
                     provided for generalisation relation.',
-                    'connector[./properties/@ea_type = Generalization]',
+                    path($generalizationConnector),
                     'generalisation-name-4'
                     )
                 else
@@ -193,7 +193,7 @@
                     f:generateErrorMessage('The generalisation connector has a role name. No source or target roles can be provided to generalisations.',
                     'The generalisation connector has a role name. No source
                     or target roles can be provided to generalisations.',
-                    'connector[./properties/@ea_type = Generalization]',
+                    path($generalizationConnector),
                     'generalisation-name-5'
                     )"
         />
@@ -215,7 +215,7 @@
                     'Generalisations must employ Source -&gt; Destination direction only.'),
                     'The $direction$ direction is invalid.
                     Generalisations must employ Source->Destination direction only.',
-                    'connector[./properties/@ea_type = Generalization]',
+                    path($generalizationConnector),
                     'generalisation-direction-6'
                     )
                 else
@@ -241,7 +241,7 @@
                 f:generateErrorMessage('Generalisations can be provided only between classes or between connectors.',
                 'Generalisations can be provided only
                 between classes or between connectors.',
-                'connector[./properties/@ea_type = Generalization]',
+                path($generalizationConnector),
                 'generalisation-source-target-types-3'
                 )"
         />

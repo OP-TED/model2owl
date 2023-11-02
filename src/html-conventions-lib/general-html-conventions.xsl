@@ -124,7 +124,7 @@
                     ' are defined. All used namespaces shall be defined (prefix = base URI), including the default one. Here is the list of undefined prefixes'), $areAllPrefixesDefined,
                     'The prefixes $[list of undefined prefixes] are not defined.
                     All used namespaces shall be defined (prefix = base URI), including the default one.',
-                    '/',
+                    path($root),
                     'general-prefix-3'
                     )"
         />

@@ -39,16 +39,12 @@
             </xsl:if>
             <xsl:if test="$reportType = 'SVRL'">
 
-                <svrl:fired-rule id="{$ruleIdentifier}">
+                <svrl:fired-rule id="{$ruleIdentifier}"/>
+                <svrl:failed-assert location="{$pathChecked}" role="info" id="{$ruleIdentifier}">
                     <svrl:text>
-                        <xsl:value-of select="$ruleDescription"/>
+                        <xsl:value-of select="$infoMessage"/>
                     </svrl:text>
-                    <svrl:failed-assert location="{$pathChecked}" role="info" id="{$ruleIdentifier}">
-                        <svrl:text>
-                            <xsl:value-of select="$infoMessage"/>
-                        </svrl:text>
-                    </svrl:failed-assert>
-                </svrl:fired-rule>
+                </svrl:failed-assert>
 
             </xsl:if>
         </xsl:sequence>
@@ -76,16 +72,13 @@
             </xsl:if>
             <xsl:if test="$reportType = 'SVRL'">
 
-                <svrl:fired-rule id="{$ruleIdentifier}">
+                <svrl:fired-rule id="{$ruleIdentifier}"/>
+                <svrl:failed-assert location="{$pathChecked}" role="warning" id="{$ruleIdentifier}">
                     <svrl:text>
-                        <xsl:value-of select="$ruleDescription"/>
+                        <xsl:value-of select="$warningMessage"/>
                     </svrl:text>
-                    <svrl:failed-assert location="{$pathChecked}" role="info" id="{$ruleIdentifier}">
-                        <svrl:text>
-                            <xsl:value-of select="$warningMessage"/>
-                        </svrl:text>
-                    </svrl:failed-assert>
-                </svrl:fired-rule>
+                </svrl:failed-assert>
+           
 
             </xsl:if>
         </xsl:sequence>
@@ -111,18 +104,12 @@
                 </dd>
             </xsl:if>
             <xsl:if test="$reportType = 'SVRL'">
-
-                <svrl:fired-rule id="{$ruleIdentifier}">
-                    <svrl:text>
-                        <xsl:value-of select="$ruleDescription"/>
-                    </svrl:text>
-                    <svrl:failed-assert location="{$pathChecked}" role="info" id="{$ruleIdentifier}">
+                <svrl:fired-rule id="{$ruleIdentifier}"/>
+                    <svrl:failed-assert location="{$pathChecked}" role="error" id="{$ruleIdentifier}">
                         <svrl:text>
                             <xsl:value-of select="$errorMessage"/>
                         </svrl:text>
                     </svrl:failed-assert>
-                </svrl:fired-rule>
-
             </xsl:if>
         </xsl:sequence>
     </xsl:function>
@@ -158,22 +145,19 @@
             </xsl:if>
             <xsl:if test="$reportType = 'SVRL'">
                 
-                <svrl:fired-rule id="{$ruleIdentifier}">
+                <svrl:fired-rule id="{$ruleIdentifier}"/>
+                <svrl:failed-assert location="{$pathChecked}" role="info" id="{$ruleIdentifier}">
                     <svrl:text>
-                        <xsl:value-of select="$ruleDescription"/>
+                        <xsl:value-of select="fn:concat($infoMessage, ' ')"/>
+                        <xsl:for-each select="$elementsList">
+                            <xsl:value-of select="."/>
+                            <xsl:if test="position() != last()">
+                                <xsl:value-of select="', '"/>
+                            </xsl:if>
+                        </xsl:for-each>
                     </svrl:text>
-                    <svrl:failed-assert location="{$pathChecked}" role="info" id="{$ruleIdentifier}">
-                        <svrl:text>
-                            <xsl:value-of select="fn:concat($infoMessage, ' ')"/>
-                            <xsl:for-each select="$elementsList">
-                                <xsl:value-of select="."/>
-                                <xsl:if test="position() != last()">
-                                    <xsl:value-of select="', '"/>
-                                </xsl:if>
-                            </xsl:for-each>
-                        </svrl:text>
-                    </svrl:failed-assert>
-                </svrl:fired-rule>
+                </svrl:failed-assert>
+
                 
             </xsl:if>
         </xsl:sequence>
@@ -210,24 +194,19 @@
             </xsl:if>
             <xsl:if test="$reportType = 'SVRL'">
                 
-                <svrl:fired-rule id="{$ruleIdentifier}">
+                <svrl:fired-rule id="{$ruleIdentifier}"/>
+                <svrl:failed-assert location="{$pathChecked}" role="warning" id="{$ruleIdentifier}">
                     <svrl:text>
-                        <xsl:value-of select="$ruleDescription"/>
+                        <xsl:value-of select="fn:concat($warningMessage, ' ')"/>
+                        
+                        <xsl:for-each select="$elementsList">
+                            <xsl:value-of select="."/>
+                            <xsl:if test="position() != last()">
+                                <xsl:value-of select="', '"/>
+                            </xsl:if>
+                        </xsl:for-each>
                     </svrl:text>
-                    <svrl:failed-assert location="{$pathChecked}" role="info" id="{$ruleIdentifier}">
-                        <svrl:text>
-                            <xsl:value-of select="fn:concat($warningMessage, ' ')"/>
-                            
-                            <xsl:for-each select="$elementsList">
-                                <xsl:value-of select="."/>
-                                <xsl:if test="position() != last()">
-                                    <xsl:value-of select="', '"/>
-                                </xsl:if>
-                            </xsl:for-each>
-                        </svrl:text>
-                    </svrl:failed-assert>
-                </svrl:fired-rule>
-                
+                </svrl:failed-assert>   
             </xsl:if>
         </xsl:sequence>
     </xsl:function>
@@ -263,23 +242,18 @@
             </xsl:if>
             <xsl:if test="$reportType = 'SVRL'">
                 
-                <svrl:fired-rule id="{$ruleIdentifier}">
+                <svrl:fired-rule id="{$ruleIdentifier}"/>
+                <svrl:failed-assert location="{$pathChecked}" role="error" id="{$ruleIdentifier}">
                     <svrl:text>
-                        <xsl:value-of select="$ruleDescription"/>
+                        <xsl:value-of select="fn:concat($errorMessage, ' ')"/>
+                        <xsl:for-each select="$elementsList">
+                            <xsl:value-of select="."/>
+                            <xsl:if test="position() != last()">
+                                <xsl:value-of select="', '"/>
+                            </xsl:if>
+                        </xsl:for-each>
                     </svrl:text>
-                    <svrl:failed-assert location="{$pathChecked}" role="info" id="{$ruleIdentifier}">
-                        <svrl:text>
-                            <xsl:value-of select="fn:concat($errorMessage, ' ')"/>
-                            <xsl:for-each select="$elementsList">
-                                <xsl:value-of select="."/>
-                                <xsl:if test="position() != last()">
-                                    <xsl:value-of select="', '"/>
-                                </xsl:if>
-                            </xsl:for-each>
-                        </svrl:text>
-                    </svrl:failed-assert>
-                </svrl:fired-rule>
-                
+                </svrl:failed-assert>    
             </xsl:if>
         </xsl:sequence>
     </xsl:function>

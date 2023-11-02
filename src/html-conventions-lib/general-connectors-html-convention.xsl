@@ -36,7 +36,7 @@
                         'The name should respect the syntax prefix:localSegment (similar to the XML QName).'),
                         'The role names does not match the pattern. The name should
                         respect the syntax prefix:localSegment (similar to the XML QName).',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-name-1'
                         )
                     else
@@ -52,7 +52,7 @@
                         'The name should respect the syntax prefix:localSegment (similar to the XML QName).'),
                         'The role names does not match the pattern. The name should
                         respect the syntax prefix:localSegment (similar to the XML QName).',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-name-1'
                         )
                     else
@@ -80,7 +80,7 @@
                         'The name should comprise a prefix respecing the syntax prefix:localSegment.'),
                         'The role names is missing a prefix. The name should comprise a
                         prefix respecing the syntax prefix:localSegment',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-name-2'
                         )
                     else
@@ -96,7 +96,7 @@
                         'The name should comprise a prefix respecing the syntax prefix:localSegment.'),
                         'The role names is missing a prefix. The name should comprise a
                         prefix respecing the syntax prefix:localSegment',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-name-2'
                         )
                     else
@@ -124,7 +124,7 @@
                         ' is missing a local segment. Please provide one respecing the syntax prefix:localSegment.'),
                         'The role names is missing a local segment. Please provide one
                         respecing the syntax prefix:localSegment',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-name-3'
                         )
                     else
@@ -139,7 +139,7 @@
                         ' is missing a local segment. Please provide one respecing the syntax prefix:localSegment.'),
                         'The role names is missing a local segment. Please provide one
                         respecing the syntax prefix:localSegment',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-name-3'
                         )
                     else
@@ -169,7 +169,7 @@
                         'containing only alphanumeric characters [a-zA-Z0-9]+.'),
                         'The name prefix is invalid in $value$. Please provide a short
                         prefix name containing only alphanumeric characters [a-zA-Z0-9]+',
-                        '//connectors/connector',
+                        path($connector),
                         'common-name-4]'
                         )
                     else
@@ -185,7 +185,7 @@
                         'containing only alphanumeric characters [a-zA-Z0-9]+.'),
                         'The name prefix is invalid in $value$. Please provide a short
                         prefix name containing only alphanumeric characters [a-zA-Z0-9]+',
-                        '//connectors/connector',
+                        path($connector),
                         'common-name-4]'
                         )
                     else
@@ -214,7 +214,7 @@
                         ' is not defined. A prefix must be associated to a namespace URI.'),
                         'The prefix $value$ is not defined. A prefix must be associated to a
                         namespace URI.',
-                        '//connectors/connector',
+                        path($connector),
                         'common-name-5'
                         )
                     "
@@ -230,7 +230,7 @@
                         ' is not defined. A prefix must be associated to a namespace URI.'),
                         'The prefix $value$ is not defined. A prefix must be associated to a
                         namespace URI.',
-                        '//connectors/connector',
+                        path($connector),
                         'common-name-5'
                         )
                     "
@@ -260,7 +260,7 @@
                         'The local name segment is invalid in $value$. Please provide a
                         concise label using alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase,
                         or possibly with tokens delimited by single spaces.',
-                        '//connectors/connector',
+                        path($connector),
                         'common-name-6'
                         )
                     else
@@ -278,7 +278,7 @@
                         'The local name segment is invalid in $value$. Please provide a
                         concise label using alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase,
                         or possibly with tokens delimited by single spaces.',
-                        '//connectors/connector',
+                        path($connector),
                         'common-name-6'
                         )
                     else
@@ -307,7 +307,7 @@
                         'must start with a letter or underscore.'),
                         'The local name segment $value$ starts with an invalid character.
                         The local segment must start with a letter or underscore.',
-                        '//connectors/connector',
+                        path($connector),
                         'common-name-7'
                         )
                     "
@@ -324,7 +324,7 @@
                         'must start with a letter or underscore.'),
                         'The local name segment $value$ starts with an invalid character.
                         The local segment must start with a letter or underscore.',
-                        '//connectors/connector',
+                        path($connector),
                         'common-name-7'
                         )
                     "
@@ -352,7 +352,7 @@
                         'are camel cased and delimiters removed.'),
                         'The local name segment $value$ contains token delimiters. It is
                         best if the names are camel cased and delimiters removed.',
-                        '//connectors/connector',
+                        path($connector),
                         'common-name-8'
                         )
                     else
@@ -368,7 +368,7 @@
                         'are camel cased and delimiters removed.'),
                         'The local name segment $value$ contains token delimiters. It is
                         best if the names are camel cased and delimiters removed.',
-                        '//connectors/connector',
+                        path($connector),
                         'common-name-8'
                         )
                     else
@@ -400,7 +400,7 @@
                     'is not known and will be ignored. '),
                     'The $stereotypeName$ stareotype applied to $elementName$
                     is not known and will be ignored.',
-                    '//connectors/connector',
+                    path($connector),
                     'connector-stereotype-9'
                     )"
         />
@@ -424,7 +424,7 @@
                     '. Stereotypes are discouraged in the current practice with some exceptions. '),
                     'The $stereotypeName$ stareotype is applied to
                     connector. Stereotypes are discouraged in the current practice with some exceptions.',
-                    '//connectors/connector',
+                    path($connector),
                     'connector-stereotype-10'
                     )
                 else
@@ -451,7 +451,7 @@
                     to define and describe all the relations.',
                     'The connector is missing a description. All concepts and properties 
                     should be defined and/or described.',
-                    '//connectors/connector',
+                    path($connector),
                     'connector-description-11'
                     )"
             />
@@ -466,7 +466,7 @@
                     to define and describe all the relations.',
                     'The connector is missing a description. All concepts and properties 
                     should be defined and/or described.',
-                    '//connectors/connector',
+                    path($connector),
                     'connector-description-11'
                     )"/>
 
@@ -490,7 +490,7 @@
                     else
                         f:generateErrorMessage(fn:concat('The source tag ', $tag/@name, ' must be an URI.'),
                         'The tag $tagName$ must be an URI.',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-tag-12'
                         )"/>
         <xsl:sequence
@@ -502,7 +502,7 @@
                     else
                         f:generateErrorMessage(fn:concat('The target tag ', $tag/@name, ' must be an URI.'),
                         'The tag $tagName$ must be an URI.',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-tag-12'
                         )"/>
 
@@ -528,14 +528,14 @@
                             f:generateWarningMessage(fn:concat('The prefix for source role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
                             'The Tag name prefix $value$ is not defined. A prefix
                             must be associated to a namespace URI.',
-                            '//connectors/connector',
+                            path($connector),
                             'connector-tag-prefix-13'
                             )
                     else
                         f:generateWarningMessage(fn:concat('The prefix for source role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
                         'The Tag name prefix $value$ is not defined. A prefix
                         must be associated to a namespace URI.',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-tag-prefix-13'
                         )
                 "/>
@@ -550,14 +550,14 @@
                             f:generateWarningMessage(fn:concat('The prefix for target role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
                             'The Tag name prefix $value$ is not defined. A prefix
                             must be associated to a namespace URI.',
-                            '//connectors/connector',
+                            path($connector),
                             'connector-tag-prefix-13'
                             )
                     else
                         f:generateWarningMessage(fn:concat('The prefix for target role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
                         'The Tag name prefix $value$ is not defined. A prefix
                         must be associated to a namespace URI.',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-tag-prefix-13'
                         )
                 "/>
@@ -582,7 +582,7 @@
                     else
                         f:generateErrorMessage(fn:concat('The source tag ', $tag/@name, ' must have a value'),
                         'The tag $tagName$ must have a value.',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-tag-14'
                         )"/>
         <xsl:sequence
@@ -594,7 +594,7 @@
                     else
                         f:generateErrorMessage(fn:concat('The target tag ', $tag/@name, ' must have a value'),
                         'The tag $tagName$ must have a value.',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-tag-14'
                         )"/>
 
@@ -618,7 +618,7 @@
                     else
                         f:generateErrorMessage(fn:concat('The source tag ', $tag/@name, ' must have a valid name'),
                         'The tag $tagName$ must have a valid name.',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-tag-15'
                         )"/>
         <xsl:sequence
@@ -630,7 +630,7 @@
                     else
                         f:generateErrorMessage(fn:concat('The target tag ', $tag/@name, ' must have a valid name'),
                         'The tag $tagName$ must have a valid name.',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-tag-15'
                         )"
         />
@@ -651,7 +651,7 @@
                     f:generateWarningMessage(fn:concat('The connector ', f:getConnectorName($connector), ' target role has tag annotations but no name. The connector must have a target role to sustain annotations.'),
                     'The connector $connectorName$ target role has tag annotations
                     but no name. The connector must have a target role to sustain annotations.',
-                    '//connectors/connector',
+                    path($connector),
                     'connector-target-tag-16'
                     )
                 else
@@ -676,7 +676,7 @@
                     f:generateWarningMessage(fn:concat('The connector ', f:getConnectorName($connector), ' source role has tag annotations but no name. The connector must have a source role to sustain annotations.'),
                     'The connector $connectorName$ source role has tag annotations
                     but no name. The connector must have a source role to sustain annotations.',
-                    '//connectors/connector',
+                    path($connector),
                     'connector-source-tag-17'
                     )
                 else
@@ -701,7 +701,7 @@
                     'The connector is not transformed into a property and therefore any tag will be ignored.'),
                     'The connector $connectorName$ has tag annotations. The
                     connector is not transformed into a property and therefore any tag will be ignored.',
-                    '//connectors/connector',
+                    path($connector),
                     'connector-tag-18'
                     )
                 else
@@ -728,7 +728,7 @@
                     'connector name.'),
                     'The connector has a general name, and it should not. The
                     names must be provided as connector source and target roles, not as connector name.',
-                    '//connectors/connector',
+                    path($connector),
                     'connector-name-19'
                     )"
         />
@@ -749,7 +749,7 @@
                     ' has no target role. The connectors must have target roles.'),
                     'The connector $connectorName$ has no target role. The
                     connectors must have target roles.',
-                    '//connectors/connector',
+                    path($connector),
                     'connector-target-20'
                     )
                 else
@@ -777,7 +777,7 @@
                     '. Connectors must employ Source->Destination or Bi-directional directions only.'),
                     'The connector $connectorName$ employs invalid direction $direction$. 
                     Connectors must employ Source->Destination or Bidirectional directions only. ',
-                    '//connectors/connector',
+                    path($connector),
                     'connector-direction-21'
                     )"
         />
@@ -798,7 +798,7 @@
                     ' has no multiplicity. Cardinality must be provided for each role.'),
                     'The target role of $connectorName$ has no
                     multiplicity. Cardinality must be provided for each role.',
-                    '//connectors/connector',
+                    path($connector),
                     'connector-multiplicity-22'
                     )
                 else
@@ -827,7 +827,7 @@
                         ' has target multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'),
                         'The connector $connectorName$ has target multiplicity
                         invalidly stated. Multiplicity must be specified in the form [min..max].',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-multiplicity-23'
                         )
                     "
@@ -862,7 +862,7 @@
                         'The connector direction and roles are out of sync. When
                         the connector direction is Source->Destination then only a target role is expected,
                 while for Bi-Directional direction source and a target roles are expected.',
-                        '//connectors/connector',
+                path($connector),
                         'connector-direction-24'
                         )"
             />
@@ -880,7 +880,7 @@
                         'The connector direction and roles are out of sync. When
                         the connector direction is Source->Destination then only a target role is expected,
                         while for Bi-Directional direction source and a target roles are expected.',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-direction-24'
                         )"
             />
@@ -915,7 +915,7 @@
                         but only as connector role names on the same type of connector. I.e. the  name of 
                         (dependecy and association) connector roles should not be reused as the name of 
                         elements  (Class, Datatype, Enumeration, Object) or attributes.',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-name-25'
                         )
                     else
@@ -940,7 +940,7 @@
                         but only as connector role names on the same type of connector. I.e. the  name of 
                         (dependecy and association) connector roles should not be reused as the name of 
                         elements  (Class, Datatype, Enumeration, Object) or attributes.',
-                        '//connectors/connector',
+                        path($connector),
                         'connector-name-25'
                         )
                     else
@@ -984,7 +984,7 @@
                             but only as connector role names on the same type of connector. 
                             I.e. the  name of a dependecy role should not be reused as the name of association role, 
                             and the name of association role should not be reused as the  name of a dependecy role.',
-                            '//connectors/connector',
+                            path($connector),
                             'connector-name-26'
                             )
                             else
@@ -1007,7 +1007,7 @@
                             but only as connector role names on the same type of connector. 
                             I.e. the  name of a dependecy role should not be reused as the name of association role, 
                             and the name of association role should not be reused as the  name of a dependecy role.',
-                            '//connectors/connector',
+                            path($connector),
                             'connector-name-26'
                             )
                             else
@@ -1035,7 +1035,7 @@
                             but only as connector role names on the same type of connector. 
                             I.e. the  name of a dependecy role should not be reused as the name of association role, 
                             and the name of association role should not be reused as the  name of a dependecy role.',
-                            '//connectors/connector',
+                            path($connector),
                             'connector-name-26'
                             )
                             else
@@ -1058,7 +1058,7 @@
                             but only as connector role names on the same type of connector. 
                             I.e. the  name of a dependecy role should not be reused as the name of association role, 
                             and the name of association role should not be reused as the  name of a dependecy role.',
-                            '//connectors/connector',
+                            path($connector),
                             'connector-name-26'
                             )
                             else

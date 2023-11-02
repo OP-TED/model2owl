@@ -171,7 +171,7 @@
                     f:generateWarningMessage(fn:concat('The class ', $class/@name,
                     ' is is disconnected. A class should be connected to other elements.'),
                     'The class $className$ is disconnected. A class should be connected to other elements.',
-                    '//elements/element[xmi:type=uml:Class]',
+                    path($class),
                     'class-connector-4'
                     )"
         />
@@ -192,7 +192,7 @@
                 if ($classNumberOfAttributes = 0) then
                     f:generateWarningMessage(fn:concat('The class ', $class/@name, ' has no attributes provided. A class should define some attributes.'),
                     'The class $className$ nas no attributes provided. A class should define some attributes.',
-                    '//elements/element[xmi:type=uml:Class]',
+                    path($class),
                     'class-attributes-3'
                     )
                 else
@@ -218,7 +218,7 @@
                     then
                         f:generateWarningMessage(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'),
                         'The class name $value$ is invalid. The class name must start with a capital case.',
-                        '//elements/element[xmi:type=uml:Class]',
+                        path($class),
                         'class-name-2'
                         )
                     else
@@ -230,7 +230,7 @@
                     else
                         f:generateWarningMessage(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'),
                         'The class name $value$ is invalid. The class name must start with a capital case.',
-                        '//elements/element[xmi:type=uml:Class]',
+                        path($class),
                         'class-name-2'
                         )"
         />

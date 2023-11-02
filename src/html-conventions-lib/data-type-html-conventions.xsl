@@ -163,7 +163,7 @@
                 'is not an XSD or RDF datatype.  It is recommended to use XSD and RDF datatypes mainly.'),
                 'The datatype is not an XSD or RDF datatype. 
                 It is recommended to use XSD and RDF datatypes mainly.',
-                '//elements/element[xmi:type=uml:DataType]',
+                path($dataTypeElement),
                 'datatype-name-2'
                 )"
             />
@@ -188,7 +188,7 @@
             ' is not atomic. Complex datatypes where attributes/components are specified shall be represented as classes.'),
             'The datatype $value$ is not atomic. 
             Complex datatypes where attributes/components are specified shall be represented as classes.',
-            '//elements/element[xmi:type=uml:DataType]',
+            path($dataTypeElement),
             'datatype-attribute-3'
             )
             else
@@ -215,7 +215,7 @@
             ' should not connect to other elements. A Datatype can only be referred to.'),
             'The datatype $value should not connect to other elements.
             A Datatype can only be referred to.',
-            '//elements/element[xmi:type=uml:DataType]',
+            path($dataTypeElement),
             'datatype-attribute-3'
             )
             else

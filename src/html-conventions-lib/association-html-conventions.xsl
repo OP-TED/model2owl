@@ -158,7 +158,7 @@
             f:generateErrorMessage(fn:concat('The source role of ', f:getConnectorName($connector),
             ' has no multiplicity. Cardinality must be provided for each role.'),
             'The target role of $connectorName$ has no multiplicity. Cardinality must be provided for each role',
-            '//connectors/connector/properties[@ea_type=Association]',
+            path($connector),
             'association-multiplicity-1')
             else
             ()"
@@ -185,7 +185,7 @@
                 ' has source multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'),
                 'The connector $connectorName$ has source multiplicity
                 invalidly stated. Multiplicity must be specified in the form [min..max].',
-                '//connectors/connector/properties[@ea_type=Association]',
+                path($connector),
                 'association-multiplicity-2')
                 "
             />
@@ -210,7 +210,7 @@
                 else
                 f:generateErrorMessage('Associations can be provided only between classes to classes and classes to objects.',
                 'Associations can be provided only between classes to classes and classes to objects.',
-                '//connectors/connector/properties[@ea_type=Association]',
+                path($connector),
                 'association-source-target-types-3')"
         />
     </xsl:template>

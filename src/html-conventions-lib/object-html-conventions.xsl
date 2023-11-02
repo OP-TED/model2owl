@@ -170,7 +170,7 @@
             f:generateWarningMessage(fn:concat('The object ', $object/@name,
             ' shall have no values/attributes defined. '),
             'The object $value$ shall have no values/attributes defined. ',
-            '//elements/element[@xmi:type = uml:Object]',
+            path($object),
             'object-attribute-2'
             )
             else
@@ -197,7 +197,7 @@
             f:generateErrorMessage(fn:concat('The object ', $object/@name,
             ' should not connect to other elements.'),
             'The object $value should not connect to other elements. ',
-            '//elements/element[@xmi:type = uml:Object]',
+            path($object),
             'object-connector-3'
             )
             else
@@ -225,7 +225,7 @@
             ' should instanciate a Class or Enumeration. There shall be at least one Realisation relationship between Object and a Class or Enumeration.'),
             'The object $name should instanciate a Class or Enumeration. 
             There shall be at least one Realisation relationship between the Object and a Class or Enumeration.',
-            '//elements/element[@xmi:type = uml:Object]',
+            path($object),
             'object-connector-4'
             )
             else

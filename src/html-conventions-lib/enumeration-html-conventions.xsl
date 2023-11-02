@@ -167,7 +167,7 @@
             ' shall have no values/attributes defined. An Enumeration stands for a controlled list and its management is out of model scope. '),
             'The enumeration $value$ shall have no values/attributes defined. 
             An Enumeration stands for a controlled list and its management is out of model scope.',
-            '//elements/element[@xmi:type = uml:Enumeration]',
+            path($enumeration),
             'enumeration-attribute-2'
             )
             else
@@ -194,7 +194,7 @@
                     ' should not connect to other elements. An Enumeration stands for an controlled list and can only be referred to.'),
                     'The enumeration $value should not connect to other elements. 
                     An Enumeration stands for an controlled list and can only be referred to.',
-                    '//elements/element[@xmi:type = uml:Enumeration]',
+                    path($enumeration),
                     'enumeration-connector-3'
                     )
                 else

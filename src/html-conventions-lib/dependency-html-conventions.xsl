@@ -149,7 +149,7 @@
                     f:generateErrorMessage('The direction is not Source -&gt; Destination. Dependecy direction can be only Source -&gt; Destination. ',
                     'The direction is not Source->Destination. Dependecy
                     direction can be only Source->Destination.',
-                    'connectors/connector[./properties/@ea_type = Dependency]',
+                    path($dependencyConnector),
                     'dependency-direction-1'
                     )
                 else
@@ -176,7 +176,7 @@
                 f:generateErrorMessage('Dependecies can be provided only between classes and enumerations or objects.',
                 'Dependecies can be provided only between classes 
                 and enumerations or objects.',
-                'connectors/connector[./properties/@ea_type = Dependency]',
+                path($dependencyConnector),
                 'dependency-source-target-types-2'
                 )"
         />

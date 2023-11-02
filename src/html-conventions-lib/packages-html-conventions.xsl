@@ -93,7 +93,7 @@
                         'The package name $packageName$ contains invalid characters.
                         Package name shall be a short alphanumeric string representing an acronym or a short
                         name.',
-                        'elements/element[@xmi:type = uml:Package]',
+                        path($package),
                         'package-name-1'
                         )"
             />
@@ -114,7 +114,7 @@
             f:generateErrorMessage(fn:concat('The name of the package ', $package/@xmi:idref,
             ' is missing.  Packages must be named.'),
             'The name of the package $IdRef$ is missing.  Packages must be named.',
-            'elements/element[@xmi:type = uml:Package]',
+            path($package),
             'package-name-2'
             )
                 else
@@ -137,7 +137,7 @@
                 f:generateWarningMessage(fn:concat('The package ',$package/@name ,' is empty. Packages must contain child classes and conenctors (i.e. owned elements).'),
                 'The package $packageName$ is empty.
                 Packages must contain child classes and conenctors (i.e. owned elements).',
-                'elements/element[@xmi:type = uml:Package]',
+                path($package),
                 'package-owned-elements-3'
                 )"
         />
