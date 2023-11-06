@@ -87,8 +87,7 @@
                 else
                 f:generateInfoMessage(
                 'When a property is reused in multiple contexts the multiplicity is expected to be the same.',
-                'Check the multiplicity values from a group of connectors with same name',
-                '//connectors/connector',
+                '//connectors',
                 'connectors-with-same-name-multiplicity-1'
                 
                 )"
@@ -127,20 +126,14 @@
                 if (f:areStringsEqual($definitionValues) and fn:boolean($definitionValues and $allConnectorsHaveDefinition)) then
                 f:generateFormattedInfoMessage(fn:concat('The property is reused in multiple contexts, the meaning given by the definition is the same.  ',
                     'Here is the property usage: '), $descriptionsWithAnnotations,
-                    'When a property is reused in multiple contexts, 
-                    the meaning given by the definition is expected to be the same. In this case, multiple definitions 
-                    are found.',
-                    '//connectors/connector',
+                    '//connectors',
                     'connectors-with-same-name-definition-2'
                     )
                 else
                     if (fn:boolean($definitionValues)) then
                     f:generateFormattedWarningMessage(fn:concat('When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. ',
                                                     'In this case, multiple definitions are found: '), $descriptionsWithAnnotations,
-                                                    'When a property is reused in multiple contexts, 
-                                                    the meaning given by the definition is expected to be the same. In this case, multiple definitions 
-                                                    are found.',
-                                                    '//connectors/connector',
+                                                    '//connectors',
                                                     'connectors-with-same-name-definition-2'
                                                     )
                     else
@@ -170,9 +163,7 @@
             else
             f:generateErrorMessage(fn:concat('The name ', $connectorName,
             ' appears on connectors of different types.  A name shall be reused only on connectors of the same type.'),
-            'The name $Name appears on connectors of different types.  
-            A name shall be reused only on connectors of the same type.',
-            '//connectors/connector',
+            '//connectors',
             'connectors-with-same-name-name-3'
             )"
         />

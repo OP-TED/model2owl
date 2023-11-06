@@ -168,7 +168,6 @@
                     if (f:isQNameLowerCasedCamelCase($classAttributeName) = fn:false())
                     then
                         f:generateWarningMessage(fn:concat('The attribute name ', $classAttributeName, ' is invalid. The attribute name must start with a lower case.'),
-                        'The attribute name $value$ is invalid. The attribute name must start with a lower case.',
                         path($classAttribute),
                         'class-attribute-name-1')
                     else
@@ -177,7 +176,6 @@
                     if (fn:contains($uppercaseLetters, fn:substring($classAttributeName, 1, 1)))
                     then
                         f:generateWarningMessage(fn:concat('The attribute name ', $classAttributeName, ' is invalid. The attribute name must start with a lower case.'),
-                        'The attribute name $value$ is invalid. The attribute name must start with a lower case.',
                         path($classAttribute),
                         'class-attribute-name-1')
                     else
@@ -203,9 +201,6 @@
             f:generateErrorMessage(fn:concat('The attribute ', $classAttribute/@name, ' multiplicity is incorrect. ',
             'Multiplicity must be specified in the form [min..max] and the values should ',
             'be defined with a digit or *'),
-            'The attribute $attributeName$ multiplicity is
-            incorrect. Multiplicity must be specified in the form [min..max] and the values
-            should be defined with a digit or *',
             path($classAttribute),
             'class-attribute-multiplicity-2')
             "
@@ -236,7 +231,6 @@
                     f:generateErrorMessage(fn:concat('The attribute type ', $classAttribute/properties/@type,
                     ' type is invalid. Attributes must use types that are either: (a) XSD or RDF datatypes or',
                     ' (b) belonging to a shortlist of custom URIs (datatypes or classes).'),
-                    'The attribute type $attributeType$ is invalid. Attributes must use datatypes that are either: (a) XSD or RDF datatypes or (b) belonging to a shortlist of custom URIs (datatypes or classes).',
                     path($classAttribute),
                     'class-attribute-type-3')
                 "
@@ -260,8 +254,6 @@
             f:generateWarningMessage(fn:concat('The attribute ', $classAttribute/@name, ' multiplicity is missing. ',
             'Multiplicity must be specified in the form [min..max] and the values should ',
             'be defined with a digit or *'),
-            'The attribute $attributeName$ multiplicity is missing. Multiplicity must be specified in the form [min..max] 
-            and the values should be defined with a digit or *',
             path($classAttribute),
             'class-attribute-multiplicity-4'
             )"
@@ -282,7 +274,6 @@
             ()
             else
             f:generateWarningMessage(fn:concat('The attribute ', $classAttribute/@name, ' is non-public. Attributes shall be public '),
-            'The attribute type $attributeType$ is non-public. Attributes shall be public.',
             path($classAttribute),
             'class-attribute-visibility-5'
             )"

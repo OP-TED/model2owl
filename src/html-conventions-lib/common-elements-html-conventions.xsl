@@ -35,8 +35,6 @@
                 select="
                     f:generateWarningMessage(fn:concat('The name ', $elementName, ' does not match the pattern. ',
                     'The name should respect the syntax prefix:localSegment (similar to the XML QName).'),
-                    'The name $elementName$ does not match the pattern. The name
-                    should respect the syntax prefix:localSegment (similar to the XML QName).',
                     path($element),
                     'common-name-1'
                     )"
@@ -59,8 +57,6 @@
                 if (f:isElementNameMissing($element)) then
                     f:generateErrorMessage(fn:concat('The name of the element ', $element/@xmi:idref,
                     ' is missing. Please provide one respecing the syntax prefix:localSegment.'),
-                    'The name of the element $IdRef$ is missing. Please provide one
-                    respecing the syntax prefix:localSegment',
                     path($element),
                     'common-name-2'
                     )
@@ -81,8 +77,6 @@
                 if (f:isElementNamePrefixMissing($element)) then
                     f:generateWarningMessage(fn:concat('The name of element ', $element/@name,
                     ' is missing a prefix. The name should comprise a prefix respecing the syntax prefix:localSegment.'),
-                    'The name of element $elementName$ is missing a prefix. The name
-                    should comprise a prefix respecing the syntax prefix:localSegment',
                     path($element),
                     'common-name-3'
                     )
@@ -104,8 +98,6 @@
                 if (f:isElementNameLocalSegmentMissing($element)) then
                     f:generateErrorMessage(fn:concat('The name of element ', $element/@name,
                     ' is missing a local segment. Please provide one respecing the syntax prefix:localSegment.'),
-                    'The name of $elementName$ is missing a local segment. Please
-                    provide one respecing the syntax prefix:localSegment.',
                     path($element),
                     'common-name-4'
                     )
@@ -128,8 +120,6 @@
                     f:generateErrorMessage(fn:concat('The name prefix ', fn:substring-before($element/@name, ':'),
                     ' , is invalid. Please provide a short prefix name ',
                     'containing only alphanumeric characters [a-zA-Z0-9]+.'),
-                    'The name prefix is invalid in $value$. Please provide a short
-                    prefix name containing only alphanumeric characters [a-zA-Z0-9]+.',
                     path($element),
                     'common-name-5'
                     )
@@ -152,8 +142,6 @@
                 select="
                     f:generateWarningMessage(fn:concat('The prefix ', fn:substring-before($elementName, ':'),
                     ' is not defined. A prefix must be associated to a namespace URI.'),
-                    'The prefix $value$ is not defined. A prefix must be associated to a
-                    namespace URI.',
                     path($element),
                     'common-name-6'
                     )"
@@ -176,9 +164,6 @@
                     ' , is invalid. Please provide a concise label using ',
                     'alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with ',
                     'tokens delimited by single spaces.'),
-                    'The local name segment is invalid in $value$. Please provide a
-                    concise label using alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase,
-                    or possibly with tokens delimited by single spaces.',
                     path($element),
                     'common-name-7'
                     )
@@ -202,8 +187,6 @@
                     f:generateErrorMessage(fn:concat('The local name segment ', f:getLocalSegmentForElements($element),
                     ' starts with an invalid character. The local segment ',
                     'must start with a letter or underscore.'),
-                    'The local name segment $value$ starts with an invalid character.
-                    The local segment must start with a letter or underscore.',
                     path($element),
                     'common-name-8'
                     )"
@@ -224,8 +207,6 @@
                     f:generateWarningMessage(fn:concat('The local name segment ', f:getLocalSegmentForElements($element),
                     ' contains token delimiters. It is best if the names ',
                     'are camel cased and delimiters removed.'),
-                    'The local name segment $value$ contains token delimiters. 
-                    It is best if the names are camel-cased and delimiters removed.',
                     path($element),
                     'common-name-9'
                     )
@@ -257,8 +238,6 @@
             select="
                 if ($noElementDescription = fn:true()) then
                     f:generateWarningMessage(fn:concat($elementName, ' is missing a description. All concepts should be defined or described.'),
-                    '$elementName$ is missing a description. 
-                    All concepts and properties should be defined and/or described.',
                     path($element),
                     'common-description-10'
                     )
@@ -292,8 +271,6 @@
                     f:generateInfoMessage(fn:concat('The ', $element/*/@stereotype,
                     ' stareotype is applied to ', $element/@name,
                     '. Stereotypes are discouraged in the current practice with some exceptions. '),
-                    'The $stereotypeName$ stareotype is applied to
-                    $elementName$. Stereotypes are discouraged in the current practice with some exceptions.',
                     path($element),
                     'common-stereotype-11'
                     )
@@ -326,8 +303,6 @@
                     f:generateWarningMessage(fn:concat('The ', $element/*/@stereotype,
                     ' stareotype applied to ', $element/@name,
                     'is not known and will be ignored. '),
-                    'The $stereotypeName$ stareotype applied to $elementName$
-                    is not known and will be ignored.',
                     path($element),
                     'common-stereotype-12'
                     )"
@@ -350,7 +325,6 @@
                         ()
                     else
                         f:generateErrorMessage(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must be an URI.'),
-                        'The tag $tagName$ of element $elementName$ must be an URI.',
                         path($element),
                         'common-tag-13'
                         )"/>
@@ -373,7 +347,6 @@
                         ()
                     else
                         f:generateErrorMessage(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must have a value'),
-                        'The tag $tagName$ of element $elementName$ must have a value.',
                         path($element),
                         'common-tag-14]'
                         )"/>
@@ -397,8 +370,6 @@
                         ()
                     else
                         f:generateErrorMessage(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must have a valid name'),
-                        'The tag $tagName$ of element $elementName$ must have a valid
-                        name.',
                         path($element),
                         'common-tag-15'
                         )"/>
@@ -417,7 +388,6 @@
             select="
                 if (fn:ends-with($elementName, 'es') or fn:ends-with($elementName, 's')) then
                 f:generateWarningMessage(fn:concat('The name (', $elementName,') is possibly in plural grammatical number. Names shall be usually provided in singular number.'),
-                    'The name $value is possibly in plural grammatical number. Names shall be usually provided in singular number.',
                     path($element),
                     'common-name-16'
                     )
@@ -443,15 +413,11 @@
                             ()
                         else
                             f:generateErrorMessage(fn:concat('The prefix for ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
-                            'The Tag name prefix $value$ is not defined. A prefix must
-                            be associated to a namespace URI.',
                             path($element),
                             'common-tag-prefix-17'
                             )
                     else
                         f:generateErrorMessage(fn:concat('The prefix for ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
-                        'The Tag name prefix $value$ is not defined. A prefix must
-                        be associated to a namespace URI.',
                         path($element),
                         'common-tag-prefix-17'
                         )
@@ -473,8 +439,6 @@
             ()
             else
             f:generateWarningMessage(fn:concat('The element ', $element/@name, ' is non-public. All elements shall be public '),
-            'The element $name$ is non-public. All elements shall be
-            public.',
             path($element),
             'common-visibility-18'
             )"
@@ -509,10 +473,6 @@
                                 'The following specifies the names of the which things are not to be reused as the names of which other things: ',
                                 'attributes -> elements, connector roles (dependency and association)'
                                 ),
-                                'The name $value$ is not unique. The Concept names should be unique within the model. 
-                                The following list specifies the names of the which things are not to be reused as the names of which other things:
-                                (a) elements (Class, Datatype, Enumeration, Object) -> elements, attributes, connector roles (dependency and association);
-                                (b) attributes -> elements, connector roles (dependency and association)',
                                 path($element),
                                 'common-name-19'
                                 )
@@ -530,10 +490,6 @@
                                 'should be unique within the model. ',
                                 'The following specifies the names of the which things are not to be reused as the names of which other things: ',
                                 'elements (Class, Datatype, Enumeration, Object) -> elements, attributes, connector roles (dependency and association)'),
-                                'The name $value$ is not unique. The Concept names should be unique within the model. 
-                                The following list specifies the names of the which things are not to be reused as the names of which other things:
-                                (a) elements (Class, Datatype, Enumeration, Object) -> elements, attributes, connector roles (dependency and association);
-                                (b) attributes -> elements, connector roles (dependency and association)',
                                 path($element),
                                 'common-name-19'
                                 )

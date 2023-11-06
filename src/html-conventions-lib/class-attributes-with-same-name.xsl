@@ -97,10 +97,7 @@
                         f:generateFormattedWarningMessage(fn:concat('The attribute ', $attributeName, ' is defined differently in reuse contexts. ',
                         'When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same.',
                         'In this case, multiple definitions are found: '), $descriptionsWithAnnotations,
-                        'The attribute $value$ is defined differently in reuse contexts. 
-                        When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. 
-                        In this case, multiple definitions are found: $Definitions',
-                        '//elements/element/attributes/attribute',
+                        '//elements/element/attributes',
                         'class-attributes-reuse-definition-1'
                         )
                     else
@@ -144,9 +141,7 @@
                     f:generateFormattedInfoMessage((fn:concat('The attribute ', $attributeName, ' has different multiplicities in reuse contexts.
                 When a property is reused in multiple contexts, the multiplicity is expected to be the same. Please see usage below:'
                 )), $multiplicityUsage,
-                'The attribute $value$ is has different multiplicities in reuse contexts. 
-                When a property is reused in multiple contexts, the multiplicity is expected to be the same.',
-                '//elements/element/attributes/attribute',
+                '//elements/element/attributes',
                 'class-attributes-reuse-multiplicity-2'
                 )"
         />
@@ -191,9 +186,7 @@
                         f:generateFormattedWarningMessage(fn:concat('The attribute ', $attributeName, ' is has different datatypes in reuse contexts.',
                         'When a property is reused in multiple contexts, the data-type is expected to be the same.',
                         'In this case, multiple data-types are found: '), $datatypeWithAnnotations,
-                        'The attribute $value$ has different datatypes in reuse contexts.
-                        When a property is reused in multiple contexts, the data-type is expected to be the same.',
-                        '//elements/element/attributes/attribute',
+                        '//elements/element/attributes',
                         'class-attributes-reuse-data-types-3'
                         )
                     else

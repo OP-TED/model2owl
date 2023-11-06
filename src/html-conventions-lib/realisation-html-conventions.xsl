@@ -84,8 +84,6 @@
                     ()
                 else
                     f:generateErrorMessage('The realisation has multiplicity. No multiplicity can be provided to realisations.',
-                    'The realisation has multiplicity. No multiplicity
-                    can be provided to realisations.',
                     path($realisationConnector),
                     'realisation-multiplicity-1'
                     )"
@@ -105,8 +103,6 @@
             select="
                 if ($realisationHasNoName = fn:false()) then
                     f:generateErrorMessage(fn:concat('The connector ', $realisationConnector/@name, ' has a name. No name can be provided for realisation relation.'),
-                    ' The connector $connectorName$ has a name. No name can be
-                    provided for realisation relation.',
                     path($realisationConnector),
                     'realisation-name-2'
                     )
@@ -132,8 +128,6 @@
                     ()
                 else
                     f:generateErrorMessage('The realisation connector has a role name. No source or target roles can be provided to realisations.',
-                    'The realisation connector has a role name. No source or
-                    target roles can be provided to realisations.',
                     path($realisationConnector),
                     'realisation-name-3'
                     )"
@@ -154,8 +148,6 @@
                 if ($realisationDirection != 'Source -&gt; Destination') then
                     f:generateErrorMessage(fn:concat('The ', $realisationDirection, ' direction is invalid. ',
                     'realisations must employ Source -&gt; Destination direction only.'),
-                    'The $direction$ direction is invalid. Realisations must
-                    employ Source->Destination direction only.',
                     path($realisationConnector),
                     'realisation-direction-4'
                     )
@@ -179,7 +171,6 @@
                     ()
                 else
                 f:generateErrorMessage('The realisation can be provided only from an Object to a Class or Enumeration.',
-                'The realisation can be provided only from an Object to a Class or Enumeration',
                 path($realisationConnector),
                 'realisation-source-target-types-5'
                 )"

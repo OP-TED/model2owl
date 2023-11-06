@@ -21,13 +21,11 @@
     <xd:doc>
         <xd:desc>This function will generate a info message</xd:desc>
         <xd:param name="infoMessage"/>
-        <xd:param name="ruleDescription"/>
         <xd:param name="pathChecked"/>
         <xd:param name="ruleIdentifier"/>
     </xd:doc>
     <xsl:function name="f:generateInfoMessage">
         <xsl:param name="infoMessage"/>
-        <xsl:param name="ruleDescription"/>
         <xsl:param name="pathChecked"/>
         <xsl:param name="ruleIdentifier"/>
         <xsl:sequence>
@@ -53,13 +51,11 @@
     <xd:doc>
         <xd:desc>This function will generate a warning message</xd:desc>
         <xd:param name="warningMessage"/>
-        <xd:param name="ruleDescription"/>
         <xd:param name="pathChecked"/>
         <xd:param name="ruleIdentifier"/>
     </xd:doc>
     <xsl:function name="f:generateWarningMessage">
         <xsl:param name="warningMessage"/>
-        <xsl:param name="ruleDescription"/>
         <xsl:param name="pathChecked"/>
         <xsl:param name="ruleIdentifier"/>
 
@@ -87,13 +83,11 @@
     <xd:doc>
         <xd:desc>This function will generate an error message</xd:desc>
         <xd:param name="errorMessage"/>
-        <xd:param name="ruleDescription"/>
         <xd:param name="pathChecked"/>
         <xd:param name="ruleIdentifier"/>
     </xd:doc>
     <xsl:function name="f:generateErrorMessage">
         <xsl:param name="errorMessage"/>
-        <xsl:param name="ruleDescription"/>
         <xsl:param name="pathChecked"/>
         <xsl:param name="ruleIdentifier"/>
         <xsl:sequence>
@@ -119,14 +113,12 @@
         <xd:desc>This function will generate a info message with a list </xd:desc>
         <xd:param name="infoMessage"/>
         <xd:param name="elementsList"/>
-        <xd:param name="ruleDescription"/>
         <xd:param name="pathChecked"/>
         <xd:param name="ruleIdentifier"/>
     </xd:doc>
     <xsl:function name="f:generateFormattedInfoMessage">
         <xsl:param name="infoMessage"/>
         <xsl:param name="elementsList"/>
-        <xsl:param name="ruleDescription"/>
         <xsl:param name="pathChecked"/>
         <xsl:param name="ruleIdentifier"/>
         <xsl:sequence>
@@ -168,14 +160,12 @@
         <xd:desc>This function will generate a warning message with a list</xd:desc>
         <xd:param name="warningMessage"/>
         <xd:param name="elementsList"/>
-        <xd:param name="ruleDescription"/>
         <xd:param name="pathChecked"/>
         <xd:param name="ruleIdentifier"/>
     </xd:doc>
     <xsl:function name="f:generateFormattedWarningMessage">
         <xsl:param name="warningMessage"/>
         <xsl:param name="elementsList"/>
-        <xsl:param name="ruleDescription"/>
         <xsl:param name="pathChecked"/>
         <xsl:param name="ruleIdentifier"/>
         <xsl:sequence>
@@ -216,14 +206,12 @@
         <xd:desc>This function will generate a error message with a list </xd:desc>
         <xd:param name="errorMessage"/>
         <xd:param name="elementsList"/>
-        <xd:param name="ruleDescription"/>
         <xd:param name="pathChecked"/>
         <xd:param name="ruleIdentifier"/>
     </xd:doc>
     <xsl:function name="f:generateFormattedErrorMessage">
         <xsl:param name="errorMessage"/>
         <xsl:param name="elementsList"/>
-        <xsl:param name="ruleDescription"/>
         <xsl:param name="pathChecked"/>
         <xsl:param name="ruleIdentifier"/>
         <xsl:sequence>

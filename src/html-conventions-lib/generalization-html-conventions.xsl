@@ -88,9 +88,6 @@
                     f:generateInfoMessage(fn:concat('The class ', $generalizationConnector/target/model/@name, ' has only one sub-class ',
                     $generalizationConnector/source/model/@name, '. Class inheritance should be built employing at least two subclasses for each class or',
                     ' not at all.'),
-                    'The class $parent$ has only one sub-class $child$.
-                    Class inheritance should be built employing at least two subclasses for each class or
-                    not at all.',
                     path($generalizationConnector),
                     'generalisation-hierarchy-1'
                     )"
@@ -115,9 +112,6 @@
                 if (boolean(f:getOutgoingConnectors($targetElement)[target/@xmi:idref = $idRefSource and properties/@ea_type = 'Generalization'])) then
                     f:generateErrorMessage(fn:concat('The classes ', $generalizationConnector/target/model/@name, ' and ', $generalizationConnector/source/model/@name, ' inherit one ',
                     'another. Sub-class relation must be established in one direction only, forming a hierarchy.'),
-                    'The classes $class1$ and $class2$ inherit one
-                    another. Sub-class relation must be established in one direction only, forming a
-                    hierarchy.',
                     path($generalizationConnector),
                     'generalisation-hierarchy-2'
                     )
@@ -143,8 +137,6 @@
                     ()
                 else
                     f:generateErrorMessage('The generalisation has multiplicity. No multiplicity can be provided to generalisations.',
-                    'The generalisation has multiplicity. No multiplicity can
-                    be provided to generalisations.',
                     path($generalizationConnector),
                     'generalisation-multiplicity-3'
                     )"
@@ -164,8 +156,6 @@
             select="
                 if ($generalizationHasNoName = fn:false()) then
                     f:generateErrorMessage(fn:concat('The connector ', $generalizationConnector/@name, ' has a name. No name can be provided for generalisation relation.'),
-                    'The connector $connectorName$ has a name. No name can be
-                    provided for generalisation relation.',
                     path($generalizationConnector),
                     'generalisation-name-4'
                     )
@@ -191,8 +181,6 @@
                     ()
                 else
                     f:generateErrorMessage('The generalisation connector has a role name. No source or target roles can be provided to generalisations.',
-                    'The generalisation connector has a role name. No source
-                    or target roles can be provided to generalisations.',
                     path($generalizationConnector),
                     'generalisation-name-5'
                     )"
@@ -213,8 +201,6 @@
                 if ($generalizationDirection != 'Source -&gt; Destination') then
                     f:generateErrorMessage(fn:concat('The ', $generalizationDirection, ' direction is invalid. ',
                     'Generalisations must employ Source -&gt; Destination direction only.'),
-                    'The $direction$ direction is invalid.
-                    Generalisations must employ Source->Destination direction only.',
                     path($generalizationConnector),
                     'generalisation-direction-6'
                     )
@@ -239,8 +225,6 @@
                     ()
                 else
                 f:generateErrorMessage('Generalisations can be provided only between classes or between connectors.',
-                'Generalisations can be provided only
-                between classes or between connectors.',
                 path($generalizationConnector),
                 'generalisation-source-target-types-3'
                 )"

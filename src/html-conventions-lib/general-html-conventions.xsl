@@ -62,8 +62,6 @@
             select="
                 if (count($unsupportedConnectorTypes) > 0) then
                     f:generateFormattedWarningMessage('Only associations, dependecies, generalisations and realisation connectors are supported. The following connector types were found in model and are not supported', $unsupportedConnectorTypes,
-                    'Only associations, dependecies, generalisations and
-                    realisation connectors are supported.',
                     '//connectors/connector/properties/@ea_type',
                     'general-connector-type-1'
                     )
@@ -91,8 +89,6 @@
             select="
                 if (count($unsupportedElementTypes) > 0) then
                     f:generateFormattedWarningMessage('Only Class, Package, Datatype, Enumeration, and Object elements are supported. The following element types were found in model and are not supported', $unsupportedElementTypes,
-                    'Only Class, Package, Datatype, Enumeration, and Object
-                    elements are supported',
                     '//elements/element/@xmi:type',
                     'general-element-type-2'
                     )
@@ -122,8 +118,6 @@
                 else
                     f:generateFormattedErrorMessage(fn:concat('Not all prefixes ',
                     ' are defined. All used namespaces shall be defined (prefix = base URI), including the default one. Here is the list of undefined prefixes'), $areAllPrefixesDefined,
-                    'The prefixes $[list of undefined prefixes] are not defined.
-                    All used namespaces shall be defined (prefix = base URI), including the default one.',
                     path($root),
                     'general-prefix-3'
                     )"

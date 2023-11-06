@@ -157,7 +157,6 @@
             if ($connector/source/type/not(@multiplicity)) then
             f:generateErrorMessage(fn:concat('The source role of ', f:getConnectorName($connector),
             ' has no multiplicity. Cardinality must be provided for each role.'),
-            'The target role of $connectorName$ has no multiplicity. Cardinality must be provided for each role',
             path($connector),
             'association-multiplicity-1')
             else
@@ -183,8 +182,6 @@
                 else
                 f:generateWarningMessage(fn:concat('The connector ', f:getConnectorName($connector),
                 ' has source multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'),
-                'The connector $connectorName$ has source multiplicity
-                invalidly stated. Multiplicity must be specified in the form [min..max].',
                 path($connector),
                 'association-multiplicity-2')
                 "
@@ -209,7 +206,6 @@
                     ()
                 else
                 f:generateErrorMessage('Associations can be provided only between classes to classes and classes to objects.',
-                'Associations can be provided only between classes to classes and classes to objects.',
                 path($connector),
                 'association-source-target-types-3')"
         />

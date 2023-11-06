@@ -165,8 +165,6 @@
             if ($enumerationNumberOfAttributes > 0) then
             f:generateWarningMessage(fn:concat('The enumeration ', $enumeration/@name,
             ' shall have no values/attributes defined. An Enumeration stands for a controlled list and its management is out of model scope. '),
-            'The enumeration $value$ shall have no values/attributes defined. 
-            An Enumeration stands for a controlled list and its management is out of model scope.',
             path($enumeration),
             'enumeration-attribute-2'
             )
@@ -192,8 +190,6 @@
                 if ($outgoingConnectors > 0) then
                     f:generateErrorMessage(fn:concat('The enumeration ', $enumeration/@name,
                     ' should not connect to other elements. An Enumeration stands for an controlled list and can only be referred to.'),
-                    'The enumeration $value should not connect to other elements. 
-                    An Enumeration stands for an controlled list and can only be referred to.',
                     path($enumeration),
                     'enumeration-connector-3'
                     )

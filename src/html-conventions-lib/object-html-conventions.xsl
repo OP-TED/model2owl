@@ -169,7 +169,6 @@
             if ($objectNumberOfAttributes > 0) then
             f:generateWarningMessage(fn:concat('The object ', $object/@name,
             ' shall have no values/attributes defined. '),
-            'The object $value$ shall have no values/attributes defined. ',
             path($object),
             'object-attribute-2'
             )
@@ -196,7 +195,6 @@
             if ($noOfOutgoingConnectors > 0) then
             f:generateErrorMessage(fn:concat('The object ', $object/@name,
             ' should not connect to other elements.'),
-            'The object $value should not connect to other elements. ',
             path($object),
             'object-connector-3'
             )
@@ -223,8 +221,6 @@
             if ($noOfRealisationOutgoingConnectors = 0) then
             f:generateWarningMessage(fn:concat('The object ', $object/@name,
             ' should instanciate a Class or Enumeration. There shall be at least one Realisation relationship between Object and a Class or Enumeration.'),
-            'The object $name should instanciate a Class or Enumeration. 
-            There shall be at least one Realisation relationship between the Object and a Class or Enumeration.',
             path($object),
             'object-connector-4'
             )

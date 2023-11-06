@@ -170,7 +170,6 @@
                 else
                     f:generateWarningMessage(fn:concat('The class ', $class/@name,
                     ' is is disconnected. A class should be connected to other elements.'),
-                    'The class $className$ is disconnected. A class should be connected to other elements.',
                     path($class),
                     'class-connector-4'
                     )"
@@ -191,7 +190,6 @@
             select="
                 if ($classNumberOfAttributes = 0) then
                     f:generateWarningMessage(fn:concat('The class ', $class/@name, ' has no attributes provided. A class should define some attributes.'),
-                    'The class $className$ nas no attributes provided. A class should define some attributes.',
                     path($class),
                     'class-attributes-3'
                     )
@@ -217,7 +215,6 @@
                     if (f:isQNameUpperCasedCamelCase($className) = fn:false())
                     then
                         f:generateWarningMessage(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'),
-                        'The class name $value$ is invalid. The class name must start with a capital case.',
                         path($class),
                         'class-name-2'
                         )
@@ -229,7 +226,6 @@
                         ()
                     else
                         f:generateWarningMessage(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'),
-                        'The class name $value$ is invalid. The class name must start with a capital case.',
                         path($class),
                         'class-name-2'
                         )"

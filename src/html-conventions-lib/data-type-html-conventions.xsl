@@ -161,8 +161,6 @@
             <xsl:sequence
                 select="f:generateWarningMessage(fn:concat('The datatype', $dataTypeElementName, 
                 'is not an XSD or RDF datatype.  It is recommended to use XSD and RDF datatypes mainly.'),
-                'The datatype is not an XSD or RDF datatype. 
-                It is recommended to use XSD and RDF datatypes mainly.',
                 path($dataTypeElement),
                 'datatype-name-2'
                 )"
@@ -186,8 +184,6 @@
             if ($dataTypeNumberOfAttributes > 0) then
             f:generateWarningMessage(fn:concat('The datatype ', $dataTypeElement/@name,
             ' is not atomic. Complex datatypes where attributes/components are specified shall be represented as classes.'),
-            'The datatype $value$ is not atomic. 
-            Complex datatypes where attributes/components are specified shall be represented as classes.',
             path($dataTypeElement),
             'datatype-attribute-3'
             )
@@ -213,8 +209,6 @@
             if ($outgoingConnectors > 0) then
             f:generateErrorMessage(fn:concat('The datatype ', $dataTypeElement/@name,
             ' should not connect to other elements. A Datatype can only be referred to.'),
-            'The datatype $value should not connect to other elements.
-            A Datatype can only be referred to.',
             path($dataTypeElement),
             'datatype-attribute-3'
             )
