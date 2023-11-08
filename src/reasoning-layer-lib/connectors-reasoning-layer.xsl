@@ -66,7 +66,7 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
-        <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">
+<!--        <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">-->
             <xsl:call-template name="classEquivalence">
                 <xsl:with-param name="generalisation" select="."/>
             </xsl:call-template>
@@ -76,7 +76,7 @@
             <xsl:call-template name="disjointClasses">
                 <xsl:with-param name="generalisation" select="."/>
             </xsl:call-template>
-        </xsl:if>
+        <!--</xsl:if>-->
     </xsl:template>
 
 
@@ -604,21 +604,27 @@
 
     <xsl:template name="disjointClasses">
         <xsl:param name="generalisation"/>
-        <xsl:variable name="superClass" select="f:getSuperClassFromGeneralization($generalisation)"/>
-        <xsl:variable name="superClassURI" select="f:buildURIFromElement($superClass)"/>
-        <xsl:variable name="subClasses" select="f:getSubClassesFromGeneralization($generalisation)"/>
-        <xsl:if test="f:getElementByIdRef($generalisation/source/@xmi:idref, root($generalisation)) and count($subClasses) > 1">
-            
-            <rdf:Description>
-                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-                <owl:members rdf:parseType="Collection">
-                    <xsl:for-each select="$subClasses">
-                        <xsl:variable name="subClassURI" select="f:buildURIFromElement(.)"/>
-                        <rdf:Description rdf:about="{$subClassURI}"/>
-                    </xsl:for-each>
-                </owl:members>
-            </rdf:Description>
+        <xsl:if
+            test="$generalisation/source/model/@type = 'Class' and $generalisation/target/model/@type = 'Class'">
+            <xsl:variable name="superClass"
+                select="f:getSuperClassFromGeneralization($generalisation)"/>
+            <xsl:variable name="superClassURI" select="f:buildURIfromLexicalQName($superClass)"/>
+            <xsl:variable name="subClasses"
+                select="f:getSubClassesFromGeneralization($generalisation)"/>
+            <xsl:if
+                test="f:getElementByIdRef($generalisation/source/@xmi:idref, root($generalisation)) and count($subClasses) > 1">
 
+                <rdf:Description>
+                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+                    <owl:members rdf:parseType="Collection">
+                        <xsl:for-each select="$subClasses">
+                            <xsl:variable name="subClassURI" select="f:buildURIFromElement(.)"/>
+                            <rdf:Description rdf:about="{$subClassURI}"/>
+                        </xsl:for-each>
+                    </owl:members>
+                </rdf:Description>
+
+            </xsl:if>
         </xsl:if>
     </xsl:template>
     

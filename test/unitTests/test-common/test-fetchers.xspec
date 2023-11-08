@@ -140,7 +140,7 @@
             <x:param name="element" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[43]"/>
         </x:call>
-        <x:expect label="result" test="boolean(element)"/>
+        <x:expect label="result" select="'epo:Agent'"/>
     </x:scenario>
     
     <x:scenario label="get sub Classes using a generalization and super Class">

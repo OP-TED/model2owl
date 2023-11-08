@@ -69,6 +69,11 @@
             <dct:title xml:lang="en">
                 <xsl:value-of select="$ontologyTitleCore"/>
             </dct:title>
+               
+            <rdfs:label xml:lang="en">
+                 <xsl:value-of select="$ontologyLabelCore"/>
+            </rdfs:label>
+            
             <dct:description xml:lang="en">
                 <xsl:value-of select="$ontologyDescriptionCore"/>
             </dct:description>

@@ -64,6 +64,9 @@
             <dct:title xml:lang="en">
                 <xsl:value-of select="$ontologyTitleRestrictions"/>
             </dct:title>
+            <rdfs:label xml:lang="en">
+                <xsl:value-of select="$ontologyLabelRestrictions"/>
+            </rdfs:label>
             <dct:publisher>
                 <xsl:value-of select="$publisher"/>
             </dct:publisher>

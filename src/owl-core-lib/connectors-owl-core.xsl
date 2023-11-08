@@ -54,34 +54,36 @@
         <xd:desc/>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
-        <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">
-            <xsl:if test="f:connectorToReusedClasses(.) and $generateReusedConcepts">
-                <xsl:choose>
-                    <xsl:when
-                        test="
-                        ./source/model/@type = 'ProxyConnector' and
-                        ./target/model/@type = 'ProxyConnector'">
-                        <xsl:call-template name="propertyGeneralization"/>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:call-template name="classGeneralization"/>
-                    </xsl:otherwise>
-                </xsl:choose>
+        <!--        <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">-->
+        <xsl:if test="f:connectorToReusedClasses(.) and $generateReusedConcepts">
+            <xsl:if
+                test="
+                    ./source/model/@type = 'ProxyConnector' and
+                    ./target/model/@type = 'ProxyConnector'">
+                <xsl:call-template name="propertyGeneralization"/>
             </xsl:if>
-            <xsl:if test="not(f:connectorToReusedClasses(.))">
-                <xsl:choose>
-                    <xsl:when
-                        test="
-                        ./source/model/@type = 'ProxyConnector' and
-                        ./target/model/@type = 'ProxyConnector'">
-                        <xsl:call-template name="propertyGeneralization"/>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:call-template name="classGeneralization"/>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:if> 
+            <xsl:if
+                test="
+                    ./source/model/@type = 'Class' and
+                    ./target/model/@type = 'Class'">
+                <xsl:call-template name="classGeneralization"/>
+            </xsl:if>
         </xsl:if>
+        <xsl:if test="not(f:connectorToReusedClasses(.))">
+            <xsl:if
+                test="
+                    ./source/model/@type = 'ProxyConnector' and
+                    ./target/model/@type = 'ProxyConnector'">
+                <xsl:call-template name="propertyGeneralization"/>
+            </xsl:if>
+            <xsl:if
+                test="
+                    ./source/model/@type = 'Class' and
+                    ./target/model/@type = 'Class'">
+                <xsl:call-template name="classGeneralization"/>
+            </xsl:if>
+        </xsl:if>
+        <!--        </xsl:if>-->
     </xsl:template>
 
     <xd:doc>
@@ -251,7 +253,7 @@
 
     <xsl:template name="classGeneralization">
         <xsl:variable name="superClass" select="f:getSuperClassFromGeneralization(.)"/>
-        <xsl:variable name="superClassURI" select="f:buildURIFromElement($superClass)"/>
+        <xsl:variable name="superClassURI" select="f:buildURIfromLexicalQName($superClass)"/>
         <xsl:variable name="subClasses" select="f:getSubClassesFromGeneralization(.)"/>
         <xsl:if test="f:getElementByIdRef(./source/@xmi:idref, root(.))">
 
