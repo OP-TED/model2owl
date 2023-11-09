@@ -47,6 +47,7 @@
             
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
+            <xsl:call-template name="generalisationsWithDistinctTargetsInReasoningLayer"/>
             <xsl:call-template name="distinctAttributeNamesInReasoningLayer"/>
             <xsl:call-template name="distinctConnectorsNamesInReasoningLayer"/>
         </rdf:RDF>
@@ -64,6 +65,9 @@
             <dct:title xml:lang="en">
                 <xsl:value-of select="$ontologyTitleRestrictions"/>
             </dct:title>
+            <rdfs:label xml:lang="en">
+                <xsl:value-of select="$ontologyLabelRestrictions"/>
+            </rdfs:label>
             <dct:publisher>
                 <xsl:value-of select="$publisher"/>
             </dct:publisher>

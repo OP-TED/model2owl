@@ -125,11 +125,11 @@
         <xd:desc>Get the superClass from using a generalization</xd:desc>
         <xd:param name="generalization"/>
     </xd:doc>
-    <xsl:function name="f:getSuperClassFromGeneralization">
+    <xsl:function name="f:getSuperClassFromGeneralization" as="xs:string*">
         <xsl:param name="generalization" as="node()"/>
         <!--<xsl:variable name="root" select="root($element)"/>-->
-        <xsl:variable name="superClassId" select="$generalization/target/@xmi:idref" as="xs:string"/>
-        <xsl:sequence select="f:getElementByIdRef($superClassId,root($generalization))"/>
+<!--        <xsl:variable name="superClassQname" select="$generalization/target/@xmi:idref" as="xs:string"/>-->
+        <xsl:value-of select="$generalization/target/model/@name"/>
 <!--        /xmi:XMI/xmi:Extension/connectors/connector[./properties/@ea_type = 'Generalization'][target/@xmi:idref='EAID_E84B97D8_2656_498d_B584_D95C2DBBD7A1']/source/model/@name-->
         
     </xsl:function>
@@ -140,9 +140,12 @@
     <xsl:function name="f:getSubClassesFromGeneralization">
         <xsl:param name="generalization" as="node()"/>
         <xsl:variable name="root" select="root($generalization)"/>
-        <xsl:variable name="superClassId" select="f:getSuperClassFromGeneralization($generalization)/@xmi:idref" as="xs:string"/>
-        <xsl:variable name="subClassesId" select="$root//connectors/connector[./properties/@ea_type = 'Generalization' and target/@xmi:idref=$superClassId]/source/@xmi:idref
-            "/>
+<!--        <xsl:variable name="superClassId" select="f:getSuperClassFromGeneralization($generalization)/@xmi:idref" as="xs:string"/>-->
+        <xsl:variable name="subClassesId"
+            select="
+                $root//connectors/connector[./properties/@ea_type = 'Generalization' and target/model/@name = f:getSuperClassFromGeneralization($generalization)]/source/@xmi:idref
+                "
+        />
         <xsl:sequence
             select="
                 for $id in $subClassesId

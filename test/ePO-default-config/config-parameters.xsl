@@ -106,18 +106,38 @@
         This artefact excludes the restrictions.
         The eProcurement Ontology describes objects and concepts, with definitions, attributes and relationships which are present within the European public procurement domain.
         The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.'"/>
+    <xsl:variable name="ontologyLabelCore"
+        select="
+        'This artefact provides the definitions for the eProcurement Ontology Core.
+        This artefact excludes the restrictions.
+        The eProcurement Ontology describes objects and concepts, with definitions, attributes and relationships which are present within the European public procurement domain.
+        The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.'"/>
+    
     <xsl:variable name="ontologyDescriptionRestrictions"
         select="
         'This artefact provides the restrictions and inference-related specifications for the eProcurement Ontology Core.
         This artefact excludes the definitions of concepts.
         The eProcurement Ontology describes objects and concepts, with definitions, attributes and relationships which are present within the European public procurement domain.
         The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.'"/>
+    <xsl:variable name="ontologyLabelRestrictions"
+        select="
+        'This artefact provides the restrictions and inference-related specifications for the eProcurement Ontology Core.
+        This artefact excludes the definitions of concepts.
+        The eProcurement Ontology describes objects and concepts, with definitions, attributes and relationships which are present within the European public procurement domain.
+        The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.'"/>
+    
     <xsl:variable name="ontologyDescriptionShapes"
         select="
         'This artefact provides the generic datashape specifications for the eProcurement Ontology Core.
         The eProcurement Ontology describes objects and concepts, with definitions, attributes and relationships which are present within the European public procurement domain.
         The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.'"/>
    
+    <xsl:variable name="ontologyLabelShapes"
+        select="
+        'This artefact provides the generic datashape specifications for the eProcurement Ontology Core.
+        The eProcurement Ontology describes objects and concepts, with definitions, attributes and relationships which are present within the European public procurement domain.
+        The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.'"/>
+    
     <!--    rdfs:seeAlso -->
     <xsl:variable name="seeAlsoResources"
         select="

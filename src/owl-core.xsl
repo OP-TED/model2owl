@@ -51,6 +51,7 @@
             </xsl:for-each>   
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
+            <xsl:call-template name="generalisationsWithDistinctTargetsInCoreLayer"/>
             <xsl:call-template name="connectorsOwlCore"/>
             <xsl:call-template name="generatePropertiesFromDistinctAttributeNamesInCore"/>
         </rdf:RDF>
@@ -69,6 +70,11 @@
             <dct:title xml:lang="en">
                 <xsl:value-of select="$ontologyTitleCore"/>
             </dct:title>
+               
+            <rdfs:label xml:lang="en">
+                 <xsl:value-of select="$ontologyLabelCore"/>
+            </rdfs:label>
+            
             <dct:description xml:lang="en">
                 <xsl:value-of select="$ontologyDescriptionCore"/>
             </dct:description>
