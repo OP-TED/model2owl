@@ -62,12 +62,6 @@
                     ./target/model/@type = 'ProxyConnector'">
                 <xsl:call-template name="propertyGeneralization"/>
             </xsl:if>
-            <xsl:if
-                test="
-                    ./source/model/@type = 'Class' and
-                    ./target/model/@type = 'Class'">
-                <xsl:call-template name="classGeneralization"/>
-            </xsl:if>
         </xsl:if>
         <xsl:if test="not(f:connectorToReusedClasses(.))">
             <xsl:if
@@ -76,14 +70,33 @@
                     ./target/model/@type = 'ProxyConnector'">
                 <xsl:call-template name="propertyGeneralization"/>
             </xsl:if>
-            <xsl:if
-                test="
-                    ./source/model/@type = 'Class' and
-                    ./target/model/@type = 'Class'">
-                <xsl:call-template name="classGeneralization"/>
-            </xsl:if>
         </xsl:if>
         <!--        </xsl:if>-->
+    </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>Applying core layer rules to generalisation connectors with distinct targets</xd:desc>
+    </xd:doc>
+    <xsl:template name="generalisationsWithDistinctTargetsInCoreLayer">
+        <xsl:variable name="generalisations" select="//connector[./properties/@ea_type = 'Generalization'][not(target/@xmi:idref = preceding::connector[./properties/@ea_type = 'Generalization']/target/@xmi:idref)]"/>
+        <xsl:for-each select="$generalisations">
+            <xsl:if test="f:connectorToReusedClasses(.) and $generateReusedConcepts">
+                <xsl:if
+                    test="
+                    ./source/model/@type = 'Class' and
+                    ./target/model/@type = 'Class'">
+                    <xsl:call-template name="classGeneralization"/>
+                </xsl:if>
+            </xsl:if>
+            <xsl:if test="not(f:connectorToReusedClasses(.))">
+                <xsl:if
+                    test="
+                    ./source/model/@type = 'Class' and
+                    ./target/model/@type = 'Class'">
+                    <xsl:call-template name="classGeneralization"/>
+                </xsl:if>
+            </xsl:if>
+        </xsl:for-each>
     </xsl:template>
 
     <xd:doc>

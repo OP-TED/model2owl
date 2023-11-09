@@ -73,12 +73,23 @@
             <xsl:call-template name="propertiesEquivalence">
                 <xsl:with-param name="generalisation" select="."/>
             </xsl:call-template>
+
+        <!--</xsl:if>-->
+    </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>Applying reasoning layer rules to generalisation connectors with distinct targets</xd:desc>
+    </xd:doc>
+    <xsl:template name="generalisationsWithDistinctTargetsInReasoningLayer">
+        <xsl:variable name="generalisations" select="//connector[./properties/@ea_type = 'Generalization'][not(target/@xmi:idref = preceding::connector[./properties/@ea_type = 'Generalization']/target/@xmi:idref)]"/>
+        <xsl:for-each select="$generalisations">
             <xsl:call-template name="disjointClasses">
                 <xsl:with-param name="generalisation" select="."/>
             </xsl:call-template>
-        <!--</xsl:if>-->
+        </xsl:for-each>
     </xsl:template>
-
+    
+    
 
     <xd:doc>
         <xd:desc>Applying reasoning layer rules to connectors with distinct names [Dependency and

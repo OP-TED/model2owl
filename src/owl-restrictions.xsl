@@ -47,6 +47,7 @@
             
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
+            <xsl:call-template name="generalisationsWithDistinctTargetsInReasoningLayer"/>
             <xsl:call-template name="distinctAttributeNamesInReasoningLayer"/>
             <xsl:call-template name="distinctConnectorsNamesInReasoningLayer"/>
         </rdf:RDF>
