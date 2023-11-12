@@ -44,11 +44,33 @@ jobs:
           cd model2owl/resources
           ls -la
 
-      - name: Commit and Push to destination repository
+      - name: commit files
+        id: commit
         run: |
-
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
+          git status
+
           git add .
+          if [ -z "$(git status --porcelain)" ]; then
+          echo "::set-output name=push::false"
+          else
           git commit -m "Copy src folder from model2owl repository"
-          git push origin main
+          echo "::set-output name=push::true"
+          fi
+        shell: bash
+
+      - name: Push changes
+        if: steps.commit.outputs.push == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+#      - name: Commit and Push to destination repository
+#        run: |
+#
+#          git config --local user.email "action@github.com"
+#          git config --local user.name "github-actions"
+#          git add .
+#          git commit -m "Copy src folder from model2owl repository"
+#          git push origin main
