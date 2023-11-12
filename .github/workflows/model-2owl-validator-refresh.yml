@@ -1,9 +1,9 @@
-name: Copy and Commit
+name: Update github model2owl-validator repo
 
 on:
   push:
     branches:
-      - feature/SM15-38  # Adjust the branch as needed
+      - master
 
 jobs:
   copy-and-commit:
@@ -19,12 +19,12 @@ jobs:
           cd ..
           pwd
           ls -la
-          mkdir destination-repo
+          mkdir copied-src-folder
           ls -la
           echo "directory to copy src folder was created"
-          cp -r model2owl/src destination-repo
-          ls -la destination-repo
-          ls -la destination-repo/src
+          cp -r model2owl/src copied-src-folder
+          ls -la copied-src-folder
+          ls -la copied-src-folder/src
 
       - name: Configure Git
         run: |
@@ -46,30 +46,9 @@ jobs:
           ls -la
           cd ..
           ls -la
-          cp -r destination-repo/src model2owl/resources/
+          cp -r copied-src-folder/src model2owl/resources/
           cd model2owl/resources
           ls -la
-
-#      - name: commit files
-#        id: commit
-#        run: |
-#          git status
-#
-#          git add .
-#          if [ -z "$(git status --porcelain)" ]; then
-#          echo "::set-output name=push::false"
-#          else
-#          git commit -m "Adding convention report and glossary files"
-#          echo "::set-output name=push::true"
-#          fi
-#        shell: bash
-#
-#      - name: Push changes
-#        if: steps.commit.outputs.push == 'true'
-#        uses: ad-m/github-push-action@master
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          branch: main
 
       - name: Commit and Push to destination repository
         run: |
@@ -79,4 +58,3 @@ jobs:
           git status
           git remote -v
           git push -f https://${{ secrets.GIT_USER }}@github.com/meaningfy-ws/model2owl-validator.git main
-#          git push -f origin main
