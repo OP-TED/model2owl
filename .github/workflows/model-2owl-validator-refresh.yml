@@ -30,6 +30,9 @@ jobs:
       - name: Copy folder to destination repository
         run: |
           pwd
+          ls -la
+          cd ..
+          ls -la
           cp -r model2owl/src model2owl-validator/resources/
 
       - name: Commit and Push to destination repository
