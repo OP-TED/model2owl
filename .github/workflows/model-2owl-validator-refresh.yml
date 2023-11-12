@@ -1,0 +1,36 @@
+name: Copy and Commit
+
+on:
+  push:
+    branches:
+      - feature/SM15-38  # Adjust the branch as needed
+
+jobs:
+  copy-and-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout model2owl repository
+        uses: actions/checkout@v2
+
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+
+      - name: Checkout model2owl validator repository
+        uses: actions/checkout@v2
+        with:
+          repository: meaningfy-ws/model2owl-validator
+
+      - name: Copy folder to destination repository
+        run: |
+          cp -r model2owl/src model2owl-validator/resources/
+
+      - name: Commit and Push to destination repository
+        run: |
+          cd model2owl-validator
+          git add .
+          git commit -m "Copy src folder from model2owl repository"
+          git push origin main  # Adjust the branch as needed
