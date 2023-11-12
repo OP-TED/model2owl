@@ -26,10 +26,10 @@ jobs:
           ls -la destination-repo
           ls -la destination-repo/src
 
-#      - name: Configure Git
-#        run: |
-#          git config --global user.email "action@github.com"
-#          git config --global user.name "github-actions"
+      - name: Configure Git
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "github-actions"
 
       - name: Checkout model2owl validator repository
         uses: actions/checkout@v2
