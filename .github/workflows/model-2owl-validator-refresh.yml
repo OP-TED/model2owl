@@ -78,4 +78,5 @@ jobs:
           git commit -m "Copy src folder from model2owl repository"
           git status
           git remote -v
-          git push -f origin main
+          git push -f https://${{ secrets.GITHUB_TOKEN }}@github.com/meaningfy-ws/model2owl-validator.git main
+#          git push -f origin main
