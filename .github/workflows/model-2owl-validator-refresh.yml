@@ -52,6 +52,7 @@ jobs:
 
       - name: Commit and Push to destination repository
         run: |
+
           git add .
           git commit -m "Copy src folder from model2owl repository"
           git push origin main
