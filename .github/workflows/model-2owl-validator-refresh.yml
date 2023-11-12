@@ -14,9 +14,10 @@ jobs:
         uses: actions/checkout@v2
 
 
-      - name: first clone
+      - name: Copy folder to destination repository
         run: |
-          ls -la
+          mkdir destination-repo
+          cp -r src destination-repo
 
       - name: Checkout model2owl validator repository
         uses: actions/checkout@v2
