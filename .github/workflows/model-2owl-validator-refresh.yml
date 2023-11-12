@@ -16,8 +16,9 @@ jobs:
 
       - name: Copy folder to destination repository
         run: |
+          cd ..
           mkdir destination-repo
-          cp -r src destination-repo
+          cp -r ../src destination-repo
 
       - name: Checkout model2owl validator repository
         uses: actions/checkout@v2
@@ -34,7 +35,7 @@ jobs:
           ls -la
           cd ..
           ls -la
-          cp -r model2owl/src model2owl-validator/resources/
+          cp -r destination-repo/src model2owl/resources/
 
       - name: Commit and Push to destination repository
         run: |
