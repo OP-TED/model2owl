@@ -39,12 +39,14 @@ jobs:
           cd ..
           ls -la
           cp -r destination-repo/src model2owl/resources/
+          cd model2owl/resources
+          ls -la
 
-      - name: Commit and Push to destination repository
-        run: |
-          cd model2owl-validator
-          git config --local user.email "action@github.com"
-          git config --local user.name "github-actions"
-          git add .
-          git commit -m "Copy src folder from model2owl repository"
-          git push origin main  # Adjust the branch as needed
+#      - name: Commit and Push to destination repository
+#        run: |
+#
+#          git config --local user.email "action@github.com"
+#          git config --local user.name "github-actions"
+#          git add .
+#          git commit -m "Copy src folder from model2owl repository"
+#          git push origin main  # Adjust the branch as needed
