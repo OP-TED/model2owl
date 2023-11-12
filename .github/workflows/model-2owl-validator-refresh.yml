@@ -50,30 +50,30 @@ jobs:
           cd model2owl/resources
           ls -la
 
-      - name: commit files
-        id: commit
-        run: |
-          git status
-
-          git add .
-          if [ -z "$(git status --porcelain)" ]; then
-          echo "::set-output name=push::false"
-          else
-          git commit -m "Adding convention report and glossary files"
-          echo "::set-output name=push::true"
-          fi
-        shell: bash
-
-      - name: Push changes
-        if: steps.commit.outputs.push == 'true'
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
-
-#      - name: Commit and Push to destination repository
+#      - name: commit files
+#        id: commit
 #        run: |
+#          git status
 #
 #          git add .
-#          git commit -m "Copy src folder from model2owl repository"
-#          git push origin main
+#          if [ -z "$(git status --porcelain)" ]; then
+#          echo "::set-output name=push::false"
+#          else
+#          git commit -m "Adding convention report and glossary files"
+#          echo "::set-output name=push::true"
+#          fi
+#        shell: bash
+#
+#      - name: Push changes
+#        if: steps.commit.outputs.push == 'true'
+#        uses: ad-m/github-push-action@master
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          branch: main
+
+      - name: Commit and Push to destination repository
+        run: |
+
+          git add .
+          git commit -m "Copy src folder from model2owl repository"
+          git push -f origin main
