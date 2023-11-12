@@ -21,8 +21,10 @@ jobs:
           ls -la
           mkdir destination-repo
           ls -la
+          echo "directory to copy src folder was created"
           cp -r model2owl/src destination-repo
-
+          ls -la destination-repo
+          ls -la destination-repo/src
       - name: Checkout model2owl validator repository
         uses: actions/checkout@v2
         with:
@@ -42,11 +44,11 @@ jobs:
           cd model2owl/resources
           ls -la
 
-#      - name: Commit and Push to destination repository
-#        run: |
-#
-#          git config --local user.email "action@github.com"
-#          git config --local user.name "github-actions"
-#          git add .
-#          git commit -m "Copy src folder from model2owl repository"
-#          git push origin main  # Adjust the branch as needed
+      - name: Commit and Push to destination repository
+        run: |
+
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add .
+          git commit -m "Copy src folder from model2owl repository"
+          git push origin main
