@@ -28,8 +28,8 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "github-actions"
+          git config --global user.email "action@github.com"
+          git config --global user.name "github-actions"
 
       - name: Checkout model2owl validator repository
         uses: actions/checkout@v2
