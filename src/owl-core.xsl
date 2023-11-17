@@ -18,8 +18,7 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:vann="http://purl.org/vocab/vann/"
-    xmlns:cc="http://creativecommons.org/ns#"
-    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn f"
+    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn f bibo"
       version="3.0">
     
      
@@ -52,6 +51,7 @@
             </xsl:for-each>   
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
+            <xsl:call-template name="generalisationsWithDistinctTargetsInCoreLayer"/>
             <xsl:call-template name="connectorsOwlCore"/>
             <xsl:call-template name="generatePropertiesFromDistinctAttributeNamesInCore"/>
         </rdf:RDF>
@@ -70,6 +70,11 @@
             <dct:title xml:lang="en">
                 <xsl:value-of select="$ontologyTitleCore"/>
             </dct:title>
+               
+            <rdfs:label xml:lang="en">
+                 <xsl:value-of select="$ontologyLabelCore"/>
+            </rdfs:label>
+            
             <dct:description xml:lang="en">
                 <xsl:value-of select="$ontologyDescriptionCore"/>
             </dct:description>
@@ -82,17 +87,18 @@
                 <rdfs:seeAlso rdf:resource="{.}"/>
             </xsl:for-each>
             <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="$issuedDate"/></dct:issued>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="$createdDate"/></dct:created>
             <owl:versionInfo><xsl:value-of select="$versionInfo"/></owl:versionInfo>   
             <owl:incompatibleWith><xsl:value-of select="$incompatibleWith"/></owl:incompatibleWith>
             <owl:versionIRI rdf:resource="{fn:concat($coreArtefactURI,'-',$versionInfo)}"/>
-            <bibo:status><xsl:value-of select="$ontologyStatus"/></bibo:status>
-            <owl:priorVersion><xsl:value-of select="$priorVersion"/></owl:priorVersion>
+<!--            <bibo:status><xsl:value-of select="$ontologyStatus"/></bibo:status>-->
+            
+            <owl:priorVersion><xsl:value-of select="fn:concat($coreArtefactURI,'-',$priorVersion)"/></owl:priorVersion>
+            
             <vann:preferredNamespaceUri><xsl:value-of select="$preferredNamespaceUri"/></vann:preferredNamespaceUri>
             <vann:preferredNamespacePrefix><xsl:value-of select="$preferredNamespacePrefix"/></vann:preferredNamespacePrefix> 
-            <dct:rights><xsl:value-of select="$rightsLiteral"/></dct:rights>
-            <dct:license rdf:resource="{$licenseURI}"/>
-            <cc:attributionName><xsl:value-of select="$attributionNameLiteral"/></cc:attributionName>
-            <cc:attributionURL rdf:resource="{$attributionURL}"/>
+            <dct:license><xsl:value-of select="$licenseLiteral"/></dct:license>
+            
         </owl:Ontology>
         
     </xsl:template>

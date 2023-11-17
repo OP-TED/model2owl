@@ -488,9 +488,9 @@
             <rdf:Description
                 rdf:about="{f:buildPropertyShapeURI($sourceClassName,$targetRole)}">
                 <sh:sparql rdf:parseType="Resource">
-                    <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
+                    <sh:select>SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
                         select="$targetRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
-                            select="$targetRoleURI"/>&gt; ?this .} </sh:select>
+                            select="$targetRoleURI"/>&gt; ?this .}</sh:select>
                 </sh:sparql>
             </rdf:Description>
 
@@ -501,9 +501,9 @@
             <rdf:Description
                 rdf:about="{f:buildPropertyShapeURI($sourceClassName,$targetRole)}">
                 <sh:sparql rdf:parseType="Resource">
-                    <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
+                    <sh:select>SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
                         select="$targetRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
-                            select="$targetRoleURI"/>&gt; ?this .} </sh:select>
+                            select="$targetRoleURI"/>&gt; ?this .}</sh:select>
                 </sh:sparql>
             </rdf:Description>
 
@@ -511,9 +511,9 @@
             <rdf:Description
                 rdf:about="{f:buildPropertyShapeURI($targetClassName,$sourceRole)}">
                 <sh:sparql rdf:parseType="Resource">
-                    <sh:select> SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
+                    <sh:select>SELECT ?this ?that WHERE { ?this &lt;<xsl:value-of
                         select="$sourceRoleURI"/>&gt; ?that . ?that &lt;<xsl:value-of
-                            select="$sourceRoleURI"/>&gt; ?this .} </sh:select>
+                            select="$sourceRoleURI"/>&gt; ?this .}</sh:select>
                 </sh:sparql>
             </rdf:Description>
 
