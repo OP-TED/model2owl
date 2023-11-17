@@ -111,20 +111,28 @@
             <xsl:apply-templates select="attributes/attribute"/>
         </xsl:variable>
         <xsl:if test="boolean($classConventions) or boolean($classAttributeConventions)">
-            <h2 id="{$class}">
-                <xsl:value-of select="$class"/>
-            </h2>
-            <section>
-                <xsl:if test="boolean($classConventions)">
-                    <dl>
-                        <dt>Unmet class conventions</dt>
-                        <xsl:copy-of select="$classConventions"/>
-                    </dl>
-                </xsl:if>
-                <xsl:if test="boolean($classAttributeConventions)">
+            <xsl:choose>
+                <xsl:when test="$reportType = 'HTML'">
+                    <h2 id="{$class}">
+                        <xsl:value-of select="$class"/>
+                    </h2>
+                    <section>
+                        <xsl:if test="boolean($classConventions)">
+                            <dl>
+                                <dt>Unmet class conventions</dt>
+                                <xsl:copy-of select="$classConventions"/>
+                            </dl>
+                        </xsl:if>
+                        <xsl:if test="boolean($classAttributeConventions)">
+                            <xsl:copy-of select="$classAttributeConventions"/>
+                        </xsl:if>
+                    </section>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:copy-of select="$classConventions"/>
                     <xsl:copy-of select="$classAttributeConventions"/>
-                </xsl:if>
-            </section>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:if>
     </xsl:template>
 
@@ -160,8 +168,11 @@
                 then
                     ()
                 else
-                    f:generateHtmlWarning(fn:concat('The class ', $class/@name,
-                    ' is is disconnected. A class should be connected to other elements.'))"
+                    f:generateWarningMessage(fn:concat('The class ', $class/@name,
+                    ' is is disconnected. A class should be connected to other elements.'),
+                    path($class),
+                    'class-connector-4'
+                    )"
         />
     </xsl:template>
 
@@ -178,7 +189,10 @@
         <xsl:sequence
             select="
                 if ($classNumberOfAttributes = 0) then
-                    f:generateHtmlWarning(fn:concat('The class ', $class/@name, ' has no attributes provided. A class should define some attributes.'))
+                    f:generateWarningMessage(fn:concat('The class ', $class/@name, ' has no attributes provided. A class should define some attributes.'),
+                    path($class),
+                    'class-attributes-3'
+                    )
                 else
                     ()"
         />
@@ -200,7 +214,10 @@
                 then
                     if (f:isQNameUpperCasedCamelCase($className) = fn:false())
                     then
-                        f:generateHtmlWarning(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'))
+                        f:generateWarningMessage(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'),
+                        path($class),
+                        'class-name-2'
+                        )
                     else
                         ()
                 else
@@ -208,7 +225,10 @@
                     then
                         ()
                     else
-                        f:generateHtmlWarning(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'))"
+                        f:generateWarningMessage(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'),
+                        path($class),
+                        'class-name-2'
+                        )"
         />
     </xsl:template>    
     

@@ -74,10 +74,10 @@
                 </xsl:call-template>
                 <xsl:call-template name="connectorSourceTags">
                     <xsl:with-param name="connector" select="."/>
-                </xsl:call-template>   
+                </xsl:call-template>
                 <xsl:call-template name="connectorTags">
                     <xsl:with-param name="connector" select="."/>
-                </xsl:call-template>           
+                </xsl:call-template>
                 <xsl:call-template name="connectorGeneralNameProvided">
                     <xsl:with-param name="connector" select="."/>
                 </xsl:call-template>
@@ -98,41 +98,48 @@
                 </xsl:call-template>
                 <xsl:call-template name="connectorDirectionAndRolesOutOfSync">
                     <xsl:with-param name="connector" select="."/>
-                </xsl:call-template> 
+                </xsl:call-template>
 
-                
-                <!--    End of common connectors checkers rules     -->  
+
+                <!--    End of common connectors checkers rules     -->
                 <!--    Start of specific checker rules-->
                 <xsl:if test="f:getConnectorDirection(.) = 'Bi-Directional'">
 
-                   <xsl:call-template name="associationMissingSourceMultiplicity">
-                       <xsl:with-param name="connector" select="."/>
-                   </xsl:call-template>
-                   <xsl:call-template name="associationInvalidSourceMultiplicityFormat">
-                       <xsl:with-param name="connector" select="."/>
-                   </xsl:call-template>
+                    <xsl:call-template name="associationMissingSourceMultiplicity">
+                        <xsl:with-param name="connector" select="."/>
+                    </xsl:call-template>
+                    <xsl:call-template name="associationInvalidSourceMultiplicityFormat">
+                        <xsl:with-param name="connector" select="."/>
+                    </xsl:call-template>
                 </xsl:if>
                 <xsl:call-template name="associationSourceTargetTypes">
                     <xsl:with-param name="connector" select="."/>
                 </xsl:call-template>
                 <xsl:call-template name="connectorUniqueName">
                     <xsl:with-param name="connector" select="."/>
-                </xsl:call-template> 
+                </xsl:call-template>
                 <xsl:call-template name="connectorRoleCrossTypeReuseCheck">
                     <xsl:with-param name="connector" select="."/>
                     <xsl:with-param name="isDependency" select="fn:false()"/>
-                </xsl:call-template> 
-                <!--    End of specific checker rules-->  
+                </xsl:call-template>
+                <!--    End of specific checker rules-->
             </xsl:if>
         </xsl:variable>
         <xsl:if test="boolean($associationChecks)">
-            <h2><xsl:value-of select="f:getConnectorName(.)"/></h2>
-        <dl>
-            <dt>
-                Unmet association conventions
-            </dt>
-            <xsl:copy-of select="$associationChecks"/>
-        </dl>
+            <xsl:choose>
+                <xsl:when test="$reportType = 'HTML'">
+                    <h2>
+                        <xsl:value-of select="f:getConnectorName(.)"/>
+                    </h2>
+                    <dl>
+                        <dt> Unmet association conventions </dt>
+                        <xsl:copy-of select="$associationChecks"/>
+                    </dl>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:copy-of select="$associationChecks"/>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:if>
     </xsl:template>
     
@@ -148,8 +155,10 @@
         <xsl:sequence
             select="
             if ($connector/source/type/not(@multiplicity)) then
-            f:generateHtmlError(fn:concat('The source role of ', f:getConnectorName($connector),
-            ' has no multiplicity. Cardinality must be provided for each role.'))
+            f:generateErrorMessage(fn:concat('The source role of ', f:getConnectorName($connector),
+            ' has no multiplicity. Cardinality must be provided for each role.'),
+            path($connector),
+            'association-multiplicity-1')
             else
             ()"
         />
@@ -171,8 +180,10 @@
                 if (fn:matches($multiplicityValue, '^[0-9]..[0-9]$') or fn:matches($multiplicityValue, '^[0-9]..\*$')) then
                 ()
                 else
-                f:generateHtmlWarning(fn:concat('The connector ', f:getConnectorName($connector),
-                ' has source multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'))
+                f:generateWarningMessage(fn:concat('The connector ', f:getConnectorName($connector),
+                ' has source multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'),
+                path($connector),
+                'association-multiplicity-2')
                 "
             />
         </xsl:if>
@@ -181,7 +192,7 @@
     
     <xd:doc>
         <xd:desc>[association-source-target-types-3] - Associations can be 
-            provided only between classes to classes and classes to objects..</xd:desc>
+            provided only between classes to classes and classes to objects.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
     
@@ -194,7 +205,9 @@
                 if ($sourceType = 'Class' and $targetType = ('Class', 'Object')) then
                     ()
                 else
-                f:generateHtmlError('Associations can be provided only between classes to classes and classes to objects.')"
+                f:generateErrorMessage('Associations can be provided only between classes to classes and classes to objects.',
+                path($connector),
+                'association-source-target-types-3')"
         />
     </xsl:template>
     

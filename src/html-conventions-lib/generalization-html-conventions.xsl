@@ -51,13 +51,20 @@
             </xsl:if>
         </xsl:variable>
         <xsl:if test="boolean($generalizationChecks)">
-            <h2>
-                <xsl:value-of select="f:getConnectorName(.)"/>
-            </h2>
-            <dl>
-                <dt> Unmet generalisation conventions </dt>
-                <xsl:copy-of select="$generalizationChecks"/>
-            </dl>
+            <xsl:choose>
+                <xsl:when test="$reportType = 'HTML'">
+                    <h2>
+                        <xsl:value-of select="f:getConnectorName(.)"/>
+                    </h2>
+                    <dl>
+                        <dt> Unmet generalisation conventions </dt>
+                        <xsl:copy-of select="$generalizationChecks"/>
+                    </dl>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:copy-of select="$generalizationChecks"/>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:if>
     </xsl:template>
 
@@ -78,9 +85,12 @@
                 if (count(f:getIncommingConnectors($targetElement)[properties/@ea_type = 'Generalization']) > 2) then
                     ()
                 else
-                    f:generateHtmlInfo(fn:concat('The class ', $generalizationConnector/target/model/@name, ' has only one sub-class ',
+                    f:generateInfoMessage(fn:concat('The class ', $generalizationConnector/target/model/@name, ' has only one sub-class ',
                     $generalizationConnector/source/model/@name, '. Class inheritance should be built employing at least two subclasses for each class or',
-                    ' not at all.'))"
+                    ' not at all.'),
+                    path($generalizationConnector),
+                    'generalisation-hierarchy-1'
+                    )"
         />
     </xsl:template>
 
@@ -100,8 +110,11 @@
         <xsl:sequence
             select="
                 if (boolean(f:getOutgoingConnectors($targetElement)[target/@xmi:idref = $idRefSource and properties/@ea_type = 'Generalization'])) then
-                    f:generateHtmlError(fn:concat('The classes ', $generalizationConnector/target/model/@name, ' and ', $generalizationConnector/source/model/@name, ' inherit one ',
-                    'another. Sub-class relation must be established in one direction only, forming a hierarchy.'))
+                    f:generateErrorMessage(fn:concat('The classes ', $generalizationConnector/target/model/@name, ' and ', $generalizationConnector/source/model/@name, ' inherit one ',
+                    'another. Sub-class relation must be established in one direction only, forming a hierarchy.'),
+                    path($generalizationConnector),
+                    'generalisation-hierarchy-2'
+                    )
                 else
                     ()"
         />
@@ -123,7 +136,10 @@
                 if ($hasNoTargetMultiplicity and $hasNoSourceMultiplicity) then
                     ()
                 else
-                    f:generateHtmlError('The generalisation has multiplicity. No multiplicity can be provided to generalisations.')"
+                    f:generateErrorMessage('The generalisation has multiplicity. No multiplicity can be provided to generalisations.',
+                    path($generalizationConnector),
+                    'generalisation-multiplicity-3'
+                    )"
         />
     </xsl:template>
 
@@ -139,7 +155,10 @@
         <xsl:sequence
             select="
                 if ($generalizationHasNoName = fn:false()) then
-                    f:generateHtmlError(fn:concat('The connector ', $generalizationConnector/@name, ' has a name. No name can be provided for generalisation relation.'))
+                    f:generateErrorMessage(fn:concat('The connector ', $generalizationConnector/@name, ' has a name. No name can be provided for generalisation relation.'),
+                    path($generalizationConnector),
+                    'generalisation-name-4'
+                    )
                 else
                     ()"
         />
@@ -161,7 +180,10 @@
                 if ($hasNoTargetRoleName and $hasNoSourceRoleName) then
                     ()
                 else
-                    f:generateHtmlError('The generalisation connector has a role name. No source or target roles can be provided to generalisations.')"
+                    f:generateErrorMessage('The generalisation connector has a role name. No source or target roles can be provided to generalisations.',
+                    path($generalizationConnector),
+                    'generalisation-name-5'
+                    )"
         />
     </xsl:template>
 
@@ -177,8 +199,11 @@
         <xsl:sequence
             select="
                 if ($generalizationDirection != 'Source -&gt; Destination') then
-                    f:generateHtmlError(fn:concat('The ', $generalizationDirection, ' direction is invalid. ',
-                    'Generalisations must employ Source -&gt; Destination direction only.'))
+                    f:generateErrorMessage(fn:concat('The ', $generalizationDirection, ' direction is invalid. ',
+                    'Generalisations must employ Source -&gt; Destination direction only.'),
+                    path($generalizationConnector),
+                    'generalisation-direction-6'
+                    )
                 else
                     ()"
         />
@@ -199,7 +224,10 @@
                 if (($sourceType = 'Class' and $targetType = 'Class') or ($sourceType = 'ProxyConnector' and $targetType = 'ProxyConnector')) then
                     ()
                 else
-                f:generateHtmlError('Generalisations can be provided only between classes or between connectors.')"
+                f:generateErrorMessage('Generalisations can be provided only between classes or between connectors.',
+                path($generalizationConnector),
+                'generalisation-source-target-types-3'
+                )"
         />
     </xsl:template>
 

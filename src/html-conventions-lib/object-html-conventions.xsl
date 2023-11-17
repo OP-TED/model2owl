@@ -100,8 +100,6 @@
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
 
-
-
             <xsl:call-template name="objectOutgoingConnectors">
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
@@ -111,20 +109,27 @@
             </xsl:call-template>
             <!--    End of specific checker rules-->
         </xsl:variable>
-        
-        <xsl:if test="boolean($objectConventions)">
-            <h2>
-                <xsl:value-of select="$object"/>
-            </h2>
-            <section>
-                <xsl:if test="boolean($objectConventions)">
-                    <dl>
-                        <dt>Unmet object conventions</dt>
-                        <xsl:copy-of select="$objectConventions"/>
-                    </dl>
-                </xsl:if>
 
-            </section>
+        <xsl:if test="boolean($objectConventions)">
+            <xsl:choose>
+                <xsl:when test="$reportType = 'HTML'">
+                    <h2>
+                        <xsl:value-of select="$object"/>
+                    </h2>
+                    <section>
+                        <xsl:if test="boolean($objectConventions)">
+                            <dl>
+                                <dt>Unmet object conventions</dt>
+                                <xsl:copy-of select="$objectConventions"/>
+                            </dl>
+                        </xsl:if>
+
+                    </section>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:copy-of select="$objectConventions"/>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:if>
     </xsl:template>
     
@@ -162,8 +167,11 @@
         <xsl:sequence
             select="
             if ($objectNumberOfAttributes > 0) then
-            f:generateHtmlWarning(fn:concat('The object ', $object/@name,
-            ' shall have no values/attributes defined. '))
+            f:generateWarningMessage(fn:concat('The object ', $object/@name,
+            ' shall have no values/attributes defined. '),
+            path($object),
+            'object-attribute-2'
+            )
             else
             ()
             "
@@ -185,8 +193,11 @@
         <xsl:sequence
             select="
             if ($noOfOutgoingConnectors > 0) then
-            f:generateHtmlError(fn:concat('The object ', $object/@name,
-            ' should not connect to other elements.'))
+            f:generateErrorMessage(fn:concat('The object ', $object/@name,
+            ' should not connect to other elements.'),
+            path($object),
+            'object-connector-3'
+            )
             else
             ()
             "
@@ -208,8 +219,11 @@
         <xsl:sequence
             select="
             if ($noOfRealisationOutgoingConnectors = 0) then
-            f:generateHtmlWarning(fn:concat('The object ', $object/@name,
-            ' should instanciate a Class or Enumeration. There shall be at least one Realisation relationship between Object and a Class or Enumeration.'))
+            f:generateWarningMessage(fn:concat('The object ', $object/@name,
+            ' should instanciate a Class or Enumeration. There shall be at least one Realisation relationship between Object and a Class or Enumeration.'),
+            path($object),
+            'object-connector-4'
+            )
             else
             ()
             "
