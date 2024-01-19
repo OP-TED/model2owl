@@ -5,6 +5,8 @@ MODEL2OWL_FOLDER?=.
 RDF_LIB_VERSION?=6.2.0
 #Saxon path
 SAXON?=${MODEL2OWL_FOLDER}/saxon/saxon.jar
+JENA_RIOT_TOOL?=${MODEL2OWL_FOLDER}/jena/apache-jena-4.10.0/bin/riot
+TEMP_FILE=./temp_file.txt
 # Glossary output directory
 OUTPUT_GLOSSARY_PATH?=output
 # Convention report output directory
@@ -40,10 +42,11 @@ get-saxon:
 	@cd ${MODEL2OWL_FOLDER}/saxon && mv saxon-he-10.6.jar saxon.jar
 	@echo 'Saxon path is ${SAXON}'
 
-# install rdflib
-get-rdflib:
-	@echo Installing rdflib
-	@source model2owl-venv/bin/activate && pip install rdflib
+get-jena-cli-tools:
+	@echo Installing jena-cli-tools
+	@mkdir -p ${MODEL2OWL_FOLDER}/jena
+	@cd ${MODEL2OWL_FOLDER}/jena  && curl -L -o jena.zip "https://dlcdn.apache.org/jena/binaries/apache-jena-4.10.0.zip" && unzip jena.zip && rm -rf jena.zip
+	@echo 'Jena riot tool path is ${JENA_RIOT_TOOL}'
 
 get-widoco:
 	@echo Installing widoco
@@ -59,9 +62,6 @@ install:  get-saxon get-rdflib get-widoco
 # Run unit_tests
 unit-tests:
 	@mvn install
-
-create-virtual-env:
-	@python -m venv model2owl-venv
 
 
 # Generate the glossary from an input file
@@ -125,8 +125,7 @@ merge-xmi:
 convert-rdf-to-turtle:
 	@for FILE_PATH in ${RDF_FILELIST}; do \
 		echo Converting $${FILE_PATH} into Turtle; \
-		source model2owl-venv/bin/activate; \
-		rdfpipe -i application/rdf+xml -o  turtle $${FILE_PATH} > $${FILE_PATH%.*}.ttl; \
+		${JENA_RIOT_TOOL} --output=ttl $${FILE_PATH} > $${FILE_PATH%.*}.ttl; \
 		echo Input in RDF/XML format;  \
 		echo $${FILE_PATH};  \
 		echo " ==> Output in Turtle format";  \
@@ -135,8 +134,7 @@ convert-rdf-to-turtle:
 convert-turtle-to-rdf:
 	@for FILE_PATH in ${TURTLE_FILELIST}; do \
 		echo Converting $${FILE_PATH} into RDF/XML; \
-		source model2owl-venv/bin/activate; \
-		rdfpipe -i turtle -o  application/rdf+xml $${FILE_PATH} > $${FILE_PATH%.*}.rdf; \
+		${JENA_RIOT_TOOL} --output=rdfxml $${FILE_PATH} > $${FILE_PATH%.*}.rdf; \
 		echo Input in Turtle format;  \
 		ls -lh $${FILE_PATH};  \
 		echo " ==> Output in RDF/XML format";  \
@@ -146,8 +144,7 @@ convert-turtle-to-rdf:
 convert-rdf-to-jsonld:
 	@for FILE_PATH in ${RDF_FILELIST}; do \
 		echo Converting $${FILE_PATH} into JSON-LD; \
-		source model2owl-venv/bin/activate; \
-		rdfpipe -i application/rdf+xml -o json-ld  $${FILE_PATH} > $${FILE_PATH%.*}.json; \
+		${JENA_RIOT_TOOL} --output=jsonld $${FILE_PATH} > $${FILE_PATH%.*}.json; \
 		echo Input in RDF/XML format;  \
 		echo $${FILE_PATH};  \
 		echo " ==> Output in JSON-LD format";  \
@@ -156,14 +153,27 @@ convert-rdf-to-jsonld:
 convert-rdf-to-rdf:
 	@for FILE_PATH in ${RDF_FILELIST}; do \
 		echo Converting $${FILE_PATH} into RDF/XML; \
-		source model2owl-venv/bin/activate; \
-		rdfpipe -i application/rdf+xml -o application/rdf+xml $${FILE_PATH} > $${FILE_PATH%.*}.rdf2; \
+		${JENA_RIOT_TOOL} --output=rdfxml  $${FILE_PATH} > $${FILE_PATH%.*}.rdf2; \
 		mv -v $${FILE_PATH%.*}.rdf2 $${FILE_PATH%.*}.rdf; \
 		echo Input in RDF/XML format;  \
 		ls -lh $${FILE_PATH};  \
 		echo " ==> Output in RDF/XML format";  \
 		ls -lh $${FILE_PATH%.*}.rdf;  \
 	done
+# make validate-rdf-file FILE_TO_VALIDATE_PATH=./output/eFulfilment.rdf
+validate-rdf-file:
+	@$(JENA_RIOT_TOOL) --validate $(FILE_TO_VALIDATE_PATH) > $(TEMP_FILE) 2>&1; \
+	OUTPUT=$$(cat $(TEMP_FILE)); \
+ 	echo "$$OUTPUT";\
+ 	rm $(TEMP_FILE);\
+    if [ -n "$$OUTPUT" ]; then \
+        echo "$${OUTPUT}" > $${FILE_TO_VALIDATE_PATH%.*}-errors.txt; \
+        echo "Output file created with the validation errors."; \
+    else \
+        echo "No validation issues"; \
+    fi
+
+
 #make generate-html-docs-from-rdf WIDOCO_RDF_INPUT_FILE_PATH=../Documents/model2owl-2023/owl-core.rdf WIDOCO_OUTPUT_FOLDER_PATH=core-html
 generate-html-docs-from-rdf: get-widoco
 	@echo ${WIDOCO_RDF_INPUT_FILE_PATH}
