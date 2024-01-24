@@ -162,16 +162,7 @@ convert-rdf-to-rdf:
 	done
 # make validate-rdf-file FILE_TO_VALIDATE_PATH=./output/eFulfilment.rdf
 validate-rdf-file:
-	@$(JENA_RIOT_TOOL) --validate $(FILE_TO_VALIDATE_PATH) > $(TEMP_FILE) 2>&1; \
-	OUTPUT=$$(cat $(TEMP_FILE)); \
- 	echo "$$OUTPUT";\
- 	rm $(TEMP_FILE);\
-    if [ -n "$$OUTPUT" ]; then \
-        echo "$${OUTPUT}" > $${FILE_TO_VALIDATE_PATH%.*}-errors.txt; \
-        echo "Output file created with the validation errors."; \
-    else \
-        echo "No validation issues"; \
-    fi
+	@$(JENA_RIOT_TOOL) --validate $(FILE_TO_VALIDATE_PATH)
 
 
 #make generate-html-docs-from-rdf WIDOCO_RDF_INPUT_FILE_PATH=../Documents/model2owl-2023/owl-core.rdf WIDOCO_OUTPUT_FOLDER_PATH=core-html
