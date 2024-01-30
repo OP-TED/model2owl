@@ -185,7 +185,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[generalisation-source-target-types-3] - Generalisations can be provided only
+        <xd:desc>[generalisation-source-target-types-7] - Generalisations can be provided only
             between classes or between connectors.</xd:desc>
         <xd:param name="generalizationConnector"/>
     </xd:doc>
