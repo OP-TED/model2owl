@@ -121,7 +121,7 @@
 
 
     <xd:doc>
-        <xd:desc>[common-name-4] - The name prefix is invalid in $value$. Please provide a short
+        <xd:desc>[connector-name-4] - The name prefix is invalid in $value$. Please provide a short
             prefix name containing only alphanumeric characters [a-zA-Z0-9]+.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -155,7 +155,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[common-name-5]-The prefix $value$ is not defined. A prefix must be associated to a
+        <xd:desc>[connector-name-5]-The prefix $value$ is not defined. A prefix must be associated to a
             namespace URI. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -189,7 +189,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[common-name-6] - The local name segment is invalid in $value$. Please provide a
+        <xd:desc>[connector-name-6] - The local name segment is invalid in $value$. Please provide a
             concise label using alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase,
             or possibly with tokens delimited by single spaces.</xd:desc>
         <xd:param name="connector"/>
@@ -226,7 +226,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[common-name-7] - The local name segment $value$ starts with an invalid character.
+        <xd:desc>[connector-name-7] - The local name segment $value$ starts with an invalid character.
             The local segment must start with a letter or underscore. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -262,7 +262,7 @@
 
 
     <xd:doc>
-        <xd:desc>[common-name-8] - The local name segment $value$ contains token delimiters. It is
+        <xd:desc>[connector-name-8] - The local name segment $value$ contains token delimiters. It is
             best if the names are camel cased and delimiters removed. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
