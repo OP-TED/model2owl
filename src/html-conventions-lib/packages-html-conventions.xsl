@@ -34,17 +34,22 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:if test="boolean($packageChecks)">
-            <h2>
-                <xsl:call-template name="getPackageName">
-                    <xsl:with-param name="package" select="."/>
-                </xsl:call-template>
-            </h2>
-            <dl>
-                <dt>
-                    Unmet package conventions 
-                </dt>
-                <xsl:copy-of select="$packageChecks"/>
-            </dl>
+            <xsl:choose>
+                <xsl:when test="$reportType = 'HTML'">
+                    <h2>
+                        <xsl:call-template name="getPackageName">
+                            <xsl:with-param name="package" select="."/>
+                        </xsl:call-template>
+                    </h2>
+                    <dl>
+                        <dt> Unmet package conventions </dt>
+                        <xsl:copy-of select="$packageChecks"/>
+                    </dl>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:copy-of select="$packageChecks"/>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:if>
     </xsl:template>
 
@@ -83,8 +88,13 @@
                 if (fn:matches($packageName, '^[a-zA-Z0-9 ]*$')) then
                         ()
                     else
-                        f:generateHtmlWarning(fn:concat('The package name ', $packageName, ' contains invalid characters. Package name shall be a short ',
-                        'alphanumeric string representing an acronym or a short name.'))"
+                        f:generateWarningMessage(fn:concat('The package name ', $packageName, ' contains invalid characters. Package name shall be a short ',
+                        'alphanumeric string representing an acronym or a short name.'),
+                        path($package),
+                        'package-name-1',
+                        'CMC-R19',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r19&quot; target=&quot;_blank&quot;&gt;CMC-R19&lt;/a&gt;'
+                        )"
             />
         </xsl:if>
     </xsl:template>
@@ -100,8 +110,13 @@
         <xsl:sequence
             select="
             if (f:isElementNameMissing($package)) then
-            f:generateHtmlError(fn:concat('The name of the package ', $package/@xmi:idref,
-            ' is missing.  Packages must be named.'))
+            f:generateErrorMessage(fn:concat('The name of the package ', $package/@xmi:idref,
+            ' is missing.  Packages must be named.'),
+            path($package),
+            'package-name-2',
+            'CMC-R15',
+            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r15&quot; target=&quot;_blank&quot;&gt;CMC-R15&lt;/a&gt;'
+            )
                 else
                     ()"
         />
@@ -119,7 +134,12 @@
                 if (count(f:getPackageElements($package)) > 0) then
                     ()
                 else
-                f:generateHtmlWarning(fn:concat('The package ',$package/@name ,' is empty. Packages must contain child classes and conenctors (i.e. owned elements).'))"
+                f:generateWarningMessage(fn:concat('The package ',$package/@name ,' is empty. Packages must contain child classes and conenctors (i.e. owned elements).'),
+                path($package),
+                'package-owned-elements-3',
+                'CMC-R15',
+                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r15&quot; target=&quot;_blank&quot;&gt;CMC-R15&lt;/a&gt;'
+                )"
         />
     </xsl:template>
 

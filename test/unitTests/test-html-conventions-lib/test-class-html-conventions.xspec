@@ -4,7 +4,7 @@
     xmlns:f="http://https://github.com/costezki/model2owl#"
     stylesheet="../../../src/html-conventions-lib/class-html-conventions.xsl">
     
-    
+    <x:param name="reportType" select="'HTML'"/>
     <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class']-finding class with unmet conventions">
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[34]"/>
         <x:expect label="there is a h2 with the class name" test="boolean(/h2)"/>

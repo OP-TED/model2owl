@@ -24,7 +24,10 @@
     <xsl:template name="classAttributesWithSameName">
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctClassAttributeNames($root)"/>
-        <h1 id="classAttributesUsage">Class attributes with multiple usages</h1>
+        <xsl:if test="$reportType = 'HTML'">
+            <h1 id="classAttributesUsage">Class attributes with multiple usages</h1>   
+        </xsl:if>
+
         <xsl:for-each select="$distinctNames">
             <xsl:sort select="." lang="en"/>
             <xsl:if test="fn:count(f:getClassAttributeByName(., $root)) > 1">
@@ -43,12 +46,19 @@
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:if test="boolean($attributeChecks)">
-                    <dl id="attribute-{.}-usage">
-                        <dt>
-                            <xsl:value-of select="."/>
-                        </dt>
-                        <xsl:copy-of select="$attributeChecks"/>
-                    </dl>
+                    <xsl:choose>
+                        <xsl:when test="$reportType = 'HTML'">
+                            <dl id="attribute-{.}-usage">
+                                <dt>
+                                    <xsl:value-of select="."/>
+                                </dt>
+                                <xsl:copy-of select="$attributeChecks"/>
+                            </dl>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:copy-of select="$attributeChecks"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:if>
             </xsl:if>
         </xsl:for-each>
@@ -84,9 +94,15 @@
                     ()
                 else
                     if (fn:boolean($definitionValues)) then
-                        f:generateFormattedHtmlWarning(fn:concat('The attribute ', $attributeName, ' is defined differently in reuse contexts. ',
+                        f:generateFormattedWarningMessage(fn:concat('The attribute ', $attributeName, ' is defined differently in reuse contexts. ',
                         'When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same.',
-                        'In this case, multiple definitions are found: '), $descriptionsWithAnnotations)
+                        'In this case, multiple definitions are found: '), $descriptionsWithAnnotations,
+                        '//elements/element/attributes',
+                        'class-attributes-reuse-definition-1',
+                        'GC-R5',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r5&quot; target=&quot;_blank&quot;&gt;GC-R5&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r6&quot; target=&quot;_blank&quot;&gt;GC-R6&lt;/a&gt;'
+                        )
                     else
                         ()"
         />
@@ -125,9 +141,15 @@
                 if (f:areStringsEqual($lowerBoundValues) and f:areStringsEqual($upperBoundValues) and $allAttributesHaveMultiplicityValue) then
                     ()
                 else
-                    f:generateFormattedHtmlInfo((fn:concat('The attribute ', $attributeName, ' has different multiplicities in reuse contexts.
+                    f:generateFormattedInfoMessage((fn:concat('The attribute ', $attributeName, ' has different multiplicities in reuse contexts.
                 When a property is reused in multiple contexts, the multiplicity is expected to be the same. Please see usage below:'
-                )), $multiplicityUsage)"
+                )), $multiplicityUsage,
+                '//elements/element/attributes',
+                'class-attributes-reuse-multiplicity-2',
+                'CMC-R11',
+                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r11&quot; target=&quot;_blank&quot;&gt;CMC-R11&lt;/a&gt;
+                &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r6&quot; target=&quot;_blank&quot;&gt;GC-R6&lt;/a&gt;'
+                )"
         />
     </xsl:template>
 
@@ -167,9 +189,15 @@
                     ()
                 else
                     if (fn:boolean($datatypeValues)) then
-                        f:generateFormattedHtmlWarning(fn:concat('The attribute ', $attributeName, ' is has different datatypes in reuse contexts.',
+                        f:generateFormattedWarningMessage(fn:concat('The attribute ', $attributeName, ' is has different datatypes in reuse contexts.',
                         'When a property is reused in multiple contexts, the data-type is expected to be the same.',
-                        'In this case, multiple data-types are found: '), $datatypeWithAnnotations)
+                        'In this case, multiple data-types are found: '), $datatypeWithAnnotations,
+                        '//elements/element/attributes',
+                        'class-attributes-reuse-data-types-3',
+                        'GC-R6',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r6&quot; target=&quot;_blank&quot;&gt;GC-R6&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r1&quot; target=&quot;_blank&quot;&gt;GC-R1&lt;/a&gt;'
+                        )
                     else
                         ()"
         />

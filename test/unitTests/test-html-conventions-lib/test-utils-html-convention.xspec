@@ -4,24 +4,39 @@
     xmlns:f="http://https://github.com/costezki/model2owl#"
     stylesheet="../../../src/html-conventions-lib/utils-html-conventions.xsl">
 
+    <x:param name="reportType" select="'HTML'"/>
+
     <x:scenario label="Generate a info in html">
-        <x:call function="f:generateHtmlInfo">
+        <x:call function="f:generateInfoMessage">
             <x:param name="infoMessage">Info message</x:param>
+            <x:param name="pathChecked">/connectors/connector</x:param>
+            <x:param name="ruleIdentifier">R-2.13</x:param>
+            <x:param name="semicRuleIdentifier">CMC-R8</x:param>
+            <x:param name="semicRuleIdentifierLinks">&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r18&quot; target=&quot;_blank&quot;&gt;CMC-R18&lt;/a&gt;</x:param>
         </x:call>
         <x:expect label="has info message" test="//dd//text() = 'Info message'"/>
     </x:scenario>
+    
 
     <x:scenario label="Generate a warning in html">
-        <x:call function="f:generateHtmlWarning">
+        <x:call function="f:generateWarningMessage">
             <x:param name="warningMessage">Warning message</x:param>
+            <x:param name="pathChecked">/connectors/connector</x:param>
+            <x:param name="ruleIdentifier">R-2.13</x:param>
+            <x:param name="semicRuleIdentifier">CMC-R8</x:param>
+            <x:param name="semicRuleIdentifierLinks">&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r18&quot; target=&quot;_blank&quot;&gt;CMC-R18&lt;/a&gt;</x:param>
         </x:call>
         <x:expect label="has warning message" test="//dd//text() = 'Warning message'"/>
     </x:scenario>
     
     
     <x:scenario label="Generate an error in html">
-        <x:call function="f:generateHtmlError">
+        <x:call function="f:generateErrorMessage">
             <x:param name="errorMessage">This has no description</x:param>
+            <x:param name="pathChecked">/connectors/connector</x:param>
+            <x:param name="ruleIdentifier">R-2.13</x:param>
+            <x:param name="semicRuleIdentifier">CMC-R8</x:param>
+            <x:param name="semicRuleIdentifierLinks">&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r18&quot; target=&quot;_blank&quot;&gt;CMC-R18&lt;/a&gt;</x:param>
         </x:call>
         <x:expect label="has error message" test="//dd//text() = 'This has no description'"/>
     </x:scenario>
@@ -30,29 +45,44 @@
     
     
     <x:scenario label="Generate a info with a list in html">
-        <x:call function="f:generateFormattedHtmlInfo">
+        <x:call function="f:generateFormattedInfoMessage">
             <x:param name="infoMessage">Info message</x:param>
             <x:param name="elementsList" select="(1,2,3,4)"/>
+            <x:param name="pathChecked">/connectors/connector</x:param>
+            <x:param name="ruleIdentifier">R-2.13</x:param>
+            <x:param name="semicRuleIdentifier">CMC-R8</x:param>
+            <x:param name="semicRuleIdentifierLinks">&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r18&quot; target=&quot;_blank&quot;&gt;CMC-R18&lt;/a&gt;</x:param>
         </x:call>
         <x:expect label="has info message" test="//dd//text() = 'Info message'"/>
         <x:expect label="has 4 list elements" test="count(dd/ul/li) = 4"/>
     </x:scenario>
     
     <x:scenario label="Generate a warning with a list in html">
-        <x:call function="f:generateFormattedHtmlInfo">
+        <x:call function="f:generateFormattedInfoMessage">
             <x:param name="warningMessage">Warning message</x:param>
             <x:param name="elementsList" select="(1,2,3,4)"/>
+            <x:param name="pathChecked">/connectors/connector</x:param>
+            <x:param name="ruleIdentifier">R-2.13</x:param>
+            <x:param name="semicRuleIdentifier">CMC-R8</x:param>
+            <x:param name="semicRuleIdentifierLinks">&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r18&quot; target=&quot;_blank&quot;&gt;CMC-R18&lt;/a&gt;</x:param>
         </x:call>
         <x:expect label="has info message" test="//dd//text() = 'Warning message'"/>
         <x:expect label="has 4 list elements" test="count(dd/ul/li) = 4"/>
     </x:scenario>
     
     <x:scenario label="Generate a error with a list in html">
-        <x:call function="f:generateFormattedHtmlInfo">
+        <x:call function="f:generateFormattedInfoMessage">
             <x:param name="errorMessage">Error message</x:param>
             <x:param name="elementsList" select="(1,2,3,4)"/>
+            <x:param name="pathChecked">/connectors/connector</x:param>
+            <x:param name="ruleIdentifier">R-2.13</x:param>
+            <x:param name="semicRuleIdentifier">CMC-R8</x:param>
+            <x:param name="semicRuleIdentifierLinks">&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r18&quot; target=&quot;_blank&quot;&gt;CMC-R18&lt;/a&gt;</x:param>
         </x:call>
         <x:expect label="has info message" test="//dd//text() = 'Error message'"/>
         <x:expect label="has 4 list elements" test="count(dd/ul/li) = 4"/>
     </x:scenario>
+    
+    
+    
 </x:description>
