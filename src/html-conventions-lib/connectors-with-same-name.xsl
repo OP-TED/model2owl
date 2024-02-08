@@ -24,9 +24,7 @@
     <xsl:template name="connectorsWithSameName">
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
-        <xsl:if test="$reportType = 'HTML'">
-             <h1 id="connectorsUsage">Connectors with multiple usages</h1> 
-        </xsl:if>
+        <h1 id="connectorsUsage">Connectors with multiple usages</h1>
         <xsl:for-each select="$distinctNames">  
             <xsl:sort select="." lang="en"/>
             <xsl:if test="fn:count(f:getConnectorByName(., $root)) > 1">
@@ -45,20 +43,12 @@
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:if test="boolean($connectorsChecks)">
-                    <xsl:choose>
-                        <xsl:when test="$reportType = 'HTML'">
-                            <dl id="connector-{.}">
-                                <dt>
-                                    <xsl:value-of select="."/>
-                                </dt>
-                            </dl>
-                            <xsl:copy-of select="$connectorsChecks"/>
-
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:copy-of select="$connectorsChecks"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
+                    <dl id="connector-{.}">
+                    <dt>
+                        <xsl:value-of select="."/>
+                    </dt>
+                    </dl>
+                    <xsl:copy-of select="$connectorsChecks"/>
                 </xsl:if>
             </xsl:if>
         </xsl:for-each>
@@ -85,14 +75,7 @@
                 if (f:areStringsEqual($multiplicityValues) and $allConnectorsHaveMultiplicityValue) then
                     ()
                 else
-                f:generateInfoMessage(
-                'When a property is reused in multiple contexts the multiplicity is expected to be the same.',
-                '//connectors',
-                'connectors-with-same-name-multiplicity-1',
-                'CMC-R12',
-                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
-                
-                )"
+                f:generateHtmlInfo('When a property is reused in multiple contexts, the multiplicity is expected to be the same. Please check the nomenclature above for a summary.')"
         />
     </xsl:template>
 
@@ -126,24 +109,12 @@
         <xsl:sequence
             select="
                 if (f:areStringsEqual($definitionValues) and fn:boolean($definitionValues and $allConnectorsHaveDefinition)) then
-                f:generateFormattedInfoMessage(fn:concat('The property is reused in multiple contexts, the meaning given by the definition is the same.  ',
-                    'Here is the property usage: '), $descriptionsWithAnnotations,
-                    '//connectors',
-                    'connectors-with-same-name-definition-2',
-                    'GC-R5',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r5&quot; target=&quot;_blank&quot;&gt;GC-R5&lt;/a&gt;
-                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r6&quot; target=&quot;_blank&quot;&gt;GC-R6&lt;/a&gt;'
-                    )
+                f:generateFormattedHtmlInfo(fn:concat('The property is reused in multiple contexts, the meaning given by the definition is the same.  ',
+                    'Here is the property usage: '), $descriptionsWithAnnotations)
                 else
                     if (fn:boolean($definitionValues)) then
-                    f:generateFormattedWarningMessage(fn:concat('When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. ',
-                                                    'In this case, multiple definitions are found: '), $descriptionsWithAnnotations,
-                                                    '//connectors',
-                                                    'connectors-with-same-name-definition-2',
-                                                    'GC-R5',
-                                                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r5&quot; target=&quot;_blank&quot;&gt;GC-R5&lt;/a&gt;
-                                                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r6&quot; target=&quot;_blank&quot;&gt;GC-R6&lt;/a&gt;'
-                                                    )
+                    f:generateFormattedHtmlWarning(fn:concat('When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. ',
+                                                    'In this case, multiple definitions are found: '), $descriptionsWithAnnotations)
                     else
                         ()"
         />
@@ -169,13 +140,8 @@
             if (f:areStringsEqual($typeValues)) then
             ()
             else
-            f:generateErrorMessage(fn:concat('The name ', $connectorName,
-            ' appears on connectors of different types.  A name shall be reused only on connectors of the same type.'),
-            '//connectors',
-            'connectors-with-same-name-name-3',
-            'CMC-R12',
-            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
-            )"
+            f:generateHtmlError(fn:concat('The name ', $connectorName,
+            ' appears on connectors of different types.  A name shall be reused only on connectors of the same type.'))"
         />
     </xsl:template>
 

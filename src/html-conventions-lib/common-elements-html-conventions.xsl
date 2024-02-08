@@ -33,14 +33,8 @@
         <xsl:if test="f:isValidQname($elementName) = fn:false()">
             <xsl:sequence
                 select="
-                    f:generateWarningMessage(fn:concat('The name ', $elementName, ' does not match the pattern. ',
-                    'The name should respect the syntax prefix:localSegment (similar to the XML QName).'),
-                    path($element),
-                    'common-name-1',
-                    'CMC-R3',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;
-                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;'
-                    )"
+                    f:generateHtmlWarning(fn:concat('The name ', $elementName, ' does not match the pattern. ',
+                    'The name should respect the syntax prefix:localSegment (similar to the XML QName).'))"
             />
         </xsl:if>
     </xsl:template>
@@ -58,14 +52,8 @@
         <xsl:sequence
             select="
                 if (f:isElementNameMissing($element)) then
-                    f:generateErrorMessage(fn:concat('The name of the element ', $element/@xmi:idref,
-                    ' is missing. Please provide one respecing the syntax prefix:localSegment.'),
-                    path($element),
-                    'common-name-2',
-                    'CMC-R3',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;
-                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;'
-                    )
+                    f:generateHtmlError(fn:concat('The name of the element ', $element/@xmi:idref,
+                    ' is missing. Please provide one respecing the syntax prefix:localSegment.'))
                 else
                     ()"
         />
@@ -81,13 +69,8 @@
         <xsl:sequence
             select="
                 if (f:isElementNamePrefixMissing($element)) then
-                    f:generateWarningMessage(fn:concat('The name of element ', $element/@name,
-                    ' is missing a prefix. The name should comprise a prefix respecing the syntax prefix:localSegment.'),
-                    path($element),
-                    'common-name-3',
-                    'CMC-R5',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;'
-                    )
+                    f:generateHtmlWarning(fn:concat('The name of element ', $element/@name,
+                    ' is missing a prefix. The name should comprise a prefix respecing the syntax prefix:localSegment.'))
                 else
                     ()"
         />
@@ -104,14 +87,8 @@
         <xsl:sequence
             select="
                 if (f:isElementNameLocalSegmentMissing($element)) then
-                    f:generateErrorMessage(fn:concat('The name of element ', $element/@name,
-                    ' is missing a local segment. Please provide one respecing the syntax prefix:localSegment.'),
-                    path($element),
-                    'common-name-4',
-                    'CMC-R5',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;
-                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;'
-                    )
+                    f:generateHtmlError(fn:concat('The name of element ', $element/@name,
+                    ' is missing a local segment. Please provide one respecing the syntax prefix:localSegment.'))
                 else
                     ()"
         />
@@ -128,14 +105,9 @@
         <xsl:sequence
             select="
                 if (f:isInvalidElementNamePrefix($element)) then
-                    f:generateErrorMessage(fn:concat('The name prefix ', fn:substring-before($element/@name, ':'),
+                    f:generateHtmlError(fn:concat('The name prefix ', fn:substring-before($element/@name, ':'),
                     ' , is invalid. Please provide a short prefix name ',
-                    'containing only alphanumeric characters [a-zA-Z0-9]+.'),
-                    path($element),
-                    'common-name-5',
-                    'CMC-R5',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;'
-                    )
+                    'containing only alphanumeric characters [a-zA-Z0-9]+.'))
                 else
                     ()"
         />
@@ -153,14 +125,8 @@
         <xsl:if test="not(f:isValidNamespace($elementName))">
             <xsl:sequence
                 select="
-                    f:generateWarningMessage(fn:concat('The prefix ', fn:substring-before($elementName, ':'),
-                    ' is not defined. A prefix must be associated to a namespace URI.'),
-                    path($element),
-                    'common-name-6',
-                    'CMC-R5',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;
-                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;'
-                    )"
+                    f:generateHtmlWarning(fn:concat('The prefix ', fn:substring-before($elementName, ':'),
+                    ' is not defined. A prefix must be associated to a namespace URI.'))"
             />
         </xsl:if>
     </xsl:template>
@@ -176,16 +142,10 @@
         <xsl:sequence
             select="
                 if (f:isInvalidElementLocalSegmentName($element)) then
-                    f:generateErrorMessage(fn:concat('The local name segment ', fn:substring-after($element/@name, ':'),
+                    f:generateHtmlError(fn:concat('The local name segment ', fn:substring-after($element/@name, ':'),
                     ' , is invalid. Please provide a concise label using ',
                     'alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with ',
-                    'tokens delimited by single spaces.'),
-                    path($element),
-                    'common-name-7',
-                    'CMC-R4',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r4&quot; target=&quot;_blank&quot;&gt;CMC-R4&lt;/a&gt;
-                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;'
-                    )
+                    'tokens delimited by single spaces.'))
                 else
                     ()"
         />
@@ -203,15 +163,9 @@
                 if (f:isValidElementFirstCharacterInLocalSegment($element)) then
                     ()
                 else
-                    f:generateErrorMessage(fn:concat('The local name segment ', f:getLocalSegmentForElements($element),
+                    f:generateHtmlError(fn:concat('The local name segment ', f:getLocalSegmentForElements($element),
                     ' starts with an invalid character. The local segment ',
-                    'must start with a letter or underscore.'),
-                    path($element),
-                    'common-name-8',
-                    'CMC-R4',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r4&quot; target=&quot;_blank&quot;&gt;CMC-R4&lt;/a&gt;
-                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;'
-                    )"
+                    'must start with a letter or underscore.'))"
         />
     </xsl:template>
 
@@ -226,14 +180,9 @@
         <xsl:sequence
             select="
                 if (f:isDelimitersInElementLocalSegment($element)) then
-                    f:generateWarningMessage(fn:concat('The local name segment ', f:getLocalSegmentForElements($element),
+                    f:generateHtmlWarning(fn:concat('The local name segment ', f:getLocalSegmentForElements($element),
                     ' contains token delimiters. It is best if the names ',
-                    'are camel cased and delimiters removed.'),
-                    path($element),
-                    'common-name-9',
-                    'CMC-R4',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r4&quot; target=&quot;_blank&quot;&gt;CMC-R4&lt;/a&gt;'
-                    )
+                    'are camel cased and delimiters removed.'))
                 else
                     ()
                 "
@@ -261,12 +210,7 @@
         <xsl:sequence
             select="
                 if ($noElementDescription = fn:true()) then
-                    f:generateWarningMessage(fn:concat($elementName, ' is missing a description. All concepts should be defined or described.'),
-                    path($element),
-                    'common-description-10',
-                    'GC-R5',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r5&quot; target=&quot;_blank&quot;&gt;GC-R5&lt;/a&gt;'
-                    )
+                    f:generateHtmlWarning(fn:concat($elementName, ' is missing a description. All concepts should be defined or described.'))
                 else
                     ()"
         />
@@ -294,14 +238,9 @@
             select="
                 if ($hasStereotype)
                 then
-                    f:generateInfoMessage(fn:concat('The ', $element/*/@stereotype,
+                    f:generateHtmlInfo(fn:concat('The ', $element/*/@stereotype,
                     ' stareotype is applied to ', $element/@name,
-                    '. Stereotypes are discouraged in the current practice with some exceptions. '),
-                    path($element),
-                    'common-stereotype-11',
-                    'CMC-R17',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r17&quot; target=&quot;_blank&quot;&gt;CMC-R17&lt;/a&gt;'
-                    )
+                    '. Stereotypes are discouraged in the current practice with some exceptions. '))
                 else
                     ()"
         />
@@ -328,14 +267,9 @@
                 then
                     ()
                 else
-                    f:generateWarningMessage(fn:concat('The ', $element/*/@stereotype,
+                    f:generateHtmlWarning(fn:concat('The ', $element/*/@stereotype,
                     ' stareotype applied to ', $element/@name,
-                    'is not known and will be ignored. '),
-                    path($element),
-                    'common-stereotype-12',
-                    'CMC-R17',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r17&quot; target=&quot;_blank&quot;&gt;CMC-R17&lt;/a&gt;'
-                    )"
+                    'is not known and will be ignored. '))"
         />
     </xsl:template>
 
@@ -354,12 +288,7 @@
                     if (f:isValidTagName($tag/@name)) then
                         ()
                     else
-                        f:generateErrorMessage(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must be an URI.'),
-                        path($element),
-                        'common-tag-13',
-                        'CMC-R6',
-                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
-                        )"/>
+                        f:generateHtmlError(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must be an URI.'))"/>
 
     </xsl:template>
 
@@ -378,12 +307,7 @@
                     if ($tag/@value) then
                         ()
                     else
-                        f:generateErrorMessage(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must have a value'),
-                        path($element),
-                        'common-tag-14]',
-                        'CMC-R6',
-                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
-                        )"/>
+                        f:generateHtmlError(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must have a value'))"/>
 
     </xsl:template>
 
@@ -403,12 +327,7 @@
                     if ($tag/@name) then
                         ()
                     else
-                        f:generateErrorMessage(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must have a valid name'),
-                        path($element),
-                        'common-tag-15',
-                        'CMC-R6',
-                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
-                        )"/>
+                        f:generateHtmlError(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must have a valid name'))"/>
 
     </xsl:template>
 
@@ -423,12 +342,7 @@
         <xsl:sequence
             select="
                 if (fn:ends-with($elementName, 'es') or fn:ends-with($elementName, 's')) then
-                f:generateWarningMessage(fn:concat('The name (', $elementName,') is possibly in plural grammatical number. Names shall be usually provided in singular number.'),
-                    path($element),
-                    'common-name-16',
-                    'GC-R4',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r4&quot; target=&quot;_blank&quot;&gt;GC-R4&lt;/a&gt;'
-                    )
+                    f:generateHtmlWarning('The name is possibly in plural grammatical number. Names shall be usually provided in singular number.')
                 else
                     ()"
         />
@@ -450,23 +364,9 @@
                         if ((f:isValidNamespace($tag/@name)) or (fn:substring-before($tag/@name, ':') = '')) then
                             ()
                         else
-                            f:generateErrorMessage(fn:concat('The prefix for ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
-                            path($element),
-                            'common-tag-prefix-17',
-                            'CMC-R3',
-                            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;
-                            &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;
-                            &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
-                            )
+                            f:generateHtmlError(fn:concat('The prefix for ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
                     else
-                        f:generateErrorMessage(fn:concat('The prefix for ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
-                        path($element),
-                        'common-tag-prefix-17',
-                        'CMC-R3',
-                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;
-                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;
-                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
-                        )
+                        f:generateHtmlError(fn:concat('The prefix for ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'))
                 "/>
 
     </xsl:template>
@@ -481,15 +381,10 @@
         <xsl:variable name="elementScope" select="$element/@scope"/>
         <xsl:sequence
             select="
-            if ($elementScope = 'public') then
-            ()
-            else
-            f:generateWarningMessage(fn:concat('The element ', $element/@name, ' is non-public. All elements shall be public '),
-            path($element),
-            'common-visibility-18',
-            'CMC-R13',
-            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r13&quot; target=&quot;_blank&quot;&gt;CMC-R13&lt;/a&gt;'
-            )"
+                if ($elementScope = 'public') then
+                    ()
+                else
+                    f:generateHtmlWarning(fn:concat('The element ', $element/@name, ' is non-public. All elements shall be public '))"
         />
     </xsl:template>
 
@@ -516,16 +411,11 @@
                     <xsl:sequence
                         select="
                             if (count($elementsFound) > 0 or count($connectorsFound) > 0) then
-                                f:generateErrorMessage(fn:concat('The name ', $element/@name, ' is not unique. The Concept names ',
+                                f:generateHtmlError(fn:concat('The name ', $element/@name, ' is not unique. The Concept names ',
                                 'should be unique within the model. ',
                                 'The following specifies the names of the which things are not to be reused as the names of which other things: ',
                                 'attributes -> elements, connector roles (dependency and association)'
-                                ),
-                                path($element),
-                                'common-name-19',
-                                'CMC-R5',
-                                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;'
-                                )
+                                ))
                             else
                                 ()
                             
@@ -536,17 +426,13 @@
                     <xsl:sequence
                         select="
                         if (count($elementsFound) > 1 or count($connectorsFound) > 0 or count($attributesFound) > 0) then
-                                f:generateErrorMessage(fn:concat('The name ', $element/@name, ' is not unique. The Concept names ',
+                                f:generateHtmlError(fn:concat('The name ', $element/@name, ' is not unique. The Concept names ',
                                 'should be unique within the model. ',
                                 'The following specifies the names of the which things are not to be reused as the names of which other things: ',
-                                'elements (Class, Datatype, Enumeration, Object) -> elements, attributes, connector roles (dependency and association)'),
-                                path($element),
-                                'common-name-19',
-                                'CMC-R5',
-                                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;'
-                                )
+                                'elements (Class, Datatype, Enumeration, Object) -> elements, attributes, connector roles (dependency and association)'))
                             else
-                                ()  
+                                ()
+                            
                             "
                     />
                 </xsl:otherwise>

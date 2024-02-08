@@ -51,20 +51,13 @@
             </xsl:if>
         </xsl:variable>
         <xsl:if test="boolean($generalizationChecks)">
-            <xsl:choose>
-                <xsl:when test="$reportType = 'HTML'">
-                    <h2>
-                        <xsl:value-of select="f:getConnectorName(.)"/>
-                    </h2>
-                    <dl>
-                        <dt> Unmet generalisation conventions </dt>
-                        <xsl:copy-of select="$generalizationChecks"/>
-                    </dl>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:copy-of select="$generalizationChecks"/>
-                </xsl:otherwise>
-            </xsl:choose>
+            <h2>
+                <xsl:value-of select="f:getConnectorName(.)"/>
+            </h2>
+            <dl>
+                <dt> Unmet generalisation conventions </dt>
+                <xsl:copy-of select="$generalizationChecks"/>
+            </dl>
         </xsl:if>
     </xsl:template>
 
@@ -85,14 +78,9 @@
                 if (count(f:getIncommingConnectors($targetElement)[properties/@ea_type = 'Generalization']) > 2) then
                     ()
                 else
-                    f:generateInfoMessage(fn:concat('The class ', $generalizationConnector/target/model/@name, ' has only one sub-class ',
+                    f:generateHtmlInfo(fn:concat('The class ', $generalizationConnector/target/model/@name, ' has only one sub-class ',
                     $generalizationConnector/source/model/@name, '. Class inheritance should be built employing at least two subclasses for each class or',
-                    ' not at all.'),
-                    path($generalizationConnector),
-                    'generalisation-hierarchy-1',
-                    'CMC-R8',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r8&quot; target=&quot;_blank&quot;&gt;CMC-R8&lt;/a&gt;'
-                    )"
+                    ' not at all.'))"
         />
     </xsl:template>
 
@@ -112,13 +100,8 @@
         <xsl:sequence
             select="
                 if (boolean(f:getOutgoingConnectors($targetElement)[target/@xmi:idref = $idRefSource and properties/@ea_type = 'Generalization'])) then
-                    f:generateErrorMessage(fn:concat('The classes ', $generalizationConnector/target/model/@name, ' and ', $generalizationConnector/source/model/@name, ' inherit one ',
-                    'another. Sub-class relation must be established in one direction only, forming a hierarchy.'),
-                    path($generalizationConnector),
-                    'generalisation-hierarchy-2',
-                    'SC-R5',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-semantic-conventions.html#sec:sc-r5&quot; target=&quot;_blank&quot;&gt;SC-R5&lt;/a&gt;'
-                    )
+                    f:generateHtmlError(fn:concat('The classes ', $generalizationConnector/target/model/@name, ' and ', $generalizationConnector/source/model/@name, ' inherit one ',
+                    'another. Sub-class relation must be established in one direction only, forming a hierarchy.'))
                 else
                     ()"
         />
@@ -140,13 +123,7 @@
                 if ($hasNoTargetMultiplicity and $hasNoSourceMultiplicity) then
                     ()
                 else
-                    f:generateErrorMessage('The generalisation has multiplicity. No multiplicity can be provided to generalisations.',
-                    path($generalizationConnector),
-                    'generalisation-multiplicity-3',
-                    'CMC-R11',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r11&quot; target=&quot;_blank&quot;&gt;CMC-R11&lt;/a&gt;
-                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
-                    )"
+                    f:generateHtmlError('The generalisation has multiplicity. No multiplicity can be provided to generalisations.')"
         />
     </xsl:template>
 
@@ -162,12 +139,7 @@
         <xsl:sequence
             select="
                 if ($generalizationHasNoName = fn:false()) then
-                    f:generateErrorMessage(fn:concat('The connector ', $generalizationConnector/@name, ' has a name. No name can be provided for generalisation relation.'),
-                    path($generalizationConnector),
-                    'generalisation-name-4',
-                    'CMC-R12',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
-                    )
+                    f:generateHtmlError(fn:concat('The connector ', $generalizationConnector/@name, ' has a name. No name can be provided for generalisation relation.'))
                 else
                     ()"
         />
@@ -189,12 +161,7 @@
                 if ($hasNoTargetRoleName and $hasNoSourceRoleName) then
                     ()
                 else
-                    f:generateErrorMessage('The generalisation connector has a role name. No source or target roles can be provided to generalisations.',
-                    path($generalizationConnector),
-                    'generalisation-name-5',
-                    'CMC-R12',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
-                    )"
+                    f:generateHtmlError('The generalisation connector has a role name. No source or target roles can be provided to generalisations.')"
         />
     </xsl:template>
 
@@ -210,13 +177,8 @@
         <xsl:sequence
             select="
                 if ($generalizationDirection != 'Source -&gt; Destination') then
-                    f:generateErrorMessage(fn:concat('The ', $generalizationDirection, ' direction is invalid. ',
-                    'Generalisations must employ Source -&gt; Destination direction only.'),
-                    path($generalizationConnector),
-                    'generalisation-direction-6',
-                    'CMC-R12',
-                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
-                    )
+                    f:generateHtmlError(fn:concat('The ', $generalizationDirection, ' direction is invalid. ',
+                    'Generalisations must employ Source -&gt; Destination direction only.'))
                 else
                     ()"
         />
@@ -237,12 +199,7 @@
                 if (($sourceType = 'Class' and $targetType = 'Class') or ($sourceType = 'ProxyConnector' and $targetType = 'ProxyConnector')) then
                     ()
                 else
-                f:generateErrorMessage('Generalisations can be provided only between classes or between connectors.',
-                path($generalizationConnector),
-                'generalisation-source-target-types-7',
-                'CMC-R12',
-                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
-                )"
+                f:generateHtmlError('Generalisations can be provided only between classes or between connectors.')"
         />
     </xsl:template>
 

@@ -90,14 +90,14 @@
             <xsl:call-template name="nonPublicElement">
                 <xsl:with-param name="element" select="."/>
             </xsl:call-template>
-
+            
             <xsl:call-template name="elementUniqueName">
                 <xsl:with-param name="element" select="."/>
                 <xsl:with-param name="isAttribute" select="fn:false()"/>
             </xsl:call-template>
-            <!--    End of common checkers rules     -->
+            <!--    End of common checkers rules     -->   
             <!--    Start of specific checker rules-->
-
+            
             <xsl:call-template name="dataTypeIncorrectType">
                 <xsl:with-param name="dataTypeElement" select="."/>
             </xsl:call-template>
@@ -111,21 +111,13 @@
 
         </xsl:variable>
         <xsl:if test="boolean($dataTypeChecks)">
-            <xsl:choose>
-                <xsl:when test="$reportType = 'HTML'">
-                    <h2>
-                        <xsl:value-of select="$dataTypeName"/>
-                    </h2>
-                    <dl>
-                        <dt> Unmet data-type conventions </dt>
-                        <xsl:copy-of select="$dataTypeChecks"/>
-                    </dl>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:copy-of select="$dataTypeChecks"/>
-                </xsl:otherwise>
-            </xsl:choose>
-
+            <h2><xsl:value-of select="$dataTypeName"/></h2>
+            <dl>
+                <dt>
+                    Unmet data-type conventions
+                </dt>
+                <xsl:copy-of select="$dataTypeChecks"/>
+            </dl>
         </xsl:if>
     </xsl:template>
 
@@ -159,13 +151,8 @@
             select="f:getXsdRdfDataTypeValues($dataTypeElementName, $xsdAndRdfDataTypes)"/>
         <xsl:if test="$rdfOrXsdDataType = ''">
             <xsl:sequence
-                select="f:generateWarningMessage(fn:concat('The datatype', $dataTypeElementName, 
-                'is not an XSD or RDF datatype.  It is recommended to use XSD and RDF datatypes mainly.'),
-                path($dataTypeElement),
-                'datatype-name-2',
-                'CMC-R18',
-                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r18&quot; target=&quot;_blank&quot;&gt;CMC-R18&lt;/a&gt;'
-                )"
+                select="f:generateHtmlWarning(fn:concat('The datatype', $dataTypeElementName, 
+                'is not an XSD or RDF datatype.  It is recommended to use XSD and RDF datatypes mainly.'))"
             />
         </xsl:if>
     </xsl:template>
@@ -184,13 +171,8 @@
         <xsl:sequence
             select="
             if ($dataTypeNumberOfAttributes > 0) then
-            f:generateWarningMessage(fn:concat('The datatype ', $dataTypeElement/@name,
-            ' is not atomic. Complex datatypes where attributes/components are specified shall be represented as classes.'),
-            path($dataTypeElement),
-            'datatype-attribute-3',
-            'CMC-R18',
-            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r18&quot; target=&quot;_blank&quot;&gt;CMC-R18&lt;/a&gt;'
-            )
+            f:generateHtmlWarning(fn:concat('The datatype ', $dataTypeElement/@name,
+            ' is not atomic. Complex datatypes where attributes/components are specified shall be represented as classes.'))
             else
             ()
             "
@@ -211,13 +193,8 @@
         <xsl:sequence
             select="
             if ($outgoingConnectors > 0) then
-            f:generateErrorMessage(fn:concat('The datatype ', $dataTypeElement/@name,
-            ' should not connect to other elements. A Datatype can only be referred to.'),
-            path($dataTypeElement),
-            'datatype-datatype-4',
-            'CMC-R10',
-            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r10&quot; target=&quot;_blank&quot;&gt;CMC-R10&lt;/a&gt;'
-            )
+            f:generateHtmlError(fn:concat('The datatype ', $dataTypeElement/@name,
+            ' should not connect to other elements. A Datatype can only be referred to.'))
             else
             ()
             "
