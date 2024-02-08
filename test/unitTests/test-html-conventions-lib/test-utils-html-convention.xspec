@@ -11,6 +11,8 @@
             <x:param name="infoMessage">Info message</x:param>
             <x:param name="pathChecked">/connectors/connector</x:param>
             <x:param name="ruleIdentifier">R-2.13</x:param>
+            <x:param name="semicRuleIdentifier">CMC-R8</x:param>
+            <x:param name="semicRuleIdentifierLinks">&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r18&quot; target=&quot;_blank&quot;&gt;CMC-R18&lt;/a&gt;</x:param>
         </x:call>
         <x:expect label="has info message" test="//dd//text() = 'Info message'"/>
     </x:scenario>

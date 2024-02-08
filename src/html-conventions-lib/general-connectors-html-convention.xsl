@@ -35,7 +35,10 @@
                         f:generateWarningMessage(fn:concat('The target role name ', $targetRoleName, ' does not match the pattern. ',
                         'The name should respect the syntax prefix:localSegment (similar to the XML QName).'),
                         path($connector),
-                        'connector-name-1'
+                        'connector-name-1',
+                        'CMC-R3',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;'
                         )
                     else
                         ()"
@@ -49,7 +52,10 @@
                         ' does not match the pattern. ',
                         'The name should respect the syntax prefix:localSegment (similar to the XML QName).'),
                         path($connector),
-                        'connector-name-1'
+                        'connector-name-1',
+                        'CMC-R3',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;'
                         )
                     else
                         ()"
@@ -75,7 +81,9 @@
                         f:generateWarningMessage(fn:concat('The target role name ', $targetRoleName, ' is missing a prefix. ',
                         'The name should comprise a prefix respecing the syntax prefix:localSegment.'),
                         path($connector),
-                        'connector-name-2'
+                        'connector-name-2',
+                        'CMC-R5',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;'
                         )
                     else
                         ()"
@@ -89,7 +97,9 @@
                         ' is missing a prefix. ',
                         'The name should comprise a prefix respecing the syntax prefix:localSegment.'),
                         path($connector),
-                        'connector-name-2'
+                        'connector-name-2',
+                        'CMC-R5',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;'
                         )
                     else
                         ()"
@@ -115,7 +125,10 @@
                         f:generateWarningMessage(fn:concat('The target role name ', $targetRoleName,
                         ' is missing a local segment. Please provide one respecing the syntax prefix:localSegment.'),
                         path($connector),
-                        'connector-name-3'
+                        'connector-name-3',
+                        'CMC-R5',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;'
                         )
                     else
                         ()"
@@ -128,7 +141,10 @@
                         f:generateWarningMessage(fn:concat('The target role name ', $targetRoleName, ' or source role name ', $sourceRoleName,
                         ' is missing a local segment. Please provide one respecing the syntax prefix:localSegment.'),
                         path($connector),
-                        'connector-name-3'
+                        'connector-name-3',
+                        'CMC-R5',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;'
                         )
                     else
                         ()"
@@ -139,7 +155,7 @@
 
 
     <xd:doc>
-        <xd:desc>[common-name-4] - The name prefix is invalid in $value$. Please provide a short
+        <xd:desc>[connector-name-4] - The name prefix is invalid in $value$. Please provide a short
             prefix name containing only alphanumeric characters [a-zA-Z0-9]+.</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -156,7 +172,9 @@
                         ' , is invalid. Please provide a short prefix name ',
                         'containing only alphanumeric characters [a-zA-Z0-9]+.'),
                         path($connector),
-                        'common-name-4]'
+                        'connector-name-4',
+                        'CMC-R5',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;'
                         )
                     else
                         ()"
@@ -170,7 +188,9 @@
                         ' , is invalid. Please provide a short prefix name ',
                         'containing only alphanumeric characters [a-zA-Z0-9]+.'),
                         path($connector),
-                        'common-name-4]'
+                        'connector-name-4',
+                        'CMC-R5',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;'
                         )
                     else
                         ()"
@@ -179,7 +199,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[common-name-5]-The prefix $value$ is not defined. A prefix must be associated to a
+        <xd:desc>[connector-name-5]-The prefix $value$ is not defined. A prefix must be associated to a
             namespace URI. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -197,7 +217,10 @@
                         f:generateWarningMessage(fn:concat('The target role name ', $targetRoleName,
                         ' is not defined. A prefix must be associated to a namespace URI.'),
                         path($connector),
-                        'common-name-5'
+                        'connector-name-5',
+                        'CMC-R5',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;'
                         )
                     "
             />
@@ -211,7 +234,10 @@
                         f:generateWarningMessage(fn:concat('The target role name prefix ', $targetRoleName, ' or source role name prefix ', $sourceRoleName,
                         ' is not defined. A prefix must be associated to a namespace URI.'),
                         path($connector),
-                        'common-name-5'
+                        'common-name-5',
+                        'CMC-R5',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;'
                         )
                     "
             />
@@ -219,7 +245,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[common-name-6] - The local name segment is invalid in $value$. Please provide a
+        <xd:desc>[connector-name-6] - The local name segment is invalid in $value$. Please provide a
             concise label using alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase,
             or possibly with tokens delimited by single spaces.</xd:desc>
         <xd:param name="connector"/>
@@ -238,7 +264,10 @@
                         'alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with ',
                         'tokens delimited by single spaces.'),
                         path($connector),
-                        'common-name-6'
+                        'connector-name-6',
+                        'CMC-R4',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r4&quot; target=&quot;_blank&quot;&gt;CMC-R4&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r4&quot; target=&quot;_blank&quot;&gt;GC-R4&lt;/a&gt;'
                         )
                     else
                         ()"
@@ -253,7 +282,10 @@
                         'alphanumeric characters [a-zA-Z0-9_\-\s]+, preferably in CamelCase, or possibly with ',
                         'tokens delimited by single spaces.'),
                         path($connector),
-                        'common-name-6'
+                        'connector-name-6',
+                        'CMC-R4',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r4&quot; target=&quot;_blank&quot;&gt;CMC-R4&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r4&quot; target=&quot;_blank&quot;&gt;GC-R4&lt;/a&gt;'
                         )
                     else
                         ()"
@@ -262,7 +294,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[common-name-7] - The local name segment $value$ starts with an invalid character.
+        <xd:desc>[connector-name-7] - The local name segment $value$ starts with an invalid character.
             The local segment must start with a letter or underscore. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -280,7 +312,9 @@
                         ' starts with an invalid character. The local segment ',
                         'must start with a letter or underscore.'),
                         path($connector),
-                        'common-name-7'
+                        'connector-name-7',
+                        'CMC-R4',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r4&quot; target=&quot;_blank&quot;&gt;CMC-R4&lt;/a&gt;'
                         )
                     "
             />
@@ -295,7 +329,9 @@
                         ' starts with an invalid character. The local segment ',
                         'must start with a letter or underscore.'),
                         path($connector),
-                        'common-name-7'
+                        'connector-name-7',
+                        'CMC-R4',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r4&quot; target=&quot;_blank&quot;&gt;CMC-R4&lt;/a&gt;'
                         )
                     "
             />
@@ -304,7 +340,7 @@
 
 
     <xd:doc>
-        <xd:desc>[common-name-8] - The local name segment $value$ contains token delimiters. It is
+        <xd:desc>[connector-name-8] - The local name segment $value$ contains token delimiters. It is
             best if the names are camel cased and delimiters removed. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -321,7 +357,9 @@
                         ' contains token delimiters. It is best if the names ',
                         'are camel cased and delimiters removed.'),
                         path($connector),
-                        'common-name-8'
+                        'connector-name-8',
+                        'CMC-R4',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r4&quot; target=&quot;_blank&quot;&gt;CMC-R4&lt;/a&gt;'
                         )
                     else
                         ()"
@@ -335,7 +373,9 @@
                         ' contains token delimiters. It is best if the names ',
                         'are camel cased and delimiters removed.'),
                         path($connector),
-                        'common-name-8'
+                        'connector-name-8',
+                        'CMC-R4',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r4&quot; target=&quot;_blank&quot;&gt;CMC-R4&lt;/a&gt;'
                         )
                     else
                         ()"
@@ -365,7 +405,9 @@
                     'The stereotype applied to ', f:getConnectorName($connector),
                     'is not known and will be ignored. '),
                     path($connector),
-                    'connector-stereotype-9'
+                    'connector-stereotype-9',
+                    'CMC-R17',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r17&quot; target=&quot;_blank&quot;&gt;CMC-R17&lt;/a&gt;'
                     )"
         />
     </xsl:template>
@@ -387,7 +429,9 @@
                     ' stareotype is applied to ', f:getConnectorName($connector),
                     '. Stereotypes are discouraged in the current practice with some exceptions. '),
                     path($connector),
-                    'connector-stereotype-10'
+                    'connector-stereotype-10',
+                    'CMC-R17',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r17&quot; target=&quot;_blank&quot;&gt;CMC-R17&lt;/a&gt;'
                     )
                 else
                     ()"
@@ -412,7 +456,10 @@
                         f:generateWarningMessage('The connector is missing a description. It is recommended 
                     to define and describe all the relations.',
                     path($connector),
-                    'connector-description-11'
+                    'connector-description-11',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;
+                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r5&quot; target=&quot;_blank&quot;&gt;GC-R5&lt;/a&gt;'
                     )"
             />
         </xsl:if>
@@ -425,7 +472,10 @@
                         f:generateWarningMessage('The connector is missing a description.It is recommended 
                     to define and describe all the relations.',
                     path($connector),
-                    'connector-description-11'
+                    'connector-description-11',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;
+                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r5&quot; target=&quot;_blank&quot;&gt;GC-R5&lt;/a&gt;'
                     )"/>
 
         </xsl:if>
@@ -448,7 +498,10 @@
                     else
                         f:generateErrorMessage(fn:concat('The source tag ', $tag/@name, ' must be an URI.'),
                         path($connector),
-                        'connector-tag-12'
+                        'connector-tag-12',
+                        'CMC-R6',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;'
                         )"/>
         <xsl:sequence
             select="
@@ -459,7 +512,10 @@
                     else
                         f:generateErrorMessage(fn:concat('The target tag ', $tag/@name, ' must be an URI.'),
                         path($connector),
-                        'connector-tag-12'
+                        'connector-tag-12',
+                        'CMC-R6',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;'
                         )"/>
 
     </xsl:template>
@@ -481,14 +537,24 @@
                         if ((f:isValidNamespace($tag/@name)) or (fn:substring-before($tag/@name, ':') = '')) then
                             ()
                         else
-                            f:generateWarningMessage(fn:concat('The prefix for source role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
+                            f:generateWarningMessage(
+                            fn:concat('The prefix for source role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
                             path($connector),
-                            'connector-tag-prefix-13'
+                            'connector-tag-prefix-13',
+                            'CMC-R3',
+                            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;
+                            &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;
+                            &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
+                            
                             )
                     else
                         f:generateWarningMessage(fn:concat('The prefix for source role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
                         path($connector),
-                        'connector-tag-prefix-13'
+                        'connector-tag-prefix-13',
+                        'CMC-R3',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
                         )
                 "/>
         <xsl:sequence
@@ -501,12 +567,20 @@
                         else
                             f:generateWarningMessage(fn:concat('The prefix for target role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
                             path($connector),
-                            'connector-tag-prefix-13'
+                            'connector-tag-prefix-13',
+                            'CMC-R3',
+                            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;
+                            &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;
+                            &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
                             )
                     else
                         f:generateWarningMessage(fn:concat('The prefix for target role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
                         path($connector),
-                        'connector-tag-prefix-13'
+                        'connector-tag-prefix-13',
+                        'CMC-R3',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r3&quot; target=&quot;_blank&quot;&gt;CMC-R3&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
                         )
                 "/>
 
@@ -530,7 +604,9 @@
                     else
                         f:generateErrorMessage(fn:concat('The source tag ', $tag/@name, ' must have a value'),
                         path($connector),
-                        'connector-tag-14'
+                        'connector-tag-14',
+                        'CMC-R6',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
                         )"/>
         <xsl:sequence
             select="
@@ -541,7 +617,9 @@
                     else
                         f:generateErrorMessage(fn:concat('The target tag ', $tag/@name, ' must have a value'),
                         path($connector),
-                        'connector-tag-14'
+                        'connector-tag-14',
+                        'CMC-R6',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
                         )"/>
 
     </xsl:template>
@@ -564,7 +642,9 @@
                     else
                         f:generateErrorMessage(fn:concat('The source tag ', $tag/@name, ' must have a valid name'),
                         path($connector),
-                        'connector-tag-15'
+                        'connector-tag-15',
+                        'CMC-R6',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
                         )"/>
         <xsl:sequence
             select="
@@ -575,7 +655,9 @@
                     else
                         f:generateErrorMessage(fn:concat('The target tag ', $tag/@name, ' must have a valid name'),
                         path($connector),
-                        'connector-tag-15'
+                        'connector-tag-15',
+                        'CMC-R6',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
                         )"
         />
     </xsl:template>
@@ -594,7 +676,10 @@
                 if (($numberOfTags > 0) and not(boolean($targetName))) then
                     f:generateWarningMessage(fn:concat('The connector ', f:getConnectorName($connector), ' target role has tag annotations but no name. The connector must have a target role to sustain annotations.'),
                     path($connector),
-                    'connector-target-tag-16'
+                    'connector-target-tag-16',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;
+                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
                     )
                 else
                     ()
@@ -617,7 +702,10 @@
                 if (($numberOfTags > 0) and not(boolean($sourceName))) then
                     f:generateWarningMessage(fn:concat('The connector ', f:getConnectorName($connector), ' source role has tag annotations but no name. The connector must have a source role to sustain annotations.'),
                     path($connector),
-                    'connector-source-tag-17'
+                    'connector-source-tag-17',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;
+                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
                     )
                 else
                     ()
@@ -640,7 +728,10 @@
                     f:generateWarningMessage(fn:concat('The connector ', f:getConnectorName($connector), ' has tag annotations.',
                     'The connector is not transformed into a property and therefore any tag will be ignored.'),
                     path($connector),
-                    'connector-tag-18'
+                    'connector-tag-18',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;
+                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
                     )
                 else
                     ()
@@ -665,7 +756,9 @@
                     'should not. The names must be provided as connector source and target roles, not as ',
                     'connector name.'),
                     path($connector),
-                    'connector-name-19'
+                    'connector-name-19',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                     )"
         />
     </xsl:template>
@@ -684,7 +777,9 @@
                     f:generateErrorMessage(fn:concat('The connector ', f:getConnectorName($connector),
                     ' has no target role. The connectors must have target roles.'),
                     path($connector),
-                    'connector-target-20'
+                    'connector-target-20',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                     )
                 else
                     ()"
@@ -710,7 +805,9 @@
                     ' employ invalid direction ', $connectorDirection,
                     '. Connectors must employ Source->Destination or Bi-directional directions only.'),
                     path($connector),
-                    'connector-direction-21'
+                    'connector-direction-21',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                     )"
         />
     </xsl:template>
@@ -729,7 +826,10 @@
                     f:generateWarningMessage(fn:concat('The target role of ', f:getConnectorName($connector),
                     ' has no multiplicity. Cardinality must be provided for each role.'),
                     path($connector),
-                    'connector-multiplicity-22'
+                    'connector-multiplicity-22',
+                    'CMC-R11',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r11&quot; target=&quot;_blank&quot;&gt;CMC-R11&lt;/a&gt;
+                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                     )
                 else
                     ()"
@@ -756,7 +856,9 @@
                         f:generateWarningMessage(fn:concat('The connector ', f:getConnectorName($connector),
                         ' has target multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'),
                         path($connector),
-                        'connector-multiplicity-23'
+                        'connector-multiplicity-23',
+                        'CMC-R11',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r11&quot; target=&quot;_blank&quot;&gt;CMC-R11&lt;/a&gt;'
                         )
                     "
             />
@@ -788,7 +890,9 @@
                         ' Source->Destination then only a target role is expected, while for Bi-Directional',
                         ' direction source and a target roles are expected.'),
                 path($connector),
-                        'connector-direction-24'
+                        'connector-direction-24',
+                        'CMC-R12',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                         )"
             />
         </xsl:if>
@@ -803,7 +907,9 @@
                         ' Source->Destination then only a target role is expected, while for Bi-Directional',
                         ' direction source and a target roles are expected.'),
                         path($connector),
-                        'connector-direction-24'
+                        'connector-direction-24',
+                        'CMC-R12',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                         )"
             />
         </xsl:if>
@@ -834,7 +940,10 @@
                         'The Connector role names can be reused within the model, but only as connector role names on the same type of connector.', 
                         'I.e. the  name of (dependecy and association) connector roles should not be reused as the name of elements  (Class, Datatype, Enumeration, Object) or attributes.'),
                         path($connector),
-                        'connector-name-25'
+                        'connector-name-25',
+                        'CMC-R5',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r6&quot; target=&quot;_blank&quot;&gt;GC-R6&lt;/a&gt;'
                         )
                     else
                         ()
@@ -855,7 +964,10 @@
                         'The Connector role names can be reused within the model, but only as connector role names on the same type of connector.', 
                         'I.e. the  name of (dependecy and association) connector roles should not be reused as the name of elements  (Class, Datatype, Enumeration, Object) or attributes.'),
                         path($connector),
-                        'connector-name-25'
+                        'connector-name-25',
+                        'CMC-R5',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r6&quot; target=&quot;_blank&quot;&gt;GC-R6&lt;/a&gt;'
                         )
                     else
                         ()
@@ -895,7 +1007,9 @@
                             'The Connector role names can be reused within the model, but only as connector role names on the same type of connector.', 
                             ' I.e. the  name of a dependecy role should not be reused as the name of association role, and the name of association role should not be reused as the  name of a dependecy role.'),
                             path($connector),
-                            'connector-name-26'
+                            'connector-name-26',
+                            'CMC-R12',
+                            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                             )
                             else
                                 ()
@@ -914,7 +1028,9 @@
                             'The Connector role names can be reused within the model, but only as connector role names on the same type of connector.', 
                             ' I.e. the  name of a dependecy role should not be reused as the name of association role, and the name of association role should not be reused as the  name of a dependecy role.'),
                             path($connector),
-                            'connector-name-26'
+                            'connector-name-26',
+                            'CMC-R12',
+                            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                             )
                             else
                                 ()
@@ -938,7 +1054,9 @@
                             'The Connector role names can be reused within the model, but only as connector role names on the same type of connector.', 
                             ' I.e. the  name of a dependecy role should not be reused as the name of association role, and the name of association role should not be reused as the  name of a dependecy role.'),
                             path($connector),
-                            'connector-name-26'
+                            'connector-name-26',
+                            'CMC-R12',
+                            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                             )
                             else
                                 ()
@@ -957,7 +1075,9 @@
                             'The Connector role names can be reused within the model, but only as connector role names on the same type of connector.', 
                             ' I.e. the  name of a dependecy role should not be reused as the name of association role, and the name of association role should not be reused as the  name of a dependecy role.'),
                             path($connector),
-                            'connector-name-26'
+                            'connector-name-26',
+                            'CMC-R12',
+                            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                             )
                             else
                                 ()

@@ -170,7 +170,9 @@
             f:generateWarningMessage(fn:concat('The object ', $object/@name,
             ' shall have no values/attributes defined. '),
             path($object),
-            'object-attribute-2'
+            'object-attribute-2',
+            'CMC-R19',
+            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r19&quot; target=&quot;_blank&quot;&gt;CMC-R19&lt;/a&gt;'
             )
             else
             ()
@@ -196,7 +198,9 @@
             f:generateErrorMessage(fn:concat('The object ', $object/@name,
             ' should not connect to other elements.'),
             path($object),
-            'object-connector-3'
+            'object-connector-3',
+            'CMC-R19',
+            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r19&quot; target=&quot;_blank&quot;&gt;CMC-R19&lt;/a&gt;'
             )
             else
             ()
@@ -222,7 +226,9 @@
             f:generateWarningMessage(fn:concat('The object ', $object/@name,
             ' should instanciate a Class or Enumeration. There shall be at least one Realisation relationship between Object and a Class or Enumeration.'),
             path($object),
-            'object-connector-4'
+            'object-connector-4',
+            'CMC-R19',
+            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r19&quot; target=&quot;_blank&quot;&gt;CMC-R19&lt;/a&gt;'
             )
             else
             ()

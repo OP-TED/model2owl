@@ -166,7 +166,9 @@
             f:generateWarningMessage(fn:concat('The enumeration ', $enumeration/@name,
             ' shall have no values/attributes defined. An Enumeration stands for a controlled list and its management is out of model scope. '),
             path($enumeration),
-            'enumeration-attribute-2'
+            'enumeration-attribute-2',
+            'CMC-R14',
+            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r14&quot; target=&quot;_blank&quot;&gt;CMC-R14&lt;/a&gt;'
             )
             else
             ()
@@ -191,7 +193,9 @@
                     f:generateErrorMessage(fn:concat('The enumeration ', $enumeration/@name,
                     ' should not connect to other elements. An Enumeration stands for an controlled list and can only be referred to.'),
                     path($enumeration),
-                    'enumeration-connector-3'
+                    'enumeration-connector-3',
+                    'CMC-R14',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r14&quot; target=&quot;_blank&quot;&gt;CMC-R14&lt;/a&gt;'
                     )
                 else
                     ()

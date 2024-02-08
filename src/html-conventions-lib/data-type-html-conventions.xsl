@@ -162,7 +162,9 @@
                 select="f:generateWarningMessage(fn:concat('The datatype', $dataTypeElementName, 
                 'is not an XSD or RDF datatype.  It is recommended to use XSD and RDF datatypes mainly.'),
                 path($dataTypeElement),
-                'datatype-name-2'
+                'datatype-name-2',
+                'CMC-R18',
+                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r18&quot; target=&quot;_blank&quot;&gt;CMC-R18&lt;/a&gt;'
                 )"
             />
         </xsl:if>
@@ -185,7 +187,9 @@
             f:generateWarningMessage(fn:concat('The datatype ', $dataTypeElement/@name,
             ' is not atomic. Complex datatypes where attributes/components are specified shall be represented as classes.'),
             path($dataTypeElement),
-            'datatype-attribute-3'
+            'datatype-attribute-3',
+            'CMC-R18',
+            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r18&quot; target=&quot;_blank&quot;&gt;CMC-R18&lt;/a&gt;'
             )
             else
             ()
@@ -210,7 +214,9 @@
             f:generateErrorMessage(fn:concat('The datatype ', $dataTypeElement/@name,
             ' should not connect to other elements. A Datatype can only be referred to.'),
             path($dataTypeElement),
-            'datatype-attribute-3'
+            'datatype-datatype-4',
+            'CMC-R10',
+            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r10&quot; target=&quot;_blank&quot;&gt;CMC-R10&lt;/a&gt;'
             )
             else
             ()

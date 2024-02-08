@@ -89,7 +89,9 @@
                     $generalizationConnector/source/model/@name, '. Class inheritance should be built employing at least two subclasses for each class or',
                     ' not at all.'),
                     path($generalizationConnector),
-                    'generalisation-hierarchy-1'
+                    'generalisation-hierarchy-1',
+                    'CMC-R8',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r8&quot; target=&quot;_blank&quot;&gt;CMC-R8&lt;/a&gt;'
                     )"
         />
     </xsl:template>
@@ -113,7 +115,9 @@
                     f:generateErrorMessage(fn:concat('The classes ', $generalizationConnector/target/model/@name, ' and ', $generalizationConnector/source/model/@name, ' inherit one ',
                     'another. Sub-class relation must be established in one direction only, forming a hierarchy.'),
                     path($generalizationConnector),
-                    'generalisation-hierarchy-2'
+                    'generalisation-hierarchy-2',
+                    'SC-R5',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-semantic-conventions.html#sec:sc-r5&quot; target=&quot;_blank&quot;&gt;SC-R5&lt;/a&gt;'
                     )
                 else
                     ()"
@@ -138,7 +142,10 @@
                 else
                     f:generateErrorMessage('The generalisation has multiplicity. No multiplicity can be provided to generalisations.',
                     path($generalizationConnector),
-                    'generalisation-multiplicity-3'
+                    'generalisation-multiplicity-3',
+                    'CMC-R11',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r11&quot; target=&quot;_blank&quot;&gt;CMC-R11&lt;/a&gt;
+                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                     )"
         />
     </xsl:template>
@@ -157,7 +164,9 @@
                 if ($generalizationHasNoName = fn:false()) then
                     f:generateErrorMessage(fn:concat('The connector ', $generalizationConnector/@name, ' has a name. No name can be provided for generalisation relation.'),
                     path($generalizationConnector),
-                    'generalisation-name-4'
+                    'generalisation-name-4',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                     )
                 else
                     ()"
@@ -182,7 +191,9 @@
                 else
                     f:generateErrorMessage('The generalisation connector has a role name. No source or target roles can be provided to generalisations.',
                     path($generalizationConnector),
-                    'generalisation-name-5'
+                    'generalisation-name-5',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                     )"
         />
     </xsl:template>
@@ -202,7 +213,9 @@
                     f:generateErrorMessage(fn:concat('The ', $generalizationDirection, ' direction is invalid. ',
                     'Generalisations must employ Source -&gt; Destination direction only.'),
                     path($generalizationConnector),
-                    'generalisation-direction-6'
+                    'generalisation-direction-6',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                     )
                 else
                     ()"
@@ -210,7 +223,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[generalisation-source-target-types-3] - Generalisations can be provided only
+        <xd:desc>[generalisation-source-target-types-7] - Generalisations can be provided only
             between classes or between connectors.</xd:desc>
         <xd:param name="generalizationConnector"/>
     </xd:doc>
@@ -226,7 +239,9 @@
                 else
                 f:generateErrorMessage('Generalisations can be provided only between classes or between connectors.',
                 path($generalizationConnector),
-                'generalisation-source-target-types-3'
+                'generalisation-source-target-types-7',
+                'CMC-R12',
+                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                 )"
         />
     </xsl:template>

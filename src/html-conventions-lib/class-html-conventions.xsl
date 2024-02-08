@@ -171,7 +171,9 @@
                     f:generateWarningMessage(fn:concat('The class ', $class/@name,
                     ' is is disconnected. A class should be connected to other elements.'),
                     path($class),
-                    'class-connector-4'
+                    'class-connector-4',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                     )"
         />
     </xsl:template>
@@ -191,7 +193,9 @@
                 if ($classNumberOfAttributes = 0) then
                     f:generateWarningMessage(fn:concat('The class ', $class/@name, ' has no attributes provided. A class should define some attributes.'),
                     path($class),
-                    'class-attributes-3'
+                    'class-attributes-3',
+                    'CMC-R10',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r10&quot; target=&quot;_blank&quot;&gt;CMC-R10&lt;/a&gt;'
                     )
                 else
                     ()"
@@ -216,7 +220,10 @@
                     then
                         f:generateWarningMessage(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'),
                         path($class),
-                        'class-name-2'
+                        'class-name-2',
+                        'CMC-R4',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r4&quot; target=&quot;_blank&quot;&gt;CMC-R4&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r4&quot; target=&quot;_blank&quot;&gt;GC-R4&lt;/a&gt;'
                         )
                     else
                         ()
@@ -227,7 +234,10 @@
                     else
                         f:generateWarningMessage(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'),
                         path($class),
-                        'class-name-2'
+                        'class-name-2',
+                        'CMC-R4',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r4&quot; target=&quot;_blank&quot;&gt;CMC-R4&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r4&quot; target=&quot;_blank&quot;&gt;GC-R4&lt;/a&gt;'
                         )"
         />
     </xsl:template>    

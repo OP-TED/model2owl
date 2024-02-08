@@ -63,7 +63,9 @@
                 if (count($unsupportedConnectorTypes) > 0) then
                     f:generateFormattedWarningMessage('Only associations, dependecies, generalisations and realisation connectors are supported. The following connector types were found in model and are not supported', $unsupportedConnectorTypes,
                     '//connectors/connector/properties/@ea_type',
-                    'general-connector-type-1'
+                    'general-connector-type-1',
+                    'CMC-R2',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r2&quot; target=&quot;_blank&quot;&gt;CMC-R2&lt;/a&gt;'
                     )
                 else
                     ()
@@ -90,7 +92,9 @@
                 if (count($unsupportedElementTypes) > 0) then
                     f:generateFormattedWarningMessage('Only Class, Package, Datatype, Enumeration, and Object elements are supported. The following element types were found in model and are not supported', $unsupportedElementTypes,
                     '//elements/element/@xmi:type',
-                    'general-element-type-2'
+                    'general-element-type-2',
+                    'CMC-R2',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r2&quot; target=&quot;_blank&quot;&gt;CMC-R2&lt;/a&gt;'
                     )
                 else
                     ()
@@ -119,7 +123,9 @@
                     f:generateFormattedErrorMessage(fn:concat('Not all prefixes ',
                     ' are defined. All used namespaces shall be defined (prefix = base URI), including the default one. Here is the list of undefined prefixes'), $areAllPrefixesDefined,
                     path($root),
-                    'general-prefix-3'
+                    'general-prefix-3',
+                    'CMC-R5',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r5&quot; target=&quot;_blank&quot;&gt;CMC-R5&lt;/a&gt;'
                     )"
         />
     </xsl:template>
