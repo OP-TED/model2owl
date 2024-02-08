@@ -158,7 +158,11 @@
             f:generateErrorMessage(fn:concat('The source role of ', f:getConnectorName($connector),
             ' has no multiplicity. Cardinality must be provided for each role.'),
             path($connector),
-            'association-multiplicity-1')
+            'association-multiplicity-1',
+            'CMC-R11',
+            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r11&quot; target=&quot;_blank&quot;&gt;CMC-R11&lt;/a&gt;
+            &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
+            )
             else
             ()"
         />
@@ -183,7 +187,11 @@
                 f:generateWarningMessage(fn:concat('The connector ', f:getConnectorName($connector),
                 ' has source multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'),
                 path($connector),
-                'association-multiplicity-2')
+                'association-multiplicity-2',
+                'CMC-R11',
+                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r11&quot; target=&quot;_blank&quot;&gt;CMC-R11&lt;/a&gt;'
+                
+                )
                 "
             />
         </xsl:if>
@@ -207,7 +215,10 @@
                 else
                 f:generateErrorMessage('Associations can be provided only between classes to classes and classes to objects.',
                 path($connector),
-                'association-source-target-types-3')"
+                'association-source-target-types-3',
+                'CMC-R12',
+                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
+                )"
         />
     </xsl:template>
     

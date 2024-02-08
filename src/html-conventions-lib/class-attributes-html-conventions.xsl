@@ -169,7 +169,11 @@
                     then
                         f:generateWarningMessage(fn:concat('The attribute name ', $classAttributeName, ' is invalid. The attribute name must start with a lower case.'),
                         path($classAttribute),
-                        'class-attribute-name-1')
+                        'class-attribute-name-1',
+                        'CMC-R4',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r4&quot; target=&quot;_blank&quot;&gt;CMC-R4&lt;/a&gt;
+                         &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r4&quot; target=&quot;_blank&quot;&gt;GC-R4&lt;/a&gt;'
+                        )
                     else
                         ()
                 else
@@ -177,7 +181,11 @@
                     then
                         f:generateWarningMessage(fn:concat('The attribute name ', $classAttributeName, ' is invalid. The attribute name must start with a lower case.'),
                         path($classAttribute),
-                        'class-attribute-name-1')
+                        'class-attribute-name-1',
+                        'CMC-R4',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r4&quot; target=&quot;_blank&quot;&gt;CMC-R4&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r4&quot; target=&quot;_blank&quot;&gt;GC-R4&lt;/a&gt;'
+                        )
                     else
                         ()"/>
 
@@ -202,7 +210,10 @@
             'Multiplicity must be specified in the form [min..max] and the values should ',
             'be defined with a digit or *'),
             path($classAttribute),
-            'class-attribute-multiplicity-2')
+            'class-attribute-multiplicity-2',
+            'CMC-R11',
+            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r11&quot; target=&quot;_blank&quot;&gt;CMC-R11&lt;/a&gt;'
+            )
             "
         />
     </xsl:template>
@@ -232,7 +243,10 @@
                     ' type is invalid. Attributes must use types that are either: (a) XSD or RDF datatypes or',
                     ' (b) belonging to a shortlist of custom URIs (datatypes or classes).'),
                     path($classAttribute),
-                    'class-attribute-type-3')
+                    'class-attribute-type-3',
+                    'CMC-R10',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r10&quot; target=&quot;_blank&quot;&gt;CMC-R10&lt;/a&gt;'
+                    )
                 "
         />
     </xsl:template>
@@ -255,7 +269,10 @@
             'Multiplicity must be specified in the form [min..max] and the values should ',
             'be defined with a digit or *'),
             path($classAttribute),
-            'class-attribute-multiplicity-4'
+            'class-attribute-multiplicity-4',
+            'CMC-R11',
+            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r11&quot; target=&quot;_blank&quot;&gt;CMC-R11&lt;/a&gt;
+            &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r10&quot; target=&quot;_blank&quot;&gt;CMC-R10&lt;/a&gt;'
             )"
         />
     </xsl:template>
@@ -275,7 +292,9 @@
             else
             f:generateWarningMessage(fn:concat('The attribute ', $classAttribute/@name, ' is non-public. Attributes shall be public '),
             path($classAttribute),
-            'class-attribute-visibility-5'
+            'class-attribute-visibility-5',
+            'CMC-R13',
+            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r13&quot; target=&quot;_blank&quot;&gt;CMC-R13&lt;/a&gt;'
             )"
         />
     </xsl:template>

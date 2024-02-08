@@ -146,9 +146,11 @@
         <xsl:sequence
             select="
                 if ($dependencyDirection != 'Source -&gt; Destination') then
-                    f:generateErrorMessage('The direction is not Source -&gt; Destination. Dependecy direction can be only Source -&gt; Destination. ',
+                    f:generateWarningMessage('The direction is not Source -&gt; Destination. Dependecy direction can be only Source -&gt; Destination. ',
                     path($dependencyConnector),
-                    'dependency-direction-1'
+                    'dependency-direction-1',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                     )
                 else
                     ()"
@@ -173,7 +175,9 @@
                 else
                 f:generateErrorMessage('Dependecies can be provided only between classes and enumerations or objects.',
                 path($dependencyConnector),
-                'dependency-source-target-types-2'
+                'dependency-source-target-types-2',
+                'CMC-R12',
+                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                 )"
         />
     </xsl:template>

@@ -23,11 +23,15 @@
         <xd:param name="infoMessage"/>
         <xd:param name="pathChecked"/>
         <xd:param name="ruleIdentifier"/>
+        <xd:param name="semicRuleIdentifier"/>
+        <xd:param name="semicRuleIdentifierLinks"/>
     </xd:doc>
     <xsl:function name="f:generateInfoMessage">
         <xsl:param name="infoMessage"/>
         <xsl:param name="pathChecked"/>
         <xsl:param name="ruleIdentifier"/>
+        <xsl:param name="semicRuleIdentifier"/>
+        <xsl:param name="semicRuleIdentifierLinks"/>
         <xsl:sequence>
             <xsl:if test="$reportType = 'HTML'">
                 <dd class="filter infos">
@@ -37,10 +41,14 @@
             </xsl:if>
             <xsl:if test="$reportType = 'SVRL'">
 
-                <svrl:fired-rule id="{$ruleIdentifier}"/>
-                <svrl:failed-assert location="{$pathChecked}" role="info" id="{$ruleIdentifier}">
+                <svrl:fired-rule id="{$semicRuleIdentifier}"/>
+                <svrl:failed-assert location="{$pathChecked}" role="info" id="{$semicRuleIdentifier}">
                     <svrl:text>
                         <xsl:value-of select="$infoMessage"/>
+                        [ Model2Owl checker identifier: <xsl:value-of select="$ruleIdentifier"/>.
+                        
+                        SEMIC Style Guide rule(s):
+                        <xsl:value-of select="$semicRuleIdentifierLinks" disable-output-escaping="true"/> ]
                     </svrl:text>
                 </svrl:failed-assert>
 
@@ -53,11 +61,15 @@
         <xd:param name="warningMessage"/>
         <xd:param name="pathChecked"/>
         <xd:param name="ruleIdentifier"/>
+        <xd:param name="semicRuleIdentifier"/>
+        <xd:param name="semicRuleIdentifierLinks"/>
     </xd:doc>
     <xsl:function name="f:generateWarningMessage">
         <xsl:param name="warningMessage"/>
         <xsl:param name="pathChecked"/>
         <xsl:param name="ruleIdentifier"/>
+        <xsl:param name="semicRuleIdentifier"/>
+        <xsl:param name="semicRuleIdentifierLinks"/>
 
         <xsl:sequence>
             <xsl:if test="$reportType = 'HTML'">
@@ -68,10 +80,14 @@
             </xsl:if>
             <xsl:if test="$reportType = 'SVRL'">
 
-                <svrl:fired-rule id="{$ruleIdentifier}"/>
-                <svrl:failed-assert location="{$pathChecked}" role="warning" id="{$ruleIdentifier}">
+                <svrl:fired-rule id="{$semicRuleIdentifier}"/>
+                <svrl:failed-assert location="{$pathChecked}" role="warning" id="{$semicRuleIdentifier}">
                     <svrl:text>
                         <xsl:value-of select="$warningMessage"/>
+                        [ Model2Owl checker identifier: <xsl:value-of select="$ruleIdentifier"/>.
+                        
+                        SEMIC Style Guide rule(s):
+                        <xsl:value-of select="$semicRuleIdentifierLinks" disable-output-escaping="true"/> ]
                     </svrl:text>
                 </svrl:failed-assert>
            
@@ -85,11 +101,15 @@
         <xd:param name="errorMessage"/>
         <xd:param name="pathChecked"/>
         <xd:param name="ruleIdentifier"/>
+        <xd:param name="semicRuleIdentifier"/>
+        <xd:param name="semicRuleIdentifierLinks"/>
     </xd:doc>
     <xsl:function name="f:generateErrorMessage">
         <xsl:param name="errorMessage"/>
         <xsl:param name="pathChecked"/>
         <xsl:param name="ruleIdentifier"/>
+        <xsl:param name="semicRuleIdentifier"/>
+        <xsl:param name="semicRuleIdentifierLinks"/>
         <xsl:sequence>
             <xsl:if test="$reportType = 'HTML'">
                 <dd class="filter errors">
@@ -98,10 +118,14 @@
                 </dd>
             </xsl:if>
             <xsl:if test="$reportType = 'SVRL'">
-                <svrl:fired-rule id="{$ruleIdentifier}"/>
-                    <svrl:failed-assert location="{$pathChecked}" role="error" id="{$ruleIdentifier}">
+                <svrl:fired-rule id="{$semicRuleIdentifier}"/>
+                <svrl:failed-assert location="{$pathChecked}" role="error" id="{$semicRuleIdentifier}">
                         <svrl:text>
                             <xsl:value-of select="$errorMessage"/>
+                            [ Model2Owl checker identifier: <xsl:value-of select="$ruleIdentifier"/>.
+                            
+                            SEMIC Style Guide rule(s):
+                            <xsl:value-of select="$semicRuleIdentifierLinks" disable-output-escaping="true"/> ]
                         </svrl:text>
                     </svrl:failed-assert>
             </xsl:if>
@@ -115,12 +139,17 @@
         <xd:param name="elementsList"/>
         <xd:param name="pathChecked"/>
         <xd:param name="ruleIdentifier"/>
+        <xd:param name="semicRuleIdentifier"/>
+        <xd:param name="semicRuleIdentifierLinks"/>
+        
     </xd:doc>
     <xsl:function name="f:generateFormattedInfoMessage">
         <xsl:param name="infoMessage"/>
         <xsl:param name="elementsList"/>
         <xsl:param name="pathChecked"/>
         <xsl:param name="ruleIdentifier"/>
+        <xsl:param name="semicRuleIdentifier"/>
+        <xsl:param name="semicRuleIdentifierLinks"/>
         <xsl:sequence>
             <xsl:if test="$reportType = 'HTML'">
                 <dd class="filter infos">
@@ -137,8 +166,8 @@
             </xsl:if>
             <xsl:if test="$reportType = 'SVRL'">
                 
-                <svrl:fired-rule id="{$ruleIdentifier}"/>
-                <svrl:failed-assert location="{$pathChecked}" role="info" id="{$ruleIdentifier}">
+                <svrl:fired-rule id="{$semicRuleIdentifier}"/>
+                <svrl:failed-assert location="{$pathChecked}" role="info" id="{$semicRuleIdentifier}">
                     <svrl:text>
                         <xsl:value-of select="fn:concat($infoMessage, ' ')"/>
                         <xsl:for-each select="$elementsList">
@@ -147,6 +176,10 @@
                                 <xsl:value-of select="', '"/>
                             </xsl:if>
                         </xsl:for-each>
+                        [ Model2Owl checker identifier: <xsl:value-of select="$ruleIdentifier"/>.
+                        
+                        SEMIC Style Guide rule(s):
+                        <xsl:value-of select="$semicRuleIdentifierLinks" disable-output-escaping="true"/> ]
                     </svrl:text>
                 </svrl:failed-assert>
 
@@ -162,12 +195,16 @@
         <xd:param name="elementsList"/>
         <xd:param name="pathChecked"/>
         <xd:param name="ruleIdentifier"/>
+        <xd:param name="semicRuleIdentifier"/>
+        <xd:param name="semicRuleIdentifierLinks"/>
     </xd:doc>
     <xsl:function name="f:generateFormattedWarningMessage">
         <xsl:param name="warningMessage"/>
         <xsl:param name="elementsList"/>
         <xsl:param name="pathChecked"/>
         <xsl:param name="ruleIdentifier"/>
+        <xsl:param name="semicRuleIdentifier"/>
+        <xsl:param name="semicRuleIdentifierLinks"/>
         <xsl:sequence>
             <xsl:if test="$reportType = 'HTML'">
                 <dd class="filter warnings">
@@ -184,8 +221,8 @@
             </xsl:if>
             <xsl:if test="$reportType = 'SVRL'">
                 
-                <svrl:fired-rule id="{$ruleIdentifier}"/>
-                <svrl:failed-assert location="{$pathChecked}" role="warning" id="{$ruleIdentifier}">
+                <svrl:fired-rule id="{$semicRuleIdentifier}"/>
+                <svrl:failed-assert location="{$pathChecked}" role="warning" id="{$semicRuleIdentifier}">
                     <svrl:text>
                         <xsl:value-of select="fn:concat($warningMessage, ' ')"/>
                         
@@ -195,6 +232,10 @@
                                 <xsl:value-of select="', '"/>
                             </xsl:if>
                         </xsl:for-each>
+                        [ Model2Owl checker identifier: <xsl:value-of select="$ruleIdentifier"/>.
+                        
+                        SEMIC Style Guide rule(s):
+                        <xsl:value-of select="$semicRuleIdentifierLinks" disable-output-escaping="true"/> ]
                     </svrl:text>
                 </svrl:failed-assert>   
             </xsl:if>
@@ -208,12 +249,16 @@
         <xd:param name="elementsList"/>
         <xd:param name="pathChecked"/>
         <xd:param name="ruleIdentifier"/>
+        <xd:param name="semicRuleIdentifier"/>
+        <xd:param name="semicRuleIdentifierLinks"/>
     </xd:doc>
     <xsl:function name="f:generateFormattedErrorMessage">
         <xsl:param name="errorMessage"/>
         <xsl:param name="elementsList"/>
         <xsl:param name="pathChecked"/>
         <xsl:param name="ruleIdentifier"/>
+        <xsl:param name="semicRuleIdentifier"/>
+        <xsl:param name="semicRuleIdentifierLinks"/>
         <xsl:sequence>
             <xsl:if test="$reportType = 'HTML'">
                 <dd class="filter errors">
@@ -230,8 +275,8 @@
             </xsl:if>
             <xsl:if test="$reportType = 'SVRL'">
                 
-                <svrl:fired-rule id="{$ruleIdentifier}"/>
-                <svrl:failed-assert location="{$pathChecked}" role="error" id="{$ruleIdentifier}">
+                <svrl:fired-rule id="{$semicRuleIdentifier}"/>
+                <svrl:failed-assert location="{$pathChecked}" role="error" id="{$semicRuleIdentifier}">
                     <svrl:text>
                         <xsl:value-of select="fn:concat($errorMessage, ' ')"/>
                         <xsl:for-each select="$elementsList">
@@ -240,6 +285,10 @@
                                 <xsl:value-of select="', '"/>
                             </xsl:if>
                         </xsl:for-each>
+                        [ Model2Owl checker identifier: <xsl:value-of select="$ruleIdentifier"/>.
+                        
+                        SEMIC Style Guide rule(s):
+                        <xsl:value-of select="$semicRuleIdentifierLinks" disable-output-escaping="true"/> ]
                     </svrl:text>
                 </svrl:failed-assert>    
             </xsl:if>

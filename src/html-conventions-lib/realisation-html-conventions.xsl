@@ -85,7 +85,10 @@
                 else
                     f:generateErrorMessage('The realisation has multiplicity. No multiplicity can be provided to realisations.',
                     path($realisationConnector),
-                    'realisation-multiplicity-1'
+                    'realisation-multiplicity-1',
+                    'CMC-R11',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r11&quot; target=&quot;_blank&quot;&gt;CMC-R11&lt;/a&gt;
+                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                     )"
         />
     </xsl:template>
@@ -104,7 +107,9 @@
                 if ($realisationHasNoName = fn:false()) then
                     f:generateErrorMessage(fn:concat('The connector ', $realisationConnector/@name, ' has a name. No name can be provided for realisation relation.'),
                     path($realisationConnector),
-                    'realisation-name-2'
+                    'realisation-name-2',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                     )
                 else
                     ()"
@@ -129,7 +134,9 @@
                 else
                     f:generateErrorMessage('The realisation connector has a role name. No source or target roles can be provided to realisations.',
                     path($realisationConnector),
-                    'realisation-name-3'
+                    'realisation-name-3',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                     )"
         />
     </xsl:template>
@@ -149,7 +156,9 @@
                     f:generateErrorMessage(fn:concat('The ', $realisationDirection, ' direction is invalid. ',
                     'realisations must employ Source -&gt; Destination direction only.'),
                     path($realisationConnector),
-                    'realisation-direction-4'
+                    'realisation-direction-4',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                     )
                 else
                     ()"
@@ -172,7 +181,9 @@
                 else
                 f:generateErrorMessage('The realisation can be provided only from an Object to a Class or Enumeration.',
                 path($realisationConnector),
-                'realisation-source-target-types-5'
+                'realisation-source-target-types-5',
+                'CMC-R12',
+                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                 )"
         />
     </xsl:template>

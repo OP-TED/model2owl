@@ -98,7 +98,10 @@
                         'When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same.',
                         'In this case, multiple definitions are found: '), $descriptionsWithAnnotations,
                         '//elements/element/attributes',
-                        'class-attributes-reuse-definition-1'
+                        'class-attributes-reuse-definition-1',
+                        'GC-R5',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r5&quot; target=&quot;_blank&quot;&gt;GC-R5&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r6&quot; target=&quot;_blank&quot;&gt;GC-R6&lt;/a&gt;'
                         )
                     else
                         ()"
@@ -142,7 +145,10 @@
                 When a property is reused in multiple contexts, the multiplicity is expected to be the same. Please see usage below:'
                 )), $multiplicityUsage,
                 '//elements/element/attributes',
-                'class-attributes-reuse-multiplicity-2'
+                'class-attributes-reuse-multiplicity-2',
+                'CMC-R11',
+                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r11&quot; target=&quot;_blank&quot;&gt;CMC-R11&lt;/a&gt;
+                &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r6&quot; target=&quot;_blank&quot;&gt;GC-R6&lt;/a&gt;'
                 )"
         />
     </xsl:template>
@@ -187,7 +193,10 @@
                         'When a property is reused in multiple contexts, the data-type is expected to be the same.',
                         'In this case, multiple data-types are found: '), $datatypeWithAnnotations,
                         '//elements/element/attributes',
-                        'class-attributes-reuse-data-types-3'
+                        'class-attributes-reuse-data-types-3',
+                        'GC-R6',
+                        '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r6&quot; target=&quot;_blank&quot;&gt;GC-R6&lt;/a&gt;
+                        &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r1&quot; target=&quot;_blank&quot;&gt;GC-R1&lt;/a&gt;'
                         )
                     else
                         ()"

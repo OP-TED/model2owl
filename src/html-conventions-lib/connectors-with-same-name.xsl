@@ -88,7 +88,9 @@
                 f:generateInfoMessage(
                 'When a property is reused in multiple contexts the multiplicity is expected to be the same.',
                 '//connectors',
-                'connectors-with-same-name-multiplicity-1'
+                'connectors-with-same-name-multiplicity-1',
+                'CMC-R12',
+                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                 
                 )"
         />
@@ -127,14 +129,20 @@
                 f:generateFormattedInfoMessage(fn:concat('The property is reused in multiple contexts, the meaning given by the definition is the same.  ',
                     'Here is the property usage: '), $descriptionsWithAnnotations,
                     '//connectors',
-                    'connectors-with-same-name-definition-2'
+                    'connectors-with-same-name-definition-2',
+                    'GC-R5',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r5&quot; target=&quot;_blank&quot;&gt;GC-R5&lt;/a&gt;
+                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r6&quot; target=&quot;_blank&quot;&gt;GC-R6&lt;/a&gt;'
                     )
                 else
                     if (fn:boolean($definitionValues)) then
                     f:generateFormattedWarningMessage(fn:concat('When a property is reused in multiple contexts, the meaning given by the definition is expected to be the same. ',
                                                     'In this case, multiple definitions are found: '), $descriptionsWithAnnotations,
                                                     '//connectors',
-                                                    'connectors-with-same-name-definition-2'
+                                                    'connectors-with-same-name-definition-2',
+                                                    'GC-R5',
+                                                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r5&quot; target=&quot;_blank&quot;&gt;GC-R5&lt;/a&gt;
+                                                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r6&quot; target=&quot;_blank&quot;&gt;GC-R6&lt;/a&gt;'
                                                     )
                     else
                         ()"
@@ -164,7 +172,9 @@
             f:generateErrorMessage(fn:concat('The name ', $connectorName,
             ' appears on connectors of different types.  A name shall be reused only on connectors of the same type.'),
             '//connectors',
-            'connectors-with-same-name-name-3'
+            'connectors-with-same-name-name-3',
+            'CMC-R12',
+            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
             )"
         />
     </xsl:template>
