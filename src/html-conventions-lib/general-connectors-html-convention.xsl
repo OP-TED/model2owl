@@ -32,7 +32,7 @@
             <xsl:sequence
                 select="
                     if (not(f:isValidQname($targetRoleName))) then
-                        f:generateWarningMessage(fn:concat('The target role name ', $targetRoleName, ' does not match the pattern. ',
+                        f:generateErrorMessage(fn:concat('The target role name ', $targetRoleName, ' does not match the pattern. ',
                         'The name should respect the syntax prefix:localSegment (similar to the XML QName).'),
                         path($connector),
                         'connector-name-1',
@@ -48,7 +48,7 @@
             <xsl:sequence
                 select="
                     if (not(f:isValidQname($targetRoleName)) and not(f:isValidQname($sourceRoleName))) then
-                        f:generateWarningMessage(fn:concat('The target role name ', $targetRoleName, ' or source role name ', $sourceRoleName,
+                        f:generateErrorMessage(fn:concat('The target role name ', $targetRoleName, ' or source role name ', $sourceRoleName,
                         ' does not match the pattern. ',
                         'The name should respect the syntax prefix:localSegment (similar to the XML QName).'),
                         path($connector),
@@ -78,7 +78,7 @@
             <xsl:sequence
                 select="
                     if (f:isNamePrefixMissing($targetRoleName)) then
-                        f:generateWarningMessage(fn:concat('The target role name ', $targetRoleName, ' is missing a prefix. ',
+                        f:generateErrorMessage(fn:concat('The target role name ', $targetRoleName, ' is missing a prefix. ',
                         'The name should comprise a prefix respecing the syntax prefix:localSegment.'),
                         path($connector),
                         'connector-name-2',
@@ -93,7 +93,7 @@
             <xsl:sequence
                 select="
                     if (f:isNamePrefixMissing($targetRoleName) or f:isNamePrefixMissing($sourceRoleName)) then
-                        f:generateWarningMessage(fn:concat('The target role name ', $targetRoleName, ' or source role name ', $sourceRoleName,
+                        f:generateErrorMessage(fn:concat('The target role name ', $targetRoleName, ' or source role name ', $sourceRoleName,
                         ' is missing a prefix. ',
                         'The name should comprise a prefix respecing the syntax prefix:localSegment.'),
                         path($connector),
@@ -122,7 +122,7 @@
             <xsl:sequence
                 select="
                     if (f:isNameLocalSegmentMissing($targetRoleName)) then
-                        f:generateWarningMessage(fn:concat('The target role name ', $targetRoleName,
+                        f:generateErrorMessage(fn:concat('The target role name ', $targetRoleName,
                         ' is missing a local segment. Please provide one respecing the syntax prefix:localSegment.'),
                         path($connector),
                         'connector-name-3',
@@ -138,7 +138,7 @@
             <xsl:sequence
                 select="
                     if (f:isNameLocalSegmentMissing($targetRoleName) or f:isNameLocalSegmentMissing($sourceRoleName)) then
-                        f:generateWarningMessage(fn:concat('The target role name ', $targetRoleName, ' or source role name ', $sourceRoleName,
+                        f:generateErrorMessage(fn:concat('The target role name ', $targetRoleName, ' or source role name ', $sourceRoleName,
                         ' is missing a local segment. Please provide one respecing the syntax prefix:localSegment.'),
                         path($connector),
                         'connector-name-3',
@@ -214,7 +214,7 @@
                     if (f:isValidNamespace($targetRoleName)) then
                         ()
                     else
-                        f:generateWarningMessage(fn:concat('The target role name ', $targetRoleName,
+                        f:generateErrorMessage(fn:concat('The target role name ', $targetRoleName,
                         ' is not defined. A prefix must be associated to a namespace URI.'),
                         path($connector),
                         'connector-name-5',
@@ -231,7 +231,7 @@
                     if (f:isValidNamespace($targetRoleName) and f:isValidNamespace($sourceRoleName)) then
                         ()
                     else
-                        f:generateWarningMessage(fn:concat('The target role name prefix ', $targetRoleName, ' or source role name prefix ', $sourceRoleName,
+                        f:generateErrorMessage(fn:concat('The target role name prefix ', $targetRoleName, ' or source role name prefix ', $sourceRoleName,
                         ' is not defined. A prefix must be associated to a namespace URI.'),
                         path($connector),
                         'common-name-5',
@@ -425,7 +425,7 @@
             select="
                 if ($hasStereotype)
                 then
-                    f:generateInfoMessage(fn:concat('The ', $hasStereotype,
+                    f:generateWarningMessage(fn:concat('The ', $hasStereotype,
                     ' stareotype is applied to ', f:getConnectorName($connector),
                     '. Stereotypes are discouraged in the current practice with some exceptions. '),
                     path($connector),
@@ -537,7 +537,7 @@
                         if ((f:isValidNamespace($tag/@name)) or (fn:substring-before($tag/@name, ':') = '')) then
                             ()
                         else
-                            f:generateWarningMessage(
+                            f:generateErrorMessage(
                             fn:concat('The prefix for source role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
                             path($connector),
                             'connector-tag-prefix-13',
@@ -548,7 +548,7 @@
                             
                             )
                     else
-                        f:generateWarningMessage(fn:concat('The prefix for source role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
+                        f:generateErrorMessage(fn:concat('The prefix for source role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
                         path($connector),
                         'connector-tag-prefix-13',
                         'CMC-R3',
@@ -565,7 +565,7 @@
                         if ((f:isValidNamespace($tag/@name)) or (fn:substring-before($tag/@name, ':') = '')) then
                             ()
                         else
-                            f:generateWarningMessage(fn:concat('The prefix for target role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
+                            f:generateErrorMessage(fn:concat('The prefix for target role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
                             path($connector),
                             'connector-tag-prefix-13',
                             'CMC-R3',
@@ -574,7 +574,7 @@
                             &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r6&quot; target=&quot;_blank&quot;&gt;CMC-R6&lt;/a&gt;'
                             )
                     else
-                        f:generateWarningMessage(fn:concat('The prefix for target role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
+                        f:generateErrorMessage(fn:concat('The prefix for target role ', $tag/@name, ' is not defined. A prefix must be associated to a namespace URI.'),
                         path($connector),
                         'connector-tag-prefix-13',
                         'CMC-R3',

@@ -184,7 +184,7 @@
                 if (fn:matches($multiplicityValue, '^[0-9]..[0-9]$') or fn:matches($multiplicityValue, '^[0-9]..\*$')) then
                 ()
                 else
-                f:generateWarningMessage(fn:concat('The connector ', f:getConnectorName($connector),
+                f:generateErrorMessage(fn:concat('The connector ', f:getConnectorName($connector),
                 ' has source multiplicity invalidly stated. Multiplicity must be specified in the form [min..max].'),
                 path($connector),
                 'association-multiplicity-2',

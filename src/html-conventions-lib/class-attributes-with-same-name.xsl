@@ -141,7 +141,7 @@
                 if (f:areStringsEqual($lowerBoundValues) and f:areStringsEqual($upperBoundValues) and $allAttributesHaveMultiplicityValue) then
                     ()
                 else
-                    f:generateFormattedInfoMessage((fn:concat('The attribute ', $attributeName, ' has different multiplicities in reuse contexts.
+                    f:generateFormattedWarningMessage((fn:concat('The attribute ', $attributeName, ' has different multiplicities in reuse contexts.
                 When a property is reused in multiple contexts, the multiplicity is expected to be the same. Please see usage below:'
                 )), $multiplicityUsage,
                 '//elements/element/attributes',
