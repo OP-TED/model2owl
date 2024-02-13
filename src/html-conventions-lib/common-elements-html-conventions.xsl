@@ -33,7 +33,7 @@
         <xsl:if test="f:isValidQname($elementName) = fn:false()">
             <xsl:sequence
                 select="
-                    f:generateWarningMessage(fn:concat('The name ', $elementName, ' does not match the pattern. ',
+                    f:generateErrorMessage(fn:concat('The name ', $elementName, ' does not match the pattern. ',
                     'The name should respect the syntax prefix:localSegment (similar to the XML QName).'),
                     path($element),
                     'common-name-1',
@@ -81,7 +81,7 @@
         <xsl:sequence
             select="
                 if (f:isElementNamePrefixMissing($element)) then
-                    f:generateWarningMessage(fn:concat('The name of element ', $element/@name,
+                    f:generateErrorMessage(fn:concat('The name of element ', $element/@name,
                     ' is missing a prefix. The name should comprise a prefix respecing the syntax prefix:localSegment.'),
                     path($element),
                     'common-name-3',
@@ -153,7 +153,7 @@
         <xsl:if test="not(f:isValidNamespace($elementName))">
             <xsl:sequence
                 select="
-                    f:generateWarningMessage(fn:concat('The prefix ', fn:substring-before($elementName, ':'),
+                    f:generateErrorMessage(fn:concat('The prefix ', fn:substring-before($elementName, ':'),
                     ' is not defined. A prefix must be associated to a namespace URI.'),
                     path($element),
                     'common-name-6',
@@ -226,7 +226,7 @@
         <xsl:sequence
             select="
                 if (f:isDelimitersInElementLocalSegment($element)) then
-                    f:generateWarningMessage(fn:concat('The local name segment ', f:getLocalSegmentForElements($element),
+                    f:generateErrorMessage(fn:concat('The local name segment ', f:getLocalSegmentForElements($element),
                     ' contains token delimiters. It is best if the names ',
                     'are camel cased and delimiters removed.'),
                     path($element),
@@ -423,7 +423,7 @@
         <xsl:sequence
             select="
                 if (fn:ends-with($elementName, 'es') or fn:ends-with($elementName, 's')) then
-                f:generateWarningMessage(fn:concat('The name (', $elementName,') is possibly in plural grammatical number. Names shall be usually provided in singular number.'),
+                f:generateInfoMessage(fn:concat('The name (', $elementName,') is possibly in plural grammatical number. Names shall be usually provided in singular number.'),
                     path($element),
                     'common-name-16',
                     'GC-R4',
@@ -484,7 +484,7 @@
             if ($elementScope = 'public') then
             ()
             else
-            f:generateWarningMessage(fn:concat('The element ', $element/@name, ' is non-public. All elements shall be public '),
+            f:generateErrorMessage(fn:concat('The element ', $element/@name, ' is non-public. All elements shall be public '),
             path($element),
             'common-visibility-18',
             'CMC-R13',

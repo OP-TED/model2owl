@@ -218,7 +218,7 @@
                 then
                     if (f:isQNameUpperCasedCamelCase($className) = fn:false())
                     then
-                        f:generateWarningMessage(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'),
+                        f:generateErrorMessage(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'),
                         path($class),
                         'class-name-2',
                         'CMC-R4',
@@ -232,7 +232,7 @@
                     then
                         ()
                     else
-                        f:generateWarningMessage(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'),
+                        f:generateErrorMessage(fn:concat('The class name ', $className, ' is invalid. The class name must start with a capital case.'),
                         path($class),
                         'class-name-2',
                         'CMC-R4',

@@ -85,7 +85,7 @@
                 if (f:areStringsEqual($multiplicityValues) and $allConnectorsHaveMultiplicityValue) then
                     ()
                 else
-                f:generateInfoMessage(
+                f:generateWarningMessage(
                 'When a property is reused in multiple contexts the multiplicity is expected to be the same.',
                 '//connectors',
                 'connectors-with-same-name-multiplicity-1',

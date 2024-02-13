@@ -88,7 +88,7 @@
                 if (fn:matches($packageName, '^[a-zA-Z0-9 ]*$')) then
                         ()
                     else
-                        f:generateWarningMessage(fn:concat('The package name ', $packageName, ' contains invalid characters. Package name shall be a short ',
+                        f:generateErrorMessage(fn:concat('The package name ', $packageName, ' contains invalid characters. Package name shall be a short ',
                         'alphanumeric string representing an acronym or a short name.'),
                         path($package),
                         'package-name-1',

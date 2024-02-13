@@ -167,7 +167,7 @@
                 then
                     if (f:isQNameLowerCasedCamelCase($classAttributeName) = fn:false())
                     then
-                        f:generateWarningMessage(fn:concat('The attribute name ', $classAttributeName, ' is invalid. The attribute name must start with a lower case.'),
+                        f:generateErrorMessage(fn:concat('The attribute name ', $classAttributeName, ' is invalid. The attribute name must start with a lower case.'),
                         path($classAttribute),
                         'class-attribute-name-1',
                         'CMC-R4',
@@ -179,7 +179,7 @@
                 else
                     if (fn:contains($uppercaseLetters, fn:substring($classAttributeName, 1, 1)))
                     then
-                        f:generateWarningMessage(fn:concat('The attribute name ', $classAttributeName, ' is invalid. The attribute name must start with a lower case.'),
+                        f:generateErrorMessage(fn:concat('The attribute name ', $classAttributeName, ' is invalid. The attribute name must start with a lower case.'),
                         path($classAttribute),
                         'class-attribute-name-1',
                         'CMC-R4',
@@ -290,7 +290,7 @@
             if ($attributeScope = 'Public') then
             ()
             else
-            f:generateWarningMessage(fn:concat('The attribute ', $classAttribute/@name, ' is non-public. Attributes shall be public '),
+            f:generateErrorMessage(fn:concat('The attribute ', $classAttribute/@name, ' is non-public. Attributes shall be public '),
             path($classAttribute),
             'class-attribute-visibility-5',
             'CMC-R13',
