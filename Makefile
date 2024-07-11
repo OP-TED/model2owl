@@ -34,7 +34,7 @@ TURTLE_FILELIST=$(shell ls ${ONTOLOGY_FOLDER_PATH}/*.ttl)
 WIDOCO_RDF_INPUT_FILE_PATH?=test/reasoning-investigation/model-2020-12-16/ePO_restrictions.rdf
 WIDOCO_OUTPUT_FOLDER_PATH?=output/widoco
 
-# download saxon library 	
+# download saxon library
 get-saxon:
 	@echo Installing saxon
 	@mkdir -p ${MODEL2OWL_FOLDER}/saxon
@@ -45,7 +45,7 @@ get-saxon:
 get-jena-cli-tools:
 	@echo Installing jena-cli-tools
 	@mkdir -p ${MODEL2OWL_FOLDER}/jena
-	@cd ${MODEL2OWL_FOLDER}/jena  && curl -L -o jena.zip "https://dlcdn.apache.org/jena/binaries/apache-jena-4.10.0.zip" && unzip jena.zip && rm -rf jena.zip
+	@cd ${MODEL2OWL_FOLDER}/jena  && curl -L -o jena.zip "https://dlcdn.apache.org/jena/binaries/apache-jena-5.0.0.zip" && unzip jena.zip && rm -rf jena.zip
 	@echo 'Jena riot tool path is ${JENA_RIOT_TOOL}'
 
 get-widoco:
@@ -112,8 +112,8 @@ merge-xmi:
 	@java -jar ${SAXON} -s:${FIRST_XMI_TO_BE_MERGED_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/xml/merge-multi-xmi.xsl -o:${XMI_MERGED_OUTPUT_FOLDER_PATH}/${MERGED_XMIS_FILE_NAME}
 	@echo Input files to be combined are located at the directory containing this input file: ${FIRST_XMI_TO_BE_MERGED_FILE_PATH} under directory ${MERGE_XMIS_FOLDER_NAME}
 	@ls -lh ${MERGE_XMIS_FOLDER_NAME}
-	@echo 
-	@echo "==> The combined document is located at the following location" 
+	@echo
+	@echo "==> The combined document is located at the following location"
 	@ls -lh ${XMI_MERGED_OUTPUT_FOLDER_PATH}/${MERGED_XMIS_FILE_NAME}
 
 
@@ -139,7 +139,7 @@ convert-turtle-to-rdf:
 		ls -lh $${FILE_PATH};  \
 		echo " ==> Output in RDF/XML format";  \
 		ls -lh $${FILE_PATH%.*}.rdf;  \
-	done	
+	done
 
 convert-rdf-to-jsonld:
 	@for FILE_PATH in ${RDF_FILELIST}; do \
