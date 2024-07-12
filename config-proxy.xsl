@@ -19,7 +19,7 @@
 
 <!--    Change below the location of your config parameters file-->
 
-    <xsl:import href="test/missing-properties/model2owl-config/config-parameters.xsl"/>
+    <xsl:import href="input/model2owl-config/config-parameters.xsl"/>
 
 </xsl:stylesheet>
 
