@@ -56,7 +56,7 @@ get-widoco:
 ######################################################################################
 # Download, install saxon, xspec, rdflib and other dependencies
 ######################################################################################
-install:  get-saxon get-rdflib get-widoco
+install:  get-saxon get-jena-cli-tools get-widoco
 
 ############################ Main tasks ##############################################
 # Run unit_tests
