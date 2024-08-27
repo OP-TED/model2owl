@@ -3,7 +3,7 @@
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:f="http://https://github.com/costezki/model2owl#"
     stylesheet="../../../src/html-conventions-lib/data-type-html-conventions.xsl">
-    
+    <x:param name="reportType" select="'HTML'"/>
     <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:DataType']-finding all data-types with invalid names and return a warning">
         <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[260]"/>
         <x:expect label="there is an Description List element" test="boolean(/dl)"/>

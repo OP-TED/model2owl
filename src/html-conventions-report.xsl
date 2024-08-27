@@ -13,7 +13,7 @@
     xmlns:skos="http://www.w3.org/2004/02/skos/core#" version="3.0">
     <xsl:output method="html" indent="yes"/>
     
-    
+
     
     <xsl:import href="common/checkers.xsl"/>
     <xsl:import href="html-conventions-lib/html-selectors.xsl"/>
@@ -34,7 +34,7 @@
     <xsl:import href="html-conventions-lib/fragments/header.xsl"/>
     <xsl:import href="html-conventions-lib/fragments/introduction.xsl"/>
     <xsl:import href="html-conventions-lib/fragments/footer.xsl"/>
-    
+    <xsl:variable name="reportType" select="'HTML'"/>
     
     <xsl:template match="/">
         

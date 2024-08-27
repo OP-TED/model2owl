@@ -29,31 +29,38 @@
         <xsl:variable name="realisationChecks" as="item()*">
 
 
-                <xsl:call-template name="realisationHasName">
-                    <xsl:with-param name="realisationConnector" select="."/>
-                </xsl:call-template>
-                <xsl:call-template name="realisationHasRoleName">
-                    <xsl:with-param name="realisationConnector" select="."/>
-                </xsl:call-template>
-                <xsl:call-template name="realisationHasMultiplicity">
-                    <xsl:with-param name="realisationConnector" select="."/>
-                </xsl:call-template>
-                <xsl:call-template name="realisationDirectionChecker">
-                    <xsl:with-param name="realisationConnector" select="."/>
-                </xsl:call-template>
-                <xsl:call-template name="realisationSourceTargetTypes">
-                    <xsl:with-param name="realisationConnector" select="."/>
-                </xsl:call-template>
-            
+            <xsl:call-template name="realisationHasName">
+                <xsl:with-param name="realisationConnector" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="realisationHasRoleName">
+                <xsl:with-param name="realisationConnector" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="realisationHasMultiplicity">
+                <xsl:with-param name="realisationConnector" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="realisationDirectionChecker">
+                <xsl:with-param name="realisationConnector" select="."/>
+            </xsl:call-template>
+            <xsl:call-template name="realisationSourceTargetTypes">
+                <xsl:with-param name="realisationConnector" select="."/>
+            </xsl:call-template>
+
         </xsl:variable>
         <xsl:if test="boolean($realisationChecks)">
-            <h2>
-                <xsl:value-of select="f:getConnectorName(.)"/>
-            </h2>
-            <dl>
-                <dt> Unmet realisation conventions </dt>
-                <xsl:copy-of select="$realisationChecks"/>
-            </dl>
+            <xsl:choose>
+                <xsl:when test="$reportType = 'HTML'">
+                    <h2>
+                        <xsl:value-of select="f:getConnectorName(.)"/>
+                    </h2>
+                    <dl>
+                        <dt> Unmet realisation conventions </dt>
+                        <xsl:copy-of select="$realisationChecks"/>
+                    </dl>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:copy-of select="$realisationChecks"/>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:if>
     </xsl:template>
 
@@ -76,7 +83,13 @@
                 if ($hasNoTargetMultiplicity and $hasNoSourceMultiplicity) then
                     ()
                 else
-                    f:generateHtmlError('The realisation has multiplicity. No multiplicity can be provided to realisations.')"
+                    f:generateErrorMessage('The realisation has multiplicity. No multiplicity can be provided to realisations.',
+                    path($realisationConnector),
+                    'realisation-multiplicity-1',
+                    'CMC-R11',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r11&quot; target=&quot;_blank&quot;&gt;CMC-R11&lt;/a&gt;
+                    &lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
+                    )"
         />
     </xsl:template>
 
@@ -92,7 +105,12 @@
         <xsl:sequence
             select="
                 if ($realisationHasNoName = fn:false()) then
-                    f:generateHtmlError(fn:concat('The connector ', $realisationConnector/@name, ' has a name. No name can be provided for realisation relation.'))
+                    f:generateErrorMessage(fn:concat('The connector ', $realisationConnector/@name, ' has a name. No name can be provided for realisation relation.'),
+                    path($realisationConnector),
+                    'realisation-name-2',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
+                    )
                 else
                     ()"
         />
@@ -114,7 +132,12 @@
                 if ($hasNoTargetRoleName and $hasNoSourceRoleName) then
                     ()
                 else
-                    f:generateHtmlError('The realisation connector has a role name. No source or target roles can be provided to realisations.')"
+                    f:generateErrorMessage('The realisation connector has a role name. No source or target roles can be provided to realisations.',
+                    path($realisationConnector),
+                    'realisation-name-3',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
+                    )"
         />
     </xsl:template>
 
@@ -130,8 +153,13 @@
         <xsl:sequence
             select="
                 if ($realisationDirection != 'Source -&gt; Destination') then
-                    f:generateHtmlError(fn:concat('The ', $realisationDirection, ' direction is invalid. ',
-                    'realisations must employ Source -&gt; Destination direction only.'))
+                    f:generateErrorMessage(fn:concat('The ', $realisationDirection, ' direction is invalid. ',
+                    'realisations must employ Source -&gt; Destination direction only.'),
+                    path($realisationConnector),
+                    'realisation-direction-4',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
+                    )
                 else
                     ()"
         />
@@ -151,7 +179,12 @@
             if ($sourceType = 'Object' and ($targetType = 'Class' or $targetType = 'Enumeration')) then
                     ()
                 else
-                f:generateHtmlError('The realisation can be provided only from an Object to a Class or Enumeration.')"
+                f:generateErrorMessage('The realisation can be provided only from an Object to a Class or Enumeration.',
+                path($realisationConnector),
+                'realisation-source-target-types-5',
+                'CMC-R12',
+                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
+                )"
         />
     </xsl:template>
 

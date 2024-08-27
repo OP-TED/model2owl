@@ -3,7 +3,7 @@
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:f="http://https://github.com/costezki/model2owl#"
     stylesheet="../../../src/html-conventions-lib/class-attributes-with-same-name.xsl">
-        
+    <x:param name="reportType" select="'HTML'"/>
     <x:scenario
         label="definition for class attributes with the same name - different definition values">
         <x:call template="checkDefinitionOfAttributesWithSameName">
@@ -89,7 +89,7 @@
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/"/>
         </x:call>
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
-        <x:expect label="expect to find a warning" test="/dd/@class = 'filter infos'"/>
+        <x:expect label="expect to find a warning" test="/dd/@class = 'filter warnings'"/>
         
     </x:scenario>
     
@@ -110,7 +110,7 @@
             <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/"/>
         </x:call>
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
-        <x:expect label="expect to find a warning" test="/dd/@class = 'filter infos'"/>
+        <x:expect label="expect to find a warning" test="/dd/@class = 'filter warnings'"/>
         
     </x:scenario>
 </x:description>

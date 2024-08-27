@@ -108,17 +108,24 @@
         </xsl:variable>
 
         <xsl:if test="boolean($enumerationConventions)">
-            <h2>
-                <xsl:value-of select="$enumeration"/>
-            </h2>
-            <section>
-                <xsl:if test="boolean($enumerationConventions)">
-                    <dl>
-                        <dt>Unmet enumeration conventions</dt>
-                        <xsl:copy-of select="$enumerationConventions"/>
-                    </dl>
-                </xsl:if>
-            </section>
+            <xsl:choose>
+                <xsl:when test="$reportType = 'HTML'">
+                    <h2>
+                        <xsl:value-of select="$enumeration"/>
+                    </h2>
+                    <section>
+                        <xsl:if test="boolean($enumerationConventions)">
+                            <dl>
+                                <dt>Unmet enumeration conventions</dt>
+                                <xsl:copy-of select="$enumerationConventions"/>
+                            </dl>
+                        </xsl:if>
+                    </section>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:copy-of select="$enumerationConventions"/>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:if>
     </xsl:template>
 
@@ -156,8 +163,13 @@
         <xsl:sequence
             select="
             if ($enumerationNumberOfAttributes > 0) then
-            f:generateHtmlWarning(fn:concat('The enumeration ', $enumeration/@name,
-            ' shall have no values/attributes defined. An Enumeration stands for a controlled list and its management is out of model scope. '))
+            f:generateWarningMessage(fn:concat('The enumeration ', $enumeration/@name,
+            ' shall have no values/attributes defined. An Enumeration stands for a controlled list and its management is out of model scope. '),
+            path($enumeration),
+            'enumeration-attribute-2',
+            'CMC-R14',
+            '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r14&quot; target=&quot;_blank&quot;&gt;CMC-R14&lt;/a&gt;'
+            )
             else
             ()
             "
@@ -178,8 +190,13 @@
         <xsl:sequence
             select="
                 if ($outgoingConnectors > 0) then
-                    f:generateHtmlError(fn:concat('The enumeration ', $enumeration/@name,
-                    ' should not connect to other elements. An Enumeration stands for an controlled list and can only be referred to.'))
+                    f:generateErrorMessage(fn:concat('The enumeration ', $enumeration/@name,
+                    ' should not connect to other elements. An Enumeration stands for an controlled list and can only be referred to.'),
+                    path($enumeration),
+                    'enumeration-connector-3',
+                    'CMC-R14',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r14&quot; target=&quot;_blank&quot;&gt;CMC-R14&lt;/a&gt;'
+                    )
                 else
                     ()
                 "
