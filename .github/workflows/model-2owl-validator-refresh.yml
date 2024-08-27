@@ -1,9 +1,7 @@
 name: Update github model2owl-validator repo
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
 
 jobs:
   copy-and-commit:
