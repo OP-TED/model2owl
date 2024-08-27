@@ -48,6 +48,11 @@ get-jena-cli-tools:
 	@cd ${MODEL2OWL_FOLDER}/jena  && curl -L -o jena.zip "https://dlcdn.apache.org/jena/binaries/apache-jena-4.10.0.zip" && unzip jena.zip && rm -rf jena.zip
 	@echo 'Jena riot tool path is ${JENA_RIOT_TOOL}'
 
+# install rdflib
+get-rdflib:
+	@echo Installing rdflib
+	@source model2owl-venv/bin/activate && pip install rdflib
+
 get-widoco:
 	@echo Installing widoco
 	@mkdir -p ${MODEL2OWL_FOLDER}/widoco
@@ -62,6 +67,9 @@ install:  get-saxon get-rdflib get-widoco
 # Run unit_tests
 unit-tests:
 	@mvn install
+
+create-virtual-env:
+	@python -m venv model2owl-venv
 
 
 # Generate the glossary from an input file
@@ -89,6 +97,16 @@ generate-convention-report:
 	@ls -lh ${OUTPUT_CONVENTION_REPORT_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_convention_report.html
 	@echo
 
+generate-convention-SVRL-report:
+	@mkdir -p "${OUTPUT_CONVENTION_REPORT_PATH}"
+	@echo Input file path: ${XMI_INPUT_FILE_PATH}
+	@echo Input file name: ${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}
+	@cp -rf ./src/static "${OUTPUT_CONVENTION_REPORT_PATH}"
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/svrl-conventions-report.xsl -o:${OUTPUT_CONVENTION_REPORT_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_convention_svrl_report.xml
+	@echo The convention report is located at the following location:
+	@echo
+	@ls -lh ${OUTPUT_CONVENTION_REPORT_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_convention_svrl_report.xml
+	@echo
 #Example how to run transformation commands :
 # make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/eNotice_CM.xml OUTPUT_FOLDER_PATH=./my-folder
 owl-core:
@@ -125,7 +143,8 @@ merge-xmi:
 convert-rdf-to-turtle:
 	@for FILE_PATH in ${RDF_FILELIST}; do \
 		echo Converting $${FILE_PATH} into Turtle; \
-		${JENA_RIOT_TOOL} --output=ttl $${FILE_PATH} > $${FILE_PATH%.*}.ttl; \
+		source model2owl-venv/bin/activate; \
+		rdfpipe -i application/rdf+xml -o  turtle $${FILE_PATH} > $${FILE_PATH%.*}.ttl; \
 		echo Input in RDF/XML format;  \
 		echo $${FILE_PATH};  \
 		echo " ==> Output in Turtle format";  \
@@ -134,7 +153,8 @@ convert-rdf-to-turtle:
 convert-turtle-to-rdf:
 	@for FILE_PATH in ${TURTLE_FILELIST}; do \
 		echo Converting $${FILE_PATH} into RDF/XML; \
-		${JENA_RIOT_TOOL} --output=rdfxml $${FILE_PATH} > $${FILE_PATH%.*}.rdf; \
+		source model2owl-venv/bin/activate; \
+		rdfpipe -i turtle -o  application/rdf+xml $${FILE_PATH} > $${FILE_PATH%.*}.rdf; \
 		echo Input in Turtle format;  \
 		ls -lh $${FILE_PATH};  \
 		echo " ==> Output in RDF/XML format";  \
@@ -144,7 +164,8 @@ convert-turtle-to-rdf:
 convert-rdf-to-jsonld:
 	@for FILE_PATH in ${RDF_FILELIST}; do \
 		echo Converting $${FILE_PATH} into JSON-LD; \
-		${JENA_RIOT_TOOL} --output=jsonld $${FILE_PATH} > $${FILE_PATH%.*}.json; \
+		source model2owl-venv/bin/activate; \
+		rdfpipe -i application/rdf+xml -o json-ld  $${FILE_PATH} > $${FILE_PATH%.*}.json; \
 		echo Input in RDF/XML format;  \
 		echo $${FILE_PATH};  \
 		echo " ==> Output in JSON-LD format";  \
@@ -153,7 +174,8 @@ convert-rdf-to-jsonld:
 convert-rdf-to-rdf:
 	@for FILE_PATH in ${RDF_FILELIST}; do \
 		echo Converting $${FILE_PATH} into RDF/XML; \
-		${JENA_RIOT_TOOL} --output=rdfxml  $${FILE_PATH} > $${FILE_PATH%.*}.rdf2; \
+		source model2owl-venv/bin/activate; \
+		rdfpipe -i application/rdf+xml -o application/rdf+xml $${FILE_PATH} > $${FILE_PATH%.*}.rdf2; \
 		mv -v $${FILE_PATH%.*}.rdf2 $${FILE_PATH%.*}.rdf; \
 		echo Input in RDF/XML format;  \
 		ls -lh $${FILE_PATH};  \
