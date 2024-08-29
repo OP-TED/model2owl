@@ -71,14 +71,18 @@
     
     <!--    This variable controls whether the enumerations are transformed into skos schemes or ignored-->
     <xsl:variable name="enableGenerationOfConceptSchemes" select="fn:false()"/>
-    
-    
+
 
     <!--Allowed characters for a normalized string-->
     <xsl:variable name="allowedStrings" select="'^[\w\d-_:]+$'"/>
     <!--    Generate reused classes, attributes and connectors-->
+    <xsl:variable name="internalModelPrefixesList" select="('epo', 'epo-not', 'epo-ord', 'epo-cat', 'epo-con', 'epo-ful')"/>
     <xsl:variable name="generateReusedConcepts" select="fn:true()"/>
-
+    <xsl:variable name="generateReusedConceptsSHACL" select="fn:true()"/>
+    <xsl:variable name="generateReusedConceptsOWLcore" select="fn:true()"/>
+    <xsl:variable name="generateReusedConceptsOWLrestrictions" select="fn:true()"/>
+    <xsl:variable name="generateReusedConceptsGlossary" select="fn:true()"/>
+    <xsl:variable name="generateReusedConceptsConventionsReport" select="fn:true()"/>
 
 
     <xsl:variable name="reference-to-external-classes-in-glossary" select="fn:false()"/>
