@@ -26,25 +26,30 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Realisation']">
+        <!-- Variables for the prefixes in source and target -->
+        <xsl:variable name="sourcePrefix" select="fn:substring-before(./source/model/@name, ':')"/>
+        <xsl:variable name="targetPrefix" select="fn:substring-before(./target/model/@name, ':')"/>
         <xsl:variable name="realisationChecks" as="item()*">
+            <xsl:if
+                test="$generateReusedConceptsConventionsReport or ($sourcePrefix = $internalModelPrefixesList and $targetPrefix = $internalModelPrefixesList)">
 
 
-            <xsl:call-template name="realisationHasName">
-                <xsl:with-param name="realisationConnector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="realisationHasRoleName">
-                <xsl:with-param name="realisationConnector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="realisationHasMultiplicity">
-                <xsl:with-param name="realisationConnector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="realisationDirectionChecker">
-                <xsl:with-param name="realisationConnector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="realisationSourceTargetTypes">
-                <xsl:with-param name="realisationConnector" select="."/>
-            </xsl:call-template>
-
+                <xsl:call-template name="realisationHasName">
+                    <xsl:with-param name="realisationConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="realisationHasRoleName">
+                    <xsl:with-param name="realisationConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="realisationHasMultiplicity">
+                    <xsl:with-param name="realisationConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="realisationDirectionChecker">
+                    <xsl:with-param name="realisationConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="realisationSourceTargetTypes">
+                    <xsl:with-param name="realisationConnector" select="."/>
+                </xsl:call-template>
+            </xsl:if>
         </xsl:variable>
         <xsl:if test="boolean($realisationChecks)">
             <xsl:choose>
@@ -166,7 +171,8 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[realisation-source-target-types-5] - The realisation can be provided only from an Object to a Class or Enumeration</xd:desc>
+        <xd:desc>[realisation-source-target-types-5] - The realisation can be provided only from an
+            Object to a Class or Enumeration</xd:desc>
         <xd:param name="realisationConnector"/>
     </xd:doc>
 
@@ -176,15 +182,15 @@
         <xsl:variable name="targetType" select="$realisationConnector/target/model/@type"/>
         <xsl:sequence
             select="
-            if ($sourceType = 'Object' and ($targetType = 'Class' or $targetType = 'Enumeration')) then
+                if ($sourceType = 'Object' and ($targetType = 'Class' or $targetType = 'Enumeration')) then
                     ()
                 else
-                f:generateErrorMessage('The realisation can be provided only from an Object to a Class or Enumeration.',
-                path($realisationConnector),
-                'realisation-source-target-types-5',
-                'CMC-R12',
-                '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
-                )"
+                    f:generateErrorMessage('The realisation can be provided only from an Object to a Class or Enumeration.',
+                    path($realisationConnector),
+                    'realisation-source-target-types-5',
+                    'CMC-R12',
+                    '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
+                    )"
         />
     </xsl:template>
 

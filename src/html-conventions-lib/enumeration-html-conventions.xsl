@@ -24,94 +24,96 @@
     </xd:doc>
 
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
-        <xsl:variable name="enumeration">
+        <xsl:variable name="enumerationName">
             <xsl:call-template name="getEnumerationName">
                 <xsl:with-param name="enumeration" select="."/>
             </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="enumerationConventions" as="item()*">
-            <!--    Start of common checkers rules     -->
-            <xsl:call-template name="namingFormat">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="missingName">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="missingNamePrefix">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="missingLocalSegmentName">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="invalidNamePrefix">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="undefinedPrefix">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="invalidNameLocalSegment">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="invalidFirstCharacterInLocalSegment">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="delimitersInTheLocalSegment">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="missingDescription">
-                <xsl:with-param name="element" select="."/>
-                <xsl:with-param name="elementType" select="'enumeration'"/>
-            </xsl:call-template>
-            <xsl:call-template name="stereotypeProvided">
-                <xsl:with-param name="element" select="."/>
-                <xsl:with-param name="elementType" select="'enumeration'"/>
-            </xsl:call-template>
-            <xsl:call-template name="unknownStereotypeProvided">
-                <xsl:with-param name="element" select="."/>
-                <xsl:with-param name="elementType" select="'enumeration'"/>
-            </xsl:call-template>
-            <xsl:call-template name="invalidTagName">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="missingTagValue">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="missingTagName">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="missingPrefixTagName">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="namePlural">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="nonPublicElement">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="elementUniqueName">
-                <xsl:with-param name="element" select="."/>
-                <xsl:with-param name="isAttribute" select="fn:false()"/>
-            </xsl:call-template>
-            <!--    End of common checkers rules     -->   
-            <!--    Start of specific checker rules-->
+            <xsl:if
+                test="$generateReusedConceptsConventionsReport or fn:substring-before($enumerationName, ':') = $internalModelPrefixesList">
+                <!--    Start of common checkers rules     -->
+                <xsl:call-template name="namingFormat">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="missingName">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="missingNamePrefix">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="missingLocalSegmentName">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="invalidNamePrefix">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="undefinedPrefix">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="invalidNameLocalSegment">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="invalidFirstCharacterInLocalSegment">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="delimitersInTheLocalSegment">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="missingDescription">
+                    <xsl:with-param name="element" select="."/>
+                    <xsl:with-param name="elementType" select="'enumeration'"/>
+                </xsl:call-template>
+                <xsl:call-template name="stereotypeProvided">
+                    <xsl:with-param name="element" select="."/>
+                    <xsl:with-param name="elementType" select="'enumeration'"/>
+                </xsl:call-template>
+                <xsl:call-template name="unknownStereotypeProvided">
+                    <xsl:with-param name="element" select="."/>
+                    <xsl:with-param name="elementType" select="'enumeration'"/>
+                </xsl:call-template>
+                <xsl:call-template name="invalidTagName">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="missingTagValue">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="missingTagName">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="missingPrefixTagName">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="namePlural">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="nonPublicElement">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="elementUniqueName">
+                    <xsl:with-param name="element" select="."/>
+                    <xsl:with-param name="isAttribute" select="fn:false()"/>
+                </xsl:call-template>
+                <!--    End of common checkers rules     -->
+                <!--    Start of specific checker rules-->
 
-            <xsl:call-template name="enumerationItemsChecker">
-                <xsl:with-param name="enumeration" select="."/>
-            </xsl:call-template>
+                <xsl:call-template name="enumerationItemsChecker">
+                    <xsl:with-param name="enumeration" select="."/>
+                </xsl:call-template>
 
-            
-            <xsl:call-template name="enumerationOutgoingConnectors">
-                <xsl:with-param name="enumeration" select="."/>
-            </xsl:call-template>
-            <!--    End of specific checker rules-->
 
+                <xsl:call-template name="enumerationOutgoingConnectors">
+                    <xsl:with-param name="enumeration" select="."/>
+                </xsl:call-template>
+                <!--    End of specific checker rules-->
+            </xsl:if>
         </xsl:variable>
 
         <xsl:if test="boolean($enumerationConventions)">
             <xsl:choose>
                 <xsl:when test="$reportType = 'HTML'">
                     <h2>
-                        <xsl:value-of select="$enumeration"/>
+                        <xsl:value-of select="$enumerationName"/>
                     </h2>
                     <section>
                         <xsl:if test="boolean($enumerationConventions)">

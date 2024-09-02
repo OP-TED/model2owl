@@ -25,12 +25,13 @@
     
     
     <xsl:template match="element[@xmi:type = 'uml:Object']">
-        <xsl:variable name="object">
+        <xsl:variable name="objectName">
             <xsl:call-template name="getObjectName">
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="objectConventions" as="item()*">
+            <xsl:if test="$generateReusedConceptsGlossary or fn:substring-before($objectName, ':') = $internalModelPrefixesList">
             <!--    Start of common checkers rules     -->
             <xsl:call-template name="namingFormat">
                 <xsl:with-param name="element" select="."/>
@@ -108,13 +109,14 @@
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
             <!--    End of specific checker rules-->
+            </xsl:if>
         </xsl:variable>
 
         <xsl:if test="boolean($objectConventions)">
             <xsl:choose>
                 <xsl:when test="$reportType = 'HTML'">
                     <h2>
-                        <xsl:value-of select="$object"/>
+                        <xsl:value-of select="$objectName"/>
                     </h2>
                     <section>
                         <xsl:if test="boolean($objectConventions)">

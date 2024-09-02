@@ -221,7 +221,7 @@
                                 if (f:getElementByIdRef(./target/@xmi:idref, $root)/@name) then
                                     f:getElementByIdRef(./target/@xmi:idref, $root)/@name
                                 else
-                                    if ($reference-to-external-classes-in-glossary) then
+                                if ($generateReusedConceptsGlossary) then
                                         fn:concat(./target/model/@name, ' (external)')
                                     else
                                         ()"/>
@@ -230,7 +230,7 @@
                                 if (f:getElementByIdRef(./source/@xmi:idref, $root)/@name) then
                                     f:getElementByIdRef(./source/@xmi:idref, $root)/@name
                                 else
-                                    if ($reference-to-external-classes-in-glossary) then
+                                if ($generateReusedConceptsGlossary) then
                                         fn:concat(./source/model/@name, ' (external)')
                                     else
                                         ()"/>
@@ -271,7 +271,7 @@
                         if (f:getElementByIdRef($connectorsWithSameName/target/@xmi:idref, $root)/@name) then
                             f:getElementByIdRef($connectorsWithSameName/target/@xmi:idref, $root)/@name
                         else
-                            if ($reference-to-external-classes-in-glossary) then
+                        if ($generateReusedConceptsGlossary) then
                                 fn:concat($connectorsWithSameName/target/model/@name, ' (external)')
                             else
                                 ()"/>
@@ -280,7 +280,7 @@
                         if (f:getElementByIdRef($connectorsWithSameName/source/@xmi:idref, $root)/@name) then
                             f:getElementByIdRef($connectorsWithSameName/source/@xmi:idref, $root)/@name
                         else
-                            if ($reference-to-external-classes-in-glossary) then
+                        if ($generateReusedConceptsGlossary) then
                                 fn:concat($connectorsWithSameName/source/model/@name, ' (external)')
                             else
                                 ()"/>
