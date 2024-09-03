@@ -31,8 +31,6 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="classConventions" as="item()*">
-            <xsl:if
-                test="$generateReusedConceptsConventionsReport or fn:substring-before($className, ':') = $internalModelPrefixesList">
                 <!--    Start of common checkers rules     -->
                 <xsl:call-template name="namingFormat">
                     <xsl:with-param name="element" select="."/>
@@ -108,7 +106,7 @@
                     <xsl:with-param name="class" select="."/>
                 </xsl:call-template>
                 <!--    End of specific checker rules-->
-            </xsl:if>
+            
         </xsl:variable>
         <xsl:variable name="classAttributeConventions" as="item()*">
             <xsl:apply-templates select="attributes/attribute"/>

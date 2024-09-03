@@ -32,16 +32,14 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
-        <!-- Variables for the prefixes in source and target -->
-        <xsl:variable name="sourcePrefix" select="fn:substring-before(./source/model/@name, ':')"/>
-        <xsl:variable name="targetPrefix" select="fn:substring-before(./target/model/@name, ':')"/>
+        <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
+        
         <xsl:if
             test="
                 not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector') and (
                 $generateReusedConceptsSHACL = fn:true()
                 or
-                ($sourcePrefix = $internalModelPrefixesList and $targetPrefix = $internalModelPrefixesList)
-                )">
+                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
             <xsl:call-template name="connectorRange">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -62,16 +60,13 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
-        <!-- Variables for the prefixes in source and target -->
-        <xsl:variable name="sourcePrefix" select="fn:substring-before(./source/model/@name, ':')"/>
-        <xsl:variable name="targetPrefix" select="fn:substring-before(./target/model/@name, ':')"/>
+        <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
         <xsl:if
             test="
                 not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = ('ProxyConnector', 'Object')) and (
                 $generateReusedConceptsSHACL = fn:true()
                 or
-                ($sourcePrefix = $internalModelPrefixesList and $targetPrefix = $internalModelPrefixesList)
-                )">
+                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
             <xsl:choose>
                 <xsl:when
                     test="not(./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')">

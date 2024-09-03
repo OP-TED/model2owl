@@ -30,8 +30,6 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="enumerationConventions" as="item()*">
-            <xsl:if
-                test="$generateReusedConceptsConventionsReport or fn:substring-before($enumerationName, ':') = $internalModelPrefixesList">
                 <!--    Start of common checkers rules     -->
                 <xsl:call-template name="namingFormat">
                     <xsl:with-param name="element" select="."/>
@@ -106,7 +104,7 @@
                     <xsl:with-param name="enumeration" select="."/>
                 </xsl:call-template>
                 <!--    End of specific checker rules-->
-            </xsl:if>
+            
         </xsl:variable>
 
         <xsl:if test="boolean($enumerationConventions)">

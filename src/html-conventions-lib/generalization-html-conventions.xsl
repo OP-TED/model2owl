@@ -25,12 +25,8 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
-        <!-- Variables for the prefixes in source and target -->
-        <xsl:variable name="sourcePrefix" select="fn:substring-before(./source/model/@name, ':')"/>
-        <xsl:variable name="targetPrefix" select="fn:substring-before(./target/model/@name, ':')"/>
         <xsl:variable name="generalizationChecks" as="item()*">
-            <xsl:if
-                test="$generateReusedConceptsConventionsReport or ($sourcePrefix = $internalModelPrefixesList and $targetPrefix = $internalModelPrefixesList)">
+
                 <xsl:call-template name="generalizationClassWithSingleChild">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
@@ -52,7 +48,7 @@
                 <xsl:call-template name="generalizationSourceTargetTypes">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
-            </xsl:if>
+            
         </xsl:variable>
         <xsl:if test="boolean($generalizationChecks)">
             <xsl:choose>

@@ -31,7 +31,6 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="objectConventions" as="item()*">
-            <xsl:if test="$generateReusedConceptsGlossary or fn:substring-before($objectName, ':') = $internalModelPrefixesList">
             <!--    Start of common checkers rules     -->
             <xsl:call-template name="namingFormat">
                 <xsl:with-param name="element" select="."/>
@@ -109,7 +108,7 @@
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
             <!--    End of specific checker rules-->
-            </xsl:if>
+            
         </xsl:variable>
 
         <xsl:if test="boolean($objectConventions)">

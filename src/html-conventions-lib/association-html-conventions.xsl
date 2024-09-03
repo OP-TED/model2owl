@@ -24,14 +24,7 @@
     </xd:doc>
     
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
-        <!-- Variables for the prefixes in source and target -->
-        <xsl:variable name="sourcePrefix" select="fn:substring-before(./source/model/@name, ':')"/>
-        <xsl:variable name="targetPrefix" select="fn:substring-before(./target/model/@name, ':')"/>
-        
         <xsl:variable name="associationChecks" as="item()*">
-            
-            <xsl:if
-                test="$generateReusedConceptsConventionsReport or ($sourcePrefix = $internalModelPrefixesList and $targetPrefix = $internalModelPrefixesList)">
                 <!--    Start of common connectors checkers rules     -->
                 <xsl:call-template name="connectorNamingFormat">
                     <xsl:with-param name="connector" select="."/>
@@ -129,7 +122,7 @@
                     <xsl:with-param name="isDependency" select="fn:false()"/>
                 </xsl:call-template>
                 <!--    End of specific checker rules-->
-            </xsl:if>
+            
         </xsl:variable>
         <xsl:if test="boolean($associationChecks)">
             <xsl:choose>

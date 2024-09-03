@@ -278,4 +278,18 @@
         </x:call>
         <x:expect label="no tags" select="()"/>
     </x:scenario>
+    
+    <x:scenario label="Get connector role name value - Source -> Destination">
+        <x:call function="f:getRoleNameFromConnector">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[21]"/>
+        </x:call>
+        <x:expect label="name is epo:has fron target role" select="'epo:has'"/>
+    </x:scenario>
+    
+    <x:scenario label="Get connector role name value - Bi-directional">
+        <x:call function="f:getRoleNameFromConnector">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[38]"/>
+        </x:call>
+        <x:expect label="name is epo:signedBy from source" select="'epo:isSignedBy'"/>
+    </x:scenario>
 </x:description>

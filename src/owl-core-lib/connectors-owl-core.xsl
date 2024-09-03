@@ -93,7 +93,7 @@
                     select="fn:substring-before(./target/model/@name, ':')"/>
                 <!-- Check if either the prefixes match the internal list or generateReusedConcepts is true -->
                 <xsl:if
-                    test="$generateReusedConceptsOWLcore or ($sourcePrefix = $internalModelPrefixesList and $targetPrefix = $internalModelPrefixesList)">
+                    test="$generateReusedConceptsOWLcore or $sourcePrefix = $internalModelPrefixesList">
                     <xsl:call-template name="classGeneralization"/>
                 </xsl:if>
             </xsl:if>
@@ -150,7 +150,7 @@
                     select="fn:substring-before($targetConnectorTargetName, ':')"/>
                 <!-- Check if either the prefixes match the internal list or generateReusedConcepts is true -->
                 <xsl:if
-                    test="$generateReusedConceptsOWLcore or ($sourceConnectorTargetNamePrefix = $internalModelPrefixesList and $targetConnectorTargetNamePrefix = $internalModelPrefixesList)">
+                    test="$generateReusedConceptsOWLcore or $sourceConnectorTargetNamePrefix = $internalModelPrefixesList">
                     <owl:ObjectProperty rdf:about="{$sourceConnectorTargetUri}">
                         <rdfs:subPropertyOf rdf:resource="{$targetConnectorTargetUri}"/>
                     </owl:ObjectProperty>
@@ -189,7 +189,7 @@
                     select="fn:substring-before($sourceConnectorSourceName, ':')"/>
                 <!-- Check if either the prefixes match the internal list or generateReusedConcepts is true -->
                 <xsl:if
-                    test="$generateReusedConceptsOWLcore or ($targetConnectorSourceNamePrefix = $internalModelPrefixesList and $sourceConnectorSourceNamePrefix = $internalModelPrefixesList)">
+                    test="$generateReusedConceptsOWLcore or $sourceConnectorSourceNamePrefix = $internalModelPrefixesList">
 
                     <owl:ObjectProperty rdf:about="{$sourceConnectorSourceUri}">
                         <rdfs:subPropertyOf rdf:resource="{$targetConnectorSourceUri}"/>
@@ -211,8 +211,10 @@
                 test="
                     f:getConnectorByName(., $root)/source/model/@type != 'ProxyConnector' and f:getConnectorByName(., $root)/target/model/@type != 'ProxyConnector'
                     and f:getConnectorByName(., $root)/properties/@ea_type = ('Association', 'Dependency')">
+                <xsl:variable name="connectorElement" select="f:getConnectorByName(., $root)"/>
+                <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector($connectorElement)"/>
                 <xsl:if
-                    test="$generateReusedConceptsOWLcore or fn:substring-before(., ':') = $internalModelPrefixesList">
+                    test="$generateReusedConceptsOWLcore or fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList">
 
                     <xsl:call-template name="genericConnector">
                         <xsl:with-param name="connectorName" select="."/>

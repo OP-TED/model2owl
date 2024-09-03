@@ -355,8 +355,6 @@
                     select="fn:normalize-space(f:formatDocString(./properties/@documentation))"/>
 
 
-                <xsl:if
-                    test="not(fn:contains($conceptSchemeURI, $base-ontology-uri)) and $generateReusedConcepts">
                     <skos:ConceptScheme rdf:about="{$conceptSchemeURI}"/>
 
                     <xsl:call-template name="coreLayerName">
@@ -383,34 +381,7 @@
                         </xsl:call-template>
                     </xsl:for-each>
 
-                </xsl:if>
-                <xsl:if test="fn:contains($conceptSchemeURI, $base-ontology-uri)">
-                    <skos:ConceptScheme rdf:about="{$conceptSchemeURI}"/>
-
-                    <xsl:call-template name="coreLayerName">
-                        <xsl:with-param name="elementName" select="$conceptSchemeName"/>
-                        <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
-                    </xsl:call-template>
-                    <xsl:if test="$documentation != ''">
-                        <xsl:call-template name="coreLayerDescription">
-                            <xsl:with-param name="definition" select="$documentation"/>
-                            <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
-                        </xsl:call-template>
-                    </xsl:if>
-
-
-                    <xsl:call-template name="coreDefinedBy">
-                        <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
-                    </xsl:call-template>
-
-                    <xsl:for-each select="f:getElementTags(.)">
-                        <xsl:call-template name="coreLayerTags">
-                            <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
-                            <xsl:with-param name="tagName" select="./@name"/>
-                            <xsl:with-param name="tagValue" select="./@value"/>
-                        </xsl:call-template>
-                    </xsl:for-each>
-                </xsl:if>
+               
             </xsl:if>
         </xsl:if>
 
@@ -441,8 +412,7 @@
                 <xsl:variable name="documentation"
                     select="fn:normalize-space(f:formatDocString(./documentation/@value))"/>
 
-                <xsl:if
-                    test="not(fn:contains($enumerationAttributeURI, $base-ontology-uri)) and $generateReusedConcepts">
+ 
 
                     <skos:Concept rdf:about="{$enumerationAttributeURI}">
                         <skos:inScheme rdf:resource="{$enumerationURI}"/>
@@ -472,38 +442,8 @@
                             <xsl:with-param name="tagValue" select="./@value"/>
                         </xsl:call-template>
                     </xsl:for-each>
-                </xsl:if>
-                <xsl:if test="fn:contains($enumerationAttributeURI, $base-ontology-uri)">
+                
 
-                    <skos:Concept rdf:about="{$enumerationAttributeURI}">
-                        <skos:inScheme rdf:resource="{$enumerationURI}"/>
-
-                    </skos:Concept>
-
-                    <xsl:call-template name="coreLayerName">
-                        <xsl:with-param name="elementName" select="$enumerationAttributeName"/>
-                        <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
-                    </xsl:call-template>
-                    <xsl:if test="$documentation != ''">
-                        <xsl:call-template name="coreLayerDescription">
-                            <xsl:with-param name="definition" select="$documentation"/>
-                            <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
-                        </xsl:call-template>
-                    </xsl:if>
-
-
-                    <xsl:call-template name="coreDefinedBy">
-                        <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
-                    </xsl:call-template>
-
-                    <xsl:for-each select="f:getElementTags(.)">
-                        <xsl:call-template name="coreLayerTags">
-                            <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
-                            <xsl:with-param name="tagName" select="./@name"/>
-                            <xsl:with-param name="tagValue" select="./@value"/>
-                        </xsl:call-template>
-                    </xsl:for-each>
-                </xsl:if>
             </xsl:if>
         </xsl:if>
     </xsl:template>

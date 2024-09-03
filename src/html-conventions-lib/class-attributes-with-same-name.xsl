@@ -30,7 +30,6 @@
 
         <xsl:for-each select="$distinctNames">
             <xsl:sort select="." lang="en"/>
-            <xsl:if test="$generateReusedConceptsConventionsReport or fn:substring-before(., ':') = $internalModelPrefixesList">
             <xsl:if test="fn:count(f:getClassAttributeByName(., $root)) > 1">
                 <xsl:variable name="attributeChecks" as="item()*">
                     <xsl:call-template name="checkMultiplicityOfAttributesWithSameName">
@@ -62,7 +61,7 @@
                     </xsl:choose>
                 </xsl:if>
             </xsl:if>
-            </xsl:if>
+            
         </xsl:for-each>
     </xsl:template>
 

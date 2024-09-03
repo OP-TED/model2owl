@@ -32,8 +32,6 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="dataTypeChecks" as="item()*">
-            <xsl:if
-                test="$generateReusedConceptsConventionsReport or fn:substring-before($dataTypeName, ':') = $internalModelPrefixesList">
                 <!--    Start of common checkers rules     -->
                 <xsl:call-template name="namingFormat">
                     <xsl:with-param name="element" select="."/>
@@ -110,7 +108,7 @@
                     <xsl:with-param name="dataTypeElement" select="."/>
                 </xsl:call-template>
                 <!--    End of specific checker rules-->
-            </xsl:if>
+            
         </xsl:variable>
         <xsl:if test="boolean($dataTypeChecks)">
             <xsl:choose>

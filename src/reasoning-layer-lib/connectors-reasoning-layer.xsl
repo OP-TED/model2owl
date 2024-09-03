@@ -25,15 +25,13 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
-        <!-- Variables for the prefixes in source and target -->
-        <xsl:variable name="sourcePrefix" select="fn:substring-before(./source/model/@name, ':')"/>
-        <xsl:variable name="targetPrefix" select="fn:substring-before(./target/model/@name, ':')"/>
+        <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
 
         <xsl:if
             test="
                 ./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
                 ($generateReusedConceptsOWLrestrictions or
-                ($sourcePrefix = $internalModelPrefixesList and $targetPrefix = $internalModelPrefixesList))">
+                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -48,14 +46,12 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
-        <!-- Variables for the prefixes in source and target -->
-        <xsl:variable name="sourcePrefix" select="fn:substring-before(./source/model/@name, ':')"/>
-        <xsl:variable name="targetPrefix" select="fn:substring-before(./target/model/@name, ':')"/>
+        <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
         <xsl:if
             test="
                 ./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
                 ($generateReusedConceptsOWLrestrictions or
-                ($sourcePrefix = $internalModelPrefixesList and $targetPrefix = $internalModelPrefixesList))">
+                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -67,7 +63,7 @@
             test="
                 ./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration' and
                 ($generateReusedConceptsOWLrestrictions or
-                ($sourcePrefix = $internalModelPrefixesList and $targetPrefix = $internalModelPrefixesList))">
+                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
             <xsl:call-template name="connectorDependencyRange">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -106,7 +102,7 @@
                     select="fn:substring-before(./target/model/@name, ':')"/>
                 <!-- Check if either the prefixes match the internal list or generateReusedConcepts is true -->
                 <xsl:if
-                    test="$generateReusedConceptsOWLrestrictions or ($sourcePrefix = $internalModelPrefixesList and $targetPrefix = $internalModelPrefixesList)">
+                    test="$generateReusedConceptsOWLrestrictions or $sourcePrefix = $internalModelPrefixesList">
                     <xsl:call-template name="disjointClasses">
                         <xsl:with-param name="generalisation" select="."/>
                     </xsl:call-template>
@@ -129,8 +125,10 @@
 
             <xsl:if
                 test="f:getConnectorByName(., $root)[1]/properties/@ea_type = ('Dependency', 'Association') and f:getConnectorByName(., $root)[1]/target/model/@type != 'Object'">
+                <xsl:variable name="connectorElement" select="f:getConnectorByName(., $root)"/>
+                <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector($connectorElement)"/>
                 <xsl:if
-                    test="$generateReusedConceptsOWLrestrictions or fn:substring-before(., ':') = $internalModelPrefixesList">
+                    test="$generateReusedConceptsOWLrestrictions or fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList">
                     <xsl:call-template name="connectorDomain">
                         <xsl:with-param name="connectorName" select="."/>
                         <xsl:with-param name="root" select="$root"/>
@@ -404,7 +402,7 @@
             <xsl:if
                 test="
                     $generateReusedConceptsOWLrestrictions or
-                    ($sourcePrefix = $internalModelPrefixesList and $targetPrefix = $internalModelPrefixesList)">
+                    $sourcePrefix = $internalModelPrefixesList">
 
                 <rdf:Description rdf:about="{$sourceClassURI}">
                     <owl:equivalentClass rdf:resource="{$targetClassURI}"/>
@@ -451,10 +449,12 @@
                 select="f:buildURIfromLexicalQName($sourceConnector/target/role/@name)"/>
             <xsl:variable name="sourceConnectorSourceRoleURI"
                 select="f:buildURIfromLexicalQName($sourceConnector/source/role/@name)"/>
+
+
             <xsl:if
                 test="
                     $generateReusedConceptsOWLrestrictions or
-                    ($sourceConnector/source/role/@name = $internalModelPrefixesList and $targetConnector/source/role/@name = $internalModelPrefixesList)">
+                    fn:substring-before($sourceConnector/source/model/@name, ':') = $internalModelPrefixesList">
                 <rdf:Description rdf:about="{$sourceConnectorSourceRoleURI}">
                     <owl:equivalentProperty rdf:resource="{$targetConnectorSourceRoleURI}"/>
                 </rdf:Description>
@@ -462,7 +462,7 @@
             <xsl:if
                 test="
                     $generateReusedConceptsOWLrestrictions or
-                    ($sourceConnector/target/role/@name = $internalModelPrefixesList and $targetConnector/target/role/@name = $internalModelPrefixesList)">
+                    fn:substring-before($targetConnector/source/model/@name, ':') = $internalModelPrefixesList">
                 <rdf:Description rdf:about="{$sourceConnectorTargetRoleURI}">
                     <owl:equivalentProperty rdf:resource="{$targetConnectorTargetRoleURI}"/>
                 </rdf:Description>
