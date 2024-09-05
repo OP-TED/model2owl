@@ -64,7 +64,7 @@
         <xd:desc/>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
-        <!--        Filter is applied in the propertyGeneralization function due complexity of the function-->
+        <!--        This reused concepts filter is applied in the propertyGeneralization function due complexity of the function-->
         <xsl:if
             test="
                 ./source/model/@type = 'ProxyConnector' and
@@ -86,16 +86,8 @@
                 test="
                     ./source/model/@type = 'Class' and
                     ./target/model/@type = 'Class'">
-                <!-- Extract prefixes for source and target -->
-                <xsl:variable name="sourcePrefix"
-                    select="fn:substring-before(./source/model/@name, ':')"/>
-                <xsl:variable name="targetPrefix"
-                    select="fn:substring-before(./target/model/@name, ':')"/>
-                <!-- Check if either the prefixes match the internal list or generateReusedConcepts is true -->
-                <xsl:if
-                    test="$generateReusedConceptsOWLcore or $sourcePrefix = $internalModelPrefixesList">
+<!--                    This reused concepts filter is applied in the template so that the subclasses are also filtered-->
                     <xsl:call-template name="classGeneralization"/>
-                </xsl:if>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
@@ -317,10 +309,12 @@
         <xsl:if test="f:getElementByIdRef(./source/@xmi:idref, root(.))">
 
             <xsl:for-each select="$subClasses">
+                <xsl:if test="$generateReusedConceptsOWLcore or fn:substring-before(./@name, ':') = $internalModelPrefixesList">
                 <xsl:variable name="subClassURI" select="f:buildURIFromElement(.)"/>
                 <owl:Class rdf:about="{$subClassURI}">
                     <rdfs:subClassOf rdf:resource="{$superClassURI}"/>
                 </owl:Class>
+                </xsl:if>
             </xsl:for-each>
 
         </xsl:if>
