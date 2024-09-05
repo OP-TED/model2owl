@@ -78,10 +78,10 @@
     <!--    Generate reused classes, attributes and connectors-->
     <xsl:variable name="internalModelPrefixesList" select="('epo', 'epo-not', 'epo-ord', 'epo-cat', 'epo-con', 'epo-ful')"/>
     <!-- This set of variables controls the generation of reused concepts within artifacts. -->
-    <xsl:variable name="generateReusedConceptsSHACL" select="fn:false()"/>
-    <xsl:variable name="generateReusedConceptsOWLcore" select="fn:false()"/>
-    <xsl:variable name="generateReusedConceptsOWLrestrictions" select="fn:false()"/>
-    <xsl:variable name="generateReusedConceptsGlossary" select="fn:false()"/>
+    <xsl:variable name="generateReusedConceptsSHACL" select="fn:true()"/>
+    <xsl:variable name="generateReusedConceptsOWLcore" select="fn:true()"/>
+    <xsl:variable name="generateReusedConceptsOWLrestrictions" select="fn:true()"/>
+    <xsl:variable name="generateReusedConceptsGlossary" select="fn:true()"/>
 
     <!-- This variable control if Object and Realisation are generated -->
     <xsl:variable name="generateObjectsAndRealisations" select="fn:false()"/>
