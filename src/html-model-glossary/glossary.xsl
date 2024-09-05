@@ -38,10 +38,10 @@
         <table class="display">
             <thead class="center aligned">
                 <tr>
-                          <th>Class name</th>
+                    <th>Class name</th>
                     <th>Attribute name</th>
                     <th>Definition</th>
-              
+
                     <th>Data type / cardinality</th>
                 </tr>
             </thead>
@@ -71,15 +71,19 @@
         <xsl:variable name="classNames" select="f:getDistinctClassNames($root)"/>
         <xsl:for-each select="$classNames">
             <xsl:sort select="." lang="en"/>
-            <tr>
-                <td>
-                    <xsl:value-of select="."/>
-                </td>
-                <td>
-                    <xsl:variable name="classElement" select="f:getElementByName(., $root)"/>
-                    <xsl:value-of select="f:formatDocString(fn:string-join($classElement/properties/@documentation))"/>
-                </td>
-            </tr>
+            <xsl:if test="$generateReusedConceptsGlossary or fn:substring-before(., ':') = $internalModelPrefixesList">
+                <tr>
+                    <td>
+                        <xsl:value-of select="."/>
+                    </td>
+                    <td>
+                        <xsl:variable name="classElement" select="f:getElementByName(., $root)"/>
+                        <xsl:value-of
+                            select="f:formatDocString(fn:string-join($classElement/properties/@documentation))"
+                        />
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:for-each>
     </xsl:template>
 
@@ -92,12 +96,14 @@
         <xsl:for-each select="$attributeNames">
             <xsl:sort select="." lang="en"/>
             <xsl:variable name="attributeName" select="."/>
+            <xsl:if test="$generateReusedConceptsGlossary or fn:substring-before($attributeName, ':') = $internalModelPrefixesList">
             <tr>
                 <xsl:call-template name="classAttributeUsage">
                     <xsl:with-param name="attributeName" select="$attributeName"/>
                     <xsl:with-param name="root" select="$root"/>
                 </xsl:call-template>
             </tr>
+            </xsl:if>
         </xsl:for-each>
     </xsl:template>
 
@@ -109,25 +115,25 @@
             select="f:getClassAttributeByName($attributeName, $root)"/>
         <xsl:choose>
             <xsl:when test="fn:count($attributesWithSameName) > 1">
-                
+
                 <td>
                     <xsl:for-each select="$attributesWithSameName">
                         <xsl:value-of select="./parent::attributes/parent::element/@name"/>
                         <br/>
                     </xsl:for-each>
                 </td>
-                
+
                 <td>
                     <xsl:value-of select="$attributeName"/>
                 </td>
-                
+
                 <td>
 
                     <xsl:value-of
                         select="
                             for $atribute in $attributesWithSameName
                             return
-                            f:formatDocString($atribute/documentation/@value)"
+                                f:formatDocString($atribute/documentation/@value)"
                     />
                 </td>
 
@@ -145,17 +151,18 @@
             <xsl:otherwise>
                 <xsl:variable name="className"
                     select="$attributesWithSameName/parent::attributes/parent::element/@name"/>
-                       <td>
+                <td>
                     <xsl:value-of select="$className"/>
                 </td>
                 <td>
-                    
+
                     <xsl:value-of select="$attributeName"/>
                 </td>
                 <td>
-                    <xsl:value-of select="f:formatDocString($attributesWithSameName/documentation/@value)"/>
+                    <xsl:value-of
+                        select="f:formatDocString($attributesWithSameName/documentation/@value)"/>
                 </td>
-        
+
                 <xsl:variable name="attributeType" select="$attributesWithSameName/properties/@type"/>
                 <xsl:variable name="attributeMultiplicityMin"
                     select="$attributesWithSameName/bounds/@lower"/>
@@ -169,25 +176,25 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
-  
+
+
     <xsl:template name="listOfConnectors">
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="connectorNames" select="f:getDistinctConnectorsNames($root)"/>
         <xsl:for-each select="$connectorNames">
             <xsl:sort select="." lang="en"/>
-            <xsl:if test="not(f:connector-to-or-from-external-resource(., $root)) or $reference-to-external-classes-in-glossary">
-            <xsl:variable name="connectorName" select="."/>
-            <tr>
-                <td>
-                    <xsl:value-of select="$connectorName"/>
-                </td>
+            <xsl:if test="$generateReusedConceptsGlossary or fn:substring-before(., ':') = $internalModelPrefixesList">
+                <xsl:variable name="connectorName" select="."/>
+                <tr>
+                    <td>
+                        <xsl:value-of select="$connectorName"/>
+                    </td>
 
-                <xsl:call-template name="connectorUsage">
-                    <xsl:with-param name="connectorName" select="$connectorName"/>
-                    <xsl:with-param name="root" select="$root"/>
-                </xsl:call-template>
-            </tr>
+                    <xsl:call-template name="connectorUsage">
+                        <xsl:with-param name="connectorName" select="$connectorName"/>
+                        <xsl:with-param name="root" select="$root"/>
+                    </xsl:call-template>
+                </tr>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
@@ -204,7 +211,7 @@
                         select="
                             for $connector in $connectorsWithSameName
                             return
-                            f:formatDocString(fn:concat($connector/documentation/@value, $connector/source/documentation/@value, $connector/target/documentation/@value))"
+                                f:formatDocString(fn:concat($connector/documentation/@value, $connector/source/documentation/@value, $connector/target/documentation/@value))"
                     />
                 </td>
                 <td>
@@ -214,7 +221,7 @@
                                 if (f:getElementByIdRef(./target/@xmi:idref, $root)/@name) then
                                     f:getElementByIdRef(./target/@xmi:idref, $root)/@name
                                 else
-                                    if ($reference-to-external-classes-in-glossary) then
+                                if ($generateReusedConceptsGlossary) then
                                         fn:concat(./target/model/@name, ' (external)')
                                     else
                                         ()"/>
@@ -223,7 +230,7 @@
                                 if (f:getElementByIdRef(./source/@xmi:idref, $root)/@name) then
                                     f:getElementByIdRef(./source/@xmi:idref, $root)/@name
                                 else
-                                    if ($reference-to-external-classes-in-glossary) then
+                                if ($generateReusedConceptsGlossary) then
                                         fn:concat(./source/model/@name, ' (external)')
                                     else
                                         ()"/>
@@ -236,8 +243,7 @@
                                     if ($sourceClass and $targetClass) then
                                         fn:concat($sourceClass, ' -&gt; ', $targetClass, ' [', $targetMultiplicity, ']')
                                     else
-                                        ()"
-                            />
+                                        ()"/>
                             <br/>
                         </xsl:if>
                         <xsl:if test="./source/role/@name = $connectorName">
@@ -247,8 +253,7 @@
                                     if ($sourceClass and $targetClass) then
                                         fn:concat($sourceClass, ' [,', $sourceMultiplicity, ']', ' &lt;- ', $targetClass)
                                     else
-                                        ()"
-                            />
+                                        ()"/>
                             <br/>
                         </xsl:if>
                     </xsl:for-each>
@@ -266,7 +271,7 @@
                         if (f:getElementByIdRef($connectorsWithSameName/target/@xmi:idref, $root)/@name) then
                             f:getElementByIdRef($connectorsWithSameName/target/@xmi:idref, $root)/@name
                         else
-                            if ($reference-to-external-classes-in-glossary) then
+                        if ($generateReusedConceptsGlossary) then
                                 fn:concat($connectorsWithSameName/target/model/@name, ' (external)')
                             else
                                 ()"/>
@@ -275,7 +280,7 @@
                         if (f:getElementByIdRef($connectorsWithSameName/source/@xmi:idref, $root)/@name) then
                             f:getElementByIdRef($connectorsWithSameName/source/@xmi:idref, $root)/@name
                         else
-                            if ($reference-to-external-classes-in-glossary) then
+                        if ($generateReusedConceptsGlossary) then
                                 fn:concat($connectorsWithSameName/source/model/@name, ' (external)')
                             else
                                 ()"/>

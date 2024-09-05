@@ -10,7 +10,7 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:skos="http://www.w3.org/2004/02/skos/core#"  xmlns:functx="http://www.functx.com" 
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:functx="http://www.functx.com"
     xmlns:f="http://https://github.com/costezki/model2owl#" version="3.0">
 
     <xsl:import href="../common/utils.xsl"/>
@@ -25,10 +25,13 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
+        <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
+
         <xsl:if
             test="
                 ./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
-                f:checkIfConnectorTargetAndSourceElementsExists(.)">
+                ($generateReusedConceptsOWLrestrictions or
+                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -43,10 +46,12 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
+        <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
         <xsl:if
             test="
                 ./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
-                f:checkIfConnectorTargetAndSourceElementsExists(.)">
+                ($generateReusedConceptsOWLrestrictions or
+                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -54,7 +59,11 @@
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
         </xsl:if>
-        <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration'">
+        <xsl:if
+            test="
+                ./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration' and
+                ($generateReusedConceptsOWLrestrictions or
+                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
             <xsl:call-template name="connectorDependencyRange">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -66,30 +75,43 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
-<!--        <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">-->
-            <xsl:call-template name="classEquivalence">
-                <xsl:with-param name="generalisation" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="propertiesEquivalence">
-                <xsl:with-param name="generalisation" select="."/>
-            </xsl:call-template>
+        <!--        Filtering for external/internal concepts are inside the functions below due complexity of the functions-->
+        <xsl:call-template name="classEquivalence">
+            <xsl:with-param name="generalisation" select="."/>
+        </xsl:call-template>
+        <xsl:call-template name="propertiesEquivalence">
+            <xsl:with-param name="generalisation" select="."/>
+        </xsl:call-template>
 
-        <!--</xsl:if>-->
+
     </xsl:template>
-    
+
     <xd:doc>
-        <xd:desc>Applying reasoning layer rules to generalisation connectors with distinct targets</xd:desc>
+        <xd:desc>Applying reasoning layer rules to generalisation connectors with distinct
+            targets</xd:desc>
     </xd:doc>
     <xsl:template name="generalisationsWithDistinctTargetsInReasoningLayer">
-        <xsl:variable name="generalisations" select="//connector[./properties/@ea_type = 'Generalization'][not(target/@xmi:idref = preceding::connector[./properties/@ea_type = 'Generalization']/target/@xmi:idref)]"/>
+        <xsl:variable name="generalisations"
+            select="//connector[./properties/@ea_type = 'Generalization'][not(target/@xmi:idref = preceding::connector[./properties/@ea_type = 'Generalization']/target/@xmi:idref)]"/>
         <xsl:for-each select="$generalisations">
-            <xsl:call-template name="disjointClasses">
-                <xsl:with-param name="generalisation" select="."/>
-            </xsl:call-template>
+            <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">
+                <!-- Extract prefixes for source and target -->
+                <xsl:variable name="sourcePrefix"
+                    select="fn:substring-before(./source/model/@name, ':')"/>
+                <xsl:variable name="targetPrefix"
+                    select="fn:substring-before(./target/model/@name, ':')"/>
+                <!-- Check if either the prefixes match the internal list or generateReusedConcepts is true -->
+                <xsl:if
+                    test="$generateReusedConceptsOWLrestrictions or $sourcePrefix = $internalModelPrefixesList">
+                    <xsl:call-template name="disjointClasses">
+                        <xsl:with-param name="generalisation" select="."/>
+                    </xsl:call-template>
+                </xsl:if>
+            </xsl:if>
         </xsl:for-each>
     </xsl:template>
-    
-    
+
+
 
     <xd:doc>
         <xd:desc>Applying reasoning layer rules to connectors with distinct names [Dependency and
@@ -100,20 +122,26 @@
         <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
         <!--        TODO Figure out dependencies to Objects -->
         <xsl:for-each select="$distinctNames">
+
             <xsl:if
                 test="f:getConnectorByName(., $root)[1]/properties/@ea_type = ('Dependency', 'Association') and f:getConnectorByName(., $root)[1]/target/model/@type != 'Object'">
-                <xsl:call-template name="connectorDomain">
-                    <xsl:with-param name="connectorName" select="."/>
-                    <xsl:with-param name="root" select="$root"/>
-                </xsl:call-template>
-                <xsl:call-template name="connectorRange">
-                    <xsl:with-param name="connectorName" select="."/>
-                    <xsl:with-param name="root" select="$root"/>
-                </xsl:call-template>
-                <xsl:call-template name="connectorInverse">
-                    <xsl:with-param name="connectorName" select="."/>
-                    <xsl:with-param name="root" select="$root"/>
-                </xsl:call-template>
+                <xsl:variable name="connectorElement" select="f:getConnectorByName(., $root)"/>
+                <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector($connectorElement)"/>
+                <xsl:if
+                    test="$generateReusedConceptsOWLrestrictions or fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList">
+                    <xsl:call-template name="connectorDomain">
+                        <xsl:with-param name="connectorName" select="."/>
+                        <xsl:with-param name="root" select="$root"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="connectorRange">
+                        <xsl:with-param name="connectorName" select="."/>
+                        <xsl:with-param name="root" select="$root"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="connectorInverse">
+                        <xsl:with-param name="connectorName" select="."/>
+                        <xsl:with-param name="root" select="$root"/>
+                    </xsl:call-template>
+                </xsl:if>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
@@ -366,9 +394,20 @@
                 select="f:buildURIfromLexicalQName($generalisation/source/model/@name)"/>
             <xsl:variable name="targetClassURI"
                 select="f:buildURIfromLexicalQName($generalisation/target/model/@name)"/>
-            <rdf:Description rdf:about="{$sourceClassURI}">
-                <owl:equivalentClass rdf:resource="{$targetClassURI}"/>
-            </rdf:Description>
+            <!-- Variables for the prefixes in source and target -->
+            <xsl:variable name="sourcePrefix"
+                select="fn:substring-before($generalisation/source/model/@name, ':')"/>
+            <xsl:variable name="targetPrefix"
+                select="fn:substring-before($generalisation/target/model/@name, ':')"/>
+            <xsl:if
+                test="
+                    $generateReusedConceptsOWLrestrictions or
+                    $sourcePrefix = $internalModelPrefixesList">
+
+                <rdf:Description rdf:about="{$sourceClassURI}">
+                    <owl:equivalentClass rdf:resource="{$targetClassURI}"/>
+                </rdf:Description>
+            </xsl:if>
         </xsl:if>
     </xsl:template>
 
@@ -401,6 +440,7 @@
                 select="f:getConnectorByIdRef($targetConnectorIdref, root($generalisation))"/>
             <xsl:variable name="sourceConnector"
                 select="f:getConnectorByIdRef($sourceConnectorIdref, root($generalisation))"/>
+
             <xsl:variable name="targetConnectorTargetRoleURI"
                 select="f:buildURIfromLexicalQName($targetConnector/target/role/@name)"/>
             <xsl:variable name="targetConnectorSourceRoleURI"
@@ -409,12 +449,24 @@
                 select="f:buildURIfromLexicalQName($sourceConnector/target/role/@name)"/>
             <xsl:variable name="sourceConnectorSourceRoleURI"
                 select="f:buildURIfromLexicalQName($sourceConnector/source/role/@name)"/>
-            <rdf:Description rdf:about="{$sourceConnectorSourceRoleURI}">
-                <owl:equivalentProperty rdf:resource="{$targetConnectorSourceRoleURI}"/>
-            </rdf:Description>
-            <rdf:Description rdf:about="{$sourceConnectorTargetRoleURI}">
-                <owl:equivalentProperty rdf:resource="{$targetConnectorTargetRoleURI}"/>
-            </rdf:Description>
+
+
+            <xsl:if
+                test="
+                    $generateReusedConceptsOWLrestrictions or
+                    fn:substring-before($sourceConnector/source/model/@name, ':') = $internalModelPrefixesList">
+                <rdf:Description rdf:about="{$sourceConnectorSourceRoleURI}">
+                    <owl:equivalentProperty rdf:resource="{$targetConnectorSourceRoleURI}"/>
+                </rdf:Description>
+            </xsl:if>
+            <xsl:if
+                test="
+                    $generateReusedConceptsOWLrestrictions or
+                    fn:substring-before($targetConnector/source/model/@name, ':') = $internalModelPrefixesList">
+                <rdf:Description rdf:about="{$sourceConnectorTargetRoleURI}">
+                    <owl:equivalentProperty rdf:resource="{$targetConnectorTargetRoleURI}"/>
+                </rdf:Description>
+            </xsl:if>
         </xsl:if>
     </xsl:template>
 
@@ -615,30 +667,27 @@
 
     <xsl:template name="disjointClasses">
         <xsl:param name="generalisation"/>
+
+        <xsl:variable name="superClass" select="f:getSuperClassFromGeneralization($generalisation)"/>
+        <xsl:variable name="superClassURI" select="f:buildURIfromLexicalQName($superClass)"/>
+        <xsl:variable name="subClasses" select="f:getSubClassesFromGeneralization($generalisation)"/>
         <xsl:if
-            test="$generalisation/source/model/@type = 'Class' and $generalisation/target/model/@type = 'Class'">
-            <xsl:variable name="superClass"
-                select="f:getSuperClassFromGeneralization($generalisation)"/>
-            <xsl:variable name="superClassURI" select="f:buildURIfromLexicalQName($superClass)"/>
-            <xsl:variable name="subClasses"
-                select="f:getSubClassesFromGeneralization($generalisation)"/>
-            <xsl:if
-                test="f:getElementByIdRef($generalisation/source/@xmi:idref, root($generalisation)) and count($subClasses) > 1">
+            test="f:getElementByIdRef($generalisation/source/@xmi:idref, root($generalisation)) and count($subClasses) > 1">
 
-                <rdf:Description>
-                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-                    <owl:members rdf:parseType="Collection">
-                        <xsl:for-each select="$subClasses">
-                            <xsl:variable name="subClassURI" select="f:buildURIFromElement(.)"/>
-                            <rdf:Description rdf:about="{$subClassURI}"/>
-                        </xsl:for-each>
-                    </owl:members>
-                </rdf:Description>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+                <owl:members rdf:parseType="Collection">
+                    <xsl:for-each select="$subClasses">
+                        <xsl:variable name="subClassURI" select="f:buildURIFromElement(.)"/>
+                        <rdf:Description rdf:about="{$subClassURI}"/>
+                    </xsl:for-each>
+                </owl:members>
+            </rdf:Description>
 
-            </xsl:if>
         </xsl:if>
+
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>This will override the common selector when applying templates</xd:desc>
     </xd:doc>

@@ -33,84 +33,85 @@
 
         <xsl:variable name="classAttributeChecks" as="item()*">
 
-            <!--    Start of common checkers rules     -->
-            <xsl:call-template name="namingFormat">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="missingName">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="missingNamePrefix">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="missingLocalSegmentName">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="invalidNamePrefix">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="undefinedPrefix">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="invalidNameLocalSegment">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="invalidFirstCharacterInLocalSegment">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="delimitersInTheLocalSegment">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="missingDescription">
-                <xsl:with-param name="element" select="."/>
-                <xsl:with-param name="elementType" select="'classAttribute'"/>
-            </xsl:call-template>
-            <xsl:call-template name="stereotypeProvided">
-                <xsl:with-param name="elementType" select="'classAttribute'"/>
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="unknownStereotypeProvided">
-                <xsl:with-param name="element" select="."/>
-                <xsl:with-param name="elementType" select="'classAttribute'"/>
-            </xsl:call-template>
-            <xsl:call-template name="invalidTagName">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="missingTagValue">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="missingTagName">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="missingPrefixTagName">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="namePlural">
-                <xsl:with-param name="element" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="elementUniqueName">
-                <xsl:with-param name="element" select="."/>
-                <xsl:with-param name="isAttribute" select="fn:true()"/>
-            </xsl:call-template>
-            <!--    End of common checkers rules     -->
-            <!--    Start of specific checker rules-->
+                <!--    Start of common checkers rules     -->
+                <xsl:call-template name="namingFormat">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="missingName">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="missingNamePrefix">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="missingLocalSegmentName">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="invalidNamePrefix">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="undefinedPrefix">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="invalidNameLocalSegment">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="invalidFirstCharacterInLocalSegment">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="delimitersInTheLocalSegment">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="missingDescription">
+                    <xsl:with-param name="element" select="."/>
+                    <xsl:with-param name="elementType" select="'classAttribute'"/>
+                </xsl:call-template>
+                <xsl:call-template name="stereotypeProvided">
+                    <xsl:with-param name="elementType" select="'classAttribute'"/>
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="unknownStereotypeProvided">
+                    <xsl:with-param name="element" select="."/>
+                    <xsl:with-param name="elementType" select="'classAttribute'"/>
+                </xsl:call-template>
+                <xsl:call-template name="invalidTagName">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="missingTagValue">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="missingTagName">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="missingPrefixTagName">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="namePlural">
+                    <xsl:with-param name="element" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="elementUniqueName">
+                    <xsl:with-param name="element" select="."/>
+                    <xsl:with-param name="isAttribute" select="fn:true()"/>
+                </xsl:call-template>
+                <!--    End of common checkers rules     -->
+                <!--    Start of specific checker rules-->
 
-            <xsl:call-template name="classAttributeNameStartsWithLowerCase">
-                <xsl:with-param name="classAttribute" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="classAttributeMultiplicityIncorrectFormat">
-                <xsl:with-param name="classAttribute" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="classAttributeIncorrectDatatype">
-                <xsl:with-param name="classAttribute" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="classAttributeMissingMultiplicity">
-                <xsl:with-param name="classAttribute" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="classAttributeNonPublic">
-                <xsl:with-param name="classAttribute" select="."/>
-            </xsl:call-template>
-            <!--    End of specific checker rules-->
+                <xsl:call-template name="classAttributeNameStartsWithLowerCase">
+                    <xsl:with-param name="classAttribute" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="classAttributeMultiplicityIncorrectFormat">
+                    <xsl:with-param name="classAttribute" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="classAttributeIncorrectDatatype">
+                    <xsl:with-param name="classAttribute" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="classAttributeMissingMultiplicity">
+                    <xsl:with-param name="classAttribute" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="classAttributeNonPublic">
+                    <xsl:with-param name="classAttribute" select="."/>
+                </xsl:call-template>
+                <!--    End of specific checker rules-->
+            
         </xsl:variable>
         <xsl:if test="boolean($classAttributeChecks)">
             <xsl:choose>
@@ -126,9 +127,9 @@
                     <xsl:copy-of select="$classAttributeChecks"/>
                 </xsl:otherwise>
             </xsl:choose>
-            
-            
-            
+
+
+
 
         </xsl:if>
     </xsl:template>

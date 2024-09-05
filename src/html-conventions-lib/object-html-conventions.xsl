@@ -25,7 +25,7 @@
     
     
     <xsl:template match="element[@xmi:type = 'uml:Object']">
-        <xsl:variable name="object">
+        <xsl:variable name="objectName">
             <xsl:call-template name="getObjectName">
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
@@ -108,13 +108,14 @@
                 <xsl:with-param name="object" select="."/>
             </xsl:call-template>
             <!--    End of specific checker rules-->
+            
         </xsl:variable>
 
         <xsl:if test="boolean($objectConventions)">
             <xsl:choose>
                 <xsl:when test="$reportType = 'HTML'">
                     <h2>
-                        <xsl:value-of select="$object"/>
+                        <xsl:value-of select="$objectName"/>
                     </h2>
                     <section>
                         <xsl:if test="boolean($objectConventions)">

@@ -28,6 +28,7 @@ The following capabilities are addressed:
 * UML -> OWL 2 (lightweight ontology suitable as a Core Vocabulary)
 * UML -> OWL 2 (heavyweight ontology with additional axioms suitable for reasoning purposes)
 * UML -> SHACL (data shapes suitable for validation)
+* UML -> SVRL (Compliance report in SVRL format)
 
 This work is developed in the context of [eProcurement ontology project](https://github.com/eprocurementontology/eprocurementontology) financed by the Digital Europe Programme and led by the [Publications Office of the European Union](https://op.europa.eu/en/).
 
@@ -38,11 +39,12 @@ This work is developed in the context of [eProcurement ontology project](https:/
 * The **transformation rules** from UML into OWL and SHACL are provided in the [UML2OWL transformation rules](https://meaningfy-ws.github.io/model2owl-docs/public-review/transformation/uml2owl-transformation.html).
 
 ### Scripts
-* [html-conventions-report.xsl](src/html-conventions-report.xsl) is the script checking the conformance to the technical conventions of the conceptual model.
+* [html-conventions-report.xsl](src/html-conventions-report.xsl) is the script checking the conformance to the technical conventions of the conceptual model. (HTML)
 * [html-model-glossary.xsl](src/html-model-glossary.xsl) is the script for creating a glossary of the conceptual model.
 * [owl-core.xsl](src/owl-core.xsl) is the transformation script for the core OWL ontology.
 * [shacl-shapes.xsl](src/shacl-shapes.xsl) is the transformation script for the SHACL data shape constraints.
 * [owl-restrictions.xsl](src/owl-restrictions.xsl) is the transformation script for the restrictions of OWL ontology (on classes and properties).
+* [svrl-conventions-report.xsl](src/svrl-conventions-report.xsl) is the script checking the conformance to the technical conventions of the conceptual model. (SVRL)
 
 ### Script unit tests
 
@@ -83,7 +85,11 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
   * parameters:
     * XMI_INPUT_FILE_PATH - path to the xmi file
     * OUTPUT_GLOSSARY_PATH - path to the folder that stores the output
-* **generate-convention-report** - this generates the compliance report from the UML export (xml/xmi)
+* **generate-convention-report** - this generates the compliance report from the UML export (xml/xmi) in HTML format
+  * parameters:
+    * XMI_INPUT_FILE_PATH - path to the xmi file
+    * OUTPUT_CONVENTION_REPORT_PATH - path to the folder that stores the output
+* **generate-convention-SVRL-report** - this generates the compliance report from the UML export (xml/xmi) in SVRL format
   * parameters:
     * XMI_INPUT_FILE_PATH - path to the xmi file
     * OUTPUT_CONVENTION_REPORT_PATH - path to the folder that stores the output
@@ -214,7 +220,7 @@ Example
 make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOLDER_PATH=./my-folder
 ```
 ## Online
-To use model2owl in an automatic way, we have created a github repository [model2owl-boilerplate](https://github.com/meaningfy-ws/model2owl-boilerplate) that will no longer require for you to install or to execute anything.
+To use model2owl in an automatic way, we have created a github repository [model2owl-boilerplate](https://github.com/OP-TED/model2owl-boilerplate) that will no longer require for you to install or to execute anything.
 Follow the instructions found there for using this model2owl automation.
 
 # Contributing

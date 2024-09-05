@@ -26,9 +26,16 @@
         <xd:desc>Applying reasoning layer rule to all attributes</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
-        <xsl:call-template name="attributeMultiplicity">
-            <xsl:with-param name="attribute" select="."/>
-        </xsl:call-template>
+        <!-- Extract the prefix from the attribute name -->
+        <xsl:variable name="attributePrefix" select="fn:substring-before(./@name, ':')"/>
+
+        <!-- Check if the attribute should be processed -->
+        <xsl:if
+            test="$generateReusedConceptsOWLrestrictions or $attributePrefix = $internalModelPrefixesList">
+            <xsl:call-template name="attributeMultiplicity">
+                <xsl:with-param name="attribute" select="."/>
+            </xsl:call-template>
+        </xsl:if>
     </xsl:template>
 
     <xd:doc>
@@ -38,19 +45,25 @@
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctClassAttributeNames($root)"/>
         <xsl:for-each select="$distinctNames">
-            <xsl:call-template name="attributeDomain">
-                <xsl:with-param name="attributeName" select="."/>
-                <xsl:with-param name="root" select="$root"/>
-            </xsl:call-template>
-            <xsl:call-template name="attributeRange">
-                <xsl:with-param name="attributeName" select="."/>
-                <xsl:with-param name="root" select="$root"/>
-            </xsl:call-template>
-            <xsl:call-template name="attributeMultiplicityOne">
-                <xsl:with-param name="attributeName" select="."/>
-                <xsl:with-param name="root" select="$root"/>
-            </xsl:call-template>
+            <!-- Extract the prefix from the attribute name -->
+            <xsl:variable name="attributePrefix" select="fn:substring-before(., ':')"/>
 
+            <!-- Check if the attribute should be processed -->
+            <xsl:if
+                test="$generateReusedConceptsOWLrestrictions or $attributePrefix = $internalModelPrefixesList">
+                <xsl:call-template name="attributeDomain">
+                    <xsl:with-param name="attributeName" select="."/>
+                    <xsl:with-param name="root" select="$root"/>
+                </xsl:call-template>
+                <xsl:call-template name="attributeRange">
+                    <xsl:with-param name="attributeName" select="."/>
+                    <xsl:with-param name="root" select="$root"/>
+                </xsl:call-template>
+                <xsl:call-template name="attributeMultiplicityOne">
+                    <xsl:with-param name="attributeName" select="."/>
+                    <xsl:with-param name="root" select="$root"/>
+                </xsl:call-template>
+            </xsl:if>
         </xsl:for-each>
     </xsl:template>
 
@@ -302,16 +315,22 @@
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
         <xsl:if test="$enableGenerationOfConceptSchemes">
-            <xsl:variable name="enumerationURI" select="f:buildURIFromElement(.)"/>
-            <owl:Class rdf:about="{$enumerationURI}">
-                <owl:equivalentClass>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
-                        <owl:hasValue rdf:resource="{$enumerationURI}"/>
-                    </owl:Restriction>
-                </owl:equivalentClass>
-                <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-            </owl:Class>
+            <xsl:variable name="enumerationPrefix" select="fn:substring-before(./@name, ':')"/>
+            <!-- Check if the Enumeration should be processed -->
+            <xsl:if
+                test="$generateReusedConceptsOWLrestrictions or $enumerationPrefix = $internalModelPrefixesList">
+                <xsl:variable name="enumerationURI" select="f:buildURIFromElement(.)"/>
+                <owl:Class rdf:about="{$enumerationURI}">
+                    <owl:equivalentClass>
+                        <owl:Restriction>
+                            <owl:onProperty
+                                rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
+                            <owl:hasValue rdf:resource="{$enumerationURI}"/>
+                        </owl:Restriction>
+                    </owl:equivalentClass>
+                    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+                </owl:Class>
+            </xsl:if>
         </xsl:if>
     </xsl:template>
 

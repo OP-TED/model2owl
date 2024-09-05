@@ -32,8 +32,14 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
+        <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
+        
         <xsl:if
-            test="not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector') and f:checkIfConnectorTargetAndSourceElementsExists(.)">
+            test="
+                not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector') and (
+                $generateReusedConceptsSHACL = fn:true()
+                or
+                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
             <xsl:call-template name="connectorRange">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -54,9 +60,13 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
-        <!--        <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">-->
+        <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
         <xsl:if
-            test="not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = ('ProxyConnector', 'Object')) and f:checkIfConnectorTargetAndSourceElementsExists(.)">
+            test="
+                not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = ('ProxyConnector', 'Object')) and (
+                $generateReusedConceptsSHACL = fn:true()
+                or
+                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
             <xsl:choose>
                 <xsl:when
                     test="not(./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')">
@@ -76,7 +86,7 @@
             <xsl:call-template name="connectorDeclaration">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
-<!--            <xsl:call-template name="connectorAsymmetry">
+            <!--            <xsl:call-template name="connectorAsymmetry">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>-->
         </xsl:if>

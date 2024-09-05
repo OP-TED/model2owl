@@ -71,19 +71,21 @@
     
     <!--    This variable controls whether the enumerations are transformed into skos schemes or ignored-->
     <xsl:variable name="enableGenerationOfConceptSchemes" select="fn:false()"/>
-    
-    
+
 
     <!--Allowed characters for a normalized string-->
     <xsl:variable name="allowedStrings" select="'^[\w\d-_:]+$'"/>
     <!--    Generate reused classes, attributes and connectors-->
-    <xsl:variable name="generateReusedConcepts" select="fn:true()"/>
+    <xsl:variable name="internalModelPrefixesList" select="('epo', 'epo-not', 'epo-ord', 'epo-cat', 'epo-con', 'epo-ful')"/>
+    <!-- This set of variables controls the generation of reused concepts within artifacts. -->
+    <xsl:variable name="generateReusedConceptsSHACL" select="fn:true()"/>
+    <xsl:variable name="generateReusedConceptsOWLcore" select="fn:true()"/>
+    <xsl:variable name="generateReusedConceptsOWLrestrictions" select="fn:true()"/>
+    <xsl:variable name="generateReusedConceptsGlossary" select="fn:true()"/>
 
-
-
-    <xsl:variable name="reference-to-external-classes-in-glossary" select="fn:false()"/>
+    <!-- This variable control if Object and Realisation are generated -->
     <xsl:variable name="generateObjectsAndRealisations" select="fn:false()"/>
-    
+<!--    Set of variables for convention report-->
     <xsl:variable name="conventionReportCopyrightText" select="'Publications Office of the European Union, 2023'"/>
     <xsl:variable name="conventionReportAuthor" select="'Publications Office of the European Union'"/>
     <xsl:variable name="conventionReportAuthorLocation" select="'Luxembourg'"/>
