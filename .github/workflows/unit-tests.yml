@@ -20,7 +20,7 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Build and Run Tests
-        run: mvn install
+        run: mvn clean install -X
       - name: current dir
         run: pwd
       - name: current dir
