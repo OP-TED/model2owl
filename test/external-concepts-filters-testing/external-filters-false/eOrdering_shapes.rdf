@@ -1,0 +1,1712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns="http://data.europa.eu/a4g/ontology#"
+         xmlns:adms="http://www.w3.org/ns/adms#"
+         xmlns:at-voc="http://publications.europa.eu/resource/authority/"
+         xmlns:at-voc-new="http://publications.europa.eu/resource/authority/new/"
+         xmlns:cccev="http://data.europa.eu/m8g/"
+         xmlns:core="http://data.europa.eu/m8g/"
+         xmlns:core-res="http://data.europa.eu/a4g/ontology#"
+         xmlns:core-shape="http://data.europa.eu/a4g/data-shape#"
+         xmlns:cpov="http://data.europa.eu/m8g/"
+         xmlns:cpsv="http://data.europa.eu/m8g/"
+         xmlns:cpv="http://data.europa.eu/m8g/"
+         xmlns:cv="http://data.europa.eu/m8g/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dct="http://purl.org/dc/terms/"
+         xmlns:dul="http://www.loa-cnr.it/ontologies/DUL.owl#"
+         xmlns:epo="http://data.europa.eu/a4g/ontology#"
+         xmlns:epo-cat="http://data.europa.eu/a4g/ontology#"
+         xmlns:epo-con="http://data.europa.eu/a4g/ontology#"
+         xmlns:epo-ful="http://data.europa.eu/a4g/ontology#"
+         xmlns:epo-not="http://data.europa.eu/a4g/ontology#"
+         xmlns:epo-ord="http://data.europa.eu/a4g/ontology#"
+         xmlns:espd="https://github.com/ESPD/ESPD-EDM/"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:geosparql="http://www.opengis.net/ont/geosparql#"
+         xmlns:legal="http://www.w3.org/ns/legal-entity#"
+         xmlns:locn="http://www.w3.org/ns/locn#"
+         xmlns:nuts="http://data.europa.eu/nuts/"
+         xmlns:org="http://www.w3.org/ns/org#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:person="http://www.w3.org/ns/person#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:reg2015="http://data.europa.eu/a4g/extension/ontology#"
+         xmlns:sh="http://www.w3.org/ns/shacl#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:time="http://www.w3.org/2006/time#"
+         xmlns:vann="http://purl.org/vocab/vann/"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+   <owl:Ontology rdf:about="http://data.europa.eu/a4g/data-shape#core-shape">
+      <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+      <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core#"/>
+      <owl:imports rdf:resource="https://data.europa.eu/m8g"/>
+      <owl:imports rdf:resource="https://data.europa.eu/m8g"/>
+      <owl:imports rdf:resource="http://www.w3.org/ns/adms"/>
+      <owl:imports rdf:resource="http://data.europa.eu/a4g/ontology#core"/>
+      <owl:imports rdf:resource="http://data.europa.eu/a4g/ontology#core-restriction"/>
+      <dct:title xml:lang="en">ePO Core shapes</dct:title>
+      <rdfs:label xml:lang="en">This artefact provides the generic datashape specifications for the eProcurement Ontology Core.         The eProcurement Ontology describes objects and concepts, with definitions, attributes and relationships which are present within the European public procurement domain.         The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.</rdfs:label>
+      <dct:publisher>http://publications.europa.eu/resource/authority/corporate-body/PUBL</dct:publisher>
+      <dct:description xml:lang="en">This artefact provides the generic datashape specifications for the eProcurement Ontology Core.         The eProcurement Ontology describes objects and concepts, with definitions, attributes and relationships which are present within the European public procurement domain.         The provision of these concepts provides the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency.</dct:description>
+      <rdfs:comment>This version is automatically generated from eOrdering.xml on 2024-09-04</rdfs:comment>
+      <rdfs:seeAlso rdf:resource="https://github.com/eprocurementontology/eprocurementontology"/>
+      <rdfs:seeAlso rdf:resource="https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about"/>
+      <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
+      <rdfs:seeAlso rdf:resource="https://docs.ted.europa.eu/EPO/latest/index.html"/>
+      <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-04</dct:issued>
+      <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-04</dct:created>
+      <owl:versionInfo>3.1.0</owl:versionInfo>
+      <owl:incompatibleWith>2.1.0</owl:incompatibleWith>
+      <owl:versionIRI rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape-3.1.0"/>
+      <owl:priorVersion>http://data.europa.eu/a4g/data-shape#core-shape-3.0.1</owl:priorVersion>
+      <vann:preferredNamespaceUri>http://data.europa.eu/a4g/ontology#</vann:preferredNamespaceUri>
+      <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
+      <dct:license>The Commission’s reuse policy is implemented by Commission Decision2011/833/EU of 12 December 2011 on the reuse of Commission documents          (OJ L 330,14.12.2011, p. 39 – https://eur-lex.europa.eu/eli/dec/2011/833/oj). Unlessotherwise noted, the reuse of this document is authorised under the          CreativeCommons Attribution 4.0 International (CC BY 4.0) licence (https://creativecommons.org/licenses/by/4.0/).This means that reuse is allowed, provided          that appropriate credit is given and any changes are indicated.</dct:license>
+   </owl:Ontology>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#AllowanceChargeInformation"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation">
+      <rdfs:label>Allowance charge information</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation">
+      <rdfs:comment>Information about discounts, taxes, duties and fees imposed. WG approval 16/05/2023</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceInformation">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#AllowanceInformation"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceInformation">
+      <rdfs:label>Allowance information</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceInformation">
+      <rdfs:comment>Information about the discounts imposed. WG approval 16/05/2023</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceInformation">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Consignee">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#Consignee"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Consignee">
+      <rdfs:label>Consignee</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Consignee">
+      <rdfs:comment>A Role of an Agent that receives the Shipment of the Procurement (service, goods or works) and who is taking possession. Additional information: The Role is carried out by the Customer or on behalf of the Customer. The possession of the goods does not necessary imply ownership. The Consignee may be the end-user or the beneficiary. (Consignee) Definition from PEPPOL Despatch: The Consignee is the person or Organisation to which the products will be shipped and who is taking possession. The Role is carried out by the Customer or on behalf of the Customer. WG approval: 21/02/2023</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Consignee">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ContractInformation"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation">
+      <rdfs:label>Contract information</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation">
+      <rdfs:comment>Information about the Contract. WG approval 20/04/2023</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryAgreement">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#DeliveryAgreement"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryAgreement">
+      <rdfs:label>Delivery agreement</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryAgreement">
+      <rdfs:comment>Term applying to the delivery of goods, services and works. Additional Information: Delivery terms identifier can normally be Incoterms accompanied by the description of specific conditions related to the delivery. WG approval 16/05/2023</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryAgreement">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#DeliveryInformation"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
+      <rdfs:label>Delivery information</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
+      <rdfs:comment>Information about the timing, the delivery destination, the delivery agreement and the involved parties. WG approval 16/05/2023</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#Order"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <rdfs:label>Order</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <rdfs:comment>A formal request of the Buyer to the Seller specifying the goods, services or works to be delivered. Additional Information: A Buyer submits an Order for delivery of goods, services or works to a Seller. WG approval 23/04/2023</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#OrderLine"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine">
+      <rdfs:label>Order line</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine">
+      <rdfs:comment>Details concerning a given unit of goods, services or works requested in the Order. Additional information: In general, an Order Line contains the Quantity and Price of the goods, services and goods requested in the Order. However, in certain cases, the Price may not be known, as the Price may fluctuate from one day to the other. WG approval 20/04/2023</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Originator">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#Originator"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Originator">
+      <rdfs:label>Originator</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Originator">
+      <rdfs:comment>A Role of an Agent that expresses the needs to trigger the Procurement. Additional Information: The Originator is often the end-user or the Beneficiary. WG approval: 20/10/2022</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Originator">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#OriginatorInformation"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation">
+      <rdfs:label>Originator information</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation">
+      <rdfs:comment>Information about the Originator of the Order. WG approval 20/03/2023</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Seller">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#Seller"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Seller">
+      <rdfs:label>Seller</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Seller">
+      <rdfs:comment>A Role of an Agent who transfers the ownership of the Procurement results (goods, services or works) to the Buyer. Additional information: A Role of an Agent that sells a Procurement Result (goods, services or work) to a Buyer. The Seller is bound by a Contract i.e. it has legal responsibility. The Seller may or may not be the same as the Supplier. The Seller may or may not issue the Invoice. The Seller may or may not be the owner of the credit owed by the Buyer. WG acceptance 08/09/2022</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Seller">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#TaxInformation"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation">
+      <rdfs:label>Tax information</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation">
+      <rdfs:comment>Information about the imposition of mandatory levies required by law. WG approval 25/04/2023</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#OrderResponse"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse">
+      <rdfs:label>Order response</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse">
+      <rdfs:comment>A formal reply from the Seller to the Buyer stating the Seller's ability to fulfil the order. Additional Information: The Order Response is used to inform on the acceptance or rejection of an Order or to make a counter-offer. WG approval 20/04/2023</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#OrderResponseInformation"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation">
+      <rdfs:label>Order response information</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <sh:NodeShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseLine">
+      <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#OrderResponseLine"/>
+   </sh:NodeShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseLine">
+      <rdfs:label>Order response line</rdfs:label>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseLine">
+      <rdfs:comment>Details concerning the Seller's ability to fulfil a given Order Line. Additional Information: The Order Response Line is used to inform on the acceptance or rejection of an Order Line or to make a counter-offer. WG approval 20/04/2023</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseLine">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-cat-hasPercentage"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-cat-hasPercentage">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPercentage"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-cat-hasPercentage">
+      <sh:name>Has percentage</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-cat-hasPercentage">
+      <sh:description>The factor relative to the price charged in addition. WG approval 26/07/2022</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-cat-hasPercentage">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-cat-hasPercentage">
+      <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-cat-hasPercentage">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ful-hasAllowanceChargeReasonDescription"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ful-hasAllowanceChargeReasonDescription">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAllowanceChargeReasonDescription"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ful-hasAllowanceChargeReasonDescription">
+      <sh:name>Has allowance charge reason description</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ful-hasAllowanceChargeReasonDescription">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ful-hasAllowanceChargeReasonDescription">
+      <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasShippingMark"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasShippingMark">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasShippingMark"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasShippingMark">
+      <sh:name>Has shipping mark</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasShippingMark">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasShippingMark">
+      <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasDeliveryDeadline"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasDeliveryDeadline">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDeliveryDeadline"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasDeliveryDeadline">
+      <sh:name>Has delivery deadline</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasDeliveryDeadline">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasDeliveryDeadline">
+      <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasDeliveryDeadline">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasCustomerReference"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasCustomerReference">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCustomerReference"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasCustomerReference">
+      <sh:name>Has customer reference</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasCustomerReference">
+      <sh:description>A supplementary reference for the order. Additional information: This information can be used for the buyer's internal processes. This reference can also be used in the invoice. WG approval 2023-01-26</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasCustomerReference">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasCustomerReference">
+      <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasCustomerReference">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasAccountingCost"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasAccountingCost">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAccountingCost"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasAccountingCost">
+      <sh:name>Has accounting cost</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasAccountingCost">
+      <sh:description>The accounting reference used by the Buyer to specify the account to which the order and the corresponding invoice are booked. WG approval 2023-01-26</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasAccountingCost">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasAccountingCost">
+      <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasAccountingCost">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasPaymentTerm"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasPaymentTerm">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPaymentTerm"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasPaymentTerm">
+      <sh:name>Has payment term</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasPaymentTerm">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasPaymentTerm">
+      <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasPaymentTerm">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasPercentage"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasPercentage">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPercentage"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasPercentage">
+      <sh:name>Has percentage</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasPercentage">
+      <sh:description>The factor relative to the price charged in addition. WG approval 26/07/2022</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasPercentage">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasPercentage">
+      <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasPercentage">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-hasResponseDescription"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-hasResponseDescription">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasResponseDescription"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-hasResponseDescription">
+      <sh:name>Has response description</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-hasResponseDescription">
+      <sh:description>Response clarification of the Supplier decision.</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-hasResponseDescription">
+      <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#core-shape"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-hasResponseDescription">
+      <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-hasResponseDescription">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-isCalculatedOn">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-isCalculatedOn">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-isCalculatedOn">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isCalculatedOn&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isCalculatedOn&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-isCalculatedOn"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-isCalculatedOn">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isCalculatedOn"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-isCalculatedOn">
+      <sh:name>Is calculated on</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-isCalculatedOn">
+      <sh:description>The monetary amount to which the multiplier factor is applied in calculating the amount of this allowance or charge.</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ord-hasTaxInformation">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#TaxInformation"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ord-hasTaxInformation">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ord-hasTaxInformation">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTaxInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTaxInformation&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ord-hasTaxInformation"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ord-hasTaxInformation">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTaxInformation"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ord-hasTaxInformation">
+      <sh:name>Has tax information</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-cat-hasAmount">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-cat-hasAmount">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-cat-hasAmount">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasAmount&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-cat-hasAmount"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-cat-hasAmount">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAmount"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-cat-hasAmount">
+      <sh:name>Has amount</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-cat-hasAmount">
+      <sh:description>The predetermined monetary value charged in addition to the price. WG approval 26/07/2022</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceInformation-epo-ord-isSpecificToOrderLine">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OrderLine"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceInformation-epo-ord-isSpecificToOrderLine">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSpecificToOrderLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSpecificToOrderLine&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceInformation-epo-ord-isSpecificToOrderLine"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceInformation-epo-ord-isSpecificToOrderLine">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSpecificToOrderLine"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceInformation-epo-ord-isSpecificToOrderLine">
+      <sh:name>Is specific to order line</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceInformation-epo-ord-isSpecificToOrderLine">
+      <sh:description>Information that is particular to one or multiple Order Lines.</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-ord-hasPriceDiscountInformation">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#AllowanceInformation"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-ord-hasPriceDiscountInformation">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-ord-hasPriceDiscountInformation">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasPriceDiscountInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasPriceDiscountInformation&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-ord-hasPriceDiscountInformation"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-ord-hasPriceDiscountInformation">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPriceDiscountInformation"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-ord-hasPriceDiscountInformation">
+      <sh:name>Has price discount information</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesAllowanceInformation">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#AllowanceInformation"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesAllowanceInformation">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesAllowanceInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesAllowanceInformation&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesAllowanceInformation"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesAllowanceInformation">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesAllowanceInformation"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesAllowanceInformation">
+      <sh:name>Specifies allowance information</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-specifiesConsignee">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Consignee"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-specifiesConsignee">
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-specifiesConsignee">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesConsignee&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesConsignee&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-specifiesConsignee"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-specifiesConsignee">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesConsignee"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-specifiesConsignee">
+      <sh:name>Specifies consignee</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-concernsConsignee">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Consignee"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-concernsConsignee">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-concernsConsignee">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsConsignee&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsConsignee&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-concernsConsignee"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-concernsConsignee">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsConsignee"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-concernsConsignee">
+      <sh:name>Concerns consignee</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation-epo-ord-isSpecificToOrderLine">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OrderLine"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation-epo-ord-isSpecificToOrderLine">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSpecificToOrderLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSpecificToOrderLine&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation-epo-ord-isSpecificToOrderLine"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation-epo-ord-isSpecificToOrderLine">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSpecificToOrderLine"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation-epo-ord-isSpecificToOrderLine">
+      <sh:name>Is specific to order line</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation-epo-ord-isSpecificToOrderLine">
+      <sh:description>Information that is particular to one or multiple Order Lines.</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation-epo-ord-concernsContract">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Contract"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation-epo-ord-concernsContract">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation-epo-ord-concernsContract">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsContract&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsContract&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation-epo-ord-concernsContract"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation-epo-ord-concernsContract">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsContract"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-ContractInformation-epo-ord-concernsContract">
+      <sh:name>Concerns contract</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesContractInformation">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ContractInformation"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesContractInformation">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesContractInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesContractInformation&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesContractInformation"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesContractInformation">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesContractInformation"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesContractInformation">
+      <sh:name>Specifies contract information</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesContractInformation">
+      <sh:description/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryAgreement-epo-ord-specifiesDeliveryAgreementLocation">
+      <sh:class rdf:resource="http://purl.org/dc/terms/Location"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryAgreement-epo-ord-specifiesDeliveryAgreementLocation">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryAgreement-epo-ord-specifiesDeliveryAgreementLocation">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesDeliveryAgreementLocation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesDeliveryAgreementLocation&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryAgreement">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryAgreement-epo-ord-specifiesDeliveryAgreementLocation"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryAgreement-epo-ord-specifiesDeliveryAgreementLocation">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesDeliveryAgreementLocation"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryAgreement-epo-ord-specifiesDeliveryAgreementLocation">
+      <sh:name>Specifies delivery agreement location</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesGeneralDeliveryAgreement">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#DeliveryAgreement"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesGeneralDeliveryAgreement">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesGeneralDeliveryAgreement">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesGeneralDeliveryAgreement&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesGeneralDeliveryAgreement&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesGeneralDeliveryAgreement"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesGeneralDeliveryAgreement">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesGeneralDeliveryAgreement"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesGeneralDeliveryAgreement">
+      <sh:name>Specifies general delivery agreement</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesSpecificDeliveryAgreement">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#DeliveryAgreement"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesSpecificDeliveryAgreement">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesSpecificDeliveryAgreement">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesSpecificDeliveryAgreement&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesSpecificDeliveryAgreement&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesSpecificDeliveryAgreement"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesSpecificDeliveryAgreement">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesSpecificDeliveryAgreement"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesSpecificDeliveryAgreement">
+      <sh:name>Specifies specific delivery agreement</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-isSpecificToOrderLine">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OrderLine"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-isSpecificToOrderLine">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSpecificToOrderLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSpecificToOrderLine&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-isSpecificToOrderLine"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-isSpecificToOrderLine">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSpecificToOrderLine"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-isSpecificToOrderLine">
+      <sh:name>Is specific to order line</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-isSpecificToOrderLine">
+      <sh:description>Information that is particular to one or multiple Order Lines.</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesPlaceOfDelivery">
+      <sh:class rdf:resource="http://purl.org/dc/terms/Location"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesPlaceOfDelivery">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesPlaceOfDelivery">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesPlaceOfDelivery&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesPlaceOfDelivery&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesPlaceOfDelivery"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesPlaceOfDelivery">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesPlaceOfDelivery"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-specifiesPlaceOfDelivery">
+      <sh:name>Specifies place of delivery</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasDeliveryPeriod">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Period"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasDeliveryPeriod">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasDeliveryPeriod">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasDeliveryPeriod&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasDeliveryPeriod&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasDeliveryPeriod"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasDeliveryPeriod">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDeliveryPeriod"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-hasDeliveryPeriod">
+      <sh:name>Has delivery period</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ful-hasTrackingID">
+      <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ful-hasTrackingID">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ful-hasTrackingID">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTrackingID&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTrackingID&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ful-hasTrackingID"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ful-hasTrackingID">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTrackingID"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ful-hasTrackingID">
+      <sh:name>Has tracking i d</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-ShipmentInformation-epo-ful-refersToDeliveryInformation">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#DeliveryInformation"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-ShipmentInformation-epo-ful-refersToDeliveryInformation">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-ShipmentInformation-epo-ful-refersToDeliveryInformation">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToDeliveryInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToDeliveryInformation&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-ShipmentInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ful-ShipmentInformation-epo-ful-refersToDeliveryInformation"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-ShipmentInformation-epo-ful-refersToDeliveryInformation">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToDeliveryInformation"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-ShipmentInformation-epo-ful-refersToDeliveryInformation">
+      <sh:name>Refers to delivery information</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesDeliveryInformation">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#DeliveryInformation"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesDeliveryInformation">
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesDeliveryInformation">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesDeliveryInformation"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesDeliveryInformation">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesDeliveryInformation">
+      <sh:name>Specifies delivery information</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalTaxInclusiveAmount">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalTaxInclusiveAmount">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalTaxInclusiveAmount">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTotalTaxInclusiveAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTotalTaxInclusiveAmount&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalTaxInclusiveAmount"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalTaxInclusiveAmount">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTotalTaxInclusiveAmount"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalTaxInclusiveAmount">
+      <sh:name>Has total tax inclusive amount</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalTaxExclusiveAmount">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalTaxExclusiveAmount">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalTaxExclusiveAmount">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTotalTaxExclusiveAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTotalTaxExclusiveAmount&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalTaxExclusiveAmount"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalTaxExclusiveAmount">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTotalTaxExclusiveAmount"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalTaxExclusiveAmount">
+      <sh:name>Has total tax exclusive amount</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-comprisesOrderLine">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OrderLine"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-comprisesOrderLine">
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-comprisesOrderLine">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#comprisesOrderLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#comprisesOrderLine&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-comprisesOrderLine"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-comprisesOrderLine">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#comprisesOrderLine"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-comprisesOrderLine">
+      <sh:name>Comprises order line</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesDespatcher">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Despatcher"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesDespatcher">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesDespatcher">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesDespatcher&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesDespatcher&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesDespatcher"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesDespatcher">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesDespatcher"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesDespatcher">
+      <sh:name>Specifies despatcher</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-cat-specifiesChargeInformation">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ChargeInformation"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-cat-specifiesChargeInformation">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesChargeInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesChargeInformation&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-cat-specifiesChargeInformation"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-cat-specifiesChargeInformation">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesChargeInformation"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-cat-specifiesChargeInformation">
+      <sh:name>Specifies charge information</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-refersToCatalogue">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Catalogue"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-refersToCatalogue">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToCatalogue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToCatalogue&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-refersToCatalogue"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-refersToCatalogue">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToCatalogue"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-refersToCatalogue">
+      <sh:name>Refers to catalogue</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-refersToCatalogue">
+      <sh:description>Additional information: If an order refers to multiple catalogues then all these catalogues ideally are subordinated to the same contract. Some countries however may allow multiple contracts per order (i.e Italy).</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalLineAmount">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalLineAmount">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalLineAmount">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTotalLineAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTotalLineAmount&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalLineAmount"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalLineAmount">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTotalLineAmount"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalLineAmount">
+      <sh:name>Has total line amount</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-refersToProject">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Project"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-refersToProject">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-refersToProject">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToProject&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToProject&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-refersToProject"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-refersToProject">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToProject"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-refersToProject">
+      <sh:name>Refers to project</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalAllowanceAmount">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalAllowanceAmount">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalAllowanceAmount">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTotalAllowanceAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTotalAllowanceAmount&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalAllowanceAmount"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalAllowanceAmount">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTotalAllowanceAmount"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalAllowanceAmount">
+      <sh:name>Has total allowance amount</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesSeller">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Seller"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesSeller">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesSeller">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesSeller&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesSeller&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesSeller"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesSeller">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesSeller"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesSeller">
+      <sh:name>Specifies seller</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasRoundingAmount">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasRoundingAmount">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasRoundingAmount">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasRoundingAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasRoundingAmount&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasRoundingAmount"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasRoundingAmount">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasRoundingAmount"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasRoundingAmount">
+      <sh:name>Has rounding amount</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasPrepaidAmount">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasPrepaidAmount">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasPrepaidAmount">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasPrepaidAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasPrepaidAmount&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasPrepaidAmount"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasPrepaidAmount">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPrepaidAmount"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasPrepaidAmount">
+      <sh:name>Has prepaid amount</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasAmountDueForPayment">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasAmountDueForPayment">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasAmountDueForPayment">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasAmountDueForPayment&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasAmountDueForPayment&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasAmountDueForPayment"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasAmountDueForPayment">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAmountDueForPayment"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasAmountDueForPayment">
+      <sh:name>Has amount due for payment</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesBuyer">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Buyer"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesBuyer">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesBuyer">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesBuyer&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesBuyer&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesBuyer"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesBuyer">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesBuyer"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-specifiesBuyer">
+      <sh:name>Specifies buyer</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesOriginatorInformation">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OriginatorInformation"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesOriginatorInformation">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesOriginatorInformation">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesOriginatorInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesOriginatorInformation&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesOriginatorInformation"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesOriginatorInformation">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesOriginatorInformation"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-specifiesOriginatorInformation">
+      <sh:name>Specifies originator information</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalChargeAmount">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalChargeAmount">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalChargeAmount">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTotalChargeAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTotalChargeAmount&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalChargeAmount"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalChargeAmount">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTotalChargeAmount"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-ord-hasTotalChargeAmount">
+      <sh:name>Has total charge amount</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-refersToOrder">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Order"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-refersToOrder">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-refersToOrder">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToOrder&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToOrder&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-refersToOrder"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-refersToOrder">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToOrder"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-refersToOrder">
+      <sh:name>Refers to order</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-isSubmittedForOrder">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Order"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-isSubmittedForOrder">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-isSubmittedForOrder">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSubmittedForOrder&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSubmittedForOrder&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-isSubmittedForOrder"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-isSubmittedForOrder">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSubmittedForOrder"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-isSubmittedForOrder">
+      <sh:name>Is submitted for order</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-ord-refersToCatalogueLine">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueLine"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-ord-refersToCatalogueLine">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-ord-refersToCatalogueLine">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToCatalogueLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToCatalogueLine&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-ord-refersToCatalogueLine"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-ord-refersToCatalogueLine">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToCatalogueLine"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-ord-refersToCatalogueLine">
+      <sh:name>Refers to catalogue line</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-ord-refersToCatalogueLine">
+      <sh:description>Additional Information: The reference to the catalogue line is for information only, to trace the source of the information provided in the order line.</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-cat-hasQuantity">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-cat-hasQuantity">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-cat-hasQuantity">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasQuantity&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasQuantity&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-cat-hasQuantity"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-cat-hasQuantity">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasQuantity"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-cat-hasQuantity">
+      <sh:name>Has quantity</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-cat-hasPrice">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Price"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-cat-hasPrice">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-cat-hasPrice">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasPrice&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasPrice&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-cat-hasPrice"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-cat-hasPrice">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPrice"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-cat-hasPrice">
+      <sh:name>Has price</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ChargeInformation-epo-ord-isSpecificToOrderLine">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OrderLine"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ChargeInformation-epo-ord-isSpecificToOrderLine">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSpecificToOrderLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSpecificToOrderLine&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ChargeInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-ChargeInformation-epo-ord-isSpecificToOrderLine"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ChargeInformation-epo-ord-isSpecificToOrderLine">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSpecificToOrderLine"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ChargeInformation-epo-ord-isSpecificToOrderLine">
+      <sh:name>Is specific to order line</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ChargeInformation-epo-ord-isSpecificToOrderLine">
+      <sh:description>Information that is particular to one or multiple Order Lines.</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchLine-epo-ful-refersToOrderLine">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OrderLine"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchLine-epo-ful-refersToOrderLine">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchLine-epo-ful-refersToOrderLine">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToOrderLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToOrderLine&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchLine">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchLine-epo-ful-refersToOrderLine"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchLine-epo-ful-refersToOrderLine">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToOrderLine"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchLine-epo-ful-refersToOrderLine">
+      <sh:name>Refers to order line</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseLine-epo-ord-isSubmittedForOrderLine">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OrderLine"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseLine-epo-ord-isSubmittedForOrderLine">
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseLine-epo-ord-isSubmittedForOrderLine">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSubmittedForOrderLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSubmittedForOrderLine&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseLine">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseLine-epo-ord-isSubmittedForOrderLine"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseLine-epo-ord-isSubmittedForOrderLine">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSubmittedForOrderLine"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseLine-epo-ord-isSubmittedForOrderLine">
+      <sh:name>Is submitted for order line</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-isSpecificToOrderLine">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OrderLine"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-isSpecificToOrderLine">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSpecificToOrderLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSpecificToOrderLine&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-isSpecificToOrderLine"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-isSpecificToOrderLine">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSpecificToOrderLine"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-isSpecificToOrderLine">
+      <sh:name>Is specific to order line</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-isSpecificToOrderLine">
+      <sh:description>Information that is particular to one or multiple Order Lines.</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-concernsOriginator">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Originator"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-concernsOriginator">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-concernsOriginator">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsOriginator&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsOriginator&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-concernsOriginator"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-concernsOriginator">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsOriginator"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-concernsOriginator">
+      <sh:name>Concerns originator</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-specifiesOriginator">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Originator"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-specifiesOriginator">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesOriginator&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesOriginator&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-specifiesOriginator"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-specifiesOriginator">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesOriginator"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-DespatchAdvice-epo-ful-specifiesOriginator">
+      <sh:name>Specifies originator</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-concernsOriginatorRequest">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OriginatorRequest"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-concernsOriginatorRequest">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-concernsOriginatorRequest">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsOriginatorRequest&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsOriginatorRequest&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-concernsOriginatorRequest"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-concernsOriginatorRequest">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsOriginatorRequest"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OriginatorInformation-epo-ord-concernsOriginatorRequest">
+      <sh:name>Concerns originator request</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-ShipmentAgreement-epo-ful-agreedBySeller">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Seller"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-ShipmentAgreement-epo-ful-agreedBySeller">
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-ShipmentAgreement-epo-ful-agreedBySeller">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#agreedBySeller&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#agreedBySeller&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-ShipmentAgreement">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ful-ShipmentAgreement-epo-ful-agreedBySeller"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-ShipmentAgreement-epo-ful-agreedBySeller">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#agreedBySeller"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-ShipmentAgreement-epo-ful-agreedBySeller">
+      <sh:name>Agreed by seller</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-specifiesSeller">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Seller"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-specifiesSeller">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesSeller&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesSeller&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-specifiesSeller"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-specifiesSeller">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesSeller"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-specifiesSeller">
+      <sh:name>Specifies seller</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesSeller">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Seller"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesSeller">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesSeller">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesSeller&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesSeller&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesSeller"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesSeller">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesSeller"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesSeller">
+      <sh:name>Specifies seller</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-isCalculatedOn">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-isCalculatedOn">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-isCalculatedOn">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isCalculatedOn&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isCalculatedOn&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-isCalculatedOn"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-isCalculatedOn">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isCalculatedOn"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-isCalculatedOn">
+      <sh:name>Is calculated on</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-isCalculatedOn">
+      <sh:description>The monetary amount to which the multiplier factor is applied in calculating the amount of this allowance or charge.</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasAmount">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasAmount">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasAmount">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasAmount&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasAmount"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasAmount">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAmount"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasAmount">
+      <sh:name>Has amount</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasAmount">
+      <sh:description>The predetermined monetary value charged in addition to the price. WG approval 26/07/2022</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Item-epo-ord-hasTaxInformation">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#TaxInformation"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Item-epo-ord-hasTaxInformation">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTaxInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTaxInformation&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Item">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Item-epo-ord-hasTaxInformation"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Item-epo-ord-hasTaxInformation">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTaxInformation"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Item-epo-ord-hasTaxInformation">
+      <sh:name>Has tax information</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-Contract-epo-ord-hasTaxInformation">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#TaxInformation"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-Contract-epo-ord-hasTaxInformation">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-Contract-epo-ord-hasTaxInformation">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTaxInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTaxInformation&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-Contract">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-Contract-epo-ord-hasTaxInformation"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-Contract-epo-ord-hasTaxInformation">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTaxInformation"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-Contract-epo-ord-hasTaxInformation">
+      <sh:name>Has tax information</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-comprisesOrderResponseLine">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OrderResponseLine"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-comprisesOrderResponseLine">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#comprisesOrderResponseLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#comprisesOrderResponseLine&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-comprisesOrderResponseLine"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-comprisesOrderResponseLine">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#comprisesOrderResponseLine"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-comprisesOrderResponseLine">
+      <sh:name>Comprises order response line</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesOrderResponseInformation">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OrderResponseInformation"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesOrderResponseInformation">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesOrderResponseInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesOrderResponseInformation&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesOrderResponseInformation"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesOrderResponseInformation">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesOrderResponseInformation"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesOrderResponseInformation">
+      <sh:name>Specifies order response information</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesBuyer">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Buyer"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesBuyer">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesBuyer">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesBuyer&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesBuyer&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesBuyer"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesBuyer">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesBuyer"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-specifiesBuyer">
+      <sh:name>Specifies buyer</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-implementsContract">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Contract"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-implementsContract">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-implementsContract">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#implementsContract&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#implementsContract&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-implementsContract"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-implementsContract">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#implementsContract"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse-epo-ord-implementsContract">
+      <sh:name>Implements contract</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-isSpecificToOrderResponseLine">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OrderResponseLine"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-isSpecificToOrderResponseLine">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSpecificToOrderResponseLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSpecificToOrderResponseLine&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-isSpecificToOrderResponseLine"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-isSpecificToOrderResponseLine">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSpecificToOrderResponseLine"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-isSpecificToOrderResponseLine">
+      <sh:name>Is specific to order response line</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-hasDeliveryPeriod">
+      <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Period"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-hasDeliveryPeriod">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-hasDeliveryPeriod">
+      <sh:sparql rdf:parseType="Resource">
+         <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasDeliveryPeriod&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasDeliveryPeriod&gt; ?this .}</sh:select>
+      </sh:sparql>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-hasDeliveryPeriod"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-hasDeliveryPeriod">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDeliveryPeriod"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-hasDeliveryPeriod">
+      <sh:name>Has delivery period</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ful-hasAllowanceChargeReason">
+      <sh:class rdf:resource="http://publications.europa.eu/resource/authority/new/allowance-charge-reason"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ful-hasAllowanceChargeReason">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ful-hasAllowanceChargeReason"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ful-hasAllowanceChargeReason">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAllowanceChargeReason"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ful-hasAllowanceChargeReason">
+      <sh:name>Has allowance charge reason</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-AllowanceChargeInformation-epo-ful-hasAllowanceChargeReason">
+      <sh:description>https://docs.peppol.eu/poacc/billing/3.0/codelist/UNCL5189/ https://docs.peppol.eu/poacc/billing/3.0/codelist/UNCL7161/</sh:description>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasTaxCategory">
+      <sh:class rdf:resource="http://publications.europa.eu/resource/authority/new/tax-category"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasTaxCategory">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasTaxCategory"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasTaxCategory">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTaxCategory"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasTaxCategory">
+      <sh:name>Has tax category</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasTaxScheme">
+      <sh:class rdf:resource="http://publications.europa.eu/resource/authority/new/tax-scheme"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasTaxScheme">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasTaxScheme"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasTaxScheme">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTaxScheme"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasTaxScheme">
+      <sh:name>Has tax scheme</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-hasAcceptanceStatus">
+      <sh:class rdf:resource="http://publications.europa.eu/resource/authority/new/ResponseStatus"/>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-hasAcceptanceStatus">
+      <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+      <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation">
+      <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-hasAcceptanceStatus"/>
+   </rdf:Description>
+   <sh:PropertyShape rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-hasAcceptanceStatus">
+      <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAcceptanceStatus"/>
+   </sh:PropertyShape>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponseInformation-epo-ord-hasAcceptanceStatus">
+      <sh:name>Has acceptance status</sh:name>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Seller">
+      <rdfs:comment>Note: Supplier is out of discussion. It is a third party. We do not care who provides these service or products we care with whom business is done. PEPPOL - Invoice: The supplier is the legal person or organization who provides a product and/or service. PEPPOL - Order: The supplier is the legal person or organisation who provides a product or service. Examples of supplier roles: seller, despatch party, creditor, economic operator.</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Originator">
+      <rdfs:comment>Context: Expressing Needs</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Consignee">
+      <rdfs:comment>Context: Ordering, Despatch</rdfs:comment>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderResponse">
+      <rdfs:comment>If contractually agreed, the Seller also may respond to the order, changing details that are acceptable by the Buyer. -- If an order is accepted with change, the buyer and seller need to have an agreement between them regarding the processing of the changed order, i.e. when is a contract concluded and when can the items be shipped. Proposal: If the order response is "Change" then the Buyer will create (instantiate) a new order implementing the changes and superseding the previously sent order.</rdfs:comment>
+   </rdf:Description>
+</rdf:RDF>
