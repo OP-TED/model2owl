@@ -221,17 +221,24 @@
                                 if (f:getElementByIdRef(./target/@xmi:idref, $root)/@name) then
                                     f:getElementByIdRef(./target/@xmi:idref, $root)/@name
                                 else
-                                if ($generateReusedConceptsGlossary) then
-                                        fn:concat(./target/model/@name, ' (external)')
+                                if (fn:substring-before(./target/model/@name, ':') = $internalModelPrefixesList) then
+                                        ./target/model/@name
                                     else
-                                        ()"/>
+                                    if ($generateReusedConceptsGlossary) then
+                                    fn:concat(./target/model/@name, ' (external)') 
+                                    else
+                                        ()"
+                        />
                         <xsl:variable name="sourceClass"
                             select="
                                 if (f:getElementByIdRef(./source/@xmi:idref, $root)/@name) then
                                     f:getElementByIdRef(./source/@xmi:idref, $root)/@name
                                 else
-                                if ($generateReusedConceptsGlossary) then
-                                        fn:concat(./source/model/@name, ' (external)')
+                                if (fn:substring-before(./source/model/@name, ':') = $internalModelPrefixesList) then
+                                        ./source/model/@name
+                                    else
+                                    if ($generateReusedConceptsGlossary) then
+                                    fn:concat(./source/model/@name, ' (external)') 
                                     else
                                         ()"/>
                         <xsl:variable name="targetMultiplicity" select="./target/type/@multiplicity"/>
@@ -271,19 +278,27 @@
                         if (f:getElementByIdRef($connectorsWithSameName/target/@xmi:idref, $root)/@name) then
                             f:getElementByIdRef($connectorsWithSameName/target/@xmi:idref, $root)/@name
                         else
-                        if ($generateReusedConceptsGlossary) then
-                                fn:concat($connectorsWithSameName/target/model/@name, ' (external)')
+                        if (fn:substring-before($connectorsWithSameName/target/model/@name, ':') = $internalModelPrefixesList) then
+                        $connectorsWithSameName/target/model/@name
                             else
-                                ()"/>
+                                if ($generateReusedConceptsGlossary) then
+                                    fn:concat($connectorsWithSameName/target/model/@name, ' (external)')
+                                else
+                                    ()"
+                />
                 <xsl:variable name="sourceClass"
                     select="
                         if (f:getElementByIdRef($connectorsWithSameName/source/@xmi:idref, $root)/@name) then
                             f:getElementByIdRef($connectorsWithSameName/source/@xmi:idref, $root)/@name
                         else
-                        if ($generateReusedConceptsGlossary) then
-                                fn:concat($connectorsWithSameName/source/model/@name, ' (external)')
+                        if (fn:substring-before($connectorsWithSameName/source/model/@name, ':') = $internalModelPrefixesList) then
+                        $connectorsWithSameName/source/model/@name
                             else
-                                ()"/>
+                                if ($generateReusedConceptsGlossary) then
+                                    fn:concat($connectorsWithSameName/source/model/@name, ' (external)')
+                                else
+                                    ()"
+                />
                 <xsl:variable name="targetMultiplicity"
                     select="$connectorsWithSameName/target/type/@multiplicity"/>
                 <xsl:variable name="sourceMultiplicity"
@@ -291,7 +306,11 @@
                 <xsl:if test="$connectorsWithSameName/target/role/@name = $connectorName">
                     <td>
                         <xsl:value-of
-                            select="fn:concat($sourceClass, ' -&gt; ', $targetClass, ' [', $targetMultiplicity, ']')"
+                            select="
+                                if ($sourceClass and $targetClass) then
+                                    fn:concat($sourceClass, ' -&gt; ', $targetClass, ' [', $targetMultiplicity, ']')
+                                else
+                                    ()"
                         />
                     </td>
                 </xsl:if>
