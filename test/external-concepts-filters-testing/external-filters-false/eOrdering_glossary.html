@@ -278,27 +278,27 @@
                         
                          The monetary amount to which the multiplier factor is applied in calculating the amount
                         of this allowance or charge.</td>
-                     <td><br><br></td>
+                     <td>epo-ord:AllowanceChargeInformation -&gt; epo:MonetaryValue [0..1]<br>epo-ord:TaxInformation -&gt; epo:MonetaryValue [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>epo:refersToProject</td>
                      <td></td>
-                     <td>epo-ord:Order -&gt;  [0..1]</td>
+                     <td>epo-ord:Order -&gt; epo:Project [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo:specifiesBuyer</td>
                      <td></td>
-                     <td>epo-ord:Order -&gt;  [1]</td>
+                     <td>epo-ord:Order -&gt; epo:Buyer [1]</td>
                   </tr>
                   <tr>
                      <td>epo:specifiesDespatcher</td>
                      <td></td>
-                     <td>epo-ord:Order -&gt;  [0..1]</td>
+                     <td>epo-ord:Order -&gt; epo-ful:Despatcher [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo:specifiesSeller</td>
                      <td> </td>
-                     <td>epo-ord:Order -&gt; epo-ord:Seller [1]<br><br></td>
+                     <td>epo-ord:Order -&gt; epo-ord:Seller [1]<br>epo-cat:Catalogue -&gt; epo-ord:Seller [0..*]<br></td>
                   </tr>
                   <tr>
                      <td>epo-cat:hasAmount</td>
@@ -309,74 +309,74 @@
                         WG approval 26/07/2022
                         
                         </td>
-                     <td><br><br></td>
+                     <td>epo-ord:AllowanceChargeInformation -&gt; epo:MonetaryValue [1]<br>epo-ord:TaxInformation -&gt; epo:MonetaryValue [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>epo-cat:hasPrice</td>
                      <td></td>
-                     <td>epo-ord:OrderLine -&gt;  [0..1]</td>
+                     <td>epo-ord:OrderLine -&gt; epo-cat:Price [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-cat:hasQuantity</td>
                      <td></td>
-                     <td>epo-ord:OrderLine -&gt;  [1]</td>
+                     <td>epo-ord:OrderLine -&gt; epo:Quantity [1]</td>
                   </tr>
                   <tr>
                      <td>epo-cat:hasTaxCategory</td>
                      <td></td>
-                     <td>epo-ord:TaxInformation -&gt;  [0..1]</td>
+                     <td></td>
                   </tr>
                   <tr>
                      <td>epo-cat:hasTaxScheme</td>
                      <td></td>
-                     <td>epo-ord:TaxInformation -&gt;  [0..1]</td>
+                     <td></td>
                   </tr>
                   <tr>
                      <td>epo-cat:specifiesChargeInformation</td>
                      <td></td>
-                     <td>epo-ord:Order -&gt;  [0..*]</td>
+                     <td>epo-ord:Order -&gt; epo-cat:ChargeInformation [0..*]</td>
                   </tr>
                   <tr>
                      <td>epo-ful:agreedBySeller</td>
                      <td></td>
-                     <td> -&gt; epo-ord:Seller [1..*]</td>
+                     <td>epo-ful:ShipmentAgreement -&gt; epo-ord:Seller [1..*]</td>
                   </tr>
                   <tr>
                      <td>epo-ful:hasAllowanceChargeReason</td>
                      <td>https://docs.peppol.eu/poacc/billing/3.0/codelist/UNCL5189/
                         
                         https://docs.peppol.eu/poacc/billing/3.0/codelist/UNCL7161/</td>
-                     <td>epo-ord:AllowanceChargeInformation -&gt;  [0..1]</td>
+                     <td></td>
                   </tr>
                   <tr>
                      <td>epo-ful:hasTrackingID</td>
                      <td></td>
-                     <td>epo-ord:DeliveryInformation -&gt;  [0..1]</td>
+                     <td></td>
                   </tr>
                   <tr>
                      <td>epo-ful:refersToDeliveryInformation</td>
                      <td></td>
-                     <td> -&gt; epo-ord:DeliveryInformation [1]</td>
+                     <td>epo-ful:ShipmentInformation -&gt; epo-ord:DeliveryInformation [1]</td>
                   </tr>
                   <tr>
                      <td>epo-ful:refersToOrder</td>
                      <td></td>
-                     <td> -&gt; epo-ord:Order [0..1]</td>
+                     <td>epo-ful:DespatchAdvice -&gt; epo-ord:Order [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-ful:refersToOrderLine</td>
                      <td></td>
-                     <td> -&gt; epo-ord:OrderLine [0..1]</td>
+                     <td>epo-ful:DespatchLine -&gt; epo-ord:OrderLine [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-ful:specifiesConsignee</td>
                      <td></td>
-                     <td> -&gt; epo-ord:Consignee [1..*]</td>
+                     <td>epo-ful:DespatchAdvice -&gt; epo-ord:Consignee [1..*]</td>
                   </tr>
                   <tr>
                      <td>epo-ful:specifiesOriginator</td>
                      <td></td>
-                     <td> -&gt; epo-ord:Originator [0..*]</td>
+                     <td>epo-ful:DespatchAdvice -&gt; epo-ord:Originator [0..*]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:comprisesOrderLine</td>
@@ -396,7 +396,7 @@
                   <tr>
                      <td>epo-ord:concernsContract</td>
                      <td></td>
-                     <td>epo-ord:ContractInformation -&gt;  [1]</td>
+                     <td>epo-ord:ContractInformation -&gt; epo:Contract [1]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:concernsOriginator</td>
@@ -406,7 +406,7 @@
                   <tr>
                      <td>epo-ord:concernsOriginatorRequest</td>
                      <td></td>
-                     <td>epo-ord:OriginatorInformation -&gt;  [0..1]</td>
+                     <td>epo-ord:OriginatorInformation -&gt; epo:OriginatorRequest [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:hasAcceptanceStatus</td>
@@ -416,62 +416,62 @@
                   <tr>
                      <td>epo-ord:hasAmountDueForPayment</td>
                      <td></td>
-                     <td>epo-ord:Order -&gt;  [1]</td>
+                     <td>epo-ord:Order -&gt; epo:MonetaryValue [1]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:hasDeliveryPeriod</td>
                      <td> </td>
-                     <td><br><br></td>
+                     <td>epo-ord:DeliveryInformation -&gt; epo:Period [0..1]<br>epo-ord:OrderResponseInformation -&gt; epo:Period [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>epo-ord:hasPrepaidAmount</td>
                      <td></td>
-                     <td>epo-ord:Order -&gt;  [0..1]</td>
+                     <td>epo-ord:Order -&gt; epo:MonetaryValue [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:hasPriceDiscountInformation</td>
                      <td></td>
-                     <td> -&gt; epo-ord:AllowanceInformation [0..1]</td>
+                     <td>epo-cat:Price -&gt; epo-ord:AllowanceInformation [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:hasRoundingAmount</td>
                      <td></td>
-                     <td>epo-ord:Order -&gt;  [0..1]</td>
+                     <td>epo-ord:Order -&gt; epo:MonetaryValue [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:hasTaxInformation</td>
                      <td>  </td>
-                     <td>epo-ord:AllowanceChargeInformation -&gt; epo-ord:TaxInformation [0..1]<br><br><br></td>
+                     <td>epo-ord:AllowanceChargeInformation -&gt; epo-ord:TaxInformation [0..1]<br>epo-cat:Item -&gt; epo-ord:TaxInformation [0..*]<br>epo:Contract -&gt; epo-ord:TaxInformation [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>epo-ord:hasTotalAllowanceAmount</td>
                      <td></td>
-                     <td>epo-ord:Order -&gt;  [0..1]</td>
+                     <td>epo-ord:Order -&gt; epo:MonetaryValue [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:hasTotalChargeAmount</td>
                      <td></td>
-                     <td>epo-ord:Order -&gt;  [0..1]</td>
+                     <td>epo-ord:Order -&gt; epo:MonetaryValue [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:hasTotalLineAmount</td>
                      <td></td>
-                     <td>epo-ord:Order -&gt;  [1]</td>
+                     <td>epo-ord:Order -&gt; epo:MonetaryValue [1]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:hasTotalTaxExclusiveAmount</td>
                      <td></td>
-                     <td>epo-ord:Order -&gt;  [0..1]</td>
+                     <td>epo-ord:Order -&gt; epo:MonetaryValue [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:hasTotalTaxInclusiveAmount</td>
                      <td></td>
-                     <td>epo-ord:Order -&gt;  [0..1]</td>
+                     <td>epo-ord:Order -&gt; epo:MonetaryValue [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:implementsContract</td>
                      <td></td>
-                     <td>epo-ord:OrderResponse -&gt;  [0..1]</td>
+                     <td>epo-ord:OrderResponse -&gt; epo:Contract [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:isSpecificToOrderLine</td>
@@ -479,7 +479,7 @@
                          Information that is particular to one or multiple Order Lines. Information that is particular to one or multiple Order Lines. Information that is particular to one or multiple Order Lines.
                          Information that is particular to one or multiple Order Lines.
                         </td>
-                     <td>epo-ord:AllowanceInformation -&gt; epo-ord:OrderLine [0..*]<br>epo-ord:ContractInformation -&gt; epo-ord:OrderLine [0..*]<br>epo-ord:DeliveryInformation -&gt; epo-ord:OrderLine [0..*]<br><br>epo-ord:OriginatorInformation -&gt; epo-ord:OrderLine [0..*]<br></td>
+                     <td>epo-ord:AllowanceInformation -&gt; epo-ord:OrderLine [0..*]<br>epo-ord:ContractInformation -&gt; epo-ord:OrderLine [0..*]<br>epo-ord:DeliveryInformation -&gt; epo-ord:OrderLine [0..*]<br>epo-cat:ChargeInformation -&gt; epo-ord:OrderLine [0..*]<br>epo-ord:OriginatorInformation -&gt; epo-ord:OrderLine [0..*]<br></td>
                   </tr>
                   <tr>
                      <td>epo-ord:isSpecificToOrderResponseLine</td>
@@ -503,7 +503,7 @@
                         If an order refers to multiple catalogues then all these catalogues ideally are subordinated
                         to the same contract. 
                         Some countries however may allow multiple contracts per order (i.e Italy). </td>
-                     <td>epo-ord:Order -&gt;  [0..*]</td>
+                     <td>epo-ord:Order -&gt; epo-cat:Catalogue [0..*]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:refersToCatalogueLine</td>
@@ -511,7 +511,7 @@
                         Additional Information:
                         The reference to the catalogue line is for information only, to trace the source of
                         the information provided in the order line. </td>
-                     <td>epo-ord:OrderLine -&gt;  [0..1]</td>
+                     <td>epo-ord:OrderLine -&gt; epo-cat:CatalogueLine [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:specifiesAllowanceInformation</td>
@@ -521,7 +521,7 @@
                   <tr>
                      <td>epo-ord:specifiesBuyer</td>
                      <td></td>
-                     <td>epo-ord:OrderResponse -&gt;  [0..1]</td>
+                     <td>epo-ord:OrderResponse -&gt; epo:Buyer [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-ord:specifiesContractInformation</td>
@@ -532,7 +532,7 @@
                   <tr>
                      <td>epo-ord:specifiesDeliveryAgreementLocation</td>
                      <td></td>
-                     <td>epo-ord:DeliveryAgreement -&gt;  [0..1]</td>
+                     <td></td>
                   </tr>
                   <tr>
                      <td>epo-ord:specifiesDeliveryInformation</td>
@@ -557,7 +557,7 @@
                   <tr>
                      <td>epo-ord:specifiesPlaceOfDelivery</td>
                      <td></td>
-                     <td>epo-ord:DeliveryInformation -&gt;  [0..1]</td>
+                     <td></td>
                   </tr>
                   <tr>
                      <td>epo-ord:specifiesSeller</td>
