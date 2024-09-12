@@ -8,6 +8,9 @@
 # In addition, the script stores lists of covered and not covered functions
 # and templates in /test/unitTests/coverage/coverage-details.
 # Expects coverage reports (*-coverage.html files) stored in /test/unitTests
+# It is assumed that any shared module (a module that is imported by a main
+# module for which the test suite has been written) has it's own dedicated
+# test suite. Thus, coverage of any imported module is EXCLUDED.
 # 
 # Tested on the following setup:
 #   Xspec: v3.0.3
@@ -19,6 +22,7 @@ PROJ_DIR=$(dirname $(dirname $SCRIPT_DIR))
 COV_REPORTS_DIR=${PROJ_DIR}/test/unitTests
 COV_REPORTS_OUTPUT_DIR=${PROJ_DIR}/test/unitTests/coverage
 COV_REPORTS_DETAILS_OUTPUT_DIR=${PROJ_DIR}/test/unitTests/coverage/coverage-details
+MODULE_HTML_CHUNK='<h2>module:'
 MISSED_CSS_CLS_HTML_CHUNK='class="missed"'
 HIT_CSS_CLS_HTML_CHUNK='class="hit"'
 XSL_FUNC_HTML_CHUNK='xsl:function name="f:'
@@ -26,7 +30,8 @@ XSL_TMPL_HTML_CHUNK='xsl:template'
 OVERALL_SCORE_FILE=${COV_REPORTS_OUTPUT_DIR}/coverage-summary.txt
 OVERALL_SCORE_FILE_TSV=${COV_REPORTS_OUTPUT_DIR}/coverage-summary.tsv
 
-rm -rf "$COV_REPORTS_OUTPUT_DIR"
+rm -rf "$COV_REPORTS_DETAILS_OUTPUT_DIR"
+rm -f "$OVERALL_SCORE_FILE" "$OVERALL_SCORE_FILE_TSV" 
 mkdir -p ${COV_REPORTS_DETAILS_OUTPUT_DIR}
 
 hits_total=0
@@ -46,23 +51,34 @@ for report in **/*-coverage.html; do
     hits_file="${COV_REPORTS_DETAILS_OUTPUT_DIR}/${report_slug}-hits.txt"
     missed_file="${COV_REPORTS_DETAILS_OUTPUT_DIR}/${report_slug}-missed.txt"
     
-    grep "$MISSED_CSS_CLS_HTML_CHUNK" $report \
+    # get main module part of the report
+    main_module_slug=$(echo "$report" | sed -E 's|^(.+)/test-(.+)-coverage.html$|\2|')
+    modules_idx=$(mktemp)
+    main_module_report=$(mktemp)
+    grep -n "$MODULE_HTML_CHUNK" "$report" > $modules_idx
+    # echo "DEBUG: $report uses $(awk 'END {print NR - 1}' $modules_idx) dependent modules"
+    awk 'END {printf("%d:\n", NR)}' "$report" >> $modules_idx  # covers the case where there is no other modules
+    main_module_line=$(grep $main_module_slug $modules_idx | cut -f1 -d:)
+    next_module_line=$(grep -A1 $main_module_slug $modules_idx | grep -v $main_module_slug | cut -f1 -d:)
+    awk -v first=$main_module_line -v last_excl=$next_module_line 'NR >= first && NR < last_excl' "$report" > "$main_module_report"
+
+    grep "$MISSED_CSS_CLS_HTML_CHUNK" "$main_module_report" \
         | grep "$XSL_FUNC_HTML_CHUNK" \
         | awk -F'xsl:function name="' '{print $2}' \
         | cut -d'"' -f1 > "$missed_file"
 
-    grep "$MISSED_CSS_CLS_HTML_CHUNK" $report \
+    grep "$MISSED_CSS_CLS_HTML_CHUNK" "$main_module_report" \
         | grep "$XSL_TMPL_HTML_CHUNK" \
         | grep -v '&lt;/xsl:template&gt;' \
         | sed  -e 's|&lt;|$|g' -e 's|&gt;|$|g' \
         | cut -f2 -d'$' >> "$missed_file"
 
-    grep "$HIT_CSS_CLS_HTML_CHUNK" $report \
+    grep "$HIT_CSS_CLS_HTML_CHUNK" "$main_module_report" \
         | grep "$XSL_FUNC_HTML_CHUNK" \
         | awk -F'xsl:function name="' '{print $2}' \
         | cut -d'"' -f1 > "$hits_file"
 
-    grep "$HIT_CSS_CLS_HTML_CHUNK" $report \
+    grep "$HIT_CSS_CLS_HTML_CHUNK" "$main_module_report" \
         | grep "$XSL_TMPL_HTML_CHUNK" \
         | grep -v '&lt;/xsl:template&gt;' \
         | sed  -e 's|&lt;|$|g' -e 's|&gt;|$|g' \
@@ -84,6 +100,7 @@ for report in **/*-coverage.html; do
     else
         echo "WARN: Skipping $report results"
     fi
+    rm -f $modules_idx $main_module_report
 done
 
 echo -n "OVERALL: " >> $OVERALL_SCORE_FILE
