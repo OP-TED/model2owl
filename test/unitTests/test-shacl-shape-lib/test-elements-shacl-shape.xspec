@@ -115,6 +115,19 @@
         
                
     </x:scenario>
+
+    <x:scenario label="Scenario for testing template with match element[@xmi:type = 'uml:Class']/attributes/attribute" >
+        <x:context href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[146]/attributes[1]/attribute[1]"/>
+        <x:variable name="testedPropShapeUri"
+            as="xs:string"
+            select="'http://data.europa.eu/a4g/data-shape#epo-FrameworkAgreementTerm-epo-hasMaximumParticipantsNumber'"/>
+        <x:expect label="correct node-property shapes link" test="boolean(/rdf:Description[@rdf:about='http://data.europa.eu/a4g/data-shape#epo-FrameworkAgreementTerm']/sh:property[@rdf:resource=$testedPropShapeUri])"/>
+        <x:expect label="property shape: correct name" test="/rdf:Description[@rdf:about=$testedPropShapeUri]/sh:name/text() = 'Has maximum participants number'"/>
+        <x:expect label="property shape: correct datatype" test="boolean(/rdf:Description[@rdf:about=$testedPropShapeUri]/sh:datatype[@rdf:resource='http://www.w3.org/2001/XMLSchema#integer'])"/>
+        <x:expect label="property shape: correct maxCount" test="/rdf:Description[@rdf:about=$testedPropShapeUri]/sh:maxCount = 1"/>
+        <x:expect label="property shape: correct description" test="boolean(/rdf:Description[@rdf:about=$testedPropShapeUri]/sh:description)"/>
+        <x:expect label="is property shape defined" test="boolean(/sh:PropertyShape[@rdf:about=$testedPropShapeUri]/sh:path[@rdf:resource='http://data.europa.eu/a4g/ontology#hasMaximumParticipantsNumber'])"/>
+    </x:scenario>
     
     
     <x:scenario label="Scenario for testing template with match 'ownedComment[@xmi:type='uml:Comment']">

@@ -408,18 +408,28 @@
 
 
     <xd:doc>
-        <xd:desc>Normalise URI from prefix:localSegment to prefix-localSegment</xd:desc>
+        <xd:desc>Normalise compact URI from prefix:localSegment to prefix-localSegment.
+            Regular URI is not supported.
+        </xd:desc>
         <xd:param name="uri"/>
     </xd:doc>
     <xsl:function name="f:normaliseURI">
         <xsl:param name="uri"/>
+        <xsl:if test="fn:matches($uri, '^http([s]*)://(.+)$')">
+            <xsl:sequence
+                select="fn:error(
+                    xs:QName('unsupported-uri'),
+                    'The function supports only a compact URI',
+                    ($uri)
+                )" />
+        </xsl:if>
         <xsl:sequence select="replace($uri, ':', '-')"/>
     </xsl:function>
 
 
 
     <xd:doc>
-        <xd:desc>This function is used to combine 2 URIs to build the property shape URI
+        <xd:desc>This function is used to combine 2 compact URIs to build the property shape URI
             shape-base-uri:{SourceClassURI}-{PropertyOrAttributeURI} Example: Class URI -
             prefix:Procedure Attribute URI - prefix:hasScope Result will be
             http://base.uri/data-shape/prefix-Procedure-prefix-hasScope</xd:desc>
