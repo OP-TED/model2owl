@@ -33,6 +33,9 @@ TURTLE_FILELIST=$(shell ls ${ONTOLOGY_FOLDER_PATH}/*.ttl)
 # Widoco variables
 WIDOCO_RDF_INPUT_FILE_PATH?=test/reasoning-investigation/model-2020-12-16/ePO_restrictions.rdf
 WIDOCO_OUTPUT_FOLDER_PATH?=output/widoco
+NAMESPACES_AS_RDFPIPE_ARGS=$(shell ${MODEL2OWL_FOLDER}/scripts/get_namespaces.sh)
+RDF_XML_MIME_TYPE:='application/rdf+xml'
+TURTLE_MIME_TYPE:='turtle'
 
 # download saxon library 	
 get-saxon:
@@ -110,17 +113,37 @@ generate-convention-SVRL-report:
 #Example how to run transformation commands :
 # make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/eNotice_CM.xml OUTPUT_FOLDER_PATH=./my-folder
 owl-core:
-	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/owl-core.xsl -o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.rdf
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/owl-core.xsl \
+		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.tmp.rdf
+	@make convert-between-serialization-formats INPUT_FORMAT=${RDF_XML_MIME_TYPE} \
+		OUTPUT_FORMAT=${RDF_XML_MIME_TYPE} \
+		FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.tmp.rdf \
+		OUTPUT_FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.rdf
 	@echo Output owl core file:
 	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.rdf
+	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.tmp.rdf
+
 owl-restrictions:
-	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/owl-restrictions.xsl -o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.rdf
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/owl-restrictions.xsl \
+		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.tmp.rdf
+	@make convert-between-serialization-formats INPUT_FORMAT=${RDF_XML_MIME_TYPE} \
+		OUTPUT_FORMAT=${RDF_XML_MIME_TYPE} \
+		FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.tmp.rdf \
+		OUTPUT_FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.rdf
 	@echo Output owl restrictions file:
 	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.rdf
+	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.tmp.rdf
+
 shacl:
-	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/shacl-shapes.xsl -o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.rdf
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/shacl-shapes.xsl \
+		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf
+	@make convert-between-serialization-formats INPUT_FORMAT=${RDF_XML_MIME_TYPE} \
+		OUTPUT_FORMAT=${RDF_XML_MIME_TYPE} \
+		FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf \
+		OUTPUT_FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.rdf
 	@echo Output shacl file location:
 	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.rdf
+	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf
 
 
 # Combine xmi UML files
@@ -144,7 +167,12 @@ convert-rdf-to-turtle:
 	@for FILE_PATH in ${RDF_FILELIST}; do \
 		echo Converting $${FILE_PATH} into Turtle; \
 		source model2owl-venv/bin/activate; \
-		rdfpipe -i application/rdf+xml -o  turtle $${FILE_PATH} > $${FILE_PATH%.*}.ttl; \
+		make convert-between-serialization-formats \
+			INPUT_FORMAT=${RDF_XML_MIME_TYPE} \
+			OUTPUT_FORMAT=${TURTLE_MIME_TYPE}  \
+			FILE_PATH=$${FILE_PATH}  \
+			OUTPUT_FILE_PATH=$${FILE_PATH%.*}.ttl \
+			USE_NAMESPACES=1; \
 		echo Input in RDF/XML format;  \
 		echo $${FILE_PATH};  \
 		echo " ==> Output in Turtle format";  \
@@ -182,6 +210,35 @@ convert-rdf-to-rdf:
 		echo " ==> Output in RDF/XML format";  \
 		ls -lh $${FILE_PATH%.*}.rdf;  \
 	done
+
+# A generic recipe for converting RDF data from one serialization format to 
+# another. It can also be used to regenerate a file using the same format.
+# 
+# Arguments:
+# 	FILE_PATH: Input RDF file in any allowed serialization format
+# 	OUTPUT_FILE_PATH: Path for the output file
+# 	INPUT_FORMAT: a MIME type of the given input RDF file
+# 	OUTPUT_FORMAT: a MIME type of any of the valid RDF serializations
+# 	USE_NAMESPACES: optional; if non-empty then namespaces (from the namespaces.xml file).
+#					This can be used if the input (FILE_PATH) doesn't include
+# 					namespaces we want to be applied (e.g. to have compact
+# 					instead of full URIs in the output file).
+#					
+# Supported MIME types: https://rdflib.readthedocs.io/en/7.0.0/plugin_serializers.html
+# 	
+# Example:
+# make convert-between-serialization-formats
+#   INPUT_FORMAT='application/rdf+xml'
+#   OUTPUT_FORMAT='application/rdf+xml' 
+#   FILE_PATH=output/ePO_core.tmp.rdf 
+#   OUTPUT_FILE_PATH=output/ePO_core.rdf
+# 	USE_NAMESPACES=1
+convert-between-serialization-formats:
+	@source model2owl-venv/bin/activate; \
+	rdfpipe -i ${INPUT_FORMAT} -o ${OUTPUT_FORMAT} \
+		$(if $(USE_NAMESPACES),${NAMESPACES_AS_RDFPIPE_ARGS}) \
+		${FILE_PATH} > ${OUTPUT_FILE_PATH}
+
 # make validate-rdf-file FILE_TO_VALIDATE_PATH=./output/eFulfilment.rdf
 validate-rdf-file:
 	@$(JENA_RIOT_TOOL) --validate $(FILE_TO_VALIDATE_PATH)
