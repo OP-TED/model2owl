@@ -234,15 +234,17 @@
 
         <xsl:variable name="connectorDocumentations" as="xs:string*"
             select="
-                for $connector in $connectorsWithSameName
-                return
-                    if ($connector/documentation/@value) then
-                        fn:concat($connector/documentation/@value, ' (', f:getConnectorName($connector), ') ')
-                    else
-                        ()"/>
+                fn:distinct-values(
+                    for $connector in $connectorsWithSameName
+                    return
+                        if ($connector/documentation/@value) then
+                            fn:normalize-space($connector/documentation/@value)
+                        else
+                            ()
+                )"/>
 
         <xsl:variable name="documentation"
-            select="fn:normalize-space(f:formatDocString(fn:string-join($connectorDocumentations)))"/>
+            select="fn:normalize-space(f:formatDocString(fn:string-join($connectorDocumentations, ' ')))"/>
 
         <xsl:variable name="connectorNotes" as="xs:string*"
             select="
