@@ -512,15 +512,15 @@
     </xsl:function>
 
     <xd:doc>
-        <xd:desc> This function will check if a given list of namespaces are defined in
-            namespaces.xml file. If not all the namespaces were defined it will return a list with
-            those namespaces</xd:desc>
+        <xd:desc> This function will check if a given list of namespaces are
+        defined in enriched-namespaces.xml file. If not all the namespaces were
+        defined it will return a list with those namespaces</xd:desc>
         <xd:param name="listOfNamespaces"/>
     </xd:doc>
     <xsl:function name="f:isAllNamespacesDefined">
         <xsl:param name="listOfNamespaces"/>
         <xsl:variable name="definedNamespaces"
-            select="($namespacePrefixes/*:prefixes/*:prefix/@name)"/>
+            select="($internalNamespacePrefixes/*:prefixes/*:prefix/@name)"/>
         <xsl:variable name="listOfNotDefinedNamespaces"
             select="functx:value-except($listOfNamespaces, $definedNamespaces)"/>
         <xsl:sequence

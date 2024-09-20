@@ -1,6 +1,7 @@
 
 # Model2owl directory
 MODEL2OWL_FOLDER?=.
+ABSOLUTE_MODEL2OWL_FOLDER?=$(shell realpath "${MODEL2OWL_FOLDER}")
 # rdflib version
 RDF_LIB_VERSION?=6.2.0
 #Saxon path
@@ -33,8 +34,10 @@ TURTLE_FILELIST=$(shell ls ${ONTOLOGY_FOLDER_PATH}/*.ttl)
 # Widoco variables
 WIDOCO_RDF_INPUT_FILE_PATH?=test/reasoning-investigation/model-2020-12-16/ePO_restrictions.rdf
 WIDOCO_OUTPUT_FOLDER_PATH?=output/widoco
-NAMESPACES_XML_FILE_PATH?=${MODEL2OWL_FOLDER}/test/ePO-default-config/namespaces.xml
-NAMESPACES_AS_RDFPIPE_ARGS=$(shell ${MODEL2OWL_FOLDER}/scripts/get_namespaces.sh ${NAMESPACES_XML_FILE_PATH})
+NAMESPACES_USER_XML_FILE_PATH?=${MODEL2OWL_FOLDER}/test/ePO-default-config/namespaces.xml
+INTERM_FOLDER_PATH?=${ABSOLUTE_MODEL2OWL_FOLDER}/.temp
+ENRICHED_NAMESPACES_XML_PATH:=${INTERM_FOLDER_PATH}/enriched-namespaces.xml
+NAMESPACES_AS_RDFPIPE_ARGS=$(shell ${MODEL2OWL_FOLDER}/scripts/get_namespaces.sh ${ENRICHED_NAMESPACES_XML_PATH})
 RDF_XML_MIME_TYPE:='application/rdf+xml'
 TURTLE_MIME_TYPE:='turtle'
 
@@ -114,8 +117,10 @@ generate-convention-SVRL-report:
 #Example how to run transformation commands :
 # make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/eNotice_CM.xml OUTPUT_FOLDER_PATH=./my-folder
 owl-core:
+	@make gen-enriched-ns-file
 	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/owl-core.xsl \
-		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.tmp.rdf
+		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.tmp.rdf \
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
 	@make convert-between-serialization-formats INPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		OUTPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.tmp.rdf \
@@ -125,8 +130,10 @@ owl-core:
 	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.tmp.rdf
 
 owl-restrictions:
+	@make gen-enriched-ns-file
 	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/owl-restrictions.xsl \
-		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.tmp.rdf
+		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.tmp.rdf \
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
 	@make convert-between-serialization-formats INPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		OUTPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.tmp.rdf \
@@ -136,8 +143,10 @@ owl-restrictions:
 	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.tmp.rdf
 
 shacl:
+	@make gen-enriched-ns-file
 	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/shacl-shapes.xsl \
-		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf
+		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf \
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
 	@make convert-between-serialization-formats INPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		OUTPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf \
@@ -146,6 +155,12 @@ shacl:
 	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.rdf
 	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf
 
+# Generate enriched namespaces XML file which contains user namespaces (defined
+# in namespaces.xml) and internal namespaces (such as core-shape)
+gen-enriched-ns-file:
+	@mkdir -p ${INTERM_FOLDER_PATH}
+	@java -jar ${SAXON} -s:${NAMESPACES_USER_XML_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/xml/enriched-namespaces.xsl \
+		-o:${ENRICHED_NAMESPACES_XML_PATH}
 
 # Combine xmi UML files
 # all files for combine should be in test/test-multi-xmi (or in XMI_MERGED_OUTPUT_FOLDER_PATH)
@@ -220,10 +235,11 @@ convert-rdf-to-rdf:
 # 	OUTPUT_FILE_PATH: Path for the output file
 # 	INPUT_FORMAT: a MIME type of the given input RDF file
 # 	OUTPUT_FORMAT: a MIME type of any of the valid RDF serializations
-# 	USE_NAMESPACES: optional; if non-empty then namespaces (from the namespaces.xml file).
-#					This can be used if the input (FILE_PATH) doesn't include
-# 					namespaces we want to be applied (e.g. to have compact
-# 					instead of full URIs in the output file).
+#   USE_NAMESPACES: optional; if non-empty then namespaces (from the
+#                   enriched-namespaces.xml file). This can be used if the input
+#                   (FILE_PATH) doesn't include namespaces we want to be applied
+#                   (e.g. to have compact instead of full URIs in the output
+#                   file).
 #					
 # Supported MIME types: https://rdflib.readthedocs.io/en/7.0.0/plugin_serializers.html
 # 	
