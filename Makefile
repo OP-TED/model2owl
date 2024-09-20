@@ -73,7 +73,7 @@ install:  get-saxon get-rdflib get-widoco
 ############################ Main tasks ##############################################
 # Run unit_tests
 unit-tests:
-	@mvn install
+	@mvn install -Dsaxon.options.enrichedNamespacesPath=${ENRICHED_NAMESPACES_XML_PATH}
 
 create-virtual-env:
 	@python -m venv model2owl-venv
