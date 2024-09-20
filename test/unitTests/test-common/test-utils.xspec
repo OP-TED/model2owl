@@ -311,4 +311,47 @@
         </x:call>
         <x:expect label="result" select="fn:true()"/>
     </x:scenario>
+
+
+    <x:scenario label="Scenario for testing function buildPropertyShapeURI">
+        <x:scenario label="valid CURIE">
+            <x:call function="f:buildPropertyShapeURI">
+                <x:param name="firstUri" select="'prefix:Procedure'"/>
+                <x:param name="secondUri" select="'prefix:hasScope'"/>
+            </x:call>
+            <x:expect label="result"
+                select="'http://data.europa.eu/a4g/data-shape#prefix-Procedure-prefix-hasScope'"/>
+        </x:scenario>
+
+        <x:scenario catch="yes" label="unsupported URI">
+            <x:call function="f:buildPropertyShapeURI">
+                <x:param name="firstUri" select="'http://dummy.org/Procedure'"/>
+                <x:param name="secondUri" select="'http://dummy.org/hasScope'"/>
+            </x:call>
+            <x:expect label="err:code" test="$x:result?err?code"
+                select="xs:QName('unsupported-uri')" />
+            <x:expect label="err:description" test="$x:result?err?description"
+                select="'The function supports only a compact URI'" />
+        </x:scenario>
+    </x:scenario>
+
+
+    <x:scenario label="Scenario for testing function normaliseURI">
+        <x:scenario label="valid CURIE">
+            <x:call function="f:normaliseURI">
+                <x:param name="uri" select="'prefix:Procedure'"/>
+            </x:call>
+            <x:expect label="result" select="'prefix-Procedure'"/>
+        </x:scenario>
+
+        <x:scenario catch="yes" label="unsupported URI">
+            <x:call function="f:normaliseURI">
+                <x:param name="uri" select="'http://dummy.org/Procedure'"/>
+            </x:call>
+            <x:expect label="err:code" test="$x:result?err?code"
+                select="xs:QName('unsupported-uri')" />
+            <x:expect label="err:description" test="$x:result?err?description"
+                select="'The function supports only a compact URI'" />
+        </x:scenario>
+    </x:scenario>
 </x:description>

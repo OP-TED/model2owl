@@ -113,4 +113,104 @@
         <x:expect label="expect to find a warning" test="/dd/@class = 'filter warnings'"/>
         
     </x:scenario>
+
+    <x:scenario label="classAttributesWithSameName">
+        <x:scenario label="correct input">
+            <x:context>
+                <xmi:XMI>
+                    <xmi:Extension>
+                        <element xmi:idref="id1" xmi:type="uml:Class" name="epo:Person">
+                            <attributes>
+                                <attribute xmi:idref="id2" name="epo:name">
+                                    <documentation value="The complete name of a person."/>
+                                    <properties type="rdfs:Literal"/>
+                                    <bounds lower="1" upper="1"/>
+                                </attribute>
+                                <attribute xmi:idref="id3" name="epo:address">
+                                    <documentation value="A place of residence."/>
+                                    <properties type="rdfs:Literal"/>
+                                    <bounds lower="1" upper="*"/>
+                                </attribute>
+                            </attributes>
+                        </element>
+                        <element xmi:idref="id1" xmi:type="uml:Class" name="epo:Contractor">
+                            <attributes>
+                                <attribute xmi:idref="id4" name="epo:name">
+                                    <documentation value="The complete name of a person."/>
+                                    <properties type="rdfs:Literal"/>
+                                    <bounds lower="1" upper="1"/>
+                                </attribute>
+                                <attribute xmi:idref="id5" name="epo:address">
+                                    <documentation value="A place of residence."/>
+                                    <properties type="rdfs:Literal"/>
+                                    <bounds lower="1" upper="*"/>
+                                </attribute>
+                            </attributes>
+                        </element>
+                    </xmi:Extension>
+                </xmi:XMI>
+            </x:context>
+            <x:call template="classAttributesWithSameName">
+            </x:call>
+            <x:expect label="empty section">
+                <h1 id="classAttributesUsage">Class attributes with multiple usages</h1>
+            </x:expect>
+        </x:scenario>
+
+        <x:scenario label="all possible violations captured">
+            <x:context>
+                <xmi:XMI>
+                    <xmi:Extension>
+                        <element xmi:idref="id1" xmi:type="uml:Class" name="epo:Person">
+                            <attributes>
+                                <attribute xmi:idref="id2" name="epo:name">
+                                    <documentation value="The complete name of a person."/>
+                                    <properties type="rdfs:Literal"/>
+                                    <bounds lower="1" upper="1"/>
+                                </attribute>
+                                <attribute xmi:idref="id3" name="epo:address">
+                                    <documentation value="A place of residence."/>
+                                    <properties type="rdfs:Literal"/>
+                                    <bounds lower="1" upper="*"/>
+                                </attribute>
+                            </attributes>
+                        </element>
+                        <element xmi:idref="id1" xmi:type="uml:Class" name="epo:Contractor">
+                            <attributes>
+                                <attribute xmi:idref="id4" name="epo:name">
+                                    <documentation value="Names (first and alternative) of a person."/>
+                                    <properties type="rdfs:Literal"/>
+                                    <bounds lower="1" upper="*"/>
+                                </attribute>
+                                <attribute xmi:idref="id5" name="epo:surname">
+                                    <documentation value="The complete name of a person."/>
+                                    <properties type="rdfs:Literal"/>
+                                    <bounds lower="1" upper="1"/>
+                                </attribute>
+                                <attribute xmi:idref="id6" name="epo:address">
+                                    <documentation value="A place of residence."/>
+                                    <properties type="dct:Address"/>
+                                    <bounds lower="1" upper="*"/>
+                                </attribute>
+                            </attributes>
+                        </element>
+                    </xmi:Extension>
+                </xmi:XMI>
+            </x:context>
+            <x:call template="classAttributesWithSameName">
+            </x:call>
+            <x:expect label="different datatypes"
+                test="contains(/dl[@id='attribute-epo:address-usage']/dd[@class='filter warnings']/text(), 'The attribute epo:address has different datatypes in reuse contexts')"/>
+            <x:expect label="different multiplicities" 
+                test="some $genMsg in /dl[@id='attribute-epo:name-usage']/dd[@class='filter warnings']/text()
+                    satisfies contains($genMsg, 'The attribute epo:name has different multiplicities in reuse contexts')"
+            />
+            <x:expect label="different definitions" 
+                test="some $genMsg in /dl[@id='attribute-epo:name-usage']/dd[@class='filter warnings']/text()
+                    satisfies contains($genMsg, 'The attribute epo:name is defined differently in reuse contexts')"
+            />
+        </x:scenario>
+    </x:scenario>
+
+
 </x:description>
