@@ -92,7 +92,10 @@ generate-glossary:
 	@echo Input file path: ${XMI_INPUT_FILE_PATH}
 	@echo Input file name: ${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}
 	@cp -rf ./src/static "${OUTPUT_GLOSSARY_PATH}"
-	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/html-model-glossary.xsl -o:${OUTPUT_GLOSSARY_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_glossary.html
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} \
+		-xsl:${MODEL2OWL_FOLDER}/src/html-model-glossary.xsl \
+		-o:${OUTPUT_GLOSSARY_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_glossary.html \
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
 	@echo The glossary is located at the following location:
 	@echo
 	@ls -lh ${OUTPUT_GLOSSARY_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_glossary.html
@@ -104,7 +107,10 @@ generate-convention-report:
 	@echo Input file path: ${XMI_INPUT_FILE_PATH}
 	@echo Input file name: ${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}
 	@cp -rf ./src/static "${OUTPUT_CONVENTION_REPORT_PATH}"
-	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/html-conventions-report.xsl -o:${OUTPUT_CONVENTION_REPORT_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_convention_report.html
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} \
+		-xsl:${MODEL2OWL_FOLDER}/src/html-conventions-report.xsl \
+		-o:${OUTPUT_CONVENTION_REPORT_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_convention_report.html \
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
 	@echo The convention report is located at the following location:
 	@echo
 	@ls -lh ${OUTPUT_CONVENTION_REPORT_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_convention_report.html
@@ -116,7 +122,10 @@ generate-convention-SVRL-report:
 	@echo Input file path: ${XMI_INPUT_FILE_PATH}
 	@echo Input file name: ${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}
 	@cp -rf ./src/static "${OUTPUT_CONVENTION_REPORT_PATH}"
-	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/svrl-conventions-report.xsl -o:${OUTPUT_CONVENTION_REPORT_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_convention_svrl_report.xml
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} \
+		-xsl:${MODEL2OWL_FOLDER}/src/svrl-conventions-report.xsl \
+		-o:${OUTPUT_CONVENTION_REPORT_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_convention_svrl_report.xml \
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
 	@echo The convention report is located at the following location:
 	@echo
 	@ls -lh ${OUTPUT_CONVENTION_REPORT_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_convention_svrl_report.xml
