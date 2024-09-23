@@ -68,12 +68,16 @@ get-widoco:
 ######################################################################################
 # Download, install saxon, xspec, rdflib and other dependencies
 ######################################################################################
-install:  get-saxon get-rdflib get-widoco
+install:  get-saxon create-virtual-env get-rdflib get-widoco
 
 ############################ Main tasks ##############################################
 # Run unit_tests
 unit-tests:
+	@make test-prerequisites
 	@mvn install -Dsaxon.options.enrichedNamespacesPath=${ENRICHED_NAMESPACES_XML_PATH}
+
+test-prerequisites:
+	@make gen-enriched-ns-file
 
 create-virtual-env:
 	@python -m venv model2owl-venv
@@ -84,6 +88,7 @@ create-virtual-env:
 # make generate-glossary XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/eNotice_CM.xml OUTPUT_GLOSSARY_PATH=/home/mypc/work/model2owl/glossary
 generate-glossary:
 	@mkdir -p "${OUTPUT_GLOSSARY_PATH}"
+	@make gen-enriched-ns-file
 	@echo Input file path: ${XMI_INPUT_FILE_PATH}
 	@echo Input file name: ${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}
 	@cp -rf ./src/static "${OUTPUT_GLOSSARY_PATH}"
@@ -95,6 +100,7 @@ generate-glossary:
 
 generate-convention-report:
 	@mkdir -p "${OUTPUT_CONVENTION_REPORT_PATH}"
+	@make gen-enriched-ns-file
 	@echo Input file path: ${XMI_INPUT_FILE_PATH}
 	@echo Input file name: ${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}
 	@cp -rf ./src/static "${OUTPUT_CONVENTION_REPORT_PATH}"
@@ -106,6 +112,7 @@ generate-convention-report:
 
 generate-convention-SVRL-report:
 	@mkdir -p "${OUTPUT_CONVENTION_REPORT_PATH}"
+	@make gen-enriched-ns-file
 	@echo Input file path: ${XMI_INPUT_FILE_PATH}
 	@echo Input file name: ${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}
 	@cp -rf ./src/static "${OUTPUT_CONVENTION_REPORT_PATH}"
@@ -180,6 +187,7 @@ merge-xmi:
 # make convert-to-turtle ONTOLOGY_FOLDER_PATH=./my-folder
 # ONTOLOGY_FOLDER_PATH is the the path to the folder containing .rdf files for converting to turtle or .ttl files to convert to rdf
 convert-rdf-to-turtle:
+	@make gen-enriched-ns-file
 	@for FILE_PATH in ${RDF_FILELIST}; do \
 		echo Converting $${FILE_PATH} into Turtle; \
 		source model2owl-venv/bin/activate; \
