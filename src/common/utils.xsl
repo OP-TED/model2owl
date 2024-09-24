@@ -21,6 +21,13 @@
     <xsl:import href="fetchers.xsl"/>
     <xsl:import href="functx-1.0.1-doc.xsl"/>
 
+    <xsl:param name="enrichedNamespacesPath"/>
+    <xsl:variable name="internalNamespacePrefixes" select="
+        if (boolean($enrichedNamespacesPath)) then
+            fn:doc($enrichedNamespacesPath)
+        else fn:error(xs:QName('missing-parameter'), 'enrichedNamespacesPath is not given.')
+    "/>
+
     <xd:doc>
         <xd:desc> Lookup a data-type in the xsd and rdf accepted data-type document (usually an
             external file with xsd and rdf data-types definitions) and return false or the data-type
@@ -61,7 +68,7 @@
     <xsl:function name="f:getNamespaceURI" as="xs:string">
         <xsl:param name="prefix"/>
 
-        <xsl:variable name="fetch" select="f:getNamespaceValues($prefix, $namespacePrefixes)"/>
+        <xsl:variable name="fetch" select="f:getNamespaceValues($prefix, $internalNamespacePrefixes)"/>
         <xsl:sequence
             select="
                 if (boolean($fetch)) then
@@ -501,5 +508,14 @@
                     fn:true()"
         />
     </xsl:function>
+
+    <xd:doc>
+        <xd:desc>This template declares set of namespaces to be defined in top element of an output file</xd:desc>
+    </xd:doc>
+    <xsl:template name="namespacesDeclaration">
+        <xsl:for-each select="$internalNamespacePrefixes/*:prefixes/*:prefix">              
+            <xsl:namespace name="{./@name}" select="./@value"/>
+        </xsl:for-each>
+    </xsl:template>
 
 </xsl:stylesheet>
