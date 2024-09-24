@@ -91,7 +91,14 @@
     <xsl:variable name="conventionReportAuthorLocation" select="'Luxembourg'"/>
     <xsl:variable name="conventionReportAuthorWebsite" select="'https://op.europa.eu'"/>
     <xsl:variable name="conventionReportUMLModelName" select="'eProcurement'"/>
-    
+    <!-- URIs list of UML versions supported by model2owl -->
+    <xsl:variable name="supportedUmlVersions"
+        select="('http://www.omg.org/spec/UML/20131001',
+            'https://www.omg.org/spec/UML/20131001',
+            'http://www.omg.org/spec/UML/20161101',
+            'https://www.omg.org/spec/UML/20161101'
+        )"/>
+
     <!-- _______________________________________________________________________   -->
     <!--                            METADATA SECTION                               -->
     <!-- _______________________________________________________________________   -->
