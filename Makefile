@@ -76,6 +76,11 @@ unit-tests:
 	@make test-prerequisites
 	@mvn install -Dsaxon.options.enrichedNamespacesPath=${ENRICHED_NAMESPACES_XML_PATH}
 
+# Actions required in order to setup the environment for testing purposes.
+# Usage (`[]` denotes an optional argument; if omited, default value will be used):
+# make test-prerequisites [NAMESPACES_USER_XML_FILE_PATH=/path/to/namespaces.xml]
+# where:
+#   NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file provided by a user
 test-prerequisites:
 	@make gen-enriched-ns-file
 
@@ -84,6 +89,13 @@ create-virtual-env:
 
 
 # Generate the glossary from an input file
+# Usage (`[]` denotes an optional argument; if omited, default value will be used):
+# make generate-glossary [XMI_INPUT_FILE_PATH=/path/to/cm.xmi] 
+#	[OUTPUT_GLOSSARY_PATH=/output/directory]
+#	[NAMESPACES_USER_XML_FILE_PATH=/path/to/namespaces.xml]
+# where:
+#   NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file provided by a user
+#
 # Example when not using the default variables
 # make generate-glossary XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/eNotice_CM.xml OUTPUT_GLOSSARY_PATH=/home/mypc/work/model2owl/glossary
 generate-glossary:
@@ -101,6 +113,14 @@ generate-glossary:
 	@ls -lh ${OUTPUT_GLOSSARY_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_glossary.html
 	@echo
 
+# Usage of the convention report generation recipes (generate-convention-report | generate-convention-SVRL-report).
+# `[]` denotes an optional argument; if omited, default value will be used:
+# make (generate-convention-report | generate-convention-SVRL-report) 
+#	[XMI_INPUT_FILE_PATH=/path/to/cm.xmi] 
+#	[OUTPUT_CONVENTION_REPORT_PATH=/output/directory]
+#	[NAMESPACES_USER_XML_FILE_PATH=/path/to/namespaces.xml]
+# where:
+#   NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file provided by a user
 generate-convention-report:
 	@mkdir -p "${OUTPUT_CONVENTION_REPORT_PATH}"
 	@make gen-enriched-ns-file
@@ -130,7 +150,17 @@ generate-convention-SVRL-report:
 	@echo
 	@ls -lh ${OUTPUT_CONVENTION_REPORT_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_convention_svrl_report.xml
 	@echo
-#Example how to run transformation commands :
+
+
+# Usage of the transformation recipes (owl-core | owl-restrictions | shacl).
+# `[]` denotes an optional argument; if omited, default value will be used:
+# make (owl-core | owl-restrictions | shacl) [XMI_INPUT_FILE_PATH=/path/to/cm.xmi] 
+#	[OUTPUT_FOLDER_PATH=/output/directory]
+#	[NAMESPACES_USER_XML_FILE_PATH=/path/to/namespaces.xml]
+# where:
+#   NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file provided by a user
+#
+# Example:
 # make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/eNotice_CM.xml OUTPUT_FOLDER_PATH=./my-folder
 owl-core:
 	@make gen-enriched-ns-file
@@ -173,6 +203,10 @@ shacl:
 
 # Generate enriched namespaces XML file which contains user namespaces (defined
 # in namespaces.xml) and internal namespaces (such as core-shape)
+# Usage (`[]` denotes an optional argument; if omited, default value will be used):
+# make gen-enriched-ns-file [NAMESPACES_USER_XML_FILE_PATH=/path/to/namespaces.xml]
+# where:
+#   NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file provided by a user
 gen-enriched-ns-file:
 	@mkdir -p ${INTERM_FOLDER_PATH}
 	@java -jar ${SAXON} -s:${NAMESPACES_USER_XML_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/xml/enriched-namespaces.xsl \
@@ -192,9 +226,14 @@ merge-xmi:
 
 
 
-#Example how to run converting commands :
-# make convert-to-turtle ONTOLOGY_FOLDER_PATH=./my-folder
-# ONTOLOGY_FOLDER_PATH is the the path to the folder containing .rdf files for converting to turtle or .ttl files to convert to rdf
+# Example how to run converting commands (`[]` denotes an optional argument;
+#  if omited, default value will be used):
+# make convert-to-turtle [ONTOLOGY_FOLDER_PATH=./my-folder] 
+#	[NAMESPACES_USER_XML_FILE_PATH=/path/to/namespaces.xml]
+# where:
+# ONTOLOGY_FOLDER_PATH: the path to the folder containing .rdf files for 
+#						converting to turtle or .ttl files to convert to rdf
+# NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file provided by a user
 convert-rdf-to-turtle:
 	@make gen-enriched-ns-file
 	@for FILE_PATH in ${RDF_FILELIST}; do \
