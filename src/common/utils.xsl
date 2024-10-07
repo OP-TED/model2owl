@@ -236,8 +236,10 @@
     </xd:doc>
     <xsl:function name="f:lexicalQNameToWords" as="xs:string">
         <xsl:param name="lexicalqName" as="xs:string"/>
+        <xsl:variable name="localName"
+            select="fn:local-name-from-QName(f:buildQNameFromLexicalQName($lexicalqName))"/>
         <xsl:sequence 
-            select="fn:string-join(f:getSegmentsFromCamelCaseText($lexicalqName), ' ')" />
+            select="fn:string-join(f:getSegmentsFromCamelCaseText($localName), ' ')" />
     </xsl:function>
 
     <xd:doc>

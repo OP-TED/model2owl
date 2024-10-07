@@ -24,7 +24,7 @@
         <x:expect label="there is rdf:Description"
             test="boolean(/rdf:Description[@rdf:about='http:/fake.uri#something'])"
         />
-        <x:expect label="correct label" test="rdf:Description/rdfs:label/text() = 'Dynamic procedure'"/>
+        <x:expect label="correct label" test="rdf:Description/rdfs:label/text() = 'Dynamic Procedure'"/>
         
         
     </x:scenario>
@@ -40,7 +40,7 @@
         <x:expect label="there is rdf:Description"
             test="boolean(/rdf:Description[@rdf:about='http:/fake.uri#something'])"
         />
-        <x:expect label="correct label" test="rdf:Description/sh:name/text() = 'Dynamic procedure'"/>
+        <x:expect label="correct label" test="rdf:Description/sh:name/text() = 'Dynamic Procedure'"/>
         
         
     </x:scenario>

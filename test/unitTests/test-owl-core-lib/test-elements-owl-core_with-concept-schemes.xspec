@@ -21,7 +21,7 @@
         <x:variable name="testedEnum" as="xs:string" select="'http://www.w3.org/2006/time#TemporalUnit'"/>
         
         <x:expect label="there is a skos:ConceptScheme" test="/skos:ConceptScheme/@rdf:about = $testedEnum"/>
-        <x:expect label="there is a skos:prefLabel" test="/rdf:Description[@rdf:about = $testedEnum]/skos:prefLabel[@xml:lang='en']/text() = 'Temporal unit'"/>
+        <x:expect label="there is a skos:prefLabel" test="/rdf:Description[@rdf:about = $testedEnum]/skos:prefLabel[@xml:lang='en']/text() = 'Temporal Unit'"/>
     </x:scenario>
 
 </x:description>
