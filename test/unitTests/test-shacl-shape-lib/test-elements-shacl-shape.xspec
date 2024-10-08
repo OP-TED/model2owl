@@ -122,7 +122,7 @@
             as="xs:string"
             select="'http://data.europa.eu/a4g/data-shape#epo-FrameworkAgreementTerm-epo-hasMaximumParticipantsNumber'"/>
         <x:expect label="correct node-property shapes link" test="boolean(/rdf:Description[@rdf:about='http://data.europa.eu/a4g/data-shape#epo-FrameworkAgreementTerm']/sh:property[@rdf:resource=$testedPropShapeUri])"/>
-        <x:expect label="property shape: correct name" test="/rdf:Description[@rdf:about=$testedPropShapeUri]/sh:name/text() = 'Has maximum participants number'"/>
+        <x:expect label="property shape: correct name" test="/rdf:Description[@rdf:about=$testedPropShapeUri]/sh:name/text() = 'has Maximum Participants Number'"/>
         <x:expect label="property shape: correct datatype" test="boolean(/rdf:Description[@rdf:about=$testedPropShapeUri]/sh:datatype[@rdf:resource='http://www.w3.org/2001/XMLSchema#integer'])"/>
         <x:expect label="property shape: correct maxCount" test="/rdf:Description[@rdf:about=$testedPropShapeUri]/sh:maxCount = 1"/>
         <x:expect label="property shape: correct description" test="boolean(/rdf:Description[@rdf:about=$testedPropShapeUri]/sh:description)"/>

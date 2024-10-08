@@ -173,7 +173,7 @@
     
         <x:expect label="has only one owl:ObjectProperty defined" test="count(/owl:ObjectProperty) = 1"/>
         <x:expect label="is owl:ObjectProperty defined" test="/owl:ObjectProperty/@rdf:about=$testedPropUri"/>
-        <x:expect label="correct skos:prefLabel" test="/rdf:Description[@rdf:about = $testedPropUri]/skos:prefLabel[@xml:lang='en']/text() = 'Comprises lot award outcome'"/>
+        <x:expect label="correct skos:prefLabel" test="/rdf:Description[@rdf:about = $testedPropUri]/skos:prefLabel[@xml:lang='en']/text() = 'comprises Lot Award Outcome'"/>
         <x:expect label="has skos:definition" test="boolean(/rdf:Description[@rdf:about=$testedPropUri]/skos:definition[@xml:lang='en'])"/>
         <x:expect label="is linked to the ontology" test="/rdf:Description[@rdf:about = $testedPropUri]/rdfs:isDefinedBy/@rdf:resource = 'http://data.europa.eu/a4g/ontology#core'"/>
     </x:scenario>

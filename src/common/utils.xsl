@@ -227,25 +227,140 @@
     </xsl:function>
 
 
-
-
-    <xd:doc>
-        <xd:desc>Turns the local segment of a lexicalised qName into words</xd:desc>
+     <xd:doc>
+        <xd:desc>
+            Turns the local segment of a lexicalised qName into words, handling
+            acronyms and camel case properly.
+        </xd:desc>
         <xd:param name="lexicalqName"/>
     </xd:doc>
     <xsl:function name="f:lexicalQNameToWords" as="xs:string">
         <xsl:param name="lexicalqName" as="xs:string"/>
+        <xsl:variable name="localName"
+            select="fn:local-name-from-QName(f:buildQNameFromLexicalQName($lexicalqName))"/>
+        <xsl:sequence 
+            select="fn:string-join(f:getSegmentsFromCamelCaseText($localName), ' ')" />
+    </xsl:function>
 
-        <xsl:sequence
-            select="
-                functx:capitalize-first(
-                fn:lower-case(
-                functx:camel-case-to-words(
-                fn:local-name-from-QName(
-                f:buildQNameFromLexicalQName($lexicalqName)
-                ), ' ')
-                ))"
+    <xd:doc>
+        <xd:desc>
+            Splits a camelCase name into a text. Supports acronyms.
+        </xd:desc>
+        <xd:param name="text"/>
+    </xd:doc>
+    <!-- The underlying function works on a reversed text as this makes
+    identification of the segments easier. -->
+    <xsl:function name="f:getSegmentsFromCamelCaseText" as="xs:string*">
+        <xsl:param name="text" as="xs:string"/>
+        <xsl:sequence 
+            select="for $segment in f:_getSegmentsRec(functx:reverse-string($text))
+            return functx:reverse-string($segment)" />
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>
+            Splits a camelCase name into a text. Supports acronyms. Returns
+            sequence of found text segments (words and acronyms).
+        </xd:desc>
+        <xd:param name="text"/>
+    </xd:doc>
+    <!-- 
+    This is private, recursive function.
+    The function preserves case of split words. For example:
+    'hasLongName' => 'has Long Name' (not 'has long name').
+    -->
+    <xsl:function name="f:_getSegmentsRec" as="xs:string*">
+        <xsl:param name="text" as="xs:string"/>
+        <xsl:variable name="textLen" select="fn:string-length($text)"/>
+        <xsl:variable name="currSegment" select="f:_getLeftSubstrByCaseChange($text)"/>
+        <xsl:variable name="currSegmentLen" select="fn:string-length($currSegment)"/>
+        <xsl:variable name="nextSegmentOffset"
+            select="if (xs:integer($currSegmentLen) &lt; xs:integer($textLen))
+                then $currSegmentLen + 1 else ()"/>
+        <xsl:choose>
+            <xsl:when test="fn:boolean($nextSegmentOffset) = fn:true()">
+                <xsl:value-of select="(
+                    $currSegment, 
+                    f:_getSegmentsRec(fn:substring($text, $nextSegmentOffset))
+                )"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="($currSegment)"/>  
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>
+            Detects a left substring based on a letter case change. Supports
+            acronyms.
+        </xd:desc>
+        <xd:param name="text"/>
+        <xd:param name="index"/>
+    </xd:doc>
+    <xsl:function name="f:_getLeftSubstrByCaseChange" as="xs:string">
+        <xsl:param name="text" as="xs:string"/>
+        <xsl:sequence select="f:_getLeftSubstrByCaseChangeRec($text, 1)"/>
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>
+            Detects a left substring based on a letter case change. Supports
+            acronyms.
+        </xd:desc>
+        <xd:param name="text"/>
+        <xd:param name="index"/>
+    </xd:doc>
+    <!-- 
+    This is a private, recursive function. 
+    It's the basis for splitting camelCaseName into segments.
+    The function returns such a left substring which letters (except for the
+    ending*) has the same letter case as the first letter.
+    Ending of the returned substring varies depending on the letter case transition:
+    1) lower to upper: INCLUDE the last character with a diffferent case.
+    2) upper to lower: EXCLUDE the last character with a diffferent case.
+    -->
+    <xsl:function name="f:_getLeftSubstrByCaseChangeRec" as="xs:string">
+        <xsl:param name="text" as="xs:string"/>
+        <xsl:param name="index" as="xs:integer"/>
+        <xsl:variable name="firstChar" select="fn:substring($text, 1, 1)"/>
+        <xsl:variable name="textLen" select="fn:string-length($text)"/>
+        <xsl:sequence select="
+        if (f:haveSameCase(fn:substring($text, $index, 1), $firstChar))
+        then 
+            if (xs:integer($index) &lt; xs:integer($textLen))
+            then f:_getLeftSubstrByCaseChangeRec($text, $index + 1) 
+            else $text
+        else 
+            if(f:isUpperCase($firstChar))
+            then fn:substring($text, 1, $index - 1)
+            else fn:substring($text, 1, $index)" 
         />
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>
+            Checks if a character is uppercase.
+        </xd:desc>
+        <xd:param name="char"/>
+    </xd:doc>
+    <xsl:function name="f:isUpperCase" as="xs:boolean">
+        <xsl:param name="char" as="xs:string"/>
+        <xsl:sequence select="matches($char, '[A-Z]')"/>
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>
+            Checks if the two passed character have the same letter case
+            (either lower case or upper case).
+        </xd:desc>
+        <xd:param name="char1"/>
+        <xd:param name="char2"/>
+    </xd:doc>
+    <xsl:function name="f:haveSameCase" as="xs:boolean">
+        <xsl:param name="char1" as="xs:string"/>
+        <xsl:param name="char2" as="xs:string"/>
+        <xsl:sequence select="f:isUpperCase($char1) = f:isUpperCase($char2)"/>
     </xsl:function>
 
     <xd:doc>
