@@ -158,6 +158,33 @@ already work with having one config folder with all config files.
 * If the variable is a list, and you don't need any values just leave an empty list
 ``<xsl:variable name="stereotypeValidOnAssociations" select="()"/>``
 
+**Example for controlling the generation of reused concepts in artefacts with the config parameters
+variables**
+
+The following variables determine the inclusion or exclusion of reused concepts within each artifact:
+```shell
+<!-- Controls whether reused concepts are generated in SHACL artefact -->
+<xsl:variable name="generateReusedConceptsSHACL" select="fn:true()"/>
+
+<!-- Controls whether reused concepts are generated in OWL core artefact -->
+<xsl:variable name="generateReusedConceptsOWLcore" select="fn:false()"/>
+
+<!-- Controls whether reused concepts are generated in OWL restrictions artefact -->
+<xsl:variable name="generateReusedConceptsOWLrestrictions" select="fn:false()"/>
+
+<!-- Controls whether reused concepts are generated in the glossary -->
+<xsl:variable name="generateReusedConceptsGlossary" select="fn:true()"/>
+```
+
+Explanation
+
+* generateReusedConceptsSHACL: Set to true, reused concepts will be included in SHACL artefact.
+* generateReusedConceptsOWLcore: Set to false, reused concepts will be excluded from OWL core artefact.
+* generateReusedConceptsOWLrestrictions: Set to false, reused concepts will be excluded from OWL restrictions artefact.
+* generateReusedConceptsGlossary: Set to true, reused concepts will be included in the glossary.
+
+By adjusting these variables, it is possible to customize whether specific artefacts contain reused concepts, 
+providing fine control over the content of each output.
 
 #### Namespaces configuration
 In the namespaces.xml file you can add the namespaces that you use in UML model and also can control which of them should
