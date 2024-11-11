@@ -141,13 +141,13 @@
             <xsl:with-param name="elementUri" select="$classURI"/>
         </xsl:call-template>
         
-        <xsl:for-each select="f:getElementTags(.)">
+<!--        <xsl:for-each select="f:getElementTags(.)">
             <xsl:call-template name="coreLayerTags">
                 <xsl:with-param name="elementUri" select="$classURI"/>
                 <xsl:with-param name="tagName" select="./@name"/>
                 <xsl:with-param name="tagValue" select="./@value"/>
             </xsl:call-template>
-        </xsl:for-each>
+        </xsl:for-each>-->
 
     </xsl:template>
 
