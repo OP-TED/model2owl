@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x:description
     xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
@@ -13,6 +14,8 @@
     xmlns:sh="http://www.w3.org/ns/shacl#"
     stylesheet="../../../src/shacl-shape-lib/elements-shacl-shape.xsl">
     
+    <x:param name="translatePlainLiteralToStringTypesInSHACL" select="fn:false()"/>
+
     <x:scenario label="Scenario for testing template with match 'element[@xmi:type = 'uml:Class']">
         <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[224]"/>
         <x:expect label="there is a sh:NodeShape" test="boolean(sh:NodeShape) "/>
@@ -68,6 +71,20 @@
         <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
         <x:expect label="there is a sh:class" test="boolean(rdf:Description/sh:class)"/>
         <x:expect label="there is no sh:datatype" test="not(boolean(sh:property/sh:PropertyShape/sh:datatype))"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for attribute range shape for a class type with rdf:PlainLiteral datatype">
+        <x:call template="attributeRangeShape">
+            <x:param name="attribute" href="../../testData/ePO_core.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[2]"/>
+            <x:param name="className" select="'epo:ProcurementObject'"/>
+        </x:call>
+        <x:expect label="there is an rdf:Description" test="boolean(rdf:Description) "/>
+        <x:expect label="there is no sh:class" test="not(boolean(rdf:Description/sh:class))"/>
+        <x:expect label="rdf:PlainLiteral remains unchanged">
+            <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ProcurementObject-epo-hasAdditionalInformation">
+                <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"/>
+            </rdf:Description>
+        </x:expect>
     </x:scenario>
     
     <x:scenario label="Scenario for attribute multiplicity values are not any (*)">
