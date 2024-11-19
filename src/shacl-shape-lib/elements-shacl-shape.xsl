@@ -263,16 +263,33 @@
                         f:getUmlDataTypeValues($attributeType, $umlDataTypesMapping)
                     else
                         $attributeType"/>
-            <xsl:variable name="datatypeURI"
-                select="
-                    if ($attributeType = $controlledListType) then
-                        f:buildURIfromLexicalQName('skos:Concept')
-                    else
-                        f:buildURIfromLexicalQName($datatype)"/>
+            <xsl:choose>
+                <xsl:when test="$attributeType = 'rdf:PlainLiteral'
+                        and fn:boolean($translatePlainLiteralToStringTypesInSHACL)">
+                    <rdf:Description rdf:about="{$shapePropertyUri}">
+                        <sh:or rdf:parseType="Collection">
+                            <rdf:Description>
+                            <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                            </rdf:Description>
+                            <rdf:Description>
+                            <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+                            </rdf:Description>
+                        </sh:or>
+                    </rdf:Description>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:variable name="datatypeURI"
+                        select="
+                            if ($attributeType = $controlledListType) then
+                                f:buildURIfromLexicalQName('skos:Concept')
+                            else
+                                f:buildURIfromLexicalQName($datatype)"/>
 
-            <rdf:Description rdf:about="{$shapePropertyUri}">
-                <sh:datatype rdf:resource="{$datatypeURI}"/>
-            </rdf:Description>
+                    <rdf:Description rdf:about="{$shapePropertyUri}">
+                        <sh:datatype rdf:resource="{$datatypeURI}"/>
+                    </rdf:Description>
+                </xsl:otherwise>
+            </xsl:choose>
 
         </xsl:if>
         <xsl:if

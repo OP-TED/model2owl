@@ -99,6 +99,12 @@
             'https://www.omg.org/spec/UML/20161101'
         )"/>
 
+    <!-- If enabled then any occurence of rdf:PlainLiteral datatype will be
+    replaced in a SHACL shape. A list of the two string datatypes will be used
+    instead: (xsd:string, rdf:langString).
+    -->
+    <xsl:variable name="translatePlainLiteralToStringTypesInSHACL" select="fn:true()"/>
+
     <!-- _______________________________________________________________________   -->
     <!--                            METADATA SECTION                               -->
     <!-- _______________________________________________________________________   -->
