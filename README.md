@@ -164,8 +164,8 @@ variables**
 The following variables determine the inclusion or exclusion of reused concepts within each artifact:
 ```shell
 
-<!-- This variable stores the concept prefixes that should be excluded from being treated as external or reused.-->
-<xsl:variable name="internalModelPrefixesList" select="('epo', 'epo-not', 'epo-ord', 'epo-cat', 'epo-con', 'epo-ful')"/>
+<!-- This variable stores the concept prefixes that should be excluded from being treated as external or reused. Concepts with these prefixes will be included in the generated artefacts. -->
+<xsl:variable name="includedPrefixesList" select="('epo', 'epo-not', 'epo-ord', 'epo-cat', 'epo-con', 'epo-ful')"/>
 
 <!-- Controls whether reused concepts are generated in SHACL artefact -->
 <xsl:variable name="generateReusedConceptsSHACL" select="fn:true()"/>
@@ -182,7 +182,7 @@ The following variables determine the inclusion or exclusion of reused concepts 
 
 Explanation
 
-* internalModelPrefixesList: Concepts with the specified prefixes in this list will be treated as internal to the model and will not be excluded from the artefacts, regardless of the settings for generating reused concepts controls (see below).
+* includedPrefixesList: Concepts with the specified prefixes in this list will be treated as internal to the model and will not be excluded from the artefacts, regardless of the settings for generating reused concepts controls (see below).
 * generateReusedConceptsSHACL: Set to true, reused concepts will be included in SHACL artefact.
 * generateReusedConceptsOWLcore: Set to false, reused concepts will be excluded from OWL core artefact.
 * generateReusedConceptsOWLrestrictions: Set to false, reused concepts will be excluded from OWL restrictions artefact.

@@ -31,7 +31,7 @@
 
         <!-- Check if the attribute should be processed -->
         <xsl:if
-            test="$generateReusedConceptsOWLrestrictions or $attributePrefix = $internalModelPrefixesList">
+            test="$generateReusedConceptsOWLrestrictions or $attributePrefix = $includedPrefixesList">
             <xsl:call-template name="attributeMultiplicity">
                 <xsl:with-param name="attribute" select="."/>
             </xsl:call-template>
@@ -50,7 +50,7 @@
 
             <!-- Check if the attribute should be processed -->
             <xsl:if
-                test="$generateReusedConceptsOWLrestrictions or $attributePrefix = $internalModelPrefixesList">
+                test="$generateReusedConceptsOWLrestrictions or $attributePrefix = $includedPrefixesList">
                 <xsl:call-template name="attributeDomain">
                     <xsl:with-param name="attributeName" select="."/>
                     <xsl:with-param name="root" select="$root"/>
@@ -318,7 +318,7 @@
             <xsl:variable name="enumerationPrefix" select="fn:substring-before(./@name, ':')"/>
             <!-- Check if the Enumeration should be processed -->
             <xsl:if
-                test="$generateReusedConceptsOWLrestrictions or $enumerationPrefix = $internalModelPrefixesList">
+                test="$generateReusedConceptsOWLrestrictions or $enumerationPrefix = $includedPrefixesList">
                 <xsl:variable name="enumerationURI" select="f:buildURIFromElement(.)"/>
                 <owl:Class rdf:about="{$enumerationURI}">
                     <owl:equivalentClass>
