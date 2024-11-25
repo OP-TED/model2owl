@@ -71,7 +71,7 @@
         <xsl:variable name="classNames" select="f:getDistinctClassNames($root)"/>
         <xsl:for-each select="$classNames">
             <xsl:sort select="." lang="en"/>
-            <xsl:if test="$generateReusedConceptsGlossary or fn:substring-before(., ':') = $internalModelPrefixesList">
+            <xsl:if test="$generateReusedConceptsGlossary or fn:substring-before(., ':') = $includedPrefixesList">
                 <tr>
                     <td>
                         <xsl:value-of select="."/>
@@ -96,7 +96,7 @@
         <xsl:for-each select="$attributeNames">
             <xsl:sort select="." lang="en"/>
             <xsl:variable name="attributeName" select="."/>
-            <xsl:if test="$generateReusedConceptsGlossary or fn:substring-before($attributeName, ':') = $internalModelPrefixesList">
+            <xsl:if test="$generateReusedConceptsGlossary or fn:substring-before($attributeName, ':') = $includedPrefixesList">
             <tr>
                 <xsl:call-template name="classAttributeUsage">
                     <xsl:with-param name="attributeName" select="$attributeName"/>
@@ -183,7 +183,7 @@
         <xsl:variable name="connectorNames" select="f:getDistinctConnectorsNames($root)"/>
         <xsl:for-each select="$connectorNames">
             <xsl:sort select="." lang="en"/>
-            <xsl:if test="$generateReusedConceptsGlossary or fn:substring-before(., ':') = $internalModelPrefixesList">
+            <xsl:if test="$generateReusedConceptsGlossary or fn:substring-before(., ':') = $includedPrefixesList">
                 <xsl:variable name="connectorName" select="."/>
                 <tr>
                     <td>
@@ -221,7 +221,7 @@
                                 if (f:getElementByIdRef(./target/@xmi:idref, $root)/@name) then
                                     f:getElementByIdRef(./target/@xmi:idref, $root)/@name
                                 else
-                                if (fn:substring-before(./target/model/@name, ':') = $internalModelPrefixesList) then
+                                if (fn:substring-before(./target/model/@name, ':') = $includedPrefixesList) then
                                         ./target/model/@name
                                     else
                                     if ($generateReusedConceptsGlossary) then
@@ -234,7 +234,7 @@
                                 if (f:getElementByIdRef(./source/@xmi:idref, $root)/@name) then
                                     f:getElementByIdRef(./source/@xmi:idref, $root)/@name
                                 else
-                                if (fn:substring-before(./source/model/@name, ':') = $internalModelPrefixesList) then
+                                if (fn:substring-before(./source/model/@name, ':') = $includedPrefixesList) then
                                         ./source/model/@name
                                     else
                                     if ($generateReusedConceptsGlossary) then
@@ -278,7 +278,7 @@
                         if (f:getElementByIdRef($connectorsWithSameName/target/@xmi:idref, $root)/@name) then
                             f:getElementByIdRef($connectorsWithSameName/target/@xmi:idref, $root)/@name
                         else
-                        if (fn:substring-before($connectorsWithSameName/target/model/@name, ':') = $internalModelPrefixesList) then
+                        if (fn:substring-before($connectorsWithSameName/target/model/@name, ':') = $includedPrefixesList) then
                         $connectorsWithSameName/target/model/@name
                             else
                                 if ($generateReusedConceptsGlossary) then
@@ -291,7 +291,7 @@
                         if (f:getElementByIdRef($connectorsWithSameName/source/@xmi:idref, $root)/@name) then
                             f:getElementByIdRef($connectorsWithSameName/source/@xmi:idref, $root)/@name
                         else
-                        if (fn:substring-before($connectorsWithSameName/source/model/@name, ':') = $internalModelPrefixesList) then
+                        if (fn:substring-before($connectorsWithSameName/source/model/@name, ':') = $includedPrefixesList) then
                         $connectorsWithSameName/source/model/@name
                             else
                                 if ($generateReusedConceptsGlossary) then

@@ -31,7 +31,7 @@
             test="
                 ./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
                 ($generateReusedConceptsOWLrestrictions or
-                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
+                fn:substring-before($connectorRoleName, ':') = $includedPrefixesList)">
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -51,7 +51,7 @@
             test="
                 ./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
                 ($generateReusedConceptsOWLrestrictions or
-                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
+                fn:substring-before($connectorRoleName, ':') = $includedPrefixesList)">
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -63,7 +63,7 @@
             test="
                 ./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration' and
                 ($generateReusedConceptsOWLrestrictions or
-                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
+                fn:substring-before($connectorRoleName, ':') = $includedPrefixesList)">
             <xsl:call-template name="connectorDependencyRange">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -102,7 +102,7 @@
                     select="fn:substring-before(./target/model/@name, ':')"/>
                 <!-- Check if either the prefixes match the internal list or generateReusedConcepts is true -->
                 <xsl:if
-                    test="$generateReusedConceptsOWLrestrictions or $sourcePrefix = $internalModelPrefixesList">
+                    test="$generateReusedConceptsOWLrestrictions or $sourcePrefix = $includedPrefixesList">
                     <xsl:call-template name="disjointClasses">
                         <xsl:with-param name="generalisation" select="."/>
                     </xsl:call-template>
@@ -128,7 +128,7 @@
                 <xsl:variable name="connectorElement" select="f:getConnectorByName(., $root)"/>
                 <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector($connectorElement)"/>
                 <xsl:if
-                    test="$generateReusedConceptsOWLrestrictions or fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList">
+                    test="$generateReusedConceptsOWLrestrictions or fn:substring-before($connectorRoleName, ':') = $includedPrefixesList">
                     <xsl:call-template name="connectorDomain">
                         <xsl:with-param name="connectorName" select="."/>
                         <xsl:with-param name="root" select="$root"/>
@@ -402,7 +402,7 @@
             <xsl:if
                 test="
                     $generateReusedConceptsOWLrestrictions or
-                    $sourcePrefix = $internalModelPrefixesList">
+                    $sourcePrefix = $includedPrefixesList">
 
                 <rdf:Description rdf:about="{$sourceClassURI}">
                     <owl:equivalentClass rdf:resource="{$targetClassURI}"/>
@@ -454,7 +454,7 @@
             <xsl:if
                 test="
                     $generateReusedConceptsOWLrestrictions or
-                    fn:substring-before($sourceConnector/source/model/@name, ':') = $internalModelPrefixesList">
+                    fn:substring-before($sourceConnector/source/model/@name, ':') = $includedPrefixesList">
                 <rdf:Description rdf:about="{$sourceConnectorSourceRoleURI}">
                     <owl:equivalentProperty rdf:resource="{$targetConnectorSourceRoleURI}"/>
                 </rdf:Description>
@@ -462,7 +462,7 @@
             <xsl:if
                 test="
                     $generateReusedConceptsOWLrestrictions or
-                    fn:substring-before($targetConnector/source/model/@name, ':') = $internalModelPrefixesList">
+                    fn:substring-before($targetConnector/source/model/@name, ':') = $includedPrefixesList">
                 <rdf:Description rdf:about="{$sourceConnectorTargetRoleURI}">
                     <owl:equivalentProperty rdf:resource="{$targetConnectorTargetRoleURI}"/>
                 </rdf:Description>

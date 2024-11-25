@@ -39,7 +39,7 @@
                 not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector') and (
                 $generateReusedConceptsSHACL = fn:true()
                 or
-                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
+                fn:substring-before($connectorRoleName, ':') = $includedPrefixesList)">
             <xsl:call-template name="connectorRange">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -66,7 +66,7 @@
                 not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = ('ProxyConnector', 'Object')) and (
                 $generateReusedConceptsSHACL = fn:true()
                 or
-                fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList)">
+                fn:substring-before($connectorRoleName, ':') = $includedPrefixesList)">
             <xsl:choose>
                 <xsl:when
                     test="not(./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')">

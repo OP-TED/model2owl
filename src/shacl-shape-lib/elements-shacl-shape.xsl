@@ -113,7 +113,7 @@
             select="fn:normalize-space(f:formatDocString($class/properties/@documentation))"/>
         <!-- Check if the prefix is in the list or if generateReusedConceptsSHACL is true -->
         <xsl:if
-            test="$generateReusedConceptsSHACL = fn:true() or $classNamePrefix = $internalModelPrefixesList">
+            test="$generateReusedConceptsSHACL = fn:true() or $classNamePrefix = $includedPrefixesList">
             <sh:NodeShape rdf:about="{$shapeClassUri}">
                 <sh:targetClass rdf:resource="{$classURI}"/>
 
@@ -164,7 +164,7 @@
         <!--        generating only for attributes that don't have a coresponding relation (dependency)-->
         <xsl:if test="not($isAttributeWithDependencyName)">
             <xsl:if
-                test="$generateReusedConceptsSHACL = fn:true() or $attributePrefix = $internalModelPrefixesList">
+                test="$generateReusedConceptsSHACL = fn:true() or $attributePrefix = $includedPrefixesList">
                 <xsl:call-template name="classAttributeDeclaration">
                     <xsl:with-param name="attribute" select="."/>
                     <xsl:with-param name="className" select="$className"/>

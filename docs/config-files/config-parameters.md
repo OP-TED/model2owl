@@ -89,9 +89,9 @@ This document provides an explanation for the variables in the configuration fil
 - **Type:** String (Regex Pattern)
 - **Description:** Defines valid characters for a normalised string.
 
-### 18. `internalModelPrefixesList`
+### 18. `includedPrefixesList`
 - **Type:** List
-- **Description:** Specifies prefixes that should be considered internal to the model and not reused.
+- **Description:** Specifies prefixes that should be considered internal to the model and not reused. The variable controls what concepts will be *included* in the generated artefacts when generation of reused concepts is disabled. 
 
 ### 19. Filter reused concepts variables
 - **Type:** Boolean
