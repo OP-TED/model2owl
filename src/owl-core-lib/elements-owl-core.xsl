@@ -105,7 +105,7 @@
     <xsl:template match="element[@xmi:type = 'uml:Class']">
         <xsl:variable name="classPrefix" select="fn:substring-before(./@name, ':')"/>
         <!-- Check if the class should be processed -->
-        <xsl:if test="$generateReusedConceptsOWLcore or $classPrefix = $internalModelPrefixesList">
+        <xsl:if test="$generateReusedConceptsOWLcore or $classPrefix = $includedPrefixesList">
             <xsl:call-template name="classDeclaration"/>
         </xsl:if>
 
@@ -171,7 +171,7 @@
 
             <!-- Check if the attribute should be processed -->
             <xsl:if
-                test="$generateReusedConceptsOWLcore or $attributePrefix = $internalModelPrefixesList">
+                test="$generateReusedConceptsOWLcore or $attributePrefix = $includedPrefixesList">
                 <xsl:call-template name="generatePropertyFromAttribute">
                     <xsl:with-param name="attributeName" select="."/>
                     <xsl:with-param name="root" select="$root"/>
@@ -285,7 +285,7 @@
 
         <!-- Check if the DataType should be processed -->
         <xsl:if
-            test="$generateReusedConceptsOWLcore or $dataTypePrefix = $internalModelPrefixesList">
+            test="$generateReusedConceptsOWLcore or $dataTypePrefix = $includedPrefixesList">
             <xsl:choose>
                 <xsl:when test="not(attributes)">
                     <xsl:call-template name="datatypeDeclaration"/>
@@ -349,7 +349,7 @@
             <xsl:variable name="enumerationPrefix" select="fn:substring-before($conceptSchemeName, ':')"/>
             <!-- Check if the Enumeration should be processed -->
             <xsl:if
-                test="$generateReusedConceptsOWLcore or $enumerationPrefix = $internalModelPrefixesList">
+                test="$generateReusedConceptsOWLcore or $enumerationPrefix = $includedPrefixesList">
                 <xsl:variable name="conceptSchemeURI" select="f:buildURIFromElement(.)"/>
                 <xsl:variable name="documentation"
                     select="fn:normalize-space(f:formatDocString(./properties/@documentation))"/>
@@ -406,7 +406,7 @@
                 select="fn:substring-before($enumerationAttributeName, ':')"/>
             <!-- Check if the Enumeration should be processed -->
             <xsl:if
-                test="$generateReusedConceptsOWLcore or $enumerationAttributePrefix = $internalModelPrefixesList">
+                test="$generateReusedConceptsOWLcore or $enumerationAttributePrefix = $includedPrefixesList">
                 <xsl:variable name="enumerationAttributeURI" select="f:buildURIFromElement(.)"/>
                 <xsl:variable name="enumerationURI" select="f:buildURIFromElement(../..)"/>
                 <xsl:variable name="documentation"

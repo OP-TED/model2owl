@@ -49,9 +49,9 @@
             <xsl:variable name="targetPrefix"
                 select="fn:substring-before(./target/model/@name, ':')"/>
 
-            <!-- Check if either the prefixes match the internal list or generateReusedConcepts is true -->
+            <!-- Check if either the prefixes match the internal prefixes list (prefixes to be included) or generateReusedConcepts is true -->
             <xsl:if
-                test="$generateReusedConceptsOWLcore or ($sourcePrefix = $internalModelPrefixesList or $targetPrefix = $internalModelPrefixesList)">
+                test="$generateReusedConceptsOWLcore or ($sourcePrefix = $includedPrefixesList or $targetPrefix = $includedPrefixesList)">
                 <xsl:call-template name="classRealisation">
                     <xsl:with-param name="realisation" select="."/>
                 </xsl:call-template>
@@ -142,7 +142,7 @@
                     select="fn:substring-before($targetConnectorTargetName, ':')"/>
                 <!-- Check if either the prefixes match the internal list or generateReusedConcepts is true -->
                 <xsl:if
-                    test="$generateReusedConceptsOWLcore or $sourceConnectorTargetNamePrefix = $internalModelPrefixesList">
+                    test="$generateReusedConceptsOWLcore or $sourceConnectorTargetNamePrefix = $includedPrefixesList">
                     <owl:ObjectProperty rdf:about="{$sourceConnectorTargetUri}">
                         <rdfs:subPropertyOf rdf:resource="{$targetConnectorTargetUri}"/>
                     </owl:ObjectProperty>
@@ -181,7 +181,7 @@
                     select="fn:substring-before($sourceConnectorSourceName, ':')"/>
                 <!-- Check if either the prefixes match the internal list or generateReusedConcepts is true -->
                 <xsl:if
-                    test="$generateReusedConceptsOWLcore or $sourceConnectorSourceNamePrefix = $internalModelPrefixesList">
+                    test="$generateReusedConceptsOWLcore or $sourceConnectorSourceNamePrefix = $includedPrefixesList">
 
                     <owl:ObjectProperty rdf:about="{$sourceConnectorSourceUri}">
                         <rdfs:subPropertyOf rdf:resource="{$targetConnectorSourceUri}"/>
@@ -206,7 +206,7 @@
                 <xsl:variable name="connectorElement" select="f:getConnectorByName(., $root)"/>
                 <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector($connectorElement)"/>
                 <xsl:if
-                    test="$generateReusedConceptsOWLcore or fn:substring-before($connectorRoleName, ':') = $internalModelPrefixesList">
+                    test="$generateReusedConceptsOWLcore or fn:substring-before($connectorRoleName, ':') = $includedPrefixesList">
 
                     <xsl:call-template name="genericConnector">
                         <xsl:with-param name="connectorName" select="."/>
@@ -311,7 +311,7 @@
         <xsl:if test="f:getElementByIdRef(./source/@xmi:idref, root(.))">
 
             <xsl:for-each select="$subClasses">
-                <xsl:if test="$generateReusedConceptsOWLcore or fn:substring-before(./@name, ':') = $internalModelPrefixesList">
+                <xsl:if test="$generateReusedConceptsOWLcore or fn:substring-before(./@name, ':') = $includedPrefixesList">
                 <xsl:variable name="subClassURI" select="f:buildURIFromElement(.)"/>
                 <owl:Class rdf:about="{$subClassURI}">
                     <rdfs:subClassOf rdf:resource="{$superClassURI}"/>

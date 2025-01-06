@@ -26,7 +26,7 @@
 
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
         <xsl:variable name="generalizationChecks" as="item()*">
-
+            <xsl:if test="f:checkIfConnectorTargetAndSourceElementsExists(.)">
                 <xsl:call-template name="generalizationClassWithSingleChild">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
@@ -48,7 +48,7 @@
                 <xsl:call-template name="generalizationSourceTargetTypes">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
-            
+            </xsl:if>
         </xsl:variable>
         <xsl:if test="boolean($generalizationChecks)">
             <xsl:choose>
