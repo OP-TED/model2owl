@@ -25,14 +25,14 @@
     <xsl:template match="xmi:XMI">
         <xsl:apply-templates select="/xmi:XMI/xmi:Extension/elements"/>
         <xsl:apply-templates select="/xmi:XMI/xmi:Extension/connectors"/>
-        <xsl:apply-templates select="/xmi:XMI/uml:Model/packagedElement//ownedComment"/>
+        <xsl:apply-templates select="/xmi:XMI//packagedElement//ownedComment"/>
     </xsl:template>
     
     <xd:doc>
         <xd:desc>This template target floating comments in the model</xd:desc>
     </xd:doc>
     <xsl:template match="ownedComment">
-        <xsl:apply-templates select="ownedComment[@xmi:type='uml:Comment']"/>
+        <xsl:apply-templates select="ownedComment[@xmi:type = 'uml:Comment']"/>
     </xsl:template>
 
     <xd:doc>

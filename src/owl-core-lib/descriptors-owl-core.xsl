@@ -104,7 +104,7 @@
                     <xsl:variable name="langTag" select="fn:substring-after($tagName, '@')"/>
                     <xsl:variable name="normalisedTagName"
                         select="fn:substring-before($tagName, '@')"/>
-                <xsl:element name="{$normalisedTagName}">
+                <xsl:element name="{$normalisedTagName}" namespace="{f:getNamespaceURI(fn:substring-before($tagName, ':'))}">
                         <xsl:attribute name="xml:lang">
                             <xsl:value-of select="$langTag"/>
                         </xsl:attribute>
@@ -119,12 +119,12 @@
                 
                 <xsl:choose>
                     <xsl:when test="$datatypeValue='string'">
-                        <xsl:element name="{fn:substring-before($tagName,'^^')}">
+                        <xsl:element name="{fn:substring-before($tagName,'^^')}" namespace="{f:getNamespaceURI(fn:substring-before($tagName, ':'))}">
                             <xsl:value-of select="$tagValue"/>
                         </xsl:element>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:element name="{fn:substring-before($tagName,'^^')}">
+                        <xsl:element name="{fn:substring-before($tagName,'^^')}" namespace="{f:getNamespaceURI(fn:substring-before($tagName, ':'))}">
                             <xsl:attribute name="rdf:datatype">
                                 <xsl:value-of select="fn:concat($expandedDatatypePrefix,$datatypeValue)"/>
                             </xsl:attribute>
@@ -135,14 +135,14 @@
             </xsl:when>
             <xsl:when test="fn:contains($tagName, '&lt;&gt;')">
                 <xsl:variable name="tagPrefix" select="fn:substring-before($tagName, ':')"/>
-                <xsl:element name="{fn:substring-before($tagName,'&lt;&gt;')}">
+                <xsl:element name="{fn:substring-before($tagName,'&lt;&gt;')}" namespace="{f:getNamespaceURI(fn:substring-before($tagName, ':'))}">
                     <xsl:attribute name="rdf:resource">
                         <xsl:value-of select="$tagValue"/>
                     </xsl:attribute>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="{$tagName}">
+                <xsl:element name="{$tagName}" namespace="{f:getNamespaceURI(fn:substring-before($tagName, ':'))}">
                     <xsl:attribute name="xml:lang">
                         <xsl:value-of select="'en'"/>
                     </xsl:attribute>
