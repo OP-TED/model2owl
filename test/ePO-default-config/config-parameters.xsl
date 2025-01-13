@@ -16,7 +16,6 @@
     </xd:doc>
 
 
-
     <!-- a set of prefix-baseURI definitions -->
     <xsl:variable name="namespacePrefixes" select="fn:doc('namespaces.xml')"/>
 
@@ -82,6 +81,9 @@
     <xsl:variable name="generateReusedConceptsOWLcore" select="fn:true()"/>
     <xsl:variable name="generateReusedConceptsOWLrestrictions" select="fn:true()"/>
     <xsl:variable name="generateReusedConceptsGlossary" select="fn:true()"/>
+    
+    <xsl:variable name="commentsGeneration" select="fn:false()"/>
+    <xsl:variable name="commentProperty" select="'skos:editorialNote'"/>
 
     <!-- This variable control if Object and Realisation are generated -->
     <xsl:variable name="generateObjectsAndRealisations" select="fn:false()"/>

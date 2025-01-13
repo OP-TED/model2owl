@@ -279,6 +279,13 @@
         <x:expect label="no tags" select="()"/>
     </x:scenario>
     
+    <x:scenario label="Get connector tags ">
+        <x:call function="f:getConnectorTags">
+            <x:param name="element" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[92]"/>
+        </x:call>
+        <x:expect label="correct tags number" test="count(/tag)=8"/>
+    </x:scenario>
+    
     <x:scenario label="Get connector role name value - Source -> Destination">
         <x:call function="f:getRoleNameFromConnector">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[21]"/>
