@@ -84,6 +84,7 @@
     
     <xsl:variable name="commentsGeneration" select="fn:false()"/>
     <xsl:variable name="commentProperty" select="'skos:editorialNote'"/>
+    <xsl:variable name="generateComments" select="fn:true()"/>
 
     <!-- This variable control if Object and Realisation are generated -->
     <xsl:variable name="generateObjectsAndRealisations" select="fn:false()"/>
