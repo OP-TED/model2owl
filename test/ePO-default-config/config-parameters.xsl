@@ -82,9 +82,8 @@
     <xsl:variable name="generateReusedConceptsOWLrestrictions" select="fn:true()"/>
     <xsl:variable name="generateReusedConceptsGlossary" select="fn:true()"/>
     
-    <xsl:variable name="commentsGeneration" select="fn:false()"/>
+    <xsl:variable name="commentsGeneration" select="fn:true()"/>
     <xsl:variable name="commentProperty" select="'skos:editorialNote'"/>
-    <xsl:variable name="generateComments" select="fn:false()"/>
 
     <!-- This variable control if Object and Realisation are generated -->
     <xsl:variable name="generateObjectsAndRealisations" select="fn:false()"/>

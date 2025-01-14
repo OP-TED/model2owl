@@ -36,7 +36,7 @@
             Selector to run core layer transfomation rules for commnents </xd:desc>
     </xd:doc>
     <xsl:template match="ownedComment[@xmi:type = 'uml:Comment']">
-        <xsl:if test="$generateComments">
+        <xsl:if test="$commentsGeneration">
         <xsl:variable name="commentText" select="./@body"/>
         <xsl:for-each select="./annotatedElement/@xmi:idref">
             <xsl:variable name="elementFound" select="f:getElementByIdRef(., root(.))"/>
