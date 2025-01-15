@@ -632,5 +632,51 @@
             <xsl:namespace name="{./@name}" select="./@value"/>
         </xsl:for-each>
     </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>This template will return true or false if the an element should be filtered or not by looking at 
+        the status value
+        :nodeInput can be an element or connector
+        </xd:desc>
+        <xd:param name="nodeInput"/>
+    </xd:doc>
+    
+    <xsl:function name="f:isExcludedByStatus">
+        <xsl:param name="nodeInput" as="node()*"/>
+        
+        <!-- Get all tags for the element -->
+        <xsl:variable name="tags"
+            select="
+                if (local-name($nodeInput) = 'connector') then
+                    f:getConnectorTags($nodeInput)
+                else
+                    f:getElementTags($nodeInput)"/>
+        
+        <!-- Find the status tag -->
+        <xsl:variable name="statusTag" select="
+            for $tag in $tags
+            return if ($tag/@name = $statusProperty) then $tag else ()"/>
+        <xsl:message>Status Tag: <xsl:copy-of select="$statusTag"/></xsl:message>
+        <!-- Extract the value of the status tag -->
+        <xsl:variable name="statusValue" select="$statusTag/@value"/>
+
+        <!-- Validation: Ensure statusValue is in validStatusesList -->
+        <xsl:if test="$statusValue and not($statusValue = $validStatusesList)">
+            <xsl:message terminate="yes"> Error: Invalid status value "<xsl:value-of
+                    select="$statusValue"/>" for element with ID "<xsl:value-of
+                    select="$nodeInput/@xmi:id"/>". Allowed values are: <xsl:value-of
+                    select="string-join($validStatusesList, ', ')"/>. </xsl:message>
+        </xsl:if>
+<xsl:message><xsl:value-of select="fn:concat('Status is ', $statusValue)"/></xsl:message>
+        <!-- Determine if the element should be excluded -->
+        <xsl:sequence
+            select="
+                if (not($statusValue)) then
+                    $unspecifiedStatusInterpretation = $excludedElementStatusesList
+                else
+                    $statusValue = $excludedElementStatusesList
+                "
+        />
+    </xsl:function>
 
 </xsl:stylesheet>
