@@ -26,7 +26,7 @@
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
         <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
-
+        <xsl:if test="not(f:isExcludedByStatus(.))">
         <xsl:if
             test="
                 ./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
@@ -39,6 +39,7 @@
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
         </xsl:if>
+        </xsl:if>
     </xsl:template>
 
     <xd:doc>
@@ -47,6 +48,7 @@
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
         <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
+        <xsl:if test="not(f:isExcludedByStatus(.))">
         <xsl:if
             test="
                 ./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
@@ -68,6 +70,7 @@
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
         </xsl:if>
+        </xsl:if>
     </xsl:template>
 
     <xd:doc>
@@ -75,6 +78,7 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
+        <xsl:if test="not(f:isExcludedByStatus(.))">
         <!--        Filtering for external/internal concepts are inside the functions below due complexity of the functions-->
         <xsl:call-template name="classEquivalence">
             <xsl:with-param name="generalisation" select="."/>
@@ -82,7 +86,7 @@
         <xsl:call-template name="propertiesEquivalence">
             <xsl:with-param name="generalisation" select="."/>
         </xsl:call-template>
-
+        </xsl:if>
 
     </xsl:template>
 
@@ -94,6 +98,7 @@
         <xsl:variable name="generalisations"
             select="//connector[./properties/@ea_type = 'Generalization'][not(target/@xmi:idref = preceding::connector[./properties/@ea_type = 'Generalization']/target/@xmi:idref)]"/>
         <xsl:for-each select="$generalisations">
+            <xsl:if test="not(f:isExcludedByStatus(.))">
             <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">
                 <!-- Extract prefixes for source and target -->
                 <xsl:variable name="sourcePrefix"
@@ -107,6 +112,7 @@
                         <xsl:with-param name="generalisation" select="."/>
                     </xsl:call-template>
                 </xsl:if>
+            </xsl:if>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
@@ -122,7 +128,7 @@
         <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
         <!--        TODO Figure out dependencies to Objects -->
         <xsl:for-each select="$distinctNames">
-
+            <xsl:if test="not(f:isExcludedByStatus(f:getConnectorByName(., $root)[1]))">
             <xsl:if
                 test="f:getConnectorByName(., $root)[1]/properties/@ea_type = ('Dependency', 'Association') and f:getConnectorByName(., $root)[1]/target/model/@type != 'Object'">
                 <xsl:variable name="connectorElement" select="f:getConnectorByName(., $root)"/>
@@ -142,6 +148,7 @@
                         <xsl:with-param name="root" select="$root"/>
                     </xsl:call-template>
                 </xsl:if>
+            </xsl:if>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>

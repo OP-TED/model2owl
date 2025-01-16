@@ -656,7 +656,6 @@
         <xsl:variable name="statusTag" select="
             for $tag in $tags
             return if ($tag/@name = $statusProperty) then $tag else ()"/>
-        <xsl:message>Status Tag: <xsl:copy-of select="$statusTag"/></xsl:message>
         <!-- Extract the value of the status tag -->
         <xsl:variable name="statusValue" select="$statusTag/@value"/>
 
@@ -667,7 +666,6 @@
                     select="$nodeInput/@xmi:id"/>". Allowed values are: <xsl:value-of
                     select="string-join($validStatusesList, ', ')"/>. </xsl:message>
         </xsl:if>
-<xsl:message><xsl:value-of select="fn:concat('Status is ', $statusValue)"/></xsl:message>
         <!-- Determine if the element should be excluded -->
         <xsl:sequence
             select="

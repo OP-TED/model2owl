@@ -26,6 +26,7 @@
         <xd:desc>Applying reasoning layer rule to all attributes</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
+        <xsl:if test="not(f:isExcludedByStatus(.))">
         <!-- Extract the prefix from the attribute name -->
         <xsl:variable name="attributePrefix" select="fn:substring-before(./@name, ':')"/>
 
@@ -36,6 +37,7 @@
                 <xsl:with-param name="attribute" select="."/>
             </xsl:call-template>
         </xsl:if>
+        </xsl:if>
     </xsl:template>
 
     <xd:doc>
@@ -45,6 +47,7 @@
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctClassAttributeNames($root)"/>
         <xsl:for-each select="$distinctNames">
+            <xsl:if test="not(f:isExcludedByStatus(f:getClassAttributeByName(., $root)[1]))">
             <!-- Extract the prefix from the attribute name -->
             <xsl:variable name="attributePrefix" select="fn:substring-before(., ':')"/>
 
@@ -63,6 +66,7 @@
                     <xsl:with-param name="attributeName" select="."/>
                     <xsl:with-param name="root" select="$root"/>
                 </xsl:call-template>
+            </xsl:if>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
@@ -315,6 +319,7 @@
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
         <xsl:if test="$enableGenerationOfConceptSchemes">
+            <xsl:if test="not(f:isExcludedByStatus(.))">
             <xsl:variable name="enumerationPrefix" select="fn:substring-before(./@name, ':')"/>
             <!-- Check if the Enumeration should be processed -->
             <xsl:if
@@ -331,6 +336,7 @@
                     <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
                 </owl:Class>
             </xsl:if>
+            </xsl:if> 
         </xsl:if>
     </xsl:template>
 
