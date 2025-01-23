@@ -112,13 +112,15 @@
                     </xsl:element>
                 </xsl:when>
             <xsl:when test="fn:contains($tagName, '^^')">
-                <xsl:variable name="datatype" select="fn:substring-after($tagName, '^^')"/>
-                <xsl:variable name="datatypePrefix" select="fn:substring-before($datatype, ':')"/>
-                <xsl:variable name="datatypeValue" select="fn:substring-after($datatype, ':')"/>
+                <xsl:variable name="datatypeCompactURI" select="fn:substring-after($tagName, '^^')"/>
+                <xsl:variable name="datatypePrefix" select="fn:substring-before($datatypeCompactURI, ':')"/>
+                <xsl:variable name="datatypeLocalName" select="fn:substring-after($datatypeCompactURI, ':')"/>
                 <xsl:variable name="expandedDatatypePrefix" select="f:getNamespaceURI($datatypePrefix)"/>
+                <xsl:if test="f:validateTagValue($tagValue,$datatypeCompactURI)">
+                    
                 
                 <xsl:choose>
-                    <xsl:when test="$datatypeValue='string'">
+                    <xsl:when test="$datatypeLocalName='string'">
                         <xsl:element name="{fn:substring-before($tagName,'^^')}" namespace="{f:getNamespaceURI(fn:substring-before($tagName, ':'))}">
                             <xsl:value-of select="$tagValue"/>
                         </xsl:element>
@@ -126,20 +128,23 @@
                     <xsl:otherwise>
                         <xsl:element name="{fn:substring-before($tagName,'^^')}" namespace="{f:getNamespaceURI(fn:substring-before($tagName, ':'))}">
                             <xsl:attribute name="rdf:datatype">
-                                <xsl:value-of select="fn:concat($expandedDatatypePrefix,$datatypeValue)"/>
+                                <xsl:value-of select="fn:concat($expandedDatatypePrefix,$datatypeLocalName)"/>
                             </xsl:attribute>
                             <xsl:value-of select="$tagValue"/>
                         </xsl:element>
                     </xsl:otherwise>
                 </xsl:choose>
+                </xsl:if>
             </xsl:when>
             <xsl:when test="fn:contains($tagName, '&lt;&gt;')">
+                <xsl:if test="f:validateTagValue($tagValue,'xsd:anyURI')">
                 <xsl:variable name="tagPrefix" select="fn:substring-before($tagName, ':')"/>
                 <xsl:element name="{fn:substring-before($tagName,'&lt;&gt;')}" namespace="{f:getNamespaceURI(fn:substring-before($tagName, ':'))}">
                     <xsl:attribute name="rdf:resource">
                         <xsl:value-of select="$tagValue"/>
                     </xsl:attribute>
                 </xsl:element>
+                </xsl:if>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:element name="{$tagName}" namespace="{f:getNamespaceURI(fn:substring-before($tagName, ':'))}">
@@ -152,6 +157,8 @@
         </xsl:choose>      
         </rdf:Description>
     </xsl:template>
+    
+    
     
 
 </xsl:stylesheet>

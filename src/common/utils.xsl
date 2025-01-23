@@ -632,5 +632,112 @@
             <xsl:namespace name="{./@name}" select="./@value"/>
         </xsl:for-each>
     </xsl:template>
+    
+    
+    <!-- Grouped Datatypes as Lists -->
+    <xsl:variable name="numericDatatypes" as="xs:string*">
+        <xsl:sequence select="'xsd:integer', 'xsd:decimal', 'xsd:double', 'xsd:float',
+            'xsd:byte', 'xsd:short', 'xsd:int', 'xsd:long',
+            'xsd:negativeInteger', 'xsd:nonNegativeInteger',
+            'xsd:positiveInteger', 'xsd:nonPositiveInteger',
+            'xsd:unsignedByte', 'xsd:unsignedShort',
+            'xsd:unsignedInt', 'xsd:unsignedLong'"/>
+    </xsl:variable>
+    
+    <xsl:variable name="booleanDatatypes" as="xs:string*">
+        <xsl:sequence select="'xsd:boolean'"/>
+    </xsl:variable>
+    
+    <xsl:variable name="dateTimeDatatypes" as="xs:string*">
+        <xsl:sequence select="'xsd:date', 'xsd:time', 'xsd:dateTime', 'xsd:dateTimeStamp'"/>
+    </xsl:variable>
+    
+    <xsl:variable name="stringDatatypes" as="xs:string*">
+        <xsl:sequence select="'xsd:string', 'xsd:normalizedString', 'xsd:token',
+            'xsd:Name', 'xsd:NCName', 'xsd:NMTOKEN',
+            'xsd:language', 'rdf:PlainLiteral', 'rdf:langString'"/>
+    </xsl:variable>
+    
+    
+    <xd:doc>
+        <xd:desc>
+            This function validates the value entered by the user in a tag against its corresponding datatype.
+            
+            Due to XSLT limitations, specifically with the castable as expression, the validation process can't be done dynamically 
+            so multiple datatypes needs to be grouped in the validation process. For instance:
+            
+            Data types such as xsd:integer and xsd:double are grouped under xs:double for validation purposes.
+            Similarly, other related data types are grouped into predefined variables.
+            
+            If a new custom data type is introduced, it must be added to the appropriate grouping variable to ensure validation.
+            This is a workaround due limitations of XSLT
+        </xd:desc>
+        <xd:param name="tagValue"/>
+        <xd:param name="datatypeQName"/>
+    </xd:doc>
+    <xsl:function name="f:validateTagValue" as="xs:boolean">
+        <xsl:param name="tagValue" as="xs:string"/>
+        <xsl:param name="datatypeQName" as="xs:string"/>
+        
+        <!-- Validation based on resolved datatype -->
+        <xsl:choose>
+            <!-- Numeric Types -->
+            <xsl:when test="$datatypeQName = $numericDatatypes">
+                <xsl:if test="not($tagValue castable as xs:double)">
+                    <xsl:sequence select="fn:error(
+                        xs:QName('invalidValueError'),
+                        concat('Error: Value ', $tagValue, ' is not valid for numeric type ', $datatypeQName, '.')
+                        )"/>
+                </xsl:if>
+            </xsl:when>
+            
+            <!-- Boolean Type -->
+            <xsl:when test="$datatypeQName = $booleanDatatypes">
+                <xsl:if test="not($tagValue castable as xs:boolean)">
+                    <xsl:sequence select="fn:error(
+                        xs:QName('invalidValueError'),
+                        concat('Error: Value ', $tagValue, ' is not valid for boolean type ', $datatypeQName, '.')
+                        )"/>
+                </xsl:if>
+            </xsl:when>
+            
+            <!-- Date and Time Types -->
+            <xsl:when test="$datatypeQName = $dateTimeDatatypes">
+                <xsl:if test="not($tagValue castable as xs:dateTime)">
+                    <xsl:sequence select="fn:error(
+                        xs:QName('invalidValueError'),
+                        concat('Error: Value ', $tagValue, ' is not valid for date/time type ', $datatypeQName, '.')
+                        )"/>
+                </xsl:if>
+            </xsl:when>
+            
+            <!-- Strings and Text Types -->
+            <xsl:when test="$datatypeQName = $stringDatatypes">
+                <!-- Strings are always valid -->
+            </xsl:when>
+            
+            <!-- URI Validation -->
+            <xsl:when test="$datatypeQName = 'xsd:anyURI'">
+                <xsl:if test="not($tagValue castable as xs:anyURI)">
+                    <xsl:sequence select="fn:error(
+                        xs:QName('invalidValueError'),
+                        concat('Error: Value ', $tagValue, ' is not a valid URI.')
+                        )"/>
+                </xsl:if>
+            </xsl:when>
+            
+            <!-- Unsupported Types -->
+            <xsl:otherwise>
+                <xsl:sequence select="fn:error(
+                    xs:QName('invalidValueError'),
+                    concat('Error: Unsupported datatype ', $datatypeQName, '.')
+                    )"/>
+            </xsl:otherwise>
+        </xsl:choose>
+        
+        <!-- Return true for valid values -->
+        <xsl:sequence select="fn:true()"/>
+    </xsl:function>
+    
 
 </xsl:stylesheet>

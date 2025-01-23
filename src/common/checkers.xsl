@@ -427,7 +427,7 @@
         <xsl:param name="tagName"/>
         <xsl:sequence
             select="
-                if (fn:matches($tagName, '^(:\w+|[a-z][-a-z0-9]*:[-a-zA-Z0-9_@]+)$')) then
+            if (fn:matches($tagName, '^[a-z][-a-z0-9]*:[-a-zA-Z0-9_]+(?:@[a-zA-Z]+|\\^\\^[-a-zA-Z0-9_]+|&lt;&gt;)?$')) then
                     fn:true()
                 else
                     fn:false()"
