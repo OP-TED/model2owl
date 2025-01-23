@@ -637,6 +637,11 @@
         <xd:desc>This template will return true or false if the an element should be filtered or not by looking at 
         the status value
         :nodeInput can be an element or connector
+        - If a `statusValue` is provided, it checks whether the value is part of the `excludedElementStatusesList`.
+        - If no `statusValue` is provided (i.e., the status is undefined), the function falls back to using
+          the `unspecifiedStatusInterpretation` as the default status value. It then checks whether this default
+          status is part of the `excludedElementStatusesList`.
+
         </xd:desc>
         <xd:param name="nodeInput"/>
     </xd:doc>
