@@ -120,7 +120,7 @@
                     
                 
                 <xsl:choose>
-                    <xsl:when test="$datatypeLocalName='string'">
+                    <xsl:when test="$datatypeCompactURI=$stringDatatypes">
                         <xsl:element name="{fn:substring-before($tagName,'^^')}" namespace="{f:getNamespaceURI(fn:substring-before($tagName, ':'))}">
                             <xsl:value-of select="$tagValue"/>
                         </xsl:element>
