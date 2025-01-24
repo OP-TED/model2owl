@@ -419,7 +419,12 @@
 
 
     <xd:doc>
-        <xd:desc>Checks if tag name is an URI</xd:desc>
+        <xd:desc>Checks if tag name is one of the following cases :
+            namespace:localName
+            namespace:localName@en
+            namespace:localName^^xsd:integer
+            namespace:localName&lt;&gt;
+        </xd:desc>
         <xd:param name="tagName"/>
     </xd:doc>
 
@@ -427,7 +432,11 @@
         <xsl:param name="tagName"/>
         <xsl:sequence
             select="
-            if (fn:matches($tagName, '^[a-z][-a-z0-9]*:[-a-zA-Z0-9_]+(?:@[a-zA-Z]+|\\^\\^[-a-zA-Z0-9_]+|&lt;&gt;)?$')) then
+            if (
+            fn:matches($tagName, '^[a-z][-a-z0-9]*:[-a-zA-Z0-9_]+$') or
+            fn:matches($tagName, '^[a-z][-a-z0-9]*:[-a-zA-Z0-9_]+@[a-zA-Z]+$') or
+            fn:matches($tagName, '^[a-z][-a-z0-9]*:[-a-zA-Z0-9]+\^\^[a-z][-a-z0-9]*:[-a-zA-Z0-9]+$') or
+            fn:matches($tagName, '^[a-z][-a-z0-9]*:[-a-zA-Z0-9_]+&lt;&gt;$')) then
                     fn:true()
                 else
                     fn:false()"

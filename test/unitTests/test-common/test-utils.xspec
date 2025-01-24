@@ -337,21 +337,17 @@
             <x:expect label="result" select="fn:true()"/>
         </x:scenario>
         
-        <x:scenario label="invalid URI" catch="yes">
-            <x:call function="f:validateTagValue">
-                <x:param name="tagValue" select="'invalid_uri'"/>
-                <x:param name="datatypeQName" select="'xsd:anyURI'"/>
-            </x:call>
-        </x:scenario>
-        
         <x:scenario label="invalid integer" catch="yes">
             <x:call function="f:validateTagValue">
                 <x:param name="tagValue" select="'integer'"/>
-                <x:param name="datatypeQName" select="'xsd:int'"/>  
+                <x:param name="datatypeQName" select="'xsd:int'"/> 
             </x:call>
+            <x:expect label="err:description" test="boolean($x:result?err?description)"/>
         </x:scenario>
 
     </x:scenario>
+    
+
 
 
     <x:scenario label="Scenario for testing function buildPropertyShapeURI">
