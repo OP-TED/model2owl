@@ -632,8 +632,8 @@
             <xsl:namespace name="{./@name}" select="./@value"/>
         </xsl:for-each>
     </xsl:template>
-    
-    
+
+
     <!-- Grouped Datatypes as Lists -->
     <xsl:variable name="numericDatatypes" as="xs:string*">
         <xsl:sequence select="'xsd:integer', 'xsd:decimal', 'xsd:double', 'xsd:float',
@@ -643,32 +643,32 @@
             'xsd:unsignedByte', 'xsd:unsignedShort',
             'xsd:unsignedInt', 'xsd:unsignedLong'"/>
     </xsl:variable>
-    
+
     <xsl:variable name="booleanDatatypes" as="xs:string*">
         <xsl:sequence select="'xsd:boolean'"/>
     </xsl:variable>
-    
+
     <xsl:variable name="dateTimeDatatypes" as="xs:string*">
         <xsl:sequence select="'xsd:date', 'xsd:time', 'xsd:dateTime', 'xsd:dateTimeStamp'"/>
     </xsl:variable>
-    
+
     <xsl:variable name="stringDatatypes" as="xs:string*">
         <xsl:sequence select="'xsd:string', 'xsd:normalizedString', 'xsd:token',
             'xsd:Name', 'xsd:NCName', 'xsd:NMTOKEN',
             'xsd:language', 'rdf:PlainLiteral', 'rdf:langString'"/>
     </xsl:variable>
-    
-    
+
+
     <xd:doc>
         <xd:desc>
             This function validates the value entered by the user in a tag against its corresponding datatype.
-            
-            Due to XSLT limitations, specifically with the castable as expression, the validation process can't be done dynamically 
+
+            Due to XSLT limitations, specifically with the castable as expression, the validation process can't be done dynamically
             so multiple datatypes needs to be grouped in the validation process. For instance:
-            
+
             Data types such as xsd:integer and xsd:double are grouped under xs:double for validation purposes.
             Similarly, other related data types are grouped into predefined variables.
-            
+
             If a new custom data type is introduced, it must be added to the appropriate grouping variable to ensure validation.
             This is a workaround due limitations of XSLT
         </xd:desc>
@@ -678,7 +678,7 @@
     <xsl:function name="f:validateTagValue" as="xs:boolean">
         <xsl:param name="tagValue" as="xs:string"/>
         <xsl:param name="datatypeQName" as="xs:string"/>
-        
+
         <!-- Validation based on resolved datatype -->
         <xsl:choose>
             <!-- Numeric Types -->
@@ -690,7 +690,7 @@
                         )"/>
                 </xsl:if>
             </xsl:when>
-            
+
             <!-- Boolean Type -->
             <xsl:when test="$datatypeQName = $booleanDatatypes">
                 <xsl:if test="not($tagValue castable as xs:boolean)">
@@ -700,7 +700,7 @@
                         )"/>
                 </xsl:if>
             </xsl:when>
-            
+
             <!-- Date and Time Types -->
             <xsl:when test="$datatypeQName = $dateTimeDatatypes">
                 <xsl:if test="not($tagValue castable as xs:dateTime)">
@@ -710,12 +710,12 @@
                         )"/>
                 </xsl:if>
             </xsl:when>
-            
+
             <!-- Strings and Text Types -->
             <xsl:when test="$datatypeQName = $stringDatatypes">
                 <!-- Strings are always valid -->
             </xsl:when>
-            
+
             <!-- URI Validation -->
             <xsl:when test="$datatypeQName = 'xsd:anyURI'">
                 <xsl:if test="not($tagValue castable as xs:anyURI)">
@@ -725,7 +725,7 @@
                         )"/>
                 </xsl:if>
             </xsl:when>
-            
+
             <!-- Unsupported Types -->
             <xsl:otherwise>
                 <xsl:sequence select="fn:error(
@@ -734,10 +734,59 @@
                     )"/>
             </xsl:otherwise>
         </xsl:choose>
-        
+
         <!-- Return true for valid values -->
         <xsl:sequence select="fn:true()"/>
     </xsl:function>
-    
+
+
+    <xd:doc>
+        <xd:desc>This template will return true or false if the an element should be filtered or not by looking at
+        the status value
+        :nodeInput can be an element or connector
+        - If a `statusValue` is provided, it checks whether the value is part of the `excludedElementStatusesList`.
+        - If no `statusValue` is provided (i.e., the status is undefined), the function falls back to using
+          the `unspecifiedStatusInterpretation` as the default status value. It then checks whether this default
+          status is part of the `excludedElementStatusesList`.
+
+        </xd:desc>
+        <xd:param name="nodeInput"/>
+    </xd:doc>
+
+    <xsl:function name="f:isExcludedByStatus">
+        <xsl:param name="nodeInput" as="node()*"/>
+
+        <!-- Get all tags for the element -->
+        <xsl:variable name="tags"
+            select="
+                if (local-name($nodeInput) = 'connector') then
+                    f:getConnectorTags($nodeInput)
+                else
+                    f:getElementTags($nodeInput)"/>
+
+        <!-- Find the status tag -->
+        <xsl:variable name="statusTag" select="
+            for $tag in $tags
+            return if ($tag/@name = $statusProperty) then $tag else ()"/>
+        <!-- Extract the value of the status tag -->
+        <xsl:variable name="statusValue" select="$statusTag/@value"/>
+
+        <!-- Validation: Ensure statusValue is in validStatusesList -->
+        <xsl:if test="$statusValue and not($statusValue = $validStatusesList)">
+            <xsl:message terminate="yes"> Error: Invalid status value "<xsl:value-of
+                    select="$statusValue"/>" for element with ID "<xsl:value-of
+                    select="$nodeInput/@xmi:id"/>". Allowed values are: <xsl:value-of
+                    select="string-join($validStatusesList, ', ')"/>. </xsl:message>
+        </xsl:if>
+        <!-- Determine if the element should be excluded -->
+        <xsl:sequence
+            select="
+                if (not($statusValue)) then
+                    $unspecifiedStatusInterpretation = $excludedElementStatusesList
+                else
+                    $statusValue = $excludedElementStatusesList
+                "
+        />
+    </xsl:function>
 
 </xsl:stylesheet>

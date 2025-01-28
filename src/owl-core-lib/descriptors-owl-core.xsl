@@ -66,14 +66,15 @@
         <rdf:Description rdf:about="{$elementUri}">
             <xsl:element name="{$commentProperty}">
                 <xsl:attribute name="xml:lang">en</xsl:attribute>
-                 <xsl:value-of select="fn:normalize-space($comment)"/>
+                <xsl:value-of select="fn:normalize-space($comment)"/>
             </xsl:element>
         </rdf:Description>
     </xsl:template>
 
 
     <xd:doc>
-        <xd:desc>Rule T.08. Annotate all locally defined OWL concepts with the name of the (core) ontology that defines them.</xd:desc>
+        <xd:desc>Rule T.08. Annotate all locally defined OWL concepts with the name of the (core)
+            ontology that defines them.</xd:desc>
         <xd:param name="elementUri"/>
     </xd:doc>
     <xsl:template name="coreDefinedBy">
@@ -87,8 +88,9 @@
     
     
     <xd:doc>
-        <xd:desc>Rule T.07. Tag — in core ontology layer. Specify an annotation axiom on the OWL entity for each UML Tag associated to a UML element.
-            If a tag has an associated language tag, it should be attached to the value.</xd:desc>
+        <xd:desc>Rule T.07. Tag — in core ontology layer. Specify an annotation axiom on the OWL
+            entity for each UML Tag associated to a UML element. If a tag has an associated language
+            tag, it should be attached to the value.</xd:desc>
         <xd:param name="elementUri"/>
         <xd:param name="tagName"/>
         <xd:param name="tagValue"/>
@@ -97,7 +99,7 @@
         <xsl:param name="tagName"/>
         <xsl:param name="tagValue"/>
         <xsl:param name="elementUri"/>
-
+ <xsl:if test="not($tagName = $statusProperty)">
         <rdf:Description rdf:about="{$elementUri}">
         <xsl:choose>
             <xsl:when test="fn:contains($tagName, '@')">
@@ -117,8 +119,8 @@
                 <xsl:variable name="datatypeLocalName" select="fn:substring-after($datatypeCompactURI, ':')"/>
                 <xsl:variable name="expandedDatatypePrefix" select="f:getNamespaceURI($datatypePrefix)"/>
                 <xsl:if test="f:validateTagValue($tagValue,$datatypeCompactURI)">
-                    
-                
+
+
                 <xsl:choose>
                     <xsl:when test="$datatypeCompactURI=$stringDatatypes">
                         <xsl:element name="{fn:substring-before($tagName,'^^')}" namespace="{f:getNamespaceURI(fn:substring-before($tagName, ':'))}">
@@ -156,9 +158,10 @@
             </xsl:otherwise>
         </xsl:choose>      
         </rdf:Description>
+ </xsl:if>
     </xsl:template>
-    
-    
-    
+
+
+
 
 </xsl:stylesheet>

@@ -33,7 +33,7 @@
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
         <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
-        
+        <xsl:if test="not(f:isExcludedByStatus(.))">
         <xsl:if
             test="
                 not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector') and (
@@ -53,6 +53,7 @@
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
         </xsl:if>
+        </xsl:if>
     </xsl:template>
 
     <xd:doc>
@@ -61,6 +62,7 @@
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
         <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
+        <xsl:if test="not(f:isExcludedByStatus(.))">
         <xsl:if
             test="
                 not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = ('ProxyConnector', 'Object')) and (
@@ -89,6 +91,7 @@
             <!--            <xsl:call-template name="connectorAsymmetry">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>-->
+        </xsl:if>
         </xsl:if>
     </xsl:template>
     
