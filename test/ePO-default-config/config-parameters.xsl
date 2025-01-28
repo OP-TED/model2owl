@@ -16,7 +16,6 @@
     </xd:doc>
 
 
-
     <!-- a set of prefix-baseURI definitions -->
     <xsl:variable name="namespacePrefixes" select="fn:doc('namespaces.xml')"/>
 
@@ -82,6 +81,16 @@
     <xsl:variable name="generateReusedConceptsOWLcore" select="fn:true()"/>
     <xsl:variable name="generateReusedConceptsOWLrestrictions" select="fn:true()"/>
     <xsl:variable name="generateReusedConceptsGlossary" select="fn:true()"/>
+    
+    <xsl:variable name="commentsGeneration" select="fn:true()"/>
+    <xsl:variable name="commentProperty" select="'skos:editorialNote'"/>
+    
+     <!--    Variables for status filtering -->
+    <xsl:variable name="statusProperty" select="'epo:status'"/>
+    <xsl:variable name="validStatusesList" select="('proposed', 'approved', 'implemented')"/>
+    <xsl:variable name="excludedElementStatusesList" select="('proposed', 'approved')"/>
+    <xsl:variable name="unspecifiedStatusInterpretation" select="'implemented'"/>
+    
 
     <!-- This variable control if Object and Realisation are generated -->
     <xsl:variable name="generateObjectsAndRealisations" select="fn:false()"/>

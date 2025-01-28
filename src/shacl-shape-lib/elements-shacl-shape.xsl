@@ -29,6 +29,7 @@
             Selector to run core layer transfomation rules for commnents </xd:desc>
     </xd:doc>
     <xsl:template match="ownedComment[@xmi:type = 'uml:Comment']">
+        <xsl:if test="$commentsGeneration">
         <xsl:variable name="commentText" select="./@body"/>
         <xsl:for-each select="./annotatedElement/@xmi:idref">
             <xsl:variable name="elementFound" select="f:getElementByIdRef(., root(.))"/>
@@ -91,6 +92,7 @@
                 </xsl:choose>
             </xsl:if>
         </xsl:for-each>
+        </xsl:if>
     </xsl:template>
 
 
@@ -104,6 +106,7 @@
             deterministically generated from the UML Class name. </xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
+        <xsl:if test="not(f:isExcludedByStatus(.))">
         <xsl:variable name="class" select="."/>
         <xsl:variable name="className" select="$class/@name"/>
         <xsl:variable name="classNamePrefix" select="fn:substring-before($className, ':')"/>
@@ -143,7 +146,7 @@
 
         </xsl:if>
 
-
+        </xsl:if>
 
         <!--        <xsl:apply-templates select="attributes/attribute"/>-->
 
@@ -155,6 +158,7 @@
         <xd:desc>Applying shape layer rules to attributes</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
+        <xsl:if test="not(f:isExcludedByStatus(.))">
         <xsl:variable name="className" select="./../../@name" as="xs:string"/>
         <xsl:variable name="attributePrefix" select="fn:substring-before(./@name, ':')"/>
         <!--        <xsl:variable name="attributeNormalizedLocalName"
@@ -178,6 +182,7 @@
                     <xsl:with-param name="className" select="$className"/>
                 </xsl:call-template>
             </xsl:if>
+        </xsl:if>
         </xsl:if>
     </xsl:template>
 
