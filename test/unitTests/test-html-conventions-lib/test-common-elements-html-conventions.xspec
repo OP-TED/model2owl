@@ -311,7 +311,7 @@
         <x:call template="invalidTagName">
             <x:param name="element" href="../../testData/ePO_core_with_tags.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[211]"/>
         </x:call>   
-        <x:expect label="expect a Description Element" test="count(/dd)=3"/> 
+        <x:expect label="expect a Description Element" test="count(/dd)=4"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for finding a tag without name in a class ">

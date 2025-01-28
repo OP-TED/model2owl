@@ -341,7 +341,12 @@
 
 
     <xd:doc>
-        <xd:desc>[common-tag-13] - The tag $tagName$ of element $elementName$ must be an URI. </xd:desc>
+        <xd:desc>[common-tag-13] - The tag $tagName$ of element $elementName$ must be one of the following formats:
+            namespace:localName
+            namespace:localName@en
+            namespace:localName^^xsd:integer
+            namespace:localName&lt;&gt;
+        </xd:desc>
         <xd:param name="element"/>
     </xd:doc>
     <xsl:template name="invalidTagName">
@@ -354,7 +359,7 @@
                     if (f:isValidTagName($tag/@name)) then
                         ()
                     else
-                        f:generateErrorMessage(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must be an URI.'),
+                    f:generateErrorMessage(fn:concat('The tag ', $tag/@name, ' of element ', $element/@name, ' must be one of the following formats: namespace:localName, namespace:localName@en, namespace:localName^^xsd:integer, namespace:localName&lt;&gt;.'),
                         path($element),
                         'common-tag-13',
                         'CMC-R6',
