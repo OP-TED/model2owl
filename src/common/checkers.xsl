@@ -540,6 +540,28 @@
                     $listOfNotDefinedNamespaces"/>
 
     </xsl:function>
+    
+    <xd:doc>
+        <xd:desc>
+            This function checks whether an enumeration has a constraint level property (tag) assigned 
+            and if its value is either "permissive" or "restrictive".
+            
+            The function returns a boolean result:
+            - `true()` if tag exists with the expected property and value.
+            - `false()` if no matching tag is found or if the enumeration has no tags.
+        </xd:desc>
+        <xd:param name="enumeration"/>
+    </xd:doc>
+    <xsl:function name="f:hasEnumerationAConstraintLevelProperty" as="xs:boolean">
+        <xsl:param name="enumeration" as="element()"/>
+        
+        <xsl:variable name="enumerationTags" select="f:getElementTags($enumeration)"/>
+        
+        <xsl:sequence select="
+            some $tag in $enumerationTags
+            satisfies ($tag/@name = $cvConstraintLevelProperty and $tag/@value = ('permissive', 'restrictive'))
+            "/>
+    </xsl:function>
 
 
 

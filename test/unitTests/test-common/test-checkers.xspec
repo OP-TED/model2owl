@@ -491,5 +491,31 @@
         </x:scenario>
     </x:scenario>
     
+    <x:scenario label="testing f:hasEnumerationAConstraintLevelProperty">
+        <x:scenario label="enumeration with no tags">
+            <x:call function="f:hasEnumerationAConstraintLevelProperty">
+                <x:param name="element" href="../../testData/ePO-core-4.2.0.xml" 
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[259]"/>
+            </x:call>
+            <x:expect label="boolean-false" select="false()"/>
+        </x:scenario>
+        
+        <x:scenario label="enumeration with tag but without constraint level property tag">
+            <x:call function="f:hasEnumerationAConstraintLevelProperty">
+                <x:param name="element" href="../../testData/ePO-core-4.2.0.xml" 
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[268]"/>
+            </x:call>
+            <x:expect label="boolean-false" select="false()"/>
+        </x:scenario>
+        
+        <x:scenario label="enumeration with correct tag and value">
+            <x:call function="f:hasEnumerationAConstraintLevelProperty">
+                <x:param name="element" href="../../testData/ePO-core-4.2.0.xml" 
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[245]"/>
+            </x:call>
+            <x:expect label="boolean-true" select="true()"/>
+        </x:scenario>
+    </x:scenario>
+    
 </x:description>
 
