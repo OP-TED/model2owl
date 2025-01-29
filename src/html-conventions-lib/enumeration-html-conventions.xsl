@@ -103,6 +103,10 @@
                 <xsl:call-template name="enumerationOutgoingConnectors">
                     <xsl:with-param name="enumeration" select="."/>
                 </xsl:call-template>
+            
+            <xsl:call-template name="enumerationConstraintLevel">
+                <xsl:with-param name="enumeration" select="."/>
+            </xsl:call-template>
                 <!--    End of specific checker rules-->
             
         </xsl:variable>

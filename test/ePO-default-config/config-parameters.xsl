@@ -70,6 +70,9 @@
     
     <!--    This variable controls whether the enumerations are transformed into skos schemes or ignored-->
     <xsl:variable name="enableGenerationOfConceptSchemes" select="fn:false()"/>
+    
+<!--    Property used for constraint level for enumerations-->
+    <xsl:variable name="cvConstraintLevelProperty" select="'epo:constraintLevel'"/>
 
 
     <!--Allowed characters for a normalized string-->
