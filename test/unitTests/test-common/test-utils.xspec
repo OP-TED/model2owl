@@ -350,7 +350,7 @@
 
     <x:scenario label="Scenario for testing filter by status - excluded element">
         <x:call function="f:isExcludedByStatus">
-            <x:param name="nodeInput"  href="../../testData/ePO-task1-test-status-filtering.xml"
+            <x:param name="nodeInput"  href="../../testData/ePO-core-4.2.0.xml"
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[168]"/>
         </x:call>
         <x:expect label="result" select="fn:true()"/>
@@ -358,7 +358,7 @@
 
     <x:scenario label="Scenario for testing filter by status - excluded connector">
         <x:call function="f:isExcludedByStatus">
-            <x:param name="nodeInput"  href="../../testData/ePO-task1-test-status-filtering.xml"
+            <x:param name="nodeInput"  href="../../testData/ePO-core-4.2.0.xml"
                 select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[648]"/>
         </x:call>
         <x:expect label="result" select="fn:true()"/>
@@ -366,7 +366,7 @@
 
     <x:scenario label="Scenario for testing filter by status - not excluded element - interpreted status">
         <x:call function="f:isExcludedByStatus">
-            <x:param name="nodeInput"  href="../../testData/ePO-task1-test-status-filtering.xml"
+            <x:param name="nodeInput"  href="../../testData/ePO-core-4.2.0.xml"
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[236]"/>
         </x:call>
         <x:expect label="result" select="fn:false()"/>
@@ -374,7 +374,7 @@
 
     <x:scenario label="Scenario for testing filter by status - not excluded attribute - with implemented status">
         <x:call function="f:isExcludedByStatus">
-            <x:param name="nodeInput"  href="../../testData/ePO-task1-test-status-filtering.xml"
+            <x:param name="nodeInput"  href="../../testData/ePO-core-4.2.0.xml"
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[234]/attributes[1]/attribute[2]"/>
         </x:call>
         <x:expect label="result" select="fn:false()"/>
