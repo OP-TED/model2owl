@@ -382,14 +382,8 @@
         <!-- Get the enumeration's compact URI -->
         <xsl:variable name="enumerationCompactURI" select="$enumeration/@name"/>
         
-        <!-- Retrieve all attributes -->
-        <xsl:variable name="enumerationItems" select="$enumeration/attributes/attribute"/>
-        
-        <!-- Ensure there are more than one attribute before processing -->
-        <xsl:if test="count($enumerationItems) > 0 and $enumerationCompactURI and $enableGenerationOfConceptSchemes">
-            <xsl:for-each select="$enumerationItems">
-                <xsl:variable name="enumerationItemCompactURI" select="./@name"/>
-                <xsl:variable name="shapeURI" select="f:buildPropertyShapeURI($enumerationCompactURI, $enumerationItemCompactURI)"/>
+        <xsl:if test="$enumerationCompactURI and $enableGenerationOfConceptSchemes">
+            <xsl:variable name="shapeURI" select="f:buildPropertyShapeURI($enumerationCompactURI, 'itemShape')"/>
                 <xsl:variable name="inSchemeURI" select="f:buildURIfromLexicalQName($enumerationCompactURI)"/>
                 
                 <rdf:Description rdf:about="{$shapeURI}">
@@ -399,7 +393,6 @@
                         <sh:hasValue rdf:resource="{$inSchemeURI}"/>
                     </sh:property>
                 </rdf:Description>
-            </xsl:for-each>
         </xsl:if>
     </xsl:template>
     
@@ -433,16 +426,16 @@
             else 'permissive'
             "/>
         
-        <!-- Retrieve all attributes and dependency IDs -->
-        <xsl:variable name="enumerationItems" select="$enumeration/attributes/attribute"/>
+        <!-- Retrieve all dependency IDs -->
+
         <xsl:variable name="dependenciesIds" select="$enumeration/links/Dependency/@xmi:id"/>  
         
         <!-- Generate RDF descriptions based on the constraint level -->
         <xsl:choose>
-            <xsl:when test="$enumerationConstraintLevel = 'restrictive' and fn:count($enumerationItems) > 0 and $enableGenerationOfConceptSchemes">
-                <!-- Iterate over enumeration items and dependencies -->
-                <xsl:for-each select="$enumerationItems">
-                    <xsl:variable name="nodeUri" select="f:buildPropertyShapeURI($enumerationCompactURI, ./@name)"/>
+            <xsl:when test="$enumerationConstraintLevel = 'restrictive' and $enableGenerationOfConceptSchemes">
+                <!-- Iterate over dependencies -->
+
+                    <xsl:variable name="nodeUri" select="f:buildPropertyShapeURI($enumerationCompactURI, 'itemShape')"/>
                     <xsl:for-each select="$dependenciesIds">
                         <xsl:variable name="dependencyConnector" select="f:getConnectorByIdRef(., $root)"/>
                         <xsl:variable name="dependencyName" select="$dependencyConnector/target/role/@name"/>
@@ -456,7 +449,7 @@
                             <sh:node rdf:resource="{$nodeUri}"/>
                         </rdf:Description>
                     </xsl:for-each>
-                </xsl:for-each>
+                
             </xsl:when>
             <xsl:when test="$enumerationConstraintLevel = 'permissive' and $enableGenerationOfSkosConcept">
                 <!-- Generate shapes for permissive or default cases -->

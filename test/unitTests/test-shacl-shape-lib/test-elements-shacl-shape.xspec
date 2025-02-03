@@ -163,18 +163,24 @@
         <x:call template="enumerationItem">
             <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[244]"/>
         </x:call>   
-        <x:expect label="there is a rdf:Description for each item" test="count(rdf:Description) = 3 "/>
+        <x:expect label="there is a rdf:Description " test="count(rdf:Description) = 1 "/>
         <x:expect label="there is a rdf:type" test="boolean(rdf:Description/rdf:type)"/>
         <x:expect label="there is sh:property" test="boolean(rdf:Description/sh:property)"/>
         <x:expect label="there is sh:path" test="boolean(rdf:Description/sh:property/sh:path)"/>
         <x:expect label="there is sh:hasValue" test="boolean(rdf:Description/sh:property/sh:hasValue)"/>
-        <x:expect label="there is correct value for sh:hasValue resource" test="rdf:Description[1]/sh:property/sh:hasValue/@rdf:resource = 'http://publications.europa.eu/resource/authority/accessibility'"/>
+        <x:expect label="there is correct value for sh:hasValue resource" test="rdf:Description/sh:property/sh:hasValue/@rdf:resource = 'http://publications.europa.eu/resource/authority/accessibility'"/>
     </x:scenario>
         <x:scenario label="enumeration without items">
             <x:call template="enumerationItem">
                 <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[243]"/>
             </x:call>   
-            <x:expect label="there is no output" select="()"/>
+            <x:expect label="there is a rdf:Description " test="count(rdf:Description) = 1 "/>
+            <x:expect label="there is correct value for rdf:about " test="rdf:Description/@rdf:about = 'http://data.europa.eu/a4g/data-shape#at-voc-access-rights-itemShape' "/>
+            <x:expect label="there is a rdf:type" test="boolean(rdf:Description/rdf:type)"/>
+            <x:expect label="there is sh:property" test="boolean(rdf:Description/sh:property)"/>
+            <x:expect label="there is sh:path" test="boolean(rdf:Description/sh:property/sh:path)"/>
+            <x:expect label="there is sh:hasValue" test="boolean(rdf:Description/sh:property/sh:hasValue)"/>
+            <x:expect label="there is correct value for sh:hasValue resource" test="rdf:Description/sh:property/sh:hasValue/@rdf:resource = 'http://publications.europa.eu/resource/authority/access-rights'"/>
         </x:scenario>
         
     </x:scenario>
@@ -207,11 +213,11 @@
             <x:call template="enumerationDependencyRangeShape">
                 <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[250]"/>
             </x:call>   
-            <x:expect label="there is a rdf:Description for each item" test="count(rdf:Description) = 8"/>
+            <x:expect label="there is a rdf:Description for each dependency" test="count(rdf:Description) = 2"/>
             <x:expect label="there is a rdf:type" test="boolean(rdf:Description/rdf:type)"/>
             <x:expect label="there is sh:node" test="boolean(rdf:Description/sh:node)"/>
             <x:expect label="there is sh:path" test="boolean(rdf:Description/sh:path)"/>
-            <x:expect label="there is correct value for sh:node resource" test="rdf:Description[1]/sh:node/@rdf:resource = 'http://data.europa.eu/a4g/data-shape#at-voc-contract-nature-supplies'"/>
+            <x:expect label="there is correct value for sh:node resource" test="rdf:Description[1]/sh:node/@rdf:resource = 'http://data.europa.eu/a4g/data-shape#at-voc-contract-nature-itemShape'"/>
             <x:expect label="there is correct value for sh:path resource" test="rdf:Description[1]/sh:path/@rdf:resource = 'http://data.europa.eu/a4g/ontology#hasContractNatureType'"/>
             <x:expect label="there is correct value for rdf:type resource" test="rdf:Description[1]/rdf:type/@rdf:resource = 'http://www.w3.org/ns/shacl#PropertyShape'"/>
         </x:scenario>
@@ -241,7 +247,13 @@
                     href="../../testData/ePO-core-4.2.0.xml" 
                     select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[280]"/>
             </x:call>   
-            <x:expect label="no output" select="()"/>
+            <x:expect label="there is a rdf:Description for each dependency" test="count(rdf:Description) = 4"/>
+            <x:expect label="there is a rdf:type" test="boolean(rdf:Description/rdf:type)"/>
+            <x:expect label="there is sh:node" test="boolean(rdf:Description/sh:node)"/>
+            <x:expect label="there is sh:path" test="boolean(rdf:Description/sh:path)"/>
+            <x:expect label="there is correct value for sh:node resource" test="rdf:Description[1]/sh:node/@rdf:resource = 'http://data.europa.eu/a4g/data-shape#at-voc-permission-itemShape'"/>
+            <x:expect label="there is correct value for sh:path resource" test="rdf:Description[1]/sh:path/@rdf:resource = 'http://data.europa.eu/a4g/ontology#hasVariantPermission'"/>
+            <x:expect label="there is correct value for rdf:type resource" test="rdf:Description[1]/rdf:type/@rdf:resource = 'http://www.w3.org/ns/shacl#PropertyShape'"/>
         </x:scenario>
         
     </x:scenario>

@@ -88,6 +88,9 @@
     <xsl:variable name="commentsGeneration" select="fn:true()"/>
     <xsl:variable name="commentProperty" select="'skos:editorialNote'"/>
     
+     <!--    Tag names/keys that are excluded from output -->
+    <xsl:variable name="excludedTagNamesList" select="($statusProperty, $cvConstraintLevelProperty)"/>
+    
      <!--    Variables for status filtering -->
     <xsl:variable name="statusProperty" select="'epo:status'"/>
     <xsl:variable name="validStatusesList" select="('proposed', 'approved', 'implemented')"/>

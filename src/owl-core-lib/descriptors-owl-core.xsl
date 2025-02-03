@@ -99,7 +99,7 @@
         <xsl:param name="tagName"/>
         <xsl:param name="tagValue"/>
         <xsl:param name="elementUri"/>
- <xsl:if test="not($tagName = ($statusProperty, $cvConstraintLevelProperty))">
+        <xsl:if test="not($tagName = $excludedTagNamesList)">
         <rdf:Description rdf:about="{$elementUri}">
         <xsl:choose>
             <xsl:when test="fn:contains($tagName, '@')">
