@@ -382,7 +382,7 @@
         <!-- Get the enumeration's compact URI -->
         <xsl:variable name="enumerationCompactURI" select="$enumeration/@name"/>
         
-        <xsl:if test="$enumerationCompactURI and $enableGenerationOfConceptSchemes">
+        <xsl:if test="$enumerationCompactURI and $enableGenerationOfSkosConcept">
             <xsl:variable name="shapeURI" select="f:buildPropertyShapeURI($enumerationCompactURI, 'itemShape')"/>
                 <xsl:variable name="inSchemeURI" select="f:buildURIfromLexicalQName($enumerationCompactURI)"/>
                 
@@ -432,7 +432,7 @@
         
         <!-- Generate RDF descriptions based on the constraint level -->
         <xsl:choose>
-            <xsl:when test="$enumerationConstraintLevel = 'restrictive' and $enableGenerationOfConceptSchemes">
+            <xsl:when test="$enumerationConstraintLevel = 'restrictive' and $enableGenerationOfSkosConcept">
                 <!-- Iterate over dependencies -->
 
                     <xsl:variable name="nodeUri" select="f:buildPropertyShapeURI($enumerationCompactURI, 'itemShape')"/>
