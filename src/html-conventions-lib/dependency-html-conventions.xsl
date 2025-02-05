@@ -72,9 +72,6 @@
                 <xsl:call-template name="connectorTargetTags">
                     <xsl:with-param name="connector" select="."/>
                 </xsl:call-template>
-                <xsl:call-template name="connectorTags">
-                    <xsl:with-param name="connector" select="."/>
-                </xsl:call-template>
                 <xsl:call-template name="connectorGeneralNameProvided">
                     <xsl:with-param name="connector" select="."/>
                 </xsl:call-template>
