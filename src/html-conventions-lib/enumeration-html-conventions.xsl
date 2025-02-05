@@ -103,6 +103,10 @@
                 <xsl:call-template name="enumerationOutgoingConnectors">
                     <xsl:with-param name="enumeration" select="."/>
                 </xsl:call-template>
+            
+            <xsl:call-template name="enumerationConstraintLevel">
+                <xsl:with-param name="enumeration" select="."/>
+            </xsl:call-template>
                 <!--    End of specific checker rules-->
             
         </xsl:variable>
@@ -200,6 +204,30 @@
                 else
                     ()
                 "
+        />
+    </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>[enumeration-constraint-level-4] he enumeration $value$ does not have a correct constraint level (either permissive or restrictive) set as a tag 
+            with the $cvConstraintLevelProperty$ key. The permissive level will be used as a fallback value. </xd:desc>
+        <xd:param name="enumeration"/>
+    </xd:doc>
+    
+    <xsl:template name="enumerationConstraintLevel">
+        <xsl:param name="enumeration"/>
+        <xsl:sequence
+            select="
+            if (not(f:hasEnumerationAConstraintLevelProperty($enumeration))) then
+            f:generateWarningMessage(fn:concat('The enumeration ', $enumeration/@name,
+            ' does not have a correct constraint level (either permissive or restrictive) set as a tag with the ', $cvConstraintLevelProperty, ' key. The permissive level will be used as a fallback value.'),
+            path($enumeration),
+            'enumeration-constraint-level-4',
+            '',
+            ''
+            )
+            else
+            ()
+            "
         />
     </xsl:template>
 

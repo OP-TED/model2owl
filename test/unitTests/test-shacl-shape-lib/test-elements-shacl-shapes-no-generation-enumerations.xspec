@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:sh="http://www.w3.org/ns/shacl#"
+    stylesheet="../../../src/shacl-shape-lib/elements-shacl-shape.xsl">
+
+    <x:param name="enableGenerationOfConceptSchemes" select="false()"/>
+
+    <x:scenario label="Scenario for enumerationDependencyRangeShape when enableGenerationOfSkosConcept is false">
+        <x:scenario label="enumeration with items - permissive">
+            <x:call template="enumerationDependencyRangeShape">
+                <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml"
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[244]"/>
+            </x:call>
+            <x:expect label="there is no output" select="()"/>
+        </x:scenario>
+        <x:scenario label="enumeration with items - restrictive ">
+            <x:call template="enumerationDependencyRangeShape">
+                <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml"
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[250]"/>
+            </x:call>
+            <x:expect label="there is no output" select="()"/>
+            <x:scenario label="enumeration with multiple dependencies and no items - permissive">
+                <x:call template="enumerationDependencyRangeShape">
+                    <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml"
+                        select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[243]"/>
+                </x:call>
+                <x:expect label="there is no output" select="()"/>
+            </x:scenario>
+
+            <x:scenario label="enumeration with no items - restrictive">
+                <x:call template="enumerationDependencyRangeShape">
+                    <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml"
+                        select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[280]"/>
+                </x:call>
+                <x:expect label="there is no output" select="()"/>
+            </x:scenario>
+
+        </x:scenario>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for enumerationItem when enableGenerationOfSkosConcept is false">
+        <x:scenario label="enumeration with items">
+            <x:call template="enumerationItem">
+                <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[244]"/>
+            </x:call>   
+            <x:expect label="there is no output" select="()"/> 
+        </x:scenario>
+        <x:scenario label="enumeration without items">
+            <x:call template="enumerationItem">
+                <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[243]"/>
+            </x:call>   
+            <x:expect label="there is no output" select="()"/> 
+        </x:scenario>
+        
+    </x:scenario>
+
+</x:description>

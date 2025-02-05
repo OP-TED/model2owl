@@ -419,7 +419,12 @@
 
 
     <xd:doc>
-        <xd:desc>Checks if tag name is an URI</xd:desc>
+        <xd:desc>Checks if tag name is one of the following cases :
+            namespace:localName
+            namespace:localName@en
+            namespace:localName^^xsd:integer
+            namespace:localName&lt;&gt;
+        </xd:desc>
         <xd:param name="tagName"/>
     </xd:doc>
 
@@ -427,7 +432,11 @@
         <xsl:param name="tagName"/>
         <xsl:sequence
             select="
-                if (fn:matches($tagName, '^(:\w+|[a-z][-a-z0-9]*:[-a-zA-Z0-9_@]+)$')) then
+            if (
+            fn:matches($tagName, '^[a-z][-a-z0-9]*:[-a-zA-Z0-9_]+$') or
+            fn:matches($tagName, '^[a-z][-a-z0-9]*:[-a-zA-Z0-9_]+@[a-zA-Z]+$') or
+            fn:matches($tagName, '^[a-z][-a-z0-9]*:[-a-zA-Z0-9]+\^\^[a-z][-a-z0-9]*:[-a-zA-Z0-9]+$') or
+            fn:matches($tagName, '^[a-z][-a-z0-9]*:[-a-zA-Z0-9_]+&lt;&gt;$')) then
                     fn:true()
                 else
                     fn:false()"
@@ -512,15 +521,15 @@
     </xsl:function>
 
     <xd:doc>
-        <xd:desc> This function will check if a given list of namespaces are defined in
-            namespaces.xml file. If not all the namespaces were defined it will return a list with
-            those namespaces</xd:desc>
+        <xd:desc> This function will check if a given list of namespaces are
+        defined in enriched-namespaces.xml file. If not all the namespaces were
+        defined it will return a list with those namespaces</xd:desc>
         <xd:param name="listOfNamespaces"/>
     </xd:doc>
     <xsl:function name="f:isAllNamespacesDefined">
         <xsl:param name="listOfNamespaces"/>
         <xsl:variable name="definedNamespaces"
-            select="($namespacePrefixes/*:prefixes/*:prefix/@name)"/>
+            select="($internalNamespacePrefixes/*:prefixes/*:prefix/@name)"/>
         <xsl:variable name="listOfNotDefinedNamespaces"
             select="functx:value-except($listOfNamespaces, $definedNamespaces)"/>
         <xsl:sequence
@@ -530,6 +539,28 @@
                 else
                     $listOfNotDefinedNamespaces"/>
 
+    </xsl:function>
+    
+    <xd:doc>
+        <xd:desc>
+            This function checks whether an enumeration has a constraint level property (tag) assigned 
+            and if its value is either "permissive" or "restrictive".
+            
+            The function returns a boolean result:
+            - `true()` if tag exists with the expected property and value.
+            - `false()` if no matching tag is found or if the enumeration has no tags.
+        </xd:desc>
+        <xd:param name="enumeration"/>
+    </xd:doc>
+    <xsl:function name="f:hasEnumerationAConstraintLevelProperty" as="xs:boolean">
+        <xsl:param name="enumeration" as="element()"/>
+        
+        <xsl:variable name="enumerationTags" select="f:getElementTags($enumeration)"/>
+        
+        <xsl:sequence select="
+            some $tag in $enumerationTags
+            satisfies ($tag/@name = $cvConstraintLevelProperty and $tag/@value = ('permissive', 'restrictive'))
+            "/>
     </xsl:function>
 
 

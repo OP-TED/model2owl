@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    stylesheet="../../../src/xml/enriched-namespaces.xsl">
+    
+    <!-- Passing truthy value to avoid raising an error due to missing parameter
+    value. It's safe as the test doesn't use a file associated with the variable
+    anyway. -->
+    <x:param name="enrichedNamespacesPath" select="true()"/>
+
+    <x:scenario label="Scenario testing completeness of the generated enriched namespaces">
+        <x:context href="../../ePO-default-config/namespaces.xml" select="/"/>
+        <x:variable name="userNamespacesCnt" as="xs:integer"
+            href="../../ePO-default-config/namespaces.xml" 
+            select="fn:count(//*:prefixes/*:prefix)"/>
+        <x:expect label="there is 1 top-level prefix element" test="count(*:prefixes) = 1"/>
+        <x:expect label="there are user-defined namespaces" 
+            test="fn:count(*:prefixes/*:prefix) >= $userNamespacesCnt"/>
+        <x:expect label="there is an internal namespace" 
+            test="*:prefixes/*:prefix[@name = 'core-shape']/@value = 'http://data.europa.eu/a4g/data-shape#'"/> 
+    </x:scenario>
+</x:description>

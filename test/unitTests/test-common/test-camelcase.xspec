@@ -11,10 +11,108 @@
     stylesheet="../../../src/common/utils.xsl">
     
     <x:scenario label="QName to words">
-        <x:call function="f:lexicalQNameToWords">
-            <x:param name="input">hasEPORoleType</x:param>
-        </x:call>
-        <x:expect label="Transformation from Qname to words is valid" select="'Has e p o role type'"/>
+        <x:scenario label="QName to words 1">
+            <x:call function="f:lexicalQNameToWords">
+                <x:param name="lexicalqName">hasEPORole</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'has EPO Role'"/>
+        </x:scenario>
+        <x:scenario label="QName to words 2">
+            <x:call function="f:lexicalQNameToWords">
+                <x:param name="lexicalqName">hasVehicleID</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'has Vehicle ID'"/>
+        </x:scenario>
+        <x:scenario label="QName to words 3">
+            <x:call function="f:lexicalQNameToWords">
+                <x:param name="lexicalqName">hasUUID</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'has UUID'"/>
+        </x:scenario>
+        <x:scenario label="QName to words 4">
+            <x:call function="f:lexicalQNameToWords">
+                <x:param name="lexicalqName">ESPD</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'ESPD'"/>
+        </x:scenario>
+        <x:scenario label="QName to words 5">
+            <x:call function="f:lexicalQNameToWords">
+                <x:param name="lexicalqName">ESPDDocument</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'ESPD Document'"/>
+        </x:scenario>
+        <x:scenario label="QName to words 6">
+            <x:call function="f:lexicalQNameToWords">
+                <x:param name="lexicalqName">hasLongName</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'has Long Name'"/>
+        </x:scenario>
+    </x:scenario>
+    
+    <x:scenario label="_getSegmentsRec">
+        <x:scenario label="_getSegmentsRec 1">
+            <x:call function="f:_getSegmentsRec">
+                <x:param name="text">DPSE</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'DPSE'"/>
+        </x:scenario>
+        <x:scenario label="_getSegmentsRec 2">
+            <x:call function="f:_getSegmentsRec">
+                <x:param name="text">sah</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'sah'"/>
+        </x:scenario>
+        <x:scenario label="_getSegmentsRec 3">
+            <x:call function="f:_getSegmentsRec">
+                <x:param name="text">OPEsah</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'OPE sah'"/>
+        </x:scenario>
+        <x:scenario label="_getSegmentsRec 4">
+            <x:call function="f:_getSegmentsRec">
+                <x:param name="text">eloROPEsah</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'eloR OPE sah'"/>
+        </x:scenario>
+        <x:scenario label="_getSegmentsRec 5">
+            <x:call function="f:_getSegmentsRec">
+                <x:param name="text">DIUUsah</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'DIUU sah'"/>
+        </x:scenario>
+        <x:scenario label="_getSegmentsRec 6">
+            <x:call function="f:_getSegmentsRec">
+                <x:param name="text">tnemucoDDPSE</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'tnemucoD DPSE'"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="getLeftSubstrByCaseChange">
+        <x:scenario label="getLeftSubstrByCaseChange 1">
+            <x:call function="f:_getLeftSubstrByCaseChange">
+                <x:param name="text">eloROPEsah</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'eloR'"/>
+        </x:scenario>
+        <x:scenario label="getLeftSubstrByCaseChange 2">
+            <x:call function="f:_getLeftSubstrByCaseChange">
+                <x:param name="text">OPEsah</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'OPE'"/>
+        </x:scenario>
+        <x:scenario label="getLeftSubstrByCaseChange 3">
+            <x:call function="f:_getLeftSubstrByCaseChange">
+                <x:param name="text">sah</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'sah'"/>
+        </x:scenario> 
+        <x:scenario label="getLeftSubstrByCaseChange 4">
+            <x:call function="f:_getLeftSubstrByCaseChange">
+                <x:param name="text">DPSE</x:param>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'DPSE'"/>
+        </x:scenario>
     </x:scenario>
     
 </x:description>

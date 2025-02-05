@@ -41,18 +41,6 @@
     </x:scenario>
     
 
-<!--    <x:scenario
-        label="Scenario for testing template with match 'element[@xmi:type = 'uml:Enumeration']">        
-        <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
-            select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[144]"/>
-        <x:expect label="there is a skos:ConceptScheme" test="boolean(/skos:ConceptScheme)"/>
-        <x:expect label="there is a skos:prefLabel" test="boolean(/skos:ConceptScheme/skos:prefLabel)"/>
-        <x:expect label="there is a correct URI"
-            test="/skos:ConceptScheme/@rdf:about = 'http://data.europa.eu/a4g/ontology#CriterionGroupPropertyType' "
-        />
-    </x:scenario>-->
-
-
     <x:scenario
         label="Scenario for testing template with match 'element[@xmi:type = 'uml:DataType']">
         <x:context href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"

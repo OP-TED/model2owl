@@ -190,7 +190,7 @@
                     ()
                 else
                     if (fn:boolean($datatypeValues)) then
-                        f:generateFormattedWarningMessage(fn:concat('The attribute ', $attributeName, ' is has different datatypes in reuse contexts.',
+                        f:generateFormattedWarningMessage(fn:concat('The attribute ', $attributeName, ' has different datatypes in reuse contexts.',
                         'When a property is reused in multiple contexts, the data-type is expected to be the same.',
                         'In this case, multiple data-types are found: '), $datatypeWithAnnotations,
                         '//elements/element/attributes',

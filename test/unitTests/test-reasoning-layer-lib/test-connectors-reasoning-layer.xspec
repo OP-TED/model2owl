@@ -39,6 +39,16 @@
         <x:expect label="result" test="boolean(/rdf:Description/rdf:type[@rdf:resource='http://www.w3.org/2002/07/owl#AllDisjointClasses'])"/>             
     </x:scenario>
     
+    
+    <x:scenario label="Test distinctConnectorsNamesInReasoningLayer">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2022-04-29_test.eap.xmi" />
+        <x:call template="distinctConnectorsNamesInReasoningLayer"/> 
+        <x:expect label="class to enumeration connector" test="/rdf:Description[@rdf:about='http://data.europa.eu/a4g/ontology#hasNotificationContentType']/rdfs:domain/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Notice'"/>
+        <x:expect label="epo class to epo-cat class: domain" test="/rdf:Description[@rdf:about='http://data.europa.eu/a4g/ontology#hasPriceValidity']/rdfs:domain/@rdf:resource = 'http://data.europa.eu/a4g/ontology#eCatalogueLine'"/>
+        <x:expect label="epo class to epo-cat class: range" test="/rdf:Description[@rdf:about='http://data.europa.eu/a4g/ontology#hasPriceValidity']/rdfs:range/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Period'"/>
+    </x:scenario>
+    
+
     <x:scenario
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Association']">
         <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
