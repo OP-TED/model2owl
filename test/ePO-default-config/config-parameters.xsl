@@ -70,6 +70,9 @@
     
     <!--    This variable controls whether the enumerations are transformed into skos schemes or ignored-->
     <xsl:variable name="enableGenerationOfConceptSchemes" select="fn:false()"/>
+    
+<!--    Property used for constraint level for enumerations-->
+    <xsl:variable name="cvConstraintLevelProperty" select="'epo:constraintLevel'"/>
 
 
     <!--Allowed characters for a normalized string-->
@@ -84,6 +87,9 @@
     
     <xsl:variable name="commentsGeneration" select="fn:true()"/>
     <xsl:variable name="commentProperty" select="'skos:editorialNote'"/>
+    
+     <!--    Tag names/keys that are excluded from output -->
+    <xsl:variable name="excludedTagNamesList" select="($statusProperty, $cvConstraintLevelProperty)"/>
     
      <!--    Variables for status filtering -->
     <xsl:variable name="statusProperty" select="'epo:status'"/>
