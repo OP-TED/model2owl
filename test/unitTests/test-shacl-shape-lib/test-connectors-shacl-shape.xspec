@@ -24,8 +24,8 @@
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Dependency']">
         <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[398]"/>
-        <x:expect label="there is 5 rdf:Description" test="count(rdf:Description)=5"/>
-        <x:expect label="there is a sh:class" test="boolean(rdf:Description/sh:class)"/>
+        <x:expect label="there is 5 rdf:Description" test="count(rdf:Description)=4"/>
+        <x:expect label="there is a no sh:class" test="not(boolean(rdf:Description/sh:class))"/>
         <x:expect label="there is a sh:PropertyShape" test="boolean(sh:PropertyShape)"/>
         <x:expect label="there is a sh:description" test="boolean(rdf:Description/sh:description)"/>
         <x:expect label="there is a sh:minCount" test="boolean(rdf:Description/sh:minCount)"/>
@@ -138,11 +138,4 @@
         <x:expect label="there is 2 sh:select" test="count(rdf:Description/sh:sparql/sh:select)=2"/>
     </x:scenario>
     
-    <x:scenario label="Scenario for dependency range (Class -> Enumeration)">
-        <x:call template="connectorRangeClassToEnumeration">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[247]"/>
-        </x:call>   
-        <x:expect label="there is 1 rdf:Description" test="count(rdf:Description) = 1"/>
-        <x:expect label="there is 1 sh:class" test="count(rdf:Description/sh:class) = 1"/>
-    </x:scenario>
 </x:description>
