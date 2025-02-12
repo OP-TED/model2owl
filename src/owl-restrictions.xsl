@@ -40,7 +40,11 @@
     </xd:doc>
     <xsl:template match="/">
         <rdf:RDF>
-            <xsl:call-template name="namespacesDeclaration"/>            
+            <xsl:for-each select="$namespacePrefixes/*:prefixes/*:prefix">              
+                <xsl:namespace name="{./@name}" select="./@value"/>
+            </xsl:for-each>
+            <xsl:namespace name="{fn:concat($moduleReference, '-res')}" select="fn:concat($base-restriction-uri,$defaultDelimiter)"/>
+            
             <xsl:call-template name="ontology-header"/>
             <xsl:apply-templates/>
             <xsl:call-template name="generalisationsWithDistinctTargetsInReasoningLayer"/>
@@ -54,7 +58,7 @@
     </xd:doc>
     <xsl:template name="ontology-header">
         <owl:Ontology rdf:about="{$restrictionsArtefactURI}">            
-            <xsl:for-each select="$internalNamespacePrefixes/*:prefixes/*:prefix/@importURI">              
+            <xsl:for-each select="$namespacePrefixes/*:prefixes/*:prefix/@importURI">              
                 <owl:imports rdf:resource="{.}"/>
             </xsl:for-each>      
             <owl:imports rdf:resource="{$coreArtefactURI}"/>
