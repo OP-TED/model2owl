@@ -382,7 +382,17 @@
         <!-- Get the enumeration's compact URI -->
         <xsl:variable name="enumerationCompactURI" select="$enumeration/@name"/>
         
-        <xsl:if test="$enumerationCompactURI and $enableGenerationOfConceptSchemes">
+        <xsl:variable name="enumerationTags" select="f:getElementTags($enumeration)"/>
+        
+        <!-- Determine the constraint level, defaulting to 'permissive' -->
+        <xsl:variable name="enumerationConstraintLevel" 
+            select="
+            if (some $tag in $enumerationTags satisfies $tag/@name = $cvConstraintLevelProperty)
+            then ($enumerationTags[@name = $cvConstraintLevelProperty][1]/@value)
+            else 'permissive'
+            "/>
+        
+        <xsl:if test="$enumerationCompactURI and $enumerationConstraintLevel = 'restrictive'">
             <xsl:variable name="shapeURI" select="f:buildPropertyShapeURI($enumerationCompactURI, 'itemShape')"/>
                 <xsl:variable name="inSchemeURI" select="f:buildURIfromLexicalQName($enumerationCompactURI)"/>
                 
@@ -432,7 +442,7 @@
         
         <!-- Generate RDF descriptions based on the constraint level -->
         <xsl:choose>
-            <xsl:when test="$enumerationConstraintLevel = 'restrictive' and $enableGenerationOfConceptSchemes">
+            <xsl:when test="$enumerationConstraintLevel = 'restrictive'">
                 <!-- Iterate over dependencies -->
 
                     <xsl:variable name="nodeUri" select="f:buildPropertyShapeURI($enumerationCompactURI, 'itemShape')"/>
@@ -451,7 +461,7 @@
                     </xsl:for-each>
                 
             </xsl:when>
-            <xsl:when test="$enumerationConstraintLevel = 'permissive' and $enableGenerationOfConceptSchemes">
+            <xsl:when test="$enumerationConstraintLevel = 'permissive'">
                 <!-- Generate shapes for permissive or default cases -->
                 <xsl:for-each select="$dependenciesIds">
                     <xsl:variable name="dependencyConnector" select="f:getConnectorByIdRef(., $root)"/>
