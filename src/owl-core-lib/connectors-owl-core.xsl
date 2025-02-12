@@ -43,7 +43,6 @@
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Realisation']">
         <xsl:if test="$generateObjectsAndRealisations">
-            <xsl:if test="not(f:isExcludedByStatus(.))">
             <!-- Extract prefixes for source and target -->
             <xsl:variable name="sourcePrefix"
                 select="fn:substring-before(./source/model/@name, ':')"/>
@@ -57,7 +56,6 @@
                     <xsl:with-param name="realisation" select="."/>
                 </xsl:call-template>
             </xsl:if>
-            </xsl:if>
         </xsl:if>
     </xsl:template>
 
@@ -66,14 +64,12 @@
         <xd:desc/>
     </xd:doc>
     <xsl:template match="connector[./properties/@ea_type = 'Generalization']">
-        <xsl:if test="not(f:isExcludedByStatus(.))">
         <!--        This reused concepts filter is applied in the propertyGeneralization function due complexity of the function-->
         <xsl:if
             test="
                 ./source/model/@type = 'ProxyConnector' and
                 ./target/model/@type = 'ProxyConnector'">
             <xsl:call-template name="propertyGeneralization"/>
-        </xsl:if>
         </xsl:if>
     </xsl:template>
 
@@ -85,14 +81,13 @@
         <xsl:variable name="generalisations"
             select="//connector[./properties/@ea_type = 'Generalization'][not(target/@xmi:idref = preceding::connector[./properties/@ea_type = 'Generalization']/target/@xmi:idref)]"/>
         <xsl:for-each select="$generalisations">
-            <xsl:if test="not(f:isExcludedByStatus(.))">
+
             <xsl:if
                 test="
                     ./source/model/@type = 'Class' and
                     ./target/model/@type = 'Class'">
 <!--                    This reused concepts filter is applied in the template so that the subclasses are also filtered-->
                     <xsl:call-template name="classGeneralization"/>
-            </xsl:if>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
@@ -204,7 +199,6 @@
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctConnectorsNames($root)"/>
         <xsl:for-each select="$distinctNames">
-            <xsl:if test="not(f:isExcludedByStatus(f:getConnectorByName(., $root)[1]))">
             <xsl:if
                 test="
                     f:getConnectorByName(., $root)/source/model/@type != 'ProxyConnector' and f:getConnectorByName(., $root)/target/model/@type != 'ProxyConnector'
@@ -220,7 +214,6 @@
                     </xsl:call-template>
                 </xsl:if>
 
-            </xsl:if>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
@@ -241,17 +234,15 @@
 
         <xsl:variable name="connectorDocumentations" as="xs:string*"
             select="
-                fn:distinct-values(
-                    for $connector in $connectorsWithSameName
-                    return
-                        if ($connector/documentation/@value) then
-                            fn:normalize-space($connector/documentation/@value)
-                        else
-                            ()
-                )"/>
+                for $connector in $connectorsWithSameName
+                return
+                    if ($connector/documentation/@value) then
+                        fn:concat($connector/documentation/@value, ' (', f:getConnectorName($connector), ') ')
+                    else
+                        ()"/>
 
         <xsl:variable name="documentation"
-            select="fn:normalize-space(f:formatDocString(fn:string-join($connectorDocumentations, ' ')))"/>
+            select="fn:normalize-space(f:formatDocString(fn:string-join($connectorDocumentations)))"/>
 
         <xsl:variable name="connectorNotes" as="xs:string*"
             select="

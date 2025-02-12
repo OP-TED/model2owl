@@ -29,7 +29,6 @@
             Selector to run core layer transfomation rules for commnents </xd:desc>
     </xd:doc>
     <xsl:template match="ownedComment[@xmi:type = 'uml:Comment']">
-        <xsl:if test="$commentsGeneration">
         <xsl:variable name="commentText" select="./@body"/>
         <xsl:for-each select="./annotatedElement/@xmi:idref">
             <xsl:variable name="elementFound" select="f:getElementByIdRef(., root(.))"/>
@@ -92,7 +91,6 @@
                 </xsl:choose>
             </xsl:if>
         </xsl:for-each>
-        </xsl:if>
     </xsl:template>
 
 
@@ -106,7 +104,6 @@
             deterministically generated from the UML Class name. </xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
-        <xsl:if test="not(f:isExcludedByStatus(.))">
         <xsl:variable name="class" select="."/>
         <xsl:variable name="className" select="$class/@name"/>
         <xsl:variable name="classNamePrefix" select="fn:substring-before($className, ':')"/>
@@ -146,7 +143,7 @@
 
         </xsl:if>
 
-        </xsl:if>
+
 
         <!--        <xsl:apply-templates select="attributes/attribute"/>-->
 
@@ -158,7 +155,6 @@
         <xd:desc>Applying shape layer rules to attributes</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
-        <xsl:if test="not(f:isExcludedByStatus(.))">
         <xsl:variable name="className" select="./../../@name" as="xs:string"/>
         <xsl:variable name="attributePrefix" select="fn:substring-before(./@name, ':')"/>
         <!--        <xsl:variable name="attributeNormalizedLocalName"
@@ -182,7 +178,6 @@
                     <xsl:with-param name="className" select="$className"/>
                 </xsl:call-template>
             </xsl:if>
-        </xsl:if>
         </xsl:if>
     </xsl:template>
 
@@ -268,33 +263,16 @@
                         f:getUmlDataTypeValues($attributeType, $umlDataTypesMapping)
                     else
                         $attributeType"/>
-            <xsl:choose>
-                <xsl:when test="$attributeType = 'rdf:PlainLiteral'
-                        and fn:boolean($translatePlainLiteralToStringTypesInSHACL)">
-                    <rdf:Description rdf:about="{$shapePropertyUri}">
-                        <sh:or rdf:parseType="Collection">
-                            <rdf:Description>
-                            <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-                            </rdf:Description>
-                            <rdf:Description>
-                            <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
-                            </rdf:Description>
-                        </sh:or>
-                    </rdf:Description>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:variable name="datatypeURI"
-                        select="
-                            if ($attributeType = $controlledListType) then
-                                f:buildURIfromLexicalQName('skos:Concept')
-                            else
-                                f:buildURIfromLexicalQName($datatype)"/>
+            <xsl:variable name="datatypeURI"
+                select="
+                    if ($attributeType = $controlledListType) then
+                        f:buildURIfromLexicalQName('skos:Concept')
+                    else
+                        f:buildURIfromLexicalQName($datatype)"/>
 
-                    <rdf:Description rdf:about="{$shapePropertyUri}">
-                        <sh:datatype rdf:resource="{$datatypeURI}"/>
-                    </rdf:Description>
-                </xsl:otherwise>
-            </xsl:choose>
+            <rdf:Description rdf:about="{$shapePropertyUri}">
+                <sh:datatype rdf:resource="{$datatypeURI}"/>
+            </rdf:Description>
 
         </xsl:if>
         <xsl:if
@@ -367,122 +345,11 @@
             </rdf:Description>
         </xsl:if>
     </xsl:template>
-    
-    <xd:doc>
-        <xd:desc>Rule D.06. Enumeration item — Specify a restrictive SHACL NodeShape for items of an enumeration 
-            for each UML Enumeration in the defining mode (based on the constraint level set for the UML Enumeration 
-            as defined in rule:enumeration-constraint-level). The URIs of the node shape is deterministically generated 
-            from the UML Enumeration name. Set a constraint for the enumeration item belonging to a concept scheme 
-            represented by the enumeration URI.</xd:desc>
-        <xd:param name="enumeration"/>
-    </xd:doc>
-    <xsl:template name="enumerationItem">
-        <xsl:param name="enumeration"/>
-        
-        <!-- Get the enumeration's compact URI -->
-        <xsl:variable name="enumerationCompactURI" select="$enumeration/@name"/>
-        
-        <xsl:if test="$enumerationCompactURI and $enableGenerationOfConceptSchemes">
-            <xsl:variable name="shapeURI" select="f:buildPropertyShapeURI($enumerationCompactURI, 'itemShape')"/>
-                <xsl:variable name="inSchemeURI" select="f:buildURIfromLexicalQName($enumerationCompactURI)"/>
-                
-                <rdf:Description rdf:about="{$shapeURI}">
-                    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-                    <sh:property rdf:parseType="Resource">
-                        <sh:path rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
-                        <sh:hasValue rdf:resource="{$inSchemeURI}"/>
-                    </sh:property>
-                </rdf:Description>
-        </xsl:if>
-    </xsl:template>
-    
-    <xd:doc>
-        <xd:desc>
-            Rule R.13. Dependency range shape — Within the SHACL PropertyShape corresponding to a dependency relation 
-            linked to a given source UML Class, constraint the range of the dependency.
-            Specify the suitable constraint based on the constraint level set for the UML Enumeration 
-     
-            * permissive: set skos:Concept as the expected type of an enumeration item
-            
-            * restrictive: refer to a NodeShape for an enumeration item that further restricts allowed values
-        </xd:desc>
-        <xd:param name="enumeration"/>
-    </xd:doc>
-    <xsl:template name="enumerationDependencyRangeShape">
-        <xsl:param name="enumeration"/>
-        
-        <!-- Root element and enumeration tags -->
-        <xsl:variable name="root" select="root($enumeration)"/>
-        <xsl:variable name="enumerationTags" select="f:getElementTags($enumeration)"/>
-        
-        <!-- Get the enumeration's compact URI -->
-        <xsl:variable name="enumerationCompactURI" select="$enumeration/@name"/>
-        
-        <!-- Determine the constraint level, defaulting to 'permissive' -->
-        <xsl:variable name="enumerationConstraintLevel" 
-            select="
-            if (some $tag in $enumerationTags satisfies $tag/@name = $cvConstraintLevelProperty)
-            then ($enumerationTags[@name = $cvConstraintLevelProperty][1]/@value)
-            else 'permissive'
-            "/>
-        
-        <!-- Retrieve all dependency IDs -->
-
-        <xsl:variable name="dependenciesIds" select="$enumeration/links/Dependency/@xmi:id"/>  
-        
-        <!-- Generate RDF descriptions based on the constraint level -->
-        <xsl:choose>
-            <xsl:when test="$enumerationConstraintLevel = 'restrictive' and $enableGenerationOfConceptSchemes">
-                <!-- Iterate over dependencies -->
-
-                    <xsl:variable name="nodeUri" select="f:buildPropertyShapeURI($enumerationCompactURI, 'itemShape')"/>
-                    <xsl:for-each select="$dependenciesIds">
-                        <xsl:variable name="dependencyConnector" select="f:getConnectorByIdRef(., $root)"/>
-                        <xsl:variable name="dependencyName" select="$dependencyConnector/target/role/@name"/>
-                        <xsl:variable name="sourceClassName" select="$dependencyConnector/source/model/@name"/>
-                        <xsl:variable name="shapeUriClassDependency" 
-                            select="f:buildPropertyShapeURI($sourceClassName, $dependencyName)"/>
-                        
-                        <rdf:Description rdf:about="{$shapeUriClassDependency}">
-                            <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-                            <sh:path rdf:resource="{f:buildURIfromLexicalQName($dependencyName)}"/>
-                            <sh:node rdf:resource="{$nodeUri}"/>
-                        </rdf:Description>
-                    </xsl:for-each>
-                
-            </xsl:when>
-            <xsl:when test="$enumerationConstraintLevel = 'permissive' and $enableGenerationOfConceptSchemes">
-                <!-- Generate shapes for permissive or default cases -->
-                <xsl:for-each select="$dependenciesIds">
-                    <xsl:variable name="dependencyConnector" select="f:getConnectorByIdRef(., $root)"/>
-                    <xsl:variable name="dependencyName" select="$dependencyConnector/target/role/@name"/>
-                    <xsl:variable name="sourceClassName" select="$dependencyConnector/source/model/@name"/>
-                    <xsl:variable name="shapeUriClassDependency" 
-                        select="f:buildPropertyShapeURI($sourceClassName, $dependencyName)"/>
-                    
-                    <rdf:Description rdf:about="{$shapeUriClassDependency}">
-                        <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-                        <sh:path rdf:resource="{f:buildURIfromLexicalQName($dependencyName)}"/>
-                        <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-                    </rdf:Description>
-                </xsl:for-each>
-            </xsl:when>
-        </xsl:choose>
-    </xsl:template>
 
     <xd:doc>
-        <xd:desc>Applying shape layer rules to Enumeration dependencies and items</xd:desc>
+        <xd:desc>This will override the common selector when applying templates</xd:desc>
     </xd:doc>
-    <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
-        <xsl:if test="not(f:isExcludedByStatus(.))">
-            <xsl:call-template name="enumerationItem">
-                <xsl:with-param name="enumeration" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="enumerationDependencyRangeShape">
-                <xsl:with-param name="enumeration" select="."/>
-            </xsl:call-template>
-        </xsl:if>
-    </xsl:template>
+    <xsl:template match="element[@xmi:type = 'uml:Enumeration']"/>
 
     <xd:doc>
         <xd:desc>This will override the common selector when applying templates</xd:desc>
