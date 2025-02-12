@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:at="http://publications.europa.eu/ontology/authority/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:atold="http://publications.europa.eu/resource/authority/"
+         xml:base="http://publications.europa.eu/resource/authority/permission">
+   <skos:ConceptScheme rdf:about="http://publications.europa.eu/resource/authority/permission"
+                       at:table.id="permission"
+                       at:table.version.number="20240612-0">
+      <owl:versionInfo>20240612-0</owl:versionInfo>
+      <skos:prefLabel xml:lang="en">Permission</skos:prefLabel>
+      <skos:definition xml:lang="en">This table provides the codes linked to the different values of permission and/or obligation. </skos:definition>
+      <rdfs:label xml:lang="en">Permission</rdfs:label>
+      <at:prefLabel xml:lang="en">Permission</at:prefLabel>
+      <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/permission/OP_DATPRO"/>
+      <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/permission/allowed"/>
+      <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/permission/required"/>
+      <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/permission/not-allowed"/>
+   </skos:ConceptScheme>
+   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/permission/OP_DATPRO"
+                 at:deprecated="true">
+      <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+      <skos:prefLabel xml:lang="de">Vorläufige Daten</skos:prefLabel>
+      <skos:prefLabel xml:lang="mt">Dejta provviżorja</skos:prefLabel>
+      <skos:prefLabel xml:lang="et">Esialgsed andmed</skos:prefLabel>
+      <skos:prefLabel xml:lang="it">Dati provvisori</skos:prefLabel>
+      <skos:prefLabel xml:lang="el">Προσωρινά δεδομένα</skos:prefLabel>
+      <skos:prefLabel xml:lang="en">Provisional data</skos:prefLabel>
+      <skos:prefLabel xml:lang="pl">Dane tymczasowe</skos:prefLabel>
+      <skos:prefLabel xml:lang="fr">Données provisoires</skos:prefLabel>
+      <skos:prefLabel xml:lang="es">Datos provisionales</skos:prefLabel>
+      <skos:prefLabel xml:lang="sk">Predbežné údaje</skos:prefLabel>
+      <skos:prefLabel xml:lang="da">Midlertidige data</skos:prefLabel>
+      <skos:prefLabel xml:lang="ga">Sonraí sealadacha</skos:prefLabel>
+      <skos:prefLabel xml:lang="lt">Laikinieji duomenys</skos:prefLabel>
+      <skos:prefLabel xml:lang="sv">Tillfälliga uppgifter</skos:prefLabel>
+      <skos:prefLabel xml:lang="cs">Předběžné údaje</skos:prefLabel>
+      <skos:prefLabel xml:lang="ro">Date provizorii</skos:prefLabel>
+      <skos:prefLabel xml:lang="pt">Dados provisórios</skos:prefLabel>
+      <skos:prefLabel xml:lang="lv">Provizoriski dati</skos:prefLabel>
+      <skos:prefLabel xml:lang="sl">Začasni podatki</skos:prefLabel>
+      <skos:prefLabel xml:lang="hu">Ideiglenes adatok</skos:prefLabel>
+      <skos:prefLabel xml:lang="fi">Alustavat tiedot</skos:prefLabel>
+      <skos:prefLabel xml:lang="bg">Неокончателни данни</skos:prefLabel>
+      <skos:prefLabel xml:lang="nl">Voorlopige gegevens</skos:prefLabel>
+      <skos:prefLabel xml:lang="hr">Privremeni podaci</skos:prefLabel>
+      <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/permission"/>
+      <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/permission"/>
+      <dc:identifier>OP_DATPRO</dc:identifier>
+      <atold:op-code>OP_DATPRO</atold:op-code>
+      <at:op-code>OP_DATPRO</at:op-code>
+      <at:start.use>1952-07-23</at:start.use>
+      <at:authority-code>OP_DATPRO</at:authority-code>
+      <at:end.use>1952-07-24</at:end.use>
+   </skos:Concept>
+   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/permission/allowed"
+                 at:deprecated="false">
+      <skos:prefLabel xml:lang="cs">Povolena</skos:prefLabel>
+      <skos:prefLabel xml:lang="el">Επιτρέπεται</skos:prefLabel>
+      <skos:prefLabel xml:lang="pt">Permitido</skos:prefLabel>
+      <skos:prefLabel xml:lang="fr">Autorisée</skos:prefLabel>
+      <skos:prefLabel xml:lang="hr">Dopušteno</skos:prefLabel>
+      <skos:prefLabel xml:lang="ro">Autorizată</skos:prefLabel>
+      <skos:prefLabel xml:lang="es">Permitida</skos:prefLabel>
+      <skos:prefLabel xml:lang="hu">Megengedett</skos:prefLabel>
+      <skos:prefLabel xml:lang="nl">Toegestaan</skos:prefLabel>
+      <skos:prefLabel xml:lang="it">Consentita</skos:prefLabel>
+      <skos:prefLabel xml:lang="sl">Dovoljeno</skos:prefLabel>
+      <skos:prefLabel xml:lang="et">Lubatud</skos:prefLabel>
+      <skos:prefLabel xml:lang="fi">Sallittu</skos:prefLabel>
+      <skos:prefLabel xml:lang="sk">Povolená</skos:prefLabel>
+      <skos:prefLabel xml:lang="lv">Atļauts</skos:prefLabel>
+      <skos:prefLabel xml:lang="sv">Tillåten</skos:prefLabel>
+      <skos:prefLabel xml:lang="bg">Разрешено</skos:prefLabel>
+      <skos:prefLabel xml:lang="pl">Dozwolone</skos:prefLabel>
+      <skos:prefLabel xml:lang="de">Zulässig</skos:prefLabel>
+      <skos:prefLabel xml:lang="ga">Ceadmhach</skos:prefLabel>
+      <skos:prefLabel xml:lang="mt">Permessa</skos:prefLabel>
+      <skos:prefLabel xml:lang="en">Allowed</skos:prefLabel>
+      <skos:prefLabel xml:lang="lt">Neprivalomos</skos:prefLabel>
+      <skos:prefLabel xml:lang="da">Tilladt</skos:prefLabel>
+      <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/permission"/>
+      <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/permission"/>
+      <dc:identifier>allowed</dc:identifier>
+      <atold:op-code>allowed</atold:op-code>
+      <at:op-code>allowed</at:op-code>
+      <at:start.use>2019-09-18</at:start.use>
+      <at:authority-code>allowed</at:authority-code>
+      <skos:example xml:lang="en">In eProcurement notices: Tenders can be submitted electronically; Tenders can include variants; Tenderers can submit eCatalogues; Electronic invoices are to be used</skos:example>
+      <skos:scopeNote xml:lang="en">The use case of 'Tenders can be submitted electronically' can only be used below thresholds as it is an obligation above threshold unless duly justified for all tenders.</skos:scopeNote>
+   </skos:Concept>
+   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/permission/required"
+                 at:deprecated="false">
+      <skos:prefLabel xml:lang="lt">Privalomos</skos:prefLabel>
+      <skos:prefLabel xml:lang="el">Υποχρεωτική</skos:prefLabel>
+      <skos:prefLabel xml:lang="bg">Задължително</skos:prefLabel>
+      <skos:prefLabel xml:lang="hu">Kötelező</skos:prefLabel>
+      <skos:prefLabel xml:lang="fi">Pakollinen</skos:prefLabel>
+      <skos:prefLabel xml:lang="ga">Ní ceadmhach</skos:prefLabel>
+      <skos:prefLabel xml:lang="nl">Vereist</skos:prefLabel>
+      <skos:prefLabel xml:lang="sv">Krävs</skos:prefLabel>
+      <skos:prefLabel xml:lang="da">Påkrævet</skos:prefLabel>
+      <skos:prefLabel xml:lang="et">Nõutav</skos:prefLabel>
+      <skos:prefLabel xml:lang="mt">Meħtieġa</skos:prefLabel>
+      <skos:prefLabel xml:lang="de">Erforderlich</skos:prefLabel>
+      <skos:prefLabel xml:lang="lv">Prasīts</skos:prefLabel>
+      <skos:prefLabel xml:lang="en">Required</skos:prefLabel>
+      <skos:prefLabel xml:lang="pt">Necessário</skos:prefLabel>
+      <skos:prefLabel xml:lang="it">Obbligatoria</skos:prefLabel>
+      <skos:prefLabel xml:lang="cs">Požadována</skos:prefLabel>
+      <skos:prefLabel xml:lang="sk">Povinná</skos:prefLabel>
+      <skos:prefLabel xml:lang="es">Obligatoria</skos:prefLabel>
+      <skos:prefLabel xml:lang="ro">Obligatorie</skos:prefLabel>
+      <skos:prefLabel xml:lang="pl">Wymagane</skos:prefLabel>
+      <skos:prefLabel xml:lang="fr">Requise</skos:prefLabel>
+      <skos:prefLabel xml:lang="hr">Obvezno</skos:prefLabel>
+      <skos:prefLabel xml:lang="sl">Obvezno</skos:prefLabel>
+      <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/permission"/>
+      <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/permission"/>
+      <dc:identifier>required</dc:identifier>
+      <atold:op-code>required</atold:op-code>
+      <at:op-code>required</at:op-code>
+      <at:start.use>2019-09-18</at:start.use>
+      <at:authority-code>required</at:authority-code>
+      <skos:example xml:lang="en">In eProcurement notices: Tenders must be submitted electronically; Tenders must include variants; Tenderers must submit eCatalogues; Electronic invoices must be used</skos:example>
+   </skos:Concept>
+   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/permission/not-allowed"
+                 at:deprecated="false">
+      <skos:prefLabel xml:lang="mt">Mhux permessa</skos:prefLabel>
+      <skos:prefLabel xml:lang="et">Ei ole lubatud</skos:prefLabel>
+      <skos:prefLabel xml:lang="sk">Nie je povolená</skos:prefLabel>
+      <skos:prefLabel xml:lang="lv">Nav atļauts</skos:prefLabel>
+      <skos:prefLabel xml:lang="de">Nicht zulässig</skos:prefLabel>
+      <skos:prefLabel xml:lang="it">Non consentita</skos:prefLabel>
+      <skos:prefLabel xml:lang="hr">Nije dopušteno</skos:prefLabel>
+      <skos:prefLabel xml:lang="el">Δεν επιτρέπεται</skos:prefLabel>
+      <skos:prefLabel xml:lang="pl">Niedozwolone</skos:prefLabel>
+      <skos:prefLabel xml:lang="fr">Non autorisée</skos:prefLabel>
+      <skos:prefLabel xml:lang="cs">Nepovolena</skos:prefLabel>
+      <skos:prefLabel xml:lang="es">No autorizada</skos:prefLabel>
+      <skos:prefLabel xml:lang="pt">Não autorizado</skos:prefLabel>
+      <skos:prefLabel xml:lang="sl">Ni dovoljeno</skos:prefLabel>
+      <skos:prefLabel xml:lang="hu">Nem megengedett</skos:prefLabel>
+      <skos:prefLabel xml:lang="sv">Ej tillåten</skos:prefLabel>
+      <skos:prefLabel xml:lang="nl">Niet toegestaan</skos:prefLabel>
+      <skos:prefLabel xml:lang="lt">Draudžiamos</skos:prefLabel>
+      <skos:prefLabel xml:lang="ga">Éigeantach</skos:prefLabel>
+      <skos:prefLabel xml:lang="ro">Nu este permisă</skos:prefLabel>
+      <skos:prefLabel xml:lang="fi">Ei sallittu</skos:prefLabel>
+      <skos:prefLabel xml:lang="da">Ikke tilladt</skos:prefLabel>
+      <skos:prefLabel xml:lang="en">Not allowed</skos:prefLabel>
+      <skos:prefLabel xml:lang="bg">Забранено</skos:prefLabel>
+      <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/permission"/>
+      <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/permission"/>
+      <dc:identifier>not-allowed</dc:identifier>
+      <atold:op-code>not-allowed</atold:op-code>
+      <at:op-code>not-allowed</at:op-code>
+      <at:start.use>2019-09-18</at:start.use>
+      <at:authority-code>not-allowed</at:authority-code>
+      <skos:example xml:lang="en">In eProcurement notices: Tenders cannot be submitted electronically; Tenders cannot include variants; Tenderers cannot submit eCatalogues; Electronic invoices are not to be used</skos:example>
+   </skos:Concept>
+</rdf:RDF>
