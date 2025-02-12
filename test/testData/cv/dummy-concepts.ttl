@@ -1,0 +1,12 @@
+@prefix : <http://example.com/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+:no a skos:Concept .
+
+:yes skos:prefLabel "yes" .
+
+:services a skos:Concept .
+
+:contractNature a skos:ConceptScheme ;
+    skos:prefLabel "contract nature"@en ;
+    skos:hasTopConcept :services .

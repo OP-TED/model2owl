@@ -1,0 +1,46 @@
+@prefix : <http://data.europa.eu/a4g/ontology#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+@prefix at-voc: <http://publications.europa.eu/resource/authority/> .
+@prefix core-shape: <http://data.europa.eu/a4g/data-shape#> .
+
+
+core-shape:epo-ContractTerm a sh:NodeShape ;
+    rdfs:label "Contract Term" ;
+    rdfs:comment "Conditions and stipulations defining particularities of the Post Award Phase." ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:property core-shape:epo-ContractTerm-epo-hasReservedExecution,
+        core-shape:epo-ContractTerm-epo-hasContractNatureType,
+        core-shape:epo-ContractTerm-epo-hasEInvoicingPermission ;
+    sh:targetClass :ContractTerm .
+
+
+# permissive
+core-shape:epo-ContractTerm-epo-hasReservedExecution a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:maxCount 1 ;
+    sh:name "has Reserved Execution" ;
+    sh:path :hasReservedExecution .
+
+
+# restrictive
+core-shape:epo-ContractTerm-epo-hasEInvoicingPermission a sh:PropertyShape ;
+    sh:name "has E Invoicing Permission" ;
+    sh:node core-shape:at-voc-permission-itemShape ;
+    sh:path :hasEInvoicingPermission .
+
+core-shape:at-voc-permission-itemShape a sh:NodeShape ;
+    sh:property [ sh:hasValue at-voc:permission ;
+            sh:path skos:inScheme ] .
+
+# restrictive
+core-shape:epo-ContractTerm-epo-hasContractNatureType a sh:PropertyShape ;
+    sh:name "has Contract Nature Type" ;
+    sh:node core-shape:at-voc-contract-nature-itemShape ;
+    sh:path :hasContractNatureType .
+
+core-shape:at-voc-contract-nature-itemShape a sh:NodeShape ;
+    sh:property [ sh:hasValue at-voc:contract-nature ;
+            sh:path skos:inScheme ] .
