@@ -517,5 +517,30 @@
         </x:scenario>
     </x:scenario>
     
+    <x:scenario label="testing f:generalisationConnectorsHasOppositeDirections"> 
+        <x:scenario label="correct generalisation between associations">
+            <x:call function="f:generalisationConnectorsHasOppositeDirections">
+                <x:param name="element" href="../../testData/ePO-core-4.2.0-generalisations.xml" 
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[1]"/>
+            </x:call>
+            <x:expect label="boolean-false" select="false()"/>
+        </x:scenario>
+        
+    </x:scenario>
+    
+    
+    <x:scenario label="testing f:generalisationMissing"> 
+        <x:scenario label="correct use of generalisations between associations - ">
+            <x:call function="f:generalisationMissing">
+                <x:param name="element" href="../../testData/ePO-core-4.2.0-generalisations.xml" 
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
+            </x:call>
+            <x:expect label="boolean-false" select="true()"/>
+        </x:scenario>
+        
+        
+
+    </x:scenario>
+    
 </x:description>
 

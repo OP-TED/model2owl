@@ -788,5 +788,35 @@
                 "
         />
     </xsl:function>
+    
+    
+    
+    <xd:doc>
+        <xd:desc>This function will return the target connector from a generalisation between 2 connectors</xd:desc>
+        <xd:param name="generalisation"/>
+    </xd:doc>
+    <xsl:function name="f:getTargetConnectorFromGeneralisation">
+        <xsl:param name="generalisation"/>
+        <xsl:variable name="targetIdref" select="$generalisation/target/@xmi:idref" as="xs:string"/>
+        <xsl:variable name="targetElement" select="f:getElementByIdRef($targetIdref, root($generalisation))"/>
+        <xsl:variable name="targetConnectorIdref" select="$targetElement/@classifier" as="xs:string"/>
+        <xsl:variable name="targetConnector"
+            select="f:getConnectorByIdRef($targetConnectorIdref, root($generalisation))"/>
+        <xsl:sequence select="$targetConnector"/>
+    </xsl:function>
+    
+    <xd:doc>
+        <xd:desc>This function will return the source connector from a generalisation between 2 connectors</xd:desc>
+        <xd:param name="generalisation"/>
+    </xd:doc>
+    <xsl:function name="f:getSourceConnectorFromGeneralisation">
+        <xsl:param name="generalisation"/>
+        <xsl:variable name="sourceIdref" select="$generalisation/source/@xmi:idref" as="xs:string"/>
+        <xsl:variable name="sourceElement" select="f:getElementByIdRef($sourceIdref, root($generalisation))"/>
+        <xsl:variable name="sourceConnectorIdref" select="$sourceElement/@classifier" as="xs:string"/>
+        <xsl:variable name="sourceConnector"
+            select="f:getConnectorByIdRef($sourceConnectorIdref, root($generalisation))"/>
+        <xsl:sequence select="$sourceConnector"/>
+    </xsl:function>
 
 </xsl:stylesheet>

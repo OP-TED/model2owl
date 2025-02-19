@@ -245,5 +245,33 @@
                 )"
         />
     </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>[generalisation-connector-unidirectional-connector-direction-8] - direction of connectors associated with the generalisation connector
+            doesn’t match</xd:desc>
+        <xd:param name="generalizationConnector"/>
+    </xd:doc>
+    
+    <xsl:template name="generalizationUnidirectionalConnectorsDirection">
+        <xsl:param name="generalizationConnector"/>
+        <xsl:variable name="targetConnector"
+            select="f:getTargetConnectorFromGeneralisation($generalizationConnector)"/>
+        <xsl:variable name="sourceConnector"
+            select="f:getSourceConnectorFromGeneralisation($generalizationConnector)"/>
+        <xsl:variable name="targetConnectorString" select="fn:concat($targetConnector/source/model/@name,' -> ', $targetConnector/target/model/@name)"/>
+        <xsl:variable name="sourceConnectorString" select="fn:concat($sourceConnector/source/model/@name,' -> ', $sourceConnector/target/model/@name)"/>
+        <xsl:sequence
+            select="
+            if (not(f:generalisationConnectorsHasOppositeDirections($generalizationConnector))) then
+            ()
+            else
+            f:generateErrorMessage('The unidirectional connectors $connector1$ and $connector2$ associated with the generalisation connector have opposite directions',
+            path($generalizationConnector),
+            'generalisation-connector-unidirectional-connector-direction-8',
+            '',
+            ''
+            )"
+        />
+    </xsl:template>
 
 </xsl:stylesheet>
