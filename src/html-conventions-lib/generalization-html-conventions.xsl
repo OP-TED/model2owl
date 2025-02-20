@@ -276,16 +276,16 @@
         
         <xsl:variable name="associationsBoundsClassNames" as="xs:string*">
             <xsl:sequence select="(
-                $targetConnector/source/model/@name,
-                $targetConnector/target/model/@name,
-                $sourceConnector/source/model/@name,
-                $sourceConnector/target/model/@name
+                $targetConnectorSource,
+                $targetConnectorTarget,
+                $sourceConnectorSource,
+                $sourceConnectorTarget
                 )"/>
         </xsl:variable>
         
-        <xsl:variable name="distinctNames" select="distinct-values($allNames)" as="xs:string*"/>
+        <xsl:variable name="distinctClassNames" select="distinct-values($associationsBoundsClassNames)" as="xs:string*"/>
         
-        <xsl:if test="not(count($allNames) = count($distinctNames))">
+        <xsl:if test="not(count($associationsBoundsClassNames) = count($distinctClassNames))">
         
         
         <xsl:sequence
