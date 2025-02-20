@@ -4,114 +4,192 @@
     xmlns:f="http://https://github.com/costezki/model2owl#"
     stylesheet="../../../src/html-conventions-lib/generalization-html-conventions.xsl">
     <x:param name="reportType" select="'HTML'"/>
-    <x:scenario label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']-finding all generalizations with unmet conventions">
-        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[22]"/>
+    <x:scenario
+        label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']-finding all generalizations with unmet conventions">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[22]"/>
         <x:expect label="there is an Description List element" test="boolean(/dl)"/>
         <x:expect label="there is an Description Term element" test="boolean(dl/dt)"/>
         <x:expect label="there is an Description Details element" test="boolean(dl/dd)"/>
     </x:scenario>
-    
-    <x:scenario label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']-finding all generalizations with no unmet conventions">
-        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[36]"/>
-        <x:expect label="expect to do nothing" select = "()"/> 
+
+    <x:scenario
+        label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Generalization']-finding all generalizations with no unmet conventions">
+        <x:context href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[36]"/>
+        <x:expect label="expect to do nothing" select="()"/>
     </x:scenario>
-    
+
     <x:scenario label="Scenario for finding a Generalization that has a name">
         <x:call template="generalizationHasName">
-            <x:param name="generalizationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[22]"/>
-        </x:call>   
-        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+            <x:param name="generalizationConnector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[22]"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
     </x:scenario>
-    
-    
+
+
     <x:scenario label="Scenario for finding a Generalization that has no name">
         <x:call template="generalizationHasName">
-            <x:param name="generalizationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[31]"/>
-        </x:call>   
-        <x:expect label="expect to do nothing" select="()"/> 
+            <x:param name="generalizationConnector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[31]"/>
+        </x:call>
+        <x:expect label="expect to do nothing" select="()"/>
     </x:scenario>
-    
+
     <x:scenario label="Scenario for finding a Generalization that has role names">
         <x:call template="generalizationHasRoleName">
-            <x:param name="generalizationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[22]"/>
-        </x:call>   
-        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+            <x:param name="generalizationConnector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[22]"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
     </x:scenario>
-    
-    
+
+
     <x:scenario label="Scenario for finding a Generalization that has no role names">
         <x:call template="generalizationHasRoleName">
-            <x:param name="generalizationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[31]"/>
-        </x:call>   
-        <x:expect label="expect to do nothing" select="()"/> 
+            <x:param name="generalizationConnector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[31]"/>
+        </x:call>
+        <x:expect label="expect to do nothing" select="()"/>
     </x:scenario>
-    
+
     <x:scenario label="Scenario for finding a Generalization that has multiplicity">
         <x:call template="generalizationHasMultiplicity">
-            <x:param name="generalizationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[22]"/>
-        </x:call>   
-        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+            <x:param name="generalizationConnector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[22]"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
     </x:scenario>
-    
-    
+
+
     <x:scenario label="Scenario for finding a Generalization that has no multiplicity">
         <x:call template="generalizationHasMultiplicity">
-            <x:param name="generalizationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[31]"/>
-        </x:call>   
-        <x:expect label="expect to do nothing" select="()"/> 
+            <x:param name="generalizationConnector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[31]"/>
+        </x:call>
+        <x:expect label="expect to do nothing" select="()"/>
     </x:scenario>
-    
+
     <x:scenario label="Scenario for finding a Generalization that has a wrong direction">
         <x:call template="generalizationDirectionChecker">
-            <x:param name="generalizationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[22]"/>
-        </x:call>   
-        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+            <x:param name="generalizationConnector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[22]"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
     </x:scenario>
-    
-    
+
+
     <x:scenario label="Scenario for finding a Generalization that has the right direction">
         <x:call template="generalizationDirectionChecker">
-            <x:param name="generalizationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[31]"/>
-        </x:call>   
-        <x:expect label="expect to do nothing" select="()"/> 
+            <x:param name="generalizationConnector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[31]"/>
+        </x:call>
+        <x:expect label="expect to do nothing" select="()"/>
     </x:scenario>
-    
+
     <x:scenario label="Scenario for finding a Generalization that has only one child">
         <x:call template="generalizationClassWithSingleChild">
-            <x:param name="generalizationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[350]"/>
-        </x:call>   
-        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
-    
+            <x:param name="generalizationConnector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[350]"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+
     </x:scenario>
-    
-    
+
+
     <x:scenario label="Scenario for finding a Generalization that has more than one child">
         <x:call template="generalizationClassWithSingleChild">
-            <x:param name="generalizationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[36]"/>
-        </x:call>   
-        <x:expect label="expect to do nothing" select="()"/> 
+            <x:param name="generalizationConnector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[36]"/>
+        </x:call>
+        <x:expect label="expect to do nothing" select="()"/>
     </x:scenario>
-    
+
     <x:scenario label="Scenario for finding a Generalization that with inverse inheritance">
         <x:call template="generalizationInverseInheritance">
-            <x:param name="generalizationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[459]"/>
-        </x:call>   
-        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+            <x:param name="generalizationConnector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[459]"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
     </x:scenario>
-    
-    
+
+
     <x:scenario label="Scenario for finding a Generalization with no inverse inheritance">
         <x:call template="generalizationInverseInheritance">
-            <x:param name="generalizationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[36]"/>
-        </x:call>   
-        <x:expect label="expect to do nothing" select="()"/> 
+            <x:param name="generalizationConnector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[36]"/>
+        </x:call>
+        <x:expect label="expect to do nothing" select="()"/>
     </x:scenario>
-    
+
     <x:scenario label="Scenario for finding a Generalization between 2 classes">
         <x:call template="generalizationSourceTargetTypes">
-            <x:param name="generalizationConnector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[36]"/>
-        </x:call>   
-        <x:expect label="expect to do nothing" select="()"/> 
+            <x:param name="generalizationConnector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[36]"/>
+        </x:call>
+        <x:expect label="expect to do nothing" select="()"/>
     </x:scenario>
-    
+
+
+
+
+    <x:scenario label="Scenario  for generalization unidirectional connectors direction">
+        <x:scenario label="incorrect generalisation between associations - invalid case">
+            <x:call template="generalizationUnidirectionalConnectorsDirection">
+                <x:param name="generalizationConnector" href="../../testData/ePO-core-4.2.0.xml"
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[1]"/>
+            </x:call>
+            <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+            <x:expect label="expect correct error text"
+                test="dd[@class='filter errors']/text() = 'The unidirectional connectors epo:SubmissionStatisticalInformation -&gt; epo:MonetaryValue and epo:MonetaryValue -&gt; epo:SubmissionStatisticalInformation associated with the generalisation connector have opposite directions'"
+            />
+        </x:scenario>
+
+        <x:scenario label="correct generalisation between associations - valid case">
+            <x:call template="generalizationUnidirectionalConnectorsDirection">
+                <x:param name="generalizationConnector" href="../../testData/ePO-core-4.2.0.xml"
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[2]"/>
+            </x:call>
+            <x:expect label="no output" select="()"/>
+        </x:scenario>
+
+    </x:scenario>
+
+
+    <x:scenario label="Scenario for generalization missing or invalid class generalization">
+        
+        <x:scenario label="incorrect use of generalisations between associations - missing">
+            <x:call template="generalizationMissingOrInvalidClassGeneralization">
+                <x:param name="generalizationConnector" href="../../testData/ePO-core-4.2.0.xml"
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[9]"/>
+            </x:call>
+            <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/>
+            <x:expect label="expect correct error text"
+                test="dd[@class='filter errors']/text() = 'The generalisation between epo:Notice -&gt; epo:Procedure and epo:SimplifiedNotice -&gt; epo:Procedure is missing or has invalid direction'"
+            />
+        </x:scenario>
+        
+        <x:scenario label="correct use of generalisations between associations - valid case">
+            <x:call template="generalizationMissingOrInvalidClassGeneralization">
+                <x:param name="generalizationConnector" href="../../testData/ePO-core-4.2.0.xml"
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[10]"/>
+            </x:call>
+            <x:expect label="no output" select="()"/>
+        </x:scenario>
+    </x:scenario>
+
 </x:description>

@@ -351,7 +351,7 @@
     <x:scenario label="Scenario for testing filter by status - excluded element">
         <x:call function="f:isExcludedByStatus">
             <x:param name="nodeInput"  href="../../testData/ePO-core-4.2.0.xml"
-                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[168]"/>
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Class' and @name='epo:Period']"/>
         </x:call>
         <x:expect label="result" select="fn:true()"/>
     </x:scenario>
@@ -359,7 +359,9 @@
     <x:scenario label="Scenario for testing filter by status - excluded connector">
         <x:call function="f:isExcludedByStatus">
             <x:param name="nodeInput"  href="../../testData/ePO-core-4.2.0.xml"
-                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[648]"/>
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[properties[@ea_type='Generalization']
+                and source/model[@name='epo:Procedure']
+                and target/model[@name='epo:ProcurementObject']]"/>
         </x:call>
         <x:expect label="result" select="fn:true()"/>
     </x:scenario>

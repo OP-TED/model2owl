@@ -161,7 +161,7 @@
     <x:scenario label="Scenario for enumerationItem">
         <x:scenario label="enumeration with items - restrictive">
         <x:call template="enumerationItem">
-            <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[250]"/>
+            <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Enumeration' and @name='at-voc:contract-nature']"/>
         </x:call>   
         <x:expect label="there is a rdf:Description " test="count(rdf:Description) = 1 "/>
         <x:expect label="there is a rdf:type" test="boolean(rdf:Description/rdf:type)"/>
@@ -174,7 +174,7 @@
 
         <x:scenario label="enumeration without items - restrictive">
                 <x:call template="enumerationItem">
-                    <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[280]"/>
+                    <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Enumeration' and @name='at-voc:permission']"/>
                 </x:call>   
                 <x:expect label="there is a rdf:Description " test="count(rdf:Description) = 1 "/>
                 <x:expect label="there is a rdf:type" test="boolean(rdf:Description/rdf:type)"/>
@@ -187,7 +187,7 @@
         
         <x:scenario label="enumeration without items - permissive">
             <x:call template="enumerationItem">
-                <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[243]"/>
+                <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Enumeration' and @name='at-voc:access-rights']"/>
             </x:call>   
             <x:expect label="there is no output" select="()"/>
         </x:scenario>
@@ -199,7 +199,7 @@
             <x:call template="enumerationDependencyRangeShape">
                 <x:param name="enumeration" 
                     href="../../testData/ePO-core-4.2.0.xml" 
-                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[244]"/>
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Enumeration' and @name='at-voc:accessibility']"/>
             </x:call>    
             <x:expect label="there is an rdf:Description" 
                 test="count(//rdf:Description) = 1"/>
@@ -220,7 +220,7 @@
         </x:scenario>
         <x:scenario label="enumeration with items - restrictive ">
             <x:call template="enumerationDependencyRangeShape">
-                <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[250]"/>
+                <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Enumeration' and @name='at-voc:contract-nature']"/>
             </x:call>   
             <x:expect label="there is a rdf:Description for each dependency" test="count(rdf:Description) = 2"/>
             <x:expect label="there is a rdf:type" test="boolean(rdf:Description/rdf:type)"/>
@@ -234,7 +234,7 @@
             <x:call template="enumerationDependencyRangeShape">
                 <x:param name="enumeration" 
                     href="../../testData/ePO-core-4.2.0.xml" 
-                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[243]"/>
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Enumeration' and @name='at-voc:access-rights']"/>
             </x:call>   
             <x:expect label="there are exactly 2 rdf:Description elements" 
                 test="count(//rdf:Description) = 2"/>
@@ -254,7 +254,7 @@
             <x:call template="enumerationDependencyRangeShape">
                 <x:param name="enumeration" 
                     href="../../testData/ePO-core-4.2.0.xml" 
-                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[280]"/>
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Enumeration' and @name='at-voc:permission']"/>
             </x:call>   
             <x:expect label="there is a rdf:Description for each dependency" test="count(rdf:Description) = 4"/>
             <x:expect label="there is a rdf:type" test="boolean(rdf:Description/rdf:type)"/>

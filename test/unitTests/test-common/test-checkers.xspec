@@ -511,9 +511,56 @@
         <x:scenario label="enumeration with correct tag and value">
             <x:call function="f:hasEnumerationAConstraintLevelProperty">
                 <x:param name="element" href="../../testData/ePO-core-4.2.0.xml" 
-                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[245]"/>
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Enumeration' and @name='at-voc:applicability']"/>
             </x:call>
             <x:expect label="boolean-true" select="true()"/>
+        </x:scenario>
+    </x:scenario>
+    
+    <x:scenario label="testing f:generalisationConnectorsHasOppositeDirections"> 
+        <x:scenario label="incorrect generalisation between associations - invalid case">
+            <x:call function="f:generalisationConnectorsHasOppositeDirections">
+                <x:param name="generalisation" href="../../testData/ePO-core-4.2.0.xml" 
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[1]"/>
+            </x:call>
+            <x:expect label="boolean-true" select="true()"/>
+        </x:scenario>
+        
+        <x:scenario label="correct generalisation between associations - valid case">
+            <x:call function="f:generalisationConnectorsHasOppositeDirections">
+                <x:param name="generalisation" href="../../testData/ePO-core-4.2.0.xml" 
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[2]"/>
+            </x:call>
+            <x:expect label="boolean-false" select="false()"/>
+        </x:scenario>
+        
+    </x:scenario>
+    
+    
+    <x:scenario label="testing f:generalisationMissing">
+        <x:scenario
+            label="incorrect use of generalisations between associations - invalid direction">
+            <x:call function="f:generalisationMissingOrIncorrect">
+                <x:param name="generalisation" href="../../testData/ePO-core-4.2.0.xml"
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
+            </x:call>
+            <x:expect label="boolean-true" select="true()"/>
+        </x:scenario>
+
+        <x:scenario label="incorrect use of generalisations between associations - missing">
+            <x:call function="f:generalisationMissingOrIncorrect">
+                <x:param name="generalisation" href="../../testData/ePO-core-4.2.0.xml"
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[9]"/>
+            </x:call>
+            <x:expect label="boolean-true" select="true()"/>
+        </x:scenario>
+
+                <x:scenario label="correct use of generalisations between associations - valid case">
+            <x:call function="f:generalisationMissingOrIncorrect">
+                <x:param name="generalisation" href="../../testData/ePO-core-4.2.0.xml"
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[10]"/>
+            </x:call>
+            <x:expect label="boolean-false" select="false()"/>
         </x:scenario>
     </x:scenario>
     
