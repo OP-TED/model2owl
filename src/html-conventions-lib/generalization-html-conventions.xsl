@@ -266,8 +266,28 @@
             select="f:getTargetConnectorFromGeneralisation($generalizationConnector)"/>
         <xsl:variable name="sourceConnector"
             select="f:getSourceConnectorFromGeneralisation($generalizationConnector)"/>
-        <xsl:variable name="targetConnectorString" select="fn:concat($targetConnector/source/model/@name,' -&gt; ', $targetConnector/target/model/@name)"/>
-        <xsl:variable name="sourceConnectorString" select="fn:concat($sourceConnector/source/model/@name,' -&gt; ', $sourceConnector/target/model/@name)"/>
+        <xsl:variable name="targetConnectorSource" select="$targetConnector/source/model/@name"/>
+        <xsl:variable name="targetConnectorTarget" select="$targetConnector/target/model/@name"/>
+        <xsl:variable name="sourceConnectorSource" select="$sourceConnector/source/model/@name"/>
+        <xsl:variable name="sourceConnectorTarget" select="$sourceConnector/target/model/@name"/>
+        
+        <xsl:variable name="targetConnectorString" select="fn:concat($targetConnectorSource,' -&gt; ', $targetConnectorTarget)"/>
+        <xsl:variable name="sourceConnectorString" select="fn:concat($sourceConnectorSource,' -&gt; ', $sourceConnectorTarget)"/>
+        
+        <xsl:variable name="associationsBoundsClassNames" as="xs:string*">
+            <xsl:sequence select="(
+                $targetConnector/source/model/@name,
+                $targetConnector/target/model/@name,
+                $sourceConnector/source/model/@name,
+                $sourceConnector/target/model/@name
+                )"/>
+        </xsl:variable>
+        
+        <xsl:variable name="distinctNames" select="distinct-values($allNames)" as="xs:string*"/>
+        
+        <xsl:if test="not(count($allNames) = count($distinctNames))">
+        
+        
         <xsl:sequence
             select="
             if (not(f:generalisationConnectorsHasOppositeDirections($generalizationConnector))) then
@@ -280,6 +300,7 @@
             ''
             )"
         />
+        </xsl:if>
     </xsl:template>
     
     <xd:doc>
