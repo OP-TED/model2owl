@@ -78,7 +78,7 @@
     <x:scenario label="enumeration no constraint level set">
         <x:call template="enumerationConstraintLevel">
             <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" 
-                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[268]"/>
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Enumeration' and @name='at-voc:main-activity']"/>
         </x:call>
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
         <x:expect label="correct warning text"
@@ -88,7 +88,7 @@
     <x:scenario label="enumeration with constraint level set">
         <x:call template="enumerationConstraintLevel">
             <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" 
-                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[245]"/>
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Enumeration' and @name='at-voc:applicability']"/>
         </x:call>
         <x:expect label="boolean-true" select="()"/>
     </x:scenario>

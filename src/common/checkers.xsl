@@ -628,7 +628,7 @@
         </xd:desc>
         <xd:param name="generalisation"/>
     </xd:doc>
-    <xsl:function name="f:generalisationMissing">
+    <xsl:function name="f:generalisationMissingOrIncorrect">
         <xsl:param name="generalisation"/>
         <xsl:variable name="targetConnector"
             select="f:getTargetConnectorFromGeneralisation($generalisation)"/>

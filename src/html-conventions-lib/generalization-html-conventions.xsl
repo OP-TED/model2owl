@@ -49,6 +49,14 @@
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
             </xsl:if>
+            <xsl:if test="./source/model/@type = 'ProxyConnector' and ./target/model/@type = 'ProxyConnector'">
+                <xsl:call-template name="generalizationUnidirectionalConnectorsDirection">
+                    <xsl:with-param name="generalizationConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="generalizationMissingOrInvalidClassGeneralization">
+                    <xsl:with-param name="generalizationConnector" select="."/>
+                </xsl:call-template>
+            </xsl:if>
         </xsl:variable>
         <xsl:if test="boolean($generalizationChecks)">
             <xsl:choose>
@@ -258,14 +266,44 @@
             select="f:getTargetConnectorFromGeneralisation($generalizationConnector)"/>
         <xsl:variable name="sourceConnector"
             select="f:getSourceConnectorFromGeneralisation($generalizationConnector)"/>
-        <xsl:variable name="targetConnectorString" select="fn:concat($targetConnector/source/model/@name,' -> ', $targetConnector/target/model/@name)"/>
-        <xsl:variable name="sourceConnectorString" select="fn:concat($sourceConnector/source/model/@name,' -> ', $sourceConnector/target/model/@name)"/>
+        <xsl:variable name="targetConnectorString" select="fn:concat($targetConnector/source/model/@name,' -&gt; ', $targetConnector/target/model/@name)"/>
+        <xsl:variable name="sourceConnectorString" select="fn:concat($sourceConnector/source/model/@name,' -&gt; ', $sourceConnector/target/model/@name)"/>
         <xsl:sequence
             select="
             if (not(f:generalisationConnectorsHasOppositeDirections($generalizationConnector))) then
             ()
             else
-            f:generateErrorMessage('The unidirectional connectors $connector1$ and $connector2$ associated with the generalisation connector have opposite directions',
+            f:generateErrorMessage(fn:concat('The unidirectional connectors ',$targetConnectorString, ' and ', $sourceConnectorString,' associated with the generalisation connector have opposite directions'),
+            path($generalizationConnector),
+            'generalisation-connector-unidirectional-connector-direction-8',
+            '',
+            ''
+            )"
+        />
+    </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>[generalisation-connector-and-missing-class-generalisation-9] [generalisation-connector-and-class-inheritance-direction-10] -
+            Missing class generalisation for two distinct classes related to the connector generalisation or
+            connector generalisation and class generalisation relationship direction mismatch
+        </xd:desc>
+        <xd:param name="generalizationConnector"/>
+    </xd:doc>
+    
+    <xsl:template name="generalizationMissingOrInvalidClassGeneralization">
+        <xsl:param name="generalizationConnector"/>
+        <xsl:variable name="targetConnector"
+            select="f:getTargetConnectorFromGeneralisation($generalizationConnector)"/>
+        <xsl:variable name="sourceConnector"
+            select="f:getSourceConnectorFromGeneralisation($generalizationConnector)"/>
+        <xsl:variable name="targetConnectorString" select="fn:concat($targetConnector/source/model/@name,' -&gt; ', $targetConnector/target/model/@name)"/>
+        <xsl:variable name="sourceConnectorString" select="fn:concat($sourceConnector/source/model/@name,' -&gt; ', $sourceConnector/target/model/@name)"/>
+        <xsl:sequence
+            select="
+            if (not(f:generalisationMissingOrIncorrect($generalizationConnector))) then
+            ()
+            else
+            f:generateErrorMessage(fn:concat('The generalisation between ',$targetConnectorString, ' and ', $sourceConnectorString,' is missing or has invalid direction'),
             path($generalizationConnector),
             'generalisation-connector-unidirectional-connector-direction-8',
             '',
