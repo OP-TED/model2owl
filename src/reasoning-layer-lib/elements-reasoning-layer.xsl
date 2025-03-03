@@ -27,16 +27,9 @@
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
         <xsl:if test="not(f:isExcludedByStatus(.))">
-        <!-- Extract the prefix from the attribute name -->
-        <xsl:variable name="attributePrefix" select="fn:substring-before(./@name, ':')"/>
-
-        <!-- Check if the attribute should be processed -->
-        <xsl:if
-            test="$generateReusedConceptsOWLrestrictions or $attributePrefix = $includedPrefixesList">
             <xsl:call-template name="attributeMultiplicity">
                 <xsl:with-param name="attribute" select="."/>
             </xsl:call-template>
-        </xsl:if>
         </xsl:if>
     </xsl:template>
 
