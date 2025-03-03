@@ -25,13 +25,9 @@
     </xd:doc>
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
-        <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
         <xsl:if test="not(f:isExcludedByStatus(.))">
         <xsl:if
-            test="
-                ./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
-                ($generateReusedConceptsOWLrestrictions or
-                fn:substring-before($connectorRoleName, ':') = $includedPrefixesList)">
+            test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
