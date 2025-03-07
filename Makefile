@@ -41,34 +41,42 @@ NAMESPACES_AS_RDFPIPE_ARGS=$(shell ${MODEL2OWL_FOLDER}/scripts/get_namespaces.sh
 RDF_XML_MIME_TYPE:='application/rdf+xml'
 TURTLE_MIME_TYPE:='turtle'
 
-# download saxon library 	
-get-saxon:
-	@echo Installing saxon
-	@mkdir -p ${MODEL2OWL_FOLDER}/saxon
-	@cd ${MODEL2OWL_FOLDER}/saxon  && curl -L -o saxon.zip "https://kumisystems.dl.sourceforge.net/project/saxon/Saxon-HE/10/Java/SaxonHE10-6J.zip" && unzip saxon.zip && rm -rf saxon.zip
-	@cd ${MODEL2OWL_FOLDER}/saxon && mv saxon-he-10.6.jar saxon.jar
-	@echo 'Saxon path is ${SAXON}'
+# download saxon library
+get-saxon: saxon/saxon.jar
 
-get-jena-cli-tools:
+saxon/saxon.jar:
+	@echo Installing saxon
+	mkdir -p saxon
+	cd saxon  && curl -L -o saxon.zip "https://kumisystems.dl.sourceforge.net/project/saxon/Saxon-HE/10/Java/SaxonHE10-6J.zip" && unzip saxon.zip && rm -rf saxon.zip
+	cd saxon && mv saxon-he-10.6.jar saxon.jar
+	@echo 'Saxon path is saxon/saxon.jar'
+
+get-jena-cli-tools: jena/apache-jena/bin/riot
+
+jena/apache-jena/bin/riot:
 	@echo Installing jena-cli-tools
-	@mkdir -p ${MODEL2OWL_FOLDER}/jena
-	@cd ${MODEL2OWL_FOLDER}/jena  && curl -L -o jena.zip "https://dlcdn.apache.org/jena/binaries/apache-jena-4.10.0.zip" && unzip jena.zip && rm -rf jena.zip
-	@echo 'Jena riot tool path is ${JENA_RIOT_TOOL}'
+	mkdir -p jena
+	cd jena  && curl -L -o jena.zip "https://dlcdn.apache.org/jena/binaries/apache-jena-5.3.0.zip" && unzip jena.zip && rm -rf jena.zip && ln -s apache-jena-* apache-jena
+	@echo 'Jena riot tool path is jena/apache-jena/bin/riot'
 
 # install rdflib
-get-rdflib:
-	@echo Installing rdflib
-	@source model2owl-venv/bin/activate && pip install rdflib
+get-rdflib: model2owl-venv/bin/rdfpipe
 
-get-widoco:
+model2owl-venv/bin/rdfpipe: model2owl-venv
+	@echo Installing rdflib
+	source model2owl-venv/bin/activate && pip install rdflib
+
+get-widoco: widoco/widoco.jar
+
+widoco/widoco.jar:
 	@echo Installing widoco
-	@mkdir -p ${MODEL2OWL_FOLDER}/widoco
-	@cd ${MODEL2OWL_FOLDER}/widoco  && curl -L -o widoco.jar "https://github.com/dgarijo/Widoco/releases/download/v1.4.17/java-11-widoco-1.4.17-jar-with-dependencies.jar"
+	mkdir widoco
+	cd widoco  && curl -L -o widoco.jar "https://github.com/dgarijo/Widoco/releases/download/v1.4.17/java-11-widoco-1.4.17-jar-with-dependencies.jar"
 
 ######################################################################################
 # Download, install saxon, xspec, rdflib and other dependencies
 ######################################################################################
-install:  get-saxon create-virtual-env get-rdflib get-widoco
+install:  get-saxon get-rdflib get-widoco get-jena-cli-tools
 
 ############################ Main tasks ##############################################
 # Run unit_tests
@@ -84,8 +92,10 @@ unit-tests:
 test-prerequisites:
 	@make gen-enriched-ns-file
 
-create-virtual-env:
-	@python -m venv model2owl-venv
+create-virtual-env: model2owl-venv
+
+model2owl-venv:
+	python3 -m venv model2owl-venv
 
 
 # Generate the glossary from an input file
