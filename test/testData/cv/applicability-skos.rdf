@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:at="http://publications.europa.eu/ontology/authority/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:atold="http://publications.europa.eu/resource/authority/"
+         xml:base="http://publications.europa.eu/resource/authority/applicability">
+   <skos:ConceptScheme rdf:about="http://publications.europa.eu/resource/authority/applicability"
+                       at:table.id="applicability"
+                       at:table.version.number="20240612-0">
+      <owl:versionInfo>20240612-0</owl:versionInfo>
+      <skos:prefLabel xml:lang="en">Applicability</skos:prefLabel>
+      <rdfs:label xml:lang="en">Applicability</rdfs:label>
+      <at:prefLabel xml:lang="en">Applicability</at:prefLabel>
+      <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/applicability/not-known"/>
+      <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/applicability/OP_DATPRO"/>
+      <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/applicability/no"/>
+      <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/applicability/yes"/>
+   </skos:ConceptScheme>
+   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/applicability/not-known"
+                 at:deprecated="false">
+      <skos:prefLabel xml:lang="de">Noch nicht bekannt</skos:prefLabel>
+      <skos:prefLabel xml:lang="fi">Ei vielä tiedossa</skos:prefLabel>
+      <skos:prefLabel xml:lang="lv">Vēl nav zināms</skos:prefLabel>
+      <skos:prefLabel xml:lang="et">Ei ole veel teada</skos:prefLabel>
+      <skos:prefLabel xml:lang="it">Non ancora noto</skos:prefLabel>
+      <skos:prefLabel xml:lang="hr">Još nije poznato</skos:prefLabel>
+      <skos:prefLabel xml:lang="cs">Není známo</skos:prefLabel>
+      <skos:prefLabel xml:lang="ro">Nu se știe încă</skos:prefLabel>
+      <skos:prefLabel xml:lang="sl">Še ni znano</skos:prefLabel>
+      <skos:prefLabel xml:lang="es">No se sabe aún</skos:prefLabel>
+      <skos:prefLabel xml:lang="bg">Все още не е известно</skos:prefLabel>
+      <skos:prefLabel xml:lang="en">Not yet known</skos:prefLabel>
+      <skos:prefLabel xml:lang="sv">Ännu ej känt</skos:prefLabel>
+      <skos:prefLabel xml:lang="hu">Jelenleg ismeretlen</skos:prefLabel>
+      <skos:prefLabel xml:lang="sk">Použitie zatiaľ nie je známe</skos:prefLabel>
+      <skos:prefLabel xml:lang="mt">Għadu mhux magħruf</skos:prefLabel>
+      <skos:prefLabel xml:lang="ga">Ní fios go fóill</skos:prefLabel>
+      <skos:prefLabel xml:lang="pl">Jeszcze nie wiadomo</skos:prefLabel>
+      <skos:prefLabel xml:lang="nl">Nog niet bekend</skos:prefLabel>
+      <skos:prefLabel xml:lang="el">Δεν έχει ακόμη προσδιοριστεί</skos:prefLabel>
+      <skos:prefLabel xml:lang="fr">Pas encore connu</skos:prefLabel>
+      <skos:prefLabel xml:lang="pt">Ainda não conhecido</skos:prefLabel>
+      <skos:prefLabel xml:lang="lt">Dar nežinoma</skos:prefLabel>
+      <skos:prefLabel xml:lang="da">Endnu ikke kendte</skos:prefLabel>
+      <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/applicability"/>
+      <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/applicability"/>
+      <skos:altLabel xml:lang="sv">Ännu ej känd</skos:altLabel>
+      <dc:identifier>not-known</dc:identifier>
+      <atold:op-code>not-known</atold:op-code>
+      <at:op-code>not-known</at:op-code>
+      <at:start.use>2019-09-18</at:start.use>
+      <at:authority-code>not-known</at:authority-code>
+   </skos:Concept>
+   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/applicability/OP_DATPRO"
+                 at:deprecated="true">
+      <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+      <skos:prefLabel xml:lang="et">Esialgsed andmed</skos:prefLabel>
+      <skos:prefLabel xml:lang="mt">Dejta provviżorja</skos:prefLabel>
+      <skos:prefLabel xml:lang="es">Datos provisionales</skos:prefLabel>
+      <skos:prefLabel xml:lang="pt">Dados provisórios</skos:prefLabel>
+      <skos:prefLabel xml:lang="fr">Données provisoires</skos:prefLabel>
+      <skos:prefLabel xml:lang="cs">Předběžné údaje</skos:prefLabel>
+      <skos:prefLabel xml:lang="en">Provisional data</skos:prefLabel>
+      <skos:prefLabel xml:lang="nl">Voorlopige gegevens</skos:prefLabel>
+      <skos:prefLabel xml:lang="de">Vorläufige Daten</skos:prefLabel>
+      <skos:prefLabel xml:lang="hu">Ideiglenes adatok</skos:prefLabel>
+      <skos:prefLabel xml:lang="el">Προσωρινά δεδομένα</skos:prefLabel>
+      <skos:prefLabel xml:lang="sv">Tillfälliga uppgifter</skos:prefLabel>
+      <skos:prefLabel xml:lang="ro">Date provizorii</skos:prefLabel>
+      <skos:prefLabel xml:lang="it">Dati provvisori</skos:prefLabel>
+      <skos:prefLabel xml:lang="lt">Laikinieji duomenys</skos:prefLabel>
+      <skos:prefLabel xml:lang="lv">Provizoriski dati</skos:prefLabel>
+      <skos:prefLabel xml:lang="ga">Sonraí sealadacha</skos:prefLabel>
+      <skos:prefLabel xml:lang="sk">Predbežné údaje</skos:prefLabel>
+      <skos:prefLabel xml:lang="fi">Alustavat tiedot</skos:prefLabel>
+      <skos:prefLabel xml:lang="pl">Dane tymczasowe</skos:prefLabel>
+      <skos:prefLabel xml:lang="hr">Privremeni podaci</skos:prefLabel>
+      <skos:prefLabel xml:lang="sl">Začasni podatki</skos:prefLabel>
+      <skos:prefLabel xml:lang="da">Midlertidige data</skos:prefLabel>
+      <skos:prefLabel xml:lang="bg">Неокончателни данни</skos:prefLabel>
+      <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/applicability"/>
+      <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/applicability"/>
+      <dc:identifier>OP_DATPRO</dc:identifier>
+      <atold:op-code>OP_DATPRO</atold:op-code>
+      <at:op-code>OP_DATPRO</at:op-code>
+      <at:start.use>1952-07-23</at:start.use>
+      <at:authority-code>OP_DATPRO</at:authority-code>
+      <at:end.use>1952-07-24</at:end.use>
+   </skos:Concept>
+   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/applicability/no"
+                 at:deprecated="false">
+      <skos:prefLabel xml:lang="pt">Não</skos:prefLabel>
+      <skos:prefLabel xml:lang="sk">Nie</skos:prefLabel>
+      <skos:prefLabel xml:lang="pl">Nie</skos:prefLabel>
+      <skos:prefLabel xml:lang="bg">Не</skos:prefLabel>
+      <skos:prefLabel xml:lang="ga">Ní hea</skos:prefLabel>
+      <skos:prefLabel xml:lang="et">Ei</skos:prefLabel>
+      <skos:prefLabel xml:lang="da">Nej</skos:prefLabel>
+      <skos:prefLabel xml:lang="ro">Nu</skos:prefLabel>
+      <skos:prefLabel xml:lang="sv">Nej</skos:prefLabel>
+      <skos:prefLabel xml:lang="en">No</skos:prefLabel>
+      <skos:prefLabel xml:lang="fi">Ei</skos:prefLabel>
+      <skos:prefLabel xml:lang="it">No</skos:prefLabel>
+      <skos:prefLabel xml:lang="es">No</skos:prefLabel>
+      <skos:prefLabel xml:lang="lt">Ne</skos:prefLabel>
+      <skos:prefLabel xml:lang="fr">Non</skos:prefLabel>
+      <skos:prefLabel xml:lang="hr">Ne</skos:prefLabel>
+      <skos:prefLabel xml:lang="hu">Nem</skos:prefLabel>
+      <skos:prefLabel xml:lang="cs">Ne</skos:prefLabel>
+      <skos:prefLabel xml:lang="lv">Nē</skos:prefLabel>
+      <skos:prefLabel xml:lang="sl">Ne</skos:prefLabel>
+      <skos:prefLabel xml:lang="nl">Neen</skos:prefLabel>
+      <skos:prefLabel xml:lang="de">Nein</skos:prefLabel>
+      <skos:prefLabel xml:lang="el">Όχι</skos:prefLabel>
+      <skos:prefLabel xml:lang="mt">Le</skos:prefLabel>
+      <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/applicability"/>
+      <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/applicability"/>
+      <dc:identifier>no</dc:identifier>
+      <atold:op-code>no</atold:op-code>
+      <at:op-code>no</at:op-code>
+      <at:start.use>2019-09-18</at:start.use>
+      <at:authority-code>no</at:authority-code>
+   </skos:Concept>
+   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/applicability/yes"
+                 at:deprecated="false">
+      <skos:prefLabel xml:lang="it">Sì</skos:prefLabel>
+      <skos:prefLabel xml:lang="sk">Áno</skos:prefLabel>
+      <skos:prefLabel xml:lang="mt">Iva</skos:prefLabel>
+      <skos:prefLabel xml:lang="en">Yes</skos:prefLabel>
+      <skos:prefLabel xml:lang="fi">Kyllä</skos:prefLabel>
+      <skos:prefLabel xml:lang="fr">Oui</skos:prefLabel>
+      <skos:prefLabel xml:lang="pt">Sim</skos:prefLabel>
+      <skos:prefLabel xml:lang="el">Ναι</skos:prefLabel>
+      <skos:prefLabel xml:lang="ro">Da</skos:prefLabel>
+      <skos:prefLabel xml:lang="sl">Da</skos:prefLabel>
+      <skos:prefLabel xml:lang="hr">Da</skos:prefLabel>
+      <skos:prefLabel xml:lang="es">Sí</skos:prefLabel>
+      <skos:prefLabel xml:lang="et">Jah</skos:prefLabel>
+      <skos:prefLabel xml:lang="nl">Ja</skos:prefLabel>
+      <skos:prefLabel xml:lang="cs">Ano</skos:prefLabel>
+      <skos:prefLabel xml:lang="da">Ja</skos:prefLabel>
+      <skos:prefLabel xml:lang="lt">Taip</skos:prefLabel>
+      <skos:prefLabel xml:lang="de">Ja</skos:prefLabel>
+      <skos:prefLabel xml:lang="sv">Ja</skos:prefLabel>
+      <skos:prefLabel xml:lang="pl">Tak</skos:prefLabel>
+      <skos:prefLabel xml:lang="lv">Jā</skos:prefLabel>
+      <skos:prefLabel xml:lang="ga">Is ea</skos:prefLabel>
+      <skos:prefLabel xml:lang="bg">Да</skos:prefLabel>
+      <skos:prefLabel xml:lang="hu">Igen</skos:prefLabel>
+      <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/applicability"/>
+      <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/applicability"/>
+      <dc:identifier>yes</dc:identifier>
+      <atold:op-code>yes</atold:op-code>
+      <at:op-code>yes</at:op-code>
+      <at:start.use>2019-09-18</at:start.use>
+      <at:authority-code>yes</at:authority-code>
+   </skos:Concept>
+</rdf:RDF>

@@ -37,7 +37,7 @@
 
             <xsl:choose>
                 <xsl:when
-                    test="fn:namespace-uri(//*:Model) = 'http://www.omg.org/spec/UML/20131001' and
+                    test="fn:namespace-uri(//*:Model) = $supportedUmlVersions and
                     fn:namespace-uri(//*:XMI) = 'http://www.omg.org/spec/XMI/20131001'">
             
                     <xsl:apply-templates/>
@@ -47,9 +47,9 @@
                 </xsl:when>
                 <xsl:otherwise>
                     <svrl:fired-rule context="/" />
-                    <svrl:failed-assert test="/*/namespace::xmi = http://www.omg.org/spec/XMI/20131001 and /*/namespace::uml = http://www.omg.org/spec/UML/20131001">
-                        <svrl:text>Wrong model version detected.Please make sure that the XMI file uses XMI version 2.5.1 and UML version 2.5.1.
-                            The namespaces to check: uml="http://www.omg.org/spec/UML/20131001" and xmi="http://www.omg.org/spec/XMI/20131001"</svrl:text>
+                    <svrl:failed-assert test="/*/namespace::xmi = http://www.omg.org/spec/XMI/20131001 and /*/namespace::uml = $supportedUmlVersions">
+                        <svrl:text>Wrong model version detected.Please make sure that the XMI file uses XMI version 2.5.1 and UML version 2.5.x (either 2.5 or 2.5.1).
+                            The namespaces to check: uml="<xsl:sequence select='fn:string-join($supportedUmlVersions, " | ")'/>" and xmi="http://www.omg.org/spec/XMI/20131001"</svrl:text>
                     </svrl:failed-assert>
                 </xsl:otherwise>
             </xsl:choose>

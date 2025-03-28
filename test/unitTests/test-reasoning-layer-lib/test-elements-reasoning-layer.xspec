@@ -181,4 +181,14 @@
     </x:scenario>
     
 
+    <x:param name="generateReusedConceptsOWLrestrictions" select="false()"/>
+
+    <x:scenario label="Test element[@xmi:type = 'uml:Class']/attributes/attribute - for disabled generateReusedConceptsOWLrestrictions">
+        <x:context href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[133]/attributes[1]/attribute[2]"/>
+        <x:variable name="testedPropUri"
+            as="xs:string"
+            select="'http://purl.org/dc/terms/issued'"/>
+        <x:expect label="restriction on property set" test="/rdf:Description[@rdf:about='http://data.europa.eu/a4g/ontology#Document']/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = $testedPropUri"/>
+    </x:scenario>
+
 </x:description>

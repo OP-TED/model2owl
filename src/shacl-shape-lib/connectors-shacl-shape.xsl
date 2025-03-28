@@ -33,7 +33,7 @@
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
         <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
-        
+        <xsl:if test="not(f:isExcludedByStatus(.))">
         <xsl:if
             test="
                 not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = 'ProxyConnector') and (
@@ -53,6 +53,7 @@
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
         </xsl:if>
+        </xsl:if>
     </xsl:template>
 
     <xd:doc>
@@ -61,25 +62,21 @@
 
     <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
         <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
+        <xsl:if test="not(f:isExcludedByStatus(.))">
         <xsl:if
             test="
                 not(./source/model/@type = 'ProxyConnector' or ./target/model/@type = ('ProxyConnector', 'Object')) and (
                 $generateReusedConceptsSHACL = fn:true()
                 or
                 fn:substring-before($connectorRoleName, ':') = $includedPrefixesList)">
-            <xsl:choose>
-                <xsl:when
+
+                <xsl:if
                     test="not(./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration')">
                     <xsl:call-template name="connectorRange">
                         <xsl:with-param name="connector" select="."/>
                     </xsl:call-template>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:call-template name="connectorRangeClassToEnumeration">
-                        <xsl:with-param name="connector" select="."/>
-                    </xsl:call-template>
-                </xsl:otherwise>
-            </xsl:choose>
+                </xsl:if>
+            
             <xsl:call-template name="connectorMultiplicity">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -89,6 +86,7 @@
             <!--            <xsl:call-template name="connectorAsymmetry">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>-->
+        </xsl:if>
         </xsl:if>
     </xsl:template>
     
@@ -278,43 +276,7 @@
         </xsl:if>
     </xsl:template>
 
-    <xd:doc>
-        <xd:desc>Rule R.13. Dependency range shape — in data shape layer. Within the SHACL PropertyShape 
-            corresponding to a dependency relation linked to a given source UML Class, 
-            specify property constraints indicating the range class.</xd:desc>
-        <xd:param name="connector"/>
-    </xd:doc>
 
-
-    <xsl:template name="connectorRangeClassToEnumeration">
-        <xsl:param name="connector"/>
-
-        <xsl:variable name="targetClassURI"
-            select="f:buildURIfromLexicalQName($connector/target/model/@name)"/>
-        <xsl:variable name="sourceClassURI"
-            select="f:buildURIfromLexicalQName($connector/source/model/@name)"/>
-        <xsl:variable name="sourceClassName"
-            select="$connector/source/model/@name"/>
-        <xsl:variable name="targetRole"
-            select="
-                if (boolean($connector/target/role/@name)) then
-                    $connector/target/role/@name
-                else
-                    fn:error(xs:QName('connectors'),concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
-       
-        <xsl:variable name="targetRoleURI"
-            select="f:buildURIfromLexicalQName($targetRole)"/>
-        <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
-
-        <xsl:if test="$connectorDirection = 'Source -&gt; Destination'">
-
-
-            <rdf:Description
-                rdf:about="{f:buildPropertyShapeURI($sourceClassName,$targetRole)}">
-                <sh:class rdf:resource="{$targetClassURI}"/>
-            </rdf:Description>
-        </xsl:if>
-    </xsl:template>
 
     <xd:doc>
         <xd:desc>Rule R.08. Association multiplicity — in data shape layer. 

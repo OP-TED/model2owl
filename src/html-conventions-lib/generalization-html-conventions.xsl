@@ -49,6 +49,14 @@
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
             </xsl:if>
+            <xsl:if test="./source/model/@type = 'ProxyConnector' and ./target/model/@type = 'ProxyConnector'">
+                <xsl:call-template name="generalizationUnidirectionalConnectorsDirection">
+                    <xsl:with-param name="generalizationConnector" select="."/>
+                </xsl:call-template>
+                <xsl:call-template name="generalizationMissingOrInvalidClassGeneralization">
+                    <xsl:with-param name="generalizationConnector" select="."/>
+                </xsl:call-template>
+            </xsl:if>
         </xsl:variable>
         <xsl:if test="boolean($generalizationChecks)">
             <xsl:choose>
@@ -243,6 +251,85 @@
                 'CMC-R12',
                 '&lt;a href=&quot;https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html#sec:cmc-r12&quot; target=&quot;_blank&quot;&gt;CMC-R12&lt;/a&gt;'
                 )"
+        />
+    </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>[generalisation-connector-unidirectional-connector-direction-8] - direction of connectors associated with the generalisation connector
+            doesn’t match</xd:desc>
+        <xd:param name="generalizationConnector"/>
+    </xd:doc>
+    
+    <xsl:template name="generalizationUnidirectionalConnectorsDirection">
+        <xsl:param name="generalizationConnector"/>
+        <xsl:variable name="targetConnector"
+            select="f:getTargetConnectorFromGeneralisation($generalizationConnector)"/>
+        <xsl:variable name="sourceConnector"
+            select="f:getSourceConnectorFromGeneralisation($generalizationConnector)"/>
+        <xsl:variable name="targetConnectorSource" select="$targetConnector/source/model/@name"/>
+        <xsl:variable name="targetConnectorTarget" select="$targetConnector/target/model/@name"/>
+        <xsl:variable name="sourceConnectorSource" select="$sourceConnector/source/model/@name"/>
+        <xsl:variable name="sourceConnectorTarget" select="$sourceConnector/target/model/@name"/>
+        
+        <xsl:variable name="targetConnectorString" select="fn:concat($targetConnectorSource,' -&gt; ', $targetConnectorTarget)"/>
+        <xsl:variable name="sourceConnectorString" select="fn:concat($sourceConnectorSource,' -&gt; ', $sourceConnectorTarget)"/>
+        
+        <xsl:variable name="associationsBoundsClassNames" as="xs:string*">
+            <xsl:sequence select="(
+                $targetConnectorSource,
+                $targetConnectorTarget,
+                $sourceConnectorSource,
+                $sourceConnectorTarget
+                )"/>
+        </xsl:variable>
+        
+        <xsl:variable name="distinctClassNames" select="distinct-values($associationsBoundsClassNames)" as="xs:string*"/>
+        
+        <xsl:if test="not(count($associationsBoundsClassNames) = count($distinctClassNames))">
+        
+        
+        <xsl:sequence
+            select="
+            if (not(f:generalisationConnectorsHasOppositeDirections($generalizationConnector))) then
+            ()
+            else
+            f:generateErrorMessage(fn:concat('The unidirectional connectors ',$targetConnectorString, ' and ', $sourceConnectorString,' associated with the generalisation connector have opposite directions'),
+            path($generalizationConnector),
+            'generalisation-connector-unidirectional-connector-direction-8',
+            '',
+            ''
+            )"
+        />
+        </xsl:if>
+    </xsl:template>
+    
+    <xd:doc>
+        <xd:desc>[generalisation-connector-and-missing-class-generalisation-9] [generalisation-connector-and-class-inheritance-direction-10] -
+            Missing class generalisation for two distinct classes related to the connector generalisation or
+            connector generalisation and class generalisation relationship direction mismatch
+        </xd:desc>
+        <xd:param name="generalizationConnector"/>
+    </xd:doc>
+    
+    <xsl:template name="generalizationMissingOrInvalidClassGeneralization">
+        <xsl:param name="generalizationConnector"/>
+        <xsl:variable name="targetConnector"
+            select="f:getTargetConnectorFromGeneralisation($generalizationConnector)"/>
+        <xsl:variable name="sourceConnector"
+            select="f:getSourceConnectorFromGeneralisation($generalizationConnector)"/>
+        <xsl:variable name="targetConnectorString" select="fn:concat($targetConnector/source/model/@name,' -&gt; ', $targetConnector/target/model/@name)"/>
+        <xsl:variable name="sourceConnectorString" select="fn:concat($sourceConnector/source/model/@name,' -&gt; ', $sourceConnector/target/model/@name)"/>
+        <xsl:sequence
+            select="
+            if (not(f:generalisationMissingOrIncorrect($generalizationConnector))) then
+            ()
+            else
+            f:generateErrorMessage(fn:concat('The generalisation between ',$targetConnectorString, ' and ', $sourceConnectorString,' is missing or has invalid direction'),
+            path($generalizationConnector),
+            'generalisation-connector-unidirectional-connector-direction-8',
+            '',
+            ''
+            )"
         />
     </xsl:template>
 

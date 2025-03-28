@@ -129,4 +129,53 @@
         <x:expect label="skos:inScheme" test="boolean(/skos:Concept/skos:inScheme)"/>
     </x:scenario>
 
+
+    <x:scenario label="Scenario for testing connectorsOwlCore template">
+        <x:context>
+            <xmi:XMI>
+                <xmi:Extension>
+                    <connectors>
+                        <connector xmi:idref="id1">
+                            <source xmi:idref="id2">
+                                <model type="Class" name="epo:AwardDecision"/>
+                                <role visibility="Public" targetScope="instance"/>
+                                <type aggregation="none" containment="Unspecified"/>                                
+                            </source>
+                            <target xmi:idref="id3">
+                                <model type="Class" name="epo:LotAwardOutcome"/>
+                                <role name="epo:comprisesLotAwardOutcome" visibility="Public" targetScope="instance"/>
+                                <type multiplicity="1..*" aggregation="none" containment="Unspecified"/>
+                            </target>
+                            <model ea_localid="2833"/>
+                            <properties ea_type="Association" direction="Source -&gt; Destination"/>
+                            <documentation value="Incorporates LotAwardOutcome."/>
+                            <labels rb="1..*" rt="+epo:comprisesLotAwardOutcome"/>
+                        </connector>
+                        <connector xmi:idref="id4">
+                            <source xmi:idref="id5">
+                                <model type="Object" name="epo:result"/>
+                                <role visibility="Public" targetScope="instance"/>
+                                <type aggregation="none" containment="Unspecified"/>
+                            </source>
+                            <target xmi:idref="id6">
+                                <model type="Enumeration" name="at-voc:form-type"/>
+                                <role visibility="Public" targetScope="instance"/>
+                                <type aggregation="none" containment="Unspecified"/>
+                            </target>
+                            <properties ea_type="Realisation" direction="Source -&gt; Destination"/>
+                        </connector>
+                    </connectors>
+                </xmi:Extension>
+            </xmi:XMI>
+        </x:context>
+        <x:variable name="testedPropUri" as="xs:string" select="'http://data.europa.eu/a4g/ontology#comprisesLotAwardOutcome'"/>
+        <x:call template="connectorsOwlCore"/>
+    
+        <x:expect label="has only one owl:ObjectProperty defined" test="count(/owl:ObjectProperty) = 1"/>
+        <x:expect label="is owl:ObjectProperty defined" test="/owl:ObjectProperty/@rdf:about=$testedPropUri"/>
+        <x:expect label="correct skos:prefLabel" test="/rdf:Description[@rdf:about = $testedPropUri]/skos:prefLabel[@xml:lang='en']/text() = 'comprises Lot Award Outcome'"/>
+        <x:expect label="has skos:definition" test="boolean(/rdf:Description[@rdf:about=$testedPropUri]/skos:definition[@xml:lang='en'])"/>
+        <x:expect label="is linked to the ontology" test="/rdf:Description[@rdf:about = $testedPropUri]/rdfs:isDefinedBy/@rdf:resource = 'http://data.europa.eu/a4g/ontology#core'"/>
+    </x:scenario>
+
 </x:description>

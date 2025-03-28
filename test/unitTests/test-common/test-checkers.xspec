@@ -451,5 +451,118 @@
         <x:expect label="a list with namespaces that were not defined" select="('twe', 'cancan')"/>
     </x:scenario>
     
+    <x:scenario label="Tests for f:isValidTagName">
+        <x:scenario label="valid tag with lang tag">
+            <x:call function="f:isValidTagName">
+                <x:param name="tagName" select="'skos:note@en'"/>
+            </x:call>
+            <x:expect label="valid tag name with lang tag" select="true()"/>
+        </x:scenario>
+        <x:scenario label="valid tag with datatype">
+            <x:call function="f:isValidTagName">
+                <x:param name="tagName" select="'skos:version^^xsd:integer'"/>
+            </x:call>
+            <x:expect label="valid with datatype" select="true()"/>
+        </x:scenario>
+        <x:scenario label="valid tag">
+            <x:call function="f:isValidTagName">
+                <x:param name="tagName" select="'skos:note'"/>
+            </x:call>
+            <x:expect label="valid tag name" select="true()"/>
+        </x:scenario>
+        <x:scenario label="valid tag with uri">
+            <x:call function="f:isValidTagName">
+                <x:param name="tagName" select="'skos:indentifier&lt;&gt;'"/>
+            </x:call>
+            <x:expect label="valid tag name with URI" select="true()"/>
+        </x:scenario>
+        
+        <x:scenario label="invalid tag">
+            <x:call function="f:isValidTagName">
+                <x:param name="tagName" select="'indentifier'"/>
+            </x:call>
+            <x:expect label="invalid" select="false()"/>
+        </x:scenario>
+        <x:scenario label="invalid tag datatytpe">
+            <x:call function="f:isValidTagName">
+                <x:param name="tagName" select="'skos:version^^'"/>
+            </x:call>
+            <x:expect label="invalid" select="false()"/>
+        </x:scenario>
+    </x:scenario>
+    
+    <x:scenario label="testing f:hasEnumerationAConstraintLevelProperty">
+        <x:scenario label="enumeration with no tags">
+            <x:call function="f:hasEnumerationAConstraintLevelProperty">
+                <x:param name="element" href="../../testData/ePO-core-4.2.0.xml" 
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[259]"/>
+            </x:call>
+            <x:expect label="boolean-false" select="false()"/>
+        </x:scenario>
+        
+        <x:scenario label="enumeration with tag but without constraint level property tag">
+            <x:call function="f:hasEnumerationAConstraintLevelProperty">
+                <x:param name="element" href="../../testData/ePO-core-4.2.0.xml" 
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[268]"/>
+            </x:call>
+            <x:expect label="boolean-false" select="false()"/>
+        </x:scenario>
+        
+        <x:scenario label="enumeration with correct tag and value">
+            <x:call function="f:hasEnumerationAConstraintLevelProperty">
+                <x:param name="element" href="../../testData/ePO-core-4.2.0.xml" 
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Enumeration' and @name='at-voc:applicability']"/>
+            </x:call>
+            <x:expect label="boolean-true" select="true()"/>
+        </x:scenario>
+    </x:scenario>
+    
+    <x:scenario label="testing f:generalisationConnectorsHasOppositeDirections"> 
+        <x:scenario label="incorrect generalisation between associations - invalid case">
+            <x:call function="f:generalisationConnectorsHasOppositeDirections">
+                <x:param name="generalisation" href="../../testData/ePO-core-4.2.0.xml" 
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[1]"/>
+            </x:call>
+            <x:expect label="boolean-true" select="true()"/>
+        </x:scenario>
+        
+        <x:scenario label="correct generalisation between associations - valid case">
+            <x:call function="f:generalisationConnectorsHasOppositeDirections">
+                <x:param name="generalisation" href="../../testData/ePO-core-4.2.0.xml" 
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[2]"/>
+            </x:call>
+            <x:expect label="boolean-false" select="false()"/>
+        </x:scenario>
+        
+    </x:scenario>
+    
+    
+    <x:scenario label="testing f:generalisationMissing">
+        <x:scenario
+            label="incorrect use of generalisations between associations - invalid direction">
+            <x:call function="f:generalisationMissingOrIncorrect">
+                <x:param name="generalisation" href="../../testData/ePO-core-4.2.0.xml"
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[3]"/>
+            </x:call>
+            <x:expect label="boolean-true" select="true()"/>
+        </x:scenario>
+
+        <x:scenario label="incorrect use of generalisations between associations - missing">
+            <x:call function="f:generalisationMissingOrIncorrect">
+                <x:param name="generalisation" href="../../testData/ePO-core-4.2.0.xml"
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[9]"/>
+            </x:call>
+            <x:expect label="boolean-true" select="true()"/>
+        </x:scenario>
+
+                <x:scenario label="correct use of generalisations between associations - valid case">
+            <x:call function="f:generalisationMissingOrIncorrect">
+                <x:param name="generalisation" href="../../testData/ePO-core-4.2.0.xml"
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[10]"/>
+            </x:call>
+            <x:expect label="boolean-false" select="false()"/>
+        </x:scenario>
+    </x:scenario>
+    
 </x:description>
 

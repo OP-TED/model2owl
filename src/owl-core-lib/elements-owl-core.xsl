@@ -36,64 +36,69 @@
             Selector to run core layer transfomation rules for commnents </xd:desc>
     </xd:doc>
     <xsl:template match="ownedComment[@xmi:type = 'uml:Comment']">
-        <xsl:variable name="commentText" select="./@body"/>
-        <xsl:for-each select="./annotatedElement/@xmi:idref">
-            <xsl:variable name="elementFound" select="f:getElementByIdRef(., root(.))"/>
-            <xsl:if test="boolean($elementFound) and $elementFound/@xmi:type != 'uml:Package'">
-                <xsl:variable name="elementUri" select="f:buildURIFromElement($elementFound)"/>
-                <xsl:call-template name="coreLayerComment">
-                    <xsl:with-param name="elementUri" select="$elementUri"/>
-                    <xsl:with-param name="comment" select="$commentText"/>
-                </xsl:call-template>
-            </xsl:if>
-            <xsl:variable name="connectorFound" select="f:getConnectorByIdRef(., root(.))"/>
-            <xsl:if test="fn:boolean($connectorFound)">
-                <xsl:variable name="connectorDirection"
-                    select="$connectorFound/properties/@direction"/>
-                <xsl:choose>
-                    <xsl:when test="$connectorDirection = 'Source -&gt; Destination'">
-                        <xsl:variable name="connectorTargetRoleUri"
-                            select="
-                                if ($connectorFound/target/role/not(@name) = fn:true()) then
-                                    ()
-                                else
-                                    f:buildURIfromLexicalQName($connectorFound/target/role/@name)"/>
-                        <xsl:if test="boolean($connectorTargetRoleUri)">
-                            <xsl:call-template name="coreLayerComment">
-                                <xsl:with-param name="elementUri" select="$connectorTargetRoleUri"/>
-                                <xsl:with-param name="comment" select="$commentText"/>
-                            </xsl:call-template>
-                        </xsl:if>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:variable name="connectorTargetRoleUri"
-                            select="
-                                if ($connectorFound/target/role/not(@name) = fn:true()) then
-                                    ()
-                                else
-                                    f:buildURIfromLexicalQName($connectorFound/target/role/@name)"/>
-                        <xsl:variable name="connectorSourceRoleUri"
-                            select="
-                                if ($connectorFound/source/role/not(@name) = fn:true()) then
-                                    ()
-                                else
-                                    f:buildURIfromLexicalQName($connectorFound/source/role/@name)"/>
-                        <xsl:if test="boolean($connectorSourceRoleUri)">
-                            <xsl:call-template name="coreLayerComment">
-                                <xsl:with-param name="elementUri" select="$connectorSourceRoleUri"/>
-                                <xsl:with-param name="comment" select="$commentText"/>
-                            </xsl:call-template>
-                        </xsl:if>
-                        <xsl:if test="boolean($connectorTargetRoleUri)">
-                            <xsl:call-template name="coreLayerComment">
-                                <xsl:with-param name="elementUri" select="$connectorTargetRoleUri"/>
-                                <xsl:with-param name="comment" select="$commentText"/>
-                            </xsl:call-template>
-                        </xsl:if>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:if>
-        </xsl:for-each>
+        <xsl:if test="$commentsGeneration">
+            <xsl:variable name="commentText" select="./@body"/>
+            <xsl:for-each select="./annotatedElement/@xmi:idref">
+                <xsl:variable name="elementFound" select="f:getElementByIdRef(., root(.))"/>
+                <xsl:if test="boolean($elementFound) and $elementFound/@xmi:type != 'uml:Package'">
+                    <xsl:variable name="elementUri" select="f:buildURIFromElement($elementFound)"/>
+                    <xsl:call-template name="coreLayerComment">
+                        <xsl:with-param name="elementUri" select="$elementUri"/>
+                        <xsl:with-param name="comment" select="$commentText"/>
+                    </xsl:call-template>
+                </xsl:if>
+                <xsl:variable name="connectorFound" select="f:getConnectorByIdRef(., root(.))"/>
+                <xsl:if test="fn:boolean($connectorFound)">
+                    <xsl:variable name="connectorDirection"
+                        select="$connectorFound/properties/@direction"/>
+                    <xsl:choose>
+                        <xsl:when test="$connectorDirection = 'Source -&gt; Destination'">
+                            <xsl:variable name="connectorTargetRoleUri"
+                                select="
+                                    if ($connectorFound/target/role/not(@name) = fn:true()) then
+                                        ()
+                                    else
+                                        f:buildURIfromLexicalQName($connectorFound/target/role/@name)"/>
+                            <xsl:if test="boolean($connectorTargetRoleUri)">
+                                <xsl:call-template name="coreLayerComment">
+                                    <xsl:with-param name="elementUri"
+                                        select="$connectorTargetRoleUri"/>
+                                    <xsl:with-param name="comment" select="$commentText"/>
+                                </xsl:call-template>
+                            </xsl:if>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:variable name="connectorTargetRoleUri"
+                                select="
+                                    if ($connectorFound/target/role/not(@name) = fn:true()) then
+                                        ()
+                                    else
+                                        f:buildURIfromLexicalQName($connectorFound/target/role/@name)"/>
+                            <xsl:variable name="connectorSourceRoleUri"
+                                select="
+                                    if ($connectorFound/source/role/not(@name) = fn:true()) then
+                                        ()
+                                    else
+                                        f:buildURIfromLexicalQName($connectorFound/source/role/@name)"/>
+                            <xsl:if test="boolean($connectorSourceRoleUri)">
+                                <xsl:call-template name="coreLayerComment">
+                                    <xsl:with-param name="elementUri"
+                                        select="$connectorSourceRoleUri"/>
+                                    <xsl:with-param name="comment" select="$commentText"/>
+                                </xsl:call-template>
+                            </xsl:if>
+                            <xsl:if test="boolean($connectorTargetRoleUri)">
+                                <xsl:call-template name="coreLayerComment">
+                                    <xsl:with-param name="elementUri"
+                                        select="$connectorTargetRoleUri"/>
+                                    <xsl:with-param name="comment" select="$commentText"/>
+                                </xsl:call-template>
+                            </xsl:if>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:if>
     </xsl:template>
 
 
@@ -103,12 +108,13 @@
         <xd:desc> Selector to run core layer transformation rules for classes</xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
-        <xsl:variable name="classPrefix" select="fn:substring-before(./@name, ':')"/>
-        <!-- Check if the class should be processed -->
-        <xsl:if test="$generateReusedConceptsOWLcore or $classPrefix = $includedPrefixesList">
-            <xsl:call-template name="classDeclaration"/>
+        <xsl:if test="not(f:isExcludedByStatus(.))">
+            <xsl:variable name="classPrefix" select="fn:substring-before(./@name, ':')"/>
+            <!-- Check if the class should be processed -->
+            <xsl:if test="$generateReusedConceptsOWLcore or $classPrefix = $includedPrefixesList">
+                <xsl:call-template name="classDeclaration"/>
+            </xsl:if>
         </xsl:if>
-
     </xsl:template>
 
     <xd:doc>
@@ -166,6 +172,7 @@
         <xsl:variable name="root" select="root()"/>
         <xsl:variable name="distinctNames" select="f:getDistinctClassAttributeNames($root)"/>
         <xsl:for-each select="$distinctNames">
+            <xsl:if test="not(f:isExcludedByStatus(f:getClassAttributeByName(., $root)[1]))">
             <!-- Extract the prefix from the attribute name -->
             <xsl:variable name="attributePrefix" select="fn:substring-before(., ':')"/>
 
@@ -176,6 +183,7 @@
                     <xsl:with-param name="attributeName" select="."/>
                     <xsl:with-param name="root" select="$root"/>
                 </xsl:call-template>
+            </xsl:if>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
@@ -280,12 +288,12 @@
         </xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:DataType']">
+        <xsl:if test="not(f:isExcludedByStatus(.))">
         <!-- Extract the prefix from the DataType name -->
         <xsl:variable name="dataTypePrefix" select="fn:substring-before(./@name, ':')"/>
 
         <!-- Check if the DataType should be processed -->
-        <xsl:if
-            test="$generateReusedConceptsOWLcore or $dataTypePrefix = $includedPrefixesList">
+        <xsl:if test="$generateReusedConceptsOWLcore or $dataTypePrefix = $includedPrefixesList">
             <xsl:choose>
                 <xsl:when test="not(attributes)">
                     <xsl:call-template name="datatypeDeclaration"/>
@@ -294,6 +302,7 @@
                     <xsl:call-template name="classDeclaration"/>
                 </xsl:otherwise>
             </xsl:choose>
+        </xsl:if>
         </xsl:if>
     </xsl:template>
 
@@ -345,8 +354,10 @@
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']">
         <xsl:if test="$enableGenerationOfConceptSchemes">
+            <xsl:if test="not(f:isExcludedByStatus(.))">
             <xsl:variable name="conceptSchemeName" select="./@name"/>
-            <xsl:variable name="enumerationPrefix" select="fn:substring-before($conceptSchemeName, ':')"/>
+            <xsl:variable name="enumerationPrefix"
+                select="fn:substring-before($conceptSchemeName, ':')"/>
             <!-- Check if the Enumeration should be processed -->
             <xsl:if
                 test="$generateReusedConceptsOWLcore or $enumerationPrefix = $includedPrefixesList">
@@ -355,33 +366,34 @@
                     select="fn:normalize-space(f:formatDocString(./properties/@documentation))"/>
 
 
-                    <skos:ConceptScheme rdf:about="{$conceptSchemeURI}"/>
+                <skos:ConceptScheme rdf:about="{$conceptSchemeURI}"/>
 
-                    <xsl:call-template name="coreLayerName">
-                        <xsl:with-param name="elementName" select="$conceptSchemeName"/>
+                <xsl:call-template name="coreLayerName">
+                    <xsl:with-param name="elementName" select="$conceptSchemeName"/>
+                    <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
+                </xsl:call-template>
+                <xsl:if test="$documentation != ''">
+                    <xsl:call-template name="coreLayerDescription">
+                        <xsl:with-param name="definition" select="$documentation"/>
                         <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
                     </xsl:call-template>
-                    <xsl:if test="$documentation != ''">
-                        <xsl:call-template name="coreLayerDescription">
-                            <xsl:with-param name="definition" select="$documentation"/>
-                            <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
-                        </xsl:call-template>
-                    </xsl:if>
+                </xsl:if>
 
 
-                    <xsl:call-template name="coreDefinedBy">
+                <xsl:call-template name="coreDefinedBy">
+                    <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
+                </xsl:call-template>
+
+                <xsl:for-each select="f:getElementTags(.)">
+                    <xsl:call-template name="coreLayerTags">
                         <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
+                        <xsl:with-param name="tagName" select="./@name"/>
+                        <xsl:with-param name="tagValue" select="./@value"/>
                     </xsl:call-template>
+                </xsl:for-each>
 
-                    <xsl:for-each select="f:getElementTags(.)">
-                        <xsl:call-template name="coreLayerTags">
-                            <xsl:with-param name="elementUri" select="$conceptSchemeURI"/>
-                            <xsl:with-param name="tagName" select="./@name"/>
-                            <xsl:with-param name="tagValue" select="./@value"/>
-                        </xsl:call-template>
-                    </xsl:for-each>
 
-               
+            </xsl:if>
             </xsl:if>
         </xsl:if>
 
@@ -396,6 +408,7 @@
     <xsl:template match="element[@xmi:type = 'uml:Enumeration']/attributes/attribute">
 
         <xsl:if test="$enableGenerationOfSkosConcept">
+            <xsl:if test="not(f:isExcludedByStatus(.))">
             <xsl:variable name="enumerationAttributeName"
                 select="
                     if (boolean(./initial/@body)) then
@@ -412,38 +425,39 @@
                 <xsl:variable name="documentation"
                     select="fn:normalize-space(f:formatDocString(./documentation/@value))"/>
 
- 
 
-                    <skos:Concept rdf:about="{$enumerationAttributeURI}">
-                        <skos:inScheme rdf:resource="{$enumerationURI}"/>
 
-                    </skos:Concept>
+                <skos:Concept rdf:about="{$enumerationAttributeURI}">
+                    <skos:inScheme rdf:resource="{$enumerationURI}"/>
 
-                    <xsl:call-template name="coreLayerName">
-                        <xsl:with-param name="elementName" select="$enumerationAttributeName"/>
+                </skos:Concept>
+
+                <xsl:call-template name="coreLayerName">
+                    <xsl:with-param name="elementName" select="$enumerationAttributeName"/>
+                    <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
+                </xsl:call-template>
+                <xsl:if test="$documentation != ''">
+                    <xsl:call-template name="coreLayerDescription">
+                        <xsl:with-param name="definition" select="$documentation"/>
                         <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
                     </xsl:call-template>
-                    <xsl:if test="$documentation != ''">
-                        <xsl:call-template name="coreLayerDescription">
-                            <xsl:with-param name="definition" select="$documentation"/>
-                            <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
-                        </xsl:call-template>
-                    </xsl:if>
+                </xsl:if>
 
 
-                    <xsl:call-template name="coreDefinedBy">
+                <xsl:call-template name="coreDefinedBy">
+                    <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
+                </xsl:call-template>
+
+                <xsl:for-each select="f:getElementTags(.)">
+                    <xsl:call-template name="coreLayerTags">
                         <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
+                        <xsl:with-param name="tagName" select="./@name"/>
+                        <xsl:with-param name="tagValue" select="./@value"/>
                     </xsl:call-template>
+                </xsl:for-each>
 
-                    <xsl:for-each select="f:getElementTags(.)">
-                        <xsl:call-template name="coreLayerTags">
-                            <xsl:with-param name="elementUri" select="$enumerationAttributeURI"/>
-                            <xsl:with-param name="tagName" select="./@name"/>
-                            <xsl:with-param name="tagValue" select="./@value"/>
-                        </xsl:call-template>
-                    </xsl:for-each>
-                
 
+            </xsl:if>
             </xsl:if>
         </xsl:if>
     </xsl:template>

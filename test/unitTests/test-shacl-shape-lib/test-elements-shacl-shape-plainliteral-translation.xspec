@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" 
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:sh="http://www.w3.org/ns/shacl#"
+    stylesheet="../../../src/shacl-shape-lib/elements-shacl-shape.xsl">
+    
+    <!-- default value -->
+    <x:param name="translatePlainLiteralToStringTypesInSHACL" select="fn:true()"/>
+    
+    <x:scenario label="Scenario for attribute range shape for a class type with translated rdf:PlainLiteral datatype">
+        <x:call template="attributeRangeShape">
+            <x:param name="attribute" href="../../testData/ePO_core.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[2]"/>
+            <x:param name="className" select="'epo:ProcurementObject'"/>
+        </x:call>
+        <x:expect label="there is an rdf:Description" test="boolean(rdf:Description) "/>
+        <x:expect label="there is no sh:class" test="not(boolean(rdf:Description/sh:class))"/>
+        <x:expect label="rdf:PlainLiteral is translated into ( xsd:string || rdf:langString )">
+            <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ProcurementObject-epo-hasAdditionalInformation">
+                <sh:or rdf:parseType="Collection">
+                    <rdf:Description>
+                    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </rdf:Description>
+                    <rdf:Description>
+                    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+                    </rdf:Description>
+                </sh:or>
+            </rdf:Description>
+        </x:expect>
+    </x:scenario>
+
+</x:description>

@@ -209,7 +209,7 @@
         <x:call function="f:lexicalQNameToWords">
             <x:param name="lexicalqName">xsd:longInteger</x:param> 
         </x:call>
-        <x:expect label="result" select="string('Long integer')"/>
+        <x:expect label="result" select="string('long Integer')"/>
     </x:scenario>
     
     
@@ -311,4 +311,119 @@
         </x:call>
         <x:expect label="result" select="fn:true()"/>
     </x:scenario>
+
+    <x:scenario label="Scenario for testing function f:validateTagValue ">
+        <x:scenario label="valid boolean">
+            <x:call function="f:validateTagValue">
+                <x:param name="tagValue" select="'true'"/>
+                <x:param name="datatypeQName" select="'xsd:boolean'"/>
+            </x:call>
+            <x:expect label="result" select="fn:true()"/>
+        </x:scenario>
+
+        <x:scenario label="valid integer">
+            <x:call function="f:validateTagValue">
+                <x:param name="tagValue" select="'2'"/>
+                <x:param name="datatypeQName" select="'xsd:int'"/>
+            </x:call>
+            <x:expect label="result" select="fn:true()"/>
+        </x:scenario>
+
+        <x:scenario label="valid URI">
+            <x:call function="f:validateTagValue">
+                <x:param name="tagValue" select="'http://www.w3.org/2001/XMLSchema#string'"/>
+                <x:param name="datatypeQName" select="'xsd:anyURI'"/>
+            </x:call>
+            <x:expect label="result" select="fn:true()"/>
+        </x:scenario>
+
+        <x:scenario label="invalid integer" catch="yes">
+            <x:call function="f:validateTagValue">
+                <x:param name="tagValue" select="'integer'"/>
+                <x:param name="datatypeQName" select="'xsd:int'"/>
+            </x:call>
+            <x:expect label="err:description" test="boolean($x:result?err?description)"/>
+        </x:scenario>
+
+    </x:scenario>
+
+
+    <x:scenario label="Scenario for testing filter by status - excluded element">
+        <x:call function="f:isExcludedByStatus">
+            <x:param name="nodeInput"  href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Class' and @name='epo:Period']"/>
+        </x:call>
+        <x:expect label="result" select="fn:true()"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for testing filter by status - excluded connector">
+        <x:call function="f:isExcludedByStatus">
+            <x:param name="nodeInput"  href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[properties[@ea_type='Generalization']
+                and source/model[@name='epo:Procedure']
+                and target/model[@name='epo:ProcurementObject']]"/>
+        </x:call>
+        <x:expect label="result" select="fn:true()"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for testing filter by status - not excluded element - interpreted status">
+        <x:call function="f:isExcludedByStatus">
+            <x:param name="nodeInput"  href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[236]"/>
+        </x:call>
+        <x:expect label="result" select="fn:false()"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for testing filter by status - not excluded attribute - with implemented status">
+        <x:call function="f:isExcludedByStatus">
+            <x:param name="nodeInput"  href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[234]/attributes[1]/attribute[2]"/>
+        </x:call>
+        <x:expect label="result" select="fn:false()"/>
+    </x:scenario>
+
+
+
+    <x:scenario label="Scenario for testing function buildPropertyShapeURI">
+        <x:scenario label="valid CURIE">
+            <x:call function="f:buildPropertyShapeURI">
+                <x:param name="firstUri" select="'prefix:Procedure'"/>
+                <x:param name="secondUri" select="'prefix:hasScope'"/>
+            </x:call>
+            <x:expect label="result"
+                select="'http://data.europa.eu/a4g/data-shape#prefix-Procedure-prefix-hasScope'"/>
+        </x:scenario>
+
+        <x:scenario catch="yes" label="unsupported URI">
+            <x:call function="f:buildPropertyShapeURI">
+                <x:param name="firstUri" select="'http://dummy.org/Procedure'"/>
+                <x:param name="secondUri" select="'http://dummy.org/hasScope'"/>
+            </x:call>
+            <x:expect label="err:code" test="$x:result?err?code"
+                select="xs:QName('unsupported-uri')" />
+            <x:expect label="err:description" test="$x:result?err?description"
+                select="'The function supports only a compact URI'" />
+        </x:scenario>
+    </x:scenario>
+
+
+    <x:scenario label="Scenario for testing function normaliseURI">
+        <x:scenario label="valid CURIE">
+            <x:call function="f:normaliseURI">
+                <x:param name="uri" select="'prefix:Procedure'"/>
+            </x:call>
+            <x:expect label="result" select="'prefix-Procedure'"/>
+        </x:scenario>
+
+        <x:scenario catch="yes" label="unsupported URI">
+            <x:call function="f:normaliseURI">
+                <x:param name="uri" select="'http://dummy.org/Procedure'"/>
+            </x:call>
+            <x:expect label="err:code" test="$x:result?err?code"
+                select="xs:QName('unsupported-uri')" />
+            <x:expect label="err:description" test="$x:result?err?description"
+                select="'The function supports only a compact URI'" />
+        </x:scenario>
+    </x:scenario>
+
 </x:description>

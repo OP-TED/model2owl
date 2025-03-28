@@ -75,6 +75,23 @@
         <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
     </x:scenario>
     
+    <x:scenario label="enumeration no constraint level set">
+        <x:call template="enumerationConstraintLevel">
+            <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Enumeration' and @name='at-voc:main-activity']"/>
+        </x:call>
+        <x:expect label="expect to find a Description Details element" test="boolean(/dd)"/> 
+        <x:expect label="correct warning text"
+            test="contains(string(/dd), 'The enumeration at-voc:main-activity does not have a correct constraint level (either permissive or restrictive) set as a tag with the epo:constraintLevel key. The permissive level will be used as a fallback value.')"/>
+    </x:scenario>
+    
+    <x:scenario label="enumeration with constraint level set">
+        <x:call template="enumerationConstraintLevel">
+            <x:param name="enumeration" href="../../testData/ePO-core-4.2.0.xml" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@xmi:type='uml:Enumeration' and @name='at-voc:applicability']"/>
+        </x:call>
+        <x:expect label="boolean-true" select="()"/>
+    </x:scenario>
    
     
 </x:description>

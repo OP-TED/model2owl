@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" 
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    stylesheet="../../../src/owl-core-lib/elements-owl-core.xsl">
+
+    <x:param name="enableGenerationOfConceptSchemes" select="true()"/>
+
+    <x:scenario
+        label="Scenario for testing template with match 'element[@xmi:type = 'uml:Enumeration']">        
+        <x:context href="../../testData/ePO-CM-v2.0.1-2022-04-29_test.eap.xmi"
+            select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[298]"/>
+        <x:variable name="testedEnum" as="xs:string" select="'http://www.w3.org/2006/time#TemporalUnit'"/>
+        
+        <x:expect label="there is a skos:ConceptScheme" test="/skos:ConceptScheme/@rdf:about = $testedEnum"/>
+        <x:expect label="there is a skos:prefLabel" test="/rdf:Description[@rdf:about = $testedEnum]/skos:prefLabel[@xml:lang='en']/text() = 'Temporal Unit'"/>
+    </x:scenario>
+
+</x:description>

@@ -22,7 +22,7 @@
             <x:expect label="there is rdf:Description"
                 test="boolean(/rdf:Description[@rdf:about='http:/fake.uri#something'])"
             />
-        <x:expect label="correct label" test="rdf:Description/skos:prefLabel/text() = 'Dynamic procedure'"/>
+        <x:expect label="correct label" test="rdf:Description/skos:prefLabel/text() = 'Dynamic Procedure'"/>
             
         
     </x:scenario>
@@ -92,5 +92,51 @@
     </x:scenario>
     
     
+    <x:scenario
+        xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        label="Scenario for testing generation of tags - with datatypes - string ">
+        
+        <x:call template="coreLayerTags">
+            <x:param name="tagName" select="'skos:historyNote^^xsd:string'"/>
+            <x:param name="tagValue" select="'Something related with history'"/>
+            <x:param name="elementUri" select="'http://base.onto.uri/ClassName'"/>
+        </x:call>
+        <x:expect label="there is rdf:Description"
+            test="boolean(/rdf:Description[@rdf:about='http://base.onto.uri/ClassName'])"
+        />
+        <x:expect label="correct skos:historyNote text"
+            test="/rdf:Description/skos:historyNote/text() = 'Something related with history'" />
+    </x:scenario>
+    
+
+
+    <x:scenario
+        label="Scenario for testing generation of tags - with URI ">
+        
+        <x:call template="coreLayerTags">
+            <x:param name="tagName" select="'skos:indentifier&lt;&gt;'"/>
+            <x:param name="tagValue" select="'http://base.onto.uri/URI'"/>
+            <x:param name="elementUri" select="'http://base.onto.uri/ClassName'"/>
+        </x:call>
+        <x:expect label="there is rdf:Description"
+            test="boolean(/rdf:Description[@rdf:about='http://base.onto.uri/ClassName'])"
+        />
+        <x:expect label="correct skos:indentifier/@rdf:resource text" test="rdf:Description/skos:indentifier/@rdf:resource = 'http://base.onto.uri/URI'"/>
+    </x:scenario>
+    
+    
+    <x:scenario
+        label="Scenario for testing generation of comments">
+        
+        <x:call template="coreLayerComment">
+            <x:param name="comment" select="'This is a comment'"/>
+            <x:param name="elementUri" select="'http://base.onto.uri/ClassName'"/>
+        </x:call>
+        <x:expect label="there is rdf:Description"
+            test="boolean(/rdf:Description[@rdf:about='http://base.onto.uri/ClassName'])"
+        />
+        <x:expect label="correct skos:editorialNote text" test="rdf:Description/skos:editorialNote/text() = 'This is a comment'"/>
+    </x:scenario>
     
 </x:description>
