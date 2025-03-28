@@ -17,9 +17,9 @@ _Transform a UML model into a formal OWL ontology, and a SHACL shape based on es
 
 ## About 
 
-This project comprises a set of tools for transforming an UML (v2.5) model from its XMI (v2.5.1) serialisation into a formal OWL ontology, and a SHACL shape. This approach is conformant to the [SEMIC Style Guide](https://semiceu.github.io/style-guide/1.0.0/index.html) and with [eProcurement Ontology Architecture specification](https://github.com/meaningfy-ws/model2owl/blob/master/docs/ontology-architecture/ontology-architecture.pdf). 
+This project comprises a set of tools for transforming an UML (v2.5) model from its XMI (v2.5.1) serialisation into a formal OWL ontology, and a SHACL shape. This approach is conformant to the [SEMIC Style Guide](https://semiceu.github.io/style-guide/1.0.0/index.html) and with [eProcurement Ontology Architecture specification](https://github.com/OP-TED/model2owl/blob/master/docs/ontology-architecture/ontology-architecture.pdf). 
 
-The UML transformation is performed using XSLT stylesheets under the assumption that the UML model conforms to the set of conventions outlined in the [EPO UML conventions documentation](https://meaningfy-ws.github.io/model2owl-docs/public-review/uml/conceptual-model-conventions.html). This set of UML conventions is an extension to the UML conventions specified in [SEMIC Style Guide](https://semiceu.github.io/style-guide/1.0.0/index.html). 
+The UML transformation is performed using XSLT stylesheets under the assumption that the UML model conforms to the set of conventions outlined in the [EPO UML conventions documentation](https://docs.ted.europa.eu/M2O/latest/uml/conceptual-model-conventions.html). This set of UML conventions is an extension to the UML conventions specified in [SEMIC Style Guide](https://semiceu.github.io/style-guide/1.0.0/index.html). 
 
 The following capabilities are addressed:
 
@@ -34,9 +34,9 @@ This work is developed in the context of [eProcurement ontology project](https:/
 
 ### Documents
 * The **architectural design** and the formal specifications are provided in the [eProcurement Ontology Architecture specification](https://github.com/OP-TED/model2owl/blob/master/docs/ontology-architecture/ontology-architecture.pdf).  
-* The technical **conventions** for the UML representation of the conceptual model are provided in [EPO UML conventions documentation](https://meaningfy-ws.github.io/ted-model2owl-docs/public-review/uml/conceptual-model-conventions.html).
-* An **inventory** of conformance tests derived from the UML conventions document are provided in the [EPO UML conventions checking specification](https://meaningfy-ws.github.io/ted-model2owl-docs/public-review/checkers/model2owl-checkers.html).
-* The **transformation rules** from UML into OWL and SHACL are provided in the [UML2OWL transformation rules](https://meaningfy-ws.github.io/ted-model2owl-docs/public-review/transformation/uml2owl-transformation.html).
+* The technical **conventions** for the UML representation of the conceptual model are provided in [EPO UML conventions documentation](https://docs.ted.europa.eu/M2O/latest/uml/conceptual-model-conventions.html).
+* An **inventory** of conformance tests derived from the UML conventions document are provided in the [EPO UML conventions checking specification](https://docs.ted.europa.eu/M2O/latest/checkers/model2owl-checkers.html).
+* The **transformation rules** from UML into OWL and SHACL are provided in the [UML2OWL transformation rules](https://docs.ted.europa.eu/M2O/latest/transformation/uml2owl-transformation.html).
 
 ### Scripts
 * [html-conventions-report.xsl](src/html-conventions-report.xsl) is the script checking the conformance to the technical conventions of the conceptual model. (HTML)
