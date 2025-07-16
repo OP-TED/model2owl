@@ -28,7 +28,7 @@
         <x:expect label="there is a rdfs:subClassOf" test="boolean(rdf:Description/rdfs:subClassOf)"/>
         <x:expect label="there is a owl:Restriction" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction)"/>
         <x:expect label="there is a owl:onProperty" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:cardinality" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:maxCardinality)"/>
+        <x:expect label="there is a owl:cardinality" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:maxQualifiedCardinality)"/>
 
     </x:scenario>
     
@@ -53,11 +53,18 @@
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Association']">
         <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[93]"/>
-        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description)"/>
-        <x:expect label="there is a rdfs:subClassOf" test="boolean(rdf:Description/rdfs:subClassOf)"/>
-        <x:expect label="there is a owl:Restriction" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction)"/>
-        <x:expect label="there is a owl:onProperty" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:cardinality" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:maxCardinality)"/>
+        <x:expect label="there is a rdf:Description"
+            test="rdf:Description/@rdf:about ='http://data.europa.eu/a4g/ontology#Tender'"/>
+        <x:expect label="there is a rdfs:subClassOf"
+            test="boolean(rdf:Description/rdfs:subClassOf)"/>
+        <x:expect label="there is a owl:Restriction"
+            test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction)"/>
+        <x:expect label="there is a owl:onProperty"
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isSubmitedBy'"/>
+        <x:expect label="there is a cardinality"
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:maxQualifiedCardinality = '1'"/>
+        <x:expect label="there is a owl:onClass"
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onClass/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Tenderer'"/>
         
     </x:scenario>
     
@@ -120,23 +127,44 @@
         <x:call template="connectorMultiplicity">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[100]"/>
         </x:call>   
-        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description)"/>
-        <x:expect label="there is a rdfs:subClassOf" test="boolean(rdf:Description/rdfs:subClassOf)"/>
-        <x:expect label="there is a owl:Restriction" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction)"/>
-        <x:expect label="there is a owl:onProperty" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:cardinality" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:cardinality)"/>
+        <x:expect label="there is a rdf:Description" 
+            test="rdf:Description/@rdf:about ='http://data.europa.eu/a4g/ontology#SubmissionTerms'"/>
+        <x:expect label="there is a rdfs:subClassOf" 
+            test="boolean(rdf:Description/rdfs:subClassOf)"/>
+        <x:expect label="there is a owl:Restriction" 
+            test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction)"/>
+        <x:expect label="there is a owl:onProperty" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#hasTenderSubmissionCommunicationMeans'"/>
+        <x:expect label="there is a cardinality" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:qualifiedCardinality = '2'"/>
+        <x:expect label="there is a owl:onClass" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onClass/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Channel'"/>
     </x:scenario>
     
-    <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and both target and source have multiplicity ">
+    <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and both target and source have multiplicity (0..1 and 2..*)">
         <x:call template="connectorMultiplicity">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[115]"/>
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[118]"/>
         </x:call>   
-        <x:expect label="there is a 2 rdf:Description" test="count(rdf:Description) = 2"/>
-        <x:expect label="there is a 2 rdfs:subClassOf" test="count(rdf:Description/rdfs:subClassOf) = 2"/>
-        <x:expect label="there is a 2 owl:Restriction" test="count(rdf:Description/rdfs:subClassOf/owl:Restriction) = 2"/>
-        <x:expect label="there is a 2 owl:onProperty" test="count(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onProperty) = 2"/>
-        <x:expect label="there is only one owl:minCardinality" test="count(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:minCardinality) = 0"/>
-        <x:expect label="there is 2 owl:maxCardinality" test="count(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:maxCardinality) = 2"/>
+        
+        <x:expect label="there are 2 rdf:Description" test="count(rdf:Description) = 2"/>
+        
+        <x:expect label="there is a rdf:Description (src -> tgt)" 
+            test="boolean(rdf:Description[@rdf:about ='http://data.europa.eu/a4g/ontology#Contract'])"/>
+        <x:expect label="there is a owl:onProperty (src -> tgt)" 
+            test="rdf:Description[@rdf:about ='http://data.europa.eu/a4g/ontology#Contract']/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isFundedBy'"/>
+        <x:expect label="there is a cardinality (src -> tgt)" 
+            test="rdf:Description[@rdf:about ='http://data.europa.eu/a4g/ontology#Contract']/rdfs:subClassOf/owl:Restriction/owl:minQualifiedCardinality = '2'"/>
+        <x:expect label="there is a owl:onClass (src -> tgt)" 
+            test="rdf:Description[@rdf:about ='http://data.europa.eu/a4g/ontology#Contract']/rdfs:subClassOf/owl:Restriction/owl:onClass/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Fund'"/>
+
+        <x:expect label="there is a rdf:Description (tgt -> src)" 
+            test="boolean(rdf:Description[@rdf:about ='http://data.europa.eu/a4g/ontology#Fund'])"/>
+        <x:expect label="there is a owl:onProperty (tgt -> src)" 
+            test="rdf:Description[@rdf:about ='http://data.europa.eu/a4g/ontology#Fund']/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#funds'"/>
+        <x:expect label="there is a cardinality (tgt -> src)" 
+            test="rdf:Description[@rdf:about ='http://data.europa.eu/a4g/ontology#Fund']/rdfs:subClassOf/owl:Restriction/owl:maxQualifiedCardinality = '1'"/>
+        <x:expect label="there is a owl:onClass (tgt -> src)" 
+            test="rdf:Description[@rdf:about ='http://data.europa.eu/a4g/ontology#Fund']/rdfs:subClassOf/owl:Restriction/owl:onClass/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Contract'"/>
     </x:scenario>
     
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction and the target has no multiplicity">
@@ -153,18 +181,26 @@
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
-    <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and only the target has multiplicity ">
+    <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and only the target has multiplicity (1..3) - max and existential constraints">
         <x:call template="connectorMultiplicity">
             <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[56]"/>
         </x:call>   
-        
         <x:expect label="there is a 1 rdf:Description" test="count(rdf:Description) = 1"/>
-        <x:expect label="there is a 1 rdfs:subClassOf" test="count(rdf:Description/rdfs:subClassOf) = 1"/>
-        <x:expect label="there is a 1 owl:Restriction" test="count(rdf:Description/rdfs:subClassOf/owl:Restriction) = 1"/>
-        <x:expect label="there is a 1 owl:onProperty" test="count(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onProperty) = 1"/>
-        <x:expect label="there is only one owl:minCardinality" test="count(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:minCardinality) = 1"/>
-        <x:expect label="there is a owl:minCardinality with correct value" test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:minCardinality/text() = '1'"/>
-        <x:expect label="there is 1 owl:maxCardinality" test="count(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:maxCardinality) = 1"/>
+        <x:expect label="there are 2 rdf:subClassOf" test="count(rdf:Description/rdfs:subClassOf) = 2"/>
+        <x:expect label="there are 2 owl:Restriction" 
+            test="count(rdf:Description/rdfs:subClassOf/owl:Restriction) = 2"/>
+        <x:expect label="there is a rdf:Description" 
+            test="rdf:Description/@rdf:about ='http://data.europa.eu/a4g/ontology#AwardDecision'"/>
+        <x:expect label="there is a owl:onProperty" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isReferedByA'"/>
+        <x:expect label="there is no minCardinality " 
+            test="not(boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:minQualifiedCardinality))"/>
+        <x:expect label="there is a maxQualifiedCardinality" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:maxQualifiedCardinality = '3'"/>
+        <x:expect label="there is a owl:onClass (1st restriction)" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onClass/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Contract'"/>
+        <x:expect label="there is a owl:someValuesFrom (2nd restriction)" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:someValuesFrom/@rdf:resource = 'http://data.europa.eu/a4g/ontology#Contract'"/>
     </x:scenario>
     
     
