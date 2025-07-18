@@ -208,8 +208,17 @@
     <x:scenario label="Scenario xsd:integer for testing function lexicalQNameToWords">
         <x:call function="f:lexicalQNameToWords">
             <x:param name="lexicalqName">xsd:longInteger</x:param> 
+            <x:param name="useTitleCase" select="false()"/>
         </x:call>
         <x:expect label="result" select="string('long Integer')"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario xsd:integer for testing function lexicalQNameToWords - title case">
+        <x:call function="f:lexicalQNameToWords">
+            <x:param name="lexicalqName">xsd:longInteger</x:param> 
+            <x:param name="useTitleCase" select="true()"/>
+        </x:call>
+        <x:expect label="result" select="string('Long integer')"/>
     </x:scenario>
     
     

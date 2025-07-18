@@ -230,27 +230,80 @@
      <xd:doc>
         <xd:desc>
             Turns the local segment of a lexicalised qName into words, handling
-            acronyms and camel case properly.
+            acronyms and camel case properly. 
+            
+            If `useTitleCase` is true, then the first letter of the first word
+            is capitalized, and the rest of the words are lowercased (unless
+            they are acronyms, which are left as-is). For example,
+            "exposureDateTime" becomes "Exposure date time", and "hasURL"
+            becomes "Has URL".
+
+            If `useTitleCase` is set to false, the function splits the given
+            camel-cased label into individual words. For instance, "hasLongName"
+            becomes "has Long Name", and "hasURL" becomes "has URL".
         </xd:desc>
         <xd:param name="lexicalqName"/>
+        <xd:param name="useTitleCase"/>
     </xd:doc>
     <xsl:function name="f:lexicalQNameToWords" as="xs:string">
         <xsl:param name="lexicalqName" as="xs:string"/>
+        <xsl:param name="useTitleCase" as="xs:boolean?"/>
         <xsl:variable name="localName"
             select="fn:local-name-from-QName(f:buildQNameFromLexicalQName($lexicalqName))"/>
-        <xsl:sequence 
-            select="fn:string-join(f:getSegmentsFromCamelCaseText($localName), ' ')" />
+        <xsl:variable name="_fixedText" select="f:getSegmentsFromCamelCaseText($localName)"/>
+        <xsl:sequence select="
+            if ($useTitleCase = true()) then
+                f:toTitleCase($_fixedText)
+            else
+                $_fixedText
+        "/>
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>
+            Translates space-separated words into title case. The first letter
+            of the first word is capitalized, the rest are lowercased (unless
+            the word is an acronym, which is left as-is). For example, "exposure
+            Date Time" becomes "Exposure date time", and "has URL" becomes "Has
+            URL".
+        </xd:desc>
+        <xd:param name="text"/>
+    </xd:doc>
+    <xsl:function name="f:toTitleCase" as="xs:string">
+        <xsl:param name="text" as="xs:string"/>
+        <xsl:variable name="normalized" select="normalize-space($text)"/>
+        <xsl:choose>
+            <xsl:when test="$normalized = upper-case($normalized)">
+                <xsl:sequence select="$normalized"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="words" select="tokenize($normalized, '\s+')" as="xs:string*"/>
+                <xsl:variable name="fixedWords" select="
+                    for $i in 1 to count($words)
+                        return
+                            if ($words[$i] = upper-case($words[$i])) then
+                                $words[$i]
+                            else if ($i = 1) then
+                                    upper-case(substring($words[$i], 1, 1)) 
+                                        || lower-case(substring($words[$i], 2))
+                                else
+                                    lower-case($words[$i])
+                "/>
+                <xsl:sequence select="fn:string-join($fixedWords, ' ')" />
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
 
     <xd:doc>
         <xd:desc>
             Splits a camelCase name into a text. Supports acronyms.
+            Returns a single string with segments separated by spaces.
         </xd:desc>
         <xd:param name="text"/>
     </xd:doc>
     <!-- The underlying function works on a reversed text as this makes
     identification of the segments easier. -->
-    <xsl:function name="f:getSegmentsFromCamelCaseText" as="xs:string*">
+    <xsl:function name="f:getSegmentsFromCamelCaseText" as="xs:string">
         <xsl:param name="text" as="xs:string"/>
         <xsl:sequence 
             select="for $segment in f:_getSegmentsRec(functx:reverse-string($text))
