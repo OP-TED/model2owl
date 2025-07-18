@@ -28,6 +28,11 @@
         else fn:error(xs:QName('missing-parameter'), 'enrichedNamespacesPath is not given.')
     "/>
 
+    <!-- path to a file with a set of URIs to be included for importing in the
+    generated ontologies using the `owl:imports` property -->
+    <xsl:param name="importsPath"/>
+    <xsl:variable name="urisToBeImported" select="fn:doc($importsPath)"/>
+
     <xd:doc>
         <xd:desc> Lookup a data-type in the xsd and rdf accepted data-type document (usually an
             external file with xsd and rdf data-types definitions) and return false or the data-type
