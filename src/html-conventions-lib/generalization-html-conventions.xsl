@@ -53,9 +53,9 @@
                 <xsl:call-template name="generalizationUnidirectionalConnectorsDirection">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
-                <xsl:call-template name="generalizationMissingOrInvalidClassGeneralization">
+                <!-- <xsl:call-template name="generalizationMissingOrInvalidClassGeneralization">
                     <xsl:with-param name="generalizationConnector" select="."/>
-                </xsl:call-template>
+                </xsl:call-template> -->
             </xsl:if>
         </xsl:variable>
         <xsl:if test="boolean($generalizationChecks)">
