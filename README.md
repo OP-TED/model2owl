@@ -199,8 +199,7 @@ By adjusting these variables, it is possible to customize whether specific artef
 providing fine control over the content of each output.
 
 #### Namespaces configuration
-In the namespaces.xml file you can add the namespaces that you use in UML model and also can control which of them should
-appear as import in the final output.
+In the namespaces.xml file you can add the namespaces that you use in UML model.
 
 Example
 
@@ -226,13 +225,28 @@ artefact types, as well as sections for specific artefact types.
     </shacl>
 </imports>
 ```
-This will cause all RDF output files to include the following import statement for the declared ontology:
+This will cause **all RDF output files** to include the following import statement for the declared ontology:
 ```xml
-<owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+<!-- in core.rdf, the resource <http://example.com/core> is of type owl:Ontology -->
+<rdf:Description rdf:about="http://example.com/core">
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+</rdf:Description>
+
+<!-- in core_restrictions.rdf, the resource <http://example.com/core-restriction> is of type owl:Ontology -->
+<rdf:Description rdf:about="http://example.com/core-restriction">
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+</rdf:Description>
+
+<!-- in core_shapes.rdf, the resource <http://example.com/core-shape> is of type owl:Ontology -->
+<rdf:Description rdf:about="http://example.com/core-shape">
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+</rdf:Description>
 ```
-In addition, the SHACL artefact will contain:
+In addition, the below statement will be present **only in the SHACL artefact**:
 ```xml
-<owl:imports rdf:resource="http://data.europa.eu/a4g/data-shape#awa-shape"/>
+<rdf:Description rdf:about="http://data.europa.eu/a4g/ontology#core-restriction">
+    <owl:imports rdf:resource="http://data.europa.eu/a4g/data-shape#awa-shape"/>
+</rdf:Description>
 ```
 
 #### XSD/RDF datatypes
