@@ -24,9 +24,11 @@
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Dependency']">
         <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[398]"/>
-        <x:expect label="there is 5 rdf:Description" test="count(rdf:Description)=4"/>
+        <x:expect label="there is 5 rdf:Description" test="count(rdf:Description)=5"/>
         <x:expect label="there is a no sh:class" test="not(boolean(rdf:Description/sh:class))"/>
         <x:expect label="there is a sh:PropertyShape" test="boolean(sh:PropertyShape)"/>
+        <x:expect label="there is an rdfs:isDefinedBy"
+            test="rdf:Description/rdfs:isDefinedBy/@rdf:resource = 'http://data.europa.eu/a4g/data-shape#core-shape'"/>
         <x:expect label="there is a sh:description" test="boolean(rdf:Description/sh:description)"/>
         <x:expect label="there is a sh:minCount" test="boolean(rdf:Description/sh:minCount)"/>
         <x:expect label="there is no sh:maxCount" test="not(boolean(rdf:Description/sh:maxCount))"/>
@@ -36,9 +38,11 @@
         label="Scenario for testing template with match 'connector[./properties/@ea_type = 'Association']">
         <x:context href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
             select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[259]"/>
-        <x:expect label="there is 6 rdf:Description" test="count(rdf:Description)=6"/>
+        <x:expect label="there is 7 rdf:Description" test="count(rdf:Description)=7"/>
         <x:expect label="there is a sh:class" test="boolean(rdf:Description/sh:class)"/>
         <x:expect label="there is a sh:PropertyShape" test="boolean(sh:PropertyShape)"/>
+        <x:expect label="there is an rdfs:isDefinedBy"
+            test="rdf:Description/rdfs:isDefinedBy/@rdf:resource = 'http://data.europa.eu/a4g/data-shape#core-shape'"/>
         <x:expect label="there is a sh:description" test="boolean(rdf:Description/sh:description)"/>
         <x:expect label="there is a sh:minCount" test="not(boolean(rdf:Description/sh:minCount))"/>
         <x:expect label="there is no sh:maxCount" test="boolean(rdf:Description/sh:maxCount)"/>
