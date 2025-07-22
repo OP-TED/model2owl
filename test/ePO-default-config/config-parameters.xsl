@@ -128,7 +128,7 @@
     <!-- If true, this option will annotate all SHACL concepts in the shapes
     artefact with the ontology IRI defined therein, using rdfs:isDefinedBy. -->
 
-    <xsl:variable name="annotateShaclConceptsWithOntology" select="fn:false()"/>
+    <xsl:variable name="annotateShaclConceptsWithOntology" select="fn:true()"/>
 
     <!-- _______________________________________________________________________   -->
     <!--                            METADATA SECTION                               -->
