@@ -47,7 +47,7 @@ get-saxon: saxon/saxon.jar
 saxon/saxon.jar:
 	@echo Installing saxon
 	mkdir -p saxon
-	cd saxon  && curl -L -o saxon.zip "https://kumisystems.dl.sourceforge.net/project/saxon/Saxon-HE/10/Java/SaxonHE10-6J.zip" && unzip saxon.zip && rm -rf saxon.zip
+	cd saxon  && curl -L -o saxon.zip "https://sourceforge.net/projects/saxon/files/Saxon-HE/10/Java/SaxonHE10-6J.zip" && unzip saxon.zip && rm -rf saxon.zip
 	cd saxon && mv saxon-he-10.6.jar saxon.jar
 	@echo 'Saxon path is saxon/saxon.jar'
 
@@ -56,7 +56,7 @@ get-jena-cli-tools: jena/apache-jena/bin/riot
 jena/apache-jena/bin/riot:
 	@echo Installing jena-cli-tools
 	mkdir -p jena
-	cd jena  && curl -L -o jena.zip "https://dlcdn.apache.org/jena/binaries/apache-jena-5.3.0.zip" && unzip jena.zip && rm -rf jena.zip && ln -s apache-jena-* apache-jena
+	cd jena  && curl -L -o jena.zip "https://archive.apache.org/dist/jena/binaries/apache-jena-5.3.0.zip" && unzip jena.zip && rm -rf jena.zip && ln -s apache-jena-* apache-jena
 	@echo 'Jena riot tool path is jena/apache-jena/bin/riot'
 
 # install rdflib
