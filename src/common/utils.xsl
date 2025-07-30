@@ -120,6 +120,21 @@
         />
     </xsl:function>
 
+    <xd:doc>
+        <xd:desc>Get the prefix from a Qname (prefix:LocalSegment).</xd:desc>
+        <xd:param name="name"/>
+    </xd:doc>
+    <xsl:function name="f:getPrefix">
+        <xsl:param name="lexicalQName"/>
+        <xsl:sequence
+            select="
+                if (fn:contains($lexicalQName, ':') and boolean(fn:substring-before($lexicalQName, ':'))) then
+                    fn:substring-before($lexicalQName, ':')
+                else
+                    ''
+            "
+        />
+    </xsl:function>
 
     <xd:doc>
         <xd:desc>Build the QName for a lexicalQName. The prefix definition is fetched from the
@@ -440,6 +455,40 @@
                     ()
                 else
                     $attributeMultiplicityValue"
+        />
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>
+            Determines if multiple values for the attribute are allowed by
+            checking the attribute multiplicity.
+        </xd:desc>
+        <xd:param name="attribute"/>
+    </xd:doc>
+    <xsl:function name="f:areMultipleAttributeValuesAllowed">
+        <xsl:param name="attribute"/>
+        <xsl:variable name="attributeMultiplicityMax"
+            select="$attribute/bounds/@upper"/>
+        <xsl:sequence
+            select="not($attributeMultiplicityMax = ('', '0', '1'))"
+        />
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>
+            Determines if multiple values for the relation range are allowed by
+            checking the connector multiplicity.
+        </xd:desc>
+        <xd:param name="multiplicity"/>
+    </xd:doc>
+    <xsl:function name="f:areMultipleValuesForRelationRangeAllowed">
+        <xsl:param name="multiplicity"/>
+        <xsl:variable name="multiplicityString"
+            select="f:normalizeMultiplicity($multiplicity)"/>
+        <xsl:variable name="targetMaxMultiplicity"
+            select="fn:substring-after($multiplicityString, '..')"/>
+        <xsl:sequence
+            select="boolean($targetMaxMultiplicity) and not($targetMaxMultiplicity = ('', '0', '1'))"
         />
     </xsl:function>
 

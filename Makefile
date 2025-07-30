@@ -40,6 +40,7 @@ ENRICHED_NAMESPACES_XML_PATH:=${INTERM_FOLDER_PATH}/enriched-namespaces.xml
 NAMESPACES_AS_RDFPIPE_ARGS=$(shell ${MODEL2OWL_FOLDER}/scripts/get_namespaces.sh ${ENRICHED_NAMESPACES_XML_PATH})
 RDF_XML_MIME_TYPE:='application/rdf+xml'
 TURTLE_MIME_TYPE:='turtle'
+JSONLD_CONTEXT_INDENTATION?=2
 
 # download saxon library
 get-saxon: saxon/saxon.jar
@@ -210,6 +211,26 @@ shacl:
 	@echo Output shacl file location:
 	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.rdf
 	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf
+
+# make generate-jsonld-context [XMI_INPUT_FILE_PATH=/path/to/cm.xmi] 
+#	[OUTPUT_FOLDER_PATH=/output/directory]
+#   [JSONLD_CONTEXT_INDENTATION=indentation_size]
+# where:
+#   JSONLD_CONTEXT_INDENTATION: Indentation for the generated file (defaults to 2 spaces)
+generate-jsonld-context:
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/jsonld-context.xsl \
+		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_context.jsonld.tmp \
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
+	@# reformat the JSON-LD context file to be more readable
+	@cat ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_context.jsonld.tmp \
+		| python3 -c "import sys, json; \
+		data = json.load(sys.stdin); \
+		print(json.dumps(data, sort_keys=True, indent=int(${JSONLD_CONTEXT_INDENTATION})))" \
+		> ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_context.jsonld
+
+	@echo Output JSON-LD context file:
+	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_context.jsonld
+	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_context.jsonld.tmp
 
 # Generate enriched namespaces XML file which contains user namespaces (defined
 # in namespaces.xml) and internal namespaces (such as core-shape)

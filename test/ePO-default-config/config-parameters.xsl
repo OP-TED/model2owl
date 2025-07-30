@@ -84,6 +84,7 @@
     <xsl:variable name="generateReusedConceptsOWLcore" select="fn:true()"/>
     <xsl:variable name="generateReusedConceptsOWLrestrictions" select="fn:true()"/>
     <xsl:variable name="generateReusedConceptsGlossary" select="fn:true()"/>
+    <xsl:variable name="generateReusedConceptsJSONLDcontext" select="fn:true()"/>
     
 <!--    This set of variables controls generation of comments and how they will generate in the output -->
     <xsl:variable name="commentsGeneration" select="fn:true()"/>

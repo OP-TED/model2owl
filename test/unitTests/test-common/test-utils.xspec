@@ -269,6 +269,30 @@
         </x:call>
         <x:expect label="result" select="()"/>
     </x:scenario>
+
+    <x:scenario label="Scenario for determining if multiple attribute values are allowed">
+        <x:scenario label="multiple attribute values are allowed (max card = *)">
+            <x:call function="f:areMultipleAttributeValuesAllowed">
+                <x:param name="attribute" href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[156]/attributes[1]/attribute[2]"/>
+            </x:call>
+            <x:expect label="result" select="true()"/>
+        </x:scenario>
+        <x:scenario label="multiple attribute values are allowed (max card = 2)">
+            <x:call function="f:areMultipleAttributeValuesAllowed">
+                <x:param name="attribute" href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[166]/attributes[1]/attribute[3]"/>
+            </x:call>
+            <x:expect label="result" select="true()"/>
+        </x:scenario>
+        <x:scenario label="multiple attribute values are not allowed (max card = 1)">
+            <x:call function="f:areMultipleAttributeValuesAllowed">
+                <x:param name="attribute" href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[156]/attributes[1]/attribute[1]"/>
+            </x:call>
+            <x:expect label="result" select="false()"/>
+        </x:scenario>
+    </x:scenario>
     
     <x:scenario label="Scenario for checking if connector target and source are in the model - True">
         <x:call function="f:checkIfConnectorTargetAndSourceElementsExists">
