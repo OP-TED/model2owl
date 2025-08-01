@@ -81,7 +81,7 @@ get-python-test-deps:
 ######################################################################################
 # Download, install saxon, xspec, rdflib and other dependencies
 ######################################################################################
-install:  get-saxon get-rdflib get-pyld get-widoco get-jena-cli-tools
+install:  get-saxon get-rdflib get-widoco get-jena-cli-tools
 
 ############################ Main tasks ##############################################
 # Run all tests
