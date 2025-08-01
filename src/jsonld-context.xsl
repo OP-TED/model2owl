@@ -34,10 +34,26 @@
                 <fn:map key="@context">
                     <xsl:apply-templates select="xmi:XMI/xmi:Extension/elements/element"/>
                     <xsl:call-template name="connectorsDeclaration"/>
+                    <xsl:call-template name="namespacesDeclaration"/>
                 </fn:map>
             </fn:map>
         </xsl:variable>
         <xsl:value-of select="xml-to-json($json-xml, map { 'indent': true() })"/>
+    </xsl:template>
+
+    <xd:doc>
+        <xd:desc>
+            This template declares set of namespaces to be included in the
+            generated context.
+        </xd:desc>
+    </xd:doc>
+    <xsl:template name="namespacesDeclaration">
+        <xsl:for-each select="$internalNamespacePrefixes/*:prefixes/*:prefix">              
+            <!-- exclude base namespace -->
+            <xsl:if test="string(./@name) != ''">
+                <fn:string key="{./@name}"><xsl:value-of select="./@value"/></fn:string>
+            </xsl:if>
+        </xsl:for-each>
     </xsl:template>
 
 </xsl:stylesheet>

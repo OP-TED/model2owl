@@ -63,9 +63,10 @@
         <xsl:for-each select="$class/attributes/attribute">
             <!-- Use the first found attribute -->
             <xsl:variable name="attribute" select="."/>
+            <xsl:variable name="attributeName" select="$attribute/@name"/>
             <xsl:if test="not(f:isExcludedByStatus($attribute))">
                 <!-- Extract the prefix from the attribute name -->
-                <xsl:variable name="attributePrefix" select="f:getPrefix(.)"/>
+                <xsl:variable name="attributePrefix" select="f:getPrefix($attributeName)"/>
                 <!-- Check if the attribute should be processed -->
                 <xsl:if
                     test="$generateReusedConceptsJSONLDcontext or $attributePrefix = $includedPrefixesList">
