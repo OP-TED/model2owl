@@ -74,16 +74,32 @@ widoco/widoco.jar:
 	mkdir widoco
 	cd widoco  && curl -L -o widoco.jar "https://github.com/dgarijo/Widoco/releases/download/v1.4.17/java-11-widoco-1.4.17-jar-with-dependencies.jar"
 
+get-python-test-deps:
+	@echo Installing test dependencies
+	source model2owl-venv/bin/activate && pip install -r requirements-test.txt
+
 ######################################################################################
 # Download, install saxon, xspec, rdflib and other dependencies
 ######################################################################################
-install:  get-saxon get-rdflib get-widoco get-jena-cli-tools
+install:  get-saxon get-rdflib get-pyld get-widoco get-jena-cli-tools
 
 ############################ Main tasks ##############################################
-# Run unit_tests
+# Run all tests
+test: unit-tests functional-tests
+	@mvn surefire-report:report-only
+
+# Run functional tests in Python
+functional-tests: .deps_installed
+	@mvn exec:exec@run-pytest
+
+.deps_installed: requirements-test.txt
+	@make get-python-test-deps
+	touch .deps_installed
+
+# Run unit tests in XSpec
 unit-tests:
 	@make test-prerequisites
-	@mvn install -Dsaxon.options.enrichedNamespacesPath=${ENRICHED_NAMESPACES_XML_PATH}
+	@mvn xspec:run-xspec -Dsaxon.options.enrichedNamespacesPath=${ENRICHED_NAMESPACES_XML_PATH}
 
 # Actions required in order to setup the environment for testing purposes.
 # Usage (`[]` denotes an optional argument; if omited, default value will be used):

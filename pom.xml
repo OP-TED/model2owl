@@ -43,6 +43,43 @@
 <!--                    </dependency>-->
 <!--                </dependencies>-->
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                    <id>run-pytest</id>
+                    <phase>test</phase>
+                    <goals>
+                        <goal>exec</goal>
+                    </goals>
+                    <configuration>
+                        <executable>sh</executable>
+                        <workingDirectory>${project.basedir}</workingDirectory>
+                        <arguments>
+                        <argument>-c</argument>
+                        <argument>
+                            . model2owl-venv/bin/activate &amp;&amp; pytest test --junitxml=target/surefire-reports/test-pytest.xml || true
+                        </argument>
+                        </arguments>
+                    </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>3.2.5</version>
+                <executions>
+                <execution>
+                    <phase>verify</phase>
+                    <goals>
+                    <goal>report-only</goal>
+                    </goals>
+                </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
