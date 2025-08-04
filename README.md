@@ -263,6 +263,21 @@ Example
 # generate lightweight ontology from the UML export (xml/xmi)
 make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOLDER_PATH=./my-folder
 ```
+
+### Testing
+There are three Make targets dedicated to testing the software:
+* `test` - runs all tests.
+* `unit-tests` - runs unit tests implemented in XSpec.
+* `functional-tests` - runs feature tests implemented in Python.
+
+Both XSpec and Python tests are integrated and managed in a unified way. When
+running `test` target, an XML report (Maven Surefire) covering both unit and
+feature tests is generated.
+
+Note: the described commands may be handy for a contributor when working
+locally. This Github repository has a CI configured that runs the test suite on
+every submitted commit and display the results in the GitHub UI.
+
 ## Online
 To use model2owl in an automatic way, we have created a github repository [model2owl-boilerplate](https://github.com/OP-TED/model2owl-boilerplate) that will no longer require for you to install or to execute anything.
 Follow the instructions found there for using this model2owl automation.
