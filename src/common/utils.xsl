@@ -576,7 +576,8 @@
     </xd:doc>
     <xsl:function name="f:buildShapeURI">
         <xsl:param name="uri"/>
-        <xsl:sequence select="fn:concat($base-shape-uri, $defaultDelimiter, f:normaliseURI($uri))"/>
+        <xsl:sequence
+            select="fn:concat($base-shape-uri, $defaultDelimiter, f:normaliseURI($uri), $nodeShapeURIsuffix)"/>
     </xsl:function>
 
 

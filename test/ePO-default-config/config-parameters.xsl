@@ -46,6 +46,9 @@
 
     <!-- when a delimiter is missing in the base URI of a namespace, use this default value-->
     <xsl:variable name="defaultDelimiter" select="'#'"/>
+    
+    <!-- suffix for URIs of sh:NodeShape instances in the SHACL artefact -->
+    <xsl:variable name="nodeShapeURIsuffix" select="'Shape'"/>
 
     <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
     <xsl:variable name="acceptableTypesForObjectProperties"
