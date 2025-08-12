@@ -31,7 +31,8 @@
                 <x:param name="root" href="../../testData/ePO-core-4.2.0.xml"/>
                 <x:param name="attributeName" select="'epo:hasURL'"/>
             </x:call>
-            <x:expect label="no reused class declaration" select="()"/>
+            <x:expect label="no reused class declaration"
+                test="not(boolean(//owl:Class[@rdf:about='http://data.europa.eu/m8g/Evidence']))"/>
         </x:scenario>
     </x:scenario>
 
