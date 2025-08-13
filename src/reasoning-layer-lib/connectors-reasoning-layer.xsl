@@ -28,20 +28,26 @@
         <xsl:if test="not(f:isExcludedByStatus(.))">
             <xsl:variable name="relations" select="f:getRelationsFromConnector(.)"/>
             <xsl:for-each select="$relations">
-                <xsl:variable name="relationCurie" select="./@name"/>
+                    <xsl:variable name="sourceClassCurie" select="./source/@name"/>
                     <xsl:if test="./source/@type = 'Class' and ./target/@type = 'Class' and
                                   ($generateReusedConceptsOWLrestrictions or
-                                  fn:substring-before($relationCurie, ':') = $includedPrefixesList)">
-                        <xsl:variable name="sourceClassCurie" select="./source/@name"/>
+                                  fn:substring-before($sourceClassCurie, ':') = $includedPrefixesList)">
+                        <xsl:call-template name="relationMultiplicity">
+                            <xsl:with-param name="relation" select="."/>
+                        </xsl:call-template>
+                        
+                        <xsl:variable name="relationCurie" select="./@name"/>
+                        <!-- Generate special axioms for object properties only
+                        if the property is not reused -->
                         <xsl:if test="$generateReusedConceptsOWLrestrictions or
-                                      fn:substring-before($sourceClassCurie, ':') = $includedPrefixesList">
-                            <xsl:call-template name="relationMultiplicity">
+                                     fn:substring-before($relationCurie, ':') = $includedPrefixesList">
+                            <xsl:call-template name="relationAsymmetry">
+                                <xsl:with-param name="relation" select="."/>
+                            </xsl:call-template>
+                            <xsl:call-template name="relationFunctional">
                                 <xsl:with-param name="relation" select="."/>
                             </xsl:call-template>
                         </xsl:if>
-                        <xsl:call-template name="relationAsymmetry">
-                            <xsl:with-param name="relation" select="."/>
-                        </xsl:call-template>
                     </xsl:if>
             </xsl:for-each>
         </xsl:if>
@@ -51,19 +57,18 @@
         <xd:desc>applying the reasoning layer rules to dependencies</xd:desc>
     </xd:doc>
 
-    <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
-        <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
+    <xsl:template match="connector[./properties/@ea_type = 'Dependency']">        
         <xsl:if test="not(f:isExcludedByStatus(.))">
+        <xsl:variable name="relation" select="f:getRelationsFromConnector(.)[1]"/>
+        <xsl:variable name="relationName" select="$relation/@name"/>
+        <xsl:variable name="sourceClassCurie" select="$relation/source/@name"/>
         <xsl:if
             test="
                 ./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
                 ($generateReusedConceptsOWLrestrictions or
-                fn:substring-before($connectorRoleName, ':') = $includedPrefixesList)">
-            <xsl:variable name="relation" select="f:getRelationsFromConnector(.)[1]"/>
+                fn:substring-before($sourceClassCurie, ':') = $includedPrefixesList)">
+            
             <xsl:call-template name="relationMultiplicity">
-                <xsl:with-param name="relation" select="$relation"/>
-            </xsl:call-template>
-            <xsl:call-template name="relationAsymmetry">
                 <xsl:with-param name="relation" select="$relation"/>
             </xsl:call-template>
         </xsl:if>
@@ -71,7 +76,13 @@
             test="
                 ./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration' and
                 ($generateReusedConceptsOWLrestrictions or
-                fn:substring-before($connectorRoleName, ':') = $includedPrefixesList)">
+                fn:substring-before($relationName, ':') = $includedPrefixesList)">
+            <xsl:call-template name="relationAsymmetry">
+                <xsl:with-param name="relation" select="$relation"/>
+            </xsl:call-template>
+            <xsl:call-template name="relationFunctional">
+                <xsl:with-param name="relation" select="$relation"/>
+            </xsl:call-template>
             <xsl:call-template name="connectorDependencyRange">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -337,6 +348,35 @@
     </xsl:template>
 
     <xd:doc>
+        <xd:desc>
+            Rule R.07. Association and dependency multiplicity "one" — in reasoning layer
+            
+            If the association/dependency multiplicity is exactly one, i.e.
+            [1..1], specify a functional property axiom like in the Rule C.10.
+
+            This function works on a relation extracted from a connector.
+        </xd:desc>
+        <xd:param name="relation"/>
+    </xd:doc>
+
+    <xsl:template name="relationFunctional">
+        <xsl:param name="relation"/>
+        <xsl:variable name="targetMultiplicity"
+            select="f:normalizeMultiplicity($relation/@multiplicity)"/>
+        <xsl:variable name="targetMultiplicityMin"
+            select="f:getMultiplicityMinFromString($targetMultiplicity)"/>
+        <xsl:variable name="targetMultiplicityMax"
+            select="f:getMultiplicityMaxFromString($targetMultiplicity)"/>
+        <xsl:if test="$targetMultiplicityMin = '1' and $targetMultiplicityMax = '1'">
+            <xsl:variable name="relationCurie" select="$relation/@name"/>
+            <xsl:variable name="relationURI" select="f:buildURIfromLexicalQName($relationCurie)"/>
+            <rdf:Description rdf:about="{$relationURI}">
+                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+            </rdf:Description>
+        </xsl:if>
+    </xsl:template>
+
+    <xd:doc>
         <xd:desc>Rule R.11. Association inverse — in reasoning layer . Specify inverse object
             property between the source and target ends of the association.</xd:desc>
         <xd:param name="connectorName"/>
@@ -516,13 +556,6 @@
             constraint using the owl:someValuesFrom property instead of a
             cardinality constraint with owl:minQualifiedCardinality.
 
-
-            Rule R.07. Association and dependency multiplicity "one" — in reasoning layer
-            
-            If the association/dependency multiplicity is
-            exactly one, i.e. [1..1], specify a functional property axiom like
-            in the Rule C.10.
-
             This function works on a relation extracted from a connector.
         </xd:desc>
         <xd:param name="relation"/>
@@ -605,11 +638,6 @@
                     </rdfs:subClassOf>
                 </xsl:for-each>
             </rdf:Description>
-            <xsl:if test="$targetMultiplicityMin = '1' and $targetMultiplicityMax = '1'">
-                <rdf:Description rdf:about="{$relationURI}">
-                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-                </rdf:Description>
-            </xsl:if>
         </xsl:if>
     </xsl:template>
 

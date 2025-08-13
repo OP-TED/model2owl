@@ -28,7 +28,10 @@
             Generation of underlying restrictions (for cardinality) depends on
             verification origin of both an attribute and the class it belongs to.
             The former is involved as datatype property restriction is always
-            defined in the context of the related OWL class.
+            defined in the context of the related OWL class. 
+            Restrictions on reused attributes defined inside a reused class are
+            not generated. However, restrictions on reused attributes defined
+            inside an internal class are generated.
         </xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
@@ -37,12 +40,9 @@
                       fn:substring-before($className, ':') = $includedPrefixesList">
             <xsl:variable name="attributeName" select="./@name"/>
             <xsl:if test="not(f:isExcludedByStatus(.))">
-                <xsl:if test="$generateReusedConceptsOWLrestrictions or
-                              fn:substring-before($attributeName, ':') = $includedPrefixesList">
-                    <xsl:call-template name="attributeMultiplicity">
-                        <xsl:with-param name="attribute" select="."/>
-                    </xsl:call-template>
-                </xsl:if>
+                <xsl:call-template name="attributeMultiplicity">
+                    <xsl:with-param name="attribute" select="."/>
+                </xsl:call-template>
             </xsl:if>
         </xsl:if>
     </xsl:template>

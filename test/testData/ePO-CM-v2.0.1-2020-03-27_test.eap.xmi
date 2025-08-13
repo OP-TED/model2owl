@@ -40406,7 +40406,7 @@
 				<xrefs/>
 				<extendedProperties tagged="0" package_name="epo" relatedlinks="idref1=EAID_6CF7585A_9930_48b9_B867_33406CC7CE66;"/>
 			</element>
-			<element xmi:idref="EAPK_49BA825D_5523_409f_A80F_979ACB1356D1" xmi:type="uml:Package" name="common £omething" scope="public">
+			<element xmi:idref="EAPK_49BA825D_5523_409f_A80F_979ACB1356D1" xmi:type="uml:Package" name="common ï¿½omething" scope="public">
 				<model package2="EAID_49BA825D_5523_409f_A80F_979ACB1356D1" package="EAPK_DB0C4677_88DC_4767_8DE5_76387A40E5AE" tpos="2" ea_localid="95" ea_eleType="package"/>
 				<properties isSpecification="false" sType="Package" nType="0" scope="public" stereotype="equivalent"/>
 				<project author="lbotapor" version="1.0" phase="1.0" created="2020-01-30 13:52:52" modified="2020-03-18 18:45:04" complexity="1" status="Proposed"/>
@@ -46690,7 +46690,7 @@
 				<source xmi:idref="EAID_76E69B0B_4A6E_4901_8372_75A07B6AB066">
 					<model ea_localid="413" type="Class" name="epo:Contract"/>
 					<role name="epo:funds" visibility="Public" targetScope="instance"/>
-					<type multiplicity="0..*" aggregation="none" containment="Unspecified"/>
+					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
 					<constraints/>
 					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
 					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
@@ -46701,7 +46701,7 @@
 				<target xmi:idref="EAID_495BBB92_468A_4f08_9330_A0C75730B97A">
 					<model ea_localid="346" type="Class" name="epo:Fund"/>
 					<role name="epo:isFundedBy" visibility="Public" targetScope="instance"/>
-					<type multiplicity="0..*" aggregation="none" containment="Unspecified"/>
+					<type multiplicity="2..*" aggregation="none" containment="Unspecified"/>
 					<constraints/>
 					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
 					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>

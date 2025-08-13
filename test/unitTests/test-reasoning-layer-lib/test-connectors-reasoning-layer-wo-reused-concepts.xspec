@@ -20,8 +20,10 @@
         <x:variable name="testedPropUri"
             as="xs:string"
             select="'http://www.w3.org/ns/adms#identifier'"/>
-        <x:expect label="restriction on reused property is not set"
+        <x:expect label="restriction on reused property for reused class is not set"
             test="not(boolean(/rdf:Description[@rdf:about='http://data.europa.eu/m8g/InformationConcept']/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = $testedPropUri))"/>
+        <x:expect label="restriction on reused property for internal class is set"
+            test="boolean(/rdf:Description[@rdf:about='http://data.europa.eu/a4g/ontology#Fund']/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = $testedPropUri)"/>
     </x:scenario>
   
     <x:scenario label="Scenarios for #TEDM2O-16 bugfix affecting connectors">
