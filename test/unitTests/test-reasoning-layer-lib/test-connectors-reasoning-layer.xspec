@@ -11,6 +11,7 @@
     xmlns:dct="http://purl.org/dc/terms/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:sh="http://www.w3.org/ns/shacl#"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
     stylesheet="../../../src/reasoning-layer-lib/connectors-reasoning-layer.xsl">
     
     <x:scenario
@@ -72,8 +73,10 @@
     </x:scenario>
 
     <x:scenario label="Scenario for association asymetry">
-        <x:call template="connectorAsymetry">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[33]"/>
+        <x:call template="relationAsymmetry">
+            <x:param name="connector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="f:getRelationsFromConnector(/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[33])[1]"/>
         </x:call>   
         <x:expect label="there is a owl:AsymmetricProperty" test="boolean(rdf:Description/rdf:type/@rdf:resource)"/>
     </x:scenario>
@@ -117,8 +120,10 @@
     </x:scenario>
 
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction ">
-        <x:call template="connectorMultiplicity">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[100]"/>
+        <x:call template="relationMultiplicity">
+            <x:param name="connector"
+                href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
+                select="f:getRelationsFromConnector(/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[100])[1]"/>
         </x:call>   
         <x:expect label="there is a rdf:Description" test="boolean(rdf:Description)"/>
         <x:expect label="there is a rdfs:subClassOf" test="boolean(rdf:Description/rdfs:subClassOf)"/>
@@ -128,8 +133,10 @@
     </x:scenario>
     
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and both target and source have multiplicity ">
-        <x:call template="connectorMultiplicity">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[115]"/>
+        <x:call template="relationMultiplicity">
+            <x:param name="connector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="f:getRelationsFromConnector(/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[115])[1]"/>
         </x:call>   
         <x:expect label="there is a 2 rdf:Description" test="count(rdf:Description) = 2"/>
         <x:expect label="there is a 2 rdfs:subClassOf" test="count(rdf:Description/rdfs:subClassOf) = 2"/>
@@ -140,22 +147,28 @@
     </x:scenario>
     
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction and the target has no multiplicity">
-        <x:call template="connectorMultiplicity">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[276]"/>
+        <x:call template="relationMultiplicity">
+            <x:param name="connector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="f:getRelationsFromConnector(/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[276])[1]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction and the target multiplicity is *">
-        <x:call template="connectorMultiplicity">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[216]"/>
+        <x:call template="relationMultiplicity">
+            <x:param name="connector"
+                href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
+                select="f:getRelationsFromConnector(/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[216])[1]"/>
         </x:call>   
         <x:expect label="expect to do nothing" select="()"/> 
     </x:scenario>
     
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and only the target has multiplicity ">
-        <x:call template="connectorMultiplicity">
-            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[56]"/>
+        <x:call template="relationMultiplicity">
+            <x:param name="connector"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="f:getRelationsFromConnector(/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[56])[1]"/>
         </x:call>   
         
         <x:expect label="there is a 1 rdf:Description" test="count(rdf:Description) = 1"/>

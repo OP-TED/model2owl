@@ -313,27 +313,6 @@
 
     </xsl:template>
 
-
-    <!-- <xd:doc>
-        <xd:desc>
-            Helper function for invoking connectorAsymetry template on a
-            connector that is bidirectional.
-        </xd:desc>
-        <xd:param name="connector"/>
-    </xd:doc>
-    <xsl:template name="connectorAsymetryIfBidirectional">
-        <xsl:param name="connector"/>
-        <xsl:if test="f:isConnectorBidirectional($connector) = true()">
-            <xsl:variable name="relations" select="f:getRelationsFromConnector($connector)"/>
-            <xsl:variable name="relation" select="$relations[1]"/>
-            <xsl:variable name="relationReversed" select="$relations[2]"/>
-            <xsl:call-template name="connectorAsymetry">
-                <xsl:with-param name="relation" select="$relation"/>
-                <xsl:with-param name="relationReversed" select="$relationReversed"/>
-            </xsl:call-template>
-        </xsl:if>
-    </xsl:template> -->
-
     <xd:doc>
         <xd:desc>Rule R.09. Association asymmetry — in reasoning layer. Specify the asymmetry object
             property axiom for each end of a recursive association.</xd:desc>
@@ -502,205 +481,6 @@
         </xsl:if>
     </xsl:template>
 
-    <!-- <xd:doc>
-        <xd:desc> Rule R.06. Association multiplicity — in reasoning layer, Rule R.07. Association
-            multiplicity "one" — in reasoning layer . For the association target multiplicity, where
-            min and max are different than * (any) and multiplicity is not [1..1], specify a
-            subclass axiom where the source class specialises an anonymous restriction of properties
-            formulated according to cases provided by Rule 9.</xd:desc>
-        <xd:param name="connector"/>
-    </xd:doc>
-
-    <xsl:template name="relationMultiplicity">
-        <xsl:param name="relation"/>
-        <xsl:variable name="targetMultiplicity"
-            select="f:normalizeMultiplicity($connector/target/type/@multiplicity)"/>
-        <xsl:variable name="targetMultiplicityMin"
-            select="f:getMultiplicityMinFromString($targetMultiplicity)"/>
-        <xsl:variable name="targetMultiplicityMax"
-            select="f:getMultiplicityMaxFromString($targetMultiplicity)"/>
-        <xsl:variable name="sourceMultiplicity"
-            select="f:normalizeMultiplicity($connector/source/type/@multiplicity)"/>
-        <xsl:variable name="sourceMultiplicityMin"
-            select="f:getMultiplicityMinFromString($sourceMultiplicity)"/>
-        <xsl:variable name="sourceMultiplicityMax"
-            select="f:getMultiplicityMaxFromString($sourceMultiplicity)"/>
-        <xsl:variable name="sourceClassName"
-            select="$connector/source/model/@name"/>
-        <xsl:variable name="sourceClassURI"
-            select="f:buildURIfromLexicalQName($sourceClassName)"/>
-        <xsl:variable name="isSourceClassInternalOrAllowed"
-                select="$generateReusedConceptsOWLrestrictions or
-                    fn:substring-before($sourceClassName, ':') = $includedPrefixesList"/>
-        <xsl:variable name="sourceRole"
-            select="
-                if (boolean($connector/source/role/@name)) then
-                    $connector/source/role/@name
-                else
-                    ()
-                "/>
-        <xsl:variable name="sourceRoleURI"
-            select="
-                if (boolean($sourceRole)) then
-                    f:buildURIfromLexicalQName($sourceRole)
-                else
-                    ()"/>
-        <xsl:variable name="targetClassName"
-            select="$connector/target/model/@name"/>
-        <xsl:variable name="targetClassURI"
-            select="f:buildURIfromLexicalQName($targetClassName)"/>
-        <xsl:variable name="isTargetClassInternalOrAllowed"
-                select="$generateReusedConceptsOWLrestrictions or
-                    fn:substring-before($targetClassName, ':') = $includedPrefixesList"/>
-        <xsl:variable name="targetRole"
-            select="
-                if (boolean($connector/target/role/@name)) then
-                    $connector/target/role/@name
-                else
-                    fn:error(xs:QName('connectors'), concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
-        <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
-        <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
-        <xsl:variable name="datatypeURI" select="f:buildURIfromLexicalQName('xsd:integer')"/>
-        <xsl:variable name="sourceDestinationRestrictionContent" as="item()*">
-            <xsl:choose>
-                <xsl:when
-                    test="
-                        boolean($targetMultiplicityMax) and
-                        boolean($targetMultiplicityMin) and
-                        $targetMultiplicityMin = $targetMultiplicityMax">
-                    <owl:cardinality rdf:datatype="{$datatypeURI}">
-                        <xsl:value-of select="$targetMultiplicityMin"/>
-                    </owl:cardinality>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:if test="boolean($targetMultiplicityMax)">
-                        <owl:maxCardinality rdf:datatype="{$datatypeURI}">
-                            <xsl:value-of select="$targetMultiplicityMax"/>
-                        </owl:maxCardinality>
-                    </xsl:if>
-                    <xsl:if test="boolean($targetMultiplicityMin)">
-                        <owl:minCardinality rdf:datatype="{$datatypeURI}">
-                            <xsl:value-of select="$targetMultiplicityMin"/>
-                        </owl:minCardinality>
-                    </xsl:if>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable>
-        <xsl:if
-            test="boolean($targetMultiplicity) and
-                  boolean($sourceDestinationRestrictionContent)">
-            <xsl:if test="$isSourceClassInternalOrAllowed">
-                <rdf:Description rdf:about="{$sourceClassURI}">
-                    <rdfs:subClassOf>
-                        <owl:Restriction>
-                            <owl:onProperty rdf:resource="{$targetRoleURI}"/>
-                            <xsl:copy-of select="$sourceDestinationRestrictionContent"/>
-                        </owl:Restriction>
-                    </rdfs:subClassOf>
-                </rdf:Description>
-            </xsl:if>
-            <xsl:if test="$targetMultiplicityMin = '1' and $targetMultiplicityMax = '1'">
-                <rdf:Description rdf:about="{$targetRoleURI}">
-                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-                </rdf:Description>
-            </xsl:if>
-        </xsl:if>
-
-        <xsl:variable name="sourceInBidirectionalRestrictionContent" as="item()*">
-            <xsl:choose>
-                <xsl:when
-                    test="
-                        boolean($targetMultiplicityMax) and
-                        boolean($targetMultiplicityMin) and
-                        $targetMultiplicityMin = $targetMultiplicityMax">
-                    <owl:cardinality rdf:datatype="{$datatypeURI}">
-                        <xsl:value-of select="$targetMultiplicityMin"/>
-                    </owl:cardinality>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:if test="boolean($targetMultiplicityMax)">
-                        <owl:maxCardinality rdf:datatype="{$datatypeURI}">
-                            <xsl:value-of select="$targetMultiplicityMax"/>
-                        </owl:maxCardinality>
-                    </xsl:if>
-                    <xsl:if test="boolean($targetMultiplicityMin)">
-                        <owl:minCardinality rdf:datatype="{$datatypeURI}">
-                            <xsl:value-of select="$targetMultiplicityMin"/>
-                        </owl:minCardinality>
-                    </xsl:if>
-
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable>
-        <xsl:if
-            test="
-                $connectorDirection = 'Bi-Directional' and
-                boolean($targetMultiplicity) and boolean($sourceInBidirectionalRestrictionContent)">
-            <xsl:if test="$isSourceClassInternalOrAllowed">
-                <rdf:Description rdf:about="{$sourceClassURI}">
-                    <rdfs:subClassOf>
-                        <owl:Restriction>
-                            <owl:onProperty rdf:resource="{$targetRoleURI}"/>
-                            <xsl:copy-of select="$sourceInBidirectionalRestrictionContent"/>
-                        </owl:Restriction>
-                    </rdfs:subClassOf>
-                </rdf:Description>
-            </xsl:if>
-            <xsl:if test="$targetMultiplicityMin = '1' and $targetMultiplicityMax = '1'">
-                <rdf:Description rdf:about="{$targetRoleURI}">
-                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-                </rdf:Description>
-            </xsl:if>
-        </xsl:if>
-
-        <xsl:variable name="targetInBidirectionalRestrictionContent" as="item()*">
-            <xsl:choose>
-                <xsl:when
-                    test="
-                        boolean($sourceMultiplicityMax) and
-                        boolean($sourceMultiplicityMin) and
-                        $sourceMultiplicityMin = $sourceMultiplicityMax">
-                    <owl:cardinality rdf:datatype="{$datatypeURI}">
-                        <xsl:value-of select="$sourceMultiplicityMin"/>
-                    </owl:cardinality>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:if test="boolean($sourceMultiplicityMax)">
-                        <owl:maxCardinality rdf:datatype="{$datatypeURI}">
-                            <xsl:value-of select="$sourceMultiplicityMax"/>
-                        </owl:maxCardinality>
-                    </xsl:if>
-                    <xsl:if test="boolean($sourceMultiplicityMin)">
-                        <owl:minCardinality rdf:datatype="{$datatypeURI}">
-                            <xsl:value-of select="$sourceMultiplicityMin"/>
-                        </owl:minCardinality>
-                    </xsl:if>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable>
-        <xsl:if
-            test="
-                $connectorDirection = 'Bi-Directional' and
-                boolean($sourceMultiplicity) and boolean($targetInBidirectionalRestrictionContent)">
-            <xsl:if test="$isTargetClassInternalOrAllowed">
-                <rdf:Description rdf:about="{$targetClassURI}">
-                    <rdfs:subClassOf>
-                        <owl:Restriction>
-                            <owl:onProperty rdf:resource="{$sourceRoleURI}"/>
-                            <xsl:copy-of select="$targetInBidirectionalRestrictionContent"/>
-                        </owl:Restriction>
-                    </rdfs:subClassOf>
-                </rdf:Description>
-            </xsl:if>
-            <xsl:if test="$sourceMultiplicityMin = '1' and $sourceMultiplicityMax = '1'">
-                <rdf:Description rdf:about="{$sourceRoleURI}">
-                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-                </rdf:Description>
-            </xsl:if>
-        </xsl:if>
-    </xsl:template> -->
-
-    <!-- SOURCE: feature/M2O3-36 -->
     <xd:doc>
         <xd:desc>
             Rule R.06. Association and dependency multiplicity — in reasoning layer
@@ -756,27 +536,8 @@
             select="f:getMultiplicityMinFromString($targetMultiplicity)"/>
         <xsl:variable name="targetMultiplicityMax"
             select="f:getMultiplicityMaxFromString($targetMultiplicity)"/>
-        <!-- <xsl:variable name="sourceMultiplicity"
-            select="f:normalizeMultiplicity($connector/source/type/@multiplicity)"/>
-        <xsl:variable name="sourceMultiplicityMin"
-            select="f:getMultiplicityMinFromString($sourceMultiplicity)"/>
-        <xsl:variable name="sourceMultiplicityMax"
-            select="f:getMultiplicityMaxFromString($sourceMultiplicity)"/> -->
         <xsl:variable name="sourceClassURI"
             select="f:buildURIfromLexicalQName($relation/source/@name)"/>
-        <!-- <xsl:variable name="sourceRole"
-            select="
-                if (boolean($connector/source/role/@name)) then
-                    $connector/source/role/@name
-                else
-                    ()
-                "/>
-        <xsl:variable name="sourceRoleURI"
-            select="
-                if (boolean($sourceRole)) then
-                    f:buildURIfromLexicalQName($sourceRole)
-                else
-                    ()"/> -->
         <xsl:variable name="targetClassURI"
             select="f:buildURIfromLexicalQName($relation/target/@name)"/>
         
@@ -788,13 +549,6 @@
                 else
                     f:buildURIfromLexicalQName('skos:Concept')
             "/>
-        <!-- <xsl:variable name="effectiveSourceClassURI"
-            select="
-                if ($connector/source/model/@type = 'Class') then
-                    $sourceClassURI
-                else
-                    f:buildURIfromLexicalQName('skos:Concept')
-            "/> -->
         <xsl:variable name="relationCurie"
             select="
                 if (boolean($relation/@name)) then
@@ -802,7 +556,6 @@
                 else
                     fn:error(xs:QName('connectors'), concat($relation/@connectorIdRef, ' - connector target role name is empty'))"/>
         <xsl:variable name="relationURI" select="f:buildURIfromLexicalQName($relationCurie)"/>
-        <!-- <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/> -->
         <xsl:variable name="datatypeURI" select="f:buildURIfromLexicalQName('xsd:integer')"/>
         <xsl:variable name="sourceTargetRestrictions" as="item()*">
             <xsl:choose>
