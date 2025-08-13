@@ -74,7 +74,7 @@
 
     <x:scenario label="Scenario for association asymetry">
         <x:call template="relationAsymmetry">
-            <x:param name="connector"
+            <x:param name="relation"
                 href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="f:getRelationsFromConnector(/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[33])[1]"/>
         </x:call>   
@@ -121,7 +121,7 @@
 
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction ">
         <x:call template="relationMultiplicity">
-            <x:param name="connector"
+            <x:param name="relation"
                 href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
                 select="f:getRelationsFromConnector(/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[100])[1]"/>
         </x:call>   
@@ -134,7 +134,7 @@
     
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and both target and source have multiplicity ">
         <x:call template="relationMultiplicity">
-            <x:param name="connector"
+            <x:param name="relation"
                 href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="f:getRelationsFromConnector(/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[115])[1]"/>
         </x:call>   
@@ -148,7 +148,7 @@
     
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction and the target has no multiplicity">
         <x:call template="relationMultiplicity">
-            <x:param name="connector"
+            <x:param name="relation"
                 href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="f:getRelationsFromConnector(/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[276])[1]"/>
         </x:call>   
@@ -157,7 +157,7 @@
     
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Source -&gt; Destination direction and the target multiplicity is *">
         <x:call template="relationMultiplicity">
-            <x:param name="connector"
+            <x:param name="relation"
                 href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi"
                 select="f:getRelationsFromConnector(/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[216])[1]"/>
         </x:call>   
@@ -166,7 +166,7 @@
     
     <x:scenario label="Scenario for multiplicity in data shape layer when the connector has Bi-Directional direction and only the target has multiplicity ">
         <x:call template="relationMultiplicity">
-            <x:param name="connector"
+            <x:param name="relation"
                 href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
                 select="f:getRelationsFromConnector(/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[56])[1]"/>
         </x:call>   
