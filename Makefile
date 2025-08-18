@@ -35,6 +35,7 @@ TURTLE_FILELIST=$(shell ls ${ONTOLOGY_FOLDER_PATH}/*.ttl)
 WIDOCO_RDF_INPUT_FILE_PATH?=test/reasoning-investigation/model-2020-12-16/ePO_restrictions.rdf
 WIDOCO_OUTPUT_FOLDER_PATH?=output/widoco
 NAMESPACES_USER_XML_FILE_PATH?=${MODEL2OWL_FOLDER}/test/ePO-default-config/namespaces.xml
+IMPORTS_XML_FILE_PATH?=${ABSOLUTE_MODEL2OWL_FOLDER}/test/ePO-default-config/imports.xml
 INTERM_FOLDER_PATH?=${ABSOLUTE_MODEL2OWL_FOLDER}/.temp
 ENRICHED_NAMESPACES_XML_PATH:=${INTERM_FOLDER_PATH}/enriched-namespaces.xml
 NAMESPACES_AS_RDFPIPE_ARGS=$(shell ${MODEL2OWL_FOLDER}/scripts/get_namespaces.sh ${ENRICHED_NAMESPACES_XML_PATH})
@@ -82,7 +83,9 @@ install:  get-saxon get-rdflib get-widoco get-jena-cli-tools
 # Run unit_tests
 unit-tests:
 	@make test-prerequisites
-	@mvn install -Dsaxon.options.enrichedNamespacesPath=${ENRICHED_NAMESPACES_XML_PATH}
+	@mvn install \
+		-Dsaxon.options.enrichedNamespacesPath=${ENRICHED_NAMESPACES_XML_PATH} \
+		-Dsaxon.options.importsPath=${IMPORTS_XML_FILE_PATH}
 
 # Actions required in order to setup the environment for testing purposes.
 # Usage (`[]` denotes an optional argument; if omited, default value will be used):
@@ -167,8 +170,10 @@ generate-convention-SVRL-report:
 # make (owl-core | owl-restrictions | shacl) [XMI_INPUT_FILE_PATH=/path/to/cm.xmi] 
 #	[OUTPUT_FOLDER_PATH=/output/directory]
 #	[NAMESPACES_USER_XML_FILE_PATH=/path/to/namespaces.xml]
+#	[IMPORTS_XML_FILE_PATH=/path/to/imports.xml]
 # where:
-#   NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file provided by a user
+#   NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file containing namespaces provided by a user
+#	IMPORTS_XML_FILE_PATH: path to the *.xml file containing URIs to be imported provided by a user
 #
 # Example:
 # make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/eNotice_CM.xml OUTPUT_FOLDER_PATH=./my-folder
@@ -176,7 +181,8 @@ owl-core:
 	@make gen-enriched-ns-file
 	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/owl-core.xsl \
 		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.tmp.rdf \
-		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}" \
+		importsPath="${IMPORTS_XML_FILE_PATH}"
 	@make convert-between-serialization-formats INPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		OUTPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.tmp.rdf \
@@ -189,7 +195,8 @@ owl-restrictions:
 	@make gen-enriched-ns-file
 	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/owl-restrictions.xsl \
 		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.tmp.rdf \
-		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}" \
+		importsPath="${IMPORTS_XML_FILE_PATH}"
 	@make convert-between-serialization-formats INPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		OUTPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.tmp.rdf \
@@ -202,7 +209,8 @@ shacl:
 	@make gen-enriched-ns-file
 	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/shacl-shapes.xsl \
 		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf \
-		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}" \
+		importsPath="${IMPORTS_XML_FILE_PATH}"
 	@make convert-between-serialization-formats INPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		OUTPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf \

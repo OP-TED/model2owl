@@ -97,14 +97,20 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
   * parameters:
     * XMI_INPUT_FILE_PATH - path to the xmi file
     * OUTPUT_FOLDER_PATH - path to the folder that stores the output
+    * NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file containing namespaces
+    * IMPORTS_XML_FILE_PATH: path to the *.xml file containing ontology URIs to be imported
 * **owl-restrictions** - this generates heavyweight ontology with additional axioms suitable for reasoning purposes from the UML export (xml/xmi)
   * parameters:
     * XMI_INPUT_FILE_PATH - path to the xmi file
     * OUTPUT_FOLDER_PATH - path to the folder that stores the output
+    * NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file containing namespaces
+    * IMPORTS_XML_FILE_PATH: path to the *.xml file containing ontology URIs to be imported
 * **shacl** - this generates data shapes suitable for validation from the UML export (xml/xmi)
   * parameters:
     * XMI_INPUT_FILE_PATH - path to the xmi file
     * OUTPUT_FOLDER_PATH - path to the folder that stores the output
+    * NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file containing namespaces
+    * IMPORTS_XML_FILE_PATH: path to the *.xml file containing ontology URIs to be imported
 * **generate-html-docs-from-rdf** - this generates html documentation using widoco from a rdf file
   * parameters:
     * WIDOCO_RDF_INPUT_FILE_PATH - path to the rdf file
@@ -134,9 +140,10 @@ Steps:
 then activate it by using  ``source model2owl-venv/bin/activate``.
 
 ### Configuration
-The model2owl configuration is formed from 4 files that should be in one folder:
+The model2owl configuration is formed from 5 files that should be in one folder:
 * config-parameters.xsl - main config variables
 * namespaces.xml - add namespaces that are used in your UML model
+* imports.xml - A set of URIs to be included for importing in the generated ontologies using the `owl:imports` property
 * umlToXsdDataTypes.xml - mapping between uml to xsd data types
 * xsdAndRdfDataTypes.xml - configure datatypes used
 
@@ -192,21 +199,56 @@ By adjusting these variables, it is possible to customize whether specific artef
 providing fine control over the content of each output.
 
 #### Namespaces configuration
-In the namespaces.xml file you can add the namespaces that you use in UML model and also can control which of them should
-appear as import in the final output.
+In the namespaces.xml file you can add the namespaces that you use in UML model.
 
 Example
 
 ```shell
 # to add prefix you need a name and the URI
  <prefix name="foaf" value="http://xmlns.com/foaf/0.1/"/>
-# to have an import statement in the final output 
-# add importURI attribute to the definition above
- <prefix name="dct" value="http://purl.org/dc/terms/" importURI="http://purl.org/dc/terms/"/>
- 
-#Output will have the following import statement
-<owl:imports rdf:resource="http://purl.org/dc/terms/"/>
 ```
+
+#### Imported ontologies configuration
+URIs of ontologies to be declared for import within generated ontologies (for
+core, restrictions or SHACL shapes artefacts) can be specified in the
+imports.xml file. The file includes sections for shared URIs, which apply to all
+artefact types, as well as sections for specific artefact types.
+```xml
+<imports xmlns="http://publications.europa.eu/ns/">
+    <!-- affects all three artefacts -->
+    <all>
+        <import uri="http://purl.org/dc/terms/"/>
+    </all>
+    <!-- affects SHACL artefact -->
+    <shacl>
+        <import uri="http://data.europa.eu/a4g/data-shape#awa-shape"/>
+    </shacl>
+</imports>
+```
+This will cause **all RDF output files** to include the following import statement for the declared ontology:
+```xml
+<!-- in core.rdf, the resource <http://example.com/core> is of type owl:Ontology -->
+<rdf:Description rdf:about="http://example.com/core">
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+</rdf:Description>
+
+<!-- in core_restrictions.rdf, the resource <http://example.com/core-restriction> is of type owl:Ontology -->
+<rdf:Description rdf:about="http://example.com/core-restriction">
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+</rdf:Description>
+
+<!-- in core_shapes.rdf, the resource <http://example.com/core-shape> is of type owl:Ontology -->
+<rdf:Description rdf:about="http://example.com/core-shape">
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+</rdf:Description>
+```
+In addition, the below statement will be present **only in the SHACL artefact**:
+```xml
+<rdf:Description rdf:about="http://data.europa.eu/a4g/ontology#core-restriction">
+    <owl:imports rdf:resource="http://data.europa.eu/a4g/data-shape#awa-shape"/>
+</rdf:Description>
+```
+
 #### XSD/RDF datatypes
 Use xsdAndRdfDataTypes.xml file to define the datatypes used in the UML model.
 

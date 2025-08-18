@@ -61,9 +61,12 @@
     <xsl:template name="ontology-header">
 
         <owl:Ontology rdf:about="{$coreArtefactURI}">         
-            <xsl:for-each select="$internalNamespacePrefixes/*:prefixes/*:prefix/@importURI">              
+            <xsl:for-each select="$urisToBeImported/*:imports/*:all/*:import/@uri">              
                 <owl:imports rdf:resource="{.}"/>
-            </xsl:for-each>      
+            </xsl:for-each>
+            <xsl:for-each select="$urisToBeImported/*:imports/*:core/*:import/@uri">              
+                <owl:imports rdf:resource="{.}"/>
+            </xsl:for-each>
              
             <dct:title xml:lang="en">
                 <xsl:value-of select="$ontologyTitleCore"/>

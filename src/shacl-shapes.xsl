@@ -55,10 +55,12 @@
     </xd:doc>
     <xsl:template name="ontology-header">
         <owl:Ontology rdf:about="{$shapeArtefactURI}">
-            
-            <xsl:for-each select="$internalNamespacePrefixes/*:prefixes/*:prefix/@importURI">              
+            <xsl:for-each select="$urisToBeImported/*:imports/*:all/*:import/@uri">              
                 <owl:imports rdf:resource="{.}"/>
-            </xsl:for-each>      
+            </xsl:for-each>
+            <xsl:for-each select="$urisToBeImported/*:imports/*:shacl/*:import/@uri">              
+                <owl:imports rdf:resource="{.}"/>
+            </xsl:for-each>
             <owl:imports rdf:resource="{$coreArtefactURI}"/>
             <owl:imports rdf:resource="{$restrictionsArtefactURI}"/>
             
