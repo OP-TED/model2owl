@@ -140,9 +140,11 @@
                     <xsl:with-param name="rdfsComment" select="fn:true()"/>
                 </xsl:call-template>
             </xsl:if>
-            <xsl:call-template name="shapeLayerDefinedBy">
-                <xsl:with-param name="uri" select="$shapeClassUri"/>
-            </xsl:call-template>
+            <xsl:if test="$annotateShaclConceptsWithOntology">
+                <xsl:call-template name="shapeLayerDefinedBy">
+                    <xsl:with-param name="uri" select="$shapeClassUri"/>
+                </xsl:call-template>
+            </xsl:if>
 
         </xsl:if>
 
@@ -224,9 +226,11 @@
                 <xsl:with-param name="rdfsComment" select="fn:false()"/>
             </xsl:call-template>
         </xsl:if>
-        <xsl:call-template name="shapeLayerDefinedBy">
-            <xsl:with-param name="uri" select="$shapePropertyUri"/>
-        </xsl:call-template>
+        <xsl:if test="$annotateShaclConceptsWithOntology">
+            <xsl:call-template name="shapeLayerDefinedBy">
+                <xsl:with-param name="uri" select="$shapePropertyUri"/>
+            </xsl:call-template>
+        </xsl:if>
     </xsl:template>
 
 

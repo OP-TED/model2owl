@@ -174,6 +174,11 @@
                     <xsl:with-param name="rdfsComment" select="fn:false()"/>
                 </xsl:call-template>
             </xsl:if>
+            <xsl:if test="$annotateShaclConceptsWithOntology">
+                <xsl:call-template name="shapeLayerDefinedBy">
+                    <xsl:with-param name="uri" select="$propertyShapeURITarget"/>
+                </xsl:call-template>
+            </xsl:if>
         </xsl:if>
         <xsl:if test="$connectorDirection = 'Bi-Directional'">
             <rdf:Description rdf:about="{$sourceNodeShapeURI}">
@@ -194,6 +199,12 @@
                     <xsl:with-param name="rdfsComment" select="fn:false()"/>
                 </xsl:call-template>
             </xsl:if>
+            <xsl:if test="$annotateShaclConceptsWithOntology">
+                <xsl:call-template name="shapeLayerDefinedBy">
+                    <xsl:with-param name="uri" select="$propertyShapeURITarget"/>
+                </xsl:call-template>
+            </xsl:if>
+
             <rdf:Description rdf:about="{$targetNodeShapeURI}">
                 <sh:property rdf:resource="{$propertyShapeURISource}"/>
             </rdf:Description>
@@ -210,6 +221,11 @@
                     <xsl:with-param name="definition" select="$sourceDocumentation"/>
                     <xsl:with-param name="uri" select="$propertyShapeURISource"/>
                     <xsl:with-param name="rdfsComment" select="fn:false()"/>
+                </xsl:call-template>
+            </xsl:if>
+            <xsl:if test="$annotateShaclConceptsWithOntology">
+                <xsl:call-template name="shapeLayerDefinedBy">
+                    <xsl:with-param name="uri" select="$propertyShapeURISource"/>
                 </xsl:call-template>
             </xsl:if>
         </xsl:if>
