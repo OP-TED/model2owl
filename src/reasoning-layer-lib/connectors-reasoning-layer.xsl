@@ -474,11 +474,47 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc> Rule R.06. Association multiplicity — in reasoning layer, Rule R.07. Association
-            multiplicity "one" — in reasoning layer . For the association target multiplicity, where
-            min and max are different than * (any) and multiplicity is not [1..1], specify a
-            subclass axiom where the source class specialises an anonymous restriction of properties
-            formulated according to cases provided by Rule 9.</xd:desc>
+        <xd:desc>
+            Rule R.06. Association and dependency multiplicity — in reasoning layer
+
+            For the association/dependency target multiplicity, where min
+            and max are different than ``*'' (any) and multiplicity is not
+            [1..1], specify a subclass axiom where the source class specialises
+            an anonymous restriction of properties formulated according to cases
+            provided by the Rule C.09. For dependency relations, the property
+            range is always defined as skos:Concept.
+
+
+            Rule C.09. Attribut/relation multiplicity — in reasoning layer
+
+            For each relation multiplicity of the form ( min .. max ),
+            where min and max are different than ``*'' (any), specify a subclass
+            axiom where the OWL class, corresponding to the UML Class,
+            specialises an anonymous restriction of properties formulated
+            according to the following cases:
+            1. exact cardinality, e.g. [2..2]
+            2. minimum cardinality only, e.g. [2..*]
+            3. maximum cardinality only, e.g. [*..2]
+            4. maximum and maximum cardinality, e.g. [1..2]
+            5. at least one occurence: [1..*]
+
+            The restriction describes a constraint that is formulated with
+            respect to the range type of the defined OWL property, that is one
+            of the following:
+            * class
+            * datatype
+
+            For the special case of multiplicity [1..*], specify the existential
+            constraint using the owl:someValuesFrom property instead of a
+            cardinality constraint with owl:minQualifiedCardinality.
+
+
+            Rule R.07. Association and dependency multiplicity "one" — in reasoning layer
+            
+            If the association/dependency multiplicity is
+            exactly one, i.e. [1..1], specify a functional property axiom like
+            in the Rule C.10.
+        </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
 
@@ -513,6 +549,22 @@
                     ()"/>
         <xsl:variable name="targetClassURI"
             select="f:buildURIfromLexicalQName($connector/target/model/@name)"/>
+        
+        <!-- Support for dependencies where skos:Concept class should be used instead of an enum URI -->
+        <xsl:variable name="effectiveTargetClassURI"
+            select="
+                if ($connector/target/model/@type = 'Class') then
+                    $targetClassURI
+                else
+                    f:buildURIfromLexicalQName('skos:Concept')
+            "/>
+        <xsl:variable name="effectiveSourceClassURI"
+            select="
+                if ($connector/source/model/@type = 'Class') then
+                    $sourceClassURI
+                else
+                    f:buildURIfromLexicalQName('skos:Concept')
+            "/>
         <xsl:variable name="targetRole"
             select="
                 if (boolean($connector/target/role/@name)) then
@@ -530,20 +582,20 @@
                         boolean($targetMultiplicityMax) and
                         boolean($targetMultiplicityMin) and
                         $targetMultiplicityMin = $targetMultiplicityMax">
-                    <owl:cardinality rdf:datatype="{$datatypeURI}">
+                    <owl:qualifiedCardinality rdf:datatype="{$datatypeURI}">
                         <xsl:value-of select="$targetMultiplicityMin"/>
-                    </owl:cardinality>
+                    </owl:qualifiedCardinality>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:if test="boolean($targetMultiplicityMax)">
-                        <owl:maxCardinality rdf:datatype="{$datatypeURI}">
+                        <owl:maxQualifiedCardinality rdf:datatype="{$datatypeURI}">
                             <xsl:value-of select="$targetMultiplicityMax"/>
-                        </owl:maxCardinality>
+                        </owl:maxQualifiedCardinality>
                     </xsl:if>
                     <xsl:if test="boolean($targetMultiplicityMin)">
-                        <owl:minCardinality rdf:datatype="{$datatypeURI}">
+                        <owl:minQualifiedCardinality rdf:datatype="{$datatypeURI}">
                             <xsl:value-of select="$targetMultiplicityMin"/>
-                        </owl:minCardinality>
+                        </owl:minQualifiedCardinality>
                     </xsl:if>
                 </xsl:otherwise>
             </xsl:choose>
@@ -553,12 +605,23 @@
                 $connectorDirection = 'Source -&gt; Destination' and
                 boolean($targetMultiplicity) and boolean($sourceDestinationRestrictionContent)">
             <rdf:Description rdf:about="{$sourceClassURI}">
-                <rdfs:subClassOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="{$targetRoleURI}"/>
-                        <xsl:copy-of select="$sourceDestinationRestrictionContent"/>
-                    </owl:Restriction>
-                </rdfs:subClassOf>
+                <xsl:for-each select="$sourceDestinationRestrictionContent">
+                    <rdfs:subClassOf>
+                        <xsl:variable name="constraintNode" select="."/>
+                        <owl:Restriction>
+                            <owl:onProperty rdf:resource="{$targetRoleURI}"/>
+                            <xsl:choose>
+                                <xsl:when test="name($constraintNode) = 'owl:minQualifiedCardinality' and $constraintNode = '1'">
+                                    <owl:someValuesFrom rdf:resource="{$effectiveTargetClassURI}"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:copy-of select="$constraintNode"/>
+                                    <owl:onClass rdf:resource="{$effectiveTargetClassURI}"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </owl:Restriction>
+                    </rdfs:subClassOf>
+                </xsl:for-each>
             </rdf:Description>
             <xsl:if test="$targetMultiplicityMin = '1' and $targetMultiplicityMax = '1'">
                 <rdf:Description rdf:about="{$targetRoleURI}">
@@ -576,20 +639,20 @@
                         boolean($targetMultiplicityMax) and
                         boolean($targetMultiplicityMin) and
                         $targetMultiplicityMin = $targetMultiplicityMax">
-                    <owl:cardinality rdf:datatype="{$datatypeURI}">
+                    <owl:qualifiedCardinality rdf:datatype="{$datatypeURI}">
                         <xsl:value-of select="$targetMultiplicityMin"/>
-                    </owl:cardinality>
+                    </owl:qualifiedCardinality>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:if test="boolean($targetMultiplicityMax)">
-                        <owl:maxCardinality rdf:datatype="{$datatypeURI}">
+                        <owl:maxQualifiedCardinality rdf:datatype="{$datatypeURI}">
                             <xsl:value-of select="$targetMultiplicityMax"/>
-                        </owl:maxCardinality>
+                        </owl:maxQualifiedCardinality>
                     </xsl:if>
                     <xsl:if test="boolean($targetMultiplicityMin)">
-                        <owl:minCardinality rdf:datatype="{$datatypeURI}">
+                        <owl:minQualifiedCardinality rdf:datatype="{$datatypeURI}">
                             <xsl:value-of select="$targetMultiplicityMin"/>
-                        </owl:minCardinality>
+                        </owl:minQualifiedCardinality>
                     </xsl:if>
 
                 </xsl:otherwise>
@@ -600,12 +663,23 @@
                 $connectorDirection = 'Bi-Directional' and
                 boolean($targetMultiplicity) and boolean($sourceInBidirectionalRestrictionContent)">
             <rdf:Description rdf:about="{$sourceClassURI}">
-                <rdfs:subClassOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="{$targetRoleURI}"/>
-                        <xsl:copy-of select="$sourceInBidirectionalRestrictionContent"/>
-                    </owl:Restriction>
-                </rdfs:subClassOf>
+                <xsl:for-each select="$sourceInBidirectionalRestrictionContent">
+                    <rdfs:subClassOf>
+                        <xsl:variable name="constraintNode" select="."/>
+                        <owl:Restriction>
+                            <owl:onProperty rdf:resource="{$targetRoleURI}"/>
+                            <xsl:choose>
+                                <xsl:when test="name($constraintNode) = 'owl:minQualifiedCardinality' and $constraintNode = '1'">
+                                    <owl:someValuesFrom rdf:resource="{$effectiveTargetClassURI}"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:copy-of select="$constraintNode"/>
+                                    <owl:onClass rdf:resource="{$effectiveTargetClassURI}"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </owl:Restriction>
+                    </rdfs:subClassOf>
+                </xsl:for-each>
             </rdf:Description>
             <xsl:if test="$targetMultiplicityMin = '1' and $targetMultiplicityMax = '1'">
                 <rdf:Description rdf:about="{$targetRoleURI}">
@@ -622,20 +696,20 @@
                         boolean($sourceMultiplicityMax) and
                         boolean($sourceMultiplicityMin) and
                         $sourceMultiplicityMin = $sourceMultiplicityMax">
-                    <owl:cardinality rdf:datatype="{$datatypeURI}">
+                    <owl:qualifiedCardinality rdf:datatype="{$datatypeURI}">
                         <xsl:value-of select="$sourceMultiplicityMin"/>
-                    </owl:cardinality>
+                    </owl:qualifiedCardinality>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:if test="boolean($sourceMultiplicityMax)">
-                        <owl:maxCardinality rdf:datatype="{$datatypeURI}">
+                        <owl:maxQualifiedCardinality rdf:datatype="{$datatypeURI}">
                             <xsl:value-of select="$sourceMultiplicityMax"/>
-                        </owl:maxCardinality>
+                        </owl:maxQualifiedCardinality>
                     </xsl:if>
                     <xsl:if test="boolean($sourceMultiplicityMin)">
-                        <owl:minCardinality rdf:datatype="{$datatypeURI}">
+                        <owl:minQualifiedCardinality rdf:datatype="{$datatypeURI}">
                             <xsl:value-of select="$sourceMultiplicityMin"/>
-                        </owl:minCardinality>
+                        </owl:minQualifiedCardinality>
                     </xsl:if>
                 </xsl:otherwise>
             </xsl:choose>
@@ -645,12 +719,23 @@
                 $connectorDirection = 'Bi-Directional' and
                 boolean($sourceMultiplicity) and boolean($targetInBidirectionalRestrictionContent)">
             <rdf:Description rdf:about="{$targetClassURI}">
-                <rdfs:subClassOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="{$sourceRoleURI}"/>
-                        <xsl:copy-of select="$targetInBidirectionalRestrictionContent"/>
-                    </owl:Restriction>
-                </rdfs:subClassOf>
+                <xsl:for-each select="$targetInBidirectionalRestrictionContent">
+                    <rdfs:subClassOf>
+                        <xsl:variable name="constraintNode" select="."/>
+                        <owl:Restriction>
+                            <owl:onProperty rdf:resource="{$sourceRoleURI}"/>
+                            <xsl:choose>
+                                <xsl:when test="name($constraintNode) = 'owl:minQualifiedCardinality' and $constraintNode = '1'">
+                                    <owl:someValuesFrom rdf:resource="{$effectiveSourceClassURI}"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:copy-of select="$constraintNode"/>
+                                    <owl:onClass rdf:resource="{$effectiveSourceClassURI}"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </owl:Restriction>
+                    </rdfs:subClassOf>
+                </xsl:for-each>
             </rdf:Description>
             <xsl:if test="$sourceMultiplicityMin = '1' and $sourceMultiplicityMax = '1'">
                 <rdf:Description rdf:about="{$sourceRoleURI}">
