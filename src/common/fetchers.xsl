@@ -372,6 +372,8 @@
         <xd:desc>
             Checks if a relation encoded in a connector source and target nodes
             is valid. It expects source name and target role name to be defined.
+            See `f:getRelationsFromConnector` for the definition of the relation
+            concept.
         </xd:desc>
         <xd:param name="source"/>
         <xd:param name="target"/>
@@ -393,6 +395,8 @@
             connector types (e.g., 'Association', 'Generalization') and returns
             a sequence of internal relation elements (see `f:createRelation`
             function).
+            See `f:getRelationsFromConnector` for the definition of the relation
+            concept.
         </xd:desc>
         <xd:param name="connectorTypes"/>
         <xd:param name="root"/>
@@ -409,7 +413,11 @@
 
     <xd:doc>
         <xd:desc>
-            Get relations that are encoded in the connector.
+            Get relations that are encoded in the connector. 
+            A relation is a commonly understood association between two
+            elements, characterized by a role held by the source element and
+            applied to the target element. The relation doesn't support
+            association between UML connectors at the moment.
             A unidirectional connector represents a single relation and
             bidirectional connector contains two relations, each having opposite
             source and target elements.
@@ -445,6 +453,8 @@
             The relation is created with the connectorIdRef attribute that
             allows to trace the relation back to the connector it was created
             from. The relation is represented as an internal `relation` element.
+            See `f:getRelationsFromConnector` for the definition of the relation
+            concept.
         </xd:desc>
         <xd:param name="source"/>
         <xd:param name="target"/>
