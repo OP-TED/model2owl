@@ -237,7 +237,7 @@
         <xsl:variable name="name"
             select="
                 if (boolean($firstAttribute/@name)) then
-                    f:lexicalQNameToWords($firstAttribute/@name)
+                    f:lexicalQNameToWords($firstAttribute/@name, false())
                 else
                     fn:error(xs:QName('attribute'), concat($firstAttribute/@xmi:idref, ' - Attribute with no name'))"/>
         <xsl:variable name="className" select="$firstAttribute/../../@name" as="xs:string"/>

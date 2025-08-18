@@ -34,7 +34,7 @@
         <xsl:param name="elementUri"/>
         <rdf:Description rdf:about="{$elementUri}">
             <skos:prefLabel xml:lang="en">
-                <xsl:value-of select="f:lexicalQNameToWords($elementName)"/>
+                <xsl:value-of select="f:lexicalQNameToWords($elementName, false())"/>
             </skos:prefLabel>
         </rdf:Description>
     </xsl:template>
