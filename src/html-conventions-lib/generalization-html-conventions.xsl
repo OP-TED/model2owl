@@ -90,7 +90,7 @@
             select="f:getElementByIdRef($idRefTarget, root($generalizationConnector))"/>
         <xsl:sequence
             select="
-                if (count(f:getIncommingConnectors($targetElement)[properties/@ea_type = 'Generalization']) > 2) then
+                if (count(f:getIncommingConnectors($targetElement)[properties/@ea_type = 'Generalization']) > 1) then
                     ()
                 else
                     f:generateInfoMessage(fn:concat('The class ', $generalizationConnector/target/model/@name, ' has only one sub-class ',

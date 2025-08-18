@@ -116,6 +116,15 @@
         <x:expect label="expect to do nothing" select="()"/>
     </x:scenario>
 
+    <x:scenario label="Scenario for finding a Generalization that has two children (bug M2O3-23)">
+        <x:call template="generalizationClassWithSingleChild">
+            <x:param name="generalizationConnector"
+                href="../../testData/prettyModel-cleaned.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[5]"/>
+        </x:call>
+        <x:expect label="expect to do nothing" select="()"/>
+    </x:scenario>
+
     <x:scenario label="Scenario for finding a Generalization that with inverse inheritance">
         <x:call template="generalizationInverseInheritance">
             <x:param name="generalizationConnector"
