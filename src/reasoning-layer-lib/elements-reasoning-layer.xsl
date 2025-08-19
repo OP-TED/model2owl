@@ -23,13 +23,27 @@
 
 
     <xd:doc>
-        <xd:desc>Applying reasoning layer rule to all attributes</xd:desc>
+        <xd:desc>
+            Applying reasoning layer rule to all attributes.
+            Generation of underlying restrictions (for cardinality) depends on
+            verification origin of both an attribute and the class it belongs to.
+            The former is involved as datatype property restriction is always
+            defined in the context of the related OWL class. 
+            Restrictions on reused attributes defined inside a reused class are
+            not generated. However, restrictions on reused attributes defined
+            inside an internal class are generated.
+        </xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
-        <xsl:if test="not(f:isExcludedByStatus(.))">
-            <xsl:call-template name="attributeMultiplicity">
-                <xsl:with-param name="attribute" select="."/>
-            </xsl:call-template>
+        <xsl:variable name="className" select="./../../@name"/>
+        <xsl:if test="$generateReusedConceptsOWLrestrictions or
+                      fn:substring-before($className, ':') = $includedPrefixesList">
+            <xsl:variable name="attributeName" select="./@name"/>
+            <xsl:if test="not(f:isExcludedByStatus(.))">
+                <xsl:call-template name="attributeMultiplicity">
+                    <xsl:with-param name="attribute" select="."/>
+                </xsl:call-template>
+            </xsl:if>
         </xsl:if>
     </xsl:template>
 
@@ -124,7 +138,7 @@
                         <owl:Class>
                             <owl:unionOf rdf:parseType="Collection">
                                 <xsl:for-each select="$attributesWithSameName">
-                                    <owl:Class
+                                    <rdf:Description
                                         rdf:about="{f:buildURIfromLexicalQName(./../../@name)}"/>
                                 </xsl:for-each>
                             </owl:unionOf>
@@ -185,7 +199,7 @@
                                                 f:buildURIfromLexicalQName('skos:Concept')
                                             else
                                                 f:buildURIfromLexicalQName(.)"/>
-                                    <owl:Class rdf:about="{$attributeTypeURI}"/>
+                                    <rdf:Description rdf:about="{$attributeTypeURI}"/>
                                 </xsl:for-each>
                             </owl:unionOf>
                         </owl:Class>

@@ -26,15 +26,30 @@
 
     <xsl:template match="connector[./properties/@ea_type = 'Association']">
         <xsl:if test="not(f:isExcludedByStatus(.))">
-        <xsl:if
-            test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">
-            <xsl:call-template name="connectorMultiplicity">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="connectorAsymetry">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-        </xsl:if>
+            <xsl:variable name="relations" select="f:getRelationsFromConnector(.)"/>
+            <xsl:for-each select="$relations">
+                    <xsl:variable name="sourceClassCurie" select="./source/@name"/>
+                    <xsl:if test="./source/@type = 'Class' and ./target/@type = 'Class' and
+                                  ($generateReusedConceptsOWLrestrictions or
+                                  fn:substring-before($sourceClassCurie, ':') = $includedPrefixesList)">
+                        <xsl:call-template name="relationMultiplicity">
+                            <xsl:with-param name="relation" select="."/>
+                        </xsl:call-template>
+                        
+                        <xsl:variable name="relationCurie" select="./@name"/>
+                        <!-- Generate special axioms for object properties only
+                        if the property is not reused -->
+                        <xsl:if test="$generateReusedConceptsOWLrestrictions or
+                                     fn:substring-before($relationCurie, ':') = $includedPrefixesList">
+                            <xsl:call-template name="relationAsymmetry">
+                                <xsl:with-param name="relation" select="."/>
+                            </xsl:call-template>
+                            <xsl:call-template name="relationFunctional">
+                                <xsl:with-param name="relation" select="."/>
+                            </xsl:call-template>
+                        </xsl:if>
+                    </xsl:if>
+            </xsl:for-each>
         </xsl:if>
     </xsl:template>
 
@@ -42,26 +57,32 @@
         <xd:desc>applying the reasoning layer rules to dependencies</xd:desc>
     </xd:doc>
 
-    <xsl:template match="connector[./properties/@ea_type = 'Dependency']">
-        <xsl:variable name="connectorRoleName" select="f:getRoleNameFromConnector(.)"/>
+    <xsl:template match="connector[./properties/@ea_type = 'Dependency']">        
         <xsl:if test="not(f:isExcludedByStatus(.))">
+        <xsl:variable name="relation" select="f:getRelationsFromConnector(.)[1]"/>
+        <xsl:variable name="relationName" select="$relation/@name"/>
+        <xsl:variable name="sourceClassCurie" select="$relation/source/@name"/>
         <xsl:if
             test="
                 ./source/model/@type = 'Class' and ./target/model/@type = 'Class' and
                 ($generateReusedConceptsOWLrestrictions or
-                fn:substring-before($connectorRoleName, ':') = $includedPrefixesList)">
-            <xsl:call-template name="connectorMultiplicity">
-                <xsl:with-param name="connector" select="."/>
-            </xsl:call-template>
-            <xsl:call-template name="connectorAsymetry">
-                <xsl:with-param name="connector" select="."/>
+                fn:substring-before($sourceClassCurie, ':') = $includedPrefixesList)">
+            
+            <xsl:call-template name="relationMultiplicity">
+                <xsl:with-param name="relation" select="$relation"/>
             </xsl:call-template>
         </xsl:if>
         <xsl:if
             test="
                 ./source/model/@type = 'Class' and ./target/model/@type = 'Enumeration' and
                 ($generateReusedConceptsOWLrestrictions or
-                fn:substring-before($connectorRoleName, ':') = $includedPrefixesList)">
+                fn:substring-before($relationName, ':') = $includedPrefixesList)">
+            <xsl:call-template name="relationAsymmetry">
+                <xsl:with-param name="relation" select="$relation"/>
+            </xsl:call-template>
+            <xsl:call-template name="relationFunctional">
+                <xsl:with-param name="relation" select="$relation"/>
+            </xsl:call-template>
             <xsl:call-template name="connectorDependencyRange">
                 <xsl:with-param name="connector" select="."/>
             </xsl:call-template>
@@ -306,25 +327,52 @@
     <xd:doc>
         <xd:desc>Rule R.09. Association asymmetry — in reasoning layer. Specify the asymmetry object
             property axiom for each end of a recursive association.</xd:desc>
-        <xd:param name="connector"/>
+        <xd:param name="relation"/>
     </xd:doc>
 
-    <xsl:template name="connectorAsymetry">
-        <xsl:param name="connector"/>
-        <xsl:if test="$connector/source/model/@name = $connector/target/model/@name">
-            <xsl:variable name="targetRole"
+    <xsl:template name="relationAsymmetry">
+        <xsl:param name="relation"/>
+        <xsl:if test="$relation/source/@name = $relation/target/@name">
+            <xsl:variable name="relationName"
                 select="
-                    if (boolean($connector/target/role/@name)) then
-                        $connector/target/role/@name
+                    if (boolean($relation/@name)) then
+                        $relation/@name
                     else
-                        fn:error(xs:QName('connectors'), concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
-            <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
-
-
-            <rdf:Description rdf:about="{$targetRoleURI}">
+                        fn:error(xs:QName('connectors'), concat($relation/@connectorIdRef, ' - connector role name is empty'))"/>
+            <xsl:variable name="relationURI" select="f:buildURIfromLexicalQName($relationName)"/>
+            <rdf:Description rdf:about="{$relationURI}">
                 <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
             </rdf:Description>
 
+        </xsl:if>
+    </xsl:template>
+
+    <xd:doc>
+        <xd:desc>
+            Rule R.07. Association and dependency multiplicity "one" — in reasoning layer
+            
+            If the association/dependency multiplicity is exactly one, i.e.
+            [1..1], specify a functional property axiom like in the Rule C.10.
+
+            This function works on a relation extracted from a connector.
+        </xd:desc>
+        <xd:param name="relation"/>
+    </xd:doc>
+
+    <xsl:template name="relationFunctional">
+        <xsl:param name="relation"/>
+        <xsl:variable name="targetMultiplicity"
+            select="f:normalizeMultiplicity($relation/@multiplicity)"/>
+        <xsl:variable name="targetMultiplicityMin"
+            select="f:getMultiplicityMinFromString($targetMultiplicity)"/>
+        <xsl:variable name="targetMultiplicityMax"
+            select="f:getMultiplicityMaxFromString($targetMultiplicity)"/>
+        <xsl:if test="$targetMultiplicityMin = '1' and $targetMultiplicityMax = '1'">
+            <xsl:variable name="relationCurie" select="$relation/@name"/>
+            <xsl:variable name="relationURI" select="f:buildURIfromLexicalQName($relationCurie)"/>
+            <rdf:Description rdf:about="{$relationURI}">
+                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+            </rdf:Description>
         </xsl:if>
     </xsl:template>
 
@@ -508,74 +556,41 @@
             constraint using the owl:someValuesFrom property instead of a
             cardinality constraint with owl:minQualifiedCardinality.
 
-
-            Rule R.07. Association and dependency multiplicity "one" — in reasoning layer
-            
-            If the association/dependency multiplicity is
-            exactly one, i.e. [1..1], specify a functional property axiom like
-            in the Rule C.10.
+            This function works on a relation extracted from a connector.
         </xd:desc>
-        <xd:param name="connector"/>
+        <xd:param name="relation"/>
     </xd:doc>
 
-    <xsl:template name="connectorMultiplicity">
-        <xsl:param name="connector"/>
+        <xsl:template name="relationMultiplicity">
+        <xsl:param name="relation"/>
         <xsl:variable name="targetMultiplicity"
-            select="f:normalizeMultiplicity($connector/target/type/@multiplicity)"/>
+            select="f:normalizeMultiplicity($relation/@multiplicity)"/>
         <xsl:variable name="targetMultiplicityMin"
             select="f:getMultiplicityMinFromString($targetMultiplicity)"/>
         <xsl:variable name="targetMultiplicityMax"
             select="f:getMultiplicityMaxFromString($targetMultiplicity)"/>
-        <xsl:variable name="sourceMultiplicity"
-            select="f:normalizeMultiplicity($connector/source/type/@multiplicity)"/>
-        <xsl:variable name="sourceMultiplicityMin"
-            select="f:getMultiplicityMinFromString($sourceMultiplicity)"/>
-        <xsl:variable name="sourceMultiplicityMax"
-            select="f:getMultiplicityMaxFromString($sourceMultiplicity)"/>
         <xsl:variable name="sourceClassURI"
-            select="f:buildURIfromLexicalQName($connector/source/model/@name)"/>
-        <xsl:variable name="sourceRole"
-            select="
-                if (boolean($connector/source/role/@name)) then
-                    $connector/source/role/@name
-                else
-                    ()
-                "/>
-        <xsl:variable name="sourceRoleURI"
-            select="
-                if (boolean($sourceRole)) then
-                    f:buildURIfromLexicalQName($sourceRole)
-                else
-                    ()"/>
+            select="f:buildURIfromLexicalQName($relation/source/@name)"/>
         <xsl:variable name="targetClassURI"
-            select="f:buildURIfromLexicalQName($connector/target/model/@name)"/>
+            select="f:buildURIfromLexicalQName($relation/target/@name)"/>
         
         <!-- Support for dependencies where skos:Concept class should be used instead of an enum URI -->
         <xsl:variable name="effectiveTargetClassURI"
             select="
-                if ($connector/target/model/@type = 'Class') then
+                if ($relation/target/@type = 'Class') then
                     $targetClassURI
                 else
                     f:buildURIfromLexicalQName('skos:Concept')
             "/>
-        <xsl:variable name="effectiveSourceClassURI"
+        <xsl:variable name="relationCurie"
             select="
-                if ($connector/source/model/@type = 'Class') then
-                    $sourceClassURI
+                if (boolean($relation/@name)) then
+                    $relation/@name
                 else
-                    f:buildURIfromLexicalQName('skos:Concept')
-            "/>
-        <xsl:variable name="targetRole"
-            select="
-                if (boolean($connector/target/role/@name)) then
-                    $connector/target/role/@name
-                else
-                    fn:error(xs:QName('connectors'), concat($connector/@xmi:idref, ' - connector target role name is empty'))"/>
-        <xsl:variable name="targetRoleURI" select="f:buildURIfromLexicalQName($targetRole)"/>
-        <xsl:variable name="connectorDirection" select="$connector/properties/@direction"/>
+                    fn:error(xs:QName('connectors'), concat($relation/@connectorIdRef, ' - connector target role name is empty'))"/>
+        <xsl:variable name="relationURI" select="f:buildURIfromLexicalQName($relationCurie)"/>
         <xsl:variable name="datatypeURI" select="f:buildURIfromLexicalQName('xsd:integer')"/>
-        <!--        this is first restriction content-->
-        <xsl:variable name="sourceDestinationRestrictionContent" as="item()*">
+        <xsl:variable name="sourceTargetRestrictions" as="item()*">
             <xsl:choose>
                 <xsl:when
                     test="
@@ -601,17 +616,17 @@
             </xsl:choose>
         </xsl:variable>
         <xsl:if
-            test="
-                $connectorDirection = 'Source -&gt; Destination' and
-                boolean($targetMultiplicity) and boolean($sourceDestinationRestrictionContent)">
+            test="boolean($targetMultiplicity) and
+                  boolean($sourceTargetRestrictions)">
             <rdf:Description rdf:about="{$sourceClassURI}">
-                <xsl:for-each select="$sourceDestinationRestrictionContent">
+                <xsl:for-each select="$sourceTargetRestrictions">
                     <rdfs:subClassOf>
                         <xsl:variable name="constraintNode" select="."/>
                         <owl:Restriction>
-                            <owl:onProperty rdf:resource="{$targetRoleURI}"/>
+                            <owl:onProperty rdf:resource="{$relationURI}"/>
                             <xsl:choose>
-                                <xsl:when test="name($constraintNode) = 'owl:minQualifiedCardinality' and $constraintNode = '1'">
+                                <xsl:when test="name($constraintNode) = 'owl:minQualifiedCardinality'
+                                                and $constraintNode = '1'">
                                     <owl:someValuesFrom rdf:resource="{$effectiveTargetClassURI}"/>
                                 </xsl:when>
                                 <xsl:otherwise>
@@ -623,128 +638,9 @@
                     </rdfs:subClassOf>
                 </xsl:for-each>
             </rdf:Description>
-            <xsl:if test="$targetMultiplicityMin = '1' and $targetMultiplicityMax = '1'">
-                <rdf:Description rdf:about="{$targetRoleURI}">
-                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-                </rdf:Description>
-            </xsl:if>
         </xsl:if>
-        <!--        end of first restrictions content-->
-
-        <!--        this is second restriction content-->
-        <xsl:variable name="sourceInBidirectionalRestrictionContent" as="item()*">
-            <xsl:choose>
-                <xsl:when
-                    test="
-                        boolean($targetMultiplicityMax) and
-                        boolean($targetMultiplicityMin) and
-                        $targetMultiplicityMin = $targetMultiplicityMax">
-                    <owl:qualifiedCardinality rdf:datatype="{$datatypeURI}">
-                        <xsl:value-of select="$targetMultiplicityMin"/>
-                    </owl:qualifiedCardinality>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:if test="boolean($targetMultiplicityMax)">
-                        <owl:maxQualifiedCardinality rdf:datatype="{$datatypeURI}">
-                            <xsl:value-of select="$targetMultiplicityMax"/>
-                        </owl:maxQualifiedCardinality>
-                    </xsl:if>
-                    <xsl:if test="boolean($targetMultiplicityMin)">
-                        <owl:minQualifiedCardinality rdf:datatype="{$datatypeURI}">
-                            <xsl:value-of select="$targetMultiplicityMin"/>
-                        </owl:minQualifiedCardinality>
-                    </xsl:if>
-
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable>
-        <xsl:if
-            test="
-                $connectorDirection = 'Bi-Directional' and
-                boolean($targetMultiplicity) and boolean($sourceInBidirectionalRestrictionContent)">
-            <rdf:Description rdf:about="{$sourceClassURI}">
-                <xsl:for-each select="$sourceInBidirectionalRestrictionContent">
-                    <rdfs:subClassOf>
-                        <xsl:variable name="constraintNode" select="."/>
-                        <owl:Restriction>
-                            <owl:onProperty rdf:resource="{$targetRoleURI}"/>
-                            <xsl:choose>
-                                <xsl:when test="name($constraintNode) = 'owl:minQualifiedCardinality' and $constraintNode = '1'">
-                                    <owl:someValuesFrom rdf:resource="{$effectiveTargetClassURI}"/>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:copy-of select="$constraintNode"/>
-                                    <owl:onClass rdf:resource="{$effectiveTargetClassURI}"/>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </owl:Restriction>
-                    </rdfs:subClassOf>
-                </xsl:for-each>
-            </rdf:Description>
-            <xsl:if test="$targetMultiplicityMin = '1' and $targetMultiplicityMax = '1'">
-                <rdf:Description rdf:about="{$targetRoleURI}">
-                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-                </rdf:Description>
-            </xsl:if>
-        </xsl:if>
-        <!--        end of second restrictions content-->
-        <!--        this is third restriction content-->
-        <xsl:variable name="targetInBidirectionalRestrictionContent" as="item()*">
-            <xsl:choose>
-                <xsl:when
-                    test="
-                        boolean($sourceMultiplicityMax) and
-                        boolean($sourceMultiplicityMin) and
-                        $sourceMultiplicityMin = $sourceMultiplicityMax">
-                    <owl:qualifiedCardinality rdf:datatype="{$datatypeURI}">
-                        <xsl:value-of select="$sourceMultiplicityMin"/>
-                    </owl:qualifiedCardinality>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:if test="boolean($sourceMultiplicityMax)">
-                        <owl:maxQualifiedCardinality rdf:datatype="{$datatypeURI}">
-                            <xsl:value-of select="$sourceMultiplicityMax"/>
-                        </owl:maxQualifiedCardinality>
-                    </xsl:if>
-                    <xsl:if test="boolean($sourceMultiplicityMin)">
-                        <owl:minQualifiedCardinality rdf:datatype="{$datatypeURI}">
-                            <xsl:value-of select="$sourceMultiplicityMin"/>
-                        </owl:minQualifiedCardinality>
-                    </xsl:if>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable>
-        <xsl:if
-            test="
-                $connectorDirection = 'Bi-Directional' and
-                boolean($sourceMultiplicity) and boolean($targetInBidirectionalRestrictionContent)">
-            <rdf:Description rdf:about="{$targetClassURI}">
-                <xsl:for-each select="$targetInBidirectionalRestrictionContent">
-                    <rdfs:subClassOf>
-                        <xsl:variable name="constraintNode" select="."/>
-                        <owl:Restriction>
-                            <owl:onProperty rdf:resource="{$sourceRoleURI}"/>
-                            <xsl:choose>
-                                <xsl:when test="name($constraintNode) = 'owl:minQualifiedCardinality' and $constraintNode = '1'">
-                                    <owl:someValuesFrom rdf:resource="{$effectiveSourceClassURI}"/>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:copy-of select="$constraintNode"/>
-                                    <owl:onClass rdf:resource="{$effectiveSourceClassURI}"/>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </owl:Restriction>
-                    </rdfs:subClassOf>
-                </xsl:for-each>
-            </rdf:Description>
-            <xsl:if test="$sourceMultiplicityMin = '1' and $sourceMultiplicityMax = '1'">
-                <rdf:Description rdf:about="{$sourceRoleURI}">
-                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-                </rdf:Description>
-            </xsl:if>
-        </xsl:if>
-        <!--       end of third restriction content-->
     </xsl:template>
+
 
     <xd:doc>
         <xd:desc>Rule R.18. Disjoint classes — in reasoning layer. Specify a disjoint classes axiom

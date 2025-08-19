@@ -20,7 +20,24 @@
         <x:variable name="testedPropUri"
             as="xs:string"
             select="'http://www.w3.org/ns/adms#identifier'"/>
-        <x:expect label="restriction on property set" test="/rdf:Description[@rdf:about='http://data.europa.eu/m8g/InformationConcept']/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = $testedPropUri"/>
+        <x:expect label="restriction on reused property for reused class is not set"
+            test="not(boolean(/rdf:Description[@rdf:about='http://data.europa.eu/m8g/InformationConcept']/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = $testedPropUri))"/>
+        <x:expect label="restriction on reused property for internal class is set"
+            test="boolean(/rdf:Description[@rdf:about='http://data.europa.eu/a4g/ontology#Fund']/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = $testedPropUri)"/>
     </x:scenario>
   
+    <x:scenario label="Scenarios for #TEDM2O-16 bugfix affecting connectors">
+        <x:scenario label="Scenario for testing template with match connector[./properties/@ea_type = 'Association'] - generation of asymmetry constraint for association">
+            <x:context href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[96]"/>
+            <x:expect label="no asymmetry constraint on reused object property term" select="()"/>
+        </x:scenario>
+        <x:scenario label="Scenario for testing template with match connector[./properties/@ea_type = 'Association'] - generation of cardinality constraint for association">
+            <x:context href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[15]"/>
+            
+            <x:expect label="no cardinality constraint on reused object property term" select="()"/>
+        </x:scenario>
+    </x:scenario>
+
 </x:description>
