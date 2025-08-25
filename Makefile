@@ -56,7 +56,7 @@ get-jena-cli-tools: jena/apache-jena/bin/riot
 jena/apache-jena/bin/riot:
 	@echo Installing jena-cli-tools
 	mkdir -p jena
-	cd jena  && curl -L -o jena.zip "https://dlcdn.apache.org/jena/binaries/apache-jena-5.3.0.zip" && unzip jena.zip && rm -rf jena.zip && ln -s apache-jena-* apache-jena
+		cd jena  && curl -L -o jena.zip "https://archive.apache.org/dist/jena/binaries/apache-jena-5.3.0.zip" && unzip jena.zip && rm -rf jena.zip && ln -s apache-jena-* apache-jena
 	@echo 'Jena riot tool path is jena/apache-jena/bin/riot'
 
 # install rdflib
