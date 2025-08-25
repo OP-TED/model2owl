@@ -1,0 +1,94 @@
+[
+  {
+    "@id": "http://data.europa.eu/a4g/resource/buyer_001",
+    "@type": [
+      "http://data.europa.eu/a4g/ontology#Buyer"
+    ],
+    "http://data.europa.eu/a4g/ontology#hasBuyerProfile": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
+        "@value": "https://example.com"
+      }
+    ],
+    "http://data.europa.eu/a4g/ontology#isContractingEntity": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": true
+      }
+    ],
+    "http://data.europa.eu/a4g/ontology#playedBy": [
+      {
+        "@id": "http://data.europa.eu/a4g/resource/organization_001"
+      }
+    ]
+  },
+  {
+    "@id": "http://data.europa.eu/a4g/resource/identifier_001",
+    "@type": [
+      "http://www.w3.org/ns/adms#Identifier"
+    ]
+  },
+  {
+    "@id": "http://data.europa.eu/a4g/resource/organization_001",
+    "@type": [
+      "http://www.w3.org/ns/org#Organization"
+    ],
+    "http://data.europa.eu/a4g/ontology#hasBuyerLegalType": [
+      {
+        "@id": "http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert"
+      }
+    ],
+    "http://data.europa.eu/a4g/ontology#hasLegalIdentifier": [
+      {
+        "@id": "http://data.europa.eu/a4g/resource/identifier_001"
+      }
+    ],
+    "http://data.europa.eu/a4g/ontology#hasLegalName": [
+      {
+        "@value": "Fancy Organization",
+        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+      }
+    ],
+    "http://data.europa.eu/a4g/ontology#hasMainActivity": [
+      {
+        "@id": "http://publications.europa.eu/resource/authority/main-activity/rail"
+      }
+    ],
+    "http://data.europa.eu/m8g/registeredAddress": [
+      {
+        "@id": "http://data.europa.eu/a4g/resource/address_001"
+      }
+    ]
+  },
+  {
+    "@id": "http://data.europa.eu/a4g/resource/address_001",
+    "@type": [
+      "http://www.w3.org/ns/locn#Address"
+    ],
+    "http://data.europa.eu/a4g/ontology#hasCountryCode": [
+      {
+        "@id": "http://publications.europa.eu/resource/authority/country/USA"
+      }
+    ],
+    "http://data.europa.eu/a4g/ontology#hasNutsCode": [
+      {
+        "@id": "http://data.europa.eu/nuts/code/EL303"
+      }
+    ],
+    "http://www.w3.org/ns/locn#fullAddress": [
+      {
+        "@value": "1248 Maplewood Drive, Springfield, IL 62704, USA"
+      }
+    ],
+    "http://www.w3.org/ns/locn#postCode": [
+      {
+        "@value": "62704"
+      }
+    ],
+    "http://www.w3.org/ns/locn#postName": [
+      {
+        "@value": "Springfield"
+      }
+    ]
+  }
+]

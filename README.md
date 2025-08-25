@@ -28,6 +28,7 @@ The following capabilities are addressed:
 * UML -> OWL 2 (lightweight ontology suitable as a Core Vocabulary)
 * UML -> OWL 2 (heavyweight ontology with additional axioms suitable for reasoning purposes)
 * UML -> SHACL (data shapes suitable for validation)
+* UML -> JSON-LD context (an accompanying context file for the ontology, suitable for use in JSON-LD applications)
 * UML -> SVRL (Compliance report in SVRL format)
 
 This work is developed in the context of [eProcurement ontology project](https://github.com/eprocurementontology/eprocurementontology) financed by the Digital Europe Programme and led by the [Publications Office of the European Union](https://op.europa.eu/en/).
@@ -44,6 +45,7 @@ This work is developed in the context of [eProcurement ontology project](https:/
 * [owl-core.xsl](src/owl-core.xsl) is the transformation script for the core OWL ontology.
 * [shacl-shapes.xsl](src/shacl-shapes.xsl) is the transformation script for the SHACL data shape constraints.
 * [owl-restrictions.xsl](src/owl-restrictions.xsl) is the transformation script for the restrictions of OWL ontology (on classes and properties).
+* [jsonld-context.xsl](src/jsonld-context.xsl) is the transformation script for the JSON-LD context.
 * [svrl-conventions-report.xsl](src/svrl-conventions-report.xsl) is the script checking the conformance to the technical conventions of the conceptual model. (SVRL)
 
 ### Script unit tests
@@ -53,6 +55,7 @@ https://github.com/OP-TED/model2owl/tree/master/test/unitTests/test-html-convent
 * [test/unitTest/test-owl-core-lib](https://github.com/OP-TED/model2owl/tree/master/test/unitTests/test-owl-core-lib) is the location of the unit tests for the transformation script for the core OWL ontology.
 * [test/unitTest/test-shacl-shape-lib](https://github.com/OP-TED/model2owl/tree/master/test/unitTests/test-shacl-shape-lib) is the location of the unit tests for the transformation script for the SHACL data shape constraints.
 * [test/unitTest/test-reasoning-layer-lib](https://github.com/OP-TED/model2owl/tree/master/test/unitTests/test-reasoning-layer-lib) is the location of the unit tests for the transformation script for the restrictions of OWL ontology (on classes and properties).
+* [test/unitTest/test-jsonld-context-lib](https://github.com/OP-TED/model2owl/tree/master/test/unitTests/test-jsonld-context-lib) is the location of the unit tests for the transformation script for the JSON-LD context.
 
 # How to use
 This project can be used in 2 different ways as follows.
@@ -111,6 +114,11 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
     * OUTPUT_FOLDER_PATH - path to the folder that stores the output
     * NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file containing namespaces
     * IMPORTS_XML_FILE_PATH: path to the *.xml file containing ontology URIs to be imported
+* **generate-jsonld-context** - Generates JSON-LD context file from the UML export (xml/xmi)
+  * parameters:
+    * XMI_INPUT_FILE_PATH - path to the xmi file
+    * OUTPUT_FOLDER_PATH - path to the folder that stores the output
+    * JSONLD_CONTEXT_INDENTATION: Indentation for the generated file (defaults to 2 spaces)
 * **generate-html-docs-from-rdf** - this generates html documentation using widoco from a rdf file
   * parameters:
     * WIDOCO_RDF_INPUT_FILE_PATH - path to the rdf file
@@ -185,6 +193,9 @@ The following variables determine the inclusion or exclusion of reused concepts 
 
 <!-- Controls whether reused concepts are generated in the glossary -->
 <xsl:variable name="generateReusedConceptsGlossary" select="fn:true()"/>
+
+<!-- Controls whether reused concepts are generated in the JSON-LD context file  -->
+<xsl:variable name="generateReusedConceptsJSONLDcontext" select="fn:true()"/>
 ```
 
 Explanation
@@ -194,6 +205,7 @@ Explanation
 * generateReusedConceptsOWLcore: Set to false, reused concepts will be excluded from OWL core artefact.
 * generateReusedConceptsOWLrestrictions: Set to false, reused concepts will be excluded from OWL restrictions artefact.
 * generateReusedConceptsGlossary: Set to true, reused concepts will be included in the glossary.
+* generateReusedConceptsJSONLDcontext: Set to true, reused concepts will be included in the JSON-LD context file.
 
 By adjusting these variables, it is possible to customize whether specific artefacts contain reused concepts, 
 providing fine control over the content of each output.
@@ -293,6 +305,21 @@ Example
 # generate lightweight ontology from the UML export (xml/xmi)
 make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOLDER_PATH=./my-folder
 ```
+
+### Testing
+There are three Make targets dedicated to testing the software:
+* `test` - runs all tests.
+* `unit-tests` - runs unit tests implemented in XSpec.
+* `functional-tests` - runs feature tests implemented in Python.
+
+Both XSpec and Python tests are integrated and managed in a unified way. When
+running `test` target, an XML report (Maven Surefire) covering both unit and
+feature tests is generated.
+
+Note: the described commands may be handy for a contributor when working
+locally. This Github repository has a CI configured that runs the test suite on
+every submitted commit and display the results in the GitHub UI.
+
 ## Online
 To use model2owl in an automatic way, we have created a github repository [model2owl-boilerplate](https://github.com/OP-TED/model2owl-boilerplate) that will no longer require for you to install or to execute anything.
 Follow the instructions found there for using this model2owl automation.
