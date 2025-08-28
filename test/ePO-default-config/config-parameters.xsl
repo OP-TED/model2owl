@@ -218,5 +218,54 @@
     <xsl:variable name="publisher" select="'http://publications.europa.eu/resource/authority/corporate-body/PUBL'"/>
     
     
+    <!-- _______________________________________________________________________   -->
+    <!--                            RESPEC SECTION                               -->
+    <!-- _______________________________________________________________________   -->
+    
+    <xsl:variable name="githubURL" select="'https://github.com/OP-TED/ePO'"/>
+    <xsl:variable name="respecDescription" select="$ontologyDescriptionCore"/>
+    <xsl:variable name="feedbackURL" select="fn:concat($githubURL, '/issues')"/>
+    <xsl:variable name="navigationSelf"  select="''"/>
+    <xsl:variable name="navigationPrev"  select="''"/>
+    <xsl:variable name="navigationNext"  select="''"/>
+    
+    <xsl:variable name="standaardregisterURL" select="''"/>
+    <xsl:variable name="repositoryURL"        select="$githubURL"/>
+    <xsl:variable name="changelogURL"         select="concat($githubURL, '/releases')"/>
+    <xsl:variable name="status"               select="''"/>
+    <xsl:variable name="statusLabel"          select="''"/>
+    
+    <xsl:variable name="documentConfigStatusLabel"        select="''"/>
+    <xsl:variable name="documentConfigEditorDocumentRoot" select="''"/>
+    
+    <xsl:variable name="license"  select="''"/>
+    <xsl:variable name="filename" select="''"/>
+    
+    <!-- Optional list of dependencies as array(map(*)) or array(*) -->
+    <xsl:variable name="dependencies" as="array(*)" select="array{}"/>
+    <!-- Authors as rich objects (array of maps) -->
+    <xsl:variable name="contributors" as="array(map(*))" select="
+        array{
+        map{
+        'first_name':'Bert',
+        'last_name':'Van Nuffelen',
+        'role':'E',
+        'affiliation': map{
+        'name':'TenForce',
+        'website':'https://www.tenforce.com'
+        },
+        'email':'bert.vannuffelen@tenforce.com'
+        },
+        map{
+        'first_name':'Alice',
+        'last_name':'Example',
+        'role':'E',
+        'affiliation': map{
+        'name':'ACME Labs',
+        'website':'https://acme.example'
+        },
+        'email':'alice@example.org'
+        }
+        }"/>
 
 </xsl:stylesheet>

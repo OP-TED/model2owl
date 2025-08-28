@@ -69,6 +69,10 @@ model2owl-venv/bin/rdfpipe: model2owl-venv
 
 get-widoco: widoco/widoco.jar
 
+get-jinja:
+	@echo Installing jinja
+	@source model2owl-venv/bin/activate && pip install jinja-cli
+	
 widoco/widoco.jar:
 	@echo Installing widoco
 	mkdir widoco
@@ -219,6 +223,11 @@ shacl:
 	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.rdf
 	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf
 
+respec-json:
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/rspec-json-generate.xsl -o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json
+	@echo Output respec json file location:
+	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json
+	
 # Generate enriched namespaces XML file which contains user namespaces (defined
 # in namespaces.xml) and internal namespaces (such as core-shape)
 # Usage (`[]` denotes an optional argument; if omited, default value will be used):
@@ -300,6 +309,10 @@ convert-rdf-to-rdf:
 		echo " ==> Output in RDF/XML format";  \
 		ls -lh $${FILE_PATH%.*}.rdf;  \
 	done
+
+generate-respec:
+	@source model2owl-venv/bin/activate; \
+	jinja -d ${RESPEC_INPUT_JSON_PATH} respec-resources/semic-ap_en.j2 -o ${RESPEC_OUTPUT_FILE_PATH}
 
 # A generic recipe for converting RDF data from one serialization format to 
 # another. It can also be used to regenerate a file using the same format.

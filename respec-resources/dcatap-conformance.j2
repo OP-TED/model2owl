@@ -1,0 +1,28 @@
+<section id="conformance"> 
+<h2>Conformance Statement</h2>
+
+<h3>Provider requirements</h3>
+In order to conform to this Application Profile, an application that provides metadata MUST:
+<ul>
+<li>Provide a description of the Catalogue, including at least the mandatory properties specified for the class <a href="#Catalogue">Catalogue</a>.</li>
+<li>Provide information for the mandatory properties for <a href="#{{ "Catalogue Record" | replace(" ","") | urlencode}}">Catalogue Records</a>, if descriptions of Catalogue Records are provided – please note that the provision of descriptions of Catalogue Records is optional.</li>
+<li>Provide descriptions of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#{{ "Dataset" | replace(" ","") | urlencode}}">Dataset</a>.</li>
+<li>Provide descriptions of Distributions, if any, of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#{{ "Distribution" | replace(" ","") | urlencode}}">Distribution</a>.</li>
+
+<li>Provide descriptions of Data Services, if any, of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#{{ "Data Service" | replace(" ","") | urlencode}}">Data Service</a>.</li>
+
+<li>Provide descriptions of all organisations involved in the descriptions of Catalogue and Datasets, including at least the mandatory properties for the class <a href="#{{ "Agent" | replace(" ","") | urlencode}}">Agent</a>.</li>
+<li>Apply the publication requirements for the controlled vocabularies as mentioned in section [[[#controlled-vocs]]]. </li>
+</ul>
+
+For the properties listed in the table in section [[[#controlled-vocs]]], the associated controlled vocabularies MUST be used. Additional controlled vocabularies MAY be used.
+In addition to the mandatory properties, any of the recommended and optional properties defined in section [[[#quick-reference]]] MAY be provided.
+<h3>Receiver requirements</h3>
+In order to conform to this Application Profile, an application that receives metadata MUST be able to:
+<li>Process information for all classes and properties specified in section [[[#quick-reference]]].</li>
+<li>Process information for all controlled vocabularies specified in section [[[#controlled-vocs]]].</li>
+"Processing" means that receivers must accept incoming data and transparently provide these data to applications and services. 
+It does neither imply nor prescribe what applications and services finally do with the data (parse, convert, store, make searchable, display to users, etc.).
+
+
+</section>

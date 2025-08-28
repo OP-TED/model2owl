@@ -41,4 +41,21 @@
         <xsl:value-of select="$doc5"/>
     </xsl:function>
 
+    <xd:doc>
+        <xd:desc>Format the Documentation string</xd:desc>
+        <xd:param name="input"/>
+    </xd:doc>
+    <xsl:function name="f:formatDocStringForJson" as="xs:string">
+        <xsl:param name="input"/>
+        <xsl:variable name="doc0"
+            select="fn:replace($input, '&lt;a href', '&lt;xref scope=&#x0022;external&#x0022; href')"/>
+        <xsl:variable name="doc1" select="fn:replace($doc0, '&lt;/a&gt;', '&lt;/xref&gt;')"/>
+        <xsl:variable name="doc2" select="fn:replace($doc1, 'font color', 'foreign otherprops')"/>
+        <xsl:variable name="doc3" select="fn:replace($doc2, '&lt;/font&gt;', '&lt;/foreign&gt;')"/>
+        <xsl:variable name="doc4" select="fn:replace($doc3, 'nbsp', '#x00A0')"/>
+        <xsl:variable name="doc5" select="fn:replace($doc4, '\$inet://', '')"/>
+        <xsl:variable name="doc6" select="fn:replace($doc5, '&quot;', '')"/>
+        <xsl:variable name="doc7" select="fn:replace($doc6, '&#xA;', '')"/>
+        <xsl:value-of select="$doc7"/>
+    </xsl:function>
 </xsl:stylesheet>
