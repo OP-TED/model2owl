@@ -388,7 +388,7 @@
 
 
     <xd:doc>
-        <xd:desc>[connector-stereotype-9] - The $stereotypeName$ stareotype applied to $elementName$
+        <xd:desc>[connector-stereotype-9] - The $stereotypeName$ stereotype applied to $elementName$
             is not known and will be ignored. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -413,7 +413,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[connector-stereotype-10] - The $stereotypeName$ stareotype is applied to
+        <xd:desc>[connector-stereotype-10] - The $stereotypeName$ stereotype is applied to
             connector. Stereotypes are discouraged in the current practice with some exceptions. </xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -426,7 +426,7 @@
                 if ($hasStereotype)
                 then
                     f:generateWarningMessage(fn:concat('The ', $hasStereotype,
-                    ' stareotype is applied to ', f:getConnectorName($connector),
+                    ' stereotype is applied to ', f:getConnectorName($connector),
                     '. Stereotypes are discouraged in the current practice with some exceptions. '),
                     path($connector),
                     'connector-stereotype-10',
