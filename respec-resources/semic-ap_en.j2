@@ -553,20 +553,20 @@
 				-->
 				<!--
                                 <td>
-                                    {% if prop.rawTags['DCAT'] %}<a href="{{ prop.rawTags['DCAT'] }}">Link</a>{% endif %}
+{#                                    {% if prop.rawTags['DCAT'] %}<a href="{{ prop.rawTags['DCAT'] }}">Link</a>{% endif %}#}
                                 </td>
 				-->
-                                <td>
-                                    {% if prop.rawTags['DCAT'] %}
-				       {% if prop.rawTags['reuse'] == "asis"   %}
-				        <a href="{{ prop.rawTags['DCAT'] }}">A</a>
-                                       {% else %}
-				        <a href="{{ prop.rawTags['DCAT'] }}">E</a>
-				       {% endif %}
-                                    {% else %}
-				       P
-				    {% endif %}
-                                </td>
+{#                                <td>#}
+{#                                    {% if prop.rawTags['DCAT'] %}#}
+{#				       {% if prop.rawTags['reuse'] == "asis"   %}#}
+{#				        <a href="{{ prop.rawTags['DCAT'] }}">A</a>#}
+{#                                       {% else %}#}
+{#				        <a href="{{ prop.rawTags['DCAT'] }}">E</a>#}
+{#				       {% endif %}#}
+{#                                    {% else %}#}
+{#				       P#}
+{#				    {% endif %}#}
+{#                                </td>#}
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -759,7 +759,7 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 		{% for entity in classes | sort(attribute=sortattr) %}
 				{% if ((entity.properties | length) > 0 ) %}
 					{% for prop in entity['properties'] | sort(attribute=sortattr) %}
-						{% if prop.rawTags['property-usage-scope'] == "mandatory" %}
+{#						{% if prop.rawTags['property-usage-scope'] == "mandatory" %}#}
 							<tr>
 								<td><a href="#{{ entity.label[language] | replace(" ","") | urlencode }}">{{ entity.label[language] }}</a></td>
 								<td><div class="shorten">{{ entity.uri }}</div></td>
@@ -767,10 +767,10 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 								<td><a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}">{{ prop.label[language] }} </a></td>
 								<td><div class="shorten">{{ prop.uri }}</div></td>
 							</tr>
-						{% endif %}
+{#						{% endif %}#}
 					{% endfor %}
 					{% for prop in entity['properties'] | sort(attribute=sortattr) %}
-						{% if prop.rawTags['property-usage-scope'] == "recommended" %}
+{#						{% if prop.rawTags['property-usage-scope'] == "recommended" %}#}
 							<tr>
 								<td><a href="#{{ entity.label[language] | replace(" ","") | urlencode }}">{{ entity.label[language] }}</a></td>
 								<td><div class="shorten">{{ entity.uri }}</div></td>
@@ -778,18 +778,18 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 								<td><a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}">{{ prop.label[language] }} </a></td>
 								<td><div class="shorten">{{ prop.uri }}</div></td>
 							</tr>
-						{% endif %}
+{#						{% endif %}#}
 					{% endfor %}
 					{% for prop in entity['properties'] | sort(attribute=sortattr) %}
-						{% if prop.rawTags['property-usage-scope'] != "recommended"  and prop.rawTags['property-usage-scope'] != "mandatory" %}
+{#						{% if prop.rawTags['property-usage-scope'] != "recommended"  and prop.rawTags['property-usage-scope'] != "mandatory" %}#}
 							<tr>
 								<td><a href="#{{ entity.label[language] | replace(" ","") | urlencode }}">{{ entity.label[language] }}</a></td>
 								<td><div class="shorten">{{ entity.uri }}</div></td>
-								<td>{{ prop.rawTags['property-usage-scope'] | capitalize }}</td>
+{#								<td>{{ prop.rawTags['property-usage-scope'] | capitalize }}</td>#}
 								<td><a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}">{{ prop.label[language] }} </a></td>
 								<td><div class="shorten">{{ prop.uri }}</div></td>
 							</tr>
-						{% endif %}
+{#						{% endif %}#}
 					{% endfor %}
 				{% else %}
 					<tr>

@@ -31,31 +31,52 @@
         <xsl:variable name="metadataMap" as="map(*)">
             <xsl:call-template name="metadata"/>
         </xsl:variable>
-        
+
         <!-- prefixes as array(*) -->
         <xsl:variable name="prefixesArray" as="array(*)">
             <xsl:call-template name="usedPrefixes"/>
         </xsl:variable>
-        
+
         <!-- classes as array(*) via mode that returns map(*) per class -->
         <xsl:variable name="classMaps" as="map(*)*">
             <xsl:apply-templates
-                select="/xmi:XMI/xmi:Extension/elements/element[@xmi:type='uml:Class']"
+                select="/xmi:XMI/xmi:Extension/elements/element[@xmi:type = 'uml:Class']"
                 mode="class-json"/>
-            
+
         </xsl:variable>
-        
+
         <!-- datatypes as array(*) via mode that returns map(*) per datatype -->
-        <xsl:variable name="datatypeMaps" as="map(*)*">
+        <!-- Combine UML DataTypes and distinct class attribute types -->
+        <xsl:variable name="umlDatatypeMaps" as="map(*)*">
             <xsl:apply-templates
-                select="/xmi:XMI/xmi:Extension/elements/element[@xmi:type='uml:DataType']"
+                select="/xmi:XMI/xmi:Extension/elements/element[@xmi:type = 'uml:DataType']"
                 mode="datatype-json"/>
-            
         </xsl:variable>
         
+        <!-- Get distinct class attribute types -->
+        <xsl:variable name="classAttributeTypeNames" select="f:getDistinctClassAttributeTypes(root(.))"/>
+        <xsl:variable name="root" select="root(.)"/>
+        <xsl:variable name="classAttributeTypeMaps" as="map(*)*">
+            <xsl:for-each select="$classAttributeTypeNames">
+                <xsl:variable name="attributeTypeName" select="."/>
+                <!-- Only include if not already in UML DataTypes -->
+                <xsl:if test="not($root//element[@xmi:type = 'uml:DataType' and @name = $attributeTypeName])">
+                    <xsl:sequence select="map{
+                        'label':       map{'en': f:lexicalQNameToWords($attributeTypeName, fn:true())},
+                        'description': map{'en': ''},
+                        'uri':         string(f:buildURIfromLexicalQName($attributeTypeName)),
+                        'scopeduri':   string($attributeTypeName)
+                    }"/>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:variable>
+        
+        <!-- Combine both into single sequence -->
+        <xsl:variable name="datatypeMaps" as="map(*)*" select="($umlDatatypeMaps, $classAttributeTypeMaps)"/>
+
         <xsl:variable name="classesArray" as="array(*)" select="array{$classMaps}"/>
         <xsl:variable name="datatypesArray" as="array(*)" select="array{$datatypeMaps}"/>
-        
+
         <!-- compose root map -->
         <xsl:variable name="rootMap" as="map(*)"
             select="map{
@@ -64,9 +85,15 @@
             'classes':   $classesArray,
             'datatypes': $datatypesArray
             }"/>
-        
+
         <!-- output -->
-        <xsl:value-of select="serialize($rootMap, map{'method':'json','indent':true()})"/>
+        <xsl:value-of
+            select="replace(
+            serialize($rootMap, map{'method':'json','indent':true()}),
+            '\\/',                        
+            '/'                           
+            )"
+        />
     </xsl:template>
     
  

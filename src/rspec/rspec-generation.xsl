@@ -21,6 +21,8 @@
     <xsl:template name="classDetails" as="map(*)">
         <xsl:variable name="className" select="./@name"/>
         <xsl:variable name="classURI" select="f:buildURIFromElement(.)"/>
+        <xsl:variable name="classNamePrefix" select="fn:substring-before($className, ':')"/>
+        <xsl:variable name="classUsage" select="if ($classNamePrefix = $includedPrefixesList) then 'main' else 'supportive'"/>
         <xsl:variable name="doc"
             select="normalize-space(f:formatDocStringForJson(./properties/@documentation))"/>
 
@@ -59,6 +61,7 @@
             map{
             'uri':  string($classURI),
             'name': string($className),
+            'rawTags': map {'class-usage-scope': $classUsage},
             'label':       map{'en': f:lexicalQNameToWords($className, fn:true())},
             'description': map{'en': $doc},
             'usage':       map{'en': $doc},
