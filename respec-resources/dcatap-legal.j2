@@ -1,0 +1,58 @@
+<section class="informative">
+  <h2>Legal information</h2>
+
+<p>
+
+Providing correct and sufficient legal information is important to create trust by candidate reusers.
+Without explicit legal information there is a risk involved in the reuse of data, because one has no way of knowing what is allowed. 
+While in the past legislation and initiatives such as Findable, Accessible, Interoperable and Reusable [[FAIR]] data stress the importance of this information, 
+recent legislations, such as the <a href="https://eur-lex.europa.eu/eli/reg_impl/2023/138/oj">High Value Datasets regulation</a>, have become more demanding by imposing a minimum level of reuse.
+As a general principle, it is recommended that publishers consult their legal services to provide the appropriate values.
+
+<p></p>
+Within DCAT-AP properties licence, rights and access rights are used to share this information. 
+The basic guidelines for their usage are expressed in the <a href="https://w3c.github.io/dxwg/dcat/#license-rights">License and Rights statements</a> guideline in DCAT.
+DCAT-AP implementers SHOULD consult these, in addition with the additional advices for the DCAT-AP usage context provided in this section.
+
+<p></p>
+
+The general principle is that licences, rights and access rights are expressions in the context of a legislation. 
+It is possible (and allowed) that a EU Member State prescribes specific licences to be used for data published by the public sector.
+And thus, publishers of that EU Member State will use that in the metadata descriptions.
+This diversity can be considered a hurdle for cross-border reuse, as the implications of the licence might not be understood by users from another EU Member State.
+
+<p></p>
+This creates a natural tendency to use licences (or rights) which have a wider adoption than national legislation.
+Unless restricted by national legislation, implementers are encouraged for that reason to use widely recognised licences such as Creative Commons licences.
+In particular it is advised for [[FAIR]] data to consider CC BY 4.0 (the minimum limit set by the HVD implementing regulation) or more permissive such as licences CC Zero.
+
+<p></p>
+
+An assessment of data.europa.eu [[DEU]] in 2023 showed that there are different representations to indicate the same licence.
+To create a more harmonised experience throughout Europe, it is recommended to use the <a href="https://publications.europa.eu/resource/authority/licence">NAL licence</a>
+maintained by the Publications Office if allowed by national legislation.
+If local representations are used, then the equivalence with a licence in this NAL should be provided.
+This mapping is expressed as metadata to local representation.
+Note that this mapping is not determining the reuse conditions; the legal binding reuse conditions are those that are directly associated with the Distribution or Data Service.
+Nevertheless, by applying this recommendation, it is possible for a cross-border reuser to get an insight in the reuse conditions without a detailed understanding the local legislation.
+
+<p></p>
+To encourage publishers to provide legal information DCAT-AP recommends to provide licence information. 
+However, in some EU Member States, the term licence has a specific interpretation; in that interpretation the to-be provided legal information cannot be supplied as a document for property <a href="https://semiceu.github.io/uri.semic.eu-generated/DCAT-AP/releases/3.0.0/#Distribution.licence">licence</a>.
+In those legislative contexts it is advised to translate this encouragement in appropriate metadata guidelines for the targeted publishers.
+For instance, such guidelines could state that one must use a set of rights to document the reuse conditions.
+
+
+<p></p>
+Since legal information may vary per distribution or service, DCAT-AP has adopted from its conception, the strategy to <b>only</b> express legal information at the most concrete level of sharing, i.e. Distribution or Data Service.
+Suppose licensing information is also given on the Dataset level, there is a possibility that this is in conflict with licensing information on the Distribution, in which case it cannot be established which licence takes precedence.
+By this strategy, the need for a conflict resolution between legal information at the level of a Dataset (or Dataset Series) and its associated Distributions or Data Services is avoided.
+
+
+<p></p>
+Despite the above examples provided here are a perfect fit for those that are in scope of 'Open Data', they apply also for data that is beyond the scope of 'Open Data'.
+E.g. the Data Governance Act requires to provide sufficient legal reuse information such as the fees that apply.
+
+</p>
+
+</section>

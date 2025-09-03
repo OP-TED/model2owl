@@ -1,0 +1,127 @@
+<section class="informative">
+<h2>Example Dataset Series</h2>
+
+<p>This section describes the use of Dataset Series via examples.
+All examples are fictitious and are created to facilitate the understanding of Dataset Series.
+This section complements the usage explained in section <a href="https://w3c.github.io/dxwg/dcat/#dataset-series">Dataset series</a> in DCAT 3 [[vocab-dcat-3]], because it 
+illustrates the decision making process when switching from publishing a single Dataset to a Dataset Series.
+</p>
+
+<p>Consider the dataset 'Bee population in Greece" published by the Greek Environment Agency.
+Users can download the data as a CSV or an RDF file.</p>
+
+<div class="h3 examples" id="example-bee-population">Example 1 - Bee population dataset</div>
+
+<p>To see the evolution in the bee population, the Greek Environment Agency publishes an update each year.
+This update can be reflected in the DCAT-AP description in various ways.</p>
+
+<p>The first option is to update and renew the metadata each update.
+For instance, the temporal coverage changes from the period "2020 - 2022" to "2020 - 2023".</p>
+
+<p>This solution has as benefit that new information is shared with a minimal effort of publisher.
+However, this approach removes the previous state of affairs from the metadata and also does not reflect the aggregation and publishing effort for the dataset in the metadata.
+In some cases this is a desired outcome.</p>
+
+<p>The alternative option is the creation of a new dataset description.
+Often this choice is a voluntary decision, however it might be enforced by legislation. 
+Legislation can impose to share an audited dataset reflecting the state of affairs on a reference date.</p>
+
+<p>The creation of new dataset also impacts the metadata, as the generic title "Bee population" cannot be maintained for both.
+A publisher must perform a minimal disambiguation effort to make the two datasets distinct.</p>
+
+<div class="h3 examples" id="example-bee-population-2022-2023">Example 2 - Bee population datasets for 2022 and 2023</div>
+
+<p>Independent of the metadata descriptions, a core decision to take is whether the dataset <code>BeePopulation2022</code> is also contained in the dataset <code>BeePopulation2023</code>. 
+Either case is valuable and seen in practice.</p>
+
+<p>However, without expressing any relationships between the datasets this approach has a major drawback: a search on the catalogue for bee population will result in several variants of the same dataset.
+The catalogue user is not provided with any guidance to select the most recent or most appropriate one.
+To address that use case, Dataset Series come into the picture.
+Dataset Series offer a structured approach to order or organise the datasets by the publisher for the catalogue user.</p>
+
+<p>To support the data portal users, the Greek Environment Agency starts managing a Dataset Series <code>BeePopulation</code>.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series">Example 3 - Bee population datasets series</div>
+
+<p>As the dataset <code>BeePopulation2023</code> is more recent than <code>BeePopulation2022</code>, a navigation ordering is added.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-ordered">Example 4 - Bee population datasets series ordered</div>
+
+<p>In most cases, the navigation is a single chain sequence, although tree organised structures are not prohibited.</p>
+
+<p>Similarly as the introduction of a new dataset description, the introduction of a Dataset Series impacts the metadata of the involved datasets.</p>
+
+<p>For instance the notion of the update frequency becomes more precise.
+In case of a single dataset description, the statement, in the example below, means that the dataset is updated each year.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-frequency">Example 5 - Bee population dataset frequency</div>
+
+<p>So each year the actual data to which this dataset provides access to changes, and the most recent information can be found via this metadata.</p>
+
+<p>However; when the publisher will introduce a new dataset description each year, the update frequency of an existing dataset is none. Namely it will not be updated. 
+Without a Dataset Series notion the information of the yearly update is lost.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-frequency">Example 6 - Bee population dataset series frequency</div>
+
+<p>Users expect that metadata of Dataset Series is coherent with the collection of datasets it refers to. 
+Up to 2022, the Greek Environment Agency only had the ability to provide the information for the region of Thessaloniki, and shared that via the spatial coverage.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-spatial-thessaloniki">Example 7 - Bee population dataset series about Thessaloniki</div>
+
+<p>From 2023 onwards, data for the region of Athens is also provided. As a consequence, not only the spatial coverage of the new dataset <code>BeePopulation2023</code> will reflect that, but also the one of the Dataset Series.
+Namely the geographical coverage of a dataset series will cover the union of all places of each dataset associated with the Dataset Series.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-spatial-thessaloniki-athens">Example 8 - Bee population dataset series about Thessaloniki and Athens</div>
+
+<p>A similar coherency concern applies to the temporal coverage of datasets.
+Publisher are advised to verify the properties title and description to match any reference to temporal and geographical coverage information with the properties.</p>
+
+<p>The metadata descriptions of a Dataset Series provide insight in how this collection of datasets evolves.
+The release date of the Dataset Series <code>BeePopulation</code> correspond to the moment the collection has been issued for the first time.
+In many cases this moment corresponds to the earliest release date of the dataset in the collection.
+In the example, the Dataset <code>BeePopulation2022</code> was first issued on <code>2022-04-01</code> while shortly after, the Dataset Series was created.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-issued">Example 9 - Bee population dataset series issuing</div>
+
+<p>This relationship between the issuing date and the oldest dataset in the collection can reduce over time.
+The Greek Environment Agency and the National History Archives start to collaborate on the use and production of honey.
+That project results in new datasets on bee populations predating 2022. 
+To make that information visible, the Dataset Series collection is updated with these historic datasets.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-gea-nha">Example 10 - Bee population dataset series with National History Archive</div>
+
+<p>The modification date of the Dataset Series is the moment the collection has changed. 
+The addition of the historic datasets changes the collection, and thus the modification date of the Dataset Series is set to <code>2023-06-01</code>.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-modified">Example 11 - Bee population dataset series with modification date</div>
+
+<p>To make the datasets easier to use, the Greek Environment Agency introduces a new API platform. Via this API platform the datasets are not only downloadable in tabular format, but also in the international Biodiversity JSON format.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-api">Example 11 - Bee population available in new format</div>
+
+As such the use of a new API platform has not changed the data denoted by the dataset <code>BeePopulation2023</code>, and so it is not necessary to adapt the modification date of the dataset.
+Similarly adding or removing distributions to a dataset did not affected the membership of dataset <code>BeePopulation2023</code> in the Dataset Series. 
+And thus the modification date of the Dataset Series is not adapted.
+
+<p/>
+To support the users even more, the API platform is extended with a possibility to get life counts of the bee population.
+This means that there is a dataset which data is updated very frequently, eg. every second.
+In that case providing a modification date for the dataset becomes a technical challenge, but also it reduces it value.
+Namely one gets the data at query time.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-life-count">Example 12 - Bee population dataset series API life count</div>
+
+All this can be combined in one dataset series about the Bee population. Doing so, the Bee population dataset series becomes 
+less a structured sequence of yearly snapshots of the Bee population data, but more a collection of datasets around the same topic.
+Likewise DCAT, DCAT-AP does not limit the use of dataset series to a strict interpretation. Making this approach acceptable. 
+Nevertheless users usually expect that the datasets of a Dataset Series are strongly related, and the notion of a series or sequence is somehow present in the collection.
+Diverging too far from this interpretation is not recommended.
+The alternative for dataset series for grouping datasets are catalogues. 
+<p/>
+Thus to conclude the example of maintaining a Dataset Series, the Greek Environment Agency has created a Dataset Series about the Bee population in Greece.
+It contains the dataset with actual life data, the yearly snapshots for 2023 and 2022 and also the historic data of 2000 maintained by the National History Archives.
+<div class="h3 examples" id="example-bee-population-dataset-series-combined">Example 13 - Bee population dataset series</div>
+
+
+
+</section>

@@ -175,6 +175,15 @@
         <xsl:sequence select="fn:distinct-values($root//element[@xmi:type = 'uml:Class']/attributes/attribute/@name)"/>
     </xsl:function>
     
+    <xd:doc>
+        <xd:desc>fetch all distinct class attribute types</xd:desc>
+        <xd:param name="root"/>
+    </xd:doc>
+    <xsl:function name="f:getDistinctClassAttributeTypes" as="xs:string*">
+        <xsl:param name="root" as="node()"/>
+        <xsl:sequence select="fn:distinct-values($root//element[@xmi:type = 'uml:Class']/attributes/attribute/properties/@type)"/>
+    </xsl:function>
+    
     
     <xd:doc>
         <xd:desc>fetch all connector distinct names</xd:desc>
