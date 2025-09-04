@@ -470,14 +470,6 @@
                 <x:expect label="result" select="'core'"/>
             </x:scenario>
             
-<!--            <x:scenario catch="yes" label="Get non-existent key throws error">
-                <x:call function="f:getMetadataValue">
-                    <x:param name="keyName" select="'nonExistentKey'"/>
-                </x:call>
-                <x:expect label="err:code" test="$x:result?err?code" select="xs:QName('keyNotFoundError')"/>
-                <x:expect label="err:description" test="$x:result?err?description" 
-                    select="'Error: Key ''nonExistentKey'' not found in metadata JSON.'"/>
-            </x:scenario>-->
         </x:scenario>
         
         <x:scenario label="Testing f:getMetadataArray function">
