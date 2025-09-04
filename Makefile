@@ -42,6 +42,7 @@ NAMESPACES_AS_RDFPIPE_ARGS=$(shell ${MODEL2OWL_FOLDER}/scripts/get_namespaces.sh
 RDF_XML_MIME_TYPE:='application/rdf+xml'
 TURTLE_MIME_TYPE:='turtle'
 JSONLD_CONTEXT_INDENTATION?=2
+RESPEC_JSON_INDENTATION?=2
 
 # download saxon library
 get-saxon: saxon/saxon.jar
@@ -86,7 +87,7 @@ get-python-test-deps:
 ######################################################################################
 # Download, install saxon, xspec, rdflib and other dependencies
 ######################################################################################
-install:  get-saxon get-rdflib get-widoco get-jena-cli-tools
+install:  get-saxon get-rdflib get-widoco get-jena-cli-tools get-jinja
 
 ############################ Main tasks ##############################################
 # Run all tests
@@ -241,9 +242,19 @@ shacl:
 	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf
 
 respec-json:
-	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/rspec-json-generate.xsl -o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/rspec-json-generate.xsl \
+		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json.tmp \
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}" \
+		importsPath="${IMPORTS_XML_FILE_PATH}"
+	@# reformat the JSON file to be more readable
+	@cat ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json.tmp \
+		| python3 -c "import sys, json; \
+		data = json.load(sys.stdin); \
+		print(json.dumps(data, sort_keys=True, indent=int(${RESPEC_JSON_INDENTATION})))" \
+		> ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json
 	@echo Output respec json file location:
 	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json
+	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json.tmp
 	
 # make generate-jsonld-context [XMI_INPUT_FILE_PATH=/path/to/cm.xmi] 
 #	[OUTPUT_FOLDER_PATH=/output/directory]
