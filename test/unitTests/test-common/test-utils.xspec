@@ -500,11 +500,11 @@
             
             <x:scenario catch="yes" label="Get non-array value throws error">
                 <x:call function="f:getMetadataArray">
-                    <x:param name="keyName" select="'moduleReference'"/>
+                    <x:param name="keyName" select="'ontologyTitleCore'"/>
                 </x:call>
                 <x:expect label="err:code" test="$x:result?err?code" select="xs:QName('notArrayError')"/>
                 <x:expect label="err:description" test="$x:result?err?description" 
-                    select="'Error: Key ''moduleReference'' exists but is not an array in metadata JSON.'"/>
+                    select="'Error: Key ''ontologyTitleCore'' exists but is not an array in metadata JSON.'"/>
             </x:scenario>
         </x:scenario>
         
