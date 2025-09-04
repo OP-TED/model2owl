@@ -465,9 +465,9 @@
         <x:scenario label="Testing f:getMetadataValue function">
             <x:scenario label="Get simple string value">
                 <x:call function="f:getMetadataValue">
-                    <x:param name="keyName" select="'moduleReference'"/>
+                    <x:param name="keyName" select="'preferredNamespacePrefix'"/>
                 </x:call>
-                <x:expect label="result" select="'core'"/>
+                <x:expect label="result" select="'epo'"/>
             </x:scenario>
             
         </x:scenario>
