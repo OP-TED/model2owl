@@ -2,6 +2,7 @@
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:f="http://https://github.com/costezki/model2owl#"
+    xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"  
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -457,6 +458,64 @@
             <x:expect label="err:description" test="$x:result?err?description"
                 select="'The function supports only a compact URI'" />
         </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Testing JSON metadata functions">
+        
+        <x:scenario label="Testing f:getMetadataValue function">
+            <x:scenario label="Get simple string value">
+                <x:call function="f:getMetadataValue">
+                    <x:param name="keyName" select="'moduleReference'"/>
+                </x:call>
+                <x:expect label="result" select="'core'"/>
+            </x:scenario>
+            
+            <x:scenario catch="yes" label="Get non-existent key throws error">
+                <x:call function="f:getMetadataValue">
+                    <x:param name="keyName" select="'nonExistentKey'"/>
+                </x:call>
+                <x:expect label="err:code" test="$x:result?err?code" select="xs:QName('keyNotFoundError')"/>
+                <x:expect label="err:description" test="$x:result?err?description" 
+                    select="'Error: Key ''nonExistentKey'' not found in metadata JSON.'"/>
+            </x:scenario>
+        </x:scenario>
+        
+        <x:scenario label="Testing f:getMetadataArray function">
+            <x:scenario label="Get seeAlsoResources array">
+                <x:call function="f:getMetadataArray">
+                    <x:param name="keyName" select="'seeAlsoResources'"/>
+                </x:call>
+                <x:expect label="result is array" test="$x:result instance of array(*)"/>
+                <x:expect label="array has four items" test="array:size($x:result) = 4"/>
+            </x:scenario>
+            
+            <x:scenario label="Get dependencies array (empty)">
+                <x:call function="f:getMetadataArray">
+                    <x:param name="keyName" select="'dependencies'" />
+                </x:call>
+                <x:expect label="result is array" test="$x:result instance of array(*)"/>
+                <x:expect label="array is empty" test="array:size($x:result) = 0"/>
+            </x:scenario>
+            
+            <x:scenario catch="yes" label="Get non-existent array throws error">
+                <x:call function="f:getMetadataArray">
+                    <x:param name="keyName" select="'nonExistentArray'"/>
+                </x:call>
+                <x:expect label="err:code" test="$x:result?err?code" select="xs:QName('keyNotFoundError')"/>
+                <x:expect label="err:description" test="$x:result?err?description" 
+                    select="'Error: Key ''nonExistentArray'' not found in metadata JSON.'"/>
+            </x:scenario>
+            
+            <x:scenario catch="yes" label="Get non-array value throws error">
+                <x:call function="f:getMetadataArray">
+                    <x:param name="keyName" select="'moduleReference'"/>
+                </x:call>
+                <x:expect label="err:code" test="$x:result?err?code" select="xs:QName('notArrayError')"/>
+                <x:expect label="err:description" test="$x:result?err?description" 
+                    select="'Error: Key ''moduleReference'' exists but is not an array in metadata JSON.'"/>
+            </x:scenario>
+        </x:scenario>
+        
     </x:scenario>
 
 </x:description>
