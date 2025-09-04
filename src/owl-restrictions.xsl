@@ -91,7 +91,7 @@
             <owl:priorVersion><xsl:value-of select="fn:concat($restrictionsArtefactURI,'-',f:getMetadataValue('priorVersion'))"/></owl:priorVersion>
             <vann:preferredNamespaceUri><xsl:value-of select="f:getMetadataValue('preferredNamespaceUri')"/></vann:preferredNamespaceUri>
             <vann:preferredNamespacePrefix><xsl:value-of select="f:getMetadataValue('preferredNamespacePrefix')"/></vann:preferredNamespacePrefix>
-            <dct:license><xsl:value-of select="f:getMetadataValue('licenseLiteral')"/></dct:license>
+            <dct:license><xsl:value-of select="f:getMetadataValue('license')"/></dct:license>
             
         </owl:Ontology>
     </xsl:template>

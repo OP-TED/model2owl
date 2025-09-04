@@ -120,34 +120,33 @@
     <xsl:template name="metadata" as="map(*)">
         <xsl:sequence select="
             map{
-            'title':        string($ontologyTitleCore),
+            'title':        string(f:getMetadataValue('ontologyTitleCore')),
             
             'navigation':   map{
-            'self': string($navigationSelf),
-            'prev': string($navigationPrev),
-            'next': string($navigationNext)
+            'self': string(f:getMetadataValue('navigationSelf')),
+            'prev': string(f:getMetadataValue('navigationPrev')),
+            'next': string(f:getMetadataValue('navigationNext'))
             },
             
-            'issued':               string($issuedDate),
-            'standaardregisterurl': string($standaardregisterURL),
-            'repositoryurl':        string($repositoryURL),
-            'changelogurl':         string($changelogURL),
-            'feedbackurl':          string($feedbackURL),
-            'status':               string($status),
-            'statuslabel':          string($statusLabel),
+            'issued':               string(f:getMetadataValue('issuedDate')),
+            'standaardregisterurl': string(f:getMetadataValue('standaardregisterURL')),
+            'repositoryurl':        string(f:getMetadataValue('repositoryURL')),
+            'changelogurl':         string(f:getMetadataValue('changelogURL')),
+            'feedbackurl':          string(f:getMetadataValue('feedbackURL')),
+            'status':               string(f:getMetadataValue('status')),
+            'statuslabel':          string(f:getMetadataValue('statusLabel')),
             
             'documentconfig': map{
-            'statuslabel':        string($documentConfigStatusLabel),
-            'editorDocumentroot': string($documentConfigEditorDocumentRoot)
+            'statuslabel':        string(f:getMetadataValue('documentConfigStatusLabel')),
+            'editorDocumentroot': string(f:getMetadataValue('documentConfigEditorDocumentRoot'))
             },
             
-            'license':     string($license),
-            'filename':    string($filename),
+            'license':     string(f:getMetadataValue('license')),
+            'filename':    string(f:getMetadataValue('filename')),
             
-            'description': fn:normalize-space(f:formatDocStringForJson($respecDescription)),
-            
-            'dependencies': $dependencies,
-            'contributors':      array{ for $contributor in $contributors return $contributor }
+
+            'dependencies': f:getMetadataArray('dependencies'),
+            'contributors': f:getMetadataArray('contributors')
             }"/>
     </xsl:template>
     
