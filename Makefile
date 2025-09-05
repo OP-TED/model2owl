@@ -360,7 +360,7 @@ convert-rdf-to-rdf:
 
 generate-respec:
 	@source model2owl-venv/bin/activate; \
-	jinja -d ${RESPEC_INPUT_JSON_PATH} respec-resources/semic-ap_en.j2 -o ${RESPEC_OUTPUT_FILE_PATH}
+	jinja -d ${RESPEC_INPUT_JSON_PATH} respec-resources/templates/main.j2 -o ${RESPEC_OUTPUT_FILE_PATH}
 
 # A generic recipe for converting RDF data from one serialization format to 
 # another. It can also be used to regenerate a file using the same format.
