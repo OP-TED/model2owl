@@ -1,0 +1,103 @@
+{% extends "base.j2" %}
+{# This is a demo template that shows how to extend the main.j2 template
+   and override some of its blocks to provide default content. It can be used as
+   a starting point for creating your own custom template. #}
+
+
+{# Any respec configuration option not included in `respecConfig` block the of
+base template can be added here. If a property is defined in respecConfig
+variable but it's not customizable or the provided way to customize it through
+ReSpec JSON is not sufficient, then `respecConfig` block needs to be redefined
+here instead. #}
+{% block respecConfigExtraParams %}
+    subtitle: "My subtitle",
+{% endblock %}
+
+
+{# Redefinition of pageContent internal structure is needed in certain scenarios
+e.g. when adding a child section between two existing ones #}
+{% block pageContent %}
+    {% block abstract %}
+        {# Write `{{ super() }}` within a block to include the content from the
+        parent template's block. #}
+        {{ super() }}
+    {% endblock %}
+
+    {% block introduction %}
+        {# New content can be added before ... #}
+        {{ super() }}
+        {# or after the parent template's block content. #}
+    {% endblock %}
+
+    {% block status %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block license %}
+        {# A block can be removed by redefining it and leaving it empty. #}
+    {% endblock %}
+
+    {% block conformance %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block terminology %}
+        <section id="specterminology">
+            <h2>Terminology</h2>
+            <p>
+                The Terminology section defining the key concepts and terms used in the vocabulary.
+            </p>
+
+            {% block usedPrefixesGen %}
+                {{ super() }}
+            {% endblock %}
+        </section>
+    {% endblock %}
+
+    {% block overview %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block mainEntities %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block supportiveEntities %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block datatypes %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block usages %}
+        <section class="informative">
+            <h2>Usage Guidelines</h2>
+        </section>
+    {% endblock %} 
+
+    {# A new blocks can be added. #}
+    {% block governance %}
+    {# Each direct child block of pageContent should 1) define a content within
+    a section and 2) specify an h2 header  #}
+    <section class="informative">
+        <h2>Governance</h2>
+        <p class="instruction">
+            {# Jinja variables can be used in this child template. #}
+            This section outlines the governance model for the {{ metadata.title}},
+            detailing how it is maintained, updated, and governed over time. It
+            specifies the roles and responsibilities of various stakeholders,
+            including who has the authority to make changes to the model, how
+            changes are proposed and reviewed, and the processes for versioning
+            and releasing updates. ...
+        </p>
+    </section>
+    {% endblock %}
+
+    {% block quickReference %}
+        {{ super() }}
+    {% endblock %}
+
+    {# Partial templates can be included as well in any block. #}
+    {% include "appendix.j2" ignore missing %}
+{% endblock %}
