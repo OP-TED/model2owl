@@ -1,18 +1,168 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 {% set language = "en" %}
 {% set sortattr = "sort" %}
-{% set documentroot = "." %}
-{% set docRoot = metadata.documentconfig.editorDocumentroot if metadata.documentconfig.editorDocumentroot else documentroot %}
+{% set _docRoot = "." %}
+{% set docRoot = metadata.documentConfig.editorDocumentRoot if metadata.documentConfig.editorDocumentRoot else _docRoot %}
 
 {# The variables above reflects a respec docs package structure #}
 {% set assetsRoot = docRoot ~ "/assets" %}
 {% set jsScriptsRoot = docRoot ~ "/js" %}
 {% set examplesRoot = assetsRoot ~ "/examples" %}
+{% set imgRoot = assetsRoot ~ "/img" %}
 {% set shaclRoot = assetsRoot ~ "/shacl" %}
 
-<head>
-    {% set name = metadata.title|lower|replace(' ', '-') %}
-	
+{% macro renderFeedbackButton(entity, prop=None) %}
+    {% if metadata.openGithubIssue %}    
+        {% set _issueTitle = None %}
+        {% set _issueBody = None %}
+        
+        {% if prop is not none %}
+            {% set _issueTitle = "Issue%20for%20'" ~ prop.label[language] ~ "'%20in%20'" ~ entity.label[language] ~ "'" %}
+            {% set _issueBody = "Explain%20your%20issue%20for%20" 
+             ~ metadata.navigation.self 
+             ~ "%23" 
+             ~ ((entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode) %}
+       
+            {% else %}
+            {% set _issueTitle = "Issue%20for%20'" ~ entity.label[language] ~ "'" %}
+            {% set _issueBody = "Explain%20your%20issue%20for%20" 
+             ~ metadata.navigation.self 
+             ~ "%23" 
+             ~ (entity.label[language] | replace(" ","") | urlencode) %}
+        {% endif %}
+
+        <a href="{{ metadata.feedbackUrl }}/new?title={{ _issueTitle }}&body={{ _issueBody }}" target="_blank" rel="noopener noreferrer" >
+            <img src="{{ imgRoot }}/callout.png" loading="lazy" alt="[o]" title="{{ metadata.openGithubIssue.buttonLabel if metadata.openGithubIssue.buttonLabel else ''}}" class="feedbackButton"/>
+        </a>
+    {% endif %}
+{% endmacro %}
+
+{% macro renderEntity(entity) %}
+    <section>
+        <h3 id="{{ entity.label[language]| replace(" ","") |urlencode }}">
+            <a href="{{ entity.uri }}"
+                data-toggle="tooltip"
+                data-content="{{ entity.uri }}"
+                data-placement="right">{{ entity.label[language] }}</a>
+
+        </h3>
+        <span style="float:right;margin-right:10px;">{{ renderFeedbackButton(entity) }}</span>
+        
+        <dl>
+            <dt>
+                Definition
+            </dt>
+            <dd>
+                {{ entity.description[language] | safe }}
+            </dd>
+            {% if entity.usage[language] %}
+                <dt>
+                    Usage Note
+                </dt>
+                <dd>
+                    {{ entity.usage[language] | safe }}
+                </dd>
+            {% endif %}
+            {% if ((entity.parents | length) > 0 ) %}
+                <dt>
+                    Subclass of
+                </dt>
+                <dd>
+                    {%- for parent in entity['parents'] %} <a href="{{ parent.scoped_uri | replace(" ","") }}">{{ parent.label[language] }}</a>
+                    {% if not loop.last %},{% endif %}
+                    {%- endfor %}
+                </dd>
+            {% endif %}
+            <dt>
+                Properties
+            </dt>
+            {% if ((entity.properties | length) > 0 ) %}
+                <dd>
+                    For this entity the following properties are defined: {%- for prop in entity['properties'] | sort(attribute=sortattr) %} <a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}">{{ prop.label[language] }}</a>
+                    {% if not loop.last %},{% endif %}
+                {%- endfor %}.
+                </dd>
+            {% else %}
+                <dd>
+                    This specification does not impose any additional requirements to properties for this entity.
+                </dd>
+            {% endif %}
+        </dl>
+        {% if ((entity.properties | length) > 0 ) %}
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:12%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+                            {% if metadata.openGithubIssue %}
+                                <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
+                                    {{ metadata.openGithubIssue.columnLabel if metadata.openGithubIssue.columnLabel else 'Open an issue'}}
+                                </th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        {% for prop in entity['properties'] | sort(attribute=sortattr) %}
+                            <tr id="{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}"
+                                typeof="rdf:Property"
+                                resource="{{ prop.uri }}"
+                                class="class mandatory">-
+                                <td>
+                                        <a href="{{ prop.uri }}"
+                                        data-toggle="tooltip"
+                                        data-content="{{ prop.uri }}"
+                                        data-placement="right">
+                                        {{ prop.label[language] }}</a>
+                                </td>
+                                <td>
+                                    {% for range in prop.scopedrange %}
+                                        {% if range['range_uri'] == range['range_puri'] %}
+                                            <a href="#{{ range['range_label'][language] | replace(" ","") | urlencode }}"
+                                            data-toggle="tooltip"
+                                            data-content="{{ range['range_puri'] }}"
+                                            data-placement="right"
+                                            class="no-prefix">{{ range['range_label'][language] }}</a>
+                                        {% else %}
+                                            <a href="#{{ range['range_label'][language] | replace(" ","") | urlencode }}" data-placement="right" class="no-prefix">{{ range['range_label'][language] }}</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {{ prop.cardinality }}
+                                </td>
+                                <td property="rdfs:comment">
+                                    {{ prop.description[language] | safe }}
+                                </td>
+                                <td property="skos:scopeNote">
+                                    {{ prop.usage[language] | safe }}
+                                </td>
+                                <td>
+                                    {{ renderFeedbackButton(entity, prop) }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </section>
+{% endmacro %}
+
+<head>	
     <meta charset="utf-8" />
     <title>{{ metadata.title }}</title>
     <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
@@ -73,7 +223,7 @@
 		$('#table-quickoverview').DataTable();
 	};
 
-   {% block respecconfig %}
+   {% block respecConfig %}
     var respecConfig = {
       postProcess: [quickreference],
       edDraftURI: "{{metadata.navigation.self}}",
@@ -129,13 +279,13 @@
             ]
           },
           {% endif %}
-          {% if metadata.repositoryurl %}
+          {% if metadata.repositoryUrl %}
           {
             key: "Source:",
             data: [
                 {
-                  value: "{{ metadata.repositoryurl }}",
-                  href: "{{ metadata.repositoryurl }}"
+                  value: "{{ metadata.repositoryUrl }}",
+                  href: "{{ metadata.repositoryUrl }}"
                 }
             ]
           },
@@ -159,6 +309,8 @@
           {% endfor %}
         ],
       {% endif %}
+      {% block respecConfigExtraParams %}
+      {% endblock %}
 
     };
 
@@ -186,131 +338,127 @@
 <body>
 
 <!-- #################### Beginning of page content ####################### -->
+{% block pageContent %}
 
 
+{% block abstract %}
 <section id="abstract">
     <h2>Abstract</h2>
-    {% block summary %}
-        <!-- Replace the below paragraph with your text -->
-        <p class="instruction">
-            The abstract should provide a concise overview of the semantic model, summarizing its scope, purpose, and key elements. The final content should explain what the model represents, its intended use, and the core concepts it covers. For instance, it should describe the main classes, relationships, and types of entities addressed, highlighting reusability, extensibility, and integration within a broader data ecosystem.
-        </p>
-    {% endblock %}
+    <!-- Replace the below paragraph with your text -->
+    <p class="instruction">
+        The abstract should provide a concise overview of the semantic model, summarizing its scope, purpose, and key elements. The final content should explain what the model represents, its intended use, and the core concepts it covers. For instance, it should describe the main classes, relationships, and types of entities addressed, highlighting reusability, extensibility, and integration within a broader data ecosystem.
+    </p>
 </section>
+{% endblock %}
 
+{% block introduction %}
 <section id="specintro">
     <h2>Introduction</h2>
-    {% block introduction %}
-        <p class="instruction">
-            The Introduction should provide context for the vocabulary, including the motivation for its creation, its intended audience, and the problems it aims to address. The section should give readers a high-level understanding of the model, including its scope, design principles, and how it fits within related specifications or standards.
-        </p>
-    {% endblock %}
+    <p class="instruction">
+        The Introduction should provide context for the vocabulary, including the motivation for its creation, its intended audience, and the problems it aims to address. The section should give readers a high-level understanding of the model, including its scope, design principles, and how it fits within related specifications or standards.
+    </p>
 </section>
-
+{% endblock %}
+    
+{% block status %}
 <section id="specstatus">
     <h2>Status</h2>
-    {% block status %}
-        <p class="instruction">
-            The Status section should explain the current standing of the specification, including its level of formal recognition, publication date, and any relevant approval or recommendation information. It should also summarize the development process, key decisions, and provide references to changelogs or historical versions.
-            It is recommended to indicate the <a href="https://www.w3.org/2021/Process-20211102/#maturity-levels">maturity levels</a> of the specification.
-        </p>
-        <p>
-            This application profile has the status {{ metadata.documentconfig.statuslabel if metadata.documentconfig.statuslabel else metadata.statuslabel }} published at {{ metadata.issued }}.
-        </p>
-        <p>
-            Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="{{ metadata.standaardregisterurl }}">Changelog</a>.
-        </p>
-    {% endblock %}
+    <p class="instruction">
+        The Status section should explain the current standing of the specification, including its level of formal recognition, publication date, and any relevant approval or recommendation information. It should also summarize the development process, key decisions, and provide references to changelogs or historical versions.
+        It is recommended to indicate the <a href="https://www.w3.org/2021/Process-20211102/#maturity-levels">maturity levels</a> of the specification.
+    </p>
+    <p>
+        {% if metadata.status and metadata.issued %}
+            This application profile has the status <i>{{ metadata.status }}</i> and has been published on {{ metadata.issued }}.
+        {% endif %}
+    </p>
+    <p>
+        History of changes to the project is available in <a href="{{ metadata.changelogUrl }}">Changelog</a>.
+    </p>
 </section>
+{% endblock %}
 
+{% block license %}
 <section id="speclicence">
     <h2>License</h2>
-    {% block license %}
-        <p class="instruction">
-            The License section should outline the legal terms under which the vocabulary and associated materials may be used, shared, and modified. It should clearly indicate copyright ownership, applicable licenses, exceptions, and any obligations or restrictions for users and contributors.
-        </p>
-        <p>
-	
-            <span rel="dct:type"
-                  property="dct:title"
-                  href="http://purl.org/dc/dcmitype/Text"
-                  xmlns:dct="http://purl.org/dc/terms/">
-		  This specification </span> of <a rel="cc:attributionURL" property="cc:attributionName" href="ORGANISATION" xmlns:cc="http://creativecommons.org/ns#">ORGANISATION </a> 
-	          is published under <a href="{{ metadata.license }}" rel="license">"CC0"</a>.
-<!-- TODO: add org name above and licence -->
-        </p>
-    {% endblock %}
+    <p class="instruction">
+        The License section should outline the legal terms under which the vocabulary and associated materials may be used, shared, and modified. It should clearly indicate copyright ownership, applicable licenses, exceptions, and any obligations or restrictions for users and contributors.
+    </p>
+    <p>
+        {% if metadata.license %}
+            This specification of {{ metadata.title }} is published under {{ metadata.license }}.
+        {% endif %}
+    </p>
 </section>
+{% endblock %}
 
-<section>
-    <h2>Conformance</h2>
-    {% block conformance %}
-        <p class="instruction">
-            The Conformance section should define which parts of the specification are normative versus non-normative, and how compliance should be interpreted. It should explain the meaning of key terms such as MUST, MAY, and SHOULD, and it should provide guidance on how these rules should be applied when using or extending the vocabulary.
-        </p>
-        <p>
-            The key words MAY, MUST, SHOULD, and SHOULD NOT in this document are to be interpreted as described in <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a> [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
-        </p>
-    {% endblock %}
+{% block conformance %}
+<section id="conformance">    
+    <p class="instruction">
+        The Conformance section should define which parts of the specification are normative versus non-normative, and how compliance should be interpreted. It should explain the meaning of key terms such as MUST, MAY, and SHOULD, and it should provide guidance on how these rules should be applied when using or extending the vocabulary.
+    </p>
 </section>
+{% endblock %}
 
+{% block terminology %}
 <section id="specterminology">
     <h2>Terminology</h2>
-    {% block terminology %}
-        <p class="instruction">
-            The Terminology section should introduce the key concepts, terms, and definitions used in the vocabulary. It should describe the purpose and scope of the vocabulary in a clear, context-neutral manner, and it should provide references to style guides, design principles, or related standards. It should also include technical conventions, such as prefixes, namespaces, and shorthand notation used for readability in RDF/OWL representations.
-        </p>
+    <p class="instruction">
+        The Terminology section should introduce the key concepts, terms, and definitions used in the vocabulary. It should describe the purpose and scope of the vocabulary in a clear, context-neutral manner, and it should provide references to style guides, design principles, or related standards. It should also include technical conventions, such as prefixes, namespaces, and shorthand notation used for readability in RDF/OWL representations.
+    </p>
 
-        {% block usedprefixes %}
-        <h3>Used Prefixes</h3>
-        <table id="table-namespaces" class="simple">
-          <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
-            <tbody>
-            {% for p in prefixes | sort(attribute='name') %}
-            <tr>
-              <td>
-                <code>{{p.name}}</code>
-              </td>
-              <td>
-                <code>{{p.uri}}</code>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        {% endblock %}
-
+    {% block usedPrefixesGen %}
+    <h3>Used Prefixes</h3>
+    <table id="table-namespaces" class="simple">
+        <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
+        <tbody>
+        {% for p in prefixes | sort(attribute='name') %}
+        <tr>
+            <td>
+            <code>{{p.name}}</code>
+            </td>
+            <td>
+            <code>{{p.uri}}</code>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
     {% endblock %}
 </section>
+{% endblock %}
 
+{% block overview %}
 <section id="specoverview">
     <h2>Overview</h2>
-    {% block overviewintro %}
-    {% endblock %}
     <div id="overview">
-                {% if ( ( classes | length > 0)   ) %}
-                        <p>
-                            This document describes the usage of the following main entities for a correct usage of the vocabulary:
-                            <br />
-                            | {%- for class in classes |sort(attribute=sortattr) %} 
-			      {%- if class.rawTags['class-usage-scope'] == "main" %}
-			      <a href="#{{ class.label[language] | replace(" ","") | urlencode }}">{{ class.label[language] }}</a> | {%- endif %}{%- endfor %}
-                        </p>
-                        <p>
-                            The main entities are supported by:
-                            <br />
-                            | {%- for class in classes |sort(attribute=sortattr) %} 
-			      {%- if class.rawTags['class-usage-scope'] != "main" %}
-			      <a href="#{{ class.label[language] | replace(" ","") | urlencode }}">{{ class.label[language] }}</a> | {%- endif %}{%- endfor %}
-                        </p>
-                {% endif %}
-                {% if ( ( datatypes | length ) > 0 ) %}
-                        <p>
-                            And supported by these datatypes:
-                            <br />
-                            | {%- for datatype in datatypes |sort(attribute=sortattr) %} <a href="#{{ datatype.label[language] | replace(" ","") | urlencode }}">{{ datatype.label[language] }}</a> | {%- endfor %}
-                        </p>
-                {% endif %}
+        {% block overviewClassesGen %}
+            {% if ( ( classes | length > 0)   ) %}
+                    <p>
+                        This document describes the usage of the following main entities for a correct usage of the vocabulary:
+                        <br />
+                        | {%- for class in classes |sort(attribute=sortattr) %} 
+                {%- if class.rawTags['class-usage-scope'] == "main" %}
+                <a href="#{{ class.label[language] | replace(" ","") | urlencode }}">{{ class.label[language] }}</a> | {%- endif %}{%- endfor %}
+                    </p>
+                    <p>
+                        The main entities are supported by:
+                        <br />
+                        | {%- for class in classes |sort(attribute=sortattr) %} 
+                {%- if class.rawTags['class-usage-scope'] != "main" %}
+                <a href="#{{ class.label[language] | replace(" ","") | urlencode }}">{{ class.label[language] }}</a> | {%- endif %}{%- endfor %}
+                    </p>
+            {% endif %}
+        {% endblock %}
+        {% block overviewDatatypesGen %}
+            {% if ( ( datatypes | length ) > 0 ) %}
+                    <p>
+                        And supported by these datatypes:
+                        <br />
+                        | {%- for datatype in datatypes |sort(attribute=sortattr) %} <a href="#{{ datatype.label[language] | replace(" ","") | urlencode }}">{{ datatype.label[language] }}</a> | {%- endfor %}
+                    </p>
+            {% endif %}
+        {% endblock %}
     </div>
     <div>
         <a href="{{ assetsRoot }}/overview.png"
@@ -320,390 +468,139 @@
         </a>
     </div>
 </section>
+{% endblock %}
 
+
+{% block mainEntities %}
 <section>
     <h2>Main Entities</h2>
-
-    {% macro renderentity(entity) %}
-        <section>
-            <h3 id="{{ entity.label[language]| replace(" ","") |urlencode }}">
-                <a href="{{ entity.uri }}"
-                   data-toggle="tooltip"
-                   data-content="{{ entity.uri }}"
-                   data-placement="right">{{ entity.label[language] }}</a>
-
-            </h3>
-	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
-		<!-- outcomment github feedback possibility
-                <a href="{{ metadata.feedbackurl }}/new?title=Issue%20for%20{{ entity.name }}&body=Explain%20your%20issue"}}>
-                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
-		</a>
-		-->
-            <dl>
-                <dt>
-                    Definition
-                </dt>
-                <dd>
-                    {{ entity.description[language] | safe }}
-                </dd>
-                <!-- {% if entity.rawTags['DCAT'] %}
-                    <dt>
-                        Reference in DCAT
-                    </dt>
-                    <dd>
-                        <a href="{{ entity.rawTags['DCAT'] }}">Link</a>
-                    </dd>
-                {% endif %} -->
-                {% if entity.usage[language] %}
-                    <dt>
-                        Usage Note
-                    </dt>
-                    <dd>
-                        {{ entity.usage[language] | safe }}
-                    </dd>
-                {% endif %}
-                {% if ((entity.parents | length) > 0 ) %}
-                    <dt>
-                        Subclass of
-                    </dt>
-                    <dd>
-                        {%- for parent in entity['parents'] %} <a href="{{ parent.scoped_uri | replace(" ","") }}">{{ parent.label[language] }}</a>
-                        {% if not loop.last %},{% endif %}
-                        {%- endfor %}
-                    </dd>
-                {% endif %}
-                <dt>
-                    Properties
-                </dt>
-                {% if ((entity.properties | length) > 0 ) %}
-                    <dd>
-                        For this entity the following properties are defined: {%- for prop in entity['properties'] | sort(attribute=sortattr) %} <a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}">{{ prop.label[language] }}</a>
-                        {% if not loop.last %},{% endif %}
-                    {%- endfor %}.
-                    </dd>
-                {% else %}
-                    <dd>
-                        This specification does not impose any additional requirements to properties for this entity.
-                    </dd>
-                {% endif %}
-            </dl>
-            {% if ((entity.properties | length) > 0 ) %}
-                <div class="u-table-overflow">
-                    <table class="data-table simple" id="table-mandatory-classes">
-                        <thead>
-                            <tr class="data-table__header">
-    <!--
-                                <th class="data-table__header-title--sortable" style="width:5%">
-                                </th>
-    --->
-                                <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
-                                    Property
-                                </th>
-                                <th class="data-table__header-title--sortable" style="width:12%">
-                                    Range
-                                </th>
-                                <th class="data-table__header-title--sortable" style="width:6%">
-                                    Card
-                                </th>
-                                <th class="data-table__header-title--sortable" style="width:30%">
-                                    Definition 
-                                </th>
-                                <th class="data-table__header-title--sortable" style="width:30%">
-                                    Usage
-                                </th>
-                    <!--
-                                <th class="data-table__header-title--sortable" style="width:3%">
-                                    Codelist
-                                </th>
-                    -->
-                    <!--
-                                <th class="data-table__header-title--sortable" style="width:5%">
-                                    DCAT
-                                </th>
-                    -->
-                                <!-- <th class="data-table__header-title--sortable" style="width:3%">
-                        <a href="#reuse-column">Reuse</a>
-                                </th> -->
-                            </tr>
-                        </thead>
-                        <tbody class="supertype">
-                            {% for prop in entity['properties'] | sort(attribute=sortattr) %}
-                                <tr id="{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}"
-                                    typeof="rdf:Property"
-                                    resource="{{ prop.uri }}"
-                                    class="class mandatory">
-    <!--
-                                    <td>
-                        <a href="{{ metadata.feedbackurl }}/new?title=Issue%20for%20{{ prop.label[language] }}%20in%20{{ entity.label[language]}}&body=Explain%20your%20issue%20for%20{{ metadata.navigation.self }}%23{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}" target="_blank" rel="noopener noreferrer" >
-                                            <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
-                                        </a>
-                                    </td>
-    --->
-                                    <td>
-                                            <a href="{{ prop.uri }}"
-                                            data-toggle="tooltip"
-                                            data-content="{{ prop.uri }}"
-                                            data-placement="right">
-                                            {{ prop.label[language] }}</a>
-                                    </td>
-                                    <td>
-                                        {% for range in prop.scopedrange %}
-                                            {% if range['range_uri'] == range['range_puri'] %}
-                                                <a href="#{{ range['range_label'][language] | replace(" ","") | urlencode }}"
-                                                data-toggle="tooltip"
-                                                data-content="{{ range['range_puri'] }}"
-                                                data-placement="right">{{ range['range_label'][language] }}</a>
-                                            {% else %}
-                                                <a href="#{{ range['range_label'][language] | replace(" ","") | urlencode }}" data-placement="right">{{ range['range_label'][language] }}</a>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </td>
-                                    <td>
-                                        {{ prop.cardinality }}
-                                    </td>
-                                    <td property="rdfs:comment">
-                                        {{ prop.description[language] | safe }}
-                                    </td>
-                                    <td property="skos:scopeNote">
-                                        {{ prop.usage[language] | safe }}
-                                    </td>
-                    <!--
-                                    <td>
-                                        {% if prop['codelist_uri'] %}<a href="{{ prop['codelist_uri'] }}">Link</a>{% endif %}
-                                    </td>
-                    -->
-                    <!--
-                                    <td>
-    {#                                    {% if prop.rawTags['DCAT'] %}<a href="{{ prop.rawTags['DCAT'] }}">Link</a>{% endif %}#}
-                                    </td>
-                    -->
-    <!-- {#                                <td>#}
-    {#                                    {% if prop.rawTags['DCAT'] %}#}
-    {#				       {% if prop.rawTags['reuse'] == "asis"   %}#}
-    {#				        <a href="{{ prop.rawTags['DCAT'] }}">A</a>#}
-    {#                                       {% else %}#}
-    {#				        <a href="{{ prop.rawTags['DCAT'] }}">E</a>#}
-    {#				       {% endif %}#}
-    {#                                    {% else %}#}
-    {#				       P#}
-    {#				    {% endif %}#}
-    {#                                </td>#} -->
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            {% endif %}
-        </section>
-    {% endmacro %}
-
-
     The main entities are those that form the core of the vocabulary. 
     Properties of entities are listed in a tabular form.
 
-    {% for entity in classes | sort(attribute=sortattr) %}
-        {% if entity.rawTags['class-usage-scope'] == "main"   %}
-            {{ renderentity(entity) }}
-        {% endif %}
-    {% endfor %}
+    {% block mainEntitiesGen %}
+        {% for entity in classes | sort(attribute=sortattr) %}
+            {% if entity.rawTags['class-usage-scope'] == "main"   %}
+                {{ renderEntity(entity) }}
+            {% endif %}
+        {% endfor %}
+    {% endblock %}
 </section>
+{% endblock %}
 
+{% block supportiveEntities %}
 <section>
     <h2>Supportive Entities</h2>
     The supportive entities are supporting the main entities in the vocabulary. They are included in the vocabulary because they form the range of properties.
 
-    {% for entity in classes | sort(attribute=sortattr) %}
-        {% if entity.rawTags['class-usage-scope'] != "main"   %}
-            {{ renderentity(entity) }}
-        {% endif %}
-    {% endfor %}
+    {% block supportiveEntitiesGen %}
+        {% for entity in classes | sort(attribute=sortattr) %}
+            {% if entity.rawTags['class-usage-scope'] != "main"   %}
+                {{ renderEntity(entity) }}
+            {% endif %}
+        {% endfor %}
+    {% endblock %}
 </section>
+{% endblock %}
 
+{% block datatypes %}
 <section>
     <h2>Datatypes</h2>
 
 	The following datatypes are used within this specification.
 
-	<table class="data-table simple" id="table-mandatory-classes">
-	    <thead>
-            <tr class="data-table__header">
-                <!--
-                <th class="data-table__header-title--sortable">
-                </th>
-                -->
-                <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
-                Class
-                </th>
-                <th class="data-table__header-title--sortable">
-                Definition
-                </th>
-            </tr>
-	    </thead>
-	    <tbody class="supertype">
-            {% for entity in datatypes | sort(attribute=sortattr)%}
-            <tr>
-                    <!--
-                <td>
-                        <a href="{{ metadata.feedbackurl }}/new?title=Issue%20for%20{{ entity.name }}&body=Explain%20your%20issue"}}>
-                            <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
-                </a>
-                </td>
-                    -->
-                <td>
-                    {% if entity.scopeduri %}
-                        <div id="{{ entity.label[language] | replace(" ","") | urlencode }}">
-                            <a href="{{ entity.scopeduri }}"
-                                data-toggle="tooltip"
-                                data-content="{{ entity.uri }}"
-                                data-placement="right">{{ entity.label[language] }}</a>
-                        </div>
-                    {% else %}
-                        <div id="{{ entity.label[language] | replace(" ","") | urlencode }}">
-                            <a href="{{ entity.uri }}"
-                                data-toggle="tooltip"
-                                data-content="{{ entity.uri }}"
-                                data-placement="right">{{ entity.label[language] }}</a>
-                        </div>
+    {% block datatypesGen %}
+        <table class="data-table simple" id="table-mandatory-classes">
+            <thead>
+                <tr class="data-table__header">
+                    <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:25%">
+                        Class
+                    </th>
+                    <th class="data-table__header-title--sortable" style="width:70%">
+                        Definition
+                    </th>
+                    {% if metadata.openGithubIssue %}
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
+                            {{ metadata.openGithubIssue.columnLabel if metadata.openGithubIssue.columnLabel else 'Open an issue'}}
+                        </th>
                     {% endif %}
-                </td>
-                <td>
-                    {{ entity.description[language] | safe }}
-                    <!-- TODO: FIXME -->
-                </td>
-            </tr>
-            {%- endfor %}
-        </tbody>
-	</table>
-
-
+                </tr>
+            </thead>
+            <tbody class="supertype">
+                {% for entity in datatypes | sort(attribute=sortattr)%}
+                <tr>
+                    <td>
+                        {% if entity.scopeduri %}
+                            <div id="{{ entity.label[language] | replace(" ","") | urlencode }}">
+                                <a href="{{ entity.scopeduri }}"
+                                    data-toggle="tooltip"
+                                    data-content="{{ entity.uri }}"
+                                    data-placement="right">{{ entity.label[language] }}</a>
+                            </div>
+                        {% else %}
+                            <div id="{{ entity.label[language] | replace(" ","") | urlencode }}">
+                                <a href="{{ entity.uri }}"
+                                    data-toggle="tooltip"
+                                    data-content="{{ entity.uri }}"
+                                    data-placement="right">{{ entity.label[language] }}</a>
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ entity.description[language] | safe }}
+                    </td>
+                    <td>
+                        {{ renderFeedbackButton(entity) }}
+                    </td>
+                </tr>
+                {%- endfor %}
+            </tbody>
+        </table>
+    {% endblock %}
 </section>
+{% endblock %}
 
-<!--
-<section class="informative">
-    <h2 aria-level="1" role="heading" id="h2_sotd">
-        JSON-LD context
-    </h2>
-    <div class="region region--no-space-top" id="jsonld">
-        {#
-        <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">
-            JSON-LD context
-        </h2>
-        #} (non normative)
-        {% block jsonld %}
-            <p>
-                A reusable JSON-LD context definition for this application profile is retrievable at: <a href="{{ documentroot }}/context/{{ metadata.filename }}.jsonld"
-    target="_blank">{{ documentroot }}/context/{{ metadata.filename }}.jsonld</a>
-            </p>
-        {% endblock %}
-    </div>
-</section>
-<section class="informative">
-    <h2 aria-level="1" role="heading" id="h2_sotd">
-        SHACL template
-    </h2>
-    <div class="region region--no-space-top" id="shacl">
-        {#
-        <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">
-            SHACL template
-        </h2>
-        #} (non normative)
-        {% block shacl %}
-            <p>
-                A reusable SHACL template for this application profile is retrievable at: <a href="{{ documentroot }}/shacl/{{ metadata.filename }}-SHACL.ttl"
-    target="_blank">{{ documentroot }}/shacl/{{ metadata.filename }}-SHACL.ttl</a>
-            </p>
-        {% endblock %}
-    </div>
-</section>
-<section class="informative">
-    <h2 aria-level="1" role="heading" id="h2_sotd">
-        Examples
-    </h2>
-    <div class="region region--no-space-top" id="examples">
-        {% block examples %}
-	<p> No examples defined </p>
-        {% endblock %}
-    </div>
-</section>
-
--->
-
-<!-- TODO: (re)move these optional blocks -->
-{% block usages %}
-<section class="informative">
-	<h2>Usage Guidelines</h2>
-</section>
-{% endblock %} 
-
-{% block governance %}
-<section class="informative">
-	<h2>Governance</h2>
-</section>
-{% endblock %} 
-
+{% block quickReference %}
 <section id="quick-reference" class="appendix">
     <h2>Quick Reference of Classes and Properties</h2>
 
     This section provides a condensed tabular overview of the mentioned classes and properties in this specification.
 
-    <table id="table-quickoverview" class="simple" style="width:100%; table-layout: fixed; word-wrap:break-word;">
-        <thead>
-            <tr>
-                <th>Class</th>
-                <th>Class IRI</th>
-                <!-- <th>Property Type</th> -->
-                <th>Property</th>
-                <th>Property IRI</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for entity in classes | sort(attribute=sortattr) %}
-                {% if ((entity.properties | length) > 0 ) %}
-                    {% for prop in entity['properties'] | sort(attribute=sortattr) %}
-                        <tr>
-                            <td><a href="#{{ entity.label[language] | replace(" ","") | urlencode }}">{{ entity.label[language] }}</a></td>
-                            <td><div class="shorten">{{ entity.uri }}</div></td>
-                            <!-- TODO: FIXME; shorten doesn't short uris -->
-                            <td><a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}">{{ prop.label[language] }} </a></td>
-                            <td><div class="shorten">{{ prop.uri }}</div></td>
-                        </tr>
-                    {% endfor %}
-                {% endif %}
-            {% endfor %}
-        <tbody>
-    </table>
-
-   {% block deprecation %}
-   {% endblock %}
-   <!-- TODO: to remove -->
+    {% block quickReferenceGen %}
+        <table id="table-quickoverview" class="simple" style="width:100%; table-layout: fixed; word-wrap:break-word;">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Class IRI</th>
+                    <th>Property</th>
+                    <th>Property IRI</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in classes | sort(attribute=sortattr) %}
+                    {% if ((entity.properties | length) > 0 ) %}
+                        {% for prop in entity['properties'] | sort(attribute=sortattr) %}
+                            <tr>
+                                <td><a href="#{{ entity.label[language] | replace(" ","") | urlencode }}">{{ entity.label[language] }}</a></td>
+                                <td><div class="compact-uri">{{ entity.uri }}</div></td>
+                                <td><a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}">{{ prop.label[language] }} </a></td>
+                                <td><div class="compact-uri">{{ prop.uri }}</div></td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            <tbody>
+        </table>
+    {% endblock %}
 </section>
+{% endblock %}
 
 
-<!-- TODO: (re)move that section  -->
-<section class="appendix">
-    <h2>Acknowledgments</h2>
-
-    The editors gratefully acknowledge the contributions made to this document by all members of the working group.
-
-    Past and current contributors are:
-    {% for role, contributors in contributors | groupby("role") %}
-    {% if role == "C" %}
-        {% set pure_contributors = contributors|sort(attribute='last_name') %}
-        {% if pure_contributors %}
-            {% for contributor in pure_contributors %} 
-            {{ contributor.first_name }} {{ contributor.last_name }}
-            {% if not loop.last %}, {% endif %}
-            {% endfor %}
-        {% endif %}
-    {% endif %}
-    {% endfor %}.
-</section>
+{% endblock %}
 <!-- ######################## End of page content ######################### -->
 </body>
 
 <!-- This must be at the end of the template, to ensure that the iterator properly works -->
     <script defer>
-
 
       const allPrefixes = {{ prefixes }};
       var usablePrefixes = [];
@@ -714,53 +611,50 @@
           console.warn("Prefix missing 'uri' property (or has empty value):", allPrefixes[i]);
         }
       }
-// 	    var prefixes = [ 
-// {'pref':'adms:', 'ns': 'http://www.w3.org/ns/adms#'},
-// {'pref':'dcat:', 'ns': 'http://www.w3.org/ns/dcat#'},
-// {'pref':'dcatap:', 'ns': 'http://data.europa.eu/r5r/'},
-// {'pref':'dct:', 'ns': 'http://purl.org/dc/terms/'},
-// {'pref':'dctype:', 'ns': 'http://purl.org/dc/dcmitype/'},
-// {'pref':'foaf:', 'ns': 'http://xmlns.com/foaf/0.1/'},
-// {'pref':'locn:', 'ns': 'http://www.w3.org/ns/locn#'},
-// {'pref':'odrl:', 'ns': 'http://www.w3.org/ns/odrl/2/'},
-// {'pref':'owl:', 'ns': 'http://www.w3.org/2002/07/owl#'},
-// {'pref':'prov:', 'ns': 'http://www.w3.org/ns/prov#'},
-// {'pref':'rdf:', 'ns': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
-// {'pref':'rdfs:', 'ns': 'http://www.w3.org/2000/01/rdf-schema#'},
-// {'pref':'skos:', 'ns': 'http://www.w3.org/2004/02/skos/core#'},
-// {'pref':'spdx:', 'ns': 'http://spdx.org/rdf/terms#'},
-// {'pref':'time:', 'ns': 'http://www.w3.org/2006/time#'},
-// {'pref':'vcard:', 'ns': 'http://www.w3.org/2006/vcard/ns#'},
-// {'pref':'eli:', 'ns' : 'http://data.europa.eu/eli/ontology#'},
-// {'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'}
-// 				];
 
-	    function shorturl (url) {
-				var short = url;
-				for (e in usablePrefixes) {
-				   var elem = usablePrefixes[e];
-				   if (short.startsWith(elem.uri)) {
-  					short = elem.name + ":" + short.slice(elem.uri.length);
-            break;
-					}
-				};
-				return short;
-			};
+      function compactUri(uri) {
+          var curie = uri;
+          for (e in usablePrefixes) {
+              var elem = usablePrefixes[e];
+              if (curie.startsWith(elem.uri)) {
+                curie = elem.name + ":" + curie.slice(elem.uri.length);
+                break;
+              }
+          };
+          return curie;
+      };
 
-	    var shorten = document.getElementsByClassName("shorten");
-	    for (k=0;k < shorten.length ; k++){
-			  var selem = shorten[k];	
-        selem.innerHTML = shorturl(selem.innerHTML.trim());
-			}
+      var compactUriElems = document.getElementsByClassName("compact-uri");
+      for (k=0;k < compactUriElems.length ; k++){
+          var selem = compactUriElems[k];	
+          selem.innerHTML = compactUri(selem.innerHTML.trim());
+      }
+      
+      function removePrefix(str) {
+          const index = str.indexOf(':');
+          if (index === -1) {
+              return str;
+          }
+          return str.slice(index + 1);
+      }
+
+      var noPrefix = document.getElementsByClassName("no-prefix");
+      for (k = 0; k < noPrefix.length; k++) {
+          var selem = noPrefix[k];
+          // If it's an <a> element, update its href
+            if (selem.tagName.toLowerCase() === "a" && selem.hasAttribute("href")) {
+            selem.setAttribute("href", removePrefix(decodeURIComponent(selem.getAttribute("href").trim())));
+          } else {
+            selem.innerHTML = removePrefix(decodeURIComponent(selem.innerHTML.trim()));
+          }
+      }
+      
     </script>
     
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.css" />
-	<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"> 
-	<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
-    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/javascript/javascript.min.js" ></script>
@@ -874,7 +768,13 @@
 		body.darkmode section#references :target {
 			background: #04162d;
 		}
-        .instruction { color: gray; }
+        .instruction { color: gray; font-style: italic; }
+
+        .feedbackButton {
+            width: 20px;
+            height: auto;
+        }
+
 	</style>
 
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
