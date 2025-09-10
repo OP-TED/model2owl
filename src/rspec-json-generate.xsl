@@ -27,10 +27,7 @@
     
 
     <xsl:template match="/">
-        <!-- metadata as map(*) -->
-        <xsl:variable name="metadataMap" as="map(*)">
-            <xsl:call-template name="metadata"/>
-        </xsl:variable>
+
 
         <!-- prefixes as array(*) -->
         <xsl:variable name="prefixesArray" as="array(*)">
@@ -80,7 +77,6 @@
         <!-- compose root map -->
         <xsl:variable name="rootMap" as="map(*)"
             select="map{
-            'metadata':  $metadataMap,
             'prefixes':  $prefixesArray,
             'classes':   $classesArray,
             'datatypes': $datatypesArray
@@ -114,41 +110,7 @@
         <xsl:sequence select="array{ $prefixMapSequence }"/>
     </xsl:template>
     
-    <!-- =========================================================
-       METADATA: return map(*)
-       ========================================================= -->
-    <xsl:template name="metadata" as="map(*)">
-        <xsl:sequence select="
-            map{
-            'title':        string(f:getMetadataValue('ontologyTitleCore')),
-            
-            'navigation':   map{
-            'self': string(f:getMetadataValue('navigationSelf')),
-            'prev': string(f:getMetadataValue('navigationPrev')),
-            'next': string(f:getMetadataValue('navigationNext'))
-            },
-            
-            'issued':               string(f:getMetadataValue('issuedDate')),
-            'standaardregisterurl': string(f:getMetadataValue('standaardregisterURL')),
-            'repositoryurl':        string(f:getMetadataValue('repositoryURL')),
-            'changelogurl':         string(f:getMetadataValue('changelogURL')),
-            'feedbackurl':          string(f:getMetadataValue('feedbackURL')),
-            'status':               string(f:getMetadataValue('status')),
-            'statuslabel':          string(f:getMetadataValue('statusLabel')),
-            
-            'documentconfig': map{
-            'statuslabel':        string(f:getMetadataValue('documentConfigStatusLabel')),
-            'editorDocumentroot': string(f:getMetadataValue('documentConfigEditorDocumentRoot'))
-            },
-            
-            'license':     string(f:getMetadataValue('license')),
-            'filename':    string(f:getMetadataValue('filename')),
-            
 
-            'dependencies': f:getMetadataArray('dependencies'),
-            'contributors': f:getMetadataArray('contributors')
-            }"/>
-    </xsl:template>
     
     <xsl:template match="element[@xmi:type='uml:Class']" mode="class-json" as="map(*)">
         <xsl:call-template name="classDetails"/>

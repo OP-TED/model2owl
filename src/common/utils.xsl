@@ -929,15 +929,15 @@
     </xsl:function>
     
     <xd:doc>
-        <xd:desc>Extract a value from the JSON metadata by key name</xd:desc>
+        <xd:desc>Extract a value from the JSON metadata by key name (preserves original type)</xd:desc>
         <xd:param name="keyName">The key name to extract from the JSON metadata</xd:param>
     </xd:doc>
-    <xsl:function name="f:getMetadataValue" as="xs:string">
+    <xsl:function name="f:getMetadataValue" as="item()?">
         <xsl:param name="keyName" as="xs:string"/>
         <xsl:variable name="value" select="$metadataJson?($keyName)"/>
         <xsl:choose>
             <xsl:when test="exists($value)">
-                <xsl:sequence select="string($value)"/>
+                <xsl:sequence select="$value"/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:sequence select="fn:error(
