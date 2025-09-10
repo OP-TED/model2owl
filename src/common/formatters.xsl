@@ -54,8 +54,13 @@
         <xsl:variable name="doc3" select="fn:replace($doc2, '&lt;/font&gt;', '&lt;/foreign&gt;')"/>
         <xsl:variable name="doc4" select="fn:replace($doc3, 'nbsp', '#x00A0')"/>
         <xsl:variable name="doc5" select="fn:replace($doc4, '\$inet://', '')"/>
-        <xsl:variable name="doc6" select="fn:replace($doc5, '&quot;', '')"/>
-        <xsl:variable name="doc7" select="fn:replace($doc6, '&#xA;', '')"/>
-        <xsl:value-of select="$doc7"/>
+        <!-- Fix common unquoted attribute patterns that break JSON -->
+        <xsl:variable name="doc6" select="fn:replace($doc5, 'scope=external', 'scope=&#x0022;external&#x0022;')"/>
+        <xsl:variable name="doc7" select="fn:replace($doc6, 'otherprops=#([0-9a-fA-F]+)', 'otherprops=&#x0022;#$1&#x0022;')"/>
+        <xsl:variable name="doc8" select="fn:replace($doc7, 'href=([^&gt;\s]+)', 'href=&#x0022;$1&#x0022;')"/>
+        <!-- Remove newlines that could break JSON -->
+        <xsl:variable name="doc9" select="fn:replace($doc8, '&#xA;', '')"/>
+        <!-- Keep quotes as-is since they're now properly quoted in attributes -->
+        <xsl:value-of select="$doc9"/>
     </xsl:function>
 </xsl:stylesheet>
