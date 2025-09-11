@@ -594,6 +594,23 @@
 </section>
 {% endblock %}
 
+{% block resources %}
+<section id="resources" class="appendix">
+    <h2>Project resources</h2>
+    <p>
+        The following list provides links to semantic data specifications and other resources related to this vocabulary.
+    </p>
+    {% if assets and assets.sdsSection %}
+        <ul>
+            {% for asset in assets.sdsSection %}
+                <li><a href="{{ asset.path }}">{{ asset.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>
+{% endblock %}
+
+
 
 {% endblock %}
 <!-- ######################## End of page content ######################### -->

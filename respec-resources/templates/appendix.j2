@@ -4,8 +4,8 @@
     The editors gratefully acknowledge the contributions made to this document by all members of the working group.
 
     Past and current contributors are:
-    {% for role, contributors in contributors | groupby("role") %}
-    {% if role == "C" %}
+    {% for role, contributors in metadata.contributors | groupby("role") %}
+    {% if role == "E" %}
         {% set pure_contributors = contributors|sort(attribute='last_name') %}
         {% if pure_contributors %}
             {% for contributor in pure_contributors %} 
