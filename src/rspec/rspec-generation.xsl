@@ -4,7 +4,7 @@
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:fn="http://www.w3.org/2005/xpath-functions"
-    exclude-result-prefixes="xs math xd xsl uml xmi umldi dc fn f functx array"
+    exclude-result-prefixes="xs math xd xsl uml xmi umldi dc fn f functx array map"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
@@ -12,11 +12,32 @@
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dct="http://purl.org/dc/terms/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:functx="http://www.functx.com"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:f="http://https://github.com/costezki/model2owl#" version="3.0">
 
     <xsl:import href="../common/utils.xsl"/>
     <xsl:import href="../common/formatters.xsl"/>
 
+    <xd:doc>
+        <xd:desc>Convert tags to a map format for JSON output</xd:desc>
+        <xd:param name="tags"/>
+    </xd:doc>
+    <xsl:function name="f:tagsToMap" as="map(*)">
+        <xsl:param name="tags"/>
+        <xsl:choose>
+            <xsl:when test="exists($tags)">
+                <xsl:variable name="tagEntries" as="map(*)*">
+                    <xsl:for-each select="$tags">
+                        <xsl:sequence select="map{string(./@name): string(./@value)}"/>
+                    </xsl:for-each>
+                </xsl:variable>
+                <xsl:sequence select="map:merge($tagEntries)"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="map{}"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
 
     <xsl:template name="classDetails" as="map(*)">
         <xsl:variable name="className" select="./@name"/>
@@ -62,6 +83,7 @@
             'uri':  string($classURI),
             'name': string($className),
             'rawTags': map {'class-usage-scope': $classUsage},
+            'tags': f:tagsToMap(f:getElementTags(.)),
             'label':       map{'en': f:lexicalQNameToWords($className, fn:true())},
             'description': map{'en': $doc},
             'usage':       map{'en': $doc},
@@ -124,7 +146,8 @@
             'name': string($attribute/properties/@type)
             }
             },
-            'cardinality': concat($attribute/bounds/@lower, '..', $attribute/bounds/@upper)
+            'cardinality': concat($attribute/bounds/@lower, '..', $attribute/bounds/@upper),
+            'tags': f:tagsToMap(f:getElementTags($attribute))
             }
             }"
         />
@@ -164,7 +187,8 @@
             'range_label': map{'en': string($association/target/model/@name)}
             }
             },
-            'cardinality': string($association/target/type/@multiplicity)
+            'cardinality': string($association/target/type/@multiplicity),
+            'tags': f:tagsToMap(f:getConnectorTags($association))
             }
             }"
         />
@@ -203,7 +227,8 @@
             'name': 'skos:Concept'
             }
             },
-            'cardinality': string($dependency/target/type/@multiplicity)
+            'cardinality': string($dependency/target/type/@multiplicity),
+            'tags': f:tagsToMap(f:getConnectorTags($dependency))
             }
             }"
         />
