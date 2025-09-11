@@ -297,7 +297,7 @@
         <x:scenario label="multiple attribute values are not allowed (max card = 1)">
             <x:call function="f:areMultipleAttributeValuesAllowed">
                 <x:param name="attribute" href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
-                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[156]/attributes[1]/attribute[1]"/>
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[159]/attributes[1]/attribute[1]"/>
             </x:call>
             <x:expect label="result" select="false()"/>
         </x:scenario>
