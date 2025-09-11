@@ -34,7 +34,7 @@
         <xsl:variable name="elementCurie" select="./@name"/>
         <xsl:variable name="elementName">
             <xsl:choose>
-                <xsl:when test="f:getPrefix($elementCurie) = $preferredNamespacePrefix">
+                <xsl:when test="f:getPrefix($elementCurie) = f:getMetadataValue('preferredNamespacePrefix')">
                     <xsl:value-of select="f:getLocalSegment($elementCurie)"/>
                 </xsl:when>
                 <xsl:otherwise>

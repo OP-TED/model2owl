@@ -2,8 +2,9 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+    xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:fn="http://www.w3.org/2005/xpath-functions"
-    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn"
+    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn array"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI" xmlns:functx="http://www.functx.com"
@@ -925,6 +926,52 @@
         <xsl:variable name="sourceConnector"
             select="f:getConnectorByIdRef($sourceConnectorIdref, root($generalisation))"/>
         <xsl:sequence select="$sourceConnector"/>
+    </xsl:function>
+    
+    <xd:doc>
+        <xd:desc>Extract a value from the JSON metadata by key name (preserves original type)</xd:desc>
+        <xd:param name="keyName">The key name to extract from the JSON metadata</xd:param>
+    </xd:doc>
+    <xsl:function name="f:getMetadataValue" as="item()?">
+        <xsl:param name="keyName" as="xs:string"/>
+        <xsl:variable name="value" select="$metadataJson?($keyName)"/>
+        <xsl:choose>
+            <xsl:when test="exists($value)">
+                <xsl:sequence select="$value"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="fn:error(
+                    xs:QName('keyNotFoundError'),
+                    concat('Error: Key ''', $keyName, ''' not found in metadata JSON.')
+                    )"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+    
+    <xd:doc>
+        <xd:desc>Get a JSON array from metadata by key name</xd:desc>
+        <xd:param name="keyName">The key name to extract the array from JSON metadata</xd:param>
+    </xd:doc>
+    <xsl:function name="f:getMetadataArray" as="array(*)">
+        <xsl:param name="keyName" as="xs:string"/>
+        <xsl:variable name="value" select="$metadataJson?($keyName)"/>
+        <xsl:choose>
+            <xsl:when test="exists($value) and $value instance of array(*)">
+                <xsl:sequence select="$value"/>
+            </xsl:when>
+            <xsl:when test="exists($value)">
+                <xsl:sequence select="fn:error(
+                    xs:QName('notArrayError'),
+                    concat('Error: Key ''', $keyName, ''' exists but is not an array in metadata JSON.')
+                    )"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="fn:error(
+                    xs:QName('keyNotFoundError'),
+                    concat('Error: Key ''', $keyName, ''' not found in metadata JSON.')
+                    )"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
 
 </xsl:stylesheet>

@@ -213,7 +213,7 @@
         <xsl:variable name="datatypeQName" select="./@name"/>
         <xsl:variable name="datatypeUri" select="string(f:buildURIfromLexicalQName($datatypeQName))"/>
         <xsl:variable name="datatypeLabel" select="string(f:lexicalQNameToWords($datatypeQName, fn:true()))"/>
-        <xsl:variable name="datatypeDescription" select="./properties/@documentation"/>
+        <xsl:variable name="datatypeDescription" select="string(./properties/@documentation)"/>
         <xsl:sequence select="
             map{
             'label':       map{'en': $datatypeLabel},
