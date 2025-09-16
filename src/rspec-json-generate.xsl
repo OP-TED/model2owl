@@ -27,10 +27,7 @@
     
 
     <xsl:template match="/">
-        <!-- metadata as map(*) -->
-        <xsl:variable name="metadataMap" as="map(*)">
-            <xsl:call-template name="metadata"/>
-        </xsl:variable>
+
 
         <!-- prefixes as array(*) -->
         <xsl:variable name="prefixesArray" as="array(*)">
@@ -80,7 +77,6 @@
         <!-- compose root map -->
         <xsl:variable name="rootMap" as="map(*)"
             select="map{
-            'metadata':  $metadataMap,
             'prefixes':  $prefixesArray,
             'classes':   $classesArray,
             'datatypes': $datatypesArray
@@ -110,42 +106,7 @@
         <xsl:sequence select="array{ $prefixMapSequence }"/>
     </xsl:template>
     
-    <!-- =========================================================
-       METADATA: return map(*)
-       ========================================================= -->
-    <xsl:template name="metadata" as="map(*)">
-        <xsl:sequence select="
-            map{
-            'title':        string($ontologyTitleCore),
-            
-            'navigation':   map{
-            'self': string($navigationSelf),
-            'prev': string($navigationPrev),
-            'next': string($navigationNext)
-            },
-            
-            'issued':               string($issuedDate),
-            'standaardregisterurl': string($standaardregisterURL),
-            'repositoryurl':        string($repositoryURL),
-            'changelogurl':         string($changelogURL),
-            'feedbackurl':          string($feedbackURL),
-            'status':               string($status),
-            'statuslabel':          string($statusLabel),
-            
-            'documentconfig': map{
-            'statuslabel':        string($documentConfigStatusLabel),
-            'editorDocumentroot': string($documentConfigEditorDocumentRoot)
-            },
-            
-            'license':     string($license),
-            'filename':    string($filename),
-            
-            'description': fn:normalize-space(f:formatDocStringForJson($respecDescription)),
-            
-            'dependencies': $dependencies,
-            'contributors':      array{ for $contributor in $contributors return $contributor }
-            }"/>
-    </xsl:template>
+
     
     <xsl:template match="element[@xmi:type='uml:Class']" mode="class-json" as="map(*)">
         <xsl:call-template name="classDetails"/>

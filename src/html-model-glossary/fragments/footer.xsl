@@ -3,8 +3,11 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
-    exclude-result-prefixes="xs math xd"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    exclude-result-prefixes="xs math xd f"
     version="3.0">
+    
+    <xsl:import href="../../common/utils.xsl"/>
     <xd:doc scope="stylesheet">
         <xd:desc>
             <xd:p><xd:b>Created on:</xd:b> May 17, 2020</xd:p>
@@ -24,7 +27,7 @@
                     eProcurement Ontology initiative</a>.</p>
             <p>The template of this report is based on the <a
                     href="https://github.com/thomaspark/pubcss">PubCSS library</a>.</p>
-            <p>&#169; <xsl:value-of select="$conventionReportCopyrightText"/></p>
+            <p>&#169; <xsl:value-of select="f:getMetadataValue('conventionReportCopyrightText')"/></p>
         </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         
