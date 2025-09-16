@@ -84,11 +84,7 @@
 
         <!-- output -->
         <xsl:value-of
-            select="replace(
-            serialize($rootMap, map{'method':'json','indent':true()}),
-            '\\/',                        
-            '/'                           
-            )"
+            select="serialize($rootMap, map{'method':'json','indent':true()})"
         />
     </xsl:template>
     
