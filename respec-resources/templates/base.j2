@@ -1,0 +1,807 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+{% set language = "en" %}
+{% set sortattr = "sort" %}
+{% set _docRoot = "." %}
+{% set docRoot = metadata.documentConfig.editorDocumentRoot if metadata.documentConfig.editorDocumentRoot else _docRoot %}
+
+{# The variables above reflects a respec docs package structure #}
+{% set assetsRoot = docRoot ~ "/assets" %}
+{% set jsScriptsRoot = docRoot ~ "/js" %}
+{% set examplesRoot = assetsRoot ~ "/examples" %}
+{% set imgRoot = assetsRoot ~ "/img" %}
+{% set shaclRoot = assetsRoot ~ "/shacl" %}
+
+{% macro renderFeedbackButton(entity, prop=None) %}
+    {% if metadata.openGithubIssue %}    
+        {% set _issueTitle = None %}
+        {% set _issueBody = None %}
+        
+        {% if prop is not none %}
+            {% set _issueTitle = "Issue%20for%20'" ~ prop.label[language] ~ "'%20in%20'" ~ entity.label[language] ~ "'" %}
+            {% set _issueBody = "Explain%20your%20issue%20for%20" 
+             ~ metadata.navigation.self 
+             ~ "%23" 
+             ~ ((entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode) %}
+       
+            {% else %}
+            {% set _issueTitle = "Issue%20for%20'" ~ entity.label[language] ~ "'" %}
+            {% set _issueBody = "Explain%20your%20issue%20for%20" 
+             ~ metadata.navigation.self 
+             ~ "%23" 
+             ~ (entity.label[language] | replace(" ","") | urlencode) %}
+        {% endif %}
+
+        <a href="{{ metadata.feedbackUrl }}/new?title={{ _issueTitle }}&body={{ _issueBody }}" target="_blank" rel="noopener noreferrer" >
+            <img src="{{ imgRoot }}/callout.png" loading="lazy" alt="[o]" title="{{ metadata.openGithubIssue.buttonLabel if metadata.openGithubIssue.buttonLabel else ''}}" class="feedbackButton"/>
+        </a>
+    {% endif %}
+{% endmacro %}
+
+{% macro renderEntity(entity) %}
+    <section>
+        <h3 id="{{ entity.label[language]| replace(" ","") |urlencode }}">
+            <a href="{{ entity.uri }}"
+                data-toggle="tooltip"
+                data-content="{{ entity.uri }}"
+                data-placement="right">{{ entity.label[language] }}</a>
+
+        </h3>
+        <span style="float:right;margin-right:10px;">{{ renderFeedbackButton(entity) }}</span>
+        
+        <dl>
+            <dt>
+                Definition
+            </dt>
+            <dd>
+                {{ entity.description[language] | safe }}
+            </dd>
+            {% if entity.usage[language] %}
+                <dt>
+                    Usage Note
+                </dt>
+                <dd>
+                    {{ entity.usage[language] | safe }}
+                </dd>
+            {% endif %}
+            {% if ((entity.parents | length) > 0 ) %}
+                <dt>
+                    Subclass of
+                </dt>
+                <dd>
+                    {%- for parent in entity['parents'] %} <a href="{{ parent.scoped_uri | replace(" ","") }}">{{ parent.label[language] }}</a>
+                    {% if not loop.last %},{% endif %}
+                    {%- endfor %}
+                </dd>
+            {% endif %}
+            <dt>
+                Properties
+            </dt>
+            {% if ((entity.properties | length) > 0 ) %}
+                <dd>
+                    For this entity the following properties are defined: {%- for prop in entity['properties'] | sort(attribute=sortattr) %} <a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}">{{ prop.label[language] }}</a>
+                    {% if not loop.last %},{% endif %}
+                {%- endfor %}.
+                </dd>
+            {% else %}
+                <dd>
+                    This specification does not impose any additional requirements to properties for this entity.
+                </dd>
+            {% endif %}
+        </dl>
+        {% if ((entity.properties | length) > 0 ) %}
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:12%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+                            {% if metadata.openGithubIssue %}
+                                <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
+                                    {{ metadata.openGithubIssue.columnLabel if metadata.openGithubIssue.columnLabel else 'Open an issue'}}
+                                </th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        {% for prop in entity['properties'] | sort(attribute=sortattr) %}
+                            <tr id="{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}"
+                                typeof="rdf:Property"
+                                resource="{{ prop.uri }}"
+                                class="class mandatory">-
+                                <td>
+                                        <a href="{{ prop.uri }}"
+                                        data-toggle="tooltip"
+                                        data-content="{{ prop.uri }}"
+                                        data-placement="right">
+                                        {{ prop.label[language] }}</a>
+                                </td>
+                                <td>
+                                    {% for range in prop.scopedrange %}
+                                        {% if range['range_uri'] == range['range_puri'] %}
+                                            <a href="#{{ range['range_label'][language] | replace(" ","") | urlencode }}"
+                                            data-toggle="tooltip"
+                                            data-content="{{ range['range_puri'] }}"
+                                            data-placement="right"
+                                            class="no-prefix">{{ range['range_label'][language] }}</a>
+                                        {% else %}
+                                            <a href="#{{ range['range_label'][language] | replace(" ","") | urlencode }}" data-placement="right" class="no-prefix">{{ range['range_label'][language] }}</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {{ prop.cardinality }}
+                                </td>
+                                <td property="rdfs:comment">
+                                    {{ prop.description[language] | safe }}
+                                </td>
+                                <td property="skos:scopeNote">
+                                    {{ prop.usage[language] | safe }}
+                                </td>
+                                <td>
+                                    {{ renderFeedbackButton(entity, prop) }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </section>
+{% endmacro %}
+
+<head>	
+    <meta charset="utf-8" />
+    <title>{{ metadata.title }}</title>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <script class="remove">
+    // All config options at https://respec.org/docs/
+
+	var myeditors = [
+	{% for role, contributors in metadata.contributors | groupby("role") %}
+	{% if role == "E" %}
+	    {% set editors = contributors|sort(attribute='last_name') %}
+	    {% if editors %}
+		{% for editor in editors %}
+		   {
+		    name: "{{ editor.first_name }} {{ editor.last_name}}",
+		      {% if editor.affiliation.website %}
+		    companyURL: "{{ editor.affiliation.website }}",
+		      {% endif %}
+		      {% if editor.affiliation.name %}
+		    company: "{{ editor.affiliation.name }}",
+		      {% endif %}
+		      {% if editor.email %}
+		    mailto: "{{ editor.email }}"
+		      {% endif %}
+		    }
+		{% if not loop.last %}, {% endif %}
+		{% endfor %}
+             {% endif %}
+        {% endif %}
+	{% endfor %}
+		]
+
+	var myauthors = [
+	{% for role, contributors in metadata.contributors | groupby("role") %}
+	{% if role == "A" %}
+	    {% set editors = contributors|sort(attribute='last_name') %}
+	    {% if editors %}
+		{% for editor in editors %}
+		   {
+		    name: "{{ editor.first_name }} {{ editor.last_name}}",
+		      {% if editor.affiliation.website %}
+		    companyURL: "{{ editor.affiliation.website }}",
+		      {% endif %}
+		      {% if editor.affiliation.name %}
+		    company: "{{ editor.affiliation.name }}",
+		      {% endif %}
+		      {% if editor.email %}
+		    mailto: "{{ editor.email }}"
+		      {% endif %}
+		    }
+		{% if not loop.last %}, {% endif %}
+		{% endfor %}
+             {% endif %}
+        {% endif %}
+	{% endfor %}
+		]
+	
+	function quickreference() {
+		$('#table-quickoverview').DataTable();
+	};
+
+   {% block respecConfig %}
+    var respecConfig = {
+      postProcess: [quickreference],
+      edDraftURI: "{{metadata.navigation.self}}",
+      latestVersion: "{{metadata.navigation.prev}}",
+      specStatus: "base",
+      publishDate: "{{ metadata.issued }}",
+      editors: myeditors,
+      authors: myauthors,
+      github: "{{metadata.github}}",
+      shortName: "{{metadata.title}}",
+      xref: "web-platform",
+      doJsonLd: true,
+      {% if logo %}
+        logos: [{
+            src: "{{ logo.path }}",
+            url: "{{ logo.link }}",
+            alt: "logo",
+            width: 154,
+            height: 140,
+            id: "vocab-logo",
+        },],
+      {% endif %}
+      generatedSubtitle: "",
+      additionalCopyrightHolders: "",
+      {% if metadata.localBiblio %}
+        localBiblio: {{ metadata.localBiblio }},
+      {% endif %}
+      {% if customMetadata.metadataSectionProperties or metadata.owners %}
+        otherLinks: [
+          {% if metadata.owners %}
+          {
+            key: "Owners:",
+            data: [
+              {% for item in metadata.owners %}
+                {
+                  value: "{{ item.name }}",
+                  {% if item.website %}
+                  href: "{{ item.website }}"
+                  {% endif %}
+                }{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            ]
+          },
+          {% endif %}
+          {% if metadata.navigation.next %}
+          {
+            key: "Next version:",
+            data: [
+                {
+                  value: "{{ metadata.navigation.next }}",
+                  href: "{{ metadata.navigation.next }}"
+                }
+            ]
+          },
+          {% endif %}
+          {% if metadata.repositoryUrl %}
+          {
+            key: "Source:",
+            data: [
+                {
+                  value: "{{ metadata.repositoryUrl }}",
+                  href: "{{ metadata.repositoryUrl }}"
+                }
+            ]
+          },
+          {% endif %}
+          {% if metadata.changelogurl %}
+          {
+            key: "Changelog:",
+            data: [
+                {
+                  value: "{{ metadata.changelogurl }}",
+                  href: "{{ metadata.changelogurl }}"
+                }
+            ]
+          },
+          {% endif %}
+          {% for item in customMetadata.metadataSectionProperties %}
+          {
+              key: "{{ item.key|trim|capitalize ~ ':' }}",
+              data: {{ item.data }}
+          }{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        ],
+      {% endif %}
+      {% block respecConfigExtraParams %}
+      {% endblock %}
+
+    };
+
+    {% endblock %}
+
+    </script>
+    <style>
+      .figure img, .sidefigure img, figure img, .figure object, .sidefigure object, figure object, img, .img {
+      max-width: 100%;
+      margin: auto;
+      height: auto;
+      }
+    </style>
+    {# -- documentation indication by nunjuncs template language
+       Copyright must be specified otherwise Respec generates a value
+     #} 
+    <p class="copyright">
+        Copyright © 2024
+    </p>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="msapplication-TileColor" content="#7ED956" />
+</head>
+<body>
+
+<!-- #################### Beginning of page content ####################### -->
+{% block pageContent %}
+
+
+{% block abstract %}
+<section id="abstract">
+    <h2>Abstract</h2>
+    <!-- Replace the below paragraph with your text -->
+    <p class="instruction">
+        The abstract should provide a concise overview of the semantic model, summarizing its scope, purpose, and key elements. The final content should explain what the model represents, its intended use, and the core concepts it covers. For instance, it should describe the main classes, relationships, and types of entities addressed, highlighting reusability, extensibility, and integration within a broader data ecosystem.
+    </p>
+</section>
+{% endblock %}
+
+{% block introduction %}
+<section id="specintro">
+    <h2>Introduction</h2>
+    <p class="instruction">
+        The Introduction should provide context for the vocabulary, including the motivation for its creation, its intended audience, and the problems it aims to address. The section should give readers a high-level understanding of the model, including its scope, design principles, and how it fits within related specifications or standards.
+    </p>
+</section>
+{% endblock %}
+    
+{% block status %}
+<section id="specstatus">
+    <h2>Status</h2>
+    <p class="instruction">
+        The Status section should explain the current standing of the specification, including its level of formal recognition, publication date, and any relevant approval or recommendation information. It should also summarize the development process, key decisions, and provide references to changelogs or historical versions.
+        It is recommended to indicate the <a href="https://www.w3.org/2021/Process-20211102/#maturity-levels">maturity levels</a> of the specification.
+    </p>
+    <p>
+        {% if metadata.status and metadata.issued %}
+            This application profile has the status <i>{{ metadata.status }}</i> and has been published on {{ metadata.issued }}.
+        {% endif %}
+    </p>
+    <p>
+        History of changes to the project is available in <a href="{{ metadata.changelogUrl }}">Changelog</a>.
+    </p>
+</section>
+{% endblock %}
+
+{% block license %}
+<section id="speclicence">
+    <h2>License</h2>
+    <p class="instruction">
+        The License section should outline the legal terms under which the vocabulary and associated materials may be used, shared, and modified. It should clearly indicate copyright ownership, applicable licenses, exceptions, and any obligations or restrictions for users and contributors.
+    </p>
+    <p>
+        {% if metadata.license %}
+            This specification of {{ metadata.title }} is published under {{ metadata.license }}.
+        {% endif %}
+    </p>
+</section>
+{% endblock %}
+
+{% block conformance %}
+<section id="conformance">    
+    <p class="instruction">
+        The Conformance section should define which parts of the specification are normative versus non-normative, and how compliance should be interpreted. It should explain the meaning of key terms such as MUST, MAY, and SHOULD, and it should provide guidance on how these rules should be applied when using or extending the vocabulary.
+    </p>
+</section>
+{% endblock %}
+
+{% block terminology %}
+<section id="specterminology">
+    <h2>Terminology</h2>
+    <p class="instruction">
+        The Terminology section should introduce the key concepts, terms, and definitions used in the vocabulary. It should describe the purpose and scope of the vocabulary in a clear, context-neutral manner, and it should provide references to style guides, design principles, or related standards. It should also include technical conventions, such as prefixes, namespaces, and shorthand notation used for readability in RDF/OWL representations.
+    </p>
+
+    {% block usedPrefixesGen %}
+    <h3>Used Prefixes</h3>
+    <table id="table-namespaces" class="simple">
+        <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
+        <tbody>
+        {% for p in prefixes | sort(attribute='name') %}
+        <tr>
+            <td>
+            <code>{{p.name}}</code>
+            </td>
+            <td>
+            <code>{{p.uri}}</code>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
+</section>
+{% endblock %}
+
+{% block overview %}
+<section id="specoverview">
+    <h2>Overview</h2>
+    <div id="overview">
+        {% block overviewClassesGen %}
+            {% if ( ( classes | length > 0)   ) %}
+                    <p>
+                        This document describes the usage of the following main entities for a correct usage of the vocabulary:
+                        <br />
+                        | {%- for class in classes |sort(attribute=sortattr) %} 
+                {%- if class.rawTags['class-usage-scope'] == "main" %}
+                <a href="#{{ class.label[language] | replace(" ","") | urlencode }}">{{ class.label[language] }}</a> | {%- endif %}{%- endfor %}
+                    </p>
+                    <p>
+                        The main entities are supported by:
+                        <br />
+                        | {%- for class in classes |sort(attribute=sortattr) %} 
+                {%- if class.rawTags['class-usage-scope'] != "main" %}
+                <a href="#{{ class.label[language] | replace(" ","") | urlencode }}">{{ class.label[language] }}</a> | {%- endif %}{%- endfor %}
+                    </p>
+            {% endif %}
+        {% endblock %}
+        {% block overviewDatatypesGen %}
+            {% if ( ( datatypes | length ) > 0 ) %}
+                    <p>
+                        And supported by these datatypes:
+                        <br />
+                        | {%- for datatype in datatypes |sort(attribute=sortattr) %} <a href="#{{ datatype.label[language] | replace(" ","") | urlencode }}">{{ datatype.label[language] }}</a> | {%- endfor %}
+                    </p>
+            {% endif %}
+        {% endblock %}
+    </div>
+    <div>
+        <a href="{{ assetsRoot }}/overview.png"
+           target="_blank">
+            <img src="{{ assetsRoot }}/overview.png"
+                onerror="this.style.display='none'"/>
+        </a>
+    </div>
+</section>
+{% endblock %}
+
+
+{% block mainEntities %}
+<section>
+    <h2>Main Entities</h2>
+    The main entities are those that form the core of the vocabulary. 
+    Properties of entities are listed in a tabular form.
+
+    {% block mainEntitiesGen %}
+        {% for entity in classes | sort(attribute=sortattr) %}
+            {% if entity.rawTags['class-usage-scope'] == "main"   %}
+                {{ renderEntity(entity) }}
+            {% endif %}
+        {% endfor %}
+    {% endblock %}
+</section>
+{% endblock %}
+
+{% block supportiveEntities %}
+<section>
+    <h2>Supportive Entities</h2>
+    The supportive entities are supporting the main entities in the vocabulary. They are included in the vocabulary because they form the range of properties.
+
+    {% block supportiveEntitiesGen %}
+        {% for entity in classes | sort(attribute=sortattr) %}
+            {% if entity.rawTags['class-usage-scope'] != "main"   %}
+                {{ renderEntity(entity) }}
+            {% endif %}
+        {% endfor %}
+    {% endblock %}
+</section>
+{% endblock %}
+
+{% block datatypes %}
+<section>
+    <h2>Datatypes</h2>
+
+	The following datatypes are used within this specification.
+
+    {% block datatypesGen %}
+        <table class="data-table simple" id="table-mandatory-classes">
+            <thead>
+                <tr class="data-table__header">
+                    <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:25%">
+                        Class
+                    </th>
+                    <th class="data-table__header-title--sortable" style="width:70%">
+                        Definition
+                    </th>
+                    {% if metadata.openGithubIssue %}
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
+                            {{ metadata.openGithubIssue.columnLabel if metadata.openGithubIssue.columnLabel else 'Open an issue'}}
+                        </th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody class="supertype">
+                {% for entity in datatypes | sort(attribute=sortattr)%}
+                <tr>
+                    <td>
+                        {% if entity.scopeduri %}
+                            <div id="{{ entity.label[language] | replace(" ","") | urlencode }}">
+                                <a href="{{ entity.scopeduri }}"
+                                    data-toggle="tooltip"
+                                    data-content="{{ entity.uri }}"
+                                    data-placement="right">{{ entity.label[language] }}</a>
+                            </div>
+                        {% else %}
+                            <div id="{{ entity.label[language] | replace(" ","") | urlencode }}">
+                                <a href="{{ entity.uri }}"
+                                    data-toggle="tooltip"
+                                    data-content="{{ entity.uri }}"
+                                    data-placement="right">{{ entity.label[language] }}</a>
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ entity.description[language] | safe }}
+                    </td>
+                    <td>
+                        {{ renderFeedbackButton(entity) }}
+                    </td>
+                </tr>
+                {%- endfor %}
+            </tbody>
+        </table>
+    {% endblock %}
+</section>
+{% endblock %}
+
+{% block quickReference %}
+<section id="quick-reference" class="appendix">
+    <h2>Quick Reference of Classes and Properties</h2>
+
+    This section provides a condensed tabular overview of the mentioned classes and properties in this specification.
+
+    {% block quickReferenceGen %}
+        <table id="table-quickoverview" class="simple" style="width:100%; table-layout: fixed; word-wrap:break-word;">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Class IRI</th>
+                    <th>Property</th>
+                    <th>Property IRI</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in classes | sort(attribute=sortattr) %}
+                    {% if ((entity.properties | length) > 0 ) %}
+                        {% for prop in entity['properties'] | sort(attribute=sortattr) %}
+                            <tr>
+                                <td><a href="#{{ entity.label[language] | replace(" ","") | urlencode }}">{{ entity.label[language] }}</a></td>
+                                <td><div class="compact-uri">{{ entity.uri }}</div></td>
+                                <td><a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}">{{ prop.label[language] }} </a></td>
+                                <td><div class="compact-uri">{{ prop.uri }}</div></td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            <tbody>
+        </table>
+    {% endblock %}
+</section>
+{% endblock %}
+
+{% block resources %}
+<section id="resources" class="appendix">
+    <h2>Project resources</h2>
+    <p>
+        The following list provides links to semantic data specifications and other resources related to this vocabulary.
+    </p>
+    {% if assets and assets.sdsSection %}
+        <ul>
+            {% for asset in assets.sdsSection %}
+                <li><a href="{{ asset.path }}">{{ asset.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>
+{% endblock %}
+
+
+
+{% endblock %}
+<!-- ######################## End of page content ######################### -->
+</body>
+
+<!-- This must be at the end of the template, to ensure that the iterator properly works -->
+    <script defer>
+
+      const allPrefixes = {{ prefixes }};
+      var usablePrefixes = [];
+      for (var i = 0; i < allPrefixes.length; i++) {
+        if (allPrefixes[i].uri) {
+          usablePrefixes.push(allPrefixes[i]);
+        } else {
+          console.warn("Prefix missing 'uri' property (or has empty value):", allPrefixes[i]);
+        }
+      }
+
+      function compactUri(uri) {
+          var curie = uri;
+          for (e in usablePrefixes) {
+              var elem = usablePrefixes[e];
+              if (curie.startsWith(elem.uri)) {
+                curie = elem.name + ":" + curie.slice(elem.uri.length);
+                break;
+              }
+          };
+          return curie;
+      };
+
+      var compactUriElems = document.getElementsByClassName("compact-uri");
+      for (k=0;k < compactUriElems.length ; k++){
+          var selem = compactUriElems[k];	
+          selem.innerHTML = compactUri(selem.innerHTML.trim());
+      }
+      
+      function removePrefix(str) {
+          const index = str.indexOf(':');
+          if (index === -1) {
+              return str;
+          }
+          return str.slice(index + 1);
+      }
+
+      var noPrefix = document.getElementsByClassName("no-prefix");
+      for (k = 0; k < noPrefix.length; k++) {
+          var selem = noPrefix[k];
+          // If it's an <a> element, update its href
+            if (selem.tagName.toLowerCase() === "a" && selem.hasAttribute("href")) {
+            selem.setAttribute("href", removePrefix(decodeURIComponent(selem.getAttribute("href").trim())));
+          } else {
+            selem.innerHTML = removePrefix(decodeURIComponent(selem.innerHTML.trim()));
+          }
+      }
+      
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/javascript/javascript.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/turtle/turtle.min.js" ></script>
+    <script src="https://codemirror.net/5/mode/javascript/javascript.js" ></script>
+    <script src="https://unpkg.com/n3@1.14.0/browser/n3.min.js"></script>
+	<script src="https://rdf.js.org/comunica-browser/versions/v4/engines/query-sparql/comunica-browser.js"></script>
+    <script src="{{ jsScriptsRoot }}/example.js" ></script>
+	<script type="text/javascript">
+		function elementInView(elem){
+				goesIn = ($(window).height() + $(window).scrollTop()) > $(elem).offset().top;
+				goesOut = ($(window).scrollTop()) > ($(elem).offset().top + $(elem).height());
+				if (goesIn && !goesOut)
+					return 1;
+				else
+					return 0;
+			};
+
+		$(window).scroll(function(){
+			$('.CodeMirror').each(function(){
+				if (elementInView($(this))){
+					$(this).each(function(i, el){
+						el.CodeMirror.refresh();
+					});
+				}
+			});
+			
+		});
+	</script>
+	<style>
+		.CodeMirror {
+			border: 1px solid #eee;
+			height: auto;
+		}
+		.buttonsample {
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 10px 5px;
+			text-decoration: none;
+			float: right
+		}
+	    .chooseVersion {
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 9px 5px;
+			text-decoration: none;
+			float: right
+		}
+		.infosample {
+			cursor: pointer;
+			margin-top: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			border-radius:4px;
+			font-family: Arial;
+			color: grey;
+			font-size: 14px;
+			padding: 10px 0px;
+			text-decoration: none;
+			float: right
+		}
+		.buttonsample:hover {color:#2a70d3}
+		.tabsstyle {
+			padding: 10px;
+			overflow: hidden;
+		}
+		li.ui-tabs-tab > a:hover {
+			background-color:dodgerblue;
+			color:white;
+		}
+		table.simple {
+			font-size: small;
+			border-spacing:0;
+			border-collapse:collapse;
+			border-bottom:3px solid #005a9c
+		}
+		.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+		.simple th a{color:#fff;padding:3px 5px;text-align:left}
+		.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+		.simple td{padding:3px 10px;border-top:1px solid #ddd}
+		.simple tr:nth-child(even){background:#f0f6ff}
+		body.darkmode .simple th{background:#005a9c94;color:#ddd}
+		body.darkmode .simple th a{color:#ddd}
+		body.darkmode .simple tr:nth-child(even){background:#f0f6ff26}
+		body.darkmode :is(h4,h5,h6)+a.self-link::before {
+			color: var(--heading-text);
+		}
+		body.darkmode img {
+			background: none;
+		}
+		body.darkmode section#references :target {
+			background: #04162d;
+		}
+        .instruction { color: gray; font-style: italic; }
+
+        .feedbackButton {
+            width: 20px;
+            height: auto;
+        }
+
+	</style>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.2.2/css/buttons.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.print.min.js"></script>
+</html>
