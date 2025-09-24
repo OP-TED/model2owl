@@ -276,7 +276,7 @@
 
 
     <xd:doc>
-        <xd:desc>[common-stereotype-11] - The $stereotypeName$ stareotype is applied to
+        <xd:desc>[common-stereotype-11] - The $stereotypeName$ stereotype is applied to
             $elementName$. Stereotypes are discouraged in the current practice with some exceptions. </xd:desc>
         <xd:param name="element"/>
         <xd:param name="elementType"/>
@@ -295,7 +295,7 @@
                 if ($hasStereotype)
                 then
                     f:generateInfoMessage(fn:concat('The ', $element/*/@stereotype,
-                    ' stareotype is applied to ', $element/@name,
+                    ' stereotype is applied to ', $element/@name,
                     '. Stereotypes are discouraged in the current practice with some exceptions. '),
                     path($element),
                     'common-stereotype-11',
@@ -308,7 +308,7 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>[common-stereotype-12] - The $stereotypeName$ stareotype applied to $elementName$
+        <xd:desc>[common-stereotype-12] - The $stereotypeName$ stereotype applied to $elementName$
             is not known and will be ignored. </xd:desc>
         <xd:param name="element"/>
         <xd:param name="elementType"/>
@@ -329,7 +329,7 @@
                     ()
                 else
                     f:generateWarningMessage(fn:concat('The ', $element/*/@stereotype,
-                    ' stareotype applied to ', $element/@name,
+                    ' stereotype applied to ', $element/@name,
                     'is not known and will be ignored. '),
                     path($element),
                     'common-stereotype-12',
