@@ -142,8 +142,10 @@
             },
             'range': array{
             map{
-            'uri':  f:buildURIfromLexicalQName($attribute/properties/@type),
-            'name': string($attribute/properties/@type)
+            'range_uri':  f:buildURIfromLexicalQName($attribute/properties/@type),
+            'range_puri':  f:buildURIfromLexicalQName($attribute/properties/@type),
+            'range_curie': string($attribute/properties/@type),
+            'range_label': map{'en': f:lexicalQNameToWords($attribute/properties/@type, fn:true())}
             }
             },
             'cardinality': concat($attribute/bounds/@lower, '..', $attribute/bounds/@upper),
@@ -172,7 +174,7 @@
             'uri':   f:buildURIfromLexicalQName($association/target/role/@name),
             'name':  string($association/target/role/@name),
             'label': map{'en': f:lexicalQNameToWords($association/target/role/@name, fn:true())},
-            'description': map{'en': normalize-space(f:formatDocStringForJson($association/target/documentation/@value))},
+            'description': map{'en': normalize-space(f:formatDocStringForJson(f:getDocumentationForConnector($association)))},
             'usage': map{},
             'domain': array{
             map{
@@ -180,11 +182,12 @@
             'name': string($association/source/model/@name)
             }
             },
-            'scopedrange': array{
+            'range': array{
             map{
             'range_uri':  f:buildURIfromLexicalQName($association/target/model/@name),
             'range_puri':  f:buildURIfromLexicalQName($association/target/model/@name),
-            'range_label': map{'en': string($association/target/model/@name)}
+            'range_curie': string($association/target/model/@name),
+            'range_label': map{'en': f:lexicalQNameToWords($association/target/model/@name, fn:true())}
             }
             },
             'cardinality': string($association/target/type/@multiplicity),
@@ -213,7 +216,7 @@
             'uri':   f:buildURIfromLexicalQName($dependency/target/role/@name),
             'name':  string($dependency/target/role/@name),
             'label': map{'en': f:lexicalQNameToWords($dependency/target/role/@name, fn:true())},
-            'description': map{'en': normalize-space(f:formatDocStringForJson($dependency/target/documentation/@value))},
+            'description': map{'en': normalize-space(f:formatDocStringForJson(f:getDocumentationForConnector($dependency)))},
             'usage': map{},
             'domain': array{
             map{
@@ -223,8 +226,10 @@
             },
             'range': array{
             map{
-            'uri':  f:buildURIfromLexicalQName('skos:Concept'),
-            'name': 'skos:Concept'
+            'range_uri':  f:buildURIfromLexicalQName('skos:Concept'),
+            'range_puri':  f:buildURIfromLexicalQName('skos:Concept'),
+            'range_curie': 'skos:Concept',
+            'range_label': map{'en': 'Concept'}
             }
             },
             'cardinality': string($dependency/target/type/@multiplicity),

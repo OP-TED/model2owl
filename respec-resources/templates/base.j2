@@ -21,14 +21,14 @@
             {% set _issueBody = "Explain%20your%20issue%20for%20" 
              ~ metadata.navigation.self 
              ~ "%23" 
-             ~ ((entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode) %}
+             ~ ((entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode| title ) %}
        
             {% else %}
             {% set _issueTitle = "Issue%20for%20'" ~ entity.label[language] ~ "'" %}
             {% set _issueBody = "Explain%20your%20issue%20for%20" 
              ~ metadata.navigation.self 
              ~ "%23" 
-             ~ (entity.label[language] | replace(" ","") | urlencode) %}
+             ~ (entity.label[language] | replace(" ","") | urlencode| title ) %}
         {% endif %}
 
         <a href="{{ metadata.feedbackUrl }}/new?title={{ _issueTitle }}&body={{ _issueBody }}" target="_blank" rel="noopener noreferrer" >
@@ -39,7 +39,7 @@
 
 {% macro renderEntity(entity) %}
     <section>
-        <h3 id="{{ entity.label[language]| replace(" ","") |urlencode }}">
+        <h3 id="{{ entity.label[language]| replace(" ","") | urlencode | title }}">
             <a href="{{ entity.uri }}"
                 data-toggle="tooltip"
                 data-content="{{ entity.uri }}"
@@ -78,7 +78,7 @@
             </dt>
             {% if ((entity.properties | length) > 0 ) %}
                 <dd>
-                    For this entity the following properties are defined: {%- for prop in entity['properties'] | sort(attribute=sortattr) %} <a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}">{{ prop.label[language] }}</a>
+                    For this entity the following properties are defined: {%- for prop in entity['properties'] | sort(attribute=sortattr) %} <a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode | title }}">{{ prop.label[language] }}</a>
                     {% if not loop.last %},{% endif %}
                 {%- endfor %}.
                 </dd>
@@ -117,7 +117,7 @@
                     </thead>
                     <tbody class="supertype">
                         {% for prop in entity['properties'] | sort(attribute=sortattr) %}
-                            <tr id="{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}"
+                            <tr id="{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode | title }}"
                                 typeof="rdf:Property"
                                 resource="{{ prop.uri }}"
                                 class="class mandatory">-
@@ -129,15 +129,14 @@
                                         {{ prop.label[language] }}</a>
                                 </td>
                                 <td>
-                                    {% for range in prop.scopedrange %}
+                                    {% for range in prop.range %}
                                         {% if range['range_uri'] == range['range_puri'] %}
-                                            <a href="#{{ range['range_label'][language] | replace(" ","") | urlencode }}"
+                                            <a href="#{{ range['range_label'][language] | replace(" ","") | urlencode | title }}"
                                             data-toggle="tooltip"
                                             data-content="{{ range['range_puri'] }}"
-                                            data-placement="right"
-                                            class="no-prefix">{{ range['range_label'][language] }}</a>
+                                            data-placement="right">{{ range['range_curie'] }}</a>
                                         {% else %}
-                                            <a href="#{{ range['range_label'][language] | replace(" ","") | urlencode }}" data-placement="right" class="no-prefix">{{ range['range_label'][language] }}</a>
+                                            <a href="#{{ range['range_label'][language] | replace(" ","") | urlencode | title }}" data-placement="right">{{ range['range_curie'] }}</a>
                                         {% endif %}
                                     {% endfor %}
                                 </td>
@@ -439,14 +438,14 @@
                         <br />
                         | {%- for class in classes |sort(attribute=sortattr) %} 
                 {%- if class.rawTags['class-usage-scope'] == "main" %}
-                <a href="#{{ class.label[language] | replace(" ","") | urlencode }}">{{ class.label[language] }}</a> | {%- endif %}{%- endfor %}
+                <a href="#{{ class.label[language] | replace(" ","") | urlencode | title }}">{{ class.label[language] }}</a> | {%- endif %}{%- endfor %}
                     </p>
                     <p>
                         The main entities are supported by:
                         <br />
                         | {%- for class in classes |sort(attribute=sortattr) %} 
                 {%- if class.rawTags['class-usage-scope'] != "main" %}
-                <a href="#{{ class.label[language] | replace(" ","") | urlencode }}">{{ class.label[language] }}</a> | {%- endif %}{%- endfor %}
+                <a href="#{{ class.label[language] | replace(" ","") | urlencode | title }}">{{ class.label[language] }}</a> | {%- endif %}{%- endfor %}
                     </p>
             {% endif %}
         {% endblock %}
@@ -455,7 +454,7 @@
                     <p>
                         And supported by these datatypes:
                         <br />
-                        | {%- for datatype in datatypes |sort(attribute=sortattr) %} <a href="#{{ datatype.label[language] | replace(" ","") | urlencode }}">{{ datatype.label[language] }}</a> | {%- endfor %}
+                        | {%- for datatype in datatypes |sort(attribute=sortattr) %} <a href="#{{ datatype.label[language] | replace(" ","") | urlencode | title}}">{{ datatype.label[language] }}</a> | {%- endfor %}
                     </p>
             {% endif %}
         {% endblock %}
@@ -530,15 +529,15 @@
                 <tr>
                     <td>
                         {% if entity.scopeduri %}
-                            <div id="{{ entity.label[language] | replace(" ","") | urlencode }}">
-                                <a href="{{ entity.scopeduri }}"
+                            <div id="{{ entity.label[language] | replace(" ","") | urlencode | title }}">
+                                <a href="{{ entity.uri }}"
                                     data-toggle="tooltip"
                                     data-content="{{ entity.uri }}"
                                     data-placement="right">{{ entity.label[language] }}</a>
                             </div>
                         {% else %}
-                            <div id="{{ entity.label[language] | replace(" ","") | urlencode }}">
-                                <a href="{{ entity.uri }}"
+                            <div id="{{ entity.label[language] | replace(" ","") | urlencode | title }}">
+                                <a href="{{ entity.scopeduri }}"
                                     data-toggle="tooltip"
                                     data-content="{{ entity.uri }}"
                                     data-placement="right">{{ entity.label[language] }}</a>
@@ -580,9 +579,10 @@
                     {% if ((entity.properties | length) > 0 ) %}
                         {% for prop in entity['properties'] | sort(attribute=sortattr) %}
                             <tr>
-                                <td><a href="#{{ entity.label[language] | replace(" ","") | urlencode }}">{{ entity.label[language] }}</a></td>
+                                <td><a href="#{{ entity.label[language] | replace(' ', '') | urlencode | title }}">{{ entity.label[language] }}</a></td>
                                 <td><div class="compact-uri">{{ entity.uri }}</div></td>
-                                <td><a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(" ","") | urlencode }}">{{ prop.label[language] }} </a></td>
+                                <!-- <td><a href="#{{ entity.label[language] | replace(' ', '') | urlencode | title }}.{{prop.label[language] | replace(' ', '') | urlencode | title }}">{{ prop.label[language] }} </a></td> -->
+                                <td><a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(' ', '') | urlencode | title }}">{{ prop.label[language] }} </a></td>
                                 <td><div class="compact-uri">{{ prop.uri }}</div></td>
                             </tr>
                         {% endfor %}
@@ -645,25 +645,6 @@
       for (k=0;k < compactUriElems.length ; k++){
           var selem = compactUriElems[k];	
           selem.innerHTML = compactUri(selem.innerHTML.trim());
-      }
-      
-      function removePrefix(str) {
-          const index = str.indexOf(':');
-          if (index === -1) {
-              return str;
-          }
-          return str.slice(index + 1);
-      }
-
-      var noPrefix = document.getElementsByClassName("no-prefix");
-      for (k = 0; k < noPrefix.length; k++) {
-          var selem = noPrefix[k];
-          // If it's an <a> element, update its href
-            if (selem.tagName.toLowerCase() === "a" && selem.hasAttribute("href")) {
-            selem.setAttribute("href", removePrefix(decodeURIComponent(selem.getAttribute("href").trim())));
-          } else {
-            selem.innerHTML = removePrefix(decodeURIComponent(selem.innerHTML.trim()));
-          }
       }
       
     </script>
