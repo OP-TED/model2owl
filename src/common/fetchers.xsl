@@ -482,4 +482,26 @@
             </relation>
         </xsl:sequence>
     </xsl:function>
+    <xd:doc>
+        <xd:desc>
+            Extracts documentation from a connector. The documentation can be
+            defined either at the connector level or at the target element
+            level. If both are present, the documentation from the target
+            element is preferred.
+        </xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    <xsl:function name="f:getDocumentationForConnector" as="xs:string*">
+        <xsl:param name="connector"/>
+        <xsl:sequence
+        select="
+            if (boolean($connector/target/documentation/@value)) then
+                $connector/target/documentation/@value
+            else
+                if (boolean($connector/documentation/@value)) then
+                    $connector/documentation/@value
+                else
+                    ()
+            "/>
+    </xsl:function>
 </xsl:stylesheet>

@@ -338,4 +338,14 @@
         </x:scenario>
     </x:scenario>
 
+    <x:scenario label="Get definition from a connector">
+        <x:call function="f:getDocumentationForConnector">
+            <x:param name="connector" 
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[614]"/>
+        </x:call>
+        <x:expect label="definition is present"
+            select="'Reveals the winner to whom the tender award outcome is attributed.'"/>
+    </x:scenario>
+
 </x:description>
