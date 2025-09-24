@@ -934,7 +934,7 @@
     </xd:doc>
     <xsl:function name="f:getMetadataValue" as="item()?">
         <xsl:param name="keyName" as="xs:string"/>
-        <xsl:variable name="value" select="$metadataJson?($keyName)"/>
+        <xsl:variable name="value" select="$metadataJson?metadata?($keyName)"/>
         <xsl:choose>
             <xsl:when test="exists($value)">
                 <xsl:sequence select="$value"/>
@@ -954,7 +954,7 @@
     </xd:doc>
     <xsl:function name="f:getMetadataArray" as="array(*)">
         <xsl:param name="keyName" as="xs:string"/>
-        <xsl:variable name="value" select="$metadataJson?($keyName)"/>
+        <xsl:variable name="value" select="$metadataJson?metadata?($keyName)"/>
         <xsl:choose>
             <xsl:when test="exists($value) and $value instance of array(*)">
                 <xsl:sequence select="$value"/>
