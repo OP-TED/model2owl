@@ -53,9 +53,9 @@
                 <xsl:call-template name="generalizationUnidirectionalConnectorsDirection">
                     <xsl:with-param name="generalizationConnector" select="."/>
                 </xsl:call-template>
-                <xsl:call-template name="generalizationMissingOrInvalidClassGeneralization">
+                <!-- <xsl:call-template name="generalizationMissingOrInvalidClassGeneralization">
                     <xsl:with-param name="generalizationConnector" select="."/>
-                </xsl:call-template>
+                </xsl:call-template> -->
             </xsl:if>
         </xsl:variable>
         <xsl:if test="boolean($generalizationChecks)">
@@ -90,7 +90,7 @@
             select="f:getElementByIdRef($idRefTarget, root($generalizationConnector))"/>
         <xsl:sequence
             select="
-                if (count(f:getIncommingConnectors($targetElement)[properties/@ea_type = 'Generalization']) > 2) then
+                if (count(f:getIncommingConnectors($targetElement)[properties/@ea_type = 'Generalization']) > 1) then
                     ()
                 else
                     f:generateInfoMessage(fn:concat('The class ', $generalizationConnector/target/model/@name, ' has only one sub-class ',

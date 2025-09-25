@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:f="http://https://github.com/costezki/model2owl#" 
+    stylesheet="../../../src/jsonld-context-lib/connectors-jsonld-context.xsl">
+
+    <x:scenario label="Scenario for generation of context for all connectors - connectorsDeclaration">
+        <x:context
+            href="../../testData/ePO-core-4.2.0.xml" select="/"/>
+        <x:call template="connectorsDeclaration"/>
+        <x:expect label="there is an object entry" test="boolean(/fn:map)"/>
+        <x:expect label="there is object for internal association"
+            test="boolean(/fn:map[@key='ReviewDecision.resolvesReviewRequest'])"/>
+        <x:expect label="there is object for external association"
+            test="boolean(/fn:map[@key='Person.registeredAddress'])"/>
+        <x:expect label="there are objects for bidirectional association"
+        test="boolean(/fn:map[@key='System.isOwnedByAgent']) and boolean(/fn:map[@key='Agent.ownsSystem'])"/>
+        <x:expect label="there is object for internal dependency"
+            test="boolean(/fn:map[@key='AwardCriterion.hasAwardCriterionType'])"/>
+        <x:expect label="there is object for external dependency"
+            test="boolean(/fn:map[@key='Constraint.hasThresholdType'])"/>
+            <x:expect label="there are objects for the same relation associated with two different connectors"
+            test="boolean(/fn:map[@key='ResultNotice.refersToRole']) and boolean(/fn:map[@key='CompletionNotice.refersToRole'])"/>
+        <x:expect label="there is no object for excluded association (epo:status == 'proposed')"
+            test="not(boolean(/fn:map[@key='ProcurementElement.hasEstimatedValue']))"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for relation entry generation - relationGeneration">
+        <x:scenario label="Scenario for a connector with a single occurence allowed">
+            <x:call template="relationGeneration">
+                <x:param name="relation"
+                    href="../../testData/ePO-core-4.2.0.xml"
+                    select="f:getRelationsFromConnector(/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[604])[1]"/>
+            </x:call>
+            <x:expect label="the object has correct key" test="/fn:map/@key = 'SubmissionTerm.definesTenderProcessor'"/>
+            <x:expect label="there is an object entry with @id key" test="fn:map/fn:string/@key = '@id'"/>
+            <x:expect label="there is an object entry with @type key" test="fn:map/fn:string/@key = '@type'"/>
+            <x:expect label="there is no object entry with @container key" test="not(fn:map/fn:string[@key = '@container'])"/>
+        </x:scenario>
+        <x:scenario label="Scenario for a connector with multiple occurences allowed">
+            <x:call template="relationGeneration">
+                <x:param name="relation"
+                    href="../../testData/ePO-core-4.2.0.xml"
+                    select="f:getRelationsFromConnector(/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[595])[1]"/>
+            </x:call>
+            <x:expect label="there is an object" test="boolean(/fn:map)"/>
+            <x:expect label="the object has correct key" test="/fn:map/@key = 'Tender.specifiesSubcontractors'"/>
+            <x:expect label="there is an object entry with @id key" test="fn:map/fn:string/@key = '@id'"/>
+            <x:expect label="there is an object entry with @type key" test="fn:map/fn:string/@key = '@type'"/>
+            <x:expect label="there is an object entry with @container key" test="fn:map/fn:string/@key = '@container'"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Scenario for relation name to URI mapping - relationDeclaration">
+        <x:call template="relationDeclaration">
+            <x:param name="relCurie" select="'epo:definesTenderProcessor'"/>
+        </x:call>
+        <x:expect label="there is an object entry" test="boolean(/fn:string)"/>
+        <x:expect label="the object entry has correct key" test="/fn:string/@key = '@id'"/>
+        <x:expect label="the object entry has correct value"
+            test="/fn:string/text() = 'http://data.europa.eu/a4g/ontology#definesTenderProcessor'"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for relation type entry - relationTypeDeclaration">
+        <x:call template="relationTypeDeclaration"/>
+        <x:expect label="there is an object entry" test="boolean(/fn:string)"/>
+        <x:expect label="the object entry has correct key"
+            test="/fn:string/@key = '@type'"/>
+        <x:expect label="the object entry has correct value"
+            test="/fn:string/text() = '@id'"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for relation container declaration - relationContainerDeclaration">
+        <x:scenario label="Scenario for a relation with 1..* cardinality">
+            <x:call template="relationContainerDeclaration">
+                <x:param name="multiplicity" select="'1..*'"/>
+            </x:call>
+            <x:expect label="there is an object entry" test="boolean(/fn:string)"/>
+            <x:expect label="the object entry has correct key" test="/fn:string/@key = '@container'"/>
+            <x:expect label="the object entry has correct value" test="/fn:string/text() = '@set'"/>
+        </x:scenario>
+        <x:scenario label="Scenario for a relation with 0..1 cardinality">
+            <x:call template="relationContainerDeclaration">
+                <x:param name="multiplicity" select="'0..1'"/>
+            </x:call>
+            <x:expect label="nothing is generated" test="()"/>
+        </x:scenario>
+    </x:scenario>
+</x:description>

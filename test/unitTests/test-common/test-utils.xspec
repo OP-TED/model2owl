@@ -2,6 +2,7 @@
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:f="http://https://github.com/costezki/model2owl#"
+    xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"  
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -208,8 +209,17 @@
     <x:scenario label="Scenario xsd:integer for testing function lexicalQNameToWords">
         <x:call function="f:lexicalQNameToWords">
             <x:param name="lexicalqName">xsd:longInteger</x:param> 
+            <x:param name="useTitleCase" select="false()"/>
         </x:call>
         <x:expect label="result" select="string('long Integer')"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario xsd:integer for testing function lexicalQNameToWords - title case">
+        <x:call function="f:lexicalQNameToWords">
+            <x:param name="lexicalqName">xsd:longInteger</x:param> 
+            <x:param name="useTitleCase" select="true()"/>
+        </x:call>
+        <x:expect label="result" select="string('Long integer')"/>
     </x:scenario>
     
     
@@ -268,6 +278,30 @@
             <x:param name="attributeMultiplicityValue" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]/attributes[1]/attribute[2]/bounds[1]/@upper"/>
         </x:call>
         <x:expect label="result" select="()"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for determining if multiple attribute values are allowed">
+        <x:scenario label="multiple attribute values are allowed (max card = *)">
+            <x:call function="f:areMultipleAttributeValuesAllowed">
+                <x:param name="attribute" href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[156]/attributes[1]/attribute[2]"/>
+            </x:call>
+            <x:expect label="result" select="true()"/>
+        </x:scenario>
+        <x:scenario label="multiple attribute values are allowed (max card = 2)">
+            <x:call function="f:areMultipleAttributeValuesAllowed">
+                <x:param name="attribute" href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[166]/attributes[1]/attribute[3]"/>
+            </x:call>
+            <x:expect label="result" select="true()"/>
+        </x:scenario>
+        <x:scenario label="multiple attribute values are not allowed (max card = 1)">
+            <x:call function="f:areMultipleAttributeValuesAllowed">
+                <x:param name="attribute" href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[159]/attributes[1]/attribute[1]"/>
+            </x:call>
+            <x:expect label="result" select="false()"/>
+        </x:scenario>
     </x:scenario>
     
     <x:scenario label="Scenario for checking if connector target and source are in the model - True">
@@ -424,6 +458,56 @@
             <x:expect label="err:description" test="$x:result?err?description"
                 select="'The function supports only a compact URI'" />
         </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Testing JSON metadata functions">
+        
+        <x:scenario label="Testing f:getMetadataValue function">
+            <x:scenario label="Get simple string value">
+                <x:call function="f:getMetadataValue">
+                    <x:param name="keyName" select="'preferredNamespacePrefix'"/>
+                </x:call>
+                <x:expect label="result" select="'epo'"/>
+            </x:scenario>
+            
+        </x:scenario>
+        
+        <x:scenario label="Testing f:getMetadataArray function">
+            <x:scenario label="Get seeAlsoResources array">
+                <x:call function="f:getMetadataArray">
+                    <x:param name="keyName" select="'seeAlsoResources'"/>
+                </x:call>
+                <x:expect label="result is array" test="$x:result instance of array(*)"/>
+                <x:expect label="array has four items" test="array:size($x:result) = 4"/>
+            </x:scenario>
+            
+            <x:scenario label="Get dependencies array (empty)">
+                <x:call function="f:getMetadataArray">
+                    <x:param name="keyName" select="'dependencies'" />
+                </x:call>
+                <x:expect label="result is array" test="$x:result instance of array(*)"/>
+                <x:expect label="array is empty" test="array:size($x:result) = 0"/>
+            </x:scenario>
+            
+            <x:scenario catch="yes" label="Get non-existent array throws error">
+                <x:call function="f:getMetadataArray">
+                    <x:param name="keyName" select="'nonExistentArray'"/>
+                </x:call>
+                <x:expect label="err:code" test="$x:result?err?code" select="xs:QName('keyNotFoundError')"/>
+                <x:expect label="err:description" test="$x:result?err?description" 
+                    select="'Error: Key ''nonExistentArray'' not found in metadata JSON.'"/>
+            </x:scenario>
+            
+            <x:scenario catch="yes" label="Get non-array value throws error">
+                <x:call function="f:getMetadataArray">
+                    <x:param name="keyName" select="'ontologyTitleCore'"/>
+                </x:call>
+                <x:expect label="err:code" test="$x:result?err?code" select="xs:QName('notArrayError')"/>
+                <x:expect label="err:description" test="$x:result?err?description" 
+                    select="'Error: Key ''ontologyTitleCore'' exists but is not an array in metadata JSON.'"/>
+            </x:scenario>
+        </x:scenario>
+        
     </x:scenario>
 
 </x:description>

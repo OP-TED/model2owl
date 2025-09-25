@@ -2,8 +2,9 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+    xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:fn="http://www.w3.org/2005/xpath-functions"
-    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn"
+    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn array"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI" xmlns:functx="http://www.functx.com"
@@ -27,6 +28,11 @@
             fn:doc($enrichedNamespacesPath)
         else fn:error(xs:QName('missing-parameter'), 'enrichedNamespacesPath is not given.')
     "/>
+
+    <!-- path to a file with a set of URIs to be included for importing in the
+    generated ontologies using the `owl:imports` property -->
+    <xsl:param name="importsPath"/>
+    <xsl:variable name="urisToBeImported" select="fn:doc($importsPath)"/>
 
     <xd:doc>
         <xd:desc> Lookup a data-type in the xsd and rdf accepted data-type document (usually an
@@ -120,6 +126,21 @@
         />
     </xsl:function>
 
+    <xd:doc>
+        <xd:desc>Get the prefix from a Qname (prefix:LocalSegment).</xd:desc>
+        <xd:param name="name"/>
+    </xd:doc>
+    <xsl:function name="f:getPrefix">
+        <xsl:param name="lexicalQName"/>
+        <xsl:sequence
+            select="
+                if (fn:contains($lexicalQName, ':') and boolean(fn:substring-before($lexicalQName, ':'))) then
+                    fn:substring-before($lexicalQName, ':')
+                else
+                    ''
+            "
+        />
+    </xsl:function>
 
     <xd:doc>
         <xd:desc>Build the QName for a lexicalQName. The prefix definition is fetched from the
@@ -230,27 +251,80 @@
      <xd:doc>
         <xd:desc>
             Turns the local segment of a lexicalised qName into words, handling
-            acronyms and camel case properly.
+            acronyms and camel case properly. 
+            
+            If `useTitleCase` is true, then the first letter of the first word
+            is capitalized, and the rest of the words are lowercased (unless
+            they are acronyms, which are left as-is). For example,
+            "exposureDateTime" becomes "Exposure date time", and "hasURL"
+            becomes "Has URL".
+
+            If `useTitleCase` is set to false, the function splits the given
+            camel-cased label into individual words. For instance, "hasLongName"
+            becomes "has Long Name", and "hasURL" becomes "has URL".
         </xd:desc>
         <xd:param name="lexicalqName"/>
+        <xd:param name="useTitleCase"/>
     </xd:doc>
     <xsl:function name="f:lexicalQNameToWords" as="xs:string">
         <xsl:param name="lexicalqName" as="xs:string"/>
+        <xsl:param name="useTitleCase" as="xs:boolean?"/>
         <xsl:variable name="localName"
             select="fn:local-name-from-QName(f:buildQNameFromLexicalQName($lexicalqName))"/>
-        <xsl:sequence 
-            select="fn:string-join(f:getSegmentsFromCamelCaseText($localName), ' ')" />
+        <xsl:variable name="_fixedText" select="f:getSegmentsFromCamelCaseText($localName)"/>
+        <xsl:sequence select="
+            if ($useTitleCase = true()) then
+                f:toTitleCase($_fixedText)
+            else
+                $_fixedText
+        "/>
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>
+            Translates space-separated words into title case. The first letter
+            of the first word is capitalized, the rest are lowercased (unless
+            the word is an acronym, which is left as-is). For example, "exposure
+            Date Time" becomes "Exposure date time", and "has URL" becomes "Has
+            URL".
+        </xd:desc>
+        <xd:param name="text"/>
+    </xd:doc>
+    <xsl:function name="f:toTitleCase" as="xs:string">
+        <xsl:param name="text" as="xs:string"/>
+        <xsl:variable name="normalized" select="normalize-space($text)"/>
+        <xsl:choose>
+            <xsl:when test="$normalized = upper-case($normalized)">
+                <xsl:sequence select="$normalized"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="words" select="tokenize($normalized, '\s+')" as="xs:string*"/>
+                <xsl:variable name="fixedWords" select="
+                    for $i in 1 to count($words)
+                        return
+                            if ($words[$i] = upper-case($words[$i])) then
+                                $words[$i]
+                            else if ($i = 1) then
+                                    upper-case(substring($words[$i], 1, 1)) 
+                                        || lower-case(substring($words[$i], 2))
+                                else
+                                    lower-case($words[$i])
+                "/>
+                <xsl:sequence select="fn:string-join($fixedWords, ' ')" />
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
 
     <xd:doc>
         <xd:desc>
             Splits a camelCase name into a text. Supports acronyms.
+            Returns a single string with segments separated by spaces.
         </xd:desc>
         <xd:param name="text"/>
     </xd:doc>
     <!-- The underlying function works on a reversed text as this makes
     identification of the segments easier. -->
-    <xsl:function name="f:getSegmentsFromCamelCaseText" as="xs:string*">
+    <xsl:function name="f:getSegmentsFromCamelCaseText" as="xs:string">
         <xsl:param name="text" as="xs:string"/>
         <xsl:sequence 
             select="for $segment in f:_getSegmentsRec(functx:reverse-string($text))
@@ -444,6 +518,40 @@
     </xsl:function>
 
     <xd:doc>
+        <xd:desc>
+            Determines if multiple values for the attribute are allowed by
+            checking the attribute multiplicity.
+        </xd:desc>
+        <xd:param name="attribute"/>
+    </xd:doc>
+    <xsl:function name="f:areMultipleAttributeValuesAllowed">
+        <xsl:param name="attribute"/>
+        <xsl:variable name="attributeMultiplicityMax"
+            select="$attribute/bounds/@upper"/>
+        <xsl:sequence
+            select="not($attributeMultiplicityMax = ('', '0', '1'))"
+        />
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>
+            Determines if multiple values for the relation range are allowed by
+            checking the connector multiplicity.
+        </xd:desc>
+        <xd:param name="multiplicity"/>
+    </xd:doc>
+    <xsl:function name="f:areMultipleValuesForRelationRangeAllowed">
+        <xsl:param name="multiplicity"/>
+        <xsl:variable name="multiplicityString"
+            select="f:normalizeMultiplicity($multiplicity)"/>
+        <xsl:variable name="targetMaxMultiplicity"
+            select="fn:substring-after($multiplicityString, '..')"/>
+        <xsl:sequence
+            select="boolean($targetMaxMultiplicity) and not($targetMaxMultiplicity = ('', '0', '1'))"
+        />
+    </xsl:function>
+
+    <xd:doc>
         <xd:desc>Check if connector target and source are in the model</xd:desc>
         <xd:param name="connector"/>
     </xd:doc>
@@ -576,7 +684,8 @@
     </xd:doc>
     <xsl:function name="f:buildShapeURI">
         <xsl:param name="uri"/>
-        <xsl:sequence select="fn:concat($base-shape-uri, $defaultDelimiter, f:normaliseURI($uri))"/>
+        <xsl:sequence
+            select="fn:concat($base-shape-uri, $defaultDelimiter, f:normaliseURI($uri), $nodeShapeURIsuffix)"/>
     </xsl:function>
 
 
@@ -817,6 +926,52 @@
         <xsl:variable name="sourceConnector"
             select="f:getConnectorByIdRef($sourceConnectorIdref, root($generalisation))"/>
         <xsl:sequence select="$sourceConnector"/>
+    </xsl:function>
+    
+    <xd:doc>
+        <xd:desc>Extract a value from the JSON metadata by key name (preserves original type)</xd:desc>
+        <xd:param name="keyName">The key name to extract from the JSON metadata</xd:param>
+    </xd:doc>
+    <xsl:function name="f:getMetadataValue" as="item()?">
+        <xsl:param name="keyName" as="xs:string"/>
+        <xsl:variable name="value" select="$metadataJson?metadata?($keyName)"/>
+        <xsl:choose>
+            <xsl:when test="exists($value)">
+                <xsl:sequence select="$value"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="fn:error(
+                    xs:QName('keyNotFoundError'),
+                    concat('Error: Key ''', $keyName, ''' not found in metadata JSON.')
+                    )"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+    
+    <xd:doc>
+        <xd:desc>Get a JSON array from metadata by key name</xd:desc>
+        <xd:param name="keyName">The key name to extract the array from JSON metadata</xd:param>
+    </xd:doc>
+    <xsl:function name="f:getMetadataArray" as="array(*)">
+        <xsl:param name="keyName" as="xs:string"/>
+        <xsl:variable name="value" select="$metadataJson?metadata?($keyName)"/>
+        <xsl:choose>
+            <xsl:when test="exists($value) and $value instance of array(*)">
+                <xsl:sequence select="$value"/>
+            </xsl:when>
+            <xsl:when test="exists($value)">
+                <xsl:sequence select="fn:error(
+                    xs:QName('notArrayError'),
+                    concat('Error: Key ''', $keyName, ''' exists but is not an array in metadata JSON.')
+                    )"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="fn:error(
+                    xs:QName('keyNotFoundError'),
+                    concat('Error: Key ''', $keyName, ''' not found in metadata JSON.')
+                    )"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
 
 </xsl:stylesheet>

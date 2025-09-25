@@ -1,4 +1,5 @@
-
+# architecture (e.g. amd64, arm64)
+ARCH?=amd64
 # Model2owl directory
 MODEL2OWL_FOLDER?=.
 ABSOLUTE_MODEL2OWL_FOLDER?=$(shell realpath "${MODEL2OWL_FOLDER}")
@@ -7,6 +8,7 @@ RDF_LIB_VERSION?=6.2.0
 #Saxon path
 SAXON?=${MODEL2OWL_FOLDER}/saxon/saxon.jar
 JENA_RIOT_TOOL?=${MODEL2OWL_FOLDER}/jena/apache-jena-4.10.0/bin/riot
+JQ=${MODEL2OWL_FOLDER}/jq/jq
 TEMP_FILE=./temp_file.txt
 # Glossary output directory
 OUTPUT_GLOSSARY_PATH?=output
@@ -35,11 +37,30 @@ TURTLE_FILELIST=$(shell ls ${ONTOLOGY_FOLDER_PATH}/*.ttl)
 WIDOCO_RDF_INPUT_FILE_PATH?=test/reasoning-investigation/model-2020-12-16/ePO_restrictions.rdf
 WIDOCO_OUTPUT_FOLDER_PATH?=output/widoco
 NAMESPACES_USER_XML_FILE_PATH?=${MODEL2OWL_FOLDER}/test/ePO-default-config/namespaces.xml
+IMPORTS_XML_FILE_PATH?=${ABSOLUTE_MODEL2OWL_FOLDER}/test/ePO-default-config/imports.xml
 INTERM_FOLDER_PATH?=${ABSOLUTE_MODEL2OWL_FOLDER}/.temp
 ENRICHED_NAMESPACES_XML_PATH:=${INTERM_FOLDER_PATH}/enriched-namespaces.xml
 NAMESPACES_AS_RDFPIPE_ARGS=$(shell ${MODEL2OWL_FOLDER}/scripts/get_namespaces.sh ${ENRICHED_NAMESPACES_XML_PATH})
 RDF_XML_MIME_TYPE:='application/rdf+xml'
 TURTLE_MIME_TYPE:='turtle'
+JSONLD_CONTEXT_INDENTATION?=2
+
+# default locations for artefacts and other resource files
+OWL_CORE_FILE_PATH?=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.rdf
+OWL_RESTR_FILE_PATH?=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.rdf
+SHACL_SHAPES_FILE_PATH?=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.rdf
+JSONLD_CONTEXT_FILE_PATH?=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_context.jsonld
+MODEL_XMI_FILE_PATH?=${ABSOLUTE_MODEL2OWL_FOLDER}/test/testData/ePO-core-4.2.0.xml
+MODEL_EAP_FILE_PATH?=
+
+# respec variables with default values
+RESPEC_JSON_INDENTATION?=2
+RESPEC_DATA_JSON_PATH?=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json
+RESPEC_METADATA_JSON_PATH?=${ABSOLUTE_MODEL2OWL_FOLDER}/test/ePO-default-config/metadata.json
+RESPEC_INPUT_ASSETS_DIR=${ABSOLUTE_MODEL2OWL_FOLDER}/respec-resources/assets
+SDS_FILES_JSON_LOCATION=.assets.sdsSection
+RESPEC_OUTPUT_DIR?=${OUTPUT_FOLDER_PATH}/respec
+RESPEC_SDS_OUTPUT_DIR=${RESPEC_OUTPUT_DIR}/sds
 
 # download saxon library
 get-saxon: saxon/saxon.jar
@@ -56,8 +77,14 @@ get-jena-cli-tools: jena/apache-jena/bin/riot
 jena/apache-jena/bin/riot:
 	@echo Installing jena-cli-tools
 	mkdir -p jena
-		cd jena  && curl -L -o jena.zip "https://archive.apache.org/dist/jena/binaries/apache-jena-5.3.0.zip" && unzip jena.zip && rm -rf jena.zip && ln -s apache-jena-* apache-jena
+	cd jena  && curl -L -o jena.zip "https://archive.apache.org/dist/jena/binaries/apache-jena-5.3.0.zip" && unzip jena.zip && rm -rf jena.zip && ln -s apache-jena-* apache-jena
 	@echo 'Jena riot tool path is jena/apache-jena/bin/riot'
+
+get-jq: jq/jq
+
+jq/jq:
+	mkdir jq
+	cd jq  && curl -L -o jq https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-linux-${ARCH} && chmod +x jq
 
 # install rdflib
 get-rdflib: model2owl-venv/bin/rdfpipe
@@ -68,21 +95,43 @@ model2owl-venv/bin/rdfpipe: model2owl-venv
 
 get-widoco: widoco/widoco.jar
 
+get-jinja:
+	@echo Installing jinja
+	@source model2owl-venv/bin/activate && pip install jinja-cli
+
 widoco/widoco.jar:
 	@echo Installing widoco
 	mkdir widoco
 	cd widoco  && curl -L -o widoco.jar "https://github.com/dgarijo/Widoco/releases/download/v1.4.17/java-11-widoco-1.4.17-jar-with-dependencies.jar"
 
+get-python-test-deps:
+	@echo Installing test dependencies
+	source model2owl-venv/bin/activate && pip install -r requirements-test.txt
+
 ######################################################################################
 # Download, install saxon, xspec, rdflib and other dependencies
 ######################################################################################
-install:  get-saxon get-rdflib get-widoco get-jena-cli-tools
+install:  get-saxon get-rdflib get-widoco get-jena-cli-tools get-jinja get-jq
 
 ############################ Main tasks ##############################################
-# Run unit_tests
+# Run all tests
+test: unit-tests functional-tests
+	@mvn surefire-report:report-only
+
+# Run functional tests in Python
+functional-tests: .deps_installed
+	@mvn exec:exec@run-pytest
+
+.deps_installed: requirements-test.txt
+	@make get-python-test-deps
+	touch .deps_installed
+
+# Run unit tests in XSpec
 unit-tests:
 	@make test-prerequisites
-	@mvn install -Dsaxon.options.enrichedNamespacesPath=${ENRICHED_NAMESPACES_XML_PATH}
+	@mvn xspec:run-xspec \
+		-Dsaxon.options.enrichedNamespacesPath=${ENRICHED_NAMESPACES_XML_PATH} \
+		-Dsaxon.options.importsPath=${IMPORTS_XML_FILE_PATH}
 
 # Actions required in order to setup the environment for testing purposes.
 # Usage (`[]` denotes an optional argument; if omited, default value will be used):
@@ -167,8 +216,10 @@ generate-convention-SVRL-report:
 # make (owl-core | owl-restrictions | shacl) [XMI_INPUT_FILE_PATH=/path/to/cm.xmi] 
 #	[OUTPUT_FOLDER_PATH=/output/directory]
 #	[NAMESPACES_USER_XML_FILE_PATH=/path/to/namespaces.xml]
+#	[IMPORTS_XML_FILE_PATH=/path/to/imports.xml]
 # where:
-#   NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file provided by a user
+#   NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file containing namespaces provided by a user
+#	IMPORTS_XML_FILE_PATH: path to the *.xml file containing URIs to be imported provided by a user
 #
 # Example:
 # make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/eNotice_CM.xml OUTPUT_FOLDER_PATH=./my-folder
@@ -176,7 +227,8 @@ owl-core:
 	@make gen-enriched-ns-file
 	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/owl-core.xsl \
 		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.tmp.rdf \
-		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}" \
+		importsPath="${IMPORTS_XML_FILE_PATH}"
 	@make convert-between-serialization-formats INPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		OUTPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}.tmp.rdf \
@@ -189,7 +241,8 @@ owl-restrictions:
 	@make gen-enriched-ns-file
 	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/owl-restrictions.xsl \
 		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.tmp.rdf \
-		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}" \
+		importsPath="${IMPORTS_XML_FILE_PATH}"
 	@make convert-between-serialization-formats INPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		OUTPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_restrictions.tmp.rdf \
@@ -202,7 +255,8 @@ shacl:
 	@make gen-enriched-ns-file
 	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/shacl-shapes.xsl \
 		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf \
-		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}" \
+		importsPath="${IMPORTS_XML_FILE_PATH}"
 	@make convert-between-serialization-formats INPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		OUTPUT_FORMAT=${RDF_XML_MIME_TYPE} \
 		FILE_PATH=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf \
@@ -210,6 +264,41 @@ shacl:
 	@echo Output shacl file location:
 	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.rdf
 	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf
+
+respec-json:
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/rspec-json-generate.xsl \
+		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json.tmp \
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}" \
+		importsPath="${IMPORTS_XML_FILE_PATH}"
+	@# reformat the JSON file to be more readable
+	@cat ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json.tmp \
+		| python3 -c "import sys, json; \
+		data = json.load(sys.stdin); \
+		print(json.dumps(data, sort_keys=True, indent=int(${RESPEC_JSON_INDENTATION})))" \
+		> ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json
+	@echo Output respec json file location:
+	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json
+	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json.tmp
+	
+# make generate-jsonld-context [XMI_INPUT_FILE_PATH=/path/to/cm.xmi] 
+#	[OUTPUT_FOLDER_PATH=/output/directory]
+#   [JSONLD_CONTEXT_INDENTATION=indentation_size]
+# where:
+#   JSONLD_CONTEXT_INDENTATION: Indentation for the generated file (defaults to 2 spaces)
+generate-jsonld-context:
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/jsonld-context.xsl \
+		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_context.jsonld.tmp \
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
+	@# reformat the JSON-LD context file to be more readable
+	@cat ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_context.jsonld.tmp \
+		| python3 -c "import sys, json; \
+		data = json.load(sys.stdin); \
+		print(json.dumps(data, sort_keys=True, indent=int(${JSONLD_CONTEXT_INDENTATION})))" \
+		> ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_context.jsonld
+
+	@echo Output JSON-LD context file:
+	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_context.jsonld
+	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_context.jsonld.tmp
 
 # Generate enriched namespaces XML file which contains user namespaces (defined
 # in namespaces.xml) and internal namespaces (such as core-shape)
@@ -292,6 +381,111 @@ convert-rdf-to-rdf:
 		echo " ==> Output in RDF/XML format";  \
 		ls -lh $${FILE_PATH%.*}.rdf;  \
 	done
+
+# Creates ReSpec HTML documentation package for an ontology.
+# Steps performed:
+#  1. Optionally generates a ReSpec JSON data file (if not provided).
+#  2. Copies static assets and ontology artefacts (OWL, SHACL, JSON-LD, UML
+#     files) to the ReSpec package directory.
+#  3. Updates the metadata JSON to reference all included artefacts.
+#  4. Merges metadata and data JSON files for use in documentation generation.
+#  5. Renders the final HTML documentation using Jinja templates.
+#
+# Usage (`[]` denotes an optional argument; if omited, default value will be used):
+# make generate-respec-new 
+#	[RESPEC_OUTPUT_DIR=/output/respec_package]
+#	[RESPEC_DATA_JSON_PATH=/path/to/respec-data.json]
+#	[RESPEC_METADATA_JSON_PATH=/path/to/metadata.json]
+#	[RESPEC_INPUT_ASSETS_DIR=/path/to/static/assets]
+#	[XMI_INPUT_FILE_PATH=/path/to/model.xmi]
+#	[MODEL_EAP_FILE_PATH=/path/to/model.eap]
+#	[OUTPUT_FOLDER_PATH=/path/to/generated/model2owl/artefacts]
+#	[OWL_CORE_FILE_PATH=/path/to/owl-core.rdf]
+#	[OWL_RESTR_FILE_PATH=/path/to/owl-restrictions.rdf]
+#	[SHACL_SHAPES_FILE_PATH=/path/to/shacl-shapes.rdf]
+#	[JSONLD_CONTEXT_FILE_PATH=/path/to/jsonld-context.jsonld]
+# where:
+#   RESPEC_OUTPUT_DIR: Output directory for the documentation package.
+#   RESPEC_DATA_JSON_PATH: (Optional) Path to the ReSpec data JSON file.
+#   RESPEC_METADATA_JSON_PATH: Path to the metadata JSON file.
+#   RESPEC_INPUT_ASSETS_DIR: Directory containing static assets (images, examples, etc.).
+#   XMI_INPUT_FILE_PATH: Path to the UML XMI model file.
+#   MODEL_EAP_FILE_PATH: Path to the UML EAP model file.
+#   OUTPUT_FOLDER_PATH: Directory containing generated model2owl artefacts.
+#   OWL_CORE_FILE_PATH: Path to the generated OWL core file.
+#   OWL_RESTR_FILE_PATH: Path to the generated OWL restrictions file.
+#   SHACL_SHAPES_FILE_PATH: Path to the generated SHACL shapes file.
+#   JSONLD_CONTEXT_FILE_PATH: Path to the generated JSON-LD context file.
+#
+# If OUTPUT_FOLDER_PATH is given then OWL_CORE_FILE_PATH, OWL_RESTR_FILE_PATH,
+# SHACL_SHAPES_FILE_PATH, and JSONLD_CONTEXT_FILE_PATH can be skipped if the
+# file names follow the default naming convention and are located in
+# OUTPUT_FOLDER_PATH.
+generate-respec:
+	@## Add a key-value artefact entry to the metadata JSON file. \
+	extend_metadata_json() { \
+		local json_file="$$1"; \
+		local key="$$2"; \
+		local value="$$3"; \
+		tmp=$$(mktemp --suffix=".json"); \
+		$(JQ) --arg k "$$key" --arg v "$$value" '${SDS_FILES_JSON_LOCATION} += [{"name": $$k, "path": $$v}]' "$$json_file" > $$tmp && mv $$tmp "$$json_file"; \
+		rm -f $$tmp; \
+	}; \
+	\
+	## Copy artefact to output ReSpec directory and records its relative path in metadata JSON. \
+	handle_artefact_file() { \
+		local json_file="$$1"; \
+		local artefact_name="$$2"; \
+		local artefact_path="$$3"; \
+		local output_dir="${RESPEC_SDS_OUTPUT_DIR}"; \
+		local respec_root_dir="${RESPEC_OUTPUT_DIR}"; \
+		if [ -f "$$artefact_path" ]; then \
+			cp "$$artefact_path" "$$output_dir"; \
+			file_name_without_path=$$(basename "$$artefact_path"); \
+			rel_path=""; \
+			pushd "$$respec_root_dir" > /dev/null; \
+			rel_path=$$(find . -name "$$file_name_without_path" | head -n 1); \
+			popd > /dev/null; \
+			extend_metadata_json "$$json_file" "$$artefact_name" "$$rel_path"; \
+		else \
+			echo "[WARN] Artefact '$$artefact_name' not found at '$$artefact_path'" >&2; \
+		fi; \
+	}; \
+	\
+	mkdir -p ${RESPEC_SDS_OUTPUT_DIR}; \
+	\
+	# Copy any provided artefacts and log them in the metadata JSON \
+	ext_md_json=$$(mktemp --suffix=".json"); \
+	cp -f ${RESPEC_METADATA_JSON_PATH} $$ext_md_json; \
+	handle_artefact_file $$ext_md_json "OWL core file" "${OWL_CORE_FILE_PATH}" ; \
+	handle_artefact_file $$ext_md_json "OWL restrictions file" "${OWL_RESTR_FILE_PATH}" ; \
+	handle_artefact_file $$ext_md_json "SHACL shapes file" "${SHACL_SHAPES_FILE_PATH}" ; \
+	handle_artefact_file $$ext_md_json "JSON-LD context file" "${JSONLD_CONTEXT_FILE_PATH}" ; \
+	handle_artefact_file $$ext_md_json "UML XMI model file" "${XMI_INPUT_FILE_PATH}" ; \
+	handle_artefact_file $$ext_md_json "UML EAP model file" "${MODEL_EAP_FILE_PATH}" ; \
+	\
+	# generate a respec JSON if not provided \
+	if [ ! -e ${RESPEC_DATA_JSON_PATH} ]; then \
+		echo "Generating a ReSpec JSON data file..."; \
+		$(MAKE) respec-json XMI_INPUT_FILE_PATH=${XMI_INPUT_FILE_PATH} OUTPUT_FOLDER_PATH=${OUTPUT_FOLDER_PATH} ; \
+	fi; \
+	\
+	# merge the metadata and data JSON files into a single JSON file to be used \
+	# for generating the respec document \
+	merged_json=$$(mktemp --suffix=".json"); \
+	$(JQ) -s 'reduce .[] as $$item ({}; . * $$item)' ${RESPEC_DATA_JSON_PATH} $$ext_md_json > $$merged_json; \
+	\
+	# copy other static assets (e.g. images, examples) to the output folder \
+	cp -rf ${RESPEC_INPUT_ASSETS_DIR} ${RESPEC_OUTPUT_DIR}; \
+	\
+	# run jinja to generate the respec document \
+	source model2owl-venv/bin/activate; \
+	jinja -d $$merged_json respec-resources/templates/main.j2 -o ${RESPEC_OUTPUT_DIR}/index.html; \
+	\
+	echo "Output respec package:"; \
+	ls -ldh ${RESPEC_OUTPUT_DIR}; \
+	command -v tree > /dev/null 2>&1 && tree "${RESPEC_OUTPUT_DIR}"; \
+	rm -f $$merged_json
 
 # A generic recipe for converting RDF data from one serialization format to 
 # another. It can also be used to regenerate a file using the same format.

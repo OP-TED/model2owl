@@ -7,6 +7,7 @@
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     xmlns:f="http://https://github.com/costezki/model2owl#"
     xmlns:bibo="http://purl.org/ontology/bibo/"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -17,7 +18,7 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:vann="http://purl.org/vocab/vann/"
-    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn f bibo"
+    exclude-result-prefixes="xs math xd xsl uml xmi umldi fn f bibo array"
     version="3.0">
     <xd:doc scope="stylesheet">
         <xd:desc>
@@ -54,39 +55,43 @@
     </xd:doc>
     <xsl:template name="ontology-header">
         <owl:Ontology rdf:about="{$restrictionsArtefactURI}">            
-            <xsl:for-each select="$internalNamespacePrefixes/*:prefixes/*:prefix/@importURI">              
+            <xsl:for-each select="$urisToBeImported/*:imports/*:all/*:import/@uri">              
                 <owl:imports rdf:resource="{.}"/>
-            </xsl:for-each>      
+            </xsl:for-each>
+            <xsl:for-each select="$urisToBeImported/*:imports/*:restrictions/*:import/@uri">              
+                <owl:imports rdf:resource="{.}"/>
+            </xsl:for-each>
             <owl:imports rdf:resource="{$coreArtefactURI}"/>
             <dct:title xml:lang="en">
-                <xsl:value-of select="$ontologyTitleRestrictions"/>
+                <xsl:value-of select="f:getMetadataValue('ontologyTitleRestrictions')"/>
             </dct:title>
             <rdfs:label xml:lang="en">
-                <xsl:value-of select="$ontologyLabelRestrictions"/>
+                <xsl:value-of select="f:getMetadataValue('ontologyLabelRestrictions')"/>
             </rdfs:label>
             <dct:publisher>
-                <xsl:value-of select="$publisher"/>
+                <xsl:value-of select="f:getMetadataValue('publisher')"/>
             </dct:publisher>
             <dct:description xml:lang="en">
-                <xsl:value-of select="$ontologyDescriptionRestrictions"/>
+                <xsl:value-of select="f:getMetadataValue('ontologyDescriptionRestrictions')"/>
             </dct:description>
             <rdfs:comment>This version is automatically generated from <xsl:value-of select="tokenize(base-uri(.), '/')[last()]"/> on 
                 <xsl:value-of select="format-date(current-date(),'[Y0001]-[M01]-[D01]')"/>
                 </rdfs:comment>
-            <xsl:for-each select="$seeAlsoResources">
-                <rdfs:seeAlso rdf:resource="{.}"/>
+            <xsl:variable name="seeAlsoArray" select="f:getMetadataArray('seeAlsoResources')"/>
+            <xsl:for-each select="1 to array:size($seeAlsoArray)">
+                <rdfs:seeAlso rdf:resource="{$seeAlsoArray(.)}"/>
             </xsl:for-each>
 
-            <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="$issuedDate"/></dct:issued>
-            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="$createdDate"/></dct:created>
-            <owl:versionInfo><xsl:value-of select="$versionInfo"/></owl:versionInfo>   
-            <owl:incompatibleWith><xsl:value-of select="$incompatibleWith"/></owl:incompatibleWith>
-            <owl:versionIRI rdf:resource="{fn:concat($restrictionsArtefactURI,'-',$versionInfo)}"/>
-<!--            <bibo:status><xsl:value-of select="$ontologyStatus"/></bibo:status>-->
-            <owl:priorVersion><xsl:value-of select="fn:concat($restrictionsArtefactURI,'-',$priorVersion)"/></owl:priorVersion>
-            <vann:preferredNamespaceUri><xsl:value-of select="$preferredNamespaceUri"/></vann:preferredNamespaceUri>
-            <vann:preferredNamespacePrefix><xsl:value-of select="$preferredNamespacePrefix"/></vann:preferredNamespacePrefix>
-            <dct:license><xsl:value-of select="$licenseLiteral"/></dct:license>
+            <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="f:getMetadataValue('issuedDate')"/></dct:issued>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="f:getMetadataValue('createdDate')"/></dct:created>
+            <owl:versionInfo><xsl:value-of select="f:getMetadataValue('versionInfo')"/></owl:versionInfo>   
+            <owl:incompatibleWith><xsl:value-of select="f:getMetadataValue('incompatibleWith')"/></owl:incompatibleWith>
+            <owl:versionIRI rdf:resource="{fn:concat($restrictionsArtefactURI,'-',f:getMetadataValue('versionInfo'))}"/>
+<!--            <bibo:status><xsl:value-of select="f:getMetadataValue('ontologyStatus')"/></bibo:status>-->
+            <owl:priorVersion><xsl:value-of select="fn:concat($restrictionsArtefactURI,'-',f:getMetadataValue('priorVersion'))"/></owl:priorVersion>
+            <vann:preferredNamespaceUri><xsl:value-of select="f:getMetadataValue('preferredNamespaceUri')"/></vann:preferredNamespaceUri>
+            <vann:preferredNamespacePrefix><xsl:value-of select="f:getMetadataValue('preferredNamespacePrefix')"/></vann:preferredNamespacePrefix>
+            <dct:license><xsl:value-of select="f:getMetadataValue('license')"/></dct:license>
             
         </owl:Ontology>
     </xsl:template>

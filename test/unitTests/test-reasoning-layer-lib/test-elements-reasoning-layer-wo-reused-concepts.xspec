@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
+    xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC" 
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:sh="http://www.w3.org/ns/shacl#"
+    stylesheet="../../../src/reasoning-layer-lib/elements-reasoning-layer.xsl">
+    
+    <x:param name="generateReusedConceptsOWLrestrictions" select="false()"/>
+  
+    <x:scenario label="Test element[@xmi:type = 'uml:Class']/attributes/attribute - for disabled generateReusedConceptsOWLrestrictions">
+        <x:context href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[133]/attributes[1]/attribute[2]"/>
+        <x:variable name="testedPropUri"
+            as="xs:string"
+            select="'http://purl.org/dc/terms/issued'"/>
+        <x:expect label="restriction on property set" test="/rdf:Description[@rdf:about='http://data.europa.eu/a4g/ontology#Document']/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = $testedPropUri"/>
+    </x:scenario>
+
+    <x:scenario label="Scenarios for #TEDM2O-16 bugfix affecting attributes">
+        <x:scenario label="Scenario for testing template with match element[@xmi:type = 'uml:Class']/attributes/attribute - reused class and attribute">
+            <x:context href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[236]/attributes[1]/attribute[7]"/>
+            <x:expect label="no restriction for reused class on reused attribute is set" select="()"/>
+        </x:scenario>
+        <x:scenario label="Scenario for testing template with match element[@xmi:type = 'uml:Class']/attributes/attribute - reused attribute in internal class">
+            <x:context href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[99]/attributes[1]/attribute[2]"/> 
+            <x:expect label="no restriction on internal attribute for reused class is set" select="()"/>
+        </x:scenario>
+        <x:scenario label="Scenario for testing template with match element[@xmi:type = 'uml:Class']/attributes/attribute - reused class declaration">
+            <x:call template="attributeDomain">
+                <x:param name="root" href="../../testData/ePO-core-4.2.0.xml"/>
+                <x:param name="attributeName" select="'epo:hasURL'"/>
+            </x:call>
+            <x:expect label="no reused class declaration"
+                test="not(boolean(//owl:Class[@rdf:about='http://data.europa.eu/m8g/Evidence']))"/>
+        </x:scenario>
+    </x:scenario>
+
+</x:description>

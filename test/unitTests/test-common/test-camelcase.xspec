@@ -14,38 +14,51 @@
         <x:scenario label="QName to words 1">
             <x:call function="f:lexicalQNameToWords">
                 <x:param name="lexicalqName">hasEPORole</x:param>
+                <x:param name="useTitleCase" select="false()"/>
             </x:call>
             <x:expect label="Transformation from Qname to words is valid" select="'has EPO Role'"/>
         </x:scenario>
         <x:scenario label="QName to words 2">
             <x:call function="f:lexicalQNameToWords">
                 <x:param name="lexicalqName">hasVehicleID</x:param>
+                <x:param name="useTitleCase" select="false()"/>
             </x:call>
             <x:expect label="Transformation from Qname to words is valid" select="'has Vehicle ID'"/>
         </x:scenario>
         <x:scenario label="QName to words 3">
             <x:call function="f:lexicalQNameToWords">
                 <x:param name="lexicalqName">hasUUID</x:param>
+                <x:param name="useTitleCase" select="false()"/>
             </x:call>
             <x:expect label="Transformation from Qname to words is valid" select="'has UUID'"/>
         </x:scenario>
         <x:scenario label="QName to words 4">
             <x:call function="f:lexicalQNameToWords">
                 <x:param name="lexicalqName">ESPD</x:param>
+                <x:param name="useTitleCase" select="false()"/>
             </x:call>
             <x:expect label="Transformation from Qname to words is valid" select="'ESPD'"/>
         </x:scenario>
         <x:scenario label="QName to words 5">
             <x:call function="f:lexicalQNameToWords">
                 <x:param name="lexicalqName">ESPDDocument</x:param>
+                <x:param name="useTitleCase" select="false()"/>
             </x:call>
             <x:expect label="Transformation from Qname to words is valid" select="'ESPD Document'"/>
         </x:scenario>
         <x:scenario label="QName to words 6">
             <x:call function="f:lexicalQNameToWords">
                 <x:param name="lexicalqName">hasLongName</x:param>
+                <x:param name="useTitleCase" select="false()"/>
             </x:call>
             <x:expect label="Transformation from Qname to words is valid" select="'has Long Name'"/>
+        </x:scenario>
+        <x:scenario label="QName to words 7 - using title case">
+            <x:call function="f:lexicalQNameToWords">
+                <x:param name="lexicalqName">hasVehicleID</x:param>
+                <x:param name="useTitleCase" select="true()"/>
+            </x:call>
+            <x:expect label="Transformation from Qname to words is valid" select="'Has vehicle ID'"/>
         </x:scenario>
     </x:scenario>
     
@@ -112,6 +125,50 @@
                 <x:param name="text">DPSE</x:param>
             </x:call>
             <x:expect label="Transformation from Qname to words is valid" select="'DPSE'"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="toTitleCase">
+        <x:scenario label="toTitleCase 1">
+            <x:call function="f:toTitleCase">
+                <x:param name="words" select="'has Estimated Value'"/>
+            </x:call>
+            <x:expect label="Transformation of words from camel case to title case is valid - simple case" select="'Has estimated value'"/>
+        </x:scenario>
+
+        <x:scenario label="toTitleCase 2">
+            <x:call function="f:toTitleCase">
+                <x:param name="words" select="'has EPO Role'"/>
+            </x:call>
+            <x:expect label="Transformation of words from camel case to title case is valid - with acronym 1" select="'Has EPO role'"/>
+        </x:scenario>
+
+        <x:scenario label="toTitleCase 3">
+            <x:call function="f:toTitleCase">
+                <x:param name="words" select="'has Vehicle ID'"/>
+            </x:call>
+            <x:expect label="Transformation of words from camel case to title case is valid - with acronym 2" select="'Has vehicle ID'"/>
+        </x:scenario>
+
+        <x:scenario label="toTitleCase 4">
+            <x:call function="f:toTitleCase">
+                <x:param name="words" select="'has UUID'"/>
+            </x:call>
+            <x:expect label="Transformation of words from camel case to title case is valid - trailing acronym" select="'Has UUID'"/>
+        </x:scenario>
+
+        <x:scenario label="toTitleCase 5">
+            <x:call function="f:toTitleCase">
+                <x:param name="words" select="'ESPD'"/>
+            </x:call>
+            <x:expect label="Transformation of words from camel case to title case is valid - single acronym" select="'ESPD'"/>
+        </x:scenario>
+
+        <x:scenario label="toTitleCase 6">
+            <x:call function="f:toTitleCase">
+                <x:param name="words" select="'ESPD Response'"/>
+            </x:call>
+            <x:expect label="Transformation of words from camel case to title case is valid - leading acronym" select="'ESPD response'"/>
         </x:scenario>
     </x:scenario>
     

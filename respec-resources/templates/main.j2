@@ -1,0 +1,76 @@
+{% extends "base.j2" %}
+
+
+{% block pageContent %}
+    {% block abstract %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block introduction %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block status %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block license %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block conformance %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block terminology %}
+        <section id="specterminology">
+            <h2>Terminology</h2>
+            <p>
+                The Terminology section defining the key concepts and terms used in the vocabulary.
+            </p>
+
+            {% block usedPrefixesGen %}
+                {{ super() }}
+            {% endblock %}
+        </section>
+    {% endblock %}
+
+    {% block overview %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block mainEntities %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block supportiveEntities %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block datatypes %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block usages %}
+        <section class="informative">
+            <h2>Usage Guidelines</h2>
+        </section>
+    {% endblock %} 
+
+    {% block governance %}
+    <section class="informative">
+        <h2>Governance</h2>
+    </section>
+    {% endblock %}
+
+
+    {% block quickReference %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block resources %}
+        {{ super() }}
+    {% endblock %}
+
+
+{% endblock %}

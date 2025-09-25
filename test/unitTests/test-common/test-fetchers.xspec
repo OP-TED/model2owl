@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns:f="http://https://github.com/costezki/model2owl#"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     stylesheet="../../../src/common/fetchers.xsl">
@@ -299,4 +300,52 @@
         </x:call>
         <x:expect label="name is epo:signedBy from source" select="'epo:isSignedBy'"/>
     </x:scenario>
+    
+    <x:scenario label="Get relations from connector">
+        <x:scenario label="Get relation from unidirectional connector">
+            <x:call function="f:getRelationsFromConnector">
+                <x:param name="connector" href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[615]"/>
+            </x:call>
+            <x:expect>
+                <relation name="epo-ful:hasNetVolume"
+                          multiplicity="0..1"
+                          connectorIdRef="EAID_FA2388C8_1471_4d6b_9B9F_2E0BBE858668">
+                    <source name="epo-ful:AbstractContainer" type="Class"/>
+                    <target name="epo:Quantity" type="Class"/>
+                </relation>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Get relation from bidirectional connector">
+            <x:call function="f:getRelationsFromConnector">
+                <x:param name="connector" href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+                    select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[154]"/>
+            </x:call>
+            <x:expect>
+                <relation name="epo:isOwnedByAgent"
+                          multiplicity="0..1"
+                          connectorIdRef="EAID_EBF47D81_D8E3_4eda_9351_165A2D6D972E">
+                    <source name="epo:System" type="Class"/>
+                    <target name="foaf:Agent" type="Class"/>
+                </relation>
+                <relation name="epo:ownsSystem"
+                          multiplicity="0..*"
+                          connectorIdRef="EAID_EBF47D81_D8E3_4eda_9351_165A2D6D972E">
+                    <source name="foaf:Agent" type="Class"/>
+                    <target name="epo:System" type="Class"/>
+                </relation>
+            </x:expect>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Get definition from a connector">
+        <x:call function="f:getDocumentationForConnector">
+            <x:param name="connector" 
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[614]"/>
+        </x:call>
+        <x:expect label="definition is present"
+            select="'Reveals the winner to whom the tender award outcome is attributed.'"/>
+    </x:scenario>
+
 </x:description>

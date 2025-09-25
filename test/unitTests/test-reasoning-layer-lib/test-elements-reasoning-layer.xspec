@@ -33,7 +33,7 @@
         </x:call>
         <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
         <x:expect label="there is a rdfs:domain" test="boolean(rdf:Description/rdfs:domain)"/>
-        <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:domain/owl:Class/owl:unionOf/owl:Class) = 3"/>
+        <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:domain/owl:Class/owl:unionOf/rdf:Description) = 3"/>
     </x:scenario>
     
     <x:scenario label="Scenario for attribute range - Object property">
@@ -93,58 +93,80 @@
         </x:call>   
         <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
         <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
-        <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:range/owl:Class/owl:unionOf/owl:Class) = 2"/>
+        <x:expect label="there is a rdf:Description for classes" test="count(rdf:Description/rdfs:range/owl:Class/owl:unionOf/rdf:Description) = 2"/>
     </x:scenario>
 
     
-    <x:scenario label="Scenario for attribute multiplicity values are not any (*)">
+    <x:scenario label="Scenario for attribute multiplicity min value is any (*) (0..1)">
         <x:call template="attributeMultiplicity">
-            <x:param name="attribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[139]/attributes[1]/attribute[1]"/>
+            <x:param name="attribute" href="../../testData/ePO-CM_v.3.0.1.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[54]/attributes[1]/attribute[1]"/>
         </x:call>   
-        <x:expect label="there is a owl:Class" test="boolean(rdf:Description) "/>
-        <x:expect label="there is a rdfs:subClassOf" test="boolean(rdf:Description/rdfs:subClassOf)"/>
-        <x:expect label="there is 2 owl:Restriction" test="count(rdf:Description/rdfs:subClassOf/owl:Class/owl:intersectionOf/owl:Restriction) = 2"/>
-        <x:expect label="there is a owl:onProperty" test="boolean(//owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:minCardinality" test="boolean(//owl:Restriction/owl:minCardinality)"/>
-        <x:expect label="there is a owl:minCardinality" test="boolean(//owl:Restriction/owl:maxCardinality)"/>
-        <x:expect label="there is a correct value for owl:maxCardinality" test="//owl:Restriction/owl:maxCardinality/text() = '3'"/>
-        <x:expect label="there is a correct value for owl:minCardinality" test="//owl:Restriction/owl:minCardinality/text() = '1'"/>
+        <x:expect label="there is a rdf:Description" 
+            test="rdf:Description/@rdf:about ='http://data.europa.eu/a4g/ontology#ProcurementObject'"/>
+        <x:expect label="there is a rdfs:subClassOf" 
+            test="boolean(rdf:Description/rdfs:subClassOf)"/>
+        <x:expect label="there is a owl:Restriction" 
+            test="count(rdf:Description/rdfs:subClassOf/owl:Restriction) = 1"/>
+        <x:expect label="there is a owl:onProperty" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isSMESuitable'"/>
+        <x:expect label="there is n owl:onDataRange" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onDataRange/@rdf:resource = 'http://www.w3.org/2001/XMLSchema#boolean'"/>
+        <x:expect label="there is a correct value for owl:maxQualifiedCardinality" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:maxQualifiedCardinality/text() = '1'"/>
+        <x:expect label="there is no owl:minQualifiedCardinality" 
+            test="not(boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:minQualifiedCardinality))"/>
     </x:scenario>
 
 
-    <x:scenario label="Scenario for attribute multiplicity max value equals any (*)">
+    <x:scenario label="Scenario for attribute multiplicity max value is any (*) (1..*)">
         <x:call template="attributeMultiplicity">
-            <x:param name="attribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[139]/attributes[1]/attribute[2]"/>
+            <x:param name="attribute" href="../../testData/ePO-CM_v.3.0.1.eap.xmi"  
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[156]/attributes[1]/attribute[1]"/>
         </x:call>   
-        <x:expect label="there is a owl:Class" test="boolean(rdf:Description) "/>
-        <x:expect label="there is a rdfs:subClassOf" test="boolean(rdf:Description/rdfs:subClassOf)"/>
-        <x:expect label="there is a owl:Restriction" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction)"/>
-        <x:expect label="there is a owl:onProperty" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:minCardinality" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:minCardinality)"/>
-        <x:expect label="there is a correct value for owl:minCardinality" test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:minCardinality/text() = '1'"/>
+        <x:expect label="there is a rdf:Description" 
+            test="rdf:Description/@rdf:about = 'http://data.europa.eu/a4g/ontology#SecurityClearanceTerm' "/>
+        <x:expect label="there is a rdfs:subClassOf"
+            test="boolean(rdf:Description/rdfs:subClassOf)"/>
+        <x:expect label="there is a owl:Restriction"
+            test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction)"/>
+        <x:expect label="there is a owl:onProperty" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#hasDeadline'"/>
+        <x:expect label="there is a owl:onDataRange" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onDataRange/@rdf:resource = 'http://www.w3.org/2001/XMLSchema#dateTime'"/>
+        <x:expect label="there is a owl:minQualifiedCardinality" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:minQualifiedCardinality/text() = '1'"/>
+        <x:expect label="there is no owl:maxQualifiedCardinality" 
+            test="not(boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:maxQualifiedCardinality))"/>
     </x:scenario>
     
-    <x:scenario label="Scenario for attribute multiplicity min value equals any (*)">
+    <x:scenario label="Scenario for attribute multiplicity exactly 1 (1..1)">
         <x:call template="attributeMultiplicity">
-            <x:param name="attribute" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[140]/attributes[1]/attribute[1]"/>
+            <x:param name="attribute" href="../../testData/ePO-CM_v.3.0.1.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[69]/attributes[1]/attribute[1]"/>
         </x:call>   
-        <x:expect label="there is a owl:Class" test="boolean(rdf:Description) "/>
-        <x:expect label="there is a rdfs:subClassOf" test="boolean(rdf:Description/rdfs:subClassOf)"/>
-        <x:expect label="there is a owl:Restriction" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction)"/>
-        <x:expect label="there is a owl:onProperty" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onProperty)"/>
-        <x:expect label="there is a owl:minCardinality" test="boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:maxCardinality)"/>
-        <x:expect label="there is a correct value for owl:maxCardinality" test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:maxCardinality/text() = '7'"/>
+        <x:expect label="there is a owl:Restriction" 
+            test="count(rdf:Description/rdfs:subClassOf/owl:Restriction) = 1"/>
+        <x:expect label="there is a owl:onProperty" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = 'http://data.europa.eu/a4g/ontology#isWithinFrameworkAgreement'"/>
+        <x:expect label="there is n owl:onDataRange" 
+            test="rdf:Description/rdfs:subClassOf/owl:Restriction/owl:onDataRange/@rdf:resource = 'http://www.w3.org/2001/XMLSchema#boolean'"/>
+        <x:expect label="there is a correct value for owl:qualifiedCardinality" 
+            test="//owl:Restriction/owl:qualifiedCardinality/text() = '1'"/>
+        <x:expect label="there is no owl:maxQualifiedCardinality" 
+            test="not(boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:maxQualifiedCardinality))"/>
+        <x:expect label="there is no owl:minQualifiedCardinality" 
+            test="not(boolean(rdf:Description/rdfs:subClassOf/owl:Restriction/owl:minQualifiedCardinality))"/>
     </x:scenario>
-    
-    <x:scenario label="Scenario for attribute multiplicity min value equals to 1 and multiplicity max value equals to 1 ">
+
+    <x:scenario label="Scenario for attribute multiplicity exactly 1 - functionalProperty">
         <x:call template="attributeMultiplicityOne">
-<!--            <x:param name="attributeName" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[140]/attributes[1]/attribute[3]"/>-->
-            <x:param name="attributeName">epo:SubcontractingUsage</x:param>
-            <x:param name="root" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/"/>
+            <x:param name="attributeName">epo:isWithinFrameworkAgreement</x:param>
+            <x:param name="root" href="../../testData/ePO-CM_v.3.0.1.eap.xmi" select="/"/>
         </x:call>   
-        <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
+        <x:expect label="it's a functionalProperty" 
+            test="rdf:Description/rdf:type/@rdf:resource = 'http://www.w3.org/2002/07/owl#FunctionalProperty'"/>
     </x:scenario>
-    
     
 <!--    <x:scenario
         label="Scenario for testing template with match 'element[@xmi:type = 'uml:Enumeration']">        
@@ -164,7 +186,7 @@
         </x:call>   
         <x:expect label="there is a owl:DatatypeProperty" test="boolean(rdf:Description) "/>
         <x:expect label="there is a rdfs:range" test="boolean(rdf:Description/rdfs:range)"/>
-        <x:expect label="there is a correct datatype URI " test="rdf:Description/rdfs:range/owl:Class/owl:unionOf/owl:Class[1]/@rdf:about = 'http://www.w3.org/2004/02/skos/core#Concept'"/>
+        <x:expect label="there is a correct datatype URI " test="rdf:Description/rdfs:range/owl:Class/owl:unionOf/rdf:Description[1]/@rdf:about = 'http://www.w3.org/2004/02/skos/core#Concept'"/>
     </x:scenario>
     
 
@@ -178,17 +200,6 @@
         <x:expect label="there is a rdf:Description" test="boolean(rdf:Description) "/>
         <x:expect label="there is a rdfs:domain" test="boolean(rdf:Description/rdfs:domain)"/>
         <x:expect label="there is a correct parent class URI" test="rdf:Description/rdfs:domain/@rdf:resource = 'http://data.europa.eu/a4g/ontology#ReviewRequest'"/>
-    </x:scenario>
-    
-
-    <x:param name="generateReusedConceptsOWLrestrictions" select="false()"/>
-
-    <x:scenario label="Test element[@xmi:type = 'uml:Class']/attributes/attribute - for disabled generateReusedConceptsOWLrestrictions">
-        <x:context href="../../testData/ePO-core-4.2.0.xml" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[133]/attributes[1]/attribute[2]"/>
-        <x:variable name="testedPropUri"
-            as="xs:string"
-            select="'http://purl.org/dc/terms/issued'"/>
-        <x:expect label="restriction on property set" test="/rdf:Description[@rdf:about='http://data.europa.eu/a4g/ontology#Document']/rdfs:subClassOf/owl:Restriction/owl:onProperty/@rdf:resource = $testedPropUri"/>
     </x:scenario>
 
 </x:description>

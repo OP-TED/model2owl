@@ -1,0 +1,18 @@
+<section class="appendix">
+    <h2>Acknowledgments</h2>
+
+    The editors gratefully acknowledge the contributions made to this document by all members of the working group.
+
+    Past and current contributors are:
+    {% for role, contributors in metadata.contributors | groupby("role") %}
+    {% if role == "E" %}
+        {% set pure_contributors = contributors|sort(attribute='last_name') %}
+        {% if pure_contributors %}
+            {% for contributor in pure_contributors %} 
+            {{ contributor.first_name }} {{ contributor.last_name }}
+            {% if not loop.last %}, {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    {% endfor %}.
+</section>
