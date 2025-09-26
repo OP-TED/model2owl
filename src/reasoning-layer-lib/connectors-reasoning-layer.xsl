@@ -108,35 +108,6 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Applying reasoning layer rules to generalisation connectors with distinct
-            targets</xd:desc>
-    </xd:doc>
-    <xsl:template name="generalisationsWithDistinctTargetsInReasoningLayer">
-        <xsl:variable name="generalisations"
-            select="//connector[./properties/@ea_type = 'Generalization'][not(target/@xmi:idref = preceding::connector[./properties/@ea_type = 'Generalization']/target/@xmi:idref)]"/>
-        <xsl:for-each select="$generalisations">
-            <xsl:if test="not(f:isExcludedByStatus(.))">
-            <xsl:if test="./source/model/@type = 'Class' and ./target/model/@type = 'Class'">
-                <!-- Extract prefixes for source and target -->
-                <xsl:variable name="sourcePrefix"
-                    select="fn:substring-before(./source/model/@name, ':')"/>
-                <xsl:variable name="targetPrefix"
-                    select="fn:substring-before(./target/model/@name, ':')"/>
-                <!-- Check if either the prefixes match the internal list or generateReusedConcepts is true -->
-                <xsl:if
-                    test="$generateReusedConceptsOWLrestrictions or $sourcePrefix = $includedPrefixesList">
-                    <xsl:call-template name="disjointClasses">
-                        <xsl:with-param name="generalisation" select="."/>
-                    </xsl:call-template>
-                </xsl:if>
-            </xsl:if>
-            </xsl:if>
-        </xsl:for-each>
-    </xsl:template>
-
-
-
-    <xd:doc>
         <xd:desc>Applying reasoning layer rules to connectors with distinct names [Dependency and
             Association]</xd:desc>
     </xd:doc>
@@ -641,36 +612,6 @@
         </xsl:if>
     </xsl:template>
 
-
-    <xd:doc>
-        <xd:desc>Rule R.18. Disjoint classes — in reasoning layer. Specify a disjoint classes axiom
-            for all "sibling" classes, i.e. for multiple UML Classes that have generalisation
-            connectors to the same UML Class. </xd:desc>
-        <xd:param name="generalisation"/>
-    </xd:doc>
-
-    <xsl:template name="disjointClasses">
-        <xsl:param name="generalisation"/>
-
-        <xsl:variable name="superClass" select="f:getSuperClassFromGeneralization($generalisation)"/>
-        <xsl:variable name="superClassURI" select="f:buildURIfromLexicalQName($superClass)"/>
-        <xsl:variable name="subClasses" select="f:getSubClassesFromGeneralization($generalisation)"/>
-        <xsl:if
-            test="f:getElementByIdRef($generalisation/source/@xmi:idref, root($generalisation)) and count($subClasses) > 1">
-
-            <rdf:Description>
-                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-                <owl:members rdf:parseType="Collection">
-                    <xsl:for-each select="$subClasses">
-                        <xsl:variable name="subClassURI" select="f:buildURIFromElement(.)"/>
-                        <rdf:Description rdf:about="{$subClassURI}"/>
-                    </xsl:for-each>
-                </owl:members>
-            </rdf:Description>
-
-        </xsl:if>
-
-    </xsl:template>
 
     <xd:doc>
         <xd:desc>This will override the common selector when applying templates</xd:desc>
