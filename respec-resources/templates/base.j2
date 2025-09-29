@@ -235,10 +235,10 @@
       shortName: "{{metadata.title}}",
       xref: "web-platform",
       doJsonLd: true,
-      {% if logo %}
+      {% if metadata.logo %}
         logos: [{
-            src: "{{ logo.path }}",
-            url: "{{ logo.link }}",
+            src: "{{ metadata.logo.path }}",
+            url: "{{ metadata.logo.link }}",
             alt: "logo",
             width: 154,
             height: 140,
