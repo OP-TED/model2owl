@@ -78,9 +78,13 @@
             </dt>
             {% if ((entity.properties | length) > 0 ) %}
                 <dd>
-                    For this entity the following properties are defined: {%- for prop in entity['properties'] | sort(attribute=sortattr) %} <a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(' ','') |urlencode | title }}">{{ prop.label[language] }}</a>
-                    {% if not loop.last %},{% endif %}
-                {%- endfor %}.
+                    For this entity the following properties are defined: 
+                    {%- for prop in entity['properties'] | sort(attribute='label[language]') %}
+                        {# lower the first letter in case it's uppercase #}
+                        {% set propertyLabel = prop.label[language][:1]|lower ~ prop.label[language][1:]  %}
+                        <a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(' ','') | urlencode | title }}">{{ propertyLabel }}</a>
+                    {%- if not loop.last %},{% endif %}
+                    {%- endfor %}.
                 </dd>
             {% else %}
                 <dd>
@@ -122,11 +126,13 @@
                                 resource="{{ prop.uri }}"
                                 class="class mandatory">
                                 <td>
+                                        {# lower the first letter in case it's uppercase #}
+                                        {% set propertyLabel = prop.label[language][:1]|lower ~ prop.label[language][1:]  %}
                                         <a href="{{ prop.uri }}"
                                         data-toggle="tooltip"
                                         data-content="{{ prop.uri }}"
                                         data-placement="right">
-                                        {{ prop.label[language] }}</a>
+                                        {{ propertyLabel }}</a>
                                 </td>
                                 <td>
                                     {% for range in prop.range %}
@@ -134,9 +140,9 @@
                                             <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}"
                                             data-toggle="tooltip"
                                             data-content="{{ range['range_puri'] }}"
-                                            data-placement="right">{{ range['range_curie'] }}</a>
+                                            data-placement="right">{{ range['range_label'][language] }}</a>
                                         {% else %}
-                                            <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}" data-placement="right">{{ range['range_curie'] }}</a>
+                                            <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}" data-placement="right">{{ range['range_label'][language] }}</a>
                                         {% endif %}
                                     {% endfor %}
                                 </td>
@@ -578,10 +584,12 @@
                 {% for entity in classes | sort(attribute=sortattr) %}
                     {% if ((entity.properties | length) > 0 ) %}
                         {% for prop in entity['properties'] | sort(attribute=sortattr) %}
+                            {# lower the first letter in case it's uppercase #}
+                            {% set propertyLabel = prop.label[language][:1]|lower ~ prop.label[language][1:]  %}
                             <tr>
                                 <td><a href="#{{ entity.label[language] | replace(' ', '') | urlencode | title }}">{{ entity.label[language] }}</a></td>
                                 <td><div class="compact-uri">{{ entity.uri }}</div></td>
-                                <td><a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(' ', '') | urlencode | title }}">{{ prop.label[language] }} </a></td>
+                                <td><a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(' ', '') | urlencode | title }}">{{ propertyLabel }} </a></td>
                                 <td><div class="compact-uri">{{ prop.uri }}</div></td>
                             </tr>
                         {% endfor %}
