@@ -95,7 +95,7 @@ async function validateRDF(content, contentType) {
     try {
         // Determine which SHACL shapes to use - ITB supports both Turtle and JSON-LD shapes
         const shaclShapesUrl = contentType === 'jsonld' 
-            ? './assets/shacl/context_shapes.jsonld'
+            ? './assets/shacl/ontology_shapes.jsonld'
             : './assets/shacl/ontology_shapes.ttl';
         
         // Load SHACL shapes
@@ -547,7 +547,7 @@ function displayValidationReport(report, contentType) {
             }
             
             dialogContent += `The RDF content is valid according to the SHACL shapes.\n`;
-            dialogContent += `SHACL shapes used: ./assets/shacl/${contentType === 'jsonld' ? 'context_shapes.jsonld' : 'ontology_shapes.ttl'}`;
+            dialogContent += `SHACL shapes used: ./assets/shacl/${contentType === 'jsonld' ? 'ontology_shapes.jsonld' : 'ontology_shapes.ttl'}`;
         } else {
             dialogContent = `VALIDATION FAILED\n\n`;
             dialogContent += `Service: ${report.service}\n`;
@@ -570,7 +570,7 @@ function displayValidationReport(report, contentType) {
                 dialogContent += '\n';
             }
             
-            dialogContent += `SHACL shapes used: ./assets/shacl/${contentType === 'jsonld' ? 'context_shapes.jsonld' : 'ontology_shapes.ttl'}\n\n`;
+            dialogContent += `SHACL shapes used: ./assets/shacl/${contentType === 'jsonld' ? 'ontology_shapes.jsonld' : 'ontology_shapes.ttl'}\n\n`;
             dialogContent += `For external validation, use: https://www.itb.ec.europa.eu/shacl/any/upload`;
         }
     }
