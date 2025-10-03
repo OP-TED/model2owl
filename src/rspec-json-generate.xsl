@@ -5,6 +5,7 @@
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:array="http://www.w3.org/2005/xpath-functions/array"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:uml="http://www.omg.org/spec/UML/20131001"
     xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
     xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"
@@ -15,7 +16,7 @@
     xmlns:dct="http://purl.org/dc/terms/"
     xmlns:f="http://https://github.com/costezki/model2owl#"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-    exclude-result-prefixes="xs math xd xsl uml xmi umldi dc fn array owl rdf rdfs dct f skos"
+    exclude-result-prefixes="xs math xd xsl uml xmi umldi dc fn array map owl rdf rdfs dct f skos"
     version="3.0">
     
     <xsl:output method="text" media-type="application/json" indent="no"/>
@@ -35,11 +36,19 @@
         </xsl:variable>
 
         <!-- classes as array(*) via mode that returns map(*) per class -->
-        <xsl:variable name="classMaps" as="map(*)*">
+        <xsl:variable name="classMapsUnsorted" as="map(*)*">
             <xsl:apply-templates
                 select="/xmi:XMI/xmi:Extension/elements/element[@xmi:type = 'uml:Class']"
                 mode="class-json"/>
 
+        </xsl:variable>
+
+        <!-- Sort classes alphabetically by label.en -->
+        <xsl:variable name="classMaps" as="map(*)*">
+            <xsl:for-each select="$classMapsUnsorted">
+                <xsl:sort select="map:get(., 'label')?en" order="ascending"/>
+                <xsl:sequence select="."/>
+            </xsl:for-each>
         </xsl:variable>
 
         <!-- datatypes as array(*) via mode that returns map(*) per datatype -->
