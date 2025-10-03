@@ -56,6 +56,7 @@ MODEL_EAP_FILE_PATH?=
 # respec variables with default values
 RESPEC_JSON_INDENTATION?=2
 RESPEC_DATA_JSON_PATH?=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json
+RESPEC_CFG_JSON_PATH?=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec-cfg.json
 RESPEC_METADATA_JSON_PATH?=${ABSOLUTE_MODEL2OWL_FOLDER}/test/ePO-default-config/metadata.json
 RESPEC_INPUT_ASSETS_DIR=${ABSOLUTE_MODEL2OWL_FOLDER}/respec-resources/assets
 SDS_FILES_JSON_LOCATION=.assets.sdsSection
@@ -279,6 +280,21 @@ respec-json:
 	@echo Output respec json file location:
 	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json
 	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json.tmp
+
+respec-cfg-json:
+	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/rspec-cfg-json-generate.xsl \
+		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec-cfg.json.tmp \
+		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}" \
+		importsPath="${IMPORTS_XML_FILE_PATH}"
+	@# reformat the JSON file to be more readable
+	@cat ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec-cfg.json.tmp \
+		| python3 -c "import sys, json; \
+		data = json.load(sys.stdin); \
+		print(json.dumps(data, sort_keys=True, indent=int(${RESPEC_JSON_INDENTATION})))" \
+		> ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec-cfg.json
+	@echo Output respec json file location:
+	@ls -lh ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec-cfg.json
+	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec-cfg.json.tmp
 	
 # make generate-jsonld-context [XMI_INPUT_FILE_PATH=/path/to/cm.xmi] 
 #	[OUTPUT_FOLDER_PATH=/output/directory]
@@ -464,16 +480,18 @@ generate-respec:
 	handle_artefact_file $$ext_md_json "UML XMI model file" "${XMI_INPUT_FILE_PATH}" ; \
 	handle_artefact_file $$ext_md_json "UML EAP model file" "${MODEL_EAP_FILE_PATH}" ; \
 	\
-	# generate a respec JSON if not provided \
+	# generate a respec data JSON if not provided \
 	if [ ! -e ${RESPEC_DATA_JSON_PATH} ]; then \
 		echo "Generating a ReSpec JSON data file..."; \
 		$(MAKE) respec-json XMI_INPUT_FILE_PATH=${XMI_INPUT_FILE_PATH} OUTPUT_FOLDER_PATH=${OUTPUT_FOLDER_PATH} ; \
 	fi; \
 	\
+	# generate a respec config JSON file \
+	$(MAKE) respec-cfg-json XMI_INPUT_FILE_PATH=${XMI_INPUT_FILE_PATH} OUTPUT_FOLDER_PATH=${OUTPUT_FOLDER_PATH} ; \
 	# merge the metadata and data JSON files into a single JSON file to be used \
 	# for generating the respec document \
 	merged_json=$$(mktemp --suffix=".json"); \
-	$(JQ) -s 'reduce .[] as $$item ({}; . * $$item)' ${RESPEC_DATA_JSON_PATH} $$ext_md_json > $$merged_json; \
+	$(JQ) -s 'reduce .[] as $$item ({}; . * $$item)' ${RESPEC_DATA_JSON_PATH} ${RESPEC_CFG_JSON_PATH} $$ext_md_json > $$merged_json; \
 	\
 	# copy other static assets (e.g. images, examples) to the output folder \
 	cp -rf ${RESPEC_INPUT_ASSETS_DIR} ${RESPEC_OUTPUT_DIR}; \
