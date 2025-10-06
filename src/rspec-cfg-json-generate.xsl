@@ -29,7 +29,8 @@
         <xsl:variable name="rootMap" as="map(*)"
             select="map{
                 'config': map{
-                    'mandatoryStatusTagName': string($mandatoryStatusTagName)
+                    'mandatoryStatusTagName': string($mandatoryStatusTagName),
+                    'usageNoteTagName': string($usageNoteTagName)
                 }
             }"/>
 

@@ -57,12 +57,12 @@
             <dd>
                 {{ entity.description[language] | safe }}
             </dd>
-            {% if entity.usage[language] %}
+            {% if entity.tags[config.usageNoteTagName] %}
                 <dt>
                     Usage Note
                 </dt>
                 <dd>
-                    {{ entity.usage[language] | safe }}
+                    {{ entity.tags[config.usageNoteTagName] | safe }}
                 </dd>
             {% endif %}
             {% if ((entity.parents | length) > 0 ) %}
@@ -145,11 +145,11 @@
                                 <td>
                                     {{ prop.cardinality }}
                                 </td>
-                                <td property="rdfs:comment">
+                                <td>
                                     {{ prop.description[language] | safe }}
                                 </td>
-                                <td property="skos:scopeNote">
-                                    {{ prop.usage[language] | safe }}
+                                <td>
+                                    {{ prop.tags[config.usageNoteTagName] | safe }}
                                 </td>
                                 <td>
                                     {{ renderFeedbackButton(entity, prop) }}
