@@ -99,6 +99,11 @@
      <!--    Tag names/keys that are excluded from output -->
     <xsl:variable name="excludedTagNamesList" select="($statusProperty, $cvConstraintLevelProperty)"/>
     
+    <!-- Tag name/key that is used to indicate if a property is mandatory or
+         optional. If the tag is missing then cardinality will be used to
+         determine if a property is mandatory or optional-->
+    <xsl:variable name="mandatoryStatusTagName" select="'cfg:usage'"/>
+    
     <!-- Variables for status filtering:  
      - The property used to indicate the status  
      - A list of valid statuses  
