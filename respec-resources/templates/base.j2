@@ -73,6 +73,14 @@
                     {%- endfor %}
                 </dd>
             {% endif %}
+            {% if config.showReferencesInRespec and entity.tags[config.referenceTagName] %}
+                <dt>
+                    {{ config.classReferenceRespecLabel if config.classReferenceRespecLabel else 'References' }}
+                </dt>
+                <dd>
+                    {{ entity.tags[config.referenceTagName] | safe }}
+                </dd>
+            {% endif %}
             <dt>
                 Properties
             </dt>
@@ -108,6 +116,11 @@
                             <th class="data-table__header-title--sortable" style="width:30%">
                                 Usage
                             </th>
+                            {% if config.showReferencesInRespec %}
+                            <th class="data-table__header-title--sortable" style="width:20%">
+                                {{ config.propertyReferenceRespecLabel if config.propertyReferenceRespecLabel else 'Reuse' }}
+                            </th>
+                            {% endif %}
                             {% if metadata.openGithubIssue %}
                                 <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
                                     {{ metadata.openGithubIssue.columnLabel if metadata.openGithubIssue.columnLabel else 'Open an issue'}}
@@ -149,6 +162,11 @@
                                 <td property="skos:scopeNote">
                                     {{ prop.usage[language] | safe }}
                                 </td>
+                                {% if config.showReferencesInRespec %}
+                                <td>
+                                    {{ prop.tags[config.referenceTagName] | safe }}
+                                </td>
+                                {% endif %}
                                 <td>
                                     {{ renderFeedbackButton(entity, prop) }}
                                 </td>
