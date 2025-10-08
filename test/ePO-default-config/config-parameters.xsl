@@ -96,8 +96,16 @@
     <xsl:variable name="commentsGeneration" select="fn:true()"/>
     <xsl:variable name="commentProperty" select="'skos:editorialNote'"/>
     
+    <!-- Tag name/key that is used to describe a usage note of a class or property-->
+    <xsl:variable name="usageNoteTagName" select="'skos:note'"/>
+
      <!--    Tag names/keys that are excluded from output -->
     <xsl:variable name="excludedTagNamesList" select="($statusProperty, $cvConstraintLevelProperty)"/>
+    
+    <!-- Tag name/key that is used to indicate if a property is mandatory or
+         optional. If the tag is missing then cardinality will be used to
+         determine if a property is mandatory or optional-->
+    <xsl:variable name="mandatoryStatusTagName" select="'cfg:usage'"/>
     
     <!-- Variables for status filtering:  
      - The property used to indicate the status  

@@ -1,6 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 {% set language = "en" %}
 {% set sortattr = "sort" %}
+{% set mandatoryPropLabel = "Mandatory" %}
+{% set optionalPropLabel = "Optional" %}
 {% set _docRoot = "." %}
 {% set docRoot = metadata.documentConfig.editorDocumentRoot if metadata.documentConfig.editorDocumentRoot else _docRoot %}
 
@@ -55,12 +57,12 @@
             <dd>
                 {{ entity.description[language] | safe }}
             </dd>
-            {% if entity.usage[language] %}
+            {% if entity.tags[config.usageNoteTagName] %}
                 <dt>
                     Usage Note
                 </dt>
                 <dd>
-                    {{ entity.usage[language] | safe }}
+                    {{ entity.tags[config.usageNoteTagName] | safe }}
                 </dd>
             {% endif %}
             {% if ((entity.parents | length) > 0 ) %}
@@ -143,11 +145,11 @@
                                 <td>
                                     {{ prop.cardinality }}
                                 </td>
-                                <td property="rdfs:comment">
+                                <td>
                                     {{ prop.description[language] | safe }}
                                 </td>
-                                <td property="skos:scopeNote">
-                                    {{ prop.usage[language] | safe }}
+                                <td>
+                                    {{ prop.tags[config.usageNoteTagName] | safe }}
                                 </td>
                                 <td>
                                     {{ renderFeedbackButton(entity, prop) }}
@@ -160,6 +162,21 @@
         {% endif %}
     </section>
 {% endmacro %}
+
+{% macro getMandatoryStatus(property) %}
+    {# Use the configured tag value if exists #}
+    {% if config.mandatoryStatusTagName and property.tags[config.mandatoryStatusTagName] %}
+        {{ property.tags[config.mandatoryStatusTagName] }}
+    {% else %}
+        {# Fallback to cardinality interpretation #}
+        {% if property.cardinality.startswith('0..') %}
+            {{ optionalPropLabel }}
+        {% else %}
+            {{ mandatoryPropLabel }}
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+
 
 <head>	
     <meta charset="utf-8" />
@@ -570,6 +587,7 @@
                 <tr>
                     <th>Class</th>
                     <th>Class IRI</th>
+                    <th>Property type</th>
                     <th>Property</th>
                     <th>Property IRI</th>
                 </tr>
@@ -581,6 +599,7 @@
                             <tr>
                                 <td><a href="#{{ entity.label[language] | replace(' ', '') | urlencode | title }}">{{ entity.label[language] }}</a></td>
                                 <td><div class="compact-uri">{{ entity.uri }}</div></td>
+                                <td>{{ getMandatoryStatus(prop) }}</td>
                                 <td><a href="#{{ (entity.label[language] ~ '.' ~ prop.label[language]) | replace(' ', '') | urlencode | title }}">{{ prop.label[language] }} </a></td>
                                 <td><div class="compact-uri">{{ prop.uri }}</div></td>
                             </tr>
