@@ -107,6 +107,16 @@
          determine if a property is mandatory or optional-->
     <xsl:variable name="mandatoryStatusTagName" select="'cfg:usage'"/>
     
+    <!-- Tag name/key that is used to provide reference links/reuse information for a class or property-->
+    <xsl:variable name="referenceTagName" select="'dcterms:references'"/>
+    <!-- Label that will be used in the ReSpec docs to describe values of `referenceTagName` for properties -->
+    <xsl:variable name="propertyReferenceRespecLabel" select="'Reuse'"/>
+    <!-- Label that will be used in the ReSpec docs to describe values of `referenceTagName` for classes -->
+    <xsl:variable name="classReferenceRespecLabel" select="'Reference'"/>
+    <!-- A flag to control whether references/reuse information is shown in the ReSpec docs -->
+    <xsl:variable name="showReferencesInRespec" select="fn:true()"/>
+
+
     <!-- Variables for status filtering:  
      - The property used to indicate the status  
      - A list of valid statuses  

@@ -29,6 +29,10 @@
         <xsl:variable name="rootMap" as="map(*)"
             select="map{
                 'config': map{
+                    'referenceTagName': string($referenceTagName),
+                    'propertyReferenceRespecLabel': string($propertyReferenceRespecLabel),
+                    'classReferenceRespecLabel': string($classReferenceRespecLabel),
+                    'showReferencesInRespec': boolean($showReferencesInRespec),
                     'mandatoryStatusTagName': string($mandatoryStatusTagName),
                     'usageNoteTagName': string($usageNoteTagName)
                 }
