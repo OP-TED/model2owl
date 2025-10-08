@@ -73,8 +73,24 @@
         </xsl:variable>
 
         <!-- Merge properties arrays -->
-        <xsl:variable name="properties" as="array(*)"
+        <xsl:variable name="propertiesUnsorted" as="array(*)"
             select="array:join(($propsFromAttributes, $propsFromAssociations, $propsFromDependencies))"/>
+
+        <!-- Sort properties alphabetically by label.en -->
+        <xsl:variable name="properties" as="array(*)">
+            <xsl:variable name="propertiesSequence" as="map(*)*">
+                <xsl:for-each select="1 to array:size($propertiesUnsorted)">
+                    <xsl:sequence select="array:get($propertiesUnsorted, .)"/>
+                </xsl:for-each>
+            </xsl:variable>
+            <xsl:variable name="sortedProperties" as="map(*)*">
+                <xsl:for-each select="$propertiesSequence">
+                    <xsl:sort select="map:get(., 'label')?en" order="ascending"/>
+                    <xsl:sequence select="."/>
+                </xsl:for-each>
+            </xsl:variable>
+            <xsl:sequence select="array{$sortedProperties}"/>
+        </xsl:variable>
 
         <!-- Emit a single map(*) -->
         <xsl:sequence
