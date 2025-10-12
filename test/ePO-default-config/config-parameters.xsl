@@ -115,6 +115,8 @@
     <xsl:variable name="classReferenceRespecLabel" select="'Reference'"/>
     <!-- A flag to control whether references/reuse information is shown in the ReSpec docs -->
     <xsl:variable name="showReferencesInRespec" select="fn:true()"/>
+    <!-- Tag name/key that is used as custom label for terms in the ReSpec documentation-->
+    <xsl:variable name="customTermLabelTagName" select="'skos:prefLabel'"/>
 
 
     <!-- Variables for status filtering:  
@@ -151,6 +153,7 @@
     <xsl:variable name="annotateShaclConceptsWithOntology" select="fn:true()"/>
 
     <xsl:variable name="moduleReference" select="'core'"/>
+
  
 
 </xsl:stylesheet>
