@@ -18,6 +18,55 @@
     <xsl:import href="../common/utils.xsl"/>
     <xsl:import href="../common/formatters.xsl"/>
 
+
+    <xd:doc>
+        <xd:desc>Get custom label from tags if available</xd:desc>
+        <xd:param name="element"/>
+        <xd:param name="defaultLabel"/>
+    </xd:doc>
+    <xsl:function name="f:getCustomLabelOrDefault" as="xs:string">
+        <xsl:param name="element" as="element()"/>
+        <xsl:param name="defaultLabel" as="xs:string"/>
+        
+        <xsl:variable name="tags" select="f:getElementTags($element)"/>
+        
+        <!-- Check for custom term label tag if available -->
+        <xsl:variable name="customLabel" select="
+            if ($tags[@name = concat($customTermLabelTagName, '@en')]) then
+                ($tags[@name = concat($customTermLabelTagName, '@en')]/@value)[1]
+            else if ($tags[@name = $customTermLabelTagName]) then
+                ($tags[@name = $customTermLabelTagName]/@value)[1]
+            else
+                ''
+        "/>
+        
+        <xsl:sequence select="if (string-length($customLabel) > 0) then string($customLabel) else $defaultLabel"/>
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>Get custom label from connector tags if available</xd:desc>
+        <xd:param name="connector"/>
+        <xd:param name="defaultLabel"/>
+    </xd:doc>
+    <xsl:function name="f:getCustomLabelOrDefaultFromConnector" as="xs:string">
+        <xsl:param name="connector" as="element()"/>
+        <xsl:param name="defaultLabel" as="xs:string"/>
+        
+        <xsl:variable name="tags" select="f:getConnectorTags($connector)"/>
+        
+        <!-- Check for custom term label tag if available -->
+        <xsl:variable name="customLabel" select="
+            if ($tags[@name = concat($customTermLabelTagName, '@en')]) then
+                ($tags[@name = concat($customTermLabelTagName, '@en')]/@value)[1]
+            else if ($tags[@name = $customTermLabelTagName]) then
+                ($tags[@name = $customTermLabelTagName]/@value)[1]
+            else
+                ''
+        "/>
+        
+        <xsl:sequence select="if (string-length($customLabel) > 0) then string($customLabel) else $defaultLabel"/>
+    </xsl:function>
+
     <xd:doc>
         <xd:desc>Convert tags to a map format for JSON output</xd:desc>
         <xd:param name="tags"/>
@@ -92,6 +141,9 @@
             <xsl:sequence select="array{$sortedProperties}"/>
         </xsl:variable>
 
+        <!-- Get label (use custom label from tag if available, otherwise generate from name) -->
+        <xsl:variable name="classLabel" select="f:getCustomLabelOrDefault(., f:lexicalQNameToWords($className, fn:true()))"/>
+
         <!-- Emit a single map(*) -->
         <xsl:sequence
             select="
@@ -100,7 +152,7 @@
             'name': string($className),
             'rawTags': map {'class-usage-scope': $classUsage},
             'tags': f:tagsToMap(f:getElementTags(.)),
-            'label':       map{'en': f:lexicalQNameToWords($className, fn:true())},
+            'label':       map{'en': $classLabel},
             'description': map{'en': $doc},
             'usage':       map{'en': $doc},
             'parents':     $parents,
@@ -125,11 +177,15 @@
             select="
             array{
             for $classParentName in $classParentsNames
-            return map{
-            'scoped_uri':   f:buildURIfromLexicalQName($classParentName),
-            'name':  string($classParentName),
-            'label': map{'en': f:lexicalQNameToWords($classParentName, fn:true())}
-            }
+            return
+                let $parentElement := root($classElement)//element[@xmi:type = 'uml:Class' and @name = $classParentName],
+                    $defaultLabel := f:lexicalQNameToWords($classParentName, fn:true()),
+                    $parentLabel := if ($parentElement) then f:getCustomLabelOrDefault($parentElement, $defaultLabel) else $defaultLabel
+                return map{
+                'scoped_uri':   f:buildURIfromLexicalQName($classParentName),
+                'name':  string($classParentName),
+                'label': map{'en': $parentLabel}
+                }
             }"
         />
     </xsl:template>
@@ -144,29 +200,32 @@
             select="
             array{
             for $attribute in $attributes
-            return map{
-            'uri':   f:buildURIfromLexicalQName($attribute/@name),
-            'name':  string($attribute/@name),
-            'label': map{'en': f:lexicalQNameToWords($attribute/@name, fn:true())},
-            'description': map{'en': normalize-space(f:formatDocStringForJson($attribute/documentation/@value))},
-            'usage': map{}, 
-            'domain': array{
-            map{
-            'uri':  f:buildURIfromLexicalQName($classElement/@name),
-            'name': string($classElement/@name)
-            }
-            },
-            'range': array{
-            map{
-            'range_uri':  f:buildURIfromLexicalQName($attribute/properties/@type),
-            'range_puri':  f:buildURIfromLexicalQName($attribute/properties/@type),
-            'range_curie': string($attribute/properties/@type),
-            'range_label': map{'en': f:lexicalQNameToWords($attribute/properties/@type, fn:true())}
-            }
-            },
-            'cardinality': concat($attribute/bounds/@lower, '..', $attribute/bounds/@upper),
-            'tags': f:tagsToMap(f:getElementTags($attribute))
-            }
+            return 
+                let $defaultLabel := f:lexicalQNameToWords($attribute/@name, fn:true()),
+                    $attributeLabel := f:getCustomLabelOrDefault($attribute, $defaultLabel)
+                return map{
+                'uri':   f:buildURIfromLexicalQName($attribute/@name),
+                'name':  string($attribute/@name),
+                'label': map{'en': $attributeLabel},
+                'description': map{'en': normalize-space(f:formatDocStringForJson($attribute/documentation/@value))},
+                'usage': map{}, 
+                'domain': array{
+                map{
+                'uri':  f:buildURIfromLexicalQName($classElement/@name),
+                'name': string($classElement/@name)
+                }
+                },
+                'range': array{
+                map{
+                'range_uri':  f:buildURIfromLexicalQName($attribute/properties/@type),
+                'range_puri':  f:buildURIfromLexicalQName($attribute/properties/@type),
+                'range_curie': string($attribute/properties/@type),
+                'range_label': map{'en': f:lexicalQNameToWords($attribute/properties/@type, fn:true())}
+                }
+                },
+                'cardinality': concat($attribute/bounds/@lower, '..', $attribute/bounds/@upper),
+                'tags': f:tagsToMap(f:getElementTags($attribute))
+                }
             }"
         />
     </xsl:template>
@@ -186,29 +245,32 @@
             select="
             array{
             for $association in $associations
-            return map{
-            'uri':   f:buildURIfromLexicalQName($association/target/role/@name),
-            'name':  string($association/target/role/@name),
-            'label': map{'en': f:lexicalQNameToWords($association/target/role/@name, fn:true())},
-            'description': map{'en': normalize-space(f:formatDocStringForJson(f:getDocumentationForConnector($association)))},
-            'usage': map{},
-            'domain': array{
-            map{
-            'uri':  f:buildURIfromLexicalQName($association/source/model/@name),
-            'name': string($association/source/model/@name)
-            }
-            },
-            'range': array{
-            map{
-            'range_uri':  f:buildURIfromLexicalQName($association/target/model/@name),
-            'range_puri':  f:buildURIfromLexicalQName($association/target/model/@name),
-            'range_curie': string($association/target/model/@name),
-            'range_label': map{'en': f:lexicalQNameToWords($association/target/model/@name, fn:true())}
-            }
-            },
-            'cardinality': string($association/target/type/@multiplicity),
-            'tags': f:tagsToMap(f:getConnectorTags($association))
-            }
+            return
+                let $defaultLabel := f:lexicalQNameToWords($association/target/role/@name, fn:true()),
+                    $associationLabel := f:getCustomLabelOrDefaultFromConnector($association, $defaultLabel)
+                return map{
+                'uri':   f:buildURIfromLexicalQName($association/target/role/@name),
+                'name':  string($association/target/role/@name),
+                'label': map{'en': $associationLabel},
+                'description': map{'en': normalize-space(f:formatDocStringForJson(f:getDocumentationForConnector($association)))},
+                'usage': map{},
+                'domain': array{
+                map{
+                'uri':  f:buildURIfromLexicalQName($association/source/model/@name),
+                'name': string($association/source/model/@name)
+                }
+                },
+                'range': array{
+                map{
+                'range_uri':  f:buildURIfromLexicalQName($association/target/model/@name),
+                'range_puri':  f:buildURIfromLexicalQName($association/target/model/@name),
+                'range_curie': string($association/target/model/@name),
+                'range_label': map{'en': f:lexicalQNameToWords($association/target/model/@name, fn:true())}
+                }
+                },
+                'cardinality': string($association/target/type/@multiplicity),
+                'tags': f:tagsToMap(f:getConnectorTags($association))
+                }
             }"
         />
     </xsl:template>
@@ -228,29 +290,32 @@
             select="
             array{
             for $dependency in $dependencies
-            return map{
-            'uri':   f:buildURIfromLexicalQName($dependency/target/role/@name),
-            'name':  string($dependency/target/role/@name),
-            'label': map{'en': f:lexicalQNameToWords($dependency/target/role/@name, fn:true())},
-            'description': map{'en': normalize-space(f:formatDocStringForJson(f:getDocumentationForConnector($dependency)))},
-            'usage': map{},
-            'domain': array{
-            map{
-            'uri':  f:buildURIfromLexicalQName($dependency/source/model/@name),
-            'name': string($dependency/source/model/@name)
-            }
-            },
-            'range': array{
-            map{
-            'range_uri':  f:buildURIfromLexicalQName('skos:Concept'),
-            'range_puri':  f:buildURIfromLexicalQName('skos:Concept'),
-            'range_curie': 'skos:Concept',
-            'range_label': map{'en': 'Concept'}
-            }
-            },
-            'cardinality': string($dependency/target/type/@multiplicity),
-            'tags': f:tagsToMap(f:getConnectorTags($dependency))
-            }
+            return
+                let $defaultLabel := f:lexicalQNameToWords($dependency/target/role/@name, fn:true()),
+                    $dependencyLabel := f:getCustomLabelOrDefaultFromConnector($dependency, $defaultLabel)
+                return map{
+                'uri':   f:buildURIfromLexicalQName($dependency/target/role/@name),
+                'name':  string($dependency/target/role/@name),
+                'label': map{'en': $dependencyLabel},
+                'description': map{'en': normalize-space(f:formatDocStringForJson(f:getDocumentationForConnector($dependency)))},
+                'usage': map{},
+                'domain': array{
+                map{
+                'uri':  f:buildURIfromLexicalQName($dependency/source/model/@name),
+                'name': string($dependency/source/model/@name)
+                }
+                },
+                'range': array{
+                map{
+                'range_uri':  f:buildURIfromLexicalQName('skos:Concept'),
+                'range_puri':  f:buildURIfromLexicalQName('skos:Concept'),
+                'range_curie': 'skos:Concept',
+                'range_label': map{'en': 'Concept'}
+                }
+                },
+                'cardinality': string($dependency/target/type/@multiplicity),
+                'tags': f:tagsToMap(f:getConnectorTags($dependency))
+                }
             }"
         />
     </xsl:template>
