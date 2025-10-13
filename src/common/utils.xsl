@@ -127,6 +127,27 @@
     </xsl:function>
 
     <xd:doc>
+        <xd:desc>
+            Function to get the local segment from a term Qname / compact URI
+            (prefix:LocalSegment), excluding the namespace prefix if it matches
+            the processed ontology prefix.
+        </xd:desc>
+    </xd:doc>
+    <xsl:function name="f:getLocalSegmentForInternalTerm">
+        <xsl:param name="termCurie"/>
+        <xsl:value-of>
+            <xsl:choose>
+                <xsl:when test="f:getPrefix($termCurie) = f:getMetadataValue('preferredNamespacePrefix')">
+                    <xsl:value-of select="f:getLocalSegment($termCurie)"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$termCurie"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:value-of>
+    </xsl:function>
+
+    <xd:doc>
         <xd:desc>Get the prefix from a Qname (prefix:LocalSegment).</xd:desc>
         <xd:param name="name"/>
     </xd:doc>

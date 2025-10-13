@@ -22,24 +22,18 @@
 
     <xd:doc>
         <xd:desc>
-            Generates node objects for associations and dependencies that are not
-            excluded based on their status or origin.
-            The function correclty handles the case when a class has more than
-            one connector with the same name (target role name). The described
-            edge case is allowed in the UML standard, but it cannot be processed
-            as-is because it would lead to duplicate keys in the JSON-LD
-            context. In case of such a situation, the function uses the first
-            found connector with the given name.
+            Generates node objects for associations and dependencies of the
+            given class that are not excluded based on their status or origin.
         </xd:desc>
     </xd:doc>
-    <xsl:template name="connectorsDeclaration">
-        <xsl:variable name="supportedConnTypes" select="('Association', 'Dependency')"/>
-        <xsl:variable name="relations" select="f:getAllRelations($supportedConnTypes, root())"/>
-
-        <xsl:for-each-group select="$relations//relation" group-by="@name">
-            <xsl:for-each-group select="." group-by="source/@name">
-                <!-- Use the first connector (relation) with the certain name -->
-                <xsl:variable name="relation" select="current-group()[1]"/>
+    <xsl:template name="classConnectorsDeclaration">
+        <xsl:variable name="class" select="."/>
+        <xsl:variable name="supportedConnTypes"
+            select="('Association', 'Dependency')"/>
+        <xsl:variable name="relations"
+            select="f:getOutgoingRelationsByType($class, $supportedConnTypes)"/>
+        <xsl:for-each select="$relations//relation">
+                <xsl:variable name="relation" select="."/>
                 <xsl:variable name="connector"
                     select="f:getConnectorByIdRef($relation/@connectorIdRef, root())"/>
                 <xsl:if test="not(f:isExcludedByStatus($connector))">
@@ -55,8 +49,7 @@
                         </xsl:if>
                     </xsl:if>
                 </xsl:if>
-            </xsl:for-each-group>
-        </xsl:for-each-group>
+        </xsl:for-each>
     </xsl:template>
 
     <xd:doc>
@@ -69,10 +62,8 @@
     <xsl:template name="relationGeneration">
         <xsl:param name="relation"/>
         <xsl:variable name="relCurie" select="$relation/@name"/>
-        <xsl:variable name="sourceClassCurie" select="$relation/source/@name"/>
         <xsl:variable name="relName" select="f:getLocalSegment($relCurie)"/>
-        <xsl:variable name="sourceClassName" select="f:getLocalSegment($sourceClassCurie)"/>
-        <fn:map key="{$sourceClassName}.{$relName}">
+        <fn:map key="{$relName}">
             <xsl:call-template name="relationDeclaration">
                 <xsl:with-param name="relCurie" select="$relCurie"/>
             </xsl:call-template>
@@ -88,9 +79,10 @@
             R.03. Association and dependency — in JSON-LD context layer.
             For each UML association/dependency, specify an object property by
             creating a property URI mapping with an absolute URI of a target end
-            in a node object. Set the term definition as a top-level entry of
-            the context object. For bidirectional connectors, additionally
-            specify an extended term definition for the source end.
+            in a node object. Set the term definition as a top-level entry
+            inside the class’s inner context object. For bidirectional
+            connectors, additionally specify an extended term definition for the
+            source end.
         </xd:desc>
         <xd:param name="relCurie"/>
     </xd:doc>
@@ -107,8 +99,9 @@
             range by creating a type coercion entry in a node object. Set the
             fixed @id keyword as a value to indicate that that the value of the
             term should be interpreted as an URI. Set the term definition as a
-            top-level entry of the context object. For bidirectional connectors,
-            additionally specify the object property range for the source end.
+            top-level entry inside the class’s inner context object. For
+            bidirectional connectors, additionally specify the object property
+            range for the source end.
         </xd:desc>
     </xd:doc>
     <xsl:template name="relationTypeDeclaration">

@@ -72,6 +72,16 @@
         <xsl:sequence select="root($element)//connector[source/@xmi:idref = $element/@xmi:idref]"/>
     </xsl:function>
     
+    <xd:doc>
+        <xd:desc>Get the connectors outgoing from the element by type</xd:desc>
+        <xd:param name="element"/>
+    </xd:doc>
+    <xsl:function name="f:getOutgoingConnectorsByType" as="node()*">
+        <xsl:param name="element" as="node()"/>
+        <xsl:param name="connectorTypes" as="xs:string*"/>
+        <xsl:variable name="connectors" select="f:getOutgoingConnectors($element)"/>
+        <xsl:sequence select="$connectors[properties/@ea_type = $connectorTypes]"/>
+    </xsl:function>
 
     <xd:doc>
         <xd:desc>Get the connectors incomming to the element</xd:desc>
@@ -416,6 +426,31 @@
         <relations>
             <xsl:for-each select="$root//connector[properties/@ea_type = $connectorTypes]">
                 <xsl:sequence select="f:getRelationsFromConnector(.)"/>
+            </xsl:for-each>
+        </relations>
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>
+            Get all relations of the given types outgoing from the specified
+            class that are encoded in the connectors. The function accepts a
+            sequence of connector types (e.g., 'Association',
+            'Generalization') and returns a sequence of internal relation
+            elements (see `f:createRelation` function).
+            See `f:getRelationsFromConnector` for the definition of the relation
+            concept.
+        </xd:desc>
+        <xd:param name="class"/>
+        <xd:param name="connectorTypes"/>
+    </xd:doc>
+    <xsl:function name="f:getOutgoingRelationsByType">
+        <xsl:param name="class" as="node()"/>
+        <xsl:param name="connectorTypes" as="xs:string*"/>
+        <xsl:variable name="className" select="$class/@name"/>
+        <relations>
+            <xsl:for-each select="f:getOutgoingConnectorsByType($class, $connectorTypes)">
+                <xsl:variable name="relations" select="f:getRelationsFromConnector(.)"/>
+                <xsl:sequence select="$relations[source/@name = $className]"/>
             </xsl:for-each>
         </relations>
     </xsl:function>

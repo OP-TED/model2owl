@@ -30,19 +30,27 @@
             Output should be used in conjunction with the `fn:map` node.
         </xd:desc>
     </xd:doc>
-    <xsl:template name="elementDeclaration">
+    <xsl:template name="simpleElementDeclaration">
         <xsl:variable name="elementCurie" select="./@name"/>
-        <xsl:variable name="elementName">
-            <xsl:choose>
-                <xsl:when test="f:getPrefix($elementCurie) = f:getMetadataValue('preferredNamespacePrefix')">
-                    <xsl:value-of select="f:getLocalSegment($elementCurie)"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="$elementCurie"/>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable>
+        <xsl:variable name="elementName" select="f:getLocalSegmentForInternalTerm($elementCurie)"/>
         <xsl:variable name="elementUri" select="f:buildURIfromLexicalQName($elementCurie)"/>
         <fn:string key="{$elementName}"><xsl:value-of select="$elementUri"/></fn:string>        
+    </xsl:template>
+
+    <xd:doc>
+        <xd:desc>
+            A generic template for declaring term ID mapping in the JSON-LD
+            context. It generates a mapping from the term name to its URI.
+            Suitable for such UML elements as Class, Property and Association.
+            The function skips the namespace prefix if it matches the
+            preferred namespace prefix.
+            Output should be used in conjunction with the `fn:map` node.    
+        </xd:desc>
+        <xd:param name="termCurie"/>
+    </xd:doc>
+    <xsl:template name="termIdMapping">
+        <xsl:param name="termCurie"/>
+        <xsl:variable name="termUri" select="f:buildURIfromLexicalQName($termCurie)"/>
+        <fn:string key="@id"><xsl:value-of select="$termUri"/></fn:string>   
     </xsl:template>
 </xsl:stylesheet>
