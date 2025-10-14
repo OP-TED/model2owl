@@ -3,22 +3,21 @@
     {
       "@id": "http://data.europa.eu/a4g/resource/buyer_001",
       "@type": "Buyer",
-      "Buyer.hasBuyerProfile": "https://example.com",
-      "Buyer.isContractingEntity": true,
-      "AgentInRole.playedBy": "http://data.europa.eu/a4g/resource/organization_001"
+      "hasBuyerProfile": "https://example.com",
+      "isContractingEntity": true
     },
     {
       "@id": "http://data.europa.eu/a4g/resource/organization_001",
       "@type": "org:Organization",
-      "Organization.hasBuyerLegalType": "at-voc:buyer-legal-type/pub-undert",
-      "Organization.hasLegalIdentifier": [
+      "hasBuyerLegalType": "at-voc:buyer-legal-type/pub-undert",
+      "hasLegalIdentifier": [
         "http://data.europa.eu/a4g/resource/identifier_001"
       ],
-      "Organization.hasLegalName": [
+      "hasLegalName": [
         "Fancy Organization"
       ],
-      "Organization.hasMainActivity": "at-voc:main-activity/rail",
-      "Person.registeredAddress": "http://data.europa.eu/a4g/resource/address_001"
+      "hasMainActivity": "at-voc:main-activity/rail",
+      "registeredAddress": "http://data.europa.eu/a4g/resource/address_001"
     },
     {
       "@id": "http://data.europa.eu/a4g/resource/identifier_001",
@@ -27,8 +26,8 @@
     {
       "@id": "http://data.europa.eu/a4g/resource/address_001",
       "@type": "locn:Address",
-      "Location.hasCountryCode": "at-voc:country/USA",
-      "Location.hasNutsCode": "http://data.europa.eu/nuts/code/EL303",
+      "hasCountryCode": "at-voc:country/USA",
+      "hasNutsCode": "http://data.europa.eu/nuts/code/EL303",
       "locn:fullAddress": "1248 Maplewood Drive, Springfield, IL 62704, USA",
       "locn:postCode": "62704",
       "locn:postName": "Springfield"

@@ -40,7 +40,7 @@
             <xsl:variable name="elemPrefix" select="f:getPrefix(./@name)"/>
             <!-- Check if the UML element should be processed -->
             <xsl:if test="$generateReusedConceptsJSONLDcontext or $elemPrefix = $includedPrefixesList">
-                <xsl:call-template name="elementDeclaration"/>
+                <xsl:call-template name="simpleElementDeclaration"/>
             </xsl:if>
         </xsl:if>
     </xsl:template>

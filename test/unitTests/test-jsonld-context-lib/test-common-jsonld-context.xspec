@@ -6,12 +6,12 @@
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     stylesheet="../../../src/jsonld-context-lib/common-jsonld-context.xsl">
 
-    <x:scenario label="Scenario for UML element name to URI mapping - elementDeclaration">
+    <x:scenario label="Scenario for UML element name to URI mapping - simpleElementDeclaration">
         <x:scenario label="Scenario for an internal class">
             <x:context
                 href="../../testData/ePO-core-4.2.0.xml"
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[108]"/>
-            <x:call template="elementDeclaration"/>
+            <x:call template="simpleElementDeclaration"/>
             <x:expect label="there is an object entry" test="boolean(/fn:string)"/>
             <x:expect label="the object entry has correct key" test="/fn:string/@key = 'AwardCriterion'"/>
             <x:expect label="the object entry has correct value"
@@ -21,7 +21,7 @@
             <x:context
                 href="../../testData/ePO-core-4.2.0.xml"
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[308]"/>
-            <x:call template="elementDeclaration"/>
+            <x:call template="simpleElementDeclaration"/>
             <x:expect label="there is an object entry" test="boolean(/fn:string)"/>
             <x:expect label="the object entry has correct key" test="/fn:string/@key = 'time:TemporalUnit'"/>
             <x:expect label="the object entry has correct value"
@@ -31,7 +31,7 @@
             <x:context
                 href="../../testData/ePO-core-4.2.0.xml"
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[313]"/>
-            <x:call template="elementDeclaration"/>
+            <x:call template="simpleElementDeclaration"/>
             <x:expect label="there is an object entry" test="boolean(/fn:string)"/>
             <x:expect label="the object entry has correct key" test="/fn:string/@key = 'xsd:boolean'"/>
             <x:expect label="the object entry has correct value"
@@ -41,7 +41,7 @@
             <x:context
                 href="../../testData/ePO-core-4.2.0.xml"
                 select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[90]"/>
-            <x:call template="elementDeclaration"/>
+            <x:call template="simpleElementDeclaration"/>
             <x:expect label="there is an object entry" test="boolean(/fn:string)"/>
             <x:expect label="the object entry has correct key" test="/fn:string/@key = 'adms:Identifier'"/>
             <x:expect label="the object entry has correct value" test="/fn:string/text() = 'http://www.w3.org/ns/adms#Identifier'"/>

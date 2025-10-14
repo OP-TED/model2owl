@@ -20,20 +20,20 @@
 
 
     <xsl:import href="jsonld-context-lib/elements-jsonld-context.xsl"/>
-    <xsl:import href="jsonld-context-lib/connectors-jsonld-context.xsl"/>
     <xsl:import href="jsonld-context-lib/datatypes-jsonld-context.xsl"/>
     
     <xsl:output method="text" encoding="UTF-8"/>
     
     <xd:doc>
-        <xd:desc>The main template for JSON-LD context file</xd:desc>
+        <xd:desc>
+            The main template for JSON-LD context file
+        </xd:desc>
     </xd:doc>
     <xsl:template match="/" >
         <xsl:variable name="json-xml" as="element(fn:map)">
             <fn:map>
                 <fn:map key="@context">
                     <xsl:apply-templates select="xmi:XMI/xmi:Extension/elements/element"/>
-                    <xsl:call-template name="connectorsDeclaration"/>
                     <xsl:call-template name="namespacesDeclaration"/>
                 </fn:map>
             </fn:map>

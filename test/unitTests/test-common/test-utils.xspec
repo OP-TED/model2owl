@@ -110,6 +110,21 @@
         </x:call>
         <x:expect label="correct local segment" select="'Site'"/>
     </x:scenario>
+
+    <x:scenario label="Scenario getting the local segment for internal term">
+        <x:scenario label="Scenario getting the local segment for internal term - internal term">
+            <x:call function="f:getLocalSegmentForInternalTerm">
+                <x:param name="termCurie" select="'epo:Business'"/>
+            </x:call>
+            <x:expect label="correct local segment" select="string('Business')"/>
+        </x:scenario>
+        <x:scenario label="Scenario getting the local segment for internal term - external term">
+            <x:call function="f:getLocalSegmentForInternalTerm">
+                <x:param name="termCurie" select="'adms:Identifier'"/>
+            </x:call>
+            <x:expect label="correct local segment" select="string('adms:Identifier')"/>
+        </x:scenario>
+    </x:scenario>
     
     <x:scenario label="Scenario xsd:integer for testing function buildQNameFromLexicalQName">
         <x:call function="f:buildQNameFromLexicalQName">

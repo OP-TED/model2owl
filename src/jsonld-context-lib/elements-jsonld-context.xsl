@@ -18,14 +18,16 @@
 
 
     <xsl:import href="../common/checkers.xsl"/>
+    <xsl:import href="connectors-jsonld-context.xsl"/>
     <xsl:import href="common-jsonld-context.xsl"/>
     
     <xsl:output method="xml" encoding="UTF-8"/>
 
     <xd:doc>
         <xd:desc>
-            Selector to run JSON-LD context transformation rules for classes and
-            attributes.
+            Selector to run JSON-LD context transformation rules for classes.
+            The transformation includes class properties, namely attributes and
+            relationships.
         </xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']">
@@ -34,7 +36,6 @@
             <!-- Check if the class should be processed -->
             <xsl:if test="$generateReusedConceptsJSONLDcontext or $classPrefix = $includedPrefixesList">
                 <xsl:call-template name="classDeclaration"/>
-                <xsl:call-template name="generatePropertiesFromClassAttributes"/>
             </xsl:if>
         </xsl:if>
     </xsl:template>
@@ -43,12 +44,50 @@
         <xd:desc>
             Rule C.03. Class — in JSON-LD context layer.
             Specify a term for each UML class by assigning an absolute URI of
-            the class to the class name. Create the term mapping as a top-level
-            entry of the context object.
+            the class to the class name. Define a simple term definition or, an
+            expanded term definition if the class includes properties. Create
+            the term mapping as a top-level entry of the context object.
         </xd:desc>
     </xd:doc>
     <xsl:template name="classDeclaration">
-        <xsl:call-template name="elementDeclaration"/>
+        <xsl:variable name="class" select="."/>
+        <xsl:variable name="supportedConnTypes"
+            select="('Association', 'Dependency')"/>
+        <xsl:variable name="hasObjectProperties"
+            select="exists(f:getOutgoingConnectorsByType($class, $supportedConnTypes))"/>
+        <xsl:variable name="hasDatatypeProperties" select="count($class/attributes) > 0"/>
+        <xsl:choose>
+            <xsl:when test="$hasObjectProperties or $hasDatatypeProperties">
+                <xsl:call-template name="expandedClassDeclaration"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:call-template name="simpleElementDeclaration"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+
+    <xd:doc>
+        <xd:desc>
+            Generates an expanded term definition for a class that contains
+            either attributes or has associated relationships. The expanded
+            definition includes the class URI mapping and a nested context with
+            property definitions.
+        </xd:desc>
+    </xd:doc>
+    <xsl:template name="expandedClassDeclaration" as="element(fn:map)">
+        <xsl:variable name="class" select="."/>
+        <xsl:variable name="classCurie" select="./@name"/>
+        <xsl:variable name="className" select="f:getLocalSegmentForInternalTerm($classCurie)"/>
+        <fn:map key="{$className}">
+            <xsl:call-template name="termIdMapping">
+                <xsl:with-param name="termCurie" select="$classCurie"/>
+            </xsl:call-template>
+            <fn:map key="@context">
+                <xsl:call-template name="classAttributesDeclaration"/>
+                <xsl:call-template name="classConnectorsDeclaration"/>
+            </fn:map>
+        </fn:map>
     </xsl:template>
 
 
@@ -58,10 +97,9 @@
             excluded based on their status or origin.
         </xd:desc>
     </xd:doc>
-    <xsl:template name="generatePropertiesFromClassAttributes">
+    <xsl:template name="classAttributesDeclaration">
         <xsl:variable name="class" select="."/>
         <xsl:for-each select="$class/attributes/attribute">
-            <!-- Use the first found attribute -->
             <xsl:variable name="attribute" select="."/>
             <xsl:variable name="attributeName" select="$attribute/@name"/>
             <xsl:if test="not(f:isExcludedByStatus($attribute))">
@@ -70,9 +108,7 @@
                 <!-- Check if the attribute should be processed -->
                 <xsl:if
                     test="$generateReusedConceptsJSONLDcontext or $attributePrefix = $includedPrefixesList">
-                    <xsl:call-template name="attributeGeneration">
-                        <xsl:with-param name="class" select="$class"/>
-                    </xsl:call-template>
+                    <xsl:call-template name="attributeGeneration"/>
                 </xsl:if>
             </xsl:if>
         </xsl:for-each>
@@ -83,16 +119,12 @@
             Generates a node object for the class attribute. Includes the
             attribute URI mapping, type, and container information.
         </xd:desc>
-        <xd:param name="class"/>
     </xd:doc>
     <xsl:template name="attributeGeneration">
-        <xsl:param name="class"/>
         <xsl:variable name="attribute" select="."/>
         <xsl:variable name="attrCurie" select="$attribute/@name"/>
-        <xsl:variable name="classCurie" select="$class/@name"/>
         <xsl:variable name="attrName" select="f:getLocalSegment($attrCurie)"/>
-        <xsl:variable name="className" select="f:getLocalSegment($classCurie)"/>
-        <fn:map key="{$className}.{$attrName}">
+        <fn:map key="{$attrName}">
             <xsl:call-template name="attributeDeclaration">
                 <xsl:with-param name="attrCurie" select="$attrCurie"/>
             </xsl:call-template>
@@ -110,15 +142,16 @@
             C.08. Attribute — in JSON-LD context layer.
             For each UML class attribute, specify a datatype property by
             creating a property URI mapping with an absolute attribute URI in a
-            node object. Set the term definition as a top-level entry of the
-            context object.
+            node object. Set the term definition as a top-level entry inside the
+            class’s inner context object.
             </xd:desc>
         <xd:param name="attrCurie"/>
     </xd:doc>
     <xsl:template name="attributeDeclaration">
         <xsl:param name="attrCurie"/>
-        <xsl:variable name="attrUri" select="f:buildURIfromLexicalQName($attrCurie)"/>
-        <fn:string key="@id"><xsl:value-of select="$attrUri"/></fn:string>   
+        <xsl:call-template name="termIdMapping">
+            <xsl:with-param name="termCurie" select="$attrCurie"/>
+        </xsl:call-template>
     </xsl:template>
 
     <xd:doc>
@@ -126,8 +159,8 @@
             C.11. Class attribute type — in JSON-LD context layer
             For each UML class attribute, specify its range by creating a type
             coercion entry with an absolute URI of the attribute datatype in a
-            node object. Set the term definition as a top-level entry of the
-            context object.
+            node object. Set the term definition as a top-level entry inside the
+            class’s inner context object.
         </xd:desc>
         <xd:param name="attribute"/>
     </xd:doc>

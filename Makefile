@@ -295,6 +295,7 @@ respec-cfg-json:
 # where:
 #   JSONLD_CONTEXT_INDENTATION: Indentation for the generated file (defaults to 2 spaces)
 generate-jsonld-context:
+	@make gen-enriched-ns-file
 	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/jsonld-context.xsl \
 		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_context.jsonld.tmp \
 		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}"
