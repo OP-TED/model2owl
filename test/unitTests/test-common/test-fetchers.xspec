@@ -337,6 +337,39 @@
             </x:expect>
         </x:scenario>
     </x:scenario>
+    
+    <x:scenario label="Get outgoing class relations by type">
+        <x:call function="f:getOutgoingRelationsByType">
+            <x:param name="class" href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:Technique']"/>
+            <x:param name="connectorTypes"
+                select="('Association', 'Dependency')"/>
+        </x:call>
+        <x:expect>
+            <relations xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:f="http://https://github.com/costezki/model2owl#"
+                xmlns:fn="http://www.w3.org/2005/xpath-functions"
+                xmlns:owl="http://www.w3.org/2002/07/owl#"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+                xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                xmlns:uml="http://www.omg.org/spec/UML/20131001"
+                xmlns:xmi="http://www.omg.org/spec/XMI/20131001">
+                <relation name="epo:hasValidityPeriod"
+                    multiplicity="0..1"
+                    connectorIdRef="EAID_DE5098A6_B134_4261_8994_841365A27FAB">
+                    <source name="epo:Technique" type="Class"/>
+                    <target name="epo:Period" type="Class"/>
+                </relation>
+                <relation name="epo:hasUsage"
+                    multiplicity="0..1"
+                    connectorIdRef="EAID_8FF77444_1F49_4895_AA8E_5C76444F3AE1">
+                    <source name="epo:Technique" type="Class"/>
+                    <target name="at-voc:usage" type="Enumeration"/>
+                </relation>
+            </relations>
+        </x:expect>
+    </x:scenario>
 
     <x:scenario label="Get definition from a connector">
         <x:call function="f:getDocumentationForConnector">

@@ -108,9 +108,7 @@
                 <!-- Check if the attribute should be processed -->
                 <xsl:if
                     test="$generateReusedConceptsJSONLDcontext or $attributePrefix = $includedPrefixesList">
-                    <xsl:call-template name="attributeGeneration">
-                        <xsl:with-param name="class" select="$class"/>
-                    </xsl:call-template>
+                    <xsl:call-template name="attributeGeneration"/>
                 </xsl:if>
             </xsl:if>
         </xsl:for-each>
@@ -121,10 +119,8 @@
             Generates a node object for the class attribute. Includes the
             attribute URI mapping, type, and container information.
         </xd:desc>
-        <xd:param name="class"/>
     </xd:doc>
     <xsl:template name="attributeGeneration">
-        <xsl:param name="class"/>
         <xsl:variable name="attribute" select="."/>
         <xsl:variable name="attrCurie" select="$attribute/@name"/>
         <xsl:variable name="attrName" select="f:getLocalSegment($attrCurie)"/>

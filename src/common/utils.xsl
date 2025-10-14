@@ -135,16 +135,14 @@
     </xd:doc>
     <xsl:function name="f:getLocalSegmentForInternalTerm">
         <xsl:param name="termCurie"/>
-        <xsl:value-of>
-            <xsl:choose>
-                <xsl:when test="f:getPrefix($termCurie) = f:getMetadataValue('preferredNamespacePrefix')">
-                    <xsl:value-of select="f:getLocalSegment($termCurie)"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="$termCurie"/>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:value-of>
+        <xsl:choose>
+            <xsl:when test="f:getPrefix($termCurie) = f:getMetadataValue('preferredNamespacePrefix')">
+                <xsl:sequence select="f:getLocalSegment($termCurie)"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="$termCurie"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
 
     <xd:doc>
