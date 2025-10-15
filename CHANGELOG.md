@@ -5,8 +5,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 ### Added
+- Generation of a new ReSpec documentation artefact (available through the new
+  `generate-respec` make command) (TEDM2O-11).
+- Generation of a new JSON-LD context artefact, available through the new
+  `generate-jsonld-context` _Make_ command (TEDM2O-7).
+- Dedicated `metadata.json` file describing metadata to be used in the generated
+- artefacts (TEDM2O-11).
 - Dedicated `imports.xml` file enabling fine-grained configuration of URIs for
   inclusion in `owl:imports` statements for each generated RDF artefact (TEDM2O-21).
+- New configuration options in `config-parameters.xsl`:
+  `classReferenceRespecLabel`, `customTermLabelTagName`,
+  `generateReusedConceptsJSONLDcontext`, `metadataJson`, `nodeShapeURIsuffix`,
+  `propertyReferenceRespecLabel`, `referenceTagName`, `showReferencesInRespec`,
+  `usageNoteTagName`.
+- New project dependencies: `Jinja2` and `jq`.
 
 ### Changed
 - Enhance ontology import configuration and separate import declarations from
@@ -16,8 +28,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   restriction generation (TEDM2O-33).
 - Parametrize URI construction for SHACL node shapes and set `Shape` as the
   default suffix (TEDM2O-19).
-
-### Deprecated
+- The following configuration options have been moved from `config-parameters.xml`
+  to `metadata.json`: `conventionReportCopyrightText`, `conventionReportAuthor`,
+  `conventionReportAuthorLocation`, `conventionReportAuthorWebsite`,
+  `conventionReportUMLModelName`, `ontologyTitleCore`,
+  `ontologyTitleRestrictions`, `ontologyTitleShapes`, `ontologyDescriptionCore`,
+  `ontologyDescriptionRestrictions`, `ontologyDescriptionShapes`,
+  `ontologyLabelCore`, `ontologyLabelRestrictions`, `ontologyLabelShapes`,
+  `seeAlsoResources`, `issuedDate`, `createdDate`, `incompatibleWith`,
+  `versionInfo`, `ontologyStatus`, `priorVersion`, `preferredNamespaceUri`,
+  `preferredNamespacePrefix`, `licenseLiteral`, `publisher`.
 
 ### Removed
 - Generation of incorrect axioms for disjointness among sibling classes in
@@ -29,8 +49,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Incorrect violation generation for generalizations with two subclasses
   (TEDM2O-32). 
 - Generation of extra triples for reused concepts (TEDM2O-16).
-
-### Security
 
 
 ## [3.0.0] — 2025-03-26
