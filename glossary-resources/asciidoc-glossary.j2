@@ -1,0 +1,44 @@
+= Glossary
+
+== 1.1 Class names and definitions
+
+[options="header"]
+|===
+| Class name | Definition
+{% for cls in classes %}
+| {{ cls.name }} | {{ cls.description.en }}
+{% endfor %}
+|===
+
+== 1.2 Attributes (datatype properties) names and definitions
+
+[cols="20%,20%,40%,20%", options="header"]
+|===
+| Class name | Attribute name | Definition | Data type / cardinality
+{% for cls in classes %}
+  {% for prop in cls.properties %}
+| {{ cls.name }} | {{ prop.name }} | {{ prop.description.en }} | 
+  {%- if prop.range %}
+    {%- for r in prop.range %}
+{{ r.range_curie }} [{{ prop.cardinality }}]
+    {%- endfor %}
+  {%- endif %}
+  {% endfor %}
+{% endfor %}
+|===
+
+== 1.3 Predicates (object properties) and definitions
+
+[cols="20%,50%,30%", options="header"]
+|===
+| Predicate name | Definition | Domain, Range and Cardinality
+{% for cls in classes %}
+  {% for prop in cls.properties %}
+| {{ prop.name }} | {{ prop.description.en }} | 
+{{ prop.domain[0].name }} → {{ prop.range[0].range_curie }} [{{ prop.cardinality }}]
+  {% endfor %}
+{% endfor %}
+|===
+
+
+This document is generated automatically by the link:https://github.com/OP-TED/model2owl[model2owl tool] developed in the context of link:https://joinup.ec.europa.eu/solution/eprocurement-ontology[the eProcurement Ontology initiative].
