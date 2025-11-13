@@ -30,15 +30,16 @@
                     fn:namespace-uri(//*:XMI) = 'http://www.omg.org/spec/XMI/20131001'">
                     <body>
                         <main class="container-fluid">
-                            <div id="toc" class="tocify">
-                                <div class="text-center">
-                                    <p>
+                            <div class="content-wrapper">
+                                <nav class="toc" aria-label="Table of contents">
+                                    <div class="text-center mb-3">
                                         <strong>Table of contents</strong>
-                                    </p>
+                                    </div>
+                                </nav>
+                                <div class="content">
+                                    <xsl:call-template name="glossary"/>
                                 </div>
-                            </div>
-                            <div class="container">
-                            <xsl:call-template name="glossary"/>
+                                <div class="toc-spacer"></div>
                             </div>
                         </main>
                         <xsl:call-template name="footer"/>
