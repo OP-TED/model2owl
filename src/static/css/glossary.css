@@ -113,6 +113,7 @@ h1 {
 
 .toc-spacer {
     /* Empty column for spacing */
+    min-width: 0;
 }
 
 table.display {
@@ -140,6 +141,72 @@ table.display tr:hover td {
 
 .dataTables_wrapper {
     margin: 20px 0;
+}
+
+/* DataTables search input styling */
+.dataTables_wrapper .dataTables_filter {
+    position: relative;
+    cursor: text;
+}
+
+.dataTables_wrapper .dataTables_filter label {
+    cursor: text;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.dataTables_wrapper .dataTables_filter input[type="search"] {
+    -webkit-appearance: searchfield;
+    -moz-appearance: searchfield;
+    appearance: searchfield;
+    flex: 1;
+    cursor: text;
+    max-width: 200px;
+    border-color: var(--epo-gray-border);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.dataTables_wrapper .dataTables_filter input[type="search"]:focus {
+    border-color: var(--epo-main);
+    outline: none;
+    box-shadow: 0 0 0 0.2rem var(--epo-main-light);
+}
+
+/* Hide native clear buttons - we use custom one instead */
+/* WebKit browsers (Chrome, Safari, Edge, Brave) */
+.dataTables_wrapper .dataTables_filter input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+    -webkit-appearance: none;
+}
+
+/* Firefox */
+.dataTables_wrapper .dataTables_filter input[type="search"]::-moz-search-clear-button {
+    display: none;
+}
+
+/* Custom clear button for Firefox and fallback */
+.dataTables_wrapper .dataTables_filter .custom-clear-button {
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 4px;
+    padding: 2px 6px;
+    color: #666;
+    font-size: 18px;
+    line-height: 1;
+    opacity: 0.6;
+    vertical-align: middle;
+    user-select: none;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.dataTables_wrapper .dataTables_filter .custom-clear-button:hover {
+    opacity: 1;
+    color: var(--epo-main);
+    background-color: var(--epo-main-hover);
+    border-radius: 50%;
 }
 
 /* DataTables pagination styling */

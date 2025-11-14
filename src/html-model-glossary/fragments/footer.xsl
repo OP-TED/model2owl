@@ -78,19 +78,88 @@
                 
                 // Initialize DataTables
                 if (typeof jQuery !== 'undefined' && jQuery.fn.DataTable) {
-                    jQuery('table.display').DataTable({
-                        lengthMenu: [[-1], ["All"]],
-                        pageLength: -1,
-                        responsive: true,
-                        order: [],
-                        language: {
-                            search: "Search:",
-                            lengthMenu: "Show _MENU_ entries",
-                            info: "Showing _START_ to _END_ of _TOTAL_ entries",
-                            infoEmpty: "No entries to show",
-                            infoFiltered: "(filtered from _MAX_ total entries)"
-                        },
-                        dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>rt<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>'
+                    jQuery('table.display').each(function() {
+                        var table = jQuery(this).DataTable({
+                            lengthMenu: [[-1], ["All"]],
+                            pageLength: -1,
+                            responsive: true,
+                            order: [],
+                            language: {
+                                search: "Search:",
+                                lengthMenu: "Show _MENU_ entries",
+                                info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                                infoEmpty: "No entries to show",
+                                infoFiltered: "(filtered from _MAX_ total entries)"
+                            },
+                            dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>rt<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>'
+                        });
+                        
+                        // Ensure search input is type="search" for native clear button
+                        var searchInput = jQuery(this).closest('.dataTables_wrapper').find('.dataTables_filter input');
+                        var searchLabel = jQuery(this).closest('.dataTables_wrapper').find('.dataTables_filter label');
+                        
+                        if (searchInput.length) {
+                            // Force type="search" for all browsers
+                            searchInput.attr('type', 'search');
+                            // For Firefox, ensure the input has the search type attribute
+                            if (searchInput[0]) {
+                                searchInput[0].type = 'search';
+                            }
+                            
+                            // Add custom clear button for Firefox (and as fallback for other browsers)
+                            var clearButton = jQuery('<span class="custom-clear-button" style="display: none; cursor: pointer; margin-left: 4px; padding: 2px 6px; color: #666; font-size: 16px; line-height: 1; opacity: 0.6;">&times;</span>');
+                            searchInput.after(clearButton);
+                            
+                            // Show/hide clear button based on input value
+                            function toggleClearButton() {
+                                if (searchInput.val() && searchInput.val().length > 0) {
+                                    clearButton.show();
+                                } else {
+                                    clearButton.hide();
+                                }
+                            }
+                            
+                            // Initial state
+                            toggleClearButton();
+                            
+                            // Update on input
+                            searchInput.on('input keyup', function() {
+                                toggleClearButton();
+                            });
+                            
+                            // Clear button click handler
+                            clearButton.on('click', function(e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                searchInput.val('');
+                                table.search('').draw();
+                                searchInput.focus();
+                                clearButton.hide();
+                            });
+                            
+                            // Make the entire label clickable to focus the input
+                            searchLabel.on('click', function(e) {
+                                // Only focus if clicking on the label, not the input itself
+                                if (e.target === this || jQuery(e.target).is('label')) {
+                                    searchInput.focus();
+                                }
+                            });
+                            
+                            // Handle clear button click for better browser compatibility
+                            searchInput.on('search', function() {
+                                if (this.value === '') {
+                                    table.search('').draw();
+                                    toggleClearButton();
+                                }
+                            });
+                            
+                            // Also handle input event for immediate clearing
+                            searchInput.on('input', function() {
+                                if (this.value === '') {
+                                    table.search('').draw();
+                                }
+                            });
+                        }
                     });
                 }
             });
