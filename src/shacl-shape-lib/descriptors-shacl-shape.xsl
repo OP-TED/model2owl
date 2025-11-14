@@ -39,7 +39,7 @@
                     <sh:name><xsl:value-of select="f:lexicalQNameToWords($elementName, true())"/></sh:name> 
                 </xsl:when>
                 <xsl:otherwise>
-                     <rdfs:label><xsl:value-of select="f:lexicalQNameToWords($elementName, true())"/></rdfs:label>  
+                     <rdfs:label><xsl:value-of select="f:lexicalQNameToWords($elementName, false())"/></rdfs:label>  
                 </xsl:otherwise>
             </xsl:choose>
         </rdf:Description>
