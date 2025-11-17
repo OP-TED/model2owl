@@ -13,6 +13,15 @@
 {% set imgRoot = assetsRoot ~ "/img" %}
 {% set shaclRoot = assetsRoot ~ "/shacl" %}
 
+{# Collect compact URIs of all model terms (classes and datatypes) #}
+{%- set all_terms = [] -%}
+{%- for cls in classes -%}
+  {%- set _ = all_terms.append(cls.name) -%}
+{%- endfor -%}
+{%- for dt in datatypes -%}
+  {%- set _ = all_terms.append(dt.scopeduri) -%}
+{%- endfor -%}
+
 {% macro renderFeedbackButton(entity, prop=None) %}
     {% if metadata.openGithubIssue %}    
         {% set _issueTitle = None %}
@@ -151,13 +160,17 @@
                                 </td>
                                 <td>
                                     {% for range in prop.range %}
-                                        {% if range['range_uri'] == range['range_puri'] %}
-                                            <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}"
-                                            data-toggle="tooltip"
-                                            data-content="{{ range['range_puri'] }}"
-                                            data-placement="right">{{ range['range_label'][language] }}</a>
+                                        {% if range['range_curie'] in all_terms %}
+                                            {% if range['range_uri'] == range['range_puri'] %}
+                                                <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}"
+                                                data-toggle="tooltip"
+                                                data-content="{{ range['range_puri'] }}"
+                                                data-placement="right">{{ range['range_label'][language] }}</a>
+                                            {% else %}
+                                                <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}" data-placement="right">{{ range['range_label'][language] }}</a>
+                                            {% endif %}
                                         {% else %}
-                                            <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}" data-placement="right">{{ range['range_label'][language] }}</a>
+                                                <p title="The term '{{ range['range_curie']}}' is not defined in this document. Please refer to the appropriate module's documentation.">{{ range['range_label'][language] }}</p>
                                         {% endif %}
                                     {% endfor %}
                                 </td>
