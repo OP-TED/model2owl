@@ -202,7 +202,10 @@
             for $attribute in $attributes
             return 
                 let $defaultLabel := f:lexicalQNameToWords($attribute/@name, fn:true()),
-                    $attributeLabel := f:getCustomLabelOrDefault($attribute, $defaultLabel)
+                    $attributeLabel := f:getCustomLabelOrDefault($attribute, $defaultLabel),
+                    $attributeRangeCurie := $attribute/properties/@type,
+                    $attributeRangeDefaultLabel := f:lexicalQNameToWords($attributeRangeCurie, fn:true()),
+                    $attributeRangeLabel := f:getCustomLabelOrDefault(root($classElement)//element[@name = $attributeRangeCurie], $attributeRangeDefaultLabel)
                 return map{
                 'uri':   f:buildURIfromLexicalQName($attribute/@name),
                 'name':  string($attribute/@name),
@@ -217,10 +220,10 @@
                 },
                 'range': array{
                 map{
-                'range_uri':  f:buildURIfromLexicalQName($attribute/properties/@type),
-                'range_puri':  f:buildURIfromLexicalQName($attribute/properties/@type),
-                'range_curie': string($attribute/properties/@type),
-                'range_label': map{'en': f:lexicalQNameToWords($attribute/properties/@type, fn:true())}
+                'range_uri':  f:buildURIfromLexicalQName($attributeRangeCurie),
+                'range_puri':  f:buildURIfromLexicalQName($attributeRangeCurie),
+                'range_curie': string($attributeRangeCurie),
+                'range_label': map{'en': $attributeRangeLabel}
                 }
                 },
                 'cardinality': concat($attribute/bounds/@lower, '..', $attribute/bounds/@upper),
@@ -247,7 +250,13 @@
             for $association in $associations
             return
                 let $defaultLabel := f:lexicalQNameToWords($association/target/role/@name, fn:true()),
-                    $associationLabel := f:getCustomLabelOrDefaultFromConnector($association, $defaultLabel)
+                    $associationLabel := f:getCustomLabelOrDefaultFromConnector($association, $defaultLabel),
+                    $associationRangeCurie := $association/target/model/@name,
+                    $associationRangeDefaultLabel := f:lexicalQNameToWords($associationRangeCurie, fn:true()),
+                    $targetClassElement := root($classElement)//element[@name = $associationRangeCurie],
+                    $associationRangeLabel := (if ($targetClassElement) 
+                    then f:getCustomLabelOrDefault($targetClassElement, $associationRangeDefaultLabel) 
+                    else $associationRangeDefaultLabel)
                 return map{
                 'uri':   f:buildURIfromLexicalQName($association/target/role/@name),
                 'name':  string($association/target/role/@name),
@@ -262,10 +271,10 @@
                 },
                 'range': array{
                 map{
-                'range_uri':  f:buildURIfromLexicalQName($association/target/model/@name),
-                'range_puri':  f:buildURIfromLexicalQName($association/target/model/@name),
-                'range_curie': string($association/target/model/@name),
-                'range_label': map{'en': f:lexicalQNameToWords($association/target/model/@name, fn:true())}
+                'range_uri':  f:buildURIfromLexicalQName($associationRangeCurie),
+                'range_puri':  f:buildURIfromLexicalQName($associationRangeCurie),
+                'range_curie': string($associationRangeCurie),
+                'range_label': map{'en': $associationRangeLabel}
                 }
                 },
                 'cardinality': string($association/target/type/@multiplicity),
