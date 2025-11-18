@@ -29,6 +29,11 @@
             <p class="mb-0 text-muted">&#169; <xsl:value-of select="f:getMetadataValue('conventionReportCopyrightText')"/></p>
         </footer>
         
+        <!-- Go to top button -->
+        <button id="goToTop" class="go-to-top" aria-label="Go to top" title="Go to top">
+            <span>&#8593;</span>
+        </button>
+        
         <!-- jQuery 3.7.1 -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         
@@ -160,6 +165,27 @@
                                 }
                             });
                         }
+                    });
+                }
+                
+                // Go to top button functionality
+                var goToTopButton = document.getElementById('goToTop');
+                if (goToTopButton) {
+                    // Show/hide button based on scroll position
+                    window.addEventListener('scroll', function() {
+                        if (window.pageYOffset > 300) {
+                            goToTopButton.style.display = 'flex';
+                        } else {
+                            goToTopButton.style.display = 'none';
+                        }
+                    });
+                    
+                    // Smooth scroll to top on click
+                    goToTopButton.addEventListener('click', function() {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
                     });
                 }
             });
