@@ -23,7 +23,13 @@
     <xd:doc>
         <xd:desc>
             Generates node objects for associations and dependencies of the
-            given class that are not excluded based on their status or origin.
+            given class that are not excluded based on their status or origin. 
+
+            The template supports multiple outgoing connectors (associations and
+            dependencies) sharing the same target-end name. For such cases, it
+            generates a single entry in the context with the appropriate
+            `@container` entry if the cardinality of any of the connectors
+            allows multiple values.
         </xd:desc>
     </xd:doc>
     <xsl:template name="classConnectorsDeclaration">
@@ -32,35 +38,51 @@
             select="('Association', 'Dependency')"/>
         <xsl:variable name="relations"
             select="f:getOutgoingRelationsByType($class, $supportedConnTypes)"/>
-        <xsl:for-each select="$relations//relation">
-                <xsl:variable name="relation" select="."/>
-                <xsl:variable name="connector"
-                    select="f:getConnectorByIdRef($relation/@connectorIdRef, root())"/>
-                <xsl:if test="not(f:isExcludedByStatus($connector))">
-                    <xsl:if test="$relation/source/@type != 'ProxyConnector'
-                        and $relation/target/@type != 'ProxyConnector'">
-                        <xsl:variable name="connectorRoleName" select="$relation/@name"/>
-                        <xsl:if
-                            test="$generateReusedConceptsJSONLDcontext 
-                            or f:getPrefix($connectorRoleName) = $includedPrefixesList">
-                            <xsl:call-template name="relationGeneration">
-                                <xsl:with-param name="relation" select="$relation"/>
-                            </xsl:call-template>
-                        </xsl:if>
+        <xsl:for-each-group select="$relations//relation" group-by="@name">
+            <xsl:variable name="relation" select="current-group()[1]"/>
+            <xsl:variable name="multiplicity"
+              select="if (some $r in current-group() satisfies (f:areMultipleValuesForRelationRangeAllowed($r/@multiplicity)))
+                      then '+'
+                      else '1'"/>
+            <xsl:variable name="connector"
+                select="f:getConnectorByIdRef($relation/@connectorIdRef, root())"/>
+            <xsl:if test="not(f:isExcludedByStatus($connector))">
+                <xsl:if test="$relation/source/@type != 'ProxyConnector'
+                    and $relation/target/@type != 'ProxyConnector'">
+                    <xsl:variable name="connectorRoleName" select="$relation/@name"/>
+                    <xsl:if
+                        test="$generateReusedConceptsJSONLDcontext 
+                        or f:getPrefix($connectorRoleName) = $includedPrefixesList">
+                        <xsl:call-template name="relationGeneration">
+                            <xsl:with-param name="relation" select="$relation"/>
+                            <xsl:with-param name="multiplicityOverride" select="$multiplicity"/>
+                        </xsl:call-template>
                     </xsl:if>
                 </xsl:if>
-        </xsl:for-each>
+            </xsl:if>
+        </xsl:for-each-group>
     </xsl:template>
 
     <xd:doc>
         <xd:desc>
             Generates a node object for the relation. Includes the relation URI
             mapping, type, and container information.
+
+            Accepts the optional `multiplicityOverride` parameter to override
+            the relation's multiplicity.
         </xd:desc>
         <xd:param name="relation"/>
     </xd:doc>
     <xsl:template name="relationGeneration">
         <xsl:param name="relation"/>
+        <xsl:param name="multiplicityOverride" select="''"/>
+
+        <xsl:variable name="effectiveMultiplicity"
+            select="if (normalize-space($multiplicityOverride) != '')
+                    then $multiplicityOverride
+                    else $relation/@multiplicity"
+        />
+
         <xsl:variable name="relCurie" select="$relation/@name"/>
         <xsl:variable name="relName" select="f:getLocalSegment($relCurie)"/>
         <fn:map key="{$relName}">
@@ -69,7 +91,7 @@
             </xsl:call-template>
             <xsl:call-template name="relationTypeDeclaration"/>
             <xsl:call-template name="relationContainerDeclaration">
-                <xsl:with-param name="multiplicity" select="$relation/@multiplicity"/>
+                <xsl:with-param name="multiplicity" select="$effectiveMultiplicity"/>
             </xsl:call-template>
         </fn:map>
     </xsl:template>
