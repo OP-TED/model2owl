@@ -19,7 +19,7 @@
     exclude-result-prefixes="xs math xd xsl uml xmi umldi dc fn array map owl rdf rdfs dct f skos"
     version="3.0">
     
-    <xsl:output method="text" media-type="application/json" indent="no"/>
+    <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="yes"/>
 
     
     <xsl:import href="rspec/rspec-generation.xsl"/>
@@ -92,11 +92,11 @@
             }"/>
 
         <!-- output -->
-        <xsl:value-of
+        <xsl:value-of disable-output-escaping="yes"
             select="serialize($rootMap, map{'method':'json','indent':true()})"
         />
     </xsl:template>
-    
+
  
     <xsl:template name="usedPrefixes" as="array(*)">
         <xsl:variable name="allPrefixNames" select="f:getAllNamespacesUsed(root(.))"/>

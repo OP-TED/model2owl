@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<x:description
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+    xmlns:maps="http://www.w3.org/2005/xpath-functions/map"
+    stylesheet="../../../src/rspec-json-generate.xsl">
+
+    <x:scenario label="Scenario for generation of class labels in referenced places">
+        <x:scenario label="Scenario for custom class label">
+            <x:context
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:Procedure' or @name='epo:OpeningTerm' or @name='epo:ProcedureSpecificTerm']"/>
+            <x:call template="classDetails"/>
+            <x:variable name="expectedLabel" select="'Procedure specific term (custom label)'"/>
+            
+            <x:expect
+                label="correct class label for epo:ProcedureSpecificTerm definition"
+                test="
+                    let $node := ($x:result)[?name = 'epo:ProcedureSpecificTerm']
+                    return $node?label?en
+                "
+                select="$expectedLabel"/>
+            <x:expect
+                label="correct class label in range for epo:isSubjectToProcedureSpecificTerm of epo:Procedure"
+                test="
+                    let $node :=
+                    ($x:result)[?name = 'epo:Procedure'],
+                    $prop :=
+                    ($node?properties?*)
+                        [?name = 'epo:isSubjectToProcedureSpecificTerm']
+                    return
+                    $prop?range?1?range_label?en
+                "
+                select="$expectedLabel"/>
+            <x:expect
+                label="correct class label for parent of epo:OpeningTerm"
+                test="
+                    let $node :=
+                    ($x:result)[?name = 'epo:OpeningTerm'],
+                    $parent :=
+                    ($node?parents?*)
+                        [?name = 'epo:ProcedureSpecificTerm']
+                    return
+                    $parent?label?en
+                "
+                select="$expectedLabel"/>
+        </x:scenario>
+        <x:scenario label="Scenario for standard class label">
+            <x:context
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:Candidate' or @name='epo:OfferingParty' or @name='epo:ExpressionOfInterest']"/>
+            <x:call template="classDetails"/>
+            <x:variable name="expectedLabel" select="'Offering party'"/>
+            
+            <x:expect
+                label="correct class label for epo:OfferingParty definition"
+                test="
+                    let $node := ($x:result)[?name = 'epo:OfferingParty']
+                    return $node?label?en
+                "
+                select="$expectedLabel"/>
+            <x:expect
+                label="correct class label in range for epo:specifiesEconomicOperator of epo:ExpressionOfInterest"
+                test="
+                    let $node :=
+                    ($x:result)[?name = 'epo:ExpressionOfInterest'],
+                    $prop :=
+                    ($node?properties?*)
+                        [?name = 'epo:specifiesEconomicOperator']
+                    return
+                    $prop?range?1?range_label?en
+                "
+                select="$expectedLabel"/>
+            <x:expect
+                label="correct class label for parent of epo:Candidate"
+                test="
+                    let $node :=
+                    ($x:result)[?name = 'epo:Candidate'],
+                    $parent :=
+                    ($node?parents?*)
+                        [?name = 'epo:OfferingParty']
+                    return
+                    $parent?label?en
+                "
+                select="$expectedLabel"/>
+        </x:scenario>
+    </x:scenario>
+</x:description>
