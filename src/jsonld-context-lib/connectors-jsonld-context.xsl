@@ -38,28 +38,39 @@
             select="('Association', 'Dependency')"/>
         <xsl:variable name="relations"
             select="f:getOutgoingRelationsByType($class, $supportedConnTypes)"/>
-        <xsl:for-each-group select="$relations//relation" group-by="@name">
-            <xsl:variable name="relation" select="current-group()[1]"/>
-            <xsl:variable name="multiplicity"
-              select="if (some $r in current-group() satisfies (f:areMultipleValuesForRelationRangeAllowed($r/@multiplicity)))
-                      then '+'
-                      else '1'"/>
-            <xsl:variable name="connector"
-                select="f:getConnectorByIdRef($relation/@connectorIdRef, root())"/>
-            <xsl:if test="not(f:isExcludedByStatus($connector))">
-                <xsl:if test="$relation/source/@type != 'ProxyConnector'
-                    and $relation/target/@type != 'ProxyConnector'">
-                    <xsl:variable name="connectorRoleName" select="$relation/@name"/>
-                    <xsl:if
-                        test="$generateReusedConceptsJSONLDcontext 
-                        or f:getPrefix($connectorRoleName) = $includedPrefixesList">
-                        <xsl:call-template name="relationGeneration">
-                            <xsl:with-param name="relation" select="$relation"/>
-                            <xsl:with-param name="multiplicityOverride" select="$multiplicity"/>
-                        </xsl:call-template>
-                    </xsl:if>
+
+        <!-- Filter relations before grouping -->
+        <xsl:variable name="filteredRelations" as="element(relation)*">
+            <xsl:for-each select="$relations//relation">
+                <xsl:variable name="connector"
+                    select="f:getConnectorByIdRef(@connectorIdRef, root())"/>
+                <xsl:if test="
+                    not(f:isExcludedByStatus($connector))
+                    and @name
+                    and (source/@type != 'ProxyConnector')
+                    and (target/@type != 'ProxyConnector')
+                    and ($generateReusedConceptsJSONLDcontext 
+                        or f:getPrefix(@name) = $includedPrefixesList)
+                ">
+                    <xsl:sequence select="."/>
                 </xsl:if>
-            </xsl:if>
+            </xsl:for-each>
+        </xsl:variable>
+
+        <xsl:for-each-group select="$filteredRelations" group-by="@name">
+            <xsl:variable name="group" select="current-group()"/>
+            <xsl:variable name="relation" select="$group[1]"/>
+            <xsl:variable name="multiplicity"
+            select="
+                if (some $r in $group
+                    satisfies f:areMultipleValuesForRelationRangeAllowed($r/@multiplicity))
+                then '+'
+                else '1'
+            "/>
+            <xsl:call-template name="relationGeneration">
+                <xsl:with-param name="relation" select="$relation"/>
+                <xsl:with-param name="multiplicityOverride" select="$multiplicity"/>
+            </xsl:call-template>
         </xsl:for-each-group>
     </xsl:template>
 
