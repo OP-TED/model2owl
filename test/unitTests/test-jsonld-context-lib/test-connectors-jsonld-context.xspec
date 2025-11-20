@@ -17,6 +17,34 @@
             <x:expect label="there is an object for the right association"
                 test="boolean(fn:map['comprisesAwardOutcome'])"/>
         </x:scenario>
+        <x:scenario label="Scenario for multiple dependencies with the same target-end name">
+            <!-- 
+                This scenario targets a single class that has two outgoing
+                dependencies. The cardinality of both dependencies allows
+                multiple occurences.
+            -->
+            <x:context
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[source[1]/model[1]/@name = 'epo:GreenProcurement'] | /xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:GreenProcurement']"/>
+            <x:call template="classConnectorsDeclaration"/>
+            <x:expect label="there is exactly one object entry for multiple occurences of a property" test="count(/fn:map[@key= 'fulfillsRequirement']) = 1"/>
+            <x:expect label="the property declaration has the correct @container value"
+                test="//fn:map[@key= 'fulfillsRequirement']/fn:string[@key='@container']/text() = '@set'"/>
+        </x:scenario>
+        <x:scenario label="Scenario for multiple associations with the same target-end name">
+            <!--
+                This scenario targets a single class that has two outgoing
+                associations. The cardinality of both associations does not
+                allow multiple occurrences.
+            -->
+            <x:context
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[source[1]/model[1]/@name = 'epo:ContractTerm'] | /xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:ContractTerm']"/>
+            <x:call template="classConnectorsDeclaration"/>
+            <x:expect label="there is exactly one object entry for multiple occurences of a property" test="count(/fn:map[@key= 'definesSpecificPlaceOfPerformance']) = 1"/>
+            <x:expect label="cardinality is interpreted correctly and there is no @container entry"
+                test="not(boolean(//fn:map[@key= 'definesSpecificPlaceOfPerformance']/fn:string[@key='@container']))"/>
+        </x:scenario>
         <x:scenario label="Scenario for a class without connectors">
             <x:context
                 href="../../testData/ePO-core-4.2.0.xml"
