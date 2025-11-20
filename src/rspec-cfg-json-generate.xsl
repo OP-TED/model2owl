@@ -34,7 +34,8 @@
                     'classReferenceRespecLabel': string($classReferenceRespecLabel),
                     'showReferencesInRespec': boolean($showReferencesInRespec),
                     'mandatoryStatusTagName': string($mandatoryStatusTagName),
-                    'usageNoteTagName': string($usageNoteTagName)
+                    'usageNoteTagName': string($usageNoteTagName),
+                    'issuedDate': string($issuedDate)
                 }
             }"/>
 

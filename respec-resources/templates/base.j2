@@ -269,7 +269,7 @@
       edDraftURI: "{{metadata.navigation.self}}",
       latestVersion: "{{metadata.navigation.prev}}",
       specStatus: "base",
-      publishDate: "{{ metadata.issued }}",
+      publishDate: "{{ config.issuedDate }}",
       editors: myeditors,
       authors: myauthors,
       github: "{{metadata.github}}",
@@ -408,8 +408,8 @@
         It is recommended to indicate the <a href="https://www.w3.org/2021/Process-20211102/#maturity-levels">maturity levels</a> of the specification.
     </p>
     <p>
-        {% if metadata.status and metadata.issued %}
-            This application profile has the status <i>{{ metadata.status }}</i> and has been published on {{ metadata.issued }}.
+        {% if metadata.status and config.issuedDate %}
+            This application profile has the status <i>{{ metadata.status }}</i> and has been published on {{ config.issuedDate }}.
         {% endif %}
     </p>
     <p>

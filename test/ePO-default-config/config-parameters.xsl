@@ -5,6 +5,7 @@
     xmlns:dct="http://purl.org/dc/terms/" xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:functx="http://www.functx.com" xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
     version="3.0">
 
     <xd:doc scope="stylesheet">
@@ -154,6 +155,11 @@
 
     <xsl:variable name="moduleReference" select="'core'"/>
 
- 
+    <!-- Date used for dct:issued property in the RDF artefacts and ReSpec
+    documentation. Defaults to the currrent date.
+    A fixed date can be set as follows:
+    select="xs:date('2024-01-01')"
+    -->
+    <xsl:variable name="issuedDate" select="format-date(current-date(),'[Y0001]-[M01]-[D01]')"/>
 
 </xsl:stylesheet>

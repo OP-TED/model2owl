@@ -89,7 +89,7 @@
             <xsl:for-each select="1 to array:size($seeAlsoArray)">
                 <rdfs:seeAlso rdf:resource="{$seeAlsoArray(.)}"/>
             </xsl:for-each>
-            <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="f:getMetadataValue('issuedDate')"/></dct:issued>
+            <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="$issuedDate"/></dct:issued>
             <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="f:getMetadataValue('createdDate')"/></dct:created>
             <owl:versionInfo><xsl:value-of select="f:getMetadataValue('versionInfo')"/></owl:versionInfo>   
             <owl:incompatibleWith><xsl:value-of select="f:getMetadataValue('incompatibleWith')"/></owl:incompatibleWith>
