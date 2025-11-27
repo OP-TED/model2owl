@@ -142,6 +142,8 @@ table.display {
     border-radius: 6px;
     overflow: hidden;
     font-size: 1rem;
+    display: table;
+    table-layout: fixed;
 }
 
 table.display th {
@@ -152,12 +154,50 @@ table.display th {
     border-right: none !important;
 }
 
-table.display th,
+table.display th {
+    border-color: var(--epo-gray-border) !important;
+    border-bottom: 1px solid var(--epo-gray-border) !important;
+    border-right: none !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
 table.display td {
     border-color: var(--epo-gray-border) !important;
     border-bottom: 1px solid var(--epo-gray-border) !important;
     border-right: none !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    hyphens: auto;
 }
+
+/* Enforce width on definition columns */
+/* For classes table - definition is 2nd column */
+table.display th:nth-child(2),
+table.display td:nth-child(2) {
+    max-width: 500px !important;
+    min-width: 250px !important;
+    width: 40% !important;
+}
+
+/* For attributes table - class name (1st) and attribute name (2nd) same width */
+table.display th:nth-child(1),
+table.display td:nth-child(1),
+table.display th:nth-child(2),
+table.display td:nth-child(2) {
+    width: 20% !important;
+}
+
+/* For attributes table - definition is 3rd column */
+table.display th:nth-child(3),
+table.display td:nth-child(3) {
+    max-width: 500px !important;
+    min-width: 250px !important;
+    width: 35% !important;
+}
+
 
 /* Disable DataTables box-shadow on striped rows */
 table.dataTable.table-striped > tbody > tr:nth-of-type(2n+1) > * {
@@ -362,6 +402,19 @@ h2 {
         width: 45px;
         height: 45px;
         font-size: 20px;
+    }
+    
+    /* Responsive tables */
+    .dataTables_wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        display: block;
+        width: 100%;
+    }
+    
+    table.display {
+        min-width: 600px;
+        display: table;
     }
 }
 
