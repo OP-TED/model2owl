@@ -310,9 +310,11 @@
             <x:expect>
                 <relation name="epo-ful:hasNetVolume"
                           multiplicity="0..1"
+                          type="Association"
+                          documentation=""
                           connectorIdRef="EAID_FA2388C8_1471_4d6b_9B9F_2E0BBE858668">
-                    <source name="epo-ful:AbstractContainer" type="Class"/>
-                    <target name="epo:Quantity" type="Class"/>
+                    <source name="epo-ful:AbstractContainer" type="Class" documentation=""/>
+                    <target name="epo:Quantity" type="Class" documentation=""/>
                 </relation>
             </x:expect>
         </x:scenario>
@@ -324,15 +326,19 @@
             <x:expect>
                 <relation name="epo:isOwnedByAgent"
                           multiplicity="0..1"
+                          type="Association"
+                          documentation=""
                           connectorIdRef="EAID_EBF47D81_D8E3_4eda_9351_165A2D6D972E">
-                    <source name="epo:System" type="Class"/>
-                    <target name="foaf:Agent" type="Class"/>
+                    <source name="epo:System" type="Class" documentation=""/>
+                    <target name="foaf:Agent" type="Class" documentation=""/>
                 </relation>
                 <relation name="epo:ownsSystem"
                           multiplicity="0..*"
+                          type="Association"
+                          documentation=""
                           connectorIdRef="EAID_EBF47D81_D8E3_4eda_9351_165A2D6D972E">
-                    <source name="foaf:Agent" type="Class"/>
-                    <target name="epo:System" type="Class"/>
+                    <source name="foaf:Agent" type="Class" documentation=""/>
+                    <target name="epo:System" type="Class" documentation=""/>
                 </relation>
             </x:expect>
         </x:scenario>
@@ -357,15 +363,19 @@
                 xmlns:xmi="http://www.omg.org/spec/XMI/20131001">
                 <relation name="epo:hasValidityPeriod"
                     multiplicity="0..1"
+                    type="Association"
+                    documentation="The relation indicating until when a given instance of a concept is applicable."
                     connectorIdRef="EAID_DE5098A6_B134_4261_8994_841365A27FAB">
-                    <source name="epo:Technique" type="Class"/>
-                    <target name="epo:Period" type="Class"/>
+                    <source name="epo:Technique" type="Class" documentation=""/>
+                    <target name="epo:Period" type="Class" documentation=""/>
                 </relation>
                 <relation name="epo:hasUsage"
                     multiplicity="0..1"
+                    type="Dependency"
+                    documentation="The codelist to be used is at-voc:usage which is available at http://publications.europa.eu/resource/dataset/usage"
                     connectorIdRef="EAID_8FF77444_1F49_4895_AA8E_5C76444F3AE1">
-                    <source name="epo:Technique" type="Class"/>
-                    <target name="at-voc:usage" type="Enumeration"/>
+                    <source name="epo:Technique" type="Class" documentation=""/>
+                    <target name="at-voc:usage" type="Enumeration" documentation=""/>
                 </relation>
             </relations>
         </x:expect>

@@ -210,8 +210,8 @@
                     <xsl:value-of
                         select="
                             for $connector in $connectorsWithSameName
-                            return
-                                f:formatDocString(fn:concat($connector/documentation/@value, $connector/source/documentation/@value, $connector/target/documentation/@value))"
+                            return f:getCombinedDocumentationForConnector($connector)
+                        "
                     />
                 </td>
                 <td>
@@ -269,7 +269,7 @@
             <xsl:otherwise>
                 <td>
                     <xsl:value-of
-                        select="f:formatDocString(fn:concat($connectorsWithSameName/documentation/@value, $connectorsWithSameName/source/documentation/@value, $connectorsWithSameName/target/documentation/@value))"
+                        select="f:getCombinedDocumentationForConnector($connectorsWithSameName)"
                     />
                 </td>
 

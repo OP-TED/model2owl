@@ -77,10 +77,32 @@
             </xsl:for-each>
         </xsl:variable>
         
+        <!-- Collect relationships for referenced classes not defined in the module -->
+        <xsl:variable name="connectorTypes" select="('Association', 'Dependency')"/>
+        <xsl:variable name="allRelations" select="f:getAllRelations($connectorTypes, $root)"/>
+        <xsl:variable name="filteredRelations"
+            select="$allRelations//relation[
+                not($root//element[@xmi:type='uml:Class']/@name = source/@name)
+            ]"/>
+        <xsl:variable name="referencedClassMaps" as="map(*)*">
+            <xsl:for-each-group select="$filteredRelations" group-by="source/@name">
+                <xsl:variable name="group" select="current-group()"/>
+                <xsl:sequence>
+                    <xsl:call-template name="referencedClassDetails">
+                        <xsl:with-param name="relations" select="$group"/>
+                        <xsl:with-param name="root" select="$root"/>
+                    </xsl:call-template>
+                </xsl:sequence>
+            </xsl:for-each-group>
+        </xsl:variable>
+
         <!-- Combine both into single sequence -->
         <xsl:variable name="datatypeMaps" as="map(*)*" select="($umlDatatypeMaps, $classAttributeTypeMaps)"/>
+        <!-- Combine both class sequences into a single one -->
+        <xsl:variable name="compinedClassMaps" as="map(*)*"
+            select="($classMaps, $referencedClassMaps)"/>
 
-        <xsl:variable name="classesArray" as="array(*)" select="array{$classMaps}"/>
+        <xsl:variable name="classesArray" as="array(*)" select="array{$compinedClassMaps}"/>
         <xsl:variable name="datatypesArray" as="array(*)" select="array{$datatypeMaps}"/>
 
         <!-- compose root map -->

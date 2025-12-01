@@ -110,13 +110,13 @@
         </xsl:variable>
 
         <xsl:variable name="propsFromAssociations" as="array(*)">
-            <xsl:call-template name="classProprietiesFromAssociations">
+            <xsl:call-template name="classProprietiesFromAssociationsByClass">
                 <xsl:with-param name="classElement" select="."/>
             </xsl:call-template>
         </xsl:variable>
 
         <xsl:variable name="propsFromDependencies" as="array(*)">
-            <xsl:call-template name="classProprietiesFromDependencies">
+            <xsl:call-template name="classProprietiesFromDependenciesByClass">
                 <xsl:with-param name="classElement" select="."/>
             </xsl:call-template>
         </xsl:variable>
@@ -156,7 +156,102 @@
             'description': map{'en': $doc},
             'usage':       map{'en': $doc},
             'parents':     $parents,
-            'properties':  $properties
+            'properties':  $properties,
+            'classType': 'definition'
+            }"
+        />
+    </xsl:template>
+
+
+    <xd:doc>
+        <xd:desc>
+        Generates details for a referenced class not defined in the module but
+        expressed through a set of relations (associations or dependencies)
+        defined in the module. This template builds a map(*) similar to the one
+        built for defined classes. The affected class is identified as a domain
+        for the all relations provided. The generated class will have minimal
+        information compared to classes defined by the `classDetails` template.
+
+        The function works on the internal representation of relations (see
+        the definition of `f:createRelation`).
+        </xd:desc>
+        <xd:param name="relations"/>
+    </xd:doc>
+    <xsl:template name="referencedClassDetails" as="map(*)">
+        <xsl:param name="relations" as="element()*"/>
+        <xsl:param name="root" as="node()"/>
+        <xsl:variable name="className" select="$relations[1]/source/@name"/>
+        <xsl:variable name="classURI" select="f:buildURIfromLexicalQName($className)"/>
+        <xsl:variable name="classNamePrefix" select="fn:substring-before($className, ':')"/>
+        <xsl:variable name="classLabel" select="f:lexicalQNameToWords($className, fn:true())"/>
+        <xsl:variable name="classUsage" select="if ($classNamePrefix = $includedPrefixesList) then 'main' else 'supportive'"/>
+
+        <xsl:variable name="connectors">
+            <xsl:for-each select="$relations">
+                <xsl:sequence select="f:getConnectorByIdRef(./@connectorIdRef, $root)"/>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:variable name="associationRelations"
+              select="$relations[@type = 'Association']"/>
+        <xsl:variable name="dependencyConnectors"
+              select="$connectors/connector[properties/@ea_type = 'Dependency']"/>
+        <xsl:variable name="propsFromAssociations" as="array(*)">
+            <xsl:choose>
+            <xsl:when test="exists($associationRelations)">
+                <xsl:call-template name="classProprietiesFromAssociations">
+                <xsl:with-param name="associations" select="$associationRelations"/>
+                <xsl:with-param name="root" select="$root"/>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="array{}"/>
+            </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <xsl:variable name="propsFromDependencies" as="array(*)">
+            <xsl:choose>
+            <xsl:when test="exists($dependencyConnectors)">
+                <xsl:call-template name="classProprietiesFromDependencies">
+                <xsl:with-param name="dependencies" select="$dependencyConnectors"/>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="array{}"/>
+            </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <!-- Merge properties arrays -->
+        <xsl:variable name="propertiesUnsorted" as="array(*)"
+            select="array:join(($propsFromAssociations, $propsFromDependencies))"/>
+
+        <!-- Sort properties alphabetically by label.en -->
+        <xsl:variable name="properties" as="array(*)">
+            <xsl:variable name="propertiesSequence" as="map(*)*">
+                <xsl:for-each select="1 to array:size($propertiesUnsorted)">
+                    <xsl:sequence select="array:get($propertiesUnsorted, .)"/>
+                </xsl:for-each>
+            </xsl:variable>
+            <xsl:variable name="sortedProperties" as="map(*)*">
+                <xsl:for-each select="$propertiesSequence">
+                    <xsl:sort select="map:get(., 'label')?en" order="ascending"/>
+                    <xsl:sequence select="."/>
+                </xsl:for-each>
+            </xsl:variable>
+            <xsl:sequence select="array{$sortedProperties}"/>
+        </xsl:variable>
+
+        <!-- Emit a single map(*) -->
+        <xsl:sequence
+            select="
+            map{
+            'uri':  string($classURI),
+            'name': string($className),
+            'label':       map{'en': $classLabel},
+            'properties':  $properties,
+            'classType': 'reference',
+            'rawTags': map {'class-usage-scope': $classUsage}
             }"
         />
     </xsl:template>
@@ -202,7 +297,8 @@
             for $attribute in $attributes
             return 
                 let $defaultLabel := f:lexicalQNameToWords($attribute/@name, fn:true()),
-                    $attributeLabel := f:getCustomLabelOrDefault($attribute, $defaultLabel)
+                    $attributeLabel := f:getCustomLabelOrDefault($attribute, $defaultLabel),
+                    $propertyPrefix := fn:substring-before($attribute/@name, ':')
                 return map{
                 'uri':   f:buildURIfromLexicalQName($attribute/@name),
                 'name':  string($attribute/@name),
@@ -224,52 +320,69 @@
                 }
                 },
                 'cardinality': concat($attribute/bounds/@lower, '..', $attribute/bounds/@upper),
+                'propertyType': 'datatype property',
+                'propertyOrigin': if ($propertyPrefix = $includedPrefixesList) then 'internal' else 'reused',
                 'tags': f:tagsToMap(f:getElementTags($attribute))
                 }
             }"
         />
     </xsl:template>
 
-
     <!-- PROPERTIES FROM ASSOCIATIONS -->
-    <xsl:template name="classProprietiesFromAssociations" as="array(*)">
+    <xsl:template name="classProprietiesFromAssociationsByClass" as="array(*)">
         <xsl:param name="classElement" as="element()"/>
+        
+        <xsl:variable name="connectorTypes" select="('Association')"/>
         <xsl:variable name="associations"
-            select="
-                root($classElement)//connector
-                [properties/@ea_type = 'Association'
-                and source[model/@type = 'Class' and model/@name = $classElement/@name]
-                and target[model/@type = 'Class']]"/>
+            select="f:getOutgoingRelationsByType($classElement, $connectorTypes)//relation"/>
 
+        <xsl:call-template name="classProprietiesFromAssociations">
+            <xsl:with-param name="associations" select="$associations"/>
+            <xsl:with-param name="root" select="root($classElement)"/>
+        </xsl:call-template>
+    </xsl:template>
+
+    <xsl:template name="classProprietiesFromAssociations" as="array(*)">
+        <xsl:param name="associations"/>
+        <xsl:param name="root" as="node()"/>
+        <xsl:variable name="haveTheSameDomain"
+            select="
+                if (count(distinct-values($associations/source/@name)) = 1) then
+                    ''
+                else
+                    fn:error(xs:QName('association-domain'), concat($associations, ' - Associations have different domain classes.'))"/>
         <xsl:sequence
             select="
             array{
             for $association in $associations
             return
-                let $defaultLabel := f:lexicalQNameToWords($association/target/role/@name, fn:true()),
-                    $associationLabel := f:getCustomLabelOrDefaultFromConnector($association, $defaultLabel)
+                let $defaultLabel := f:lexicalQNameToWords($association/@name, fn:true()),
+                    $associationLabel := f:getCustomLabelOrDefaultFromConnector($association, $defaultLabel),
+                    $propertyPrefix := fn:substring-before($association/@name, ':')
                 return map{
-                'uri':   f:buildURIfromLexicalQName($association/target/role/@name),
-                'name':  string($association/target/role/@name),
+                'uri':   f:buildURIfromLexicalQName($association/@name),
+                'name':  string($association/@name),
                 'label': map{'en': $associationLabel},
-                'description': map{'en': normalize-space(f:formatDocStringForJson(f:getDocumentationForConnector($association)))},
+                'description': map{'en': normalize-space(f:formatDocStringForJson(f:getCombinedDocumentationForRelation($association)))},
                 'usage': map{},
                 'domain': array{
                 map{
-                'uri':  f:buildURIfromLexicalQName($association/source/model/@name),
-                'name': string($association/source/model/@name)
+                'uri':  f:buildURIfromLexicalQName($association/source/@name),
+                'name': string($association/source/@name)
                 }
                 },
                 'range': array{
                 map{
-                'range_uri':  f:buildURIfromLexicalQName($association/target/model/@name),
-                'range_puri':  f:buildURIfromLexicalQName($association/target/model/@name),
-                'range_curie': string($association/target/model/@name),
-                'range_label': map{'en': f:lexicalQNameToWords($association/target/model/@name, fn:true())}
+                'range_uri':  f:buildURIfromLexicalQName($association/target/@name),
+                'range_puri':  f:buildURIfromLexicalQName($association/target/@name),
+                'range_curie': string($association/target/@name),
+                'range_label': map{'en': f:lexicalQNameToWords($association/target/@name, fn:true())}
                 }
                 },
-                'cardinality': string($association/target/type/@multiplicity),
-                'tags': f:tagsToMap(f:getConnectorTags($association))
+                'cardinality': string($association/@multiplicity),
+                'propertyType': 'object property',
+                'propertyOrigin': if ($propertyPrefix = $includedPrefixesList) then 'internal' else 'reused',
+                'tags': f:tagsToMap(f:getConnectorTagsByRelation($association, $root))
                 }
             }"
         />
@@ -277,7 +390,7 @@
 
 
     <!-- PROPERTIES FROM DEPENDENCIES → array(*) of map(*) -->
-    <xsl:template name="classProprietiesFromDependencies" as="array(*)">
+    <xsl:template name="classProprietiesFromDependenciesByClass" as="array(*)">
         <xsl:param name="classElement" as="element()"/>
         <xsl:variable name="dependencies"
             select="
@@ -285,19 +398,33 @@
                 [properties/@ea_type = 'Dependency'
                 and source[model/@type = 'Class' and model/@name = $classElement/@name]
                 and target[model/@type = 'Enumeration']]"/>
+        <xsl:call-template name="classProprietiesFromDependencies">
+            <xsl:with-param name="dependencies" select="$dependencies"/>
+        </xsl:call-template>
+    </xsl:template>
 
+    <xsl:template name="classProprietiesFromDependencies" as="array(*)">
+        <xsl:param name="dependencies"/>
+        <xsl:variable name="haveTheSameDomain"
+            select="
+                if (count(distinct-values($dependencies/source/model/@name)) = 1) then
+                    ''
+                else
+                    fn:error(xs:QName('dependency-domain'), concat($dependencies, ' - Dependencies have different domain classes.'))"/>
         <xsl:sequence
             select="
             array{
             for $dependency in $dependencies
             return
-                let $defaultLabel := f:lexicalQNameToWords($dependency/target/role/@name, fn:true()),
-                    $dependencyLabel := f:getCustomLabelOrDefaultFromConnector($dependency, $defaultLabel)
+                let $dependencyName := $dependency/target/role/@name,
+                    $defaultLabel := f:lexicalQNameToWords($dependencyName, fn:true()),
+                    $dependencyLabel := f:getCustomLabelOrDefaultFromConnector($dependency, $defaultLabel),
+                    $propertyPrefix := fn:substring-before($dependencyName, ':')
                 return map{
-                'uri':   f:buildURIfromLexicalQName($dependency/target/role/@name),
-                'name':  string($dependency/target/role/@name),
+                'uri':   f:buildURIfromLexicalQName($dependencyName),
+                'name':  string($dependencyName),
                 'label': map{'en': $dependencyLabel},
-                'description': map{'en': normalize-space(f:formatDocStringForJson(f:getDocumentationForConnector($dependency)))},
+                'description': map{'en': normalize-space(f:formatDocStringForJson(f:getCombinedDocumentationForConnector($dependency)))},
                 'usage': map{},
                 'domain': array{
                 map{
@@ -313,7 +440,13 @@
                 'range_label': map{'en': 'Concept'}
                 }
                 },
+                'controlled_vocabulary': map{
+                    'uri':  f:buildURIfromLexicalQName($dependency/target/model/@name),
+                    'name': string($dependency/target/model/@name)
+                },
                 'cardinality': string($dependency/target/type/@multiplicity),
+                'propertyType': 'object property',
+                'propertyOrigin': if ($propertyPrefix = $includedPrefixesList) then 'internal' else 'reused',
                 'tags': f:tagsToMap(f:getConnectorTags($dependency))
                 }
             }"

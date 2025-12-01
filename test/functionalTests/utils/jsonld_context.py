@@ -129,3 +129,4 @@ def find_first_matching_file(directory: str, glob_str: str) -> Optional[str]:
     """
     matches = glob.glob(os.path.join(directory, glob_str))
     return matches[0] if matches else None
+

@@ -3,7 +3,7 @@ Shared pytest fixtures for functional tests in this package.
 """
 import pytest
 
-from functionalTests.utils import Model2owlArtefact
+from functionalTests.utils.jsonld_context import Model2owlArtefact
 
 
 @pytest.fixture
