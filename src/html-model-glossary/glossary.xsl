@@ -22,8 +22,8 @@
     <xsl:template name="glossary">
         <h1>Glossary</h1>
         <h2>Class names and definitions</h2>
-        <table class="display">
-            <thead class="center aligned">
+        <table class="display table table-striped table-hover table-bordered">
+            <thead class="table-light text-center">
                 <tr>
                     <th>Class name</th>
                     <th>Definition</th>
@@ -35,13 +35,12 @@
         </table>
 
         <h2>Attributes (datatype properties) names and definitions</h2>
-        <table class="display">
-            <thead class="center aligned">
+        <table class="display table table-striped table-hover table-bordered">
+            <thead class="table-light text-center">
                 <tr>
                     <th>Class name</th>
                     <th>Attribute name</th>
                     <th>Definition</th>
-
                     <th>Data type / cardinality</th>
                 </tr>
             </thead>
@@ -51,8 +50,8 @@
         </table>
 
         <h2>Predicates (object properties) and definitions</h2>
-        <table class="display">
-            <thead class="center aligned">
+        <table class="display table table-striped table-hover table-bordered">
+            <thead class="table-light text-center">
                 <tr>
                     <th>Predicate name</th>
                     <th>Definition</th>

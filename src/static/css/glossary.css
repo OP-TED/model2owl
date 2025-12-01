@@ -1,0 +1,420 @@
+/* EPO Color Variables */
+:root {
+    --epo-main: #2C862D;
+    --epo-main-light: #e6fae6;
+    --epo-gray-light: #f9fafc;
+    --epo-main-hover: #b3e7b3;
+    --epo-gray-border: #e1ece1;
+    --epo-text: #333;
+    --epo-text-light: #555;
+}
+
+body {
+    background-color: var(--epo-gray-light);
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    color: var(--epo-text);
+    font-size: 1rem;
+}
+
+h1, h2, h3 {
+    color: var(--epo-main);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 1.75rem;
+    border-bottom: 2px solid var(--epo-main-light);
+    padding-bottom: 0.25rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    color: #00771e;
+}
+
+.toc {
+    font-size: 1em;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    overflow-y: visible;
+    padding-right: 15px;
+    padding-left: 10px;
+    width: 250px;
+    flex-shrink: 0;
+    background: #fff;
+    border: 1px solid var(--epo-gray-border);
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.toc::-webkit-scrollbar {
+    width: 8px;
+}
+
+.toc::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.toc::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.toc::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.toc h4,
+.toc strong {
+    margin-top: 0;
+    font-size: 1rem;
+    color: var(--epo-main);
+}
+
+.toc-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.toc-list-item {
+    margin-bottom: 0.5em;
+    line-height: 1.4;
+}
+
+.toc-link {
+    color: var(--epo-text-light);
+    text-decoration: none;
+    transition: all 0.2s;
+    display: block;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    padding-left: 1em;
+}
+
+.toc-link:hover {
+    background-color: var(--epo-main-hover);
+    color: var(--epo-main);
+}
+
+.toc-link.is-active-link {
+    background-color: var(--epo-main-hover);
+    color: var(--epo-main);
+    font-weight: 600;
+}
+
+.container-fluid {
+    padding: 20px;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 250px 1fr 250px;
+    gap: 30px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.content {
+    min-width: 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.toc-spacer {
+    /* Empty column for spacing */
+    min-width: 0;
+}
+
+table.display {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100% !important;
+    border: 1px solid var(--epo-gray-border) !important;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 1rem;
+    display: table;
+    table-layout: fixed;
+}
+
+table.display th {
+    background-color: var(--epo-main);
+    color: #fbfbfb;
+    border-bottom: 1px solid var(--epo-gray-border) !important;
+
+    border-right: none !important;
+}
+
+table.display th {
+    border-color: var(--epo-gray-border) !important;
+    border-bottom: 1px solid var(--epo-gray-border) !important;
+    border-right: none !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+table.display td {
+    border-color: var(--epo-gray-border) !important;
+    border-bottom: 1px solid var(--epo-gray-border) !important;
+    border-right: none !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    hyphens: auto;
+}
+
+/* Enforce width on definition columns */
+/* For classes table - definition is 2nd column */
+table.display th:nth-child(2),
+table.display td:nth-child(2) {
+    max-width: 500px !important;
+    min-width: 250px !important;
+    width: 40% !important;
+}
+
+/* For attributes table - class name (1st) and attribute name (2nd) same width */
+table.display th:nth-child(1),
+table.display td:nth-child(1),
+table.display th:nth-child(2),
+table.display td:nth-child(2) {
+    width: 20% !important;
+}
+
+/* For attributes table - definition is 3rd column */
+table.display th:nth-child(3),
+table.display td:nth-child(3) {
+    max-width: 500px !important;
+    min-width: 250px !important;
+    width: 35% !important;
+}
+
+
+/* Disable DataTables box-shadow on striped rows */
+table.dataTable.table-striped > tbody > tr:nth-of-type(2n+1) > * {
+    box-shadow: none !important;
+}
+
+table.display tr:nth-child(odd) td {
+    background-color: var(--epo-gray-light) !important;
+}
+
+table.display tr:nth-child(even) td {
+    background-color: #f0fff0;
+}
+
+table.display tr:hover td {
+    background-color: var(--epo-main-hover) !important;
+}
+
+.dataTables_wrapper {
+    margin: 20px 0;
+}
+
+/* DataTables search input styling */
+.dataTables_wrapper .dataTables_filter {
+    position: relative;
+    cursor: text;
+}
+
+.dataTables_wrapper .dataTables_filter label {
+    cursor: text;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.dataTables_wrapper .dataTables_filter input[type="search"] {
+    -webkit-appearance: searchfield;
+    -moz-appearance: searchfield;
+    appearance: searchfield;
+    flex: 1;
+    cursor: text;
+    max-width: 60%;
+    border-color: var(--epo-gray-border);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+}
+
+.dataTables_wrapper .dataTables_filter input[type="search"]:focus {
+    border-color: var(--epo-main);
+    outline: none;
+    box-shadow: 0 0 0 0.2rem var(--epo-main-light);
+}
+
+/* Hide native clear buttons - we use custom one instead */
+/* WebKit browsers (Chrome, Safari, Edge, Brave) */
+.dataTables_wrapper .dataTables_filter input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+    -webkit-appearance: none;
+}
+
+/* Firefox */
+.dataTables_wrapper .dataTables_filter input[type="search"]::-moz-search-clear-button {
+    display: none;
+}
+
+/* Custom clear button for Firefox and fallback */
+.dataTables_wrapper .dataTables_filter .custom-clear-button {
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 4px;
+    padding: 2px 6px;
+    color: #666;
+    font-size: 18px;
+    line-height: 1;
+    opacity: 0.6;
+    vertical-align: middle;
+    user-select: none;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.dataTables_wrapper .dataTables_filter .custom-clear-button:hover {
+    opacity: 1;
+    color: var(--epo-main);
+    background-color: var(--epo-main-hover);
+    border-radius: 50%;
+}
+
+/* DataTables pagination styling */
+.dataTables_wrapper .dataTables_paginate {
+    font-size: 0.85rem;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: var(--epo-main) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: var(--epo-main) !important;
+    background: var(--epo-main-hover) !important;
+    border-color: var(--epo-main) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--epo-main) !important;
+    border-color: var(--epo-main) !important;
+    color: #fff !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: var(--epo-main) !important;
+    color: #fff !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+    color: var(--epo-text-light) !important;
+    opacity: 0.5;
+}
+
+.active > .page-link, .page-link.active {
+    background-color: var(--epo-main) !important;
+}
+
+h1 {
+    margin-bottom: 1rem;
+    scroll-margin-top: 20px;
+}
+
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    scroll-margin-top: 20px;
+}
+
+@media print {
+    @page {size: landscape}
+    .toc {
+        display: none;
+    }
+    .toc-spacer {
+        display: none;
+    }
+}
+
+/* Go to top button */
+.go-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--epo-main);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    z-index: 1000;
+    opacity: 0.9;
+}
+
+.go-to-top:hover {
+    background-color: #247a25;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    opacity: 1;
+}
+
+.go-to-top:active {
+    transform: translateY(0);
+}
+
+.go-to-top span {
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .toc {
+        position: relative;
+        max-height: none;
+        width: 100%;
+    }
+
+    .toc-spacer {
+        display: none;
+    }
+    
+    .go-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    
+    /* Responsive tables */
+    .dataTables_wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        display: block;
+        width: 100%;
+    }
+    
+    table.display {
+        min-width: 600px;
+        display: table;
+    }
+}
+

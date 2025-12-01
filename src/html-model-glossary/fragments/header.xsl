@@ -21,23 +21,23 @@
             <meta name="author" content="Publications Office of the European Union"/>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             
-            <link rel="stylesheet" href="static/css/jquery-ui.min.css"/>  
-            <link rel="stylesheet" href="static/css/bootstrap.min.css"/>
+            <!-- Bootstrap 5 CSS -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
+            
+            <!-- PubCSS -->
             <link rel="stylesheet" href="static/css/pubcss-acm-sig.css"/>
-<!--            <link rel="stylesheet" media="screen" href="static/css/screen.css"/>
-            <link rel="stylesheet" media="print" href="static/css/print.css"/>-->
+            
+            <!-- Tocbot CSS -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.css"/>
+            
+            <!-- DataTables CSS -->
+            <link href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css" rel="stylesheet"/>
+            
+            <!-- Custom styles -->
             <link rel="stylesheet" href="static/css/toc_adjustments.css"/>
-            <link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet"/>
+            <link rel="stylesheet" href="static/css/glossary.css"/>
             
             <link rel="shortcut icon" href=""/>
-            <style>
-                #toc {
-                font-size: 1.2em;
-                width: 10%;
-                }
-                @media print{@page {size: landscape}}
-                
-            </style>
             <title>Model glossary</title>
         </head>
     </xsl:template>
