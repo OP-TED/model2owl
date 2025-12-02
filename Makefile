@@ -496,26 +496,30 @@ generate-respec:
 
 # Usage (`[]` denotes an optional argument; if omited, default value will be used):
 # make generate-asciidoc-glossary
-#	[OUTPUT_GLOSSARY_PATH=/output/glossary_directory]
-#	[MODEL_DATA_JSON_PATH=/path/to/respec-data.json]
 #	[XMI_INPUT_FILE_PATH=/path/to/model.xmi]
+#	[MODEL_DATA_JSON_PATH=/path/to/respec-data.json]
+#	[OUTPUT_GLOSSARY_PATH=/output/glossary_directory]
 #	[OUTPUT_FOLDER_PATH=/path/to/generated/model2owl/artefacts]
 # where:
-#   OUTPUT_GLOSSARY_PATH: Output directory for the glossary package.
-#   MODEL_DATA_JSON_PATH: (Optional) Path to the ReSpec data JSON file.
-#						  If not given, it will be generated.
 #   XMI_INPUT_FILE_PATH: (Optional) Path to the UML XMI model file needed for
 #						 generating the ReSpec data JSON file (if not given).
-#   OUTPUT_FOLDER_PATH: (Optional) Directory where a ReSpec data JSON file 
-#						should be stored (if not given).
+#   MODEL_DATA_JSON_PATH: (Optional) Path to the ReSpec data JSON file.
+#						  If not given, it will be generated.
+#   OUTPUT_GLOSSARY_PATH: Output directory for the glossary package.
+#   OUTPUT_FOLDER_PATH: (Optional) Directory to store the generated model data
+#   					JSON if MODEL_DATA_JSON_PATH is not given; if not set,
+# 						then the default directory is used.
 #
 generate-asciidoc-glossary:
 	@mkdir -p "${OUTPUT_GLOSSARY_PATH}"; \
 	## generate a model data JSON if not provided \
+	GEN_MODEL_DATA_JSON=0; \
 	if [ ! -e ${MODEL_DATA_JSON_PATH} ]; then \
 		echo "Generating a model data JSON file..."; \
 		$(MAKE) respec-json XMI_INPUT_FILE_PATH=${XMI_INPUT_FILE_PATH} \
 			OUTPUT_FOLDER_PATH=${OUTPUT_FOLDER_PATH} ; \
+		MODEL_DATA_JSON_PATH=$$(find "${OUTPUT_FOLDER_PATH}" -maxdepth 1 -name '*_respec.json' | head -n 1); \
+		GEN_MODEL_DATA_JSON=1; \
 	fi; \
 	\
 	## get value of a config parameter from the correct XSL config file \
@@ -544,8 +548,11 @@ generate-asciidoc-glossary:
 		glossary-resources/asciidoc-glossary.j2 \
 		-o ${OUTPUT_GLOSSARY_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_glossary.adoc ; \
 	\
-	echo "Output glossary package:"; \
+	echo "Output glossary directory:"; \
 	ls -ldh ${OUTPUT_GLOSSARY_PATH}; \
+	if [ "$$GEN_MODEL_DATA_JSON" -eq 1 ]; then \
+		echo "Generated model data JSON: $$MODEL_DATA_JSON_PATH"; \
+	fi; \
  	command -v tree > /dev/null 2>&1 && tree "${OUTPUT_GLOSSARY_PATH}"
 
 # A generic recipe for converting RDF data from one serialization format to 
