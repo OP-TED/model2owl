@@ -246,15 +246,21 @@ table.display tr:hover td {
 .dataTables_wrapper .dataTables_filter {
     position: relative;
     cursor: text;
+    display: flex;
+    justify-content: flex-end;
+    width: 115%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .dataTables_wrapper .dataTables_filter label {
     cursor: text;
-    width: 50%;
+    width: 65%;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-left: auto;
+    margin: 0;
+    justify-content: flex-end;
 }
 
 .dataTables_wrapper .dataTables_filter input[type="search"] {
@@ -263,7 +269,7 @@ table.display tr:hover td {
     appearance: searchfield;
     flex: 1;
     cursor: text;
-    max-width: 60%;
+    max-width: 75%;
     border-color: var(--epo-gray-border);
     transition: border-color 0.2s, box-shadow 0.2s;
     font-size: 0.9rem;
