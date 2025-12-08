@@ -31,6 +31,7 @@ The following capabilities are addressed:
 * UML -> JSON-LD context (an accompanying context file for the ontology, suitable for use in JSON-LD applications)
 * UML -> SVRL (Compliance report in SVRL format)
 * UML -> ReSpec documentation (comprehensive documentation of the ontology project)
+* Generation of diff reports in both machine-readable (JSON) and human-readable (AsciiDoc) formats
 
 This work is developed in the context of [eProcurement ontology project](https://github.com/eprocurementontology/eprocurementontology) financed by the Digital Europe Programme and led by the [Publications Office of the European Union](https://op.europa.eu/en/).
 
@@ -84,9 +85,12 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 * **get-saxon** - this will install saxon in a folder inside the project
 * **get-rdflib** - this will install rdflib library
 * **get-widoco** - this will install saxon in a folder inside the project
-* **get-jinja** – this will install Jinja2 inside the project folder.
-* **get-jq** – this will install jq inside the project folder.
+* **get-jinja** – this will install Jinja2 inside the project folder
+* **get-jq** – this will install jq inside the project folder
 * **install** - this will automatically execute all the commands above
+* **get-rdf-differ** – installs RDF Differ in a local directory
+* **start-rdf-differ-services** – starts Traefik and the Docker-based RDF Differ services
+* **stop-rdf-differ-services** – stops RDF Differ Docker and Traefik services
 * **create-virtual-env** - this creates a virtual environment for the project
 #### Functional commands
 * **generate-glossary** - this generates a glossary from the UML export (xml/xmi)
@@ -152,6 +156,18 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
     * NAMESPACES_USER_XML_FILE_PATH - path to the *.xml file containing namespaces
     * IMPORTS_XML_FILE_PATH - path to the *.xml file containing ontology URIs to be imported
     * RESPEC_JSON_INDENTATION - (optional) number of spaces for indentation in the generated JSON file. Default is 2
+* **merge-owl-shacl** – merges an OWL ontology file with a SHACL shapes file into a combined output TTL file.
+  * parameters:
+    * MERGE_ONTOLOGY_FILE - path to the OWL ontology file (default: `test/diffing-files/ePO_core-4.1.0.ttl`)
+    * MERGE_SHAPES_FILE - path to the SHACL shapes file (default: `test/diffing-files/ePO_core_shapes-4.1.0.ttl`)
+    * MERGE_OUTPUT_FILE - path to the output file (default: `${OUTPUT_FOLDER_PATH}/ePO_core_combined-1.0.ttl`)
+* **run-rdf-diff** – runs RDF diffing workflow between two RDF files using RDF Differ services and produces a diff report. The report type is determined by the `RDF_DIFF_TEMPLATE`.
+  * parameters:
+    * RDF_DIFF_FILE1 - path to the first RDF file (default: `test/diffing-files/ePO_core-4.1.0.ttl`)
+    * RDF_DIFF_FILE2 - path to the second RDF file (default: `test/diffing-files/ePO_core-4.2.0.ttl`)
+    * RDF_DIFF_OUTDIR - folder to store the diff output (default: `${OUTPUT_FOLDER_PATH}`)
+    * RDF_DIFF_AP - application profile used for diffing (default: `owl-core-en-only`)
+    * RDF_DIFF_TEMPLATE - template format for diff report (default: `html`)
 * **merge-xmi** - this will merge xmis from specific folder
   * parameters:
     * FIRST_XMI_TO_BE_MERGED_FILE_PATH - path to the first xmi to be merged. All xmi files need to be 
@@ -356,6 +372,23 @@ Example
 # generate lightweight ontology from the UML export (xml/xmi)
 make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOLDER_PATH=./my-folder
 ```
+
+### Generating diff reports
+Model2owl uses the [RDF Differ](https://meaningfy-ws.github.io/rdf-differ-ws/)
+tool to calculate differences between two RDF graphs and to generate diff
+reports in AsciiDoc and JSON formats. It compares either two OWL core files or
+two pairs consisting of an OWL core file and a SHACL shapes file. When SHACL
+files are provided, the comparison scope additionally covers domain, range, and
+cardinality properties. The comparison scope is defined in an application
+profile suitable for comparing OWL ontologies. Details on how the RDF Differ
+tool works, produced reports, and how to interpret them can be found in the [project
+documentation](https://github.com/meaningfy-ws/rdf-differ-ws/blob/master/README.md).
+
+Model2owl integrates the tool (via its CLI client) and provides a dedicated set
+of commands to interact with it (see the descriptions of the `run-rdf-diff` and
+`merge-owl-shacl` commands in [Functional commands](#functional-commands)). Apart from
+the functional tools, it also provides utility commands for installing and setting up
+the tool (see [Setting up commands](#setting-up-commands)).
 
 ### Testing
 There are three Make targets dedicated to testing the software:
