@@ -11,7 +11,7 @@
 
 body {
     background-color: var(--epo-gray-light);
-    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-family: Roboto, sans-serif;
     color: var(--epo-text);
     font-size: 1rem;
 }
@@ -20,6 +20,7 @@ h1, h2, h3 {
     color: var(--epo-main);
     margin-top: 2rem;
     margin-bottom: 1rem;
+    font-family: Roboto, sans-serif;
 }
 
 h1 {
@@ -137,7 +138,7 @@ table.display {
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    width: 100% !important;
+    width: 115%;
     border: 1px solid var(--epo-gray-border) !important;
     border-radius: 6px;
     overflow: hidden;
@@ -150,17 +151,16 @@ table.display th {
     background-color: var(--epo-main);
     color: #fbfbfb;
     border-bottom: 1px solid var(--epo-gray-border) !important;
-
-    border-right: none !important;
-}
-
-table.display th {
-    border-color: var(--epo-gray-border) !important;
-    border-bottom: 1px solid var(--epo-gray-border) !important;
     border-right: none !important;
     word-wrap: break-word;
     overflow-wrap: break-word;
     word-break: break-word;
+    text-align: left !important;
+}
+
+/* Override Bootstrap text-center class on table headers */
+table.display thead.text-center th {
+    text-align: left !important;
 }
 
 table.display td {
@@ -171,6 +171,7 @@ table.display td {
     overflow-wrap: break-word;
     word-break: break-all;
     hyphens: auto;
+    text-align: left !important;
 }
 
 /* Enforce width on definition columns */
@@ -198,6 +199,28 @@ table.display td:nth-child(3) {
     width: 35% !important;
 }
 
+/* For 3rd table (Predicates) - Column widths: 20% (Predicate name), 50% (Definition), 30% (Domain/Range) */
+/* Using DataTables ID for higher specificity to override inline styles */
+#DataTables_Table_2 th:nth-child(1),
+#DataTables_Table_2 td:nth-child(1) {
+    width: 20% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+}
+
+#DataTables_Table_2 th:nth-child(2),
+#DataTables_Table_2 td:nth-child(2) {
+    width: 50% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+}
+
+#DataTables_Table_2 th:nth-child(3),
+#DataTables_Table_2 td:nth-child(3) {
+    width: 30% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+}
 
 /* Disable DataTables box-shadow on striped rows */
 table.dataTable.table-striped > tbody > tr:nth-of-type(2n+1) > * {
@@ -224,15 +247,21 @@ table.display tr:hover td {
 .dataTables_wrapper .dataTables_filter {
     position: relative;
     cursor: text;
+    display: flex;
+    justify-content: flex-end;
+    width: 115%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .dataTables_wrapper .dataTables_filter label {
     cursor: text;
-    width: 50%;
+    width: 65%;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-left: auto;
+    margin: 0;
+    justify-content: flex-end;
 }
 
 .dataTables_wrapper .dataTables_filter input[type="search"] {
@@ -241,7 +270,7 @@ table.display tr:hover td {
     appearance: searchfield;
     flex: 1;
     cursor: text;
-    max-width: 60%;
+    max-width: 75%;
     border-color: var(--epo-gray-border);
     transition: border-color 0.2s, box-shadow 0.2s;
     font-size: 0.9rem;
