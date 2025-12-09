@@ -34,7 +34,10 @@
                     'classReferenceRespecLabel': string($classReferenceRespecLabel),
                     'showReferencesInRespec': boolean($showReferencesInRespec),
                     'mandatoryStatusTagName': string($mandatoryStatusTagName),
-                    'usageNoteTagName': string($usageNoteTagName)
+                    'usageNoteTagName': string($usageNoteTagName),
+                    'statusProperty': string($statusProperty),
+                    'unspecifiedStatusInterpretation': string($unspecifiedStatusInterpretation),
+                    'excludedElementStatusesList': array { $excludedElementStatusesList }
                 }
             }"/>
 

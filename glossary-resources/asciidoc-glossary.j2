@@ -46,12 +46,26 @@ tables covering classes, datatype properties (attributes) and object properties
 
 
 {# build helper structure for properties #}
-{# Step 1: collect all properties in a flat list #}
+{#- Step 1: collect properties that are not filtered out by status in a flat list -#}
 {%- set all_props = [] -%}
 {%- for cls in classes -%}
-  {%- for prop in cls.properties -%}
-    {%- set _ = all_props.append(prop) -%}
-  {%- endfor -%}
+  {%- set effective_cls_status =
+    cls.tags[config.statusProperty]
+    if config.statusProperty in cls.tags
+    else config.unspecifiedStatusInterpretation
+  -%}
+  {%- if effective_cls_status not in config.excludedElementStatusesList -%}
+    {%- for prop in cls.properties -%}
+      {%- set effective_prop_status =
+        prop.tags[config.statusProperty]
+        if config.statusProperty in prop.tags
+        else config.unspecifiedStatusInterpretation
+      -%}
+      {%- if effective_prop_status not in config.excludedElementStatusesList -%}
+        {%- set _ = all_props.append(prop) -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
 {%- endfor -%}
 {# Step 2: get unique property names #}
 {%- set prop_names = [] -%}
@@ -96,11 +110,18 @@ tables covering classes, datatype properties (attributes) and object properties
 |===
 | Class name | Definition
 {% for cls in classes %}
-  {% if generate_reused_concepts_ or cls.rawTags['class-usage-scope'] == "main" %}
-  {% if cls.classType == "definition" %}
-  | {{ cls.name }} | {{ passthrough_if_external_concept(cls.description.en) }}
-  {% endif %}
-  {% endif %}
+  {%- set effective_elem_status =
+    cls.tags[config.statusProperty]
+    if config.statusProperty in cls.tags
+    else config.unspecifiedStatusInterpretation
+  -%}
+  {%- if effective_elem_status not in config.excludedElementStatusesList -%}
+    {% if generate_reused_concepts_ or cls.rawTags['class-usage-scope'] == "main" %}
+      {% if cls.classType == "definition" %}
+| {{ cls.name }} | {{ passthrough_if_external_concept(cls.description.en) }}
+      {% endif %}
+    {% endif %}
+  {%- endif -%}
 {% endfor %}
 |===
 
