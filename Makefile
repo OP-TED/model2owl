@@ -532,7 +532,20 @@ generate-asciidoc-glossary:
 			OUTPUT_FOLDER_PATH=${OUTPUT_FOLDER_PATH} ; \
 		MODEL_DATA_JSON_PATH=$$(find "${OUTPUT_FOLDER_PATH}" -maxdepth 1 -name '*_respec.json' | head -n 1); \
 		GEN_MODEL_DATA_JSON=1; \
+	else \
+		echo "Creating temporary copy of existing model data JSON..."; \
+		tmp_file=$$(mktemp --suffix=".json"); \
+		cp "${MODEL_DATA_JSON_PATH}" "$$tmp_file"; \
+		MODEL_DATA_JSON_PATH="$$tmp_file"; \
 	fi; \
+	\
+	# generate a respec config JSON file \
+	echo "Generating a config JSON file ..."; \
+	$(MAKE) respec-cfg-json XMI_INPUT_FILE_PATH=${XMI_INPUT_FILE_PATH} OUTPUT_FOLDER_PATH=${OUTPUT_FOLDER_PATH} ; \
+	# merge the config and data JSON files into a single JSON file to be used \
+	# for generating the asciidoc document \
+	merged_json=$$(mktemp --suffix=".json"); \
+	$(JQ) -s 'reduce .[] as $$item ({}; . * $$item)' ${MODEL_DATA_JSON_PATH} ${RESPEC_CFG_JSON_PATH} > $$merged_json; \
 	\
 	## get value of a config parameter from the correct XSL config file \
 	generate_reused_concepts=$$( \
@@ -555,7 +568,7 @@ generate-asciidoc-glossary:
 	\
 	## run jinja to generate the respec document \
 	source model2owl-venv/bin/activate; \
-	jinja -d ${MODEL_DATA_JSON_PATH} \
+	jinja -d $$merged_json \
 		-D generate_reused_concepts $$generate_reused_concepts \
 		glossary-resources/asciidoc-glossary.j2 \
 		-o ${OUTPUT_GLOSSARY_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_glossary.adoc ; \
