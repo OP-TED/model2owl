@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+### Added
+
+### Changed
+
+
+## [3.2.0-rc.1] - 2025-12-09
+### Added
+- Introduce RDF Diffing feature (TEDM2O-12).
+- Introduce new AsciiDoc glossary (TEDM2O-13).
+
+### Changed
+- Fix status-based filtering bug in the existing HTML glossary (TEDM2O-13).
+- Improve appearance of the existing HTML glossary (TEDM2O-13).
 
 
 ## [3.1.0-rc.2] - 2025-11-20
