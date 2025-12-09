@@ -555,7 +555,7 @@
     <xd:doc>
         <xd:desc>
             Determines if multiple values for the relation range are allowed by
-            checking the connector multiplicity.
+            checking the connector multiplicity. Supports multiplicity shorthands like '1' and using '+' to indicate a cardinality of multiple values.
         </xd:desc>
         <xd:param name="multiplicity"/>
     </xd:doc>
@@ -563,11 +563,16 @@
         <xsl:param name="multiplicity"/>
         <xsl:variable name="multiplicityString"
             select="f:normalizeMultiplicity($multiplicity)"/>
-        <xsl:variable name="targetMaxMultiplicity"
-            select="fn:substring-after($multiplicityString, '..')"/>
-        <xsl:sequence
-            select="boolean($targetMaxMultiplicity) and not($targetMaxMultiplicity = ('', '0', '1'))"
-        />
+        <xsl:variable name="maxRaw"
+            select="if (contains($multiplicityString, '..'))
+                    then substring-after($multiplicityString, '..')
+                    else $multiplicityString"/>
+        <xsl:sequence select="
+            if ($maxRaw = '*' or $maxRaw = '+' or number($maxRaw) > 1) then
+                fn:true()
+            else
+                fn:false()
+        "/>
     </xsl:function>
 
     <xd:doc>

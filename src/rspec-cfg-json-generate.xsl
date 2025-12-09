@@ -35,6 +35,7 @@
                     'showReferencesInRespec': boolean($showReferencesInRespec),
                     'mandatoryStatusTagName': string($mandatoryStatusTagName),
                     'usageNoteTagName': string($usageNoteTagName),
+                    'issuedDate': string($issuedDate),
                     'statusProperty': string($statusProperty),
                     'unspecifiedStatusInterpretation': string($unspecifiedStatusInterpretation),
                     'excludedElementStatusesList': array { $excludedElementStatusesList }

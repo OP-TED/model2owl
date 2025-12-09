@@ -13,6 +13,17 @@
 {% set imgRoot = assetsRoot ~ "/img" %}
 {% set shaclRoot = assetsRoot ~ "/shacl" %}
 
+{# Collect compact URIs of all model terms (classes and datatypes) #}
+{%- set all_terms = [] -%}
+{%- for cls in classes -%}
+  {%- if cls.classType is defined and cls.classType == "definition" -%}
+    {%- set _ = all_terms.append(cls.name) -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- for dt in datatypes -%}
+  {%- set _ = all_terms.append(dt.scopeduri) -%}
+{%- endfor -%}
+
 {% macro renderFeedbackButton(entity, prop=None) %}
     {% if metadata.openGithubIssue %}    
         {% set _issueTitle = None %}
@@ -151,13 +162,17 @@
                                 </td>
                                 <td>
                                     {% for range in prop.range %}
-                                        {% if range['range_uri'] == range['range_puri'] %}
-                                            <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}"
-                                            data-toggle="tooltip"
-                                            data-content="{{ range['range_puri'] }}"
-                                            data-placement="right">{{ range['range_label'][language] }}</a>
+                                        {% if range['range_curie'] in all_terms %}
+                                            {% if range['range_uri'] == range['range_puri'] %}
+                                                <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}"
+                                                data-toggle="tooltip"
+                                                data-content="{{ range['range_puri'] }}"
+                                                data-placement="right">{{ range['range_label'][language] }}</a>
+                                            {% else %}
+                                                <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}" data-placement="right">{{ range['range_label'][language] }}</a>
+                                            {% endif %}
                                         {% else %}
-                                            <a href="#{{ range['range_label'][language] | replace(' ','') |urlencode | title }}" data-placement="right">{{ range['range_label'][language] }}</a>
+                                                <p title="The term '{{ range['range_curie']}}' is not defined in this document. Please refer to the appropriate module's documentation.">{{ range['range_label'][language] }}</p>
                                         {% endif %}
                                     {% endfor %}
                                 </td>
@@ -269,7 +284,7 @@
       edDraftURI: "{{metadata.navigation.self}}",
       latestVersion: "{{metadata.navigation.prev}}",
       specStatus: "base",
-      publishDate: "{{ metadata.issued }}",
+      publishDate: "{{ config.issuedDate }}",
       editors: myeditors,
       authors: myauthors,
       github: "{{metadata.github}}",
@@ -411,8 +426,8 @@
         It is recommended to indicate the <a href="https://www.w3.org/2021/Process-20211102/#maturity-levels">maturity levels</a> of the specification.
     </p>
     <p>
-        {% if metadata.status and metadata.issued %}
-            This application profile has the status <i>{{ metadata.status }}</i> and has been published on {{ metadata.issued }}.
+        {% if metadata.status and config.issuedDate %}
+            This application profile has the status <i>{{ metadata.status }}</i> and has been published on {{ config.issuedDate }}.
         {% endif %}
     </p>
     <p>

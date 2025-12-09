@@ -20791,6 +20791,7 @@
 					<Dependency xmi:id="EAID_12A5A0C6_97F3_4362_97F5_2EACA8AA8D1B" start="EAID_40588AD6_810D_4fd6_BA64_B05755E636F2" end="EAID_B7C0137B_3C6D_42f7_AB51_FA49B0F7E63B"/>
 					<Association xmi:id="EAID_A01E8ADE_1698_4353_BEDB_63334B745ECB" start="EAID_40588AD6_810D_4fd6_BA64_B05755E636F2" end="EAID_F5B54CD5_45A5_4220_A1F4_9F1CD0DD9969"/>
 					<Association xmi:id="EAID_A02EFC84_74F8_415f_B4C7_BC3E17610EF7" start="EAID_40588AD6_810D_4fd6_BA64_B05755E636F2" end="EAID_B52CB5AD_2F7E_4e03_AFA8_D5DCED9D61C7"/>
+					<Association xmi:id="EAID_A02EFC84_74F8_415f_B4C7_BC3E17610EF8" start="EAID_40588AD6_810D_4fd6_BA64_B05755E636F2" end="EAID_29678A10_6473_461a_BE84_76269B5BBD68"/>
 					<Dependency xmi:id="EAID_B0D4CDC5_3F31_4f44_9C9D_C9C33A874154" start="EAID_40588AD6_810D_4fd6_BA64_B05755E636F2" end="EAID_1D435754_B2BA_42ed_805E_C8B5A8985BC5"/>
 					<Dependency xmi:id="EAID_BA97DF04_90AD_4153_8BC2_8F80AD12DA02" start="EAID_40588AD6_810D_4fd6_BA64_B05755E636F2" end="EAID_9700E0F6_A1F2_4c3e_9848_ECC8B70AFE82"/>
 					<Generalization xmi:id="EAID_D62CD782_93C6_480f_BE3B_872E1A0882C0" start="EAID_40588AD6_810D_4fd6_BA64_B05755E636F2" end="EAID_F7EC5BAF_BF10_4e4d_BAF3_ED8B1330B5E6"/>
@@ -22762,7 +22763,9 @@
 				<project author="lps" version="1.0" phase="1.0" created="2022-04-25 15:41:50" modified="2024-11-11 09:54:58" complexity="1" status="Proposed"/>
 				<code gentype="Java"/>
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
+				<tags>
+					<tag xmi:id="EAID_2FE57E01_51F2_43af_8E5F_B5E96844D560" name="skos:prefLabel" value="Procedure specific term (custom label)" modelElement="EAID_223696B2_E889_41a8_B53F_E7A5B530FFFD"/>
+				</tags>
 				<xrefs/>
 				<extendedProperties tagged="0" package_name="classes"/>
 				<links>
@@ -25563,6 +25566,7 @@
 					<NoteLink xmi:id="EAID_D1765221_81FB_4316_892D_E974CE455005" start="EAID_7E2E06EA_022C_468e_B46C_17C2AA282DCD" end="EAID_29678A10_6473_461a_BE84_76269B5BBD68"/>
 					<NoteLink xmi:id="EAID_DA42655D_7F73_4abf_87D3_800074047096" start="EAID_59A6B46E_8FBB_4614_8AD5_D1EE6AB3905C" end="EAID_29678A10_6473_461a_BE84_76269B5BBD68"/>
 					<NoteLink xmi:id="EAID_FABCE042_BD3F_455b_AA89_4B890DB85CB2" start="EAID_EB39EE3E_49DD_4ae3_9836_5FA1C8C8F79B" end="EAID_29678A10_6473_461a_BE84_76269B5BBD68"/>
+					<Association xmi:id="EAID_A02EFC84_74F8_415f_B4C7_BC3E17610EF8" start="EAID_40588AD6_810D_4fd6_BA64_B05755E636F2" end="EAID_29678A10_6473_461a_BE84_76269B5BBD68"/>
 				</links>
 			</element>
 			<element xmi:idref="EAID_2424C22E_B54F_4b6f_BA47_E78DE21C76DE" xmi:type="uml:Class" name="locn:Geometry" scope="public">
@@ -31638,7 +31642,7 @@
 				<target xmi:idref="EAID_B52CB5AD_2F7E_4e03_AFA8_D5DCED9D61C7">
 					<model ea_localid="87" type="Class" name="dct:Location"/>
 					<role name="epo:definesSpecificPlaceOfPerformance" visibility="Public" targetScope="instance"/>
-					<type multiplicity="0..*" aggregation="none" containment="Unspecified"/>
+					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
 					<constraints/>
 					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
 					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
@@ -31652,7 +31656,7 @@
 				<parameterSubstitutions/>
 				<documentation value="Relation indicating a ContractTerm has a specific place of performance."/>
 				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
-				<labels rb="0..*" rt="+epo:definesSpecificPlaceOfPerformance"/>
+				<labels rb="0..1" rt="+epo:definesSpecificPlaceOfPerformance"/>
 				<extendedProperties virtualInheritance="0"/>
 				<style/>
 				<xrefs/>
@@ -39824,7 +39828,7 @@
 				</source>
 				<target xmi:idref="EAID_BF1B4E2A_7D4A_4247_8B45_5AD2427938E3">
 					<model ea_localid="230" type="Enumeration" name="at-voc:environmental-impact"/>
-					<role name="epo:fulfillsEnvironmentalRequirement" visibility="Public" targetScope="instance"/>
+					<role name="epo:fulfillsRequirement" visibility="Public" targetScope="instance"/>
 					<type multiplicity="0..*" aggregation="none" containment="Unspecified"/>
 					<constraints/>
 					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
@@ -53325,6 +53329,40 @@
 				<documentation/>
 				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
 				<labels/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_A02EFC84_74F8_415f_B4C7_BC3E17610EF8">
+				<source xmi:idref="EAID_40588AD6_810D_4fd6_BA64_B05755E636F2">
+					<model ea_localid="49" type="Class" name="epo:ContractTerm"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_29678A10_6473_461a_BE84_76269B5BBD68">
+					<model ea_localid="33" type="Class" name="locn:Address"/>
+					<role name="epo:definesSpecificPlaceOfPerformance" visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+				</target>
+				<model ea_localid="204"/>
+				<properties ea_type="Association" direction="Source -&gt; Destination"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<parameterSubstitutions/>
+				<documentation value="Relation indicating a ContractTerm has a specific place of performance."/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels rb="0..*" rt="+epo:definesSpecificPlaceOfPerformance"/>
 				<extendedProperties virtualInheritance="0"/>
 				<style/>
 				<xrefs/>

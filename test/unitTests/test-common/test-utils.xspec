@@ -525,4 +525,64 @@
         
     </x:scenario>
 
+    <x:scenario label="Scenario for f:areMultipleValuesForRelationRangeAllowed">
+        <x:scenario label="Multiplicity '*' allows multiple values">
+            <x:call function="f:areMultipleValuesForRelationRangeAllowed">
+                <x:param name="multiplicity" select="'+'"/>
+            </x:call>
+            <x:expect label="returns true" select="fn:true()"/>
+        </x:scenario>
+
+        <x:scenario label="Multiplicity '1' does NOT allow multiple values">
+            <x:call function="f:areMultipleValuesForRelationRangeAllowed">
+                <x:param name="multiplicity" select="'1'"/>
+            </x:call>
+            <x:expect label="returns false" select="fn:false()"/>
+        </x:scenario>
+
+        <x:scenario label="Multiplicity '0' does NOT allow multiple values">
+            <x:call function="f:areMultipleValuesForRelationRangeAllowed">
+                <x:param name="multiplicity" select="'0'"/>
+            </x:call>
+            <x:expect label="returns false" select="fn:false()"/>
+        </x:scenario>
+
+        <x:scenario label="Multiplicity '0..*' allows multiple values">
+            <x:call function="f:areMultipleValuesForRelationRangeAllowed">
+                <x:param name="multiplicity" select="'0..*'"/>
+            </x:call>
+            <x:expect label="returns true" select="fn:true()"/>
+        </x:scenario>
+
+        <x:scenario label="Multiplicity '1..*' allows multiple values">
+            <x:call function="f:areMultipleValuesForRelationRangeAllowed">
+                <x:param name="multiplicity" select="'1..*'"/>
+            </x:call>
+            <x:expect label="returns true" select="fn:true()"/>
+        </x:scenario>
+
+        <x:scenario label="Multiplicity '0..1' does NOT allow multiple values">
+            <x:call function="f:areMultipleValuesForRelationRangeAllowed">
+                <x:param name="multiplicity" select="'0..1'"/>
+            </x:call>
+            <x:expect label="returns false" select="fn:false()"/>
+        </x:scenario>
+
+        <x:scenario label="Multiplicity '1..2' allows multiple values">
+            <x:call function="f:areMultipleValuesForRelationRangeAllowed">
+                <x:param name="multiplicity" select="'1..2'"/>
+            </x:call>
+            <x:expect label="returns true" select="fn:true()"/>
+        </x:scenario>
+
+        <x:scenario label="Multiplicity '1..1' does NOT allow multiple values">
+            <x:call function="f:areMultipleValuesForRelationRangeAllowed">
+                <x:param name="multiplicity" select="'1..1'"/>
+            </x:call>
+            <x:expect label="returns false" select="fn:false()"/>
+        </x:scenario>
+
+    </x:scenario>
+
+
 </x:description>

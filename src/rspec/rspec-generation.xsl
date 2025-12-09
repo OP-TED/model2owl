@@ -298,7 +298,10 @@
             return 
                 let $defaultLabel := f:lexicalQNameToWords($attribute/@name, fn:true()),
                     $attributeLabel := f:getCustomLabelOrDefault($attribute, $defaultLabel),
-                    $propertyPrefix := fn:substring-before($attribute/@name, ':')
+                    $propertyPrefix := fn:substring-before($attribute/@name, ':'),
+                    $attributeRangeCurie := $attribute/properties/@type,
+                    $attributeRangeDefaultLabel := f:lexicalQNameToWords($attributeRangeCurie, fn:true()),
+                    $attributeRangeLabel := f:getCustomLabelOrDefault(root($classElement)//element[@name = $attributeRangeCurie], $attributeRangeDefaultLabel)
                 return map{
                 'uri':   f:buildURIfromLexicalQName($attribute/@name),
                 'name':  string($attribute/@name),
@@ -313,10 +316,10 @@
                 },
                 'range': array{
                 map{
-                'range_uri':  f:buildURIfromLexicalQName($attribute/properties/@type),
-                'range_puri':  f:buildURIfromLexicalQName($attribute/properties/@type),
-                'range_curie': string($attribute/properties/@type),
-                'range_label': map{'en': f:lexicalQNameToWords($attribute/properties/@type, fn:true())}
+                'range_uri':  f:buildURIfromLexicalQName($attributeRangeCurie),
+                'range_puri':  f:buildURIfromLexicalQName($attributeRangeCurie),
+                'range_curie': string($attributeRangeCurie),
+                'range_label': map{'en': $attributeRangeLabel}
                 }
                 },
                 'cardinality': concat($attribute/bounds/@lower, '..', $attribute/bounds/@upper),
@@ -358,7 +361,13 @@
             return
                 let $defaultLabel := f:lexicalQNameToWords($association/@name, fn:true()),
                     $associationLabel := f:getCustomLabelOrDefaultFromConnector($association, $defaultLabel),
-                    $propertyPrefix := fn:substring-before($association/@name, ':')
+                    $propertyPrefix := fn:substring-before($association/@name, ':'),
+                    $associationRangeCurie := $association/target/@name,
+                    $associationRangeDefaultLabel := f:lexicalQNameToWords($associationRangeCurie, fn:true()),
+                    $targetClassElement := $root//element[@name = $associationRangeCurie],
+                    $associationRangeLabel := (if ($targetClassElement) 
+                    then f:getCustomLabelOrDefault($targetClassElement, $associationRangeDefaultLabel) 
+                    else $associationRangeDefaultLabel)
                 return map{
                 'uri':   f:buildURIfromLexicalQName($association/@name),
                 'name':  string($association/@name),
@@ -373,10 +382,10 @@
                 },
                 'range': array{
                 map{
-                'range_uri':  f:buildURIfromLexicalQName($association/target/@name),
-                'range_puri':  f:buildURIfromLexicalQName($association/target/@name),
-                'range_curie': string($association/target/@name),
-                'range_label': map{'en': f:lexicalQNameToWords($association/target/@name, fn:true())}
+                'range_uri':  f:buildURIfromLexicalQName($associationRangeCurie),
+                'range_puri':  f:buildURIfromLexicalQName($associationRangeCurie),
+                'range_curie': string($associationRangeCurie),
+                'range_label': map{'en': $associationRangeLabel}
                 }
                 },
                 'cardinality': string($association/@multiplicity),
