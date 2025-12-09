@@ -24,7 +24,7 @@ The UML transformation is performed using XSLT stylesheets under the assumption 
 The following capabilities are addressed:
 
 * UML -> Compliance report (ideal for checking the model against the established conventions) 
-* UML -> Glossary
+* UML -> Glossary (in HTML and AsciiDoc format)
 * UML -> OWL 2 (lightweight ontology suitable as a Core Vocabulary)
 * UML -> OWL 2 (heavyweight ontology with additional axioms suitable for reasoning purposes)
 * UML -> SHACL (data shapes suitable for validation)
@@ -43,14 +43,14 @@ This work is developed in the context of [eProcurement ontology project](https:/
 
 ### Scripts
 * [html-conventions-report.xsl](src/html-conventions-report.xsl) is the script checking the conformance to the technical conventions of the conceptual model. (HTML)
-* [html-model-glossary.xsl](src/html-model-glossary.xsl) is the script for creating a glossary of the conceptual model.
+* [html-model-glossary.xsl](src/html-model-glossary.xsl) is the script for creating a glossary of the conceptual model in HTML format.
 * [owl-core.xsl](src/owl-core.xsl) is the transformation script for the core OWL ontology.
 * [shacl-shapes.xsl](src/shacl-shapes.xsl) is the transformation script for the SHACL data shape constraints.
 * [owl-restrictions.xsl](src/owl-restrictions.xsl) is the transformation script for the restrictions of OWL ontology (on classes and properties).
 * [jsonld-context.xsl](src/jsonld-context.xsl) is the transformation script for the JSON-LD context.
 * [svrl-conventions-report.xsl](src/svrl-conventions-report.xsl) is the script checking the conformance to the technical conventions of the conceptual model. (SVRL)
 * [rspec-json-generate.xsl](src/rspec-json-generate.xsl) is the transformation script for genearting a ReSpec data JSON.
-
+* [asciidoc-glossary.j2](glossary-resources/asciidoc-glossary.j2) is the script for creating a glossary of the conceptual model in AsciiDoc format.
 ### Script unit tests
 
 * [test/unitTest/test-html-conventions-lib](
@@ -89,10 +89,16 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 * **install** - this will automatically execute all the commands above
 * **create-virtual-env** - this creates a virtual environment for the project
 #### Functional commands
-* **generate-glossary** - this generates a glossary from the UML export (xml/xmi)
+* **generate-glossary** - this generates an HTML glossary from the UML export (xml/xmi)
   * parameters:
     * XMI_INPUT_FILE_PATH - path to the xmi file
     * OUTPUT_GLOSSARY_PATH - path to the folder that stores the output
+* **generate-asciidoc-glossary** - this generates an AsciiDoc glossary from the UML export (xml/xmi), optionally creating the ReSpec data JSON file if it is not provided
+  * parameters:
+    * XMI_INPUT_FILE_PATH - path to the UML XMI model file needed for generating the ReSpec data JSON file (used only if MODEL_DATA_JSON_PATH is not provided)
+    * MODEL_DATA_JSON_PATH - (Optional) path to the ReSpec data JSON file; if omitted, it will be generated automatically
+    * OUTPUT_GLOSSARY_PATH - output directory for the glossary package
+    * OUTPUT_FOLDER_PATH - (Optional) directory where the generated ReSpec data JSON file should be stored (used only if MODEL_DATA_JSON_PATH is not provided). If not set, then the default directory is used.
 * **generate-convention-report** - this generates the compliance report from the UML export (xml/xmi) in HTML format
   * parameters:
     * XMI_INPUT_FILE_PATH - path to the xmi file

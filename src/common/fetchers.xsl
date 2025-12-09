@@ -25,6 +25,7 @@
     </xd:doc>
     
     <xsl:import href="../../config-proxy.xsl"/>
+    <xsl:import href="formatters.xsl"/>
     
     <xd:doc>
         <xd:desc>fetch the xmi:element with a given name</xd:desc>
@@ -64,12 +65,22 @@
     
     
     <xd:doc>
-        <xd:desc>Get the conenctors outgoing from the element</xd:desc>
+        <xd:desc>
+            Get the conenctors outgoing from the element.
+            
+            The function supports both unidirectional (source to target) and
+            bi-directional connectors.
+        </xd:desc>
         <xd:param name="element"/>
     </xd:doc>
     <xsl:function name="f:getOutgoingConnectors" as="node()*">
         <xsl:param name="element" as="node()"/>
-        <xsl:sequence select="root($element)//connector[source/@xmi:idref = $element/@xmi:idref]"/>
+        <xsl:sequence 
+            select="
+                root($element)//connector[source/@xmi:idref = $element/@xmi:idref]
+                |
+                root($element)//connector[properties/@direction = 'Bi-Directional' and target/@xmi:idref = $element/@xmi:idref]
+        "/>
     </xsl:function>
     
     <xd:doc>
@@ -357,6 +368,21 @@
         <!-- Fetch all tags from source, target, and connector level -->
         <xsl:sequence select="$connector//tags/tag" />
     </xsl:function>
+
+    <xd:doc>
+        <xd:desc>
+            Fetch all tags for a connector represented by a relation.
+        </xd:desc>
+        <xd:param name="relation"/>
+        <xd:param name="root"/>
+    </xd:doc>
+    <xsl:function name="f:getConnectorTagsByRelation">
+        <xsl:param name="relation"/>
+        <xsl:param name="root"/>
+        <xsl:variable name="connector"
+            select="f:getConnectorByIdRef($relation/@connectorIdRef, $root)" />
+        <xsl:sequence select="f:getConnectorTags($connector)" />
+    </xsl:function>
     
     <xd:doc>
         <xd:desc> Fetch role name value from a connector. It can be either in source or in target</xd:desc>
@@ -478,12 +504,36 @@
         <xsl:variable name="source" select="$connector/source"/>
         <xsl:variable name="target" select="$connector/target"/>
         <xsl:variable name="connectorIdRef" select="$connector/@xmi:idref"/>
+        <xsl:variable name="connectorType" select="$connector/properties/@ea_type"/>
+        <xsl:variable name="connectorDocs" select="$connector/documentation/@value"/>
+        <xsl:variable name="connectorSourceDocs"
+            select="$connector/source/documentation/@value"/>
+        <xsl:variable name="connectorTargetDocs"
+            select="$connector/target/documentation/@value"/>
         <xsl:sequence>
             <xsl:if test="f:isRelationValid($source, $target) = true()">
-                <xsl:sequence select="f:createRelation($source, $target, $connectorIdRef)"/>
+                <xsl:sequence
+                    select="f:createRelation(
+                        $source,
+                        $target,
+                        $connectorIdRef,
+                        $connectorType,
+                        $connectorDocs,
+                        $connectorSourceDocs,
+                        $connectorTargetDocs
+                    )"/>
                 <xsl:if test="f:isConnectorBidirectional($connector) = true()
                     and f:isRelationValid($target, $source) = true()">
-                    <xsl:sequence select="f:createRelation($target, $source, $connectorIdRef)"/>
+                    <xsl:sequence
+                        select="f:createRelation(
+                            $target,
+                            $source,
+                            $connectorIdRef,
+                            $connectorType,
+                            $connectorDocs,
+                            $connectorTargetDocs,
+                            $connectorSourceDocs
+                        )"/>
                 </xsl:if>
             </xsl:if>
         </xsl:sequence>
@@ -503,17 +553,29 @@
         <xd:param name="source"/>
         <xd:param name="target"/>
         <xd:param name="connectorIdRef"/>
+        <xd:param name="connectorType"/>
+        <xd:param name="connectorDocs"/>
+        <xd:param name="connectorSourceDocs"/>
+        <xd:param name="connectorTargetDocs"/>
     </xd:doc>
     <xsl:function name="f:createRelation">
         <xsl:param name="source"/>
         <xsl:param name="target"/>
         <xsl:param name="connectorIdRef"/>
+        <xsl:param name="connectorType"/>
+        <xsl:param name="connectorDocs"/>
+        <xsl:param name="connectorSourceDocs"/>
+        <xsl:param name="connectorTargetDocs"/>
         <xsl:sequence>
             <relation name="{$target/role/@name}"
                       multiplicity="{$target/type/@multiplicity}"
+                      type="{$connectorType}"
+                      documentation="{fn:normalize-space($connectorDocs)}"
                       connectorIdRef="{$connectorIdRef}">
-                <source name="{$source/model/@name}" type="{$source/model/@type}"/>
-                <target name="{$target/model/@name}" type="{$target/model/@type}"/>
+                <source name="{$source/model/@name}" type="{$source/model/@type}"
+                    documentation="{fn:normalize-space($connectorSourceDocs)}"/>
+                <target name="{$target/model/@name}" type="{$target/model/@type}"
+                    documentation="{fn:normalize-space($connectorTargetDocs)}"/>
             </relation>
         </xsl:sequence>
     </xsl:function>
@@ -538,5 +600,51 @@
                 else
                     ()
             "/>
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>
+            Extracts and combines documentation from a connector, its source and
+            target ends. All available documentation values are concatenated and
+            formatted.
+        </xd:desc>
+        <xd:param name="connector"/>
+    </xd:doc>
+    <xsl:function name="f:getCombinedDocumentationForConnector" as="xs:string*">
+        <xsl:param name="connector"/>
+        <xsl:sequence
+        select="
+            f:formatDocString(
+                fn:concat(
+                    $connector/documentation/@value,
+                    $connector/source/documentation/@value,
+                    $connector/target/documentation/@value
+                )
+            )
+        "/>
+    </xsl:function>
+
+    <xd:doc>
+        <xd:desc>
+            Extracts and combines documentation from a relation, its source and
+            target ends. All available documentation values are concatenated and
+            formatted.
+        </xd:desc>
+        <xd:param name="relation"/>
+    </xd:doc>
+    <xsl:function name="f:getCombinedDocumentationForRelation" as="xs:string*">
+        <xsl:param name="relation"/>
+        <xsl:sequence
+        select="
+            f:formatDocString(
+                fn:concat(
+                    $relation/@documentation,
+                    ' ',
+                    $relation/source/@documentation,
+                    ' ',
+                    $relation/target/@documentation
+                )
+            )
+        "/>
     </xsl:function>
 </xsl:stylesheet>

@@ -59,7 +59,7 @@
         <xsl:variable name="doc7" select="fn:replace($doc6, 'otherprops=#([0-9a-fA-F]+)', 'otherprops=&#x0022;#$1&#x0022;')"/>
         <xsl:variable name="doc8" select="fn:replace($doc7, 'href=([^&gt;\s]+)', 'href=&#x0022;$1&#x0022;')"/>
         <!-- Remove newlines that could break JSON -->
-        <xsl:variable name="doc9" select="fn:replace($doc8, '&#xA;', '')"/>
+        <xsl:variable name="doc9" select="fn:replace($doc8, '&#xA;+', ' ')"/>
         <!-- Keep quotes as-is since they're now properly quoted in attributes -->
         <xsl:value-of select="$doc9"/>
     </xsl:function>

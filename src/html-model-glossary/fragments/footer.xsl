@@ -22,7 +22,7 @@
             <p class="mb-2"> This document is generated automatically by the <a
                     href="https://github.com/costezki/model2owl" target="_blank" class="text-decoration-none">model2owl tool</a>
                 developed in the context of <a
-                    href="https://joinup.ec.europa.eu/solution/eprocurement-ontology" class="text-decoration-none">the
+                    href="https://interoperable-europe.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology">the
                     eProcurement Ontology initiative</a>.</p>
             <p class="mb-2">The template of this report is based on the <a
                     href="https://github.com/thomaspark/pubcss" class="text-decoration-none">PubCSS library</a>.</p>

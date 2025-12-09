@@ -3,7 +3,7 @@ from pyld import jsonld
 import pytest
 
 from functionalTests import ROOT_TEST_DATA_PATH
-from functionalTests.utils import (
+from functionalTests.utils.jsonld_context import (
     get_jsonld_data,
     get_jsonld_data_for_test_suite,
     run_model2owl_for_artefact

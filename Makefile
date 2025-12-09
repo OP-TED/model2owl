@@ -48,6 +48,7 @@ JSONLD_CONTEXT_INDENTATION?=2
 # respec variables with default values
 RESPEC_JSON_INDENTATION?=2
 RESPEC_DATA_JSON_PATH?=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json
+MODEL_DATA_JSON_PATH?=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json
 RESPEC_CFG_JSON_PATH?=${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec-cfg.json
 RESPEC_METADATA_JSON_PATH?=${ABSOLUTE_MODEL2OWL_FOLDER}/test/ePO-default-config/metadata.json
 RESPEC_INPUT_ASSETS_DIR=${ABSOLUTE_MODEL2OWL_FOLDER}/respec-resources/assets
@@ -272,6 +273,7 @@ shacl:
 	@rm -f ${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_shapes.tmp.rdf
 
 respec-json:
+	@make gen-enriched-ns-file
 	@java -jar ${SAXON} -s:${XMI_INPUT_FILE_PATH} -xsl:${MODEL2OWL_FOLDER}/src/rspec-json-generate.xsl \
 		-o:${OUTPUT_FOLDER_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_respec.json.tmp \
 		enrichedNamespacesPath="${ENRICHED_NAMESPACES_XML_PATH}" \
@@ -503,6 +505,67 @@ generate-respec:
 	ls -ldh ${RESPEC_OUTPUT_DIR}; \
 	command -v tree > /dev/null 2>&1 && tree "${RESPEC_OUTPUT_DIR}"; \
 	rm -f $$merged_json $$ext_md_json $$ext_md_json_updated
+
+# Usage (`[]` denotes an optional argument; if omited, default value will be used):
+# make generate-asciidoc-glossary
+#	[XMI_INPUT_FILE_PATH=/path/to/model.xmi]
+#	[MODEL_DATA_JSON_PATH=/path/to/respec-data.json]
+#	[OUTPUT_GLOSSARY_PATH=/output/glossary_directory]
+#	[OUTPUT_FOLDER_PATH=/path/to/generated/model2owl/artefacts]
+# where:
+#   XMI_INPUT_FILE_PATH: (Optional) Path to the UML XMI model file needed for
+#						 generating the ReSpec data JSON file (if not given).
+#   MODEL_DATA_JSON_PATH: (Optional) Path to the ReSpec data JSON file.
+#						  If not given, it will be generated.
+#   OUTPUT_GLOSSARY_PATH: Output directory for the glossary package.
+#   OUTPUT_FOLDER_PATH: (Optional) Directory to store the generated model data
+#   					JSON if MODEL_DATA_JSON_PATH is not given; if not set,
+# 						then the default directory is used.
+#
+generate-asciidoc-glossary:
+	@mkdir -p "${OUTPUT_GLOSSARY_PATH}"; \
+	## generate a model data JSON if not provided \
+	GEN_MODEL_DATA_JSON=0; \
+	if [ ! -e ${MODEL_DATA_JSON_PATH} ]; then \
+		echo "Generating a model data JSON file..."; \
+		$(MAKE) respec-json XMI_INPUT_FILE_PATH=${XMI_INPUT_FILE_PATH} \
+			OUTPUT_FOLDER_PATH=${OUTPUT_FOLDER_PATH} ; \
+		MODEL_DATA_JSON_PATH=$$(find "${OUTPUT_FOLDER_PATH}" -maxdepth 1 -name '*_respec.json' | head -n 1); \
+		GEN_MODEL_DATA_JSON=1; \
+	fi; \
+	\
+	## get value of a config parameter from the correct XSL config file \
+	generate_reused_concepts=$$( \
+		printf '%s\n' \
+		'<?xml version="1.0"?>' \
+		'<xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">' \
+		'  <xsl:import href="config-proxy.xsl"/>' \
+		'  <xsl:output method="text"/>' \
+		'  <xsl:template match="/">' \
+		'    <xsl:value-of select="$$generateReusedConceptsGlossary"/>' \
+		'  </xsl:template>' \
+		'</xsl:stylesheet>' \
+		| java -jar $(SAXON) -xsl:- -s:<(printf '<nil/>'); \
+	); \
+	if [ "$$generate_reused_concepts" = "true" ]; then \
+	    echo "Generating AsciiDoc glossary with reused concepts ..."; \
+	else \
+	    echo "Generating AsciiDoc glossary without reused concepts ..."; \
+	fi ; \
+	\
+	## run jinja to generate the respec document \
+	source model2owl-venv/bin/activate; \
+	jinja -d ${MODEL_DATA_JSON_PATH} \
+		-D generate_reused_concepts $$generate_reused_concepts \
+		glossary-resources/asciidoc-glossary.j2 \
+		-o ${OUTPUT_GLOSSARY_PATH}/${XMI_INPUT_FILENAME_WITHOUT_EXTENSION}_glossary.adoc ; \
+	\
+	echo "Output glossary directory:"; \
+	ls -ldh ${OUTPUT_GLOSSARY_PATH}; \
+	if [ "$$GEN_MODEL_DATA_JSON" -eq 1 ]; then \
+		echo "Generated model data JSON: $$MODEL_DATA_JSON_PATH"; \
+	fi; \
+ 	command -v tree > /dev/null 2>&1 && tree "${OUTPUT_GLOSSARY_PATH}"
 
 # A generic recipe for converting RDF data from one serialization format to 
 # another. It can also be used to regenerate a file using the same format.

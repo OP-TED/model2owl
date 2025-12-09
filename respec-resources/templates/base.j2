@@ -368,8 +368,11 @@
        Copyright must be specified otherwise Respec generates a value
      #} 
     <p class="copyright">
-        Copyright © 2024
+        Copyright © <span id="year"></span>
     </p>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -477,14 +480,15 @@
                     <p>
                         This document describes the usage of the following main entities for a correct usage of the vocabulary:
                         <br />
-                        | {%- for class in classes |sort(attribute=sortattr) %} 
+                        | {%- for class in classes | selectattr('classType', 'equalto', 'definition') | sort(attribute=sortattr) %}
+
                 {%- if class.rawTags['class-usage-scope'] == "main" %}
                 <a href="#{{ class.label[language] | replace(' ','') |urlencode | title }}">{{ class.label[language] }}</a> | {%- endif %}{%- endfor %}
                     </p>
                     <p>
                         The main entities are supported by:
                         <br />
-                        | {%- for class in classes |sort(attribute=sortattr) %} 
+                        | {%- for class in classes | selectattr('classType', 'equalto', 'definition') | sort(attribute=sortattr) %} 
                 {%- if class.rawTags['class-usage-scope'] != "main" %}
                 <a href="#{{ class.label[language] | replace(' ','') |urlencode | title }}">{{ class.label[language] }}</a> | {%- endif %}{%- endfor %}
                     </p>
@@ -518,7 +522,7 @@
     Properties of entities are listed in a tabular form.
 
     {% block mainEntitiesGen %}
-        {% for entity in classes | sort(attribute=sortattr) %}
+        {% for entity in classes | selectattr('classType', 'equalto', 'definition') | sort(attribute=sortattr) %}
             {% if entity.rawTags['class-usage-scope'] == "main"   %}
                 {{ renderEntity(entity) }}
             {% endif %}
@@ -533,7 +537,7 @@
     The supportive entities are supporting the main entities in the vocabulary. They are included in the vocabulary because they form the range of properties.
 
     {% block supportiveEntitiesGen %}
-        {% for entity in classes | sort(attribute=sortattr) %}
+        {% for entity in classes | selectattr('classType', 'equalto', 'definition') | sort(attribute=sortattr) %}
             {% if entity.rawTags['class-usage-scope'] != "main"   %}
                 {{ renderEntity(entity) }}
             {% endif %}
@@ -617,7 +621,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for entity in classes | sort(attribute=sortattr) %}
+                {% for entity in classes | selectattr('classType', 'equalto', 'definition') | sort(attribute=sortattr) %}
                     {% if ((entity.properties | length) > 0 ) %}
                         {% for prop in entity['properties'] | sort(attribute=sortattr) %}
                             {# lower the first letter in case it's uppercase #}
