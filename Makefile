@@ -57,6 +57,18 @@ TARGET_SDS_FILES_JSON_LOCATION=.assets.sdsSection
 RESPEC_OUTPUT_DIR?=${OUTPUT_FOLDER_PATH}/respec
 RESPEC_SDS_OUTPUT_DIR=${RESPEC_OUTPUT_DIR}/sds
 
+# Variables for merge-owl-shacl
+MERGE_ONTOLOGY_FILE?=test/diffing-files/ePO_core-4.1.0.ttl
+MERGE_SHAPES_FILE?=test/diffing-files/ePO_core_shapes-4.1.0.ttl
+MERGE_OUTPUT_FILE?=${OUTPUT_FOLDER_PATH}/ePO_core_combined-1.0.ttl
+
+# Variables for RDF diff
+RDF_DIFF_FILE1?=test/diffing-files/ePO_core-4.1.0.ttl
+RDF_DIFF_FILE2?=test/diffing-files/ePO_core-4.2.0.ttl
+RDF_DIFF_OUTDIR?=${OUTPUT_FOLDER_PATH}
+RDF_DIFF_AP?=owl-core-en-only
+RDF_DIFF_TEMPLATE?=html
+
 # download saxon library
 get-saxon: saxon/saxon.jar
 
@@ -593,6 +605,87 @@ validate-rdf-file:
 generate-html-docs-from-rdf: get-widoco
 	@echo ${WIDOCO_RDF_INPUT_FILE_PATH}
 	@java -jar widoco/widoco.jar -ontFile ${WIDOCO_RDF_INPUT_FILE_PATH} -outFolder ${WIDOCO_OUTPUT_FOLDER_PATH}  -getOntologyMetadata -uniteSections -webVowl
+
+# Merge OWL ontology and SHACL shapes files
+# Usage:
+# make merge-owl-shacl [MERGE_ONTOLOGY_FILE=test/diffing-files/ePO_core-4.1.0.ttl] [MERGE_SHAPES_FILE=test/diffing-files/ePO_core_shapes-4.1.0.ttl] [MERGE_OUTPUT_FILE=${OUTPUT_FOLDER_PATH}/ePO_core_combined-1.0.ttl]
+# where:
+#   MERGE_ONTOLOGY_FILE: Path to the OWL ontology file (default: test/diffing-files/ePO_core-4.1.0.ttl)
+#   MERGE_SHAPES_FILE: Path to the SHACL shapes file (default: test/diffing-files/ePO_core_shapes-4.1.0.ttl)
+#   MERGE_OUTPUT_FILE: Path to the output file (default: ${OUTPUT_FOLDER_PATH}/ePO_core_combined-1.0.ttl)
+merge-owl-shacl: get-jena-cli-tools get-rdf-differ
+	@if [ -z "${MERGE_ONTOLOGY_FILE}" ] || [ -z "${MERGE_SHAPES_FILE}" ]; then \
+		echo "Error: MERGE_ONTOLOGY_FILE and MERGE_SHAPES_FILE are required"; \
+		exit 1; \
+	fi
+	@if [ ! -f "rdf-differ-ws/bash/merge-owl-shacl.sh" ]; then \
+		echo "Error: rdf-differ-ws/bash/merge-owl-shacl.sh not found"; \
+		exit 1; \
+	fi
+	@if [ -z "${MERGE_OUTPUT_FILE}" ]; then \
+		cd rdf-differ-ws && PATH="${ABSOLUTE_MODEL2OWL_FOLDER}/jena/apache-jena/bin:$$PATH" bash ./bash/merge-owl-shacl.sh "../${MERGE_ONTOLOGY_FILE}" "../${MERGE_SHAPES_FILE}"; \
+	else \
+		cd rdf-differ-ws && PATH="${ABSOLUTE_MODEL2OWL_FOLDER}/jena/apache-jena/bin:$$PATH" bash ./bash/merge-owl-shacl.sh "../${MERGE_ONTOLOGY_FILE}" "../${MERGE_SHAPES_FILE}" "../${MERGE_OUTPUT_FILE}"; \
+	fi
+
+# Get rdf-differ-ws repository
+get-rdf-differ:
+	@if [ ! -d "rdf-differ-ws" ]; then \
+		git clone --depth 1 --branch 2.1.0-beta https://github.com/meaningfy-ws/rdf-differ-ws.git; \
+		rm -rf rdf-differ-ws/.git; \
+		if ! grep -q "^rdf-differ-ws/" .gitignore 2>/dev/null; then \
+			echo "rdf-differ-ws/" >> .gitignore; \
+			echo "✅ Added rdf-differ-ws/ to .gitignore"; \
+		fi; \
+	fi
+
+# Start RDF Differ services (Traefik and Docker services)
+start-rdf-differ-services: get-rdf-differ
+	@echo "Starting Traefik for user-friendly network routing..."
+	@cd rdf-differ-ws && make start-traefik
+	@echo "🔎 Running Docker containers after start-traefik:"
+	@docker ps
+	@echo "Starting RDF Differ Docker services..."
+	@cd rdf-differ-ws && make start-services
+	@echo "🔎 Running containers after start-services:"
+	@docker ps
+	@echo "⏳ Waiting 5 seconds for rdf-differ-ws container group (via Traefik) to be ready..."
+	@sleep 5
+
+# Stop RDF Differ services and Traefik
+stop-rdf-differ-services:
+	@if [ -d "rdf-differ-ws" ]; then \
+		cd rdf-differ-ws && make stop-services && make stop-traefik; \
+		echo "🔎 Running containers after stopping services and Traefik:"; \
+		docker ps; \
+	fi
+
+# Run RDF diff workflow
+# Usage:
+# make run-rdf-diff [RDF_DIFF_FILE1=test/diffing-files/ePO_core-4.1.0.ttl] [RDF_DIFF_FILE2=test/diffing-files/ePO_core-4.2.0.ttl] \
+#   [RDF_DIFF_OUTDIR=${OUTPUT_FOLDER_PATH}] [RDF_DIFF_AP=owl-core-en-only] [RDF_DIFF_TEMPLATE=html]
+# where:
+#   RDF_DIFF_FILE1: Path to the first RDF file (default: test/diffing-files/ePO_core-4.1.0.ttl)
+#   RDF_DIFF_FILE2: Path to the second RDF file (default: test/diffing-files/ePO_core-4.2.0.ttl)
+#   RDF_DIFF_OUTDIR: Output directory for diff results (default: ${OUTPUT_FOLDER_PATH}, which is "output")
+#   RDF_DIFF_AP: Application profile (default: owl-core-en-only)
+#   RDF_DIFF_TEMPLATE: Output template format (default: html)
+run-rdf-diff: start-rdf-differ-services
+	@echo "FILE1: ${RDF_DIFF_FILE1}"
+	@echo "FILE2: ${RDF_DIFF_FILE2}"
+	@echo "OUTDIR: ${RDF_DIFF_OUTDIR}"
+	@echo "AP: ${RDF_DIFF_AP}"
+	@echo "TEMPLATE: ${RDF_DIFF_TEMPLATE}"
+	@cd rdf-differ-ws && bash ./bash/rdf-differ.sh --old ../${RDF_DIFF_FILE1} --new ../${RDF_DIFF_FILE2} --output ../${RDF_DIFF_OUTDIR} --profile ${RDF_DIFF_AP} --template ${RDF_DIFF_TEMPLATE}
+	@echo "🔎 First few lines of the diff report:"
+	@if [ -f "${RDF_DIFF_OUTDIR}/diff.${RDF_DIFF_TEMPLATE}" ]; then \
+		head ${RDF_DIFF_OUTDIR}/diff.${RDF_DIFF_TEMPLATE}; \
+	else \
+		echo "No diff report found at ${RDF_DIFF_OUTDIR}/diff.${RDF_DIFF_TEMPLATE}"; \
+		echo "Checking for diff files in ${RDF_DIFF_OUTDIR}:"; \
+		ls -la ${RDF_DIFF_OUTDIR}/diff.* 2>/dev/null || echo "No diff files found"; \
+	fi
+	@$(MAKE) stop-rdf-differ-services
 
 SHELL=/bin/bash -o pipefail
 BUILD_PRINT = \e[1;34mSTEP:

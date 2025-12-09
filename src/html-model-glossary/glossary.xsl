@@ -22,8 +22,8 @@
     <xsl:template name="glossary">
         <h1>Glossary</h1>
         <h2>Class names and definitions</h2>
-        <table class="display">
-            <thead class="center aligned">
+        <table class="display table table-striped table-hover table-bordered">
+            <thead class="table-light text-center">
                 <tr>
                     <th>Class name</th>
                     <th>Definition</th>
@@ -35,13 +35,12 @@
         </table>
 
         <h2>Attributes (datatype properties) names and definitions</h2>
-        <table class="display">
-            <thead class="center aligned">
+        <table class="display table table-striped table-hover table-bordered">
+            <thead class="table-light text-center">
                 <tr>
                     <th>Class name</th>
                     <th>Attribute name</th>
                     <th>Definition</th>
-
                     <th>Data type / cardinality</th>
                 </tr>
             </thead>
@@ -51,8 +50,8 @@
         </table>
 
         <h2>Predicates (object properties) and definitions</h2>
-        <table class="display">
-            <thead class="center aligned">
+        <table class="display table table-striped table-hover table-bordered">
+            <thead class="table-light text-center">
                 <tr>
                     <th>Predicate name</th>
                     <th>Definition</th>
@@ -72,17 +71,19 @@
         <xsl:for-each select="$classNames">
             <xsl:sort select="." lang="en"/>
             <xsl:if test="$generateReusedConceptsGlossary or fn:substring-before(., ':') = $includedPrefixesList">
-                <tr>
-                    <td>
-                        <xsl:value-of select="."/>
-                    </td>
-                    <td>
-                        <xsl:variable name="classElement" select="f:getElementByName(., $root)"/>
-                        <xsl:value-of
-                            select="f:formatDocString(fn:string-join($classElement/properties/@documentation))"
-                        />
-                    </td>
-                </tr>
+                <xsl:variable name="classElement" select="f:getElementByName(., $root)"/>
+                <xsl:if test="not(f:isExcludedByStatus($classElement))">
+                    <tr>
+                        <td>
+                            <xsl:value-of select="."/>
+                        </td>
+                        <td>
+                            <xsl:value-of
+                                select="f:formatDocString(fn:string-join($classElement/properties/@documentation))"
+                            />
+                        </td>
+                    </tr>
+                </xsl:if>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
@@ -97,12 +98,14 @@
             <xsl:sort select="." lang="en"/>
             <xsl:variable name="attributeName" select="."/>
             <xsl:if test="$generateReusedConceptsGlossary or fn:substring-before($attributeName, ':') = $includedPrefixesList">
-            <tr>
-                <xsl:call-template name="classAttributeUsage">
-                    <xsl:with-param name="attributeName" select="$attributeName"/>
-                    <xsl:with-param name="root" select="$root"/>
-                </xsl:call-template>
-            </tr>
+                <xsl:if test="not(f:isExcludedByStatus(f:getClassAttributeByName(., $root)[1]))">
+                    <tr>
+                        <xsl:call-template name="classAttributeUsage">
+                            <xsl:with-param name="attributeName" select="$attributeName"/>
+                            <xsl:with-param name="root" select="$root"/>
+                        </xsl:call-template>
+                    </tr>
+                </xsl:if>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
@@ -185,16 +188,18 @@
             <xsl:sort select="." lang="en"/>
             <xsl:if test="$generateReusedConceptsGlossary or fn:substring-before(., ':') = $includedPrefixesList">
                 <xsl:variable name="connectorName" select="."/>
-                <tr>
-                    <td>
-                        <xsl:value-of select="$connectorName"/>
-                    </td>
+                <xsl:if test="not(f:isExcludedByStatus(f:getConnectorByName(., $root)[1]))">
+                    <tr>
+                        <td>
+                            <xsl:value-of select="$connectorName"/>
+                        </td>
 
-                    <xsl:call-template name="connectorUsage">
-                        <xsl:with-param name="connectorName" select="$connectorName"/>
-                        <xsl:with-param name="root" select="$root"/>
-                    </xsl:call-template>
-                </tr>
+                        <xsl:call-template name="connectorUsage">
+                            <xsl:with-param name="connectorName" select="$connectorName"/>
+                            <xsl:with-param name="root" select="$root"/>
+                        </xsl:call-template>
+                    </tr>
+                </xsl:if>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>

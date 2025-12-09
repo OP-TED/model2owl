@@ -259,8 +259,6 @@
     <xsl:template name="attributeRangeShape">
         <xsl:param name="attribute"/>
         <xsl:param name="className"/>
-        <xsl:variable name="attributeURI" select="f:buildURIFromElement($attribute)"/>
-        <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name, false())"/>
         <xsl:variable name="attributeType" select="$attribute/properties/@type"/>
         <xsl:variable name="shapePropertyUri"
             select="f:buildPropertyShapeURI($className, $attribute/@name)"/>
@@ -337,8 +335,6 @@
         <xsl:variable name="attributeMultiplicityMax"
             select="f:getAttributeValueToDisplay($attribute/bounds/@upper)"/>
         <xsl:variable name="datatypeURI" select="f:buildURIfromLexicalQName('xsd:integer')"/>
-        <xsl:variable name="attributeURI" select="f:buildURIFromElement($attribute)"/>
-        <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name, false())"/>
         <xsl:variable name="shapePropertyUri"
             select="f:buildPropertyShapeURI($className, $attribute/@name)"/>
 
