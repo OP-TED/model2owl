@@ -523,7 +523,8 @@ generate-respec:
 # 						then the default directory is used.
 #
 generate-asciidoc-glossary:
-	@mkdir -p "${OUTPUT_GLOSSARY_PATH}"; \
+	@set -euo pipefail; \
+	mkdir -p "${OUTPUT_GLOSSARY_PATH}"; \
 	## generate a model data JSON if not provided \
 	GEN_MODEL_DATA_JSON=0; \
 	if [ ! -e ${MODEL_DATA_JSON_PATH} ]; then \
