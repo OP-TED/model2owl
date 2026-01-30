@@ -433,7 +433,8 @@ convert-rdf-to-rdf:
 #   OUTPUT_FOLDER_PATH: (Optional) Directory where a ReSpec data JSON file 
 #						should be stored (if not given).
 generate-respec:
-	@## Add a key-value artefact entry to the metadata JSON file. \
+	@set -eo pipefail; \
+	## Add a key-value artefact entry to the metadata JSON file. \
 	extend_metadata_json() { \
 		local json_file="$$1"; \
 		local key="$$2"; \
@@ -523,7 +524,7 @@ generate-respec:
 # 						then the default directory is used.
 #
 generate-asciidoc-glossary:
-	@set -euo pipefail; \
+	@set -eo pipefail; \
 	mkdir -p "${OUTPUT_GLOSSARY_PATH}"; \
 	## generate a model data JSON if not provided \
 	GEN_MODEL_DATA_JSON=0; \

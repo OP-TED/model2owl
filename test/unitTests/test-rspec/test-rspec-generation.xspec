@@ -88,5 +88,32 @@
                 "
                 select="$expectedLabel"/>
         </x:scenario>
+        <x:scenario label="Scenario for a class in a combined XMI covering two modules">
+            <x:context
+                href="../../testData/ePO-5.1.0-two-modules-combined.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:LocalLegalBasisInformation' or @name='epo:ProcurementElement']"/>
+            <x:call template="classDetails"/>
+            <x:variable name="expectedLabel" select="'Procurement element'"/>
+            
+            <x:expect
+                label="correct class label for epo:ProcurementElement definition"
+                test="
+                    let $node := ($x:result)[?name = 'epo:ProcurementElement']
+                    return $node?label?en
+                "
+                select="$expectedLabel"/>
+            <x:expect
+                label="correct class label in range for epo:concernsProcurementElement of epo:LocalLegalBasisInformation"
+                test="
+                    let $node :=
+                    ($x:result)[?name = 'epo:LocalLegalBasisInformation'],
+                    $prop :=
+                    ($node?properties?*)
+                        [?name = 'epo:concernsProcurementElement']
+                    return
+                    $prop?range?1?range_label?en
+                "
+                select="$expectedLabel"/>
+        </x:scenario>
     </x:scenario>
 </x:description>
