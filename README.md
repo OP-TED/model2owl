@@ -380,7 +380,7 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 ```
 
 ### Generating diff reports
-Model2owl uses the [RDF Differ](https://meaningfy-ws.github.io/rdf-differ-ws/)
+Model2owl uses the [RDF Differ](https://github.com/OP-TED/rdf-differ-ws)
 tool to calculate differences between two RDF graphs and to generate diff
 reports in AsciiDoc and JSON formats. It compares either two OWL core files or
 two pairs consisting of an OWL core file and a SHACL shapes file. When SHACL
@@ -388,7 +388,7 @@ files are provided, the comparison scope additionally covers domain, range, and
 cardinality properties. The comparison scope is defined in an application
 profile suitable for comparing OWL ontologies. Details on how the RDF Differ
 tool works, produced reports, and how to interpret them can be found in the [project
-documentation](https://github.com/meaningfy-ws/rdf-differ-ws/blob/master/README.md).
+documentation](https://github.com/OP-TED/rdf-differ-ws/blob/2.1.0/README.md).
 
 Model2owl integrates the tool (via its CLI client) and provides a dedicated set
 of commands to interact with it (see the descriptions of the `run-rdf-diff` and
