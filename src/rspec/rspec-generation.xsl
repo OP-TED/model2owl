@@ -273,7 +273,7 @@
             array{
             for $classParentName in $classParentsNames
             return
-                let $parentElement := root($classElement)//element[@xmi:type = 'uml:Class' and @name = $classParentName],
+                let $parentElement := (root($classElement)//element[@xmi:type = 'uml:Class' and @name = $classParentName])[1],
                     $defaultLabel := f:lexicalQNameToWords($classParentName, fn:true()),
                     $parentLabel := if ($parentElement) then f:getCustomLabelOrDefault($parentElement, $defaultLabel) else $defaultLabel
                 return map{
@@ -290,6 +290,7 @@
     <xsl:template name="classProprietiesFromAttributes" as="array(*)">
         <xsl:param name="classElement" as="element()"/>
         <xsl:variable name="attributes" select="$classElement/attributes/attribute"/>
+        <xsl:variable name="root" select="root($classElement)"/>
 
         <xsl:sequence
             select="
@@ -301,7 +302,13 @@
                     $propertyPrefix := fn:substring-before($attribute/@name, ':'),
                     $attributeRangeCurie := $attribute/properties/@type,
                     $attributeRangeDefaultLabel := f:lexicalQNameToWords($attributeRangeCurie, fn:true()),
-                    $attributeRangeLabel := f:getCustomLabelOrDefault(root($classElement)//element[@name = $attributeRangeCurie], $attributeRangeDefaultLabel)
+                    $targetClassElement := ($root//element[@name = $attributeRangeCurie])[1],
+                    $attributeRangeLabel := (
+                        if ($targetClassElement) then
+                            f:getCustomLabelOrDefault($targetClassElement, $attributeRangeDefaultLabel) 
+                        else 
+                            $attributeRangeDefaultLabel
+                    )
                 return map{
                 'uri':   f:buildURIfromLexicalQName($attribute/@name),
                 'name':  string($attribute/@name),
@@ -364,7 +371,7 @@
                     $propertyPrefix := fn:substring-before($association/@name, ':'),
                     $associationRangeCurie := $association/target/@name,
                     $associationRangeDefaultLabel := f:lexicalQNameToWords($associationRangeCurie, fn:true()),
-                    $targetClassElement := $root//element[@name = $associationRangeCurie],
+                    $targetClassElement := ($root//element[@name = $associationRangeCurie])[1],
                     $associationRangeLabel := (if ($targetClassElement) 
                     then f:getCustomLabelOrDefault($targetClassElement, $associationRangeDefaultLabel) 
                     else $associationRangeDefaultLabel)
