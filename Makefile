@@ -433,7 +433,8 @@ convert-rdf-to-rdf:
 #   OUTPUT_FOLDER_PATH: (Optional) Directory where a ReSpec data JSON file 
 #						should be stored (if not given).
 generate-respec:
-	@## Add a key-value artefact entry to the metadata JSON file. \
+	@set -eo pipefail; \
+	## Add a key-value artefact entry to the metadata JSON file. \
 	extend_metadata_json() { \
 		local json_file="$$1"; \
 		local key="$$2"; \
@@ -523,7 +524,8 @@ generate-respec:
 # 						then the default directory is used.
 #
 generate-asciidoc-glossary:
-	@mkdir -p "${OUTPUT_GLOSSARY_PATH}"; \
+	@set -eo pipefail; \
+	mkdir -p "${OUTPUT_GLOSSARY_PATH}"; \
 	## generate a model data JSON if not provided \
 	GEN_MODEL_DATA_JSON=0; \
 	if [ ! -e ${MODEL_DATA_JSON_PATH} ]; then \
@@ -644,7 +646,7 @@ merge-owl-shacl: get-jena-cli-tools get-rdf-differ
 # Get rdf-differ-ws repository
 get-rdf-differ:
 	@if [ ! -d "rdf-differ-ws" ]; then \
-		git clone --depth 1 --branch 2.1.0-beta https://github.com/meaningfy-ws/rdf-differ-ws.git; \
+		git clone --depth 1 --branch 2.1.0 https://github.com/OP-TED/rdf-differ-ws.git; \
 		rm -rf rdf-differ-ws/.git; \
 		if ! grep -q "^rdf-differ-ws/" .gitignore 2>/dev/null; then \
 			echo "rdf-differ-ws/" >> .gitignore; \
