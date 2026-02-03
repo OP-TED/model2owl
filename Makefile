@@ -646,7 +646,7 @@ merge-owl-shacl: get-jena-cli-tools get-rdf-differ
 # Get rdf-differ-ws repository
 get-rdf-differ:
 	@if [ ! -d "rdf-differ-ws" ]; then \
-		git clone --depth 1 --branch 2.1.0-beta https://github.com/meaningfy-ws/rdf-differ-ws.git; \
+		git clone --depth 1 --branch 2.1.0 https://github.com/OP-TED/rdf-differ-ws.git; \
 		rm -rf rdf-differ-ws/.git; \
 		if ! grep -q "^rdf-differ-ws/" .gitignore 2>/dev/null; then \
 			echo "rdf-differ-ws/" >> .gitignore; \
