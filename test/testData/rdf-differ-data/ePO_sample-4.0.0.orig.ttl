@@ -1,0 +1,122 @@
+@prefix : <http://data.europa.eu/a4g/ontology#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix at-voc: <http://publications.europa.eu/resource/authority/> .
+@prefix at-voc-new: <http://publications.europa.eu/resource/authority/new/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix person: <http://www.w3.org/ns/person#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:AccessTerm a owl:Class ;
+    rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :LotSpecificTerm,
+        :ProcedureSpecificTerm ;
+    skos:definition "Conditions and stipulations about where and how to access the Procurement Documents. WG Approval 09/03/2021"@en ;
+    skos:prefLabel "Access term"@en .
+
+:AcquiringCentralPurchasingBody a owl:Class ;
+    rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :CentralPurchasingBody ;
+    skos:definition "Role of an Agent procuring activities conducted on a permanent basis in the form of the acquisition of supplies and/or services intended for other Buyers. Additional Information: In Public Procurement the Role of Acquiring Central Purchasing Body is carried out by a Central Purchasing Body for other Contracting Authorities. WG approval 05/08/2021"@en ;
+    skos:prefLabel "Acquiring central purchasing body"@en .
+
+:AdHocChannel a owl:Class ;
+    rdfs:isDefinedBy :core ;
+    rdfs:subClassOf cccev:Channel ;
+    skos:definition "Web page where tools and devices for electronic communication that are not generally available can be downloaded free of charge. Additional Information: This corresponds in eForms to BT-724 Tool Atypical. WG Acceptance 10/01/2023"@en ;
+    skos:prefLabel "Ad hoc channel"@en .
+
+:AwardCriteriaSummary a owl:Class ;
+    rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :ProcurementCriteriaSummary ;
+    skos:prefLabel "Award criteria summary"@en .
+
+:actsOnBehalfOf a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:definition "Represents. (epo:ProcurementServiceProvider -> epo:Buyer (+epo:actsOnBehalfOf))"@en ;
+    skos:prefLabel "Acts on behalf of"@en .
+
+:describesProfession a owl:DatatypeProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "Describes profession"@en .
+
+:describesProfessionRelevantLaw a owl:DatatypeProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "Describes profession relevant law"@en .
+
+:describesResultNotice a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "Describes result notice"@en .
+
+:describesVerificationMethod a owl:DatatypeProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "Describes verification method"@en .
+
+:distributesOffer a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "Distributes offer"@en .
+
+:exposesChannel a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "Exposes channel"@en .
+
+:exposesInvoiceeChannel a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "Exposes invoicee channel"@en .
+
+:Document a owl:Class ;
+    rdfs:isDefinedBy :core ;
+    skos:definition "A set of interrelated Business Information representing the Business facts and associated metadata. The information may be conveyed in any language, medium or form, including textual, numerical, graphic, cartographic, audio-visual forms, etc. WG Approval 23/05/2019"@en ;
+    skos:prefLabel "Document"@en .
+
+:LotSpecificTerm a owl:Class ;
+    rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :Term ;
+    skos:definition "Gathering class for conditions and stipulations related to a Lot."@en ;
+    skos:prefLabel "Lot specific term"@en .
+
+:AcquiringParty a owl:Class ;
+    rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :AgentInRole ;
+    skos:definition "The Role of an Agent that acts on the buying side of a Procurement Process."@en ;
+    skos:prefLabel "Acquiring party"@en .
+
+:core a owl:Ontology ;
+    rdfs:label "eProcurement Ontology - core"@en ;
+    dcterms:created "2021-06-01"^^xsd:date ;
+    dcterms:description "The eProcurement Ontology core describes the concepts and properties representing the European Public Procurement domain. The provision of these semantics offers the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency. The ontology restrictions are published in a separate artefact."@en ;
+    dcterms:issued "2023-11-09"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
+    dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
+    dcterms:title "eProcurement Ontology - core"@en ;
+    vann:preferredNamespacePrefix "epo" ;
+    vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
+    rdfs:comment "This version is automatically generated from ePO_core.xml on 2023-11-09" ;
+    rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
+        <https://github.com/OP-TED/ePO/releases>,
+        <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
+        <https://op.europa.eu/en/web/eu-vocabularies/e-procurement> ;
+    owl:imports cccev:,
+        dcterms:,
+        vann:,
+        <http://www.w3.org/2004/02/skos/core>,
+        <http://www.w3.org/2006/time>,
+        <http://www.w3.org/ns/adms>,
+        <http://www.w3.org/ns/locn>,
+        org:,
+        <http://www.w3.org/ns/person>,
+        foaf: ;
+    owl:incompatibleWith "3.1.0" ;
+    owl:priorVersion "http://data.europa.eu/a4g/ontology#core-3.1.0" ;
+    owl:versionIRI :core-4.0.0 ;
+    owl:versionInfo "4.0.0" .
+
