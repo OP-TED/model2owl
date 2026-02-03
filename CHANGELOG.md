@@ -9,6 +9,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 
+## [3.2.0-rc.2] - 2026-02-03
+### Added
+- Test suite demonstrating RDF diff cases (TEDM2O-12).
+
+### Changed
+- Update references to the RDF Differ repository (TEDM2O-12).
+
+### Fixed
+- Improved error handling in some Make recipes (TEDM2O-13).
+- Improved implementation of the combined glossary generation (TEDM2O-13).
+
+
 ## [3.2.0-rc.1] - 2025-12-09
 ### Added
 - Introduce RDF Diffing feature (TEDM2O-12).
