@@ -233,13 +233,6 @@
                         'owl:ObjectProperty'
                     else
                         'rdf:Property'"/>
-
-        <xsl:variable name="name"
-            select="
-                if (boolean($firstAttribute/@name)) then
-                    f:lexicalQNameToWords($firstAttribute/@name)
-                else
-                    fn:error(xs:QName('attribute'), concat($firstAttribute/@xmi:idref, ' - Attribute with no name'))"/>
         <xsl:variable name="className" select="$firstAttribute/../../@name" as="xs:string"/>
         <xsl:variable name="isAttributeWithDependencyName"
             select="f:getConnectorByName($firstAttribute/@name, $root)[source/model/@name = $className]"/>

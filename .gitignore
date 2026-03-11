@@ -198,6 +198,12 @@ sympy-plots-for-*.tex/
 *.pytxcode
 pythontex-files-*/
 
+# Python artefacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.deps_installed
+
 # tcolorbox
 *.listing
 
@@ -311,7 +317,6 @@ TSWLatexianTemp*
 *.xpr
 /data/
 
-glossary
 test/test-multi-xmi/combined
 workspace.code-workspace
 .ant-targets-build.xml
@@ -327,3 +332,6 @@ pyvenv.cfg
 /node_modules/
 .temp
 /enf/
+jq/jq
+.output*
+rdf-differ-ws/

@@ -1,0 +1,36 @@
+{
+  "@graph": [
+    {
+      "@id": "http://data.europa.eu/a4g/resource/buyer_001",
+      "@type": "Buyer",
+      "hasBuyerProfile": "https://example.com",
+      "isContractingEntity": true
+    },
+    {
+      "@id": "http://data.europa.eu/a4g/resource/organization_001",
+      "@type": "org:Organization",
+      "hasBuyerLegalType": "at-voc:buyer-legal-type/pub-undert",
+      "hasLegalIdentifier": [
+        "http://data.europa.eu/a4g/resource/identifier_001"
+      ],
+      "hasLegalName": [
+        "Fancy Organization"
+      ],
+      "hasMainActivity": "at-voc:main-activity/rail",
+      "registeredAddress": "http://data.europa.eu/a4g/resource/address_001"
+    },
+    {
+      "@id": "http://data.europa.eu/a4g/resource/identifier_001",
+      "@type": "adms:Identifier"
+    },
+    {
+      "@id": "http://data.europa.eu/a4g/resource/address_001",
+      "@type": "locn:Address",
+      "hasCountryCode": "at-voc:country/USA",
+      "hasNutsCode": "http://data.europa.eu/nuts/code/EL303",
+      "locn:fullAddress": "1248 Maplewood Drive, Springfield, IL 62704, USA",
+      "locn:postCode": "62704",
+      "locn:postName": "Springfield"
+    }
+  ]
+}

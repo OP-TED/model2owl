@@ -23,13 +23,27 @@
 
 
     <xd:doc>
-        <xd:desc>Applying reasoning layer rule to all attributes</xd:desc>
+        <xd:desc>
+            Applying reasoning layer rule to all attributes.
+            Generation of underlying restrictions (for cardinality) depends on
+            verification origin of both an attribute and the class it belongs to.
+            The former is involved as datatype property restriction is always
+            defined in the context of the related OWL class. 
+            Restrictions on reused attributes defined inside a reused class are
+            not generated. However, restrictions on reused attributes defined
+            inside an internal class are generated.
+        </xd:desc>
     </xd:doc>
     <xsl:template match="element[@xmi:type = 'uml:Class']/attributes/attribute">
-        <xsl:if test="not(f:isExcludedByStatus(.))">
-            <xsl:call-template name="attributeMultiplicity">
-                <xsl:with-param name="attribute" select="."/>
-            </xsl:call-template>
+        <xsl:variable name="className" select="./../../@name"/>
+        <xsl:if test="$generateReusedConceptsOWLrestrictions or
+                      fn:substring-before($className, ':') = $includedPrefixesList">
+            <xsl:variable name="attributeName" select="./@name"/>
+            <xsl:if test="not(f:isExcludedByStatus(.))">
+                <xsl:call-template name="attributeMultiplicity">
+                    <xsl:with-param name="attribute" select="."/>
+                </xsl:call-template>
+            </xsl:if>
         </xsl:if>
     </xsl:template>
 
@@ -124,7 +138,7 @@
                         <owl:Class>
                             <owl:unionOf rdf:parseType="Collection">
                                 <xsl:for-each select="$attributesWithSameName">
-                                    <owl:Class
+                                    <rdf:Description
                                         rdf:about="{f:buildURIfromLexicalQName(./../../@name)}"/>
                                 </xsl:for-each>
                             </owl:unionOf>
@@ -185,7 +199,7 @@
                                                 f:buildURIfromLexicalQName('skos:Concept')
                                             else
                                                 f:buildURIfromLexicalQName(.)"/>
-                                    <owl:Class rdf:about="{$attributeTypeURI}"/>
+                                    <rdf:Description rdf:about="{$attributeTypeURI}"/>
                                 </xsl:for-each>
                             </owl:unionOf>
                         </owl:Class>
@@ -198,12 +212,26 @@
     </xsl:template>
 
     <xd:doc>
-        <xd:desc>Rule C.09. Attribute multiplicity — in reasoning layer .For each attribute
-            multiplicity of the form ( min .. max ), where min and max are diferent than * (any),
-            specify a subclass axiom where the OWL class, corresponding to the UML class,
-            specialises an anonymous restriction of properties formulated according to the following
-            cases 1. exact cardinality, e.g. [2..2] 2. minimum cardinality only, e.g. [1..*] 3.
-            maximum cardinality only, e.g. [*..2] 4. maximum and maximum cardinality , e.g. [1..2] </xd:desc>
+        <xd:desc>
+            Rule C.09. Attribute multiplicity — in reasoning layer
+
+            For each attribute multiplicity of the form ( min .. max ),
+            where min and max are different than ``*'' (any), specify a subclass
+            axiom where the OWL class, corresponding to the UML Class,
+            specialises an anonymous restriction of properties formulated
+            according to the following cases:
+            1. exact cardinality, e.g. [2..2]
+            2. minimum cardinality only, e.g. [2..*]
+            3. maximum cardinality only, e.g. [*..2]
+            4. maximum and maximum cardinality, e.g. [1..2]
+            5. at least one occurence: [1..*]
+
+            The restriction describes a constraint that is formulated with
+            respect to the range type of the defined OWL property, that is one
+            of the following:
+            * class
+            * datatype
+        </xd:desc>
         <xd:param name="attribute"/>
     </xd:doc>
 
@@ -215,41 +243,54 @@
             select="f:getAttributeValueToDisplay($attribute/bounds/@upper)"/>
         <xsl:variable name="className" select="$attribute/../../@name"/>
         <xsl:variable name="classURI" select="f:buildURIfromLexicalQName($className)"/>
-        <xsl:variable name="datatypeURI" select="f:buildURIfromLexicalQName('xsd:integer')"/>
+        <xsl:variable name="attributeType" select="$attribute/properties/@type"/>
+        <xsl:variable name="attrTypeChecked"
+            select="
+                if (boolean(f:getUmlDataTypeValues($attributeType, $umlDataTypesMapping))) then
+                    f:getUmlDataTypeValues($attributeType, $umlDataTypesMapping)
+                else
+                    $attributeType"/>
+        <xsl:variable name="attrTypeURI" select="f:buildURIfromLexicalQName($attrTypeChecked)"/>
+        <xsl:variable name="cardValueDatatypeURI" select="f:buildURIfromLexicalQName('xsd:integer')"/>
         <xsl:variable name="attributeURI" select="f:buildURIFromElement($attribute)"/>
         <!--if both min and max vaules are present choose whether they are equal or not-->
         <xsl:if test="boolean($attributeMultiplicityMin) and boolean($attributeMultiplicityMax)">
             <rdf:Description rdf:about="{$classURI}">
-                <rdfs:subClassOf>
-                    <xsl:choose>
-                        <xsl:when test="$attributeMultiplicityMin = $attributeMultiplicityMax">
+                <xsl:choose>
+                    <xsl:when test="$attributeMultiplicityMin = $attributeMultiplicityMax">
+                        <rdfs:subClassOf>
                             <owl:Restriction>
                                 <owl:onProperty rdf:resource="{$attributeURI}"/>
-                                <owl:cardinality rdf:datatype="{$datatypeURI}">
+                                <owl:onDataRange rdf:resource="{$attrTypeURI}"/>
+                                <owl:qualifiedCardinality rdf:datatype="{$cardValueDatatypeURI}">
                                     <xsl:value-of select="$attributeMultiplicityMin"/>
-                                </owl:cardinality>
+                                </owl:qualifiedCardinality>
                             </owl:Restriction>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="{$attributeURI}"/>
-                                        <owl:minCardinality rdf:datatype="{$datatypeURI}">
-                                            <xsl:value-of select="$attributeMultiplicityMin"/>
-                                        </owl:minCardinality>
-                                    </owl:Restriction>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="{$attributeURI}"/>
-                                        <owl:maxCardinality rdf:datatype="{$datatypeURI}">
-                                            <xsl:value-of select="$attributeMultiplicityMax"/>
-                                        </owl:maxCardinality>
-                                    </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </rdfs:subClassOf>
+                        </rdfs:subClassOf>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <owl:Class>
+                            <rdfs:subClassOf>
+                                <owl:Restriction>
+                                    <owl:onProperty rdf:resource="{$attributeURI}"/>
+                                    <owl:onDataRange rdf:resource="{$attrTypeURI}"/>
+                                    <owl:minQualifiedCardinality rdf:datatype="{$cardValueDatatypeURI}">
+                                        <xsl:value-of select="$attributeMultiplicityMin"/>
+                                    </owl:minQualifiedCardinality>
+                                </owl:Restriction>
+                            </rdfs:subClassOf>
+                            <rdfs:subClassOf>
+                                <owl:Restriction>
+                                    <owl:onProperty rdf:resource="{$attributeURI}"/>
+                                    <owl:onDataRange rdf:resource="{$attrTypeURI}"/>
+                                    <owl:maxQualifiedCardinality rdf:datatype="{$cardValueDatatypeURI}">
+                                        <xsl:value-of select="$attributeMultiplicityMax"/>
+                                    </owl:maxQualifiedCardinality>
+                                </owl:Restriction>
+                            </rdfs:subClassOf>
+                        </owl:Class>
+                    </xsl:otherwise>
+                </xsl:choose>
             </rdf:Description>
         </xsl:if>
         <!--        if only min or max is present choose the value that exist-->
@@ -259,9 +300,10 @@
                 <rdfs:subClassOf>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="{$attributeURI}"/>
-                        <owl:maxCardinality rdf:datatype="{$datatypeURI}">
+                        <owl:onDataRange rdf:resource="{$attrTypeURI}"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="{$cardValueDatatypeURI}">
                             <xsl:value-of select="$attributeMultiplicityMax"/>
-                        </owl:maxCardinality>
+                        </owl:maxQualifiedCardinality>
                     </owl:Restriction>
                 </rdfs:subClassOf>
             </rdf:Description>
@@ -272,9 +314,10 @@
                 <rdfs:subClassOf>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="{$attributeURI}"/>
-                        <owl:minCardinality rdf:datatype="{$datatypeURI}">
+                        <owl:onDataRange rdf:resource="{$attrTypeURI}"/>
+                        <owl:minQualifiedCardinality rdf:datatype="{$cardValueDatatypeURI}">
                             <xsl:value-of select="$attributeMultiplicityMin"/>
-                        </owl:minCardinality>
+                        </owl:minQualifiedCardinality>
                     </owl:Restriction>
                 </rdfs:subClassOf>
             </rdf:Description>

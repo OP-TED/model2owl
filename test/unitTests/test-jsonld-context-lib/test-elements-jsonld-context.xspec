@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    stylesheet="../../../src/jsonld-context-lib/elements-jsonld-context.xsl">
+
+    <x:scenario label="Scenario for conditional generation of a class declaration - testing template with match 'element[@xmi:type = 'uml:Class']">
+        <x:scenario label="Scenario for an internal class">
+            <x:context
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:AwardCriterion']"/>
+            <x:expect label="there is an object entry" test="boolean(/fn:map)"/>
+            <x:expect label="the object entry has correct key" test="/fn:map/@key = 'AwardCriterion'"/>
+        </x:scenario>
+        <x:scenario label="Scenario for an external class">
+            <x:context
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='adms:Identifier']"/>
+            <x:expect label="there is an object entry" test="boolean(/fn:map)"/>
+            <x:expect label="the object entry has correct key" test="/fn:map/@key = 'adms:Identifier'"/>
+        </x:scenario>
+        <x:scenario label="Scenario for an excluded class (status == 'proposed')">
+            <x:context
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:Period']"/>        
+            <x:expect label="nothing is generated" test="()"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Scenario for class declaration - classDeclaration">
+        <x:scenario label="Scenario for generation of a complete declaration for a class - with attributes and connectors">
+            <x:context
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:Business']"/>
+            <x:call template="classDeclaration">
+            </x:call>
+            <x:expect label="there is an object entry" test="boolean(/fn:map[@key='Business'])"/>
+            <x:expect label="there is an inner context object"
+                test="boolean(/fn:map[@key='Business']/fn:map[@key='@context'])"/>
+            <x:expect label="there is a correct id in the object entry"
+                test="/fn:map[@key='Business']/fn:string[@key='@id'] = 'http://data.europa.eu/a4g/ontology#Business'"/>
+            <x:expect label="there is a correct number of entries for the associations"
+                test="count(/fn:map[@key='Business']/fn:map[@key='@context']/fn:map) = 3"/>
+            <x:expect label="there is an object for the right association"
+                test="boolean(/fn:map[@key='Business']/fn:map[@key='@context']/fn:map['hasBeneficialOwner'])"/>
+            <x:expect label="there is an object for the right dependency"
+                test="boolean(/fn:map[@key='Business']/fn:map[@key='@context']/fn:map['hasBusinessSize'])"/>
+            <x:expect label="there is an object for the right attribute"
+                test="boolean(/fn:map[@key='Business']/fn:map[@key='@context']/fn:map['isListedCompany'])"/>
+        </x:scenario>
+        <x:scenario label="Scenario for generation of a complete declaration for a class - attributes only">
+            <x:context
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:ElectronicSignature']"/>
+            <x:call template="classDeclaration"/>
+            <x:expect label="there is an object entry" test="boolean(/fn:map[@key='ElectronicSignature'])"/>
+            <x:expect label="there is an inner context object"
+                test="boolean(/fn:map[@key='ElectronicSignature']/fn:map[@key='@context'])"/>
+            <x:expect label="there is a correct number of entries for the attributes"
+                test="count(/fn:map[@key='ElectronicSignature']/fn:map[@key='@context']/fn:map) = 1"/>
+            <x:expect label="there is an object for the right attribute"
+                test="boolean(/fn:map[@key='ElectronicSignature']/fn:map[@key='@context']/fn:map['description'])"/>
+        </x:scenario>
+        <x:scenario label="Scenario for generation of a complete declaration for a class - connectors only">
+            <x:context
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:JuryMember']"/>
+            <x:call template="classDeclaration"/>
+            <x:expect label="there is an object entry" test="boolean(/fn:map[@key='JuryMember'])"/>
+            <x:expect label="there is an inner context object"
+                test="boolean(/fn:map[@key='JuryMember']/fn:map[@key='@context'])"/>
+            <x:expect label="there is a correct number of entries for the connectors"
+                test="count(/fn:map[@key='JuryMember']/fn:map[@key='@context']/fn:map) = 1"/>
+            <x:expect label="there is an object for the right connector"
+                test="boolean(/fn:map[@key='JuryMember']/fn:map[@key='@context']/fn:map['playedBy'])"/>
+        </x:scenario>
+        <x:scenario label="Scenario for generation of a simple declaration for a class - no attributes nor connectors">
+            <x:context
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:Mediator']"/>
+            <x:call template="classDeclaration"/>
+                <x:expect label="there is no object entry" test="not(boolean(/fn:map))"/>
+            <x:expect label="there is a simple term declaration"
+                test="fn:string[@key='Mediator'] = 'http://data.europa.eu/a4g/ontology#Mediator'"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Scenario for generating attribute entries of a class - classAttributesDeclaration">
+        <x:scenario label="Scenario for a class with several attributes">
+            <x:context 
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:OpeningTerm']"/>
+            <x:call template="classAttributesDeclaration"/>
+            <x:expect label="there are objects for attributes" test="count(/fn:map) = 3"/>
+            <x:expect label="there are objects for correct attributes"
+                test="/fn:map/@key = (
+                    'hasOpeningDateTime',
+                    'hasOpeningDescription',
+                    'hasOpeningURL'
+            )"/>
+        </x:scenario>        
+        <x:scenario label="Scenario for an excluded attribute (status == 'proposed')">
+            <x:context 
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:Procedure']"/>
+            <x:call template="classAttributesDeclaration"/>
+            <x:expect label="there are objects for included attributes" test="count(/fn:map) = 4"/>
+            <x:expect label="there are objects for correct attributes"
+                test="/fn:map/@key = (
+                    'hasAcceleratedProcedureJustification',
+                    'hasMainFeature',
+                    'isAccelerated',
+                    'isDesignContest'
+            )"/>
+            <x:expect label="there is no object for the excluded attribute"
+                test="not(/fn:map[@key = 'isJointProcurement'])"/>
+        </x:scenario>
+        <x:scenario label="Scenario for a class without attributes">
+            <x:context 
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:ExclusionGroundsSummary']"/>
+            <x:call template="classAttributesDeclaration"/>
+            <x:expect label="there are no objects for attributes" test="()"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Scenario for attribute entry generation - attributeGeneration">
+        <x:scenario label="Scenario for an internal attribute with a single occurence allowed">
+            <x:context 
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:ContractTerm']/attributes[1]/attribute[@name='epo:hasEOrdering']"/>
+            <x:call template="attributeGeneration"/>
+            <x:expect label="there is an object" test="boolean(/fn:map)"/>
+            <x:expect label="the object has correct key" test="/fn:map/@key = 'hasEOrdering'"/>
+            <x:expect label="there is an object entry with @id key" test="fn:map/fn:string/@key = '@id'"/>
+            <x:expect label="there is an object entry with @type key" test="fn:map/fn:string/@key = '@type'"/>
+            <x:expect label="there is no object entry with @container key" test="not(fn:map/fn:string[@key = '@container'])"/>
+        </x:scenario>
+        <x:scenario label="Scenario for an internal attribute with multiple occurences allowed">
+            <x:context 
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='epo:ChangeInformation']/attributes[1]/attribute[@name='epo:hasChangeReasonDescription']"/>
+            <x:call template="attributeGeneration"/>
+            <x:expect label="there is an object" test="boolean(/fn:map)"/>
+            <x:expect label="the object has correct key" test="/fn:map/@key = 'hasChangeReasonDescription'"/>
+            <x:expect label="there is an object entry with @id key" test="fn:map/fn:string/@key = '@id'"/>
+            <x:expect label="there is an object entry with @type key" test="fn:map/fn:string/@key = '@type'"/>
+            <x:expect label="there is an object entry with @container key" test="fn:map/fn:string/@key = '@container'"/>
+        </x:scenario>
+        <x:scenario label="Scenario for an external attribute with multiple occurences allowed">
+            <x:context 
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[@name='adms:Identifier']/attributes[1]/attribute[@name='epo:hasScheme']"/>
+            <x:call template="attributeGeneration"/>
+            <x:expect label="there is an object" test="boolean(/fn:map)"/>
+            <x:expect label="the object has correct key" test="/fn:map/@key = 'hasScheme'"/>
+            <x:expect label="there is an object entry with @id key" test="fn:map/fn:string/@key = '@id'"/>
+            <x:expect label="there is an object entry with @type key" test="fn:map/fn:string/@key = '@type'"/>
+            <x:expect label="there is an object entry with @container key" test="fn:map/fn:string/@key = '@container'"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Scenario for attribute name to URI mapping - attributeDeclaration">
+        <x:call template="attributeDeclaration">
+            <x:param name="attrCurie" select="'epo:hasEOrdering'"/>
+        </x:call>
+        <x:expect label="there is an object entry" test="boolean(/fn:string)"/>
+        <x:expect label="the object entry has correct key" test="/fn:string/@key = '@id'"/>
+        <x:expect label="the object entry has correct value"
+            test="/fn:string/text() = 'http://data.europa.eu/a4g/ontology#hasEOrdering'"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for attribute type entry - attributeTypeDeclaration">
+        <x:call template="attributeTypeDeclaration">
+            <x:param name="attribute"
+                href="../../testData/ePO-core-4.2.0.xml"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[129]/attributes[1]/attribute[2]"/>
+        </x:call>
+        <x:expect label="there is an object entry" test="boolean(/fn:string)"/>
+        <x:expect label="the object entry has correct key" test="/fn:string/@key = '@type'"/>
+        <x:expect label="the object entry has correct value"
+            test="/fn:string/text() = 'http://www.w3.org/2001/XMLSchema#boolean'"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for class attribute container declaration - attributeContainerDeclaration">
+        <x:scenario label="Scenario for an attribute with 1..* cardinality">
+            <x:call template="attributeContainerDeclaration">
+                <x:param name="attribute"
+                    href="../../testData/ePO-core-4.2.0.xml"
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[110]/attributes[1]/attribute[1]"/>
+            </x:call>
+            <x:expect label="there is an object entry" test="boolean(/fn:string)"/>
+            <x:expect label="the object entry has correct key" test="/fn:string/@key = '@container'"/>
+            <x:expect label="the object entry has correct value" test="/fn:string/text() = '@set'"/>
+        </x:scenario>
+        <x:scenario label="Scenario for an attribute with 0..1 cardinality">
+            <x:call template="attributeContainerDeclaration">
+                <x:param name="attribute"
+                    href="../../testData/ePO-core-4.2.0.xml"
+                    select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[108]/attributes[1]/attribute[2]"/>
+            </x:call>
+            <x:expect label="nothing is generated" test="()"/>
+        </x:scenario>
+    </x:scenario>
+</x:description>

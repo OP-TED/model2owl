@@ -24,11 +24,14 @@ The UML transformation is performed using XSLT stylesheets under the assumption 
 The following capabilities are addressed:
 
 * UML -> Compliance report (ideal for checking the model against the established conventions) 
-* UML -> Glossary
+* UML -> Glossary (in HTML and AsciiDoc format)
 * UML -> OWL 2 (lightweight ontology suitable as a Core Vocabulary)
 * UML -> OWL 2 (heavyweight ontology with additional axioms suitable for reasoning purposes)
 * UML -> SHACL (data shapes suitable for validation)
+* UML -> JSON-LD context (an accompanying context file for the ontology, suitable for use in JSON-LD applications)
 * UML -> SVRL (Compliance report in SVRL format)
+* UML -> ReSpec documentation (comprehensive documentation of the ontology project)
+* Generation of diff reports in both machine-readable (JSON) and human-readable (AsciiDoc) formats
 
 This work is developed in the context of [eProcurement ontology project](https://github.com/eprocurementontology/eprocurementontology) financed by the Digital Europe Programme and led by the [Publications Office of the European Union](https://op.europa.eu/en/).
 
@@ -37,15 +40,18 @@ This work is developed in the context of [eProcurement ontology project](https:/
 * The technical **conventions** for the UML representation of the conceptual model are provided in [EPO UML conventions documentation](https://docs.ted.europa.eu/M2O/latest/uml/conceptual-model-conventions.html).
 * An **inventory** of conformance tests derived from the UML conventions document are provided in the [EPO UML conventions checking specification](https://docs.ted.europa.eu/M2O/latest/checkers/model2owl-checkers.html).
 * The **transformation rules** from UML into OWL and SHACL are provided in the [UML2OWL transformation rules](https://docs.ted.europa.eu/M2O/latest/transformation/uml2owl-transformation.html).
+* The **user guide** describing how to configure and run model2owl is provided in the [User guide](https://docs.ted.europa.eu/M2O/latest/user-guide/about.html).
 
 ### Scripts
 * [html-conventions-report.xsl](src/html-conventions-report.xsl) is the script checking the conformance to the technical conventions of the conceptual model. (HTML)
-* [html-model-glossary.xsl](src/html-model-glossary.xsl) is the script for creating a glossary of the conceptual model.
+* [html-model-glossary.xsl](src/html-model-glossary.xsl) is the script for creating a glossary of the conceptual model in HTML format.
 * [owl-core.xsl](src/owl-core.xsl) is the transformation script for the core OWL ontology.
 * [shacl-shapes.xsl](src/shacl-shapes.xsl) is the transformation script for the SHACL data shape constraints.
 * [owl-restrictions.xsl](src/owl-restrictions.xsl) is the transformation script for the restrictions of OWL ontology (on classes and properties).
+* [jsonld-context.xsl](src/jsonld-context.xsl) is the transformation script for the JSON-LD context.
 * [svrl-conventions-report.xsl](src/svrl-conventions-report.xsl) is the script checking the conformance to the technical conventions of the conceptual model. (SVRL)
-
+* [rspec-json-generate.xsl](src/rspec-json-generate.xsl) is the transformation script for genearting a ReSpec data JSON.
+* [asciidoc-glossary.j2](glossary-resources/asciidoc-glossary.j2) is the script for creating a glossary of the conceptual model in AsciiDoc format.
 ### Script unit tests
 
 * [test/unitTest/test-html-conventions-lib](
@@ -53,6 +59,7 @@ https://github.com/OP-TED/model2owl/tree/master/test/unitTests/test-html-convent
 * [test/unitTest/test-owl-core-lib](https://github.com/OP-TED/model2owl/tree/master/test/unitTests/test-owl-core-lib) is the location of the unit tests for the transformation script for the core OWL ontology.
 * [test/unitTest/test-shacl-shape-lib](https://github.com/OP-TED/model2owl/tree/master/test/unitTests/test-shacl-shape-lib) is the location of the unit tests for the transformation script for the SHACL data shape constraints.
 * [test/unitTest/test-reasoning-layer-lib](https://github.com/OP-TED/model2owl/tree/master/test/unitTests/test-reasoning-layer-lib) is the location of the unit tests for the transformation script for the restrictions of OWL ontology (on classes and properties).
+* [test/unitTest/test-jsonld-context-lib](https://github.com/OP-TED/model2owl/tree/master/test/unitTests/test-jsonld-context-lib) is the location of the unit tests for the transformation script for the JSON-LD context.
 
 # How to use
 This project can be used in 2 different ways as follows.
@@ -78,13 +85,24 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 * **get-saxon** - this will install saxon in a folder inside the project
 * **get-rdflib** - this will install rdflib library
 * **get-widoco** - this will install saxon in a folder inside the project
+* **get-jinja** – this will install Jinja2 inside the project folder
+* **get-jq** – this will install jq inside the project folder
 * **install** - this will automatically execute all the commands above
+* **get-rdf-differ** – installs RDF Differ in a local directory
+* **start-rdf-differ-services** – starts Traefik and the Docker-based RDF Differ services
+* **stop-rdf-differ-services** – stops RDF Differ Docker and Traefik services
 * **create-virtual-env** - this creates a virtual environment for the project
-#### Functionality commands
-* **generate-glossary** - this generates a glossary from the UML export (xml/xmi)
+#### Functional commands
+* **generate-glossary** - this generates an HTML glossary from the UML export (xml/xmi)
   * parameters:
     * XMI_INPUT_FILE_PATH - path to the xmi file
     * OUTPUT_GLOSSARY_PATH - path to the folder that stores the output
+* **generate-asciidoc-glossary** - this generates an AsciiDoc glossary from the UML export (xml/xmi), optionally creating the ReSpec data JSON file if it is not provided
+  * parameters:
+    * XMI_INPUT_FILE_PATH - path to the UML XMI model file needed for generating the ReSpec data JSON file (used only if MODEL_DATA_JSON_PATH is not provided)
+    * MODEL_DATA_JSON_PATH - (Optional) path to the ReSpec data JSON file; if omitted, it will be generated automatically
+    * OUTPUT_GLOSSARY_PATH - output directory for the glossary package
+    * OUTPUT_FOLDER_PATH - (Optional) directory where the generated ReSpec data JSON file should be stored (used only if MODEL_DATA_JSON_PATH is not provided). If not set, then the default directory is used.
 * **generate-convention-report** - this generates the compliance report from the UML export (xml/xmi) in HTML format
   * parameters:
     * XMI_INPUT_FILE_PATH - path to the xmi file
@@ -97,18 +115,65 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
   * parameters:
     * XMI_INPUT_FILE_PATH - path to the xmi file
     * OUTPUT_FOLDER_PATH - path to the folder that stores the output
+    * NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file containing namespaces
+    * IMPORTS_XML_FILE_PATH: path to the *.xml file containing ontology URIs to be imported
 * **owl-restrictions** - this generates heavyweight ontology with additional axioms suitable for reasoning purposes from the UML export (xml/xmi)
   * parameters:
     * XMI_INPUT_FILE_PATH - path to the xmi file
     * OUTPUT_FOLDER_PATH - path to the folder that stores the output
+    * NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file containing namespaces
+    * IMPORTS_XML_FILE_PATH: path to the *.xml file containing ontology URIs to be imported
 * **shacl** - this generates data shapes suitable for validation from the UML export (xml/xmi)
   * parameters:
     * XMI_INPUT_FILE_PATH - path to the xmi file
     * OUTPUT_FOLDER_PATH - path to the folder that stores the output
+    * NAMESPACES_USER_XML_FILE_PATH: path to the *.xml file containing namespaces
+    * IMPORTS_XML_FILE_PATH: path to the *.xml file containing ontology URIs to be imported
+* **generate-jsonld-context** - Generates JSON-LD context file from the UML export (xml/xmi)
+  * parameters:
+    * XMI_INPUT_FILE_PATH - path to the xmi file
+    * OUTPUT_FOLDER_PATH - path to the folder that stores the output
+    * JSONLD_CONTEXT_INDENTATION: Indentation for the generated file (defaults to 2 spaces)
 * **generate-html-docs-from-rdf** - this generates html documentation using widoco from a rdf file
   * parameters:
     * WIDOCO_RDF_INPUT_FILE_PATH - path to the rdf file
     * OUTPUT_FOLDER_PATH - path to the folder that stores the output
+* **generate-respec** - Creates an HTML documentation package for an ontology using Jinja2 and ReSpec. The command expects the input model, metadata and a set of assets to be provided. The generated package is ready to be hosted on a web server.
+  * parameters:
+    * RESPEC_OUTPUT_DIR - output directory for the documentation package
+    * RESPEC_DATA_JSON_PATH - (optional) path to the ReSpec data JSON file. If not provided, the file will be generated automatically
+    * RESPEC_METADATA_JSON_PATH - path to the metadata JSON file; defaults to [metadata.json](./test/ePO-default-config/metadata.json)
+    * RESPEC_INPUT_ASSETS_DIR - directory containing static assets (examples, images, etc.); defaults to [assets directory](./respec-resources/assets)
+    * XMI_INPUT_FILE_PATH - path to the UML XMI model file
+    * MODEL_EAP_FILE_PATH - path to the UML EAP model file
+    * OUTPUT_FOLDER_PATH - directory containing generated model2owl artefacts
+    * OWL_CORE_FILE_PATH - path to the generated OWL core file
+    * OWL_RESTR_FILE_PATH - path to the generated OWL restrictions file
+    * SHACL_SHAPES_FILE_PATH - path to the generated SHACL shapes file
+    * JSONLD_CONTEXT_FILE_PATH - path to the generated JSON-LD context file
+  * The command relies on Jinja2 templates that generate a ReSpec HTML document:
+    * [base.j2](./respec-resources/templates/base.j2): contains the base documentation page structure with standard sections (such as Abstract, Introduction, etc.) as well as autogenerated model description (as generated by the `respec-json`)
+    * [main.j2](./respec-resources/templates/main.j2): allows customization of the *base template* using the Jinja2 template inheritance mechanism. This file is expected to be customized by the user to meet the needs of a specific ontology.
+  * _Note: This command does not generate other RDF artefacts, so they need to be generated separately and provided as input to this command._
+* **respec-json** - an auxiliary command that generates the ReSpec data JSON file from the input XMI file. The command is used by the `generate-respec` command.
+  * parameters:
+    * XMI_INPUT_FILE_PATH - path to the XMI file
+    * OUTPUT_FOLDER_PATH - path to the output folder
+    * NAMESPACES_USER_XML_FILE_PATH - path to the *.xml file containing namespaces
+    * IMPORTS_XML_FILE_PATH - path to the *.xml file containing ontology URIs to be imported
+    * RESPEC_JSON_INDENTATION - (optional) number of spaces for indentation in the generated JSON file. Default is 2
+* **merge-owl-shacl** – merges an OWL ontology file with a SHACL shapes file into a combined output TTL file.
+  * parameters:
+    * MERGE_ONTOLOGY_FILE - path to the OWL ontology file (default: `test/diffing-files/ePO_core-4.1.0.ttl`)
+    * MERGE_SHAPES_FILE - path to the SHACL shapes file (default: `test/diffing-files/ePO_core_shapes-4.1.0.ttl`)
+    * MERGE_OUTPUT_FILE - path to the output file (default: `${OUTPUT_FOLDER_PATH}/ePO_core_combined-1.0.ttl`)
+* **run-rdf-diff** – runs RDF diffing workflow between two RDF files using RDF Differ services and produces a diff report. The report type is determined by the `RDF_DIFF_TEMPLATE`.
+  * parameters:
+    * RDF_DIFF_FILE1 - path to the first RDF file (default: `test/diffing-files/ePO_core-4.1.0.ttl`)
+    * RDF_DIFF_FILE2 - path to the second RDF file (default: `test/diffing-files/ePO_core-4.2.0.ttl`)
+    * RDF_DIFF_OUTDIR - folder to store the diff output (default: `${OUTPUT_FOLDER_PATH}`)
+    * RDF_DIFF_AP - application profile used for diffing (default: `owl-core-en-only`)
+    * RDF_DIFF_TEMPLATE - template format for diff report (default: `html`)
 * **merge-xmi** - this will merge xmis from specific folder
   * parameters:
     * FIRST_XMI_TO_BE_MERGED_FILE_PATH - path to the first xmi to be merged. All xmi files need to be 
@@ -134,9 +199,11 @@ Steps:
 then activate it by using  ``source model2owl-venv/bin/activate``.
 
 ### Configuration
-The model2owl configuration is formed from 4 files that should be in one folder:
+The model2owl configuration is formed from 6 files that should be in one folder:
 * config-parameters.xsl - main config variables
 * namespaces.xml - add namespaces that are used in your UML model
+* imports.xml - A set of URIs to be included for importing in the generated ontologies using the `owl:imports` property
+* metadata.json - Contains metadata describing the processed model, which is used to generate RDF and ReSpec artefacts
 * umlToXsdDataTypes.xml - mapping between uml to xsd data types
 * xsdAndRdfDataTypes.xml - configure datatypes used
 
@@ -144,7 +211,7 @@ To start just copy the default configuration files from [ePO-default-config fold
 #### Changing config parameters
 To change the configuration in the config-parameters.xsl just simply change the value of the variable.
 Notes: 
-* Do not change the values from the namespacePrefixes, umlDataTypesMapping, xsdAndRdfDataTypes variables as these will 
+* Do not change the values from the namespacePrefixes, umlDataTypesMapping, xsdAndRdfDataTypes, metadataJson variables as these will 
 already work with having one config folder with all config files. 
 * When changing variables make sure you modify it with the same datatype (boolean, string, list)
 ```shell
@@ -178,6 +245,9 @@ The following variables determine the inclusion or exclusion of reused concepts 
 
 <!-- Controls whether reused concepts are generated in the glossary -->
 <xsl:variable name="generateReusedConceptsGlossary" select="fn:true()"/>
+
+<!-- Controls whether reused concepts are generated in the JSON-LD context file  -->
+<xsl:variable name="generateReusedConceptsJSONLDcontext" select="fn:true()"/>
 ```
 
 Explanation
@@ -187,26 +257,62 @@ Explanation
 * generateReusedConceptsOWLcore: Set to false, reused concepts will be excluded from OWL core artefact.
 * generateReusedConceptsOWLrestrictions: Set to false, reused concepts will be excluded from OWL restrictions artefact.
 * generateReusedConceptsGlossary: Set to true, reused concepts will be included in the glossary.
+* generateReusedConceptsJSONLDcontext: Set to true, reused concepts will be included in the JSON-LD context file.
 
 By adjusting these variables, it is possible to customize whether specific artefacts contain reused concepts, 
 providing fine control over the content of each output.
 
 #### Namespaces configuration
-In the namespaces.xml file you can add the namespaces that you use in UML model and also can control which of them should
-appear as import in the final output.
+In the namespaces.xml file you can add the namespaces that you use in UML model.
 
 Example
 
 ```shell
 # to add prefix you need a name and the URI
  <prefix name="foaf" value="http://xmlns.com/foaf/0.1/"/>
-# to have an import statement in the final output 
-# add importURI attribute to the definition above
- <prefix name="dct" value="http://purl.org/dc/terms/" importURI="http://purl.org/dc/terms/"/>
- 
-#Output will have the following import statement
-<owl:imports rdf:resource="http://purl.org/dc/terms/"/>
 ```
+
+#### Imported ontologies configuration
+URIs of ontologies to be declared for import within generated ontologies (for
+core, restrictions or SHACL shapes artefacts) can be specified in the
+imports.xml file. The file includes sections for shared URIs, which apply to all
+artefact types, as well as sections for specific artefact types.
+```xml
+<imports xmlns="http://publications.europa.eu/ns/">
+    <!-- affects all three artefacts -->
+    <all>
+        <import uri="http://purl.org/dc/terms/"/>
+    </all>
+    <!-- affects SHACL artefact -->
+    <shacl>
+        <import uri="http://data.europa.eu/a4g/data-shape#awa-shape"/>
+    </shacl>
+</imports>
+```
+This will cause **all RDF output files** to include the following import statement for the declared ontology:
+```xml
+<!-- in core.rdf, the resource <http://example.com/core> is of type owl:Ontology -->
+<rdf:Description rdf:about="http://example.com/core">
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+</rdf:Description>
+
+<!-- in core_restrictions.rdf, the resource <http://example.com/core-restriction> is of type owl:Ontology -->
+<rdf:Description rdf:about="http://example.com/core-restriction">
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+</rdf:Description>
+
+<!-- in core_shapes.rdf, the resource <http://example.com/core-shape> is of type owl:Ontology -->
+<rdf:Description rdf:about="http://example.com/core-shape">
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+</rdf:Description>
+```
+In addition, the below statement will be present **only in the SHACL artefact**:
+```xml
+<rdf:Description rdf:about="http://data.europa.eu/a4g/ontology#core-restriction">
+    <owl:imports rdf:resource="http://data.europa.eu/a4g/data-shape#awa-shape"/>
+</rdf:Description>
+```
+
 #### XSD/RDF datatypes
 Use xsdAndRdfDataTypes.xml file to define the datatypes used in the UML model.
 
@@ -241,6 +347,27 @@ Example:
 # to
  <xsl:import href="my-pc/user/my-config-folder/config-parameters.xsl"/>
 ```
+#### Configuration of ReSpec document generation
+The below paragraphs describe how to prepare required input and configure model2owl in order to generate the ReSpec documentation. Detailed instructions can be found in the [User guide](https://docs.ted.europa.eu/M2O/latest/user-guide/about.html). A working example of a ReSpec configuration is available in the [model2owl-boilerplate](https://github.com/OP-TED/model2owl-boilerplate) repository.
+
+##### Metadata JSON
+The user should update predefined metadata properties in the [metadata.json](test/ePO-default-config/metadata.json) file to reflect information about the processed model. The information will be used to generate RDF artefacts and ReSpec documentation. The user can also add custom properties to be used in a Jinja template or included in a metadata section of the generated ReSpec documentation. Details of the metadata properties are described in the [ReSpec metadata](https://docs.ted.europa.eu/M2O/latest/user-guide/respec-documentation.html#sec:respec-metadata) and [Custom metadata](https://docs.ted.europa.eu/M2O/latest/user-guide/respec-documentation.html#sec:respec-custom-metadata) sections of the user guide.
+
+##### ReSpec assets
+All files needed for generating the ReSpec documentation must be prepared and stored in appropriate locations. The locations are typically subfolders of the ReSpec [assets](./respec-resources/assets) folder, however, the relevant model2owl command is configurable to allow using files from different locations.
+
+The following structure of the assets folder is recommended:
+* `model`: contains model artefact files (OWL, SHACL, JSON-LD, XMI, and EAP files)
+* `examples`: contains code examples
+* `img`: contains images
+* `shacl`: contains SHACL shapes for validation purposes
+* `js`: contains JS scripts
+
+##### Customization of the main template
+The [main](./respec-resources/templates/main.j2) template allows customization of the [base](./respec-resources/templates/base.j2) template by using the Jinja2 template inheritance mechanism. 
+The main template can be not only tweaked by adjusting metadata but also extended to use custom metadata and assets described above.
+
+
 ### Running transformations
 After installing and creating your configuration folder use the available make targets described above to transform/generate 
 output from you XMI/XML export file. The command should be executed from the root folder of this project.
@@ -251,6 +378,38 @@ Example
 # generate lightweight ontology from the UML export (xml/xmi)
 make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOLDER_PATH=./my-folder
 ```
+
+### Generating diff reports
+Model2owl uses the [RDF Differ](https://github.com/OP-TED/rdf-differ-ws)
+tool to calculate differences between two RDF graphs and to generate diff
+reports in AsciiDoc and JSON formats. It compares either two OWL core files or
+two pairs consisting of an OWL core file and a SHACL shapes file. When SHACL
+files are provided, the comparison scope additionally covers domain, range, and
+cardinality properties. The comparison scope is defined in an application
+profile suitable for comparing OWL ontologies. Details on how the RDF Differ
+tool works, produced reports, and how to interpret them can be found in the [project
+documentation](https://github.com/OP-TED/rdf-differ-ws/blob/2.1.0/README.md).
+
+Model2owl integrates the tool (via its CLI client) and provides a dedicated set
+of commands to interact with it (see the descriptions of the `run-rdf-diff` and
+`merge-owl-shacl` commands in [Functional commands](#functional-commands)). Apart from
+the functional tools, it also provides utility commands for installing and setting up
+the tool (see [Setting up commands](#setting-up-commands)).
+
+### Testing
+There are three Make targets dedicated to testing the software:
+* `test` - runs all tests.
+* `unit-tests` - runs unit tests implemented in XSpec.
+* `functional-tests` - runs feature tests implemented in Python.
+
+Both XSpec and Python tests are integrated and managed in a unified way. When
+running `test` target, an XML report (Maven Surefire) covering both unit and
+feature tests is generated.
+
+Note: the described commands may be handy for a contributor when working
+locally. This Github repository has a CI configured that runs the test suite on
+every submitted commit and display the results in the GitHub UI.
+
 ## Online
 To use model2owl in an automatic way, we have created a github repository [model2owl-boilerplate](https://github.com/OP-TED/model2owl-boilerplate) that will no longer require for you to install or to execute anything.
 Follow the instructions found there for using this model2owl automation.

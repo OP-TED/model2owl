@@ -3,7 +3,8 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
-    exclude-result-prefixes="xs math xd"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    exclude-result-prefixes="xs math xd f"
     version="3.0">
     <xd:doc scope="stylesheet">
         <xd:desc>
@@ -25,9 +26,9 @@
             
             <div class="authors col-span">
                 <div class="author">
-                    <div><xsl:value-of select="$conventionReportAuthor"/></div>
-                    <div><xsl:value-of select="$conventionReportAuthorLocation"/></div>
-                    <div><a href="{$conventionReportAuthorWebsite}"><xsl:value-of select="$conventionReportAuthorWebsite"/></a></div>
+                    <div><xsl:value-of select="f:getMetadataValue('conventionReportAuthor')"/></div>
+                    <div><xsl:value-of select="f:getMetadataValue('conventionReportAuthorLocation')"/></div>
+                    <div><a href="{f:getMetadataValue('conventionReportAuthorWebsite')}"><xsl:value-of select="f:getMetadataValue('conventionReportAuthorWebsite')"/></a></div>
                 </div>
             </div>
        
@@ -40,7 +41,7 @@
     <xsl:template name="abstract">
         <div class="abstract counter-skip">
             <h1>Abstract</h1>
-            <p><xsl:value-of select="$conventionReportUMLModelName"/> UML model needs to conform to a set of UML conventions described
+            <p><xsl:value-of select="f:getMetadataValue('conventionReportUMLModelName')"/> UML model needs to conform to a set of UML conventions described
                 <a href="https://meaningfy-ws.github.io/model2owl-docs/public-review/uml/conceptual-model-conventions.html" target="_blank">elsewhere</a>. A conformance checking script was developed to execute tests to the UML
                 model and generate errors or warnings when encountered. </p>
             
@@ -48,7 +49,7 @@
                 comprises the UML conformance violations.</p>
             
             <p>The organisation of this document is based on major types of UML elements and
-                connectors that are employed in the <xsl:value-of select="$conventionReportUMLModelName"/> conceptual model. They are as
+                connectors that are employed in the <xsl:value-of select="f:getMetadataValue('conventionReportUMLModelName')"/> conceptual model. They are as
                 follows: 
                 <em>Classes, Enumerations, Datatypes, Packages, Objects, Associations, Dependencies, Realisations and
                     Generalisations</em>. Each major section lists model items that need correction of errors

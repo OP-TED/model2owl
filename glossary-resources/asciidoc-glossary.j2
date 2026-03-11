@@ -1,0 +1,173 @@
+{#- Asciidoc glossary template for generating model glossary consisting of three
+tables covering classes, datatype properties (attributes) and object properties
+(relationships). -#}
+
+{%- set deduplicate_definitions = true -%}
+
+{#- boolean flag (string) whether to include reused concepts in the glossary -#}
+{%- set generate_reused_concepts_ = generate_reused_concepts|string|lower in ["true", "1", "yes", "on"] -%}
+
+{#- ######################## macros and utilities ######################### -#}
+{%- macro replace_asterisks(text) -%}
+  {%- if text and '*' in text -%}
+    {{ text | replace('*', '&#42;') }}
+  {%- else -%}
+    {{ text }}
+  {%- endif -%}
+{%- endmacro -%}
+
+{%- macro build_multiline_string(items, dedupe=false) -%}
+  {%- set ns = namespace(out=[], seen=[]) -%}
+  {%- for it in items
+        | map("trim")
+        | select("string")
+        | reject("equalto", "") %}
+    {%- if not dedupe -%}
+      {%- set ns.out = ns.out + [it] -%}
+    {%- elif it not in ns.seen -%}
+      {%- set ns.seen = ns.seen + [it] -%}
+      {%- set ns.out  = ns.out  + [it] -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {# {{ ns.out | join(" +\n") }} #}
+  {{ passthrough_if_external_concept(ns.out | join(" +\n")) }}
+{%- endmacro -%}
+
+
+{% macro passthrough_if_external_concept(text) %}
+    {%- if text.startswith('External concept defined by') -%}
+        +++{{ text }}+++
+    {%- else -%}
+        {{ text }}
+    {%- endif -%}
+{% endmacro %}
+
+
+
+{# build helper structure for properties #}
+{#- Step 1: collect properties that are not filtered out by status in a flat list -#}
+{%- set all_props = [] -%}
+{%- for cls in classes -%}
+  {%- set effective_cls_status =
+    cls.tags[config.statusProperty]
+    if config.statusProperty in cls.tags
+    else config.unspecifiedStatusInterpretation
+  -%}
+  {%- if effective_cls_status not in config.excludedElementStatusesList -%}
+    {%- for prop in cls.properties -%}
+      {%- set effective_prop_status =
+        prop.tags[config.statusProperty]
+        if config.statusProperty in prop.tags
+        else config.unspecifiedStatusInterpretation
+      -%}
+      {%- if effective_prop_status not in config.excludedElementStatusesList -%}
+        {%- set _ = all_props.append(prop) -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}
+{# Step 2: get unique property names #}
+{%- set prop_names = [] -%}
+{%- set _visited = [] -%}
+{%- for p in all_props -%}
+  {%- if p.name not in _visited -%}
+    {%- set _ = prop_names.append([p.name, p.propertyType, p.propertyOrigin]) -%}
+    {%- set _ = _visited.append(p.name) -%}
+  {%- endif -%}
+{%- endfor -%}
+{# Step 3: build groupedProps in memory: a list of objects grouped by a property name, with properties extended to contain values for all occurences #}
+{%- set groupedProps = [] -%}
+{%- for name, ptype, origin in prop_names -%}
+    {%- set merged_domains = [] -%}
+    {%- set merged_descriptions = [] -%}
+    {%- set merged_cards = [] -%}
+    {%- set merged_ranges = [] -%}
+    {%- for p in all_props if p.name == name -%}
+        {%- for d in p.domain -%}
+          {%- set _ = merged_domains.append(d) -%}
+        {%- endfor -%}
+        {% if p['controlled_vocabulary'] is defined %}
+          {%- set _ = merged_ranges.append({'range_curie': p.controlled_vocabulary['name']}) -%}
+        {% else %}
+          {%- for r in p.range -%}
+            {%- set _ = merged_ranges.append(r) -%}
+          {%- endfor -%}
+        {% endif %}
+        {%- set _ = merged_cards.append(replace_asterisks(p.cardinality)) -%}
+        {%- set _ = merged_descriptions.append(replace_asterisks(p.description.en)) -%}
+    {%- endfor -%}
+    {%- set _ = groupedProps.append({'name': name, 'domain': merged_domains, 'propertyType': ptype, 'range': merged_ranges, 'cardinality': merged_cards, 'description': merged_descriptions, 'origin': origin}) -%}
+{%- endfor -%}
+
+
+{#- ############################ document content ######################### -#}
+= Glossary
+
+== Class names and definitions
+
+[options="header"]
+|===
+| Class name | Definition
+{% for cls in classes %}
+  {%- set effective_elem_status =
+    cls.tags[config.statusProperty]
+    if config.statusProperty in cls.tags
+    else config.unspecifiedStatusInterpretation
+  -%}
+  {%- if effective_elem_status not in config.excludedElementStatusesList -%}
+    {% if generate_reused_concepts_ or cls.rawTags['class-usage-scope'] == "main" %}
+      {% if cls.classType == "definition" %}
+| {{ cls.name }} | {{ passthrough_if_external_concept(cls.description.en) }}
+      {% endif %}
+    {% endif %}
+  {%- endif -%}
+{% endfor %}
+|===
+
+== Attributes (datatype properties) names and definitions
+
+[cols="20%,20%,40%,20%", options="header"]
+|===
+| Class name | Attribute name | Definition | Data type / cardinality
+{# sort all items by prop.name #}
+{# {% set sorted_items = items | sort(attribute='name') %} #}
+
+{% for prop in groupedProps %}
+  {% if generate_reused_concepts_ or prop.origin == "internal" %}
+  {% if prop.propertyType == "datatype property" %}
+| {% for cls in prop.domain -%}
+  {{ cls.name }} {%- if not loop.last %} + {% endif %}
+{% endfor -%}
+| {{ prop.name -}} 
+| {{ build_multiline_string(prop.description, deduplicate_definitions) -}}
+| {%- for i in range(prop.range|length) -%}
+{{ prop.range[i].range_curie }} [{{ prop.cardinality[i] }}] {%- if not loop.last %} +{% endif %}
+  {% endfor -%}
+  {%- endif -%}
+  {%- endif -%}
+{%- endfor %}
+|===
+
+== Predicates (object properties) and definitions
+
+[cols="20%,50%,30%", options="header"]
+|===
+| Predicate name | Definition | Domain, Range and Cardinality
+
+{% for prop in groupedProps %}
+  {% if generate_reused_concepts_ or prop.origin == "internal" %}
+  {% if prop.propertyType == "object property" %}
+| {{ prop.name -}}
+| {{ build_multiline_string(prop.description, deduplicate_definitions) -}}
+| {%- for i in range(prop.range|length) -%}
+ {{ prop.domain[i].name }} → {{ prop.range[i].range_curie }} [{{ prop.cardinality[i] }}] {%- if not loop.last %} +{% endif %}
+{% endfor -%}
+  {% endif %}
+  {% endif %}
+{% endfor %}
+
+|===
+
+
+This document is generated automatically by the link:https://github.com/OP-TED/model2owl[model2owl tool] developed in the context of link:https://interoperable-europe.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology[the eProcurement Ontology initiative].

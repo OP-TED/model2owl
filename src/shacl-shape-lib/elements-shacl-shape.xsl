@@ -140,9 +140,11 @@
                     <xsl:with-param name="rdfsComment" select="fn:true()"/>
                 </xsl:call-template>
             </xsl:if>
-            <xsl:call-template name="shapeLayerDefinedBy">
-                <xsl:with-param name="uri" select="$shapeClassUri"/>
-            </xsl:call-template>
+            <xsl:if test="$annotateShaclConceptsWithOntology">
+                <xsl:call-template name="shapeLayerDefinedBy">
+                    <xsl:with-param name="uri" select="$shapeClassUri"/>
+                </xsl:call-template>
+            </xsl:if>
 
         </xsl:if>
 
@@ -224,9 +226,11 @@
                 <xsl:with-param name="rdfsComment" select="fn:false()"/>
             </xsl:call-template>
         </xsl:if>
-        <xsl:call-template name="shapeLayerDefinedBy">
-            <xsl:with-param name="uri" select="$shapePropertyUri"/>
-        </xsl:call-template>
+        <xsl:if test="$annotateShaclConceptsWithOntology">
+            <xsl:call-template name="shapeLayerDefinedBy">
+                <xsl:with-param name="uri" select="$shapePropertyUri"/>
+            </xsl:call-template>
+        </xsl:if>
     </xsl:template>
 
 
@@ -255,8 +259,6 @@
     <xsl:template name="attributeRangeShape">
         <xsl:param name="attribute"/>
         <xsl:param name="className"/>
-        <xsl:variable name="attributeURI" select="f:buildURIFromElement($attribute)"/>
-        <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
         <xsl:variable name="attributeType" select="$attribute/properties/@type"/>
         <xsl:variable name="shapePropertyUri"
             select="f:buildPropertyShapeURI($className, $attribute/@name)"/>
@@ -333,8 +335,6 @@
         <xsl:variable name="attributeMultiplicityMax"
             select="f:getAttributeValueToDisplay($attribute/bounds/@upper)"/>
         <xsl:variable name="datatypeURI" select="f:buildURIfromLexicalQName('xsd:integer')"/>
-        <xsl:variable name="attributeURI" select="f:buildURIFromElement($attribute)"/>
-        <xsl:variable name="attributeName" select="f:lexicalQNameToWords($attribute/@name)"/>
         <xsl:variable name="shapePropertyUri"
             select="f:buildPropertyShapeURI($className, $attribute/@name)"/>
 

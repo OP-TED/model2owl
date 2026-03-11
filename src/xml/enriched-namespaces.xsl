@@ -20,11 +20,6 @@
         <prefixes>
             <xsl:for-each select="/*:prefixes/*:prefix">
                 <prefix name="{./@name}" value="{./@value}">
-                    <xsl:if test="boolean(./@importURI)">
-                        <xsl:attribute name="importURI">
-                            <xsl:value-of select="./@importURI" />
-                        </xsl:attribute>
-                    </xsl:if>
                 </prefix>
             </xsl:for-each>
             <prefix name="{fn:concat($moduleReference, '-res')}" 
