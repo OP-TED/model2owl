@@ -84,7 +84,7 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 #### Setting up commands
 * **get-saxon** - this will install saxon in a folder inside the project
 * **get-rdflib** - this will install rdflib library
-* **get-widoco** - this will install saxon in a folder inside the project
+* **get-widoco** - this will install widoco in a folder inside the project
 * **get-jinja** – this will install Jinja2 inside the project folder
 * **get-jq** – this will install jq inside the project folder
 * **install** - this will automatically execute all the commands above
